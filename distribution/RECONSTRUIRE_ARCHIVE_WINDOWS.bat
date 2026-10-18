@@ -1,7 +1,5 @@
 @echo off
-setlocal
-where python >nul 2>nul || (echo Python 3 est requis pour reconstituer et lancer le jeu. & pause & exit /b 1)
-python "%~dp0RECONSTRUIRE_ARCHIVE.py"
-set "RESULT=%ERRORLEVEL%"
+cd /d "%~dp0"
+where py >nul 2>nul
+if errorlevel 1 (python RECONSTRUIRE_ARCHIVE.py) else (py -3 RECONSTRUIRE_ARCHIVE.py)
 pause
-exit /b %RESULT%

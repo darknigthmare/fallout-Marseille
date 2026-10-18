@@ -1,5 +1,13 @@
 # Publication GitHub et Google Drive — 18 octobre 2026
 
+## Livraison actuelle : v0.50
+
+La version v0.50 « Les routes retrouvées » est publiée sur la branche principale. Le [dossier Drive v0.50](https://drive.google.com/drive/folders/1xE5VpELY64tz5GV9CHHrlsIb_rfahRnQ) contient le jeu complet en un ZIP et le projet complet en cinq parties. Le dossier `distribution/` contient les consignes, le manifeste et les scripts correspondant exactement à cette livraison.
+
+Le texte ci-dessous conserve le compte rendu historique de l’import v0.49. Ses tailles et constats concernent cette ancienne version.
+
+## Historique : import v0.49
+
 Cette publication importe la livraison v0.49 originale dans `darknigthmare/fallout-Marseille`. Le dépôt contenait auparavant uniquement son README, au commit `cc60c2325da40199f109b430c6a3719bb86054c4`.
 
 ## Intégrité de la base
@@ -26,4 +34,4 @@ Les 434 contrôles documentés dans les rapports d’origine restent des contrô
 
 Le transfert impose une limite de 100 Mio par fichier. L’archive est donc découpée en deux parties binaires, sans recompression ni retrait de contenu. Le script de recomposition vérifie chaque partie et l’empreinte du ZIP final. La recomposition est vérifiée avant publication des parties.
 
-Les instructions et scripts correspondants sont conservés dans `distribution/`.
+Les instructions et scripts de cette ancienne livraison restent accessibles dans [l’historique Git de distribution](https://github.com/darknigthmare/fallout-Marseille/tree/1e7ef8dc958bda56c573715ccf4c7ebdc791f241/distribution).
