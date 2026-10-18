@@ -1,0 +1,23 @@
+{
+  "name": "Fallout : Mistral — Couche Fallout territoriale",
+  "short_name": "Mistral",
+  "description": "RPG 3D local non officiel avec cartographie réelle, 248 sites Fallout persistants, lieux visitables, PNJ, monstres, élites et boss régionaux.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b120d",
+  "theme_color": "#11170f",
+  "icons": [
+    {
+      "src": "icons/mistral-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/mistral-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

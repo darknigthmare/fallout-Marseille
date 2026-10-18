@@ -1,0 +1,346 @@
+{
+  "version": "0.35.0",
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 67,
+  "failed": 0,
+  "total": 67,
+  "results": [
+    {
+      "ok": true,
+      "name": "Trois contrôleurs nouveaux + deux historiques ; zéro carte importée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Titre v029 actualisé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Refus réel localStorage sur origine opaque détecté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sauvegarde via adaptateur mémoire explicitement injecté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Nouvelles clés distinctes de v028",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration ancienne partie sans accès ni quête inventés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Préserve santé, fouille, vieilles quêtes et champs inconnus",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "État importé borné ; zéro essai corrompu ne contourne pas le verrouillage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Indices répétés/invalides nettoyés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Journal importé borné",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pas de contrôleur ou issue inconnus acceptés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : douze mots uniques de même longueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : douze mots uniques de même longueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : douze mots uniques de même longueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay : douze mots uniques de même longueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "ship : douze mots uniques de même longueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Similitude par position et longueur, pas lettres seulement présentes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Contrôleur inaccessible à distance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Contrôleur inaccessible depuis le mauvais étage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ouverture sur place du dialogue natif et pause de jeu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune lecture privée ni commande sans identification",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Les douze candidats sont de vrais boutons",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Règle de la déduction affichée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réinitialisation non consommée avec quatre essais",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Après un candidat devenu inactif, le focus reste dans le contrôleur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mauvais mot : un essai consommé au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retour de similitude conforme à la solution",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Répéter le même candidat ne débite pas deux essais",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Les chevrons retirent un leurre, jamais la solution",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Séquence déjà utilisée et candidat retiré refusés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Crochets : restitution des quatre essais une fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accolades retirent un second leurre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fermer puis rouvrir conserve essais, mots et aides",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bonne réponse authentifie sans action automatique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Authentification ne déclenche ni volet ni veille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bonne réponse non répétable pour expérience",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Journal D-4 archivé et preuve de liaison enregistrée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Texte complet copié, pas seulement titre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ouverture du volet nécessite confirmation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Revenir laisse le volet fermé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Confirmation ouvre réellement la collision",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ouverture ne se répète pas",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Quatre erreurs : verrouillage de 45 secondes actives",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Déduction désactivée pendant refroidissement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Attendre dans le terminal ne fait pas refroidir le contrôleur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fermer ne rétablit pas les essais",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sauvegarde verrouillée réimportée via validateur réel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Verrouillage persiste après import",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Habilitation permet accès pendant lockout sans recharger le jeu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Avant 45 secondes actives : pas de reset anticipé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Au refroidissement : nouveau cycle et quatre essais",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le nouveau cycle change la table, pas une simple fermeture",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bouton obsolète après changement de scène inopérant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Confirmation refuse un joueur déplacé à distance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Import invalide une session et son devis encore ouverts",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Personnage mort ne commande pas le contrôleur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Science insuffisante : A-2 ne peut être forcé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Science suffisante ouvre la déduction A-2",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Shift+Tab reste dans le contrôleur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tab boucle sur le premier bouton",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Clavier dans le contrôleur ne déplace pas le joueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Échap ferme et rend le contrôle au jeu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Registre des contrôleurs intégré au Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Copie archivée : aucune commande à distance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Reprise ancienne exploration v028",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Nouvelle écriture n’écrase pas le fichier de la version précédente",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Déduction, accès et preuves reprennent fidèlement",
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "scope": "Exact HTML via set_content; software Chromium; controlled state/poses disclosed; successful saves via declared memory adapter. Native opaque-origin refusal checked separately. No official geospatial data."
+}

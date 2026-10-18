@@ -1,0 +1,693 @@
+{
+  "version": "0.35.0",
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 86,
+  "failed": 0,
+  "total": 86,
+  "results": [
+    {
+      "ok": true,
+      "name": "depot : neuf espaces précédents et un local de service",
+      "detail": [
+        [
+          "Réception",
+          0,
+          17,
+          0
+        ],
+        [
+          "Fret",
+          0,
+          3,
+          0
+        ],
+        [
+          "Magasin",
+          -18,
+          13,
+          0
+        ],
+        [
+          "Double escalier",
+          -17,
+          -4,
+          0
+        ],
+        [
+          "Registres",
+          -5,
+          -18,
+          3.2
+        ],
+        [
+          "Réserve haute",
+          12,
+          -18,
+          3.2
+        ],
+        [
+          "Cour de réception",
+          0,
+          32,
+          0
+        ],
+        [
+          "Abri des couvertures",
+          -14,
+          38,
+          0
+        ],
+        [
+          "Cantine du retour",
+          12,
+          44,
+          0
+        ],
+        [
+          "Local de service depot",
+          -15,
+          45,
+          0
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "depot : local fermé vraiment inaccessible depuis la scène",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : poignée de secours non actionnable depuis dehors",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : veille seulement après confirmation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : un automate vivant en veille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : aucun autre ennemi neutralisé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : veille sans mort ni attribution de butin",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : entrer par le contrôleur de déplacement réel",
+      "detail": {
+        "ok": true,
+        "steps": 162,
+        "pos": [
+          -14.900374959430936,
+          1.65,
+          44.05525372510897
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Contact mécanique collecté depuis l’intérieur, après marche",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Contact non duplicable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : ressortir sans chargement ni téléportation",
+      "detail": {
+        "ok": true,
+        "steps": 21,
+        "pos": [
+          -14.900000263583587,
+          1.65,
+          41.23836632794291
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "depot : volet ouvert conservé au retour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : veille conservée après rechargement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : aucun cycle offensif d’un automate en veille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : ouverture mécanique depuis l’intérieur sans mot de passe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : sortie de secours n’authentifie pas le contrôleur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : évacuation réelle après ouverture intérieure",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : neuf espaces précédents et un local de service",
+      "detail": [
+        [
+          "Accueil",
+          0,
+          17,
+          0
+        ],
+        [
+          "Salle basse",
+          -17,
+          -13,
+          0
+        ],
+        [
+          "Lecture",
+          14,
+          4,
+          0
+        ],
+        [
+          "Galerie",
+          -15,
+          2,
+          3.2
+        ],
+        [
+          "Bandes sources",
+          14,
+          -16,
+          3.2
+        ],
+        [
+          "Escalier est",
+          18,
+          -3,
+          0
+        ],
+        [
+          "Jardin des lecteurs",
+          0,
+          30,
+          0
+        ],
+        [
+          "Dépôt des dossiers",
+          -14,
+          36,
+          0
+        ],
+        [
+          "Atelier des radios",
+          12,
+          42,
+          0
+        ],
+        [
+          "Local de service archives",
+          -21,
+          43,
+          0
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "archives : local fermé vraiment inaccessible depuis la scène",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : poignée de secours non actionnable depuis dehors",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : veille seulement après confirmation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : un automate vivant en veille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : aucun autre ennemi neutralisé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : veille sans mort ni attribution de butin",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : entrer par le contrôleur de déplacement réel",
+      "detail": {
+        "ok": true,
+        "steps": 412,
+        "pos": [
+          -21.09947494075835,
+          1.65,
+          42.13604520874226
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "archives : note intérieure accessible après parcours",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : ressortir sans chargement ni téléportation",
+      "detail": {
+        "ok": true,
+        "steps": 21,
+        "pos": [
+          -21.099999561628888,
+          1.65,
+          39.319157924412906
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "archives : volet ouvert conservé au retour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : veille conservée après rechargement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : aucun cycle offensif d’un automate en veille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : ouverture mécanique depuis l’intérieur sans mot de passe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : sortie de secours n’authentifie pas le contrôleur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : évacuation réelle après ouverture intérieure",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : neuf espaces précédents et un local de service",
+      "detail": [
+        [
+          "Secours",
+          0,
+          19,
+          0
+        ],
+        [
+          "Batterie ouest",
+          -22,
+          16,
+          0
+        ],
+        [
+          "Batterie est",
+          22,
+          16,
+          0
+        ],
+        [
+          "Palan",
+          8,
+          7,
+          0
+        ],
+        [
+          "Passerelle",
+          0,
+          0,
+          3.2
+        ],
+        [
+          "Diffusion",
+          0,
+          -16,
+          3.2
+        ],
+        [
+          "Cour des secours",
+          0,
+          32,
+          0
+        ],
+        [
+          "Atelier des amarres",
+          -14,
+          38,
+          0
+        ],
+        [
+          "Table des départs",
+          12,
+          44,
+          0
+        ],
+        [
+          "Local de service amarres",
+          -22,
+          46,
+          0
+        ],
+        [
+          "Baie d’assistance",
+          10,
+          32,
+          0
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "amarres : local fermé vraiment inaccessible depuis la scène",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : poignée de secours non actionnable depuis dehors",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : veille seulement après confirmation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : un automate vivant en veille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : aucun autre ennemi neutralisé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : veille sans mort ni attribution de butin",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : entrer par le contrôleur de déplacement réel",
+      "detail": {
+        "ok": true,
+        "steps": 451,
+        "pos": [
+          -21.799385041950035,
+          1.65,
+          45.33106552484098
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "amarres : note intérieure accessible après parcours",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : ressortir sans chargement ni téléportation",
+      "detail": {
+        "ok": true,
+        "steps": 21,
+        "pos": [
+          -21.799999541351095,
+          1.65,
+          42.51417832611334
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "amarres : volet ouvert conservé au retour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : veille conservée après rechargement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : aucun cycle offensif d’un automate en veille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : ouverture mécanique depuis l’intérieur sans mot de passe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : sortie de secours n’authentifie pas le contrôleur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : évacuation réelle après ouverture intérieure",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une coupure historique ayant neutralisé le robot n’est pas annulée par la nouvelle veille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Adrien abordé sur place",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Acceptation par clic réel dans le dialogue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Conclusion impossible sans journaux et contact",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fiche D-4 recueillie à la cantine",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "D-4 accessible sans jouer au piratage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Contact atteint par trajet réel dans l’alcôve ouverte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Contact emporté dans le dossier",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fiche A-2 interdite à travers son étage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Habilitation A-2 atteinte par escaliers existants",
+      "detail": {
+        "ok": true,
+        "steps": 402,
+        "pos": [
+          10.142641727193512,
+          4.85,
+          -14.6781329927143
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "Habilitation A-2 lue physiquement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Journal A-2 conservé par accès habilité malgré Science basse",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Autorisation Q-8 délivrée seulement avec deux journaux",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Trois preuves sans G.O.A.T., sans points de Science ajoutés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux issues et possibilité de différer",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Prévisualisation réversible sans dépense",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Matériaux manquants : pas de paiement partiel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Issue locale signée une fois : 75 capsules",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Issue locale : deux attelles, pas un bonus fictif",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Trois scènes textuelles distinctes de l’accord local",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Relecture sans récompense et conclusion non remplaçable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "depot : accord appliqué lors du rechargement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "archives : accord appliqué lors du rechargement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "amarres : accord appliqué lors du rechargement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Canal six, dossier d’aptitudes et pharmacie non réécrits par cet accord",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le suivi de la quête ne reste pas affiché après une nouvelle partie",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Issue surveillée : deux ferrailles et un circuit exactement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Issue surveillée : trousse et capsules effectives",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six scènes d’épilogue réellement distinctes entre les deux issues",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "État d’accord sauvegardé puis réimporté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Décision et portes persistent dans l’import",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bande trouvée sur place inscrite à la bibliothèque",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bande d’Adrien consultable depuis le lecteur existant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancien relais résolu par nouvelle authentification puis commande explicite",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Revisiter le relais ne recule pas la campagne et ne répète pas sa récompense",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancien mandat du chantier : contournement réel du système historique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pas de réputation répétable sur le mandat réécrit",
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "scope": "Exact HTML via set_content; software Chromium; controlled state/poses disclosed; successful saves via declared memory adapter. Native opaque-origin refusal checked separately. No official geospatial data."
+}

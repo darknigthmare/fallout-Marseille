@@ -1,0 +1,51 @@
+{
+  "version": "0.36.0",
+  "html_sha256": "6075228bc948f86424ee19f63c5cec8a72fb98061e6d13e9d193607863945d9a",
+  "passed": 105,
+  "failed": 0,
+  "total": 105,
+  "javascriptErrors": 0,
+  "suites": [
+    {
+      "name": "Cartographie v0.36",
+      "file": "QA_V036.json",
+      "passed": 21,
+      "failed": 0,
+      "total": 21
+    },
+    {
+      "name": "Distribution cartographique v0.36",
+      "file": "QA_V036_PRODUCT.json",
+      "passed": 11,
+      "failed": 0,
+      "total": 11
+    },
+    {
+      "name": "Régression produit v0.35",
+      "file": "QA_REGRESSION_V035_ON_V036.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41
+    },
+    {
+      "name": "Régression prologue v0.35",
+      "file": "QA_REGRESSION_V035_PROLOGUE_ON_V036.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22
+    },
+    {
+      "name": "Régression distribution v0.35",
+      "file": "QA_REGRESSION_V035_PRODUCT_ON_V036.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10
+    }
+  ],
+  "truth": {
+    "plannedVectorTiles": 5884,
+    "embeddedVectorTiles": 0,
+    "officialTerrainMacros": 0,
+    "relayVerified": true
+  }
+}

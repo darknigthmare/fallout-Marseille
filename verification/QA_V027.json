@@ -1,0 +1,499 @@
+{
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "scope": "HTML exact dans Chromium logiciel ; caméra et état préparés ; stockage mémoire explicite. Pas de carte officielle ni certification GPU.",
+  "passed": 98,
+  "failed": 0,
+  "checks": [
+    {
+      "ok": true,
+      "name": "Version exacte 0.27.0",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cinq boutons principaux, pas ancien menu en six onglets",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Boîtier monté dans le vrai Pip-Boy accessible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "status/health : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "status/special : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "status/skills : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "status/perks : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "status/rep : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "status/survival : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "status/power : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "inventory/weapon : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "inventory/armor : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "inventory/aid : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "inventory/quest : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "inventory/junk : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "inventory/material : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "inventory/ammo : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "data/quests : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "data/notes : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "data/terminals : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "data/consequences : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "data/dialogs : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "data/network : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "data/legacy : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "data/system : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "data/security : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "map/local : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "map/places : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "map/coverage : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "radio/stations : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "radio/tapes : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "radio/games : rubrique réelle rendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Parcourir les 25 rubriques ne valide aucune quête ni ne crée ressources ou découvertes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "E passe au mode suivant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "D passe à la sous-rubrique suivante",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Q revient au mode précédent",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Molette physique SELECT change réellement le mode",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Saisie q/e/a/d ne navigue pas dans le Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tab ferme même depuis le champ de recherche",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "I ouvre le véritable INV au lieu du sac séparé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Échap rend le contrôle au jeu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "INV armes = modèles effectivement possédés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Portefeuille affiché depuis player.caps",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Équiper depuis la barre basse change réellement l’arme",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Favori 1 enregistré depuis le Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Équipement absent ou inconnu refusé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Comparaison de protection avec indication de portée nominale",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Équiper protection depuis le Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Stimpak : un seul retrait et soin réel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Soin gaspillé refusé, objet conservé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "RadAway sans radiations ne consomme rien",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Recherche de circuits sauvegardée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Potentiel des objets de récupération distinct des composants en sac",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tube radio reconnu comme source de circuit recherché",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Recherche sans résultat : aucun objet attribué",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Recherche filtre réellement la liste",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Loupe de composant présente dans la fouille physique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Démontage distant refusé sans débit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Démontage à l’établi accepté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Objet consommé une fois, circuit réellement ajouté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Démontage ne donne pas une boucle d’expérience",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucun objet historique en sac ne disparaît entre les sept catégories",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "Note non découverte absente",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Texte archivé exact, HTML neutralisé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Marquage lu enregistré",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Impossible de marquer une note inexistante",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Changement de page sélectionne une entrée de cette page",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Détail actif correspond à la page visible, pas à la première page",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Quête locale non commencée non révélée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Suivi unique du dossier d’aptitudes, autres suivis désactivés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Suivre n’accorde pas preuve, récompense ni XP",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Filtre terminé contient l’enquête résolue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une quête terminée ne peut être réactivée par son suivi",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Seul le terminal marqué comme visité est archivé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Terminal consulté ailleurs : commande impossible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Commande autorisée au vrai terminal proche",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Commande déjà appliquée non répétable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Thème ambre appliqué et sauvegardé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Balayage désactivable sans modifier les stats",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Couleur inconnue refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un seul canvas de plan, pas doublon laissé par le panneau de terrain",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Zoom local appliqué",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Étage haut disponible pour le lieu multi-étages",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Choisir étage et zoom ne déplace pas le personnage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Clic dans le plan ne téléporte pas le joueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Balise conservée uniquement avec contexte du lieu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Effacer balise retire aussi le parcours",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Périmètre annonce les données absentes, pas une fausse carte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Voyage direct vers intérieur refusé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Destination inconnue refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Geste tactile sélectionne DATA",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Geste tactile sélectionne INV",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pas de défilement horizontal global à 390 px",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Boîtier et cinq onglets entièrement à l’intérieur de la largeur mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Barre d’action rapide dans la fenêtre mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sous-rubrique hors premier écran atteignable par clic sur mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rangement tactile du Pip-Boy rend le contrôle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Absence d’exception JavaScript pendant les essais",
+      "detail": []
+    }
+  ],
+  "errors": []
+}

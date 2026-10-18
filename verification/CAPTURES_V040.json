@@ -1,0 +1,47 @@
+{
+  "version": "0.40.0",
+  "html_sha256": "79a5a6b8153f5faf586d60d15c183a1b36c17080ab5e48ca0f9972ebe24d1137",
+  "errors": [],
+  "shots": [
+    {
+      "file": "v040_00_corridors_preuve.png",
+      "title": "Preuves des deux traversées",
+      "note": "Géométries réelles issues du graphe OSM mis en cache."
+    },
+    {
+      "file": "v040_01_menu.png",
+      "title": "Menu v0.40",
+      "note": "Le dossier cartographique affiche désormais Corridors continus."
+    },
+    {
+      "file": "v040_02_status.png",
+      "title": "Statut de certification",
+      "note": "Les deux distances, les raccords cadastraux et le relief sont séparés."
+    },
+    {
+      "file": "v040_03_pipboy.png",
+      "title": "Roadbook dans le Pip-Boy",
+      "note": "Deux trajets certifiés peuvent être activés ou préchargés."
+    },
+    {
+      "file": "v040_04_roadbook.png",
+      "title": "Traversée en cours",
+      "note": "Le HUD suit la progression et compte les ruptures de continuité."
+    },
+    {
+      "file": "v040_05_stitch.png",
+      "title": "Bâtiment cadastral recousu",
+      "note": "Deux fragments de tuiles sont masqués et remplacés par une seule emprise sûre."
+    },
+    {
+      "file": "v040_06_certification.png",
+      "title": "Compteurs de certification",
+      "note": "Le Pip-Boy expose les bâtiments recousus et les preuves hors ligne."
+    },
+    {
+      "file": "v040_07_final_status.png",
+      "title": "État après recollage",
+      "note": "Le statut conserve une distinction claire entre preuve calculée et validation humaine restante."
+    }
+  ]
+}

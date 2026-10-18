@@ -1,0 +1,177 @@
+node --check src/game.js
+node tests/v047/kernel.test.cjs
+OK Mémoire : ArrayBuffer mesuré
+OK Mémoire : les vues partagées ne sont pas comptées deux fois
+OK Mémoire : références cycliques supportées
+OK Cache LRU : limite en entrées
+OK Cache LRU : une lecture rend la ressource récente
+OK Cache LRU : limite en octets
+OK Cache LRU : conservation des ressources actives
+OK Dépassement requis affiché et non caché
+OK Déverrouillage permet de libérer le cache
+OK Remplacement ne double pas les octets
+OK Effacement libère les références et épingles
+OK Grille spatiale : élément chevauchant une frontière
+OK Grille spatiale : coordonnées négatives
+OK Grille spatiale : pas de duplicata de requête
+OK Grille spatiale : grandes surfaces restent bornées
+OK Grille invalide refusée
+OK Marqueur vide explicite accepté
+OK Marqueur autre tuile refusé
+OK Marqueur non officiel refusé
+OK Empreinte de vide incohérente refusée
+OK Reprise de position tolérance métrique
+OK Une position invalide n’est pas une reprise
+OK Terrain cloné sans modifier la banque publiée
+OK SHA-256 sans WebCrypto : 0 octets
+OK SHA-256 sans WebCrypto : 1 octets
+OK SHA-256 sans WebCrypto : 3 octets
+OK SHA-256 sans WebCrypto : 55 octets
+OK SHA-256 sans WebCrypto : 56 octets
+OK SHA-256 sans WebCrypto : 63 octets
+OK SHA-256 sans WebCrypto : 64 octets
+OK SHA-256 sans WebCrypto : 65 octets
+OK SHA-256 sans WebCrypto : 1000 octets
+OK SHA-256 sans WebCrypto : 65536 octets
+node tests/v047/legacy_kernel.test.cjs
+OK Polygone : ordre cyclique identique
+OK Polygone : orientation identique
+OK Cour centrale reste vide
+OK Murs entourant la cour restent solides
+OK Extérieur reste libre
+OK Un trou différent change l’identité
+OK Terrain : axe nord-sud correct
+OK Terrain hors grille non extrapolé
+OK NoData ne devient pas zéro
+OK Sentinelle sous -100 rejetée
+OK Emprise fausse rejetée
+OK Longueur de grille incohérente rejetée
+OK Origine du terrain obligatoire
+OK Ordre des lignes invalide rejeté
+OK Zone superposée attend ses deux sources
+OK Terrain indépendant de l’ordre de réception
+OK Transaction publie une seule fois après tous les fichiers
+OK Une tuile manquante interdit la publication
+OK Échec géométrique préserve la scène
+OK Annulation avant réponse ne publie rien
+OK Réponse périmée ne remplace pas une requête récente
+OK Réessai réutilise les fichiers déjà validés
+OK Concurrence réseau bornée
+node tests/v047/legacy_distribution.cjs
+{"passed":8,"failed":0,"total":8,"tests":[{"name":"Index identique au HTML livré","ok":true},{"name":"Version PWA et lanceurs v046","ok":true},{"name":"Noyau offline existe","ok":true},{"name":"Absence /data/map_pack/france-vector/14/1/2.pbf retourne 503, pas HTML","ok":true},{"name":"Absence /data/map_pack/terrain/geo_marseille.json retourne 503, pas HTML","ok":true},{"name":"Shell offline disponible","ok":true},{"name":"Les caches d’autres applications sont conservés","ok":true},{"name":"Catalogue v042 conservé à 248 sites","ok":true}],"scope":"Contrats de fichiers et événements service-worker exécutés dans Node ; aucune inscription native PWA revendiquée"}
+/opt/pyvenv/bin/python tests/v047/runtime.py
+OK Version v0.47 exécutée
+OK Laboratoire synthétique chargé
+OK Échec après lecture du nouveau relief
+OK Échec : banque altimétrique publiée inchangée
+OK Échec : altitude sous le joueur inchangée
+OK Échec : bâtiments et nature inchangés
+OK Échec : aucune publication partielle
+OK Annulation pendant construction : banque intacte
+OK Annulation pendant construction : géométrie intacte
+OK Annulation pendant construction : position intacte
+OK Réessai après annulation
+OK Tuiles réutilisées par référence, pas réinstanciées
+OK Maillages terrain réutilisés
+OK Préchargement déclenché dans le secteur valide
+OK Préchargement non bloquant
+OK Le joueur peut marcher pendant la préparation
+OK Au seuil de sécurité, attente visible
+OK Le saut vers une zone non prête est refusé
+OK La même anticipation est publiée une seule fois
+OK Reprise sans téléportation
+OK Joueur arrêté : aucun cycle anticipatif oscillant
+OK Scène conservée après publication
+OK Empreintes des bâtiments identiques
+OK La marche reprend dans le secteur préparé
+OK Seconde anticipation demandée
+OK Demi-tour : ancien secteur validé conservé
+OK Demi-tour : préchargement périmé rejeté
+OK Chargement de stress 1
+OK Chargement de stress 2
+OK Chargement de stress 3
+OK Chargement de stress 4
+OK Chargement de stress 5
+OK Chargement de stress 6
+OK Chargement de stress 7
+OK Chargement de stress 8
+OK Chargement de stress 9
+OK Chargement de stress 10
+OK Chargement de stress 11
+OK Chargement de stress 12
+OK Cache brut borné après exploration
+OK Géométrie et terrain bornés
+OK Anciennes données non actives évincées
+OK Retour au secteur initial
+OK Bâtiments stables après éviction et retour
+OK Échec : bouton de réessai accessible au clavier
+OK Annuler respecte le Pip-Boy ouvert
+OK Lecture bornée valide
+OK Corps trop volumineux refusé
+OK Signal déjà annulé respecté
+OK Diagnostic réel du streaming affiché
+OK Le banc ne prétend pas être Marseille
+OK Aucune exception JavaScript
+{"passed": 52, "failed": 0, "total": 52, "errors": []}
+/opt/pyvenv/bin/python tests/v047/server_io.py
+OK Le serveur distribue le HTML final exact
+OK Audit local réellement exécuté
+OK Absence de pack signalée et non masquée
+OK Audit interdit en cache périmé
+OK PBF réel de fixture validé via réponses HTTP contrôlées
+OK Empreinte corrompue refusée, même sans WebCrypto
+OK Une page HTML ne devient pas une tuile
+OK Coordonnées hors manifeste refusées
+OK Diagnostics sont rendus par le programme
+OK Aucune exception JavaScript
+{"passed": 10, "failed": 0, "total": 10, "errors": []}
+/opt/pyvenv/bin/python tests/v047/legacy_runtime.py
+OK Démarrage v0.46
+OK Banc se charge par la barrière réelle
+OK Cinq empreintes cadastrales de test chargées
+OK Des arbres sont créés dans le masque forestier
+OK Une seule projection pour les huit régions
+OK Cour du bâtiment reste traversable
+OK Mur du même bâtiment garde sa collision
+OK Région traverse sans reconstruire — aller 1
+OK Bâtiments identiques après franchissement 1
+OK Retour conserve routes et forêt 1
+OK Position retour conservée 1
+OK Région traverse sans reconstruire — aller 2
+OK Bâtiments identiques après franchissement 2
+OK Retour conserve routes et forêt 2
+OK Position retour conservée 2
+OK Région traverse sans reconstruire — aller 3
+OK Bâtiments identiques après franchissement 3
+OK Retour conserve routes et forêt 3
+OK Position retour conservée 3
+OK Écran de chargement réellement visible
+OK Déplacement bloqué pendant chargement
+OK Ressources manquantes interdisent la publication
+OK Réessayer et annuler restent accessibles
+OK Annulation reprend la scène intacte
+OK Réessai réussi
+OK Rechargement ne déplace pas les bâtiments
+OK Une réponse tardive après annulation ne change rien
+OK Raccourcis non reconstruits sur 600 mises à jour
+OK Dimensions des raccourcis constantes
+OK HUD arme constant sur 600 valeurs
+OK HUD étroit défini sans pompage
+OK Ciel : azimut monde indépendant de la caméra
+OK Ciel : projection change avec le regard
+OK Neuf factions et huit dossiers réintégrés
+OK Objectif non accompli ne donne pas de récompense
+OK Récompense une seule fois
+OK Progression COCHONNET persistante
+OK Le laboratoire ne sauvegarde jamais la campagne
+OK Dossiers de lore accessibles dans le vrai Pip-Boy
+OK Ancienne sauvegarde convertie au repère commun
+OK Portefeuille conservé pendant migration
+OK Retour de porte converti avec la sauvegarde
+OK Migration idempotente : pas de second déplacement
+OK Abri existant toujours ouvrable
+OK Intérieur hérité conservé
+OK Sortie de l’abri acceptée
+OK Retour au même point extérieur
+OK Bâtiments identiques après sortie d’instance
+OK Aucune exception JS

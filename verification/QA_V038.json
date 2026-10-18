@@ -1,0 +1,404 @@
+{
+  "version": "0.38.0",
+  "html_sha256": "0e94d183613089d04256907634b3df1ff82e7ee043efc08c8d2ded6282ce6fc5",
+  "passed": 16,
+  "failed": 0,
+  "total": 16,
+  "errors": [],
+  "requests": {
+    "coverage": 3,
+    "base": 9,
+    "cadastre": 7,
+    "empty": 2
+  },
+  "checks": [
+    {
+      "name": "manifest v0.38 exact",
+      "ok": true,
+      "detail": {
+        "base": 367,
+        "cadastre": 5517,
+        "total": 5884
+      }
+    },
+    {
+      "name": "manifest cache complete",
+      "ok": true,
+      "detail": {
+        "coordinates": 5884,
+        "base": 367,
+        "cadastre": 5517,
+        "storedPbf": 4557,
+        "officialEmpty": 1327,
+        "bytes": 86973739,
+        "complete": true,
+        "verifiedAt": "2026-09-19T01:53:47Z"
+      }
+    },
+    {
+      "name": "relay v0.38 in every row",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "runtime v0.38",
+      "ok": true,
+      "detail": {
+        "version": "0.38.0",
+        "plan": {
+          "version": "0.38.0",
+          "base": 367,
+          "cadastre": 5517,
+          "total": 5884,
+          "basePbf": 367,
+          "cadastrePbf": 4190,
+          "cadastreEmpty": 1327,
+          "totalPbf": 4557,
+          "totalEmpty": 1327,
+          "cloudBytes": 86973739,
+          "terrainExpected": 8,
+          "terrainBundled": 0,
+          "bounds": {
+            "south": 43.125,
+            "west": 5.255,
+            "north": 43.42,
+            "east": 5.755
+          }
+        },
+        "cloud": {
+          "state": "ready",
+          "base": 367,
+          "cadastre": 5517,
+          "total": 5884,
+          "bytes": 86973739,
+          "basePbf": 367,
+          "cadastrePbf": 4190,
+          "baseEmpty": 0,
+          "cadastreEmpty": 1327,
+          "totalEmpty": 1327,
+          "complete": true,
+          "hits": 32,
+          "newest": "2026-09-19T01:51:42Z",
+          "error": null
+        },
+        "local": {
+          "count": 0,
+          "bytes": 0,
+          "quota": 536870912,
+          "usage": 0,
+          "error": null
+        },
+        "prefetch": {
+          "total": 0,
+          "done": 0,
+          "pct": 0,
+          "active": 0,
+          "queued": 0,
+          "errors": 0,
+          "label": "aucun"
+        },
+        "topology": {
+          "seamMatched": 0,
+          "seamPending": 0,
+          "seamUnpaired": 0,
+          "roadNodes": 0,
+          "roadEdges": 0,
+          "roadComponents": 0,
+          "baseBuildingsSuppressed": 0,
+          "duplicatesSuppressed": 0,
+          "splitBuildings": 0
+        },
+        "runtime": {
+          "loaded": 0,
+          "pending": 0,
+          "errors": 0,
+          "source": "none",
+          "status": "CARTE VECTORIELLE · EN ATTENTE"
+        },
+        "session": {
+          "cloud": 0,
+          "direct": 0,
+          "pack": 0,
+          "cacheHits": 0,
+          "macro": null,
+          "last": null,
+          "emptyTiles": 0,
+          "dataTiles": 0
+        },
+        "terrain": {
+          "bundled": 0,
+          "expected": 8,
+          "status": "Aucun MNT numérique officiel chargé"
+        },
+        "vector": {
+          "coordinates": 5884,
+          "pbf": 4557,
+          "empty": 1327,
+          "complete": true,
+          "percent": 100
+        }
+      }
+    },
+    {
+      "name": "coverage cloud is complete",
+      "ok": true,
+      "detail": {
+        "state": "ready",
+        "base": 367,
+        "cadastre": 5517,
+        "total": 5884,
+        "bytes": 86973739,
+        "basePbf": 367,
+        "cadastrePbf": 4190,
+        "baseEmpty": 0,
+        "cadastreEmpty": 1327,
+        "totalEmpty": 1327,
+        "complete": true,
+        "hits": 32,
+        "newest": "2026-09-19T01:51:42Z",
+        "error": null
+      }
+    },
+    {
+      "name": "PBF and empty split exact",
+      "ok": true,
+      "detail": {
+        "state": "ready",
+        "base": 367,
+        "cadastre": 5517,
+        "total": 5884,
+        "bytes": 86973739,
+        "basePbf": 367,
+        "cadastrePbf": 4190,
+        "baseEmpty": 0,
+        "cadastreEmpty": 1327,
+        "totalEmpty": 1327,
+        "complete": true,
+        "hits": 32,
+        "newest": "2026-09-19T01:51:42Z",
+        "error": null
+      }
+    },
+    {
+      "name": "cloud bytes exact",
+      "ok": true,
+      "detail": {
+        "state": "ready",
+        "base": 367,
+        "cadastre": 5517,
+        "total": 5884,
+        "bytes": 86973739,
+        "basePbf": 367,
+        "cadastrePbf": 4190,
+        "baseEmpty": 0,
+        "cadastreEmpty": 1327,
+        "totalEmpty": 1327,
+        "complete": true,
+        "hits": 32,
+        "newest": "2026-09-19T01:51:42Z",
+        "error": null
+      }
+    },
+    {
+      "name": "manifest permits proof tiles",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "filled cadastral tile loads",
+      "ok": true,
+      "detail": {
+        "source": "cloud-hit",
+        "bytes": 89,
+        "meta": {
+          "source": "cloud",
+          "tileSource": "cadastre",
+          "z": 16,
+          "x": 33757,
+          "y": 23976,
+          "cloud": "hit",
+          "sha256": "7f4f20ee073ce33dbeb71ae9e186e4e188631060177e0df58a57c944439ad5c9",
+          "fetchedAt": 1789783601127,
+          "empty": false,
+          "bytes": 89,
+          "cacheVersion": "0.38"
+        }
+      }
+    },
+    {
+      "name": "official empty tile loads as valid zero bytes",
+      "ok": true,
+      "detail": {
+        "source": "cloud-hit-empty",
+        "bytes": 0,
+        "meta": {
+          "source": "cloud",
+          "tileSource": "cadastre",
+          "z": 16,
+          "x": 33730,
+          "y": 23996,
+          "cloud": "hit-empty",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "fetchedAt": 1789783601133,
+          "empty": true,
+          "bytes": 0,
+          "cacheVersion": "0.38"
+        }
+      }
+    },
+    {
+      "name": "local cache tracks filled and empty tiles",
+      "ok": true,
+      "detail": {
+        "count": 7,
+        "bytes": 678,
+        "quota": 536870912,
+        "usage": 0,
+        "error": null,
+        "rows": [
+          {
+            "key": "base:14:8431:6000",
+            "bytes": 125,
+            "source": "cloud",
+            "cloud": "hit",
+            "sha256": "8fdee559a331589b67c6ce5c7dfec7069f9ce74afb99581aff4c4355d9d85eb2",
+            "fetchedAt": 1789783601484,
+            "lastAccessed": 1789783601486,
+            "z": 14,
+            "x": 8431,
+            "y": 6000,
+            "tileSource": "base"
+          },
+          {
+            "key": "cadastre:16:33730:23996",
+            "bytes": 0,
+            "source": "cloud",
+            "cloud": "hit-empty",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "fetchedAt": 1789783601539,
+            "lastAccessed": 1789783601540,
+            "z": 16,
+            "x": 33730,
+            "y": 23996,
+            "tileSource": "cadastre"
+          },
+          {
+            "key": "cadastre:16:33757:23976",
+            "bytes": 89,
+            "source": "cloud",
+            "cloud": "hit",
+            "sha256": "7f4f20ee073ce33dbeb71ae9e186e4e188631060177e0df58a57c944439ad5c9",
+            "fetchedAt": 1789783601540,
+            "lastAccessed": 1789783601541,
+            "z": 16,
+            "x": 33757,
+            "y": 23976,
+            "tileSource": "cadastre"
+          },
+          {
+            "key": "base:14:8435:5999",
+            "bytes": 125,
+            "source": "cloud",
+            "cloud": "hit",
+            "sha256": "8fdee559a331589b67c6ce5c7dfec7069f9ce74afb99581aff4c4355d9d85eb2",
+            "fetchedAt": 1789783603340,
+            "lastAccessed": 1789783603340,
+            "z": 14,
+            "x": 8435,
+            "y": 5999,
+            "tileSource": "base"
+          },
+          {
+            "key": "base:14:8435:6000",
+            "bytes": 125,
+            "source": "cloud",
+            "cloud": "hit",
+            "sha256": "8fdee559a331589b67c6ce5c7dfec7069f9ce74afb99581aff4c4355d9d85eb2",
+            "fetchedAt": 1789783603340,
+            "lastAccessed": 1789783603340,
+            "z": 14,
+            "x": 8435,
+            "y": 6000,
+            "tileSource": "base"
+          },
+          {
+            "key": "base:14:8437:6001",
+            "bytes": 125,
+            "source": "cloud",
+            "cloud": "hit",
+            "sha256": "8fdee559a331589b67c6ce5c7dfec7069f9ce74afb99581aff4c4355d9d85eb2",
+            "fetchedAt": 1789783603357,
+            "lastAccessed": 1789783603357,
+            "z": 14,
+            "x": 8437,
+            "y": 6001,
+            "tileSource": "base"
+          },
+          {
+            "key": "cadastre:16:33750:24006",
+            "bytes": 89,
+            "source": "cloud",
+            "cloud": "hit",
+            "sha256": "7f4f20ee073ce33dbeb71ae9e186e4e188631060177e0df58a57c944439ad5c9",
+            "fetchedAt": 1789783603370,
+            "lastAccessed": 1789783603370,
+            "z": 16,
+            "x": 33750,
+            "y": 24006,
+            "tileSource": "cadastre"
+          }
+        ]
+      }
+    },
+    {
+      "name": "official empty tile cached locally",
+      "ok": true,
+      "detail": {
+        "got": {
+          "source": "cache",
+          "bytes": 0,
+          "meta": {
+            "key": "cadastre:16:33730:23996",
+            "bytes": 0,
+            "source": "cache",
+            "cloud": "hit-empty",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "fetchedAt": 1789783601539,
+            "lastAccessed": 1789783601540,
+            "z": 16,
+            "x": 33730,
+            "y": 23996,
+            "tileSource": "cadastre"
+          }
+        },
+        "requests": {
+          "coverage": 3,
+          "base": 9,
+          "cadastre": 7,
+          "empty": 2
+        }
+      }
+    },
+    {
+      "name": "Pip-Boy shows complete cache",
+      "ok": true,
+      "detail": "TERRITOIRE RÉEL v0.38 Le cache persistant couvre maintenant toutes les coordonnées vectorielles prévues : routes, rails, eau et occupation du sol à z14, bâtiments cadastraux à z16. 367 / 367 Fond général 29,46 Mo 5 517 / 5 517 Cadastre traité 4 190 PBF + 1 327 vides 5 884 / 5 884 Coordonnées totales 86,97 Mo persistés 0 / 8 Reliefs officiels non acquis MARSEILLE 88 fond · 1302 cadastre CACHE TERRITORIAL DISPONIBLE HUVEAUNE 70 fond · 936 cadastre CACHE TERRITORIAL DISPONIBLE GARLABAN 110 fond · 1444 cadastre CACHE TERRITORIAL DISPONIBLE CALANQUES 160 fond · 2124 cadastre CACHE TERRITORIAL DISPONIBLE LA CIOTAT 90 fond · 1258 cadastre CACHE TERRITORIAL DISPONIBLE ARCHIPEL DU FRIOUL 30 fond · 342 cadastre CACHE TERRITORIAL DISPONIBLE ÉTOILE & ALLAUCH 64 fond · 961 cadastre CACHE TERRITORIAL DISPONIBLE SAINTE-BAUME 117 fond · 1750 cadastre CACHE TERRITORIAL DISPONIBLE PREUVES ET LIMITES Échantillon cadastral rempli : 33757/23976, 3816 octets. Échantillon vide officiel : 33730/23996, SHA-256 du fichier vide. Le cache complet ne certifie pas encore les altitudes, la fusion parfaite de chaque bâtiment coupé ou les traversées humaines de toute la région. © OpenStreetMap contributors — ODbL · Cadastre Etalab / DGFiP — Licence Ouverte 2.0. CACHE, INSTALLATION & AUDIT ÉTAT DÉTAILLÉ ACTUALISER"
+    },
+    {
+      "name": "Pip-Boy remains honest about terrain",
+      "ok": true,
+      "detail": "TERRITOIRE RÉEL v0.38 Le cache persistant couvre maintenant toutes les coordonnées vectorielles prévues : routes, rails, eau et occupation du sol à z14, bâtiments cadastraux à z16. 367 / 367 Fond général 29,46 Mo 5 517 / 5 517 Cadastre traité 4 190 PBF + 1 327 vides 5 884 / 5 884 Coordonnées totales 86,97 Mo persistés 0 / 8 Reliefs officiels non acquis MARSEILLE 88 fond · 1302 cadastre CACHE TERRITORIAL DISPONIBLE HUVEAUNE 70 fond · 936 cadastre CACHE TERRITORIAL DISPONIBLE GARLABAN 110 fond · 1444 cadastre CACHE TERRITORIAL DISPONIBLE CALANQUES 160 fond · 2124 cadastre CACHE TERRITORIAL DISPONIBLE LA CIOTAT 90 fond · 1258 cadastre CACHE TERRITORIAL DISPONIBLE ARCHIPEL DU FRIOUL 30 fond · 342 cadastre CACHE TERRITORIAL DISPONIBLE ÉTOILE & ALLAUCH 64 fond · 961 cadastre CACHE TERRITORIAL DISPONIBLE SAINTE-BAUME 117 fond · 1750 cadastre CACHE TERRITORIAL DISPONIBLE PREUVES ET LIMITES Échantillon cadastral rempli : 33757/23976, 3816 octets. Échantillon vide officiel : 33730/23996, SHA-256"
+    },
+    {
+      "name": "status distinguishes PBF and empty",
+      "ok": true,
+      "detail": "CARTOGRAPHIE RÉELLE · V0.38 COUVERTURE VECTORIELLE ACQUISE Les compteurs distinguent fichiers PBF, tuiles vides officielles et relief numérique. Une réponse 204 n’est plus confondue avec une panne. 367/367 Fond général 5 517/5 517 Cadastre traité 4 190 + 1 327 PBF cadastraux + vides officiels 0/8 MNT numériques officiels Cache territorial 5 884 / 5 884 coordonnées · 82.9 Mio · état ready · complet : oui. La couche générale représente 367 PBF. Le cadastre représente 4 190 PBF et 1 327 emplacements sans contenu cadastral. Session 3 tuile(s) rendue(s), 0 en cours, 0 erreur(s). Tuiles vides reçues : 3; tuiles de données : 13. Raccords chargés 0 appariés · 2 en attente · 0 anomalies confirmées. Verrous restants Relief officiel : 0/8. Pack embarqué : 0/5 884. Fusion complète des bâtiments divisés, audit commune par commune et traversées humaines longues restent requis. RETOUR ACTUALISER OUVRIR L’INSTALLATION"
+    },
+    {
+      "name": "no JavaScript exception",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "Exact v0.38 HTML. Controlled MVT plus explicit official-empty fixture. IndexedDB uses an API-compatible memory adapter because opaque-origin native storage is blocked. Live full cache is verified separately; official terrain remains 0/8."
+}

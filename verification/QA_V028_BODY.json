@@ -1,0 +1,427 @@
+{
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 80,
+  "failed": 0,
+  "checks": [
+    {
+      "ok": true,
+      "name": "Six régions, six circuits, vingt recettes, aucune carte officielle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Titre de la nouvelle build",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Refus du stockage natif opaque vérifié avant adaptateur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Écriture par adaptateur mémoire déclarée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Options v027 récupérées avant les valeurs anciennes v017",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Préférence v028 prend priorité sans écraser la v027",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lecture des options ne modifie pas la source précédente",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration ancienne partie : aucune blessure imposée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration : aucune bande ou lampe active inventée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration ne donne pas de soins et conserve les issues existantes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Champs anciens inconnus conservés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Valeurs extrêmes bornées ; null ne crée pas une blessure",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six clés seulement et historique borné",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Texte et issue inconnue nettoyés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Grille importée bornée, niveau inexistant rejeté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lésion calculée après les dégâts réels de protection",
+      "detail": {
+        "loss": 19,
+        "limb": 78.72
+      }
+    },
+    {
+      "ok": true,
+      "name": "Impact sur jambe gauche : cinq autres régions intactes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Radiation : pas de traumatisme répétitif",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Petit effet continu : aucune nouvelle région cassée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Interface ouverte : dégâts et traumatismes suspendus",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lésion négative et membre inconnu refusés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux jambes atteintes réduisent le déplacement réel à 58 %",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux jambes sévères empêchent effectivement le saut",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une jambe soignée autorise de nouveau le saut",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bras atteints : minuteur de rechargement réellement multiplié par 1,65",
+      "detail": {
+        "base": {
+          "started": true,
+          "time": 0.9750000000000001
+        },
+        "injured": {
+          "started": true,
+          "time": 1.6087500000000001
+        }
+      }
+    },
+    {
+      "ok": true,
+      "name": "Bras atteints : dégâts de mêlée réduits à 72 %",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lésion des bras ne réduit pas arbitrairement les dégâts de balle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tête atteinte : précision V.A.T.S. réduite de quatorze points",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pénalité de tête ne transforme pas un obstacle en chance positive",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Torse atteint : récupération naturelle des PA à 45 %",
+      "detail": {
+        "normal": 5,
+        "hurt": 2.25
+      }
+    },
+    {
+      "ok": true,
+      "name": "Six régions sélectionnables par boutons natifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sélection réelle de jambe dans le Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Stimpak ciblé : +35 sur une région, un seul objet",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Soin ciblé ne restaure ni PV ni radiations ni états",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Attelle restaure la jambe à 100",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Attelle non gaspillée sur une jambe intacte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Attelle pour la tête refusée sans débit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Trousse restaure la tête sans toucher les autres régions",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Traitement régional ne guérit pas le corps entier",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Trousse manquante : aucun prélèvement partiel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "En menace visible, attelle et trousse sont refusées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Stimpak ciblé reste utilisable pendant une menace",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Médecin indisponible à distance malgré interface",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Devis local ne prélève pas les capsules",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Nouveau dommage invalide l’ancien devis",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ranger puis rouvrir le Pip-Boy invalide le devis",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Validation du devis : six régions et montant exact",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Médecin traumatismes ne traite ni PV ni radiations",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Personnage intact : consultation gratuite, pas de facture",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Devis non payable : aucun paiement partiel ni soin",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Transition annule le devis et interdit un soin à distance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fabrication physique : fieldSplint",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un objet produit : fieldSplint",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fabrication physique : traumaKit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un objet produit : traumaKit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fabrication des soins ne génère pas d’XP",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Recette insuffisante ne prélève aucune ressource",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cartouches du chargeur actif comptées dans la charge",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retrait d’une cartouche chargée enlève exactement sa masse",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Besoins et surcharge non imposés au départ",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Besoins désactivés : ration sans effet utile non consommée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Activation réelle des besoins dans le Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ration à PV pleins retire quarante points de faim",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aliment retire vingt-cinq points de faim",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Eau retire trente-cinq points de soif",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Besoins après consommation réellement sauvegardés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Menus suspendent la progression des besoins",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Besoins progressent pendant le jeu actif",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Désactivation suspend sans effacer les besoins",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Repos réel disponible à la halte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Repos payé retire trente fatigue sans guérir les jambes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Passerelle Survie → Halte ouvre le vrai service",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Import validé conserve traumatismes et lampe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Import ne supprime pas l’ancienne clé v027",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fenêtre mobile : sélection corporelle effective",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Interface mobile sans débordement horizontal de page",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sélection corporelle contrastée même hors survol et sur tactile",
+      "detail": {
+        "bg": "rgb(159, 236, 170)",
+        "color": "rgb(7, 27, 17)"
+      }
+    },
+    {
+      "ok": true,
+      "name": "La sélection active respecte le phosphore ambre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bouton de soin réellement accessible sur fenêtre mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript de la suite",
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "scope": "Exact HTML, Chromium logiciel, états et arène synthétiques déclarés, clics réels. Stockage mémoire après refus natif opaque, pas de GPU/iPhone réel."
+}

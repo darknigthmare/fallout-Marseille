@@ -1,0 +1,688 @@
+{
+  "version": "0.23.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "total": 130,
+  "passed": 130,
+  "failed": 0,
+  "errors": [],
+  "scope": "Exact HTML via set_content; managed file navigation denied; software Chromium; native opaque-origin write failure then explicit memory store; no geographic data; choices clicked; controller walk tests separate from injected approaches.",
+  "results": [
+    {
+      "ok": true,
+      "name": "Version et nouveau bouton du HTML final",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Refus natif du stockage sur origine opaque explicitement détecté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sauvegarde fonctionnelle avec adaptateur mémoire déclaré",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Clés campagne / exploration séparées v023",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Borne G.O.A.T. physiquement accessible dans A-03",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Examen ouvert depuis A-03",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Trois réponses enregistrées par vrais clics",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Reprise à la quatrième question après fermeture",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retour modifie la réponse, sans accumuler de points",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Scores recalculés : dix réponses, quarante points au total",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Écran de proposition après dix questions",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Reprise du résultat inachevé, sans repasser les dix questions",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Confirmation bloquée tant que trois spécialités ne sont pas retenues",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Trois spécialités personnalisées, pas seulement la proposition",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucun changement S.P.E.C.I.A.L. ni XP à la validation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bonus +15 limité aux trois compétences choisies",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Répéter une validation ne cumule aucun bonus",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Spécialité Médecine : soin direct 55 + 8, un seul Stimpak",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Même bonus via inventaire et consommation unique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration v022 préserve l’ancien retour et les champs inconnus",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Normalisation des doublons, tags inconnus, critique et conclusion invalide",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Choix direct équivalent, sans questionnaire obligatoire",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Spécialité Balistique : +6 % dans le calcul de combat commun",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "manifest : montée par le contrôleur jusqu’à la preuve",
+      "detail": {
+        "ok": true,
+        "steps": 465,
+        "pos": [
+          -3.241548304444521,
+          4.85,
+          -16.680119626208814
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "manifest : point d’interaction visible et accessible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "register : montée par le contrôleur jusqu’à la preuve",
+      "detail": {
+        "ok": true,
+        "steps": 383,
+        "pos": [
+          13.39195909009964,
+          4.85,
+          -14.679368297855238
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "register : point d’interaction visible et accessible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "protocol : montée par le contrôleur jusqu’à la preuve",
+      "detail": {
+        "ok": true,
+        "steps": 404,
+        "pos": [
+          1.8240770859642494,
+          4.85,
+          1.3500000000000014
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "protocol : point d’interaction visible et accessible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Nouvelle enquête acceptée par le dialogue de Lise",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Résolution prématurée refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Collecte distante dans un autre lieu refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Affirmation non étayée affecte la confiance, sans bloquer l’enquête",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Même provocation ne cumule pas les pénalités",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La preuve ouvre un rattrapage après le bluff",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Diagnostic sans compétence ni protocole échoue sans bloquer la suite",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Même diagnostic réussi après lecture du protocole",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal : dossier complet ouvre les trois résolutions",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal : aperçu sans engagement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal : retour à la discussion sans modifier les réserves",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal : confirmation persistante et 90 capsules une seule fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal : trois scènes de conclusion distinctes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal : décisions du canal et confidentialité conservées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal : résolution répétée refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / transit_depot : tableau et lumière de formation réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / transit_depot : livraison physique obtenue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / transit_depot : aucun doublon de livraison",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / transit_depot : caisse retirée visuellement après collecte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / traverse_archives : tableau et lumière de formation réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / traverse_archives : livraison physique obtenue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / traverse_archives : aucun doublon de livraison",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / traverse_archives : caisse retirée visuellement après collecte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / mooring_station : tableau et lumière de formation réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / mooring_station : livraison physique obtenue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / mooring_station : aucun doublon de livraison",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal / mooring_station : caisse retirée visuellement après collecte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "appeal : les trois livraisons sont mémorisées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network : dossier complet ouvre les trois résolutions",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network : aperçu sans engagement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network : retour à la discussion sans modifier les réserves",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network : confirmation persistante et 90 capsules une seule fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network : trois scènes de conclusion distinctes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network : décisions du canal et confidentialité conservées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network : résolution répétée refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / transit_depot : tableau et lumière de formation réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / transit_depot : livraison physique obtenue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / transit_depot : aucun doublon de livraison",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / transit_depot : caisse retirée visuellement après collecte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / traverse_archives : tableau et lumière de formation réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / traverse_archives : livraison physique obtenue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / traverse_archives : aucun doublon de livraison",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / traverse_archives : caisse retirée visuellement après collecte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / mooring_station : tableau et lumière de formation réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / mooring_station : livraison physique obtenue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / mooring_station : aucun doublon de livraison",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network / mooring_station : caisse retirée visuellement après collecte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "network : les trois livraisons sont mémorisées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract : dossier complet ouvre les trois résolutions",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract : aperçu sans engagement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract : retour à la discussion sans modifier les réserves",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract : confirmation persistante et 90 capsules une seule fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract : trois scènes de conclusion distinctes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract : décisions du canal et confidentialité conservées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract : résolution répétée refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / transit_depot : tableau et lumière de formation réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / transit_depot : livraison physique obtenue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / transit_depot : aucun doublon de livraison",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / transit_depot : caisse retirée visuellement après collecte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / traverse_archives : tableau et lumière de formation réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / traverse_archives : livraison physique obtenue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / traverse_archives : aucun doublon de livraison",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / traverse_archives : caisse retirée visuellement après collecte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / mooring_station : tableau et lumière de formation réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / mooring_station : livraison physique obtenue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / mooring_station : aucun doublon de livraison",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract / mooring_station : caisse retirée visuellement après collecte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "contract : les trois livraisons sont mémorisées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Voie sans aucun G.O.A.T., avec seulement deux preuves et Rayan",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Conséquence commerciale ciblée : achat essentiels seulement, pas revente ni autre marchand",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Condition revalidée au clic après changement d’état",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bouton détaché d’un ancien dialogue ne peut plus agir",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "H ouvre l’historique sans fermer le dialogue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Échap revient à la conversation exacte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Consultation de l’historique ne duplique pas les répliques",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Critique refusé avec jauge vide",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Critique réservé avec jauge pleine",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux réservations d’un même critique interdites",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Préparation sans débit PA, munitions ni jauge",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Annulation conserve la réserve critique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Critique valide touche même avec jet 0,999 puis vide la réserve",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Critique débite exactement une action émise",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mur ajouté après sélection : aucun tir, aucun coût, critique conservé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux cibles et réorganisation de la file",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Action critique effectivement remontée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retrait individuel actualise la file",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six actions maximum, sans inflation silencieuse",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six impacts V.A.T.S. normaux remplissent la réserve, plafonnée à 100",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sérialisation du dossier, de la jauge, des échanges et aptitudes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Reprise d’une exploration v022 vers sa clé v023 distincte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancienne exploration v022 conservée intacte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "goat : panneau 390×844 sans débordement et fermeture accessible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "aptitudes : panneau 390×844 sans débordement et fermeture accessible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "dossier : panneau 390×844 sans débordement et fermeture accessible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "dialogues : panneau 390×844 sans débordement et fermeture accessible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "consequences : panneau 390×844 sans débordement et fermeture accessible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Commande critique tactile présente",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ajout critique au clic dans une fenêtre mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "V.A.T.S. mobile sans débordement horizontal",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Annulation V.A.T.S. par bouton tactile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript dans la suite",
+      "detail": []
+    }
+  ]
+}

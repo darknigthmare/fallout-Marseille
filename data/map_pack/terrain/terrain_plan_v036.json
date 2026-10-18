@@ -1,0 +1,67 @@
+{
+  "version": "0.36.0",
+  "generated": "2026-09-19T00:38:45Z",
+  "status": "waiting-official-numeric-source",
+  "macros": {
+    "geo_marseille": [
+      43.22,
+      5.285,
+      43.34,
+      5.51
+    ],
+    "geo_huveaune": [
+      43.245,
+      5.43,
+      43.335,
+      5.64
+    ],
+    "geo_garlaban": [
+      43.245,
+      5.485,
+      43.39,
+      5.69
+    ],
+    "geo_calanques": [
+      43.145,
+      5.33,
+      43.285,
+      5.65
+    ],
+    "geo_laciotat": [
+      43.125,
+      5.54,
+      43.255,
+      5.735
+    ],
+    "geo_frioul": [
+      43.245,
+      5.255,
+      43.315,
+      5.35
+    ],
+    "geo_etoile": [
+      43.3,
+      5.435,
+      43.42,
+      5.6
+    ],
+    "geo_saintebaume": [
+      43.215,
+      5.565,
+      43.41,
+      5.755
+    ]
+  },
+  "expectedFiles": [
+    "terrain/geo_marseille.json",
+    "terrain/geo_huveaune.json",
+    "terrain/geo_garlaban.json",
+    "terrain/geo_calanques.json",
+    "terrain/geo_laciotat.json",
+    "terrain/geo_frioul.json",
+    "terrain/geo_etoile.json",
+    "terrain/geo_saintebaume.json"
+  ],
+  "sourceLabel": "IGN RGE ALTI — fichier numérique fourni par l’utilisateur",
+  "inputFiles": []
+}

@@ -1,0 +1,53 @@
+{
+  "version": "0.46.0",
+  "html_sha256": "a0556ee0ac1e55f7862c6b29502bcadfcce0a634fbf6c757f803ff2605115a63",
+  "shots": [
+    {
+      "file": "01_menu.png",
+      "title": "Projet intégré · base vérifiée",
+      "note": "Menu réel du projet repris depuis la v0.42. Le binaire v0.44 n’a pas été récupéré."
+    },
+    {
+      "file": "02_aller.png",
+      "title": "Avant franchissement",
+      "note": "Banc synthétique de continuité : cinq bâtiments dont une cour, deux routes et des masques forestiers. Ce n’est pas Marseille."
+    },
+    {
+      "file": "03_autre_cote.png",
+      "title": "De l’autre côté : même scène",
+      "note": "Le nom de région change ; ni les identités ni les coordonnées des bâtiments ne sont recalculées."
+    },
+    {
+      "file": "04_retour.png",
+      "title": "Retour au point initial",
+      "note": "Le test compare également les signatures complètes des bâtiments, routes et arbres. Aucune image n’est utilisée comme décor de remplacement."
+    },
+    {
+      "file": "05_cour.png",
+      "title": "Cour préservée",
+      "note": "Les anneaux intérieurs sont conservés. Le contrôle de collision confirme que le centre est libre et que les murs sont solides."
+    },
+    {
+      "file": "06_chargement.png",
+      "title": "Préparation avant affichage",
+      "note": "Chargement réel du banc via le même gestionnaire que les sources cartographiques. Les entrées sont figées pendant la préparation."
+    },
+    {
+      "file": "07_echec.png",
+      "title": "Donnée absente : pas de faux quartier",
+      "note": "Échec injecté. Réessayer ou annuler conserve le joueur et l’ancienne scène ; aucune route ou maison de secours n’est inventée."
+    },
+    {
+      "file": "08_raccourcis.png",
+      "title": "Raccourcis persistants",
+      "note": "La barre cesse de supprimer et recréer ses boutons à chaque cycle. 600 mises à jour testées sans remplacement des éléments."
+    },
+    {
+      "file": "09_lore.png",
+      "title": "France en Cendres · reconstruction",
+      "note": "Neuf factions, huit dossiers jouables et COCHONNET réintégrés. Ce contenu ne prétend pas être le binaire v0.44 retrouvé."
+    }
+  ],
+  "errors": [],
+  "scope": "Screenshots réels d’un scénario synthétique explicitement marqué. Le territoire complet n’est pas installé."
+}

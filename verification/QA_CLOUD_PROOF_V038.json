@@ -1,0 +1,193 @@
+{
+  "version": "0.38.0",
+  "passed": 12,
+  "failed": 0,
+  "total": 12,
+  "checks": [
+    {
+      "name": "cache reports 5 884 coordinates",
+      "ok": true,
+      "detail": {
+        "base": {
+          "coordinates": 367,
+          "storedPbf": 367,
+          "officialEmpty": 0,
+          "bytes": 29456613,
+          "hitsAtVerification": 31
+        },
+        "cadastre": {
+          "coordinates": 5517,
+          "storedPbf": 4190,
+          "officialEmpty": 1327,
+          "bytes": 57517126,
+          "hitsAtVerification": 1
+        },
+        "totalCoordinates": 5884,
+        "totalStoredPbf": 4557,
+        "totalOfficialEmpty": 1327,
+        "totalBytes": 86973739
+      }
+    },
+    {
+      "name": "base layer complete",
+      "ok": true,
+      "detail": {
+        "coordinates": 367,
+        "storedPbf": 367,
+        "officialEmpty": 0,
+        "bytes": 29456613,
+        "hitsAtVerification": 31
+      }
+    },
+    {
+      "name": "cadastre coordinates complete",
+      "ok": true,
+      "detail": {
+        "coordinates": 5517,
+        "storedPbf": 4190,
+        "officialEmpty": 1327,
+        "bytes": 57517126,
+        "hitsAtVerification": 1
+      }
+    },
+    {
+      "name": "cadastre PBF + empty equals plan",
+      "ok": true,
+      "detail": {
+        "coordinates": 5517,
+        "storedPbf": 4190,
+        "officialEmpty": 1327,
+        "bytes": 57517126,
+        "hitsAtVerification": 1
+      }
+    },
+    {
+      "name": "stored vector bytes exact",
+      "ok": true,
+      "detail": 86973739
+    },
+    {
+      "name": "filled sample has non-empty SHA",
+      "ok": true,
+      "detail": {
+        "baseFilled": {
+          "z": 14,
+          "x": 8431,
+          "y": 6000,
+          "status": 200,
+          "cache": "hit",
+          "bytes": 899,
+          "sha256": "983598282c9669f7b37ce19816470ceb2b81486f66375eaf01a1f67b1cbaa939"
+        },
+        "cadastreFilled": {
+          "z": 16,
+          "x": 33757,
+          "y": 23976,
+          "status": 200,
+          "cache": "hit",
+          "empty": false,
+          "bytes": 3816,
+          "sha256": "07bdaf302341a82085ffda39ab10b35444e26313c6f3401f873ac2a2b294c6c7"
+        },
+        "cadastreOfficialEmpty": {
+          "z": 16,
+          "x": 33730,
+          "y": 23996,
+          "status": 200,
+          "cache": "hit-empty",
+          "empty": true,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "empty sample uses SHA-256 of empty body",
+      "ok": true,
+      "detail": {
+        "baseFilled": {
+          "z": 14,
+          "x": 8431,
+          "y": 6000,
+          "status": 200,
+          "cache": "hit",
+          "bytes": 899,
+          "sha256": "983598282c9669f7b37ce19816470ceb2b81486f66375eaf01a1f67b1cbaa939"
+        },
+        "cadastreFilled": {
+          "z": 16,
+          "x": 33757,
+          "y": 23976,
+          "status": 200,
+          "cache": "hit",
+          "empty": false,
+          "bytes": 3816,
+          "sha256": "07bdaf302341a82085ffda39ab10b35444e26313c6f3401f873ac2a2b294c6c7"
+        },
+        "cadastreOfficialEmpty": {
+          "z": 16,
+          "x": 33730,
+          "y": 23996,
+          "status": 200,
+          "cache": "hit-empty",
+          "empty": true,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "cache table not readable by client roles",
+      "ok": true,
+      "detail": {
+        "name": "public.mistral_map_tile_cache",
+        "rls": true,
+        "anonSelect": false,
+        "authenticatedSelect": false,
+        "emptyMarkerColumn": "is_empty"
+      }
+    },
+    {
+      "name": "storage bucket private",
+      "ok": true,
+      "detail": {
+        "id": "fallout-mistral-map-v037",
+        "public": false,
+        "fileSizeLimit": 8000000
+      }
+    },
+    {
+      "name": "warmers disabled after completion",
+      "ok": true,
+      "detail": {
+        "base": "disabled after 367/367",
+        "cadastre": "disabled after 5517/5517"
+      }
+    },
+    {
+      "name": "manifest agrees with cloud proof",
+      "ok": true,
+      "detail": {
+        "coordinates": 5884,
+        "base": 367,
+        "cadastre": 5517,
+        "storedPbf": 4557,
+        "officialEmpty": 1327,
+        "bytes": 86973739,
+        "complete": true,
+        "verifiedAt": "2026-09-19T01:53:47Z"
+      }
+    },
+    {
+      "name": "terrain remains truthful",
+      "ok": true,
+      "detail": {
+        "target": "IGN numeric terrain / RGE ALTI or validated equivalent",
+        "expectedMacros": 8,
+        "numericFilesBundled": 0,
+        "status": "not acquired"
+      }
+    }
+  ],
+  "scope": "Consistency checks over live-cache proof files captured from verified Supabase responses."
+}

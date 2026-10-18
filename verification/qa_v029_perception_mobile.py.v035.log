@@ -1,0 +1,38 @@
+OK Une fraction de seconde en vue produit du soupçon, pas une attaque instantanée
+OK HUD de soupçon correspond à la perception réelle
+OK Regard soutenu déclenche réellement alerte et danger
+OK Adversaire de dos à dix mètres ne voit pas à travers son propre dos
+OK Très proche derrière un adversaire : détection de proximité
+OK Mur entre joueur et adversaire : aucune acquisition visuelle
+OK Debout à quinze mètres dans le cône : soupçon
+OK Accroupi : portée de détection réduite par la règle existante
+OK Soupçon décroît quand le contact visuel est perdu
+OK Boucle réelle des ennemis ne court-circuite pas le délai de regard
+OK Boucle réelle termine l’acquisition après observation prolongée
+OK Un son transmet une position à inspecter, pas la position du joueur
+OK Aucune téléportation au bruit ; état de recherche affiché
+OK Enquête sonore : déplacement limité par la vitesse
+OK Le son derrière le mur ne donne pas une vision traversante du joueur
+OK Fin du délai de recherche : point sonore abandonné
+OK Une cloison réduit la portée auditive au lieu de propager uniformément
+OK Un son assez fort reste audible derrière le même obstacle
+OK Rayons et coordonnées invalides ignorés
+OK Un ennemi déjà en combat ne vous oublie pas avec un leurre
+OK Un automate en veille ne part pas enquêter
+OK Veille ne déclenche ni acquisition ni attaque
+OK Menu Pip-Boy : les investigations sont suspendues
+OK Lampe à huit mètres visible : règle de révélation précédente conservée
+OK Éteindre la lampe n’efface pas la dernière alerte
+OK Course au clavier : bruit réellement propagé
+OK Déplacement accroupi : pas de bruit de pas artificiel
+OK Carillon activé réellement depuis le contrôleur
+OK Carillon non répétable avant douze secondes actives
+OK Attendre dans le terminal ne réarme pas le carillon
+OK Délai de jeu actif écoulé : nouvel essai possible
+OK Boîtier ne déborde pas la largeur 390 px
+OK Aucun débordement horizontal du terminal
+OK Cible tactile suffisamment haute : [data-t29="word"]
+OK Cible tactile suffisamment haute : [data-t29="bracket"]
+OK Menu et journal restent accessibles par défilement
+OK Échap fonctionne après défilement mobile
+TOTAL 37 0 ERRORS []

@@ -1,0 +1,23 @@
+{
+  "name": "Fallout : Mistral — Continuité vérifiable",
+  "short_name": "Mistral",
+  "description": "Prototype de fan, reprise complète v0.42, scène géographique commune et chargement contrôlé.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b120d",
+  "theme_color": "#11170f",
+  "icons": [
+    {
+      "src": "icons/mistral-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/mistral-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

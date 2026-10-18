@@ -1,0 +1,16 @@
+{
+  "version": "0.38.0",
+  "verifiedAt": "2026-09-19",
+  "storageBucket": {"id": "fallout-mistral-map-v037", "public": false, "fileSizeLimit": 8000000},
+  "metadataTable": {
+    "name": "public.mistral_map_tile_cache",
+    "rls": true,
+    "anonSelect": false,
+    "authenticatedSelect": false,
+    "emptyMarkerColumn": "is_empty"
+  },
+  "statsView": {"name": "public.mistral_map_cache_stats", "securityInvoker": true, "anonAccess": false, "authenticatedAccess": false},
+  "edgeFunction": {"name": "fallout-mistral-map-v038", "verifyJwt": true, "version": 1},
+  "warmers": {"base": "disabled after 367/367", "cadastre": "disabled after 5517/5517"},
+  "note": "The project-level security advisor also reports unrelated pre-existing findings for other application tables/functions; this file covers only the Mistral map cache."
+}

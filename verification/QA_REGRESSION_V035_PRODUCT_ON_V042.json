@@ -1,0 +1,134 @@
+{
+  "version": "0.42.0",
+  "html_sha256": "94835b6b97ba9d48131053e9d7f53edf6551a69280113e6c38ca1b510813e2db",
+  "passed": 10,
+  "failed": 0,
+  "total": 10,
+  "errors": [],
+  "checks": [
+    {
+      "name": "Sauvegarde manuelle produite",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Emplacement manuel détecté",
+      "ok": true,
+      "detail": [
+        [
+          "slot",
+          1
+        ],
+        [
+          "auto",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "Continuer réactivé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reprise restaure un point cohérent",
+      "ok": true,
+      "detail": 2600
+    },
+    {
+      "name": "Mode sûr activable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Diagnostic contient build, carrière et slots",
+      "ok": true,
+      "detail": {
+        "version": "0.42.0",
+        "at": "2026-09-19T05:29:04.215Z",
+        "zone": "canebiere",
+        "mode": "PLAYING",
+        "gameStarted": true,
+        "renderer": {
+          "backend": "pending",
+          "customMeshes": 0,
+          "triangles": 0
+        },
+        "settings": {
+          "quality": "low",
+          "reduceMotion": true,
+          "reducedFlashes": true,
+          "geoStreaming": false
+        },
+        "career": {
+          "percent": 71,
+          "rank": "BÂTISSEUR",
+          "story": 100,
+          "zones": 100,
+          "side": 0,
+          "ach": 0,
+          "endings": 6,
+          "operations": 0
+        },
+        "slots": [
+          {
+            "kind": "auto",
+            "slot": 0,
+            "savedAt": 1789795743909,
+            "meta": {
+              "name": "Camille",
+              "level": 26,
+              "zone": "canebiere",
+              "zoneName": "Canebière–Belsunce",
+              "stage": 59,
+              "chapter": "VI · La Terre et le Feu",
+              "percent": 71,
+              "playTime": 0.2833000000000002,
+              "caps": 2600,
+              "ending": "federation"
+            }
+          },
+          {
+            "kind": "slot",
+            "slot": 1,
+            "savedAt": 1789795743607,
+            "meta": {
+              "name": "Camille",
+              "level": 26,
+              "zone": "canebiere",
+              "zoneName": "Canebière–Belsunce",
+              "stage": 59,
+              "chapter": "VI · La Terre et le Feu",
+              "percent": 71,
+              "playTime": 0.2833000000000002,
+              "caps": 2600,
+              "ending": "federation"
+            }
+          }
+        ],
+        "crash": null,
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/144.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "name": "PWA manifeste présent",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Service worker présent",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Index installable identique",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Crédits v0.42 à jour",
+      "ok": true,
+      "detail": null
+    }
+  ]
+}

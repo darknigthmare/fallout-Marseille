@@ -1,0 +1,24 @@
+FALLOUT MARSEILLE - MISTRAL v0.49 : archive complete
+
+Le ZIP original fait 127 071 766 octets. La limite du transfert impose deux parties.
+Aucun fichier du projet n'a ete retire. La recomposition rend exactement le ZIP d'origine.
+
+1. Telechargez dans un meme dossier les deux fichiers .zip.001 et .zip.002,
+   ARCHIVE_PARTS.json, RECONSTRUIRE_ARCHIVE.py et le lanceur de votre systeme.
+2. Windows : double-cliquez RECONSTRUIRE_ARCHIVE_WINDOWS.bat.
+   Linux/macOS : python3 RECONSTRUIRE_ARCHIVE.py
+   Python 3 est requis pour la recomposition et pour le lanceur du jeu.
+3. Le script verifie les deux parties, reconstitue le ZIP puis controle son empreinte
+   et son integrite interne. Il ne telecharge rien et ne remplace aucun ZIP existant.
+4. Extrayez FALLOUT_MISTRAL_v0.49_PROJET_COMPLET.zip.
+5. Dans le dossier extrait, lancez LANCER_APP_WINDOWS.bat (ou le lanceur Linux/macOS).
+
+Deposez les fichiers telecharges a cote du script, sans sous-dossier entre eux.
+Si Drive telecharge une enveloppe ZIP, extrayez d'abord cette enveloppe.
+Ne renommez pas les deux parties et n'essayez pas de les extraire separement.
+
+Depot GitHub : https://github.com/darknigthmare/fallout-Marseille
+Dossier Drive : https://drive.google.com/drive/folders/1XYIrQczKXczburj2Tu0bDs2ZNH10Jxta
+
+Le pack geographique integral n'est pas embarque. Les captures du rapport visuel
+proviennent du banc synthetique signale a l'ecran, et non de la vraie carte de Marseille.

@@ -1,0 +1,161 @@
+{
+  "version": "0.29.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "passed": 1142,
+  "failed": 0,
+  "same_html": true,
+  "suites": [
+    {
+      "script": "qa_regression_v020_on_v022.py",
+      "report": "QA_REGRESSION_V020_ON_V022.json",
+      "exit": 0,
+      "seconds": 25.91,
+      "passed": 157,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_regression_v021_on_v022.py",
+      "report": "QA_REGRESSION_V021_ON_V022.json",
+      "exit": 0,
+      "seconds": 11.9,
+      "passed": 109,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_regression_v021_extra_on_v022.py",
+      "report": "QA_REGRESSION_V021_EXTRA_ON_V022.json",
+      "exit": 0,
+      "seconds": 8.6,
+      "passed": 18,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v022.py",
+      "report": "QA_V022.json",
+      "exit": 0,
+      "seconds": 14.44,
+      "passed": 107,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v022_extra.py",
+      "report": "QA_V022_EXTRA.json",
+      "exit": 0,
+      "seconds": 8.11,
+      "passed": 13,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v023.py",
+      "report": "QA_V023.json",
+      "exit": 0,
+      "seconds": 15.24,
+      "passed": 130,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v023_extra.py",
+      "report": "QA_V023_EXTRA.json",
+      "exit": 0,
+      "seconds": 6.96,
+      "passed": 16,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v025.py",
+      "report": "QA_V025.json",
+      "exit": 0,
+      "seconds": 24.66,
+      "passed": 100,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v025_pointer.py",
+      "report": "QA_V025_POINTER.json",
+      "exit": 0,
+      "seconds": 11.15,
+      "passed": 29,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v026.py",
+      "report": "QA_V026.json",
+      "exit": 0,
+      "seconds": 11.38,
+      "passed": 116,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v026_edges.py",
+      "report": "QA_V026_EDGES.json",
+      "exit": 0,
+      "seconds": 12.47,
+      "passed": 26,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v027.py",
+      "report": "QA_V027.json",
+      "exit": 0,
+      "seconds": 13.54,
+      "passed": 98,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v027_radio_storage.py",
+      "report": "QA_V027_RADIO_STORAGE.json",
+      "exit": 0,
+      "seconds": 10.04,
+      "passed": 50,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v028_body.py",
+      "report": "QA_V028_BODY.json",
+      "exit": 0,
+      "seconds": 9.21,
+      "passed": 80,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    },
+    {
+      "script": "qa_v028_light_story_game.py",
+      "report": "QA_V028_LIGHT_STORY_GAME.json",
+      "exit": 0,
+      "seconds": 29.48,
+      "passed": 93,
+      "failed": 0,
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+      "errors": []
+    }
+  ],
+  "scope": "HTML exact dans Chromium logiciel. États/caméras d’essai préparés. Stockage mémoire déclaré après contrôle du refus natif opaque ; tentative localhost bloquée par administrateur. Pas de GPU, iPhone, ni parcours humain intégral.",
+  "total": 1142
+}

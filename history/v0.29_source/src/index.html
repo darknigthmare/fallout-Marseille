@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#11170f" />
+  <meta name="description" content="Fallout : Mistral — prototype 3D hors ligne non officiel situé entre Aubagne, Marseille et La Ciotat." />
+  <title>Fallout : Mistral — v0.21</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" data-screen="boot">
+    <canvas id="skyCanvas" aria-hidden="true"></canvas>
+    <canvas id="gameCanvas" tabindex="0" aria-label="Vue du jeu 3D"></canvas>
+    <div id="filmGrain" aria-hidden="true"></div>
+    <div id="vignette" aria-hidden="true"></div>
+
+    <section id="bootScreen" class="screen active" aria-label="Chargement">
+      <div class="boot-terminal">
+        <div class="boot-logo">CONCORDE // TERMINAL CIVIQUE</div>
+        <div id="bootText" class="boot-text"></div>
+        <div class="boot-progress"><i id="bootBar"></i></div>
+      </div>
+    </section>
+
+    <section id="menuScreen" class="screen" aria-label="Menu principal">
+      <div class="menu-shade"></div>
+      <div class="menu-copy">
+        <p class="eyebrow">PROVENCE · 2291</p>
+        <h1><span>FALLOUT</span><strong>MISTRAL</strong></h1>
+        <p class="tagline">La mer a survécu. Pas le monde.</p>
+        <nav class="menu-actions" aria-label="Actions principales">
+          <button id="btnContinue" class="primary" disabled>Continuer</button>
+          <button id="btnNew">Nouvelle partie</button>
+          <button id="btnChapter">Exploration libre</button>
+          <button id="btnOptions">Options</button>
+          <button id="btnCredits">Crédits & statut</button>
+        </nav>
+        <p class="legal">Prototype de fan non officiel. Aucune approbation de Bethesda n’est revendiquée.</p>
+      </div>
+      <div class="menu-version">ALPHA LOCALE v0.21.0 · « LES ABSENTS DE LA RELÈVE »</div>
+    </section>
+
+    <section id="creatorScreen" class="screen panel-screen" aria-label="Création du personnage">
+      <div class="panel creator-panel">
+        <header>
+          <p class="eyebrow">DOSSIER CIVIQUE A-03</p>
+          <h2>QUI ÊTES-VOUS ?</h2>
+          <p>Le système demande une identité. Les chiffres décideront de la façon dont le monde vous répond.</p>
+        </header>
+        <div class="creator-grid">
+          <div class="creator-left">
+            <label class="field">Nom d’usage<input id="charName" maxlength="18" value="Camille" autocomplete="off" /></label>
+            <label class="field">Forme d’adresse<select id="charPronoun"><option value="neutre">Neutre</option><option value="f">Féminin</option><option value="m">Masculin</option></select></label>
+            <fieldset class="traits"><legend>Trait</legend>
+              <label><input type="radio" name="trait" value="mistral" checked><span><b>Enfant du Mistral</b><small>+10 PA, meilleure résistance au vent.</small></span></label>
+              <label><input type="radio" name="trait" value="bricoleur"><span><b>Bricoleur des collines</b><small>Réparations moins coûteuses, armes plus fragiles.</small></span></label>
+              <label><input type="radio" name="trait" value="parleur"><span><b>Langue bien pendue</b><small>Dialogues facilités, meilleurs prix chez les marchands.</small></span></label>
+              <label><input type="radio" name="trait" value="sangfroid"><span><b>Sang-froid</b><small>V.A.T.S. plus précis, PA régénérés plus lentement.</small></span></label>
+            </fieldset>
+          </div>
+          <div class="special-wrap">
+            <div class="special-head"><h3>S.P.E.C.I.A.L.</h3><span>Points restants : <b id="specialRemaining">14</b></span></div>
+            <div id="specialList" class="special-list"></div>
+            <p class="special-help" id="specialHelp">Sélectionnez un attribut pour lire son effet.</p>
+          </div>
+        </div>
+        <footer>
+          <button id="btnCreatorBack" class="ghost">Retour</button>
+          <button id="btnStartGame" class="primary">Valider le dossier</button>
+        </footer>
+      </div>
+    </section>
+
+    <section id="hud" class="hud" aria-live="polite">
+      <div id="locationCard" class="location-card"><small>PROVENCE · 2291</small><strong id="locationName">Abri A-03 · Les Fontaines</strong></div>
+      <div id="compass" class="compass"><span id="compassDir">N</span><i></i><span id="questDistance">—</span></div>
+      <div id="questCard" class="quest-card"><small id="questTitle">UN VIVANT DE TROP</small><p id="questObjective">Présentez votre identification à la borne de rationnement.</p></div>
+      <div id="crosshair" class="crosshair"><i></i><i></i><i></i><i></i></div>
+      <div id="weaponModel" class="weapon-model"><i class="gun-slide"></i><i class="gun-sight"></i><i class="gun-grip"></i><i id="muzzleFlash" class="muzzle-flash"></i></div>
+      <div id="interactPrompt" class="interact-prompt hidden"><kbd>E</kbd><span id="interactLabel">Interagir</span></div>
+      <div id="statusBars" class="status-bars">
+        <div><span>PV</span><i><b id="hpBar"></b></i><em id="hpText">100</em></div>
+        <div><span>PA</span><i><b id="apBar"></b></i><em id="apText">100</em></div>
+        <div class="radline"><span>RAD</span><i><b id="radBar"></b></i><em id="radText">0</em></div>
+        <small id="networkStatus">RÉSEAU LOCAL SUSPENDU</small>
+      </div>
+      <div id="weaponHud" class="weapon-hud"><small id="weaponName">PISTOLET 10 MM</small><strong><span id="ammoClip">10</span><i>/</i><span id="ammoReserve">40</span></strong><em id="reloadHint">R · RECHARGER</em><div class="condition-line"><span>ARME</span><i><b id="weaponCondition"></b></i><span>ARMURE</span><i><b id="armorCondition"></b></i></div></div>
+      <div id="vehicleHud" class="vehicle-hud hidden"><header><small>SKIFF M-12</small><strong id="vehicleSpeed">0 KM/H</strong></header><div><span>COQUE</span><i><b id="vehicleHullBar"></b></i><em id="vehicleHullText">100</em></div><div><span>CARBURANT</span><i><b id="vehicleFuelBar"></b></i><em id="vehicleFuelText">100</em></div><footer>ZQSD · PILOTER &nbsp; E · INTERAGIR &nbsp; TIR · DÉFENSE</footer></div>
+      <div id="quickHelp" class="quick-help"><span><kbd>Tab</kbd> PIP-BOY</span><span><kbd>V</kbd> V.A.T.S.</span><span><kbd>H</kbd> SOINS</span><span><kbd>Esc</kbd> PAUSE</span></div>
+      <div id="companionCard" class="companion-card hidden"><span id="companionInitials" class="portrait">MB</span><div><small>COMPAGNON</small><b id="companionName">Mireille</b><i><em id="companionHp"></em></i></div></div>
+      <div id="levelHud" class="level-hud"><span>NIV <b id="levelValue">1</b></span><i><em id="xpBar"></em></i><small id="xpText">0 / 100 XP</small></div>
+      <div id="effectHud" class="effect-hud hidden"></div><div id="needsHud" class="needs-hud hidden"><span>FAIM <b id="hungerValue">0</b></span><span>SOIF <b id="thirstValue">0</b></span><span>FATIGUE <b id="fatigueValue">0</b></span></div>
+      <div id="subtitle" class="subtitle hidden"></div>
+      <div id="toastStack" class="toast-stack"></div>
+      <div id="damageFlash" class="damage-flash"></div>
+      <div id="questFlash" class="quest-flash"><small>QUÊTE MISE À JOUR</small><strong></strong><p></p></div>
+      <div id="touchControls" class="touch-controls" aria-hidden="true">
+        <div id="touchMove" class="touch-stick"><i></i></div>
+        <div id="touchLook" class="touch-look"></div>
+        <button data-touch="fire" class="touch-fire">TIR</button>
+        <button data-touch="interact" class="touch-action">E</button>
+        <button data-touch="vats" class="touch-vats">V</button>
+        <button data-touch="pip" class="touch-pip">PIP</button>
+      </div>
+    </section>
+
+    <section id="dialogue" class="dialogue hidden" aria-label="Dialogue">
+      <div class="dialogue-portrait"><span id="speakerInitials">MB</span><small id="speakerRole">TECHNICIENNE</small></div>
+      <div class="dialogue-body">
+        <h3 id="speakerName">Mireille Barral</h3>
+        <p id="dialogueLine"></p>
+        <div id="dialogueChoices" class="dialogue-choices"></div>
+      </div>
+    </section>
+
+    <section id="pipboy" class="pipboy hidden" aria-label="Pip-Boy">
+      <div class="pip-shell">
+        <div class="pip-screw a"></div><div class="pip-screw b"></div><div class="pip-screw c"></div><div class="pip-screw d"></div>
+        <header><span>PIP-BOY 3000-FR</span><b id="pipClock">12:00</b><em id="pipZone">A-03</em></header>
+        <nav id="pipTabs"><button data-tab="status" class="active">STAT</button><button data-tab="inventory">INV</button><button data-tab="data">DONNÉES</button><button data-tab="map">CARTE</button><button data-tab="network">RÉSEAU</button><button data-tab="radio">RADIO</button></nav>
+        <main id="pipContent"></main>
+        <footer><span><kbd>Tab</kbd> Fermer</span><span><kbd>Q/E</kbd> Onglets</span><span id="pipHint">Sélectionner</span></footer>
+      </div>
+    </section>
+
+    <section id="vats" class="vats hidden" aria-label="V.A.T.S.">
+      <header><small>VAULT-TEC ASSISTED TARGETING SYSTEM</small><strong id="vatsTargetName">CIBLE</strong><span>PA <b id="vatsAp">100</b></span></header>
+      <div id="vatsParts" class="vats-parts"></div>
+      <div class="vatsQueue"><small>FILE D’ACTIONS</small><div id="vatsQueue"></div></div>
+      <footer><span><kbd>A/D</kbd> Cible</span><span><kbd>W/S</kbd> Zone</span><span><kbd>E</kbd> Ajouter</span><span><kbd>Espace</kbd> Exécuter</span><span><kbd>V</kbd> Quitter</span></footer>
+    </section>
+
+
+    <section id="tradeScreen" class="modal hidden" aria-label="Commerce">
+      <div class="modal-card trade-card">
+        <header><p class="eyebrow">ÉCHANGE LOCAL</p><h2 id="tradeTitle">MARCHAND</h2><p id="tradeSubtitle">Les prix dépendent de votre réputation, de votre Charisme et de l’état des routes.</p></header>
+        <div class="trade-wallet"><span>Vos capsules <b id="tradePlayerCaps">0</b></span><span>Caisse du marchand <b id="tradeVendorCaps">0</b></span></div>
+        <div class="trade-columns"><section><h3>ACHETER</h3><div id="tradeBuyList" class="trade-list"></div></section><section><h3>VENDRE</h3><div id="tradeSellList" class="trade-list"></div></section></div>
+        <footer><small id="tradeMessage">Sélectionnez une marchandise.</small><button id="tradeClose" class="primary">Terminer l’échange</button></footer>
+      </div>
+    </section>
+
+    <section id="hackScreen" class="modal hidden" aria-label="Piratage du relais">
+      <div class="modal-card terminal-card">
+        <header><small>CONCORDE // ACCÈS TECHNIQUE</small><h2>RECONSTRUIRE LE CIRCUIT</h2><p>Alignez les quatre relais avant que le contrôleur ne se verrouille.</p></header>
+        <div id="hackGrid" class="hack-grid"></div>
+        <div class="hack-readout"><span>Tentatives <b id="hackTries">6</b></span><span>Stabilité <b id="hackStability">0%</b></span></div>
+        <footer><button id="hackAbort" class="ghost">Abandonner</button><button id="hackCheck" class="primary">Injecter la séquence</button></footer>
+      </div>
+    </section>
+
+    <section id="projectionScreen" class="modal hidden" aria-label="Calibration du projecteur">
+      <div class="modal-card projection-card">
+        <header><small>CINÉMATHÈQUE PHOCÉENNE // CABINE 03</small><h2>CALIBRER LA MÉMOIRE</h2><p>Réglez la mise au point, la synchronisation et la lampe jusqu’à stabiliser le visage enregistré sur la bobine.</p></header>
+        <div class="projection-stage">
+          <div id="projectionPreview" class="projection-preview"><i></i><b></b><span>IMAGE 17-B</span></div>
+          <div id="projectionControls" class="projection-controls"></div>
+        </div>
+        <div class="projection-readout"><span>Tentatives <b id="projectionTries">7</b></span><span>Stabilité <b id="projectionStability">0%</b></span><span id="projectionHint">Signal instable</span></div>
+        <footer><button id="projectionAbort" class="ghost">Quitter la cabine</button><button id="projectionCheck" class="primary">Projeter la bobine</button></footer>
+      </div>
+    </section>
+
+
+    <section id="terminalLoreScreen" class="modal hidden" aria-label="Terminal local">
+      <div class="modal-card lore-terminal-card">
+        <header><small>RÉSEAU CONCORDE // ARCHIVE LOCALE</small><h2 id="terminalLoreTitle">TERMINAL LOCAL</h2><p>Les entrées consultées et les actions exécutées sont conservées dans la sauvegarde.</p></header>
+        <div class="lore-terminal-layout"><nav id="terminalLoreEntries"></nav><article><h3 id="terminalLoreEntryTitle">ENTRÉE</h3><p id="terminalLoreText"></p><button id="terminalLoreAction" class="primary">EXÉCUTER L’ACTION</button></article></div>
+        <footer><button id="terminalLoreExit" class="ghost">Quitter le terminal</button></footer>
+      </div>
+    </section>
+
+    <section id="holotapeScreen" class="modal hidden" aria-label="Lecteur d’holodisque">
+      <div class="modal-card holotape-card">
+        <header><small>LECTEUR MAGNÉTIQUE // MODE SOUS-TITRÉ</small><h2 id="holotapeTitle">HOLODISQUE</h2><p id="holotapeSpeaker">INTERVENANT</p></header>
+        <div class="tape-window"><i></i><div><small id="holotapeCounter">01 / 05</small><p id="holotapeText"></p></div></div>
+        <div class="tape-progress"><i id="holotapeProgress"></i></div>
+        <nav class="tape-controls"><button id="holotapePrev">◀ PRÉC.</button><button id="holotapePlay" class="primary">LECTURE</button><button id="holotapeNext">SUIV. ▶</button></nav>
+        <footer><button id="holotapeExit" class="ghost">Éjecter la bande</button><small>Le texte remplace provisoirement la voix enregistrée.</small></footer>
+      </div>
+    </section>
+
+
+    <section id="constructionScreen" class="modal hidden" aria-label="Reconstruction régionale">
+      <div class="modal-card construction-card">
+        <header><small>RÉSEAU DES COMMUNES // CHANTIER LOCAL</small><h2 id="constructionTitle">RECONSTRUCTION</h2><p id="constructionDesc">Les modules construits apparaissent réellement dans le secteur et modifient sa production.</p></header>
+        <div id="constructionResources" class="construction-resources"></div>
+        <div id="constructionModules" class="construction-grid"></div>
+        <footer><small id="constructionHint">Sélectionnez un module.</small><button id="constructionClose" class="primary">Quitter le chantier</button></footer>
+      </div>
+    </section>
+
+    <section id="petanqueScreen" class="modal hidden" aria-label="Partie de pétanque">
+      <div class="modal-card petanque-card">
+        <header><small>AUBAGNE // PLACE DES ATELIERS</small><h2>ON JOUE ENCORE</h2><p>Trois boules. Réglez l’angle et la force, puis approchez-vous du cochonnet malgré le mistral.</p></header>
+        <div class="petanque-pitch"><div id="petanqueJack" class="petanque-jack"></div><div id="petanqueBalls" class="petanque-balls"></div><i id="petanqueAim"></i></div>
+        <div class="petanque-controls"><label>Angle <input id="petanqueAngle" type="range" min="-35" max="35" value="0"><output id="petanqueAngleOut">0°</output></label><label>Force <input id="petanquePower" type="range" min="25" max="100" value="62"><output id="petanquePowerOut">62%</output></label></div>
+        <div class="petanque-score"><span>Boule <b id="petanqueRound">1 / 3</b></span><span>Meilleure distance <b id="petanqueBest">—</b></span><span>Vent <b id="petanqueWind">—</b></span></div>
+        <footer><button id="petanqueExit" class="ghost">Abandonner</button><button id="petanqueThrow" class="primary">Lancer la boule</button></footer>
+      </div>
+    </section>
+
+    <section id="lockpickScreen" class="modal hidden" aria-label="Crochetage">
+      <div class="modal-card lockpick-card">
+        <header><small>SERRURE MÉCANIQUE // ÉPINGLE ET TOURNEVIS</small><h2 id="lockpickTitle">CAISSE VERROUILLÉE</h2><p>Placez l’épingle dans la zone de tolérance puis tournez le cylindre sans la casser.</p></header>
+        <div class="lockpick-stage"><div id="lockpickCylinder" class="lockpick-cylinder"><i></i></div><div id="lockpickPin" class="lockpick-pin"></div></div>
+        <div class="lockpick-readout"><span>Épingles <b id="lockpickPins">5</b></span><span>Tolérance <b id="lockpickTolerance">—</b></span><span id="lockpickMessage">Cherchez le point de résistance.</span></div>
+        <div class="lockpick-controls"><input id="lockpickAngle" type="range" min="-90" max="90" value="0"><button id="lockpickTurn" class="primary">Tourner</button></div>
+        <footer><button id="lockpickExit" class="ghost">Quitter</button></footer>
+      </div>
+    </section>
+
+    <section id="pauseScreen" class="modal hidden" aria-label="Pause">
+      <div class="modal-card pause-card">
+        <p class="eyebrow">PARTIE SUSPENDUE</p><h2>PAUSE</h2>
+        <button id="btnResume" class="primary">Reprendre</button>
+        <button id="btnSave">Sauvegarder</button>
+        <button id="btnLoad">Recharger</button>
+        <button id="btnPauseOptions">Options</button>
+        <button id="btnQuitMenu">Menu principal</button>
+      </div>
+    </section>
+
+    <section id="optionsScreen" class="modal hidden" aria-label="Options">
+      <div class="modal-card options-card">
+        <header><p class="eyebrow">ACCESSIBILITÉ & JEU</p><h2>OPTIONS</h2></header>
+        <div class="option-grid">
+          <label>Sensibilité souris <input id="optSensitivity" type="range" min="0.2" max="2" step="0.1" value="0.8"><output>0.8</output></label>
+          <label>Volume général <input id="optVolume" type="range" min="0" max="1" step="0.05" value="0.7"><output>70%</output></label>
+          <label>Taille des textes <select id="optText"><option value="1">Normale</option><option value="1.15">Grande</option><option value="1.3">Très grande</option></select></label>
+          <label>Qualité 3D <select id="optQuality"><option value="high">Élevée</option><option value="medium">Moyenne</option><option value="low">Basse</option></select></label>
+          <label>Difficulté <select id="optDifficulty"><option value="story">Histoire</option><option value="survivor" selected>Survie</option><option value="hardcore">Sans pitié</option></select></label>
+          <label class="toggle"><input id="optMotion" type="checkbox"><span>Réduire les mouvements de caméra</span></label>
+          <label class="toggle"><input id="optContrast" type="checkbox"><span>Contraste renforcé</span></label>
+          <label class="toggle"><input id="optSubtitles" type="checkbox" checked><span>Sous-titres</span></label>
+          <label class="toggle"><input id="optAim" type="checkbox"><span>Aide à la visée</span></label>
+          <label class="toggle"><input id="optSurvivalNeeds" type="checkbox"><span>Besoins de survie indépendants</span></label>
+          <label class="toggle"><input id="optCompanionProtection" type="checkbox" checked><span>Compagnons protégés</span></label>
+          <label class="toggle"><input id="optReducedFlashes" type="checkbox"><span>Réduire les flashs lumineux</span></label>
+          <label class="toggle"><input id="optGeoStreaming" type="checkbox" checked><span>Streaming cartographique OpenStreetMap</span></label>
+          <label class="toggle"><input id="optGeoCache" type="checkbox" checked><span>Conserver les tuiles géographiques en cache</span></label>
+          <label class="toggle"><input id="optGeoOfflineFirst" type="checkbox" checked><span>Utiliser en priorité le pack cartographique local</span></label>
+          <label class="toggle"><input id="optGeoStrict" type="checkbox" checked><span>Mode cadastral strict — aucune maison ou route inventée</span></label>
+          <label class="toggle"><input id="optGeoAudit" type="checkbox"><span>Afficher l’audit source/rendu en jeu</span></label>
+        </div>
+        <footer><button id="btnOptionsReset" class="ghost">Réinitialiser</button><button id="btnOptionsClose" class="primary">Appliquer et fermer</button></footer>
+      </div>
+    </section>
+
+    <section id="creditsScreen" class="modal hidden" aria-label="Crédits et statut">
+      <div class="modal-card credits-card">
+        <p class="eyebrow">DOSSIER DE PRODUCTION</p><h2>FALLOUT : MISTRAL</h2>
+        <p>Prototype 3D local et hors ligne développé comme preuve de concept : exploration, quêtes ramifiées, combat, V.A.T.S., Pip-Boy, compagnons, sauvegarde et environnement densifié.</p>
+        <dl><dt>Version</dt><dd>0.16.0 · Les Paysages habités</dd><dt>Secteurs jouables</dt><dd>Huit macro-régions géoréférencées, 42 villes, villages, parcs et forêts extérieurs, reliés à 86 districts et intérieurs instanciés</dd><dt>Systèmes</dt><dd>Six chapitres, huit extérieurs géographiques, 42 lieux de surface, 86 instances, 42 abris, sept compagnons et reconstruction visible</dd><dt>Technologie</dt><dd>WebGL natif, JavaScript, projection géographique locale, streaming OpenStreetMap optionnel, cache et repli hors ligne</dd><dt>Statut</dt><dd>Prototype de fan non officiel, non commercial</dd></dl>
+        <p class="credits-note">Fallout et ses éléments de marque appartiennent à leurs ayants droit. Les factions et intrigues provençales de ce prototype sont originales.</p>
+        <button id="btnCreditsClose" class="primary">Fermer</button>
+      </div>
+    </section>
+
+    <section id="loadingScreen" class="screen loading-screen" aria-label="Chargement de zone">
+      <div><small id="loadingRegion">PROVENCE</small><h2 id="loadingTitle">Aubagne</h2><p id="loadingLore">Le vent emporte la poussière. Les dossiers, eux, restent.</p><i><b id="loadingBar"></b></i></div>
+    </section>
+
+    <section id="endingScreen" class="screen ending-screen" aria-label="Fin du chapitre">
+      <div class="ending-scroll">
+        <p id="endingEyebrow" class="eyebrow">CHAPITRE TERMINÉ</p><h2 id="endingTitle">UN VIVANT DE TROP</h2>
+        <div id="endingSummary"></div>
+        <div class="ending-actions"><button id="btnContinueExplore" class="primary">Continuer à explorer</button><button id="btnEndingMenu">Menu principal</button></div>
+      </div>
+    </section>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>

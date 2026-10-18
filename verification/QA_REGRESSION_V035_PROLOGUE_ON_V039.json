@@ -1,0 +1,164 @@
+{
+  "version": "0.39.0",
+  "html_sha256": "fbcf904f6259751e8d9bf2102f85a196d81eb17d782f070e386b45eeadb19466",
+  "passed": 22,
+  "failed": 0,
+  "total": 22,
+  "errors": [],
+  "checks": [
+    {
+      "name": "Nouvelle campagne dans le prologue",
+      "ok": true,
+      "detail": "vault_prologue"
+    },
+    {
+      "name": "Stage initial",
+      "ok": true,
+      "detail": {
+        "started": true,
+        "titleSeen": true,
+        "stage": 1,
+        "locker": false,
+        "clinic": false,
+        "filter": false,
+        "breakfast": false,
+        "records": false,
+        "briefed": false,
+        "loadout": null,
+        "complete": false
+      }
+    },
+    {
+      "name": "Interactions essentielles présentes",
+      "ok": true,
+      "detail": [
+        "v35p-locker",
+        "v35p-clinic",
+        "v35p-filter",
+        "v35p-ration",
+        "v35p-records",
+        "v35p-issue",
+        "v35p-exit"
+      ]
+    },
+    {
+      "name": "Approche v35p-locker",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Approche v35p-clinic",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Approche v35p-filter",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Approche v35p-ration",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Approche v35p-records",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Approche v35p-issue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Approche v35p-exit",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Casier -> stage 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Routine -> stage 3",
+      "ok": true,
+      "detail": {
+        "started": true,
+        "titleSeen": true,
+        "stage": 3,
+        "locker": true,
+        "clinic": true,
+        "filter": true,
+        "breakfast": false,
+        "records": false,
+        "briefed": false,
+        "loadout": null,
+        "complete": false
+      }
+    },
+    {
+      "name": "Petit-déjeuner -> stage 4",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Décès administratif -> stage 5",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Quête principale lancée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Archives -> stage 6",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Briefing -> stage 7",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Dotation -> stage 8",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Dotation unique",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Sortie vers Aubagne",
+      "ok": true,
+      "detail": "aubagne"
+    },
+    {
+      "name": "Prologue terminé",
+      "ok": true,
+      "detail": {
+        "started": true,
+        "titleSeen": true,
+        "stage": 9,
+        "locker": true,
+        "clinic": true,
+        "filter": true,
+        "breakfast": true,
+        "records": true,
+        "briefed": true,
+        "loadout": "patrol",
+        "complete": true
+      }
+    },
+    {
+      "name": "Campagne continue étape 2",
+      "ok": true,
+      "detail": null
+    }
+  ]
+}

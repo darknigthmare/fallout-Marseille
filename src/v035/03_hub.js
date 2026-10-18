@@ -1,0 +1,19 @@
+function v035HubAvailable(){return state.mode==='free'||state.quest.main>=2||state.quest.mainComplete}
+function v035RestAtHub(){if(world?.id!=='vault'||inCombat||world.enemies.some(e=>e.alive&&dist2(e.pos,state.player.pos)<18)){toast('Le foyer n’est pas assez sûr pour dormir.','bad');return false;}state.worldTime=(state.worldTime+8)%24;state.player.hp=state.player.maxHp;state.player.ap=state.player.maxAp;state.status.bleeding=0;state.status.burning=0;state.status.smoke=0;state.v035.hub.lastRest={at:Date.now(),worldTime:state.worldTime};saveGame(true);v035Autosave('repos A-03');toast('Huit heures de repos · PV et PA restaurés. Radiations et infection inchangées.','good');updateNPCSchedules?.(.05);return true;}
+function v035ReturnVault(){if(!v035HubAvailable()||inCombat){toast('Le retour à A-03 est indisponible.','bad');return false;}state.v035.hub.returns=(state.v035.hub.returns||0)+1;state.v035.hub.visited=true;state.v018.travelMode='story';loadZone('vault',{instance:true,force:true,silent:true,noTravel:true});setTimeout(()=>v035Autosave('retour A-03'),0);return true;}
+function v035ReturnAubagne(){if(inCombat)return false;state.v018.travelMode='story';loadZone('aubagne',{instance:true,force:true,silent:true,noTravel:true});setTimeout(()=>v035Autosave('liaison Aubagne'),0);return true;}
+function v035AddBed(w,p){addBox(w,[p[0],p[1]+.32,p[2]],[3.4,.62,1.45],COLORS.darkMetal);addBox(w,[p[0],p[1]+.72,p[2]],[3.15,.18,1.25],COLORS.clothTan);addBox(w,[p[0]-.9,p[1]+.91,p[2]-.35],[.9,.18,.48],COLORS.white);addCollider(w,p[0],p[2],3.5,1.55,{minY:p[1],maxY:p[1]+.85});}
+function v035AddTerminal(w,p,label,color=COLORS.green){addBox(w,[p[0],p[1]+.9,p[2]],[1.5,1.8,.75],COLORS.metal);addBox(w,[p[0],p[1]+1.25,p[2]+.4],[.9,.65,.06],color,0,{emissive:.45});addCollider(w,p[0],p[2],1.6,.85,{minY:p[1],maxY:p[1]+1.9});}
+function v035ApplyHubWorld(w){if(w.id==='vault'&&v035HubAvailable()){
+  const bed=ldFindFree(w,-6,7),board=ldFindFree(w,6,7),terminal=ldFindFree(w,6,-4);v035AddBed(w,bed);addInteract(w,'v035-hub-bed',[bed[0],bed[1]+.8,bed[2]],'Dormir huit heures',v035RestAtHub,{kind:'rest',priority:4});v035AddTerminal(w,board,'RELÈVES',COLORS.amber);addInteract(w,'v035-hub-board',[board[0],board[1]+1.2,board[2]],'Tableau des relèves',()=>v035OpenScreen('operations'),{kind:'terminal',priority:5});v035AddTerminal(w,terminal,'SAUVEGARDES',COLORS.green);addInteract(w,'v035-hub-save',[terminal[0],terminal[1]+1.2,terminal[2]],'Terminal de sauvegardes',()=>v035OpenScreen('saves'),{kind:'terminal',priority:5});
+  const out=ldFindFree(w,0,-12);addInteract(w,'v035-hub-exit',[out[0],out[1]+1.1,out[2]],'Prendre la liaison vers Aubagne',v035ReturnAubagne,{kind:'door',priority:5});
+  if(!w.npcs.some(n=>n.id==='v035-leo'))addHumanNPC(w,'v035-leo','Léo Martin','TECHNICIEN DE FILTRATION',ldFindFree(w,-4,-2),[.36,.47,.37],{initials:'LM',route:[ldFindFree(w,-4,-2),ldFindFree(w,-7,5),ldFindFree(w,-1,6)]});
+  if(!w.npcs.some(n=>n.id==='v035-alma'))addHumanNPC(w,'v035-alma','Alma Ruiz','CUISINIÈRE A-03',ldFindFree(w,4,1),[.5,.41,.31],{initials:'AR',route:[ldFindFree(w,4,1),ldFindFree(w,7,5),ldFindFree(w,2,7)]});
+  if(!w.npcs.some(n=>n.id==='v035-yasmine'))addHumanNPC(w,'v035-yasmine','Yasmine Kader','ARCHIVISTE',ldFindFree(w,0,-5),[.41,.43,.5],{initials:'YK',route:[ldFindFree(w,0,-5),ldFindFree(w,-5,-2),ldFindFree(w,5,-2)]});
+  w.v035Hub={bed,board,terminal};
+ }
+ if(w.id==='aubagne'&&v035HubAvailable()){
+  const p=ldFindFree(w,-82,72);addBox(w,[p[0],p[1]+1.2,p[2]],[4.5,2.4,.35],COLORS.darkMetal);addBox(w,[p[0],p[1]+1.55,p[2]+.2],[3.8,.65,.05],COLORS.amber,0,{emissive:.35});addInteract(w,'v035-vault-return',[p[0],p[1]+1.0,p[2]+1.1],'Retourner à A-03 · Les Fontaines',v035ReturnVault,{kind:'door',priority:5});
+  const b=ldFindFree(w,82,72);v035AddTerminal(w,b,'RELÈVES',COLORS.amber);addInteract(w,'v035-aubagne-board',[b[0],b[1]+1.2,b[2]],'Tableau des opérations',()=>v035OpenScreen('operations'),{kind:'terminal',priority:5});
+ }
+}

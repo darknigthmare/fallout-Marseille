@@ -1,0 +1,282 @@
+{
+  "version": "0.39.0",
+  "html_sha256": "fbcf904f6259751e8d9bf2102f85a196d81eb17d782f070e386b45eeadb19466",
+  "passed": 16,
+  "failed": 0,
+  "total": 16,
+  "errors": [],
+  "requests": {
+    "status": 1,
+    "terrain": 2,
+    "vector": 4
+  },
+  "checks": [
+    {
+      "name": "runtime v0.39",
+      "ok": true,
+      "detail": "0.39.0"
+    },
+    {
+      "name": "plan 8 × 161²",
+      "ok": true,
+      "detail": {
+        "version": "0.39.0",
+        "regions": 8,
+        "width": 161,
+        "height": 161,
+        "samplesPerRegion": 25921,
+        "totalSamples": 207368,
+        "valid": 174944,
+        "missing": 32424,
+        "bytes": 1260176,
+        "resource": "ign_rge_alti_wld",
+        "source": "RGE ALTI IGN",
+        "sourceTitle": "Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes)",
+        "license": "Licence Ouverte 2.0",
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "noDataThreshold": -100
+      }
+    },
+    {
+      "name": "cloud status 8/8",
+      "ok": true,
+      "detail": {
+        "state": "ready",
+        "complete": true,
+        "count": 8,
+        "totalBytes": 1260176,
+        "totalValid": 174944,
+        "totalMissing": 32424,
+        "regions": [
+          {
+            "macro": "geo_marseille",
+            "valid": 22282,
+            "missing": 3639,
+            "min": -17.9,
+            "max": 643.91,
+            "mean": 109.791,
+            "bytes": 144478,
+            "sha256": null,
+            "fetchedAt": null
+          },
+          {
+            "macro": "geo_huveaune",
+            "valid": 25921,
+            "missing": 0,
+            "min": 24.82,
+            "max": 708.45,
+            "mean": 210.666,
+            "bytes": 176122,
+            "sha256": null,
+            "fetchedAt": null
+          },
+          {
+            "macro": "geo_garlaban",
+            "valid": 25921,
+            "missing": 0,
+            "min": 60,
+            "max": 1031.19,
+            "mean": 304.142,
+            "bytes": 178206,
+            "sha256": null,
+            "fetchedAt": null
+          },
+          {
+            "macro": "geo_calanques",
+            "valid": 21063,
+            "missing": 4858,
+            "min": -8.52,
+            "max": 638.19,
+            "mean": 131.902,
+            "bytes": 137635,
+            "sha256": null,
+            "fetchedAt": null
+          },
+          {
+            "macro": "geo_laciotat",
+            "valid": 21717,
+            "missing": 4204,
+            "min": -8.94,
+            "max": 560.11,
+            "mean": 150.016,
+            "bytes": 144586,
+            "sha256": null,
+            "fetchedAt": null
+          },
+          {
+            "macro": "geo_frioul",
+            "valid": 6198,
+            "missing": 19723,
+            "min": -67.51,
+            "max": 81.92,
+            "mean": 2.891,
+            "bytes": 121364,
+            "sha256": null,
+            "fetchedAt": null
+          },
+          {
+            "macro": "geo_etoile",
+            "valid": 25921,
+            "missing": 0,
+            "min": 64.99,
+            "max": 768.45,
+            "mean": 317.122,
+            "bytes": 178722,
+            "sha256": null,
+            "fetchedAt": null
+          },
+          {
+            "macro": "geo_saintebaume",
+            "valid": 25921,
+            "missing": 0,
+            "min": 74.49,
+            "max": 1029.36,
+            "mean": 367.892,
+            "bytes": 179063,
+            "sha256": null,
+            "fetchedAt": null
+          }
+        ],
+        "error": null,
+        "checkedAt": "2026-09-19T02:47:58.211Z",
+        "source": {
+          "resource": "ign_rge_alti_wld",
+          "title": "Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes)",
+          "license": "Licence Ouverte 2.0",
+          "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+        },
+        "grid": {
+          "width": 161,
+          "height": 161
+        }
+      }
+    },
+    {
+      "name": "official resource named",
+      "ok": true,
+      "detail": {
+        "resource": "ign_rge_alti_wld",
+        "title": "Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes)",
+        "license": "Licence Ouverte 2.0",
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+      }
+    },
+    {
+      "name": "cloud grid loads",
+      "ok": true,
+      "detail": {
+        "source": "cloud",
+        "macro": "geo_marseille",
+        "width": 5,
+        "height": 5,
+        "valid": 23,
+        "missing": 2,
+        "min": 60,
+        "max": 140,
+        "bytes": 538
+      }
+    },
+    {
+      "name": "terrain is cached in IndexedDB",
+      "ok": true,
+      "detail": {
+        "got": {
+          "source": "indexeddb",
+          "macro": "geo_marseille",
+          "width": 5,
+          "height": 5,
+          "valid": 23,
+          "missing": 2,
+          "min": 60,
+          "max": 140,
+          "bytes": 538
+        },
+        "requests": {
+          "status": 1,
+          "terrain": 2,
+          "vector": 4
+        }
+      }
+    },
+    {
+      "name": "terrain applies to current macro",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "active terrain reports NoData",
+      "ok": true,
+      "detail": {
+        "macro": "geo_marseille",
+        "source": "debug",
+        "valid": 23,
+        "missing": 2,
+        "min": 60,
+        "max": 140,
+        "status": "RGE ALTI · 23 MESURES · 2 NODATA"
+      }
+    },
+    {
+      "name": "north-west orientation is correct",
+      "ok": true,
+      "detail": {
+        "point": [
+          -9059.159963298356,
+          0,
+          -4291.143732439727
+        ],
+        "z": 99.99999999999764
+      }
+    },
+    {
+      "name": "NoData grid point stays absent",
+      "ok": true,
+      "detail": {
+        "point": [
+          267.0088578565046,
+          0,
+          2105.0139049440622
+        ],
+        "z": null
+      }
+    },
+    {
+      "name": "interpolation ignores NoData sentinel",
+      "ok": true,
+      "detail": {
+        "z": 92.49999999999763
+      }
+    },
+    {
+      "name": "all-NoData terrain is rejected",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "terrain mesh is generated",
+      "ok": true,
+      "detail": {
+        "vertices": 1764,
+        "faces": 3362,
+        "minY": 59.983450159982354,
+        "maxY": 139.90955252911272
+      }
+    },
+    {
+      "name": "Pip-Boy terrain panel",
+      "ok": true,
+      "detail": "RELIEF OFFICIEL · RGE ALTI Les huit macro-régions utilisent des grilles échantillonnées depuis la ressource officielle ign_rge_alti_wld. Les cellules sans mesure restent NoData : le jeu conserve alors son plan marin/de référence et ne l’étiquette pas comme relief IGN. 8/8 Grilles cloud COMPLET · 1.2 Mio 174 944 Altitudes valides 32 424 cellules NoData 0/8 Grilles IndexedDB 1 lecture(s) cache 60–140 m Relief actif MARSEILLE MARSEILLE -17,9–643,9 m 22 282 mesures · 3 639 NoData 86% de cellules mesurées · ACTIVE HUVEAUNE 24,8–708,5 m 25 921 mesures · 0 NoData 100% de cellules mesurées GARLABAN 60–1 031,2 m 25 921 mesures · 0 NoData 100% de cellules mesurées CALANQUES -8,5–638,2 m 21 063 mesures · 4 858 NoData 81.3% de cellules mesurées LA CIOTAT -8,9–560,1 m 21 717 mesures · 4 204 NoData 83.8% de cellules mesurées ARCHIPEL DU FRIOUL -67,5–81,9 m 6 198 mesures · 19 723 NoData 23.9% de cellules mesurées ÉTOILE & ALLAUCH 65–768,5 m 25 921 mesures · 0 NoData 100% de cellules mesurées SAINTE-BAUME 74,5–1 029,4 m 25 921 mesures · 0 NoData 100% de cellules mesurées CHAÎNE DE CHARGEMENT Pack local → IndexedDB → cache terrain privé. Source : Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes) · NGF-IGN69 — altitude normale, France continentale · Licence Ouverte 2.0. Grille : 161 × 161 points par macro. Cette résolution est un échantillonnage destiné au moteur, pas la résolution native maximale du produit IGN. ACTUALISER LES PREUVES CHARGER LE RELIEF COURANT FORCER DEPUIS LE CLOUD VIDER LES GRILLES LOCALES CACHE VECTORIEL ÉTAT DE SESSION 3 demande(s) · 0 pack · 1 IndexedD"
+    },
+    {
+      "name": "status separates vector and terrain",
+      "ok": true,
+      "detail": "CARTOGRAPHIE RÉELLE · V0.39 RELIEF RGE ALTI · 8/8 Les compteurs distinguent données vectorielles, grilles terrain, mesures valides et NoData. Aucune cellule absente n’est transformée en altitude inventée. 5 884/5 884 Coordonnées vectorielles 8/8 Grilles terrain cloud 174 944 Mesures RGE ALTI valides 32 424 Cellules NoData Source officielle Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes) · ressource ign_rge_alti_wld · NGF-IGN69 — altitude normale, France continentale · Licence Ouverte 2.0. Terrain actif MARSEILLE · debug · 23 mesures · 2 NoData · 60 à 140 m Vectoriel Fond général 367/367 · cadastre 5 517/5 517 · cache vectoriel 82.9 Mio. Verrous restants Audit topologique complet, assemblage du bâti aux frontières, littoral, portes réelles, performances avec pack disque et traversées humaines Aubagne–Marseille / Aubagne–La Ciotat. RETOUR ACTUALISER RELIEF DANS LE PIP-BOY"
+    },
+    {
+      "name": "no JavaScript exception",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "Exact v0.39 HTML. Controlled RGE ALTI JSON fixture plus mocked 8/8 cloud status. IndexedDB uses an API-compatible memory adapter because opaque-origin native storage is blocked. Live terrain proof is verified separately."
+}

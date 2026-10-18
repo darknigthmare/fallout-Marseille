@@ -1,0 +1,58 @@
+{
+  "version": "0.47.0",
+  "html_sha256": "b541ff8950943c71f356c11452d014a08c4531517d30912dd8791d05e1edb107",
+  "shots": [
+    {
+      "file": "01_menu.png",
+      "title": "v0.47 intégrée à la v0.46 fournie",
+      "note": "Menu du programme livré. La provenance historique v0.42 de la branche reste documentée."
+    },
+    {
+      "file": "02_depart.png",
+      "title": "Le secteur reste en scène",
+      "note": "Banc synthétique explicitement signalé : bâtiments, cour et végétation. Ce n’est pas Marseille."
+    },
+    {
+      "file": "03_anticipation.png",
+      "title": "Préparation pendant la marche",
+      "note": "La barre discrète indique les ressources du prochain secteur. La scène et le mouvement restent actifs."
+    },
+    {
+      "file": "04_attente.png",
+      "title": "Pas de pas dans un secteur incomplet",
+      "note": "À la marge de sécurité, la même préparation devient bloquante. Aucune géométrie de secours n’est inventée."
+    },
+    {
+      "file": "05_reprise.png",
+      "title": "Publication complète, même quartier",
+      "note": "Le chargement se termine sans téléporter le joueur. Les empreintes bâties et la scène sont conservées."
+    },
+    {
+      "file": "06_refus.png",
+      "title": "Préparation ratée : l’ancien relief reste intact",
+      "note": "Échec injecté après lecture du terrain. Le test compare aussi l’empreinte de la banque de relief avant et après."
+    },
+    {
+      "file": "07_diagnostics.png",
+      "title": "Compteurs de cette exécution",
+      "note": "Tuiles réellement en scène, réutilisations et mémoire estimée. Aucune performance de la carte intégrale n’est annoncée."
+    },
+    {
+      "file": "08_retour.png",
+      "title": "Retour vérifiable",
+      "note": "La banque et les ressources restent contrôlées au retour. Le HUD et le ciel hérités restent actifs."
+    },
+    {
+      "file": "09_lore.png",
+      "title": "Lore et dossiers conservés",
+      "note": "Les neuf factions, huit dossiers et COCHONNET de la v0.46 sont préservés ; aucun nouveau modèle de créature n’est revendiqué."
+    },
+    {
+      "file": "10_etroit.png",
+      "title": "Statut sur fenêtre étroite",
+      "note": "Lecture et défilement à 390 × 844 dans Chromium. Ce n’est pas une validation sur téléphone physique."
+    }
+  ],
+  "errors": [],
+  "scope": "Captures réelles du programme. Scène géographique de test synthétique explicitement marquée ; cartes réelles complètes non installées."
+}

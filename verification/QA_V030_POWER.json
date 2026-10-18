@@ -1,0 +1,354 @@
+{
+  "version": "0.35.0",
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 68,
+  "failed": 0,
+  "total": 68,
+  "results": [
+    {
+      "ok": true,
+      "name": "Stockage natif opaque refusé avant adaptateur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Adaptateur mémoire explicite permet les scénarios de conservation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six plaques, trois modifications et familles assistées existantes reconnues",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Titre courant exact",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Nouvelles clés de campagne et exploration distinctes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancienne T-51 à 37 % : six plaques à 37 %, pas de réparation gratuite",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration sans moteur activé ni cœur offert",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Anciennes données et champs inconnus conservés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Charges invalides rejetées ou bornées et quarante cœurs entamés maximum",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pièces importées bornées à 0–100",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Modèle, réglage et issue inconnus non inventés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Historique borné sans grossissement de sauvegarde",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Insérer retire exactement un cœur neuf pour une charge de 100 %",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un emplacement occupé ne consomme pas de second cœur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Moteurs activés depuis le Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Manipulations refusées pendant l’assistance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune charge perdue en menus",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Éjection en réserve entamée, sans recréer de cœur neuf",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Insertion exacte du cœur rangé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Charge réellement débitée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retirer puis réinsérer conserve les fractions de charge",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Index négatif et emplacement occupé non exploitables",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réserve pleine : le cœur reste installé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Marche assistée intacte : 92 % du déplacement de référence",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Charge proportionnelle au déplacement réellement parcouru",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Coque hors tension : marche lourde sans charge débitée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Assistance apporte 60 de portage, retirés hors tension",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Servos actifs : 98 % de marche et +85 de capacité totale",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Servos paient leur dépense accrue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Buter contre une collision ne consomme pas de mouvement",
+      "detail": {
+        "moved": 0,
+        "core": 9.98285
+      }
+    },
+    {
+      "ok": true,
+      "name": "Cœur épuisé : arrêt automatique, pas de valeur négative",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Châssis vidé retirable : aucune partie immobilisée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Impact traverse le calcul de protection puis use le bras gauche",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cinq plaques non frappées conservent leur intégrité",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le porteur peut rester blessé sous la plaque",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit du plastron cassé coupe les moteurs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Force assistée augmente réellement les dégâts de mêlée de 20 %",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Armure ne multiplie pas les dégâts de balle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Action V.A.T.S. masquée avant émission : aucune charge dépensée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une action V.A.T.S. émise dépense 0,35 % une seule fois",
+      "detail": 9.65
+    },
+    {
+      "ok": true,
+      "name": "Saut réussi : débit de 0,25 %",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Saut déjà en l’air : pas de second débit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Nouvel établi vraiment à portée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Devis de plaque sans prélèvement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réparer gauche ne répare pas droite",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réparer une plaque ne soigne ni PV ni traumatisme",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Coût exact pour une plaque détruite",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucun XP de réparation répétable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Plaque intacte : aucun service superflu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Dommage modifié invalide le devis",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ranger l’appareil invalide le devis",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ressources insuffisantes : pas de paiement partiel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Modification installée depuis le devis, ressources exactes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Modification identique ne se facture pas deux fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une nouvelle configuration remplace la précédente, sans empilement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Moteurs actifs : atelier refuse les travaux",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tenue active ne se retire pas pendant l’assistance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Moteurs coupés : changement de tenue autorisé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sauvegarde de châssis acceptée à l’import",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Charges exactes conservées dans l’export/import",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pièces individuelles conservées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Reprise de l’exploration v029",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sauvegarde v029 non écrasée par la reprise",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Plaque détruite retire ses éléments visuels et garde la structure",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Maillages d’armure : positions, dimensions et couleurs finies",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sélection du bras droit au clic en fenêtre mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pip-Boy mobile sans débordement horizontal de page",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La sélection ne ferme pas le Pip-Boy",
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "scope": "Exact HTML via set_content; software Chromium; controlled state/poses disclosed; successful saves via declared memory adapter. Native opaque-origin refusal checked separately. No official geospatial data."
+}

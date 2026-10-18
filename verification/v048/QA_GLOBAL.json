@@ -1,0 +1,95 @@
+{
+  "version": "0.48.0",
+  "html_sha256": "07082b364c22648e9dff9b42fe9a90533556acb76c425b1d9b77b82b05aa8aca",
+  "passed": 350,
+  "failed": 0,
+  "total": 350,
+  "allHtmlMatch": true,
+  "suites": [
+    {
+      "file": "QA_BUDGET_PASSAGES.json",
+      "passed": 25,
+      "failed": 0,
+      "total": 25,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_PREPARATION_RETURNS.json",
+      "passed": 62,
+      "failed": 0,
+      "total": 62,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_KERNEL_NEW.json",
+      "passed": 33,
+      "failed": 0,
+      "total": 33,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_KERNEL_LEGACY.json",
+      "passed": 23,
+      "failed": 0,
+      "total": 23,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_DISTRIBUTION.json",
+      "passed": 9,
+      "failed": 0,
+      "total": 9,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_STREAMING_NEW.json",
+      "passed": 52,
+      "failed": 0,
+      "total": 52,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_SERVER_IO.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_LAB_ISOLATION.json",
+      "passed": 14,
+      "failed": 0,
+      "total": 14,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_RUNTIME.json",
+      "passed": 49,
+      "failed": 0,
+      "total": 49,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_CAMPAIGN.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_PROLOGUE.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_PRODUCT.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    }
+  ],
+  "scope": "HTML réel, préparation et retours via banc synthétique identifié, collisions des gabarits du jeu, tests purs Node et serveur HTTP loopback. Pas de pack territorial intégral ni navigation native certifiés."
+}

@@ -1,0 +1,22 @@
+{
+  "version": "0.48.0",
+  "baseVersion": "0.47.0",
+  "baseArchive": "FALLOUT_MISTRAL_v0.47_PROJET_COMPLET.zip",
+  "baseBytes": 109324406,
+  "baseSha256": "90087a5b22beaac585b77b361c1d1eb4133640b20ef635f6991fa62fb084dee4",
+  "baseRecoveredInThisTurn": true,
+  "v044ArchiveRecovered": false,
+  "catalogue248Unchanged": true,
+  "catalogueSha256": "fa02b2b6eaf85abef39983c0605d4fd8bab5983fa6f7e367d2589c28d079b1b8",
+  "v046ModulesUnchanged": true,
+  "v047ModulesUnchanged": true,
+  "newModules": [
+    "src/v048/00_budget.js",
+    "src/v048/01_preparation.js",
+    "src/v048/02_returns.js",
+    "src/v048/02b_passages.js",
+    "src/v048/02c_door_transactions.js",
+    "src/v048/03_interface.js",
+    "src/v048/style.css"
+  ]
+}

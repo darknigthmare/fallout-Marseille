@@ -1,0 +1,287 @@
+{
+  "version": "0.42.0",
+  "html_sha256": "94835b6b97ba9d48131053e9d7f53edf6551a69280113e6c38ca1b510813e2db",
+  "passed": 25,
+  "failed": 0,
+  "total": 25,
+  "errors": [],
+  "checks": [
+    {
+      "name": "geo_marseille · 31 projections valides",
+      "ok": true,
+      "detail": {
+        "sites": 31,
+        "inside": 31
+      }
+    },
+    {
+      "name": "geo_marseille · streaming actif",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_marseille",
+        "active": [
+          "v042-marseille-settlement-01",
+          "v042-marseille-shelter-02",
+          "v042-marseille-nest-05",
+          "v042-marseille-interior-03",
+          "v042-marseille-caravan-01"
+        ],
+        "npcs": 6,
+        "nearest": {
+          "id": "v042-marseille-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "geo_marseille · boss régional présent",
+      "ok": true,
+      "detail": {
+        "boss": "v042-marseille-boss-01",
+        "enemies": 7
+      }
+    },
+    {
+      "name": "geo_huveaune · 31 projections valides",
+      "ok": true,
+      "detail": {
+        "sites": 31,
+        "inside": 31
+      }
+    },
+    {
+      "name": "geo_huveaune · streaming actif",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_huveaune",
+        "active": [
+          "v042-huveaune-settlement-01"
+        ],
+        "npcs": 4,
+        "nearest": {
+          "id": "v042-huveaune-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "geo_huveaune · boss régional présent",
+      "ok": true,
+      "detail": {
+        "boss": "v042-huveaune-boss-01",
+        "enemies": 7
+      }
+    },
+    {
+      "name": "geo_garlaban · 31 projections valides",
+      "ok": true,
+      "detail": {
+        "sites": 31,
+        "inside": 31
+      }
+    },
+    {
+      "name": "geo_garlaban · streaming actif",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_garlaban",
+        "active": [
+          "v042-garlaban-settlement-01",
+          "v042-garlaban-outpost-01",
+          "v042-garlaban-nest-03",
+          "v042-garlaban-caravan-01",
+          "v042-garlaban-interior-04",
+          "v042-garlaban-interior-03"
+        ],
+        "npcs": 9,
+        "nearest": {
+          "id": "v042-garlaban-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "geo_garlaban · boss régional présent",
+      "ok": true,
+      "detail": {
+        "boss": "v042-garlaban-boss-01",
+        "enemies": 7
+      }
+    },
+    {
+      "name": "geo_calanques · 31 projections valides",
+      "ok": true,
+      "detail": {
+        "sites": 31,
+        "inside": 31
+      }
+    },
+    {
+      "name": "geo_calanques · streaming actif",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_calanques",
+        "active": [
+          "v042-calanques-settlement-01",
+          "v042-calanques-settlement-03",
+          "v042-calanques-interior-03",
+          "v042-calanques-interior-05"
+        ],
+        "npcs": 8,
+        "nearest": {
+          "id": "v042-calanques-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "geo_calanques · boss régional présent",
+      "ok": true,
+      "detail": {
+        "boss": "v042-calanques-boss-01",
+        "enemies": 7
+      }
+    },
+    {
+      "name": "geo_laciotat · 31 projections valides",
+      "ok": true,
+      "detail": {
+        "sites": 31,
+        "inside": 31
+      }
+    },
+    {
+      "name": "geo_laciotat · streaming actif",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_laciotat",
+        "active": [
+          "v042-laciotat-settlement-01",
+          "v042-laciotat-caravan-01"
+        ],
+        "npcs": 6,
+        "nearest": {
+          "id": "v042-laciotat-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "geo_laciotat · boss régional présent",
+      "ok": true,
+      "detail": {
+        "boss": "v042-laciotat-boss-01",
+        "enemies": 7
+      }
+    },
+    {
+      "name": "geo_frioul · 31 projections valides",
+      "ok": true,
+      "detail": {
+        "sites": 31,
+        "inside": 31
+      }
+    },
+    {
+      "name": "geo_frioul · streaming actif",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_frioul",
+        "active": [
+          "v042-frioul-settlement-01",
+          "v042-frioul-caravan-02",
+          "v042-frioul-caravan-01",
+          "v042-frioul-interior-06",
+          "v042-frioul-interior-04",
+          "v042-frioul-interior-05",
+          "v042-frioul-settlement-02"
+        ],
+        "npcs": 12,
+        "nearest": {
+          "id": "v042-frioul-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "geo_frioul · boss régional présent",
+      "ok": true,
+      "detail": {
+        "boss": "v042-frioul-boss-01",
+        "enemies": 7
+      }
+    },
+    {
+      "name": "geo_etoile · 31 projections valides",
+      "ok": true,
+      "detail": {
+        "sites": 31,
+        "inside": 31
+      }
+    },
+    {
+      "name": "geo_etoile · streaming actif",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_etoile",
+        "active": [
+          "v042-etoile-settlement-01",
+          "v042-etoile-landmark-03",
+          "v042-etoile-settlement-03",
+          "v042-etoile-nest-02"
+        ],
+        "npcs": 8,
+        "nearest": {
+          "id": "v042-etoile-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "geo_etoile · boss régional présent",
+      "ok": true,
+      "detail": {
+        "boss": "v042-etoile-boss-01",
+        "enemies": 7
+      }
+    },
+    {
+      "name": "geo_saintebaume · 31 projections valides",
+      "ok": true,
+      "detail": {
+        "sites": 31,
+        "inside": 31
+      }
+    },
+    {
+      "name": "geo_saintebaume · streaming actif",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_saintebaume",
+        "active": [
+          "v042-saintebaume-settlement-01",
+          "v042-saintebaume-interior-03"
+        ],
+        "npcs": 4,
+        "nearest": {
+          "id": "v042-saintebaume-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "geo_saintebaume · boss régional présent",
+      "ok": true,
+      "detail": {
+        "boss": "v042-saintebaume-boss-01",
+        "enemies": 7
+      }
+    },
+    {
+      "name": "aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "All 8 real-map macro-regions are loaded with network blocked. All 248 site projections and one settlement + regional boss stream per macro are verified."
+}

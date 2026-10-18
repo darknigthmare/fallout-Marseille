@@ -1,0 +1,150 @@
+{
+  "version": "0.37.0",
+  "passed": 8,
+  "failed": 0,
+  "total": 8,
+  "checks": [
+    {
+      "name": "auditor accepts controlled pack",
+      "ok": true,
+      "detail": {
+        "rc": 0,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "auditor validates three PBF",
+      "ok": true,
+      "detail": {
+        "version": "0.37.0",
+        "generated": "2026-09-19T01:22:36Z",
+        "selection": {
+          "source": "all",
+          "macro": "all"
+        },
+        "expected": 3,
+        "present": 3,
+        "valid": 3,
+        "invalid": 0,
+        "missing": 0,
+        "coveragePercent": 100.0,
+        "bytes": 211,
+        "features": 4,
+        "groups": {
+          "transport": 2,
+          "building": 2
+        },
+        "layers": {
+          "transportation": 2,
+          "batiments": 2
+        },
+        "transportTopology": {
+          "edgeEndpoints": 4,
+          "matchedSeams": 1,
+          "pendingNeighborTiles": 2,
+          "unpairedWithNeighborLoaded": 0,
+          "unpairedExamples": []
+        },
+        "buildings": {
+          "exactDuplicateFootprints": 1,
+          "edgeTouchingFootprints": 0,
+          "edgeExamples": []
+        },
+        "missingExamples": [],
+        "invalidFiles": [],
+        "files": [
+          {
+            "key": "14/8437/6001",
+            "source": "base",
+            "bytes": 61,
+            "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+            "layers": 1,
+            "features": 1
+          },
+          {
+            "key": "14/8438/6001",
+            "source": "base",
+            "bytes": 61,
+            "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+            "layers": 1,
+            "features": 1
+          },
+          {
+            "key": "16/33750/24006",
+            "source": "cadastre",
+            "bytes": 89,
+            "sha256": "9fbc73131279feddb9b4feebf50b7b7045052137ab21407a75be7dbaa5ff5221",
+            "layers": 1,
+            "features": 2
+          }
+        ],
+        "truth": {
+          "complete": true,
+          "vectorFilesComplete": true,
+          "transportSeamsClean": true,
+          "terrainNumericAudited": false,
+          "note": "Pending endpoints are caused by absent neighbors and are not counted as confirmed seam defects. Vector completeness does not certify official terrain or visual fidelity."
+        }
+      }
+    },
+    {
+      "name": "auditor matches cross-tile road",
+      "ok": true,
+      "detail": {
+        "edgeEndpoints": 4,
+        "matchedSeams": 1,
+        "pendingNeighborTiles": 2,
+        "unpairedWithNeighborLoaded": 0,
+        "unpairedExamples": []
+      }
+    },
+    {
+      "name": "auditor does not invent a seam defect",
+      "ok": true,
+      "detail": {
+        "edgeEndpoints": 4,
+        "matchedSeams": 1,
+        "pendingNeighborTiles": 2,
+        "unpairedWithNeighborLoaded": 0,
+        "unpairedExamples": []
+      }
+    },
+    {
+      "name": "auditor detects exact cadastre duplicate",
+      "ok": true,
+      "detail": {
+        "exactDuplicateFootprints": 1,
+        "edgeTouchingFootprints": 0,
+        "edgeExamples": []
+      }
+    },
+    {
+      "name": "installer validator accepts MVT",
+      "ok": true,
+      "detail": {
+        "bytes": 61,
+        "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+        "layers": 1,
+        "features": 1
+      }
+    },
+    {
+      "name": "installer validator rejects HTML",
+      "ok": true,
+      "detail": {
+        "error": "MVTError('HTML/JSON instead of PBF')"
+      }
+    },
+    {
+      "name": "installer validator checks SHA-256",
+      "ok": true,
+      "detail": {
+        "bytes": 61,
+        "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+        "layers": 1,
+        "features": 1
+      }
+    }
+  ],
+  "scope": "Controlled local MVT fixtures. No geographic fidelity claim."
+}

@@ -1,0 +1,38 @@
+{
+  "version": "0.29.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "total": 1335,
+  "passed": 1335,
+  "failed": 0,
+  "retained": 1142,
+  "new": 193,
+  "suites": 19,
+  "errors": [],
+  "same_html": true,
+  "runs": [
+    {
+      "script": "run_regression_v029.py",
+      "exit": 0
+    },
+    {
+      "script": "qa_v029_terminal.py",
+      "exit": 0
+    },
+    {
+      "script": "qa_v029_world_story.py",
+      "exit": 0
+    },
+    {
+      "script": "qa_v029_perception_mobile.py",
+      "exit": 0
+    }
+  ],
+  "regression": "QA_GLOBAL_V029_REGRESSION.json",
+  "new_reports": [
+    "QA_V029_TERMINAL.json",
+    "QA_V029_WORLD_STORY.json",
+    "QA_V029_PERCEPTION_MOBILE.json",
+    "QA_V029_TOUCH.json"
+  ],
+  "scope": "Software Chromium. Opaque-origin native failure; success paths use explicit memory adapter. Synthetic AI arena marked as such. Real fictional scene routes tested separately. No GPU/iPhone certification. No full manual campaign playthrough."
+}

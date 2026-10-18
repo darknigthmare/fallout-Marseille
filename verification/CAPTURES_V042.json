@@ -1,0 +1,73 @@
+{
+  "version": "0.42.0",
+  "html_sha256": "94835b6b97ba9d48131053e9d7f53edf6551a69280113e6c38ca1b510813e2db",
+  "errors": [],
+  "disclosure": "All game screenshots are captured from the final HTML. Cameras and progression states are prepared for presentation. The catalog map is computed from the deterministic WGS84 catalog and is not satellite imagery.",
+  "shots": [
+    {
+      "file": "v042_00_catalogue_territorial.png",
+      "title": "Catalogue territorial calculé",
+      "note": "Les 248 points sont dessinés depuis le catalogue final WGS84. Ce graphique décrit le placement, pas une capture satellite."
+    },
+    {
+      "file": "v042_01_menu.png",
+      "title": "Menu v0.42",
+      "note": "La nouvelle version est identifiée comme couche Fallout territoriale ; les outils internes restent dans Admin."
+    },
+    {
+      "file": "v042_02_pip_carte_complete.png",
+      "title": "Pip-Boy · couche complète",
+      "note": "Les 248 implantations sont consultables, filtrables et suivies par macro-région."
+    },
+    {
+      "file": "v042_03_colonie.png",
+      "title": "Colonie habitée",
+      "note": "Une colonie n’instancie que ses bâtiments, collisions et quatre PNJ lorsque le joueur s’en approche."
+    },
+    {
+      "file": "v042_04_dialogue_contrat.png",
+      "title": "PNJ et contrat territorial",
+      "note": "Les habitants disposent d’un dialogue contextualisé, de commerce simple et de contrats vers une menace locale."
+    },
+    {
+      "file": "v042_05_nid.png",
+      "title": "Nid de créatures",
+      "note": "Les nids persistent, utilisent le bestiaire existant et se réinitialisent uniquement selon leur délai de respawn."
+    },
+    {
+      "file": "v042_06_elite.png",
+      "title": "Repaire élite",
+      "note": "Chaque macro-région possède trois repaires vétérans avec un ennemi élite distinct et des récompenses persistantes."
+    },
+    {
+      "file": "v042_07_boss_regional.png",
+      "title": "Boss régional",
+      "note": "Un boss et son escorte sont instanciés localement ; sa défaite est mémorisée par région."
+    },
+    {
+      "file": "v042_08_abri_exterieur.png",
+      "title": "Entrée d’abri",
+      "note": "Les seize abris disposent d’une implantation stable, d’une entrée physique et d’un dossier propre."
+    },
+    {
+      "file": "v042_09_abri_interieur.png",
+      "title": "Abri visitable",
+      "note": "L’intérieur configurable possède six sous-zones, un trajet principal, un terminal, des menaces et un noyau à sécuriser."
+    },
+    {
+      "file": "v042_10_abri_securise.png",
+      "title": "Abri sécurisé",
+      "note": "Après neutralisation des menaces, le noyau peut être revendiqué et la progression est sauvegardée."
+    },
+    {
+      "file": "v042_11_progression_regionale.png",
+      "title": "Progression régionale",
+      "note": "Le tableau distingue découvertes, sécurisations et boss encore actifs dans les huit macro-régions."
+    },
+    {
+      "file": "v042_12_mobile.png",
+      "title": "Carte sur écran étroit",
+      "note": "La couche territoriale reste défilable à 390 × 844 ; il s’agit d’une fenêtre simulée, pas d’une certification matérielle."
+    }
+  ]
+}

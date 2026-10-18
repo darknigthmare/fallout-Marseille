@@ -1,0 +1,262 @@
+{
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "scope": "Chronométrage contrôlé et stockage mémoire déclaré ; export réel téléchargé via Chromium ; pas de voix enregistrée.",
+  "passed": 50,
+  "failed": 0,
+  "checks": [
+    {
+      "ok": true,
+      "name": "Refus natif en origine opaque signalé dans le Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Écriture contrôlée annonce le succès uniquement après écriture",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Clés campagne et exploration v027 distinctes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune holobande non découverte dans le lecteur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lecture d’une bande non possédée refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Station Mistral diffuse la transcription liée à l’état",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Radio textuelle annoncée, pas de fausse promesse audio",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Stations non débloquées ne révèlent pas leurs bulletins",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Régler la radio ne modifie ni quête ni ressources",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bande du magasinier possède une interaction physique atteignable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Interaction dans la cour découvre effectivement la bande",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bande trouvée répertoriée seule dans RADIO",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lecture déclenchée explicitement une seule fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Chronomètre fait avancer le segment lu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pause fige segment et temps écoulé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Suivant avance d’un segment et réinitialise sa progression",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Précédent fonctionne depuis la barre du boîtier",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Vitesse de lecture 1,5× enregistrée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Vitesse arbitraire refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Transcription réelle des cinq segments affichée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fermeture par défaut suspend la bande",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fermeture conserve un marque-page exact",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réouverture reprend au marque-page au lieu de repartir à zéro",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sous-titres en jeu visibles lorsque l’option est activée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ouvrir le boîtier masque immédiatement les sous-titres en exploration",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Dialogue suspend le chronomètre et masque la légende",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fin de bande s’arrête sans déborder du dernier segment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lecture après la fin redémarre proprement au premier segment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Événement visibilitychange suspend la bande",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retour à la page n’impose pas une reprise automatique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Transition sauvegarde le repère puis invalide la lecture de la scène précédente",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fermeture du commerce puis Pip-Boy : aucun verrouillage différé de souris",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le curseur clique réellement sur INV après fermeture du commerce",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La liste de fouille reste cliquable après un ancien retour différé du commerce",
+      "detail": {
+        "pointer": null,
+        "selected": 1
+      }
+    },
+    {
+      "ok": true,
+      "name": "Migration v026 conserve réserves, aptitudes et conséquences",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration ajoute préférences saines, pas de découverte inventée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Import de préférences invalide nettoyé et dédupliqué",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Clés hostiles rejetées, texte valide conservé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Export JSON contient affichage et composants suivis",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Export inclut le texte des notes, pas seulement leurs titres",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Import validé restaure les préférences archivées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Import JSON invalide ne remplace aucune sauvegarde",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Refuser le nouveau départ ne crée pas une exploration",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accepter démarre une vraie exploration distincte avec Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Campagne existante inchangée après démarrage séparé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Exploration enregistrée dans sa propre clé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Nouveau départ contient deux armes choisies, pas les 304 modèles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancienne exploration v026 reprise par le nouveau bouton",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Source v026 inchangée après migration en v027",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript pendant la suite",
+      "detail": []
+    }
+  ],
+  "errors": []
+}

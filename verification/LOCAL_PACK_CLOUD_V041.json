@@ -1,0 +1,219 @@
+{
+  "version": "0.41.0",
+  "verifiedAt": "2026-09-19T04:13:41Z",
+  "service": "fallout-mistral-local-pack-v041",
+  "manifestStatus": 200,
+  "manifest": {
+    "version": "0.41.0",
+    "generated": "2026-09-19T04:00:00Z",
+    "service": "fallout-mistral-local-pack-v041",
+    "endpoint": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/chunk/{name}",
+    "manifestEndpoint": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+    "publicKey": "sb_publishable_hAcM5bQMkl9a0wn7tgzupg_DeSgYQZC",
+    "coordinates": 5884,
+    "baseCoordinates": 367,
+    "cadastreCoordinates": 5517,
+    "pbfObjects": 4557,
+    "officialEmpty": 1327,
+    "chunkCount": 24,
+    "baseChunks": 5,
+    "cadastreChunks": 19,
+    "totalBase64Bytes": 119130028,
+    "chunks": [
+      {
+        "name": "base_00000_60.zip",
+        "source": "base",
+        "cursor": 0,
+        "rows": 60,
+        "base64Bytes": 6445556
+      },
+      {
+        "name": "base_00060_100.zip",
+        "source": "base",
+        "cursor": 60,
+        "rows": 100,
+        "base64Bytes": 17917008
+      },
+      {
+        "name": "base_00160_100.zip",
+        "source": "base",
+        "cursor": 160,
+        "rows": 100,
+        "base64Bytes": 9474268
+      },
+      {
+        "name": "base_00260_100.zip",
+        "source": "base",
+        "cursor": 260,
+        "rows": 100,
+        "base64Bytes": 4470004
+      },
+      {
+        "name": "base_00360_7.zip",
+        "source": "base",
+        "cursor": 360,
+        "rows": 7,
+        "base64Bytes": 1128716
+      },
+      {
+        "name": "cadastre_00000_300.zip",
+        "source": "cadastre",
+        "cursor": 0,
+        "rows": 300,
+        "base64Bytes": 304760
+      },
+      {
+        "name": "cadastre_00300_300.zip",
+        "source": "cadastre",
+        "cursor": 300,
+        "rows": 300,
+        "base64Bytes": 1202672
+      },
+      {
+        "name": "cadastre_00600_300.zip",
+        "source": "cadastre",
+        "cursor": 600,
+        "rows": 300,
+        "base64Bytes": 9596168
+      },
+      {
+        "name": "cadastre_00900_300.zip",
+        "source": "cadastre",
+        "cursor": 900,
+        "rows": 300,
+        "base64Bytes": 10404452
+      },
+      {
+        "name": "cadastre_01200_300.zip",
+        "source": "cadastre",
+        "cursor": 1200,
+        "rows": 300,
+        "base64Bytes": 6830748
+      },
+      {
+        "name": "cadastre_01500_300.zip",
+        "source": "cadastre",
+        "cursor": 1500,
+        "rows": 300,
+        "base64Bytes": 5112468
+      },
+      {
+        "name": "cadastre_01800_300.zip",
+        "source": "cadastre",
+        "cursor": 1800,
+        "rows": 300,
+        "base64Bytes": 4472344
+      },
+      {
+        "name": "cadastre_02100_300.zip",
+        "source": "cadastre",
+        "cursor": 2100,
+        "rows": 300,
+        "base64Bytes": 3706064
+      },
+      {
+        "name": "cadastre_02400_300.zip",
+        "source": "cadastre",
+        "cursor": 2400,
+        "rows": 300,
+        "base64Bytes": 3383920
+      },
+      {
+        "name": "cadastre_02700_300.zip",
+        "source": "cadastre",
+        "cursor": 2700,
+        "rows": 300,
+        "base64Bytes": 3975196
+      },
+      {
+        "name": "cadastre_03000_300.zip",
+        "source": "cadastre",
+        "cursor": 3000,
+        "rows": 300,
+        "base64Bytes": 4983468
+      },
+      {
+        "name": "cadastre_03300_300.zip",
+        "source": "cadastre",
+        "cursor": 3300,
+        "rows": 300,
+        "base64Bytes": 6472408
+      },
+      {
+        "name": "cadastre_03600_300.zip",
+        "source": "cadastre",
+        "cursor": 3600,
+        "rows": 300,
+        "base64Bytes": 5390056
+      },
+      {
+        "name": "cadastre_03900_300.zip",
+        "source": "cadastre",
+        "cursor": 3900,
+        "rows": 300,
+        "base64Bytes": 3163376
+      },
+      {
+        "name": "cadastre_04200_300.zip",
+        "source": "cadastre",
+        "cursor": 4200,
+        "rows": 300,
+        "base64Bytes": 1758776
+      },
+      {
+        "name": "cadastre_04500_300.zip",
+        "source": "cadastre",
+        "cursor": 4500,
+        "rows": 300,
+        "base64Bytes": 2413964
+      },
+      {
+        "name": "cadastre_04800_300.zip",
+        "source": "cadastre",
+        "cursor": 4800,
+        "rows": 300,
+        "base64Bytes": 3782324
+      },
+      {
+        "name": "cadastre_05100_300.zip",
+        "source": "cadastre",
+        "cursor": 5100,
+        "rows": 300,
+        "base64Bytes": 2279588
+      },
+      {
+        "name": "cadastre_05400_117.zip",
+        "source": "cadastre",
+        "cursor": 5400,
+        "rows": 117,
+        "base64Bytes": 461724
+      }
+    ],
+    "security": {
+      "bucketPublic": false,
+      "jwtRequired": true,
+      "builderDisabledAfterRelease": true
+    },
+    "notes": [
+      "Archives are uncompressed ZIPs wrapped by a private builder and served as binary ZIP through a JWT-protected read-only relay.",
+      "Every archive contains chunk_manifest.json. Empty cadastral coordinates carry a zero-byte .pbf and a .pbf.empty.json proof."
+    ]
+  },
+  "chunkProbes": [
+    {
+      "name": "base_00360_7.zip",
+      "status": 200,
+      "contentType": "application/zip",
+      "zipBytes": 846536,
+      "base64Bytes": 1128716
+    },
+    {
+      "name": "cadastre_05400_117.zip",
+      "status": 200,
+      "contentType": "application/zip",
+      "zipBytes": 346293,
+      "base64Bytes": 461724
+    }
+  ],
+  "note": "The compact project does not contain the heavy pack. These proofs verify the authenticated read-only distribution service and two binary ZIP responses."
+}

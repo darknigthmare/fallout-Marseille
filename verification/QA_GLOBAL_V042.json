@@ -1,0 +1,86 @@
+{
+  "version": "0.42.0",
+  "html_sha256": "94835b6b97ba9d48131053e9d7f53edf6551a69280113e6c38ca1b510813e2db",
+  "passed": 204,
+  "failed": 0,
+  "total": 204,
+  "errors": [],
+  "sameHtml": true,
+  "stale": [],
+  "seconds": 0.0,
+  "rerun": false,
+  "runs": [],
+  "suites": [
+    {
+      "file": "QA_V042.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_V042_COVERAGE.json",
+      "passed": 25,
+      "failed": 0,
+      "total": 25,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V041_ON_V042.json",
+      "passed": 11,
+      "failed": 0,
+      "total": 11,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V040_ON_V042.json",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V039_ON_V042.json",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V038_ON_V042.json",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_ON_V042.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PRODUCT_ON_V042.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PROLOGUE_ON_V042.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_PWA_V042.json",
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "sameHtml": true
+    }
+  ],
+  "scope": "Exact final v0.42 HTML: territorial catalog and all eight macro-regions, streaming, settlements, NPCs, contracts, elites/bosses, visitable interiors, persistence, mobile UI, v0.41/v0.40/v0.39/v0.38 and product/prologue regressions, plus PWA."
+}

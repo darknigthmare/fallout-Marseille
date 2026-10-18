@@ -1,0 +1,127 @@
+{
+  "version": "0.42.0",
+  "catalog_sha256": "fa02b2b6eaf85abef39983c0605d4fd8bab5983fa6f7e367d2589c28d079b1b8",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "siteCount": 248,
+  "macroCount": 8,
+  "kindCounts": {
+    "shelter": 16,
+    "settlement": 24,
+    "outpost": 24,
+    "interior": 48,
+    "nest": 64,
+    "elite": 24,
+    "boss": 8,
+    "landmark": 24,
+    "caravan": 16
+  },
+  "macroCounts": {
+    "geo_marseille": 31,
+    "geo_huveaune": 31,
+    "geo_garlaban": 31,
+    "geo_calanques": 31,
+    "geo_laciotat": 31,
+    "geo_frioul": 31,
+    "geo_etoile": 31,
+    "geo_saintebaume": 31
+  },
+  "minSpacing": {
+    "geo_marseille": {
+      "meters": 169.3,
+      "a": "v042-marseille-shelter-02",
+      "b": "v042-marseille-settlement-01"
+    },
+    "geo_huveaune": {
+      "meters": 177.2,
+      "a": "v042-huveaune-outpost-02",
+      "b": "v042-huveaune-landmark-03"
+    },
+    "geo_garlaban": {
+      "meters": 133.7,
+      "a": "v042-garlaban-nest-03",
+      "b": "v042-garlaban-caravan-01"
+    },
+    "geo_calanques": {
+      "meters": 163.7,
+      "a": "v042-calanques-interior-06",
+      "b": "v042-calanques-landmark-02"
+    },
+    "geo_laciotat": {
+      "meters": 170.6,
+      "a": "v042-laciotat-elite-02",
+      "b": "v042-laciotat-caravan-02"
+    },
+    "geo_frioul": {
+      "meters": 186.3,
+      "a": "v042-frioul-outpost-01",
+      "b": "v042-frioul-interior-03"
+    },
+    "geo_etoile": {
+      "meters": 156.8,
+      "a": "v042-etoile-settlement-02",
+      "b": "v042-etoile-landmark-02"
+    },
+    "geo_saintebaume": {
+      "meters": 272.1,
+      "a": "v042-saintebaume-settlement-03",
+      "b": "v042-saintebaume-landmark-01"
+    }
+  },
+  "visitable": 64,
+  "hostileSites": 96,
+  "uniqueSites": 72,
+  "npcSlots": 200,
+  "enemySlots": 720,
+  "enemyFamilies": [
+    "alienInvader",
+    "assaultron",
+    "bloatfly",
+    "calanqueChameleon",
+    "concordeDrone",
+    "concordeMagistrate",
+    "crab",
+    "cyberdog",
+    "deathclaw",
+    "deathclawAlpha",
+    "dockOctopus",
+    "feral",
+    "giantRat",
+    "hermitCrab",
+    "limestoneMaw",
+    "markedMan",
+    "mirelurk",
+    "mirelurkKing",
+    "mistralCicada",
+    "molerat",
+    "mutantHound",
+    "nightkin",
+    "protectron",
+    "quarryBeast",
+    "radscorpion",
+    "radscorpionQueen",
+    "raider",
+    "registryScribe",
+    "robot",
+    "saltHound",
+    "sanglier",
+    "sentryBot",
+    "sirenAutomaton",
+    "smuggler",
+    "soapGhoul",
+    "sporeBeast",
+    "supermutant",
+    "tarente",
+    "tunneler",
+    "welder",
+    "yaoGuai"
+  ],
+  "streaming": {
+    "defaultBudget": 7,
+    "minBudget": 3,
+    "maxBudget": 12,
+    "simultaneousSitesClaimedAtDefault": 7
+  },
+  "disclosure": "Sites and Fallout fiction are original/fan-made placements. Coordinates are deterministic WGS84 overlays and do not modify OSM, Cadastre or RGE ALTI data."
+}

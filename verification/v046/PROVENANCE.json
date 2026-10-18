@@ -1,0 +1,32 @@
+{
+  "version": "0.46.0",
+  "base": "FALLOUT_MISTRAL_v0.42_PROJET_COMPLET.zip",
+  "baseBytes": 87495842,
+  "baseSha256": "82760c0cb76f608a946494bc50ceef9ec7088828f1db32def10d52d12990af4e",
+  "baseVersion": "0.42.0",
+  "v044ArchiveRecovered": false,
+  "v045PatchAppliedBlindly": false,
+  "modifiedOriginalsBackedUp": [
+    "JOUER_FALLOUT_MISTRAL_v0.42.html",
+    "LANCER_JEU.bat",
+    "LANCER_JEU.sh",
+    "RAPPORT_VISUEL_V0.42.html",
+    "RAPPORT_VISUEL_V0.42.png",
+    "README_FR.md",
+    "START_HERE.txt",
+    "docs/RAPPORT_QA.md",
+    "docs/STATUT_PRODUCTION.md",
+    "index.html",
+    "manifest.webmanifest",
+    "package.json",
+    "src/game.js",
+    "src/v020/05_runtime.js",
+    "sw.js",
+    "tools/benchmark_map_v041.py",
+    "tools/build_single.py",
+    "tools/install_local_pack_v041.py",
+    "tools/serve_game.py"
+  ],
+  "catalogSha256": "fa02b2b6eaf85abef39983c0605d4fd8bab5983fa6f7e367d2589c28d079b1b8",
+  "note": "Projet intégré reconstruit depuis les sources vérifiées v042. Le lore est réintroduit explicitement, pas récupéré d’un binaire v044 absent."
+}

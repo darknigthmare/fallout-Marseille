@@ -1,0 +1,84 @@
+{
+  "version": "0.47.0",
+  "html_sha256": "b541ff8950943c71f356c11452d014a08c4531517d30912dd8791d05e1edb107",
+  "passed": 263,
+  "failed": 0,
+  "total": 263,
+  "allHtmlMatch": true,
+  "suites": [
+    {
+      "file": "QA_KERNEL_NEW.json",
+      "passed": 33,
+      "failed": 0,
+      "total": 33,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_KERNEL_LEGACY.json",
+      "passed": 23,
+      "failed": 0,
+      "total": 23,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_DISTRIBUTION.json",
+      "passed": 9,
+      "failed": 0,
+      "total": 9,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_STREAMING_NEW.json",
+      "passed": 52,
+      "failed": 0,
+      "total": 52,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_SERVER_IO.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_LAB_ISOLATION.json",
+      "passed": 14,
+      "failed": 0,
+      "total": 14,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_RUNTIME.json",
+      "passed": 49,
+      "failed": 0,
+      "total": 49,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_CAMPAIGN.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_PROLOGUE.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_PRODUCT.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    }
+  ],
+  "limitations": [
+    "Géographie du banc synthétique ; pas de traversée du pack territorial intégral.",
+    "Navigation native Chromium bloquée par la politique de cet environnement. Tests navigateur via set_content ; serveur HTTP vérifié séparément. Pas de validation IndexedDB natif ni installation PWA native."
+  ]
+}

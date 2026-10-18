@@ -1,0 +1,36 @@
+{
+  "version": "0.47.0",
+  "baseVersion": "0.46.0",
+  "baseArchive": "FALLOUT_MISTRAL_v0.46_PROJET_COMPLET.zip",
+  "baseBytes": 99763871,
+  "baseSha256": "0265d69c90719c16738169634d6a8d5bc632a2c5cb2497f437c4b9826204171a",
+  "baseRecoveredInThisTurn": true,
+  "inheritedOriginalBase": "0.42.0",
+  "v044ArchiveRecovered": false,
+  "catalogue248Unchanged": true,
+  "catalogueSha256": "fa02b2b6eaf85abef39983c0605d4fd8bab5983fa6f7e367d2589c28d079b1b8",
+  "v046ModulesUnchanged": true,
+  "v046ModuleChecks": {
+    "src/v046/00_integrity.js": true,
+    "src/v046/01_world.js": true,
+    "src/v046/02_environment.js": true,
+    "src/v046/03_hud_sky.js": true,
+    "src/v046/04_lore.js": true,
+    "src/v046/05_lab.js": true,
+    "src/v046/06_boot.js": true,
+    "src/v046/style.css": true
+  },
+  "newModules": [
+    "src/v047/00_stream_primitives.js",
+    "src/v047/01_staging.js",
+    "src/v047/02_streaming.js",
+    "src/v047/03_interface.js",
+    "src/v047/04_lab_safety.js",
+    "src/v047/style.css"
+  ],
+  "assembledAt": "2026-09-22T01:56:49.196355+00:00",
+  "notes": [
+    "Travail direct sur le projet complet v0.46 fourni, pas sur un patch isolé.",
+    "Les anciens rapports sont historiques. Les seules preuves de cette livraison se trouvent sous verification/v047."
+  ]
+}

@@ -1,0 +1,10 @@
+function v038AfterInit(){
+ document.title='Fallout : Mistral · v0.38 · Cadastre complet';
+ v018CoverageReport=v038CoverageReport;v018OpenStatus=v038OpenStatus;v036HealthCheck=v038CloudCoverage;
+ const statusBtn=$('v018MenuStatus');if(statusBtn){statusBtn.textContent='Cartographie réelle · 5 884/5 884';statusBtn.onclick=v038OpenStatus}
+ const mv=$('menuScreen .menu-version');if(mv)mv.textContent='PRÉ-BÊTA CARTOGRAPHIQUE v0.38.0 · « CADASTRE COMPLET »';
+ const credits=document.querySelector('#creditsScreen .credits-card');if(credits){credits.innerHTML=`<p class="eyebrow">DOSSIER DE PRODUCTION</p><h2>FALLOUT : MISTRAL</h2><p>La v0.38 complète le cache vectoriel du territoire : les 367 coordonnées générales et les 5 517 coordonnées cadastrales ont été traitées et archivées.</p><dl><dt>Version</dt><dd>0.38.0 · Cadastre complet</dd><dt>Fond général</dt><dd>367/367 PBF · OpenStreetMap — ODbL</dd><dt>Cadastre</dt><dd>5 517/5 517 coordonnées · 4 190 PBF · 1 327 réponses officielles sans contenu</dd><dt>Cache territorial</dt><dd>5 884/5 884 · 86,97 Mo</dd><dt>Relief</dt><dd>0/8 MNT numériques officiels : toujours non acquis</dd><dt>Chaîne</dt><dd>Pack disque → IndexedDB → cache cloud privé v0.38</dd></dl><p class="credits-note">Prototype de fan non officiel. Fallout appartient à ses ayants droit. Les données cartographiques conservent leurs licences propres.</p><button id="btnCreditsClose" class="primary">Fermer</button>`;$('btnCreditsClose').onclick=closeCredits}
+ Promise.all([v038CloudCoverage(),v037CacheStats()]).then(()=>updateHUD());
+ const hudBase=updateHUD;updateHUD=function(){hudBase();const badge=$('v036Attribution');if(world?.geoMacro&&badge){badge.textContent=`${V015_GEO_MACROS[world.id].region.replace('MACRO-RÉGION · ','')} · ${V017_RUNTIME.loaded.size} tuiles · cache ${V037.cloud.total||0}/${V038_PLAN.total} · © OSM / Cadastre Etalab`}}
+ Object.assign(window.__MISTRAL_DEBUG,{v038Info:v037StatusSummary,v038Plan:()=>({...V038_PLAN}),v038Cloud:v038CloudCoverage,v038OpenStatus,v038Relay:()=>V038_RELAY,v038Proof:()=>deepClone(V038.proof),v038Snapshot:()=>deepClone(V038_SNAPSHOT)});
+}

@@ -1,0 +1,72 @@
+{
+  "version": "0.38.0",
+  "generated": "2026-09-19T03:47:30Z",
+  "source": "base",
+  "macro": "all",
+  "endpoint": "cloud",
+  "selected": 3,
+  "ok": 0,
+  "officialEmpty": 0,
+  "errors": 3,
+  "bytes": 0,
+  "seconds": 27.01,
+  "files": [
+    {
+      "source": "base",
+      "dataset": "france-vector",
+      "z": 14,
+      "x": 8431,
+      "y": 6000,
+      "key": "14/8431/6000",
+      "macros": [
+        "geo_frioul"
+      ],
+      "local": "data/map_pack/france-vector/14/8431/6000.pbf",
+      "direct": "https://openmaptiles.data.gouv.fr/data/france-vector/14/8431/6000.pbf",
+      "relay": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/tile/base/14/8431/6000.pbf",
+      "status": "error",
+      "bytes": 0,
+      "sha256": null,
+      "endpoint": "cloud",
+      "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))"
+    },
+    {
+      "source": "base",
+      "dataset": "france-vector",
+      "z": 14,
+      "x": 8431,
+      "y": 6001,
+      "key": "14/8431/6001",
+      "macros": [
+        "geo_frioul"
+      ],
+      "local": "data/map_pack/france-vector/14/8431/6001.pbf",
+      "direct": "https://openmaptiles.data.gouv.fr/data/france-vector/14/8431/6001.pbf",
+      "relay": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/tile/base/14/8431/6001.pbf",
+      "status": "error",
+      "bytes": 0,
+      "sha256": null,
+      "endpoint": "cloud",
+      "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))"
+    },
+    {
+      "source": "base",
+      "dataset": "france-vector",
+      "z": 14,
+      "x": 8431,
+      "y": 6002,
+      "key": "14/8431/6002",
+      "macros": [
+        "geo_frioul"
+      ],
+      "local": "data/map_pack/france-vector/14/8431/6002.pbf",
+      "direct": "https://openmaptiles.data.gouv.fr/data/france-vector/14/8431/6002.pbf",
+      "relay": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/tile/base/14/8431/6002.pbf",
+      "status": "error",
+      "bytes": 0,
+      "sha256": null,
+      "endpoint": "cloud",
+      "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))"
+    }
+  ]
+}

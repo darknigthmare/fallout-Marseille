@@ -1,0 +1,110 @@
+{
+  "version": "0.35.0",
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 613,
+  "failed": 0,
+  "total": 613,
+  "same_html": true,
+  "errors": [],
+  "suites": [
+    {
+      "file": "QA_V035.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "same_html": true
+    },
+    {
+      "file": "QA_V035_PROLOGUE.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "same_html": true
+    },
+    {
+      "file": "QA_V035_PRODUCT.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "same_html": true
+    },
+    {
+      "file": "QA_V035_PWA.json",
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "same_html": true
+    },
+    {
+      "file": "QA_V027.json",
+      "passed": 98,
+      "failed": 0,
+      "total": 98,
+      "same_html": true
+    },
+    {
+      "file": "QA_V028_BODY.json",
+      "passed": 80,
+      "failed": 0,
+      "total": 80,
+      "same_html": true
+    },
+    {
+      "file": "QA_V029_TERMINAL.json",
+      "passed": 67,
+      "failed": 0,
+      "total": 67,
+      "same_html": true
+    },
+    {
+      "file": "QA_V029_WORLD_STORY.json",
+      "passed": 86,
+      "failed": 0,
+      "total": 86,
+      "same_html": true
+    },
+    {
+      "file": "QA_V029_PERCEPTION_MOBILE.json",
+      "passed": 37,
+      "failed": 0,
+      "total": 37,
+      "same_html": true
+    },
+    {
+      "file": "QA_V029_TOUCH.json",
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "same_html": true
+    },
+    {
+      "file": "QA_V030_POWER.json",
+      "passed": 68,
+      "failed": 0,
+      "total": 68,
+      "same_html": true
+    },
+    {
+      "file": "QA_V030_STORY.json",
+      "passed": 57,
+      "failed": 0,
+      "total": 57,
+      "same_html": true
+    },
+    {
+      "file": "QA_V030_EDGES.json",
+      "passed": 26,
+      "failed": 0,
+      "total": 26,
+      "same_html": true
+    },
+    {
+      "file": "QA_V030_TOUCH.json",
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "same_html": true
+    }
+  ],
+  "scope": "Exact v0.35 HTML in Chromium software for gameplay suites; declared memory storage adapter where opaque-origin storage is unavailable. PWA layer checked statically because localhost navigation is blocked in this environment. No official geography or native platform certification."
+}

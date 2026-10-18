@@ -1,0 +1,91 @@
+{
+  "version": "0.23.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "total": 16,
+  "passed": 16,
+  "failed": 0,
+  "errors": [],
+  "scope": "Exact HTML set_content; synthetic combat fixture explicitly used; software Chromium; no geographical import; narrow targeted guards.",
+  "results": [
+    {
+      "ok": true,
+      "name": "Rafale : réserver trois puis une munition",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rafale partielle remontée : une seule munition consommée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rafale entière suivante : trois munitions, total 50 PA",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Jauge : deux actions touchées, pas quatre projectiles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un tir libre ne remplit pas la réserve critique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ouverture à exactement 25 PA",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réservation AP ne peut dépasser la réserve",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cible neutralisée avant le tir : aucune perte critique ou ressource",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Transition annule la file, pas la jauge",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réponse ou validation après fermeture du questionnaire refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Dernière livraison effectivement récupérée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bilan passe de disponible à reçu après les trois caisses",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Historique borné aux 120 derniers échanges",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Objectif du dossier suivi visible pendant l’enquête",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Objectif ancien retiré du HUD après conclusion",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript supplémentaire",
+      "detail": []
+    }
+  ]
+}

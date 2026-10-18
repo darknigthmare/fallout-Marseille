@@ -1,0 +1,53 @@
+{
+  "version": "0.46.0",
+  "html_sha256": "a0556ee0ac1e55f7862c6b29502bcadfcce0a634fbf6c757f803ff2605115a63",
+  "passed": 153,
+  "failed": 0,
+  "total": 153,
+  "allHtmlMatch": true,
+  "suites": [
+    {
+      "file": "QA_KERNEL.json",
+      "passed": 23,
+      "failed": 0,
+      "total": 23,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_DISTRIBUTION.json",
+      "passed": 8,
+      "failed": 0,
+      "total": 8,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_RUNTIME.json",
+      "passed": 49,
+      "failed": 0,
+      "total": 49,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_CAMPAIGN.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_PROLOGUE.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_PRODUCT.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    }
+  ],
+  "scope": "Noyau Node et HTML réellement exécuté dans Chromium. Test géographique synthétique ; aucun audit exhaustif du terrain réel revendiqué."
+}

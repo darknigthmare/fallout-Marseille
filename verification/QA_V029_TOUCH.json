@@ -1,0 +1,26 @@
+{
+  "version": "0.35.0",
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 3,
+  "failed": 0,
+  "total": 3,
+  "results": [
+    {
+      "ok": true,
+      "name": "Tap tactile sur un candidat : véritable tentative",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tap tactile sur les crochets : aide réellement exécutée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tap QUITTER : retour au personnage",
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "scope": "Exact HTML via set_content; software Chromium; controlled state/poses disclosed; successful saves via declared memory adapter. Native opaque-origin refusal checked separately. No official geospatial data."
+}

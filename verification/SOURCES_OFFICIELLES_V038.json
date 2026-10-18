@@ -1,0 +1,29 @@
+{
+  "version": "0.38.0",
+  "verifiedAt": "2026-09-19",
+  "sources": {
+    "base": {
+      "dataset": "france-vector",
+      "origin": "openmaptiles.data.gouv.fr",
+      "zoom": 14,
+      "coordinates": 367,
+      "cached": 367,
+      "attribution": "© OpenStreetMap contributors — ODbL"
+    },
+    "cadastre": {
+      "dataset": "cadastre",
+      "origin": "openmaptiles.data.gouv.fr",
+      "zoom": 16,
+      "coordinates": 5517,
+      "cachedPbf": 4190,
+      "officialEmpty": 1327,
+      "attribution": "Cadastre Etalab / DGFiP — Licence Ouverte 2.0"
+    },
+    "terrain": {
+      "target": "IGN numeric terrain / RGE ALTI or validated equivalent",
+      "expectedMacros": 8,
+      "numericFilesBundled": 0,
+      "status": "not acquired"
+    }
+  }
+}

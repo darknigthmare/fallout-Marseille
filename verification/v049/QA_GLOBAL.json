@@ -1,0 +1,132 @@
+{
+  "version": "0.49.0",
+  "html_sha256": "b5c1a7b59a6635964020cb0595a0cb3ed5f2330eaf92c1f2cb818cd17e77f546",
+  "passed": 434,
+  "failed": 0,
+  "total": 434,
+  "allHtmlMatch": true,
+  "javascriptErrors": [],
+  "suites": [
+    {
+      "test": "kernel.test.cjs",
+      "file": "QA_ENCOUNTER_KERNEL.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "test": "runtime.py",
+      "file": "QA_ENCOUNTERS.json",
+      "passed": 47,
+      "failed": 0,
+      "total": 47,
+      "sameHtml": true
+    },
+    {
+      "test": "saves.py",
+      "file": "QA_ENCOUNTER_SAVES.json",
+      "passed": 15,
+      "failed": 0,
+      "total": 15,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_kernel.test.cjs",
+      "file": "QA_BUDGET_PASSAGES.json",
+      "passed": 25,
+      "failed": 0,
+      "total": 25,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_runtime.py",
+      "file": "QA_PREPARATION_RETURNS.json",
+      "passed": 62,
+      "failed": 0,
+      "total": 62,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_kernel.test.cjs",
+      "file": "QA_KERNEL_NEW.json",
+      "passed": 33,
+      "failed": 0,
+      "total": 33,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_kernel.test.cjs",
+      "file": "QA_KERNEL_LEGACY.json",
+      "passed": 23,
+      "failed": 0,
+      "total": 23,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_distribution.cjs",
+      "file": "QA_DISTRIBUTION.json",
+      "passed": 9,
+      "failed": 0,
+      "total": 9,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_runtime.py",
+      "file": "QA_STREAMING_NEW.json",
+      "passed": 52,
+      "failed": 0,
+      "total": 52,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_server_io.py",
+      "file": "QA_SERVER_IO.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_lab_isolation.py",
+      "file": "QA_LAB_ISOLATION.json",
+      "passed": 14,
+      "failed": 0,
+      "total": 14,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_runtime.py",
+      "file": "QA_RUNTIME.json",
+      "passed": 49,
+      "failed": 0,
+      "total": 49,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_regression_campaign.py",
+      "file": "QA_CAMPAIGN.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_regression_prologue.py",
+      "file": "QA_PROLOGUE.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "file": "QA_PRODUCT.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    }
+  ],
+  "scope": "Programme complet exécuté en Chromium avec Playwright set_content et données synthétiques identifiées. Persistance, dépouilles, sauvegardes et régressions v0.48. Serveur loopback vérifié séparément. Pas de pack géographique intégral ni de navigation native/IndexedDB/PWA natifs certifiés."
+}

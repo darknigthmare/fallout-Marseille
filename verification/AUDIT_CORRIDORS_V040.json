@@ -1,0 +1,39 @@
+{
+  "version": "0.40.0",
+  "pack": "/mnt/data/FALLOUT_MISTRAL_v0.40_work/FALLOUT_MISTRAL_v0.40/data/map_pack",
+  "requireLocal": false,
+  "ok": true,
+  "corridors": [
+    {
+      "id": "aubagne_laciotat",
+      "label": "Aubagne → La Ciotat",
+      "status": "certified",
+      "distanceM": 22740,
+      "pathPoints": 109,
+      "baseRequired": 39,
+      "cadastreRequired": 38,
+      "localFiles": 0,
+      "requiredFiles": 77,
+      "localComplete": false,
+      "geometryValid": true,
+      "ok": true,
+      "sha256": "98564f3ec8ac13756735e429789c628ed5c5919612171f2a70aad4a852ad6b90"
+    },
+    {
+      "id": "aubagne_marseille",
+      "label": "Aubagne → Marseille Vieux-Port",
+      "status": "certified",
+      "distanceM": 23701,
+      "pathPoints": 72,
+      "baseRequired": 46,
+      "cadastreRequired": 45,
+      "localFiles": 0,
+      "requiredFiles": 91,
+      "localComplete": false,
+      "geometryValid": true,
+      "ok": true,
+      "sha256": "a2350119c788ef472d89ee2ff54354b971fa967a6cec16e14531b2a34873a721"
+    }
+  ],
+  "scope": "Certified proof geometry plus optional verification that every vector tile needed around each path is installed locally."
+}

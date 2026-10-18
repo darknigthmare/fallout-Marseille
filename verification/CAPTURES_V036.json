@@ -1,0 +1,46 @@
+{
+  "html_sha256": "6075228bc948f86424ee19f63c5cec8a72fb98061e6d13e9d193607863945d9a",
+  "errors": [],
+  "shots": [
+    {
+      "file": "v036_01_plan_couverture.png",
+      "title": "Plan de couverture",
+      "note": "Huit emprises géographiques et 5 884 tuiles planifiées. Le dessin ne fabrique aucune route."
+    },
+    {
+      "file": "v036_02_menu.png",
+      "title": "Menu v0.36",
+      "note": "La build annonce explicitement son statut cartographique."
+    },
+    {
+      "file": "v036_03_statut.png",
+      "title": "État des données",
+      "note": "Distinction explicite entre couverture vectorielle adressable, pack hors ligne et relief numérique absent."
+    },
+    {
+      "file": "v036_04_pipeline_mvt.png",
+      "title": "Pipeline MVT validé",
+      "note": "Géométrie synthétique explicitement marquée : cette vue teste le décodeur/rendu, pas la fidélité de Marseille."
+    },
+    {
+      "file": "v036_05_pip_couverture.png",
+      "title": "Pip-Boy — couverture",
+      "note": "Les huit territoires et les limites 0/8 du relief officiel restent consultables en jeu."
+    },
+    {
+      "file": "v036_06_transition_huveaune.png",
+      "title": "Transition continue",
+      "note": "La position WGS84 passe de Marseille à l’Huveaune sans voyage scénaristique ni changement de coordonnées."
+    },
+    {
+      "file": "v036_07_position_locale.png",
+      "title": "Position locale",
+      "note": "Le terminal affiche la macro-région, la position et le nombre de tuiles actives."
+    },
+    {
+      "file": "v036_08_mobile_statut.png",
+      "title": "Statut en portrait",
+      "note": "Lecture du statut cartographique sur une fenêtre 390 × 844 simulée."
+    }
+  ]
+}

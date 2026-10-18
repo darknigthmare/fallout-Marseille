@@ -1,0 +1,138 @@
+{
+  "version": "0.39.0",
+  "passed": 14,
+  "failed": 0,
+  "total": 14,
+  "checks": [
+    {
+      "name": "eight terrain regions",
+      "ok": true,
+      "detail": {
+        "regions": 8,
+        "samples": 207368,
+        "valid": 174944,
+        "missing": 32424,
+        "bytes": 1260176
+      }
+    },
+    {
+      "name": "207 368 samples accounted",
+      "ok": true,
+      "detail": {
+        "regions": 8,
+        "samples": 207368,
+        "valid": 174944,
+        "missing": 32424,
+        "bytes": 1260176
+      }
+    },
+    {
+      "name": "official RGE ALTI resource",
+      "ok": true,
+      "detail": {
+        "name": "RGE ALTI IGN",
+        "resource": "ign_rge_alti_wld",
+        "title": "Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes)",
+        "license": "Licence Ouverte 2.0",
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "api": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json"
+      }
+    },
+    {
+      "name": "all grids 161 square",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "all terrain hashes present",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NoData exists only where expected",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "no impossible extrema recorded",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "manifest agrees with proof",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "table is client-inaccessible",
+      "ok": true,
+      "detail": {
+        "name": "public.mistral_terrain_cache",
+        "rls": true,
+        "anonSelect": false,
+        "authenticatedSelect": false
+      }
+    },
+    {
+      "name": "terrain bucket private",
+      "ok": true,
+      "detail": {
+        "id": "fallout-mistral-terrain-v039",
+        "public": false,
+        "fileSizeLimit": 6000000,
+        "allowedMimeTypes": [
+          "application/json",
+          "application/octet-stream"
+        ]
+      }
+    },
+    {
+      "name": "final service read-only",
+      "ok": true,
+      "detail": {
+        "name": "fallout-mistral-terrain-v039",
+        "verifyJwt": true,
+        "buildRouteStatus": 410,
+        "buildRouteClosed": true
+      }
+    },
+    {
+      "name": "temporary tools disabled",
+      "ok": true,
+      "detail": {
+        "queue": {
+          "service": "fallout-mistral-terrain-queue-v039",
+          "status": 410,
+          "disabled": true
+        },
+        "repair": {
+          "service": "fallout-mistral-terrain-repair-v039",
+          "status": 410,
+          "disabled": true
+        },
+        "export": {
+          "service": "fallout-mistral-terrain-export-v039",
+          "status": 410,
+          "disabled": true
+        }
+      }
+    },
+    {
+      "name": "source proof separates sampling from native resolution",
+      "ok": true,
+      "detail": "Regular WGS84 sample grids; not claimed as native full-resolution RGE ALTI raster."
+    },
+    {
+      "name": "compact ZIP honesty",
+      "ok": true,
+      "detail": {
+        "nativeResolutionClaimed": false,
+        "sampledGrid": true,
+        "syntheticElevationInserted": false,
+        "noDataPreserved": true,
+        "bundledInCompactZip": false
+      }
+    }
+  ],
+  "scope": "Consistency checks over terrain cloud, security and official-source proof files captured from verified Supabase and Géoplateforme responses."
+}

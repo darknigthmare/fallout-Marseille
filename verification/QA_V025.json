@@ -1,0 +1,769 @@
+{
+  "version": "0.25.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "total": 100,
+  "passed": 100,
+  "failed": 0,
+  "errors": [],
+  "source": "http://127.0.0.1:8765/JOUER_FALLOUT_MISTRAL_v0.30.html",
+  "scope": "Localhost navigation refused by managed browser (ERR_BLOCKED_BY_ADMINISTRATOR), exact HTML via set_content. Native opaque-origin refusal checked, then explicit memory storage adapter for successful save scenarios; software Chromium. Original authored scene for menu/persistence; explicitly synthetic arenas for combat/occlusion/anatomy projection. DOM clicks, keyboard and viewport emulation. No official geography imported.",
+  "results": [
+    {
+      "ok": true,
+      "name": "Version effective 0.25",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Refus natif du stockage sur origine opaque constaté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Adaptateur mémoire explicite pour les scénarios de réussite",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Menu de prise en main disponible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Annuler la confirmation ne démarre pas le scénario",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Menu démarre le V.A.T.S. contre un ennemi du dépôt",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Campagne préservée par la prise en main",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancienne exploration v0.24 intacte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Caméra de ciblage conserve exactement l’origine des yeux",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cadrage sans déplacement ni rotation du personnage enregistré",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancien dessin anatomique supprimé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pas de flou opaque cachant la scène",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six zones distinctes sur un humanoïde",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Toutes les zones découvertes visibles dans une arène ouverte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six ancrages projetés dans le cadre de la caméra",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Projection indépendante : écart inférieur à 0,1 pixel",
+      "detail": 1.1368683772161603e-13
+    },
+    {
+      "ok": true,
+      "name": "Clic sur OUTIL/BRAS gauche sélectionne le membre réel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sélection sans ajout ou débit implicite",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La zone projetée elle-même est interactive",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Surbrillance appliquée aux primitives de la tête, pas à une silhouette séparée",
+      "detail": [
+        {
+          "enemy": "v020-qa-enemy",
+          "part": "head"
+        },
+        {
+          "enemy": "v020-qa-enemy",
+          "part": "head"
+        },
+        {
+          "enemy": "v020-qa-enemy",
+          "part": "head"
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "File conserve le bras droit réellement sélectionné",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Critique explicitement réservé sur la tête",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réorganisation visuelle préserve le critique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retrait individuel sans coût",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Annulation garde le critique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sortie retire le cadrage, position exacte conservée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "HUD normal rétabli après fermeture",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Volumes suivent l’altitude du modèle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bras gauche/droit suivent la rotation, pas l’axe X fixe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Coordonnées d’anatomie finies après rotation/translation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une blessure à gauche ne remplit pas la jauge de droite",
+      "detail": {
+        "head": 0,
+        "body": 0,
+        "arm_l": 0.125,
+        "arm_r": 0,
+        "leg_l": 0,
+        "leg_r": 0
+      }
+    },
+    {
+      "ok": true,
+      "name": "Blessures des jambes distinguées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sauvegarde réussie via adaptateur mémoire déclaré",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Dégâts de membre sérialisés dans le JSON de sauvegarde",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Dégâts de côté conservés au rechargement de scène",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration conserve les atteintes anatomiques",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Import borne les valeurs et filtre les membres inconnus",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Couverture basse : tête exposée, deux jambes masquées",
+      "detail": {
+        "head": 69,
+        "body": 93,
+        "arm_l": 81,
+        "arm_r": 82,
+        "leg_l": 0,
+        "leg_r": 0
+      }
+    },
+    {
+      "ok": true,
+      "name": "Étiquette masquée désactivée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Impossible de réserver un membre derrière le couvert",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tête exposée encore réservable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mur après réservation : action annulée sans coût ni critique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retour d’exécution explicite pour action annulée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Critique côté droit : coût exact de l’action émise",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tir critique atteint le membre choisi, pas le côté opposé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bilan d’exécution présent pendant la rafale",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bilan retiré à l’arrêt",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "robot : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "CAPTEURS"
+        ],
+        [
+          "body",
+          "CHÂSSIS"
+        ],
+        [
+          "arm_l",
+          "OUTIL GAUCHE"
+        ],
+        [
+          "arm_r",
+          "OUTIL DROIT"
+        ],
+        [
+          "leg_l",
+          "MOTEUR GAUCHE"
+        ],
+        [
+          "leg_r",
+          "MOTEUR DROIT"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "robot : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "feralGhoul : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "TÊTE"
+        ],
+        [
+          "body",
+          "TORSE"
+        ],
+        [
+          "arm_l",
+          "BRAS GAUCHE"
+        ],
+        [
+          "arm_r",
+          "BRAS DROIT"
+        ],
+        [
+          "leg_l",
+          "JAMBE GAUCHE"
+        ],
+        [
+          "leg_r",
+          "JAMBE DROITE"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "feralGhoul : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "tarente : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "TÊTE"
+        ],
+        [
+          "body",
+          "CORPS"
+        ],
+        [
+          "leg_l",
+          "PATTES GAUCHES"
+        ],
+        [
+          "leg_r",
+          "PATTES DROITES"
+        ],
+        [
+          "tail",
+          "QUEUE"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "tarente : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "radscorpion : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "TÊTE"
+        ],
+        [
+          "body",
+          "CORPS"
+        ],
+        [
+          "claw_l",
+          "PINCE GAUCHE"
+        ],
+        [
+          "claw_r",
+          "PINCE DROITE"
+        ],
+        [
+          "leg_l",
+          "PATTES GAUCHES"
+        ],
+        [
+          "leg_r",
+          "PATTES DROITES"
+        ],
+        [
+          "tail",
+          "QUEUE"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "radscorpion : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "crab : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "YEUX"
+        ],
+        [
+          "body",
+          "CARAPACE"
+        ],
+        [
+          "claw_l",
+          "PINCE GAUCHE"
+        ],
+        [
+          "claw_r",
+          "PINCE DROITE"
+        ],
+        [
+          "leg_l",
+          "PATTES GAUCHES"
+        ],
+        [
+          "leg_r",
+          "PATTES DROITES"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "crab : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "sanglier : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "HURE"
+        ],
+        [
+          "body",
+          "FLANC"
+        ],
+        [
+          "fore_l",
+          "PATTE AV. GAUCHE"
+        ],
+        [
+          "fore_r",
+          "PATTE AV. DROITE"
+        ],
+        [
+          "back_l",
+          "PATTE AR. GAUCHE"
+        ],
+        [
+          "back_r",
+          "PATTE AR. DROITE"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "sanglier : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "ledgerhound : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "TÊTE"
+        ],
+        [
+          "body",
+          "FLANC"
+        ],
+        [
+          "fore_l",
+          "PATTE AV. GAUCHE"
+        ],
+        [
+          "fore_r",
+          "PATTE AV. DROITE"
+        ],
+        [
+          "back_l",
+          "PATTE AR. GAUCHE"
+        ],
+        [
+          "back_r",
+          "PATTE AR. DROITE"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "ledgerhound : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "eyebot : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "CAPTEURS"
+        ],
+        [
+          "body",
+          "CHÂSSIS"
+        ],
+        [
+          "thruster_l",
+          "PROPULSEUR GAUCHE"
+        ],
+        [
+          "thruster_r",
+          "PROPULSEUR DROIT"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "eyebot : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "walkingcrane : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "CAPTEURS"
+        ],
+        [
+          "body",
+          "CHÂSSIS"
+        ],
+        [
+          "arms",
+          "OUTIL"
+        ],
+        [
+          "leg_l",
+          "MOTEUR GAUCHE"
+        ],
+        [
+          "leg_r",
+          "MOTEUR DROIT"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "walkingcrane : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "deathclaw : zones construites à partir du modèle",
+      "detail": [
+        [
+          "head",
+          "TÊTE"
+        ],
+        [
+          "body",
+          "TORSE"
+        ],
+        [
+          "arms",
+          "BRAS"
+        ],
+        [
+          "tail",
+          "QUEUE"
+        ]
+      ]
+    },
+    {
+      "ok": true,
+      "name": "deathclaw : volumes finis et positifs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Changer de cible cadre le second acteur du monde",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "File multi-cibles conserve les bons acteurs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Limite à six actions conservée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Transition supprime ancrages/caméra/file obsolètes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cadrage à 1.2 m, zoom borné et origine fixe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Projection finie à 1.2 m",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cadrage à 4 m, zoom borné et origine fixe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Projection finie à 4 m",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cadrage à 18 m, zoom borné et origine fixe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Projection finie à 18 m",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cadrage à 60 m, zoom borné et origine fixe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Projection finie à 60 m",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Hors portée : le zoom ne crée pas une cible autorisée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "S sélectionne le membre suivant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Z AZERTY sélectionne le membre précédent",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "E ajoute une action",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retour arrière retire une action",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "390×844 sans débordement horizontal",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "390×844 étiquettes dans la largeur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "390×844 ciblage et ajout au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "844×390 sans débordement horizontal",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "844×390 étiquettes dans la largeur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "844×390 ciblage et ajout au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "1280×720 sans débordement horizontal",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "1280×720 étiquettes dans la largeur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "1280×720 ciblage et ajout au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "File dépliable sur mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retrait tactile dans la file dépliée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fermeture tactile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Reprise v0.24 via adaptateur mémoire déclaré",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Nouvelle clé v0.25, pas d’écrasement v0.24",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancienne sauvegarde préservée octet pour octet",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript pendant la suite",
+      "detail": []
+    }
+  ]
+}

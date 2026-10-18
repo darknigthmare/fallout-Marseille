@@ -1,0 +1,1203 @@
+{
+  "version": "0.30.0",
+  "mode": "story",
+  "character": {
+    "name": "Camille",
+    "pronoun": "neutre",
+    "trait": "mistral",
+    "special": {
+      "S": 3,
+      "P": 3,
+      "E": 3,
+      "C": 3,
+      "I": 3,
+      "A": 3,
+      "L": 3
+    }
+  },
+  "player": {
+    "zone": "transit_depot",
+    "pos": [
+      8,
+      1.65,
+      32.6
+    ],
+    "yaw": 0,
+    "pitch": 0,
+    "hp": 115,
+    "maxHp": 115,
+    "ap": 100,
+    "maxAp": 105,
+    "rad": 0,
+    "ammoClip": 10,
+    "ammoReserve": 42,
+    "clipSize": 10,
+    "weapon": "Pistolet 10 mm",
+    "caps": 18,
+    "crouched": false,
+    "cameraMode": "first",
+    "discovered": [
+      "vault",
+      "transit_depot",
+      "traverse_archives",
+      "aubagne"
+    ],
+    "level": 1,
+    "xp": 54,
+    "perkPoints": 0,
+    "activeCompanion": null,
+    "weaponId": "pistol10",
+    "armorId": "vaultSuit",
+    "critCharge": 0,
+    "damageResistance": 0.05,
+    "radResistance": 0.08
+  },
+  "quest": {
+    "main": 0,
+    "relayOutcome": null,
+    "clinicOutcome": null,
+    "finalOutcome": null,
+    "mainComplete": false,
+    "trainOutcome": null,
+    "gardenOutcome": null,
+    "paludsOutcome": null,
+    "aqueductOutcome": null,
+    "belvedereOutcome": null,
+    "beaconOutcome": null,
+    "routesOutcome": null,
+    "routesComplete": false,
+    "waterOutcome": null,
+    "treilleOutcome": null,
+    "fontOutcome": null,
+    "marketOutcome": null,
+    "longchampOutcome": null,
+    "waterComplete": false,
+    "unionOutcome": null,
+    "drydockOutcome": null,
+    "cadenceOutcome": null,
+    "emileOutcome": null,
+    "islandOutcome": null,
+    "industryOutcome": null,
+    "industryComplete": false,
+    "cinemaOutcome": null,
+    "stationOutcome": null,
+    "guichetierOutcome": null,
+    "naimaHighOutcome": null,
+    "signalOutcome": null,
+    "marseilleOutcome": null,
+    "marseilleComplete": false,
+    "cadastreOutcome": null,
+    "aubagneStationOutcome": null,
+    "ceramicOutcome": null,
+    "culvertOutcome": null,
+    "mireilleTruthOutcome": null,
+    "rouxRescueOutcome": null,
+    "firewatchOutcome": null,
+    "aubagneOutcome": null,
+    "aubagneComplete": false
+  },
+  "side": {
+    "roux": 0,
+    "filters": 0,
+    "train": 0,
+    "eden": 0,
+    "garden": 0,
+    "paluds": 0,
+    "aqueduct": 0,
+    "refugees": 0,
+    "beacon": 0,
+    "mireille": 0,
+    "naima": 0,
+    "fontdemai": 0,
+    "noailleMarket": 0,
+    "waterEvidence": 0,
+    "dockSalvage": 0,
+    "seaRescue": 0,
+    "hullCaches": 0,
+    "cinema": 0,
+    "saintCharles": 0,
+    "ghoulRegistry": 0,
+    "gardeClinic": 0,
+    "aubagneHigh": 0,
+    "aubagneStation": 0,
+    "ceramics": 0,
+    "culvert": 0,
+    "firewatch": 0,
+    "regionalEvents": 0,
+    "environment": 0,
+    "shelters": 0
+  },
+  "flags": {
+    "rationDenied": false,
+    "metMireille": false,
+    "mireilleRecruited": false,
+    "naimaRecruited": false,
+    "emileRecruited": false,
+    "relayPowered": false,
+    "archiveMemo": false,
+    "fuseTaken": false,
+    "rouxFreed": false,
+    "clinicResolved": false,
+    "marseilleArchiveRead": false,
+    "shipBypassed": false,
+    "bossDefeated": false,
+    "routeChapterStarted": false,
+    "trainRestored": false,
+    "gardenResolved": false,
+    "paludsResolved": false,
+    "aqueductResolved": false,
+    "belvedereResolved": false,
+    "beaconLit": false,
+    "crabBossDefeated": false,
+    "waterChapterStarted": false,
+    "treilleResolved": false,
+    "fontPumpRestored": false,
+    "rouxRecruited": false,
+    "naimaQuestResolved": false,
+    "marketResolved": false,
+    "longchampArchiveRead": false,
+    "longchampValveOpen": false,
+    "waterCouncilReady": false,
+    "industryChapterStarted": false,
+    "unionArchiveRead": false,
+    "unionCouncilResolved": false,
+    "drydockRestored": false,
+    "cadenceBypassed": false,
+    "cadenceResolved": false,
+    "emileQuestResolved": false,
+    "skiffRepaired": false,
+    "skiffUnlocked": false,
+    "islandResolved": false,
+    "seaRouteCleared": false,
+    "coastCouncilReady": false,
+    "rescueCompleted": false,
+    "marseilleChapterStarted": false,
+    "projectorRestored": false,
+    "cinemaResolved": false,
+    "stationArchiveRead": false,
+    "stationResolved": false,
+    "guichetierBypassed": false,
+    "guichetierResolved": false,
+    "naimaHighResolved": false,
+    "gardeSignalActive": false,
+    "marseilleCouncilReady": false,
+    "projectionCalibrated": false,
+    "aubagneChapterStarted": false,
+    "cadastreRead": false,
+    "aubagneStationResolved": false,
+    "kilnRestored": false,
+    "culvertCleared": false,
+    "mireilleTruthResolved": false,
+    "rouxRescueResolved": false,
+    "firewatchActive": false,
+    "fireFrontContained": false,
+    "aubagneCouncilReady": false,
+    "enemyDead": {},
+    "looted": {},
+    "notes": {
+      "qa-export": true
+    },
+    "doors": {},
+    "worldChanges": {},
+    "shelterResolved": {},
+    "shelterOutcomes": {},
+    "enemySeen": {
+      "robot": true,
+      "tarente": true,
+      "archiveDrone": true,
+      "feral": true,
+      "raider": true,
+      "molerat": true,
+      "gecko": true,
+      "giantAnt": true,
+      "ledgerHound": true,
+      "feralReaver": true,
+      "mirelurkHatchling": true
+    },
+    "lucienRecruited": false,
+    "bastienRecruited": false,
+    "mariusRecruited": false
+  },
+  "inventory": {
+    "stimpak": 3,
+    "radaway": 1,
+    "water": 2,
+    "ration": 1,
+    "ammo10": 0,
+    "fuse": 0,
+    "ceramicFilter": 0,
+    "concordeSeal": 0,
+    "shipKey": 0,
+    "scrap": 5,
+    "circuitry": 1,
+    "chemicals": 1,
+    "cloth": 1,
+    "food": 2,
+    "seeds": 0,
+    "leather": 0,
+    "weaponParts": 0,
+    "waterChip": 0,
+    "antibiotics": 0,
+    "fuelCell": 0,
+    "sealant": 0,
+    "steelPlate": 0,
+    "flare": 0,
+    "unionLedger": 0,
+    "clay": 0,
+    "fireGel": 0,
+    "rescueBeacon": 0,
+    "bobbyPin": 5,
+    "soapCatalyst": 0,
+    "lyeFilter": 0,
+    "cleaningLedger": 0
+  },
+  "ammo": {
+    "ammo10": 42,
+    "shells": 0,
+    "cells": 0,
+    "rivets": 0,
+    "harpoons": 0,
+    "ammo38": 0,
+    "ammo44": 0,
+    "ammo45": 0,
+    "ammo308": 0,
+    "ammo556": 0,
+    "ammo5mm": 0,
+    "ammo4570": 0,
+    "spikes": 0,
+    "ammo2mm": 0,
+    "plasma": 0,
+    "gamma": 0,
+    "alienCell": 0,
+    "fuel": 0,
+    "missiles": 0,
+    "miniNukes": 0,
+    "cryo": 0,
+    "fusionCore": 0,
+    "ceramicSlug": 0,
+    "bb": 0,
+    "grenade40": 0,
+    "nails": 0,
+    "syringes": 0,
+    "junkAmmo": 0,
+    "ammo9": 0,
+    "ammo127": 0,
+    "ammo357": 0,
+    "ammo50": 0,
+    "microfusion": 0,
+    "electronCharge": 0,
+    "rockets": 0,
+    "protonCell": 0,
+    "ammo22": 0,
+    "ammo14": 0,
+    "ammo223": 0,
+    "ammo762": 0,
+    "ammo20g": 0,
+    "ammo25": 0,
+    "sonicCell": 0,
+    "acidCanister": 0,
+    "coilSlug": 0,
+    "saltCartridge": 0,
+    "windCell": 0,
+    "quarryBolt": 0,
+    "archiveCell": 0,
+    "brineCharge": 0,
+    "kilnBolt": 0,
+    "signalCapsule": 0,
+    "quarryShell": 0,
+    "memoryTape": 0,
+    "mistralDart": 0,
+    "heavyFusionCell": 0,
+    "soapCapsule": 0,
+    "memoryCell": 0
+  },
+  "perks": {
+    "gunslinger": 0,
+    "medic": 0,
+    "scavenger": 0,
+    "localHero": 0,
+    "mariner": 0,
+    "technician": 0,
+    "armorer": 0,
+    "hydrologist": 0,
+    "pathfinder": 0,
+    "shipwright": 0,
+    "unionVoice": 0,
+    "dockRat": 0,
+    "urbanExplorer": 0,
+    "archivist": 0,
+    "civicVoice": 0,
+    "firewarden": 0,
+    "ceramist": 0,
+    "tracker": 0
+  },
+  "settlements": {
+    "aubagne": 0,
+    "marseille": 0,
+    "laciotat": 0,
+    "huveaune": 0,
+    "garlaban": 0,
+    "gemenos": 0,
+    "ceyreste": 0,
+    "cassis": 0,
+    "calanques": 0,
+    "latreille": 0,
+    "fontdemai": 0,
+    "panier": 0,
+    "longchamp": 0,
+    "ciotatport": 0,
+    "syndicat": 0,
+    "drydock": 0,
+    "hull27": 0,
+    "mugel": 0,
+    "ileverte": 0,
+    "canebiere": 0,
+    "cinema": 0,
+    "saintcharles": 0,
+    "tunnels": 0,
+    "lagarde": 0,
+    "aubagnehaute": 0,
+    "aubagnegare": 0,
+    "ceramiques": 0,
+    "huveaunesouterraine": 0,
+    "garlabanpass": 0,
+    "shelter_m17": 0,
+    "shelter_a11": 0,
+    "shelter_h04": 0,
+    "shelter_g06": 0,
+    "shelter_c08": 0,
+    "shelter_lc12": 0,
+    "shelter_iv02": 0,
+    "shelter_p13": 0,
+    "shelter_m04": 0,
+    "shelter_a19": 0,
+    "shelter_h12": 0,
+    "shelter_g22": 0,
+    "shelter_c14": 0,
+    "shelter_lc03": 0,
+    "shelter_iv07": 0,
+    "shelter_p08": 0,
+    "shelter_r18": 0,
+    "shelter_t05": 0,
+    "saintloup": 0,
+    "lapenne": 0,
+    "accates": 0,
+    "luminy": 0,
+    "roquefort": 0,
+    "carnoux": 0,
+    "portmiou": 0,
+    "capcanaille": 0,
+    "shelter_r09": 0,
+    "shelter_m22": 0,
+    "shelter_m31": 0,
+    "shelter_a07": 0,
+    "shelter_a27": 0,
+    "shelter_h21": 0,
+    "shelter_g31": 0,
+    "shelter_c21": 0,
+    "shelter_c31": 0,
+    "shelter_lc21": 0,
+    "shelter_lc29": 0,
+    "shelter_i11": 0,
+    "shelter_m42": 0,
+    "shelter_a32": 0,
+    "shelter_h33": 0,
+    "shelter_g40": 0,
+    "shelter_c40": 0,
+    "shelter_lc44": 0,
+    "shelter_i23": 0,
+    "shelter_p27": 0,
+    "shelter_r32": 0,
+    "shelter_t18": 0,
+    "shelter_s06": 0,
+    "shelter_v14": 0,
+    "savonnerie": 0,
+    "frioulport": 0,
+    "ratonneau": 0,
+    "pomegues": 0,
+    "chateauif": 0
+  },
+  "economy": {
+    "travelCount": 0,
+    "lastProduction": 0,
+    "merchants": {
+      "aubagne": {
+        "caps": 220,
+        "stock": {
+          "stimpak": 4,
+          "water": 5,
+          "ammo10": 50,
+          "scrap": 8,
+          "weaponParts": 3,
+          "pipeCarbine": 1,
+          "workshopJacket": 1,
+          "ammo38": 80,
+          "ammo44": 18,
+          "ammo556": 40,
+          "pipePistol": 1,
+          "pipeRifle": 1,
+          "provenceRevolver": 1,
+          "mistralCarbine": 1,
+          "combatKnife": 1,
+          "machete": 1,
+          "bb": 100,
+          "nails": 80,
+          "pistol32": 1,
+          "bbGun": 1,
+          "nailGun": 1,
+          "tireIron": 1,
+          "crowbar": 1,
+          "leatherArmor": 1,
+          "ammo9": 80,
+          "ammo357": 30,
+          "pistol9": 1,
+          "revolver357": 1,
+          "varmintRifle": 1,
+          "cowboyRepeater": 1,
+          "handmadeRifle": 1,
+          "mistralScoutMantle": 1
+        }
+      }
+    },
+    "contracts": {
+      "salvage": 0,
+      "rescue": 0,
+      "escort": 0,
+      "broadcast": 0,
+      "firewatch": 0
+    }
+  },
+  "events": {
+    "active": null,
+    "history": [],
+    "nextTravel": 2,
+    "resolved": 0
+  },
+  "weather": {
+    "type": "clear",
+    "timer": 210
+  },
+  "rep": {
+    "ligue": 0,
+    "rade": 0,
+    "arsenal": 0,
+    "continuite": 0,
+    "veilleurs": 0,
+    "francs": 0,
+    "rails": 0,
+    "collines": 0,
+    "marches": 0,
+    "eaux": 0,
+    "artisans": 0,
+    "secours": 0
+  },
+  "equipment": {
+    "ownedWeapons": [
+      "pistol10"
+    ],
+    "ownedArmors": [
+      "vaultSuit"
+    ],
+    "weaponCondition": {
+      "pistol10": 100
+    },
+    "armorCondition": {
+      "vaultSuit": 100
+    },
+    "loadedAmmo": {
+      "pistol10": 10
+    },
+    "weaponMods": {}
+  },
+  "companions": {
+    "loyalty": {
+      "mireille": 25,
+      "naima": 20,
+      "emile": 15,
+      "roux": 0,
+      "lucien": 0,
+      "bastien": 0,
+      "marius": 0
+    }
+  },
+  "crime": {
+    "aubagne": 0,
+    "marseille": 0,
+    "laciotat": 0,
+    "collines": 0
+  },
+  "status": {
+    "bleeding": 0,
+    "infection": 0,
+    "fortified": 0,
+    "burning": 0,
+    "smoke": 0
+  },
+  "vehicle": {
+    "skiffUnlocked": false,
+    "hull": 100,
+    "maxHull": 100,
+    "fuel": 0,
+    "maxFuel": 100,
+    "speed": 0,
+    "seaRuns": 0,
+    "lastDock": "mugel",
+    "collisionCooldown": 0
+  },
+  "achievements": [],
+  "worldTime": 8.25,
+  "playTime": 0,
+  "lastSave": "2026-09-17T05:27:55.141Z",
+  "lore": {
+    "terminals": {},
+    "terminalActions": {},
+    "notes": {},
+    "holotapes": {
+      "v026_reserves": true
+    },
+    "holotapePlays": {
+      "v026_reserves": 3
+    },
+    "localQuests": {},
+    "localQuestOutcomes": {}
+  },
+  "companionQuests": {
+    "lucien": {
+      "stage": 0,
+      "outcome": null
+    },
+    "bastien": {
+      "stage": 0,
+      "outcome": null
+    },
+    "marius": {
+      "stage": 0,
+      "outcome": null
+    }
+  },
+  "foundation": {
+    "q09": {
+      "stage": 0,
+      "outcome": null,
+      "parts": {}
+    },
+    "q12": {
+      "played": 0,
+      "best": null,
+      "wins": 0,
+      "outcome": null
+    },
+    "powerArmor": {
+      "stage": 0,
+      "outcome": null
+    }
+  },
+  "reconstruction": {
+    "sites": {
+      "aubagne": {},
+      "huveaune": {},
+      "marseille": {},
+      "cassis": {},
+      "drydock": {},
+      "frioulport": {}
+    }
+  },
+  "collectibles": {
+    "magazines": {},
+    "plans": {},
+    "lockedCaches": {}
+  },
+  "needs": {
+    "hunger": 0,
+    "thirst": 0,
+    "fatigue": 0,
+    "lastTick": 0
+  },
+  "v018": {
+    "coordinates": "EPSG:2154-local",
+    "travelMode": "story",
+    "trackedQuest": null,
+    "tapeBookmarks": {
+      "v026_reserves": {
+        "index": 0,
+        "elapsed": 0
+      }
+    },
+    "tapeSpeed": 1.5
+  },
+  "v020": {
+    "schema": 1,
+    "operations": {},
+    "visits": {},
+    "returnPoint": null,
+    "companionOrders": {},
+    "favorites": [
+      "pistol10",
+      null,
+      null,
+      null
+    ],
+    "stash": {},
+    "craftCount": {},
+    "discoveredStations": {},
+    "restHours": 0,
+    "notes": {},
+    "looted": {},
+    "openedDoors": {},
+    "accessibility": {
+      "localPlan": true
+    },
+    "lastVersion": "0.20.0"
+  },
+  "v021": {
+    "schema": 1,
+    "accepted": false,
+    "clues": {},
+    "switches": {},
+    "witness": false,
+    "visited": {},
+    "ending": null,
+    "rewarded": false,
+    "returnPoints": [],
+    "journalPage": 0,
+    "tracked": false
+  },
+  "v022": {
+    "schema": 1,
+    "actors": {
+      "v022:salome": {
+        "pos": [
+          -12,
+          0,
+          35
+        ],
+        "yaw": 3.141592653589793,
+        "activity": "idle",
+        "world": "transit_depot"
+      },
+      "v022:joris": {
+        "pos": [
+          -19,
+          0,
+          41
+        ],
+        "yaw": 3.141592653589793,
+        "activity": "idle",
+        "world": "transit_depot"
+      },
+      "v022:ines": {
+        "pos": [
+          12,
+          0,
+          36.5
+        ],
+        "yaw": 3.141592653589793,
+        "activity": "idle",
+        "world": "transit_depot"
+      },
+      "v022:diane": {
+        "pos": [
+          -14,
+          0,
+          28
+        ],
+        "yaw": 3.141592653589793,
+        "activity": "idle",
+        "world": "traverse_archives"
+      },
+      "v022:basile": {
+        "pos": [
+          -16,
+          0,
+          34
+        ],
+        "yaw": 3.141592653589793,
+        "activity": "idle",
+        "world": "traverse_archives"
+      },
+      "v022:nora": {
+        "pos": [
+          15,
+          0,
+          36.5
+        ],
+        "yaw": 3.141592653589793,
+        "activity": "idle",
+        "world": "traverse_archives"
+      }
+    },
+    "encounters": {
+      "transit_depot|transit_depot:unit": {
+        "zone": "transit_depot",
+        "type": "robot",
+        "health": 85,
+        "leg": 0,
+        "arm": 0
+      },
+      "transit_depot|transit_depot:tarente": {
+        "zone": "transit_depot",
+        "type": "tarente",
+        "health": 65,
+        "leg": 0,
+        "arm": 0
+      },
+      "traverse_archives|traverse_archives:index": {
+        "zone": "traverse_archives",
+        "type": "archiveDrone",
+        "health": 70,
+        "leg": 0,
+        "arm": 0
+      },
+      "traverse_archives|traverse_archives:lost": {
+        "zone": "traverse_archives",
+        "type": "feral",
+        "health": 70,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|roux-hunter": {
+        "zone": "aubagne",
+        "type": "tarente",
+        "health": 70,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|eco-v012-aubagne-0": {
+        "zone": "aubagne",
+        "type": "raider",
+        "health": 72,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|eco-v012-aubagne-1": {
+        "zone": "aubagne",
+        "type": "molerat",
+        "health": 44,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|eco-v012-aubagne-2": {
+        "zone": "aubagne",
+        "type": "gecko",
+        "health": 62,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|eco-v012-aubagne-3": {
+        "zone": "aubagne",
+        "type": "giantAnt",
+        "health": 73,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|eco-v012-aubagne-4": {
+        "zone": "aubagne",
+        "type": "ledgerHound",
+        "health": 122,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|eco-v012-aubagne-5": {
+        "zone": "aubagne",
+        "type": "feralReaver",
+        "health": 150,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|eco-v012-aubagne-6": {
+        "zone": "aubagne",
+        "type": "mirelurkHatchling",
+        "health": 46,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|eco-v012-aubagne-7": {
+        "zone": "aubagne",
+        "type": "raider",
+        "health": 72,
+        "leg": 0,
+        "arm": 0
+      },
+      "aubagne|eco-v012-aubagne-8": {
+        "zone": "aubagne",
+        "type": "molerat",
+        "health": 44,
+        "leg": 0,
+        "arm": 0
+      }
+    },
+    "caches": {},
+    "task": {
+      "accepted": false,
+      "kit": false,
+      "beds": false,
+      "consent": null,
+      "relay": false,
+      "ending": null,
+      "rewarded": false,
+      "tracked": false
+    },
+    "observed": {}
+  },
+  "v023": {
+    "schema": 1,
+    "goat": {
+      "answers": [],
+      "tags": [],
+      "completed": false,
+      "method": null
+    },
+    "critical": 0,
+    "history": [
+      {
+        "speaker": "Test de condition",
+        "text": "Test uniquement.",
+        "choice": false,
+        "role": "QA",
+        "zone": "transit_depot"
+      },
+      {
+        "speaker": "Mémo de transfert",
+        "text": "Conserver ce texte après import.",
+        "choice": false,
+        "role": "ARCHIVE ENREGISTRÉE",
+        "zone": "transit_depot"
+      }
+    ],
+    "seen": {},
+    "checks": {},
+    "quest": {
+      "accepted": false,
+      "evidence": {
+        "manifest": false,
+        "register": false,
+        "protocol": false
+      },
+      "witness": {
+        "diane": false,
+        "rayan": false
+      },
+      "trust": 0,
+      "ending": null,
+      "rewarded": false,
+      "deliveries": {
+        "transit_depot": false,
+        "traverse_archives": false,
+        "mooring_station": false
+      },
+      "tracked": false
+    },
+    "consequences": []
+  },
+  "v025": {
+    "schema": 1,
+    "limbs": {}
+  },
+  "v026": {
+    "schema": 1,
+    "containers": {
+      "transit_depot|free": {
+        "zone": "transit_depot",
+        "id": "free",
+        "title": "Casier des objets abandonnés",
+        "pos": [
+          8,
+          0,
+          31
+        ],
+        "kind": "chest",
+        "items": {
+          "enamelCup": 2,
+          "radioTube": 1,
+          "rationTin": 2,
+          "bobbyPin": 3
+        },
+        "initial": {
+          "enamelCup": 2,
+          "radioTube": 1,
+          "rationTin": 2,
+          "bobbyPin": 3
+        },
+        "gear": {},
+        "owned": false,
+        "permission": false,
+        "reported": false,
+        "lock": 0,
+        "unlocked": true,
+        "visited": true,
+        "pinWear": 0,
+        "actor": null
+      },
+      "transit_depot|consignment": {
+        "zone": "transit_depot",
+        "id": "consignment",
+        "title": "Lot A · dortoir des passagers",
+        "pos": [
+          -7,
+          0,
+          46
+        ],
+        "kind": "chest",
+        "items": {
+          "cloth": 6,
+          "water": 4
+        },
+        "initial": {
+          "cloth": 6,
+          "water": 4
+        },
+        "gear": {},
+        "owned": true,
+        "permission": false,
+        "reported": false,
+        "lock": 0,
+        "unlocked": true,
+        "visited": false,
+        "pinWear": 0,
+        "actor": null
+      },
+      "transit_depot|workcase": {
+        "zone": "transit_depot",
+        "id": "workcase",
+        "title": "Coffret de maintenance verrouillé",
+        "pos": [
+          18,
+          3.2,
+          -14
+        ],
+        "kind": "chest",
+        "items": {
+          "pipeCarbine": 1,
+          "weaponParts": 2,
+          "crackedGauge": 1
+        },
+        "initial": {
+          "pipeCarbine": 1,
+          "weaponParts": 2,
+          "crackedGauge": 1
+        },
+        "gear": {
+          "pipeCarbine": {
+            "condition": 48,
+            "mod": false
+          }
+        },
+        "owned": false,
+        "permission": false,
+        "reported": false,
+        "lock": 2,
+        "unlocked": false,
+        "visited": false,
+        "pinWear": 0,
+        "actor": null
+      },
+      "traverse_archives|free": {
+        "zone": "traverse_archives",
+        "id": "free",
+        "title": "Casier des objets abandonnés",
+        "pos": [
+          8,
+          0,
+          29
+        ],
+        "kind": "chest",
+        "items": {
+          "enamelCup": 2,
+          "radioTube": 1,
+          "rationTin": 2,
+          "bobbyPin": 3
+        },
+        "initial": {
+          "enamelCup": 2,
+          "radioTube": 1,
+          "rationTin": 2,
+          "bobbyPin": 3
+        },
+        "gear": {},
+        "owned": false,
+        "permission": false,
+        "reported": false,
+        "lock": 0,
+        "unlocked": true,
+        "visited": false,
+        "pinWear": 0,
+        "actor": null
+      },
+      "traverse_archives|consignment": {
+        "zone": "traverse_archives",
+        "id": "consignment",
+        "title": "Lot M · salle des lecteurs",
+        "pos": [
+          8,
+          0,
+          44
+        ],
+        "kind": "chest",
+        "items": {
+          "circuitry": 3,
+          "water": 4
+        },
+        "initial": {
+          "circuitry": 3,
+          "water": 4
+        },
+        "gear": {},
+        "owned": true,
+        "permission": false,
+        "reported": false,
+        "lock": 0,
+        "unlocked": true,
+        "visited": false,
+        "pinWear": 0,
+        "actor": null
+      },
+      "traverse_archives|workcase": {
+        "zone": "traverse_archives",
+        "id": "workcase",
+        "title": "Coffret de maintenance verrouillé",
+        "pos": [
+          -18,
+          3.2,
+          -18
+        ],
+        "kind": "chest",
+        "items": {
+          "watcherCoat": 1,
+          "weaponParts": 2,
+          "crackedGauge": 1
+        },
+        "initial": {
+          "watcherCoat": 1,
+          "weaponParts": 2,
+          "crackedGauge": 1
+        },
+        "gear": {
+          "watcherCoat": {
+            "condition": 48,
+            "mod": false
+          }
+        },
+        "owned": false,
+        "permission": false,
+        "reported": false,
+        "lock": 2,
+        "unlocked": false,
+        "visited": false,
+        "pinWear": 0,
+        "actor": null
+      }
+    },
+    "vendorGear": {},
+    "marked": {},
+    "carry": false,
+    "transactions": [],
+    "quest": {
+      "accepted": false,
+      "inspected": {},
+      "informed": false,
+      "ending": null,
+      "rewarded": false,
+      "tracked": false
+    }
+  },
+  "v027": {
+    "schema": 1,
+    "theme": "white",
+    "scanlines": true,
+    "backgroundTape": true,
+    "tagged": [
+      "circuitry"
+    ],
+    "read": {},
+    "documents": {
+      "qa-export": {
+        "title": "Mémo de transfert",
+        "text": "Conserver ce texte après import."
+      }
+    },
+    "pin": null,
+    "last": {
+      "tab": "data",
+      "sub": "system"
+    }
+  },
+  "v028": {
+    "schema": 1,
+    "limbs": {
+      "head": 100,
+      "torso": 100,
+      "leftArm": 100,
+      "rightArm": 100,
+      "leftLeg": 100,
+      "rightLeg": 100
+    },
+    "hits": 0,
+    "lamp": false,
+    "history": [],
+    "quest": {
+      "accepted": false,
+      "plan": false,
+      "isolated": false,
+      "rewarded": false,
+      "ending": null,
+      "tracked": false
+    },
+    "game": {
+      "unlocked": false,
+      "levels": {}
+    }
+  },
+  "v029": {
+    "schema": 1,
+    "elapsed": 0,
+    "terminals": {},
+    "credentials": {
+      "d4": false,
+      "a2": false,
+      "q8": false
+    },
+    "quest": {
+      "accepted": false,
+      "proof": {
+        "route": false,
+        "filter": false,
+        "clause": false
+      },
+      "contact": false,
+      "ending": null,
+      "rewarded": false,
+      "tracked": false
+    },
+    "noiseCount": 0
+  },
+  "v030": {
+    "schema": 1,
+    "active": false,
+    "core": null,
+    "spares": [],
+    "rigs": {},
+    "vendorRigs": {},
+    "hitIndex": 0,
+    "travelDistance": 0,
+    "spent": 0,
+    "quest": {
+      "accepted": false,
+      "servo": false,
+      "plan": false,
+      "isolated": false,
+      "restored": false,
+      "coreTaken": false,
+      "trial": null,
+      "ending": null,
+      "rewarded": false,
+      "tracked": false
+    },
+    "history": []
+  },
+  "geo": {
+    "return": null,
+    "pendingTarget": null,
+    "lastMacro": "geo_huveaune",
+    "visitedMacros": {}
+  }
+}

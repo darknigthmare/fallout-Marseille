@@ -1,0 +1,1 @@
+Les 22 captures décrites dans CAPTURES_V030.json proviennent du même HTML que les suites. Les autres résultats/sous-rapports sont les preuves de test. Les noms de suites anciennes désignent le socle testé, pas une ancienne build exécutée. Les fixtures synthétiques de combat ne sont pas des données réelles.

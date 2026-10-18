@@ -1,0 +1,83 @@
+{
+  "version": "0.39.0",
+  "html_sha256": "fbcf904f6259751e8d9bf2102f85a196d81eb17d782f070e386b45eeadb19466",
+  "passed": 157,
+  "failed": 0,
+  "total": 157,
+  "errors": [],
+  "same_html": true,
+  "mismatches": [],
+  "suites": [
+    {
+      "file": "QA_V039.json",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "html_matches": true
+    },
+    {
+      "file": "QA_TERRAIN_TOOLS_V039.json",
+      "passed": 8,
+      "failed": 0,
+      "total": 8,
+      "html_matches": true
+    },
+    {
+      "file": "QA_CLOUD_PROOF_V039.json",
+      "passed": 14,
+      "failed": 0,
+      "total": 14,
+      "html_matches": true
+    },
+    {
+      "file": "QA_REGRESSION_V038_ON_V039.json",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "html_matches": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_ON_V039.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "html_matches": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PRODUCT_ON_V039.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "html_matches": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PROLOGUE_ON_V039.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "html_matches": true
+    },
+    {
+      "file": "QA_MAP_TOOLS_V038.json",
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "html_matches": true
+    },
+    {
+      "file": "QA_CLOUD_PROOF_V038.json",
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "html_matches": true
+    },
+    {
+      "file": "QA_PWA_V039.json",
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "html_matches": true
+    }
+  ],
+  "scope": "Relief RGE ALTI IGN échantillonné, moteur terrain, NoData, outils, preuves cloud, vectoriel v0.38, jeu v0.35, PWA. Chromium logiciel et fixtures explicites."
+}

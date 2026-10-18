@@ -1,0 +1,55 @@
+{
+  "version": "0.37.0",
+  "checkedAt": "2026-09-19T01:29:06Z",
+  "sources": {
+    "base": {
+      "name": "France Vector / OpenStreetMap",
+      "license": "ODbL 1.0",
+      "planned": 367,
+      "sampleStatus": 200,
+      "sampleBytes": 899,
+      "sampleSha256": "983598282c9669f7b37ce19816470ceb2b81486f66375eaf01a1f67b1cbaa939",
+      "cached": 367,
+      "cachedBytes": 29456613,
+      "cacheComplete": true
+    },
+    "cadastre": {
+      "name": "Cadastre Etalab / DGFiP",
+      "license": "Licence Ouverte 2.0",
+      "planned": 5517,
+      "sampleStatus": 200,
+      "sampleBytes": 3816,
+      "sampleSha256": "07bdaf302341a82085ffda39ab10b35444e26313c6f3401f873ac2a2b294c6c7",
+      "cached": 1,
+      "cachedBytes": 3816,
+      "cacheComplete": false
+    },
+    "terrain": {
+      "name": "IGN RGE ALTI / Géoplateforme",
+      "plannedMacros": 8,
+      "numericFilesBundled": 0,
+      "verifiedNumericCoverage": false
+    }
+  },
+  "relay": {
+    "service": "fallout-mistral-map-v037",
+    "auth": "Supabase publishable key",
+    "boundsEnforced": true,
+    "zooms": {
+      "base": 14,
+      "cadastre": 16
+    },
+    "maxTileBytes": 8000000,
+    "persistentStorage": true,
+    "sha256": true,
+    "etagRevalidation": true,
+    "staleFallback": true
+  },
+  "limits": {
+    "allTilesIndividuallyDownloaded": false,
+    "terrainAcquired": false,
+    "humanContinuousTraversalCertified": false,
+    "allBaseTilesPersistentlyCached": true,
+    "allCadastreTilesCached": false
+  }
+}

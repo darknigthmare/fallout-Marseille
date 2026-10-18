@@ -1,0 +1,1274 @@
+{
+  "version": "0.42.0",
+  "html_sha256": "94835b6b97ba9d48131053e9d7f53edf6551a69280113e6c38ca1b510813e2db",
+  "passed": 41,
+  "failed": 0,
+  "total": 41,
+  "errors": [],
+  "checks": [
+    {
+      "name": "titre exact v0.42",
+      "ok": true,
+      "detail": "Fallout : Mistral · v0.42 · Couche Fallout"
+    },
+    {
+      "name": "surface debug v0.42",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "248 sites territoriaux",
+      "ok": true,
+      "detail": {
+        "version": "0.42.0",
+        "seed": "fallout-mistral-v042",
+        "siteCount": 248,
+        "macroCount": 8,
+        "counts": {
+          "shelter": 16,
+          "settlement": 24,
+          "outpost": 24,
+          "interior": 48,
+          "nest": 64,
+          "elite": 24,
+          "boss": 8,
+          "landmark": 24,
+          "caravan": 16
+        },
+        "visitable": 64,
+        "hostileSites": 96,
+        "npcSlots": 200,
+        "enemySlots": 720,
+        "macroCounts": {
+          "geo_marseille": 31,
+          "geo_huveaune": 31,
+          "geo_garlaban": 31,
+          "geo_calanques": 31,
+          "geo_laciotat": 31,
+          "geo_frioul": 31,
+          "geo_etoile": 31,
+          "geo_saintebaume": 31
+        },
+        "generatedWith": "tools/build_fallout_layer_v042.py",
+        "validation": {
+          "ok": true,
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "8 macro-régions",
+      "ok": true,
+      "detail": {
+        "version": "0.42.0",
+        "seed": "fallout-mistral-v042",
+        "siteCount": 248,
+        "macroCount": 8,
+        "counts": {
+          "shelter": 16,
+          "settlement": 24,
+          "outpost": 24,
+          "interior": 48,
+          "nest": 64,
+          "elite": 24,
+          "boss": 8,
+          "landmark": 24,
+          "caravan": 16
+        },
+        "visitable": 64,
+        "hostileSites": 96,
+        "npcSlots": 200,
+        "enemySlots": 720,
+        "macroCounts": {
+          "geo_marseille": 31,
+          "geo_huveaune": 31,
+          "geo_garlaban": 31,
+          "geo_calanques": 31,
+          "geo_laciotat": 31,
+          "geo_frioul": 31,
+          "geo_etoile": 31,
+          "geo_saintebaume": 31
+        },
+        "generatedWith": "tools/build_fallout_layer_v042.py",
+        "validation": {
+          "ok": true,
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "répartition fonctionnelle exacte",
+      "ok": true,
+      "detail": {
+        "shelter": 16,
+        "settlement": 24,
+        "outpost": 24,
+        "interior": 48,
+        "nest": 64,
+        "elite": 24,
+        "boss": 8,
+        "landmark": 24,
+        "caravan": 16
+      }
+    },
+    {
+      "name": "64 lieux visitables",
+      "ok": true,
+      "detail": 64
+    },
+    {
+      "name": "96 zones hostiles",
+      "ok": true,
+      "detail": 96
+    },
+    {
+      "name": "200 postes PNJ potentiels",
+      "ok": true,
+      "detail": 200
+    },
+    {
+      "name": "720 postes ennemis potentiels",
+      "ok": true,
+      "detail": 720
+    },
+    {
+      "name": "31 sites par macro-région",
+      "ok": true,
+      "detail": {
+        "geo_marseille": 31,
+        "geo_huveaune": 31,
+        "geo_garlaban": 31,
+        "geo_calanques": 31,
+        "geo_laciotat": 31,
+        "geo_frioul": 31,
+        "geo_etoile": 31,
+        "geo_saintebaume": 31
+      }
+    },
+    {
+      "name": "bestiaire référencé entièrement existant",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "colonie instanciée près du joueur",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_huveaune",
+        "active": [
+          "v042-huveaune-settlement-01"
+        ],
+        "npcs": 4,
+        "nearest": {
+          "id": "v042-huveaune-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "quatre PNJ locaux instanciés",
+      "ok": true,
+      "detail": [
+        {
+          "id": "v042-npc:v042-huveaune-settlement-01:0",
+          "site": "v042-huveaune-settlement-01",
+          "pos": [
+            -2535.4838554136168,
+            0,
+            994.2305810741087
+          ]
+        },
+        {
+          "id": "v042-npc:v042-huveaune-settlement-01:1",
+          "site": "v042-huveaune-settlement-01",
+          "pos": [
+            -2540.3431259303234,
+            0,
+            996.7360730508406
+          ]
+        },
+        {
+          "id": "v042-npc:v042-huveaune-settlement-01:2",
+          "site": "v042-huveaune-settlement-01",
+          "pos": [
+            -2543.2207677632414,
+            0,
+            990.959466998716
+          ]
+        },
+        {
+          "id": "v042-npc:v042-huveaune-settlement-01:3",
+          "site": "v042-huveaune-settlement-01",
+          "pos": [
+            -2536.5268261756987,
+            0,
+            987.7096753096123
+          ]
+        }
+      ]
+    },
+    {
+      "name": "site découvert par proximité",
+      "ok": true,
+      "detail": {
+        "version": "0.42.0",
+        "meta": {
+          "version": "0.42.0",
+          "seed": "fallout-mistral-v042",
+          "siteCount": 248,
+          "macroCount": 8,
+          "counts": {
+            "shelter": 16,
+            "settlement": 24,
+            "outpost": 24,
+            "interior": 48,
+            "nest": 64,
+            "elite": 24,
+            "boss": 8,
+            "landmark": 24,
+            "caravan": 16
+          },
+          "visitable": 64,
+          "hostileSites": 96,
+          "npcSlots": 200,
+          "enemySlots": 720,
+          "macroCounts": {
+            "geo_marseille": 31,
+            "geo_huveaune": 31,
+            "geo_garlaban": 31,
+            "geo_calanques": 31,
+            "geo_laciotat": 31,
+            "geo_frioul": 31,
+            "geo_etoile": 31,
+            "geo_saintebaume": 31
+          },
+          "generatedWith": "tools/build_fallout_layer_v042.py",
+          "validation": {
+            "ok": true,
+            "errors": []
+          }
+        },
+        "active": 1,
+        "nearest": {
+          "id": "v042-huveaune-settlement-01",
+          "distance": 0
+        },
+        "discovered": 1,
+        "cleared": 0,
+        "tracked": null,
+        "instance": null
+      }
+    },
+    {
+      "name": "budget de streaming respecté",
+      "ok": true,
+      "detail": {
+        "worldId": "geo_huveaune",
+        "active": [
+          "v042-huveaune-settlement-01"
+        ],
+        "npcs": 4,
+        "nearest": {
+          "id": "v042-huveaune-settlement-01",
+          "d": 0
+        }
+      }
+    },
+    {
+      "name": "dialogue PNJ territorial",
+      "ok": true,
+      "detail": {
+        "id": "v042-npc:v042-huveaune-settlement-01:0",
+        "site": "v042-huveaune-settlement-01",
+        "pos": [
+          -2535.4838554136168,
+          0,
+          994.2305810741087
+        ]
+      }
+    },
+    {
+      "name": "dialogue contextualisé",
+      "ok": true,
+      "detail": "YE MÉDECIN ITINÉRANT Yanis Esposito Bienvenue à Relais · La Penne. Ateliers libres maintient ce point tant que les routes restent ouvertes. HISTORIQUE DE CONVERSATION [H] La réplique affichée est la réplique choisie. Les preuves ne remplacent pas automatiquement le consentement. Parler du secteur. Avez-vous du travail ? Acheter une eau purifiée · 8 caps Acheter un Stimpak · 28 caps Quitter."
+    },
+    {
+      "name": "contrat territorial assignable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "contrat cible un site hostile",
+      "ok": true,
+      "detail": {
+        "id": "v042-huveaune-boss-01",
+        "macro": "geo_huveaune",
+        "lat": 43.2954137,
+        "lon": 5.5096248,
+        "kind": "boss",
+        "name": "Menace régionale · Camp Major",
+        "description": "Une signature de niveau régional est installée près de Camp Major.",
+        "anchor": "Camp Major",
+        "tier": 2,
+        "faction": "concorde",
+        "factionLabel": "Concorde",
+        "safe": false,
+        "visitable": false,
+        "interior": null,
+        "theme": "industrial",
+        "unique": true,
+        "discoverRadius": 190,
+        "activationRadius": 620,
+        "enemyRadius": 370,
+        "npcSlots": 0,
+        "npcRoles": [],
+        "enemySlots": 7,
+        "enemyTypes": [
+          "molerat",
+          "giantRat",
+          "raider"
+        ],
+        "eliteType": "cyberdog",
+        "bossType": "assaultron",
+        "rewardCaps": 128,
+        "rewardXP": 225,
+        "respawnHours": 0,
+        "icon": "crown"
+      }
+    },
+    {
+      "name": "onglet Pip-Boy couche Fallout",
+      "ok": true,
+      "detail": "COUCHE FALLOUT TERRITORIALE 248 implantations persistantes sont réparties sur les huit macro-régions. Le streaming n’instancie que les sites proches : les marqueurs existent à l’échelle du territoire, tandis que monstres, PNJ, bâtiments et collisions restent soumis à un budget local. 248 sites territoriaux 8 régions · seed fixe 64 lieux visitables 16 abris · 48 intérieurs 96 zones hostiles 24 élites · 8 boss 200 postes PNJ potentiels 24 colonies · 16 haltes TOUS HABITÉS VISITABLES HOSTILES ÉLITES SÉCURISÉS COUCHE ACTIVE MARSEILLE HUVEAUNE GARLABAN CALANQUES LA CIOTAT ARCHIPEL DU FRIOUL ÉTOILE & ALLAUCH SAINTE-BAUME A SIGNATURE INCONNUE A SIGNATURE INCONNUE ● SIGNATURE INCONNUE ● SIGNATURE INCONNUE ● SIGNATURE INCONNUE □ SIGNATURE INCONNUE □ SIGNATURE INCONNUE □ SIGNATURE INCONNUE □ SIGNATURE INCONNUE □ SIGNATURE INCONNUE □ SIGNATURE INCONNUE ◆ SIGNATURE INCONNUE A Abri R-17 · Deux noms pour une vie A Abri F-04 · La Table commune ● Relais · La Penne ● Commune · Céramistes ● Hameau · Beaudinard ▲ Poste de veille · Aubagne ▲ Barrage · Galeries de l’Huveaune ▲ Tour de garde · Vallée de l’Huveaune □ Sous-sol · Aubagne Haute □ Dépôt condamné · Camp Major □ Galerie technique · La Penne □ Hôpital oublié · Céramistes □ Station enterrée · Beaudinard □ Bunker civil · Aubagne × Nid irradié · Céramistes × Terrier · Beaudinard × Zone de chasse · Aubagne × Fosse contaminée · Galeries de l’Huveaune × Ruines infestées · Vallée de l’Huveaune × Couloir de prédation · Aubagne Haute × Nid irradié"
+    },
+    {
+      "name": "marqueurs SVG produits",
+      "ok": true,
+      "detail": 115
+    },
+    {
+      "name": "repaire élite instancié",
+      "ok": true,
+      "detail": [
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:0",
+          "site": "v042-huveaune-elite-01",
+          "rank": "elite",
+          "type": "cyberdog",
+          "alive": true,
+          "hp": 247,
+          "pos": [
+            2389.075636036362,
+            0,
+            -1480.1013555362633
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:1",
+          "site": "v042-huveaune-elite-01",
+          "rank": "normal",
+          "type": "giantRat",
+          "alive": true,
+          "hp": 65,
+          "pos": [
+            2383.8480099194544,
+            0,
+            -1476.6684730359696
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:2",
+          "site": "v042-huveaune-elite-01",
+          "rank": "normal",
+          "type": "raider",
+          "alive": true,
+          "hp": 85,
+          "pos": [
+            2377.493275126487,
+            0,
+            -1482.7042112324914
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:3",
+          "site": "v042-huveaune-elite-01",
+          "rank": "normal",
+          "type": "molerat",
+          "alive": true,
+          "hp": 52,
+          "pos": [
+            2384.737998130993,
+            0,
+            -1486.3522307727326
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:4",
+          "site": "v042-huveaune-elite-01",
+          "rank": "normal",
+          "type": "giantRat",
+          "alive": true,
+          "hp": 65,
+          "pos": [
+            2390.9850342063355,
+            0,
+            -1486.0567695191453
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ennemi élite distinct",
+      "ok": true,
+      "detail": [
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:0",
+          "site": "v042-huveaune-elite-01",
+          "rank": "elite",
+          "type": "cyberdog",
+          "alive": true,
+          "hp": 247,
+          "pos": [
+            2389.075636036362,
+            0,
+            -1480.1013555362633
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:1",
+          "site": "v042-huveaune-elite-01",
+          "rank": "normal",
+          "type": "giantRat",
+          "alive": true,
+          "hp": 65,
+          "pos": [
+            2383.8480099194544,
+            0,
+            -1476.6684730359696
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:2",
+          "site": "v042-huveaune-elite-01",
+          "rank": "normal",
+          "type": "raider",
+          "alive": true,
+          "hp": 85,
+          "pos": [
+            2377.493275126487,
+            0,
+            -1482.7042112324914
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:3",
+          "site": "v042-huveaune-elite-01",
+          "rank": "normal",
+          "type": "molerat",
+          "alive": true,
+          "hp": 52,
+          "pos": [
+            2384.737998130993,
+            0,
+            -1486.3522307727326
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-elite-01:outside:4",
+          "site": "v042-huveaune-elite-01",
+          "rank": "normal",
+          "type": "giantRat",
+          "alive": true,
+          "hp": 65,
+          "pos": [
+            2390.9850342063355,
+            0,
+            -1486.0567695191453
+          ]
+        }
+      ]
+    },
+    {
+      "name": "combat élite sécurise le site",
+      "ok": true,
+      "detail": {
+        "count": 5,
+        "cleared": true
+      }
+    },
+    {
+      "name": "progression élite persistante",
+      "ok": true,
+      "detail": {
+        "v042-huveaune-elite-01": true
+      }
+    },
+    {
+      "name": "boss régional et escorte instanciés",
+      "ok": true,
+      "detail": [
+        {
+          "id": "v042:v042-huveaune-boss-01:outside:0",
+          "site": "v042-huveaune-boss-01",
+          "rank": "boss",
+          "type": "assaultron",
+          "alive": true,
+          "hp": 485,
+          "pos": [
+            -3126.8066601773876,
+            0,
+            -388.5300864211339
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-boss-01:outside:1",
+          "site": "v042-huveaune-boss-01",
+          "rank": "normal",
+          "type": "giantRat",
+          "alive": true,
+          "hp": 65,
+          "pos": [
+            -3129.4548587771105,
+            0,
+            -384.46782719697893
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-boss-01:outside:2",
+          "site": "v042-huveaune-boss-01",
+          "rank": "normal",
+          "type": "raider",
+          "alive": true,
+          "hp": 85,
+          "pos": [
+            -3136.090768407862,
+            0,
+            -384.6161700798332
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-boss-01:outside:3",
+          "site": "v042-huveaune-boss-01",
+          "rank": "normal",
+          "type": "molerat",
+          "alive": true,
+          "hp": 52,
+          "pos": [
+            -3134.1962924367313,
+            0,
+            -391.02494891124104
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-boss-01:outside:4",
+          "site": "v042-huveaune-boss-01",
+          "rank": "normal",
+          "type": "giantRat",
+          "alive": true,
+          "hp": 65,
+          "pos": [
+            -3133.5728961637997,
+            0,
+            -395.8339283159278
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-boss-01:outside:5",
+          "site": "v042-huveaune-boss-01",
+          "rank": "normal",
+          "type": "raider",
+          "alive": true,
+          "hp": 85,
+          "pos": [
+            -3127.529784611594,
+            0,
+            -398.5794892797379
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-boss-01:outside:6",
+          "site": "v042-huveaune-boss-01",
+          "rank": "normal",
+          "type": "molerat",
+          "alive": true,
+          "hp": 52,
+          "pos": [
+            -3126.4559835600235,
+            0,
+            -391.9833967533448
+          ]
+        }
+      ]
+    },
+    {
+      "name": "boss régional vaincu",
+      "ok": true,
+      "detail": {
+        "count": 7,
+        "cleared": true
+      }
+    },
+    {
+      "name": "région mémorise le boss",
+      "ok": true,
+      "detail": {
+        "discovered": 31,
+        "cleared": 2,
+        "boss": true
+      }
+    },
+    {
+      "name": "entrée d’abri instanciée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "entrée dans l’abri",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "instance visitable chargée",
+      "ok": true,
+      "detail": {
+        "id": "v042_expedition",
+        "geo": false,
+        "draws": 62,
+        "colliders": 12,
+        "interactables": 3,
+        "npcs": [],
+        "enemies": [
+          {
+            "id": "v042:v042-huveaune-shelter-01:inside:0",
+            "site": "v042-huveaune-shelter-01",
+            "rank": "normal",
+            "type": "molerat",
+            "alive": true,
+            "hp": 44,
+            "pos": [
+              5.963736587740181,
+              0,
+              -3.341330194976951
+            ]
+          },
+          {
+            "id": "v042:v042-huveaune-shelter-01:inside:1",
+            "site": "v042-huveaune-shelter-01",
+            "rank": "normal",
+            "type": "giantRat",
+            "alive": true,
+            "hp": 55,
+            "pos": [
+              -0.8123594261950938,
+              0,
+              3.355275124879557
+            ]
+          },
+          {
+            "id": "v042:v042-huveaune-shelter-01:inside:2",
+            "site": "v042-huveaune-shelter-01",
+            "rank": "normal",
+            "type": "raider",
+            "alive": true,
+            "hp": 72,
+            "pos": [
+              -8.746813662018933,
+              0,
+              -4.966049047367136
+            ]
+          },
+          {
+            "id": "v042:v042-huveaune-shelter-01:inside:3",
+            "site": "v042-huveaune-shelter-01",
+            "rank": "normal",
+            "type": "molerat",
+            "alive": true,
+            "hp": 44,
+            "pos": [
+              1.1197386685391844,
+              0,
+              -14.138352199158307
+            ]
+          }
+        ],
+        "subzones": [],
+        "allSubzones": [
+          {
+            "id": "entry",
+            "name": "Sas d’entrée",
+            "pos": [
+              0,
+              0,
+              44
+            ]
+          },
+          {
+            "id": "west1",
+            "name": "Aile occidentale I",
+            "pos": [
+              -24,
+              0,
+              24
+            ]
+          },
+          {
+            "id": "east1",
+            "name": "Aile orientale I",
+            "pos": [
+              24,
+              0,
+              4
+            ]
+          },
+          {
+            "id": "west2",
+            "name": "Aile occidentale II",
+            "pos": [
+              -24,
+              0,
+              -16
+            ]
+          },
+          {
+            "id": "east2",
+            "name": "Aile orientale II",
+            "pos": [
+              24,
+              0,
+              -36
+            ]
+          },
+          {
+            "id": "core",
+            "name": "Noyau expérimental",
+            "pos": [
+              0,
+              0,
+              -44
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "menaces intérieures conservées",
+      "ok": true,
+      "detail": [
+        {
+          "id": "v042:v042-huveaune-shelter-01:inside:0",
+          "site": "v042-huveaune-shelter-01",
+          "rank": "normal",
+          "type": "molerat",
+          "alive": true,
+          "hp": 44,
+          "pos": [
+            5.963736587740181,
+            0,
+            -3.341330194976951
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-shelter-01:inside:1",
+          "site": "v042-huveaune-shelter-01",
+          "rank": "normal",
+          "type": "giantRat",
+          "alive": true,
+          "hp": 55,
+          "pos": [
+            -0.8123594261950938,
+            0,
+            3.355275124879557
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-shelter-01:inside:2",
+          "site": "v042-huveaune-shelter-01",
+          "rank": "normal",
+          "type": "raider",
+          "alive": true,
+          "hp": 72,
+          "pos": [
+            -8.746813662018933,
+            0,
+            -4.966049047367136
+          ]
+        },
+        {
+          "id": "v042:v042-huveaune-shelter-01:inside:3",
+          "site": "v042-huveaune-shelter-01",
+          "rank": "normal",
+          "type": "molerat",
+          "alive": true,
+          "hp": 44,
+          "pos": [
+            1.1197386685391844,
+            0,
+            -14.138352199158307
+          ]
+        }
+      ]
+    },
+    {
+      "name": "six sous-zones intérieures",
+      "ok": true,
+      "detail": [
+        {
+          "id": "entry",
+          "name": "Sas d’entrée",
+          "pos": [
+            0,
+            0,
+            44
+          ]
+        },
+        {
+          "id": "west1",
+          "name": "Aile occidentale I",
+          "pos": [
+            -24,
+            0,
+            24
+          ]
+        },
+        {
+          "id": "east1",
+          "name": "Aile orientale I",
+          "pos": [
+            24,
+            0,
+            4
+          ]
+        },
+        {
+          "id": "west2",
+          "name": "Aile occidentale II",
+          "pos": [
+            -24,
+            0,
+            -16
+          ]
+        },
+        {
+          "id": "east2",
+          "name": "Aile orientale II",
+          "pos": [
+            24,
+            0,
+            -36
+          ]
+        },
+        {
+          "id": "core",
+          "name": "Noyau expérimental",
+          "pos": [
+            0,
+            0,
+            -44
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ennemis intérieurs neutralisés",
+      "ok": true,
+      "detail": {
+        "count": 4,
+        "cleared": false
+      }
+    },
+    {
+      "name": "noyau récupérable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "abri sécurisé et visité",
+      "ok": true,
+      "detail": {
+        "schema": 1,
+        "discovered": {
+          "v042-huveaune-settlement-01": {
+            "at": "2026-09-19T05:29:28.534Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-boss-01": {
+            "at": "2026-09-19T05:29:28.623Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-shelter-01": {
+            "at": "2026-09-19T05:29:28.628Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-shelter-02": {
+            "at": "2026-09-19T05:29:28.628Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-settlement-02": {
+            "at": "2026-09-19T05:29:28.629Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-settlement-03": {
+            "at": "2026-09-19T05:29:28.629Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-outpost-01": {
+            "at": "2026-09-19T05:29:28.629Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-outpost-02": {
+            "at": "2026-09-19T05:29:28.629Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-outpost-03": {
+            "at": "2026-09-19T05:29:28.630Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-interior-01": {
+            "at": "2026-09-19T05:29:28.630Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-interior-02": {
+            "at": "2026-09-19T05:29:28.630Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-interior-03": {
+            "at": "2026-09-19T05:29:28.630Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-interior-04": {
+            "at": "2026-09-19T05:29:28.631Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-interior-05": {
+            "at": "2026-09-19T05:29:28.631Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-interior-06": {
+            "at": "2026-09-19T05:29:28.631Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-nest-01": {
+            "at": "2026-09-19T05:29:28.631Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-nest-02": {
+            "at": "2026-09-19T05:29:28.632Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-nest-03": {
+            "at": "2026-09-19T05:29:28.632Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-nest-04": {
+            "at": "2026-09-19T05:29:28.632Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-nest-05": {
+            "at": "2026-09-19T05:29:28.632Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-nest-06": {
+            "at": "2026-09-19T05:29:28.632Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-nest-07": {
+            "at": "2026-09-19T05:29:28.632Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-nest-08": {
+            "at": "2026-09-19T05:29:28.633Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-elite-01": {
+            "at": "2026-09-19T05:29:28.633Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-elite-02": {
+            "at": "2026-09-19T05:29:28.633Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-elite-03": {
+            "at": "2026-09-19T05:29:28.633Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-landmark-01": {
+            "at": "2026-09-19T05:29:28.633Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-landmark-02": {
+            "at": "2026-09-19T05:29:28.633Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-landmark-03": {
+            "at": "2026-09-19T05:29:28.634Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-caravan-01": {
+            "at": "2026-09-19T05:29:28.634Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          },
+          "v042-huveaune-caravan-02": {
+            "at": "2026-09-19T05:29:28.634Z",
+            "playTime": 0,
+            "macro": "geo_huveaune"
+          }
+        },
+        "cleared": {
+          "v042-huveaune-elite-01": {
+            "at": "2026-09-19T05:29:28.868Z",
+            "playTime": 0,
+            "kind": "elite"
+          },
+          "v042-huveaune-boss-01": {
+            "at": "2026-09-19T05:29:28.911Z",
+            "playTime": 0,
+            "kind": "boss"
+          },
+          "v042-huveaune-shelter-01": {
+            "at": "2026-09-19T05:29:29.103Z",
+            "playTime": 0,
+            "kind": "shelter"
+          }
+        },
+        "visited": {
+          "v042-huveaune-shelter-01": {
+            "enteredAt": "2026-09-19T05:29:28.965Z",
+            "claimedAt": "2026-09-19T05:29:29.103Z"
+          }
+        },
+        "tracked": "v042-huveaune-boss-01",
+        "activeContract": null,
+        "contracts": {
+          "v042-huveaune-boss-01": {
+            "state": "complete",
+            "giverSite": "v042-huveaune-settlement-01",
+            "acceptedAt": "2026-09-19T05:29:28.623Z",
+            "completedAt": "2026-09-19T05:29:28.911Z"
+          }
+        },
+        "siteKills": {
+          "v042-huveaune-elite-01": 5,
+          "v042-huveaune-boss-01": 7,
+          "v042-huveaune-shelter-01": 4
+        },
+        "eliteKills": {
+          "v042-huveaune-elite-01": true
+        },
+        "bossKills": {
+          "v042-huveaune-boss-01": true
+        },
+        "regional": {
+          "geo_huveaune": {
+            "discovered": 31,
+            "cleared": 3,
+            "boss": true
+          }
+        },
+        "activeInterior": "v042-huveaune-shelter-01",
+        "returnPoint": {
+          "macro": "geo_huveaune",
+          "pos": [
+            -5185.671476041898,
+            1.65,
+            1.964568736962974
+          ],
+          "yaw": 0,
+          "site": "v042-huveaune-shelter-01"
+        },
+        "discoveries": 31,
+        "clears": 3,
+        "filter": "all",
+        "lastSite": null,
+        "lastUpdate": "2026-09-19T05:29:28.953Z"
+      }
+    },
+    {
+      "name": "reset efface la progression active",
+      "ok": true,
+      "detail": {
+        "version": "0.42.0",
+        "meta": {
+          "version": "0.42.0",
+          "seed": "fallout-mistral-v042",
+          "siteCount": 248,
+          "macroCount": 8,
+          "counts": {
+            "shelter": 16,
+            "settlement": 24,
+            "outpost": 24,
+            "interior": 48,
+            "nest": 64,
+            "elite": 24,
+            "boss": 8,
+            "landmark": 24,
+            "caravan": 16
+          },
+          "visitable": 64,
+          "hostileSites": 96,
+          "npcSlots": 200,
+          "enemySlots": 720,
+          "macroCounts": {
+            "geo_marseille": 31,
+            "geo_huveaune": 31,
+            "geo_garlaban": 31,
+            "geo_calanques": 31,
+            "geo_laciotat": 31,
+            "geo_frioul": 31,
+            "geo_etoile": 31,
+            "geo_saintebaume": 31
+          },
+          "generatedWith": "tools/build_fallout_layer_v042.py",
+          "validation": {
+            "ok": true,
+            "errors": []
+          }
+        },
+        "active": 0,
+        "nearest": null,
+        "discovered": 0,
+        "cleared": 0,
+        "tracked": null,
+        "instance": null
+      }
+    },
+    {
+      "name": "restauration conserve sécurisations",
+      "ok": true,
+      "detail": {
+        "version": "0.42.0",
+        "meta": {
+          "version": "0.42.0",
+          "seed": "fallout-mistral-v042",
+          "siteCount": 248,
+          "macroCount": 8,
+          "counts": {
+            "shelter": 16,
+            "settlement": 24,
+            "outpost": 24,
+            "interior": 48,
+            "nest": 64,
+            "elite": 24,
+            "boss": 8,
+            "landmark": 24,
+            "caravan": 16
+          },
+          "visitable": 64,
+          "hostileSites": 96,
+          "npcSlots": 200,
+          "enemySlots": 720,
+          "macroCounts": {
+            "geo_marseille": 31,
+            "geo_huveaune": 31,
+            "geo_garlaban": 31,
+            "geo_calanques": 31,
+            "geo_laciotat": 31,
+            "geo_frioul": 31,
+            "geo_etoile": 31,
+            "geo_saintebaume": 31
+          },
+          "generatedWith": "tools/build_fallout_layer_v042.py",
+          "validation": {
+            "ok": true,
+            "errors": []
+          }
+        },
+        "active": 0,
+        "nearest": null,
+        "discovered": 31,
+        "cleared": 3,
+        "tracked": "v042-huveaune-boss-01",
+        "instance": "v042-huveaune-shelter-01"
+      }
+    },
+    {
+      "name": "restauration conserve le repère",
+      "ok": true,
+      "detail": {
+        "version": "0.42.0",
+        "meta": {
+          "version": "0.42.0",
+          "seed": "fallout-mistral-v042",
+          "siteCount": 248,
+          "macroCount": 8,
+          "counts": {
+            "shelter": 16,
+            "settlement": 24,
+            "outpost": 24,
+            "interior": 48,
+            "nest": 64,
+            "elite": 24,
+            "boss": 8,
+            "landmark": 24,
+            "caravan": 16
+          },
+          "visitable": 64,
+          "hostileSites": 96,
+          "npcSlots": 200,
+          "enemySlots": 720,
+          "macroCounts": {
+            "geo_marseille": 31,
+            "geo_huveaune": 31,
+            "geo_garlaban": 31,
+            "geo_calanques": 31,
+            "geo_laciotat": 31,
+            "geo_frioul": 31,
+            "geo_etoile": 31,
+            "geo_saintebaume": 31
+          },
+          "generatedWith": "tools/build_fallout_layer_v042.py",
+          "validation": {
+            "ok": true,
+            "errors": []
+          }
+        },
+        "active": 0,
+        "nearest": null,
+        "discovered": 31,
+        "cleared": 3,
+        "tracked": "v042-huveaune-boss-01",
+        "instance": "v042-huveaune-shelter-01"
+      }
+    },
+    {
+      "name": "carte mobile défilable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "Exact v0.42 HTML in Chromium software. Remote map services deliberately blocked. Deterministic catalog, proximity streaming, settlements, NPCs, contracts, elite/boss sites, visitable shelter, persistence and mobile map are exercised."
+}

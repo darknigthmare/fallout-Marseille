@@ -1,0 +1,47 @@
+{
+  "html_sha256": "fbcf904f6259751e8d9bf2102f85a196d81eb17d782f070e386b45eeadb19466",
+  "errors": [],
+  "scope": "Exact v0.39 HTML. Coverage plan uses verified cloud metadata. Browser terrain render is an explicitly labelled controlled fixture, not a geographic screenshot of Marseille.",
+  "shots": [
+    {
+      "file": "v039_01_plan_relief.png",
+      "title": "Huit grilles RGE ALTI",
+      "note": "Emprises, extrema et couverture mesurée des huit macro-régions."
+    },
+    {
+      "file": "v039_02_menu.png",
+      "title": "Menu v0.39",
+      "note": "Le dossier de production annonce le relief officiel 8/8 sans prétendre intégrer la résolution native complète."
+    },
+    {
+      "file": "v039_03_statut.png",
+      "title": "État cartographique",
+      "note": "Vectoriel 5 884/5 884, relief 8/8, mesures et NoData comptés séparément."
+    },
+    {
+      "file": "v039_04_maillage_fixture.png",
+      "title": "Maillage terrain — fixture QA",
+      "note": "Relief synthétique contrôlé servant uniquement à vérifier le maillage et les cellules NoData. Ce n’est pas Marseille."
+    },
+    {
+      "file": "v039_05_pip_relief.png",
+      "title": "Pip-Boy — Relief IGN",
+      "note": "Huit régions, extrema, mesures, NoData et chaîne pack → IndexedDB → cache privé."
+    },
+    {
+      "file": "v039_06_pip_couverture.png",
+      "title": "Pip-Boy — Couverture",
+      "note": "Le vectoriel complet et le relief 8/8 sont visibles sans masquer les audits restant à faire."
+    },
+    {
+      "file": "v039_07_nodata_fixture.png",
+      "title": "NoData — fixture QA",
+      "note": "Le coin sans donnée reste au plan de référence ; aucune altitude IGN n’y est inventée."
+    },
+    {
+      "file": "v039_08_mobile_relief.png",
+      "title": "Relief en portrait",
+      "note": "Lecture des huit régions et des compteurs dans une fenêtre mobile simulée."
+    }
+  ]
+}

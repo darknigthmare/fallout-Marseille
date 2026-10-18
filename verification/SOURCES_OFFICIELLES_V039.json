@@ -1,0 +1,57 @@
+{
+  "version": "0.39.0",
+  "verifiedAt": "2026-09-19T02:34:18Z",
+  "terrain": {
+    "provider": "IGN / Géoplateforme",
+    "service": "API Altimétrie",
+    "endpoint": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+    "resource": "ign_rge_alti_wld",
+    "title": "Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes)",
+    "license": "Licence Ouverte 2.0",
+    "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+    "requestLimitDocumented": 5000,
+    "grid": {
+      "width": 161,
+      "height": 161,
+      "regions": 8,
+      "samples": 207368
+    },
+    "sampling": "Regular WGS84 sample grids; not claimed as native full-resolution RGE ALTI raster.",
+    "noData": "null, non-finite, <= -100 m and >= 9000 m are preserved as NoData by the final relay and client.",
+    "sampleVerification": {
+      "status": 200,
+      "points": [
+        {
+          "lat": 43.3,
+          "lon": 5.37,
+          "elevation": 20.71
+        },
+        {
+          "lat": 43.18,
+          "lon": 5.56,
+          "elevation": -0.3
+        },
+        {
+          "lat": 43.1741,
+          "lon": 5.608,
+          "elevation": 0.0
+        }
+      ],
+      "accuracy": "Variable suivant la source de mesure"
+    }
+  },
+  "vector": {
+    "base": {
+      "provider": "OpenStreetMap / data.gouv.fr vector tiles",
+      "license": "ODbL",
+      "coordinates": 367
+    },
+    "cadastre": {
+      "provider": "Cadastre Etalab / DGFiP",
+      "license": "Licence Ouverte 2.0",
+      "coordinates": 5517,
+      "pbf": 4190,
+      "officialEmpty": 1327
+    }
+  }
+}

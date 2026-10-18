@@ -1,0 +1,39 @@
+{
+  "version": "0.49.0",
+  "baseVersion": "0.48.0",
+  "baseArchive": "FALLOUT_MISTRAL_v0.48_PROJET_COMPLET.zip",
+  "baseBytes": 116973279,
+  "baseSha256": "7dc3e06c28efdca45e56fe17d3b7233745a6bf06a4ceb6c9c83f8451dbc18f73",
+  "baseRecoveredInThisTurn": true,
+  "v044ArchiveRecovered": false,
+  "catalogue248Unchanged": true,
+  "catalogueSha256": "fa02b2b6eaf85abef39983c0605d4fd8bab5983fa6f7e367d2589c28d079b1b8",
+  "v046ModulesUnchanged": true,
+  "v047ModulesUnchanged": true,
+  "v048ModulesUnchanged": true,
+  "baseFilesRetainedUnchanged": 1075,
+  "baseFilesMissing": [],
+  "baseFilesModified": [
+    "LANCER_JEU.bat",
+    "LANCER_JEU.sh",
+    "README_FR.md",
+    "START_HERE.txt",
+    "docs/RAPPORT_QA.md",
+    "docs/STATUT_PRODUCTION.md",
+    "index.html",
+    "manifest.webmanifest",
+    "package.json",
+    "src/game.js",
+    "sw.js",
+    "tools/build_single.py",
+    "tools/serve_game.py"
+  ],
+  "newModules": [
+    "src/v049/00_encounters.js",
+    "src/v049/01_persistence.js",
+    "src/v049/02_bodies_lifecycle.js",
+    "src/v049/03_interface.js",
+    "src/v049/style.css"
+  ],
+  "note": "Reprise de la v0.48 fournie. Les artefacts v0.48 sont conservés sous history/v0.48_generated. Le lore reconstruit des versions v0.46–v0.48 est conservé, sans revendiquer la récupération de la v0.44 originale."
+}

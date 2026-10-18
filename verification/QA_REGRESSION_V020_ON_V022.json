@@ -1,0 +1,1081 @@
+{
+  "version": "0.22.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "scope": {
+    "browser": "Chromium Linux headless / SoftwareRenderer",
+    "load": "exact HTML via set_content; file navigation blocked by unchanged administrator policy",
+    "storage": "initial actual refusal tested, then explicit in-memory adapter; restart persistence not certified",
+    "graphics": "software renderer; no hardware GPU or physical mobile certification",
+    "campaign": "86 historical scene loads plus targeted new interventions, not a full campaign traversal",
+    "geography": "no official tiles or DEM acquired"
+  },
+  "total": 157,
+  "passed": 157,
+  "failed": 0,
+  "errors": [],
+  "results": [
+    {
+      "ok": true,
+      "name": "Version et modules initialisés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Titre exact de la build",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pas de prétendue acquisition cartographique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "20 recettes : 18 conservées et 2 soins supplémentaires",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "3 interventions distinctes enregistrées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Refus réel du stockage opaque détecté, sans succès fictif",
+      "detail": {
+        "error": "Failed to read the 'localStorage' property from 'Window': Access is denied for this document.",
+        "session": "campaign",
+        "key": "fallout_mistral_save_v030"
+      }
+    },
+    {
+      "ok": true,
+      "name": "Écriture vérifiée via adaptateur de stockage contrôlé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : construction du bon intérieur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : décor et collisions présents",
+      "detail": {
+        "draws": 457,
+        "colliders": 28
+      }
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : cinq espaces de fonction différente",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : tous les postes atteignables par le graphe local",
+      "detail": [
+        {
+          "id": "relay_vent:door",
+          "nodes": 19
+        },
+        {
+          "id": "relay_vent:contact",
+          "nodes": 4
+        },
+        {
+          "id": "relay_vent:terminal",
+          "nodes": 8
+        },
+        {
+          "id": "relay_vent:part",
+          "nodes": 26
+        },
+        {
+          "id": "relay_vent:isolate",
+          "nodes": 24
+        },
+        {
+          "id": "relay_vent:finish",
+          "nodes": 26
+        },
+        {
+          "id": "relay_vent:tape",
+          "nodes": 18
+        },
+        {
+          "id": "relay_vent:station",
+          "nodes": 4
+        },
+        {
+          "id": "relay_vent:exit",
+          "nodes": 3
+        },
+        {
+          "id": "v026:relay_vent|salvage",
+          "nodes": 12
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : apparition hors collision",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : récompense impossible à distance et avant étapes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : acceptation par dialogue réel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : consignation exige un diagnostic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : diagnostic lu sur place",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : composant récupéré sur place",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : composant non duplicable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : coupure du circuit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : issue publique et récompense",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : conséquence persistante enregistrée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : montant de capsules exact",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : récompense non répétable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : changement de scène visible après restauration",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : construction du bon intérieur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : décor et collisions présents",
+      "detail": {
+        "draws": 450,
+        "colliders": 24
+      }
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : cinq espaces de fonction différente",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : tous les postes atteignables par le graphe local",
+      "detail": [
+        {
+          "id": "relay_cold:door",
+          "nodes": 9
+        },
+        {
+          "id": "relay_cold:contact",
+          "nodes": 4
+        },
+        {
+          "id": "relay_cold:terminal",
+          "nodes": 9
+        },
+        {
+          "id": "relay_cold:part",
+          "nodes": 28
+        },
+        {
+          "id": "relay_cold:isolate",
+          "nodes": 21
+        },
+        {
+          "id": "relay_cold:finish",
+          "nodes": 22
+        },
+        {
+          "id": "relay_cold:tape",
+          "nodes": 13
+        },
+        {
+          "id": "relay_cold:station",
+          "nodes": 4
+        },
+        {
+          "id": "relay_cold:exit",
+          "nodes": 3
+        },
+        {
+          "id": "v026:relay_cold|salvage",
+          "nodes": 9
+        },
+        {
+          "id": "v028:medic",
+          "nodes": 4
+        },
+        {
+          "id": "v028:switch",
+          "nodes": 25
+        },
+        {
+          "id": "v028:game",
+          "nodes": 7
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : apparition hors collision",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : récompense impossible à distance et avant étapes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : acceptation par dialogue réel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : consignation exige un diagnostic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : diagnostic lu sur place",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : composant récupéré sur place",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : composant non duplicable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : coupure du circuit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : issue publique et récompense",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : conséquence persistante enregistrée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : montant de capsules exact",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : récompense non répétable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : changement de scène visible après restauration",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : construction du bon intérieur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : décor et collisions présents",
+      "detail": {
+        "draws": 557,
+        "colliders": 25
+      }
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : cinq espaces de fonction différente",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : tous les postes atteignables par le graphe local",
+      "detail": [
+        {
+          "id": "relay_brake:door",
+          "nodes": 42
+        },
+        {
+          "id": "relay_brake:contact",
+          "nodes": 4
+        },
+        {
+          "id": "relay_brake:terminal",
+          "nodes": 7
+        },
+        {
+          "id": "relay_brake:part",
+          "nodes": 25
+        },
+        {
+          "id": "relay_brake:isolate",
+          "nodes": 31
+        },
+        {
+          "id": "relay_brake:finish",
+          "nodes": 30
+        },
+        {
+          "id": "relay_brake:tape",
+          "nodes": 14
+        },
+        {
+          "id": "relay_brake:station",
+          "nodes": 4
+        },
+        {
+          "id": "relay_brake:exit",
+          "nodes": 3
+        },
+        {
+          "id": "v026:relay_brake|salvage",
+          "nodes": 7
+        },
+        {
+          "id": "v030:plan",
+          "nodes": 9
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : apparition hors collision",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : récompense impossible à distance et avant étapes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : acceptation par dialogue réel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : consignation exige un diagnostic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : diagnostic lu sur place",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : composant récupéré sur place",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : composant non duplicable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : coupure du circuit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Palan : consignation neutralise le Protectron sans tir",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : issue publique et récompense",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : conséquence persistante enregistrée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : montant de capsules exact",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : récompense non répétable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : changement de scène visible après restauration",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : résolution alternative atelier",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : résolution alternative recover",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : résolution alternative atelier",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : résolution alternative recover",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : résolution alternative atelier",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : résolution alternative recover",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aubagne : entrée de relève physique dans le quartier historique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Entrée dans la relève via le portail proche",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Entrée charge effectivement l’intérieur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Point de retour conservé dans la sauvegarde",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sortie physique de l’intérieur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Position et orientation parent restaurées",
+      "detail": {
+        "before": [
+          6,
+          1.65,
+          97.6
+        ],
+        "after": [
+          6,
+          1.65,
+          97.6
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "Porte manipulable à proximité",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ouverture persistante",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Porte refuse de se fermer sur le joueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Atelier interdit à distance sans débiter les ressources",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Pansement renforcé",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Filtrer l’eau",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Préparer deux rations",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Antibiotiques conditionnés",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Solution décontaminante",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Cartouche céramique",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Usiner des pièces",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Récupérer un circuit",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Plaque de réparation",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Balise de détresse",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Mastic marin",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Gel coupe-feu",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Assembler 10 munitions 10 mm",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Assembler 6 cartouches",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Reconditionner 8 cellules",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Usiner 12 rivets",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Fabriquer 3 harpons",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Préparer du carburant marin",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Attelle des ateliers",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Recette réelle : Trousse de traumatologie",
+      "detail": {
+        "costs": true,
+        "produced": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Fabrication ne génère pas de boucle d’XP",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ressources insuffisantes : aucun débit partiel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Recette inconnue rejetée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Dépôt dans la réserve près de la halte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Reprise de réserve sans duplication",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Objet de quête exclu de la réserve",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Repos d’une heure à la halte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Repos : coût, soin et radiations inchangées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Repos impossible à distance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "T ouvre le panneau de terrain",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Inventaire équipé accessible par clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Filtre d’équipement réellement appliqué",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Échap ferme le champ de recherche et le panneau",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "M ouvre le plan local",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Plan : destination cliquée traitée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Clic du plan correctement reprojeté aux coordonnées locales",
+      "detail": [
+        -10.03698979591837,
+        1.65,
+        -7.046059312773972
+      ]
+    },
+    {
+      "ok": true,
+      "name": "Clavier AZERTY : la lettre M ouvre aussi le plan",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cadence : deux appels immédiats ne consomment qu’un tir",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cadence : le tir suivant est autorisé après délai",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "R lance le rechargement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Changer d’arme annule le rechargement en cours",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancienne arme non rechargée par le minuteur annulé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rechargement fini : chargeur du pistolet correctement rempli",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "VATS : torse mis en file avec pistol10",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "VATS utilise les dégâts de pistol10 (pas une valeur fixe)",
+      "detail": {
+        "expected": 19.8,
+        "actual": 19.799999999999955
+      }
+    },
+    {
+      "ok": true,
+      "name": "VATS débite une seule action réellement émise : pistol10",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "VATS : torse mis en file avec pipeCarbine",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "VATS utilise les dégâts de pipeCarbine (pas une valeur fixe)",
+      "detail": {
+        "expected": 26.8,
+        "actual": 26.799999999999955
+      }
+    },
+    {
+      "ok": true,
+      "name": "VATS débite une seule action réellement émise : pipeCarbine",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Obstacle après mise en file : action annulée sans PA ni munition",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Changement de scène annule la file VATS",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "VATS ne sélectionne pas une cible derrière un mur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Arme automatique : maintien du tir et cadence effectifs",
+      "detail": {
+        "id": "maritimeSMG",
+        "rounds": 9
+      }
+    },
+    {
+      "ok": true,
+      "name": "Relâchement du tir : plus aucune émission",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "L’ouverture d’une interface suspend le tir maintenu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mireille ne tire pas à travers un mur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ordre de ne pas engager respecté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Riposte défensive sur une menace visible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Roux ne mord pas une cible distante",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Roux mord une cible atteinte au contact",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le déplacement clavier s’arrête devant la console solide",
+      "detail": {
+        "from": [
+          0,
+          1.65,
+          12
+        ],
+        "to": [
+          0,
+          1.65,
+          8.742374999999997
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "Contournement réel au clavier autour de la console",
+      "detail": [
+        -1.9162499999999998,
+        1.65,
+        4.909874999999994
+      ]
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : parcours complet automatisé par le contrôleur de mouvement jusqu’au magasin",
+      "detail": {
+        "ok": true,
+        "pos": [
+          -9.999999971832775,
+          1.65,
+          -7.564823238459368
+        ],
+        "steps": 135
+      }
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : parcours complet automatisé par le contrôleur de mouvement jusqu’au magasin",
+      "detail": {
+        "ok": true,
+        "pos": [
+          -10.650194757846117,
+          1.65,
+          -6.937507159026118
+        ],
+        "steps": 165
+      }
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : parcours complet automatisé par le contrôleur de mouvement jusqu’au magasin",
+      "detail": {
+        "ok": true,
+        "pos": [
+          -11.94670219380699,
+          1.65,
+          -9.681463866608318
+        ],
+        "steps": 146
+      }
+    },
+    {
+      "ok": true,
+      "name": "Sauvegarde contrôlée du nouvel état",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Export contenant le nouvel intérieur accepté par le validateur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La mort ne remplace pas la dernière sauvegarde vivante",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration conserve champs inconnus et nouveau suivi",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Campagne et bac à sable restent séparés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Holodisque original chargé depuis le nouvel intérieur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Intervenante et bande correctes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Changement de segment sous-titré",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Chargement structurel des 86 instances historiques",
+      "detail": {
+        "count": 86,
+        "failures": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "Mobile 390×844 : panneau interventions reste dans la fenêtre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mobile 390×844 : panneau atelier reste dans la fenêtre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mobile 390×844 : panneau inventaire reste dans la fenêtre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mobile 390×844 : panneau compagnons reste dans la fenêtre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mobile 390×844 : panneau halte reste dans la fenêtre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mobile 390×844 : panneau plan reste dans la fenêtre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucun débordement horizontal de la page mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript dans la suite ciblée",
+      "detail": []
+    }
+  ]
+}

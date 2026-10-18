@@ -1,0 +1,17 @@
+[
+  {
+    "url": "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/13/13005/cadastre-13005-batiments.json.gz",
+    "error": "HTTPSConnectionPool(host='cadastre.data.gouv.fr', port=443): Max retries exceeded with url: /data/etalab-cadastre/latest/geojson/communes/13/13005/cadastre-13005-batiments.json.gz (Caused by NameResolutionError(\"HTTPSConnection(host='cadastre.data.gouv.fr', port=443): Failed to resolve 'cadastre.data.gouv.fr' ([Errno -3] Temporary failure in name resolution)\"))",
+    "seconds": 0.0
+  },
+  {
+    "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities",
+    "error": "HTTPSConnectionPool(host='data.geopf.fr', port=443): Max retries exceeded with url: /wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities (Caused by NameResolutionError(\"HTTPSConnection(host='data.geopf.fr', port=443): Failed to resolve 'data.geopf.fr' ([Errno -3] Temporary failure in name resolution)\"))",
+    "seconds": 5.01
+  },
+  {
+    "url": "https://overpass-api.de/api/status",
+    "error": "HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/status (Caused by NameResolutionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to resolve 'overpass-api.de' ([Errno -3] Temporary failure in name resolution)\"))",
+    "seconds": 0.0
+  }
+]

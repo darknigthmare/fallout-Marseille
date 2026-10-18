@@ -1,0 +1,352 @@
+{
+  "version": "0.36.0",
+  "html_sha256": "6075228bc948f86424ee19f63c5cec8a72fb98061e6d13e9d193607863945d9a",
+  "passed": 21,
+  "failed": 0,
+  "total": 21,
+  "errors": [],
+  "checks": [
+    {
+      "name": "manifest 367 tuiles base",
+      "ok": true,
+      "detail": {
+        "base": 367,
+        "cadastre": 5517,
+        "total": 5884
+      }
+    },
+    {
+      "name": "manifest 5517 tuiles cadastre",
+      "ok": true,
+      "detail": {
+        "base": 367,
+        "cadastre": 5517,
+        "total": 5884
+      }
+    },
+    {
+      "name": "manifest total 5884",
+      "ok": true,
+      "detail": {
+        "base": 367,
+        "cadastre": 5517,
+        "total": 5884
+      }
+    },
+    {
+      "name": "huit macro-régions au manifeste",
+      "ok": true,
+      "detail": [
+        "geo_marseille",
+        "geo_huveaune",
+        "geo_garlaban",
+        "geo_calanques",
+        "geo_laciotat",
+        "geo_frioul",
+        "geo_etoile",
+        "geo_saintebaume"
+      ]
+    },
+    {
+      "name": "aucune tuile marquée installée artificiellement",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "fixtures MVT valides",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "runtime v0.36 chargé",
+      "ok": true,
+      "detail": {
+        "version": "0.36.0",
+        "plan": {
+          "version": "0.36.0",
+          "base": 367,
+          "cadastre": 5517,
+          "total": 5884,
+          "terrainExpected": 8,
+          "terrainBundled": 0,
+          "bounds": {
+            "south": 43.125,
+            "west": 5.255,
+            "north": 43.42,
+            "east": 5.755
+          }
+        },
+        "relay": {
+          "state": "ready",
+          "checkedAt": "2026-09-19T00:38:36.931Z",
+          "checks": [
+            {
+              "name": "manifest",
+              "ok": true,
+              "total": 5884
+            }
+          ],
+          "error": null
+        },
+        "runtime": {
+          "loaded": 0,
+          "pending": 0,
+          "errors": 0,
+          "source": "none",
+          "status": "CARTE VECTORIELLE · EN ATTENTE"
+        },
+        "session": {
+          "online": 0,
+          "cache": 0,
+          "macro": null,
+          "latLon": null
+        },
+        "terrain": {
+          "bundled": 0,
+          "expected": 8,
+          "status": "Aucun MNT numérique officiel chargé"
+        }
+      }
+    },
+    {
+      "name": "huit macro-régions dans le moteur",
+      "ok": true,
+      "detail": [
+        "geo_marseille",
+        "geo_huveaune",
+        "geo_garlaban",
+        "geo_calanques",
+        "geo_laciotat",
+        "geo_frioul",
+        "geo_etoile",
+        "geo_saintebaume"
+      ]
+    },
+    {
+      "name": "vérification manifeste relayée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "état relais prêt",
+      "ok": true,
+      "detail": {
+        "state": "ready",
+        "checkedAt": "2026-09-19T00:38:40.728Z",
+        "checks": [
+          {
+            "name": "manifest",
+            "ok": true,
+            "total": 5884
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "name": "deux tuiles passées par le pipeline MVT",
+      "ok": true,
+      "detail": {
+        "version": "0.36.0",
+        "plan": {
+          "version": "0.36.0",
+          "base": 367,
+          "cadastre": 5517,
+          "total": 5884,
+          "terrainExpected": 8,
+          "terrainBundled": 0,
+          "bounds": {
+            "south": 43.125,
+            "west": 5.255,
+            "north": 43.42,
+            "east": 5.755
+          }
+        },
+        "relay": {
+          "state": "ready",
+          "checkedAt": "2026-09-19T00:38:40.728Z",
+          "checks": [
+            {
+              "name": "manifest",
+              "ok": true,
+              "total": 5884
+            }
+          ],
+          "error": null
+        },
+        "runtime": {
+          "loaded": 2,
+          "pending": 0,
+          "errors": 0,
+          "source": "relay",
+          "status": "DONNÉES VECTORIELLES DISTANTES"
+        },
+        "session": {
+          "online": 2,
+          "cache": 0,
+          "macro": "geo_marseille",
+          "latLon": [
+            43.29899999999999,
+            5.3950000000000005
+          ]
+        },
+        "terrain": {
+          "bundled": 0,
+          "expected": 8,
+          "status": "MNT non chargé · Failed to execute 'fetch' on 'Window': Failed to parse URL from data/map_pack/terrain/geo_marseille."
+        }
+      }
+    },
+    {
+      "name": "routes/polygones/bâtiments rendus",
+      "ok": true,
+      "detail": {
+        "geometry": 25,
+        "status": {
+          "version": "0.36.0",
+          "plan": {
+            "version": "0.36.0",
+            "base": 367,
+            "cadastre": 5517,
+            "total": 5884,
+            "terrainExpected": 8,
+            "terrainBundled": 0,
+            "bounds": {
+              "south": 43.125,
+              "west": 5.255,
+              "north": 43.42,
+              "east": 5.755
+            }
+          },
+          "relay": {
+            "state": "ready",
+            "checkedAt": "2026-09-19T00:38:40.728Z",
+            "checks": [
+              {
+                "name": "manifest",
+                "ok": true,
+                "total": 5884
+              }
+            ],
+            "error": null
+          },
+          "runtime": {
+            "loaded": 2,
+            "pending": 0,
+            "errors": 0,
+            "source": "relay",
+            "status": "DONNÉES VECTORIELLES DISTANTES"
+          },
+          "session": {
+            "online": 2,
+            "cache": 0,
+            "macro": "geo_marseille",
+            "latLon": [
+              43.29899999999999,
+              5.3950000000000005
+            ]
+          },
+          "terrain": {
+            "bundled": 0,
+            "expected": 8,
+            "status": "MNT non chargé · Failed to execute 'fetch' on 'Window': Failed to parse URL from data/map_pack/terrain/geo_marseille."
+          }
+        }
+      }
+    },
+    {
+      "name": "source de streaming officielle/relay",
+      "ok": true,
+      "detail": "relay"
+    },
+    {
+      "name": "Pip-Boy affiche 5 884",
+      "ok": true,
+      "detail": "COUVERTURE RÉELLE v0.36\n\nLe plan adresse 5 884 tuiles réelles : 367 tuiles OpenStreetMap à z14 et 5 517 tuiles cadastrales à z16.\n\nMARSEILLE\n\n43.220 / 5.285 / 43.340 / 5.510\n\n2 TUILES CHARGÉES DANS LA SCÈNE\nHUVEAUNE\n\n43.245 / 5.430 / 43.335 / 5.640\n\nSTREAMING À L’ENTRÉE\nGARLABAN\n\n43.245 / 5.485 / 43.390 / 5.690\n\nSTREAMING À L’ENTRÉE\nCALANQUES\n\n43.145 / 5.330 / 43.285 / 5.650\n\nSTREAMING À L’ENTRÉE\nLA CIOTAT\n\n43.125 / 5.540 / 43.255 / 5.735\n\nSTREAMING À L’ENTRÉE\nARCHIPEL DU FRIOUL\n\n43.245 / 5.255 / 43.315 / 5.350\n\nSTREAMING À L’ENTRÉE\nÉTOILE & ALLAUCH\n\n43.300 / 5.435 / 43.420 / 5.600\n\nSTREAMING À L’ENTRÉE\nSAINTE-BAUME\n\n43.215 / 5.565 / 43.410 / 5.755\n\nSTREAMING À L’ENTRÉE\nPREUVES ET LIMITES\n\nManifeste distant : vérifié. Terrain numérique officiel : 0/8. Une couverture vectorielle complète ne constitue pas une certification du relief.\n\n© OpenStreetMap contributors — ODbL · Cadastre Etalab /"
+    },
+    {
+      "name": "terrain 0/8 signalé",
+      "ok": true,
+      "detail": "COUVERTURE RÉELLE v0.36\n\nLe plan adresse 5 884 tuiles réelles : 367 tuiles OpenStreetMap à z14 et 5 517 tuiles cadastrales à z16.\n\nMARSEILLE\n\n43.220 / 5.285 / 43.340 / 5.510\n\n2 TUILES CHARGÉES DANS LA SCÈNE\nHUVEAUNE\n\n43.245 / 5.430 / 43.335 / 5.640\n\nSTREAMING À L’ENTRÉE\nGARLABAN\n\n43.245 / 5.485 / 43.390 / 5.690\n\nSTREAMING À L’ENTRÉE\nCALANQUES\n\n43.145 / 5.330 / 43.285 / 5.650\n\nSTREAMING À L’ENTRÉE\nLA CIOTAT\n\n43.125 / 5.540 / 43.255 / 5.735\n\nSTREAMING À L’ENTRÉE\nARCHIPEL DU FRIOUL\n\n43.245 / 5.255 / 43.315 / 5.350\n\nSTREAMING À L’ENTRÉE\nÉTOILE & ALLAUCH\n\n43.300 / 5.435 / 43.420 / 5.600\n\nSTREAMING À L’ENTRÉE\nSAINTE-BAUME\n\n43.215 / 5.565 / 43.410 / 5.755\n\nSTREAMING À L’ENTRÉE\nPREUVES ET LIMITES\n\nManifeste distant : vérifié. Terrain numérique officiel : 0/8. Une couverture vectorielle complète ne constitue pas une certification du relief.\n\n© OpenStreetMap contributors — ODbL · Cadastre Etalab /"
+    },
+    {
+      "name": "transfert automatique Marseille→Huveaune",
+      "ok": true,
+      "detail": {
+        "before": [
+          43.290000000000006,
+          5.52
+        ],
+        "after": {
+          "id": "geo_huveaune",
+          "ll": [
+            43.290000000000006,
+            5.52
+          ]
+        }
+      }
+    },
+    {
+      "name": "position WGS84 conservée",
+      "ok": true,
+      "detail": {
+        "id": "geo_huveaune",
+        "ll": [
+          43.290000000000006,
+          5.52
+        ]
+      }
+    },
+    {
+      "name": "source locale + relay + directe",
+      "ok": true,
+      "detail": {
+        "base": {
+          "id": "france-vector",
+          "zoom": 14,
+          "url": "https://openmaptiles.data.gouv.fr/data/france-vector/{z}/{x}/{y}.pbf",
+          "local": "data/map_pack/france-vector/{z}/{x}/{y}.pbf",
+          "directUrl": "https://openmaptiles.data.gouv.fr/data/france-vector/{z}/{x}/{y}.pbf",
+          "relayUrl": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v036/tile/base/{z}/{x}/{y}.pbf"
+        },
+        "cadastre": {
+          "id": "cadastre",
+          "zoom": 16,
+          "url": "https://openmaptiles.data.gouv.fr/data/cadastre/{z}/{x}/{y}.pbf",
+          "local": "data/map_pack/cadastre/{z}/{x}/{y}.pbf",
+          "directUrl": "https://openmaptiles.data.gouv.fr/data/cadastre/{z}/{x}/{y}.pbf",
+          "relayUrl": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v036/tile/cadastre/{z}/{x}/{y}.pbf"
+        }
+      }
+    },
+    {
+      "name": "aucun MNT officiel faussement annoncé",
+      "ok": true,
+      "detail": {
+        "version": "0.36.0",
+        "base": 367,
+        "cadastre": 5517,
+        "total": 5884,
+        "terrainExpected": 8,
+        "terrainBundled": 0,
+        "bounds": {
+          "south": 43.125,
+          "west": 5.255,
+          "north": 43.42,
+          "east": 5.755
+        }
+      }
+    },
+    {
+      "name": "installateur reprenable sélectionne Marseille",
+      "ok": true,
+      "detail": "Sélection : 88 tuiles · source=base · macro=geo_marseille · mode=direct\n"
+    },
+    {
+      "name": "terrain refuse d’inventer des altitudes",
+      "ok": true,
+      "detail": "{\n  \"version\": \"0.36.0\",\n  \"generated\": \"2026-09-19T00:38:45Z\",\n  \"status\": \"waiting-official-numeric-source\",\n  \"macros\": {\n    \"geo_marseille\": [\n      43.22,\n      5.285,\n      43.34,\n      5.51\n    ],\n    \"geo_huveaune\": [\n      43.245,\n      5.43,\n      43.335,\n      5.64\n    ],\n    \"geo_garlaban\": [\n      43.245,\n      5.485,\n      43.39,\n      5.69\n    ],\n    \"geo_calanques\": [\n      43.145,\n      5.33,\n      43.285,\n      5.65\n    ],\n    \"geo_laciotat\": [\n      43.125,\n      5.54,\n      43.255,\n      5.735\n    ],\n    \"geo_frioul\": [\n      43.245,\n      5.255,\n      43.315,\n      5.35\n "
+    }
+  ],
+  "scope": "Exact v0.36 HTML; valid synthetic MVT bytes only for browser pipeline QA. Server-side external verification is documented separately. No official numeric terrain bundled."
+}

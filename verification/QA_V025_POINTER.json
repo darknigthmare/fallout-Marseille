@@ -1,0 +1,188 @@
+{
+  "version": "0.25.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "total": 29,
+  "passed": 29,
+  "failed": 0,
+  "errors": [],
+  "scope": "Exact HTML; synthetic arena; native mouse clicks and touchscreen taps on screen-projected polygon centres, no dispatch_event; no storage success claim",
+  "results": [
+    {
+      "ok": true,
+      "name": "Souris : head est une zone de corps, pas une étiquette",
+      "detail": {
+        "tag": "polygon",
+        "id": "head",
+        "parent": "v025Overlay"
+      }
+    },
+    {
+      "ok": true,
+      "name": "Souris : sélection native de head",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Souris : toucher head ne tire pas",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Souris : arm_r est une zone de corps, pas une étiquette",
+      "detail": {
+        "tag": "polygon",
+        "id": "arm_r",
+        "parent": "v025Overlay"
+      }
+    },
+    {
+      "ok": true,
+      "name": "Souris : sélection native de arm_r",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Souris : toucher arm_r ne tire pas",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Souris : leg_l est une zone de corps, pas une étiquette",
+      "detail": {
+        "tag": "polygon",
+        "id": "leg_l",
+        "parent": "v025Overlay"
+      }
+    },
+    {
+      "ok": true,
+      "name": "Souris : sélection native de leg_l",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Souris : toucher leg_l ne tire pas",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Souris : body est une zone de corps, pas une étiquette",
+      "detail": {
+        "tag": "polygon",
+        "id": "body",
+        "parent": "v025Overlay"
+      }
+    },
+    {
+      "ok": true,
+      "name": "Souris : sélection native de body",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Souris : toucher body ne tire pas",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Souris : ajout séparé du dernier membre visé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Souris : quitter retrouve le jeu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : head est une zone de corps, pas une étiquette",
+      "detail": {
+        "tag": "polygon",
+        "id": "head",
+        "parent": "v025Overlay"
+      }
+    },
+    {
+      "ok": true,
+      "name": "Tactile : sélection native de head",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : toucher head ne tire pas",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : arm_r est une zone de corps, pas une étiquette",
+      "detail": {
+        "tag": "polygon",
+        "id": "arm_r",
+        "parent": "v025Overlay"
+      }
+    },
+    {
+      "ok": true,
+      "name": "Tactile : sélection native de arm_r",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : toucher arm_r ne tire pas",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : leg_l est une zone de corps, pas une étiquette",
+      "detail": {
+        "tag": "polygon",
+        "id": "leg_l",
+        "parent": "v025Overlay"
+      }
+    },
+    {
+      "ok": true,
+      "name": "Tactile : sélection native de leg_l",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : toucher leg_l ne tire pas",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : body est une zone de corps, pas une étiquette",
+      "detail": {
+        "tag": "polygon",
+        "id": "body",
+        "parent": "v025Overlay"
+      }
+    },
+    {
+      "ok": true,
+      "name": "Tactile : sélection native de body",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : toucher body ne tire pas",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : ajout séparé du dernier membre visé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : quitter retrouve le jeu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript",
+      "detail": []
+    }
+  ]
+}

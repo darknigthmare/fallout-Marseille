@@ -1,0 +1,230 @@
+{
+  "version": "0.35.0",
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 37,
+  "failed": 0,
+  "total": 37,
+  "results": [
+    {
+      "ok": true,
+      "name": "Une fraction de seconde en vue produit du soupçon, pas une attaque instantanée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "HUD de soupçon correspond à la perception réelle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Regard soutenu déclenche réellement alerte et danger",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Adversaire de dos à dix mètres ne voit pas à travers son propre dos",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Très proche derrière un adversaire : détection de proximité",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mur entre joueur et adversaire : aucune acquisition visuelle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Debout à quinze mètres dans le cône : soupçon",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accroupi : portée de détection réduite par la règle existante",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Soupçon décroît quand le contact visuel est perdu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Boucle réelle des ennemis ne court-circuite pas le délai de regard",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Boucle réelle termine l’acquisition après observation prolongée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un son transmet une position à inspecter, pas la position du joueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune téléportation au bruit ; état de recherche affiché",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Enquête sonore : déplacement limité par la vitesse",
+      "detail": {
+        "before": [
+          0,
+          0,
+          -2
+        ],
+        "after": [
+          0.9750000000000002,
+          0,
+          -2
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "Le son derrière le mur ne donne pas une vision traversante du joueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fin du délai de recherche : point sonore abandonné",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une cloison réduit la portée auditive au lieu de propager uniformément",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un son assez fort reste audible derrière le même obstacle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rayons et coordonnées invalides ignorés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un ennemi déjà en combat ne vous oublie pas avec un leurre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un automate en veille ne part pas enquêter",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Veille ne déclenche ni acquisition ni attaque",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Menu Pip-Boy : les investigations sont suspendues",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lampe à huit mètres visible : règle de révélation précédente conservée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Éteindre la lampe n’efface pas la dernière alerte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Course au clavier : bruit réellement propagé",
+      "detail": {
+        "kind": "pas",
+        "pos": [
+          0,
+          0,
+          7.4792
+        ],
+        "heard": 1
+      }
+    },
+    {
+      "ok": true,
+      "name": "Déplacement accroupi : pas de bruit de pas artificiel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Carillon activé réellement depuis le contrôleur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Carillon non répétable avant douze secondes actives",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Attendre dans le terminal ne réarme pas le carillon",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Délai de jeu actif écoulé : nouvel essai possible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Boîtier ne déborde pas la largeur 390 px",
+      "detail": {
+        "x": 3.90625,
+        "y": 8.4375,
+        "width": 382.1875,
+        "height": 827.109375
+      }
+    },
+    {
+      "ok": true,
+      "name": "Aucun débordement horizontal du terminal",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cible tactile suffisamment haute : [data-t29=\"word\"]",
+      "detail": {
+        "x": 20.90625,
+        "y": 359.21875,
+        "width": 61.015625,
+        "height": 44
+      }
+    },
+    {
+      "ok": true,
+      "name": "Cible tactile suffisamment haute : [data-t29=\"bracket\"]",
+      "detail": {
+        "x": 20.90625,
+        "y": 792.8125,
+        "width": 111.21875,
+        "height": 42
+      }
+    },
+    {
+      "ok": true,
+      "name": "Menu et journal restent accessibles par défilement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Échap fonctionne après défilement mobile",
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "scope": "Exact HTML via set_content; software Chromium; controlled state/poses disclosed; successful saves via declared memory adapter. Native opaque-origin refusal checked separately. No official geospatial data."
+}

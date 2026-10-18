@@ -1,0 +1,72 @@
+{
+  "version": "0.35.0",
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 6,
+  "failed": 0,
+  "total": 6,
+  "errors": [],
+  "scope": "Static PWA/distribution contract. Live service-worker registration and offline reload were not executable because localhost navigation is blocked in this environment.",
+  "checks": [
+    {
+      "name": "Index installable identique au HTML autonome",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Manifest lié dans le HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Manifest application cohérent",
+      "ok": true,
+      "detail": {
+        "name": "Fallout : Mistral — Relève complète",
+        "short_name": "Mistral",
+        "description": "RPG 3D local non officiel entre Aubagne, Marseille et La Ciotat.",
+        "start_url": "./index.html",
+        "scope": "./",
+        "display": "standalone",
+        "orientation": "any",
+        "background_color": "#0b120d",
+        "theme_color": "#11170f",
+        "icons": [
+          {
+            "src": "icons/mistral-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+          },
+          {
+            "src": "icons/mistral-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Icônes PWA aux dimensions déclarées",
+      "ok": true,
+      "detail": [
+        [
+          192,
+          192
+        ],
+        [
+          512,
+          512
+        ]
+      ]
+    },
+    {
+      "name": "Service worker met en cache le noyau local",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Trois lanceurs application ciblent le serveur local",
+      "ok": true,
+      "detail": null
+    }
+  ]
+}

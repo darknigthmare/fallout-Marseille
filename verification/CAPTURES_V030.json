@@ -1,0 +1,394 @@
+{
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "images": [
+    {
+      "file": "01_menu.png",
+      "title": "Sous la cuirasse",
+      "note": "Menu du HTML exact. Le nouveau départ séparé demande une confirmation et n’attribue aucune armure assistée.",
+      "camera": {},
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "02_baie_assistance.png",
+      "title": "Une baie dans la cour des amarres",
+      "note": "Gantry, établi, châssis, casier et portillon ajoutés au lieu fictif existant. Ce n’est pas une reconstruction cadastrale.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          11,
+          2,
+          38
+        ],
+        "yaw": 0,
+        "pitch": -0.045,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "03_chassis_stationne.png",
+      "title": "Le M-45 avant sa remise en service",
+      "note": "Assemblage 3D original de primitives : plaques, hydraulique, cage et logement de cœur. Les modèles historiques partagent cette base visuelle, pas des modèles extraits de Fallout.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          10,
+          1.75,
+          35.5
+        ],
+        "yaw": 0,
+        "pitch": -0.12,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "04_alba_dialogue.png",
+      "title": "Alba refuse un simple voyant vert",
+      "note": "Dialogue original. L’intervention doit distinguer le porteur, les plaques et l’assistance ; l’essai est réalisable sans cellule neuve.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          5.2,
+          1.65,
+          36.5
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "05_actionneur_etage.png",
+      "title": "Un actionneur à rapporter",
+      "note": "Objet dans la galerie haute du dépôt. Caméra préparée ; montée et descente sont parcourues séparément avec le contrôleur dans la suite narrative.",
+      "camera": {
+        "zone": "transit_depot",
+        "pos": [
+          9.5,
+          4.8500000000000005,
+          -16.9
+        ],
+        "yaw": 0,
+        "pitch": -0.18,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "06_cahier_palan.png",
+      "title": "Le cahier du levage porté",
+      "note": "Note originale posée sur une table dans le Poste du palan 12. La consignation ancienne du palan garde ses propres commandes.",
+      "camera": {
+        "zone": "relay_brake",
+        "pos": [
+          -6,
+          1.65,
+          6.4
+        ],
+        "yaw": 3.141592653589793,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "07_devis_restauration.png",
+      "title": "Des travaux avant de prendre le châssis",
+      "note": "Bilan avant validation. Coût dépendant de Réparation ; aucune guérison, aucun châssis attribué avant la confirmation.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          10,
+          1.65,
+          34.6
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "08_pip_coeur.png",
+      "title": "Charge installée et six plaques",
+      "note": "La batterie d’essai réellement récupérée commence à 65 %. Chaque plaque restaurée commence à 85 %, indépendamment des blessures du personnage.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          6.1,
+          1.65,
+          32.9
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "09_armure_portee.png",
+      "title": "Le châssis porté en troisième personne",
+      "note": "Le vrai personnage porte l’assemblage dans la cour. Pose et caméra préparées ; les déplacements et la consommation sont testés indépendamment. Pas d’animation d’entrée dans une armure physique.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          10,
+          1.65,
+          36.3
+        ],
+        "yaw": 3.141592653589793,
+        "pitch": 0.03,
+        "third": true
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "10_coeur_entame.png",
+      "title": "Une charge qui ne se réinitialise pas",
+      "note": "État de charge préparé à 37,625 % pour illustrer l’éjection exacte. Elle devient un cœur entamé, pas une nouvelle cellule à 100 %. La conservation est testée numériquement.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          6.1,
+          1.65,
+          32.9
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "11_plaque_detruite.png",
+      "title": "Bras gauche détruit, bras droit encore intact",
+      "note": "Pièces endommagées préparées pour la démonstration. Le diagramme représente les plaques, pas les membres blessés du porteur.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          6.1,
+          1.65,
+          32.9
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "12_devis_plaque.png",
+      "title": "Réparation d’une seule pièce",
+      "note": "Prix réel généré à partir de la pièce choisie, avant confirmation. L’établi, la sécurité, le stock et le devis sont revérifiés au clic.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          6.1,
+          1.65,
+          32.9
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "13_plaque_reparee.png",
+      "title": "Le bras est réparé, pas le corps entier",
+      "note": "La confirmation réelle restaure seulement le bras gauche. Les autres plaques et les blessures du joueur ne sont pas réparées.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          6.1,
+          1.65,
+          32.9
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "14_configuration_atelier.png",
+      "title": "Une configuration, pas des bonus empilés",
+      "note": "Trois réglages possibles. Le remplacement consomme son coût sans rembourser le précédent ; pas d’XP de fabrication répétable.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          6.1,
+          1.65,
+          32.9
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "15_ecrans_refractaires.png",
+      "title": "Les écrans réfractaires sont visibles",
+      "note": "Plaques claires sur les épaules de l’assemblage. Le modèle reste procédural ; cette modification a aussi une masse et une résistance au feu dépendant de l’usure.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          10,
+          1.65,
+          36.3
+        ],
+        "yaw": 3.141592653589793,
+        "pitch": 0.03,
+        "third": true
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "16_portillon_ferme.png",
+      "title": "Avant l’essai : le portillon est fermé",
+      "note": "Même caméra que la capture suivante. Le volet possède sa collision, et une manivelle permet de finir même sans charge.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          21,
+          1.75,
+          37.3
+        ],
+        "yaw": 0,
+        "pitch": -0.02,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "17_portillon_ouvert.png",
+      "title": "Après l’essai : passage effectif",
+      "note": "L’essai assisté a débité 2 % et ouvert le passage. Sa traversée est aussi testée au contrôleur ; il ne s’agit pas d’un montage après coup.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          21,
+          1.75,
+          37.3
+        ],
+        "yaw": 0,
+        "pitch": -0.02,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "18_bilan_accord.png",
+      "title": "Choisir ce que prépare l’atelier",
+      "note": "Bilan de l’une des deux conclusions. Les deux gardent le châssis au joueur ; aucune réécriture des anciens circuits, réserves ou dossiers.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          5.2,
+          1.65,
+          36.5
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "19_epilogue.png",
+      "title": "L’essai à vide",
+      "note": "Première des trois scènes textuelles de cette conclusion. Six scènes distinctes sur les deux accords, aucun doublage.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          5.2,
+          1.65,
+          36.5
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "20_bande_alba.png",
+      "title": "Pas une seconde peau",
+      "note": "Bande originale à trouver physiquement, puis à relire dans RADIO. Cinq segments, pas de fichier audio enregistré.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          6.4,
+          1.65,
+          32.9
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "21_mobile_pieces.png",
+      "title": "Six plaques sur un écran étroit",
+      "note": "Fenêtre 390 × 844, pas un iPhone réel. Des boutons natifs permettent la sélection indépendamment du schéma.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          6.1,
+          1.65,
+          32.9
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    },
+    {
+      "file": "22_mobile_charge.png",
+      "title": "Commandes de charge accessibles",
+      "note": "La page défile jusqu’aux commandes. Les gestes tactiles et la conservation de charge sont testés séparément.",
+      "camera": {
+        "zone": "mooring_station",
+        "pos": [
+          6.1,
+          1.65,
+          32.9
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "third": false
+      },
+      "renderer": "Chromium logiciel",
+      "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c"
+    }
+  ],
+  "errors": [],
+  "checks": [],
+  "scope": "Exact runtime, software Chromium. Prepared cameras and selected damaged/equipment states. Existing fictional scenes, zero official cartography. Controller routes tested separately."
+}

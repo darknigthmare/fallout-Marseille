@@ -1,0 +1,108 @@
+OK Version 0.22 chargée depuis le HTML final 
+OK Scénario séparé accessible au menu 
+OK Refus réel du stockage sur origine opaque signalé 
+OK Adaptateur de stockage mémoire explicitement employé pour les scénarios de réussite 
+OK Aucune carte officielle simulée comme importée 
+OK transit_depot : six espaces conservés + trois espaces de cour 
+OK transit_depot : trois résidents nommés 
+OK transit_depot : géométrie et mobilier solide construits {'id': 'transit_depot', 'bounds': [-24, 24, -24, 50], 'draws': 1800, 'npcs': 7, 'rooms': [['Réception', 0, 17, 0], ['Fret', 0, 3, 0], ['Magasin', -18, 13, 0], ['Double escalier', -17, -4, 0], ['Registres', -5, -18, 3.2], ['Réserve haute', 12, -18, 3.
+OK transit_depot : objets historiques reliés ; alcôve verrouillée vérifiée en v029 [{'id': 'transit_depot:contact', 'nodes': 12}, {'id': 'transit_depot:clue', 'nodes': 98}, {'id': 'transit_depot:power', 'nodes': 47}, {'id': 'transit_depot:tape', 'nodes': 14}, {'id': 'transit_depot:station', 'nodes': 12}, {'id': 'transit_depot:exit'
+OK transit_depot : sortie dans la cour par le contrôleur réel sans chargement {'ok': True, 'steps': 168, 'pos': [0.050000000000000724, 1.65, 42.768127693241766], 'maxY': 1.65}
+OK transit_depot : retour physique depuis la cour vers l’intérieur {'ok': True, 'steps': 181, 'pos': [0.05000000000000071, 1.65, 18.48924019324152], 'maxY': 1.65}
+OK transit_depot : déplacement réel vers le repos nocturne [{'id': 'v022:salome', 'name': 'Salomé Arnaud', 'pos': [-13.954323412334809, 0, 35.9771617061674], 'activity': 'repos', 'moving': False, 'yaw': 0, 'phase': {'label': 'repos', 'pos': [-14, 0, 36]}, 'target': None, 'work': [-12, 0, 35], 'rest': [-14, 0
+OK transit_depot : animation de repos déclenchée après arrivée 
+OK transit_depot : aucun résident au repos dans un obstacle 
+OK transit_depot : résidents non superposés 
+OK transit_depot : reprise du travail aux emplacements dédiés [{'id': 'v022:salome', 'name': 'Salomé Arnaud', 'pos': [-12.411436507859959, 0, 35.20571825392999], 'activity': 'travail', 'moving': False, 'yaw': 1.1071487177940684, 'phase': {'label': 'travail', 'pos': [-12, 0, 35]}, 'target': None, 'work': [-12, 0
+OK transit_depot : pause de midi sur les sièges affectés [{'id': 'v022:salome', 'name': 'Salomé Arnaud', 'pos': [11.98648043577066, 0, 39.4408037460627], 'activity': 'pause', 'moving': False, 'yaw': 0, 'phase': {'label': 'pause', 'pos': [12, 0, 39.5]}, 'target': None, 'work': [-12, 0, 35], 'rest': [-14, 0,
+OK transit_depot : retour de la pause de midi 
+OK transit_depot : alerte fait quitter les postes 
+OK transit_depot : horaires et alerte suspendus dans le panneau 
+OK transit_depot : reprise après fin de l’alerte [{'id': 'v022:salome', 'name': 'Salomé Arnaud', 'pos': [-11.687094190573466, 0, 35.356125003502804], 'activity': 'travail', 'moving': False, 'yaw': -0.7208880935031053, 'phase': {'label': 'travail', 'pos': [-12, 0, 35]}, 'target': None, 'work': [-12,
+OK transit_depot : accessoires et poses sans coordonnée invalide 
+OK transit_depot : cour effectivement rendue {'backend': 'Canvas · profondeur complète', 'faces': 8387, 'ms': 153, 'raster': [922, 576]}
+OK traverse_archives : six espaces conservés + trois espaces de cour 
+OK traverse_archives : trois résidents nommés 
+OK traverse_archives : géométrie et mobilier solide construits {'id': 'traverse_archives', 'bounds': [-25, 25, -22, 50], 'draws': 2036, 'npcs': 5, 'rooms': [['Accueil', 0, 17, 0], ['Salle basse', -17, -13, 0], ['Lecture', 14, 4, 0], ['Galerie', -15, 2, 3.2], ['Bandes sources', 14, -16, 3.2], ['Escalier est', 18,
+OK traverse_archives : objets historiques reliés ; alcôve verrouillée vérifiée en v029 [{'id': 'traverse_archives:contact', 'nodes': 3}, {'id': 'traverse_archives:clue', 'nodes': 80}, {'id': 'traverse_archives:power', 'nodes': 45}, {'id': 'traverse_archives:tape', 'nodes': 13}, {'id': 'traverse_archives:station', 'nodes': 13}, {'id': '
+OK traverse_archives : sortie dans la cour par le contrôleur réel sans chargement {'ok': True, 'steps': 183, 'pos': [-0.30000000000000066, 1.65, 42.81344215354183], 'maxY': 1.65}
+OK traverse_archives : retour physique depuis la cour vers l’intérieur {'ok': True, 'steps': 181, 'pos': [-0.3000000000000007, 1.65, 18.534554653541583], 'maxY': 1.65}
+OK traverse_archives : déplacement réel vers le repos nocturne [{'id': 'v022:diane', 'name': 'Diane Vial', 'pos': [-14.18140616694713, 0, 36.68524489377095], 'activity': 'repos', 'moving': False, 'yaw': 0, 'phase': {'label': 'repos', 'pos': [-14.2, 0, 36.7]}, 'target': [-14.2, 0, 36.7], 'work': [-14, 0, 28], 're
+OK traverse_archives : animation de repos déclenchée après arrivée 
+OK traverse_archives : aucun résident au repos dans un obstacle 
+OK traverse_archives : résidents non superposés 
+OK traverse_archives : reprise du travail aux emplacements dédiés [{'id': 'v022:diane', 'name': 'Diane Vial', 'pos': [-13.95206146549383, 0, 28.394881032133185], 'activity': 'travail', 'moving': False, 'yaw': -0.12080876590619274, 'phase': {'label': 'travail', 'pos': [-14, 0, 28]}, 'target': [-14, 0, 28], 'work': [
+OK traverse_archives : pause de midi sur les sièges affectés [{'id': 'v022:diane', 'name': 'Diane Vial', 'pos': [-8.723322642321111, 0, 43.94400099224166], 'activity': 'pause', 'moving': False, 'yaw': 0, 'phase': {'label': 'pause', 'pos': [-8.7, 0, 44]}, 'target': [-8.7, 0, 44], 'work': [-14, 0, 28], 'rest': [
+OK traverse_archives : retour de la pause de midi 
+OK traverse_archives : alerte fait quitter les postes 
+OK traverse_archives : horaires et alerte suspendus dans le panneau 
+OK traverse_archives : reprise après fin de l’alerte [{'id': 'v022:diane', 'name': 'Diane Vial', 'pos': [-13.659060097926886, 0, 28.330950580101543], 'activity': 'travail', 'moving': False, 'yaw': -0.8002645535515766, 'phase': {'label': 'travail', 'pos': [-14, 0, 28]}, 'target': [-14, 0, 28], 'work': [
+OK traverse_archives : accessoires et poses sans coordonnée invalide 
+OK traverse_archives : cour effectivement rendue {'backend': 'Canvas · profondeur complète', 'faces': 11020, 'ms': 50.9, 'raster': [922, 576]}
+OK mooring_station : six espaces conservés + trois espaces de cour 
+OK mooring_station : trois résidents nommés 
+OK mooring_station : géométrie et mobilier solide construits {'id': 'mooring_station', 'bounds': [-27, 27, -24, 52], 'draws': 1939, 'npcs': 5, 'rooms': [['Secours', 0, 19, 0], ['Batterie ouest', -22, 16, 0], ['Batterie est', 22, 16, 0], ['Palan', 8, 7, 0], ['Passerelle', 0, 0, 3.2], ['Diffusion', 0, -16, 3.2],
+OK mooring_station : objets historiques reliés ; alcôve verrouillée vérifiée en v029 [{'id': 'mooring_station:contact', 'nodes': 3}, {'id': 'mooring_station:clue', 'nodes': 89}, {'id': 'mooring_station:power', 'nodes': 40}, {'id': 'mooring_station:tape', 'nodes': 14}, {'id': 'mooring_station:station', 'nodes': 12}, {'id': 'mooring_st
+OK mooring_station : sortie dans la cour par le contrôleur réel sans chargement {'ok': True, 'steps': 184, 'pos': [0.30000000000000066, 1.65, 44.7146976864047], 'maxY': 1.65}
+OK mooring_station : retour physique depuis la cour vers l’intérieur {'ok': True, 'steps': 196, 'pos': [0.3000000000000007, 1.65, 18.423747686404432], 'maxY': 1.65}
+OK mooring_station : déplacement réel vers le repos nocturne [{'id': 'v022:rayan', 'name': 'Rayan Costa', 'pos': [11.999514636309414, 0, 46.99466099940355], 'activity': 'repos', 'moving': False, 'yaw': 0, 'phase': {'label': 'repos', 'pos': [12, 0, 47]}, 'target': None, 'work': [11, 0, 36], 'rest': [12, 0, 47],
+OK mooring_station : animation de repos déclenchée après arrivée 
+OK mooring_station : aucun résident au repos dans un obstacle 
+OK mooring_station : résidents non superposés 
+OK mooring_station : reprise du travail aux emplacements dédiés [{'id': 'v022:rayan', 'name': 'Rayan Costa', 'pos': [11.041646443179559, 0, 36.45811087497515], 'activity': 'travail', 'moving': False, 'yaw': -0.09065988720074511, 'phase': {'label': 'travail', 'pos': [11, 0, 36]}, 'target': None, 'work': [11, 0, 36
+OK mooring_station : pause de midi sur les sièges affectés [{'id': 'v022:rayan', 'name': 'Rayan Costa', 'pos': [-15.94802149839461, 0, 33.605493760190065], 'activity': 'pause', 'moving': False, 'yaw': 0, 'phase': {'label': 'pause', 'pos': [-16, 0, 33.6]}, 'target': None, 'work': [11, 0, 36], 'rest': [12, 0, 
+OK mooring_station : retour de la pause de midi 
+OK mooring_station : alerte fait quitter les postes 
+OK mooring_station : horaires et alerte suspendus dans le panneau 
+OK mooring_station : reprise après fin de l’alerte [{'id': 'v022:rayan', 'name': 'Rayan Costa', 'pos': [10.682337305008325, 0, 36.28855129725163], 'activity': 'travail', 'moving': False, 'yaw': 0.8333829530846099, 'phase': {'label': 'travail', 'pos': [11, 0, 36]}, 'target': None, 'work': [11, 0, 36],
+OK mooring_station : accessoires et poses sans coordonnée invalide 
+OK mooring_station : cour effectivement rendue {'backend': 'Canvas · profondeur complète', 'faces': 11047, 'ms': 255.6, 'raster': [922, 576]}
+OK Salomé se présente physiquement 
+OK Suite bloquée tant que le canal six n’a pas de conclusion 
+OK Acceptation par un vrai clic de dialogue 
+OK Réparation refusée loin des couchettes 
+OK Ressources insuffisantes refusées 
+OK Sangles collectées physiquement à l’étage 
+OK Sangles non duplicables 
+OK Couchettes remises en état avec les sangles 
+OK Réparation persistante validée 
+OK Réparation non répétable 
+OK Cassette présente dans le monde 
+OK Cassette inscrite dans les archives 
+OK Sous-titres de la nouvelle cassette 
+OK Choix de confidentialité proposé sur le pupitre 
+OK Choix anonyme conservé après clic 
+OK Choix de dossier non modifiable par appel répété 
+OK Diagnostic mécanique ouvert physiquement 
+OK Mauvais cran réinitialise l’essai 
+OK Mauvais cran ne valide pas le poste 
+OK Séquence mécanique : cran 0 
+OK Séquence mécanique : cran 1 
+OK Séquence mécanique : cran 2 
+OK Radio remise en service après trois crans 
+OK Deux destinations du retour proposées 
+OK Conclusion maison d’étape choisie par clic 
+OK Récompense de 120 capsules, une seule fois 
+OK Trois scènes de conclusion, chacune distincte et rédigée 
+OK Relecture sans changer la fin ni répéter le gain 
+OK Fin départs accompagnés active 
+OK Conclusion tient compte du canal six mis en silence 
+OK Réserve locale donne les ressources de réparation 
+OK Réserve non duplicable 
+OK Réparation sans trouver les sangles, avec ressources 
+OK Tissu et ferraille effectivement consommés 
+OK Écriture des horaires dans adaptateur mémoire 
+OK Positions des résidents conservées au retour dans la scène 
+OK Ennemi blessé ne retrouve pas tous ses PV au rechargement 
+OK Blessures présentes dans le JSON de sauvegarde 
+OK Migration 0.21 conserve les champs inconnus et initialise le retour 
+OK K ouvre le suivi de retour 
+OK Plan local accessible après extension 
+OK retour : panneau mobile sans débordement 
+OK retour : fermeture mobile visible 
+OK habitants : panneau mobile sans débordement 
+OK habitants : fermeture mobile visible 
+OK plan : panneau mobile sans débordement 
+OK plan : fermeture mobile visible 
+OK Aucune exception JavaScript []
+RESULT 107 0

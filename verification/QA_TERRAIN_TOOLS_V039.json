@@ -1,0 +1,267 @@
+{
+  "version": "0.39.0",
+  "passed": 8,
+  "failed": 0,
+  "total": 8,
+  "checks": [
+    {
+      "name": "verify-only accepts valid fixtures",
+      "ok": true,
+      "detail": {
+        "stdout": "Reliefs sélectionnés : 2 · grille 5×5\n{\n  \"selected\": 2,\n  \"ok\": 2,\n  \"errors\": 0,\n  \"validPoints\": 49,\n  \"missingPoints\": 1,\n  \"bytes\": 1183\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "installer sanitises bad sentinel",
+      "ok": true,
+      "detail": {
+        "version": "0.39.0",
+        "generated": "2026-09-19T03:32:03Z",
+        "selected": 2,
+        "ok": 2,
+        "errors": 0,
+        "validPoints": 49,
+        "missingPoints": 1,
+        "bytes": 1183,
+        "seconds": 0.0,
+        "regions": [
+          {
+            "macro": "macro_a",
+            "width": 5,
+            "height": 5,
+            "valid": 24,
+            "missing": 1,
+            "min": 10.0,
+            "max": 30.0,
+            "mean": 20.0,
+            "sanitised": 1,
+            "bytes": 590,
+            "sha256": "d886cf354832d72ebc89c9c1e45377b1b517d84d30219b1a7ddeb303e04c7f9f",
+            "coverage": 0.96,
+            "status": "verified",
+            "path": "/tmp/tmp0re368kb/terrain/macro_a.json"
+          },
+          {
+            "macro": "macro_b",
+            "width": 5,
+            "height": 5,
+            "valid": 25,
+            "missing": 0,
+            "min": 11.0,
+            "max": 31.0,
+            "mean": 21.0,
+            "sanitised": 0,
+            "bytes": 593,
+            "sha256": "ff26ca13311992129ce6032405fbf6857056d9c1f094f0aefe6c00e8943d44b3",
+            "coverage": 1.0,
+            "status": "verified",
+            "path": "/tmp/tmp0re368kb/terrain/macro_b.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sentinel persisted as null",
+      "ok": true,
+      "detail": [
+        16.0,
+        18.0,
+        null,
+        22.0,
+        24.0
+      ]
+    },
+    {
+      "name": "audit accepts complete pack",
+      "ok": true,
+      "detail": {
+        "stdout": "{\n  \"expectedRegions\": 2,\n  \"validRegions\": 2,\n  \"missingRegions\": 0,\n  \"invalidRegions\": 0,\n  \"validPoints\": 49,\n  \"missingPoints\": 1,\n  \"bytes\": 1183,\n  \"complete\": true\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "audit reports two regions",
+      "ok": true,
+      "detail": {
+        "version": "0.39.0",
+        "generated": "2026-09-19T03:32:03Z",
+        "source": {
+          "name": "RGE ALTI IGN",
+          "resource": "ign_rge_alti_wld",
+          "title": "Fixture RGE ALTI QA",
+          "license": "Licence Ouverte 2.0",
+          "verticalDatum": "NGF-IGN69"
+        },
+        "expectedRegions": 2,
+        "validRegions": 2,
+        "missingRegions": 0,
+        "invalidRegions": 0,
+        "validPoints": 49,
+        "missingPoints": 1,
+        "bytes": 1183,
+        "complete": true,
+        "missing": [],
+        "invalid": [],
+        "overlaps": [
+          {
+            "a": "macro_a",
+            "b": "macro_b",
+            "bbox": [
+              0.0,
+              0.5,
+              1.0,
+              1.0
+            ],
+            "samples": 49,
+            "noDataPairs": 0,
+            "meanAbsoluteDelta": 3.096,
+            "medianAbsoluteDelta": 3.0,
+            "maxAbsoluteDelta": 4.714,
+            "above5m": 0,
+            "above15m": 0
+          }
+        ],
+        "files": [
+          {
+            "macro": "macro_a",
+            "path": "/tmp/tmp0re368kb/terrain/macro_a.json",
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "width": 5,
+            "height": 5,
+            "valid": 24,
+            "missing": 1,
+            "min": 10.0,
+            "max": 30.0,
+            "mean": 20.0,
+            "bytes": 590,
+            "sha256": "d886cf354832d72ebc89c9c1e45377b1b517d84d30219b1a7ddeb303e04c7f9f",
+            "coverage": 0.96
+          },
+          {
+            "macro": "macro_b",
+            "path": "/tmp/tmp0re368kb/terrain/macro_b.json",
+            "bbox": [
+              0.0,
+              0.5,
+              1.0,
+              1.5
+            ],
+            "width": 5,
+            "height": 5,
+            "valid": 25,
+            "missing": 0,
+            "min": 11.0,
+            "max": 31.0,
+            "mean": 21.0,
+            "bytes": 593,
+            "sha256": "ff26ca13311992129ce6032405fbf6857056d9c1f094f0aefe6c00e8943d44b3",
+            "coverage": 1.0
+          }
+        ],
+        "truth": {
+          "officialSource": "ign_rge_alti_wld",
+          "nativeResolutionClaimed": false,
+          "syntheticHeightsInserted": false,
+          "note": "This audit validates the sampled grids installed locally. It does not certify every native RGE ALTI cell or every road/building alignment."
+        }
+      }
+    },
+    {
+      "name": "overlap diagnostic produced",
+      "ok": true,
+      "detail": [
+        {
+          "a": "macro_a",
+          "b": "macro_b",
+          "bbox": [
+            0.0,
+            0.5,
+            1.0,
+            1.0
+          ],
+          "samples": 49,
+          "noDataPairs": 0,
+          "meanAbsoluteDelta": 3.096,
+          "medianAbsoluteDelta": 3.0,
+          "maxAbsoluteDelta": 4.714,
+          "above5m": 0,
+          "above15m": 0
+        }
+      ]
+    },
+    {
+      "name": "missing terrain is reported",
+      "ok": true,
+      "detail": {
+        "version": "0.39.0",
+        "generated": "2026-09-19T03:32:04Z",
+        "source": {
+          "name": "RGE ALTI IGN",
+          "resource": "ign_rge_alti_wld",
+          "title": "Fixture RGE ALTI QA",
+          "license": "Licence Ouverte 2.0",
+          "verticalDatum": "NGF-IGN69"
+        },
+        "expectedRegions": 2,
+        "validRegions": 1,
+        "missingRegions": 1,
+        "invalidRegions": 0,
+        "validPoints": 24,
+        "missingPoints": 1,
+        "bytes": 590,
+        "complete": false,
+        "missing": [
+          "macro_b"
+        ],
+        "invalid": [],
+        "overlaps": [],
+        "files": [
+          {
+            "macro": "macro_a",
+            "path": "/tmp/tmp0re368kb/terrain/macro_a.json",
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "width": 5,
+            "height": 5,
+            "valid": 24,
+            "missing": 1,
+            "min": 10.0,
+            "max": 30.0,
+            "mean": 20.0,
+            "bytes": 590,
+            "sha256": "d886cf354832d72ebc89c9c1e45377b1b517d84d30219b1a7ddeb303e04c7f9f",
+            "coverage": 0.96
+          }
+        ],
+        "truth": {
+          "officialSource": "ign_rge_alti_wld",
+          "nativeResolutionClaimed": false,
+          "syntheticHeightsInserted": false,
+          "note": "This audit validates the sampled grids installed locally. It does not certify every native RGE ALTI cell or every road/building alignment."
+        }
+      }
+    },
+    {
+      "name": "HTML disguised as terrain is rejected",
+      "ok": true,
+      "detail": [
+        {
+          "macro": "macro_b",
+          "path": "/tmp/tmp0re368kb/terrain/macro_b.json",
+          "error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+        }
+      ]
+    }
+  ],
+  "scope": "Local controlled terrain fixtures. No network used. Tests installer sanitisation, verify-only, overlap audit, missing files and malformed JSON rejection."
+}

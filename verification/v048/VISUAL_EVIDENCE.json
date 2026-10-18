@@ -1,0 +1,116 @@
+{
+  "html_sha256": "07082b364c22648e9dff9b42fe9a90533556acb76c425b1d9b77b82b05aa8aca",
+  "shots": [
+    {
+      "file": "01_menu.png",
+      "title": "Version intégrée",
+      "note": "Menu du HTML livré ; le banc de coutures reste séparé de la campagne."
+    },
+    {
+      "file": "02_avant.png",
+      "title": "Extérieur conservé",
+      "note": "Banc synthétique identifié : bâtiments, cour, route et masque forestier. Ce n’est pas Marseille."
+    },
+    {
+      "file": "03_chargement.png",
+      "title": "Préparation interruptible",
+      "note": "Écran réel du chargement, avec pause QA injectée pour photographier l’étape terrain ; aucune performance inventée."
+    },
+    {
+      "file": "04_passage.png",
+      "title": "Cloisons et ouverture",
+      "note": "Intérieur du jeu : le passage existe entre deux cloisons, y compris pour les segments définis en sens inverse."
+    },
+    {
+      "file": "05_diagnostic.png",
+      "title": "La scène attend le retour",
+      "note": "Diagnostic produit : un seul extérieur retenu, mémoire estimée et pauses coopératives réellement comptées."
+    },
+    {
+      "file": "06_apres.png",
+      "title": "Même extérieur, sans requête",
+      "note": "Retour à la scène conservée alors que le fournisseur de test est volontairement en échec."
+    },
+    {
+      "file": "07_echec.png",
+      "title": "Une sortie peut échouer sans perdre le lieu",
+      "note": "Échec réseau simulé sans scène retenue : réessai et annulation gardent les données de l’intérieur valides."
+    },
+    {
+      "file": "08_annulation.png",
+      "title": "Retour dans l’intérieur",
+      "note": "Après annulation du chargement de sortie, l’intérieur reste actif. Le joueur n’est pas envoyé dans un quartier vide."
+    }
+  ],
+  "returnComparison": {
+    "sameGeometry": true,
+    "samePosition": true,
+    "sameReferences": {
+      "scene": true,
+      "bank": true
+    },
+    "state": {
+      "version": "0.48.0",
+      "preparation": null,
+      "lastJob": {
+        "id": 3,
+        "status": "prepared",
+        "phase": "publication",
+        "units": 3242,
+        "yields": 11,
+        "budgetMs": 6,
+        "maxSliceMs": 2.2,
+        "elapsedMs": 67.7
+      },
+      "jobs": [
+        {
+          "id": 1,
+          "status": "prepared",
+          "phase": "publication",
+          "units": 16882,
+          "yields": 38,
+          "budgetMs": 6,
+          "maxSliceMs": 7.2,
+          "elapsedMs": 362.2
+        },
+        {
+          "id": 2,
+          "status": "cancelled",
+          "phase": "relief",
+          "units": 301,
+          "yields": 81,
+          "budgetMs": 6,
+          "maxSliceMs": 2.1,
+          "elapsedMs": 345.7
+        },
+        {
+          "id": 3,
+          "status": "prepared",
+          "phase": "publication",
+          "units": 3242,
+          "yields": 11,
+          "budgetMs": 6,
+          "maxSliceMs": 2.2,
+          "elapsedMs": 67.7
+        }
+      ],
+      "returns": {
+        "kept": 1,
+        "reused": 1,
+        "missed": 0,
+        "discarded": 0,
+        "last": {
+          "event": "return",
+          "site": "v042-marseille-shelter-01",
+          "bytes": 2367408,
+          "scenePreserved": true
+        }
+      },
+      "exitPending": null,
+      "retained": null,
+      "returnBudget": 50331648
+    }
+  },
+  "errors": [],
+  "scope": "Captures du HTML réellement exécuté. Extérieurs synthétiques signalés ; caméras et une pause de préparation contrôlées pour photographier les vérifications."
+}

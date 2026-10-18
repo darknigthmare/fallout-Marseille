@@ -1,0 +1,248 @@
+{
+  "version": "0.49.0",
+  "html_sha256": "b5c1a7b59a6635964020cb0595a0cb3ed5f2330eaf92c1f2cb818cd17e77f546",
+  "shots": [
+    {
+      "file": "01_menu.png",
+      "title": "v0.49 intégrée",
+      "note": "Menu du programme livré. Le projet est un prototype de fan non officiel."
+    },
+    {
+      "file": "02_blesse_avant.png",
+      "title": "Adversaire blessé avant départ",
+      "note": "Blessure appliquée par le combat du jeu. Rencontre placée pour test dans le banc synthétique, pas dans une rue réelle."
+    },
+    {
+      "file": "03_blesse_retour.png",
+      "title": "Même santé après retour",
+      "note": "Le site a été déchargé puis réinstancié. La santé, la pose et le membre blessé sont conservés, sans valeur d’affichage injectée."
+    },
+    {
+      "file": "04_depouille.png",
+      "title": "Dépouille réelle du combat",
+      "note": "Le corps reste dans le monde. Son inventaire possède une identité indépendante du nom de macro-région."
+    },
+    {
+      "file": "05_butin.png",
+      "title": "Le butin déjà pris ne revient pas",
+      "note": "Trois capsules ont été prises, puis le site a été rechargé avec un autre libellé de région. Le reliquat est inchangé."
+    },
+    {
+      "file": "06_habitants.png",
+      "title": "Habitants et props stables",
+      "note": "Les poses des habitants sont restaurées ; les détails du site ne sont plus tirés au hasard à chaque réapparition."
+    },
+    {
+      "file": "07_interieur.png",
+      "title": "Même occupant dans l’intérieur reconstruit",
+      "note": "La visite intérieure conserve son propre journal. Ses coordonnées locales ne remplacent pas celles de l’extérieur."
+    },
+    {
+      "file": "08_journal.png",
+      "title": "Diagnostic réellement mesuré",
+      "note": "Compteurs issus de cette exécution : blessés mémorisés, dépouilles finies, habitants et restaurations. Aucun total territorial inventé."
+    }
+  ],
+  "comparison": {
+    "before": {
+      "id": "v042:v042-marseille-nest-01:outside:0",
+      "kind": "enemy",
+      "site": "v042-marseille-nest-01",
+      "pos": [
+        -6550.926871996489,
+        47.85366872139184,
+        -326.36810891423374
+      ],
+      "home": [
+        -6547.648279925107,
+        47.85366872139184,
+        -324.0766390738318
+      ],
+      "alive": true,
+      "hp": 59.099999999999994,
+      "max": 85,
+      "limbs": {
+        "head": 0,
+        "body": 0,
+        "arm_l": 0,
+        "arm_r": 0,
+        "leg_l": 0.6348039215686276,
+        "leg_r": 0
+      },
+      "yaw": 3.141592653589793,
+      "status": {},
+      "alerted": true
+    },
+    "after": {
+      "id": "v042:v042-marseille-nest-01:outside:0",
+      "kind": "enemy",
+      "site": "v042-marseille-nest-01",
+      "pos": [
+        -6550.926871996489,
+        47.85366872139184,
+        -326.36810891423374
+      ],
+      "home": [
+        -6547.648279925107,
+        47.85366872139184,
+        -324.0766390738318
+      ],
+      "alive": true,
+      "hp": 59.099999999999994,
+      "max": 85,
+      "limbs": {
+        "head": 0,
+        "body": 0,
+        "arm_l": 0,
+        "arm_r": 0,
+        "leg_l": 0.6348039215686276,
+        "leg_r": 0
+      },
+      "yaw": 3.141592653589793,
+      "status": {},
+      "alerted": true
+    },
+    "sameHealth": true,
+    "samePosition": true,
+    "sameLimbs": true,
+    "journal": {
+      "version": "0.49.0",
+      "entries": 12,
+      "enemies": 8,
+      "npcs": 4,
+      "wounded": 1,
+      "dead": 1,
+      "sites": 3,
+      "bytes": 6718,
+      "budget": 2097152,
+      "corpses": 1,
+      "availableCorpses": 0,
+      "stats": {
+        "snapshots": 86,
+        "restored": 15,
+        "unloads": 3,
+        "cycles": 0,
+        "bodiesBound": 5,
+        "duplicatesMerged": 0
+      },
+      "last": {
+        "event": "restored",
+        "site": "v042-marseille-shelter-01",
+        "id": "v042:v042-marseille-shelter-01:inside:3"
+      },
+      "lab": true,
+      "rows": [
+        {
+          "id": "v042:v042-marseille-nest-01:outside:0",
+          "site": "v042-marseille-nest-01",
+          "scope": "outside",
+          "kind": "enemy",
+          "hp": 0,
+          "max": 85,
+          "alive": false
+        },
+        {
+          "id": "v042:v042-marseille-nest-01:outside:1",
+          "site": "v042-marseille-nest-01",
+          "scope": "outside",
+          "kind": "enemy",
+          "hp": 78,
+          "max": 78,
+          "alive": true
+        },
+        {
+          "id": "v042:v042-marseille-nest-01:outside:2",
+          "site": "v042-marseille-nest-01",
+          "scope": "outside",
+          "kind": "enemy",
+          "hp": 109,
+          "max": 109,
+          "alive": true
+        },
+        {
+          "id": "v042:v042-marseille-nest-01:outside:3",
+          "site": "v042-marseille-nest-01",
+          "scope": "outside",
+          "kind": "enemy",
+          "hp": 85,
+          "max": 85,
+          "alive": true
+        },
+        {
+          "id": "v042-npc:v042-marseille-settlement-01:0",
+          "site": "v042-marseille-settlement-01",
+          "scope": "outside",
+          "kind": "npc",
+          "hp": null,
+          "max": null,
+          "alive": true
+        },
+        {
+          "id": "v042-npc:v042-marseille-settlement-01:1",
+          "site": "v042-marseille-settlement-01",
+          "scope": "outside",
+          "kind": "npc",
+          "hp": null,
+          "max": null,
+          "alive": true
+        },
+        {
+          "id": "v042-npc:v042-marseille-settlement-01:2",
+          "site": "v042-marseille-settlement-01",
+          "scope": "outside",
+          "kind": "npc",
+          "hp": null,
+          "max": null,
+          "alive": true
+        },
+        {
+          "id": "v042-npc:v042-marseille-settlement-01:3",
+          "site": "v042-marseille-settlement-01",
+          "scope": "outside",
+          "kind": "npc",
+          "hp": null,
+          "max": null,
+          "alive": true
+        },
+        {
+          "id": "v042:v042-marseille-shelter-01:inside:0",
+          "site": "v042-marseille-shelter-01",
+          "scope": "inside",
+          "kind": "enemy",
+          "hp": 68.35,
+          "max": 85,
+          "alive": true
+        },
+        {
+          "id": "v042:v042-marseille-shelter-01:inside:1",
+          "site": "v042-marseille-shelter-01",
+          "scope": "inside",
+          "kind": "enemy",
+          "hp": 78,
+          "max": 78,
+          "alive": true
+        },
+        {
+          "id": "v042:v042-marseille-shelter-01:inside:2",
+          "site": "v042-marseille-shelter-01",
+          "scope": "inside",
+          "kind": "enemy",
+          "hp": 109,
+          "max": 109,
+          "alive": true
+        },
+        {
+          "id": "v042:v042-marseille-shelter-01:inside:3",
+          "site": "v042-marseille-shelter-01",
+          "scope": "inside",
+          "kind": "enemy",
+          "hp": 85,
+          "max": 85,
+          "alive": true
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "scope": "Captures réelles du programme. Positions/caméras préparées dans le banc synthétique identifié ; dégâts, déchargement, restauration et prises de butin par les fonctions de production."
+}

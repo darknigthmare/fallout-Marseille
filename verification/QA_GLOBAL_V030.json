@@ -1,0 +1,47 @@
+{
+  "version": "0.30.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "total": 1498,
+  "failed": 0,
+  "retained": 1335,
+  "new": 163,
+  "suites": 23,
+  "errors": [],
+  "same_html": true,
+  "runs": [
+    {
+      "script": "run_all_qa_v029.py",
+      "exit": 0,
+      "seconds": 254.71
+    },
+    {
+      "script": "qa_v030_power.py",
+      "exit": 0,
+      "seconds": 10.87
+    },
+    {
+      "script": "qa_v030_story.py",
+      "exit": 0,
+      "seconds": 9.94
+    },
+    {
+      "script": "qa_v030_edges.py",
+      "exit": 0,
+      "seconds": 7.01
+    },
+    {
+      "script": "qa_v030_touch.py",
+      "exit": 0,
+      "seconds": 8.95
+    }
+  ],
+  "reports": [
+    "QA_GLOBAL_V029.json",
+    "QA_V030_POWER.json",
+    "QA_V030_STORY.json",
+    "QA_V030_EDGES.json",
+    "QA_V030_TOUCH.json"
+  ],
+  "scope": "Exact build; Chromium software. Native opaque-origin storage rejection then declared memory adapter. Real authored scene routes and actual mouse/touch controls; synthetic fixture explicitly used for isolated combat/physics checks. No GPU/iPhone/official geographic validation.",
+  "passed": 1498
+}

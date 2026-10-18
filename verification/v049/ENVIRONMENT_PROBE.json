@@ -1,0 +1,44 @@
+{
+  "version": "0.49.0",
+  "date": "2026-09-22",
+  "agentBrowser": {
+    "available": false,
+    "error": "[Errno 2] No such file or directory: 'agent-browser'"
+  },
+  "httpAudit": {
+    "version": "0.49.0",
+    "vector": {
+      "expected": 5884,
+      "pbf": 0,
+      "officialEmpty": 0,
+      "missing": 5884,
+      "invalid": 0,
+      "bytes": 0,
+      "examples": []
+    },
+    "terrain": {
+      "expected": 8,
+      "valid": 0,
+      "missing": 8,
+      "invalid": 0,
+      "samples": 0,
+      "noData": 0,
+      "examples": []
+    },
+    "complete": false,
+    "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+    "inspectedAt": "2026-09-22T03:17:41Z"
+  },
+  "nativeNavigation": {
+    "ok": false,
+    "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:46325/\nCall log:\n  - navigating to \"http://127.0.0.1:46325/\", waiting until \"domcontentloaded\"\n"
+  },
+  "vector": {
+    "available": false,
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  "terrain": {
+    "available": false,
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  }
+}

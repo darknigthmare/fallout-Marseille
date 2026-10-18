@@ -1,0 +1,28 @@
+{
+  "version": "0.48.0",
+  "attempts": [
+    {
+      "service": "Source vectorielle officielle",
+      "request": "curl HEAD openmaptiles.data.gouv.fr",
+      "result": "Could not resolve host",
+      "downloadedBytes": 0
+    },
+    {
+      "service": "Chromium navigation loopback",
+      "result": "net::ERR_BLOCKED_BY_ADMINISTRATOR",
+      "nativeNavigationVerified": false
+    },
+    {
+      "service": "agent-browser CLI",
+      "result": "CLI absente ; découverte npm expirée sans installation"
+    }
+  ],
+  "browserMethod": "Playwright set_content with explicitly synthetic source provider or controlled HTTP responses",
+  "serverMethod": "Python urllib real HTTP on loopback",
+  "notVerified": [
+    "native IndexedDB",
+    "native PWA installation",
+    "complete geographic pack",
+    "human traversal of the whole territory"
+  ]
+}

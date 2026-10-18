@@ -1,0 +1,19 @@
+OK runtime v0.42
+OK plan 8 × 161²
+OK cloud status 8/8
+OK official resource named
+OK cloud grid loads
+OK terrain is cached in IndexedDB
+OK terrain applies to current macro
+OK active terrain reports NoData
+OK north-west orientation is correct
+OK NoData grid point stays absent
+OK interpolation ignores NoData sentinel
+OK all-NoData terrain is rejected
+OK terrain mesh is generated
+OK Pip-Boy terrain panel
+OK status separates vector and terrain
+OK no JavaScript exception
+{"passed": 16, "failed": 0, "total": 16, "errors": [], "requests": {"status": 1, "terrain": 2, "vector": 4}}
+
+--- STDERR ---

@@ -1,0 +1,2812 @@
+{
+  "version": "0.22.0",
+  "sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "scope": {
+    "browser": "Chromium Linux, HTML exact via set_content ; HTTP local bloqué par politique navigateur",
+    "renderer": "SoftwareRenderer ; pas de GPU matériel certifié",
+    "storage": "refus natif origine opaque puis adaptateur mémoire explicitement installé",
+    "actions": "acceptation et fins par clic ; approches injectées ; marches par vrai contrôleur",
+    "geography": "cours fictives, zéro donnée cartographique officielle acquise"
+  },
+  "total": 107,
+  "passed": 107,
+  "failed": 0,
+  "errors": [],
+  "results": [
+    {
+      "ok": true,
+      "name": "Version 0.22 chargée depuis le HTML final",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Scénario séparé accessible au menu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Refus réel du stockage sur origine opaque signalé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Adaptateur de stockage mémoire explicitement employé pour les scénarios de réussite",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune carte officielle simulée comme importée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : six espaces conservés + trois espaces de cour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : trois résidents nommés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : géométrie et mobilier solide construits",
+      "detail": {
+        "id": "transit_depot",
+        "bounds": [
+          -24,
+          24,
+          -24,
+          50
+        ],
+        "draws": 1800,
+        "npcs": 7,
+        "rooms": [
+          [
+            "Réception",
+            0,
+            17,
+            0
+          ],
+          [
+            "Fret",
+            0,
+            3,
+            0
+          ],
+          [
+            "Magasin",
+            -18,
+            13,
+            0
+          ],
+          [
+            "Double escalier",
+            -17,
+            -4,
+            0
+          ],
+          [
+            "Registres",
+            -5,
+            -18,
+            3.2
+          ],
+          [
+            "Réserve haute",
+            12,
+            -18,
+            3.2
+          ],
+          [
+            "Cour de réception",
+            0,
+            32,
+            0
+          ],
+          [
+            "Abri des couvertures",
+            -14,
+            38,
+            0
+          ],
+          [
+            "Cantine du retour",
+            12,
+            44,
+            0
+          ],
+          [
+            "Local de service depot",
+            -15,
+            45,
+            0
+          ]
+        ],
+        "colliders": 103
+      }
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : objets historiques reliés ; alcôve verrouillée vérifiée en v029",
+      "detail": [
+        {
+          "id": "transit_depot:contact",
+          "nodes": 12
+        },
+        {
+          "id": "transit_depot:clue",
+          "nodes": 98
+        },
+        {
+          "id": "transit_depot:power",
+          "nodes": 47
+        },
+        {
+          "id": "transit_depot:tape",
+          "nodes": 14
+        },
+        {
+          "id": "transit_depot:station",
+          "nodes": 12
+        },
+        {
+          "id": "transit_depot:exit",
+          "nodes": 45
+        },
+        {
+          "id": "transit_depot:door",
+          "nodes": 32
+        },
+        {
+          "id": "v022:tape",
+          "nodes": 50
+        },
+        {
+          "id": "v022:beds",
+          "nodes": 45
+        },
+        {
+          "id": "v022:kit",
+          "nodes": 93
+        },
+        {
+          "id": "transit_depot:v22:cache",
+          "nodes": 69
+        },
+        {
+          "id": "v022:salome:talk",
+          "nodes": 43
+        },
+        {
+          "id": "v022:joris:talk",
+          "nodes": 62
+        },
+        {
+          "id": "v022:ines:talk",
+          "nodes": 44
+        },
+        {
+          "id": "v023:goat",
+          "nodes": 18
+        },
+        {
+          "id": "v023:lise",
+          "nodes": 43
+        },
+        {
+          "id": "v023:proof:manifest",
+          "nodes": 104
+        },
+        {
+          "id": "v023:delivery",
+          "nodes": 47
+        },
+        {
+          "id": "v026:transit_depot|free",
+          "nodes": 31
+        },
+        {
+          "id": "v026:transit_depot|consignment",
+          "nodes": 50
+        },
+        {
+          "id": "v026:transit_depot|workcase",
+          "nodes": 83
+        },
+        {
+          "id": "v026:notice",
+          "nodes": 37
+        },
+        {
+          "id": "v029:terminal:depot",
+          "nodes": 44
+        },
+        {
+          "id": "v029:exit:depot",
+          "nodes": 0
+        },
+        {
+          "id": "v029:contact",
+          "nodes": 0
+        },
+        {
+          "id": "v029:adrien",
+          "nodes": 44
+        },
+        {
+          "id": "v029:badge:d4",
+          "nodes": 50
+        },
+        {
+          "id": "v029:tape",
+          "nodes": 50
+        },
+        {
+          "id": "v030:servo",
+          "nodes": 92
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : sortie dans la cour par le contrôleur réel sans chargement",
+      "detail": {
+        "ok": true,
+        "steps": 168,
+        "pos": [
+          0.050000000000000724,
+          1.65,
+          42.768127693241766
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : retour physique depuis la cour vers l’intérieur",
+      "detail": {
+        "ok": true,
+        "steps": 181,
+        "pos": [
+          0.05000000000000071,
+          1.65,
+          18.48924019324152
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : déplacement réel vers le repos nocturne",
+      "detail": [
+        {
+          "id": "v022:salome",
+          "name": "Salomé Arnaud",
+          "pos": [
+            -13.954323412334809,
+            0,
+            35.9771617061674
+          ],
+          "activity": "repos",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "repos",
+            "pos": [
+              -14,
+              0,
+              36
+            ]
+          },
+          "target": null,
+          "work": [
+            -12,
+            0,
+            35
+          ],
+          "rest": [
+            -14,
+            0,
+            36
+          ],
+          "safe": [
+            -2.2,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:joris",
+          "name": "Joris Fabre",
+          "pos": [
+            -12,
+            0,
+            36
+          ],
+          "activity": "repos",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "repos",
+            "pos": [
+              -12,
+              0,
+              36
+            ]
+          },
+          "target": null,
+          "work": [
+            -19,
+            0,
+            41
+          ],
+          "rest": [
+            -12,
+            0,
+            36
+          ],
+          "safe": [
+            0,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:ines",
+          "name": "Inès Malaval",
+          "pos": [
+            10.614043134800735,
+            0,
+            39.448403549310726
+          ],
+          "activity": "repos",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "repos",
+            "pos": [
+              10.6,
+              0,
+              39.5
+            ]
+          },
+          "target": [
+            10.6,
+            0,
+            39.5
+          ],
+          "work": [
+            12,
+            0,
+            36.5
+          ],
+          "rest": [
+            10.6,
+            0,
+            39.5
+          ],
+          "safe": [
+            2.2,
+            0,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : animation de repos déclenchée après arrivée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : aucun résident au repos dans un obstacle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : résidents non superposés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : reprise du travail aux emplacements dédiés",
+      "detail": [
+        {
+          "id": "v022:salome",
+          "name": "Salomé Arnaud",
+          "pos": [
+            -12.411436507859959,
+            0,
+            35.20571825392999
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": 1.1071487177940684,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -12,
+              0,
+              35
+            ]
+          },
+          "target": null,
+          "work": [
+            -12,
+            0,
+            35
+          ],
+          "rest": [
+            -14,
+            0,
+            36
+          ],
+          "safe": [
+            -2.2,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:joris",
+          "name": "Joris Fabre",
+          "pos": [
+            -18.644133792403004,
+            0,
+            40.74580985171643
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -2.1910458127777126,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -19,
+              0,
+              41
+            ]
+          },
+          "target": null,
+          "work": [
+            -19,
+            0,
+            41
+          ],
+          "rest": [
+            -12,
+            0,
+            36
+          ],
+          "safe": [
+            0,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:ines",
+          "name": "Inès Malaval",
+          "pos": [
+            11.652000000000005,
+            0,
+            36.76099999999999
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": 0.9272952180016206,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              12,
+              0,
+              36.5
+            ]
+          },
+          "target": [
+            12,
+            0,
+            36.5
+          ],
+          "work": [
+            12,
+            0,
+            36.5
+          ],
+          "rest": [
+            10.6,
+            0,
+            39.5
+          ],
+          "safe": [
+            2.2,
+            0,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : pause de midi sur les sièges affectés",
+      "detail": [
+        {
+          "id": "v022:salome",
+          "name": "Salomé Arnaud",
+          "pos": [
+            11.98648043577066,
+            0,
+            39.4408037460627
+          ],
+          "activity": "pause",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "pause",
+            "pos": [
+              12,
+              0,
+              39.5
+            ]
+          },
+          "target": null,
+          "work": [
+            -12,
+            0,
+            35
+          ],
+          "rest": [
+            -14,
+            0,
+            36
+          ],
+          "safe": [
+            -2.2,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:joris",
+          "name": "Joris Fabre",
+          "pos": [
+            13.970706441620166,
+            0,
+            39.512025041697314
+          ],
+          "activity": "pause",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "pause",
+            "pos": [
+              14,
+              0,
+              39.5
+            ]
+          },
+          "target": null,
+          "work": [
+            -19,
+            0,
+            41
+          ],
+          "rest": [
+            -12,
+            0,
+            36
+          ],
+          "safe": [
+            0,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:ines",
+          "name": "Inès Malaval",
+          "pos": [
+            15.389306957439866,
+            0,
+            39.45818746178409
+          ],
+          "activity": "pause",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "pause",
+            "pos": [
+              15.4,
+              0,
+              39.5
+            ]
+          },
+          "target": [
+            15.4,
+            0,
+            39.5
+          ],
+          "work": [
+            12,
+            0,
+            36.5
+          ],
+          "rest": [
+            10.6,
+            0,
+            39.5
+          ],
+          "safe": [
+            2.2,
+            0,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : retour de la pause de midi",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : alerte fait quitter les postes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : horaires et alerte suspendus dans le panneau",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : reprise après fin de l’alerte",
+      "detail": [
+        {
+          "id": "v022:salome",
+          "name": "Salomé Arnaud",
+          "pos": [
+            -11.687094190573466,
+            0,
+            35.356125003502804
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -0.7208880935031053,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -12,
+              0,
+              35
+            ]
+          },
+          "target": null,
+          "work": [
+            -12,
+            0,
+            35
+          ],
+          "rest": [
+            -14,
+            0,
+            36
+          ],
+          "safe": [
+            -2.2,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:joris",
+          "name": "Joris Fabre",
+          "pos": [
+            -18.56414011751509,
+            0,
+            41.0747188369974
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -1.4010180528265836,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -19,
+              0,
+              41
+            ]
+          },
+          "target": [
+            -19,
+            0,
+            41
+          ],
+          "work": [
+            -19,
+            0,
+            41
+          ],
+          "rest": [
+            -12,
+            0,
+            36
+          ],
+          "safe": [
+            0,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:ines",
+          "name": "Inès Malaval",
+          "pos": [
+            11.652000000000005,
+            0,
+            36.76099999999999
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": 0.9272952180016206,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              12,
+              0,
+              36.5
+            ]
+          },
+          "target": [
+            12,
+            0,
+            36.5
+          ],
+          "work": [
+            12,
+            0,
+            36.5
+          ],
+          "rest": [
+            10.6,
+            0,
+            39.5
+          ],
+          "safe": [
+            2.2,
+            0,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : accessoires et poses sans coordonnée invalide",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : cour effectivement rendue",
+      "detail": {
+        "backend": "Canvas · profondeur complète",
+        "faces": 8387,
+        "ms": 153,
+        "raster": [
+          922,
+          576
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : six espaces conservés + trois espaces de cour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : trois résidents nommés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : géométrie et mobilier solide construits",
+      "detail": {
+        "id": "traverse_archives",
+        "bounds": [
+          -25,
+          25,
+          -22,
+          50
+        ],
+        "draws": 2036,
+        "npcs": 5,
+        "rooms": [
+          [
+            "Accueil",
+            0,
+            17,
+            0
+          ],
+          [
+            "Salle basse",
+            -17,
+            -13,
+            0
+          ],
+          [
+            "Lecture",
+            14,
+            4,
+            0
+          ],
+          [
+            "Galerie",
+            -15,
+            2,
+            3.2
+          ],
+          [
+            "Bandes sources",
+            14,
+            -16,
+            3.2
+          ],
+          [
+            "Escalier est",
+            18,
+            -3,
+            0
+          ],
+          [
+            "Jardin des lecteurs",
+            0,
+            30,
+            0
+          ],
+          [
+            "Dépôt des dossiers",
+            -14,
+            36,
+            0
+          ],
+          [
+            "Atelier des radios",
+            12,
+            42,
+            0
+          ],
+          [
+            "Local de service archives",
+            -21,
+            43,
+            0
+          ]
+        ],
+        "colliders": 106
+      }
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : objets historiques reliés ; alcôve verrouillée vérifiée en v029",
+      "detail": [
+        {
+          "id": "traverse_archives:contact",
+          "nodes": 3
+        },
+        {
+          "id": "traverse_archives:clue",
+          "nodes": 80
+        },
+        {
+          "id": "traverse_archives:power",
+          "nodes": 45
+        },
+        {
+          "id": "traverse_archives:tape",
+          "nodes": 13
+        },
+        {
+          "id": "traverse_archives:station",
+          "nodes": 13
+        },
+        {
+          "id": "traverse_archives:exit",
+          "nodes": 48
+        },
+        {
+          "id": "traverse_archives:door",
+          "nodes": 24
+        },
+        {
+          "id": "traverse_archives:witness",
+          "nodes": 81
+        },
+        {
+          "id": "v022:consent",
+          "nodes": 39
+        },
+        {
+          "id": "traverse_archives:v22:cache",
+          "nodes": 70
+        },
+        {
+          "id": "v022:diane:talk",
+          "nodes": 37
+        },
+        {
+          "id": "v022:basile:talk",
+          "nodes": 49
+        },
+        {
+          "id": "v022:nora:talk",
+          "nodes": 53
+        },
+        {
+          "id": "v023:proof:register",
+          "nodes": 86
+        },
+        {
+          "id": "v023:delivery",
+          "nodes": 47
+        },
+        {
+          "id": "v026:traverse_archives|free",
+          "nodes": 29
+        },
+        {
+          "id": "v026:traverse_archives|consignment",
+          "nodes": 55
+        },
+        {
+          "id": "v026:traverse_archives|workcase",
+          "nodes": 138
+        },
+        {
+          "id": "v026:notice",
+          "nodes": 36
+        },
+        {
+          "id": "v028:plan",
+          "nodes": 133
+        },
+        {
+          "id": "v029:terminal:archives",
+          "nodes": 49
+        },
+        {
+          "id": "v029:exit:archives",
+          "nodes": 0
+        },
+        {
+          "id": "v029:roomnote:archives",
+          "nodes": 0
+        },
+        {
+          "id": "v029:badge:a2",
+          "nodes": 92
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : sortie dans la cour par le contrôleur réel sans chargement",
+      "detail": {
+        "ok": true,
+        "steps": 183,
+        "pos": [
+          -0.30000000000000066,
+          1.65,
+          42.81344215354183
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : retour physique depuis la cour vers l’intérieur",
+      "detail": {
+        "ok": true,
+        "steps": 181,
+        "pos": [
+          -0.3000000000000007,
+          1.65,
+          18.534554653541583
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : déplacement réel vers le repos nocturne",
+      "detail": [
+        {
+          "id": "v022:diane",
+          "name": "Diane Vial",
+          "pos": [
+            -14.18140616694713,
+            0,
+            36.68524489377095
+          ],
+          "activity": "repos",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "repos",
+            "pos": [
+              -14.2,
+              0,
+              36.7
+            ]
+          },
+          "target": [
+            -14.2,
+            0,
+            36.7
+          ],
+          "work": [
+            -14,
+            0,
+            28
+          ],
+          "rest": [
+            -14.2,
+            0,
+            36.7
+          ],
+          "safe": [
+            -2.2,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:basile",
+          "name": "Basile Aymard",
+          "pos": [
+            -15.850653731374909,
+            0,
+            36.65965792108356
+          ],
+          "activity": "repos",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "repos",
+            "pos": [
+              -15.8,
+              0,
+              36.7
+            ]
+          },
+          "target": [
+            -15.8,
+            0,
+            36.7
+          ],
+          "work": [
+            -16,
+            0,
+            34
+          ],
+          "rest": [
+            -15.8,
+            0,
+            36.7
+          ],
+          "safe": [
+            0,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:nora",
+          "name": "Nora Ségur",
+          "pos": [
+            15.06342161726645,
+            0,
+            39.48172194286459
+          ],
+          "activity": "repos",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "repos",
+            "pos": [
+              15,
+              0,
+              39.5
+            ]
+          },
+          "target": [
+            15,
+            0,
+            39.5
+          ],
+          "work": [
+            15,
+            0,
+            36.5
+          ],
+          "rest": [
+            15,
+            0,
+            39.5
+          ],
+          "safe": [
+            2.2,
+            0,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : animation de repos déclenchée après arrivée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : aucun résident au repos dans un obstacle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : résidents non superposés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : reprise du travail aux emplacements dédiés",
+      "detail": [
+        {
+          "id": "v022:diane",
+          "name": "Diane Vial",
+          "pos": [
+            -13.95206146549383,
+            0,
+            28.394881032133185
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -0.12080876590619274,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -14,
+              0,
+              28
+            ]
+          },
+          "target": [
+            -14,
+            0,
+            28
+          ],
+          "work": [
+            -14,
+            0,
+            28
+          ],
+          "rest": [
+            -14.2,
+            0,
+            36.7
+          ],
+          "safe": [
+            -2.2,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:basile",
+          "name": "Basile Aymard",
+          "pos": [
+            -16.395174639333874,
+            0,
+            33.99176719501387
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": 1.5916266468311224,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -16,
+              0,
+              34
+            ]
+          },
+          "target": [
+            -16,
+            0,
+            34
+          ],
+          "work": [
+            -16,
+            0,
+            34
+          ],
+          "rest": [
+            -15.8,
+            0,
+            36.7
+          ],
+          "safe": [
+            0,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:nora",
+          "name": "Nora Ségur",
+          "pos": [
+            15.371803772545558,
+            0,
+            36.60740997873538
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -1.289564124876611,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              15,
+              0,
+              36.5
+            ]
+          },
+          "target": [
+            15,
+            0,
+            36.5
+          ],
+          "work": [
+            15,
+            0,
+            36.5
+          ],
+          "rest": [
+            15,
+            0,
+            39.5
+          ],
+          "safe": [
+            2.2,
+            0,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : pause de midi sur les sièges affectés",
+      "detail": [
+        {
+          "id": "v022:diane",
+          "name": "Diane Vial",
+          "pos": [
+            -8.723322642321111,
+            0,
+            43.94400099224166
+          ],
+          "activity": "pause",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "pause",
+            "pos": [
+              -8.7,
+              0,
+              44
+            ]
+          },
+          "target": [
+            -8.7,
+            0,
+            44
+          ],
+          "work": [
+            -14,
+            0,
+            28
+          ],
+          "rest": [
+            -14.2,
+            0,
+            36.7
+          ],
+          "safe": [
+            -2.2,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:basile",
+          "name": "Basile Aymard",
+          "pos": [
+            -7.101314611882787,
+            0,
+            43.99789780532257
+          ],
+          "activity": "pause",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "pause",
+            "pos": [
+              -7.1,
+              0,
+              44
+            ]
+          },
+          "target": [
+            -7.1,
+            0,
+            44
+          ],
+          "work": [
+            -16,
+            0,
+            34
+          ],
+          "rest": [
+            -15.8,
+            0,
+            36.7
+          ],
+          "safe": [
+            0,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:nora",
+          "name": "Nora Ségur",
+          "pos": [
+            16.4,
+            0,
+            39.5
+          ],
+          "activity": "pause",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "pause",
+            "pos": [
+              16.4,
+              0,
+              39.5
+            ]
+          },
+          "target": [
+            16.4,
+            0,
+            39.5
+          ],
+          "work": [
+            15,
+            0,
+            36.5
+          ],
+          "rest": [
+            15,
+            0,
+            39.5
+          ],
+          "safe": [
+            2.2,
+            0,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : retour de la pause de midi",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : alerte fait quitter les postes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : horaires et alerte suspendus dans le panneau",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : reprise après fin de l’alerte",
+      "detail": [
+        {
+          "id": "v022:diane",
+          "name": "Diane Vial",
+          "pos": [
+            -13.659060097926886,
+            0,
+            28.330950580101543
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -0.8002645535515766,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -14,
+              0,
+              28
+            ]
+          },
+          "target": [
+            -14,
+            0,
+            28
+          ],
+          "work": [
+            -14,
+            0,
+            28
+          ],
+          "rest": [
+            -14.2,
+            0,
+            36.7
+          ],
+          "safe": [
+            -2.2,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:basile",
+          "name": "Basile Aymard",
+          "pos": [
+            -15.524458968753757,
+            0,
+            33.99077308446835
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -1.5901968775011042,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -16,
+              0,
+              34
+            ]
+          },
+          "target": [
+            -16,
+            0,
+            34
+          ],
+          "work": [
+            -16,
+            0,
+            34
+          ],
+          "rest": [
+            -15.8,
+            0,
+            36.7
+          ],
+          "safe": [
+            0,
+            0,
+            46
+          ]
+        },
+        {
+          "id": "v022:nora",
+          "name": "Nora Ségur",
+          "pos": [
+            14.582843346509675,
+            0,
+            36.618102077364874
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": 1.2949041540839472,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              15,
+              0,
+              36.5
+            ]
+          },
+          "target": [
+            15,
+            0,
+            36.5
+          ],
+          "work": [
+            15,
+            0,
+            36.5
+          ],
+          "rest": [
+            15,
+            0,
+            39.5
+          ],
+          "safe": [
+            2.2,
+            0,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : accessoires et poses sans coordonnée invalide",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : cour effectivement rendue",
+      "detail": {
+        "backend": "Canvas · profondeur complète",
+        "faces": 11020,
+        "ms": 50.9,
+        "raster": [
+          922,
+          576
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : six espaces conservés + trois espaces de cour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : trois résidents nommés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : géométrie et mobilier solide construits",
+      "detail": {
+        "id": "mooring_station",
+        "bounds": [
+          -27,
+          27,
+          -24,
+          52
+        ],
+        "draws": 1939,
+        "npcs": 5,
+        "rooms": [
+          [
+            "Secours",
+            0,
+            19,
+            0
+          ],
+          [
+            "Batterie ouest",
+            -22,
+            16,
+            0
+          ],
+          [
+            "Batterie est",
+            22,
+            16,
+            0
+          ],
+          [
+            "Palan",
+            8,
+            7,
+            0
+          ],
+          [
+            "Passerelle",
+            0,
+            0,
+            3.2
+          ],
+          [
+            "Diffusion",
+            0,
+            -16,
+            3.2
+          ],
+          [
+            "Cour des secours",
+            0,
+            32,
+            0
+          ],
+          [
+            "Atelier des amarres",
+            -14,
+            38,
+            0
+          ],
+          [
+            "Table des départs",
+            12,
+            44,
+            0
+          ],
+          [
+            "Local de service amarres",
+            -22,
+            46,
+            0
+          ],
+          [
+            "Baie d’assistance",
+            10,
+            32,
+            0
+          ]
+        ],
+        "colliders": 100
+      }
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : objets historiques reliés ; alcôve verrouillée vérifiée en v029",
+      "detail": [
+        {
+          "id": "mooring_station:contact",
+          "nodes": 3
+        },
+        {
+          "id": "mooring_station:clue",
+          "nodes": 89
+        },
+        {
+          "id": "mooring_station:power",
+          "nodes": 40
+        },
+        {
+          "id": "mooring_station:tape",
+          "nodes": 14
+        },
+        {
+          "id": "mooring_station:station",
+          "nodes": 12
+        },
+        {
+          "id": "mooring_station:exit",
+          "nodes": 48
+        },
+        {
+          "id": "mooring_station:power2",
+          "nodes": 41
+        },
+        {
+          "id": "mooring_station:finish",
+          "nodes": 115
+        },
+        {
+          "id": "v022:relay",
+          "nodes": 53
+        },
+        {
+          "id": "mooring_station:v22:cache",
+          "nodes": 76
+        },
+        {
+          "id": "v022:rayan:talk",
+          "nodes": 41
+        },
+        {
+          "id": "v022:suzanne_r:talk",
+          "nodes": 44
+        },
+        {
+          "id": "v022:leon:talk",
+          "nodes": 68
+        },
+        {
+          "id": "v023:proof:protocol",
+          "nodes": 90
+        },
+        {
+          "id": "v023:diagnostic",
+          "nodes": 43
+        },
+        {
+          "id": "v023:delivery",
+          "nodes": 47
+        },
+        {
+          "id": "v026:mooring_station|free",
+          "nodes": 31
+        },
+        {
+          "id": "v026:mooring_station|consignment",
+          "nodes": 50
+        },
+        {
+          "id": "v026:mooring_station|workcase",
+          "nodes": 89
+        },
+        {
+          "id": "v026:notice",
+          "nodes": 36
+        },
+        {
+          "id": "v029:terminal:amarres",
+          "nodes": 50
+        },
+        {
+          "id": "v029:exit:amarres",
+          "nodes": 0
+        },
+        {
+          "id": "v029:roomnote:amarres",
+          "nodes": 0
+        },
+        {
+          "id": "v030:station",
+          "nodes": 27
+        },
+        {
+          "id": "v030:alba",
+          "nodes": 32
+        },
+        {
+          "id": "v030:frame",
+          "nodes": 36
+        },
+        {
+          "id": "v030:isolate",
+          "nodes": 40
+        },
+        {
+          "id": "v030:battery",
+          "nodes": 44
+        },
+        {
+          "id": "v030:trial",
+          "nodes": 56
+        },
+        {
+          "id": "v030:tape",
+          "nodes": 27
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : sortie dans la cour par le contrôleur réel sans chargement",
+      "detail": {
+        "ok": true,
+        "steps": 184,
+        "pos": [
+          0.30000000000000066,
+          1.65,
+          44.7146976864047
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : retour physique depuis la cour vers l’intérieur",
+      "detail": {
+        "ok": true,
+        "steps": 196,
+        "pos": [
+          0.3000000000000007,
+          1.65,
+          18.423747686404432
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : déplacement réel vers le repos nocturne",
+      "detail": [
+        {
+          "id": "v022:rayan",
+          "name": "Rayan Costa",
+          "pos": [
+            11.999514636309414,
+            0,
+            46.99466099940355
+          ],
+          "activity": "repos",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "repos",
+            "pos": [
+              12,
+              0,
+              47
+            ]
+          },
+          "target": null,
+          "work": [
+            11,
+            0,
+            36
+          ],
+          "rest": [
+            12,
+            0,
+            47
+          ],
+          "safe": [
+            -2.2,
+            0,
+            48
+          ]
+        },
+        {
+          "id": "v022:suzanne_r",
+          "name": "Suzanne Reynaud",
+          "pos": [
+            10.4,
+            0,
+            47
+          ],
+          "activity": "repos",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "repos",
+            "pos": [
+              10.4,
+              0,
+              47
+            ]
+          },
+          "target": [
+            10.4,
+            0,
+            47
+          ],
+          "work": [
+            -17,
+            0,
+            31
+          ],
+          "rest": [
+            10.4,
+            0,
+            47
+          ],
+          "safe": [
+            0,
+            0,
+            48
+          ]
+        },
+        {
+          "id": "v022:leon",
+          "name": "Léon Féraud",
+          "pos": [
+            13.648205564248567,
+            0,
+            46.977403641758485
+          ],
+          "activity": "repos",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "repos",
+            "pos": [
+              13.6,
+              0,
+              47
+            ]
+          },
+          "target": null,
+          "work": [
+            20,
+            0,
+            44
+          ],
+          "rest": [
+            13.6,
+            0,
+            47
+          ],
+          "safe": [
+            2.2,
+            0,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : animation de repos déclenchée après arrivée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : aucun résident au repos dans un obstacle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : résidents non superposés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : reprise du travail aux emplacements dédiés",
+      "detail": [
+        {
+          "id": "v022:rayan",
+          "name": "Rayan Costa",
+          "pos": [
+            11.041646443179559,
+            0,
+            36.45811087497515
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -0.09065988720074511,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              11,
+              0,
+              36
+            ]
+          },
+          "target": null,
+          "work": [
+            11,
+            0,
+            36
+          ],
+          "rest": [
+            12,
+            0,
+            47
+          ],
+          "safe": [
+            -2.2,
+            0,
+            48
+          ]
+        },
+        {
+          "id": "v022:suzanne_r",
+          "name": "Suzanne Reynaud",
+          "pos": [
+            -16.529943779651784,
+            0,
+            31.00313370813566
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -1.5641297588910132,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -17,
+              0,
+              31
+            ]
+          },
+          "target": [
+            -17,
+            0,
+            31
+          ],
+          "work": [
+            -17,
+            0,
+            31
+          ],
+          "rest": [
+            10.4,
+            0,
+            47
+          ],
+          "safe": [
+            0,
+            0,
+            48
+          ]
+        },
+        {
+          "id": "v022:leon",
+          "name": "Léon Féraud",
+          "pos": [
+            19.58348888945896,
+            0,
+            44.195239583066126
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": 1.1324597669369205,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              20,
+              0,
+              44
+            ]
+          },
+          "target": null,
+          "work": [
+            20,
+            0,
+            44
+          ],
+          "rest": [
+            13.6,
+            0,
+            47
+          ],
+          "safe": [
+            2.2,
+            0,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : pause de midi sur les sièges affectés",
+      "detail": [
+        {
+          "id": "v022:rayan",
+          "name": "Rayan Costa",
+          "pos": [
+            -15.94802149839461,
+            0,
+            33.605493760190065
+          ],
+          "activity": "pause",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "pause",
+            "pos": [
+              -16,
+              0,
+              33.6
+            ]
+          },
+          "target": null,
+          "work": [
+            11,
+            0,
+            36
+          ],
+          "rest": [
+            12,
+            0,
+            47
+          ],
+          "safe": [
+            -2.2,
+            0,
+            48
+          ]
+        },
+        {
+          "id": "v022:suzanne_r",
+          "name": "Suzanne Reynaud",
+          "pos": [
+            -17.600584203982198,
+            0,
+            33.59691345562739
+          ],
+          "activity": "pause",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "pause",
+            "pos": [
+              -17.6,
+              0,
+              33.6
+            ]
+          },
+          "target": [
+            -17.6,
+            0,
+            33.6
+          ],
+          "work": [
+            -17,
+            0,
+            31
+          ],
+          "rest": [
+            10.4,
+            0,
+            47
+          ],
+          "safe": [
+            0,
+            0,
+            48
+          ]
+        },
+        {
+          "id": "v022:leon",
+          "name": "Léon Féraud",
+          "pos": [
+            -14.340941335984672,
+            0,
+            33.61841307985574
+          ],
+          "activity": "pause",
+          "moving": false,
+          "yaw": 0,
+          "phase": {
+            "label": "pause",
+            "pos": [
+              -14.4,
+              0,
+              33.6
+            ]
+          },
+          "target": null,
+          "work": [
+            20,
+            0,
+            44
+          ],
+          "rest": [
+            13.6,
+            0,
+            47
+          ],
+          "safe": [
+            2.2,
+            0,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : retour de la pause de midi",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : alerte fait quitter les postes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : horaires et alerte suspendus dans le panneau",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : reprise après fin de l’alerte",
+      "detail": [
+        {
+          "id": "v022:rayan",
+          "name": "Rayan Costa",
+          "pos": [
+            10.682337305008325,
+            0,
+            36.28855129725163
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": 0.8333829530846099,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              11,
+              0,
+              36
+            ]
+          },
+          "target": null,
+          "work": [
+            11,
+            0,
+            36
+          ],
+          "rest": [
+            12,
+            0,
+            47
+          ],
+          "safe": [
+            -2.2,
+            0,
+            48
+          ]
+        },
+        {
+          "id": "v022:suzanne_r",
+          "name": "Suzanne Reynaud",
+          "pos": [
+            -16.529943779651784,
+            0,
+            31.00313370813566
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": -1.5641297588910132,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              -17,
+              0,
+              31
+            ]
+          },
+          "target": [
+            -17,
+            0,
+            31
+          ],
+          "work": [
+            -17,
+            0,
+            31
+          ],
+          "rest": [
+            10.4,
+            0,
+            47
+          ],
+          "safe": [
+            0,
+            0,
+            48
+          ]
+        },
+        {
+          "id": "v022:leon",
+          "name": "Léon Féraud",
+          "pos": [
+            19.584875656205202,
+            0,
+            44.093146634017735
+          ],
+          "activity": "travail",
+          "moving": false,
+          "yaw": 1.350069716801547,
+          "phase": {
+            "label": "travail",
+            "pos": [
+              20,
+              0,
+              44
+            ]
+          },
+          "target": null,
+          "work": [
+            20,
+            0,
+            44
+          ],
+          "rest": [
+            13.6,
+            0,
+            47
+          ],
+          "safe": [
+            2.2,
+            0,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : accessoires et poses sans coordonnée invalide",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : cour effectivement rendue",
+      "detail": {
+        "backend": "Canvas · profondeur complète",
+        "faces": 11047,
+        "ms": 255.6,
+        "raster": [
+          922,
+          576
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "Salomé se présente physiquement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Suite bloquée tant que le canal six n’a pas de conclusion",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Acceptation par un vrai clic de dialogue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réparation refusée loin des couchettes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ressources insuffisantes refusées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sangles collectées physiquement à l’étage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sangles non duplicables",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Couchettes remises en état avec les sangles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réparation persistante validée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réparation non répétable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cassette présente dans le monde",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cassette inscrite dans les archives",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sous-titres de la nouvelle cassette",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Choix de confidentialité proposé sur le pupitre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Choix anonyme conservé après clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Choix de dossier non modifiable par appel répété",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Diagnostic mécanique ouvert physiquement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mauvais cran réinitialise l’essai",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Mauvais cran ne valide pas le poste",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Séquence mécanique : cran 0",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Séquence mécanique : cran 1",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Séquence mécanique : cran 2",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Radio remise en service après trois crans",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux destinations du retour proposées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Conclusion maison d’étape choisie par clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Récompense de 120 capsules, une seule fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Trois scènes de conclusion, chacune distincte et rédigée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Relecture sans changer la fin ni répéter le gain",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fin départs accompagnés active",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Conclusion tient compte du canal six mis en silence",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réserve locale donne les ressources de réparation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réserve non duplicable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Réparation sans trouver les sangles, avec ressources",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tissu et ferraille effectivement consommés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Écriture des horaires dans adaptateur mémoire",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Positions des résidents conservées au retour dans la scène",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ennemi blessé ne retrouve pas tous ses PV au rechargement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Blessures présentes dans le JSON de sauvegarde",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration 0.21 conserve les champs inconnus et initialise le retour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "K ouvre le suivi de retour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Plan local accessible après extension",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "retour : panneau mobile sans débordement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "retour : fermeture mobile visible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "habitants : panneau mobile sans débordement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "habitants : fermeture mobile visible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "plan : panneau mobile sans débordement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "plan : fermeture mobile visible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript",
+      "detail": []
+    }
+  ],
+  "metrics": [
+    {
+      "id": "transit_depot",
+      "bounds": [
+        -24,
+        24,
+        -24,
+        50
+      ],
+      "draws": 1800,
+      "npcs": 7,
+      "rooms": [
+        [
+          "Réception",
+          0,
+          17,
+          0
+        ],
+        [
+          "Fret",
+          0,
+          3,
+          0
+        ],
+        [
+          "Magasin",
+          -18,
+          13,
+          0
+        ],
+        [
+          "Double escalier",
+          -17,
+          -4,
+          0
+        ],
+        [
+          "Registres",
+          -5,
+          -18,
+          3.2
+        ],
+        [
+          "Réserve haute",
+          12,
+          -18,
+          3.2
+        ],
+        [
+          "Cour de réception",
+          0,
+          32,
+          0
+        ],
+        [
+          "Abri des couvertures",
+          -14,
+          38,
+          0
+        ],
+        [
+          "Cantine du retour",
+          12,
+          44,
+          0
+        ],
+        [
+          "Local de service depot",
+          -15,
+          45,
+          0
+        ]
+      ],
+      "colliders": 103
+    },
+    {
+      "id": "traverse_archives",
+      "bounds": [
+        -25,
+        25,
+        -22,
+        50
+      ],
+      "draws": 2036,
+      "npcs": 5,
+      "rooms": [
+        [
+          "Accueil",
+          0,
+          17,
+          0
+        ],
+        [
+          "Salle basse",
+          -17,
+          -13,
+          0
+        ],
+        [
+          "Lecture",
+          14,
+          4,
+          0
+        ],
+        [
+          "Galerie",
+          -15,
+          2,
+          3.2
+        ],
+        [
+          "Bandes sources",
+          14,
+          -16,
+          3.2
+        ],
+        [
+          "Escalier est",
+          18,
+          -3,
+          0
+        ],
+        [
+          "Jardin des lecteurs",
+          0,
+          30,
+          0
+        ],
+        [
+          "Dépôt des dossiers",
+          -14,
+          36,
+          0
+        ],
+        [
+          "Atelier des radios",
+          12,
+          42,
+          0
+        ],
+        [
+          "Local de service archives",
+          -21,
+          43,
+          0
+        ]
+      ],
+      "colliders": 106
+    },
+    {
+      "id": "mooring_station",
+      "bounds": [
+        -27,
+        27,
+        -24,
+        52
+      ],
+      "draws": 1939,
+      "npcs": 5,
+      "rooms": [
+        [
+          "Secours",
+          0,
+          19,
+          0
+        ],
+        [
+          "Batterie ouest",
+          -22,
+          16,
+          0
+        ],
+        [
+          "Batterie est",
+          22,
+          16,
+          0
+        ],
+        [
+          "Palan",
+          8,
+          7,
+          0
+        ],
+        [
+          "Passerelle",
+          0,
+          0,
+          3.2
+        ],
+        [
+          "Diffusion",
+          0,
+          -16,
+          3.2
+        ],
+        [
+          "Cour des secours",
+          0,
+          32,
+          0
+        ],
+        [
+          "Atelier des amarres",
+          -14,
+          38,
+          0
+        ],
+        [
+          "Table des départs",
+          12,
+          44,
+          0
+        ],
+        [
+          "Local de service amarres",
+          -22,
+          46,
+          0
+        ],
+        [
+          "Baie d’assistance",
+          10,
+          32,
+          0
+        ]
+      ],
+      "colliders": 100
+    }
+  ]
+}

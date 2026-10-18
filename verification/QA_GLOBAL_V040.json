@@ -1,0 +1,100 @@
+{
+  "version": "0.40.0",
+  "html_sha256": "79a5a6b8153f5faf586d60d15c183a1b36c17080ab5e48ca0f9972ebe24d1137",
+  "passed": 177,
+  "failed": 0,
+  "total": 177,
+  "javascriptErrors": [],
+  "allExactHtml": true,
+  "suites": [
+    {
+      "file": "QA_V040.json",
+      "label": "Moteur, roadbook, stitching et seams",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_CLOUD_PROOF_V040.json",
+      "label": "Preuves cloud et sécurité v0.40",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_REGRESSION_V039_ON_V040.json",
+      "label": "Régression relief v0.39",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_REGRESSION_V038_ON_V040.json",
+      "label": "Régression vectoriel/cadastre v0.38",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_ON_V040.json",
+      "label": "Régression jeu produit v0.35",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PRODUCT_ON_V040.json",
+      "label": "Régression interface produit/PWA",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PROLOGUE_ON_V040.json",
+      "label": "Régression prologue A-03",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_PWA_V040.json",
+      "label": "Contrat PWA v0.40",
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_TERRAIN_TOOLS_V039.json",
+      "label": "Outils terrain",
+      "passed": 8,
+      "failed": 0,
+      "total": 8,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_MAP_TOOLS_V038.json",
+      "label": "Outils vectoriels",
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "htmlExact": true
+    },
+    {
+      "file": "QA_CLOUD_PROOF_V039.json",
+      "label": "Preuves RGE ALTI",
+      "passed": 14,
+      "failed": 0,
+      "total": 14,
+      "htmlExact": true
+    }
+  ],
+  "scope": "v0.40 browser QA, cloud proof validation, v0.39/v0.38/v0.35 regressions, tools and PWA contract. Corridor human field traversal remains outside automated scope."
+}

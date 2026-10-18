@@ -1,0 +1,51 @@
+OK Refus natif en origine opaque signalé dans le Pip-Boy 
+OK Écriture contrôlée annonce le succès uniquement après écriture 
+OK Clés campagne et exploration v027 distinctes 
+OK Aucune holobande non découverte dans le lecteur 
+OK Lecture d’une bande non possédée refusée 
+OK Station Mistral diffuse la transcription liée à l’état 
+OK Radio textuelle annoncée, pas de fausse promesse audio 
+OK Stations non débloquées ne révèlent pas leurs bulletins 
+OK Régler la radio ne modifie ni quête ni ressources 
+OK Bande du magasinier possède une interaction physique atteignable 
+OK Interaction dans la cour découvre effectivement la bande 
+OK Bande trouvée répertoriée seule dans RADIO 
+OK Lecture déclenchée explicitement une seule fois 
+OK Chronomètre fait avancer le segment lu 
+OK Pause fige segment et temps écoulé 
+OK Suivant avance d’un segment et réinitialise sa progression 
+OK Précédent fonctionne depuis la barre du boîtier 
+OK Vitesse de lecture 1,5× enregistrée 
+OK Vitesse arbitraire refusée 
+OK Transcription réelle des cinq segments affichée 
+OK Fermeture par défaut suspend la bande 
+OK Fermeture conserve un marque-page exact 
+OK Réouverture reprend au marque-page au lieu de repartir à zéro 
+OK Sous-titres en jeu visibles lorsque l’option est activée 
+OK Ouvrir le boîtier masque immédiatement les sous-titres en exploration 
+OK Dialogue suspend le chronomètre et masque la légende 
+OK Fin de bande s’arrête sans déborder du dernier segment 
+OK Lecture après la fin redémarre proprement au premier segment 
+OK Événement visibilitychange suspend la bande 
+OK Retour à la page n’impose pas une reprise automatique 
+OK Transition sauvegarde le repère puis invalide la lecture de la scène précédente 
+OK Fermeture du commerce puis Pip-Boy : aucun verrouillage différé de souris 
+OK Le curseur clique réellement sur INV après fermeture du commerce 
+OK La liste de fouille reste cliquable après un ancien retour différé du commerce {'pointer': None, 'selected': 1}
+OK Migration v026 conserve réserves, aptitudes et conséquences 
+OK Migration ajoute préférences saines, pas de découverte inventée 
+OK Import de préférences invalide nettoyé et dédupliqué 
+OK Clés hostiles rejetées, texte valide conservé 
+OK Export JSON contient affichage et composants suivis 
+OK Export inclut le texte des notes, pas seulement leurs titres 
+OK Import validé restaure les préférences archivées 
+OK Import JSON invalide ne remplace aucune sauvegarde 
+OK Refuser le nouveau départ ne crée pas une exploration 
+OK Accepter démarre une vraie exploration distincte avec Pip-Boy 
+OK Campagne existante inchangée après démarrage séparé 
+OK Exploration enregistrée dans sa propre clé 
+OK Nouveau départ contient deux armes choisies, pas les 304 modèles 
+OK Ancienne exploration v026 reprise par le nouveau bouton 
+OK Source v026 inchangée après migration en v027 
+OK Aucune exception JavaScript pendant la suite 
+TOTAL 50 0

@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+*.zip.001
+*.zip.002
+*.reconstruction.tmp

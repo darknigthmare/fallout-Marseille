@@ -1,0 +1,44 @@
+{
+  "passed": 9,
+  "failed": 0,
+  "total": 9,
+  "tests": [
+    {
+      "name": "Index identique au HTML livré",
+      "ok": true
+    },
+    {
+      "name": "Version PWA et lanceurs v046",
+      "ok": true
+    },
+    {
+      "name": "Noyau offline existe",
+      "ok": true
+    },
+    {
+      "name": "Absence /data/map_pack/france-vector/14/1/2.pbf retourne 503, pas HTML",
+      "ok": true
+    },
+    {
+      "name": "Absence /data/map_pack/terrain/geo_marseille.json retourne 503, pas HTML",
+      "ok": true
+    },
+    {
+      "name": "Absence /__mistral/local-data retourne 503, pas HTML",
+      "ok": true
+    },
+    {
+      "name": "Shell offline disponible",
+      "ok": true
+    },
+    {
+      "name": "Les caches d’autres applications sont conservés",
+      "ok": true
+    },
+    {
+      "name": "Catalogue v042 conservé à 248 sites",
+      "ok": true
+    }
+  ],
+  "scope": "Contrats de fichiers et événements service-worker exécutés dans Node ; aucune inscription native PWA revendiquée"
+}

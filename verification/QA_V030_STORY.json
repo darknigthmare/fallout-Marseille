@@ -1,0 +1,413 @@
+{
+  "version": "0.35.0",
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 57,
+  "failed": 0,
+  "total": 57,
+  "results": [
+    {
+      "ok": true,
+      "name": "Départ au poste sans châssis gratuit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucun cœur plein ou entamé distribué au départ",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Dix espaces conservés et baie d’assistance ajoutée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ni prélèvement distant ni conclusion prématurée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Alba atteinte par déplacement au contrôleur",
+      "detail": {
+        "ok": true,
+        "steps": 13,
+        "pos": [
+          5.4788586848924625,
+          1.65,
+          36.334133182333666
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Acceptation par réplique cliquée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Actionneur à l’étage non récupérable à travers le plancher",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Escaliers réellement gravis jusqu’à l’actionneur",
+      "detail": {
+        "ok": true,
+        "steps": 428,
+        "pos": [
+          9.934971110768844,
+          4.85,
+          -16.818899124345407
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "Le porteur atteint le vrai niveau haut",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Actionneur pris physiquement après la montée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Actionneur unique non duplicable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retour au niveau bas par les escaliers",
+      "detail": {
+        "ok": true,
+        "steps": 396,
+        "pos": [
+          0.07714067819993345,
+          1.65,
+          18.105271204217438
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "Cahier du palan atteint au contrôleur",
+      "detail": {
+        "ok": true,
+        "steps": 58,
+        "pos": [
+          -5.767231140428136,
+          1.65,
+          9.032567491497506
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Plan lu au poste existant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Châssis approché sans traverser son volume",
+      "detail": {
+        "ok": true,
+        "steps": 160,
+        "pos": [
+          10.008963093631023,
+          1.65,
+          34.331080227640705
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Pas de réparation avant consignation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sectionneur rejoint à pied",
+      "detail": {
+        "ok": true,
+        "steps": 32,
+        "pos": [
+          13.907396261465234,
+          1.65,
+          33.98748217222184
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Baie isolée physiquement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Consignation distincte du canal six et des contrôleurs existants",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retour au châssis pour devis",
+      "detail": {
+        "ok": true,
+        "steps": 32,
+        "pos": [
+          10.071014007252804,
+          1.65,
+          34.37868706229896
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Travaux sans matériaux : refus sans débit partiel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Devis réversible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Attribution réelle du M-45",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six plaques à 85 % et pas neuves",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Travaux ne soignent pas le personnage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune seconde attribution ni consommation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le châssis réclamé libère son emplacement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Casier du cœur approché au contrôleur",
+      "detail": {
+        "ok": true,
+        "steps": 53,
+        "pos": [
+          15.862630151679074,
+          1.65,
+          32.712082370404545
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Cœur d’essai effectivement récupéré à 65 %",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pas de cœur infini",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Portillon atteint à pied",
+      "detail": {
+        "ok": true,
+        "steps": 52,
+        "pos": [
+          21.057908307675977,
+          1.65,
+          34.984310423131895
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Ouverture du choix moteur/manivelle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Voie motorisée affichée indisponible sans assistance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Manivelle valide l’essai sans exiger ni consommer de cœur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le portillon est physiquement ouvert",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Passer au travers du portillon ouvert avec le contrôleur",
+      "detail": {
+        "ok": true,
+        "steps": 31,
+        "pos": [
+          21.099998797815473,
+          1.65,
+          30.82722304461178
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Rejoindre Alba après essai manuel",
+      "detail": {
+        "ok": true,
+        "steps": 145,
+        "pos": [
+          5.542362153256958,
+          1.65,
+          36.27863820775802
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Prévisualisation d’accord réversible",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Conclusion secours validée une fois et capsules réelles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une trousse et deux attelles attribuées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Trois scènes d’épilogue secours originales",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Relecture sans récompense et issue non remplaçable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucun accord antérieur ni circuit voisin réécrit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Portillon reste ouvert au retour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accord persisté après rechargement du lieu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Reprise du point de contrôle avant essai",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Armure portée : trajet réel jusqu’au portillon",
+      "detail": {
+        "ok": true,
+        "steps": 134,
+        "pos": [
+          21.061951947938553,
+          1.65,
+          35.025555873214515
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Essai motorisé : exactement 2 % en plus du déplacement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Retour vers Alba avec assistance active",
+      "detail": {
+        "ok": true,
+        "steps": 134,
+        "pos": [
+          5.540553512941205,
+          1.65,
+          36.24099206110928
+        ],
+        "maxY": 1.65
+      }
+    },
+    {
+      "ok": true,
+      "name": "Issue autonomie : quatre pièces, deux circuits, trois ferrailles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six scènes distinctes sur les deux accords",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bande d’Alba acquise physiquement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bande consultable depuis RADIO sans faux fichier audio",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Établi approchable avec l’armure et lieu sans menace",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Changement de scène invalide le devis de maintenance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six contrôles natifs de pièce dans le Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Charge installée et cœurs entamés présentés séparément",
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "scope": "Exact HTML via set_content; software Chromium; controlled state/poses disclosed; successful saves via declared memory adapter. Native opaque-origin refusal checked separately. No official geospatial data."
+}

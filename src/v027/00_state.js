@@ -1,0 +1,23 @@
+/* v0.27 — the wrist terminal. UI never grants discoveries or quest progress. */
+const V027_TABS={status:'STAT',inventory:'INV',data:'DATA',map:'MAP',radio:'RADIO'};
+const V027_SUBS={status:{health:'ÉTAT',special:'S.P.E.C.I.A.L.',skills:'APTITUDES',perks:'AVANTAGES',rep:'RÉPUTATIONS'},inventory:{weapon:'ARMES',armor:'TENUES',aid:'AIDE',quest:'DIVERS',junk:'BRIC-À-BRAC',material:'COMPOSANTS',ammo:'MUNITIONS'},data:{quests:'QUÊTES',notes:'NOTES',terminals:'TERMINAUX',consequences:'CONSÉQUENCES',dialogs:'DIALOGUES',network:'RÉSEAU',legacy:'ARCHIVES',system:'SYSTÈME'},map:{local:'PLAN LOCAL',places:'LIEUX CONNUS',coverage:'PÉRIMÈTRE PRÉVU'},radio:{stations:'STATIONS',tapes:'HOLODISQUES'}};
+const V027_COMPONENTS=[...new Set([...Object.values(V026_JUNK).flatMap(j=>Object.keys(j.yield)),...V020_RECIPES.flatMap(r=>Object.keys(r.cost)),...Object.keys(ITEM_VALUES).filter(id=>v026Category(id)==='material')])].filter(id=>id!=='caps'&&!WEAPONS[id]&&!ARMORS[id]&&!AMMO_INFO[id]).sort();
+const V027={tab:'status',sub:'health',selected:null,query:'',page:0,sort:'name',questFilter:'active',epoch:0,message:'',zoom:1,tape:null,tapeManual:false,returnFocus:null,confirm:null,ready:false,rendering:false,station:'mistral',activeStation:null};
+function v027Fresh(){return{schema:1,theme:'green',scanlines:true,backgroundTape:false,tagged:[],read:{},documents:{},pin:null,last:{tab:'status',sub:'health'}};}
+const v027Base=baseState;baseState=function(){const s=v027Base();s.v027=v027Fresh();return s;};
+const v027Migrate=migrateState;migrateState=function(input={}){const s=v027Migrate(input),p=input.v027||{},f=v027Fresh();s.v027=f;
+ f.theme=['green','amber','white'].includes(p.theme)?p.theme:'green';f.scanlines=p.scanlines!==false;f.backgroundTape=p.backgroundTape===true;
+ f.tagged=[...new Set(Array.isArray(p.tagged)?p.tagged:[])].filter(x=>V027_COMPONENTS.includes(x)).slice(0,40);
+ for(const[k,v]of Object.entries(p.read||{}).slice(0,1500))if(v&&v026SafeKey(k))f.read[k]=true;
+ if(p.pin&&typeof p.pin.zone==='string'&&Array.isArray(p.pin.pos)&&p.pin.pos.length===3&&p.pin.pos.every(n=>Number.isFinite(n)&&Math.abs(n)<1e7))f.pin={zone:p.pin.zone.slice(0,100),pos:p.pin.pos.slice(),floor:p.pin.floor===3.2?3.2:0};
+ if(V027_TABS[p.last?.tab]&&V027_SUBS[p.last.tab][p.last.sub])f.last={tab:p.last.tab,sub:p.last.sub};return s;};state=migrateState(state);
+function v027Escape(x){return escapeHtml(String(x??''));}
+function v027Button(text,a,arg='',disabled=false){return `<button type="button" data-p27="${a}" data-arg="${v027Escape(arg)}"${disabled?' disabled':''}>${text}</button>`;}
+function v027Num(n,dp=0){return Number.isFinite(Number(n))?Number(n).toLocaleString('fr-FR',{maximumFractionDigits:dp}):'—';}
+function v027Notify(t){V027.message=t;const e=$('p27Message');if(e)e.textContent=t;return false;}
+function v027Station(){return v020AtStation();}
+function v027CanAct(){return mode==='PIP'&&!zoneTransitioning&&state.player.hp>0&&V027.ready;}
+function v027ComponentMatches(id){return state.v027.tagged.filter(k=>k===id||!!V026_JUNK[id]?.yield[k]);}
+function v027Tag(id){if(!v027CanAct()||!V027_COMPONENTS.includes(id))return false;const tags=state.v027.tagged;state.v027.tagged=tags.includes(id)?tags.filter(k=>k!==id):[...tags,id];saveGame(false);renderPipboy();return true;}
+function v027SafeSelect(items){if(!items.some(x=>x.id===V027.selected))V027.selected=items[0]?.id||null;return items.find(x=>x.id===V027.selected);}
+function v027List(rows,detail,opts={}){const list=rows.slice(V027.page*14,V027.page*14+14);if(!list.length&&rows.length){V027.page=0;return v027List(rows,detail,opts);}const picked=v027SafeSelect(list);return `<div class="p27-browser"><aside class="p27-records" aria-label="Liste ${v027Escape(opts.label||'des entrées')}"><div class="p27-listheading"><span>${v027Escape(opts.label||'DOSSIER')}</span><span>${rows.length}</span></div>${list.map(r=>`<button type="button" class="p27-row ${r.id===V027.selected?'selected':''}" data-p27="select" data-arg="${v027Escape(r.id)}" aria-pressed="${r.id===V027.selected}"><span>${r.icon||''}${v027Escape(r.name)}</span><b>${v027Escape(r.badge||'')}</b>${r.hint?`<small>${v027Escape(r.hint)}</small>`:''}</button>`).join('')||'<p class="p27-empty">Aucune entrée dans cette sélection.</p>'}<div class="p27-pages">${v027Button('◀','page','-1',V027.page===0)}<span>${V027.page+1} / ${Math.max(1,Math.ceil(rows.length/14))}</span>${v027Button('▶','page','1',(V027.page+1)*14>=rows.length)}</div></aside><article class="p27-detail">${picked?detail(picked):'<div class="p27-empty"><strong>Aucun document chargé</strong><p>Les objets, preuves et enregistrements doivent être trouvés dans le monde. Aucun contenu n’est attribué à l’ouverture de cet écran.</p></div>'}</article></div>`;}

@@ -1,0 +1,488 @@
+{
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "passed": 93,
+  "failed": 0,
+  "checks": [
+    {
+      "ok": true,
+      "name": "Stockage natif opaque refuse l’écriture avant adaptateur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La lampe est éteinte au départ",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "L allume réellement la lampe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "L éteint réellement la lampe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bouton Pip-Boy et raccourci partagent le même état",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Écrire L dans la recherche ne modifie pas l’éclairage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Dialogue ne prend pas le raccourci de lampe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lampe : surfaces de la scène réellement éclairées par le moteur logiciel",
+      "detail": {
+        "renderer": "software",
+        "faces": 267
+      }
+    },
+    {
+      "ok": true,
+      "name": "Échantillonnage de lumière ne modifie pas les décors persistants",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Comparaison des pixels de la scène, hors HUD : éclairage visible",
+      "detail": {
+        "mean_abs_change": 4.370967222222222
+      }
+    },
+    {
+      "ok": true,
+      "name": "Cache d’occultation borné pendant le rendu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Plusieurs images ne dupliquent pas les maillages de sol",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Éclairement local limité au rayon de onze mètres",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un mur bloque l’échantillon de lumière placé derrière lui",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lampe éteinte ne laisse pas un éclairement résiduel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Sans lampe, la menace du contrôle à portée de détection nulle ne repère pas le joueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lampe visible à courte distance : adversaire alerté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lampe derrière un mur ne déclenche pas la détection supplémentaire",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Lampe ne signale pas automatiquement les ennemis au-delà de douze mètres",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Impossible de résoudre la veille avant son diagnostic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Interrupteur non identifié : aucune consignation aveugle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Acceptation par les répliques réelles de Sofia",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Quête locale enregistrée dans DATA",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Preuve à l’étage non lisible à travers le plancher",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Montée réelle au contrôleur vers le plan dans la galerie",
+      "detail": {
+        "ok": true,
+        "steps": 623,
+        "pos": [
+          -17.16788453889536,
+          4.85,
+          -16.63648118487214
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "Plan pris à portée après le parcours, pas depuis l’interface",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le document intégral rejoint les archives du Pip-Boy",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Consignation physique de L-4 après identification",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Consignation non répétable et sans prélèvement caché",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancienne chaîne du froid non résolue ou modifiée par L-4",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux solutions et option de report affichées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Refus du manque de matériaux sans débit partiel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accord fixe réellement validé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Débit exact de trois ferrailles et deux circuits",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Récompense unique : cinquante capsules, soixante XP",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Solution fixe : une trousse réellement remise",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Solution fixe restaure réellement l’éclairage de la pharmacie",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux scènes distinctes de l’épilogue fixe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Relecture sans ressources recréées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une seconde conclusion ne remplace pas l’accord fixé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accord et éclairage conservés après import complet",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Solution mobile : deux attelles effectivement remises",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Solution mobile ne consomme pas de composants",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Solution mobile ne prétend pas réparer le poste fixe",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux scènes propres à la solution mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Jeu inconnu non distribué à la migration",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pas de rotation tant que la cassette n’est pas trouvée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bande non récupérable à distance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Cassette physique débloque le jeu et la bande sous-titrée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Grille réelle de vingt-cinq cellules",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le premier circuit ne démarre pas gagné",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 1 : deux bornes fixes non tournables",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 1 : isolant non cliquable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 1 : sortie réellement alimentée après rotations au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 1 : meilleur score persistant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 1 : réussite reflétée dans la grille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 2 : deux bornes fixes non tournables",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 2 : isolant non cliquable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 2 : sortie réellement alimentée après rotations au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 2 : meilleur score persistant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 2 : réussite reflétée dans la grille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 3 : deux bornes fixes non tournables",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 3 : isolant non cliquable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 3 : sortie réellement alimentée après rotations au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 3 : meilleur score persistant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 3 : réussite reflétée dans la grille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 4 : deux bornes fixes non tournables",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 4 : isolant non cliquable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 4 : sortie réellement alimentée après rotations au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 4 : meilleur score persistant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 4 : réussite reflétée dans la grille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 5 : deux bornes fixes non tournables",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 5 : isolant non cliquable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 5 : sortie réellement alimentée après rotations au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 5 : meilleur score persistant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 5 : réussite reflétée dans la grille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 6 : deux bornes fixes non tournables",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 6 : isolant non cliquable",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 6 : sortie réellement alimentée après rotations au clic",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 6 : meilleur score persistant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Circuit 6 : réussite reflétée dans la grille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Six circuits terminés : zéro capsule, XP ou butin ajouté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Refus de réinitialisation conserve la disposition",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Recommencer conserve le record mais rétablit la panne",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Indice indique une case sans la tourner ni offrir de solution",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une rotation reste une seule action",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Import retrouve les orientations du circuit en cours",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Niveau et cellule invalides refusés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancienne commande de jeu refusée dans une autre rubrique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile simulé 390×844 : rotation sur la vraie grille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Jeu intégré sans débordement horizontal mobile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Bouton HUD de lampe actionnable au toucher",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript de la suite",
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "scope": "Exact HTML Chromium logiciel. Caméras/états et occlusion synthétiques déclarés ; pixels réels de lumière, parcours contrôleur vers preuve, 6 puzzles par clic. Stockage mémoire après refus natif opaque, mobile tactile simulé."
+}

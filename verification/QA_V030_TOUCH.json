@@ -1,0 +1,71 @@
+{
+  "version": "0.35.0",
+  "html_sha256": "976171371f7ec2f900bf6375593570996e7ad53bea3f1fb391f4d12601df2d81",
+  "passed": 12,
+  "failed": 0,
+  "total": 12,
+  "results": [
+    {
+      "ok": true,
+      "name": "Tactile : sélectionner la vraie pièce sans clic programmatique",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : enclencher les moteurs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : arrêter les moteurs",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : éjection à charge conservée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tactile : réinsérer le même cœur, pas un nouveau",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La pièce active suit le phosphore ambre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La pièce active suit le phosphore blanc",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Page sans débordement horizontal sur fenêtre 390 × 844",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Commande principale accessible sans poignée minuscule",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "HUD d’armure placé sous le suivi de quête sans chevauchement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "HUD tactile ouvre le diagnostic du châssis",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Export JSON effectivement téléchargé avec charge et état de pièce",
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "scope": "Exact HTML via set_content; software Chromium; controlled state/poses disclosed; successful saves via declared memory adapter. Native opaque-origin refusal checked separately. No official geospatial data."
+}

@@ -1,0 +1,239 @@
+{
+  "version": "0.40.0",
+  "html_sha256": "79a5a6b8153f5faf586d60d15c183a1b36c17080ab5e48ca0f9972ebe24d1137",
+  "passed": 16,
+  "failed": 0,
+  "total": 16,
+  "errors": [],
+  "checks": [
+    {
+      "name": "titre v0.40",
+      "ok": true,
+      "detail": "Fallout : Mistral · v0.40 · Corridors continus"
+    },
+    {
+      "name": "surface debug v0.40",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "deux preuves hors ligne",
+      "ok": true,
+      "detail": [
+        {
+          "id": "aubagne_marseille",
+          "label": "Aubagne → Marseille Vieux-Port",
+          "status": "certified",
+          "distanceM": 23701,
+          "pathPoints": 72,
+          "tileCount": 78,
+          "macroSequence": [
+            "geo_huveaune",
+            "geo_marseille"
+          ],
+          "snapshot": true
+        },
+        {
+          "id": "aubagne_laciotat",
+          "label": "Aubagne → La Ciotat",
+          "status": "certified",
+          "distanceM": 22740,
+          "pathPoints": 109,
+          "tileCount": 43,
+          "macroSequence": [
+            "geo_huveaune",
+            "geo_laciotat"
+          ],
+          "snapshot": true
+        }
+      ]
+    },
+    {
+      "name": "Aubagne–Marseille certifié",
+      "ok": true,
+      "detail": {
+        "id": "aubagne_marseille",
+        "label": "Aubagne → Marseille Vieux-Port",
+        "status": "certified",
+        "distanceM": 23701,
+        "pathPoints": 72,
+        "tileCount": 78,
+        "macroSequence": [
+          "geo_huveaune",
+          "geo_marseille"
+        ],
+        "snapshot": true
+      }
+    },
+    {
+      "name": "Aubagne–La Ciotat certifié",
+      "ok": true,
+      "detail": {
+        "id": "aubagne_laciotat",
+        "label": "Aubagne → La Ciotat",
+        "status": "certified",
+        "distanceM": 22740,
+        "pathPoints": 109,
+        "tileCount": 43,
+        "macroSequence": [
+          "geo_huveaune",
+          "geo_laciotat"
+        ],
+        "snapshot": true
+      }
+    },
+    {
+      "name": "macro séquences réelles",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "préchargement corridor calculé",
+      "ok": true,
+      "detail": {
+        "base": 46,
+        "cadastre": 45
+      }
+    },
+    {
+      "name": "raccord terrain aligné",
+      "ok": true,
+      "detail": {
+        "a": "fixture-a",
+        "b": "fixture-b",
+        "samples": 81,
+        "mean": 1.9999999999999993,
+        "max": 2.000000000000014,
+        "status": "aligned",
+        "checkedAt": "2026-09-19T03:31:04.549Z"
+      }
+    },
+    {
+      "name": "bâtiment de frontière recousu",
+      "ok": true,
+      "detail": {
+        "merged": 1,
+        "pending": 0,
+        "checked": 2,
+        "fixtureMerged": true,
+        "mergedDelta": 1,
+        "hidden": [
+          true,
+          true
+        ],
+        "fragments": [
+          "v040-fixture-building-a",
+          "v040-fixture-building-b"
+        ],
+        "hullRatio": 1.0010666672722541,
+        "tileA": "cadastre:16:33777:24008",
+        "tileB": "cadastre:16:33778:24008",
+        "touchA": [
+          "E"
+        ],
+        "touchB": [
+          "W"
+        ],
+        "pair": {
+          "ratio": 1.0010666672722541,
+          "overlap": 5.996876269077731,
+          "same": true
+        },
+        "boundaryError": 4.974592103558154e-14
+      }
+    },
+    {
+      "name": "frontières exactes détectées",
+      "ok": true,
+      "detail": {
+        "merged": 1,
+        "pending": 0,
+        "checked": 2,
+        "fixtureMerged": true,
+        "mergedDelta": 1,
+        "hidden": [
+          true,
+          true
+        ],
+        "fragments": [
+          "v040-fixture-building-a",
+          "v040-fixture-building-b"
+        ],
+        "hullRatio": 1.0010666672722541,
+        "tileA": "cadastre:16:33777:24008",
+        "tileB": "cadastre:16:33778:24008",
+        "touchA": [
+          "E"
+        ],
+        "touchB": [
+          "W"
+        ],
+        "pair": {
+          "ratio": 1.0010666672722541,
+          "overlap": 5.996876269077731,
+          "same": true
+        },
+        "boundaryError": 4.974592103558154e-14
+      }
+    },
+    {
+      "name": "traversée La Ciotat jouée sans rupture",
+      "ok": true,
+      "detail": {
+        "completedAt": "2026-09-19T03:31:04.953Z",
+        "seconds": 1,
+        "breaks": 0,
+        "status": "continuous",
+        "distanceM": 22740
+      }
+    },
+    {
+      "name": "traversée Marseille jouée sans rupture",
+      "ok": true,
+      "detail": {
+        "completedAt": "2026-09-19T03:31:04.966Z",
+        "seconds": 1,
+        "breaks": 0,
+        "status": "continuous",
+        "distanceM": 23701
+      }
+    },
+    {
+      "name": "roadbook se termine proprement",
+      "ok": true,
+      "detail": {
+        "laciotat": {
+          "completedAt": "2026-09-19T03:31:04.953Z",
+          "seconds": 1,
+          "breaks": 0,
+          "status": "continuous",
+          "distanceM": 22740
+        },
+        "marseille": {
+          "completedAt": "2026-09-19T03:31:04.966Z",
+          "seconds": 1,
+          "breaks": 0,
+          "status": "continuous",
+          "distanceM": 23701
+        },
+        "active": null
+      }
+    },
+    {
+      "name": "Pip-Boy roadbook",
+      "ok": true,
+      "detail": "TRAVERSÉES CONTINUES Deux corridors sont calculés depuis les lignes de transport du cache OpenStreetMap. Le roadbook n’invente pas de route : il suit la géométrie certifiée, précharge les tuiles et surveille les ruptures de continuité. Aubagne → Marseille Vieux-Port CERTIFIED 23.7 km 72 points simplifiés · 78 tuiles de certification HUVEAUNE → MARSEILLE ACTIVER PRÉCHARGER PREUVE Aubagne → La Ciotat CERTIFIED 22.7 km 109 points simplifiés · 43 tuiles de certification HUVEAUNE → LA CIOTAT ACTIVER PRÉCHARGER PREUVE CERTIFICATION DU MONDE 1 bâtiments recousus 2 fragments masqués 0 fragments en attente voisin ou union non sûre 0 raccords de relief testés écart max 0 m 2/2 preuves cloud COMPLÈTES ACTUALISER LES PREUVES RECOUDRE LA SCÈNE AUDITER LES RELIEFS VOISINS RELIEF IGN Une certification de graphe routier prouve la continuité des lignes chargées entre les extrémités. Elle ne remplace pas une traversée humaine finale, ni la vérification de chaque trottoir et accès."
+    },
+    {
+      "name": "statut cartographique v0.40",
+      "ok": true,
+      "detail": "CARTOGRAPHIE RÉELLE · V0.40 CORRIDORS, RACCORDS ET BÂTI RECOUSU Cette passe vérifie la continuité utile du territoire : routes longues, transitions de relief et bâtiments cadastraux coupés aux frontières. 2/2 corridors calculés 1 bâtiments recousus 0 raccords terrain audités 8/8 reliefs RGE ALTI Traversées Aubagne → Marseille Vieux-Port · certified · 23.7 km · HUVEAUNE → MARSEILLE Aubagne → La Ciotat · certified · 22.7 km · HUVEAUNE → LA CIOTAT Raccords cadastraux 1 union(s) convexes sûres ; 0 fragment(s) laissés séparés lorsqu’une fusion risquerait d’inventer une emprise. Relief inter-régions 0 échantillons comparés · écart moyen 0 m · maximum 0 m · 0 désaccord(s) à revoir. Limite Le pack compact n’embarque toujours pas les 5 884 coordonnées. L’installation locale complète et les deux traversées humaines restent la validation finale de production. RETOUR ROADBOOK DANS LE PIP-BOY ACTUALISER"
+    },
+    {
+      "name": "aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "Exact v0.40 HTML. Corridor relay deliberately blocked to verify embedded certified snapshots. Traversals are simulated through every proof segment at <=280 m increments; geometric stitch and terrain seam fixtures exercise production code."
+}

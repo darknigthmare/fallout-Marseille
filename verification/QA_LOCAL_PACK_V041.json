@@ -1,0 +1,162 @@
+{
+  "version": "0.41.0",
+  "passed": 14,
+  "failed": 0,
+  "total": 14,
+  "checks": [
+    {
+      "name": "installation fixture réussie",
+      "ok": true,
+      "detail": "Téléchargé base_00000_1.zip\nTéléchargé cadastre_00000_2.zip\nExtrait 1/2 · base_00000_1.zip\nExtrait 2/2 · cadastre_00000_2.zip\n{\n  \"version\": \"0.41.0\",\n  \"generated\": \"2026-09-19T04:15:07Z\",\n  \"source\": \"all\",\n  \"chunksExpected\": 2,\n  \"chunksInstalled\": 2,\n  \"chunkErrors\": [],\n  \"vector\": {\n    \"coordinates\": 3,\n    \"objects\": 2,\n    \"officialEmpty\": 1,\n    \"missing\": 0,\n    \"invalid\": 0,\n    \"bytes\": 1297,\n    \"seconds\": 0.0,\n    \"missingSample\": [],\n    \"invalidSample\": [],\n    \"ok\": true\n  },\n  \"terrain\": null,\n  \"seconds\": 0.0,\n  \"complete\": true\n}\n"
+    },
+    {
+      "name": "trois coordonnées vérifiées",
+      "ok": true,
+      "detail": {
+        "version": "0.41.0",
+        "generated": "2026-09-19T04:15:07Z",
+        "source": "all",
+        "chunksExpected": 2,
+        "chunksInstalled": 2,
+        "chunkErrors": [],
+        "vector": {
+          "coordinates": 3,
+          "objects": 2,
+          "officialEmpty": 1,
+          "missing": 0,
+          "invalid": 0,
+          "bytes": 1297,
+          "seconds": 0.0,
+          "missingSample": [],
+          "invalidSample": [],
+          "ok": true
+        },
+        "terrain": null,
+        "seconds": 0.0,
+        "complete": true
+      }
+    },
+    {
+      "name": "deux PBF et une vide",
+      "ok": true,
+      "detail": {
+        "coordinates": 3,
+        "objects": 2,
+        "officialEmpty": 1,
+        "missing": 0,
+        "invalid": 0,
+        "bytes": 1297,
+        "seconds": 0.0,
+        "missingSample": [],
+        "invalidSample": [],
+        "ok": true
+      }
+    },
+    {
+      "name": "aucun manque",
+      "ok": true,
+      "detail": {
+        "coordinates": 3,
+        "objects": 2,
+        "officialEmpty": 1,
+        "missing": 0,
+        "invalid": 0,
+        "bytes": 1297,
+        "seconds": 0.0,
+        "missingSample": [],
+        "invalidSample": [],
+        "ok": true
+      }
+    },
+    {
+      "name": "vérification seule réussie",
+      "ok": true,
+      "detail": "{\n  \"version\": \"0.41.0\",\n  \"generated\": \"2026-09-19T04:15:07Z\",\n  \"source\": \"all\",\n  \"chunksExpected\": 2,\n  \"chunksInstalled\": null,\n  \"chunkErrors\": [],\n  \"vector\": {\n    \"coordinates\": 3,\n    \"objects\": 2,\n    \"officialEmpty\": 1,\n    \"missing\": 0,\n    \"invalid\": 0,\n    \"bytes\": 1297,\n    \"seconds\": 0.0,\n    \"missingSample\": [],\n    \"invalidSample\": [],\n    \"ok\": true\n  },\n  \"terrain\": null,\n  \"seconds\": 0.0,\n  \"complete\": true\n}\n"
+    },
+    {
+      "name": "benchmark fixture réussi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "benchmark décode deux PBF",
+      "ok": true,
+      "detail": {
+        "version": "0.41.0",
+        "generated": "2026-09-19T04:15:08Z",
+        "sampledPbf": 2,
+        "officialEmpty": 1,
+        "decodedBytes": 1297,
+        "features": 25,
+        "seconds": 0.002,
+        "throughputMiBps": 0.73,
+        "tilesPerSecond": 1177.55,
+        "decodeMs": {
+          "mean": 0.459,
+          "median": 0.459,
+          "p95": 0.379,
+          "max": 0.539
+        },
+        "terrain": [],
+        "terrainParseSeconds": 0.0,
+        "corridors": {
+          "aubagne_laciotat": {
+            "distanceM": 22740,
+            "pathPoints": 109,
+            "tileCount": 43,
+            "macros": [
+              "geo_huveaune",
+              "geo_laciotat"
+            ]
+          },
+          "aubagne_marseille": {
+            "distanceM": 23701,
+            "pathPoints": 72,
+            "tileCount": 78,
+            "macros": [
+              "geo_huveaune",
+              "geo_marseille"
+            ]
+          }
+        },
+        "peakRssKiB": 93088,
+        "completePack": false
+      }
+    },
+    {
+      "name": "débit mesuré",
+      "ok": true,
+      "detail": 0.73
+    },
+    {
+      "name": "traversée ZIP refusée",
+      "ok": true,
+      "detail": "Téléchargé base_00001_1.zip\n{\n  \"version\": \"0.41.0\",\n  \"generated\": \"2026-09-19T04:15:08Z\",\n  \"source\": \"all\",\n  \"chunksExpected\": 1,\n  \"chunksInstalled\": 0,\n  \"chunkErrors\": [\n    {\n      \"chunk\": \"base_00001_1.zip\",\n      \"error\": \"PackError(\\\"unsafe ZIP member: '../escape.pbf'\\\")\"\n    }\n  ],\n  \"vector\": {\n    \"coordinates\": 3,\n    \"objects\": 0,\n    \"officialEmpty\": 0,\n    \"missing\": 3,\n    \"invalid\": 0,\n    \"bytes\": 0,\n    \"seconds\": 0.0,\n    \"missingSample\": [\n      \"14/8437/6001\",\n      \"16/33750/24006\",\n      \"16/33751/24006\"\n    ],\n    \"invalidSample\": [],\n    \"ok\": false\n  },\n  \"terrain\": null,\n  \"seconds\": 0.0,\n  \"complete\": false\n}\n"
+    },
+    {
+      "name": "24 lots de production",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "5884 coordonnées déclarées",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "367 générales",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "5517 cadastrales",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "taille Base64 cohérente",
+      "ok": true,
+      "detail": null
+    }
+  ]
+}

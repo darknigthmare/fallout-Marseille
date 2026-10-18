@@ -1,0 +1,23 @@
+{
+  "name": "Fallout : Mistral — Le quartier se souvient",
+  "short_name": "Mistral",
+  "description": "Prototype de fan non officiel : continuité du territoire, rencontres persistantes, blessures mémorisées et dépouilles à butin fini.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b120d",
+  "theme_color": "#11170f",
+  "icons": [
+    {
+      "src": "icons/mistral-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/mistral-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

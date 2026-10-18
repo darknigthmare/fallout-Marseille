@@ -1,0 +1,645 @@
+{
+  "version": "0.47.0",
+  "html_sha256": "b541ff8950943c71f356c11452d014a08c4531517d30912dd8791d05e1edb107",
+  "passed": 52,
+  "failed": 0,
+  "total": 52,
+  "errors": [],
+  "tests": [
+    {
+      "name": "Version v0.47 exécutée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Laboratoire synthétique chargé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec après lecture du nouveau relief",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec : banque altimétrique publiée inchangée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec : altitude sous le joueur inchangée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec : bâtiments et nature inchangés",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec : aucune publication partielle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation pendant construction : banque intacte",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation pendant construction : géométrie intacte",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation pendant construction : position intacte",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai après annulation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Tuiles réutilisées par référence, pas réinstanciées",
+      "ok": true,
+      "detail": {
+        "sameRecords": 34,
+        "sameBank": false
+      }
+    },
+    {
+      "name": "Maillages terrain réutilisés",
+      "ok": true,
+      "detail": {
+        "warmStarted": 0,
+        "warmCommitted": 0,
+        "blocking": 5,
+        "cancelled": 1,
+        "failed": 1,
+        "stale": 0,
+        "reusedTiles": 68,
+        "builtTiles": 34,
+        "reusedTerrain": 50,
+        "builtTerrain": 25
+      }
+    },
+    {
+      "name": "Préchargement déclenché dans le secteur valide",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Préchargement non bloquant",
+      "ok": true,
+      "detail": {
+        "version": "0.47.0",
+        "scene": 1,
+        "region": "geo_huveaune",
+        "lab": true,
+        "loading": false,
+        "anticipating": true,
+        "phase": "loading",
+        "done": 0,
+        "total": 37,
+        "anchor": [
+          -6550.926871996489,
+          0,
+          -314.3681089133024
+        ],
+        "pos": [
+          -6478.926871996489,
+          49.56818885674608,
+          -314.36810891423374
+        ],
+        "stats": {
+          "warmStarted": 1,
+          "warmCommitted": 0,
+          "blocking": 5,
+          "cancelled": 1,
+          "failed": 1,
+          "stale": 0,
+          "reusedTiles": 68,
+          "builtTiles": 34,
+          "reusedTerrain": 50,
+          "builtTerrain": 25
+        },
+        "resources": {
+          "entries": 0,
+          "bytes": 0,
+          "budgetBytes": 50331648,
+          "pinned": 37,
+          "overBudgetBytes": 0,
+          "hits": 37,
+          "misses": 0,
+          "evictions": 0
+        },
+        "geometry": {
+          "entries": 34,
+          "bytes": 66264,
+          "budgetBytes": 41943040,
+          "pinned": 34,
+          "overBudgetBytes": 0,
+          "hits": 0,
+          "misses": 34,
+          "evictions": 0
+        },
+        "terrainMeshes": {
+          "entries": 25,
+          "bytes": 805090,
+          "budgetBytes": 12582912,
+          "pinned": 25,
+          "overBudgetBytes": 0,
+          "hits": 50,
+          "misses": 25,
+          "evictions": 0
+        },
+        "terrain": [
+          {
+            "id": "geo_calanques",
+            "width": 41,
+            "height": 41,
+            "valid": 1681,
+            "noData": 0
+          },
+          {
+            "id": "geo_huveaune",
+            "width": 41,
+            "height": 41,
+            "valid": 1681,
+            "noData": 0
+          },
+          {
+            "id": "geo_marseille",
+            "width": 41,
+            "height": 41,
+            "valid": 1681,
+            "noData": 0
+          }
+        ],
+        "tiles": 34,
+        "nature": 249,
+        "origins": {
+          "BANC QA SYNTHÉTIQUE": 34
+        },
+        "history": [
+          {
+            "type": "publication",
+            "at": "2026-09-22T01:55:12.649Z",
+            "id": 1,
+            "warm": false,
+            "ms": 529,
+            "tiles": 34
+          },
+          {
+            "type": "échec",
+            "at": "2026-09-22T01:55:13.566Z",
+            "id": 2,
+            "blocking": true,
+            "message": "Échec de préparation injecté — banque active intacte"
+          },
+          {
+            "type": "annulation",
+            "at": "2026-09-22T01:55:13.856Z",
+            "id": 3
+          },
+          {
+            "type": "publication",
+            "at": "2026-09-22T01:55:14.379Z",
+            "id": 4,
+            "warm": false,
+            "ms": 21,
+            "tiles": 34
+          },
+          {
+            "type": "publication",
+            "at": "2026-09-22T01:55:14.418Z",
+            "id": 5,
+            "warm": false,
+            "ms": 21,
+            "tiles": 34
+          },
+          {
+            "type": "anticipation",
+            "at": "2026-09-22T01:55:14.470Z",
+            "id": 6,
+            "lat": 43.289621781420415,
+            "lon": 5.431610327039172
+          }
+        ],
+        "localData": null
+      }
+    },
+    {
+      "name": "Le joueur peut marcher pendant la préparation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Au seuil de sécurité, attente visible",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Le saut vers une zone non prête est refusé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "La même anticipation est publiée une seule fois",
+      "ok": true,
+      "detail": {
+        "warmStarted": 1,
+        "warmCommitted": 1,
+        "blocking": 6,
+        "cancelled": 1,
+        "failed": 1,
+        "stale": 0,
+        "reusedTiles": 102,
+        "builtTiles": 34,
+        "reusedTerrain": 75,
+        "builtTerrain": 25
+      }
+    },
+    {
+      "name": "Reprise sans téléportation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Joueur arrêté : aucun cycle anticipatif oscillant",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Scène conservée après publication",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Empreintes des bâtiments identiques",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "La marche reprend dans le secteur préparé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Seconde anticipation demandée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Demi-tour : ancien secteur validé conservé",
+      "ok": true,
+      "detail": {
+        "version": "0.47.0",
+        "scene": 1,
+        "region": "geo_huveaune",
+        "lab": true,
+        "loading": false,
+        "anticipating": false,
+        "phase": "failed",
+        "done": 37,
+        "total": 37,
+        "anchor": [
+          -6378.926871996373,
+          0,
+          -314.36810891423374
+        ],
+        "pos": [
+          -6490.926871996489,
+          49.55743566570852,
+          -314.36810891423374
+        ],
+        "stats": {
+          "warmStarted": 2,
+          "warmCommitted": 1,
+          "blocking": 6,
+          "cancelled": 1,
+          "failed": 2,
+          "stale": 1,
+          "reusedTiles": 130,
+          "builtTiles": 40,
+          "reusedTerrain": 95,
+          "builtTerrain": 25
+        },
+        "resources": {
+          "entries": 37,
+          "bytes": 52032,
+          "budgetBytes": 50331648,
+          "pinned": 37,
+          "overBudgetBytes": 0,
+          "hits": 37,
+          "misses": 0,
+          "evictions": 0
+        },
+        "geometry": {
+          "entries": 40,
+          "bytes": 68760,
+          "budgetBytes": 41943040,
+          "pinned": 34,
+          "overBudgetBytes": 0,
+          "hits": 0,
+          "misses": 40,
+          "evictions": 0
+        },
+        "terrainMeshes": {
+          "entries": 25,
+          "bytes": 805090,
+          "budgetBytes": 12582912,
+          "pinned": 25,
+          "overBudgetBytes": 0,
+          "hits": 95,
+          "misses": 25,
+          "evictions": 0
+        },
+        "terrain": [
+          {
+            "id": "geo_calanques",
+            "width": 41,
+            "height": 41,
+            "valid": 1681,
+            "noData": 0
+          },
+          {
+            "id": "geo_huveaune",
+            "width": 41,
+            "height": 41,
+            "valid": 1681,
+            "noData": 0
+          },
+          {
+            "id": "geo_marseille",
+            "width": 41,
+            "height": 41,
+            "valid": 1681,
+            "noData": 0
+          }
+        ],
+        "tiles": 34,
+        "nature": 249,
+        "origins": {
+          "BANC QA SYNTHÉTIQUE": 34
+        },
+        "history": [
+          {
+            "type": "publication",
+            "at": "2026-09-22T01:55:12.649Z",
+            "id": 1,
+            "warm": false,
+            "ms": 529,
+            "tiles": 34
+          },
+          {
+            "type": "échec",
+            "at": "2026-09-22T01:55:13.566Z",
+            "id": 2,
+            "blocking": true,
+            "message": "Échec de préparation injecté — banque active intacte"
+          },
+          {
+            "type": "annulation",
+            "at": "2026-09-22T01:55:13.856Z",
+            "id": 3
+          },
+          {
+            "type": "publication",
+            "at": "2026-09-22T01:55:14.379Z",
+            "id": 4,
+            "warm": false,
+            "ms": 21,
+            "tiles": 34
+          },
+          {
+            "type": "publication",
+            "at": "2026-09-22T01:55:14.418Z",
+            "id": 5,
+            "warm": false,
+            "ms": 21,
+            "tiles": 34
+          },
+          {
+            "type": "anticipation",
+            "at": "2026-09-22T01:55:14.470Z",
+            "id": 6,
+            "lat": 43.289621781420415,
+            "lon": 5.431610327039172
+          },
+          {
+            "type": "attente",
+            "at": "2026-09-22T01:55:14.604Z",
+            "id": 6
+          },
+          {
+            "type": "publication",
+            "at": "2026-09-22T01:55:14.952Z",
+            "id": 6,
+            "warm": true,
+            "ms": 481,
+            "tiles": 34
+          },
+          {
+            "type": "anticipation",
+            "at": "2026-09-22T01:55:15.647Z",
+            "id": 7,
+            "lat": 43.28957245838286,
+            "lon": 5.433801241342106
+          },
+          {
+            "type": "échec",
+            "at": "2026-09-22T01:55:16.026Z",
+            "id": 7,
+            "blocking": false,
+            "message": "Préchargement abandonné : direction de marche modifiée"
+          }
+        ],
+        "localData": null
+      }
+    },
+    {
+      "name": "Demi-tour : préchargement périmé rejeté",
+      "ok": true,
+      "detail": {
+        "warmStarted": 2,
+        "warmCommitted": 1,
+        "blocking": 6,
+        "cancelled": 1,
+        "failed": 2,
+        "stale": 1,
+        "reusedTiles": 130,
+        "builtTiles": 40,
+        "reusedTerrain": 95,
+        "builtTerrain": 25
+      }
+    },
+    {
+      "name": "Chargement de stress 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 3",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 4",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 5",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 6",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 7",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 8",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 9",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 10",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 11",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement de stress 12",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cache brut borné après exploration",
+      "ok": true,
+      "detail": {
+        "entries": 128,
+        "bytes": 95144,
+        "budgetBytes": 50331648,
+        "pinned": 34,
+        "overBudgetBytes": 0,
+        "hits": 293,
+        "misses": 0,
+        "evictions": 65
+      }
+    },
+    {
+      "name": "Géométrie et terrain bornés",
+      "ok": true,
+      "detail": {
+        "geometry": {
+          "entries": 96,
+          "bytes": 39840,
+          "budgetBytes": 41943040,
+          "pinned": 29,
+          "overBudgetBytes": 0,
+          "hits": 5,
+          "misses": 223,
+          "evictions": 127
+        },
+        "terrainMeshes": {
+          "entries": 64,
+          "bytes": 1950590,
+          "budgetBytes": 12582912,
+          "pinned": 25,
+          "overBudgetBytes": 0,
+          "hits": 230,
+          "misses": 157,
+          "evictions": 93
+        }
+      }
+    },
+    {
+      "name": "Anciennes données non actives évincées",
+      "ok": true,
+      "detail": {
+        "entries": 128,
+        "bytes": 95144,
+        "budgetBytes": 50331648,
+        "pinned": 34,
+        "overBudgetBytes": 0,
+        "hits": 293,
+        "misses": 0,
+        "evictions": 65
+      }
+    },
+    {
+      "name": "Retour au secteur initial",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Bâtiments stables après éviction et retour",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec : bouton de réessai accessible au clavier",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annuler respecte le Pip-Boy ouvert",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Lecture bornée valide",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Corps trop volumineux refusé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Signal déjà annulé respecté",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Diagnostic réel du streaming affiché",
+      "ok": true,
+      "detail": "v0.47 / SOURCES ET CONTINUITÉ\n\nLE TERRITOIRE EN AVANCE\n\nBANC SYNTHÉTIQUE ACTIF — les mesures ci-dessous ne décrivent pas un quartier réel.\n\n34\nTuiles en scène\n5/8\nGrilles lues\n1\nPréchargements publiés\n249\nCellules décorées\nSECTEUR PRÊT\n\nLe secteur suivant se prépare pendant la marche. Si la marge de sécurité est atteinte avant sa validation, le jeu attend les données plutôt que d’afficher un vide.\n\nUne préparation échouée ou annulée ne modifie ni le relief actif ni les bâtiments. Le retour d’une donnée tardive ne change pas la scène.\n\nMEMOIRE DES RESSOURCES\n\n0.0 Mio estimés sur un budget de 48.0 Mio · 0 entrées · 296 réutilisations · 99 évictions.\n\n0.1 Mio de géométrie en cache · 317 tuiles réutilisées · 257 reconstructions.\n\nCes valeurs estiment les ressources conservées, pas l’ensemble de la mémoire du navigateur ni la mémoire graphique. Les données actives restent prioritaires si leur taille dépasse le budget.\nPROVENANCE DE LA SCÈNE\n\nBANC QA SYNTHÉTIQUE: 34\n\nDONNÉES SUR LE DISQUE\n\nLancer un audit local pour compter les fichiers installés. Le petit ZIP ne contient pas le pack territorial complet.\n\nAUDITER LES FICHIERS LOCAUX\nDERNIERS CHARGEMENTS\n\néchec Échec réseau injecté — dem:"
+    },
+    {
+      "name": "Le banc ne prétend pas être Marseille",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "HTML réel exécuté dans Chromium ; préchargement, échecs et stress utilisent le banc synthétique explicitement signalé, pas des quartiers réels."
+}

@@ -1,0 +1,33 @@
+{
+  "version": "0.39.0",
+  "verifiedAt": "2026-09-19T02:34:18Z",
+  "metadataTable": {
+    "name": "public.mistral_terrain_cache",
+    "rls": true,
+    "anonSelect": false,
+    "authenticatedSelect": false
+  },
+  "storageBucket": {
+    "id": "fallout-mistral-terrain-v039",
+    "public": false,
+    "fileSizeLimit": 6000000,
+    "allowedMimeTypes": ["application/json", "application/octet-stream"]
+  },
+  "readService": {
+    "name": "fallout-mistral-terrain-v039",
+    "verifyJwt": true,
+    "buildRouteStatus": 410,
+    "buildRouteClosed": true
+  },
+  "temporaryTools": {
+    "queue": {"service":"fallout-mistral-terrain-queue-v039","status":410,"disabled":true},
+    "repair": {"service":"fallout-mistral-terrain-repair-v039","status":410,"disabled":true},
+    "export": {"service":"fallout-mistral-terrain-export-v039","status":410,"disabled":true}
+  },
+  "notes": [
+    "The client cannot select metadata rows directly.",
+    "The terrain object bucket is private.",
+    "The final relay is read-only for v0.39 grids.",
+    "Temporary generation and export functions return HTTP 410."
+  ]
+}

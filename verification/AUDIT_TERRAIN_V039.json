@@ -1,0 +1,39 @@
+{
+  "version": "0.39.0",
+  "generated": "2026-09-19T02:46:08Z",
+  "source": {
+    "name": "RGE ALTI IGN",
+    "resource": "ign_rge_alti_wld",
+    "title": "Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes)",
+    "license": "Licence Ouverte 2.0",
+    "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+    "api": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json"
+  },
+  "expectedRegions": 8,
+  "validRegions": 0,
+  "missingRegions": 8,
+  "invalidRegions": 0,
+  "validPoints": 0,
+  "missingPoints": 0,
+  "bytes": 0,
+  "complete": false,
+  "missing": [
+    "geo_marseille",
+    "geo_huveaune",
+    "geo_garlaban",
+    "geo_calanques",
+    "geo_laciotat",
+    "geo_frioul",
+    "geo_etoile",
+    "geo_saintebaume"
+  ],
+  "invalid": [],
+  "overlaps": [],
+  "files": [],
+  "truth": {
+    "officialSource": "ign_rge_alti_wld",
+    "nativeResolutionClaimed": false,
+    "syntheticHeightsInserted": false,
+    "note": "This audit validates the sampled grids installed locally. It does not certify every native RGE ALTI cell or every road/building alignment."
+  }
+}

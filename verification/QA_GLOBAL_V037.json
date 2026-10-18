@@ -1,0 +1,52 @@
+{
+  "version": "0.37.0",
+  "htmlSha256": "86388e86c3de9f759589b5a01f79d3d05f1fd7666b30cd3d8f5c0cbba3a067e5",
+  "passed": 102,
+  "failed": 0,
+  "total": 102,
+  "errors": [],
+  "sameHtml": true,
+  "suites": [
+    {
+      "file": "QA_V037.json",
+      "passed": 21,
+      "failed": 0,
+      "total": 21,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_MAP_TOOLS_V037.json",
+      "passed": 8,
+      "failed": 0,
+      "total": 8,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_ON_V037.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PRODUCT_ON_V037.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PROLOGUE_ON_V037.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    }
+  ],
+  "cloudCacheVerifiedTiles": 368,
+  "cloudBaseTiles": 367,
+  "cloudCadastreTiles": 1,
+  "localPackValidTiles": 0,
+  "officialTerrainMacros": 0,
+  "scope": "Exact final HTML for browser suites; controlled local MVT fixtures for installer/auditor QA; live official source/cache evidence stored separately."
+}

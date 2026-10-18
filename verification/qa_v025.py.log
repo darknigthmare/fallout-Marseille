@@ -1,0 +1,101 @@
+OK Version effective 0.25 
+OK Refus natif du stockage sur origine opaque constaté 
+OK Adaptateur mémoire explicite pour les scénarios de réussite 
+OK Menu de prise en main disponible 
+OK Annuler la confirmation ne démarre pas le scénario 
+OK Menu démarre le V.A.T.S. contre un ennemi du dépôt 
+OK Campagne préservée par la prise en main 
+OK Ancienne exploration v0.24 intacte 
+OK Caméra de ciblage conserve exactement l’origine des yeux 
+OK Cadrage sans déplacement ni rotation du personnage enregistré 
+OK Ancien dessin anatomique supprimé 
+OK Pas de flou opaque cachant la scène 
+OK Six zones distinctes sur un humanoïde 
+OK Toutes les zones découvertes visibles dans une arène ouverte 
+OK Six ancrages projetés dans le cadre de la caméra 
+OK Projection indépendante : écart inférieur à 0,1 pixel 1.1368683772161603e-13
+OK Clic sur OUTIL/BRAS gauche sélectionne le membre réel 
+OK Sélection sans ajout ou débit implicite 
+OK La zone projetée elle-même est interactive 
+OK Surbrillance appliquée aux primitives de la tête, pas à une silhouette séparée [{'enemy': 'v020-qa-enemy', 'part': 'head'}, {'enemy': 'v020-qa-enemy', 'part': 'head'}, {'enemy': 'v020-qa-enemy', 'part': 'head'}]
+OK File conserve le bras droit réellement sélectionné 
+OK Critique explicitement réservé sur la tête 
+OK Réorganisation visuelle préserve le critique 
+OK Retrait individuel sans coût 
+OK Annulation garde le critique 
+OK Sortie retire le cadrage, position exacte conservée 
+OK HUD normal rétabli après fermeture 
+OK Volumes suivent l’altitude du modèle 
+OK Bras gauche/droit suivent la rotation, pas l’axe X fixe 
+OK Coordonnées d’anatomie finies après rotation/translation 
+OK Une blessure à gauche ne remplit pas la jauge de droite {'head': 0, 'body': 0, 'arm_l': 0.125, 'arm_r': 0, 'leg_l': 0, 'leg_r': 0}
+OK Blessures des jambes distinguées 
+OK Sauvegarde réussie via adaptateur mémoire déclaré 
+OK Dégâts de membre sérialisés dans le JSON de sauvegarde 
+OK Dégâts de côté conservés au rechargement de scène 
+OK Migration conserve les atteintes anatomiques 
+OK Import borne les valeurs et filtre les membres inconnus 
+OK Couverture basse : tête exposée, deux jambes masquées {'head': 69, 'body': 93, 'arm_l': 81, 'arm_r': 82, 'leg_l': 0, 'leg_r': 0}
+OK Étiquette masquée désactivée 
+OK Impossible de réserver un membre derrière le couvert 
+OK Tête exposée encore réservable 
+OK Mur après réservation : action annulée sans coût ni critique 
+OK Retour d’exécution explicite pour action annulée 
+OK Critique côté droit : coût exact de l’action émise 
+OK Tir critique atteint le membre choisi, pas le côté opposé 
+OK Bilan d’exécution présent pendant la rafale 
+OK Bilan retiré à l’arrêt 
+OK robot : zones construites à partir du modèle [('head', 'CAPTEURS'), ('body', 'CHÂSSIS'), ('arm_l', 'OUTIL GAUCHE'), ('arm_r', 'OUTIL DROIT'), ('leg_l', 'MOTEUR GAUCHE'), ('leg_r', 'MOTEUR DROIT')]
+OK robot : volumes finis et positifs 
+OK feralGhoul : zones construites à partir du modèle [('head', 'TÊTE'), ('body', 'TORSE'), ('arm_l', 'BRAS GAUCHE'), ('arm_r', 'BRAS DROIT'), ('leg_l', 'JAMBE GAUCHE'), ('leg_r', 'JAMBE DROITE')]
+OK feralGhoul : volumes finis et positifs 
+OK tarente : zones construites à partir du modèle [('head', 'TÊTE'), ('body', 'CORPS'), ('leg_l', 'PATTES GAUCHES'), ('leg_r', 'PATTES DROITES'), ('tail', 'QUEUE')]
+OK tarente : volumes finis et positifs 
+OK radscorpion : zones construites à partir du modèle [('head', 'TÊTE'), ('body', 'CORPS'), ('claw_l', 'PINCE GAUCHE'), ('claw_r', 'PINCE DROITE'), ('leg_l', 'PATTES GAUCHES'), ('leg_r', 'PATTES DROITES'), ('tail', 'QUEUE')]
+OK radscorpion : volumes finis et positifs 
+OK crab : zones construites à partir du modèle [('head', 'YEUX'), ('body', 'CARAPACE'), ('claw_l', 'PINCE GAUCHE'), ('claw_r', 'PINCE DROITE'), ('leg_l', 'PATTES GAUCHES'), ('leg_r', 'PATTES DROITES')]
+OK crab : volumes finis et positifs 
+OK sanglier : zones construites à partir du modèle [('head', 'HURE'), ('body', 'FLANC'), ('fore_l', 'PATTE AV. GAUCHE'), ('fore_r', 'PATTE AV. DROITE'), ('back_l', 'PATTE AR. GAUCHE'), ('back_r', 'PATTE AR. DROITE')]
+OK sanglier : volumes finis et positifs 
+OK ledgerhound : zones construites à partir du modèle [('head', 'TÊTE'), ('body', 'FLANC'), ('fore_l', 'PATTE AV. GAUCHE'), ('fore_r', 'PATTE AV. DROITE'), ('back_l', 'PATTE AR. GAUCHE'), ('back_r', 'PATTE AR. DROITE')]
+OK ledgerhound : volumes finis et positifs 
+OK eyebot : zones construites à partir du modèle [('head', 'CAPTEURS'), ('body', 'CHÂSSIS'), ('thruster_l', 'PROPULSEUR GAUCHE'), ('thruster_r', 'PROPULSEUR DROIT')]
+OK eyebot : volumes finis et positifs 
+OK walkingcrane : zones construites à partir du modèle [('head', 'CAPTEURS'), ('body', 'CHÂSSIS'), ('arms', 'OUTIL'), ('leg_l', 'MOTEUR GAUCHE'), ('leg_r', 'MOTEUR DROIT')]
+OK walkingcrane : volumes finis et positifs 
+OK deathclaw : zones construites à partir du modèle [('head', 'TÊTE'), ('body', 'TORSE'), ('arms', 'BRAS'), ('tail', 'QUEUE')]
+OK deathclaw : volumes finis et positifs 
+OK Changer de cible cadre le second acteur du monde 
+OK File multi-cibles conserve les bons acteurs 
+OK Limite à six actions conservée 
+OK Transition supprime ancrages/caméra/file obsolètes 
+OK Cadrage à 1.2 m, zoom borné et origine fixe 
+OK Projection finie à 1.2 m 
+OK Cadrage à 4 m, zoom borné et origine fixe 
+OK Projection finie à 4 m 
+OK Cadrage à 18 m, zoom borné et origine fixe 
+OK Projection finie à 18 m 
+OK Cadrage à 60 m, zoom borné et origine fixe 
+OK Projection finie à 60 m 
+OK Hors portée : le zoom ne crée pas une cible autorisée 
+OK S sélectionne le membre suivant 
+OK Z AZERTY sélectionne le membre précédent 
+OK E ajoute une action 
+OK Retour arrière retire une action 
+OK 390×844 sans débordement horizontal 
+OK 390×844 étiquettes dans la largeur 
+OK 390×844 ciblage et ajout au clic 
+OK 844×390 sans débordement horizontal 
+OK 844×390 étiquettes dans la largeur 
+OK 844×390 ciblage et ajout au clic 
+OK 1280×720 sans débordement horizontal 
+OK 1280×720 étiquettes dans la largeur 
+OK 1280×720 ciblage et ajout au clic 
+OK File dépliable sur mobile 
+OK Retrait tactile dans la file dépliée 
+OK Fermeture tactile 
+OK Reprise v0.24 via adaptateur mémoire déclaré 
+OK Nouvelle clé v0.25, pas d’écrasement v0.24 
+OK Ancienne sauvegarde préservée octet pour octet 
+OK Aucune exception JavaScript pendant la suite []
+RESULT 100 0

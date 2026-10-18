@@ -1,0 +1,623 @@
+{
+  "version": "0.30.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "total": 116,
+  "passed": 116,
+  "failed": 0,
+  "errors": [],
+  "scope": "Exact HTML / software Chromium / authored level routes, real UI clicks, explicit synthetic combat, memory save adapter",
+  "results": [
+    {
+      "ok": true,
+      "name": "Le HTML final annonce 0.27.0",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Écriture native sur origine opaque refusée, sans faux succès",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Écriture de test avec adaptateur mémoire explicitement déclaré",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Campagne et exploration v0.26 séparées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : conteneurs attendus réellement attachés",
+      "detail": 3
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : interaction atteignable free",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : interaction atteignable consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : monter au coffret via le contrôleur",
+      "detail": {
+        "ok": true,
+        "steps": 640,
+        "pos": [
+          18.243209838091474,
+          4.85,
+          -12.156020724308265
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "transit_depot : interaction atteignable workcase",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : conteneurs attendus réellement attachés",
+      "detail": 3
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : interaction atteignable free",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : interaction atteignable consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : monter au coffret via le contrôleur",
+      "detail": {
+        "ok": true,
+        "steps": 850,
+        "pos": [
+          -17.80957580943778,
+          4.85,
+          -15.980492023108075
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "traverse_archives : interaction atteignable workcase",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : conteneurs attendus réellement attachés",
+      "detail": 3
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : interaction atteignable free",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : interaction atteignable consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : monter au coffret via le contrôleur",
+      "detail": {
+        "ok": true,
+        "steps": 638,
+        "pos": [
+          19.759145211440874,
+          4.85,
+          -13.429514737343302
+        ],
+        "maxY": 4.85
+      }
+    },
+    {
+      "ok": true,
+      "name": "mooring_station : interaction atteignable workcase",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : conteneurs attendus réellement attachés",
+      "detail": 1
+    },
+    {
+      "ok": true,
+      "name": "relay_vent : interaction atteignable salvage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : conteneurs attendus réellement attachés",
+      "detail": 1
+    },
+    {
+      "ok": true,
+      "name": "relay_cold : interaction atteignable salvage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : conteneurs attendus réellement attachés",
+      "detail": 1
+    },
+    {
+      "ok": true,
+      "name": "relay_brake : interaction atteignable salvage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/free",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Clic natif : prendre un objet, pas toute la pile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La quantité restante est finie",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Transferts négatifs, excessifs et fractionnaires refusés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Quantité partielle conservée après aller-retour entre scènes",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tout prendre vide le conteneur sans le régénérer",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Reprendre une caisse vide ne duplique rien",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/workcase",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Serrure fermée empêche de prendre du matériel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Trois tentatives ratées cassent une épingle, pas trois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le réglage correct ouvre le vrai coffre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune boucle d’XP au crochetage",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "L’arme usée du coffret peut être prise",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "État du coffre conservé à la récupération",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/workcase",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Serrure reste ouverte après retour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Inspecter une réserve ne donne pas le droit de la vider",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Prélèvement volontaire après avertissement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un seul objet a quitté la réserve",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Témoin proche : un avis local est enregistré",
+      "detail": {
+        "aubagne": 1,
+        "marseille": 0,
+        "laciotat": 0,
+        "collines": 0
+      }
+    },
+    {
+      "ok": true,
+      "name": "Le même lot ne cumule pas un avis par article",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux eaux manquent au lot dans le bilan",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Remise physique diminue le manque et le sac",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rendre au-delà du contenu initial est refusé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Conclure avant les trois bordereaux est refusé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur traverse_archives/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur mooring_station/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une restitution sans ses ressources est bloquée, sans paiement partiel",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Restitution conclue par vraie confirmation",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Prime unique de restitution attribuée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rejouer une conclusion ne verse pas de seconde prime",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Les réserves restituées ne restent pas à disposition du joueur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fournitures de l’accord réellement visibles",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur traverse_archives/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur mooring_station/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Chemin complet : share",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Épilogue share relisible sans gain",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "share : partage limité ou récupération des restes, pas un double don",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur traverse_archives/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur mooring_station/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Chemin complet : claim",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Épilogue claim relisible sans gain",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "claim : partage limité ou récupération des restes, pas un double don",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Récupération personnelle affecte la réputation locale",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Neutraliser ne transfère plus les ressources à distance",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un conteneur de dépouille est créé au lieu du décès",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Restes visuels issus du modèle, coordonnées finies",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Impossible de fouiller un corps distant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fouille à proximité du vrai corps",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Récupération du butin après fouille",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Capsules du décès transférées une fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Appel répété sur mort ignoré",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Restes et butin persistent dans une scène réelle rechargée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Démontage à distance refusé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Démontage au véritable établi",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Consommation et résultat de récupération exacts",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Les objets de quête ne sont pas démontables",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Soin depuis le sac consomme un Stimpak",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Recherche réelle sur le contenu possédé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Échap depuis recherche rend la commande au jeu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Encombrement facultatif ralentit de 35 %, pas d’effacement d’objets",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Vendre une arme non équipée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Chargeur revendu vidé dans la réserve une seule fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Vente répétée d’un objet absent refusée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Objet revendu disponible au comptoir",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rachat de l’arme",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rachat conserve la condition et ne remplit pas le chargeur",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Achat d’un modèle déjà possédé bloqué sans débiter",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Arme active protégée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un produit absent du stock ne peut pas être acheté",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Transactions refusées après fermeture du comptoir",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/free",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Migration v0.25 conserve VATS, champs inconnus, encombrement inactif",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "État des conteneurs conservé dans la migration",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Export/import de test conserve l’objet déjà pris",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Quantités invalides et objets inconnus éliminés du nouveau registre",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/free",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Panneau de fouille visible à 390×844",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pas de débordement horizontal en mode étroit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "I ouvre le nouvel inventaire Pip-Boy avec une vraie touche",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Échap ferme le sac étroit",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Accès physique au conteneur transit_depot/consignment",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un ancien transfert est invalidé lors du changement de scène",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Panneau invalidé et masqué au changement de scène",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript",
+      "detail": []
+    }
+  ]
+}

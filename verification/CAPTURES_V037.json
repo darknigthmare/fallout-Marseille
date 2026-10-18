@@ -1,0 +1,47 @@
+{
+  "html_sha256": "86388e86c3de9f759589b5a01f79d3d05f1fd7666b30cd3d8f5c0cbba3a067e5",
+  "errors": [],
+  "scope": "HTML exact v0.37. Cloud count 368 is live verified; base layer 367/367, cadastre 1/5517; local IndexedDB count and seam scene use controlled QA fixtures because native storage/network are blocked in the production sandbox. No official terrain bundled.",
+  "shots": [
+    {
+      "file": "v037_01_plan_couverture.png",
+      "title": "Plan territorial",
+      "note": "Huit emprises WGS84, 5 884 coordonnées prévues, cache cloud réel 368 (fond 367/367), relief officiel 0/8."
+    },
+    {
+      "file": "v037_02_menu.png",
+      "title": "Menu v0.37",
+      "note": "La build annonce Cache territorial sans prétendre que le pack complet est embarqué."
+    },
+    {
+      "file": "v037_03_statut.png",
+      "title": "État cartographique",
+      "note": "Le plan 5 884, le cache cloud réel 368 — fond 367/367, cadastre 1/5 517 — le cache local et le relief 0/8 sont séparés."
+    },
+    {
+      "file": "v037_04_pip_cache.png",
+      "title": "Pip-Boy — cache",
+      "note": "Trois PBF contrôlés dans le cache local de QA ; 368 sont réellement archivés dans le cache cloud, dont le fond complet 367/367."
+    },
+    {
+      "file": "v037_05_pip_couverture.png",
+      "title": "Pip-Boy — couverture",
+      "note": "Les huit macro-régions, le plan théorique et les fichiers acquis sont présentés séparément."
+    },
+    {
+      "file": "v037_06_raccord_synthetique.png",
+      "title": "Raccord MVT synthétique",
+      "note": "Vue de QA : deux tuiles contrôlées valident raccord routier, remplacement HLOD et déduplication cadastrale ; ce n’est pas Marseille."
+    },
+    {
+      "file": "v037_07_transition.png",
+      "title": "Transition Marseille → Huveaune",
+      "note": "La latitude/longitude est conservée au changement de macro-région."
+    },
+    {
+      "file": "v037_08_mobile_statut.png",
+      "title": "Statut en portrait",
+      "note": "Lecture du statut cache/pack/terrain dans une fenêtre 390×844 simulée."
+    }
+  ]
+}

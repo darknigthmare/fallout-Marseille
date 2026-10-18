@@ -1,0 +1,34 @@
+{
+  "version": "0.40.0",
+  "service": "fallout-mistral-corridors-v040",
+  "verifyJwt": true,
+  "serviceMode": "read-only",
+  "buildRouteStatus": 410,
+  "temporaryExportStatus": 410,
+  "bucket": {
+    "id": "fallout-mistral-corridors-v040",
+    "public": false,
+    "fileSizeLimit": 5000000,
+    "allowedMimeTypes": [
+      "application/json"
+    ]
+  },
+  "table": {
+    "name": "public.mistral_corridor_certification",
+    "rls": true,
+    "anonSelect": false,
+    "authenticatedSelect": false,
+    "access": "service-role only through bounded relay"
+  },
+  "allowedCorridors": [
+    "aubagne_marseille",
+    "aubagne_laciotat"
+  ],
+  "certified": true,
+  "count": 2,
+  "notes": [
+    "temporary build/export functions were disabled after proof acquisition",
+    "corridor payloads are also embedded in the offline HTML",
+    "no arbitrary storage path or external URL is accepted"
+  ]
+}

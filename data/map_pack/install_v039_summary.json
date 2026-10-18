@@ -1,0 +1,21 @@
+{
+  "version": "0.39.0",
+  "generated": "2026-09-19T02:46:06Z",
+  "source": "all",
+  "macro": "all",
+  "endpoint": "cloud",
+  "verifyOnly": false,
+  "dryRun": true,
+  "seconds": 1.21,
+  "steps": [
+    {
+      "name": "vector",
+      "returncode": 0
+    },
+    {
+      "name": "terrain",
+      "returncode": 0
+    }
+  ],
+  "ok": true
+}

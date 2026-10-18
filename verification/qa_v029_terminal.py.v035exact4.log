@@ -1,0 +1,68 @@
+OK Trois contrôleurs nouveaux + deux historiques ; zéro carte importée
+OK Titre v029 actualisé
+OK Refus réel localStorage sur origine opaque détecté
+OK Sauvegarde via adaptateur mémoire explicitement injecté
+OK Nouvelles clés distinctes de v028
+OK Migration ancienne partie sans accès ni quête inventés
+OK Préserve santé, fouille, vieilles quêtes et champs inconnus
+OK État importé borné ; zéro essai corrompu ne contourne pas le verrouillage
+OK Indices répétés/invalides nettoyés
+OK Journal importé borné
+OK Pas de contrôleur ou issue inconnus acceptés
+OK depot : douze mots uniques de même longueur
+OK archives : douze mots uniques de même longueur
+OK amarres : douze mots uniques de même longueur
+OK relay : douze mots uniques de même longueur
+OK ship : douze mots uniques de même longueur
+OK Similitude par position et longueur, pas lettres seulement présentes
+OK Contrôleur inaccessible à distance
+OK Contrôleur inaccessible depuis le mauvais étage
+OK Ouverture sur place du dialogue natif et pause de jeu
+OK Aucune lecture privée ni commande sans identification
+OK Les douze candidats sont de vrais boutons
+OK Règle de la déduction affichée
+OK Réinitialisation non consommée avec quatre essais
+OK Après un candidat devenu inactif, le focus reste dans le contrôleur
+OK Mauvais mot : un essai consommé au clic
+OK Retour de similitude conforme à la solution
+OK Répéter le même candidat ne débite pas deux essais
+OK Les chevrons retirent un leurre, jamais la solution
+OK Séquence déjà utilisée et candidat retiré refusés
+OK Crochets : restitution des quatre essais une fois
+OK Accolades retirent un second leurre
+OK Fermer puis rouvrir conserve essais, mots et aides
+OK Bonne réponse authentifie sans action automatique
+OK Authentification ne déclenche ni volet ni veille
+OK Bonne réponse non répétable pour expérience
+OK Journal D-4 archivé et preuve de liaison enregistrée
+OK Texte complet copié, pas seulement titre
+OK Ouverture du volet nécessite confirmation
+OK Revenir laisse le volet fermé
+OK Confirmation ouvre réellement la collision
+OK Ouverture ne se répète pas
+OK Quatre erreurs : verrouillage de 45 secondes actives
+OK Déduction désactivée pendant refroidissement
+OK Attendre dans le terminal ne fait pas refroidir le contrôleur
+OK Fermer ne rétablit pas les essais
+OK Sauvegarde verrouillée réimportée via validateur réel
+OK Verrouillage persiste après import
+OK Habilitation permet accès pendant lockout sans recharger le jeu
+OK Avant 45 secondes actives : pas de reset anticipé
+OK Au refroidissement : nouveau cycle et quatre essais
+OK Le nouveau cycle change la table, pas une simple fermeture
+OK Bouton obsolète après changement de scène inopérant
+OK Confirmation refuse un joueur déplacé à distance
+OK Import invalide une session et son devis encore ouverts
+OK Personnage mort ne commande pas le contrôleur
+OK Science insuffisante : A-2 ne peut être forcé
+OK Science suffisante ouvre la déduction A-2
+OK Shift+Tab reste dans le contrôleur
+OK Tab boucle sur le premier bouton
+OK Clavier dans le contrôleur ne déplace pas le joueur
+OK Échap ferme et rend le contrôle au jeu
+OK Registre des contrôleurs intégré au Pip-Boy
+OK Copie archivée : aucune commande à distance
+OK Reprise ancienne exploration v028
+OK Nouvelle écriture n’écrase pas le fichier de la version précédente
+OK Déduction, accès et preuves reprennent fidèlement
+TOTAL 67 0 ERRORS []

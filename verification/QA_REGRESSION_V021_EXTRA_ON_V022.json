@@ -1,0 +1,178 @@
+{
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "scope": "HTML exact, rendu logiciel ; fixture visuelle synthétique explicitement nommée ; stockage mémoire",
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "results": [
+    {
+      "ok": true,
+      "name": "Clic du menu lance réellement le dépôt sans transition périmée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Contrôle joueur actif après le menu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Découverte écrite uniquement dans la clé exploration",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Point de départ sauvegardé dans le nouveau lieu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le porteur du dépôt se déplace réellement",
+      "detail": {
+        "from": [
+          -6,
+          0,
+          12
+        ],
+        "to": [
+          1.0249499999999987,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "Le compagnon rejoint le joueur par les escaliers",
+      "detail": {
+        "pos": [
+          -7.578580625773673,
+          3.2,
+          -16.499655779220415
+        ],
+        "order": {
+          "move": "follow",
+          "fire": "quiet",
+          "zone": "transit_depot",
+          "pos": [
+            -4,
+            0,
+            17
+          ]
+        },
+        "cooldown": 0
+      }
+    },
+    {
+      "ok": true,
+      "name": "Import JSON réel restaure preuves, coupures et retour (stockage simulé)",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : raider",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "raider",
+        "parts": 37,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : ghoul",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "ghoul",
+        "parts": 35,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : robot",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "robot",
+        "parts": 22,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : drone",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "drone",
+        "parts": 11,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : tarente",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "tarente",
+        "parts": 17,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : scorpion",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "scorpion",
+        "parts": 32,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : crab",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "crab",
+        "parts": 26,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : boar",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "boar",
+        "parts": 26,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : dog",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "dog",
+        "parts": 16,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Silhouette : crane",
+      "detail": {
+        "id": "v020-qa-enemy",
+        "family": "crane",
+        "parts": 19,
+        "finite": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JS du menu, des acteurs et de l’import",
+      "detail": []
+    }
+  ],
+  "errors": []
+}

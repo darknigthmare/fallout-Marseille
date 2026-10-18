@@ -1,0 +1,21 @@
+{
+  "name": "fallout-mistral",
+  "version": "0.49.0",
+  "private": true,
+  "scripts": {
+    "build": "python3 tools/build_single.py",
+    "check": "node --check src/game.js",
+    "qa": "python3 tools/check_v049.py",
+    "captures": "python3 tests/v049/capture.py",
+    "report": "python3 tests/v049/capture.py",
+    "app": "python3 tools/serve_game.py",
+    "map:install": "python3 tools/install_local_pack_v041.py --workers 3",
+    "map:audit": "python3 tools/audit_real_map_v039.py --require-local",
+    "corridors:audit": "python3 tools/audit_corridors_v040.py",
+    "map:verify": "python3 tools/validate_real_map_v046.py --require-complete --report verification/v049/LOCAL_DATA_STATE.json",
+    "map:benchmark": "python3 tools/benchmark_map_v041.py",
+    "layer:build": "python3 tools/build_fallout_layer_v042.py",
+    "layer:audit": "python3 tools/audit_fallout_layer_v042.py",
+    "package": "python3 tools/package_v049.py"
+  }
+}

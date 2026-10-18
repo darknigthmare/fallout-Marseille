@@ -1,0 +1,31 @@
+const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');
+const M=require('../../src/v046/00_integrity.js');const tests=[];
+async function check(name,fn){try{await fn();tests.push({name,ok:true});console.log('OK',name);}catch(e){tests.push({name,ok:false,error:String(e.stack)});console.log('FAIL',name,e);}}
+const raw=(id,bbox,values)=>({macro:id,bbox,width:2,height:2,values,sourceResource:'ign_rge_alti_wld'});
+(async()=>{
+await check('Polygone : ordre cyclique identique',()=>assert.equal(M.ringKey([[0,0],[4,0],[4,4],[0,0]]),M.ringKey([[4,4],[0,0],[4,0],[4,4]])));
+await check('Polygone : orientation identique',()=>assert.equal(M.ringKey([[0,0],[4,0],[4,4],[0,0]]),M.ringKey([[0,0],[4,4],[4,0],[0,0]])));
+const U=[[[0,0],[20,0],[20,20],[0,20],[0,0]],[[5,5],[5,15],[15,15],[15,5],[5,5]]];
+await check('Cour centrale reste vide',()=>assert.equal(M.inside(U,10,10),false));
+await check('Murs entourant la cour restent solides',()=>assert.equal(M.inside(U,2,10),true));
+await check('Extérieur reste libre',()=>assert.equal(M.inside(U,25,10),false));
+await check('Un trou différent change l’identité',()=>assert.notEqual(M.footprintKey('cad',U),M.footprintKey('cad',[U[0]])));
+await check('Terrain : axe nord-sud correct',()=>{const t=M.terrain(raw('a',[0,0,1,1],[10,20,30,40]),'a');assert.equal(M.sample(t,1,0),10);assert.equal(M.sample(t,0,1),40);assert.equal(M.sample(t,.5,.5),25);});
+await check('Terrain hors grille non extrapolé',()=>assert.equal(M.sample(M.terrain(raw('a',[0,0,1,1],[10,20,30,40]),'a'),2,.5),null));
+await check('NoData ne devient pas zéro',()=>assert.equal(M.sample(M.terrain(raw('a',[0,0,1,1],[null,20,30,40]),'a'),1,0),null));
+await check('Sentinelle sous -100 rejetée',()=>assert.equal(M.sample(M.terrain(raw('a',[0,0,1,1],[-99999,20,30,40]),'a'),1,0),null));
+await check('Emprise fausse rejetée',()=>assert.throws(()=>M.terrain(raw('a',[0,0,1,1],[1,2,3,4]),'a',[0,0,2,2])));
+await check('Longueur de grille incohérente rejetée',()=>assert.throws(()=>M.terrain(raw('a',[0,0,1,1],[1,2]),'a')));
+await check('Origine du terrain obligatoire',()=>assert.throws(()=>M.terrain({...raw('a',[0,0,1,1],[1,2,3,4]),sourceResource:null},'a')));
+await check('Ordre des lignes invalide rejeté',()=>assert.throws(()=>M.terrain({...raw('a',[0,0,1,1],[1,2,3,4]),rowOrder:'south-to-north'},'a')));
+await check('Zone superposée attend ses deux sources',()=>{const b=new M.TerrainBank({a:[0,0,1,1],b:[0,0,1,1]});b.add(raw('a',[0,0,1,1],[1,1,1,1]),'a');assert.equal(b.read(.5,.5).missing,'b');});
+await check('Terrain indépendant de l’ordre de réception',()=>{const bounds={a:[0,0,1,1],b:[0,0,1,1]},a=new M.TerrainBank(bounds),b=new M.TerrainBank(bounds);for(const id of['a','b'])a.add(raw(id,bounds[id],[id==='a'?10:20,10,10,10]),id);for(const id of['b','a'])b.add(raw(id,bounds[id],[id==='a'?10:20,10,10,10]),id);assert.deepEqual(a.read(.6,.4),b.read(.6,.4));});
+await check('Transaction publie une seule fois après tous les fichiers',async()=>{const gate=new M.Gate(3);let publications=0,read=0;const r=await gate.run(['a','b','a'],async k=>{read++;return k;},res=>[...res.keys()],stage=>{assert.equal(read,2);assert.equal(stage.length,2);publications++;});assert.equal(r.ok,true);assert.equal(publications,1);});
+await check('Une tuile manquante interdit la publication',async()=>{const gate=new M.Gate();let publish=false;const r=await gate.run(['good','bad'],async k=>{if(k==='bad')throw new Error('404');return k;},r=>r,()=>publish=true);assert.equal(r.ok,false);assert.equal(publish,false);assert.equal(gate.status.phase,'failed');});
+await check('Échec géométrique préserve la scène',async()=>{const gate=new M.Gate();let scene='old';await gate.run(['a'],async()=>1,()=>{throw new Error('geometry');},()=>scene='new');assert.equal(scene,'old');});
+await check('Annulation avant réponse ne publie rien',async()=>{const gate=new M.Gate();let release,published=false;const pending=gate.run(['a'],()=>new Promise(r=>release=r),x=>x,()=>published=true);gate.cancel();release(1);const r=await pending;assert.equal(r.cancelled,true);assert.equal(published,false);});
+await check('Réponse périmée ne remplace pas une requête récente',async()=>{const gate=new M.Gate();let release,scene;const first=gate.run(['old'],()=>new Promise(r=>release=r),r=>[...r.values()][0],s=>scene=s);await gate.run(['new'],async()=>2,r=>[...r.values()][0],s=>scene=s);release(1);await first;assert.equal(scene,2);});
+await check('Réessai réutilise les fichiers déjà validés',async()=>{const gate=new M.Gate();let calls=0,fail=true;const fetch=async k=>{calls++;if(k==='b'&&fail)throw Error('wait');return k;};await gate.run(['a','b'],fetch,x=>x,()=>{});fail=false;const r=await gate.run(['a','b'],fetch,x=>x,()=>{});assert.equal(r.ok,true);assert.equal(calls,3);});
+await check('Concurrence réseau bornée',async()=>{const gate=new M.Gate(3);let active=0,max=0;await gate.run(Array.from({length:17},(_,i)=>i),async k=>{active++;max=Math.max(max,active);await new Promise(r=>setTimeout(r,2));active--;return k;},x=>x,()=>{});assert.equal(max,3);});
+const out={scope:'Fonctions réellement exécutées en Node, aucune donnée géographique simulée présentée comme acquise',passed:tests.filter(t=>t.ok).length,failed:tests.filter(t=>!t.ok).length,total:tests.length,tests};fs.writeFileSync(path.join(__dirname,'../../verification/v048/QA_KERNEL_LEGACY.json'),JSON.stringify(out,null,2));if(out.failed)process.exitCode=1;
+})();

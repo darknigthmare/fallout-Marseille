@@ -1,0 +1,75 @@
+{
+  "version": "0.41.0",
+  "htmlSha256": "bfdb5ed58ef0eb73fd1cf52d2080802091cb7fdef9f4cb1518d1f803fedf952f",
+  "passed": 152,
+  "failed": 0,
+  "total": 152,
+  "javascriptErrors": [],
+  "allHtmlMatch": true,
+  "suites": [
+    {
+      "file": "QA_V041.json",
+      "passed": 11,
+      "failed": 0,
+      "total": 11,
+      "htmlMatch": true
+    },
+    {
+      "file": "QA_LOCAL_PACK_V041.json",
+      "passed": 14,
+      "failed": 0,
+      "total": 14,
+      "htmlMatch": true
+    },
+    {
+      "file": "QA_REGRESSION_V040_ON_V041.json",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "htmlMatch": true
+    },
+    {
+      "file": "QA_PWA_V041.json",
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "htmlMatch": true
+    },
+    {
+      "file": "QA_REGRESSION_V039_ON_V041.json",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "htmlMatch": true
+    },
+    {
+      "file": "QA_REGRESSION_V038_ON_V041.json",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "htmlMatch": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_ON_V041.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "htmlMatch": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PRODUCT_ON_V041.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "htmlMatch": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PROLOGUE_ON_V041.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "htmlMatch": true
+    }
+  ],
+  "scope": "Exact final v0.41 HTML, offline snapshot UI, safe local-pack fixtures, PWA contract and regressions through v0.40. Heavy production pack was not installed in this runner due DNS resolution limits."
+}

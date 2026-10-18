@@ -1,0 +1,8 @@
+/* v0.48 preserves the existing game layout and adds preparation diagnostics. */
+#v048Phase{min-height:1.8em;color:#e7d795;letter-spacing:.03em;font:14px/1.6 monospace;margin:12px 0}
+#v046Progress:indeterminate{opacity:.75}
+.v048-preparation{padding:18px;border:1px solid #546b50;background:linear-gradient(135deg,#14251b,#101a15);margin:0 0 24px}
+.v048-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.v048-grid article{padding:16px 12px;border-left:2px solid #a3b079;background:#0c1510}
+.v048-grid b{display:block;font-size:25px;color:#e7deb5}.v048-grid span{display:block;font-size:11px;color:#b4c6a6;margin-top:8px}
+.v048-preparation small{display:block;line-height:1.5;color:#9aaf98}@media(max-width:650px){.v048-grid{grid-template-columns:1fr}.v048-preparation{padding:12px}}

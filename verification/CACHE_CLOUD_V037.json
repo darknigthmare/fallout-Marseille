@@ -1,0 +1,35 @@
+{
+  "version": "0.37.0",
+  "checkedAt": "2026-09-19T01:29:06Z",
+  "service": "fallout-mistral-map-v037",
+  "plan": {
+    "base": 367,
+    "cadastre": 5517,
+    "total": 5884
+  },
+  "cache": {
+    "base": {
+      "tiles": 367,
+      "bytes": 29456613,
+      "hits": 31,
+      "coveragePercent": 100.0,
+      "newest": "2026-09-19T01:29:06.223+00:00"
+    },
+    "cadastre": {
+      "tiles": 1,
+      "bytes": 3816,
+      "hits": 1,
+      "coveragePercent": 0.018126,
+      "newest": "2026-09-19T00:56:40.804+00:00"
+    },
+    "totalTiles": 368,
+    "totalBytes": 29460429
+  },
+  "truth": {
+    "complete": false,
+    "baseLayerComplete": true,
+    "cadastreComplete": false,
+    "percent": 6.254249,
+    "note": "All 367 base tiles are persistently cached. Only one of 5,517 cadastre tiles is cached. The local ZIP still bundles zero PBF and official terrain remains absent."
+  }
+}

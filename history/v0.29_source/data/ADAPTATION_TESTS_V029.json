@@ -1,0 +1,29 @@
+{
+  "oldReference": "history/v0.28_source/tools",
+  "initialBuildAdaptations": "Old suites target new exact standalone and revision/title; all numerical mechanics kept.",
+  "secondPass": [
+    {
+      "file": "qa_v023.py",
+      "change": "Expected current key is v029; old-source-key preservation assertions retained."
+    },
+    {
+      "file": "qa_v025.py",
+      "change": "Expected current key is v029; old-source-key preservation assertions retained."
+    },
+    {
+      "file": "qa_v026.py",
+      "change": "Expected current key is v029; old-source-key preservation assertions retained."
+    },
+    {
+      "file": "qa_v027_radio_storage.py",
+      "change": "Expected current key is v029; old-source-key preservation assertions retained."
+    },
+    {
+      "files": [
+        "qa_regression_v021_on_v022.py",
+        "qa_v022.py"
+      ],
+      "change": "Only new inner handles/contact/roomnotes behind deliberately locked shutters are excluded from initial all-accessible assertion. v029 tests must check initially blocked and actual controller access after unlock; existing contacts/paths unchanged. Existing room count >=9 rather than ==9, current count separately tested."
+    }
+  ]
+}

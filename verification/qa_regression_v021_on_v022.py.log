@@ -1,0 +1,110 @@
+OK Version v0.21 initialisée 
+OK Accès de découverte séparé visible au menu 
+OK Aucune fausse acquisition géographique déclarée 
+OK Refus réel du stockage signalé 
+OK Sauvegarde via adaptateur mémoire explicitement contrôlé 
+OK transit_depot : six espaces historiques conservés 
+OK transit_depot : décor solide et détaillé {'id': 'transit_depot', 'draws': 1800, 'colliders': 103, 'graph': {'nodes': 8063, 'ground': 7015, 'upper': 892, 'edges': 30914}}
+OK transit_depot : graphe réellement multi-niveaux 
+OK transit_depot : points historiques et contrôleurs reliés (alcôve fermée testée séparément) [{'id': 'transit_depot:contact', 'nodes': 12}, {'id': 'transit_depot:clue', 'nodes': 98}, {'id': 'transit_depot:power', 'nodes': 47}, {'id': 'transit_depot:tape', 'nodes': 14}, {'id': 'transit_depot:station', 'nodes': 12}, {'id': 'transit_depot:exit'
+OK transit_depot : apparition libre 
+OK transit_depot : montée par le contrôleur réel {'ok': True, 'steps': 455, 'pos': [-5.263678129429116, 4.85, -16.845497893513212], 'maxY': 4.85}
+OK transit_depot : sol bas conservé sous la plateforme 
+OK transit_depot : sol haut distinct 
+OK transit_depot : retour au rez-de-chaussée {'ok': True, 'steps': 429, 'pos': [0.022859590200377738, 1.65, 18.10527190730712], 'maxY': 4.85}
+OK transit_depot : preuve inaccessible à travers le plancher 
+OK transit_depot : dialogue physique du responsable 
+OK transit_depot : consignation neutralise le robot 
+OK transit_depot : animal ou goule non neutralisé par une coupure électrique 
+OK transit_depot : représentations distinctes et coordonnées valides [{'id': 'transit_depot:unit', 'family': 'robot', 'parts': 22, 'finite': True}, {'id': 'transit_depot:tarente', 'family': 'tarente', 'parts': 17, 'finite': True}]
+OK transit_depot : cassette ouverte physiquement 
+OK transit_depot : intervenant propre à la cassette 
+OK transit_depot : progression du sous-titre 
+OK transit_depot : rendu réel avec profondeur {'backend': 'Canvas · profondeur complète', 'faces': 4116, 'ms': 97, 'raster': [922, 576]}
+OK traverse_archives : six espaces historiques conservés 
+OK traverse_archives : décor solide et détaillé {'id': 'traverse_archives', 'draws': 2036, 'colliders': 106, 'graph': {'nodes': 9070, 'ground': 7257, 'upper': 1696, 'edges': 34738}}
+OK traverse_archives : graphe réellement multi-niveaux 
+OK traverse_archives : points historiques et contrôleurs reliés (alcôve fermée testée séparément) [{'id': 'traverse_archives:contact', 'nodes': 3}, {'id': 'traverse_archives:clue', 'nodes': 80}, {'id': 'traverse_archives:power', 'nodes': 45}, {'id': 'traverse_archives:tape', 'nodes': 13}, {'id': 'traverse_archives:station', 'nodes': 13}, {'id': '
+OK traverse_archives : apparition libre 
+OK traverse_archives : montée par le contrôleur réel {'ok': True, 'steps': 373, 'pos': [15.34039632090508, 4.85, -14.680459466082736], 'maxY': 4.85}
+OK traverse_archives : sol bas conservé sous la plateforme 
+OK traverse_archives : sol haut distinct 
+OK traverse_archives : retour au rez-de-chaussée {'ok': True, 'steps': 353, 'pos': [-0.2782479841785845, 1.65, 18.17437267166302], 'maxY': 4.85}
+OK traverse_archives : preuve inaccessible à travers le plancher 
+OK traverse_archives : dialogue physique du responsable 
+OK traverse_archives : consignation neutralise le robot 
+OK traverse_archives : animal ou goule non neutralisé par une coupure électrique 
+OK traverse_archives : représentations distinctes et coordonnées valides [{'id': 'traverse_archives:index', 'family': 'drone', 'parts': 11, 'finite': True}, {'id': 'traverse_archives:lost', 'family': 'ghoul', 'parts': 35, 'finite': True}]
+OK traverse_archives : cassette ouverte physiquement 
+OK traverse_archives : intervenant propre à la cassette 
+OK traverse_archives : progression du sous-titre 
+OK traverse_archives : rendu réel avec profondeur {'backend': 'Canvas · profondeur complète', 'faces': 5004, 'ms': 54.7, 'raster': [922, 576]}
+OK mooring_station : six espaces historiques conservés 
+OK mooring_station : décor solide et détaillé {'id': 'mooring_station', 'draws': 1939, 'colliders': 100, 'graph': {'nodes': 10659, 'ground': 8085, 'upper': 2466, 'edges': 41136}}
+OK mooring_station : graphe réellement multi-niveaux 
+OK mooring_station : points historiques et contrôleurs reliés (alcôve fermée testée séparément) [{'id': 'mooring_station:contact', 'nodes': 3}, {'id': 'mooring_station:clue', 'nodes': 89}, {'id': 'mooring_station:power', 'nodes': 40}, {'id': 'mooring_station:tape', 'nodes': 14}, {'id': 'mooring_station:station', 'nodes': 12}, {'id': 'mooring_st
+OK mooring_station : apparition libre 
+OK mooring_station : montée par le contrôleur réel {'ok': True, 'steps': 421, 'pos': [0.16427583766375164, 4.85, 0.6999999999999993], 'maxY': 4.85}
+OK mooring_station : sol bas conservé sous la plateforme 
+OK mooring_station : sol haut distinct 
+OK mooring_station : retour au rez-de-chaussée {'ok': True, 'steps': 411, 'pos': [0.4977556820366893, 1.65, 18.250016135867426], 'maxY': 4.85}
+OK mooring_station : preuve inaccessible à travers le plancher 
+OK mooring_station : dialogue physique du responsable 
+OK mooring_station : une seule coupure ne suffit pas 
+OK mooring_station : deux coupures arrêtent les automates 
+OK mooring_station : représentations distinctes et coordonnées valides [{'id': 'mooring_station:palan', 'family': 'crane', 'parts': 19, 'finite': True}, {'id': 'mooring_station:dock', 'family': 'robot', 'parts': 22, 'finite': True}]
+OK mooring_station : cassette ouverte physiquement 
+OK mooring_station : intervenant propre à la cassette 
+OK mooring_station : progression du sous-titre 
+OK mooring_station : rendu réel avec profondeur {'backend': 'Canvas · profondeur complète', 'faces': 2744, 'ms': 63, 'raster': [922, 576]}
+OK Preuve refusée à distance 
+OK Acceptation préalable nécessaire 
+OK Acceptation par un vrai clic dans le dialogue 
+OK transit_depot : collecte de la preuve sur place 
+OK transit_depot : preuve non duplicable 
+OK traverse_archives : collecte de la preuve sur place 
+OK traverse_archives : preuve non duplicable 
+OK mooring_station : collecte de la preuve sur place 
+OK mooring_station : preuve non duplicable 
+OK Conclusion interdite avant la seconde coupure 
+OK Les trois actes alimentent le même dossier 
+OK Fin contrôlée verrouillée visuellement sans témoin 
+OK Témoin facultatif obtenu physiquement 
+OK Fin contrôlée obtenue après toutes les étapes 
+OK Récompense exacte de 180 capsules 
+OK Trois scènes de conclusion distinctes, non phrases témoins 
+OK Conclusion et récompense non remplaçables 
+OK Équipe visible après la décision 
+OK transit_depot : conséquence visible au rechargement 
+OK traverse_archives : conséquence visible au rechargement 
+OK mooring_station : conséquence visible au rechargement 
+OK Résolution alternative active : manual 
+OK Relecture sans récompense : manual 
+OK Résolution alternative active : silence 
+OK Relecture sans récompense : silence 
+OK Entrée physique depuis Aubagne 
+OK Entrée charge le dépôt 
+OK Écriture de la pile de retour contrôlée 
+OK Pile de retour dans le JSON 
+OK Validateur accepte une sauvegarde dans le nouveau lieu 
+OK Sortie physique 
+OK Retour à la position, direction et inclinaison exactes 
+OK Migration v0.20 ajoute l’enquête sans supprimer les champs inconnus 
+OK Campagne et découverte restent séparées 
+OK Attaque annoncée avant dégâts 
+OK Aucun dégât pendant la préparation 
+OK Impact appliqué si le joueur reste dans la cible 
+OK Déplacement hors cible évite le tir verrouillé 
+OK Un obstacle apparu pendant la préparation bloque l’impact 
+OK Un coup suffisant interrompt la préparation 
+OK Pause du combat dans le carnet 
+OK Aucune préparation ancienne après changement de scène 
+OK J ouvre le carnet lié aux trois lieux 
+OK M affiche le choix d’étage 
+OK Changement réel d’étage dans le plan 
+OK Plan traite une destination à l’étage 
+OK Plan mobile fermé sans débordement · étage 0 
+OK Plan mobile fermé sans débordement · étage 3.2 
+OK Carnet mobile sans débordement 
+OK Aucune exception JavaScript dans les contrôles ciblés []
+RESULT 109 0

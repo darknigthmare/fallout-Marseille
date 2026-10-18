@@ -1,0 +1,42 @@
+{
+  "version": "0.41.0",
+  "verifiedAt": "2026-09-19T04:10:40Z",
+  "bucket": {
+    "id": "fallout-mistral-local-pack-v041",
+    "public": false,
+    "fileSizeLimit": 40000000,
+    "allowedMimeTypes": [
+      "text/plain",
+      "application/json"
+    ]
+  },
+  "distribution": {
+    "function": "fallout-mistral-local-pack-v041",
+    "verifyJwt": true,
+    "mode": "read-only",
+    "manifestStatus": 200,
+    "chunks": 24
+  },
+  "temporaryFunctions": [
+    {
+      "name": "fallout-mistral-local-pack-builder-v041",
+      "status": 410,
+      "reason": "all 24 immutable distribution chunks are built"
+    },
+    {
+      "name": "fallout-mistral-local-pack-index-v041",
+      "status": 410,
+      "reason": "distribution manifest is served by the read-only relay"
+    },
+    {
+      "name": "fallout-mistral-local-pack-links-v041",
+      "status": 410,
+      "reason": "temporary public export window closed"
+    }
+  ],
+  "storage": {
+    "chunkObjects": 24,
+    "totalBase64Bytes": 119130028
+  },
+  "advisors": "Project-wide Supabase advisors still report unrelated launcher/auth warnings. No new public table, public bucket or security-definer RPC was created for v0.41."
+}

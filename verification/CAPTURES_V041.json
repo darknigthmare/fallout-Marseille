@@ -1,0 +1,48 @@
+{
+  "version": "0.41.0",
+  "html_sha256": "bfdb5ed58ef0eb73fd1cf52d2080802091cb7fdef9f4cb1518d1f803fedf952f",
+  "errors": [],
+  "disclosure": "The two complete-pack screenshots use injected presentation data solely to validate layout. No claim is made that the heavy pack was installed in this runner.",
+  "shots": [
+    {
+      "file": "v041_00_manifest_chunks.png",
+      "title": "Manifeste de distribution réel",
+      "note": "Les 5 884 coordonnées sont réparties dans 24 lots versionnés ; ce graphique est calculé depuis le manifeste final."
+    },
+    {
+      "file": "v041_01_menu.png",
+      "title": "Menu v0.41",
+      "note": "Le dossier de production affiche « Territoire local » ; les outils internes restent dans Admin."
+    },
+    {
+      "file": "v041_02_status_pending.png",
+      "title": "Statut avant installation",
+      "note": "État réel du ZIP compact : distribution disponible, mais pack lourd non installé dans cette exécution."
+    },
+    {
+      "file": "v041_03_pip_pending.png",
+      "title": "Pip-Boy · pack non détecté",
+      "note": "L’interface explique les 24 archives et ne confond pas le cache cloud avec une installation locale."
+    },
+    {
+      "file": "v041_04_pip_complete_demo.png",
+      "title": "Présentation de l’état complet",
+      "note": "État injecté uniquement pour vérifier la mise en page finale ; le runner n’a pas installé le pack lourd à cause de sa résolution DNS."
+    },
+    {
+      "file": "v041_05_status_benchmark_demo.png",
+      "title": "Présentation du benchmark",
+      "note": "Valeurs de présentation injectées pour tester les métriques ; les performances réelles seront écrites par benchmark_map_v041.py sur la machine cible."
+    },
+    {
+      "file": "v041_06_roadbook.png",
+      "title": "Roadbook conservé",
+      "note": "Les deux corridors certifiés de la v0.40 restent disponibles après l’ajout du pack local."
+    },
+    {
+      "file": "v041_07_mobile_pack.png",
+      "title": "Pack local sur écran étroit",
+      "note": "La rubrique reste défilable et lisible à 390 × 844 ; il s’agit d’une fenêtre simulée, pas d’une certification matérielle."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "version": "0.48.0 baseline",
+  "sourceSha256": "07082b364c22648e9dff9b42fe9a90533556acb76c425b1d9b77b82b05aa8aca",
+  "site": "v042-marseille-nest-01",
+  "before": {
+    "id": "v042:v042-marseille-nest-01:outside:0",
+    "site": "v042-marseille-nest-01",
+    "rank": "normal",
+    "type": "raider",
+    "alive": true,
+    "hp": 85,
+    "pos": [
+      -6535.648279925107,
+      47.85366872139184,
+      -312.0766390738318
+    ]
+  },
+  "damaged": {
+    "id": "v042:v042-marseille-nest-01:outside:0",
+    "site": "v042-marseille-nest-01",
+    "rank": "normal",
+    "type": "raider",
+    "alive": true,
+    "hp": 68.35,
+    "pos": [
+      -6535.648279925107,
+      47.85366872139184,
+      -312.0766390738318
+    ]
+  },
+  "afterReturn": {
+    "id": "v042:v042-marseille-nest-01:outside:0",
+    "site": "v042-marseille-nest-01",
+    "rank": "normal",
+    "type": "raider",
+    "alive": true,
+    "hp": 85,
+    "pos": [
+      -6535.648279925107,
+      47.85366872139184,
+      -312.0766390738318
+    ]
+  },
+  "reproducedHealing": true,
+  "errors": [],
+  "scope": "Exact v0.48 HTML, explicit placement in the identified synthetic exterior. Proximity actor unload/reload through production functions, not a full world reconstruction."
+}

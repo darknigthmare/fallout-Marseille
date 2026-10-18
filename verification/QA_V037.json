@@ -1,0 +1,334 @@
+{
+  "version": "0.37.0",
+  "html_sha256": "86388e86c3de9f759589b5a01f79d3d05f1fd7666b30cd3d8f5c0cbba3a067e5",
+  "passed": 21,
+  "failed": 0,
+  "total": 21,
+  "errors": [],
+  "requests": {
+    "coverage": 2,
+    "base": 4,
+    "cadastre": 1,
+    "direct": 0
+  },
+  "checks": [
+    {
+      "name": "manifest v0.37 exact",
+      "ok": true,
+      "detail": {
+        "base": 367,
+        "cadastre": 5517,
+        "total": 5884
+      }
+    },
+    {
+      "name": "relay v0.37 in every row",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "runtime v0.37",
+      "ok": true,
+      "detail": {
+        "version": "0.37.0",
+        "plan": {
+          "version": "0.37.0",
+          "base": 367,
+          "cadastre": 5517,
+          "total": 5884,
+          "terrainExpected": 8,
+          "terrainBundled": 0,
+          "bounds": {
+            "south": 43.125,
+            "west": 5.255,
+            "north": 43.42,
+            "east": 5.755
+          }
+        },
+        "cloud": {
+          "state": "ready",
+          "base": 1,
+          "cadastre": 1,
+          "total": 2,
+          "bytes": 214,
+          "hits": 7,
+          "newest": "2026-09-19T00:56:40Z",
+          "error": null
+        },
+        "local": {
+          "count": 0,
+          "bytes": 0,
+          "quota": 536870912,
+          "usage": 0,
+          "error": null
+        },
+        "prefetch": {
+          "total": 0,
+          "done": 0,
+          "pct": 0,
+          "active": 0,
+          "queued": 0,
+          "errors": 0,
+          "label": "aucun"
+        },
+        "topology": {
+          "seamMatched": 0,
+          "seamPending": 0,
+          "seamUnpaired": 0,
+          "roadNodes": 0,
+          "roadEdges": 0,
+          "roadComponents": 0,
+          "baseBuildingsSuppressed": 0,
+          "duplicatesSuppressed": 0,
+          "splitBuildings": 0
+        },
+        "runtime": {
+          "loaded": 0,
+          "pending": 0,
+          "errors": 0,
+          "source": "none",
+          "status": "CARTE VECTORIELLE · EN ATTENTE"
+        },
+        "session": {
+          "cloud": 0,
+          "direct": 0,
+          "pack": 0,
+          "cacheHits": 0,
+          "macro": null,
+          "last": null
+        },
+        "terrain": {
+          "bundled": 0,
+          "expected": 8,
+          "status": "Aucun MNT numérique officiel chargé"
+        }
+      }
+    },
+    {
+      "name": "IndexedDB available on local origin",
+      "ok": true,
+      "detail": {
+        "count": 0,
+        "bytes": 0,
+        "quota": 536870912,
+        "usage": 0,
+        "error": null,
+        "rows": []
+      }
+    },
+    {
+      "name": "coverage cloud verified",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "coverage reports only acquired files",
+      "ok": true,
+      "detail": {
+        "state": "ready",
+        "base": 1,
+        "cadastre": 1,
+        "total": 2,
+        "bytes": 214,
+        "hits": 7,
+        "newest": "2026-09-19T00:56:40Z",
+        "error": null
+      }
+    },
+    {
+      "name": "exact manifest accepts real sample",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "exact manifest rejects out-of-plan",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "three fixture tiles rendered",
+      "ok": true,
+      "detail": {
+        "loaded": 3,
+        "pending": 0,
+        "errors": 0,
+        "source": "cloud-cloud",
+        "status": "DONNÉES VECTORIELLES DISTANTES"
+      }
+    },
+    {
+      "name": "cross-tile road seam matched",
+      "ok": true,
+      "detail": {
+        "seamMatched": 1,
+        "seamPending": 2,
+        "seamUnpaired": 0,
+        "roadNodes": 3,
+        "roadEdges": 2,
+        "roadComponents": 1,
+        "baseBuildingsSuppressed": 1,
+        "duplicatesSuppressed": 1,
+        "splitBuildings": 0
+      }
+    },
+    {
+      "name": "no confirmed seam defect for loaded pair",
+      "ok": true,
+      "detail": {
+        "seamMatched": 1,
+        "seamPending": 2,
+        "seamUnpaired": 0,
+        "roadNodes": 3,
+        "roadEdges": 2,
+        "roadComponents": 1,
+        "baseBuildingsSuppressed": 1,
+        "duplicatesSuppressed": 1,
+        "splitBuildings": 0
+      }
+    },
+    {
+      "name": "cadastre duplicate suppressed",
+      "ok": true,
+      "detail": {
+        "seamMatched": 1,
+        "seamPending": 2,
+        "seamUnpaired": 0,
+        "roadNodes": 3,
+        "roadEdges": 2,
+        "roadComponents": 1,
+        "baseBuildingsSuppressed": 1,
+        "duplicatesSuppressed": 1,
+        "splitBuildings": 0
+      }
+    },
+    {
+      "name": "base HLOD building replaced",
+      "ok": true,
+      "detail": {
+        "seamMatched": 1,
+        "seamPending": 2,
+        "seamUnpaired": 0,
+        "roadNodes": 3,
+        "roadEdges": 2,
+        "roadComponents": 1,
+        "baseBuildingsSuppressed": 1,
+        "duplicatesSuppressed": 1,
+        "splitBuildings": 0
+      }
+    },
+    {
+      "name": "IndexedDB contains fetched PBF",
+      "ok": true,
+      "detail": {
+        "count": 3,
+        "bytes": 339,
+        "quota": 536870912,
+        "usage": 0,
+        "error": null,
+        "rows": [
+          {
+            "key": "base:14:8437:6001",
+            "bytes": 125,
+            "source": "cloud",
+            "cloud": null,
+            "sha256": null,
+            "fetchedAt": 1789780953147,
+            "lastAccessed": 1789780953151,
+            "z": 14,
+            "x": 8437,
+            "y": 6001,
+            "tileSource": "base"
+          },
+          {
+            "key": "base:14:8438:6001",
+            "bytes": 125,
+            "source": "cloud",
+            "cloud": null,
+            "sha256": null,
+            "fetchedAt": 1789780953196,
+            "lastAccessed": 1789780953197,
+            "z": 14,
+            "x": 8438,
+            "y": 6001,
+            "tileSource": "base"
+          },
+          {
+            "key": "cadastre:16:33750:24006",
+            "bytes": 89,
+            "source": "cloud",
+            "cloud": null,
+            "sha256": null,
+            "fetchedAt": 1789780953230,
+            "lastAccessed": 1789780953232,
+            "z": 16,
+            "x": 33750,
+            "y": 24006,
+            "tileSource": "cadastre"
+          }
+        ]
+      }
+    },
+    {
+      "name": "second read served by local cache",
+      "ok": true,
+      "detail": {
+        "got": {
+          "source": "cache",
+          "bytes": 125,
+          "meta": {
+            "key": "base:14:8437:6001",
+            "bytes": 125,
+            "source": "cache",
+            "cloud": null,
+            "sha256": null,
+            "fetchedAt": 1789780953147,
+            "lastAccessed": 1789780953151,
+            "z": 14,
+            "x": 8437,
+            "y": 6001,
+            "tileSource": "base"
+          }
+        },
+        "before": 2,
+        "after": 2,
+        "requests": {
+          "coverage": 2,
+          "base": 4,
+          "cadastre": 1,
+          "direct": 0
+        }
+      }
+    },
+    {
+      "name": "out-of-manifest queue refused",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "directional prefetch schedules valid neighbors",
+      "ok": true,
+      "detail": 15
+    },
+    {
+      "name": "Pip-Boy cache screen shows cloud and local",
+      "ok": true,
+      "detail": "CACHE DU TERRITOIRE RÉEL\n\nLe cache n'invente aucune donnée : il conserve uniquement des PBF officiels déjà validés. Priorité : pack local → IndexedDB → cache cloud persistant → source officielle directe.\n\n2\nTuiles conservées dans le cache cloud\n214 o · 7 accès cache\n3\nTuiles IndexedDB de ce navigateur\n339 o · quota 0 o / 512.0 Mio\n3\nTuiles actuellement rendues\ncloud-cloud\n0/8\nReliefs numériques officiels\nAucune altitude synthétique de remplacement\nPRÉCHARGEMENT CONTRÔLÉ\n\nAUTOUR DU JOUEUR · 0/0 · -1 actif(s) · 0 en attente · 0 erreur(s).\n\nACTUALISER LES COMPTEURS\nPRÉCHARGER AUTOUR DU JOUEUR\nPRÉCHARGER LES ROUTES DE CETTE MACRO\nPRÉCHARGER LE CADASTRE DE CETTE MACRO\nANNULER LE PRÉCHARGEMENT\nVIDER LE CACHE LOCAL\nRÉGLAGES\nPréchargement directionnel\nINACTIF\nProfondeur anticipée\n2 TUILE(S)\nBudget local\n256 MIO\nAUDIT DES RACCORDS CHARGÉS\n\nNœuds routiers : 3 · segments uniques : 2 · composantes : 1.\n\nRaccords appariés : 1 · en attente du voisin : 2 · non appariés avec voisin chargé : 0.\n\nBâti général remplacé par le cadastre : 1 · doublons supprimés : 1 · bâtiments coupés à auditer : 0.\n\nPlan complet : 5 884 PBF. Le compteur cloud représente les fichiers réellement récupérés et archivés, pa"
+    },
+    {
+      "name": "terrain remains truthful 0/8",
+      "ok": true,
+      "detail": "CACHE DU TERRITOIRE RÉEL\n\nLe cache n'invente aucune donnée : il conserve uniquement des PBF officiels déjà validés. Priorité : pack local → IndexedDB → cache cloud persistant → source officielle directe.\n\n2\nTuiles conservées dans le cache cloud\n214 o · 7 accès cache\n3\nTuiles IndexedDB de ce navigateur\n339 o · quota 0 o / 512.0 Mio\n3\nTuiles actuellement rendues\ncloud-cloud\n0/8\nReliefs numériques officiels\nAucune altitude synthétique de remplacement\nPRÉCHARGEMENT CONTRÔLÉ\n\nAUTOUR DU JOUEUR · 0/0 · -1 actif(s) · 0 en attente · 0 erreur(s).\n\nACTUALISER LES COMPTEURS\nPRÉCHARGER AUTOUR DU JOUEUR\nPRÉCHARGER LES ROUTES DE CETTE MACRO\nPRÉCHARGER LE CADASTRE DE CETTE MACRO\nANNULER LE PRÉCHARGEMENT\nVIDER LE CACHE LOCAL\nRÉGLAGES\nPréchargement directionnel\nINACTIF\nProfondeur anticipée\n2 TUILE(S)\nBudget local\n256 MIO\nAUDIT DES RACCORDS CHARGÉS\n\nNœuds routiers : 3 · segments uniques : 2 · composantes : 1.\n\nRaccords appariés : 1 · en attente du voisin : 2 · non appariés avec voisin chargé : 0.\n\nBâti général remplacé par le cadastre : 1 · doublons supprimés : 1 · bâtiments coupés à auditer : 0.\n\nPlan complet : 5 884 PBF. Le compteur cloud représente les fichiers réellement récupérés et archivés, pa"
+    },
+    {
+      "name": "status separates plan and acquired files",
+      "ok": true,
+      "detail": "CARTOGRAPHIE RÉELLE · V0.37\n\nCACHE PERSISTANT ET AUDIT DES RACCORDS\n\nLes compteurs ci-dessous distinguent le plan théorique des fichiers réellement acquis. Une tuile absente n'est jamais remplacée par une rue ou un bâtiment inventé.\n\n5 884\nPBF prévus au manifeste\n2\nPBF archivés dans le cache cloud\n3\nPBF dans ce navigateur\n0/8\nMNT numériques officiels\nChaîne de données\n\nCache cloud : 2 tuile(s), 214 o, 7 accès servis depuis le cache.\n\nCache navigateur : 3 tuile(s), 339 o. Budget configuré : 256 Mio.\n\nRendu courant : 3 tuile(s), 0 en cours, 0 erreur(s). Source récente : cloud-cloud.\n\nContinuité chargée\n\n1 raccord(s) apparié(s), 2 en attente d'une tuile voisine, 0 anomalie(s) visible(s) lorsque les deux voisins sont chargés.\n\n1 volumes HLOD remplacés par le cadastre ; 1 doublon(s) supprimé(s) ; 0 empreinte(s) coupée(s) à contrôler.\n\nLimites\n\nPack embarqué : 0 / 5884. Relief numérique officiel : 0/8. Le cache améliore la disponibilité ; il ne constitue pas encore l'audit exhaustif de toute la région.\n\n© OpenStreetMap contributors — ODbL · Cadastre Etalab / DGFiP — Licence Ouverte 2.0.\n\nRETOUR\nACTUALISER\nOUVRIR LE CACHE DANS LE PIP-BOY"
+    },
+    {
+      "name": "no JavaScript exception",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "Exact v0.37 HTML via set_content. Controlled synthetic MVT for seam/dedup QA only; IndexedDB logic uses an explicit API-compatible memory adapter because opaque-origin storage is blocked. Live cloud cache verified separately. No official terrain bundled."
+}

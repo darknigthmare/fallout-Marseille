@@ -1,0 +1,35 @@
+{
+  "version": "0.39.0",
+  "verifiedAt": "2026-09-19T02:34:18Z",
+  "service": "fallout-mistral-terrain-v039",
+  "endpoint": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039",
+  "status": 200,
+  "complete": true,
+  "grid": {"width": 161, "height": 161, "rowOrder": "north-to-south", "samplesPerRegion": 25921},
+  "source": {
+    "name": "RGE ALTI IGN",
+    "resource": "ign_rge_alti_wld",
+    "title": "Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes)",
+    "license": "Licence Ouverte 2.0",
+    "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+    "api": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json"
+  },
+  "totals": {"regions": 8, "samples": 207368, "valid": 174944, "missing": 32424, "bytes": 1260176},
+  "regions": [
+    {"macro":"geo_calanques","bbox":[43.145,5.33,43.285,5.65],"bytes":137635,"width":161,"height":161,"sha256":"836ac9c9bfab38c38043fd9b984776d040357cdfd283ff6d3516763fdee25b06","storagePath":"terrain/0.39.0/geo_calanques.json","valid":21063,"missing":4858,"min":-8.52,"max":638.19,"mean":131.902},
+    {"macro":"geo_etoile","bbox":[43.3,5.435,43.42,5.6],"bytes":178722,"width":161,"height":161,"sha256":"24d615909b47f9c7592a606bc3d0aae46eb657ede7baf81dfdcd8ec09aed21a5","storagePath":"terrain/0.39.0/geo_etoile.json","valid":25921,"missing":0,"min":64.99,"max":768.45,"mean":317.122},
+    {"macro":"geo_frioul","bbox":[43.245,5.255,43.315,5.35],"bytes":121364,"width":161,"height":161,"sha256":"fb39ea8f5f1de4dec3ca88faa3b26781e0d4fce3447f65cbe5185f4e28ff3d13","storagePath":"terrain/0.39.0/geo_frioul.json","valid":6198,"missing":19723,"min":-67.51,"max":81.92,"mean":2.89132},
+    {"macro":"geo_garlaban","bbox":[43.245,5.485,43.39,5.69],"bytes":178206,"width":161,"height":161,"sha256":"088359784d9140660c62179d342f08c8703bd1c78bfc5244b5632ec04b7a356b","storagePath":"terrain/0.39.0/geo_garlaban.json","valid":25921,"missing":0,"min":60.0,"max":1031.19,"mean":304.142},
+    {"macro":"geo_huveaune","bbox":[43.245,5.43,43.335,5.64],"bytes":176122,"width":161,"height":161,"sha256":"e6ce62b82edd3458a869c4549dae1714c9d7c8777e37bc78418a61ead804fb22","storagePath":"terrain/0.39.0/geo_huveaune.json","valid":25921,"missing":0,"min":24.82,"max":708.45,"mean":210.666},
+    {"macro":"geo_laciotat","bbox":[43.125,5.54,43.255,5.735],"bytes":144586,"width":161,"height":161,"sha256":"5404a8ddd996ee5222fa51f73da13f421278494e39e445678dfb6745e3abdb03","storagePath":"terrain/0.39.0/geo_laciotat.json","valid":21717,"missing":4204,"min":-8.94,"max":560.11,"mean":150.016},
+    {"macro":"geo_marseille","bbox":[43.22,5.285,43.34,5.51],"bytes":144478,"width":161,"height":161,"sha256":"8e0df813731abadd8c040ea3eb014b0e3a0346c854670a88f2af2e5e71778d5c","storagePath":"terrain/0.39.0/geo_marseille.json","valid":22282,"missing":3639,"min":-17.9,"max":643.91,"mean":109.791},
+    {"macro":"geo_saintebaume","bbox":[43.215,5.565,43.41,5.755],"bytes":179063,"width":161,"height":161,"sha256":"b9e6b04c490ebc0052665fb6db9c20ea6e0b6eca2c333eb7f0069d4701ce5cda","storagePath":"terrain/0.39.0/geo_saintebaume.json","valid":25921,"missing":0,"min":74.49,"max":1029.36,"mean":367.892}
+  ],
+  "truth": {
+    "nativeResolutionClaimed": false,
+    "sampledGrid": true,
+    "syntheticElevationInserted": false,
+    "noDataPreserved": true,
+    "bundledInCompactZip": false
+  }
+}

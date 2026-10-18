@@ -1,0 +1,25 @@
+{
+  "version": "0.39.0",
+  "source": {
+    "name": "RGE ALTI IGN",
+    "resource": "ign_rge_alti_wld",
+    "title": "Pyramide RGE Alti France Entière (Métropole, DOM et COM couvertes)",
+    "license": "Licence Ouverte 2.0",
+    "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+    "api": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json"
+  },
+  "relay": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039",
+  "publicKey": "sb_publishable_hAcM5bQMkl9a0wn7tgzupg_DeSgYQZC",
+  "grid": {"width": 161, "height": 161, "rowOrder": "north-to-south", "samplesPerRegion": 25921},
+  "noData": {"minimumExclusive": -100, "maximumExclusive": 9000, "policy": "null or out-of-range remains NoData; no synthetic elevation"},
+  "regions": [
+    {"macro":"geo_marseille","bbox":[43.22,5.285,43.34,5.51],"valid":22282,"missing":3639,"min":-17.9,"max":643.91,"mean":109.791324836191},
+    {"macro":"geo_huveaune","bbox":[43.245,5.43,43.335,5.64],"valid":25921,"missing":0,"min":24.82,"max":708.45,"mean":210.666},
+    {"macro":"geo_garlaban","bbox":[43.245,5.485,43.39,5.69],"valid":25921,"missing":0,"min":60.0,"max":1031.19,"mean":304.142},
+    {"macro":"geo_calanques","bbox":[43.145,5.33,43.285,5.65],"valid":21063,"missing":4858,"min":-8.52,"max":638.19,"mean":131.902},
+    {"macro":"geo_laciotat","bbox":[43.125,5.54,43.255,5.735],"valid":21717,"missing":4204,"min":-8.94,"max":560.11,"mean":150.016},
+    {"macro":"geo_frioul","bbox":[43.245,5.255,43.315,5.35],"valid":6198,"missing":19723,"min":-67.51,"max":81.92,"mean":2.89132462084538},
+    {"macro":"geo_etoile","bbox":[43.3,5.435,43.42,5.6],"valid":25921,"missing":0,"min":64.99,"max":768.45,"mean":317.122},
+    {"macro":"geo_saintebaume","bbox":[43.215,5.565,43.41,5.755],"valid":25921,"missing":0,"min":74.49,"max":1029.36,"mean":367.892}
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "version": "0.30.0",
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "total": 26,
+  "passed": 26,
+  "failed": 0,
+  "errors": [],
+  "scope": "Authored maps, explicit synthetic VATS kill, native clicks and touchscreen taps, memory storage adapter",
+  "results": [
+    {
+      "ok": true,
+      "name": "La quête est reliée au dialogue normal de Salomé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le vrai lien ouvre le dialogue des réserves",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Crime des archives attribué à Marseille, pas aux collines",
+      "detail": {
+        "aubagne": 0,
+        "marseille": 1,
+        "laciotat": 0,
+        "collines": 0
+      }
+    },
+    {
+      "ok": true,
+      "name": "Pas de double exemplaire créé silencieusement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Démontage du doublon explicitement demandé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pièces du doublon récupérées une fois",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une véritable exécution VATS crée la mort",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le décès par VATS passe par le conteneur persistant",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La clé et les verrous narratifs historiques restent immédiats",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Les capsules restent sur le corps après le tir",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Modification initiale installée pour essai",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Modification enregistrée chez le marchand",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Rachat conserve modification et usure",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Échange périmé après déplacement refusé",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Deux exemplaires usés gardent leurs métadonnées au comptoir",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Premier rachat : état de la dernière arme vendue",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le stock restant conserve le second état, sans remise à neuf",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Ancien callback de bouton ne prélève pas après transition",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Onze objets de récupération sont réellement placés, optique sur robots",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "Pas de restitution dans un lot déjà remis aux destinataires",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le bilan ne réclame pas à nouveau les fournitures distribuées",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le partage n’est pas renouvelé au rechargement",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Tap natif sur écran étroit transfère un objet",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Fermeture tactile rend la main au jeu",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Pas de débordement horizontal du sac après transfert tactile",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript",
+      "detail": []
+    }
+  ]
+}

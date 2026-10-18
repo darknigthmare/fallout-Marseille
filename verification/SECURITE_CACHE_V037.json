@@ -1,0 +1,24 @@
+{
+  "version": "0.37.0",
+  "checkedAt": "2026-09-19T01:16:22Z",
+  "table": "public.mistral_map_tile_cache",
+  "rls": true,
+  "anonSelect": false,
+  "authenticatedSelect": false,
+  "publicPolicies": 0,
+  "bucket": {
+    "id": "fallout-mistral-map-v037",
+    "public": false,
+    "maxFileBytes": 8000000
+  },
+  "edgeFunction": {
+    "verifyJwt": true,
+    "customPublishableKeyAccepted": true,
+    "secretRoleExposedToClient": false
+  },
+  "advisor": {
+    "ourTable": "INFO rls_enabled_no_policy",
+    "interpretation": "Intentional deny-by-default technical table: RLS enabled, no anon/authenticated grants, no public policies. Edge service uses server credentials."
+  },
+  "unrelatedProjectWarningsExcluded": true
+}

@@ -1,0 +1,274 @@
+{
+  "version": "0.38.0",
+  "passed": 12,
+  "failed": 0,
+  "total": 12,
+  "checks": [
+    {
+      "name": "auditor accepts controlled pack",
+      "ok": true,
+      "detail": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "{\n  \"expected\": 4,\n  \"present\": 4,\n  \"valid\": 4,\n  \"invalid\": 0,\n  \"missing\": 0,\n  \"coveragePercent\": 100.0\n}\n{\n  \"edgeEndpoints\": 4,\n  \"matchedSeams\": 1,\n  \"pendingNeighborTiles\": 2,\n  \"unpairedWithNeighborLoaded\": 0,\n  \"unpairedExamples\": []\n}\n"
+      }
+    },
+    {
+      "name": "auditor validates four coordinates",
+      "ok": true,
+      "detail": {
+        "version": "0.38.0",
+        "generated": "2026-09-19T03:32:05Z",
+        "selection": {
+          "source": "all",
+          "macro": "all"
+        },
+        "expected": 4,
+        "present": 4,
+        "valid": 4,
+        "invalid": 0,
+        "missing": 0,
+        "coveragePercent": 100.0,
+        "bytes": 211,
+        "officialEmptyTiles": 1,
+        "features": 4,
+        "groups": {
+          "transport": 2,
+          "building": 2
+        },
+        "layers": {
+          "transportation": 2,
+          "batiments": 2
+        },
+        "transportTopology": {
+          "edgeEndpoints": 4,
+          "matchedSeams": 1,
+          "pendingNeighborTiles": 2,
+          "unpairedWithNeighborLoaded": 0,
+          "unpairedExamples": []
+        },
+        "buildings": {
+          "exactDuplicateFootprints": 1,
+          "edgeTouchingFootprints": 0,
+          "edgeExamples": []
+        },
+        "missingExamples": [],
+        "invalidFiles": [],
+        "files": [
+          {
+            "key": "14/8437/6001",
+            "source": "base",
+            "bytes": 61,
+            "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+            "layers": 1,
+            "features": 1
+          },
+          {
+            "key": "14/8438/6001",
+            "source": "base",
+            "bytes": 61,
+            "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+            "layers": 1,
+            "features": 1
+          },
+          {
+            "key": "16/33750/24006",
+            "source": "cadastre",
+            "bytes": 89,
+            "sha256": "9fbc73131279feddb9b4feebf50b7b7045052137ab21407a75be7dbaa5ff5221",
+            "layers": 1,
+            "features": 2
+          },
+          {
+            "key": "16/33730/23996",
+            "source": "cadastre",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "layers": 0,
+            "features": 0,
+            "empty": true
+          }
+        ],
+        "truth": {
+          "complete": true,
+          "vectorFilesComplete": true,
+          "transportSeamsClean": true,
+          "terrainNumericAudited": false,
+          "note": "Pending endpoints are caused by absent neighbors and are not counted as confirmed seam defects. Vector completeness does not certify official terrain or visual fidelity."
+        }
+      }
+    },
+    {
+      "name": "auditor recognizes official empty tile",
+      "ok": true,
+      "detail": {
+        "version": "0.38.0",
+        "generated": "2026-09-19T03:32:05Z",
+        "selection": {
+          "source": "all",
+          "macro": "all"
+        },
+        "expected": 4,
+        "present": 4,
+        "valid": 4,
+        "invalid": 0,
+        "missing": 0,
+        "coveragePercent": 100.0,
+        "bytes": 211,
+        "officialEmptyTiles": 1,
+        "features": 4,
+        "groups": {
+          "transport": 2,
+          "building": 2
+        },
+        "layers": {
+          "transportation": 2,
+          "batiments": 2
+        },
+        "transportTopology": {
+          "edgeEndpoints": 4,
+          "matchedSeams": 1,
+          "pendingNeighborTiles": 2,
+          "unpairedWithNeighborLoaded": 0,
+          "unpairedExamples": []
+        },
+        "buildings": {
+          "exactDuplicateFootprints": 1,
+          "edgeTouchingFootprints": 0,
+          "edgeExamples": []
+        },
+        "missingExamples": [],
+        "invalidFiles": [],
+        "files": [
+          {
+            "key": "14/8437/6001",
+            "source": "base",
+            "bytes": 61,
+            "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+            "layers": 1,
+            "features": 1
+          },
+          {
+            "key": "14/8438/6001",
+            "source": "base",
+            "bytes": 61,
+            "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+            "layers": 1,
+            "features": 1
+          },
+          {
+            "key": "16/33750/24006",
+            "source": "cadastre",
+            "bytes": 89,
+            "sha256": "9fbc73131279feddb9b4feebf50b7b7045052137ab21407a75be7dbaa5ff5221",
+            "layers": 1,
+            "features": 2
+          },
+          {
+            "key": "16/33730/23996",
+            "source": "cadastre",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "layers": 0,
+            "features": 0,
+            "empty": true
+          }
+        ],
+        "truth": {
+          "complete": true,
+          "vectorFilesComplete": true,
+          "transportSeamsClean": true,
+          "terrainNumericAudited": false,
+          "note": "Pending endpoints are caused by absent neighbors and are not counted as confirmed seam defects. Vector completeness does not certify official terrain or visual fidelity."
+        }
+      }
+    },
+    {
+      "name": "auditor matches cross-tile road",
+      "ok": true,
+      "detail": {
+        "edgeEndpoints": 4,
+        "matchedSeams": 1,
+        "pendingNeighborTiles": 2,
+        "unpairedWithNeighborLoaded": 0,
+        "unpairedExamples": []
+      }
+    },
+    {
+      "name": "auditor does not invent seam defect",
+      "ok": true,
+      "detail": {
+        "edgeEndpoints": 4,
+        "matchedSeams": 1,
+        "pendingNeighborTiles": 2,
+        "unpairedWithNeighborLoaded": 0,
+        "unpairedExamples": []
+      }
+    },
+    {
+      "name": "auditor detects exact cadastre duplicate",
+      "ok": true,
+      "detail": {
+        "exactDuplicateFootprints": 1,
+        "edgeTouchingFootprints": 0,
+        "edgeExamples": []
+      }
+    },
+    {
+      "name": "installer validator accepts MVT",
+      "ok": true,
+      "detail": {
+        "bytes": 61,
+        "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+        "layers": 1,
+        "features": 1,
+        "empty": false
+      }
+    },
+    {
+      "name": "installer validator accepts official empty marker",
+      "ok": true,
+      "detail": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "layers": 0,
+        "features": 0,
+        "empty": true
+      }
+    },
+    {
+      "name": "zero-byte file without marker rejected",
+      "ok": true,
+      "detail": {
+        "error": "zero-byte file without official-empty marker"
+      }
+    },
+    {
+      "name": "HTML rejected",
+      "ok": true,
+      "detail": {
+        "error": "MVTError('HTML/JSON instead of PBF')"
+      }
+    },
+    {
+      "name": "SHA-256 verified",
+      "ok": true,
+      "detail": {
+        "bytes": 61,
+        "sha256": "779669209ad9f9e98d07ab597b51efba5c83f37ec2c488e24c07df391191a14e",
+        "layers": 1,
+        "features": 1,
+        "empty": false
+      }
+    },
+    {
+      "name": "installer dry-run selects 5 884 coordinates",
+      "ok": true,
+      "detail": {
+        "stdout": "Sélection : 5884 coordonnées · source=all · macro=all · endpoint=cloud\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "scope": "Controlled local MVT and official-empty fixtures. No geographic fidelity claim."
+}

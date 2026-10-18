@@ -1,0 +1,117 @@
+OK Le HTML final annonce 0.27.0 
+OK Écriture native sur origine opaque refusée, sans faux succès 
+OK Écriture de test avec adaptateur mémoire explicitement déclaré 
+OK Campagne et exploration v0.26 séparées 
+OK transit_depot : conteneurs attendus réellement attachés 3
+OK transit_depot : interaction atteignable free 
+OK transit_depot : interaction atteignable consignment 
+OK transit_depot : monter au coffret via le contrôleur {'ok': True, 'steps': 640, 'pos': [18.243209838091474, 4.85, -12.156020724308265], 'maxY': 4.85}
+OK transit_depot : interaction atteignable workcase 
+OK traverse_archives : conteneurs attendus réellement attachés 3
+OK traverse_archives : interaction atteignable free 
+OK traverse_archives : interaction atteignable consignment 
+OK traverse_archives : monter au coffret via le contrôleur {'ok': True, 'steps': 850, 'pos': [-17.80957580943778, 4.85, -15.980492023108075], 'maxY': 4.85}
+OK traverse_archives : interaction atteignable workcase 
+OK mooring_station : conteneurs attendus réellement attachés 3
+OK mooring_station : interaction atteignable free 
+OK mooring_station : interaction atteignable consignment 
+OK mooring_station : monter au coffret via le contrôleur {'ok': True, 'steps': 638, 'pos': [19.759145211440874, 4.85, -13.429514737343302], 'maxY': 4.85}
+OK mooring_station : interaction atteignable workcase 
+OK relay_vent : conteneurs attendus réellement attachés 1
+OK relay_vent : interaction atteignable salvage 
+OK relay_cold : conteneurs attendus réellement attachés 1
+OK relay_cold : interaction atteignable salvage 
+OK relay_brake : conteneurs attendus réellement attachés 1
+OK relay_brake : interaction atteignable salvage 
+OK Accès physique au conteneur transit_depot/free 
+OK Clic natif : prendre un objet, pas toute la pile 
+OK La quantité restante est finie 
+OK Transferts négatifs, excessifs et fractionnaires refusés 
+OK Quantité partielle conservée après aller-retour entre scènes 
+OK Tout prendre vide le conteneur sans le régénérer 
+OK Reprendre une caisse vide ne duplique rien 
+OK Accès physique au conteneur transit_depot/workcase 
+OK Serrure fermée empêche de prendre du matériel 
+OK Trois tentatives ratées cassent une épingle, pas trois 
+OK Le réglage correct ouvre le vrai coffre 
+OK Aucune boucle d’XP au crochetage 
+OK L’arme usée du coffret peut être prise 
+OK État du coffre conservé à la récupération 
+OK Accès physique au conteneur transit_depot/workcase 
+OK Serrure reste ouverte après retour 
+OK Accès physique au conteneur transit_depot/consignment 
+OK Inspecter une réserve ne donne pas le droit de la vider 
+OK Prélèvement volontaire après avertissement 
+OK Un seul objet a quitté la réserve 
+OK Témoin proche : un avis local est enregistré {'aubagne': 1, 'marseille': 0, 'laciotat': 0, 'collines': 0}
+OK Le même lot ne cumule pas un avis par article 
+OK Deux eaux manquent au lot dans le bilan 
+OK Remise physique diminue le manque et le sac 
+OK Rendre au-delà du contenu initial est refusé 
+OK Conclure avant les trois bordereaux est refusé 
+OK Accès physique au conteneur transit_depot/consignment 
+OK Accès physique au conteneur traverse_archives/consignment 
+OK Accès physique au conteneur mooring_station/consignment 
+OK Une restitution sans ses ressources est bloquée, sans paiement partiel 
+OK Restitution conclue par vraie confirmation 
+OK Prime unique de restitution attribuée 
+OK Rejouer une conclusion ne verse pas de seconde prime 
+OK Les réserves restituées ne restent pas à disposition du joueur 
+OK Fournitures de l’accord réellement visibles 
+OK Accès physique au conteneur transit_depot/consignment 
+OK Accès physique au conteneur traverse_archives/consignment 
+OK Accès physique au conteneur mooring_station/consignment 
+OK Chemin complet : share 
+OK Épilogue share relisible sans gain 
+OK Accès physique au conteneur transit_depot/consignment 
+OK share : partage limité ou récupération des restes, pas un double don 
+OK Accès physique au conteneur transit_depot/consignment 
+OK Accès physique au conteneur traverse_archives/consignment 
+OK Accès physique au conteneur mooring_station/consignment 
+OK Chemin complet : claim 
+OK Épilogue claim relisible sans gain 
+OK Accès physique au conteneur transit_depot/consignment 
+OK claim : partage limité ou récupération des restes, pas un double don 
+OK Récupération personnelle affecte la réputation locale 
+OK Neutraliser ne transfère plus les ressources à distance 
+OK Un conteneur de dépouille est créé au lieu du décès 
+OK Restes visuels issus du modèle, coordonnées finies 
+OK Impossible de fouiller un corps distant 
+OK Fouille à proximité du vrai corps 
+OK Récupération du butin après fouille 
+OK Capsules du décès transférées une fois 
+OK Appel répété sur mort ignoré 
+OK Restes et butin persistent dans une scène réelle rechargée 
+OK Démontage à distance refusé 
+OK Démontage au véritable établi 
+OK Consommation et résultat de récupération exacts 
+OK Les objets de quête ne sont pas démontables 
+OK Soin depuis le sac consomme un Stimpak 
+OK Recherche réelle sur le contenu possédé 
+OK Échap depuis recherche rend la commande au jeu 
+OK Encombrement facultatif ralentit de 35 %, pas d’effacement d’objets 
+OK Vendre une arme non équipée 
+OK Chargeur revendu vidé dans la réserve une seule fois 
+OK Vente répétée d’un objet absent refusée 
+OK Objet revendu disponible au comptoir 
+OK Rachat de l’arme 
+OK Rachat conserve la condition et ne remplit pas le chargeur 
+OK Achat d’un modèle déjà possédé bloqué sans débiter 
+OK Arme active protégée 
+OK Un produit absent du stock ne peut pas être acheté 
+OK Transactions refusées après fermeture du comptoir 
+OK Accès physique au conteneur transit_depot/free 
+OK Migration v0.25 conserve VATS, champs inconnus, encombrement inactif 
+OK État des conteneurs conservé dans la migration 
+OK Export/import de test conserve l’objet déjà pris 
+OK Quantités invalides et objets inconnus éliminés du nouveau registre 
+OK Accès physique au conteneur transit_depot/free 
+OK Panneau de fouille visible à 390×844 
+OK Pas de débordement horizontal en mode étroit 
+OK I ouvre le nouvel inventaire Pip-Boy avec une vraie touche 
+OK Échap ferme le sac étroit 
+OK Accès physique au conteneur transit_depot/consignment 
+OK Un ancien transfert est invalidé lors du changement de scène 
+OK Panneau invalidé et masqué au changement de scène 
+OK Aucune exception JavaScript []
+RESULT 116 0

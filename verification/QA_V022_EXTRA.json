@@ -1,0 +1,112 @@
+{
+  "html_sha256": "692aba8ed96364b950fbb7c242191152dd939e54371630f0d58d049bfa98527c",
+  "scope": "HTML exact, rendu logiciel ; stockage mémoire explicite ; menu cliqué ; tir réel via fonction du jeu",
+  "total": 13,
+  "passed": 13,
+  "failed": 0,
+  "errors": [],
+  "results": [
+    {
+      "ok": true,
+      "name": "Le bouton de découverte ouvre la cour et rend le contrôle",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Le départ de découverte se situe réellement dans la nouvelle cour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Campagne précédente inchangée après le clic de découverte",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La découverte sauvegarde dans une clé séparée",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "La découverte prépare le contexte sans accomplir la nouvelle quête",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Un vrai tir consomme une munition dans la cour",
+      "detail": {
+        "before": [
+          0,
+          10
+        ],
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.3,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 1,
+          "queue": null,
+          "execution": null,
+          "ammo": 9,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "ok": true,
+      "name": "Le tir réel déclenche le signal d’alerte local",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Les neuf scripts partagés réagissent au tir : contrôle des trois résidents chargés",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Import réel du JSON rétablit les choix du retour (stockage mémoire)",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Une machine consignée ne redémarre pas avec la persistance des blessures",
+      "detail": [
+        {
+          "id": "transit_depot:tarente",
+          "type": "tarente",
+          "pos": [
+            -17,
+            0,
+            -16
+          ],
+          "alive": true,
+          "windup": null,
+          "cool": 1.5,
+          "health": 65
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "Ennemi détruit non ressuscité au retour",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Données de position et de santé invalides rejetées par la migration",
+      "detail": null
+    },
+    {
+      "ok": true,
+      "name": "Aucune exception JavaScript pendant les contrôles supplémentaires",
+      "detail": []
+    }
+  ]
+}

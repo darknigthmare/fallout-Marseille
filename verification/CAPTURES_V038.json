@@ -1,0 +1,47 @@
+{
+  "html_sha256": "0e94d183613089d04256907634b3df1ff82e7ee043efc08c8d2ded6282ce6fc5",
+  "errors": [],
+  "scope": "Exact v0.38 HTML. The 5,884-coordinate cloud cache is live verified separately. Browser cache and seam render use controlled fixtures. No official terrain bundled.",
+  "shots": [
+    {
+      "file": "v038_01_plan_couverture.png",
+      "title": "Couverture vectorielle complète",
+      "note": "Les 5 884 coordonnées du manifeste sont traitées ; 4 557 contiennent un PBF et 1 327 sont officiellement vides. Relief 0/8."
+    },
+    {
+      "file": "v038_02_menu.png",
+      "title": "Menu v0.38",
+      "note": "Le menu annonce un cadastre complet sans prétendre que le relief officiel est installé."
+    },
+    {
+      "file": "v038_03_statut.png",
+      "title": "État cartographique",
+      "note": "5 884/5 884 coordonnées : 4 557 PBF, 1 327 tuiles vides officielles et relief 0/8."
+    },
+    {
+      "file": "v038_04_pip_cache.png",
+      "title": "Pip-Boy — cache complet",
+      "note": "Le cache cloud, le navigateur, les PBF et les réponses officielles vides sont comptés séparément."
+    },
+    {
+      "file": "v038_05_pip_couverture.png",
+      "title": "Pip-Boy — couverture",
+      "note": "Chaque macro-région est reliée au cache complet ; le relief officiel reste explicitement absent."
+    },
+    {
+      "file": "v038_06_raccord_synthetique.png",
+      "title": "Raccord MVT synthétique",
+      "note": "Fixture QA : raccord routier, remplacement du bâti générique et déduplication cadastrale. Ce n’est pas Marseille."
+    },
+    {
+      "file": "v038_07_transition.png",
+      "title": "Transition Marseille → Huveaune",
+      "note": "La transition conserve la latitude et la longitude avant reprojection dans la macro-région voisine."
+    },
+    {
+      "file": "v038_08_mobile_statut.png",
+      "title": "Statut en portrait",
+      "note": "Lecture des compteurs PBF / vides / relief dans une fenêtre mobile simulée."
+    }
+  ]
+}

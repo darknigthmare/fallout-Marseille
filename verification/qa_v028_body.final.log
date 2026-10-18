@@ -1,0 +1,81 @@
+OK Six régions, six circuits, vingt recettes, aucune carte officielle
+OK Titre de la nouvelle build
+OK Refus du stockage natif opaque vérifié avant adaptateur
+OK Écriture par adaptateur mémoire déclarée
+OK Options v027 récupérées avant les valeurs anciennes v017
+OK Préférence v028 prend priorité sans écraser la v027
+OK Lecture des options ne modifie pas la source précédente
+OK Migration ancienne partie : aucune blessure imposée
+OK Migration : aucune bande ou lampe active inventée
+OK Migration ne donne pas de soins et conserve les issues existantes
+OK Champs anciens inconnus conservés
+OK Valeurs extrêmes bornées ; null ne crée pas une blessure
+OK Six clés seulement et historique borné
+OK Texte et issue inconnue nettoyés
+OK Grille importée bornée, niveau inexistant rejeté
+OK Lésion calculée après les dégâts réels de protection
+OK Impact sur jambe gauche : cinq autres régions intactes
+OK Radiation : pas de traumatisme répétitif
+OK Petit effet continu : aucune nouvelle région cassée
+OK Interface ouverte : dégâts et traumatismes suspendus
+OK Lésion négative et membre inconnu refusés
+OK Deux jambes atteintes réduisent le déplacement réel à 58 %
+OK Deux jambes sévères empêchent effectivement le saut
+OK Une jambe soignée autorise de nouveau le saut
+OK Bras atteints : minuteur de rechargement réellement multiplié par 1,65
+OK Bras atteints : dégâts de mêlée réduits à 72 %
+OK Lésion des bras ne réduit pas arbitrairement les dégâts de balle
+OK Tête atteinte : précision V.A.T.S. réduite de quatorze points
+OK Pénalité de tête ne transforme pas un obstacle en chance positive
+OK Torse atteint : récupération naturelle des PA à 45 %
+OK Six régions sélectionnables par boutons natifs
+OK Sélection réelle de jambe dans le Pip-Boy
+OK Stimpak ciblé : +35 sur une région, un seul objet
+OK Soin ciblé ne restaure ni PV ni radiations ni états
+OK Attelle restaure la jambe à 100
+OK Attelle non gaspillée sur une jambe intacte
+OK Attelle pour la tête refusée sans débit
+OK Trousse restaure la tête sans toucher les autres régions
+OK Traitement régional ne guérit pas le corps entier
+OK Trousse manquante : aucun prélèvement partiel
+OK En menace visible, attelle et trousse sont refusées
+OK Stimpak ciblé reste utilisable pendant une menace
+OK Médecin indisponible à distance malgré interface
+OK Devis local ne prélève pas les capsules
+OK Nouveau dommage invalide l’ancien devis
+OK Ranger puis rouvrir le Pip-Boy invalide le devis
+OK Validation du devis : six régions et montant exact
+OK Médecin traumatismes ne traite ni PV ni radiations
+OK Personnage intact : consultation gratuite, pas de facture
+OK Devis non payable : aucun paiement partiel ni soin
+OK Transition annule le devis et interdit un soin à distance
+OK Fabrication physique : fieldSplint
+OK Un objet produit : fieldSplint
+OK Fabrication physique : traumaKit
+OK Un objet produit : traumaKit
+OK Fabrication des soins ne génère pas d’XP
+OK Recette insuffisante ne prélève aucune ressource
+OK Cartouches du chargeur actif comptées dans la charge
+OK Retrait d’une cartouche chargée enlève exactement sa masse
+OK Besoins et surcharge non imposés au départ
+OK Besoins désactivés : ration sans effet utile non consommée
+OK Activation réelle des besoins dans le Pip-Boy
+OK Ration à PV pleins retire quarante points de faim
+OK Aliment retire vingt-cinq points de faim
+OK Eau retire trente-cinq points de soif
+OK Besoins après consommation réellement sauvegardés
+OK Menus suspendent la progression des besoins
+OK Besoins progressent pendant le jeu actif
+OK Désactivation suspend sans effacer les besoins
+OK Repos réel disponible à la halte
+OK Repos payé retire trente fatigue sans guérir les jambes
+OK Passerelle Survie → Halte ouvre le vrai service
+OK Import validé conserve traumatismes et lampe
+OK Import ne supprime pas l’ancienne clé v027
+OK Fenêtre mobile : sélection corporelle effective
+OK Interface mobile sans débordement horizontal de page
+OK Sélection corporelle contrastée même hors survol et sur tactile
+OK La sélection active respecte le phosphore ambre
+OK Bouton de soin réellement accessible sur fenêtre mobile
+OK Aucune exception JavaScript de la suite
+TOTAL 80 0

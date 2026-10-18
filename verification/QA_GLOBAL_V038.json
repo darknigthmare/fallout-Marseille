@@ -1,0 +1,59 @@
+{
+  "version": "0.38.0",
+  "htmlSha256": "0e94d183613089d04256907634b3df1ff82e7ee043efc08c8d2ded6282ce6fc5",
+  "passed": 113,
+  "failed": 0,
+  "total": 113,
+  "errors": [],
+  "sameHtml": true,
+  "suites": [
+    {
+      "file": "QA_V038.json",
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_MAP_TOOLS_V038.json",
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_CLOUD_PROOF_V038.json",
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_ON_V038.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PRODUCT_ON_V038.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    },
+    {
+      "file": "QA_REGRESSION_V035_PROLOGUE_ON_V038.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    }
+  ],
+  "cloudCoordinates": 5884,
+  "storedPbf": 4557,
+  "officialEmpty": 1327,
+  "cloudBytes": 86973739,
+  "localPackValid": 0,
+  "officialTerrainMacros": 0
+}
