@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Loopback-only game server with read-only inspection of the installed map pack."""
+"""Loopback game server; bundled files are prepared before its read-only routes open."""
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 from threading import Lock
 import argparse, json, time, webbrowser
 from validate_real_map_v046 import audit
+from prepare_local_pack_v050 import prepare_if_bundled
 ROOT = Path(__file__).resolve().parents[1]
 class GameHandler(SimpleHTTPRequestHandler):
     _audit_lock = Lock()
@@ -19,7 +20,7 @@ class GameHandler(SimpleHTTPRequestHandler):
             with type(self)._audit_lock:
                 if type(self)._audit_cache is None or time.monotonic() - type(self)._audit_time > 30:
                     data = audit(ROOT / 'data/map_pack')
-                    data.update(version='0.49.0', inspectedAt=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), scope='Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.')
+                    data.update(version='0.50.0', inspectedAt=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), scope='Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.')
                     type(self)._audit_cache = data
                     type(self)._audit_time = time.monotonic()
                 payload = json.dumps(type(self)._audit_cache, ensure_ascii=False).encode('utf-8')
@@ -38,11 +39,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--port', type=int, default=8765)
     parser.add_argument('--no-browser', action='store_true')
+    parser.add_argument('--no-prepare', action='store_true', help='Inspecter les fichiers présents sans extraire les archives fournies.')
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error('Le port doit être compris entre 1 et 65535.')
+    if not args.no_prepare:
+        prepare_if_bundled(ROOT)
     url = f'http://127.0.0.1:{args.port}/index.html'
-    print('Application locale v0.49 :', url, flush=True)
+    print('Application locale v0.50 :', url, flush=True)
     try:
         with ThreadingHTTPServer(('127.0.0.1', args.port), GameHandler) as server:
             if not args.no_browser:

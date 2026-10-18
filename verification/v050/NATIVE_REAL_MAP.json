@@ -1,0 +1,3647 @@
+{
+  "version": "0.50.0",
+  "scope": "Real HTTP + native Chromium + installed geographic data",
+  "native_navigation": true,
+  "assistance": [
+    "UI menu, character creation and dialogue choice buttons",
+    "Existing v020Approach and v35p* story actions",
+    "Existing measured camera placement and v046Move collision-controlled steps",
+    "Simulation freeze and day/night clock for repeatable measurements; geography and collisions remain production data",
+    "Two explicitly named POIs discovered through the existing debug discovery action before their UI-only fast travel tests"
+  ],
+  "network_mocked": false,
+  "storage_mocked": false,
+  "html_injected": false,
+  "synthetic_lab_used": false,
+  "checks": [
+    {
+      "name": "Server delivers the exact index.html",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Installed pack complete with all coordinates and terrain grids",
+      "ok": true,
+      "detail": {
+        "version": "0.50.0",
+        "vector": {
+          "expected": 5884,
+          "pbf": 4557,
+          "officialEmpty": 1327,
+          "missing": 0,
+          "invalid": 0,
+          "bytes": 86973739,
+          "examples": []
+        },
+        "terrain": {
+          "expected": 8,
+          "valid": 8,
+          "missing": 0,
+          "invalid": 0,
+          "samples": 174944,
+          "noData": 32424,
+          "examples": []
+        },
+        "complete": true,
+        "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+        "inspectedAt": "2026-10-18T14:48:21Z"
+      }
+    },
+    {
+      "name": "Native HTTP document matches the served game",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Global v050 and historical module versions reported honestly",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "All visible menu actions fit the viewport",
+      "ok": true,
+      "detail": [
+        {
+          "id": "btnContinue",
+          "text": "Continuer",
+          "visible": true,
+          "inViewport": true,
+          "top": 269.078125,
+          "bottom": 313.078125
+        },
+        {
+          "id": "btnNew",
+          "text": "Nouvelle campagne",
+          "visible": true,
+          "inViewport": true,
+          "top": 320.265625,
+          "bottom": 364.265625
+        },
+        {
+          "id": "btnV035Load",
+          "text": "Charger une sauvegarde",
+          "visible": true,
+          "inViewport": true,
+          "top": 371.453125,
+          "bottom": 415.453125
+        },
+        {
+          "id": "btnV035Career",
+          "text": "Carrière",
+          "visible": true,
+          "inViewport": true,
+          "top": 371.453125,
+          "bottom": 415.453125
+        },
+        {
+          "id": "btnV035Operations",
+          "text": "Opérations rejouables",
+          "visible": true,
+          "inViewport": true,
+          "top": 422.640625,
+          "bottom": 466.640625
+        },
+        {
+          "id": "btnChapter",
+          "text": "Exploration libre",
+          "visible": true,
+          "inViewport": true,
+          "top": 422.640625,
+          "bottom": 466.640625
+        },
+        {
+          "id": "btnOptions",
+          "text": "Options",
+          "visible": true,
+          "inViewport": true,
+          "top": 473.828125,
+          "bottom": 517.828125
+        },
+        {
+          "id": "btnCredits",
+          "text": "Crédits & statut",
+          "visible": true,
+          "inViewport": true,
+          "top": 473.828125,
+          "bottom": 517.828125
+        },
+        {
+          "id": "v050MapStatus",
+          "text": "Cartes & territoire",
+          "visible": true,
+          "inViewport": true,
+          "top": 525.015625,
+          "bottom": 569.015625
+        },
+        {
+          "id": "btnV035Admin",
+          "text": "Admin",
+          "visible": true,
+          "inViewport": true,
+          "top": 525.015625,
+          "bottom": 569.015625
+        }
+      ]
+    },
+    {
+      "name": "Menu status uses the live local audit",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mobile menu actions can all be reached by scrolling",
+      "ok": true,
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "buttons": [
+          {
+            "id": "btnContinue",
+            "text": "Continuer",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnNew",
+            "text": "Nouvelle campagne",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnV035Load",
+            "text": "Charger une sauvegarde",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnV035Career",
+            "text": "Carrière",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnV035Operations",
+            "text": "Opérations rejouables",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnChapter",
+            "text": "Exploration libre",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnOptions",
+            "text": "Options",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnCredits",
+            "text": "Crédits & statut",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "v050MapStatus",
+            "text": "Cartes & territoire",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnV035Admin",
+            "text": "Admin",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          }
+        ]
+      }
+    },
+    {
+      "name": "New campaign reaches the vault prologue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-locker",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pLocker reaches stage 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-clinic",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pClinic reaches stage 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-filter",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pFilter reaches stage 3",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pBreakfast reaches stage 4",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-ration",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pRation reaches stage 5",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-records",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pRecords reaches stage 6",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pBrief reaches stage 7",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-issue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pIssue reaches stage 8",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Airlock commits directly to real exterior",
+      "ok": true,
+      "detail": {
+        "before": {
+          "started": true,
+          "titleSeen": true,
+          "stage": 8,
+          "locker": true,
+          "clinic": true,
+          "filter": true,
+          "breakfast": true,
+          "records": true,
+          "briefed": true,
+          "loadout": "patrol",
+          "complete": false
+        },
+        "after": {
+          "started": true,
+          "titleSeen": true,
+          "stage": 9,
+          "locker": true,
+          "clinic": true,
+          "filter": true,
+          "breakfast": true,
+          "records": true,
+          "briefed": true,
+          "loadout": "patrol",
+          "complete": true
+        },
+        "world": "geo_huveaune",
+        "real": true,
+        "info": {
+          "version": "0.47.0",
+          "scene": null,
+          "region": "geo_huveaune",
+          "lab": false,
+          "loading": false,
+          "anticipating": false,
+          "phase": "ready",
+          "done": 46,
+          "total": 46,
+          "anchor": [
+            4893.191229318152,
+            0,
+            -1447.6664349995553
+          ],
+          "pos": [
+            4908.610264830184,
+            106.72790162517461,
+            -1439.4654409372893
+          ],
+          "stats": {
+            "warmStarted": 0,
+            "warmCommitted": 0,
+            "blocking": 1,
+            "cancelled": 0,
+            "failed": 0,
+            "stale": 0,
+            "reusedTiles": 0,
+            "builtTiles": 42,
+            "reusedTerrain": 0,
+            "builtTerrain": 25
+          },
+          "resources": {
+            "entries": 46,
+            "bytes": 27033650,
+            "budgetBytes": 50331648,
+            "pinned": 46,
+            "overBudgetBytes": 0,
+            "hits": 0,
+            "misses": 0,
+            "evictions": 0
+          },
+          "geometry": {
+            "entries": 42,
+            "bytes": 35301268,
+            "budgetBytes": 41943040,
+            "pinned": 42,
+            "overBudgetBytes": 0,
+            "hits": 0,
+            "misses": 42,
+            "evictions": 0
+          },
+          "terrainMeshes": {
+            "entries": 25,
+            "bytes": 775430,
+            "budgetBytes": 12582912,
+            "pinned": 25,
+            "overBudgetBytes": 0,
+            "hits": 0,
+            "misses": 25,
+            "evictions": 0
+          },
+          "terrain": [
+            {
+              "id": "geo_etoile",
+              "width": 161,
+              "height": 161,
+              "valid": 25921,
+              "noData": 0
+            },
+            {
+              "id": "geo_garlaban",
+              "width": 161,
+              "height": 161,
+              "valid": 25921,
+              "noData": 0
+            },
+            {
+              "id": "geo_huveaune",
+              "width": 161,
+              "height": 161,
+              "valid": 25921,
+              "noData": 0
+            },
+            {
+              "id": "geo_saintebaume",
+              "width": 161,
+              "height": 161,
+              "valid": 25921,
+              "noData": 0
+            }
+          ],
+          "tiles": 42,
+          "nature": 215,
+          "origins": {
+            "pack local": 42
+          },
+          "history": [
+            {
+              "type": "publication",
+              "at": "2026-10-18T14:49:08.438Z",
+              "id": 1,
+              "warm": false,
+              "ms": 9396,
+              "tiles": 42
+            }
+          ],
+          "localData": {
+            "version": "0.50.0",
+            "vector": {
+              "expected": 5884,
+              "pbf": 4557,
+              "officialEmpty": 1327,
+              "missing": 0,
+              "invalid": 0,
+              "bytes": 86973739,
+              "examples": []
+            },
+            "terrain": {
+              "expected": 8,
+              "valid": 8,
+              "missing": 0,
+              "invalid": 0,
+              "samples": 174944,
+              "noData": 32424,
+              "examples": []
+            },
+            "complete": true,
+            "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+            "inspectedAt": "2026-10-18T14:48:21Z",
+            "live": true
+          }
+        }
+      }
+    },
+    {
+      "name": "Campaign progresses only after the exit succeeds",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Exterior is live geography, not a synthetic lab",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "All active vectors came from the installed pack",
+      "ok": true,
+      "detail": {
+        "pack local": 42
+      }
+    },
+    {
+      "name": "Committed terrain grids contain measured heights",
+      "ok": true,
+      "detail": [
+        {
+          "id": "geo_etoile",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_garlaban",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_huveaune",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_saintebaume",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        }
+      ]
+    },
+    {
+      "name": "Arrival has measured terrain with source attribution",
+      "ok": true,
+      "detail": {
+        "player": [
+          4908.610264830184,
+          106.72790162517461,
+          -1439.4654409372893
+        ],
+        "latlon": [
+          43.296521750733305,
+          5.570986509810465
+        ],
+        "ground": {
+          "height": 105.0779016251746,
+          "missing": null,
+          "sources": [
+            "geo_garlaban",
+            "geo_huveaune",
+            "geo_saintebaume"
+          ]
+        },
+        "eye_minus_ground": 1.6500000000000057,
+        "collision": false
+      }
+    },
+    {
+      "name": "Player footing is finite and above measured ground",
+      "ok": true,
+      "detail": {
+        "player": [
+          4908.610264830184,
+          106.72790162517461,
+          -1439.4654409372893
+        ],
+        "latlon": [
+          43.296521750733305,
+          5.570986509810465
+        ],
+        "ground": {
+          "height": 105.0779016251746,
+          "missing": null,
+          "sources": [
+            "geo_garlaban",
+            "geo_huveaune",
+            "geo_saintebaume"
+          ]
+        },
+        "eye_minus_ground": 1.6500000000000057,
+        "collision": false
+      }
+    },
+    {
+      "name": "Arrival is clear of collision geometry",
+      "ok": true,
+      "detail": {
+        "player": [
+          4908.610264830184,
+          106.72790162517461,
+          -1439.4654409372893
+        ],
+        "latlon": [
+          43.296521750733305,
+          5.570986509810465
+        ],
+        "ground": {
+          "height": 105.0779016251746,
+          "missing": null,
+          "sources": [
+            "geo_garlaban",
+            "geo_huveaune",
+            "geo_saintebaume"
+          ]
+        },
+        "eye_minus_ground": 1.6500000000000057,
+        "collision": false
+      }
+    },
+    {
+      "name": "Real roads and building geometry are present",
+      "ok": true,
+      "detail": {
+        "buildings": 9696,
+        "roads": 4075,
+        "nature": 74
+      }
+    },
+    {
+      "name": "All building ground and roof heights are finite",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A physical workshop gateway exists in the geographic scene",
+      "ok": true,
+      "detail": {
+        "id": "v050-campaign-workshops",
+        "label": "Ateliers d’Aubagne — poursuivre la campagne",
+        "pos": [
+          4900.191229318152,
+          106.43552011681578,
+          -1459.7907906525375
+        ],
+        "radius": 4.5
+      }
+    },
+    {
+      "name": "Measured exterior gateway can be approached",
+      "ok": true,
+      "detail": {
+        "pos": [
+          4900.191229318152,
+          107.08552011681579,
+          -1458.1907906525375
+        ],
+        "physical": true
+      }
+    },
+    {
+      "name": "Nearby workshop gateway opens the actual dialogue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Workshop dialogue identifies the narrative scene",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Campaign gateway enters the authored workshop scene",
+      "ok": true,
+      "detail": {
+        "saved": {
+          "schema": 1,
+          "route": "geographic",
+          "gateway": [
+            4900.191229318152,
+            105.23552011681578,
+            -1459.7907906525375
+          ],
+          "returnPoint": {
+            "macro": "geo_huveaune",
+            "pos": [
+              4900.191229318036,
+              106.86531688147532,
+              -1458.1907906532288
+            ],
+            "yaw": 0,
+            "pitch": 0
+          },
+          "workshopVisits": 1
+        },
+        "prologue": {
+          "started": true,
+          "titleSeen": true,
+          "stage": 9,
+          "locker": true,
+          "clinic": true,
+          "filter": true,
+          "breakfast": true,
+          "records": true,
+          "briefed": true,
+          "loadout": "patrol",
+          "complete": true
+        },
+        "main": 2,
+        "zone": "aubagne",
+        "pending": null,
+        "last": {
+          "id": 2,
+          "kind": "workshops",
+          "status": "complete",
+          "zone": "aubagne",
+          "real": false
+        },
+        "completed": 2,
+        "cancelled": 0,
+        "failed": 0,
+        "gateway": {
+          "id": "v050-campaign-territory",
+          "label": "Retourner au territoire d’Aubagne",
+          "pos": [
+            5,
+            1.1,
+            86
+          ],
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "Geographic return point is stored before the workshop visit",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mireille is present in the connected workshop scene",
+      "ok": true,
+      "detail": {
+        "id": "mireille",
+        "site": null,
+        "pos": [
+          -18,
+          0,
+          6
+        ]
+      }
+    },
+    {
+      "name": "Mireille has an accessible physical dialogue approach",
+      "ok": true,
+      "detail": [
+        -18.0,
+        1.65,
+        8.0
+      ]
+    },
+    {
+      "name": "Mireille dialogue advances the existing campaign to stage 3",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Narrative return gateway can be approached",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Workshop return opens the actual dialogue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Return restores the saved geographic point",
+      "ok": true,
+      "detail": {
+        "before": [
+          4900.191229318036,
+          106.86531688147532,
+          -1458.1907906532288
+        ],
+        "after": [
+          4900.191229318036,
+          106.86531688147532,
+          -1458.1907906532288
+        ]
+      }
+    },
+    {
+      "name": "Workshop return preserves newly acquired campaign progress and inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production movement crosses the real cadastre tile boundary",
+      "ok": true,
+      "detail": {
+        "start": [
+          4819.45838627615,
+          105.90027048355164,
+          -1455.5618396168575
+        ],
+        "target": [
+          4847.504350918229,
+          0,
+          -1456.4750014347956
+        ],
+        "actual": [
+          4847.5043509182515,
+          106.2348651216637,
+          -1456.4750014348008
+        ],
+        "distance": 28.06082673782909,
+        "blocked_steps": 0,
+        "error": 2.3331021020267776e-11,
+        "tile": [
+          33782,
+          24007
+        ]
+      }
+    },
+    {
+      "name": "The crossing publishes a different window of real tiles",
+      "ok": true,
+      "detail": {
+        "changed": true,
+        "requests": [
+          {
+            "requested_latlon": [
+              43.29669257334529,
+              5.5717222705537495
+            ],
+            "published_anchor": [
+              4967.701296963263,
+              0,
+              -1460.3899423927069
+            ],
+            "ok": true,
+            "added": [],
+            "removed": [
+              "base:14:8444:6001",
+              "base:14:8444:6002",
+              "cadastre:16:33779:24004",
+              "cadastre:16:33779:24005",
+              "cadastre:16:33779:24006",
+              "cadastre:16:33779:24007",
+              "cadastre:16:33779:24008",
+              "cadastre:16:33779:24009"
+            ]
+          }
+        ],
+        "before_count": 42,
+        "after_count": 34,
+        "player": [
+          4847.5043509182515,
+          106.2348651216637,
+          -1456.4750014348008
+        ]
+      }
+    },
+    {
+      "name": "Walking and publishing across the boundary keeps one scene",
+      "ok": true,
+      "detail": {
+        "before": 2,
+        "after": 2
+      }
+    },
+    {
+      "name": "Common real roads and buildings retain identical geometry",
+      "ok": true,
+      "detail": {
+        "buildings": {
+          "before": 9419,
+          "after": 8728,
+          "common": 8728,
+          "changed": [],
+          "changed_count": 0
+        },
+        "roads": {
+          "before": 3999,
+          "after": 3070,
+          "common": 3070,
+          "changed": [],
+          "changed_count": 0
+        }
+      }
+    },
+    {
+      "name": "The return publishes another real tile window",
+      "ok": true,
+      "detail": {
+        "changed": true,
+        "requests": [
+          {
+            "requested_latlon": [
+              43.29669257334529,
+              5.568414448196251
+            ],
+            "published_anchor": [
+              4746.666966689983,
+              0,
+              -1453.1917893849313
+            ],
+            "ok": true,
+            "added": [
+              "base:14:8444:6001",
+              "base:14:8444:6002",
+              "cadastre:16:33779:24004",
+              "cadastre:16:33779:24005",
+              "cadastre:16:33779:24006",
+              "cadastre:16:33779:24007",
+              "cadastre:16:33779:24008",
+              "cadastre:16:33779:24009"
+            ],
+            "removed": [
+              "base:14:8446:6001",
+              "base:14:8446:6002",
+              "cadastre:16:33784:24004",
+              "cadastre:16:33784:24005",
+              "cadastre:16:33784:24006",
+              "cadastre:16:33784:24007",
+              "cadastre:16:33784:24008",
+              "cadastre:16:33784:24009"
+            ]
+          }
+        ],
+        "before_count": 34,
+        "after_count": 34,
+        "player": [
+          4819.45838627615,
+          105.90027048355164,
+          -1455.5618396168575
+        ]
+      }
+    },
+    {
+      "name": "Return crossing retains scene, position and common geometry",
+      "ok": true,
+      "detail": {
+        "movement": {
+          "start": [
+            4847.5043509182515,
+            106.2348651216637,
+            -1456.4750014348008
+          ],
+          "target": [
+            4819.45838627615,
+            0,
+            -1455.5618396168575
+          ],
+          "actual": [
+            4819.45838627615,
+            105.90027048355164,
+            -1455.5618396168575
+          ],
+          "distance": 28.060826737851983,
+          "blocked_steps": 0,
+          "error": 0.0,
+          "tile": [
+            33781,
+            24007
+          ]
+        },
+        "geometry": {
+          "buildings": {
+            "before": 9419,
+            "after": 8317,
+            "common": 8317,
+            "changed": [],
+            "changed_count": 0
+          },
+          "roads": {
+            "before": 3999,
+            "after": 2644,
+            "common": 2644,
+            "changed": [],
+            "changed_count": 0
+          }
+        },
+        "scene": 2
+      }
+    },
+    {
+      "name": "A real cadastral wall blocks production movement",
+      "ok": true,
+      "detail": {
+        "building": "cadastre:building:f32237a4",
+        "center": [
+          4810.857728023198,
+          -1441.465439944528
+        ],
+        "normal": [
+          0.30653371736551205,
+          0.951859800662934
+        ],
+        "free": [
+          4810.336620703677,
+          -1443.083601605655
+        ],
+        "inside": [
+          4811.37883534272,
+          -1439.847278283401
+        ],
+        "intended_metres": 3.4000000000001247,
+        "moved_metres": 1.3254950875657445,
+        "remaining_push_moved": 0.0,
+        "loading": false,
+        "end": [
+          4810.927208999037,
+          105.77860726360939,
+          -1441.8969497221844
+        ],
+        "end_collision": false
+      }
+    },
+    {
+      "name": "Native frames continue while the real exterior is displayed",
+      "ok": true,
+      "detail": {
+        "scope": "Native headless Chromium frame cadence in this execution environment; not a hardware or desktop FPS guarantee",
+        "samples": 26,
+        "median_ms": 133.4,
+        "p95_ms": 150.1,
+        "renderer": {
+          "backend": "WebGL",
+          "customMeshes": 4732,
+          "triangles": 169949,
+          "bufferGroups": 4732
+        },
+        "gpu": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+        }
+      }
+    },
+    {
+      "name": "The courtyard probe comes from an actual source hole",
+      "ok": true,
+      "detail": {
+        "file": "data/map_pack/cadastre/16/33789/24002.pbf",
+        "feature_id": 1653439797,
+        "sha256": "321a62d2b99c258a88363e7334c0594413022c49aed2322891644e6c9467baa7",
+        "latlon": [
+          43.31400976363655,
+          5.612585060298443
+        ]
+      }
+    },
+    {
+      "name": "Native rendered geometry retains the real courtyard ring",
+      "ok": true,
+      "detail": {
+        "source_feature": 1653439797,
+        "rendered_id": "cadastre:building:383d8061",
+        "rings": 2
+      }
+    },
+    {
+      "name": "The measured source courtyard is not filled by a collision",
+      "ok": true,
+      "detail": {
+        "ll": [
+          43.31400976363655,
+          5.612585060298443
+        ],
+        "p": [
+          8220.130412389291,
+          0,
+          -3493.2877204502
+        ],
+        "ground": {
+          "height": 172.9373989458082,
+          "missing": null,
+          "sources": [
+            "geo_garlaban",
+            "geo_huveaune",
+            "geo_saintebaume"
+          ]
+        },
+        "clear": true
+      }
+    },
+    {
+      "name": "Production movement can enter the real open courtyard",
+      "ok": true,
+      "detail": {
+        "start": [
+          8220.131412389292,
+          174.58745078906077,
+          -3493.2877204502
+        ],
+        "target": [
+          8222.13362925523,
+          0,
+          -3493.3540242267773
+        ],
+        "actual": [
+          8222.133629255231,
+          174.69651344682325,
+          -3493.3540242267777
+        ],
+        "distance": 2.0033143959535624,
+        "blocked_steps": 0,
+        "error": 1.8749713606747085e-12
+      }
+    },
+    {
+      "name": "The real courtyard survives re-publication with the same geometry",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pip-Boy shows the discovered destination Belvédère · Aubagne",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel departure is permitted 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Travel UI asks for a priced duration confirmation 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cancelling the UI confirmation preserves the player and time",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "UI fast travel reaches Belvédère · Aubagne",
+      "ok": true,
+      "detail": {
+        "id": 1,
+        "site": "v042-huveaune-landmark-02",
+        "status": "complete",
+        "minutes": 12,
+        "distance": 749,
+        "arrival": [
+          4414.685241407335,
+          118.28071094051687,
+          -788.2478749090806
+        ],
+        "loadedAnchor": [
+          4426.809597060317,
+          0,
+          -817.2478749090806
+        ]
+      }
+    },
+    {
+      "name": "Native travel keeps one scene 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel time is charged exactly once 1",
+      "ok": true,
+      "detail": {
+        "before": 12,
+        "minutes": 12,
+        "after": 12.200000000000003
+      }
+    },
+    {
+      "name": "Native travel preserves inventory, experience and capsules 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel arrival is clear of real collision 1",
+      "ok": true,
+      "detail": {
+        "player": [
+          4414.685241407335,
+          118.28071094051687,
+          -788.2478749090806
+        ],
+        "terrain": {
+          "height": 116.63071094051686,
+          "missing": null,
+          "sources": [
+            "geo_garlaban",
+            "geo_huveaune"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pip-Boy shows the discovered destination Épave · Galeries de l’Huveaune",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel departure is permitted 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Travel UI asks for a priced duration confirmation 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "UI fast travel reaches Épave · Galeries de l’Huveaune",
+      "ok": true,
+      "detail": {
+        "id": 2,
+        "site": "v042-huveaune-landmark-03",
+        "status": "complete",
+        "minutes": 18,
+        "distance": 1143,
+        "arrival": [
+          3364.3968968763697,
+          94.29570721385035,
+          -431.41958711016923
+        ],
+        "loadedAnchor": [
+          3328.0238299174234,
+          0,
+          -432.41958711016923
+        ]
+      }
+    },
+    {
+      "name": "Native travel keeps one scene 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel time is charged exactly once 2",
+      "ok": true,
+      "detail": {
+        "before": 12.200000000000003,
+        "minutes": 18,
+        "after": 12.5
+      }
+    },
+    {
+      "name": "Native travel preserves inventory, experience and capsules 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel arrival is clear of real collision 2",
+      "ok": true,
+      "detail": {
+        "player": [
+          3364.3968968763697,
+          94.29570721385035,
+          -431.41958711016923
+        ],
+        "terrain": {
+          "height": 92.64570721385034,
+          "missing": null,
+          "sources": [
+            "geo_garlaban",
+            "geo_huveaune"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Native save API writes successfully",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual browser storage contains the geographic save",
+      "ok": true,
+      "detail": {
+        "key": "fallout_mistral_save_v050",
+        "bytes": 21159
+      }
+    },
+    {
+      "name": "Native reload uses the same release HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Continue restores the geographic player position",
+      "ok": true,
+      "detail": {
+        "saved": [
+          3364.3968968763697,
+          94.29570721385035,
+          -431.41958711016923
+        ],
+        "loaded": [
+          3364.396896876511,
+          94.29570721385032,
+          -431.41958710737526
+        ]
+      }
+    },
+    {
+      "name": "Continue preserves discovered sites and campaign stage",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No installed tile or terrain request failed",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "Native browser reports no JavaScript exception",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "The tested HTML remains unchanged for the whole native run",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [
+    {
+      "file": "native_01_menu.png",
+      "label": "Real menu, loaded by HTTP in Chromium",
+      "sha256": "549247595942439fff8b4308748604ee09183f50687b85448a48d8cd2878c884"
+    },
+    {
+      "file": "native_02_local_maps.png",
+      "label": "Local map status from the running server",
+      "sha256": "33566c338970c28cbbb2e2b81aadffa4069a56203cbc6dfd202858a9158c8816"
+    },
+    {
+      "file": "native_00_mobile_menu.png",
+      "label": "390 px mobile menu; native browser, scrollable actions",
+      "sha256": "dc68af99c0f8d0e301cbc2f7d2c91249df4237def525ce69dd490e61d7f22c06"
+    },
+    {
+      "file": "native_03_character.png",
+      "label": "Character created with the actual UI",
+      "sha256": "31240a29624f4ea101000c8b8870f4aaeec880cf976e2497f91ab943e6333a25"
+    },
+    {
+      "file": "native_04_prologue.png",
+      "label": "Native vault arrival through New campaign",
+      "sha256": "1289f8c4e9814b59c9429dbdfac3fe598a37e4eba0c64ae3adcda8d4a5f3ef07"
+    },
+    {
+      "file": "native_05_airlock.png",
+      "label": "Native airlock after debug-assisted story progression",
+      "sha256": "c828956c1d0575c37f369c59ad903c5bd972fc4e3fb3d236fe11d63085f73abe"
+    },
+    {
+      "file": "native_06_exit.png",
+      "label": "Actual airlock destination, without changing the exit result",
+      "sha256": "c30888741ba924dd85cf2527ebff3286ec4fc9e9627bd832e50dcce744d224d7"
+    },
+    {
+      "file": "native_07_real_aubagne.png",
+      "label": "Real vector footprints and terrain around Aubagne; interpreted game buildings",
+      "sha256": "255bb30791d9cf9adfbdb434fd2b3894026980d0500c95fd1ee9a9cce18061b9"
+    },
+    {
+      "file": "native_07b_workshop_gateway.png",
+      "label": "Physical campaign gateway in the real geographic scene; measured debug-assisted approach",
+      "sha256": "64eb4d1dc0103be356f6bcc8aeffc62651aae0729e7b7cf0a162d0b78d64a6ac"
+    },
+    {
+      "file": "native_07c_narrative_workshops.png",
+      "label": "Authored Aubagne workshops reached through the geographic gateway; explicitly a narrative scene",
+      "sha256": "fd9d13e5bf38ac0715f96b91bd50c389b65df7ea3fa939390430f3cb95abedd9"
+    },
+    {
+      "file": "native_07e_mireille_dialogue.png",
+      "label": "Real Mireille campaign dialogue reached through the narrative workshop scene; existing dialogue API, actual choice button",
+      "sha256": "764f961836acceabbcbada9e4fb841e0bc9cc78d2928ab1c69faaf54bc9019cf"
+    },
+    {
+      "file": "native_07d_geographic_return.png",
+      "label": "Return from the authored workshops to the saved real geographic point",
+      "sha256": "e17c1112be5c6e0f3753fa94cbe39d4bcbc0ce3407ab388cd2eadbb218306b7b"
+    },
+    {
+      "file": "native_08_day_road.png",
+      "label": "Measured road-side setup by a real cadastre boundary at noon; actual game render",
+      "sha256": "60e25d307cda68b7f2ef69fd34e60140577f809a13999a3b493e0361daa5998f"
+    },
+    {
+      "file": "native_09_night_road.png",
+      "label": "Same real road-side camera at 21:00; production night lighting",
+      "sha256": "85489ef983bee521b3efabe6b4993222b39a82cde69f5d323b684249f6122281"
+    },
+    {
+      "file": "native_09b_real_courtyard.png",
+      "label": "Elevated QA inspection of a real cadastral courtyard; source ring retained, measured ground, not a player traversal camera",
+      "sha256": "ed797b30af5d681d7fcecd840c1bd377618da2d2da5746ae98d89e04f06be3a8"
+    },
+    {
+      "file": "native_10_travel_1_confirmation.png",
+      "label": "Native Pip-Boy confirmation for Belvédère · Aubagne; discovery precondition explicitly debug-assisted",
+      "sha256": "e5dff47e120e7e0a16f3826583b379b32d8b250e70309bbd7d81dbdce4092a0f"
+    },
+    {
+      "file": "native_11_travel_1_arrival.png",
+      "label": "Actual geographic arrival at Belvédère · Aubagne; interpreted game landmarks on measured geography",
+      "sha256": "cd40c8efdd32d3136c54d496292b1ee94484b4c069499d2ce79bc9d0014ee111"
+    },
+    {
+      "file": "native_10_travel_2_confirmation.png",
+      "label": "Native Pip-Boy confirmation for Épave · Galeries de l’Huveaune; discovery precondition explicitly debug-assisted",
+      "sha256": "e752e368a3c1711391ea1fad1fad38dd4f029cdbd01e3650097763237de6587f"
+    },
+    {
+      "file": "native_11_travel_2_arrival.png",
+      "label": "Actual geographic arrival at Épave · Galeries de l’Huveaune; interpreted game landmarks on measured geography",
+      "sha256": "de92d071983a7156493a82aa8fb82ad01090efcc74c32e94e8c1198ea54d5efc"
+    },
+    {
+      "file": "native_12_continue.png",
+      "label": "Continue after a real browser reload, using native saved progress and installed geographic files",
+      "sha256": "76e041ec433bf618d3fc88a4a424e18be41c1b361fa122e7e4156e05311417fd"
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+  ],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:40575/index.html",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/local_pack_v041_status.json?t=1792334902702",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/benchmark_v041.json?t=1792334902702",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:40575/__mistral/local-data",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:40575/icons/mistral-192.png",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/__mistral/local-data",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/terrain/geo_etoile.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/terrain/geo_garlaban.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/terrain/geo_huveaune.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/terrain/geo_saintebaume.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8444/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8444/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8445/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8445/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8446/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8446/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33781/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33781/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33781/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33781/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33781/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33781/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33782/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33782/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33782/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33782/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33782/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33782/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33783/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33783/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33783/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33783/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33783/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33783/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33784/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33784/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33784/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33784/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33784/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33784/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8446/6000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8447/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33787/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8447/6000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33787/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33787/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33787/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33787/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33788/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33788/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33788/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33788/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33788/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33789/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33789/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33789/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33789/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33789/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33790/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33790/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33791/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33790/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33790/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33790/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33791/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33791/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33791/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33791/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/terrain/geo_calanques.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33781/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33782/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33783/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/index.html",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/benchmark_v041.json?t=1792335066985",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/local_pack_v041_status.json?t=1792335066985",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/icons/mistral-192.png",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/terrain/geo_calanques.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/terrain/geo_garlaban.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8444/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/terrain/geo_huveaune.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8445/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8444/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/france-vector/14/8445/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33776/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33777/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33778/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33779/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:40575/data/map_pack/cadastre/16/33780/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    }
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_CERT_AUTHORITY_INVALID"
+    }
+  ],
+  "stage": "complete",
+  "url": "http://127.0.0.1:40575/index.html",
+  "html_sha256": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+  "passed": 83,
+  "failed": 0,
+  "total": 83,
+  "server_audit_cache_control": "no-store",
+  "server_audit": {
+    "version": "0.50.0",
+    "vector": {
+      "expected": 5884,
+      "pbf": 4557,
+      "officialEmpty": 1327,
+      "missing": 0,
+      "invalid": 0,
+      "bytes": 86973739,
+      "examples": []
+    },
+    "terrain": {
+      "expected": 8,
+      "valid": 8,
+      "missing": 0,
+      "invalid": 0,
+      "samples": 174944,
+      "noData": 32424,
+      "examples": []
+    },
+    "complete": true,
+    "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+    "inspectedAt": "2026-10-18T14:48:21Z"
+  },
+  "browser_version": "134.0.6998.35",
+  "browser_document_sha256": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+  "title": "Fallout : Mistral · v0.50 · Les routes retrouvées",
+  "menu_version": "v0.50 · LES ROUTES RETROUVÉES",
+  "storage": {
+    "localStorageType": "Storage",
+    "indexedDB": true,
+    "secureContext": true
+  },
+  "menu_buttons": [
+    {
+      "id": "btnContinue",
+      "text": "Continuer",
+      "visible": true,
+      "inViewport": true,
+      "top": 269.078125,
+      "bottom": 313.078125
+    },
+    {
+      "id": "btnNew",
+      "text": "Nouvelle campagne",
+      "visible": true,
+      "inViewport": true,
+      "top": 320.265625,
+      "bottom": 364.265625
+    },
+    {
+      "id": "btnV035Load",
+      "text": "Charger une sauvegarde",
+      "visible": true,
+      "inViewport": true,
+      "top": 371.453125,
+      "bottom": 415.453125
+    },
+    {
+      "id": "btnV035Career",
+      "text": "Carrière",
+      "visible": true,
+      "inViewport": true,
+      "top": 371.453125,
+      "bottom": 415.453125
+    },
+    {
+      "id": "btnV035Operations",
+      "text": "Opérations rejouables",
+      "visible": true,
+      "inViewport": true,
+      "top": 422.640625,
+      "bottom": 466.640625
+    },
+    {
+      "id": "btnChapter",
+      "text": "Exploration libre",
+      "visible": true,
+      "inViewport": true,
+      "top": 422.640625,
+      "bottom": 466.640625
+    },
+    {
+      "id": "btnOptions",
+      "text": "Options",
+      "visible": true,
+      "inViewport": true,
+      "top": 473.828125,
+      "bottom": 517.828125
+    },
+    {
+      "id": "btnCredits",
+      "text": "Crédits & statut",
+      "visible": true,
+      "inViewport": true,
+      "top": 473.828125,
+      "bottom": 517.828125
+    },
+    {
+      "id": "v050MapStatus",
+      "text": "Cartes & territoire",
+      "visible": true,
+      "inViewport": true,
+      "top": 525.015625,
+      "bottom": 569.015625
+    },
+    {
+      "id": "btnV035Admin",
+      "text": "Admin",
+      "visible": true,
+      "inViewport": true,
+      "top": 525.015625,
+      "bottom": 569.015625
+    }
+  ],
+  "mobile_menu": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "buttons": [
+      {
+        "id": "btnContinue",
+        "text": "Continuer",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnNew",
+        "text": "Nouvelle campagne",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnV035Load",
+        "text": "Charger une sauvegarde",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnV035Career",
+        "text": "Carrière",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnV035Operations",
+        "text": "Opérations rejouables",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnChapter",
+        "text": "Exploration libre",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnOptions",
+        "text": "Options",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnCredits",
+        "text": "Crédits & statut",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "v050MapStatus",
+        "text": "Cartes & territoire",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnV035Admin",
+        "text": "Admin",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      }
+    ]
+  },
+  "campaign_exit": {
+    "before": {
+      "started": true,
+      "titleSeen": true,
+      "stage": 8,
+      "locker": true,
+      "clinic": true,
+      "filter": true,
+      "breakfast": true,
+      "records": true,
+      "briefed": true,
+      "loadout": "patrol",
+      "complete": false
+    },
+    "after": {
+      "started": true,
+      "titleSeen": true,
+      "stage": 9,
+      "locker": true,
+      "clinic": true,
+      "filter": true,
+      "breakfast": true,
+      "records": true,
+      "briefed": true,
+      "loadout": "patrol",
+      "complete": true
+    },
+    "world": "geo_huveaune",
+    "real": true,
+    "info": {
+      "version": "0.47.0",
+      "scene": null,
+      "region": "geo_huveaune",
+      "lab": false,
+      "loading": false,
+      "anticipating": false,
+      "phase": "ready",
+      "done": 46,
+      "total": 46,
+      "anchor": [
+        4893.191229318152,
+        0,
+        -1447.6664349995553
+      ],
+      "pos": [
+        4908.610264830184,
+        106.72790162517461,
+        -1439.4654409372893
+      ],
+      "stats": {
+        "warmStarted": 0,
+        "warmCommitted": 0,
+        "blocking": 1,
+        "cancelled": 0,
+        "failed": 0,
+        "stale": 0,
+        "reusedTiles": 0,
+        "builtTiles": 42,
+        "reusedTerrain": 0,
+        "builtTerrain": 25
+      },
+      "resources": {
+        "entries": 46,
+        "bytes": 27033650,
+        "budgetBytes": 50331648,
+        "pinned": 46,
+        "overBudgetBytes": 0,
+        "hits": 0,
+        "misses": 0,
+        "evictions": 0
+      },
+      "geometry": {
+        "entries": 42,
+        "bytes": 35301268,
+        "budgetBytes": 41943040,
+        "pinned": 42,
+        "overBudgetBytes": 0,
+        "hits": 0,
+        "misses": 42,
+        "evictions": 0
+      },
+      "terrainMeshes": {
+        "entries": 25,
+        "bytes": 775430,
+        "budgetBytes": 12582912,
+        "pinned": 25,
+        "overBudgetBytes": 0,
+        "hits": 0,
+        "misses": 25,
+        "evictions": 0
+      },
+      "terrain": [
+        {
+          "id": "geo_etoile",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_garlaban",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_huveaune",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_saintebaume",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        }
+      ],
+      "tiles": 42,
+      "nature": 215,
+      "origins": {
+        "pack local": 42
+      },
+      "history": [
+        {
+          "type": "publication",
+          "at": "2026-10-18T14:49:08.438Z",
+          "id": 1,
+          "warm": false,
+          "ms": 9396,
+          "tiles": 42
+        }
+      ],
+      "localData": {
+        "version": "0.50.0",
+        "vector": {
+          "expected": 5884,
+          "pbf": 4557,
+          "officialEmpty": 1327,
+          "missing": 0,
+          "invalid": 0,
+          "bytes": 86973739,
+          "examples": []
+        },
+        "terrain": {
+          "expected": 8,
+          "valid": 8,
+          "missing": 0,
+          "invalid": 0,
+          "samples": 174944,
+          "noData": 32424,
+          "examples": []
+        },
+        "complete": true,
+        "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+        "inspectedAt": "2026-10-18T14:48:21Z",
+        "live": true
+      }
+    }
+  },
+  "exterior": {
+    "version": "0.47.0",
+    "scene": null,
+    "region": "geo_huveaune",
+    "lab": false,
+    "loading": false,
+    "anticipating": false,
+    "phase": "ready",
+    "done": 46,
+    "total": 46,
+    "anchor": [
+      4893.191229318152,
+      0,
+      -1447.6664349995553
+    ],
+    "pos": [
+      4908.610264830184,
+      106.72790162517461,
+      -1439.4654409372893
+    ],
+    "stats": {
+      "warmStarted": 0,
+      "warmCommitted": 0,
+      "blocking": 1,
+      "cancelled": 0,
+      "failed": 0,
+      "stale": 0,
+      "reusedTiles": 0,
+      "builtTiles": 42,
+      "reusedTerrain": 0,
+      "builtTerrain": 25
+    },
+    "resources": {
+      "entries": 46,
+      "bytes": 27033650,
+      "budgetBytes": 50331648,
+      "pinned": 46,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 0,
+      "evictions": 0
+    },
+    "geometry": {
+      "entries": 42,
+      "bytes": 35301268,
+      "budgetBytes": 41943040,
+      "pinned": 42,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 42,
+      "evictions": 0
+    },
+    "terrainMeshes": {
+      "entries": 25,
+      "bytes": 775430,
+      "budgetBytes": 12582912,
+      "pinned": 25,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 25,
+      "evictions": 0
+    },
+    "terrain": [
+      {
+        "id": "geo_etoile",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      },
+      {
+        "id": "geo_garlaban",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      },
+      {
+        "id": "geo_huveaune",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      },
+      {
+        "id": "geo_saintebaume",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      }
+    ],
+    "tiles": 42,
+    "nature": 215,
+    "origins": {
+      "pack local": 42
+    },
+    "history": [
+      {
+        "type": "publication",
+        "at": "2026-10-18T14:49:08.438Z",
+        "id": 1,
+        "warm": false,
+        "ms": 9396,
+        "tiles": 42
+      }
+    ],
+    "localData": {
+      "version": "0.50.0",
+      "vector": {
+        "expected": 5884,
+        "pbf": 4557,
+        "officialEmpty": 1327,
+        "missing": 0,
+        "invalid": 0,
+        "bytes": 86973739,
+        "examples": []
+      },
+      "terrain": {
+        "expected": 8,
+        "valid": 8,
+        "missing": 0,
+        "invalid": 0,
+        "samples": 174944,
+        "noData": 32424,
+        "examples": []
+      },
+      "complete": true,
+      "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+      "inspectedAt": "2026-10-18T14:48:21Z",
+      "live": true
+    }
+  },
+  "location": [
+    43.296521750733305,
+    5.570986509810465
+  ],
+  "footing": {
+    "player": [
+      4908.610264830184,
+      106.72790162517461,
+      -1439.4654409372893
+    ],
+    "latlon": [
+      43.296521750733305,
+      5.570986509810465
+    ],
+    "ground": {
+      "height": 105.0779016251746,
+      "missing": null,
+      "sources": [
+        "geo_garlaban",
+        "geo_huveaune",
+        "geo_saintebaume"
+      ]
+    },
+    "eye_minus_ground": 1.6500000000000057,
+    "collision": false
+  },
+  "geometry_counts": {
+    "buildings": 9696,
+    "roads": 4075,
+    "nature": 74
+  },
+  "campaign_bridge_probe": {
+    "simulation_active": true,
+    "player": [
+      4900.191229318036,
+      106.86531688147532,
+      -1458.1907906532288
+    ],
+    "enemies": []
+  },
+  "campaign_bridge": {
+    "approach": "Existing physical approach helper and proximity-checked dialogue entry; actual dialogue choices clicked. Mireille uses the existing talkNPC API after a verified free physical approach.",
+    "gateway": {
+      "id": "v050-campaign-workshops",
+      "label": "Ateliers d’Aubagne — poursuivre la campagne",
+      "pos": [
+        4900.191229318152,
+        106.43552011681578,
+        -1459.7907906525375
+      ],
+      "radius": 4.5
+    },
+    "narrative": {
+      "zone": "aubagne",
+      "name": "Ateliers d’Aubagne — scène narrative",
+      "returnPoint": {
+        "macro": "geo_huveaune",
+        "pos": [
+          4900.191229318036,
+          106.86531688147532,
+          -1458.1907906532288
+        ],
+        "yaw": 0,
+        "pitch": 0
+      },
+      "acquired_main_stage": 3
+    },
+    "returned": {
+      "position": [
+        4900.191229318036,
+        106.86531688147532,
+        -1458.1907906532288
+      ],
+      "origins": {
+        "pack local": 42
+      },
+      "main_stage": 3
+    }
+  },
+  "continuity": {
+    "method": "Measured camera setup, production collision-controlled steps across a real z16 cadastre boundary, then real look-ahead windows requested within the validated 170 m margin on each side. The scheduler request is debug-assisted; all fetched resources, preparation, publication and movement are production operations without network mocks.",
+    "seam": {
+      "tile_before": [
+        33781,
+        24007
+      ],
+      "tile_after": [
+        33782,
+        24007
+      ],
+      "center": {
+        "ll": [
+          43.29669257334529,
+          5.570068359375
+        ],
+        "p": [
+          4833.481369096786,
+          0,
+          -1456.018405182287
+        ],
+        "ground": {
+          "height": 104.41737454798822,
+          "missing": null,
+          "sources": [
+            "geo_garlaban",
+            "geo_huveaune",
+            "geo_saintebaume"
+          ]
+        },
+        "clear": true
+      },
+      "start": {
+        "ll": [
+          43.29669257334529,
+          5.569895562684683
+        ],
+        "p": [
+          4819.45838627615,
+          0,
+          -1455.5618396168575
+        ],
+        "ground": {
+          "height": 104.25027048355163,
+          "missing": null,
+          "sources": [
+            "geo_garlaban",
+            "geo_huveaune",
+            "geo_saintebaume"
+          ]
+        },
+        "clear": true
+      },
+      "end": {
+        "ll": [
+          43.29669257334529,
+          5.570241156065317
+        ],
+        "p": [
+          4847.504350918229,
+          0,
+          -1456.4750014347956
+        ],
+        "ground": {
+          "height": 104.58486512166284,
+          "missing": null,
+          "sources": [
+            "geo_garlaban",
+            "geo_huveaune",
+            "geo_saintebaume"
+          ]
+        },
+        "clear": true
+      },
+      "samples": [
+        {
+          "ll": [
+            43.29669257334529,
+            5.569895562684683
+          ],
+          "p": [
+            4819.45838627615,
+            0,
+            -1455.5618396168575
+          ],
+          "ground": {
+            "height": 104.25027048355163,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.569920247926157
+          ],
+          "p": [
+            4821.4616695974255,
+            0,
+            -1455.627061390318
+          ],
+          "ground": {
+            "height": 104.27411862136785,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.569944933167631
+          ],
+          "p": [
+            4823.464952898212,
+            0,
+            -1455.6922837896273
+          ],
+          "ground": {
+            "height": 104.29797474313911,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.569969618409105
+          ],
+          "p": [
+            4825.468236178858,
+            0,
+            -1455.7575068157166
+          ],
+          "ground": {
+            "height": 104.32183883272681,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.569994303650579
+          ],
+          "p": [
+            4827.471519438899,
+            0,
+            -1455.822730468586
+          ],
+          "ground": {
+            "height": 104.34571087403587,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570018988892052
+          ],
+          "p": [
+            4829.474802678451,
+            0,
+            -1455.887954746373
+          ],
+          "ground": {
+            "height": 104.36959085101367,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570043674133526
+          ],
+          "p": [
+            4831.4780858977465,
+            0,
+            -1455.95317965094
+          ],
+          "ground": {
+            "height": 104.39347874765328,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570068359375
+          ],
+          "p": [
+            4833.481369096786,
+            0,
+            -1456.018405182287
+          ],
+          "ground": {
+            "height": 104.41737454798822,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570093044616474
+          ],
+          "p": [
+            4835.48465227522,
+            0,
+            -1456.083631339483
+          ],
+          "ground": {
+            "height": 104.44127823609584,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570117729857948
+          ],
+          "p": [
+            4837.487935433397,
+            0,
+            -1456.148858123459
+          ],
+          "ground": {
+            "height": 104.46518979609618,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570142415099421
+          ],
+          "p": [
+            4839.4912185710855,
+            0,
+            -1456.2140855332837
+          ],
+          "ground": {
+            "height": 104.48910921215098,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570167100340895
+          ],
+          "p": [
+            4841.494501688518,
+            0,
+            -1456.2793135689571
+          ],
+          "ground": {
+            "height": 104.5130364684671,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570191785582369
+          ],
+          "p": [
+            4843.497784785461,
+            0,
+            -1456.3445422314107
+          ],
+          "ground": {
+            "height": 104.53697154929107,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570216470823843
+          ],
+          "p": [
+            4845.501067861915,
+            0,
+            -1456.409771519713
+          ],
+          "ground": {
+            "height": 104.56091443891242,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.29669257334529,
+            5.570241156065317
+          ],
+          "p": [
+            4847.504350918229,
+            0,
+            -1456.4750014347956
+          ],
+          "ground": {
+            "height": 104.58486512166284,
+            "missing": null,
+            "sources": [
+              "geo_garlaban",
+              "geo_huveaune",
+              "geo_saintebaume"
+            ]
+          },
+          "clear": true
+        }
+      ]
+    },
+    "forward": {
+      "movement": {
+        "start": [
+          4819.45838627615,
+          105.90027048355164,
+          -1455.5618396168575
+        ],
+        "target": [
+          4847.504350918229,
+          0,
+          -1456.4750014347956
+        ],
+        "actual": [
+          4847.5043509182515,
+          106.2348651216637,
+          -1456.4750014348008
+        ],
+        "distance": 28.06082673782909,
+        "blocked_steps": 0,
+        "error": 2.3331021020267776e-11,
+        "tile": [
+          33782,
+          24007
+        ]
+      },
+      "window": {
+        "changed": true,
+        "requests": [
+          {
+            "requested_latlon": [
+              43.29669257334529,
+              5.5717222705537495
+            ],
+            "published_anchor": [
+              4967.701296963263,
+              0,
+              -1460.3899423927069
+            ],
+            "ok": true,
+            "added": [],
+            "removed": [
+              "base:14:8444:6001",
+              "base:14:8444:6002",
+              "cadastre:16:33779:24004",
+              "cadastre:16:33779:24005",
+              "cadastre:16:33779:24006",
+              "cadastre:16:33779:24007",
+              "cadastre:16:33779:24008",
+              "cadastre:16:33779:24009"
+            ]
+          }
+        ],
+        "before_count": 42,
+        "after_count": 34,
+        "player": [
+          4847.5043509182515,
+          106.2348651216637,
+          -1456.4750014348008
+        ]
+      },
+      "geometry": {
+        "buildings": {
+          "before": 9419,
+          "after": 8728,
+          "common": 8728,
+          "changed": [],
+          "changed_count": 0
+        },
+        "roads": {
+          "before": 3999,
+          "after": 3070,
+          "common": 3070,
+          "changed": [],
+          "changed_count": 0
+        }
+      },
+      "reuse": {
+        "sameRecords": 34,
+        "sameBank": false
+      }
+    },
+    "courtyards": {
+      "shared_courtyard_buildings": 0,
+      "note": "This crossing has no source courtyard case; the separate native_courtyard scenario loads a verified real hole."
+    },
+    "return": {
+      "movement": {
+        "start": [
+          4847.5043509182515,
+          106.2348651216637,
+          -1456.4750014348008
+        ],
+        "target": [
+          4819.45838627615,
+          0,
+          -1455.5618396168575
+        ],
+        "actual": [
+          4819.45838627615,
+          105.90027048355164,
+          -1455.5618396168575
+        ],
+        "distance": 28.060826737851983,
+        "blocked_steps": 0,
+        "error": 0.0,
+        "tile": [
+          33781,
+          24007
+        ]
+      },
+      "window": {
+        "changed": true,
+        "requests": [
+          {
+            "requested_latlon": [
+              43.29669257334529,
+              5.568414448196251
+            ],
+            "published_anchor": [
+              4746.666966689983,
+              0,
+              -1453.1917893849313
+            ],
+            "ok": true,
+            "added": [
+              "base:14:8444:6001",
+              "base:14:8444:6002",
+              "cadastre:16:33779:24004",
+              "cadastre:16:33779:24005",
+              "cadastre:16:33779:24006",
+              "cadastre:16:33779:24007",
+              "cadastre:16:33779:24008",
+              "cadastre:16:33779:24009"
+            ],
+            "removed": [
+              "base:14:8446:6001",
+              "base:14:8446:6002",
+              "cadastre:16:33784:24004",
+              "cadastre:16:33784:24005",
+              "cadastre:16:33784:24006",
+              "cadastre:16:33784:24007",
+              "cadastre:16:33784:24008",
+              "cadastre:16:33784:24009"
+            ]
+          }
+        ],
+        "before_count": 34,
+        "after_count": 34,
+        "player": [
+          4819.45838627615,
+          105.90027048355164,
+          -1455.5618396168575
+        ]
+      },
+      "geometry": {
+        "buildings": {
+          "before": 9419,
+          "after": 8317,
+          "common": 8317,
+          "changed": [],
+          "changed_count": 0
+        },
+        "roads": {
+          "before": 3999,
+          "after": 2644,
+          "common": 2644,
+          "changed": [],
+          "changed_count": 0
+        }
+      }
+    }
+  },
+  "collision": {
+    "building": "cadastre:building:f32237a4",
+    "center": [
+      4810.857728023198,
+      -1441.465439944528
+    ],
+    "normal": [
+      0.30653371736551205,
+      0.951859800662934
+    ],
+    "free": [
+      4810.336620703677,
+      -1443.083601605655
+    ],
+    "inside": [
+      4811.37883534272,
+      -1439.847278283401
+    ],
+    "intended_metres": 3.4000000000001247,
+    "moved_metres": 1.3254950875657445,
+    "remaining_push_moved": 0.0,
+    "loading": false,
+    "end": [
+      4810.927208999037,
+      105.77860726360939,
+      -1441.8969497221844
+    ],
+    "end_collision": false
+  },
+  "performance": {
+    "scope": "Native headless Chromium frame cadence in this execution environment; not a hardware or desktop FPS guarantee",
+    "samples": 26,
+    "median_ms": 133.4,
+    "p95_ms": 150.1,
+    "renderer": {
+      "backend": "WebGL",
+      "customMeshes": 4732,
+      "triangles": 169949,
+      "bufferGroups": 4732
+    },
+    "gpu": {
+      "vendor": "Google Inc. (Google)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    }
+  },
+  "courtyard": {
+    "source": "data/map_pack/cadastre/16/33789/24002.pbf",
+    "source_sha256": "321a62d2b99c258a88363e7334c0594413022c49aed2322891644e6c9467baa7",
+    "feature_id": 1653439797,
+    "latlon": [
+      43.31400976363655,
+      5.612585060298443
+    ],
+    "rendered_geometry_id": "cadastre:building:383d8061",
+    "rings": 2,
+    "movement": {
+      "start": [
+        8220.131412389292,
+        174.58745078906077,
+        -3493.2877204502
+      ],
+      "target": [
+        8222.13362925523,
+        0,
+        -3493.3540242267773
+      ],
+      "actual": [
+        8222.133629255231,
+        174.69651344682325,
+        -3493.3540242267777
+      ],
+      "distance": 2.0033143959535624,
+      "blocked_steps": 0,
+      "error": 1.8749713606747085e-12
+    },
+    "same_geometry_after_publication": true,
+    "camera": {
+      "elevated_qa_view": true,
+      "position": [
+        8220.130412389291,
+        194.9373989458082,
+        -3483.2877204502
+      ]
+    }
+  },
+  "travel": {
+    "precondition": "Existing v042Discover debug action identifies these two catalogue POIs. This validates their subsequent UI travel, not a manual exploration to discover them.",
+    "targets": [
+      {
+        "id": "v042-huveaune-landmark-02",
+        "name": "Belvédère · Aubagne",
+        "macro": "geo_huveaune",
+        "lat": 43.2910684,
+        "lon": 5.564807,
+        "qa_distance": 749.4121526317806
+      },
+      {
+        "id": "v042-huveaune-landmark-03",
+        "name": "Épave · Galeries de l’Huveaune",
+        "macro": "geo_huveaune",
+        "lat": 43.2879286,
+        "lon": 5.5511298,
+        "qa_distance": 1808.6459265526587
+      }
+    ],
+    "journeys": [
+      {
+        "destination": "v042-huveaune-landmark-02",
+        "quote": {
+          "distance": 749.4121526317806,
+          "minutes": 12
+        },
+        "result": {
+          "id": 1,
+          "site": "v042-huveaune-landmark-02",
+          "status": "complete",
+          "minutes": 12,
+          "distance": 749,
+          "arrival": [
+            4414.685241407335,
+            118.28071094051687,
+            -788.2478749090806
+          ],
+          "loadedAnchor": [
+            4426.809597060317,
+            0,
+            -817.2478749090806
+          ]
+        },
+        "scene": 2,
+        "source": {
+          "pack local": 34
+        }
+      },
+      {
+        "destination": "v042-huveaune-landmark-03",
+        "quote": {
+          "distance": 1143.4363968403102,
+          "minutes": 18
+        },
+        "result": {
+          "id": 2,
+          "site": "v042-huveaune-landmark-03",
+          "status": "complete",
+          "minutes": 18,
+          "distance": 1143,
+          "arrival": [
+            3364.3968968763697,
+            94.29570721385035,
+            -431.41958711016923
+          ],
+          "loadedAnchor": [
+            3328.0238299174234,
+            0,
+            -432.41958711016923
+          ]
+        },
+        "scene": 2,
+        "source": {
+          "pack local": 29
+        }
+      }
+    ]
+  },
+  "continue_before_reload": {
+    "current": {
+      "key": "fallout_mistral_save_v050",
+      "lastSave": "2026-10-18T14:51:06.719Z",
+      "zone": "geo_huveaune",
+      "position": [
+        3364.3968968763697,
+        94.29570721385035,
+        -431.41958711016923
+      ]
+    },
+    "alternatives": [
+      {
+        "kind": "auto",
+        "slot": 0,
+        "savedAt": 1792334968906,
+        "zone": "geo_huveaune"
+      }
+    ]
+  },
+  "save_reload": {
+    "key": "fallout_mistral_save_v050",
+    "saved_position": [
+      3364.3968968763697,
+      94.29570721385035,
+      -431.41958711016923
+    ],
+    "loaded_position": [
+      3364.396896876511,
+      94.29570721385032,
+      -431.41958710737526
+    ],
+    "source": {
+      "pack local": 29
+    },
+    "native_reload": true
+  },
+  "final_exterior": {
+    "version": "0.47.0",
+    "scene": null,
+    "region": "geo_huveaune",
+    "lab": false,
+    "loading": false,
+    "anticipating": false,
+    "phase": "ready",
+    "done": 32,
+    "total": 32,
+    "anchor": [
+      3364.396896876511,
+      0,
+      -431.41958710737526
+    ],
+    "pos": [
+      3364.396896876511,
+      94.29570721385032,
+      -431.41958710737526
+    ],
+    "stats": {
+      "warmStarted": 0,
+      "warmCommitted": 0,
+      "blocking": 1,
+      "cancelled": 0,
+      "failed": 0,
+      "stale": 0,
+      "reusedTiles": 0,
+      "builtTiles": 29,
+      "reusedTerrain": 0,
+      "builtTerrain": 20
+    },
+    "resources": {
+      "entries": 32,
+      "bytes": 18478759,
+      "budgetBytes": 50331648,
+      "pinned": 32,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 0,
+      "evictions": 0
+    },
+    "geometry": {
+      "entries": 29,
+      "bytes": 22056440,
+      "budgetBytes": 41943040,
+      "pinned": 29,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 29,
+      "evictions": 0
+    },
+    "terrainMeshes": {
+      "entries": 20,
+      "bytes": 620430,
+      "budgetBytes": 12582912,
+      "pinned": 20,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 20,
+      "evictions": 0
+    },
+    "terrain": [
+      {
+        "id": "geo_calanques",
+        "width": 161,
+        "height": 161,
+        "valid": 21063,
+        "noData": 4858
+      },
+      {
+        "id": "geo_garlaban",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      },
+      {
+        "id": "geo_huveaune",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      }
+    ],
+    "tiles": 29,
+    "nature": 194,
+    "origins": {
+      "pack local": 29
+    },
+    "history": [
+      {
+        "type": "publication",
+        "at": "2026-10-18T14:51:17.186Z",
+        "id": 1,
+        "warm": false,
+        "ms": 5404,
+        "tiles": 29
+      }
+    ],
+    "localData": null
+  }
+}

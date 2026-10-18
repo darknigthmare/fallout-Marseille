@@ -1,0 +1,319 @@
+{
+  "version": "0.46.0",
+  "html_sha256": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+  "passed": 49,
+  "failed": 0,
+  "total": 49,
+  "errors": [],
+  "tests": [
+    {
+      "name": "Démarrage v0.46",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Banc se charge par la barrière réelle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cinq empreintes cadastrales de test chargées",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Des arbres sont créés dans le masque forestier",
+      "ok": true,
+      "detail": 249
+    },
+    {
+      "name": "Une seule projection pour les huit régions",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cour du bâtiment reste traversable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mur du même bâtiment garde sa collision",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Région traverse sans reconstruire — aller 1",
+      "ok": true,
+      "detail": {
+        "scene": 1,
+        "region": "geo_huveaune"
+      }
+    },
+    {
+      "name": "Bâtiments identiques après franchissement 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour conserve routes et forêt 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Position retour conservée 1",
+      "ok": true,
+      "detail": {
+        "before": [
+          -6550.926871996489,
+          49.50366872139184,
+          -314.36810891423374
+        ],
+        "after": [
+          -6550.926871996489,
+          49.50366872139184,
+          -314.36810891423374
+        ]
+      }
+    },
+    {
+      "name": "Région traverse sans reconstruire — aller 2",
+      "ok": true,
+      "detail": {
+        "scene": 1,
+        "region": "geo_huveaune"
+      }
+    },
+    {
+      "name": "Bâtiments identiques après franchissement 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour conserve routes et forêt 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Position retour conservée 2",
+      "ok": true,
+      "detail": {
+        "before": [
+          -6550.926871996489,
+          49.50366872139184,
+          -314.36810891423374
+        ],
+        "after": [
+          -6550.926871996489,
+          49.50366872139184,
+          -314.36810891423374
+        ]
+      }
+    },
+    {
+      "name": "Région traverse sans reconstruire — aller 3",
+      "ok": true,
+      "detail": {
+        "scene": 1,
+        "region": "geo_huveaune"
+      }
+    },
+    {
+      "name": "Bâtiments identiques après franchissement 3",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour conserve routes et forêt 3",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Position retour conservée 3",
+      "ok": true,
+      "detail": {
+        "before": [
+          -6550.926871996489,
+          49.50366872139184,
+          -314.36810891423374
+        ],
+        "after": [
+          -6550.926871996489,
+          49.50366872139184,
+          -314.36810891423374
+        ]
+      }
+    },
+    {
+      "name": "Écran de chargement réellement visible",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Déplacement bloqué pendant chargement",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ressources manquantes interdisent la publication",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessayer et annuler restent accessibles",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation reprend la scène intacte",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai réussi",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Rechargement ne déplace pas les bâtiments",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Une réponse tardive après annulation ne change rien",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Raccourcis non reconstruits sur 600 mises à jour",
+      "ok": true,
+      "detail": {
+        "rebuilds": 0,
+        "children": 7
+      }
+    },
+    {
+      "name": "Dimensions des raccourcis constantes",
+      "ok": true,
+      "detail": [
+        594,
+        43
+      ]
+    },
+    {
+      "name": "HUD arme constant sur 600 valeurs",
+      "ok": true,
+      "detail": [
+        258,
+        118
+      ]
+    },
+    {
+      "name": "HUD étroit défini sans pompage",
+      "ok": true,
+      "detail": {
+        "x": 164,
+        "y": 726,
+        "width": 210,
+        "height": 104
+      }
+    },
+    {
+      "name": "Ciel : azimut monde indépendant de la caméra",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ciel : projection change avec le regard",
+      "ok": true,
+      "detail": {
+        "facing": {
+          "x": 720.001804111582,
+          "y": -323.92490633762395,
+          "z": 0.6599831458826586
+        },
+        "away": null
+      }
+    },
+    {
+      "name": "Neuf factions et huit dossiers réintégrés",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Objectif non accompli ne donne pas de récompense",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Récompense une seule fois",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Progression COCHONNET persistante",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Le laboratoire ne sauvegarde jamais la campagne",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Dossiers de lore accessibles dans le vrai Pip-Boy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ancienne sauvegarde convertie au repère commun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Portefeuille conservé pendant migration",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour de porte converti avec la sauvegarde",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Migration idempotente : pas de second déplacement",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Abri existant toujours ouvrable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Intérieur hérité conservé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Sortie de l’abri acceptée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour au même point extérieur",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Bâtiments identiques après sortie d’instance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JS",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "Chromium, HTML réel via set_content. Données de coutures volontairement synthétiques. Aucun téléchargement géographique ni stockage IndexedDB natif revendiqué."
+}

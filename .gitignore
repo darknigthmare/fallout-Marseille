@@ -10,3 +10,11 @@ Thumbs.db
 *.zip.001
 *.zip.002
 *.reconstruction.tmp
+
+# Extracted from the verified archives shipped with the project.
+data/map_pack/france-vector/
+data/map_pack/cadastre/
+data/map_pack/.chunks_v041/
+tests/v050-legacy-*/
+# The original ZIP is reconstructed from its byte-exact .zip.gz transport.
+data/map_pack/archives/base_00060_100.zip

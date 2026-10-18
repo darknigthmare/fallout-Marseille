@@ -1,0 +1,35 @@
+Application locale v0.50 : http://127.0.0.1:46591/index.html
+127.0.0.1 - - [18/Oct/2026 16:48:13] "GET /index.html HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54440)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/workspace/scratch/b47acf41a0d4/fallout-Marseille/tools/serve_game.py", line 15, in __init__
+    super().__init__(*args, directory=str(ROOT), **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/workspace/scratch/b47acf41a0d4/fallout-Marseille/tools/serve_game.py", line 18, in do_GET
+    return super().do_GET()
+           ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+----------------------------------------
+127.0.0.1 - - [18/Oct/2026 16:48:14] "GET /data/map_pack/local_pack_v041_status.json?t=1792334894224 HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:14] "GET /data/map_pack/benchmark_v041.json?t=1792334894224 HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:14] "GET /icons/mistral-192.png HTTP/1.1" 200 -

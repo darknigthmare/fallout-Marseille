@@ -1,0 +1,28 @@
+{
+  "version": "0.50.0",
+  "passed": true,
+  "scope": "One real official POST for four measured points near Aubagne; isolated smoke-test grid, not a replacement for the eight delivered grids.",
+  "endpoint": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+  "resource": "ign_rge_alti_wld",
+  "region": {
+    "macro": "geo_ign_smoke_v050",
+    "bbox": [
+      43.292,
+      5.571,
+      43.2922,
+      5.5712
+    ]
+  },
+  "values": [
+    112.38,
+    115.41,
+    110.52,
+    111.35
+  ],
+  "httpBatches": 1,
+  "validPoints": 4,
+  "noDataPoints": 0,
+  "responseSha256": "4979533cc4d8c09258accf35abfa57b0896fb9c0c9cfa7ce0abeae23fa2a46e5",
+  "generatedAt": "2026-10-18T14:21:40Z",
+  "seconds": 0.793
+}

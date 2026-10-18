@@ -22,6 +22,7 @@ def main():
     seconds=time.perf_counter()-started;ms=[r['ms'] for r in rows];total=sum(r['bytes'] for r in rows);features=sum(r['features'] for r in rows)
     terrain=[];terrain_started=time.perf_counter()
     for p in sorted((a.root/'terrain').glob('geo_*.json')):
+        if p.name.endswith('.proof.json'):continue
         t=time.perf_counter();j=json.loads(p.read_text());terrain.append({'macro':j.get('macro'),'bytes':p.stat().st_size,'cells':len(j.get('values') or []),'valid':j.get('validPoints'),'missing':j.get('missingPoints'),'ms':(time.perf_counter()-t)*1000})
     corridors={}
     for p in sorted((ROOT/'data/corridors').glob('*.json')):

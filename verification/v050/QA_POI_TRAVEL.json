@@ -1,0 +1,228 @@
+{
+  "version": "0.50.0",
+  "tested_html": "JOUER_FALLOUT_MISTRAL_v0.50.html",
+  "in_memory_module_insertion": false,
+  "html_sha256": "4ddbffe1324f4e779d6a75fa4f2b25537f65066c2e7244538638299803c5a3cd",
+  "passed": 36,
+  "failed": 0,
+  "total": 36,
+  "errors": [],
+  "checks": [
+    {
+      "name": "Banc de données identifié chargé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Lieu inconnu refusé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Refus ne déplace et ne débite rien",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Confirmation directe sans préparation refusée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Fiche de voyage présente dans le Pip-Boy du jeu",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ennemi proche bloque le voyage",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Confirmation affiche la durée et la destination",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Voyage confirmé accompli",
+      "ok": true,
+      "detail": {
+        "completed": 1,
+        "cancelled": 0,
+        "failed": 0,
+        "confirmation": null,
+        "pending": null,
+        "last": {
+          "id": 1,
+          "site": "v042-huveaune-landmark-01",
+          "status": "complete",
+          "minutes": 208,
+          "distance": 13845,
+          "arrival": [
+            7220.3570543373935,
+            65.89283143120574,
+            -1720.7289654286578
+          ],
+          "loadedAnchor": [
+            7220.3570543373935,
+            0,
+            -1742.7289654286578
+          ]
+        }
+      }
+    },
+    {
+      "name": "Même scène persistante après voyage",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Durée appliquée exactement une fois",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Capsules, XP et objets conservés",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Arrivée réellement hors collision",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Point d’arrivée dans la marge validée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Voyage vers le lieu actuel refusé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai terminé sans second débit",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Arrivée rejetée : missing",
+      "ok": true,
+      "detail": {
+        "ok": false,
+        "error": "L’accès enregistré de ce lieu n’est pas praticable avec les données chargées."
+      }
+    },
+    {
+      "name": "Arrivée rejetée : tile",
+      "ok": true,
+      "detail": {
+        "ok": false,
+        "error": "L’accès enregistré de ce lieu n’est pas praticable avec les données chargées."
+      }
+    },
+    {
+      "name": "Arrivée rejetée : water",
+      "ok": true,
+      "detail": {
+        "ok": false,
+        "error": "L’accès enregistré de ce lieu n’est pas praticable avec les données chargées."
+      }
+    },
+    {
+      "name": "Arrivée rejetée : solid",
+      "ok": true,
+      "detail": {
+        "ok": false,
+        "error": "L’accès enregistré de ce lieu n’est pas praticable avec les données chargées."
+      }
+    },
+    {
+      "name": "Repère suivi conservé au-delà du nom de macro",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Liste proche considère aussi la macro voisine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec de préparation propagé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec conserve position, progression, inventaire et heure",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec conserve la scène active",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai du même voyage réussit",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec puis succès ne facturent qu’une durée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation interrompt une préparation réellement en cours",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réponse tardive ne change pas position, progression ni heure",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation conserve la même scène",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Un voyage annulé ne peut pas être réessayé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Changement de sauvegarde rejette le voyage en attente",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réponse tardive préserve la sauvegarde nouvellement chargée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ancien contexte ne peut plus relancer le voyage",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD ne révèle pas le nom d’un lieu inconnu",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Un lieu sécurisé reste suivable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "Programme exécuté dans Chromium, catalogue de production et fonctions joueur, données du banc synthétique signalé ; erreurs, eau, collision et NoData injectés uniquement dans ce test."
+}

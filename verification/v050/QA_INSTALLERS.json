@@ -1,0 +1,221 @@
+{
+  "version": "0.50.0",
+  "generatedAt": "2026-10-18T15:12:00Z",
+  "scope": "Synthetic unit fixtures for archive integrity, bounded HTTP/gzip decoding, exact coordinate responses, offline mode, resumable IGN fallback and preservation on failure.",
+  "tests": 42,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "cases": [
+    {
+      "test": "__main__.ArchiveTests.test_archive_limits_are_checked_before_decompression",
+      "passed": true,
+      "seconds": 0.0016
+    },
+    {
+      "test": "__main__.ArchiveTests.test_archive_pin_and_size_mismatch_rejected",
+      "passed": true,
+      "seconds": 0.0004
+    },
+    {
+      "test": "__main__.ArchiveTests.test_complete_chunk_round_trip_and_marker_cleanup",
+      "passed": true,
+      "seconds": 0.0013
+    },
+    {
+      "test": "__main__.ArchiveTests.test_corrupt_proof_coordinate_or_digest_rejected_before_extraction",
+      "passed": true,
+      "seconds": 0.0028
+    },
+    {
+      "test": "__main__.ArchiveTests.test_duplicate_zip_members_and_duplicate_rows_rejected",
+      "passed": true,
+      "seconds": 0.0008
+    },
+    {
+      "test": "__main__.ArchiveTests.test_each_member_requires_matching_byte_count_hash_and_empty_flag",
+      "passed": true,
+      "seconds": 0.0019
+    },
+    {
+      "test": "__main__.ArchiveTests.test_invalid_local_chunk_cannot_fall_back_to_network_offline",
+      "passed": true,
+      "seconds": 0.0009
+    },
+    {
+      "test": "__main__.ArchiveTests.test_local_gzip_corruption_preserves_existing_cache",
+      "passed": true,
+      "seconds": 0.0016
+    },
+    {
+      "test": "__main__.ArchiveTests.test_local_gzip_expansion_is_bounded_by_pinned_zip_size",
+      "passed": true,
+      "seconds": 0.0147
+    },
+    {
+      "test": "__main__.ArchiveTests.test_local_gzip_requires_original_byte_and_sha256_pins",
+      "passed": true,
+      "seconds": 0.0009
+    },
+    {
+      "test": "__main__.ArchiveTests.test_local_gzip_transport_recovers_exact_zip_without_network",
+      "passed": true,
+      "seconds": 0.0018
+    },
+    {
+      "test": "__main__.ArchiveTests.test_missing_empty_proof_rejected",
+      "passed": true,
+      "seconds": 0.0008
+    },
+    {
+      "test": "__main__.ArchiveTests.test_offline_cli_propagates_output_and_offline_to_terrain",
+      "passed": true,
+      "seconds": 0.004
+    },
+    {
+      "test": "__main__.ArchiveTests.test_undeclared_files_and_unsafe_paths_rejected",
+      "passed": true,
+      "seconds": 0.0023
+    },
+    {
+      "test": "__main__.ArchiveTests.test_valid_cache_is_preserved_when_gzip_source_is_corrupt",
+      "passed": true,
+      "seconds": 0.001
+    },
+    {
+      "test": "__main__.ArchiveTests.test_wrong_source_or_zoom_is_rejected",
+      "passed": true,
+      "seconds": 0.0002
+    },
+    {
+      "test": "__main__.TerrainTests.test_bundled_terrain_is_copied_into_output_after_validation",
+      "passed": true,
+      "seconds": 0.0011
+    },
+    {
+      "test": "__main__.TerrainTests.test_bundled_terrain_with_wrong_proof_digest_is_not_installed",
+      "passed": true,
+      "seconds": 0.0008
+    },
+    {
+      "test": "__main__.TerrainTests.test_corrupt_checkpoint_is_downloaded_again",
+      "passed": true,
+      "seconds": 0.0039
+    },
+    {
+      "test": "__main__.TerrainTests.test_explicitly_disabled_official_fallback_does_not_call_ign",
+      "passed": true,
+      "seconds": 0.0006
+    },
+    {
+      "test": "__main__.TerrainTests.test_failed_relay_uses_official_post_fallback",
+      "passed": true,
+      "seconds": 0.0017
+    },
+    {
+      "test": "__main__.TerrainTests.test_grid_has_north_to_south_order_and_exact_corners",
+      "passed": true,
+      "seconds": 0.0003
+    },
+    {
+      "test": "__main__.TerrainTests.test_nodata_remains_missing_and_non_numeric_values_are_not_altitudes",
+      "passed": true,
+      "seconds": 0.0004
+    },
+    {
+      "test": "__main__.TerrainTests.test_official_batch_checks_count_coordinates_order_and_altitude_type",
+      "passed": true,
+      "seconds": 0.0004
+    },
+    {
+      "test": "__main__.TerrainTests.test_official_batch_size_never_exceeds_5000",
+      "passed": true,
+      "seconds": 0.0005
+    },
+    {
+      "test": "__main__.TerrainTests.test_official_post_batches_preserve_nodata_and_provenance",
+      "passed": true,
+      "seconds": 0.0017
+    },
+    {
+      "test": "__main__.TerrainTests.test_official_retry_reuses_only_validated_batches_and_preserves_previous_grid",
+      "passed": true,
+      "seconds": 0.0022
+    },
+    {
+      "test": "__main__.TerrainTests.test_offline_missing_or_invalid_terrain_never_calls_relay_or_ign",
+      "passed": true,
+      "seconds": 0.0007
+    },
+    {
+      "test": "__main__.TerrainTests.test_offline_valid_terrain_uses_local_data",
+      "passed": true,
+      "seconds": 0.0007
+    },
+    {
+      "test": "__main__.TerrainTests.test_terrain_requires_real_resource_bbox_shape_and_order",
+      "passed": true,
+      "seconds": 0.0005
+    },
+    {
+      "test": "__main__.VectorTests.test_cache_validation_is_read_only_and_checks_empty_coordinate",
+      "passed": true,
+      "seconds": 0.0006
+    },
+    {
+      "test": "__main__.VectorTests.test_corrupt_truncated_and_concatenated_gzip_rejected",
+      "passed": true,
+      "seconds": 0.0003
+    },
+    {
+      "test": "__main__.VectorTests.test_empty_proof_is_committed_before_zero_byte_tile",
+      "passed": true,
+      "seconds": 0.0006
+    },
+    {
+      "test": "__main__.VectorTests.test_empty_with_payload_and_wrong_remote_hash_rejected",
+      "passed": true,
+      "seconds": 0.0006
+    },
+    {
+      "test": "__main__.VectorTests.test_failed_download_preserves_previous_invalid_file",
+      "passed": true,
+      "seconds": 0.0005
+    },
+    {
+      "test": "__main__.VectorTests.test_gzip_and_identity_decode_to_identical_tile",
+      "passed": true,
+      "seconds": 0.0002
+    },
+    {
+      "test": "__main__.VectorTests.test_gzip_both_wire_and_decoded_limits",
+      "passed": true,
+      "seconds": 0.0002
+    },
+    {
+      "test": "__main__.VectorTests.test_http_200_empty_never_creates_official_proof",
+      "passed": true,
+      "seconds": 0.0004
+    },
+    {
+      "test": "__main__.VectorTests.test_http_gzip_checks_decoded_sha256",
+      "passed": true,
+      "seconds": 0.0008
+    },
+    {
+      "test": "__main__.VectorTests.test_only_explicit_empty_response_is_accepted",
+      "passed": true,
+      "seconds": 0.0007
+    },
+    {
+      "test": "__main__.VectorTests.test_pinned_nonempty_tile_rejects_remote_empty",
+      "passed": true,
+      "seconds": 0.0007
+    },
+    {
+      "test": "__main__.VectorTests.test_unsupported_or_contradictory_encoding_rejected",
+      "passed": true,
+      "seconds": 0.0002
+    }
+  ]
+}

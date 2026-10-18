@@ -1,0 +1,251 @@
+{
+  "version": "0.41.0",
+  "generated": "2026-09-19T04:00:00Z",
+  "service": "fallout-mistral-local-pack-v041",
+  "endpoint": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/chunk/{name}",
+  "manifestEndpoint": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+  "publicKey": "sb_publishable_hAcM5bQMkl9a0wn7tgzupg_DeSgYQZC",
+  "coordinates": 5884,
+  "baseCoordinates": 367,
+  "cadastreCoordinates": 5517,
+  "pbfObjects": 4557,
+  "officialEmpty": 1327,
+  "chunkCount": 24,
+  "baseChunks": 5,
+  "cadastreChunks": 19,
+  "totalBase64Bytes": 119130028,
+  "chunks": [
+    {
+      "name": "base_00000_60.zip",
+      "source": "base",
+      "cursor": 0,
+      "rows": 60,
+      "base64Bytes": 6445556,
+      "sha256": "87554bf012ae76b4972a74d2bfd9fa7887130eaf90a02b6b6282fc1079dbda4b",
+      "archiveBytes": 4834167
+    },
+    {
+      "name": "base_00060_100.zip",
+      "source": "base",
+      "cursor": 60,
+      "rows": 100,
+      "base64Bytes": 17917008,
+      "sha256": "bdfe4439f082f4a6e9d8b1c0472a4a1cefcd4e215457eec465620bedb619df94",
+      "archiveBytes": 13437755
+    },
+    {
+      "name": "base_00160_100.zip",
+      "source": "base",
+      "cursor": 160,
+      "rows": 100,
+      "base64Bytes": 9474268,
+      "sha256": "99d087b8a4e6cac1e41ebb092e8a017e79392fd0de538aad4bfb4314c20e1992",
+      "archiveBytes": 7105701
+    },
+    {
+      "name": "base_00260_100.zip",
+      "source": "base",
+      "cursor": 260,
+      "rows": 100,
+      "base64Bytes": 4470004,
+      "sha256": "61bc0d718e8f8d7cf0469e8e04be1ad2009af2aa75f4f60967fff98c741c9751",
+      "archiveBytes": 3352501
+    },
+    {
+      "name": "base_00360_7.zip",
+      "source": "base",
+      "cursor": 360,
+      "rows": 7,
+      "base64Bytes": 1128716,
+      "sha256": "eb9985d825e374c5dee913dc188af7f6e9ea9bedcd38c6139941d081e036f55b",
+      "archiveBytes": 846536
+    },
+    {
+      "name": "cadastre_00000_300.zip",
+      "source": "cadastre",
+      "cursor": 0,
+      "rows": 300,
+      "base64Bytes": 304760,
+      "sha256": "2534030168d7bfa2bcd825b2f2a5287758311dff2645b384c0ba9e215ef4bf71",
+      "archiveBytes": 228569
+    },
+    {
+      "name": "cadastre_00300_300.zip",
+      "source": "cadastre",
+      "cursor": 300,
+      "rows": 300,
+      "base64Bytes": 1202672,
+      "sha256": "8ff35989050e31fda19a6117bad22237f1f11c75f2dcc62fe2e145af524f3f04",
+      "archiveBytes": 902004
+    },
+    {
+      "name": "cadastre_00600_300.zip",
+      "source": "cadastre",
+      "cursor": 600,
+      "rows": 300,
+      "base64Bytes": 9596168,
+      "sha256": "31309fc284e656cb84e2d3b3932b7e3981caeef89b2fe56bf4ac50ac48221822",
+      "archiveBytes": 7197124
+    },
+    {
+      "name": "cadastre_00900_300.zip",
+      "source": "cadastre",
+      "cursor": 900,
+      "rows": 300,
+      "base64Bytes": 10404452,
+      "sha256": "2871c740b478fc53094533724e1d4b7c812cfe7b45ab48bb8e6f98810f53877e",
+      "archiveBytes": 7803337
+    },
+    {
+      "name": "cadastre_01200_300.zip",
+      "source": "cadastre",
+      "cursor": 1200,
+      "rows": 300,
+      "base64Bytes": 6830748,
+      "sha256": "54209aea4e5ee6b905c4c0117decdd7aba6b36805f467ace7cc271bea2e08b61",
+      "archiveBytes": 5123059
+    },
+    {
+      "name": "cadastre_01500_300.zip",
+      "source": "cadastre",
+      "cursor": 1500,
+      "rows": 300,
+      "base64Bytes": 5112468,
+      "sha256": "8b15bbdc636ae5d4d30338fb18af0b4feffd02c1e914c80dad706aa82c0bd320",
+      "archiveBytes": 3834351
+    },
+    {
+      "name": "cadastre_01800_300.zip",
+      "source": "cadastre",
+      "cursor": 1800,
+      "rows": 300,
+      "base64Bytes": 4472344,
+      "sha256": "7becbd17fc74a37e9bb3e6bdb47c5570e9efc08304b0b96ff30c72e757c5bc62",
+      "archiveBytes": 3354257
+    },
+    {
+      "name": "cadastre_02100_300.zip",
+      "source": "cadastre",
+      "cursor": 2100,
+      "rows": 300,
+      "base64Bytes": 3706064,
+      "sha256": "b070d527324974da08d413fef6969494a647f7c7fa2a7ed2148591667e715145",
+      "archiveBytes": 2779547
+    },
+    {
+      "name": "cadastre_02400_300.zip",
+      "source": "cadastre",
+      "cursor": 2400,
+      "rows": 300,
+      "base64Bytes": 3383920,
+      "sha256": "90ebffefb20b815361cacda48f9c549311041228cbac2d09130d8803f3fa762e",
+      "archiveBytes": 2537938
+    },
+    {
+      "name": "cadastre_02700_300.zip",
+      "source": "cadastre",
+      "cursor": 2700,
+      "rows": 300,
+      "base64Bytes": 3975196,
+      "sha256": "22633e8017307209f826747193ff71cd71dc51a74dec87d1813eda6418342dd9",
+      "archiveBytes": 2981397
+    },
+    {
+      "name": "cadastre_03000_300.zip",
+      "source": "cadastre",
+      "cursor": 3000,
+      "rows": 300,
+      "base64Bytes": 4983468,
+      "sha256": "714060ee7b9b03e52c4c1ad00bc250fdc958e5877947fece5300a2fef7ad576d",
+      "archiveBytes": 3737600
+    },
+    {
+      "name": "cadastre_03300_300.zip",
+      "source": "cadastre",
+      "cursor": 3300,
+      "rows": 300,
+      "base64Bytes": 6472408,
+      "sha256": "f258c817ac6c20ac93aa0b94b06d26b11bd5fb4a30f558cb5e7e0901055cccaa",
+      "archiveBytes": 4854306
+    },
+    {
+      "name": "cadastre_03600_300.zip",
+      "source": "cadastre",
+      "cursor": 3600,
+      "rows": 300,
+      "base64Bytes": 5390056,
+      "sha256": "fd40fa61a7acba5971c752959da27c4e224e88951fcc589034e45f1e825878ed",
+      "archiveBytes": 4042542
+    },
+    {
+      "name": "cadastre_03900_300.zip",
+      "source": "cadastre",
+      "cursor": 3900,
+      "rows": 300,
+      "base64Bytes": 3163376,
+      "sha256": "175c50937971eb7532b31ef6479a0738569821602c848ec2c4ea67477f0ecc88",
+      "archiveBytes": 2372530
+    },
+    {
+      "name": "cadastre_04200_300.zip",
+      "source": "cadastre",
+      "cursor": 4200,
+      "rows": 300,
+      "base64Bytes": 1758776,
+      "sha256": "72acf5402139d5ccf13d96f0414788224db38e2ca99b8b2707a92c02acbce4f7",
+      "archiveBytes": 1319081
+    },
+    {
+      "name": "cadastre_04500_300.zip",
+      "source": "cadastre",
+      "cursor": 4500,
+      "rows": 300,
+      "base64Bytes": 2413964,
+      "sha256": "2fdbee7973239cb0276d02fe0d86922d10b059bbf69da87e5ed01b980a772ea6",
+      "archiveBytes": 1810472
+    },
+    {
+      "name": "cadastre_04800_300.zip",
+      "source": "cadastre",
+      "cursor": 4800,
+      "rows": 300,
+      "base64Bytes": 3782324,
+      "sha256": "38fd565ae2ac6126165911e75795828e62ec1dfea4ee6e66b866765db3b69728",
+      "archiveBytes": 2836743
+    },
+    {
+      "name": "cadastre_05100_300.zip",
+      "source": "cadastre",
+      "cursor": 5100,
+      "rows": 300,
+      "base64Bytes": 2279588,
+      "sha256": "dde6ffb870ddb08dc10093b10cae1713f5b025bc72621874cad399ee9e22f74c",
+      "archiveBytes": 1709689
+    },
+    {
+      "name": "cadastre_05400_117.zip",
+      "source": "cadastre",
+      "cursor": 5400,
+      "rows": 117,
+      "base64Bytes": 461724,
+      "sha256": "bbdf8b69122ad38889a4c97d45eebb97ad46e7315b9d0e28e11ed992c5c1277f",
+      "archiveBytes": 346293
+    }
+  ],
+  "security": {
+    "bucketPublic": false,
+    "jwtRequired": true,
+    "builderDisabledAfterRelease": true
+  },
+  "notes": [
+    "Archives are uncompressed ZIPs wrapped by a private builder and served as binary ZIP through a JWT-protected read-only relay.",
+    "Every archive contains chunk_manifest.json. Empty cadastral coordinates carry a zero-byte .pbf and a .pbf.empty.json proof."
+  ],
+  "bundledSnapshot": {
+    "schema": 1,
+    "acquiredAt": "2026-10-18T12:47:32Z",
+    "referenceManifestSha256": "7923a83c563ac18d7c2929d34709edf908f9b958beb37193c717d6e60136811b",
+    "archiveBytes": 89347499,
+    "validation": "24 ZIP CRCs; per-member SHA-256 when supplied; 5884 coordinates; 4557 parsed MVT; 1327 explicit official-empty proofs; independent local audit"
+  }
+}

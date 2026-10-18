@@ -1,0 +1,106 @@
+{
+  "version": "0.41.0",
+  "generated": "2026-10-18T14:20:21Z",
+  "sampledPbf": 64,
+  "officialEmpty": 1327,
+  "decodedBytes": 832784,
+  "features": 13127,
+  "seconds": 0.223,
+  "throughputMiBps": 3.55,
+  "tilesPerSecond": 286.46,
+  "decodeMs": {
+    "mean": 9.834,
+    "median": 4.293,
+    "p95": 33.127,
+    "max": 45.731
+  },
+  "terrain": [
+    {
+      "macro": "geo_calanques",
+      "bytes": 148525,
+      "cells": 25921,
+      "valid": 21063,
+      "missing": 4858,
+      "ms": 2.265686000100686
+    },
+    {
+      "macro": "geo_etoile",
+      "bytes": 179308,
+      "cells": 25921,
+      "valid": 25921,
+      "missing": 0,
+      "ms": 4.0681690006749704
+    },
+    {
+      "macro": "geo_frioul",
+      "bytes": 128311,
+      "cells": 25921,
+      "valid": 6198,
+      "missing": 19723,
+      "ms": 1.1750020003091777
+    },
+    {
+      "macro": "geo_garlaban",
+      "bytes": 178814,
+      "cells": 25921,
+      "valid": 25921,
+      "missing": 0,
+      "ms": 1.9638339999801246
+    },
+    {
+      "macro": "geo_huveaune",
+      "bytes": 176639,
+      "cells": 25921,
+      "valid": 25921,
+      "missing": 0,
+      "ms": 2.138936000847025
+    },
+    {
+      "macro": "geo_laciotat",
+      "bytes": 152338,
+      "cells": 25921,
+      "valid": 21717,
+      "missing": 4204,
+      "ms": 1.7091219997382723
+    },
+    {
+      "macro": "geo_marseille",
+      "bytes": 151441,
+      "cells": 25921,
+      "valid": 22282,
+      "missing": 3639,
+      "ms": 2.163893999750144
+    },
+    {
+      "macro": "geo_saintebaume",
+      "bytes": 179641,
+      "cells": 25921,
+      "valid": 25921,
+      "missing": 0,
+      "ms": 2.0758519985975
+    }
+  ],
+  "terrainParseSeconds": 0.019,
+  "corridors": {
+    "aubagne_laciotat": {
+      "distanceM": 22740,
+      "pathPoints": 109,
+      "tileCount": 43,
+      "macros": [
+        "geo_huveaune",
+        "geo_laciotat"
+      ]
+    },
+    "aubagne_marseille": {
+      "distanceM": 23701,
+      "pathPoints": 72,
+      "tileCount": 78,
+      "macros": [
+        "geo_huveaune",
+        "geo_marseille"
+      ]
+    }
+  },
+  "peakRssKiB": 21712,
+  "completePack": false
+}

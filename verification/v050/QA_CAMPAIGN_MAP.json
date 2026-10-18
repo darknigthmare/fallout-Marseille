@@ -1,0 +1,260 @@
+{
+  "version": "0.50.0",
+  "tested_html": "JOUER_FALLOUT_MISTRAL_v0.50.html",
+  "html_sha256": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+  "module_inserted_before_integration": false,
+  "private_test_adapter": true,
+  "data": "Installed real vectors and measured terrain, fetched over the local HTTP server",
+  "passed": 41,
+  "failed": 0,
+  "total": 41,
+  "errors": [],
+  "checks": [
+    {
+      "name": "SAS accessible au stade de sortie",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Choix carte réelle proposé avant la scène narrative",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec de carte conserve le sas actif",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec conserve progression, objets, position et heure",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec ne publie pas de sauvegarde partielle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai sort sur les vraies données locales",
+      "ok": true,
+      "detail": {
+        "pack local": 42
+      }
+    },
+    {
+      "name": "Prologue terminé seulement après sortie validée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Sortie ne fait pas avancer l’heure",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Arrivée extérieure sans collision",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Arrivée reste dans la marge du secteur chargé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Balise de campagne physique présente",
+      "ok": true,
+      "detail": {
+        "id": "v050-campaign-workshops",
+        "label": "Ateliers d’Aubagne — poursuivre la campagne",
+        "pos": [
+          4900.191229318152,
+          106.43552011681578,
+          -1459.7907906525375
+        ],
+        "radius": 4.5
+      }
+    },
+    {
+      "name": "Quête principale guide vers le passage réel",
+      "ok": true,
+      "detail": {
+        "title": "LA CAMPAGNE · ATELIERS D’AUBAGNE",
+        "objective": "Rejoignez la balise des ateliers pour poursuivre avec Mireille (scène narrative).",
+        "marker": {
+          "zone": "geo_huveaune",
+          "pos": [
+            4900.191229318152,
+            108.03552011681577,
+            -1459.7907906525375
+          ],
+          "label": "Ateliers d’Aubagne — campagne"
+        }
+      }
+    },
+    {
+      "name": "Réessai terminé ne répète pas la sortie",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "L’entrée narrative exige d’approcher la balise",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Balise accessible sur un sol dégagé",
+      "ok": true,
+      "detail": {
+        "pos": [
+          4900.191229318152,
+          106.85016218854436,
+          -1456.9907906525375
+        ],
+        "id": "v050-campaign-workshops"
+      }
+    },
+    {
+      "name": "Interaction physique ouvre la scène narrative",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ateliers nommés explicitement scène narrative",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Point géographique persistant capturé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mireille et son dialogue de campagne restent disponibles",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Dialogue de Mireille fait avancer la campagne",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Porte physique vers le territoire disponible",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour proposé depuis les ateliers",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Échec du retour conserve la scène narrative et ses acquis",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour rejoint exactement le point conservé",
+      "ok": true,
+      "detail": {
+        "expected": [
+          4900.191229318152,
+          106.85016218854436,
+          -1456.9907906525375
+        ],
+        "actual": [
+          4900.191229318152,
+          106.85016218854436,
+          -1456.9907906525375
+        ]
+      }
+    },
+    {
+      "name": "Quête et inventaire acquis dans les ateliers restent acquis",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour ne change pas l’heure",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Recharge d’une sauvegarde narrative conserve sa porte de retour",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour fonctionne après recharge de sauvegarde",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "SAS accessible au stade de sortie",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Choix carte réelle proposé avant la scène narrative",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation en préparation conserve sas, progression et heure",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Une sortie annulée ne peut plus être réessayée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "SAS accessible au stade de sortie",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Choix carte réelle proposé avant la scène narrative",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Nouvelle sauvegarde protégée des réponses tardives",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ancien contexte de sortie invalidé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "SAS accessible au stade de sortie",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Raccourci explicite conserve l’accès à la campagne historique",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Raccourci n’ajoute aucun temps de trajet",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Anciennes sauvegardes migrées sans perte de progression",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ]
+}

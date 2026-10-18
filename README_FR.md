@@ -1,14 +1,18 @@
-# FALLOUT : MISTRAL — v0.49
-## Le quartier se souvient
+# FALLOUT : MISTRAL — v0.50
+## Les routes retrouvées
 
-Prototype de fan non officiel. Reprise directe du projet complet v0.48 fourni.
+Le [guide principal](README.md) décrit le lancement, les nouveautés, les sources et les vérifications.
 
-Lancez `LANCER_APP_WINDOWS.bat` après extraction, ou son équivalent Linux/macOS. Le HTML autonome reste disponible.
+Après extraction complète, lancez **LANCER_APP_WINDOWS.bat**, **LANCER_APP_LINUX.sh** ou **LANCER_APP_MAC.command**. Python 3 est nécessaire. Gardez le serveur ouvert pendant la partie.
 
-La v0.49 conserve les rencontres au-delà du chargement de proximité : santé restante, membres blessés, positions, orientation, état de recherche et dépouilles à contenu fini. Intérieur et extérieur possèdent des identités séparées. Les boss uniques ne réapparaissent pas ; les sites ordinaires ne changent de cycle qu’après leur délai historique de jeu.
+Le menu **Cartes & territoire** vérifie les fichiers présents. Le pack contient les 5 884 coordonnées et les huit grilles prévues. Depuis le dépôt GitHub, les fichiers sont extraits des archives fournies au premier lancement, sans téléchargement.
 
-Les 248 implantations sont inchangées. Le streaming, les retours d’intérieur, le lore reconstruit, la campagne et le prologue de la v0.48 sont conservés.
+La campagne commence dans l’abri A-03. Au sas, **Sortir vers Aubagne** rejoint le territoire géographique sur un point praticable. La balise **Ateliers d’Aubagne — poursuivre la campagne** donne accès à Mireille et à la scène narrative ; une porte permet ensuite de reprendre l’exploration au point enregistré. Un accès direct aux ateliers est également proposé au sas.
 
-434 contrôles ciblés sont réussis sur le même HTML final. Les captures sont prises dans le programme, sur le banc synthétique signalé. Le pack réel de 5 884 coordonnées et huit grilles n’est pas embarqué : les rues réelles ne sont pas certifiées dans cette livraison.
+Dans le Pip-Boy, **MAP → LIEUX ET VOYAGES** permet de suivre les lieux découverts et d’y voyager après confirmation. Le départ est refusé dans un intérieur, près d’ennemis, en combat, en surcharge ou sur un sol impraticable. Le temps estimé est appliqué uniquement quand l’arrivée aboutit.
 
-Build : `python3 tools/build_single.py`. QA : `npm run qa`. Rapport visuel : `npm run captures`. Banc : Ctrl + Maj + F9, avec sauvegardes de campagne désactivées pendant l’essai.
+**Continuer** choisit la sauvegarde valide la plus récente parmi la sauvegarde courante, l’autosauvegarde et les emplacements manuels. Les rencontres, blessures, objets pris et progrès de campagne restent persistants.
+
+[Rapport visuel](RAPPORT_VISUEL_V0.50.png) · [Installation détaillée](docs/INSTALLATION_V050.md) · [Limites connues](docs/KNOWN_LIMITATIONS_V0.50.md).
+
+Prototype de fan non officiel. Les anciennes versions et leurs rapports sont conservés avec leur propre périmètre de validation.

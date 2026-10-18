@@ -1,0 +1,33 @@
+{
+  "version": "0.50.0",
+  "html_sha256": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+  "scope": "Contrats hérités exécutés sur le programme actuel. Bancs synthétiques et réseau contrôlé ; voir NATIVE_REAL_MAP.json pour les parcours HTTP réels.",
+  "passed": 10,
+  "failed": 0,
+  "total": 10,
+  "allHtmlMatch": true,
+  "javascriptErrors": [],
+  "suites": [
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "file": "QA_PRODUCT.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    }
+  ],
+  "processes": [
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "exitCode": 0
+    }
+  ],
+  "adaptations": [
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "sourceSha256": "9189642a1d77ffadbb13810ac9ce945560feb78fb880bdc00e5e51490ef60092",
+      "executedSha256": "17ffab723a921b0e0bbe5e458bc030f2f2a47368201db1cff70b3025e0c6ed2e"
+    }
+  ]
+}

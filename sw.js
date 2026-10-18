@@ -1,6 +1,6 @@
-/* v0.49: cache the application shell, never substitute HTML for missing PBF/DEM. */
-const CACHE='fallout-mistral-v049-1';
-const CORE=['./','./index.html','./JOUER_FALLOUT_MISTRAL_v0.49.html','./manifest.webmanifest','./icons/mistral-192.png','./icons/mistral-512.png'];
+/* v0.50: cache the application shell, never substitute HTML for missing PBF/DEM. */
+const CACHE='fallout-mistral-v050-1';
+const CORE=['./','./index.html','./JOUER_FALLOUT_MISTRAL_v0.50.html','./manifest.webmanifest','./icons/mistral-192.png','./icons/mistral-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('fallout-mistral-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.origin!==location.origin)return;

@@ -1,20 +1,20 @@
 # FALLOUT Marseille — MISTRAL
 
-## v0.49 · Le quartier se souvient
+## v0.50 · Les routes retrouvées
 
-Projet complet du prototype : jeu prêt à lancer, sources, ressources disponibles, campagne, prologue, outils, tests, rapports visuels et historique des versions.
+Le jeu dispose du **pack géographique complet prévu par son manifeste** : 5 884 coordonnées vectorielles et huit grilles de relief. La sortie du sas rejoint le territoire réel d’Aubagne sur un emplacement dégagé. Une balise relie cet extérieur aux ateliers de Mireille et à la campagne existante.
 
-**[Téléchargements Google Drive](https://drive.google.com/drive/folders/1XYIrQczKXczburj2Tu0bDs2ZNH10Jxta)** · [Guide français](README_FR.md) · [Rapport visuel](RAPPORT_VISUEL_V0.49.png) · [Limites connues](docs/KNOWN_LIMITATIONS_V0.49.md)
+**[Téléchargements Google Drive v0.50](https://drive.google.com/drive/folders/1xE5VpELY64tz5GV9CHHrlsIb_rfahRnQ)** · [Rapport visuel](RAPPORT_VISUEL_V0.50.png) · [Installation](docs/INSTALLATION_V050.md) · [Limites vérifiées](docs/KNOWN_LIMITATIONS_V0.50.md)
 
-## Lancer le jeu
+## Jouer
 
-Python 3 est nécessaire pour le serveur local. Aucun paquet npm n’est nécessaire pour jouer.
+Python 3 est nécessaire au serveur local. Aucun paquet npm n’est requis pour jouer.
 
-- **Windows :** double-cliquer sur `LANCER_APP_WINDOWS.bat`.
+- **Windows :** lancer `LANCER_APP_WINDOWS.bat`.
 - **Linux :** `bash LANCER_APP_LINUX.sh`.
 - **macOS :** `bash LANCER_APP_MAC.command`.
 
-Le lanceur ouvre `http://127.0.0.1:8765/index.html`. Pour un lancement manuel :
+Le navigateur s’ouvre sur `http://127.0.0.1:8765/index.html`. Au premier lancement depuis GitHub, le serveur prépare les cartes à partir des 24 archives fournies, **sans téléchargement**. La plus volumineuse est transportée en `.zip.gz` puis reconstituée automatiquement, avec contrôle du SHA-256 du ZIP d’origine. Cette préparation peut prendre environ une minute selon l’ordinateur. Le ZIP « JEU_COMPLET » proposé sur Drive contient les cartes déjà extraites.
 
 ```bash
 git clone https://github.com/darknigthmare/fallout-Marseille.git
@@ -22,43 +22,44 @@ cd fallout-Marseille
 python3 tools/serve_game.py
 ```
 
-Le fichier `JOUER_FALLOUT_MISTRAL_v0.49.html` contient également le jeu autonome. Le serveur local est recommandé pour l’inspection des données géographiques et les fonctions de l’application.
+Utiliser le lanceur de l’application pour lire les données cartographiques. Le fichier `JOUER_FALLOUT_MISTRAL_v0.50.html` contient le programme ; une ouverture directe en `file://` ne donne pas au navigateur l’accès HTTP requis par le pack.
 
-## Archive complète
+## Ce qui change
 
-Le ZIP original contient **1 172 fichiers** et pèse **127 071 766 octets**. La limite de transfert vers Drive impose sa distribution en deux parties, avec les lanceurs de recomposition et les empreintes dans le dossier dédié. Les deux parties reconstituent exactement le ZIP original ; aucun fichier n’a été retiré.
+- **Carte réelle disponible localement.** Les fichiers sont validés, les vides officiels portent leur preuve et les huit grilles de relief sont incluses.
+- **Sortie de campagne reliée à la carte.** Le sas propose la sortie géographique et un accès direct explicitement nommé « scène narrative ». La balise des ateliers permet de retrouver Mireille ; la sortie des ateliers retrouve le point géographique enregistré, y compris après recharge.
+- **Voyage rapide vers les lieux découverts.** Dans le Pip-Boy, ouvrir **MAP → LIEUX ET VOYAGES**, sélectionner un lieu, préparer puis confirmer le voyage. L’arrivée est contrôlée contre le relief, l’eau, les murs et une marge de marche libre. Le temps avance seulement après réussite.
+- **Continuer reprend la sauvegarde la plus récente.** La sauvegarde courante est comparée aux autosauvegardes et emplacements manuels. Les données des versions antérieures restent migrables.
+- **Installation plus robuste.** Gzip borné, contrôle des archives, reprise, conservation des fichiers précédents en cas d’erreur et repli direct vers l’IGN pour le relief. Le mode `--offline` interdit le réseau.
+- **Menu accessible sur les petites fenêtres.** Les boutons restent atteignables ; l’état des cartes provient de l’audit du serveur local.
 
-Sur Windows, télécharger les deux parties et les scripts dans un même dossier, puis lancer `RECONSTRUIRE_ARCHIVE_WINDOWS.bat`. Sur Linux/macOS : `python3 RECONSTRUIRE_ARCHIVE.py`. Python 3 est aussi utilisé pour lancer le jeu.
+Les 248 lieux du catalogue, les rencontres persistantes, les blessures, les dépouilles à butin fini, les intérieurs et le lore des versions précédentes sont conservés. Les bâtiments et routes communs restent attachés à une scène extérieure persistante lorsque la fenêtre de tuiles se déplace.
 
-SHA-256 du ZIP reconstitué :
+## Données et portée
 
-```text
-172783f2026a1b8537b45a3b91df89bcd6afe425ade8613bb0210aff2ed6477c
-```
+Le pack comprend **4 557 fichiers PBF**, **1 327 coordonnées officiellement vides**, **8 grilles de 161 × 161 points**, **174 944 altitudes valides** et **32 424 points sans mesure**. L’audit ne relève aucun fichier attendu manquant ou invalide. Une grille complète peut contenir des points sans mesure ; le jeu conserve ces absences.
 
-## Contenu et carte réelle
+Les emprises et routes reposent sur les sources OpenStreetMap et cadastrales, le relief sur un échantillonnage de données IGN. Les décors et bâtiments sont interprétés par le jeu ; les hauteurs de toiture non documentées restent estimées. La campagne historique utilise encore des scènes narratives distinctes, clairement indiquées. Il ne s’agit pas d’une reproduction photoréaliste ni d’un relevé de chaque rue validé à pied.
 
-La v0.49 conserve les rencontres au-delà des changements de secteur : santé, blessures, positions, orientation, états d’alerte et dépouilles avec leur butin restant. Les intérieurs et extérieurs ont des identités séparées ; les boss uniques ne sont pas réinitialisés au retour.
+Les essais actuels comprennent des parcours dans Chromium avec **vrais fichiers HTTP et stockage natif**, ainsi que des tests de régression sur bancs synthétiques distincts. Le rapport visuel v0.50 présente les captures de cette exécution. Les anciens rapports v0.49 et antérieurs restent historiques.
 
-Le catalogue des 248 implantations, la continuité géométrique, les préparations interruptibles, les retours d’intérieur, la campagne, le prologue et le lore reconstruit sont inclus.
-
-**Le pack géographique intégral n’est pas embarqué** : 0/5 884 coordonnées vectorielles et 0/8 grilles territoriales dans cette livraison. Les extérieurs du rapport visuel proviennent du banc synthétique identifié à l’écran. L’accès à la vraie carte nécessite les ressources géographiques ; cette publication ne certifie pas les rues réelles de Marseille, Aubagne ou La Ciotat.
-
-`Ctrl + Maj + F9` ouvre le banc de coutures. Ses sauvegardes de campagne sont désactivées. Le diagnostic est disponible dans **MAP → CONTINUITÉ**.
-
-## Sources et validation
+## Vérifier et reconstruire
 
 ```bash
 python3 tools/build_single.py
 node --check src/game.js
-node tests/v049/kernel.test.cjs
-node tests/v049/v048_inherited_legacy_distribution.cjs
+python3 tools/validate_real_map_v046.py --require-complete --report verification/v050/LOCAL_DATA_STATE.json
+python3 tests/v050/test_installers.py
+python3 tests/v050/test_installers.py --offline-integration
+python3 tools/check_v050.py
+python3 tests/v050/poi_travel.py
+python3 tests/v050/campaign_map.py
+python3 tests/v050/continue_save.py
+python3 tests/v050/native_real_map.py
+python3 tools/report_v050.py
+python3 tools/package_v050.py
 ```
 
-La reconstruction des deux HTML et de `src/game.js` est identique octet pour octet à la livraison. Les 31 assertions ciblées ci-dessus ont été relancées lors de la publication, avec un contrôle HTTP réel du serveur local. Les 434 contrôles de la livraison initiale restent documentés dans les rapports historiques ; ils n’ont pas tous été relancés pour cet import.
+Les tests de navigateur nécessitent les dépendances de `requirements-dev.txt` et Chromium installé par Playwright, ou `CHROMIUM_PATH` pointant vers un navigateur existant. Le rapport de livraison regroupe les résultats et précise leur périmètre. Les PBF extraits sont ignorés dans Git parce que les archives vérifiées qui les reconstituent sont déjà suivies ; ils figurent dans les archives de jeu distribuées sur Drive.
 
-Pour la campagne QA complète, consulter `requirements-dev.txt`, les outils et [le rapport QA](docs/RAPPORT_QA.md). Aucun nouveau rendu Chromium, contrôle PWA native ou test IndexedDB natif n’est revendiqué pendant la publication.
-
-Les 1 172 fichiers d’origine sont conservés à l’identique. Ce README, les fichiers de distribution et la [note de publication](docs/PUBLICATION_2026-10-18.md) complètent l’import. Le [manifeste d’origine](MANIFEST_SHA256.json) conserve son périmètre de livraison v0.49.
-
-Prototype de fan non officiel.
+Prototype de fan non officiel. © contributeurs OpenStreetMap — ODbL · Cadastre Etalab / DGFiP — Licence Ouverte 2.0 · IGN RGE ALTI — Licence Ouverte 2.0. [Sources et provenance](docs/PROVENANCE_V050.md).

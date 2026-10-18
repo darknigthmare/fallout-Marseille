@@ -1,0 +1,81 @@
+Application locale v0.50 : http://127.0.0.1:42897/index.html
+127.0.0.1 - - [18/Oct/2026 16:48:32] "GET /index.html HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 46162)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/workspace/scratch/b47acf41a0d4/fallout-Marseille/tools/serve_game.py", line 15, in __init__
+    super().__init__(*args, directory=str(ROOT), **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/workspace/scratch/b47acf41a0d4/fallout-Marseille/tools/serve_game.py", line 18, in do_GET
+    return super().do_GET()
+           ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+----------------------------------------
+127.0.0.1 - - [18/Oct/2026 16:48:33] "GET /data/map_pack/benchmark_v041.json?t=1792334913706 HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:33] "GET /data/map_pack/local_pack_v041_status.json?t=1792334913706 HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:34] "GET /icons/mistral-192.png HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/terrain/geo_garlaban.json HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/terrain/geo_etoile.json HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/terrain/geo_huveaune.json HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/terrain/geo_saintebaume.json HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/france-vector/14/8444/6001.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/france-vector/14/8444/6002.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/france-vector/14/8445/6002.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/france-vector/14/8445/6001.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/france-vector/14/8446/6001.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/france-vector/14/8446/6002.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:39] "GET /data/map_pack/cadastre/16/33779/24004.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33779/24005.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33779/24006.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33779/24007.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33779/24008.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33779/24009.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33780/24005.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33780/24004.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33780/24006.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33780/24007.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33780/24008.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33780/24009.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33781/24004.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33781/24005.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33781/24007.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33781/24006.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33781/24008.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33781/24009.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33782/24004.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33782/24005.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33782/24006.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33782/24007.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33783/24004.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33782/24009.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33782/24008.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33783/24005.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33783/24006.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33783/24007.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33783/24008.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33783/24009.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33784/24005.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33784/24004.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33784/24006.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33784/24007.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33784/24009.pbf HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 16:48:40] "GET /data/map_pack/cadastre/16/33784/24008.pbf HTTP/1.1" 200 -

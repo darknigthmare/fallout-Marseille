@@ -1,0 +1,288 @@
+{
+  "schema": 1,
+  "acquiredAt": "2026-10-18T12:47:32Z",
+  "vector": {
+    "expected": 5884,
+    "pbf": 4557,
+    "officialEmpty": 1327,
+    "missing": 0,
+    "invalid": 0,
+    "bytes": 86973739,
+    "examples": []
+  },
+  "terrain": {
+    "expected": 8,
+    "valid": 8,
+    "missing": 0,
+    "invalid": 0,
+    "samples": 174944,
+    "noData": 32424,
+    "examples": []
+  },
+  "complete": true,
+  "referenceManifest": "local_pack_v041_manifest.json",
+  "bundledManifest": "archives/manifest.json",
+  "archives": [
+    {
+      "name": "base_00000_60.zip",
+      "bytes": 4834167,
+      "sha256": "87554bf012ae76b4972a74d2bfd9fa7887130eaf90a02b6b6282fc1079dbda4b"
+    },
+    {
+      "name": "base_00060_100.zip",
+      "bytes": 13437755,
+      "sha256": "bdfe4439f082f4a6e9d8b1c0472a4a1cefcd4e215457eec465620bedb619df94"
+    },
+    {
+      "name": "base_00160_100.zip",
+      "bytes": 7105701,
+      "sha256": "99d087b8a4e6cac1e41ebb092e8a017e79392fd0de538aad4bfb4314c20e1992"
+    },
+    {
+      "name": "base_00260_100.zip",
+      "bytes": 3352501,
+      "sha256": "61bc0d718e8f8d7cf0469e8e04be1ad2009af2aa75f4f60967fff98c741c9751"
+    },
+    {
+      "name": "base_00360_7.zip",
+      "bytes": 846536,
+      "sha256": "eb9985d825e374c5dee913dc188af7f6e9ea9bedcd38c6139941d081e036f55b"
+    },
+    {
+      "name": "cadastre_00000_300.zip",
+      "bytes": 228569,
+      "sha256": "2534030168d7bfa2bcd825b2f2a5287758311dff2645b384c0ba9e215ef4bf71"
+    },
+    {
+      "name": "cadastre_00300_300.zip",
+      "bytes": 902004,
+      "sha256": "8ff35989050e31fda19a6117bad22237f1f11c75f2dcc62fe2e145af524f3f04"
+    },
+    {
+      "name": "cadastre_00600_300.zip",
+      "bytes": 7197124,
+      "sha256": "31309fc284e656cb84e2d3b3932b7e3981caeef89b2fe56bf4ac50ac48221822"
+    },
+    {
+      "name": "cadastre_00900_300.zip",
+      "bytes": 7803337,
+      "sha256": "2871c740b478fc53094533724e1d4b7c812cfe7b45ab48bb8e6f98810f53877e"
+    },
+    {
+      "name": "cadastre_01200_300.zip",
+      "bytes": 5123059,
+      "sha256": "54209aea4e5ee6b905c4c0117decdd7aba6b36805f467ace7cc271bea2e08b61"
+    },
+    {
+      "name": "cadastre_01500_300.zip",
+      "bytes": 3834351,
+      "sha256": "8b15bbdc636ae5d4d30338fb18af0b4feffd02c1e914c80dad706aa82c0bd320"
+    },
+    {
+      "name": "cadastre_01800_300.zip",
+      "bytes": 3354257,
+      "sha256": "7becbd17fc74a37e9bb3e6bdb47c5570e9efc08304b0b96ff30c72e757c5bc62"
+    },
+    {
+      "name": "cadastre_02100_300.zip",
+      "bytes": 2779547,
+      "sha256": "b070d527324974da08d413fef6969494a647f7c7fa2a7ed2148591667e715145"
+    },
+    {
+      "name": "cadastre_02400_300.zip",
+      "bytes": 2537938,
+      "sha256": "90ebffefb20b815361cacda48f9c549311041228cbac2d09130d8803f3fa762e"
+    },
+    {
+      "name": "cadastre_02700_300.zip",
+      "bytes": 2981397,
+      "sha256": "22633e8017307209f826747193ff71cd71dc51a74dec87d1813eda6418342dd9"
+    },
+    {
+      "name": "cadastre_03000_300.zip",
+      "bytes": 3737600,
+      "sha256": "714060ee7b9b03e52c4c1ad00bc250fdc958e5877947fece5300a2fef7ad576d"
+    },
+    {
+      "name": "cadastre_03300_300.zip",
+      "bytes": 4854306,
+      "sha256": "f258c817ac6c20ac93aa0b94b06d26b11bd5fb4a30f558cb5e7e0901055cccaa"
+    },
+    {
+      "name": "cadastre_03600_300.zip",
+      "bytes": 4042542,
+      "sha256": "fd40fa61a7acba5971c752959da27c4e224e88951fcc589034e45f1e825878ed"
+    },
+    {
+      "name": "cadastre_03900_300.zip",
+      "bytes": 2372530,
+      "sha256": "175c50937971eb7532b31ef6479a0738569821602c848ec2c4ea67477f0ecc88"
+    },
+    {
+      "name": "cadastre_04200_300.zip",
+      "bytes": 1319081,
+      "sha256": "72acf5402139d5ccf13d96f0414788224db38e2ca99b8b2707a92c02acbce4f7"
+    },
+    {
+      "name": "cadastre_04500_300.zip",
+      "bytes": 1810472,
+      "sha256": "2fdbee7973239cb0276d02fe0d86922d10b059bbf69da87e5ed01b980a772ea6"
+    },
+    {
+      "name": "cadastre_04800_300.zip",
+      "bytes": 2836743,
+      "sha256": "38fd565ae2ac6126165911e75795828e62ec1dfea4ee6e66b866765db3b69728"
+    },
+    {
+      "name": "cadastre_05100_300.zip",
+      "bytes": 1709689,
+      "sha256": "dde6ffb870ddb08dc10093b10cae1713f5b025bc72621874cad399ee9e22f74c"
+    },
+    {
+      "name": "cadastre_05400_117.zip",
+      "bytes": 346293,
+      "sha256": "bbdf8b69122ad38889a4c97d45eebb97ad46e7315b9d0e28e11ed992c5c1277f"
+    }
+  ],
+  "terrainGrids": [
+    {
+      "macro": "geo_marseille",
+      "path": "terrain/geo_marseille.json",
+      "sha256": "686951997edd5ed05ec4750894847893b92387fbdc2f4e4f95c1e5bba0749fa9",
+      "bytes": 151441,
+      "width": 161,
+      "height": 161,
+      "validPoints": 22282,
+      "missingPoints": 3639,
+      "source": "RGE ALTI IGN",
+      "sourceResource": "ign_rge_alti_wld",
+      "generatedAt": "2026-09-19T02:20:07.918Z",
+      "approximateSpacingMeters": {
+        "x": 114,
+        "y": 83.5
+      }
+    },
+    {
+      "macro": "geo_huveaune",
+      "path": "terrain/geo_huveaune.json",
+      "sha256": "a6750fdf539229d0a74e8359ba2665031e03d1f8ff590fab133af842680f2570",
+      "bytes": 176639,
+      "width": 161,
+      "height": 161,
+      "validPoints": 25921,
+      "missingPoints": 0,
+      "source": "RGE ALTI IGN",
+      "sourceResource": "ign_rge_alti_wld",
+      "generatedAt": "2026-09-19T02:20:54.996Z",
+      "approximateSpacingMeters": {
+        "x": 106.4,
+        "y": 62.6
+      }
+    },
+    {
+      "macro": "geo_garlaban",
+      "path": "terrain/geo_garlaban.json",
+      "sha256": "f71d8782439ed01f55d105099ea84c72dddab4dda01182384db99510d03e2c7f",
+      "bytes": 178814,
+      "width": 161,
+      "height": 161,
+      "validPoints": 25921,
+      "missingPoints": 0,
+      "source": "RGE ALTI IGN",
+      "sourceResource": "ign_rge_alti_wld",
+      "generatedAt": "2026-09-19T02:20:55.385Z",
+      "approximateSpacingMeters": {
+        "x": 103.8,
+        "y": 100.9
+      }
+    },
+    {
+      "macro": "geo_calanques",
+      "path": "terrain/geo_calanques.json",
+      "sha256": "428ab1b2d292e0207cc98957ff6bf0b3fc2207e5f9ba66ef87af06e6a7fd8288",
+      "bytes": 148525,
+      "width": 161,
+      "height": 161,
+      "validPoints": 21063,
+      "missingPoints": 4858,
+      "source": "RGE ALTI IGN",
+      "sourceResource": "ign_rge_alti_wld",
+      "generatedAt": "2026-09-19T02:20:55.771Z",
+      "approximateSpacingMeters": {
+        "x": 162.3,
+        "y": 97.4
+      }
+    },
+    {
+      "macro": "geo_laciotat",
+      "path": "terrain/geo_laciotat.json",
+      "sha256": "5d0dc36a5ee43ef5fd987a93ed3cf7afbeefb2ddbce74c5a696146af74380af3",
+      "bytes": 152338,
+      "width": 161,
+      "height": 161,
+      "validPoints": 21717,
+      "missingPoints": 4204,
+      "source": "RGE ALTI IGN",
+      "sourceResource": "ign_rge_alti_wld",
+      "generatedAt": "2026-09-19T02:21:06.539Z",
+      "approximateSpacingMeters": {
+        "x": 98.9,
+        "y": 90.4
+      }
+    },
+    {
+      "macro": "geo_frioul",
+      "path": "terrain/geo_frioul.json",
+      "sha256": "69874a4843967280a47ebee19ca37757ab2f64dec50af2ef5d21a9b1df47d07e",
+      "bytes": 128311,
+      "width": 161,
+      "height": 161,
+      "validPoints": 6198,
+      "missingPoints": 19723,
+      "source": "RGE ALTI IGN",
+      "sourceResource": "ign_rge_alti_wld",
+      "generatedAt": "2026-09-19T02:21:03.485Z",
+      "approximateSpacingMeters": {
+        "x": 48.1,
+        "y": 48.7
+      }
+    },
+    {
+      "macro": "geo_etoile",
+      "path": "terrain/geo_etoile.json",
+      "sha256": "e665ee5e9225db080322c054de0be8aea5ea82e674b9da264a24c4dd4666463f",
+      "bytes": 179308,
+      "width": 161,
+      "height": 161,
+      "validPoints": 25921,
+      "missingPoints": 0,
+      "source": "RGE ALTI IGN",
+      "sourceResource": "ign_rge_alti_wld",
+      "generatedAt": "2026-09-19T02:21:08.324Z",
+      "approximateSpacingMeters": {
+        "x": 83.5,
+        "y": 83.5
+      }
+    },
+    {
+      "macro": "geo_saintebaume",
+      "path": "terrain/geo_saintebaume.json",
+      "sha256": "664c85b4e9f3881b193e16e189b0b9333581dfc34aa43f0954b30641efb9f225",
+      "bytes": 179641,
+      "width": 161,
+      "height": 161,
+      "validPoints": 25921,
+      "missingPoints": 0,
+      "source": "RGE ALTI IGN",
+      "sourceResource": "ign_rge_alti_wld",
+      "generatedAt": "2026-09-19T02:21:05.183Z",
+      "approximateSpacingMeters": {
+        "x": 96.2,
+        "y": 135.7
+      }
+    }
+  ],
+  "installedDataBytes": 88596719,
+  "dataBytes": 88268756,
+  "scope": "Historical geographic snapshot retrieved from the configured authenticated read-only relays. Current official sources were checked separately on a limited sample; this is not a parcel-by-parcel or gameplay certification."
+}

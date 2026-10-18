@@ -1,0 +1,428 @@
+{
+  "schema": 1,
+  "version": "0.50.0",
+  "status": "complete",
+  "scope": "Agrégation de preuves existantes ; aucune nouvelle exécution du jeu. Les méthodes et périmètres distincts restent explicites.",
+  "html_sha256": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+  "canonicalFiles": {
+    "index.html": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5"
+  },
+  "htmlEvidenceValidated": true,
+  "htmlEvidence": [
+    {
+      "file": "NATIVE_REAL_MAP.json",
+      "convention": "canonical_source_html",
+      "reported": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+      "expected": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+      "valid": true
+    },
+    {
+      "file": "QA_CAMPAIGN_MAP.json",
+      "convention": "canonical_source_html",
+      "reported": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+      "expected": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+      "valid": true
+    },
+    {
+      "file": "QA_CONTINUE_SAVE.json",
+      "convention": "canonical_source_html",
+      "reported": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+      "expected": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+      "valid": true
+    },
+    {
+      "file": "QA_LEGACY.json",
+      "convention": "canonical_source_html",
+      "reported": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+      "expected": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+      "valid": true
+    },
+    {
+      "file": "QA_POI_TRAVEL.json",
+      "convention": "canonical_html_plus_literal_private_test_inspectors",
+      "reported": "4ddbffe1324f4e779d6a75fa4f2b25537f65066c2e7244538638299803c5a3cd",
+      "expected": "4ddbffe1324f4e779d6a75fa4f2b25537f65066c2e7244538638299803c5a3cd",
+      "valid": true,
+      "note": "in_memory_module_insertion=false concerne le module de jeu ; les inspecteurs privés du test sont néanmoins ajoutés au HTML exécuté."
+    }
+  ],
+  "passed": 654,
+  "failed": 0,
+  "total": 654,
+  "countsByScope": {
+    "native": 83,
+    "targeted": 95,
+    "installers": 42,
+    "inherited": 434
+  },
+  "suites": [
+    {
+      "file": "verification/v050/NATIVE_REAL_MAP.json",
+      "passed": 83,
+      "failed": 0,
+      "total": 83,
+      "scope": "HTTP, stockage Chromium et cartes locales réels ; assistance par API de diagnostic existantes, sans injection HTML."
+    },
+    {
+      "file": "verification/v050/QA_POI_TRAVEL.json",
+      "passed": 36,
+      "failed": 0,
+      "total": 36,
+      "scope": "HTML instrumenté, banc synthétique identifié, stockage et réseau contrôlés ; erreurs de trajet provoquées."
+    },
+    {
+      "file": "verification/v050/QA_CAMPAIGN_MAP.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "scope": "Vraies cartes locales et adaptateur privé de test pour les échecs, réessais, annulations et changements de contexte."
+    },
+    {
+      "file": "verification/v050/QA_CONTINUE_SAVE.json",
+      "passed": 18,
+      "failed": 0,
+      "total": 18,
+      "scope": "Chromium et localStorage natifs ; sauvegardes datées préparées par un adaptateur privé ; bouton et chargeur de production."
+    },
+    {
+      "file": "verification/v050/QA_LEGACY.json",
+      "passed": 434,
+      "failed": 0,
+      "total": 434,
+      "scope": "Contrats historiques adaptés au produit actuel ; bancs synthétiques et réseau contrôlé."
+    },
+    {
+      "file": "verification/v050/QA_INSTALLERS.json",
+      "passed": 42,
+      "failed": 0,
+      "total": 42,
+      "scope": "Cas unitaires sur fixtures : intégrité ZIP/PBF, transport gzip borné, HTTP borné, réponses vides attestées, reprise et conservation sur échec."
+    }
+  ],
+  "javascriptErrors": [],
+  "additionalProofsCountedAsAssertions": false,
+  "additionalProofs": {
+    "offlineInstall": {
+      "file": "verification/v050/INSTALL_OFFLINE.json",
+      "passed": true,
+      "coordinatesComparedBySha256": 5884,
+      "officialEmptyProofsCompared": 1327,
+      "terrainGridsCompared": 8,
+      "networkAttempts": 0
+    },
+    "gzipTransportOfflineInstall": {
+      "file": "verification/v050/INSTALL_OFFLINE_GZIP.json",
+      "passed": true,
+      "isolatedBundleClone": true,
+      "coordinatesComparedBySha256": 5884,
+      "officialEmptyProofsCompared": 1327,
+      "terrainGridsCompared": 8,
+      "networkAttempts": 0,
+      "gzipTransport": [
+        {
+          "suppliedPath": "data/map_pack/archives/base_00060_100.zip.gz",
+          "compressedBytes": 7271970,
+          "compressedSha256": "8e5c14d3ff5600622792fb33a83994c3527de014c544094cd0578e2715ca9862",
+          "originalZipAbsentFromClone": true,
+          "decodedBytesLimit": 13437755,
+          "expectedOriginalZipSha256": "bdfe4439f082f4a6e9d8b1c0472a4a1cefcd4e215457eec465620bedb619df94"
+        }
+      ],
+      "scope": "Copie isolée où le ZIP original est absent ; seules l’enveloppe gzip, les autres ZIP et les grilles sont fournis."
+    },
+    "officialIgnSample": {
+      "file": "verification/v050/IGN_OFFICIAL_SMOKE.json",
+      "passed": true,
+      "measuredPoints": 4,
+      "scope": "Échantillon officiel isolé, sans remplacement des huit grilles livrées."
+    }
+  },
+  "localData": {
+    "version": "0.46.0",
+    "vector": {
+      "expected": 5884,
+      "pbf": 4557,
+      "officialEmpty": 1327,
+      "missing": 0,
+      "invalid": 0,
+      "bytes": 86973739,
+      "examples": []
+    },
+    "terrain": {
+      "expected": 8,
+      "valid": 8,
+      "missing": 0,
+      "invalid": 0,
+      "samples": 174944,
+      "noData": 32424,
+      "examples": []
+    },
+    "complete": true,
+    "scope": "État des fichiers réellement présents. Les anciens rapports de cache cloud ne sont pas une preuve de disponibilité actuelle."
+  },
+  "localDataAuditorVersionNote": "Le validateur conservé porte la version 0.46.0 ; ce fichier décrit les données réellement présentes pour la livraison 0.50.",
+  "nativeMethod": {
+    "browser": "134.0.6998.35",
+    "nativeNavigation": true,
+    "networkMocked": false,
+    "storageMocked": false,
+    "htmlInjected": false,
+    "syntheticLabUsed": false,
+    "assistance": [
+      "UI menu, character creation and dialogue choice buttons",
+      "Existing v020Approach and v35p* story actions",
+      "Existing measured camera placement and v046Move collision-controlled steps",
+      "Simulation freeze and day/night clock for repeatable measurements; geography and collisions remain production data",
+      "Two explicitly named POIs discovered through the existing debug discovery action before their UI-only fast travel tests"
+    ],
+    "streamingAssistance": "Position initiale mesurée et demande de fenêtre anticipée à moins de 120 m via l’API existante ; déplacement par la collision de production. Ce contrôle ne constitue pas une randonnée manuelle."
+  },
+  "performance": {
+    "scope": "Native headless Chromium frame cadence in this execution environment; not a hardware or desktop FPS guarantee",
+    "samples": 26,
+    "median_ms": 133.4,
+    "p95_ms": 150.1,
+    "renderer": {
+      "backend": "WebGL",
+      "customMeshes": 4732,
+      "triangles": 169949,
+      "bufferGroups": 4732
+    },
+    "gpu": {
+      "vendor": "Google Inc. (Google)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    }
+  },
+  "network": {
+    "failedInstalledDataRequests": 0,
+    "externalCertificateFailures": 18,
+    "failure": "net::ERR_CERT_AUTHORITY_INVALID",
+    "externalUrls": [
+      "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status"
+    ],
+    "note": "Sondes de services historiques Supabase ; aucune politique TLS relâchée dans le parcours natif."
+  },
+  "shots": [
+    {
+      "file": "native_01_menu.png",
+      "label": "Real menu, loaded by HTTP in Chromium",
+      "sha256": "549247595942439fff8b4308748604ee09183f50687b85448a48d8cd2878c884",
+      "path": "verification/v050/native_01_menu.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_02_local_maps.png",
+      "label": "Local map status from the running server",
+      "sha256": "33566c338970c28cbbb2e2b81aadffa4069a56203cbc6dfd202858a9158c8816",
+      "path": "verification/v050/native_02_local_maps.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_00_mobile_menu.png",
+      "label": "390 px mobile menu; native browser, scrollable actions",
+      "sha256": "dc68af99c0f8d0e301cbc2f7d2c91249df4237def525ce69dd490e61d7f22c06",
+      "path": "verification/v050/native_00_mobile_menu.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "native_03_character.png",
+      "label": "Character created with the actual UI",
+      "sha256": "31240a29624f4ea101000c8b8870f4aaeec880cf976e2497f91ab943e6333a25",
+      "path": "verification/v050/native_03_character.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_04_prologue.png",
+      "label": "Native vault arrival through New campaign",
+      "sha256": "1289f8c4e9814b59c9429dbdfac3fe598a37e4eba0c64ae3adcda8d4a5f3ef07",
+      "path": "verification/v050/native_04_prologue.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_05_airlock.png",
+      "label": "Native airlock after debug-assisted story progression",
+      "sha256": "c828956c1d0575c37f369c59ad903c5bd972fc4e3fb3d236fe11d63085f73abe",
+      "path": "verification/v050/native_05_airlock.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_06_exit.png",
+      "label": "Actual airlock destination, without changing the exit result",
+      "sha256": "c30888741ba924dd85cf2527ebff3286ec4fc9e9627bd832e50dcce744d224d7",
+      "path": "verification/v050/native_06_exit.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_07_real_aubagne.png",
+      "label": "Real vector footprints and terrain around Aubagne; interpreted game buildings",
+      "sha256": "255bb30791d9cf9adfbdb434fd2b3894026980d0500c95fd1ee9a9cce18061b9",
+      "path": "verification/v050/native_07_real_aubagne.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_07b_workshop_gateway.png",
+      "label": "Physical campaign gateway in the real geographic scene; measured debug-assisted approach",
+      "sha256": "64eb4d1dc0103be356f6bcc8aeffc62651aae0729e7b7cf0a162d0b78d64a6ac",
+      "path": "verification/v050/native_07b_workshop_gateway.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_07c_narrative_workshops.png",
+      "label": "Authored Aubagne workshops reached through the geographic gateway; explicitly a narrative scene",
+      "sha256": "fd9d13e5bf38ac0715f96b91bd50c389b65df7ea3fa939390430f3cb95abedd9",
+      "path": "verification/v050/native_07c_narrative_workshops.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_07e_mireille_dialogue.png",
+      "label": "Real Mireille campaign dialogue reached through the narrative workshop scene; existing dialogue API, actual choice button",
+      "sha256": "764f961836acceabbcbada9e4fb841e0bc9cc78d2928ab1c69faaf54bc9019cf",
+      "path": "verification/v050/native_07e_mireille_dialogue.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_07d_geographic_return.png",
+      "label": "Return from the authored workshops to the saved real geographic point",
+      "sha256": "e17c1112be5c6e0f3753fa94cbe39d4bcbc0ce3407ab388cd2eadbb218306b7b",
+      "path": "verification/v050/native_07d_geographic_return.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_08_day_road.png",
+      "label": "Measured road-side setup by a real cadastre boundary at noon; actual game render",
+      "sha256": "60e25d307cda68b7f2ef69fd34e60140577f809a13999a3b493e0361daa5998f",
+      "path": "verification/v050/native_08_day_road.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_09_night_road.png",
+      "label": "Same real road-side camera at 21:00; production night lighting",
+      "sha256": "85489ef983bee521b3efabe6b4993222b39a82cde69f5d323b684249f6122281",
+      "path": "verification/v050/native_09_night_road.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_09b_real_courtyard.png",
+      "label": "Elevated QA inspection of a real cadastral courtyard; source ring retained, measured ground, not a player traversal camera",
+      "sha256": "ed797b30af5d681d7fcecd840c1bd377618da2d2da5746ae98d89e04f06be3a8",
+      "path": "verification/v050/native_09b_real_courtyard.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_10_travel_1_confirmation.png",
+      "label": "Native Pip-Boy confirmation for Belvédère · Aubagne; discovery precondition explicitly debug-assisted",
+      "sha256": "e5dff47e120e7e0a16f3826583b379b32d8b250e70309bbd7d81dbdce4092a0f",
+      "path": "verification/v050/native_10_travel_1_confirmation.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_11_travel_1_arrival.png",
+      "label": "Actual geographic arrival at Belvédère · Aubagne; interpreted game landmarks on measured geography",
+      "sha256": "cd40c8efdd32d3136c54d496292b1ee94484b4c069499d2ce79bc9d0014ee111",
+      "path": "verification/v050/native_11_travel_1_arrival.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_10_travel_2_confirmation.png",
+      "label": "Native Pip-Boy confirmation for Épave · Galeries de l’Huveaune; discovery precondition explicitly debug-assisted",
+      "sha256": "e752e368a3c1711391ea1fad1fad38dd4f029cdbd01e3650097763237de6587f",
+      "path": "verification/v050/native_10_travel_2_confirmation.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_11_travel_2_arrival.png",
+      "label": "Actual geographic arrival at Épave · Galeries de l’Huveaune; interpreted game landmarks on measured geography",
+      "sha256": "de92d071983a7156493a82aa8fb82ad01090efcc74c32e94e8c1198ea54d5efc",
+      "path": "verification/v050/native_11_travel_2_arrival.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "native_12_continue.png",
+      "label": "Continue after a real browser reload, using native saved progress and installed geographic files",
+      "sha256": "76e041ec433bf618d3fc88a4a424e18be41c1b361fa122e7e4156e05311417fd",
+      "path": "verification/v050/native_12_continue.png",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "reportSelectedShots": [
+    "native_07_real_aubagne.png",
+    "native_07c_narrative_workshops.png",
+    "native_08_day_road.png",
+    "native_09_night_road.png",
+    "native_09b_real_courtyard.png",
+    "native_10_travel_2_confirmation.png",
+    "native_11_travel_2_arrival.png",
+    "native_12_continue.png"
+  ],
+  "evidenceFilesSha256": {
+    "verification/v050/NATIVE_REAL_MAP.json": "e1dd65806bc287653605b245cecf4deb7865c437bc05d0326cecbffb75786798",
+    "verification/v050/QA_POI_TRAVEL.json": "18abc5be8bb224572ef16efe36b112f2194682d302ce9726b9cdf0b5825b017f",
+    "verification/v050/QA_CAMPAIGN_MAP.json": "3db728c39766d6b6304c0047b4c3a308209c8f917157d7ac1ea72c60f3b83593",
+    "verification/v050/QA_CONTINUE_SAVE.json": "eefc2f09317754ccf9d44f2727a48d395e71c226fc5a0c59684b1e3955dec73c",
+    "verification/v050/QA_LEGACY.json": "ab3132b00845218faaff321c8dc92b2d9b2d01c780fd33a4ca0dd2622e8c2826",
+    "verification/v050/legacy/QA_ENCOUNTER_KERNEL.json": "dfc8a37813ca488fa99ba5d3e9bb7fe74309ba001cd66031a81c69b200d74465",
+    "verification/v050/legacy/QA_ENCOUNTERS.json": "6a22a5b2cabd1610996c32d3185f116ac8815a8523e0809e49b7043473a65d2f",
+    "verification/v050/legacy/QA_ENCOUNTER_SAVES.json": "8459a3170b3719f3280bd35fddcd96995cb042ee3ac6b3662ab154139b6b435e",
+    "verification/v050/legacy/QA_BUDGET_PASSAGES.json": "c35157bb6632a37b4f3c8ebe51db0502468bed78d9e2f9a661a5f4ab7448050b",
+    "verification/v050/legacy/QA_PREPARATION_RETURNS.json": "2d2dc408487cf1e8d2e1d5e4d1c7988ddd6792dacbf8bd0eb3b86d6168182243",
+    "verification/v050/legacy/QA_KERNEL_NEW.json": "8f07e18ac10f1c69e99f4581fa5486bd9f10bb01f89400c5c03014e79cbeee38",
+    "verification/v050/legacy/QA_KERNEL_LEGACY.json": "a74a5fb0363579ea49b452142b496510a5a28c48e49c0110545098369665c08a",
+    "verification/v050/legacy/QA_DISTRIBUTION.json": "9061175c8e272da3c05c488849d3cd6f6648c2ac9c6fb541d4c1c58d10d79473",
+    "verification/v050/legacy/QA_STREAMING_NEW.json": "0f2f7e0ad9334d6ad9e1fbb69571aa97c0251efeeb361c9bef3c16ec1dd800c2",
+    "verification/v050/legacy/QA_SERVER_IO.json": "9f4494b06f0064e033a216662185421e4cc030ada617c396eab6bb38258fc797",
+    "verification/v050/legacy/QA_LAB_ISOLATION.json": "0ff785ed5dfa6c027d7805101d55a90727aa45fe1fd972dd6e021328c1bb7a97",
+    "verification/v050/legacy/QA_RUNTIME.json": "b7632adbbb5c12895a4f9a03e3bd1dc02b18472425ace6b2a6c3b53a8053e905",
+    "verification/v050/legacy/QA_CAMPAIGN.json": "714d5948d2288f9936034a735967f29f6b0456d19b1f6d484f4cb6b50839cd2c",
+    "verification/v050/legacy/QA_PROLOGUE.json": "2aed3c84b3d50afc75afaa0e0d2b3b182bd4305afd43619f9a005883a929c433",
+    "verification/v050/legacy/QA_PRODUCT.json": "36b4c12c6631b5e22aba77818032bed3fa00d9830ba8f561b0caa034f940591a",
+    "verification/v050/QA_INSTALLERS.json": "83982783394dc2b7a469d2117cf34fa67c2668dfaca10e7fa9248e6071fa9589",
+    "verification/v050/LOCAL_DATA_STATE.json": "026199c1d6abb8f9980f16991660e020159968d9cbd4364cada19eb0318ca6ff",
+    "verification/v050/INSTALL_OFFLINE.json": "8eb0779655b3227f9eacef69db97895c0950a8224308ea54790a46c45706746f",
+    "verification/v050/INSTALL_OFFLINE_GZIP.json": "54e0600b840df812460b42d9d2661a53c843625eca98ac43ae3ec79e208c8bbf",
+    "verification/v050/IGN_OFFICIAL_SMOKE.json": "521b306a5897030f9945175589926a5b81d83e1f6177d2d480de6448445ac560",
+    "data/map_pack/acquisition_v050.json": "b777d04b2402ef87870e3d8ff3a9835c4e35f6827dd4e641834bfc0862feff48"
+  },
+  "releaseLocations": {
+    "github": "https://github.com/darknigthmare/fallout-Marseille",
+    "driveFolder": "https://drive.google.com/drive/folders/1xE5VpELY64tz5GV9CHHrlsIb_rfahRnQ",
+    "note": "Destinations de livraison ; ce rapport local ne constitue pas une preuve de publication distante."
+  },
+  "reproduction": "python3 tools/report_v050.py",
+  "reproductionNote": "Pillow et les JSON/captures existants suffisent. L’agrégation refuse une preuve en échec, un ancien build ou une capture modifiée.",
+  "visualReport": {
+    "html": "RAPPORT_VISUEL_V0.50.html",
+    "png": "RAPPORT_VISUEL_V0.50.png",
+    "embeddedNativeImages": 8,
+    "allOriginalScreenshotHashesVerified": true,
+    "html_sha256": "dacfd499b8becdc8eed0392b866ee2d69ed811e0e7bacdb58555085592cf1f10",
+    "png_sha256": "2afff22913d2672a56b390b62ddafbe03dfff1028f5bc82f5a0340ab4d73df42",
+    "rendering": "HTML autonome et composition Pillow avec huit captures natives redimensionnées sans recadrage.",
+    "reproducibility": "Contenus déterministes pour les mêmes preuves, polices DejaVu et version de Pillow."
+  }
+}

@@ -1,12 +1,20 @@
-FALLOUT : MISTRAL v0.49 — LE QUARTIER SE SOUVIENT
+FALLOUT : MISTRAL v0.50 — LES ROUTES RETROUVÉES
 
-Windows : LANCER_APP_WINDOWS.bat
-Linux : LANCER_APP_LINUX.sh
-macOS : LANCER_APP_MAC.command
+1. Extraire entièrement l’archive avant de lancer le jeu.
+2. Python 3 doit être installé.
+3. Windows : LANCER_APP_WINDOWS.bat
+   Linux : bash LANCER_APP_LINUX.sh
+   macOS : bash LANCER_APP_MAC.command
+4. Garder le serveur ouvert pendant la partie.
 
-Le projet complet inclut les sources, données disponibles, tests et historique.
-Le pack géographique intégral n’est pas embarqué.
+La fenêtre du navigateur utilise http://127.0.0.1:8765/index.html.
+Depuis GitHub, le premier lancement prépare les cartes fournies hors réseau.
+Dans l’archive JEU_COMPLET, les données sont déjà extraites.
 
-Ctrl + Maj + F9 : banc synthétique de coutures (pas Marseille réel).
-MAP > CONTINUITÉ : état de chargement et journal des rencontres réellement mémorisées.
-Le banc ne peut pas écrire dans les emplacements manuels ou automatiques de campagne.
+Au sas : Sortir vers Aubagne ouvre le territoire géographique.
+La balise Ateliers d’Aubagne mène à Mireille et à la campagne narrative.
+MAP > LIEUX ET VOYAGES : suivre un lieu découvert et confirmer un voyage rapide.
+Cartes & territoire : état réellement installé sur votre disque.
+
+Le programme HTML ouvert seul ne suffit pas à lire le pack local.
+Lire README.md et docs/KNOWN_LIMITATIONS_V0.50.md pour le périmètre exact.

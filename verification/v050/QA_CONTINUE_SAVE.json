@@ -1,0 +1,102 @@
+{
+  "version": "0.50.0",
+  "html_sha256": "ac473edc0ecd222db0ed0dd3b29f30b245dfb2f27a967c7d588a200b11d784e5",
+  "module_inserted_before_integration": false,
+  "scope": "Real Chromium and origin localStorage; private dated-save fixtures, production validator/migration/button/loader; no geography substitute",
+  "passed": 18,
+  "failed": 0,
+  "total": 18,
+  "errors": [],
+  "checks": [
+    {
+      "name": "Courant récent prioritaire sur autosave et slot anciens",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Classement et rafraîchissement ne modifient aucune sauvegarde",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Autosave réellement plus récente sélectionnée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Slot réellement plus récent sélectionné",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Sauvegarde v049 plus récente prise en compte",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Égalité de date donne priorité au courant",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Égalité sans courant reste déterministe",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Égalité entre legacy respecte la version la plus récente",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Date invalide ne passe pas devant une sauvegarde datée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Enveloppe sans date valide utilise lastSave de son snapshot",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "JSON corrompu et snapshot invalide ignorés",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Vrai bouton Continuer charge le secours validé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement du secours conserve sa clé source intacte",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Migration v049 conserve prologue et inventaire",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chargement sélectionné ne facture pas de trajet",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Clic Continuer reprend le courant malgré une enveloppe existante",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Bouton désactivé lorsque toutes les sauvegardes sont invalides",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ]
+}

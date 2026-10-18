@@ -1,0 +1,110 @@
+{
+  "version": "0.50.0",
+  "passed": true,
+  "generatedAt": "2026-10-18T15:13:01Z",
+  "scope": "Fresh output from an isolated bundle clone; largest original ZIP absent, supplied only as gzip; original ZIP byte count/SHA-256 enforced; actual vectors and IGN grids compared; subprocess network requests blocked and audited.",
+  "command": "python3 tools/install_local_pack_v041.py --offline --output <empty-directory> --workers 3",
+  "archives": 24,
+  "archiveBytes": 89347499,
+  "coordinatesComparedBySha256": 5884,
+  "emptyProofsComparedByteForByte": 1327,
+  "terrainComparedByteForByte": [
+    {
+      "path": "terrain/geo_marseille.json",
+      "sha256": "686951997edd5ed05ec4750894847893b92387fbdc2f4e4f95c1e5bba0749fa9",
+      "bytes": 151441,
+      "valid": 22282,
+      "noData": 3639
+    },
+    {
+      "path": "terrain/geo_huveaune.json",
+      "sha256": "a6750fdf539229d0a74e8359ba2665031e03d1f8ff590fab133af842680f2570",
+      "bytes": 176639,
+      "valid": 25921,
+      "noData": 0
+    },
+    {
+      "path": "terrain/geo_garlaban.json",
+      "sha256": "f71d8782439ed01f55d105099ea84c72dddab4dda01182384db99510d03e2c7f",
+      "bytes": 178814,
+      "valid": 25921,
+      "noData": 0
+    },
+    {
+      "path": "terrain/geo_calanques.json",
+      "sha256": "428ab1b2d292e0207cc98957ff6bf0b3fc2207e5f9ba66ef87af06e6a7fd8288",
+      "bytes": 148525,
+      "valid": 21063,
+      "noData": 4858
+    },
+    {
+      "path": "terrain/geo_laciotat.json",
+      "sha256": "5d0dc36a5ee43ef5fd987a93ed3cf7afbeefb2ddbce74c5a696146af74380af3",
+      "bytes": 152338,
+      "valid": 21717,
+      "noData": 4204
+    },
+    {
+      "path": "terrain/geo_frioul.json",
+      "sha256": "69874a4843967280a47ebee19ca37757ab2f64dec50af2ef5d21a9b1df47d07e",
+      "bytes": 128311,
+      "valid": 6198,
+      "noData": 19723
+    },
+    {
+      "path": "terrain/geo_etoile.json",
+      "sha256": "e665ee5e9225db080322c054de0be8aea5ea82e674b9da264a24c4dd4666463f",
+      "bytes": 179308,
+      "valid": 25921,
+      "noData": 0
+    },
+    {
+      "path": "terrain/geo_saintebaume.json",
+      "sha256": "664c85b4e9f3881b193e16e189b0b9333581dfc34aa43f0954b30641efb9f225",
+      "bytes": 179641,
+      "valid": 25921,
+      "noData": 0
+    }
+  ],
+  "networkGuardSelfTestPassed": true,
+  "guardedPythonProcesses": 2,
+  "networkAttempts": 0,
+  "installerExitCode": 0,
+  "independentAudit": {
+    "version": "0.46.0",
+    "vector": {
+      "expected": 5884,
+      "pbf": 4557,
+      "officialEmpty": 1327,
+      "missing": 0,
+      "invalid": 0,
+      "bytes": 86973739,
+      "examples": []
+    },
+    "terrain": {
+      "expected": 8,
+      "valid": 8,
+      "missing": 0,
+      "invalid": 0,
+      "samples": 174944,
+      "noData": 32424,
+      "examples": []
+    },
+    "complete": true,
+    "scope": "État des fichiers réellement présents. Les anciens rapports de cache cloud ne sont pas une preuve de disponibilité actuelle."
+  },
+  "installedVectorInventorySha256": "0d3531dc8f6b2d7e0eefd296f9f13bdd19ccdb601fc43bc78c6e188b131ba9f6",
+  "temporaryArchiveCacheRemoved": true,
+  "seconds": 61.198,
+  "isolatedBundleClone": true,
+  "gzipTransport": [
+    {
+      "suppliedPath": "data/map_pack/archives/base_00060_100.zip.gz",
+      "compressedBytes": 7271970,
+      "compressedSha256": "8e5c14d3ff5600622792fb33a83994c3527de014c544094cd0578e2715ca9862",
+      "originalZipAbsentFromClone": true,
+      "decodedBytesLimit": 13437755,
+      "expectedOriginalZipSha256": "bdfe4439f082f4a6e9d8b1c0472a4a1cefcd4e215457eec465620bedb619df94"
+    }
+  ]
+}

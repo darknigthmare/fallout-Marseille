@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#11170f" />
   <meta name="description" content="Fallout : Mistral — prototype 3D hors ligne non officiel situé entre Aubagne, Marseille et La Ciotat." />
-  <title>Fallout : Mistral — v0.42</title>
+  <title>Fallout : Mistral — v0.50 · Les routes retrouvées</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icons/mistral-192.png" />
 <style>
@@ -499,6 +499,27 @@ body.v025-targeting #v023CriticalHud,body.v025-executing #v023CriticalHud,body.v
 
 .v049-memory{margin:0 0 22px;padding:18px;border:1px solid #617755;background:#17251d}.v049-memory h2{color:#e8d99d}.v049-memory small{display:block;line-height:1.5;color:#b4c9aa}.v049-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}.v049-metrics article{padding:12px;border:1px solid #536c4c;background:#101c15}.v049-metrics b{display:block;font-size:26px;color:#eee6bb}.v049-metrics span{font-size:12px;color:#b7cba9}@media(max-width:760px){.v049-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.v049-memory{padding:12px}}
 
+/* Keep the entire menu reachable on desktop, short windows and phones. */
+#menuScreen .menu-copy{justify-content:flex-start;overflow-y:auto;overscroll-behavior:contain;max-height:100dvh;width:min(760px,100vw);padding-top:clamp(1.5rem,5vh,4rem);padding-bottom:3.2rem}
+#menuScreen .menu-copy h1 span{font-size:clamp(3.8rem,8vw,7rem)}
+#menuScreen .menu-copy h1 strong{font-size:clamp(2.2rem,4.7vw,4rem)}
+#menuScreen .tagline{margin:1.2rem 0 1.4rem}
+#menuScreen .menu-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:min(500px,100%);max-height:none;overflow:visible;flex-shrink:0;padding-right:0;gap:.45rem}
+#menuScreen .menu-actions button{min-height:44px;padding:.65rem .9rem;font-size:.78rem;line-height:1.3}
+#menuScreen .menu-actions #btnContinue,#menuScreen .menu-actions #btnNew{grid-column:1/-1}
+#menuScreen .legal{margin-top:.8rem}
+#v050MapSummary{max-width:500px;margin:1rem 0 0;padding:.75rem .9rem;border-left:2px solid #8b875b;background:#09120ddd;color:#b7c5a3;font-size:.72rem;line-height:1.5}
+#v050MapSummary b,#v050MapSummary span{display:block}
+#v050MapSummary b{color:#e1d8b4;margin-bottom:.15rem}
+#v050MapSummary[data-ready="true"]{border-color:#94ba78}
+.v050-geography{margin-bottom:22px;padding:20px;border:1px solid #a4945a;background:linear-gradient(140deg,#233426,#142018)}
+.v050-geography h2{color:#eee2aa}
+.v050-geography p{line-height:1.55}
+.v050-geography small{display:block;line-height:1.5;color:#b3c6a7}
+.v050-install-note{padding:12px;background:#0c1710;border-left:3px solid #a49a65}
+.v050-travel{margin-top:18px;padding-top:15px;border-top:1px solid #89935f}
+@media(max-width:600px){#menuScreen .menu-copy{padding-left:1.4rem;padding-right:1.4rem}#menuScreen .menu-actions{grid-template-columns:1fr}#menuScreen .menu-version{font-size:.55rem;background:#0b120df0;padding:5px;right:10px;bottom:6px}.v050-geography{padding:13px}}
+
 </style>
 </head>
 <body>
@@ -767,11 +788,11 @@ body.v025-targeting #v023CriticalHud,body.v025-executing #v023CriticalHud,body.v
 (() => {
 'use strict';
 
-const VERSION = '0.49.0';
-const SAVE_KEY = 'fallout_mistral_save_v049';
-const LEGACY_SAVE_KEYS = ['fallout_mistral_save_v048','fallout_mistral_save_v047','fallout_mistral_save_v046','fallout_mistral_save_v045','fallout_mistral_save_v044','fallout_mistral_save_v043','fallout_mistral_save_v042','fallout_mistral_save_v041','fallout_mistral_save_v040','fallout_mistral_save_v038','fallout_mistral_save_v037','fallout_mistral_save_v036','fallout_mistral_save_v035','fallout_mistral_save_v030','fallout_mistral_save_v029','fallout_mistral_save_v028','fallout_mistral_save_v027','fallout_mistral_save_v026','fallout_mistral_save_v025','fallout_mistral_save_v024','fallout_mistral_save_v023','fallout_mistral_save_v022','fallout_mistral_save_v021','fallout_mistral_save_v020','fallout_mistral_save_v019','fallout_mistral_save_v018','fallout_mistral_save_v017','fallout_mistral_save_v016','fallout_mistral_save_v015','fallout_mistral_save_v014','fallout_mistral_save_v013','fallout_mistral_save_v012','fallout_mistral_save_v011','fallout_mistral_save_v09','fallout_mistral_save_v08','fallout_mistral_save_v07','fallout_mistral_save_v06','fallout_mistral_save_v05','fallout_mistral_save_v04','fallout_mistral_save_v03'];
-const SETTINGS_KEY = 'fallout_mistral_settings_v049';
-const LEGACY_SETTINGS_KEYS = ['fallout_mistral_settings_v048','fallout_mistral_settings_v047','fallout_mistral_settings_v046','fallout_mistral_settings_v045','fallout_mistral_settings_v044','fallout_mistral_settings_v043','fallout_mistral_settings_v042','fallout_mistral_settings_v041','fallout_mistral_settings_v040','fallout_mistral_settings_v038','fallout_mistral_settings_v037','fallout_mistral_settings_v036','fallout_mistral_settings_v035','fallout_mistral_settings_v030','fallout_mistral_settings_v029','fallout_mistral_settings_v028','fallout_mistral_settings_v027','fallout_mistral_settings_v026','fallout_mistral_settings_v025','fallout_mistral_settings_v024','fallout_mistral_settings_v023','fallout_mistral_settings_v022','fallout_mistral_settings_v021','fallout_mistral_settings_v020','fallout_mistral_settings_v018','fallout_mistral_settings_v017','fallout_mistral_settings_v016','fallout_mistral_settings_v015','fallout_mistral_settings_v014','fallout_mistral_settings_v013','fallout_mistral_settings_v012','fallout_mistral_settings_v011','fallout_mistral_settings_v09','fallout_mistral_settings_v08','fallout_mistral_settings_v07'];
+const VERSION = '0.50.0';
+const SAVE_KEY = 'fallout_mistral_save_v050';
+const LEGACY_SAVE_KEYS = ['fallout_mistral_save_v049','fallout_mistral_save_v048','fallout_mistral_save_v047','fallout_mistral_save_v046','fallout_mistral_save_v045','fallout_mistral_save_v044','fallout_mistral_save_v043','fallout_mistral_save_v042','fallout_mistral_save_v041','fallout_mistral_save_v040','fallout_mistral_save_v038','fallout_mistral_save_v037','fallout_mistral_save_v036','fallout_mistral_save_v035','fallout_mistral_save_v030','fallout_mistral_save_v029','fallout_mistral_save_v028','fallout_mistral_save_v027','fallout_mistral_save_v026','fallout_mistral_save_v025','fallout_mistral_save_v024','fallout_mistral_save_v023','fallout_mistral_save_v022','fallout_mistral_save_v021','fallout_mistral_save_v020','fallout_mistral_save_v019','fallout_mistral_save_v018','fallout_mistral_save_v017','fallout_mistral_save_v016','fallout_mistral_save_v015','fallout_mistral_save_v014','fallout_mistral_save_v013','fallout_mistral_save_v012','fallout_mistral_save_v011','fallout_mistral_save_v09','fallout_mistral_save_v08','fallout_mistral_save_v07','fallout_mistral_save_v06','fallout_mistral_save_v05','fallout_mistral_save_v04','fallout_mistral_save_v03'];
+const SETTINGS_KEY = 'fallout_mistral_settings_v050';
+const LEGACY_SETTINGS_KEYS = ['fallout_mistral_settings_v049','fallout_mistral_settings_v048','fallout_mistral_settings_v047','fallout_mistral_settings_v046','fallout_mistral_settings_v045','fallout_mistral_settings_v044','fallout_mistral_settings_v043','fallout_mistral_settings_v042','fallout_mistral_settings_v041','fallout_mistral_settings_v040','fallout_mistral_settings_v038','fallout_mistral_settings_v037','fallout_mistral_settings_v036','fallout_mistral_settings_v035','fallout_mistral_settings_v030','fallout_mistral_settings_v029','fallout_mistral_settings_v028','fallout_mistral_settings_v027','fallout_mistral_settings_v026','fallout_mistral_settings_v025','fallout_mistral_settings_v024','fallout_mistral_settings_v023','fallout_mistral_settings_v022','fallout_mistral_settings_v021','fallout_mistral_settings_v020','fallout_mistral_settings_v018','fallout_mistral_settings_v017','fallout_mistral_settings_v016','fallout_mistral_settings_v015','fallout_mistral_settings_v014','fallout_mistral_settings_v013','fallout_mistral_settings_v012','fallout_mistral_settings_v011','fallout_mistral_settings_v09','fallout_mistral_settings_v08','fallout_mistral_settings_v07'];
 const $ = (id) => document.getElementById(id);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -5215,7 +5236,7 @@ Object.assign(window.__MISTRAL_DEBUG,{
 /* Tuiles vectorielles officielles, cadastre exact, HLOD et audit de fidélité */
 /* ========================================================================== */
 
-const V017_MAP_VERSION='0.49.0';
+const V017_MAP_VERSION='0.50.0';
 const V017_ATTRIBUTION='Fond vectoriel © OpenStreetMap contributors · Cadastre Etalab/DINUM · licences ouvertes';
 const V017_TILE_SOURCES={
   base:{id:'france-vector',zoom:14,url:'https://openmaptiles.data.gouv.fr/data/france-vector/{z}/{x}/{y}.pbf',local:'data/map_pack/france-vector/{z}/{x}/{y}.pbf'},
@@ -5785,7 +5806,7 @@ v017GroundExistingContent=function(w){
 
 /* v0.18 — Campaign safeguards, local quest journal and subtitle cassette player. */
 let v018SessionKind='campaign';
-const V018_SANDBOX_KEY='fallout_mistral_sandbox_v049';
+const V018_SANDBOX_KEY='fallout_mistral_sandbox_v050';
 const v018BaseState=baseState;
 baseState=function(){const s=v018BaseState();s.v018={coordinates:'EPSG:2154-local',travelMode:'story',trackedQuest:null,tapeBookmarks:{},tapeSpeed:1};return s;};
 const v018Migrate=migrateState;
@@ -10031,6 +10052,576 @@ function v049AfterInit(){document.title='Fallout : Mistral · v0.49 · Le quarti
  v049SiteGeometry:id=>MistralIntegrity.hash(world.staticDraws.filter(d=>d.v042Site===id).map(d=>[d.mesh,d.pos,d.scale,d.rotY,d.color]))});
 }
 
+/* Continue resumes the newest valid campaign, regardless of its storage shape.
+   Reading/ranking never rewrites an autosave, manual slot or legacy source. */
+function v050ContinueTimestamp(value){
+  if(typeof value==='number')return Number.isFinite(value)&&value>0&&value<=8640000000000000?value:0;
+  if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}T/.test(value))return 0;
+  const n=Date.parse(value);return Number.isFinite(n)&&n>0?n:0;
+}
+function v050ContinueCandidates(){
+  const rows=[],seen=new Set(),sources=[{key:SAVE_KEY,kind:'current',rank:0},
+    ...[1,2,3].map(slot=>({key:v035SlotKey(slot),kind:'slot',slot,rank:1})),
+    {key:V035_AUTOSAVE_KEY,kind:'auto',rank:2},
+    ...LEGACY_SAVE_KEYS.map((key,index)=>({key,kind:'legacy',rank:3,index}))];
+  for(const source of sources){
+    if(seen.has(source.key))continue;seen.add(source.key);
+    try{
+      const raw=storage.getItem(source.key);if(!raw||raw.length>8*1024*1024)continue;
+      const parsed=JSON.parse(raw),envelope=source.kind==='slot'||source.kind==='auto',snapshot=envelope?parsed?.snapshot:parsed;
+      v018ValidateSave(snapshot);
+      const savedAt=(envelope?v050ContinueTimestamp(parsed.savedAt):0)||v050ContinueTimestamp(snapshot.lastSave);
+      rows.push({...source,savedAt,snapshot});
+    }catch{ /* An unreadable candidate does not hide another valid save. */ }
+  }
+  // Current wins exact ties; manual slots keep deterministic slot order, then
+  // autosave and legacy keys in their declared (newest-version-first) order.
+  return rows.sort((a,b)=>b.savedAt-a.savedAt||a.rank-b.rank||(a.slot||0)-(b.slot||0)||(a.index||0)-(b.index||0));
+}
+function v050ContinueInfo(){return v050ContinueCandidates().map(c=>({kind:c.kind,key:c.key,slot:c.slot||0,savedAt:c.savedAt,zone:c.snapshot.player.zone,version:c.snapshot.version||null}));}
+v035RefreshContinue=function(){
+  const b=$('btnContinue');if(!b)return;
+  const best=v050ContinueCandidates()[0];b.disabled=!best;
+  if(!best){b.textContent='Continuer';b.title='';return;}
+  const chapter=v035ChapterForStage(Number(best.snapshot.quest?.main)||0).name;
+  b.textContent='Continuer · '+chapter;
+  const date=best.savedAt?new Date(best.savedAt).toLocaleString('fr-FR'):'date inconnue';
+  b.title=`${best.snapshot.character.name||'Survivant'} · ${v018ZoneName(best.snapshot.player.zone)} · ${date}`;
+};
+v035ContinueLatest=async function(){
+  const best=v050ContinueCandidates()[0];if(!best){v035RefreshContinue();toast('Aucune sauvegarde de campagne lisible.','bad');return false;}
+  try{
+    // Validate migration before replacing the live session or any stored data.
+    const next=migrateState(best.snapshot);v018ValidateSave(next);
+    if(V046.busy||V047.pending)v046Cancel();
+    state=next;v018SessionKind='campaign';if(best.kind==='slot')state.v035.activeSlot=best.slot;
+    syncEquipment();gameStarted=true;v035CloseScreen();hideAllScreens();
+    v035BeginSession(best.kind==='slot'?'slot-'+best.slot:'continuer-'+best.kind);
+    const loaded=loadZone(state.player.zone,{spawn:state.player.pos.slice(),yaw:state.player.yaw,silent:true,force:true,noTravel:true,instance:!V015_GEO_MACROS[state.player.zone]});
+    // Geographic preparation is asynchronous. Let its normal loading gate own
+    // retry/cancel and only report a successful Continue once it has committed.
+    if(loaded&&typeof loaded.then==='function'&&await loaded===false)return false;
+    if(state!==next)return false;
+    saveGame(false);v035RefreshContinue();toast('Campagne chargée.','good');return true;
+  }catch(e){toast('Sauvegarde refusée : '+String(e.message||e),'bad');v035RefreshContinue();return false;}
+};
+updateContinueButton=function(){v035RefreshContinue();};
+const v050ContinueAfterBase=v035AfterInit;
+v035AfterInit=function(){v050ContinueAfterBase();$('btnContinue').onclick=v035ContinueLatest;
+  Object.assign(window.__MISTRAL_DEBUG,{v035ContinueLatest,v050ContinueInfo});v035RefreshContinue();};
+
+/* The airlock commits its campaign progress only after a measured, walkable
+   exterior has been published. Authored workshops remain an explicit narrative
+   scene, connected by a physical gateway and a persistent geographic return. */
+const V050_CAMPAIGN_POINT=[43.2966,5.5708];
+const V050_CAMPAIGN={serial:0,active:null,last:null,completed:0,cancelled:0,failed:0};
+const V050_CAMPAIGN_GATE='v050-campaign-workshops';
+const V050_CAMPAIGN_RETURN='v050-campaign-territory';
+function v050CampaignFresh(){return{schema:1,route:null,gateway:null,returnPoint:null,workshopVisits:0};}
+function v050CampaignPosition(p){return Array.isArray(p)&&p.length===3&&p.every(Number.isFinite);}
+function v050CampaignReturnPoint(r){
+  if(!r||!V015_GEO_MACROS[r.macro]||!v050CampaignPosition(r.pos)||!v046Region(...v015GeoUnproject(r.macro,r.pos[0],r.pos[2])))return null;
+  return{macro:r.macro,pos:r.pos.slice(),yaw:Number.isFinite(r.yaw)?r.yaw:0,pitch:Number.isFinite(r.pitch)?clamp(r.pitch,-1.3,1.3):0};
+}
+const v050CampaignBaseState=baseState;
+baseState=function(){const s=v050CampaignBaseState();s.v050Campaign=v050CampaignFresh();return s;};
+const v050CampaignMigrateBase=migrateState;
+migrateState=function(input={}){
+  const s=v050CampaignMigrateBase(input),old=input.v050Campaign||{},fresh=v050CampaignFresh();
+  const raw=v015GeoProject('geo_huveaune',...V050_CAMPAIGN_POINT),p=old.gateway;
+  s.v050Campaign={...fresh,route:['geographic','story'].includes(old.route)?old.route:null,
+    gateway:v050CampaignPosition(p)&&Math.hypot(p[0]-raw[0],p[2]-raw[2])<=125?p.slice():null,
+    returnPoint:v050CampaignReturnPoint(old.returnPoint),workshopVisits:Math.max(0,Math.floor(Number(old.workshopVisits)||0))};
+  return s;
+};
+state=migrateState(state);if(world)v049Own(world);
+
+function v050CampaignCurrent(ctx){return!!ctx&&V050_CAMPAIGN.active===ctx&&ctx.state===state&&!ctx.cancelled&&!ctx.applied;}
+function v050CampaignGuard(ctx){
+  if(!v050CampaignCurrent(ctx)||world!==ctx.departure||state.player.zone!==ctx.zone)
+    throw Error('Passage abandonné : la session ou le lieu de départ a changé.');
+  if(state.player.pos.some((n,i)=>Math.abs(n-ctx.pos[i])>.02)||state.worldTime!==ctx.time||
+    state.v035.prologue.stage!==ctx.prologueStage||state.v035.prologue.complete!==ctx.prologueComplete||state.quest.main!==ctx.main)
+    throw Error('Passage abandonné : la situation de départ a changé.');
+}
+function v050CampaignInvalidate(reason='annulation'){
+  const ctx=V050_CAMPAIGN.active;
+  if(ctx&&!ctx.applied){ctx.cancelled=true;ctx.status='cancelled';V050_CAMPAIGN.cancelled++;V050_CAMPAIGN.last={id:ctx.id,kind:ctx.kind,status:'cancelled',reason};}
+  V050_CAMPAIGN.active=null;return ctx;
+}
+function v050CampaignBegin(kind){
+  const ctx={id:++V050_CAMPAIGN.serial,kind,state,departure:world,zone:state.player.zone,pos:state.player.pos.slice(),time:state.worldTime,
+    prologueStage:state.v035.prologue.stage,prologueComplete:state.v035.prologue.complete,main:state.quest.main,
+    snapshot:deepClone(state),status:'loading',applied:false,cancelled:false,published:false,arrival:null,
+    bank:V046.terrain,readyAnchor:V046.readyAnchor,active:new Map(V042_RUNTIME.active),npcData:new Map(V042_RUNTIME.npcData),
+    worldId:V042_RUNTIME.worldId,nearest:V042_RUNTIME.nearest,loaded:new Map(V017_RUNTIME.loaded)};
+  V050_CAMPAIGN.active=ctx;return ctx;
+}
+function v050CampaignRollback(ctx){
+  // A failed publication may only restore the transaction's own scene/state.
+  // It must never copy the old campaign over a subsequently loaded save.
+  if(!v050CampaignCurrent(ctx)||!ctx.published||world!==ctx.target)return false;
+  const restored=deepClone(ctx.snapshot);for(const k of Object.keys(state))delete state[k];Object.assign(state,restored);
+  world=ctx.departure;V046.terrain=ctx.bank;V046.readyAnchor=ctx.readyAnchor;V046.prepared=null;
+  V042_RUNTIME.active=new Map(ctx.active);V042_RUNTIME.npcData=new Map(ctx.npcData);V042_RUNTIME.worldId=ctx.worldId;V042_RUNTIME.nearest=ctx.nearest;
+  V017_RUNTIME.loaded=new Map(ctx.loaded);V049.lastBind=null;v049Own(world);
+  ctx.published=false;ctx.arrival=null;updateLocation();updateQuestUI(false);updateHUD();return true;
+}
+function v050CampaignFailed(ctx,message){
+  if(!v050CampaignCurrent(ctx))return false;
+  v050CampaignRollback(ctx);ctx.status='failed';V050_CAMPAIGN.failed++;
+  V050_CAMPAIGN.last={id:ctx.id,kind:ctx.kind,status:'failed',reason:String(message||'Le passage n’est pas prêt.')};return false;
+}
+/* The legacy scene loader autosaves during its final synchronous publication.
+   Hold that save until the route and campaign progress form one complete state. */
+const v050CampaignSaveBase=saveGame;
+saveGame=function(...args){const c=V050_CAMPAIGN.active;if(v050CampaignCurrent(c))return false;return v050CampaignSaveBase(...args);};
+
+function v050CampaignArrival(stage,w,ctx,plan){
+  if(ctx.returnPoint){
+    const r=ctx.returnPoint,[x,,z]=r.pos,y=v050TravelGround(stage,w,x,z,.6);
+    if(y===null)throw Error('Le point de retour enregistré n’est plus praticable. Les ateliers restent accessibles.');
+    for(const[dx,dz]of [[.8,0],[-.8,0],[0,.8],[0,-.8]]){
+      const h=v050TravelGround(stage,w,x+dx,z+dz,.4);
+      if(h===null||Math.abs(h-y)>.65)throw Error('La sortie des ateliers ne dispose pas d’une marge de marche sûre.');
+    }
+    return{pos:[x,y,z],anchor:state.v050Campaign.gateway?.slice()||null,yaw:r.yaw,pitch:r.pitch};
+  }
+  const site={id:V050_CAMPAIGN_GATE,macro:w.id,lat:V050_CAMPAIGN_POINT[0],lon:V050_CAMPAIGN_POINT[1]};
+  const arrival=v050TravelArrival(stage,w,site,plan);arrival.pitch=0;return arrival;
+}
+const v050CampaignPrepareBase=v046Prepare;
+v046Prepare=async function(plan,resources,w,signal){
+  const task=V047.pending,ctx=task?.opts?.v050CampaignId?V050_CAMPAIGN.active:null;
+  if(ctx&&task.opts.v050CampaignId===ctx.id)v050CampaignGuard(ctx);
+  const stage=await v050CampaignPrepareBase(plan,resources,w,signal);
+  if(!ctx||task?.opts?.v050CampaignId!==ctx.id)return stage;
+  MistralWork.check(signal);v050CampaignGuard(ctx);
+  ctx.arrival=v050CampaignArrival(stage,w,ctx,plan);MistralWork.check(signal);v050CampaignGuard(ctx);
+  task.opts.yaw=ctx.arrival.yaw;stage.height=ctx.arrival.pos[1];stage.v050Campaign=ctx;return stage;
+};
+const v050CampaignPublishBase=v046Publish;
+v046Publish=function(w,stage,plan){
+  const ctx=stage.v050Campaign;if(ctx)v050CampaignGuard(ctx);
+  const result=v050CampaignPublishBase(w,stage,plan);
+  if(ctx){ctx.loadedAnchor=plan.p.slice();plan.p=ctx.arrival.pos.slice();ctx.published=true;}
+  return result;
+};
+function v050CampaignCompletePrologue(route){
+  state.v035.prologue.complete=true;state.v035.prologue.stage=9;state.quest.main=Math.max(2,state.quest.main);
+  state.player.discovered=[...new Set(state.player.discovered.filter(id=>id!=='vault_prologue').concat(['vault']))];
+  state.v050Campaign.route=route;
+}
+function v050CampaignFinishMap(ctx){
+  if(!v050CampaignCurrent(ctx)||!ctx.published||world!==ctx.target||!ctx.arrival)return false;
+  const p=ctx.arrival.pos,expected=[p[0],p[1]+playerEyeHeight(),p[2]];
+  if(state.player.pos.some((n,i)=>Math.abs(n-expected[i])>.02))return v050CampaignFailed(ctx,'La position publiée diffère de l’arrivée contrôlée.');
+  if(ctx.kind==='exit')v050CampaignCompletePrologue('geographic');
+  state.v018.travelMode='geographic';state.player.pitch=ctx.arrival.pitch||0;jumpVelocity=0;onGround=true;
+  state.geo.lastMacro=world.id;state.geo.visitedMacros[world.id]=true;
+  state.v046.lastLocation=v015GeoUnproject(world.id,p[0],p[2]);
+  if(ctx.arrival.anchor)state.v050Campaign.gateway=ctx.arrival.anchor.slice();
+  state.v050Campaign.returnPoint={macro:world.id,pos:state.player.pos.slice(),yaw:state.player.yaw,pitch:state.player.pitch};
+  v050CampaignAttachGateway(world);ctx.applied=true;ctx.status='complete';V050_CAMPAIGN.completed++;
+  V050_CAMPAIGN.last={id:ctx.id,kind:ctx.kind,status:'complete',arrival:state.player.pos.slice(),loadedAnchor:ctx.loadedAnchor.slice(),real:!V046.lab};V050_CAMPAIGN.active=null;
+  updateLocation();updateQuestUI(true);updateHUD();saveGame(false);
+  toast(ctx.kind==='exit'?'AUBAGNE · Rejoignez la balise des ateliers pour retrouver Mireille.':'Retour au territoire · position géographique retrouvée.','good');return true;
+}
+const v050CampaignEnsureBase=v046Ensure;
+v046Ensure=async function(lat,lon,w=world,initial=false,opts={}){
+  const id=opts.v050CampaignId,ctx=id?V050_CAMPAIGN.active:null;
+  if(id&&(!ctx||ctx.id!==id||!v050CampaignCurrent(ctx)))return false;
+  if(!id&&V050_CAMPAIGN.active)v050CampaignInvalidate('autre chargement');
+  if(ctx){ctx.status='loading';ctx.arrival=null;ctx.published=false;}
+  const ok=await v050CampaignEnsureBase(lat,lon,w,initial,opts);
+  if(!ctx)return ok;
+  if(ok)return v050CampaignFinishMap(ctx);
+  if(v050CampaignCurrent(ctx))v050CampaignFailed(ctx,V046.error?.[0]?.message);
+  else if(V050_CAMPAIGN.active===ctx)v050CampaignInvalidate('session modifiée');
+  return false;
+};
+const v050CampaignCancelBase=v046Cancel;
+v046Cancel=function(){v050CampaignInvalidate();return v050CampaignCancelBase();};
+const v050CampaignLoadBase=loadZone;
+loadZone=function(id,opts={}){
+  const ctx=V050_CAMPAIGN.active;if(ctx&&opts.v050CampaignId!==ctx.id)v050CampaignInvalidate('changement de lieu');
+  return v050CampaignLoadBase(id,opts);
+};
+const v050CampaignNewBase=startNewGame;
+startNewGame=function(...args){v050CampaignInvalidate('nouvelle partie');return v050CampaignNewBase(...args);};
+
+function v050CampaignReady(){return!V050_CAMPAIGN.active&&!V046.busy&&!V047.pending&&!zoneTransitioning&&state.player.hp>0&&['PLAYING','DIALOGUE'].includes(mode);}
+function v050CampaignLoadMap(kind){
+  if(!v050CampaignReady())return false;
+  if(kind==='exit'&&(world?.id!=='vault_prologue'||state.v035.prologue.stage<8||state.v035.prologue.complete))return false;
+  if(kind==='return'&&world?.id!=='aubagne')return false;
+  closeDialogue();const ctx=v050CampaignBegin(kind);
+  ctx.returnPoint=kind==='return'?v050CampaignReturnPoint(state.v050Campaign.returnPoint):null;
+  const ll=ctx.returnPoint?v015GeoUnproject(ctx.returnPoint.macro,ctx.returnPoint.pos[0],ctx.returnPoint.pos[2]):V050_CAMPAIGN_POINT;
+  ctx.target=v046World(v046Region(...ll));
+  return v046Ensure(...ll,ctx.target,true,{v046Reposition:true,v050CampaignId:ctx.id,noTravel:true,force:true,silent:true,geoDirect:true});
+}
+function v050CampaignLoadStory(kind){
+  if(!v050CampaignReady())return false;
+  if(kind==='story-exit'&&(world?.id!=='vault_prologue'||state.v035.prologue.stage<8||state.v035.prologue.complete))return false;
+  if(kind==='workshops'&&!v050CampaignNear(V050_CAMPAIGN_GATE))return false;
+  closeDialogue();const ctx=v050CampaignBegin(kind),point=world?.v046?{macro:world.id,pos:state.player.pos.slice(),yaw:state.player.yaw,pitch:state.player.pitch}:null;
+  try{
+    loadZone('aubagne',{instance:true,force:true,silent:true,noTravel:true,v050CampaignId:ctx.id});ctx.target=world;ctx.published=world?.id==='aubagne';
+    if(!v050CampaignCurrent(ctx)||!ctx.published||world===ctx.departure)throw Error('Les ateliers n’ont pas été chargés.');
+    if(kind==='story-exit')v050CampaignCompletePrologue('story');
+    if(point)state.v050Campaign.returnPoint=point;
+    state.v018.travelMode='story';state.v050Campaign.workshopVisits++;v050CampaignAttachNarrativeReturn(world);
+    ctx.applied=true;ctx.status='complete';V050_CAMPAIGN.completed++;V050_CAMPAIGN.last={id:ctx.id,kind,status:'complete',zone:'aubagne',real:false};V050_CAMPAIGN.active=null;
+    updateLocation();updateQuestUI(true);updateHUD();saveGame(false);return true;
+  }catch(e){v050CampaignFailed(ctx,e.message);v050CampaignInvalidate('entrée interrompue');toast('Passage interrompu : '+String(e.message||e),'bad');return false;}
+}
+v35pExit=function(){
+  if(world?.id!=='vault_prologue'||state.v035.prologue.stage<8||state.v035.prologue.complete||!v050CampaignReady())return false;
+  openDialogue(speaker('SAS 2','SURFACE · AUBAGNE','A3'),
+    'Pression stable. La sortie ouvre le territoire d’Aubagne. Une balise des ateliers vous permettra de rejoindre Mireille et la suite de la campagne dans une scène narrative.',[
+      {text:'Sortir vers Aubagne',onChoose:()=>v050CampaignLoadMap('exit')},
+      {text:'Rejoindre directement les ateliers — scène narrative',onChoose:()=>v050CampaignLoadStory('story-exit')},
+      {text:'Rester dans l’abri',onChoose:closeDialogue}]);return true;
+};
+function v050CampaignNear(id){const it=world?.interactables.find(i=>i.id===id);return!!it&&Math.hypot(it.pos[0]-state.player.pos[0],it.pos[2]-state.player.pos[2])<=it.radius+.25;}
+function v050CampaignOpenWorkshops(){
+  if(!world?.v046||!v050CampaignNear(V050_CAMPAIGN_GATE)||!v050CampaignReady())return false;
+  if(v050TravelNearbyThreat()){toast('Mettez-vous à l’abri du danger avant de rejoindre les ateliers.','bad');return false;}
+  openDialogue(speaker('ATELIERS D’AUBAGNE','PASSAGE VERS LA CAMPAGNE','AB'),
+    'Mireille Barral vous attend dans les ateliers. Cette entrée mène à la scène narrative de la campagne. Votre point sur la carte est conservé pour le retour.',[
+      {text:'Entrer dans les ateliers — scène narrative',onChoose:()=>v050CampaignLoadStory('workshops')},
+      {text:'Continuer l’exploration',onChoose:closeDialogue}]);return true;
+}
+function v050CampaignOpenReturn(){
+  if(world?.id!=='aubagne'||!v050CampaignNear(V050_CAMPAIGN_RETURN)||!v050CampaignReady())return false;
+  if(v050TravelNearbyThreat()){toast('Éloignez le danger avant de regagner le territoire.','bad');return false;}
+  openDialogue(speaker('SORTIE DES ATELIERS','TERRITOIRE D’AUBAGNE','AB'),
+    state.v050Campaign.returnPoint?'Reprendre l’exploration au point géographique conservé ? Votre progression dans les ateliers et votre inventaire restent acquis.':'Rejoindre le territoire d’Aubagne ? La sortie sera préparée sur un sol mesuré et dégagé.',[
+      {text:'Retourner au territoire d’Aubagne',onChoose:()=>v050CampaignLoadMap('return')},
+      {text:'Rester dans les ateliers',onChoose:closeDialogue}]);return true;
+}
+function v050CampaignAttachGateway(w){
+  const p=state.v050Campaign.gateway;if(!w?.v046||!p||w.interactables.some(i=>i.id===V050_CAMPAIGN_GATE))return;
+  const h=v047Height(v047Bank(w),p[0],p[2]).height;if(h===null)return;
+  const[x,,z]=p,y=Math.max(0,h);
+  addBox(w,[x,y+1.35,z],[.22,2.7,.22],COLORS.darkMetal);
+  addBox(w,[x,y+2.25,z],[2.3,.75,.14],COLORS.amber,0,{emissive:.16});
+  v021Sign(w,x,y+2.27,z+.1,'ATELIERS',.062);
+  addInteract(w,V050_CAMPAIGN_GATE,[x,y+1.2,z],'Ateliers d’Aubagne — poursuivre la campagne',v050CampaignOpenWorkshops,{kind:'door',radius:4.5,priority:8,marker:true});
+  w.subzones.push({id:V050_CAMPAIGN_GATE,name:'Accès aux ateliers · campagne',pos:[x,y,z]});
+}
+function v050CampaignAttachNarrativeReturn(w){
+  if(w?.id!=='aubagne'||w.interactables.some(i=>i.id===V050_CAMPAIGN_RETURN))return;
+  w.name='Ateliers d’Aubagne · scène narrative';
+  const p=ldFindFree(w,w.spawn[0]+5,w.spawn[2]-4),[x,y,z]=p;
+  addBox(w,[x,y+1.1,z],[.22,2.2,.22],COLORS.darkMetal);v021Sign(w,x,y+1.8,z,'TERRITOIRE',.065);
+  addInteract(w,V050_CAMPAIGN_RETURN,[x,y+1.1,z],'Retourner au territoire d’Aubagne',v050CampaignOpenReturn,{kind:'door',radius:4,priority:8,marker:true});
+}
+const v050CampaignBuildBase=buildWorld;
+buildWorld=function(id){const w=v050CampaignBuildBase(id);v050CampaignAttachGateway(w);if(id==='aubagne')v050CampaignAttachNarrativeReturn(w);return w;};
+const v050CampaignRegionBase=worldRegionLabel;
+worldRegionLabel=function(id){return id==='aubagne'?'PAYS D’AUBAGNE · SCÈNE NARRATIVE':v050CampaignRegionBase(id);};
+function v050CampaignGuidance(){return!!world?.v046&&!!state.v050Campaign.gateway&&state.mode!=='free'&&!state.v042.activeContract&&!state.v042.tracked&&!state.v046.lore.side;}
+const v050CampaignMarkerBase=getObjectiveMarker;
+getObjectiveMarker=function(){if(v050CampaignGuidance()){const p=state.v050Campaign.gateway;return{zone:world.id,pos:[p[0],p[1]+2.8,p[2]],label:'Ateliers d’Aubagne — campagne'};}return v050CampaignMarkerBase();};
+const v050CampaignQuestBase=updateQuestUI;
+updateQuestUI=function(flash=false){const result=v050CampaignQuestBase(flash);if(v050CampaignGuidance()){
+  $('questTitle').textContent='LA CAMPAGNE · ATELIERS D’AUBAGNE';$('questObjective').textContent='Rejoignez la balise des ateliers pour poursuivre avec Mireille (scène narrative).';
+}return result;};
+function v050CampaignInfo(){
+  const c=V050_CAMPAIGN.active,it=world?.interactables.find(i=>i.id===(world.v046?V050_CAMPAIGN_GATE:V050_CAMPAIGN_RETURN));
+  return{saved:deepClone(state.v050Campaign),prologue:deepClone(state.v035.prologue),main:state.quest.main,zone:world?.id,
+    pending:c?{id:c.id,kind:c.kind,status:c.status}:null,last:V050_CAMPAIGN.last,completed:V050_CAMPAIGN.completed,cancelled:V050_CAMPAIGN.cancelled,failed:V050_CAMPAIGN.failed,
+    gateway:it?{id:it.id,label:it.label,pos:it.pos.slice(),radius:it.radius}:null};
+}
+function v050CampaignAfterInit(){Object.assign(window.__MISTRAL_DEBUG,{v35pExit,v050CampaignInfo,v050CampaignOpenWorkshops,v050CampaignOpenReturn,
+  v050CampaignRetry:()=>{const c=V050_CAMPAIGN.active,p=V046.last;return c?.status==='failed'&&p?.opts?.v050CampaignId===c.id?v046Ensure(p.lat,p.lon,p.w,p.initial,p.opts):false;}});}
+
+/* Territorial travel uses the same validated publication gate as walking.
+   Quotes and transaction tokens are session state: no save-schema migration,
+   map unlock, reward or elapsed time is written before a successful arrival. */
+const V050_TRAVEL={serial:0,active:null,confirmation:null,last:null,completed:0,cancelled:0,failed:0};
+function v050TravelPoint(site){
+  const p=state.v046?.placements?.[site.id];
+  return Array.isArray(p)&&p.length===3&&p.every(Number.isFinite)?p.slice():v015GeoProject(site.macro,site.lat,site.lon);
+}
+function v050TravelQuote(site){
+  const p=v050TravelPoint(site),distance=Math.hypot(p[0]-state.player.pos[0],p[2]-state.player.pos[2]);
+  return {distance,minutes:Math.max(5,Math.ceil(distance/4000*60))};
+}
+function v050TravelDuration(minutes){return minutes<60?`${minutes} min`:`${Math.floor(minutes/60)} h ${String(minutes%60).padStart(2,'0')}`;}
+function v050TravelNearbyThreat(w=world,pos=state.player.pos){
+  return !!inCombat||v020Danger()||(w?.enemies||[]).some(e=>e.alive&&Math.hypot(e.pos[0]-pos[0],e.pos[2]-pos[2])<40);
+}
+function v050TravelBlock(site,loading=false){
+  if(!site||!v042SiteDiscovered(site))return 'Approchez-vous de ce lieu pour le découvrir avant de voyager.';
+  if(!world?.v046||!world.geoMacro||state.v042.activeInterior)return 'Rejoignez le territoire extérieur pour voyager.';
+  if(!(state.player.hp>0))return 'Le voyage est indisponible à zéro point de vie.';
+  const ground=v047Height(v047Bank(world),state.player.pos[0],state.player.pos[2]).height;
+  if(!onGround||ground===null||!Number.isFinite(ground)||v046SurfaceAt(state.player.pos,world.v046Records).water||collidesAt(state.player.pos[0],state.player.pos[2],.38,state.player.pos[1]))
+    return 'Rejoignez un sol stable et dégagé avant de voyager.';
+  if(v050TravelNearbyThreat())return 'Voyage impossible : des ennemis vous menacent à proximité.';
+  if(typeof V040!=='undefined'&&V040.active)return 'Quittez la traversée guidée avant de voyager.';
+  if(state.v026?.carry&&v026MassTotal()>v026Capacity())return 'Allégez votre inventaire avant de voyager.';
+  if(!loading&&(V046.busy||V047.pending||zoneTransitioning||V050_TRAVEL.active))return 'Un chargement est en cours. Attendez sa fin.';
+  if(!loading&&(!v027CanAct()||V027.tab!=='map'))return 'Ouvrez la fiche du lieu sur la carte pour préparer le voyage.';
+  if(v050TravelQuote(site).distance<90)return 'Vous êtes déjà à proximité de ce lieu.';
+  return null;
+}
+function v050TravelCurrent(ctx){return !!ctx&&V050_TRAVEL.active===ctx&&ctx.state===state&&ctx.world===world&&!ctx.cancelled&&!ctx.applied;}
+function v050TravelInvalidate(reason='annulation'){
+  const ctx=V050_TRAVEL.active;V050_TRAVEL.confirmation=null;
+  if(ctx&&!ctx.applied){ctx.cancelled=true;ctx.status='cancelled';V050_TRAVEL.cancelled++;V050_TRAVEL.last={id:ctx.id,site:ctx.site.id,status:'cancelled',reason};}
+  V050_TRAVEL.active=null;return ctx;
+}
+function v050TravelGuard(ctx){
+  if(!v050TravelCurrent(ctx))throw Error('Voyage abandonné : la session ou le lieu de départ a changé.');
+  if(state.player.zone!==ctx.zone||state.player.pos.some((n,i)=>Math.abs(n-ctx.pos[i])>.02)||state.worldTime!==ctx.time)
+    throw Error('Voyage abandonné : le point de départ a changé.');
+  const blocked=v050TravelBlock(ctx.site,true);if(blocked)throw Error(blocked);
+}
+/* A usable arrival needs measured ground at its feet and in a walking margin.
+   A road is walkable; a building, water polygon or missing tile is not. */
+function v050TravelGround(stage,w,x,z,radius=.8){
+  if(!Number.isFinite(x)||!Number.isFinite(z))return null;
+  const [lat,lon]=v015GeoUnproject(w.id,x,z);if(!v046Region(lat,lon))return null;
+  const b=w.bounds;if(b&&(x-radius<b[0]||x+radius>b[1]||z-radius<b[2]||z+radius>b[3]))return null;
+  for(const[source,zoom]of [['base',14],['cadastre',16]]){
+    const t=v017LonLatToTile(lat,lon,zoom),key=v046TileKey(source,zoom,Math.floor(t.x),Math.floor(t.y));
+    if(!stage.records.has(key))return null;
+  }
+  const h=v047Height(stage.bank,x,z).height;if(h===null||!Number.isFinite(h)||v046SurfaceAt([x,0,z],stage.records).water)return null;
+  const y=Math.max(0,h),head=y+1.83;
+  const nearby=stage.records.v047Index?.solids.at(x,z)||stage.geoColliders;
+  const gameplay=stage.v050GameplayColliders||(stage.v050GameplayColliders=w.colliders.filter(c=>!c.v046Tile));
+  for(const c of [...nearby,...gameplay]){
+    if(c.disabled||head<(c.minY??-Infinity)||y>(c.maxY??Infinity))continue;
+    if(v017ColliderHit(c,x,z,radius))return null;
+  }
+  return y;
+}
+function v050TravelAnchor(stage,w,site){
+  const raw=v015GeoProject(w.id,site.lat,site.lon),saved=state.v046?.placements?.[site.id];
+  if(Array.isArray(saved)&&saved.length===3&&saved.every(Number.isFinite)){
+    if(Math.hypot(saved[0]-raw[0],saved[2]-raw[2])>125)throw Error('Le point enregistré de ce lieu est invalide.');
+    const y=v050TravelGround(stage,w,saved[0],saved[2],.4);
+    if(y===null)throw Error('L’accès enregistré de ce lieu n’est pas praticable avec les données chargées.');
+    return [saved[0],y,saved[2]];
+  }
+  const temp={...w,v046Records:stage.records,v047TerrainBank:stage.bank,colliders:stage.geoColliders};
+  const candidates=[[0,0]];for(let r=14;r<=98;r+=14)for(let n=0;n<12;n++)candidates.push([Math.cos(n/12*TAU)*r,Math.sin(n/12*TAU)*r]);
+  for(const[dx,dz]of candidates){const x=raw[0]+dx,z=raw[2]+dz,y=v050TravelGround(stage,w,x,z,2);
+    if(y!==null&&!v046Blocked(temp,x,z))return[x,y,z];
+  }
+  throw Error('Aucun accès praticable au lieu dans les données chargées.');
+}
+function v050TravelArrival(stage,w,site,plan){
+  const anchor=v050TravelAnchor(stage,w,site),actors=[...(w.enemies||[]),...(w.npcs||[]),...Object.values(state.v049?.actors||{}).filter(a=>a.scope==='outside')];
+  for(const r of [22,28,36,48,64,80])for(let n=0;n<16;n++){
+    const angle=n/16*TAU,x=anchor[0]+Math.sin(angle)*r,z=anchor[2]+Math.cos(angle)*r;
+    // Keep the player inside the original, validated movement margin. The
+    // loaded anchor stays at plan.p even when the final landing is offset.
+    if(Math.hypot(x-plan.p[0],z-plan.p[2])>145)continue;
+    const y=v050TravelGround(stage,w,x,z);if(y===null)continue;
+    const margin=[[1,0],[-1,0],[0,1],[0,-1],[2.5,0],[-2.5,0],[0,2.5],[0,-2.5]];
+    if(margin.some(([dx,dz])=>{const h=v050TravelGround(stage,w,x+dx,z+dz,.55);return h===null||Math.abs(h-y)>.65;}))continue;
+    if(actors.some(a=>a.alive!==false&&Array.isArray(a.pos)&&Math.hypot(a.pos[0]-x,a.pos[2]-z)<(a.kind==='npc'||String(a.id).startsWith('v042-npc:')?3:18)))continue;
+    if(Object.entries(state.v046?.placements||{}).some(([id,p])=>id!==site.id&&Array.isArray(p)&&Math.hypot(p[0]-x,p[2]-z)<18))continue;
+    return {pos:[x,y,z],anchor,yaw:Math.atan2(anchor[0]-x,z-anchor[2])};
+  }
+  throw Error('Aucune arrivée dégagée et praticable près de ce lieu. Votre position est conservée.');
+}
+const v050TravelPrepareBase=v046Prepare;
+v046Prepare=async function(plan,resources,w,signal){
+  const task=V047.pending,ctx=task?.opts?.v050TravelId?V050_TRAVEL.active:null;
+  if(ctx&&task.opts.v050TravelId===ctx.id)v050TravelGuard(ctx);
+  const stage=await v050TravelPrepareBase(plan,resources,w,signal);
+  if(!ctx||task?.opts?.v050TravelId!==ctx.id)return stage;
+  MistralWork.check(signal);v050TravelGuard(ctx);
+  const arrival=v050TravelArrival(stage,w,ctx.site,plan);
+  MistralWork.check(signal);v050TravelGuard(ctx);
+  ctx.arrival=arrival;task.opts.yaw=arrival.yaw;
+  stage.v050Travel=ctx;stage.height=arrival.pos[1];return stage;
+};
+const v050TravelPublishBase=v046Publish;
+v046Publish=function(w,stage,plan){
+  const ctx=stage.v050Travel;if(ctx)v050TravelGuard(ctx);
+  const result=v050TravelPublishBase(w,stage,plan);
+  if(ctx){
+    // Publish first with the ORIGINAL anchor, then let the existing Ensure
+    // reposition to the verified landing. No frame can observe half a move.
+    ctx.loadedAnchor=plan.p.slice();plan.p=ctx.arrival.pos.slice();ctx.published=true;
+  }
+  return result;
+};
+function v050TravelFinish(ctx){
+  if(!v050TravelCurrent(ctx)||!ctx.published||!ctx.arrival)return false;
+  const expected=[ctx.arrival.pos[0],ctx.arrival.pos[1]+playerEyeHeight(),ctx.arrival.pos[2]];
+  if(state.player.pos.some((n,i)=>Math.abs(n-expected[i])>.02))return false;
+  ctx.applied=true;ctx.status='complete';
+  state.worldTime=((ctx.time+ctx.quote.minutes/60)%24+24)%24;
+  state.player.pitch=0;jumpVelocity=0;onGround=true;state.v046.placements[ctx.site.id]=ctx.arrival.anchor.slice();
+  state.v046.lastLocation=v015GeoUnproject(world.id,state.player.pos[0],state.player.pos[2]);
+  state.geo.lastMacro=world.id;state.geo.visitedMacros[world.id]=true;state.v018.travelMode='geographic';
+  V050_TRAVEL.completed++;V050_TRAVEL.last={id:ctx.id,site:ctx.site.id,status:'complete',minutes:ctx.quote.minutes,distance:Math.round(ctx.quote.distance),arrival:state.player.pos.slice(),loadedAnchor:ctx.loadedAnchor.slice()};
+  V050_TRAVEL.active=null;V050_TRAVEL.confirmation=null;
+  closePipboy();updateLocation();updateQuestUI(false);updateHUD();
+  toast(`ARRIVÉE · ${ctx.site.name} · ${v050TravelDuration(ctx.quote.minutes)} écoulées`,'good');return true;
+}
+const v050TravelEnsureBase=v046Ensure;
+v046Ensure=async function(lat,lon,w=world,initial=false,opts={}){
+  const id=opts.v050TravelId,ctx=id?V050_TRAVEL.active:null;
+  if(id&&(!ctx||ctx.id!==id||!v050TravelCurrent(ctx)))return false;
+  if(!id&&V050_TRAVEL.active)v050TravelInvalidate('autre chargement');
+  if(ctx){ctx.status='loading';ctx.published=false;ctx.arrival=null;}
+  const ok=await v050TravelEnsureBase(lat,lon,w,initial,opts);
+  if(!ctx)return ok;
+  if(ok)return v050TravelFinish(ctx);
+  if(v050TravelCurrent(ctx)){ctx.status='failed';V050_TRAVEL.failed++;V050_TRAVEL.last={id:ctx.id,site:ctx.site.id,status:'failed',reason:V046.error?.[0]?.message||'Données ou arrivée indisponibles'};}
+  else if(V050_TRAVEL.active===ctx)v050TravelInvalidate('session modifiée');
+  return false;
+};
+const v050TravelCancelBase=v046Cancel;
+v046Cancel=function(){v050TravelInvalidate();const out=v050TravelCancelBase();if(mode==='PIP'&&V027.tab==='map')renderPipboy();return out;};
+const v050TravelLoadBase=loadZone;
+loadZone=function(...args){if(V050_TRAVEL.active)v050TravelInvalidate('changement de lieu');V050_TRAVEL.confirmation=null;return v050TravelLoadBase(...args);};
+const v050TravelNewBase=startNewGame;
+startNewGame=function(...args){v050TravelInvalidate('nouvelle partie');return v050TravelNewBase(...args);};
+function v050TravelRequest(id,confirmed=false){
+  const site=v042Site(id),blocked=v050TravelBlock(site);
+  if(blocked){toast(blocked,'bad');return false;}
+  if(!confirmed){V050_TRAVEL.confirmation={site:id,state,world};renderPipboy();return true;}
+  const confirmation=V050_TRAVEL.confirmation;
+  if(!confirmation||confirmation.site!==id||confirmation.state!==state||confirmation.world!==world)return false;
+  const quote=v050TravelQuote(site),ctx={id:++V050_TRAVEL.serial,site,state,world,zone:state.player.zone,pos:state.player.pos.slice(),time:state.worldTime,quote,status:'loading',cancelled:false,applied:false,published:false};
+  V050_TRAVEL.active=ctx;V050_TRAVEL.confirmation=null;
+  return v046Ensure(site.lat,site.lon,world,false,{v046Reposition:true,v050TravelId:ctx.id,noTravel:true});
+}
+function v050TravelCardHTML(site){
+  const blocked=v050TravelBlock(site),quote=world?.v046?v050TravelQuote(site):null;
+  const confirmation=V050_TRAVEL.confirmation?.site===site.id&&V050_TRAVEL.confirmation?.state===state;
+  return `<section class="v050-travel"><h3>VOYAGE RAPIDE</h3>${quote?`<p>${(quote.distance/1000).toFixed(2)} km à vol d’oiseau · durée estimée : <strong>${v050TravelDuration(quote.minutes)}</strong>.</p>`:''}<p>${blocked?v027Escape(blocked):'Arrivée à proximité du repère. Le temps avance uniquement lorsque le voyage aboutit.'}</p>${confirmation&&!blocked?`<div class="p27-confirm" role="group" aria-label="Confirmer le voyage vers ${v027Escape(site.name)}"><h3>Rejoindre ${v027Escape(site.name)} ?</h3><p>${v050TravelDuration(quote.minutes)} seront ajoutées à l’heure du monde. Aucun coût en capsules.</p>${v027Button('Confirmer le voyage','v050-travel-confirm',site.id)}${v027Button('Rester ici','v050-travel-cancel')}</div>`:v027Button('Préparer le voyage','v050-travel',site.id,!!blocked)}</section>`;
+}
+const v050TravelLayerPanelBase=v042LayerPanel;
+v042LayerPanel=function(c){
+  const result=v050TravelLayerPanelBase(c),site=v042Site(state.v042.tracked),card=c.querySelector('.v42-tracked');
+  if(site&&v042SiteDiscovered(site)&&card)card.insertAdjacentHTML('beforeend',v050TravelCardHTML(site));
+  return result;
+};
+const v050TravelDispatchBase=v027Dispatch;
+v027Dispatch=function(action,arg=''){
+  if(action==='v050-travel')return v050TravelRequest(arg);
+  if(action==='v050-travel-confirm')return v050TravelRequest(arg,true);
+  if(action==='v050-travel-cancel'){if(!v027CanAct())return false;V050_TRAVEL.confirmation=null;renderPipboy();return true;}
+  if(['v042-track','v042-untrack','tab','sub','close'].includes(action))V050_TRAVEL.confirmation=null;
+  return v050TravelDispatchBase(action,arg);
+};
+/* A macro label is no longer a scene boundary. Both the nearby list and the
+   tracked marker must continue to work across that label, including clears. */
+const v050TravelNearestBase=v042NearestDiscovered;
+v042NearestDiscovered=function(limit=8){if(!world?.v046)return v050TravelNearestBase(limit);
+  return V042_CATALOG.filter(v042SiteDiscovered).map(s=>({s,d:v042DistancePos(state.player.pos,v050TravelPoint(s))})).sort((a,b)=>a.d-b.d||a.s.id.localeCompare(b.s.id)).slice(0,limit);
+};
+const v050TravelMarkerBase=getObjectiveMarker;
+getObjectiveMarker=function(){
+  const s=v042Site(state.v042.activeContract||state.v042.tracked);
+  if(world?.v046&&s&&v042SiteDiscovered(s)){const p=v050TravelPoint(s);return {zone:world.id,pos:[p[0],v042Ground(world,p[0],p[2])+1.4,p[2]],label:s.name};}
+  return v050TravelMarkerBase();
+};
+const v050TravelQuestBase=updateQuestUI;
+updateQuestUI=function(flash=false){const out=v050TravelQuestBase(flash),site=v042Site(state.v042.tracked);
+  if(!state.v042.activeContract&&site&&v042SiteDiscovered(site)&&v042SiteCleared(site)){
+    $('questTitle').textContent='REPÈRE TERRITORIAL';$('questObjective').textContent='Rejoindre : '+site.name;
+  }
+  return out;
+};
+const v050TravelHudBase=v042UpdateHud;
+v042UpdateHud=function(){const out=v050TravelHudBase(),site=V042_RUNTIME.nearest?.site;
+  if(site&&!v042SiteDiscovered(site)){const el=$('v042LayerHud');if(el&&!el.classList.contains('hidden')){el.querySelector('b').textContent='SIGNATURE INCONNUE';el.querySelector('span').textContent=`Approchez pour identifier ce lieu · ${Math.round(V042_RUNTIME.nearest.d)} m`;}}
+  return out;
+};
+function v050TravelInfo(){const c=V050_TRAVEL.active;return {completed:V050_TRAVEL.completed,cancelled:V050_TRAVEL.cancelled,failed:V050_TRAVEL.failed,confirmation:V050_TRAVEL.confirmation?.site||null,pending:c?{id:c.id,site:c.site.id,status:c.status,minutes:c.quote.minutes}:null,last:V050_TRAVEL.last};}
+function v050TravelAfterInit(){
+  V027_SUBS.map.fallout='LIEUX ET VOYAGES';
+  Object.assign(window.__MISTRAL_DEBUG,{v050TravelInfo,v050TravelRequest,v050TravelBlock:id=>v050TravelBlock(v042Site(id)),v050TravelQuote:id=>{const s=v042Site(id);return s?v050TravelQuote(s):null;},v050TravelNearby:()=>v042NearestDiscovered().map(r=>({id:r.s.id,distance:r.d})),v050TravelMarker:()=>getObjectiveMarker(),v050TravelRetry:()=>{const c=V050_TRAVEL.active,p=V046.last;return c?.status==='failed'&&p?.opts?.v050TravelId===c.id?v046Ensure(p.lat,p.lon,p.w,p.initial,p.opts):false;},v027Dispatch,v046Cancel});
+}
+
+/* v0.50 — installed geography and discovered-place travel.
+   A shipping report is evidence about the delivery, never a live disk audit. */
+const V050 = {version:'0.50.0',auditPromise:null,lastAudit:0};
+
+function v050LocalSummary(data=V047.localData){
+  if(location.protocol==='file:')return {title:'Ouvrez le lanceur de l’application',detail:'Les cartes locales se lisent avec LANCER_APP_WINDOWS.bat, LANCER_APP_LINUX.sh ou LANCER_APP_MAC.command.',ready:false};
+  if(!data?.vector||!data?.terrain)return {title:'Cartes locales : vérification disponible',detail:'Consultez les fichiers installés et le territoire dans Cartes & territoire.',ready:false};
+  const v=data.vector,t=data.terrain,count=(v.pbf||0)+(v.officialEmpty||0);
+  const detail=`${count.toLocaleString('fr-FR')} / ${(v.expected||5884).toLocaleString('fr-FR')} coordonnées · ${t.valid||0} / ${t.expected||8} grilles de relief`;
+  if(!data.live)return {title:'État de la livraison',detail:detail+' · rapport conservé ; votre disque reste à vérifier.',ready:false};
+  return {title:data.complete?'Cartes locales prêtes':'Cartes locales à compléter',detail,ready:!!data.complete};
+}
+
+function v050RefreshMenu(){
+  const el=$('v050MapSummary');if(!el)return;
+  const s=v050LocalSummary();el.dataset.ready=String(s.ready);
+  el.replaceChildren();const title=document.createElement('b');title.textContent=s.title;
+  const detail=document.createElement('span');detail.textContent=s.detail;el.append(title,detail);
+}
+
+v047ReadLocal=async function(){
+  if(V050.auditPromise)return V050.auditPromise;
+  V050.auditPromise=(async()=>{
+    let last;
+    for(const url of ['__mistral/local-data','verification/v050/LOCAL_DATA_STATE.json']){
+      const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),20000);
+      try{
+        const response=await fetch(url,{cache:'no-store',signal:ctrl.signal});
+        if(!response.ok)throw Error('HTTP '+response.status);
+        const data=await response.json();if(!data.vector||!data.terrain)throw Error('Rapport local incompatible');
+        V047.localData={...data,live:url.startsWith('__mistral/')};V050.lastAudit=Date.now();return V047.localData;
+      }catch(e){last=e;}finally{clearTimeout(timer);}
+    }
+    V047.localData={complete:false,error:String(last?.message||'Serveur local non disponible')};return null;
+  })();
+  try{return await V050.auditPromise;}finally{V050.auditPromise=null;v050RefreshMenu();}
+};
+
+const v050PreviousPanel=v047Panel;
+v047Panel=function(container){
+  v050PreviousPanel(container);
+  const box=container.querySelector('.v047-integrity');if(!box)return;
+  const summary=v050LocalSummary(),data=V047.localData,section=document.createElement('section');section.className='v050-geography';
+  section.innerHTML=`<p class="p27-kicker">v0.50 / LES ROUTES RETROUVÉES</p><h2>${escapeHtml(summary.title)}</h2><p>${escapeHtml(summary.detail)}</p>
+    <p>Les routes et emprises proviennent des tuiles OpenStreetMap et du cadastre ; les hauteurs du terrain proviennent de grilles IGN. Les bâtiments et décors sont une interprétation du jeu. Les hauteurs de toiture non documentées restent estimées.</p>
+    <p>Dans MAP → LIEUX ET VOYAGES, sélectionnez un lieu découvert pour y voyager. Le départ exige un extérieur praticable, à distance du danger ; la destination est vérifiée avant le déplacement.</p>
+    ${!data?.live||!data?.complete?'<p class="v050-install-note">Après extraction, lancez l’application avec son lanceur. Les archives géographiques fournies sont préparées sur votre ordinateur. Pour réparer un pack incomplet, utilisez INSTALLER_PACK_LOCAL_WINDOWS.bat ou INSTALLER_PACK_LOCAL_LINUX_MAC.sh.</p>':''}
+    <small>Une grille est un échantillonnage du relief. Les points sans mesure restent absents et peuvent empêcher un chargement dans les zones concernées.</small>`;
+  box.prepend(section);
+};
+
+const v050PreviousAdmin=v035AdminHTML;
+v035AdminHTML=function(){const s=v050LocalSummary();return v050PreviousAdmin().replace('Carte réelle : non intégrée',escapeHtml(s.title+' — '+s.detail));};
+
+const v050PreviousMenu=showMenu;
+showMenu=function(){const result=v050PreviousMenu();v050RefreshMenu();if($('v050MapSummary')&&Date.now()-V050.lastAudit>30000)v047ReadLocal();return result;};
+
+function v050AfterInit(){
+  document.title='Fallout : Mistral · v0.50 · Les routes retrouvées';
+  const menu=$('menuScreen'),label=menu?.querySelector('.menu-version');if(label)label.textContent='v0.50 · LES ROUTES RETROUVÉES';
+  const nav=menu?.querySelector('.menu-actions');if(nav){
+    const button=document.createElement('button');button.id='v050MapStatus';button.textContent='Cartes & territoire';button.onclick=()=>{v047OpenStatus();v047ReadLocal().then(()=>{const content=$('v047StatusContent');if(content&&mode==='STATUS')v047Panel(content);});};
+    nav.insertBefore(button,$('btnV035Admin'));
+    const summary=document.createElement('p');summary.id='v050MapSummary';summary.setAttribute('aria-live','polite');nav.after(summary);v050RefreshMenu();
+  }
+  const credits=document.querySelector('#creditsScreen .credits-card');if(credits){
+    credits.innerHTML='<h2>FALLOUT : MISTRAL</h2><p>0.50.0 · Les routes retrouvées</p><p>Territoire géographique local, 248 lieux à découvrir, voyage rapide et rencontres persistantes. Campagne, prologue, intérieurs et lore des versions précédentes conservés.</p><p>Sources géographiques : © contributeurs OpenStreetMap — ODbL · Cadastre Etalab / DGFiP — Licence Ouverte 2.0 · IGN RGE ALTI — Licence Ouverte 2.0. La carte utilise les fichiers effectivement installés. Géométrie des bâtiments interprétée, hauteurs non documentées estimées.</p><p>Prototype de fan non officiel. Les anciens rapports inclus décrivent leurs versions respectives.</p><button id="btnCreditsClose" class="primary">Fermer</button>';
+    $('btnCreditsClose').onclick=closeCredits;
+  }
+  if(typeof v050CampaignAfterInit==='function')v050CampaignAfterInit();
+  if(typeof v050TravelAfterInit==='function')v050TravelAfterInit();
+  Object.assign(window.__MISTRAL_DEBUG,{v050Info:()=>({version:V050.version,lab:V046.lab,localData:V047.localData,summary:v050LocalSummary(),saveKey:SAVE_KEY,settingsKey:SETTINGS_KEY}),v050ReadLocal:v047ReadLocal});
+  if(location.protocol!=='file:')v047ReadLocal();
+}
+
 init();
 v018AfterInit();
 v020AfterInit();
@@ -10055,6 +10646,7 @@ v046AfterInit();
 v047AfterInit();
 v048AfterInit();
 v049AfterInit();
+v050AfterInit();
 })();
 
 </script>

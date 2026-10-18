@@ -4,12 +4,12 @@ import re
 root=Path(__file__).resolve().parents[1]
 src=root/'src'
 js=(src/'core-v017.js').read_text(encoding='utf-8')
-js=js.replace("VERSION = '0.17.0'", "VERSION = '0.49.0'").replace("VERSION='0.17.0'", "VERSION='0.49.0'")
-js=js.replace("const LEGACY_SAVE_KEYS = [", "const LEGACY_SAVE_KEYS = ['fallout_mistral_save_v048','fallout_mistral_save_v047','fallout_mistral_save_v046','fallout_mistral_save_v045','fallout_mistral_save_v044','fallout_mistral_save_v043','fallout_mistral_save_v042','fallout_mistral_save_v041','fallout_mistral_save_v040','fallout_mistral_save_v038','fallout_mistral_save_v037','fallout_mistral_save_v036','fallout_mistral_save_v035','fallout_mistral_save_v030','fallout_mistral_save_v029','fallout_mistral_save_v028','fallout_mistral_save_v027','fallout_mistral_save_v026','fallout_mistral_save_v025','fallout_mistral_save_v024','fallout_mistral_save_v023','fallout_mistral_save_v022','fallout_mistral_save_v021','fallout_mistral_save_v020','fallout_mistral_save_v019','fallout_mistral_save_v018',",1)
+js=js.replace("VERSION = '0.17.0'", "VERSION = '0.50.0'").replace("VERSION='0.17.0'", "VERSION='0.50.0'")
+js=js.replace("const LEGACY_SAVE_KEYS = [", "const LEGACY_SAVE_KEYS = ['fallout_mistral_save_v049','fallout_mistral_save_v048','fallout_mistral_save_v047','fallout_mistral_save_v046','fallout_mistral_save_v045','fallout_mistral_save_v044','fallout_mistral_save_v043','fallout_mistral_save_v042','fallout_mistral_save_v041','fallout_mistral_save_v040','fallout_mistral_save_v038','fallout_mistral_save_v037','fallout_mistral_save_v036','fallout_mistral_save_v035','fallout_mistral_save_v030','fallout_mistral_save_v029','fallout_mistral_save_v028','fallout_mistral_save_v027','fallout_mistral_save_v026','fallout_mistral_save_v025','fallout_mistral_save_v024','fallout_mistral_save_v023','fallout_mistral_save_v022','fallout_mistral_save_v021','fallout_mistral_save_v020','fallout_mistral_save_v019','fallout_mistral_save_v018',",1)
 # Preserve options selected in the immediately preceding releases as well.
-js=js.replace("const LEGACY_SETTINGS_KEYS = [", "const LEGACY_SETTINGS_KEYS = ['fallout_mistral_settings_v048','fallout_mistral_settings_v047','fallout_mistral_settings_v046','fallout_mistral_settings_v045','fallout_mistral_settings_v044','fallout_mistral_settings_v043','fallout_mistral_settings_v042','fallout_mistral_settings_v041','fallout_mistral_settings_v040','fallout_mistral_settings_v038','fallout_mistral_settings_v037','fallout_mistral_settings_v036','fallout_mistral_settings_v035','fallout_mistral_settings_v030','fallout_mistral_settings_v029','fallout_mistral_settings_v028','fallout_mistral_settings_v027','fallout_mistral_settings_v026','fallout_mistral_settings_v025','fallout_mistral_settings_v024','fallout_mistral_settings_v023','fallout_mistral_settings_v022','fallout_mistral_settings_v021','fallout_mistral_settings_v020','fallout_mistral_settings_v018',",1)
-js=re.sub(r"const SAVE_KEY\s*=\s*'[^']+'", "const SAVE_KEY = 'fallout_mistral_save_v049'",js,count=1)
-js=re.sub(r"const SETTINGS_KEY\s*=\s*'[^']+'", "const SETTINGS_KEY = 'fallout_mistral_settings_v049'",js,count=1)
+js=js.replace("const LEGACY_SETTINGS_KEYS = [", "const LEGACY_SETTINGS_KEYS = ['fallout_mistral_settings_v049','fallout_mistral_settings_v048','fallout_mistral_settings_v047','fallout_mistral_settings_v046','fallout_mistral_settings_v045','fallout_mistral_settings_v044','fallout_mistral_settings_v043','fallout_mistral_settings_v042','fallout_mistral_settings_v041','fallout_mistral_settings_v040','fallout_mistral_settings_v038','fallout_mistral_settings_v037','fallout_mistral_settings_v036','fallout_mistral_settings_v035','fallout_mistral_settings_v030','fallout_mistral_settings_v029','fallout_mistral_settings_v028','fallout_mistral_settings_v027','fallout_mistral_settings_v026','fallout_mistral_settings_v025','fallout_mistral_settings_v024','fallout_mistral_settings_v023','fallout_mistral_settings_v022','fallout_mistral_settings_v021','fallout_mistral_settings_v020','fallout_mistral_settings_v018',",1)
+js=re.sub(r"const SAVE_KEY\s*=\s*'[^']+'", "const SAVE_KEY = 'fallout_mistral_save_v050'",js,count=1)
+js=re.sub(r"const SETTINGS_KEY\s*=\s*'[^']+'", "const SETTINGS_KEY = 'fallout_mistral_settings_v050'",js,count=1)
 # A delayed historical transition may not overwrite a newer forced load.
 js=js.replace("if(zoneTransitioning)return;if(!isZoneUnlocked(id)","if(zoneTransitioning&&!opts.force)return;if(!isZoneUnlocked(id)",1)
 js=js.replace("const perform=()=>{\n    world=buildWorld(id)","const perform=()=>{\n    if(transitionToken!==V018.transitionEpoch)return;world=buildWorld(id)",1)
@@ -21,7 +21,7 @@ js=js.replace('uniform vec3 uCamera;', 'uniform vec3 uCamera; uniform float uFog
 js=js.replace('smoothstep(65.0,220.0,d)', 'smoothstep(uFogNear,uFogFar,d)')
 patches='\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'patches').glob('*.js'))) + '\n' + '\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v020').glob('*.js')))
 patches+='\n'+'\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v021').glob('*.js')))
-patches=patches.replace("'fallout_mistral_sandbox_v018'", "'fallout_mistral_sandbox_v049'")
+patches=patches.replace("'fallout_mistral_sandbox_v018'", "'fallout_mistral_sandbox_v050'")
 patches+='\n'+'\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v022').glob('*.js')))
 patches+='\n'+'\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v023').glob('*.js')))
 patches+='\n'+'\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v025').glob('*.js')))
@@ -42,13 +42,14 @@ patches+='\n'+'\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v046
 patches+='\n'+'\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v047').glob('*.js')))
 patches+='\n'+'\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v048').glob('*.js')))
 patches+='\n'+'\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v049').glob('*.js')))
+patches+='\n'+'\n'.join(p.read_text(encoding='utf-8') for p in sorted((src/'v050').glob('*.js')))
 # Perception hook in the historical AI. Preserve the rest of its attack/search logic.
 old='if(d<detect&&hasSight){e.alerted=true;'
 assert js.count(old)==1, 'Perception hook missing or ambiguous'
 js=js.replace(old,'if(v029Observe(e,dt,d,hasSight,detect)){e.alerted=true;')
 needle='\ninit();\n})();'
 if needle not in js:raise RuntimeError('Entrée du programme introuvable')
-js=js.replace(needle,'\n'+patches+'\ninit();\nv018AfterInit();\nv020AfterInit();\nv021AfterInit();\nv022AfterInit();\nv023AfterInit();\nv025AfterInit();\nv026AfterInit();\nv027AfterInit();\nv028AfterInit();\nv029AfterInit();\nv030AfterInit();\nv035AfterInit();\nv036AfterInit();\nv037AfterInit();\nv038AfterInit();\nv039AfterInit();\nv040AfterInit();\nv041AfterInit();\nv042AfterInit();\nv046AfterInit();\nv047AfterInit();\nv048AfterInit();\nv049AfterInit();\n})();')
+js=js.replace(needle,'\n'+patches+'\ninit();\nv018AfterInit();\nv020AfterInit();\nv021AfterInit();\nv022AfterInit();\nv023AfterInit();\nv025AfterInit();\nv026AfterInit();\nv027AfterInit();\nv028AfterInit();\nv029AfterInit();\nv030AfterInit();\nv035AfterInit();\nv036AfterInit();\nv037AfterInit();\nv038AfterInit();\nv039AfterInit();\nv040AfterInit();\nv041AfterInit();\nv042AfterInit();\nv046AfterInit();\nv047AfterInit();\nv048AfterInit();\nv049AfterInit();\nv050AfterInit();\n})();')
 js=js.replace('const far=world?.geoMacro?8000:400','const far=world?.geoMacro?850:400').replace('world?.geoMacro?1200:65','world?.geoMacro?430:65').replace('world?.geoMacro?6500:280','world?.geoMacro?720:280')
 (src/'game.js').write_text(js,encoding='utf-8')
 html=(src/'index.html').read_text(encoding='utf-8')
@@ -81,6 +82,7 @@ css+='\n'+(src/'v046/style.css').read_text(encoding='utf-8')
 css+='\n'+(src/'v047/style.css').read_text(encoding='utf-8')
 css+='\n'+(src/'v048/style.css').read_text(encoding='utf-8')
 css+='\n'+(src/'v049/style.css').read_text(encoding='utf-8')
+css+='\n'+(src/'v050/style.css').read_text(encoding='utf-8')
 html=html.replace('v0.29','v0.30').replace('LES PORTES ONT DES OREILLES','SOUS LA CUIRASSE')
 html=html.replace('v0.30','v0.35').replace('SOUS LA CUIRASSE','RELÈVE COMPLÈTE')
 html=html.replace('v0.35','v0.36').replace('RELÈVE COMPLÈTE','TERRITOIRE RÉEL')
@@ -92,4 +94,5 @@ html=html.replace('v0.40','v0.41').replace('CORRIDORS CONTINUS','TERRITOIRE LOCA
 html=html.replace('v0.41','v0.42').replace('TERRITOIRE LOCAL','COUCHE FALLOUT')
 html=re.sub(r'\s*<link rel="stylesheet" href="styles\.css"\s*/?>',lambda m:'\n<style>\n'+css+'\n</style>',html)
 html=html.replace('<script src="game.js"></script>','<script>\n'+js.replace('</script>','<\\/script>')+'\n</script>')
-out=root/'JOUER_FALLOUT_MISTRAL_v0.49.html';out.write_text(html,encoding='utf-8');(root/'index.html').write_text(html,encoding='utf-8');print(out,out.stat().st_size)
+html=re.sub(r'<title>.*?</title>', '<title>Fallout : Mistral — v0.50 · Les routes retrouvées</title>', html)
+out=root/'JOUER_FALLOUT_MISTRAL_v0.50.html';out.write_text(html,encoding='utf-8');(root/'index.html').write_text(html,encoding='utf-8');print(out,out.stat().st_size)
