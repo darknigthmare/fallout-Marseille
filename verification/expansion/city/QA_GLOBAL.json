@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23T22:42:27.687273+00:00",
+  "html_sha256": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+  "passed": 1417,
+  "failed": 0,
+  "total": 1417,
+  "allHtmlMatch": true,
+  "same_html": true,
+  "stage": "complete",
+  "errors": [],
+  "scope": "Sum of explicitly reported checks across distinct methods: isolated unit/tool fixtures, controlled inherited contracts, assisted native HTTP city and campaign/source pilots, real archive restoration and byte-identical rebuild. These checks are not equivalent gameplay runs or a complete unassisted citywide playthrough.",
+  "completeGameOrOneToOneWorldClaimed": false,
+  "categories": {
+    "units": {
+      "passed": 744,
+      "failed": 0,
+      "total": 744,
+      "report": "UNITS.json",
+      "category": "Isolated production model/tool assertions; declared fixtures, not a browser playthrough.",
+      "originalScope": "Pure production geometry/physics/input/model tests and validated source tools; fixtures explicitly isolated",
+      "assistance": null,
+      "networkObservations": {}
+    },
+    "legacy": {
+      "passed": 434,
+      "failed": 0,
+      "total": 434,
+      "report": "QA_LEGACY.json",
+      "category": "Adapted inherited contracts with controlled/synthetic harnesses; final copy generated without local edits from the repository adapter.",
+      "originalScope": "Contrats hérités exécutés sur le programme actuel. Bancs synthétiques et réseau contrôlé ; voir NATIVE_REAL_MAP.json pour les parcours HTTP réels.",
+      "assistance": null,
+      "networkObservations": {}
+    },
+    "city": {
+      "passed": 76,
+      "failed": 0,
+      "total": 76,
+      "report": "CITY_ARCHITECTURE_BROWSER.json",
+      "category": "Assisted native HTTP city/facade/interior integration using actual installed geographic sources.",
+      "originalScope": "Assisted native-browser contracts for the installed Marseille city atlas.\n\nThe exact production HTML, real GameHandler, city partitions, terrain, source\nhashes, UI and browser storage are used. Existing diagnostic APIs load sectors,\nplace a camera on measured clear ground and pause simulation/rendering. They do\nnot fabricate buildings, substitute HTTP, inject HTML or grant a documentary\nplan. Portal, landing and container actions use actual keyboard/UI controls.\nThis is a bounded integration pilot, not an unassisted citywide playthrough.\n",
+      "assistance": [
+        "Existing macro/sector loading APIs",
+        "Measured, collision-free camera selection and existing physical approach helper",
+        "Existing QA simulation freeze and paused continuous rendering; explicit real WebGL captures"
+      ],
+      "networkObservations": {
+        "console_errors": [
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+        ],
+        "request_failures": [
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "http://127.0.0.1:46429/__mistral/local-data",
+            "failure": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "http://127.0.0.1:46429/__mistral/local-data",
+            "failure": "net::ERR_ABORTED"
+          }
+        ]
+      }
+    },
+    "restore": {
+      "passed": 28,
+      "failed": 0,
+      "total": 28,
+      "report": "CITY_RESTORE.json",
+      "category": "Fresh real-archive restoration and HTTP validation under Python standard library; no rendering claim.",
+      "originalScope": "Restore the shipped REAL Marseille archive into an empty temporary directory.\n\nThis verifies archive restoration, every runtime byte and the production HTTP\naudit, including immediate corruption detection. It does not certify rendering\nor an unassisted playthrough. No remote acquisition or synthetic map is used.\n",
+      "assistance": null,
+      "networkObservations": {}
+    },
+    "roads": {
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "report": "ROAD_CLASSIFICATION_NATIVE.json",
+      "category": "Targeted assisted native road geometry/visual regression; historical before capture is identified separately.",
+      "originalScope": "Native final production HTML, real installed city sources and unchanged measured camera. Existing diagnostic APIs pause rendering/simulation, load the real sector and read geometry; browser receives no injected HTML, network mocks or synthetic geography. The targeted correction preserves raw sourceXYZ while deriving only eligible at-grade IGN ribbons from the MNT used by physics. This is a regression diagnostic at one location, not a citywide visual certification.",
+      "assistance": null,
+      "networkObservations": {}
+    },
+    "rebuild": {
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "report": "REBUILD.json",
+      "category": "Byte-identical independent production rebuild and JavaScript syntax check.",
+      "originalScope": "Production builder in a new ordinary temporary directory from copied source files; all three outputs compared byte for byte, original outputs unmodified",
+      "assistance": null,
+      "networkObservations": {}
+    },
+    "native": {
+      "passed": 84,
+      "failed": 0,
+      "total": 84,
+      "report": "NATIVE_REAL_MAP.json",
+      "category": "Actual native HTTP campaign/geography pilot with declared diagnostic assistance.",
+      "originalScope": "Real HTTP + native Chromium + installed geographic data",
+      "assistance": [
+        "UI menu, character creation and dialogue choice buttons",
+        "Existing v020Approach and v35p* story actions",
+        "Existing measured camera placement and v046Move collision-controlled steps",
+        "Simulation freeze and day/night clock for repeatable measurements; geography and collisions remain production data",
+        "Two explicitly named POIs discovered through the existing debug discovery action before their UI-only fast travel tests"
+      ],
+      "networkObservations": {
+        "console_errors": [
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+        ],
+        "request_failures": [
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "http://127.0.0.1:54001/__mistral/local-data",
+            "failure": "net::ERR_ABORTED"
+          }
+        ]
+      }
+    },
+    "realSources": {
+      "passed": 26,
+      "failed": 0,
+      "total": 26,
+      "report": "GEOGRAPHY_REAL_SOURCES.json",
+      "category": "Actual native HTTP integration of the retained historical high-resolution IGN source extract; bounded diagnostic preparation.",
+      "originalScope": "Installed REAL official IGN source files, current production HTML, native Chromium, loopback HTTP; diagnostic scene/camera selection",
+      "assistance": null,
+      "networkObservations": {}
+    }
+  },
+  "integrationReport": "CITY_INTEGRATION.json"
+}

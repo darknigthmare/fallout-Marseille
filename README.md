@@ -2,9 +2,11 @@
 
 ## v0.50 · Les routes retrouvées
 
-Le jeu dispose du **pack géographique complet prévu par son manifeste** : 5 884 coordonnées vectorielles et huit grilles de relief. La sortie du sas rejoint le territoire réel d’Aubagne sur un emplacement dégagé. Une balise relie cet extérieur aux ateliers de Mireille et à la campagne existante.
+Le jeu couvre désormais **toute la commune officielle de Marseille, îles comprises**, avec des sources IGN acquises : 291 001 identifiants d’objets bâtiment, 55 449 tronçons routiers, relief communal et littoral. Des façades et intérieurs cohérents sont générés dans les emprises disponibles ; les détails sans document restent explicitement inventés. L’échelle est métrique, avec la précision et les absences propres aux relevés. Voir [la portée et le fonctionnement de cette extension](docs/MARSEILLE_ENTIERE.md).
 
-**[Téléchargements Google Drive v0.50](https://drive.google.com/drive/folders/1xE5VpELY64tz5GV9CHHrlsIb_rfahRnQ)** · [Rapport visuel](RAPPORT_VISUEL_V0.50.png) · [Installation](docs/INSTALLATION_V050.md) · [Limites vérifiées](docs/KNOWN_LIMITATIONS_V0.50.md)
+**[Ancienne distribution Google Drive v0.50](https://drive.google.com/drive/folders/1xE5VpELY64tz5GV9CHHrlsIb_rfahRnQ)** · [Rapport visuel initial](RAPPORT_VISUEL_V0.50.png) · [Installation](docs/INSTALLATION_V050.md) · [Validation communale actuelle](verification/expansion/city/CITY_INTEGRATION.json)
+
+L’extension communale est livrée dans ce dépôt et ses archives vérifiées. Le lien Drive et les rapports visuels initiaux n’ont pas été actualisés pour cette extension.
 
 ## Jouer
 
@@ -14,7 +16,7 @@ Python 3 est nécessaire au serveur local. Aucun paquet npm n’est requis pour 
 - **Linux :** `bash LANCER_APP_LINUX.sh`.
 - **macOS :** `bash LANCER_APP_MAC.command`.
 
-Le navigateur s’ouvre sur `http://127.0.0.1:8765/index.html`. Au premier lancement depuis GitHub, le serveur prépare les cartes à partir des 24 archives fournies, **sans téléchargement**. La plus volumineuse est transportée en `.zip.gz` puis reconstituée automatiquement, avec contrôle du SHA-256 du ZIP d’origine. Cette préparation peut prendre environ une minute selon l’ordinateur. Le ZIP « JEU_COMPLET » proposé sur Drive contient les cartes déjà extraites.
+Le navigateur s’ouvre sur `http://127.0.0.1:8765/index.html`. Au premier lancement depuis GitHub, le serveur prépare les cartes à partir des 24 archives de base, de l’enrichissement d’Aubagne et de l’archive communale, **sans téléchargement**. La plus volumineuse des archives de base est transportée en `.zip.gz` puis reconstituée automatiquement, avec contrôle du SHA-256 du ZIP d’origine. La préparation et la validation du nouvel atlas communal peuvent prendre plusieurs minutes selon l’ordinateur ; attendre l’ouverture du navigateur. Le ZIP initial proposé sur Drive précède cette extension.
 
 ```bash
 git clone https://github.com/darknigthmare/fallout-Marseille.git
@@ -26,7 +28,10 @@ Utiliser le lanceur de l’application pour lire les données cartographiques. L
 
 ## Ce qui change
 
-- **Carte réelle disponible localement.** Les fichiers sont validés, les vides officiels portent leur preuve et les huit grilles de relief sont incluses.
+- **Commune entière disponible.** Les requêtes officielles couvrent Marseille et ses îles ; le voisinage est chargé à la demande, avec des caches bornés. Les objets de bordure sont conservés entiers.
+- **Façades et intérieurs jouables.** Portes accessibles, niveaux, cours préservées, mobilier adapté à l’usage, contenants finis et retour extérieur persistant. Les annotations documentées et les créations procédurales sont distinguées.
+- **Relief et littoral communaux.** Un fond au pas demandé de 25 m et 25 partitions au pas de 10 m complètent les relevés locaux plus fins. La mer suit les géométries IGN et bloque la marche hors supports appropriés.
+- **Carte réelle disponible localement.** Les fichiers sont validés, les vides officiels portent leur preuve et les huit grilles de relief de base sont incluses.
 - **Sortie de campagne reliée à la carte.** Le sas propose la sortie géographique et un accès direct explicitement nommé « scène narrative ». La balise des ateliers permet de retrouver Mireille ; la sortie des ateliers retrouve le point géographique enregistré, y compris après recharge.
 - **Voyage rapide vers les lieux découverts.** Dans le Pip-Boy, ouvrir **MAP → LIEUX ET VOYAGES**, sélectionner un lieu, préparer puis confirmer le voyage. L’arrivée est contrôlée contre le relief, l’eau, les murs et une marge de marche libre. Le temps avance seulement après réussite.
 - **Continuer reprend la sauvegarde la plus récente.** La sauvegarde courante est comparée aux autosauvegardes et emplacements manuels. Les données des versions antérieures restent migrables.
@@ -39,7 +44,7 @@ Les 248 lieux du catalogue, les rencontres persistantes, les blessures, les dép
 
 Le pack de base comprend **4 557 fichiers PBF**, **1 327 coordonnées officiellement vides**, **8 grilles de 161 × 161 points**, **174 944 altitudes valides** et **32 424 points sans mesure**. L’audit ne relève aucun fichier attendu manquant ou invalide. Une grille complète peut contenir des points sans mesure ; le jeu conserve ces absences.
 
-Les emprises et routes reposent sur les sources OpenStreetMap et cadastrales, le relief sur un échantillonnage de données IGN. Les décors et bâtiments sont interprétés par le jeu ; les hauteurs de toiture non documentées restent estimées. La campagne historique utilise encore des scènes narratives distinctes, clairement indiquées. Il ne s’agit pas d’une reproduction photoréaliste ni d’un relevé de chaque rue validé à pied.
+Le pack de base repose sur les sources OpenStreetMap, cadastrales et IGN ; l’extension communale ajoute les objets BD TOPO et le littoral IGN avec leurs preuves distinctes. Les décors, détails inconnus de façade et plans non documentés sont interprétés par le jeu. La campagne historique utilise encore des scènes narratives distinctes, clairement indiquées. La couverture géographique complète ne certifie pas une reproduction photoréaliste ni une visite vérifiée de chaque rue et intérieur.
 
 Les essais comprennent des parcours dans Chromium avec **vrais fichiers HTTP et stockage natif**, ainsi que des tests de régression sur bancs synthétiques distincts. Le rapport visuel v0.50 présente les captures de la livraison initiale v0.50 ; il reste historique, comme les rapports v0.49 et antérieurs. La validation des extensions actuelles est détaillée plus bas.
 
@@ -64,7 +69,9 @@ Les tests de navigateur nécessitent les dépendances de `requirements-dev.txt` 
 
 Prototype de fan non officiel. © contributeurs OpenStreetMap — ODbL · Cadastre Etalab / DGFiP — Licence Ouverte 2.0 · IGN RGE ALTI — Licence Ouverte 2.0. [Sources et provenance](docs/PROVENANCE_V050.md).
 
-## Extensions du territoire et de l’exploration
+## Acquisition précédente d’Aubagne et exploration
+
+Cette section décrit la livraison précédente `bb122d0`. L’état courant de Marseille, des façades et des intérieurs figure dans [Marseille entière](docs/MARSEILLE_ENTIERE.md) et son [bilan de validation](verification/expansion/city/CITY_INTEGRATION.json).
 
 Des sources IGN ont réellement été acquises et intégrées autour d’Aubagne, en complément du pack de base :
 
@@ -72,7 +79,7 @@ Des sources IGN ont réellement été acquises et intégrées autour d’Aubagne
 - **174 777 altitudes RGE ALTI**, interrogées au pas demandé d’environ **2 m** sur ce secteur.
 - **145 396 nœuds MNT LiDAR HD** sur le plus petit extrait `[43.2956, 5.5698, 43.2976, 5.5718]`. Le GeoTIFF source possède des pixels natifs de **50 cm** ; la grille WGS84 du jeu est reprojetée par échantillonnage **au plus proche (`nearest`)**, explicitement déclaré dans sa provenance.
 
-Le pas d’échantillonnage ne garantit pas une précision absolue de 50 cm. Les précisions XY et Z et les dates restent celles des sources ; les façades, formes de toiture inconnues et intérieurs ne sont pas inventés. Ce secteur ne constitue pas une reproduction exhaustive de Marseille « 1:1 ». Les formes de toiture prises en charge, à deux pans ou à un pan, explicitement cotées et orientées, disposent d’une collision par faces et de surfaces accessibles ; les bâtiments BD TOPO sans forme de toiture renseignée conservent une enveloppe estimée.
+Le pas d’échantillonnage ne garantit pas une précision absolue de 50 cm. Les précisions XY et Z et les dates restent celles des sources. Cette acquisition antérieure n’apportait pas de plans de façades ou d’intérieurs ; l’extension communale actuelle ajoute des créations cohérentes pour les parties inconnues. Ce seul secteur ne constitue pas une reproduction exhaustive de Marseille « 1:1 ». Les formes de toiture prises en charge, à deux pans ou à un pan, explicitement cotées et orientées, disposent d’une collision par faces et de surfaces accessibles ; les bâtiments BD TOPO sans forme de toiture renseignée conservent une enveloppe estimée.
 
 Le conditionnement reproductible des enrichissements utilise `tools/world_source_bundle.py`. Au lancement normal, le serveur restaure **sans réseau** les sources dont l’archive est fournie, avec vérification du reçu et des fichiers, tout en conservant les imports utilisateur déjà valides. L’archive fournie et sa restauration ont été vérifiées. Le [bilan de cette livraison](verification/expansion/real_sources/REAL_SOURCE_INTEGRATION.json) regroupe 397 contrôles de logique et d’outils, 434 contrats hérités et 84 contrôles du parcours natif ; les autres essais et leurs fixtures restent séparés. Les rapports v0.50 et le bilan précédent associé au HTML `8f4619bc…22d5aaa` restent historiques et ne valident pas automatiquement cette livraison enrichie.
 

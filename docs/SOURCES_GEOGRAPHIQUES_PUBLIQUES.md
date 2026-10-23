@@ -1,5 +1,7 @@
 # Sources publiques pour Marseille et ses environs
 
+L’[extension communale actuelle](MARSEILLE_ENTIERE.md) a acquis les requêtes vectorielles de toute Marseille, le relief échantillonné à 25/10 m et le littoral. Les reçus sont sous [implementation/city-sources](../implementation/city-sources/). L’acquisition LiDAR HD à 50 cm décrite ci-dessous reste un extrait local d’Aubagne ; elle ne devient pas une couverture LiDAR de toute la commune.
+
 Recherche effectuée le 23 octobre 2026 dans les dépôts et services officiels de l’IGN. Après application de la configuration réseau, une **vraie dalle MNT LiDAR HD de 2 000 × 2 000 pixels au pas de 0,50 m** a été acquise autour d’Aubagne. Un extrait reprojeté de **145 396 points**, sans NoData, a été intégré au jeu tout en conservant les objets vectoriels acquis séparément. La disponibilité native des autres secteurs de Marseille et La Ciotat reste à vérifier dalle par dalle. [Preuve d’acquisition](../implementation/real-sources/IGN_LIDARHD_MNT_AUBAGNE.json).
 
 ## Données utilisables

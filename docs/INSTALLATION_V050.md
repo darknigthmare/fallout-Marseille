@@ -2,6 +2,8 @@
 
 La version v0.50 fournit les cartes locales nécessaires au parcours géographique : **5 884 coordonnées vectorielles**, dont 4 557 PBF non vides et 1 327 réponses officiellement vides, ainsi que **huit grilles de relief**. Le jeu se lance avec un serveur local Python et un navigateur compatible WebGL. Python 3.11 ou plus récent est recommandé ; Node.js et Playwright servent au développement et aux tests, pas au jeu compilé. [Audit des fichiers livrés](../verification/v050/LOCAL_DATA_STATE.json)
 
+L’extension communale actuelle est fournie dans le dépôt GitHub ; la distribution Drive décrite ci-dessous reste celle de la livraison initiale. Le serveur actuel restaure aussi les archives d’Aubagne et de Marseille, hors réseau, avant d’ouvrir le navigateur. Cette validation peut prendre plusieurs minutes. Voir [Marseille entière](MARSEILLE_ENTIERE.md).
+
 ## 1. Choisir l’archive
 
 Les livraisons de cette version sont regroupées dans le [dossier Google Drive v0.50](https://drive.google.com/drive/folders/1xE5VpELY64tz5GV9CHHrlsIb_rfahRnQ). Le projet est également disponible dans le [dépôt GitHub](https://github.com/darknigthmare/fallout-Marseille).

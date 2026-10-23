@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "scope": "Exact cached official response replay, source-derived coastline tiling, island holes and coordinate classification; no visual game certification",
+  "network": "Explicit offline adapter rejects every new request; original URL/body/SHA-verified IGN HTTPS responses only",
+  "license": "Licence Ouverte 2.0",
+  "source": {
+    "acquiredAt": "2026-10-23",
+    "attribution": "IGN — Géoplateforme",
+    "license": "Licence Ouverte 2.0",
+    "resource": "ign-city-water",
+    "source": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+    "url": "https://data.geopf.fr/wfs/ows"
+  },
+  "sourceInputs": [
+    {
+      "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDCARTO_V5%3Aoccupation_du_sol&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.20751953125%2C43.16512263158296%2C5.537109375%2C43.40504748787035%2C%27EPSG%3A4326%27%29+AND+nature%3D%27Eau+libre%27&COUNT=1000&SORTBY=cleabs&STARTINDEX=0",
+      "responseSha256": "01580b735e28c79476b5299c62d8d134c3c7de94511383ab3848af5ce7e099f7",
+      "responseBytes": 123095,
+      "features": 3,
+      "complete": true,
+      "archivePath": "data/map_pack/city/water-68a26cdd718b88bd.json",
+      "archiveSha256": "68a26cdd718b88bd2e3bd424ea1a99b5df2da0b4a2ff75005229153ef92603e1"
+    },
+    {
+      "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Alimite_terre_mer&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.18751953125%2C43.14512263158296%2C5.557109375%2C43.42504748787035%2C%27EPSG%3A4326%27%29+AND+niveau%3D%27Plus+hautes+eaux%27&COUNT=1000&SORTBY=cleabs&STARTINDEX=0",
+      "responseSha256": "ed4c388ca6bc84b1729eb82f3bfbf6e2aabb6f521c0b12acbfb2143c1d4c4ecb",
+      "responseBytes": 1271818,
+      "features": 148,
+      "complete": true,
+      "archivePath": "data/map_pack/city/water-0122f4e0b4cc4447.json",
+      "archiveSha256": "0122f4e0b4cc44470ee4bbd3dca45b5da4a055f85acaedabb37cd9c96558733b"
+    }
+  ],
+  "municipalityBbox": [
+    43.1696313,
+    5.22875102,
+    43.39105653,
+    5.53254336
+  ],
+  "atlasBbox": [
+    43.16512263158296,
+    5.20751953125,
+    43.40504748787035,
+    5.537109375
+  ],
+  "indexSha256": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927",
+  "indexUnchanged": true,
+  "byteIdenticalReplayedFiles": 121,
+  "expandedBytes": 2619287,
+  "waterTileCount": 118,
+  "derivation": {
+    "algorithm": "Exact GEOS intersection and planar polygonization; no coordinate snapping or simplification",
+    "artificialEdges": "Outer XYZ tile coverage rectangle, XYZ tile cuts, and exact polygon subdivision only",
+    "noSimplification": true,
+    "polygonizedFaces": 103,
+    "renderSeaLevelBasis": "Nominal game sea surface, not an instantaneous tidal measurement",
+    "renderSeaLevelMetres": 0,
+    "seaHoles": 97,
+    "seaSeedOverlapRatio": 0.9977208187799319,
+    "shorelineFeatures": 148,
+    "shorelineLevel": "Plus hautes eaux",
+    "sourceSeedId": "occupation_du_sol.97",
+    "unsupportedTinyFragments": []
+  },
+  "unionSymmetricDifferenceAreaDegreesSquared": 2.5180653486855948e-17,
+  "islandHoleRepresentativePointsExcluded": 97,
+  "coordinateChecks": [
+    {
+      "label": "Northern bay, actual sea coordinate",
+      "latitude": 43.35,
+      "longitude": 5.3,
+      "expectedSourceWater": true,
+      "observedSourceWater": true
+    },
+    {
+      "label": "Northern Marseille, actual land coordinate",
+      "latitude": 43.362,
+      "longitude": 5.312,
+      "expectedSourceWater": false,
+      "observedSourceWater": false
+    },
+    {
+      "label": "Eastern inland envelope, outside municipal land mask",
+      "latitude": 43.37,
+      "longitude": 5.48,
+      "expectedSourceWater": false,
+      "observedSourceWater": false
+    },
+    {
+      "label": "Vieux-Port basin centre, actual sea coordinate",
+      "latitude": 43.29475,
+      "longitude": 5.3698,
+      "expectedSourceWater": true,
+      "observedSourceWater": true
+    }
+  ],
+  "administrativeOutsideLandCheck": {
+    "boundarySha256": "c15532675daf55dc629c3f92f876e032715bf49ed2ade423f520dca36b792138",
+    "latitude": 43.37,
+    "longitude": 5.48,
+    "insideMunicipality": false,
+    "sourceWater": false
+  },
+  "sourceCodeSha256": {
+    "tools/acquire_city_water.py": "c1a5fcfe08afe75052ab629924947e083a47e30de5e7593bb8ecb5ca99ff1b94",
+    "tools/city_water_sources.py": "95964d2f5cc6012688652b994f43472a5dda5938976ae7e3592938f8e63795d6"
+  },
+  "durationSeconds": 2.503
+}

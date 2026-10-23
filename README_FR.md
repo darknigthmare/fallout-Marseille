@@ -3,6 +3,8 @@
 
 Le [guide principal](README.md) décrit le lancement, les nouveautés, les sources et les vérifications.
 
+L’extension actuelle couvre [Marseille entière et ses intérieurs](docs/MARSEILLE_ENTIERE.md), avec des façades et aménagements inventés lorsque les détails ne sont pas documentés. Au lancement depuis ce dépôt, les archives communales et d’Aubagne sont aussi restaurées hors réseau ; leur validation peut prendre plusieurs minutes.
+
 Après extraction complète, lancez **LANCER_APP_WINDOWS.bat**, **LANCER_APP_LINUX.sh** ou **LANCER_APP_MAC.command**. Python 3 est nécessaire. Gardez le serveur ouvert pendant la partie.
 
 Le menu **Cartes & territoire** vérifie les fichiers présents. Le pack contient les 5 884 coordonnées et les huit grilles prévues. Depuis le dépôt GitHub, les fichiers sont extraits des archives fournies au premier lancement, sans téléchargement.

@@ -31,6 +31,17 @@ DRIVE_LIMIT = 100 * 1024 * 1024
 CHECKS = []
 
 
+def playable_tool_names():
+    """Python modules needed by the extracted game and its source validators."""
+    return ['serve_game.py', 'prepare_local_pack_v050.py', 'validate_real_map_v046.py',
+            'install_local_pack_v041.py', 'install_real_map_v038.py', 'install_real_map_v039.py',
+            'install_terrain_v039.py', 'mvt_audit_v036.py', 'benchmark_map_v041.py',
+            'audit_real_map_v039.py', 'audit_real_map_v038.py', 'audit_terrain_v039.py',
+            'audit_corridors_v040.py', 'world_source_bundle.py', 'world_sources.py',
+            'city_sources.py', 'city_water_sources.py', 'acquire_city_world.py',
+            'acquire_public_world.py']
+
+
 def sha(path):
     digest = hashlib.sha256()
     with path.open('rb') as source:
@@ -114,7 +125,8 @@ def check_extracted_server(folder, html_hash):
         proc = subprocess.Popen([sys.executable, 'tools/serve_game.py', '--port', str(port), '--no-browser'], cwd=folder, stdout=log, stderr=log)
         try:
             status = None
-            for _ in range(120):
+            startup_deadline = time.monotonic() + 300
+            while time.monotonic() < startup_deadline:
                 if proc.poll() is not None:
                     log.seek(0)
                     raise RuntimeError('Serveur arrêté : ' + log.read()[-1200:])
@@ -136,6 +148,18 @@ def check_extracted_server(folder, html_hash):
             terrain = folder / 'data/map_pack/terrain/geo_huveaune.json'
             with urllib.request.urlopen(url + '/data/map_pack/terrain/geo_huveaune.json', timeout=5) as response:
                 ck('Jeu extrait : vraie grille de relief HTTP', hashlib.sha256(response.read()).hexdigest() == sha(terrain))
+            city_index = folder / 'data/map_pack/city/index.json'
+            if city_index.exists():
+                with urllib.request.urlopen(url + '/__mistral/city-sources', timeout=300) as response:
+                    city = json.load(response)
+                expected_city = read_json(city_index)
+                expected_terrain = read_json(folder / 'data/map_pack/city/terrain-index.json')
+                ck('Jeu extrait : atlas communal et validateurs réellement distribués',
+                   city.get('ok') is True and city.get('present') is True
+                   and city['indexSha256'] == sha(city_index)
+                   and city['coverage'] == expected_city['coverage']
+                   and city['terrain']['coverage'] == expected_terrain['coverage']
+                   and city['water']['present'] is True)
             with sync_playwright() as pw:
                 browser = pw.chromium.launch(executable_path=chromium_path(), args=['--no-sandbox', '--disable-dev-shm-usage'])
                 try:
@@ -210,23 +234,25 @@ def split_and_verify(full, out):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=R.parent / 'delivery-v050')
+    parser.add_argument('--quality-report', type=Path, default=R / 'verification/v050/QA_GLOBAL.json', help='Bilan complet réussi, lié au SHA du HTML à distribuer.')
+    parser.add_argument('--native-report', type=Path, default=R / 'verification/v050/NATIVE_REAL_MAP.json', help='Parcours natif complet de campagne sur le même HTML.')
     args = parser.parse_args()
     out = args.output.resolve()
     if out == R or R in out.parents:
         parser.error('Le dossier de livraison doit être extérieur au dépôt.')
     out.mkdir(parents=True, exist_ok=True)
     html_hash = sha(R / HTML)
-    quality = read_json(R / 'verification/v050/QA_GLOBAL.json')
-    native = read_json(R / 'verification/v050/NATIVE_REAL_MAP.json')
+    quality = read_json(args.quality_report)
+    native = read_json(args.native_report)
     ck('QA finale réussie sur le HTML distribué', quality['failed'] == 0 and quality['passed'] == quality['total'] and quality['html_sha256'] == html_hash, {'passed': quality['passed'], 'total': quality['total']})
     ck('Parcours natif complet sur le même HTML', native['failed'] == 0 and native['stage'] == 'complete' and native['html_sha256'] == html_hash and native['browser_document_sha256'] == html_hash and not native['page_errors'])
     ck('Index et programme distribués identiques', sha(R / 'index.html') == html_hash)
     rootfiles = [HTML, 'index.html', 'README.md', 'README_FR.md', 'START_HERE.txt', 'manifest.webmanifest', 'sw.js', 'RAPPORT_VISUEL_V0.50.html', 'RAPPORT_VISUEL_V0.50.png']
     rootfiles += [p.name for p in R.iterdir() if p.is_file() and p.suffix in {'.bat', '.sh', '.command'}]
-    toolnames = ['serve_game.py', 'prepare_local_pack_v050.py', 'validate_real_map_v046.py', 'install_local_pack_v041.py', 'install_real_map_v038.py', 'install_real_map_v039.py', 'install_terrain_v039.py', 'mvt_audit_v036.py', 'benchmark_map_v041.py', 'audit_real_map_v039.py', 'audit_real_map_v038.py', 'audit_terrain_v039.py', 'audit_corridors_v040.py']
+    toolnames = playable_tool_names()
     paths = {R / name for name in rootfiles} | {R / 'tools' / name for name in toolnames}
-    for folder in ['icons', 'data', 'docs', 'verification/v050']:
-        paths.update(p for p in (R / folder).rglob('*') if include(p) and 'archives' not in p.relative_to(R).parts)
+    for folder in ['icons', 'data', 'docs', 'verification/v050', 'verification/expansion', 'implementation/real-sources', 'implementation/city-sources']:
+        paths.update(p for p in (R / folder).rglob('*') if include(p) and not any(part in {'archives', 'enrichment_archives', 'city_archives'} for part in p.relative_to(R).parts))
     game_files = sorted(paths)
     ck('Tous les composants de la distribution jouable présents', all(p.is_file() for p in game_files))
     game_manifest = {'version': '0.50.0', 'scope': 'Jeu avec données géographiques déjà extraites, lanceurs, documents et preuves. Les 24 ZIP de reconstruction figurent dans le projet complet.', 'files': entries(game_files)}

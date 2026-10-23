@@ -187,6 +187,44 @@ def _point_inside(ring, point):
     return hit
 
 
+def _segment_candidates(first, second=None):
+    """Conservative AABB sweep; the exact intersection predicate stays below.
+
+    Expand both segment boxes by the existing on-segment tolerance. This is a
+    deliberate superset (not a new geometric tolerance): every candidate still
+    passes through the unchanged _segments_intersect predicate. Sorting and
+    pruning only avoid testing segments whose expanded boxes cannot meet.
+    Coordinates, vertex order, adjacent-edge rules and source bytes are intact.
+    """
+    rows = []
+    for origin, ring in enumerate((first,) if second is None else (first, second)):
+        for i, (a, b) in enumerate(zip(ring, ring[1:])):
+            rows.append((min(a[0], b[0]) - 1e-14, max(a[0], b[0]) + 1e-14,
+                         min(a[1], b[1]) - 1e-14, max(a[1], b[1]) + 1e-14, origin, i))
+    rows.sort(key=lambda row: row[0])
+    active = []
+    count = len(first) - 1
+    for current in rows:
+        xmin, xmax, ymin, ymax, origin, i = current
+        active = [previous for previous in active if previous[1] >= xmin]
+        for previous in active:
+            if previous[3] < ymin or previous[2] > ymax:
+                continue
+            other_origin, j = previous[4], previous[5]
+            if second is None:
+                if abs(i - j) == 1 or (i == 0 and j == count - 1) or (j == 0 and i == count - 1):
+                    continue
+                yield i, j
+            elif origin != other_origin:
+                yield (i, j) if origin == 0 else (j, i)
+        active.append(current)
+
+
+def _rings_intersect(first, second):
+    return any(_segments_intersect(first[i], first[i + 1], second[j], second[j + 1])
+               for i, j in _segment_candidates(first, second))
+
+
 def _ring(raw, crs, counter):
     if not isinstance(raw, list) or not 4 <= len(raw) <= MAX_RING_VERTICES:
         raise SourceError(f"polygon rings require 4..{MAX_RING_VERTICES} vertices")
@@ -201,13 +239,9 @@ def _ring(raw, crs, counter):
     area = sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(ring, ring[1:])) / 2
     if abs(area) < 1e-14:
         raise SourceError("polygon ring has zero area")
-    count = len(ring) - 1
-    for i in range(count):
-        for j in range(i + 2, count):
-            if i == 0 and j == count - 1:
-                continue
-            if _segments_intersect(ring[i], ring[i + 1], ring[j], ring[j + 1]):
-                raise SourceError("polygon ring self-intersects")
+    for i, j in _segment_candidates(ring):
+        if _segments_intersect(ring[i], ring[i + 1], ring[j], ring[j + 1]):
+            raise SourceError("polygon ring self-intersects")
     return ring
 
 
@@ -219,7 +253,7 @@ def _polygon(raw, crs, counter):
         if not _point_inside(rings[0], hole[0]):
             raise SourceError("polygon hole is not strictly inside its outer ring")
         for previous in rings[:i]:
-            if any(_segments_intersect(a, b, c, d) for a, b in zip(hole, hole[1:]) for c, d in zip(previous, previous[1:])):
+            if _rings_intersect(hole, previous):
                 raise SourceError("polygon rings intersect or touch")
         if any(_point_inside(previous, hole[0]) or _point_inside(hole, previous[0]) for previous in rings[1:i]):
             raise SourceError("polygon holes overlap or are nested")

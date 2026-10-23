@@ -1,0 +1,138 @@
+{
+  "ok": true,
+  "present": true,
+  "municipality": {
+    "code": "13055",
+    "name": "Marseille",
+    "bbox": [
+      43.1696313,
+      5.22875102,
+      43.39105653,
+      5.53254336
+    ]
+  },
+  "coverage": {
+    "administrativeEnvelopeBorderObjects": 4,
+    "complete": true,
+    "expandedBytes": 759922557,
+    "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+    "nonAcquiredZAnomalies": 1,
+    "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+    "partitionStepDegrees": 0.025,
+    "queryTileCount": 77,
+    "tileCount": 290,
+    "uniqueBuildings": 291001,
+    "uniqueRoads": 55449
+  },
+  "tileCount": 290,
+  "totalBuildings": 291001,
+  "totalRoads": 55449,
+  "terrain": {
+    "present": true,
+    "base": {
+      "allNoData": false,
+      "bbox": [
+        43.1696313,
+        5.22875102,
+        43.39105653,
+        5.53254336
+      ],
+      "bytes": 5613054,
+      "height": 985,
+      "macro": "geo_marseille_commune",
+      "missingPoints": 232492,
+      "outOfSupportedRangePoints": 11433,
+      "path": "data/map_pack/city/terrain-f9ea94a8973316e9.json",
+      "providerInvalidPoints": 11433,
+      "providerNoDataPoints": 221059,
+      "sha256": "f9ea94a8973316e9fbcc5e3e9fe48b4a6e78f0e6e0b6d7878cb27458d02211bc",
+      "sourceResource": "ign_rge_alti_wld",
+      "validPoints": 740688,
+      "width": 988
+    },
+    "tileCount": 24,
+    "noDataTileCount": 1,
+    "coverage": {
+      "complete": true,
+      "completedFinePartitions": 25,
+      "fineComplete": true,
+      "requestedFinePartitions": 25,
+      "scope": "commune bounding envelope, without fabrication in source NoData"
+    }
+  },
+  "water": {
+    "present": true,
+    "tileCount": 118,
+    "source": {
+      "acquiredAt": "2026-10-23",
+      "attribution": "IGN — Géoplateforme",
+      "license": "Licence Ouverte 2.0",
+      "resource": "ign-city-water",
+      "source": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+      "url": "https://data.geopf.fr/wfs/ows"
+    },
+    "derivation": {
+      "algorithm": "Exact GEOS intersection and planar polygonization; no coordinate snapping or simplification",
+      "artificialEdges": "Outer XYZ tile coverage rectangle, XYZ tile cuts, and exact polygon subdivision only",
+      "noSimplification": true,
+      "polygonizedFaces": 103,
+      "renderSeaLevelBasis": "Nominal game sea surface, not an instantaneous tidal measurement",
+      "renderSeaLevelMetres": 0,
+      "seaHoles": 97,
+      "seaSeedOverlapRatio": 0.9977208187799319,
+      "shorelineFeatures": 148,
+      "shorelineLevel": "Plus hautes eaux",
+      "sourceSeedId": "occupation_du_sol.97",
+      "unsupportedTinyFragments": []
+    }
+  },
+  "sources": [
+    {
+      "name": "IGN BD TOPO — commune",
+      "license": "Licence Ouverte 2.0",
+      "attribution": "IGN — Géoplateforme",
+      "acquiredAt": "2026-10-23",
+      "resource": "ign-bdtopo",
+      "url": "https://data.geopf.fr/wfs/ows"
+    },
+    {
+      "name": "IGN BD TOPO — BDTOPO_V3:batiment",
+      "license": "Licence Ouverte 2.0",
+      "attribution": "IGN — Géoplateforme",
+      "acquiredAt": "2026-10-23",
+      "resource": "ign-bdtopo",
+      "url": "https://data.geopf.fr/wfs/ows",
+      "verticalDatum": "NGF-IGN69"
+    },
+    {
+      "name": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+      "license": "Licence Ouverte 2.0",
+      "attribution": "IGN — Géoplateforme",
+      "acquiredAt": "2026-10-23",
+      "resource": "ign-bdtopo",
+      "url": "https://data.geopf.fr/wfs/ows",
+      "verticalDatum": "NGF-IGN69"
+    },
+    {
+      "name": "IGN — MNT RGE ALTI, API points",
+      "license": "Licence Ouverte 2.0",
+      "attribution": "IGN — RGE ALTI",
+      "acquiredAt": "2026-10-23",
+      "resource": "ign_rge_alti_wld",
+      "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+      "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+    },
+    {
+      "name": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+      "license": "Licence Ouverte 2.0",
+      "attribution": "IGN — Géoplateforme",
+      "acquiredAt": "2026-10-23",
+      "resource": "ign-city-water",
+      "url": "https://data.geopf.fr/wfs/ows"
+    }
+  ],
+  "indexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+  "validationDurationSeconds": 53.982,
+  "validatorCodeSha256": "aab465f8dd47f71710e86689e61a06f0b85e02d03a8e2aebcc0b39b44c50cf3d",
+  "runtimeAcquisitionModulesImported": []
+}

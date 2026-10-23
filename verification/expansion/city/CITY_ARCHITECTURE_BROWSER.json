@@ -1,0 +1,5083 @@
+{
+  "scope": "Assisted native-browser contracts for the installed Marseille city atlas.\n\nThe exact production HTML, real GameHandler, city partitions, terrain, source\nhashes, UI and browser storage are used. Existing diagnostic APIs load sectors,\nplace a camera on measured clear ground and pause simulation/rendering. They do\nnot fabricate buildings, substitute HTTP, inject HTML or grant a documentary\nplan. Portal, landing and container actions use actual keyboard/UI controls.\nThis is a bounded integration pilot, not an unassisted citywide playthrough.\n",
+  "html_sha256": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+  "stage": "complete",
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "synthetic_geography": false,
+  "assistance": [
+    "Existing macro/sector loading APIs",
+    "Measured, collision-free camera selection and existing physical approach helper",
+    "Existing QA simulation freeze and paused continuous rendering; explicit real WebGL captures"
+  ],
+  "checks": [
+    {
+      "name": "The requested frozen production HTML is installed",
+      "ok": true,
+      "detail": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa"
+    },
+    {
+      "name": "Official full-commune boundary is locally pinned by bytes and SHA-256",
+      "ok": true,
+      "detail": {
+        "bytes": 950873,
+        "path": "data/map_pack/city/boundary-c15532675daf55dc.json",
+        "sha256": "c15532675daf55dc629c3f92f876e032715bf49ed2ade423f520dca36b792138"
+      }
+    },
+    {
+      "name": "The installed city index identifies a completed Marseille acquisition",
+      "ok": true,
+      "detail": {
+        "administrativeEnvelopeBorderObjects": 4,
+        "complete": true,
+        "expandedBytes": 759922557,
+        "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+        "nonAcquiredZAnomalies": 1,
+        "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+        "partitionStepDegrees": 0.025,
+        "queryTileCount": 77,
+        "tileCount": 290,
+        "uniqueBuildings": 291001,
+        "uniqueRoads": 55449
+      }
+    },
+    {
+      "name": "The frozen city acquisition contains the expected complete source inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "All twenty-five requested fine terrain partitions are certified complete",
+      "ok": true,
+      "detail": {
+        "complete": true,
+        "completedFinePartitions": 25,
+        "fineComplete": true,
+        "requestedFinePartitions": 25,
+        "scope": "commune bounding envelope, without fabrication in source NoData"
+      }
+    },
+    {
+      "name": "Actual server verifies every installed partition and returns an uncached complete audit",
+      "ok": true,
+      "detail": {
+        "status": 200,
+        "cache_control": "no-store"
+      }
+    },
+    {
+      "name": "Real municipal terrain accompanies the full-boundary source index",
+      "ok": true,
+      "detail": {
+        "present": true,
+        "base": {
+          "allNoData": false,
+          "bbox": [
+            43.1696313,
+            5.22875102,
+            43.39105653,
+            5.53254336
+          ],
+          "bytes": 5613054,
+          "height": 985,
+          "macro": "geo_marseille_commune",
+          "missingPoints": 232492,
+          "outOfSupportedRangePoints": 11433,
+          "path": "data/map_pack/city/terrain-f9ea94a8973316e9.json",
+          "providerInvalidPoints": 11433,
+          "providerNoDataPoints": 221059,
+          "sha256": "f9ea94a8973316e9fbcc5e3e9fe48b4a6e78f0e6e0b6d7878cb27458d02211bc",
+          "sourceResource": "ign_rge_alti_wld",
+          "validPoints": 740688,
+          "width": 988
+        },
+        "tileCount": 24,
+        "noDataTileCount": 1,
+        "coverage": {
+          "complete": true,
+          "completedFinePartitions": 25,
+          "fineComplete": true,
+          "requestedFinePartitions": 25,
+          "scope": "commune bounding envelope, without fabrication in source NoData"
+        }
+      }
+    },
+    {
+      "name": "Native Chromium receives the unchanged production document over real HTTP",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Runtime registers the real commune and complete partition inventory",
+      "ok": true,
+      "detail": {
+        "indexPresent": true,
+        "municipality": {
+          "code": "13055",
+          "name": "Marseille",
+          "bbox": [
+            43.1696313,
+            5.22875102,
+            43.39105653,
+            5.53254336
+          ]
+        },
+        "coverage": {
+          "administrativeEnvelopeBorderObjects": 4,
+          "complete": true,
+          "expandedBytes": 759922557,
+          "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+          "nonAcquiredZAnomalies": 1,
+          "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+          "partitionStepDegrees": 0.025,
+          "queryTileCount": 77,
+          "tileCount": 290,
+          "uniqueBuildings": 291001,
+          "uniqueRoads": 55449
+        },
+        "registered": true,
+        "tilesAvailable": 290,
+        "sourceBuildings": 291001,
+        "sourceRoads": 55449,
+        "loadedPartitions": 0,
+        "loadedBuildings": 0,
+        "loadedRoads": 0,
+        "loadedWireBytes": 0,
+        "sharedProvenanceRecords": 0,
+        "cache": {
+          "entries": 0,
+          "bytes": 0,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 0,
+          "misses": 0,
+          "evictions": 0
+        },
+        "terrainCache": {
+          "entries": 0,
+          "bytes": 0,
+          "budgetBytes": 50331648,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 0,
+          "misses": 0,
+          "evictions": 0
+        },
+        "terrainIndexPresent": true,
+        "terrainTilesAvailable": 24,
+        "inflight": 0,
+        "requests": 0,
+        "errors": []
+      }
+    },
+    {
+      "name": "Player-visible city panel reports the actual audited building and road totals",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The real maritime diagnostic sector prepares successfully",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The actual official water atlas is present with its pinned source and unsimplified shoreline",
+      "ok": true,
+      "detail": {
+        "present": true,
+        "source": {
+          "acquiredAt": "2026-10-23",
+          "attribution": "IGN — Géoplateforme",
+          "license": "Licence Ouverte 2.0",
+          "resource": "ign-city-water",
+          "source": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+          "url": "https://data.geopf.fr/wfs/ows"
+        },
+        "derivation": {
+          "algorithm": "Exact GEOS intersection and planar polygonization; no coordinate snapping or simplification",
+          "artificialEdges": "Outer XYZ tile coverage rectangle, XYZ tile cuts, and exact polygon subdivision only",
+          "noSimplification": true,
+          "polygonizedFaces": 103,
+          "renderSeaLevelBasis": "Nominal game sea surface, not an instantaneous tidal measurement",
+          "renderSeaLevelMetres": 0,
+          "seaHoles": 97,
+          "seaSeedOverlapRatio": 0.9977208187799319,
+          "shorelineFeatures": 148,
+          "shorelineLevel": "Plus hautes eaux",
+          "sourceSeedId": "occupation_du_sol.97",
+          "unsupportedTinyFragments": []
+        },
+        "tiles": 118,
+        "cache": {
+          "entries": 4,
+          "bytes": 101360,
+          "budgetBytes": 8388608,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 0,
+          "misses": 4,
+          "evictions": 0
+        },
+        "requests": 4,
+        "errors": []
+      }
+    },
+    {
+      "name": "The loaded official sea polygon blocks walking independently of missing or zero terrain",
+      "ok": true,
+      "detail": {
+        "latlon": [
+          43.35,
+          5.3
+        ],
+        "projected": [
+          -17257.154154217453,
+          0,
+          -6703.181174496189
+        ],
+        "ground": {
+          "height": 0,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            9.969249779515213,
+            10.01994170878003
+          ],
+          "sourceResource": "ign_rge_alti_wld",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+        },
+        "maritimePolygonsLoaded": 12,
+        "maritimeHits": [
+          {
+            "id": "water:ign-sea:14:8433:5998:0",
+            "mesh": "flatpoly",
+            "renderY": 0.02,
+            "rings": 1
+          }
+        ],
+        "collision": true
+      }
+    },
+    {
+      "name": "The water atlas declares nominal sea level without claiming a tidal measurement",
+      "ok": true,
+      "detail": {
+        "nominal_level_metres": 0,
+        "render_separation_metres": 0.02,
+        "raw_terrain": {
+          "height": 0,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            9.969249779515213,
+            10.01994170878003
+          ],
+          "sourceResource": "ign_rge_alti_wld",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+        }
+      }
+    },
+    {
+      "name": "The maritime projected cache stays within its byte budget",
+      "ok": true,
+      "detail": {
+        "entries": 4,
+        "bytes": 101360,
+        "budgetBytes": 8388608,
+        "pinned": 0,
+        "overBudgetBytes": 0,
+        "hits": 0,
+        "misses": 4,
+        "evictions": 0
+      }
+    },
+    {
+      "name": "vieux_port: production staging loads actual city sources",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "vieux_port: a measured collision-free camera point exists",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "vieux_port: real city buildings and roads are streamed instead of the whole atlas",
+      "ok": true,
+      "detail": {
+        "indexPresent": true,
+        "municipality": {
+          "code": "13055",
+          "name": "Marseille",
+          "bbox": [
+            43.1696313,
+            5.22875102,
+            43.39105653,
+            5.53254336
+          ]
+        },
+        "coverage": {
+          "administrativeEnvelopeBorderObjects": 4,
+          "complete": true,
+          "expandedBytes": 759922557,
+          "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+          "nonAcquiredZAnomalies": 1,
+          "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+          "partitionStepDegrees": 0.025,
+          "queryTileCount": 77,
+          "tileCount": 290,
+          "uniqueBuildings": 291001,
+          "uniqueRoads": 55449
+        },
+        "registered": true,
+        "tilesAvailable": 290,
+        "sourceBuildings": 291001,
+        "sourceRoads": 55449,
+        "loadedPartitions": 13,
+        "loadedBuildings": 17415,
+        "loadedRoads": 2085,
+        "loadedWireBytes": 38860830,
+        "sharedProvenanceRecords": 81,
+        "cache": {
+          "entries": 13,
+          "bytes": 64064796,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 195,
+          "misses": 116,
+          "evictions": 67
+        },
+        "terrainCache": {
+          "entries": 8,
+          "bytes": 19139448,
+          "budgetBytes": 50331648,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 0,
+          "misses": 8,
+          "evictions": 0
+        },
+        "terrainIndexPresent": true,
+        "terrainTilesAvailable": 24,
+        "inflight": 0,
+        "requests": 88,
+        "errors": []
+      }
+    },
+    {
+      "name": "vieux_port: municipal vector and terrain caches remain within their byte budgets",
+      "ok": true,
+      "detail": {
+        "cache": {
+          "entries": 13,
+          "bytes": 64064796,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 195,
+          "misses": 116,
+          "evictions": 67
+        },
+        "terrainCache": {
+          "entries": 8,
+          "bytes": 19139448,
+          "budgetBytes": 50331648,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 0,
+          "misses": 8,
+          "evictions": 0
+        }
+      }
+    },
+    {
+      "name": "vieux_port: nearby source buildings receive bounded rendered facade details",
+      "ok": true,
+      "detail": {
+        "buildings": 17424,
+        "visibleBuildings": 36,
+        "quads": 8192,
+        "openings": 3134,
+        "fictionalBuildings": 36,
+        "documentedBuildings": 0,
+        "cache": {
+          "bytes": 5673810,
+          "entries": 36,
+          "hits": 36,
+          "builds": 36,
+          "evictions": 0
+        },
+        "radius": 145,
+        "selection": [
+          {
+            "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+            "distance": 1.6560084691736847,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258927776:823ead136147462f",
+            "distance": 8.357735970057547,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258927777:266fd67c8d066310",
+            "distance": 9.567903057434927,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258930406:55abd31e9a3465da",
+            "distance": 32.49321241046874,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258929691:5dc4fee0c6c66944",
+            "distance": 32.84437011554837,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258929774:e83edbe137660ba5",
+            "distance": 34.53376036521898,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258929690:e253bd29dec39a8d",
+            "distance": 36.243849140941165,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000219874657:ae993130bde19dec",
+            "distance": 36.55610247992445,
+            "style": "industrial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258927583:4d09dfcddc4c8ce1",
+            "distance": 43.3304008682784,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258930412:9ae7cf782a614abc",
+            "distance": 46.360170591196265,
+            "style": "residential",
+            "provenance": "invented"
+          }
+        ],
+        "limit": "Les détails inventés sont cohérents avec l’emprise et la hauteur disponibles ; ils ne constituent pas un relevé de façade."
+      }
+    },
+    {
+      "name": "vieux_port: rendered facade details preserve the actual source outline and metric envelope",
+      "ok": true,
+      "detail": [
+        {
+          "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "sourceId": "batiment.9968149",
+          "baseY": 1.6,
+          "height": 24.799999999999997,
+          "levels": 8,
+          "levelHeight": 3.0999999999999996,
+          "levelsBasis": "invented",
+          "renderedOpenings": 82,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258927776:823ead136147462f",
+          "sourceId": "batiment.9968147",
+          "baseY": 1,
+          "height": 23.2,
+          "levels": 1,
+          "levelHeight": 23.2,
+          "levelsBasis": "source-declared",
+          "renderedOpenings": 22,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258927777:266fd67c8d066310",
+          "sourceId": "batiment.9968148",
+          "baseY": 1.9,
+          "height": 18.5,
+          "levels": 6,
+          "levelHeight": 3.0833333333333335,
+          "levelsBasis": "invented",
+          "renderedOpenings": 48,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258930406:55abd31e9a3465da",
+          "sourceId": "batiment.9970416",
+          "baseY": 1.5,
+          "height": 4.5,
+          "levels": 1,
+          "levelHeight": 4.5,
+          "levelsBasis": "invented",
+          "renderedOpenings": 14,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        }
+      ]
+    },
+    {
+      "name": "vieux_port: generated doors use plausible metric dimensions and explicit provenance",
+      "ok": true,
+      "detail": [
+        {
+          "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22:entrance:0:0:5000",
+          "buildingId": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "center": [
+            -11432.193965831248,
+            1.6,
+            -939.1049481099471
+          ],
+          "outside": [
+            -11433.321766434401,
+            1.6,
+            -938.8800797050343
+          ],
+          "inside": [
+            -11431.262304463426,
+            1.6,
+            -939.2907089661794
+          ],
+          "tangent": [
+            0.19553774340244087,
+            0.9806961766546665
+          ],
+          "normal": [
+            -0.9806961766546665,
+            0.19553774340244087
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 0,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 16.04583231891469,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22:entrance:0:11:5000",
+          "buildingId": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "center": [
+            -11407.994304584223,
+            1.6,
+            -947.0053671789356
+          ],
+          "outside": [
+            -11406.95385480963,
+            1.6,
+            -947.4952286558348
+          ],
+          "inside": [
+            -11408.85380657193,
+            1.6,
+            -946.6006990023666
+          ],
+          "tangent": [
+            -0.4259665016515232,
+            -0.9047389344284698
+          ],
+          "normal": [
+            0.9047389344284698,
+            -0.4259665016515232
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 11,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 14.567370166273022,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22:entrance:0:12:5000",
+          "buildingId": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "center": [
+            -11424.44438134873,
+            1.6,
+            -958.1551803685725
+          ],
+          "outside": [
+            -11424.728548174708,
+            1.6,
+            -959.2695183850713
+          ],
+          "inside": [
+            -11424.209634840316,
+            1.6,
+            -957.2346402679866
+          ],
+          "tangent": [
+            -0.9689895795641198,
+            0.2471015878058053
+          ],
+          "normal": [
+            -0.2471015878058053,
+            -0.9689895795641198
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 12,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 9.744960636280773,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22:entrance:0:1:5000",
+          "buildingId": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "center": [
+            -11422.244125999452,
+            1.6,
+            -923.8552190815099
+          ],
+          "outside": [
+            -11422.06602851775,
+            1.6,
+            -922.7190935219825
+          ],
+          "inside": [
+            -11422.391250006076,
+            1.6,
+            -924.7937575872064
+          ],
+          "tangent": [
+            0.9879352691542316,
+            -0.15486737539312873
+          ],
+          "normal": [
+            0.15486737539312873,
+            0.9879352691542316
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 1,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 6.206658673265425,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22:entrance:0:9:5000",
+          "buildingId": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "center": [
+            -11404.994294328731,
+            1.6,
+            -926.6552173765376
+          ],
+          "outside": [
+            -11404.80310330258,
+            1.6,
+            -925.5212217894567
+          ],
+          "inside": [
+            -11405.15223474164,
+            1.6,
+            -927.5919963397783
+          ],
+          "tangent": [
+            0.9860831192007412,
+            -0.1662530662193537
+          ],
+          "normal": [
+            0.1662530662193537,
+            0.9860831192007412
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 9,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 3.9379656054311862,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22:entrance:0:10:5000",
+          "buildingId": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "center": [
+            -11401.044148632733,
+            1.6,
+            -930.3554935380816
+          ],
+          "outside": [
+            -11399.910320342107,
+            1.6,
+            -930.54767420146
+          ],
+          "inside": [
+            -11401.980789394554,
+            1.6,
+            -930.1967355987691
+          ],
+          "tangent": [
+            -0.1671136203290121,
+            -0.9859376440224457
+          ],
+          "normal": [
+            0.9859376440224457,
+            -0.1671136203290121
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 10,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 2.417057164856005,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22:entrance:0:5:5000",
+          "buildingId": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "center": [
+            -11412.39430135145,
+            1.6,
+            -924.8048621928319
+          ],
+          "outside": [
+            -11412.228734325285,
+            1.6,
+            -923.6668430542202
+          ],
+          "inside": [
+            -11412.531074112198,
+            1.6,
+            -925.7449649595112
+          ],
+          "tangent": [
+            0.9895818596623549,
+            -0.14397132710090327
+          ],
+          "normal": [
+            0.14397132710090327,
+            0.9895818596623549
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 5,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 2.203859851512105,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258927776:823ead136147462f:entrance:0:18:5000",
+          "buildingId": "BATIMENT0000000258927776:823ead136147462f",
+          "center": [
+            -11393.84415694006,
+            1,
+            -910.9055026290007
+          ],
+          "outside": [
+            -11392.711505358226,
+            1,
+            -911.1045011068003
+          ],
+          "inside": [
+            -11394.779825638097,
+            1,
+            -910.7411125821228
+          ],
+          "tangent": [
+            0.17304215460834974,
+            0.984914418987
+          ],
+          "normal": [
+            0.984914418987,
+            -0.17304215460834974
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 18,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 6.938486653681612,
+          "provenance": "invented",
+          "source": null
+        }
+      ]
+    },
+    {
+      "name": "vieux_port: actual accessible building portals are available",
+      "ok": true,
+      "detail": [
+        {
+          "id": "city-door:a6d190750f6c5fd1",
+          "building": "BATIMENT0000000258927776:823ead136147462f",
+          "pos": [
+            -11392.711505358226,
+            2.167424127302195,
+            -911.1045011068003
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:3d96a0bc28989666",
+          "building": "BATIMENT0000000258927777:266fd67c8d066310",
+          "pos": [
+            -11415.527994913766,
+            2.377916619239564,
+            -919.8116256629904
+          ],
+          "levels": 6,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:e9117ec6ece43034",
+          "building": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "pos": [
+            -11433.321766434401,
+            2.597870905647116,
+            -938.8800797050343
+          ],
+          "levels": 8,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:f4391d873700be6d",
+          "building": "BATIMENT0000000258930406:55abd31e9a3465da",
+          "pos": [
+            -11371.661380349147,
+            2.7927782965360515,
+            -964.8028334571238
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:3afa0d819ecd5117",
+          "building": "BATIMENT0000000258929774:e83edbe137660ba5",
+          "pos": [
+            -11366.576087728363,
+            2.612606719537544,
+            -962.2506282983262
+          ],
+          "levels": 6,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:d7bb1003053674dd",
+          "building": "BATIMENT0000000258929388:7d9770dbb68de267",
+          "pos": [
+            -11349.728066241385,
+            2.577276853679697,
+            -948.164175182611
+          ],
+          "levels": 7,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:cec1dd1228df9dac",
+          "building": "BATIMENT0000000258930412:9ae7cf782a614abc",
+          "pos": [
+            -11385.827009986275,
+            6.3504039482017625,
+            -983.0079475086509
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:072f71055ca070f7",
+          "building": "BATIMENT0000000219874657:ae993130bde19dec",
+          "pos": [
+            -11463.834568708768,
+            2.542517306341365,
+            -911.7740942313135
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        }
+      ]
+    },
+    {
+      "name": "estaque: production staging loads actual city sources",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "estaque: a measured collision-free camera point exists",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "estaque: real city buildings and roads are streamed instead of the whole atlas",
+      "ok": true,
+      "detail": {
+        "indexPresent": true,
+        "municipality": {
+          "code": "13055",
+          "name": "Marseille",
+          "bbox": [
+            43.1696313,
+            5.22875102,
+            43.39105653,
+            5.53254336
+          ]
+        },
+        "coverage": {
+          "administrativeEnvelopeBorderObjects": 4,
+          "complete": true,
+          "expandedBytes": 759922557,
+          "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+          "nonAcquiredZAnomalies": 1,
+          "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+          "partitionStepDegrees": 0.025,
+          "queryTileCount": 77,
+          "tileCount": 290,
+          "uniqueBuildings": 291001,
+          "uniqueRoads": 55449
+        },
+        "registered": true,
+        "tilesAvailable": 290,
+        "sourceBuildings": 291001,
+        "sourceRoads": 55449,
+        "loadedPartitions": 23,
+        "loadedBuildings": 15421,
+        "loadedRoads": 3089,
+        "loadedWireBytes": 38678806,
+        "sharedProvenanceRecords": 232,
+        "cache": {
+          "entries": 23,
+          "bytes": 64233326,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 277,
+          "misses": 149,
+          "evictions": 79
+        },
+        "terrainCache": {
+          "entries": 8,
+          "bytes": 19139448,
+          "budgetBytes": 50331648,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 1,
+          "misses": 8,
+          "evictions": 0
+        },
+        "terrainIndexPresent": true,
+        "terrainTilesAvailable": 24,
+        "inflight": 0,
+        "requests": 110,
+        "errors": []
+      }
+    },
+    {
+      "name": "estaque: municipal vector and terrain caches remain within their byte budgets",
+      "ok": true,
+      "detail": {
+        "cache": {
+          "entries": 23,
+          "bytes": 64233326,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 277,
+          "misses": 149,
+          "evictions": 79
+        },
+        "terrainCache": {
+          "entries": 8,
+          "bytes": 19139448,
+          "budgetBytes": 50331648,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 1,
+          "misses": 8,
+          "evictions": 0
+        }
+      }
+    },
+    {
+      "name": "estaque: nearby source buildings receive bounded rendered facade details",
+      "ok": true,
+      "detail": {
+        "buildings": 4955,
+        "visibleBuildings": 64,
+        "quads": 5606,
+        "openings": 875,
+        "fictionalBuildings": 64,
+        "documentedBuildings": 0,
+        "cache": {
+          "bytes": 3720770,
+          "entries": 64,
+          "hits": 100,
+          "builds": 100,
+          "evictions": 0
+        },
+        "radius": 145,
+        "selection": [
+          {
+            "id": "BATIMENT0000000258947632:23f484f52642af31",
+            "distance": 0.5236880455631763,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947296:b7da4049d864d0e5",
+            "distance": 5.948266093482133,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947295:c29ffea70a8ab043",
+            "distance": 6.985913958622175,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947537:4acb4ea464a8fe80",
+            "distance": 8.74733264464885,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947536:f6402f1d7b583181",
+            "distance": 9.223628941183119,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947294:f69e4e20361c73a4",
+            "distance": 16.906199786007523,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947637:22bf5de56a09d769",
+            "distance": 20.975925300619565,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947340:850edb16285bc902",
+            "distance": 24.576193783771245,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947641:bafab81bb4c1ebaf",
+            "distance": 24.662019673307334,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947284:bb544ec0d2045fcc",
+            "distance": 27.498410875983332,
+            "style": "residential",
+            "provenance": "invented"
+          }
+        ],
+        "limit": "Les détails inventés sont cohérents avec l’emprise et la hauteur disponibles ; ils ne constituent pas un relevé de façade."
+      }
+    },
+    {
+      "name": "estaque: rendered facade details preserve the actual source outline and metric envelope",
+      "ok": true,
+      "detail": [
+        {
+          "id": "BATIMENT0000000258947632:23f484f52642af31",
+          "sourceId": "batiment.9984180",
+          "baseY": 11.6,
+          "height": 1.8000000000000007,
+          "levels": 1,
+          "levelHeight": 1.8000000000000007,
+          "levelsBasis": "invented",
+          "renderedOpenings": 2,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258947296:b7da4049d864d0e5",
+          "sourceId": "batiment.9983894",
+          "baseY": 8.2,
+          "height": 7.5,
+          "levels": 2,
+          "levelHeight": 3.75,
+          "levelsBasis": "invented",
+          "renderedOpenings": 8,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258947295:c29ffea70a8ab043",
+          "sourceId": "batiment.9983893",
+          "baseY": 8.8,
+          "height": 8.8,
+          "levels": 1,
+          "levelHeight": 8.8,
+          "levelsBasis": "source-declared",
+          "renderedOpenings": 13,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258947537:4acb4ea464a8fe80",
+          "sourceId": "batiment.9984098",
+          "baseY": 8.6,
+          "height": 9.6,
+          "levels": 3,
+          "levelHeight": 3.1999999999999997,
+          "levelsBasis": "invented",
+          "renderedOpenings": 33,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        }
+      ]
+    },
+    {
+      "name": "estaque: generated doors use plausible metric dimensions and explicit provenance",
+      "ok": true,
+      "detail": [
+        {
+          "id": "BATIMENT0000000258947296:b7da4049d864d0e5:entrance:0:1:5000",
+          "buildingId": "BATIMENT0000000258947296:b7da4049d864d0e5",
+          "center": [
+            -16332.694001916854,
+            8.2,
+            -8058.505136704072
+          ],
+          "outside": [
+            -16333.04336191474,
+            8.2,
+            -8057.409487311303
+          ],
+          "inside": [
+            -16332.40540017947,
+            8.2,
+            -8059.41023837636
+          ],
+          "tangent": [
+            -0.9527386024086115,
+            -0.3037913025096102
+          ],
+          "normal": [
+            -0.3037913025096102,
+            0.9527386024086115
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 1,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 3.045919344935461,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258947296:b7da4049d864d0e5:entrance:0:4:5000",
+          "buildingId": "BATIMENT0000000258947296:b7da4049d864d0e5",
+          "center": [
+            -16330.193946146057,
+            8.2,
+            -8060.6051034932025
+          ],
+          "outside": [
+            -16329.878182733695,
+            8.2,
+            -8061.710903415165
+          ],
+          "inside": [
+            -16330.454794182357,
+            8.2,
+            -8059.691616601146
+          ],
+          "tangent": [
+            0.9615651495329809,
+            0.2745768803151791
+          ],
+          "normal": [
+            0.2745768803151791,
+            -0.9615651495329809
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 4,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 1.2451567757416582,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258947296:b7da4049d864d0e5:entrance:0:3:5000",
+          "buildingId": "BATIMENT0000000258947296:b7da4049d864d0e5",
+          "center": [
+            -16333.644296923012,
+            8.2,
+            -8061.65504718991
+          ],
+          "outside": [
+            -16333.29023268019,
+            8.2,
+            -8062.749185440752
+          ],
+          "inside": [
+            -16333.936784775777,
+            8.2,
+            -8060.7511938522575
+          ],
+          "tangent": [
+            0.9514245659495651,
+            0.3078819502791314
+          ],
+          "normal": [
+            0.3078819502791314,
+            -0.9514245659495651
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 3,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 1.2119534964326837,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258947296:b7da4049d864d0e5:entrance:0:0:5000",
+          "buildingId": "BATIMENT0000000258947296:b7da4049d864d0e5",
+          "center": [
+            -16328.843979552272,
+            8.2,
+            -8058.7552317120135
+          ],
+          "outside": [
+            -16327.741406989806,
+            8.2,
+            -8058.428377395081
+          ],
+          "inside": [
+            -16329.754800364744,
+            8.2,
+            -8059.0252417999145
+          ],
+          "tangent": [
+            -0.284221145158664,
+            0.9587587499703445
+          ],
+          "normal": [
+            0.9587587499703445,
+            0.284221145158664
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 0,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 0.8331736537612566,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258947296:b7da4049d864d0e5:entrance:0:2:5000",
+          "buildingId": "BATIMENT0000000258947296:b7da4049d864d0e5",
+          "center": [
+            -16335.744119965355,
+            8.2,
+            -8060.905179212801
+          ],
+          "outside": [
+            -16336.843346675972,
+            8.2,
+            -8061.243115062729
+          ],
+          "inside": [
+            -16334.836063117455,
+            8.2,
+            -8060.626014815035
+          ],
+          "tangent": [
+            0.29385726080690555,
+            -0.9558493135798457
+          ],
+          "normal": [
+            -0.9558493135798457,
+            -0.29385726080690555
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 2,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 0.7850875014281389,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258947295:c29ffea70a8ab043:entrance:0:6:5000",
+          "buildingId": "BATIMENT0000000258947295:c29ffea70a8ab043",
+          "center": [
+            -16338.694054966618,
+            8.8,
+            -8049.854884731583
+          ],
+          "outside": [
+            -16339.06410095277,
+            8.8,
+            -8048.7660477519885
+          ],
+          "inside": [
+            -16338.388364804145,
+            8.8,
+            -8050.754358758205
+          ],
+          "tangent": [
+            0.9468147648651375,
+            0.32177911839237544
+          ],
+          "normal": [
+            -0.32177911839237544,
+            0.9468147648651375
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 6,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 4.864330340702159,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258947295:c29ffea70a8ab043:entrance:0:1:5000",
+          "buildingId": "BATIMENT0000000258947295:c29ffea70a8ab043",
+          "center": [
+            -16330.894120313576,
+            8.8,
+            -8052.554890765343
+          ],
+          "outside": [
+            -16329.805388157429,
+            8.8,
+            -8052.184536486076
+          ],
+          "inside": [
+            -16331.793507746916,
+            8.8,
+            -8052.860835604737
+          ],
+          "tangent": [
+            0.32204719936277676,
+            -0.9467236140408626
+          ],
+          "normal": [
+            0.9467236140408626,
+            0.32204719936277676
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 1,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 4.548187023874066,
+          "provenance": "invented",
+          "source": null
+        },
+        {
+          "id": "BATIMENT0000000258947295:c29ffea70a8ab043:entrance:0:4:5000",
+          "buildingId": "BATIMENT0000000258947295:c29ffea70a8ab043",
+          "center": [
+            -16343.344181757653,
+            8.8,
+            -8056.755330032669
+          ],
+          "outside": [
+            -16344.440812894858,
+            8.8,
+            -8057.101596041562
+          ],
+          "inside": [
+            -16342.438269079094,
+            8.8,
+            -8056.4692841992355
+          ],
+          "tangent": [
+            -0.30110087729819596,
+            0.95359229322088
+          ],
+          "normal": [
+            -0.95359229322088,
+            -0.30110087729819596
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 4,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 4.4063819598637135,
+          "provenance": "invented",
+          "source": null
+        }
+      ]
+    },
+    {
+      "name": "estaque: actual accessible building portals are available",
+      "ok": true,
+      "detail": [
+        {
+          "id": "city-door:4501672a9f49e9a8",
+          "building": "BATIMENT0000000258947296:b7da4049d864d0e5",
+          "pos": [
+            -16329.878182733695,
+            13.00476033700337,
+            -8061.710903415165
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:5273c93c809efdb6",
+          "building": "BATIMENT0000000258947536:f6402f1d7b583181",
+          "pos": [
+            -16315.253529580094,
+            12.213736163777636,
+            -8057.017643618993
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:1dd22423d2768e85",
+          "building": "BATIMENT0000000258947295:c29ffea70a8ab043",
+          "pos": [
+            -16329.805388157429,
+            9.415139792760414,
+            -8052.184536486076
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:ae5fc9de473b8a30",
+          "building": "BATIMENT0000000258947537:4acb4ea464a8fe80",
+          "pos": [
+            -16327.023339695545,
+            9.475993790497057,
+            -8050.902745669251
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:25d8cf1b41053b95",
+          "building": "BATIMENT0000000258947294:f69e4e20361c73a4",
+          "pos": [
+            -16340.064484667279,
+            9.126828826016771,
+            -8045.966721753552
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:4a598033c5bc39bb",
+          "building": "BATIMENT0000000258947284:bb544ec0d2045fcc",
+          "pos": [
+            -16308.088180369423,
+            22.74391080719344,
+            -8091.460288384364
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:d1611020af1f4f1e",
+          "building": "BATIMENT0000000258947283:604938728d236dee",
+          "pos": [
+            -16297.929342807745,
+            23.090022978453185,
+            -8092.411213419765
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:0e682ae5de4cd86f",
+          "building": "BATIMENT0000000258947635:71292fc41f2c1920",
+          "pos": [
+            -16351.689511211707,
+            7.8703943198365405,
+            -8036.136014306345
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        }
+      ]
+    },
+    {
+      "name": "Estaque demonstrates actual coverage beyond all eight original base-region rectangles",
+      "ok": true,
+      "detail": {
+        "IGN — partition vérifiée hors du pack de base": 34
+      }
+    },
+    {
+      "name": "The actual Estaque land point is outside every loaded maritime polygon",
+      "ok": true,
+      "detail": {
+        "latlon": [
+          43.362,
+          5.312
+        ],
+        "projected": [
+          -16323.16807007417,
+          0,
+          -8064.9527812656015
+        ],
+        "ground": {
+          "height": 13.305174796130645,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            9.969249779515213,
+            10.01994170878003
+          ],
+          "sourceResource": "ign_rge_alti_wld",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+        },
+        "maritimePolygonsLoaded": 11,
+        "maritimeHits": [],
+        "collision": false
+      }
+    },
+    {
+      "name": "Portal setup places a standing player at the measured production ground height",
+      "ok": true,
+      "detail": {
+        "ground": {
+          "height": 27.924799875719586,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            9.969249779515213,
+            10.01994170878003
+          ],
+          "sourceResource": "ign_rge_alti_wld",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+        },
+        "position": [
+          -16251.023186314596,
+          29.574799875719584,
+          -8116.639916552378
+        ],
+        "eye_height": 1.65
+      }
+    },
+    {
+      "name": "A real multi-storey building is entered through its keyboard portal interaction",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cold Continue is exercised inside a building whose saved street lies beyond the original eight regions",
+      "ok": true,
+      "detail": {
+        "latlon": [
+          43.36244577860904,
+          5.312907816809886
+        ],
+        "return_macro": "geo_marseille_commune"
+      }
+    },
+    {
+      "name": "Entered building identity, source footprint and explicit invented plan survive the portal",
+      "ok": true,
+      "detail": {
+        "id": "BATIMENT0000000258947311:e6846feb6d02889f",
+        "name": "Bâtiment",
+        "floor": 0,
+        "streetFloor": 0,
+        "levels": 2,
+        "origin": [
+          -16250.794109538605,
+          27.9,
+          -8124.155400895979
+        ],
+        "signature": "dd089021c1905eed",
+        "layoutProvenance": "invented",
+        "furnishing": {
+          "objects": 3,
+          "byKind": {
+            "bed": 1,
+            "kitchen": 1,
+            "wardrobe": 1
+          },
+          "functionalUses": [
+            "Coin nuit",
+            "Coin cuisine",
+            "Rangement"
+          ],
+          "roomsBasis": "invented-functional-zones",
+          "roomCoverage": "partial",
+          "provenance": "invented"
+        }
+      }
+    },
+    {
+      "name": "The requested storey is adjacent to the current landing",
+      "ok": true,
+      "detail": {
+        "from": 0,
+        "to": 1
+      }
+    },
+    {
+      "name": "The real interior exposes an accessible landing interaction",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Landing camera remains on clear interior floor",
+      "ok": true,
+      "detail": [
+        0.2802496546137263,
+        1.6500000000000001,
+        3.8781854978042247
+      ]
+    },
+    {
+      "name": "The visible interaction targets the actual landing",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The landing dialog closes after its storey transition",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The landing UI reaches a different storey of the same actual building",
+      "ok": true,
+      "detail": {
+        "id": "BATIMENT0000000258947311:e6846feb6d02889f",
+        "name": "Bâtiment",
+        "floor": 1,
+        "streetFloor": 0,
+        "levels": 2,
+        "origin": [
+          -16250.794109538605,
+          27.9,
+          -8124.155400895979
+        ],
+        "signature": "b95a48d1f3f77ab3",
+        "layoutProvenance": "invented",
+        "furnishing": {
+          "objects": 3,
+          "byKind": {
+            "bed": 1,
+            "wardrobe": 2
+          },
+          "functionalUses": [
+            "Coin nuit",
+            "Rangement"
+          ],
+          "roomsBasis": "invented-functional-zones",
+          "roomCoverage": "partial",
+          "provenance": "invented"
+        }
+      }
+    },
+    {
+      "name": "Native localStorage contains the current building, floor and exterior return point",
+      "ok": true,
+      "detail": {
+        "key": "fallout_mistral_save_v050",
+        "floor": 1
+      }
+    },
+    {
+      "name": "Reload retains the exact frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual Continue restores the same floor, deterministic plan and source-building identity",
+      "ok": true,
+      "detail": {
+        "id": "BATIMENT0000000258947311:e6846feb6d02889f",
+        "name": "Bâtiment",
+        "floor": 1,
+        "streetFloor": 0,
+        "levels": 2,
+        "origin": [
+          -16250.794109538605,
+          27.9,
+          -8124.155400895979
+        ],
+        "signature": "b95a48d1f3f77ab3",
+        "layoutProvenance": "invented",
+        "furnishing": {
+          "objects": 3,
+          "byKind": {
+            "bed": 1,
+            "wardrobe": 2
+          },
+          "functionalUses": [
+            "Coin nuit",
+            "Rangement"
+          ],
+          "roomsBasis": "invented-functional-zones",
+          "roomCoverage": "partial",
+          "provenance": "invented"
+        }
+      }
+    },
+    {
+      "name": "Continue preserves inventory and the exact geographic return coordinates",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "An actual finite interior reserve can be opened through the proximity interaction",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The real loot UI empties the reserve exactly once",
+      "ok": true,
+      "detail": {
+        "key": "v050_city_interior|city:3e68b620ab89bf4c:1",
+        "before": {
+          "cloth": 1,
+          "scrap": 1
+        },
+        "after": {
+          "cloth": 0,
+          "scrap": 0
+        }
+      }
+    },
+    {
+      "name": "An emptied reserve disables repeated take-all",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The requested storey is adjacent to the current landing",
+      "ok": true,
+      "detail": {
+        "from": 1,
+        "to": 0
+      }
+    },
+    {
+      "name": "The real interior exposes an accessible landing interaction",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Landing camera remains on clear interior floor",
+      "ok": true,
+      "detail": [
+        0.2802496546137263,
+        5.1499999999999995,
+        3.8781854978042247
+      ]
+    },
+    {
+      "name": "The visible interaction targets the actual landing",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The landing dialog closes after its storey transition",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The requested storey is adjacent to the current landing",
+      "ok": true,
+      "detail": {
+        "from": 0,
+        "to": 1
+      }
+    },
+    {
+      "name": "The real interior exposes an accessible landing interaction",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Landing camera remains on clear interior floor",
+      "ok": true,
+      "detail": [
+        0.2802496546137263,
+        1.6500000000000001,
+        3.8781854978042247
+      ]
+    },
+    {
+      "name": "The visible interaction targets the actual landing",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The landing dialog closes after its storey transition",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Rebuilding the storey preserves its emptied reserve and finite inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The requested storey is adjacent to the current landing",
+      "ok": true,
+      "detail": {
+        "from": 1,
+        "to": 0
+      }
+    },
+    {
+      "name": "The real interior exposes an accessible landing interaction",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Landing camera remains on clear interior floor",
+      "ok": true,
+      "detail": [
+        0.2802496546137263,
+        5.1499999999999995,
+        3.8781854978042247
+      ]
+    },
+    {
+      "name": "The visible interaction targets the actual landing",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The landing dialog closes after its storey transition",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Street-entry storey reconstructs the same deterministic actual-footprint plan",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The real interior exposes an accessible landing interaction",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Landing camera remains on clear interior floor",
+      "ok": true,
+      "detail": [
+        0.2802496546137263,
+        1.6500000000000001,
+        3.8781854978042247
+      ]
+    },
+    {
+      "name": "The visible interaction targets the actual landing",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The landing dialog closes when the player returns to the street",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The actual exterior return restores the saved entrance coordinates and inventory",
+      "ok": true,
+      "detail": {
+        "expected": {
+          "macro": "geo_marseille_commune",
+          "pos": [
+            -16251.023186314596,
+            29.574799875719584,
+            -8116.639916552378
+          ],
+          "yaw": 0,
+          "pitch": 0
+        },
+        "actual": [
+          -16251.023186314618,
+          29.574799875719584,
+          -8116.639916551299
+        ],
+        "ground": {
+          "height": 27.924799875719586,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            9.969249779515213,
+            10.01994170878003
+          ],
+          "sourceResource": "ign_rge_alti_wld",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+        },
+        "entrance_approach": {
+          "interaction": "city-door:08fde9280d87263a",
+          "approach": {
+            "pos": [
+              -16251.023186314596,
+              29.87821306381537,
+              -8116.639916552378
+            ],
+            "physical": true
+          },
+          "latlon": [
+            43.36244577860904,
+            5.312907816809886
+          ],
+          "ground": {
+            "height": 27.924799875719586,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              9.969249779515213,
+              10.01994170878003
+            ],
+            "sourceResource": "ign_rge_alti_wld",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+          },
+          "canonical_position": [
+            -16251.023186314596,
+            29.574799875719584,
+            -8116.639916552378
+          ]
+        },
+        "inventory_preserved": true,
+        "return_point_cleared": true
+      }
+    },
+    {
+      "name": "No city hash, fetch, staging or interior transaction exception was recorded",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No installed municipal source HTTP request failed",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "No global JavaScript exception occurred",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "Production HTML, all three city indices and official boundary stayed unchanged",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_city_sources.png",
+      "label": "Unmodified menu source panel, actual municipal HTTP audit",
+      "sha256": "07c742330b6aeb52f109a32353c1c40044adb73c5d2577aac5531a84b33e15ed"
+    },
+    {
+      "file": "02_vieux_port.png",
+      "label": "Actual municipal sector; measured diagnostic camera, source buildings and facade LOD",
+      "sha256": "834766c3b4ac0c80ca3565413801751ef8ebf42d0dd554ef4d4d22e15957c426"
+    },
+    {
+      "file": "02_estaque.png",
+      "label": "Actual municipal sector; measured diagnostic camera, source buildings and facade LOD",
+      "sha256": "20655105a64167dd7bf4d543e4f68730f6b0695773a8bb7bcaa97b802a85c39a"
+    },
+    {
+      "file": "03_interior_entry.png",
+      "label": "Actual source-footprint building, explicitly invented arrangement at the measured street-entry storey",
+      "sha256": "6674c55eb8d0da89102908bd54e790b5182a78074764bf7d5c6e244555552ff8"
+    },
+    {
+      "file": "04_interior_adjacent.png",
+      "label": "Same building, actual landing UI and a different metric storey",
+      "sha256": "d471fce57f0decfedd0b7d9a973ab0b870e8a8a25faf9890fbb4e6011ffa1523"
+    },
+    {
+      "file": "05_return_estaque.png",
+      "label": "Real reloaded municipal exterior at the conserved entrance position",
+      "sha256": "95ae738852773d1c2b07434bf4e21869ee3cd0792a297d3ac1356b9c67a41c91"
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:46429/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:46429/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "local_http_errors": [],
+  "sectors": {
+    "vieux_port": {
+      "anchor": [
+        43.2965,
+        5.3698
+      ],
+      "camera": {
+        "ll": [
+          43.2965,
+          5.370046851632981
+        ],
+        "p": [
+          -11398.888126658509,
+          0,
+          -926.6633799411356
+        ],
+        "height": 1.3629979244143142,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "clear": true
+      },
+      "city": {
+        "indexPresent": true,
+        "municipality": {
+          "code": "13055",
+          "name": "Marseille",
+          "bbox": [
+            43.1696313,
+            5.22875102,
+            43.39105653,
+            5.53254336
+          ]
+        },
+        "coverage": {
+          "administrativeEnvelopeBorderObjects": 4,
+          "complete": true,
+          "expandedBytes": 759922557,
+          "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+          "nonAcquiredZAnomalies": 1,
+          "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+          "partitionStepDegrees": 0.025,
+          "queryTileCount": 77,
+          "tileCount": 290,
+          "uniqueBuildings": 291001,
+          "uniqueRoads": 55449
+        },
+        "registered": true,
+        "tilesAvailable": 290,
+        "sourceBuildings": 291001,
+        "sourceRoads": 55449,
+        "loadedPartitions": 13,
+        "loadedBuildings": 17415,
+        "loadedRoads": 2085,
+        "loadedWireBytes": 38860830,
+        "sharedProvenanceRecords": 81,
+        "cache": {
+          "entries": 13,
+          "bytes": 64064796,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 195,
+          "misses": 116,
+          "evictions": 67
+        },
+        "terrainCache": {
+          "entries": 8,
+          "bytes": 19139448,
+          "budgetBytes": 50331648,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 0,
+          "misses": 8,
+          "evictions": 0
+        },
+        "terrainIndexPresent": true,
+        "terrainTilesAvailable": 24,
+        "inflight": 0,
+        "requests": 88,
+        "errors": []
+      },
+      "facades": {
+        "buildings": 17424,
+        "visibleBuildings": 36,
+        "quads": 8192,
+        "openings": 3134,
+        "fictionalBuildings": 36,
+        "documentedBuildings": 0,
+        "cache": {
+          "bytes": 5673810,
+          "entries": 36,
+          "hits": 36,
+          "builds": 36,
+          "evictions": 0
+        },
+        "radius": 145,
+        "selection": [
+          {
+            "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+            "distance": 1.6560084691736847,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258927776:823ead136147462f",
+            "distance": 8.357735970057547,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258927777:266fd67c8d066310",
+            "distance": 9.567903057434927,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258930406:55abd31e9a3465da",
+            "distance": 32.49321241046874,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258929691:5dc4fee0c6c66944",
+            "distance": 32.84437011554837,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258929774:e83edbe137660ba5",
+            "distance": 34.53376036521898,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258929690:e253bd29dec39a8d",
+            "distance": 36.243849140941165,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000219874657:ae993130bde19dec",
+            "distance": 36.55610247992445,
+            "style": "industrial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258927583:4d09dfcddc4c8ce1",
+            "distance": 43.3304008682784,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258930412:9ae7cf782a614abc",
+            "distance": 46.360170591196265,
+            "style": "residential",
+            "provenance": "invented"
+          }
+        ],
+        "limit": "Les détails inventés sont cohérents avec l’emprise et la hauteur disponibles ; ils ne constituent pas un relevé de façade."
+      },
+      "doors": [
+        {
+          "id": "city-door:a6d190750f6c5fd1",
+          "building": "BATIMENT0000000258927776:823ead136147462f",
+          "pos": [
+            -11392.711505358226,
+            2.167424127302195,
+            -911.1045011068003
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:3d96a0bc28989666",
+          "building": "BATIMENT0000000258927777:266fd67c8d066310",
+          "pos": [
+            -11415.527994913766,
+            2.377916619239564,
+            -919.8116256629904
+          ],
+          "levels": 6,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:e9117ec6ece43034",
+          "building": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "pos": [
+            -11433.321766434401,
+            2.597870905647116,
+            -938.8800797050343
+          ],
+          "levels": 8,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:f4391d873700be6d",
+          "building": "BATIMENT0000000258930406:55abd31e9a3465da",
+          "pos": [
+            -11371.661380349147,
+            2.7927782965360515,
+            -964.8028334571238
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:3afa0d819ecd5117",
+          "building": "BATIMENT0000000258929774:e83edbe137660ba5",
+          "pos": [
+            -11366.576087728363,
+            2.612606719537544,
+            -962.2506282983262
+          ],
+          "levels": 6,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:d7bb1003053674dd",
+          "building": "BATIMENT0000000258929388:7d9770dbb68de267",
+          "pos": [
+            -11349.728066241385,
+            2.577276853679697,
+            -948.164175182611
+          ],
+          "levels": 7,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:cec1dd1228df9dac",
+          "building": "BATIMENT0000000258930412:9ae7cf782a614abc",
+          "pos": [
+            -11385.827009986275,
+            6.3504039482017625,
+            -983.0079475086509
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:072f71055ca070f7",
+          "building": "BATIMENT0000000219874657:ae993130bde19dec",
+          "pos": [
+            -11463.834568708768,
+            2.542517306341365,
+            -911.7740942313135
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:04509d2a6195deec",
+          "building": "BATIMENT0000000258929387:63b11b6cbf107940",
+          "pos": [
+            -11342.986524852795,
+            2.5777970943118653,
+            -963.1886396454606
+          ],
+          "levels": 8,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:16bc7ce30d475ea9",
+          "building": "BATIMENT0000000258929532:b93a42b46c4cae10",
+          "pos": [
+            -11445.511645102872,
+            5.4040492841852075,
+            -976.9927237033481
+          ],
+          "levels": 7,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:20efa1feaf92b8bc",
+          "building": "BATIMENT0000000258927582:d223bc3d6abe6d89",
+          "pos": [
+            -11468.292628682339,
+            2.329440299547988,
+            -902.7877895422595
+          ],
+          "levels": 6,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:0c28d8ef51acaf0d",
+          "building": "BATIMENT0000000258927583:4d09dfcddc4c8ce1",
+          "pos": [
+            -11462.69328154464,
+            2.001545992828556,
+            -882.8227081313414
+          ],
+          "levels": 6,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:38d4af54a675e690",
+          "building": "BATIMENT0000000258929530:a1e7bbf87cc89bd4",
+          "pos": [
+            -11467.883486217883,
+            4.74219292743561,
+            -965.1744017104062
+          ],
+          "levels": 7,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:352260350170c993",
+          "building": "BATIMENT0000000258929729:4e81a516ea784102",
+          "pos": [
+            -11440.421389156181,
+            6.509594985593926,
+            -994.0880570109331
+          ],
+          "levels": 8,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:e693253ae90cec2c",
+          "building": "BATIMENT0000000258929690:e253bd29dec39a8d",
+          "pos": [
+            -11318.440655150416,
+            2.4755421735508603,
+            -931.5379412194413
+          ],
+          "levels": 6,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:2e43b0940f9c1cae",
+          "building": "BATIMENT0000000258929691:5dc4fee0c6c66944",
+          "pos": [
+            -11315.597100077173,
+            2.306047493085406,
+            -914.7718307988359
+          ],
+          "levels": 6,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:5d9bc0ce721cbe30",
+          "building": "BATIMENT0000000258929533:d361fd64eb682dd0",
+          "pos": [
+            -11464.808472452434,
+            4.902733298492258,
+            -980.5698208772664
+          ],
+          "levels": 7,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:e58a1b01ae18ca4f",
+          "building": "BATIMENT0000000258929730:fea4ce93344a7197",
+          "pos": [
+            -11352.227039189562,
+            6.780050740050521,
+            -999.7577646963143
+          ],
+          "levels": 4,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:e80f247afef532cc",
+          "building": "BATIMENT0000000258929390:23c5e8ca400e4c16",
+          "pos": [
+            -11314.159639210722,
+            2.5615649359038057,
+            -948.6202814814133
+          ],
+          "levels": 8,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:b6e91fbbe089b111",
+          "building": "BATIMENT0000000318260348:4837beffd67bcefb",
+          "pos": [
+            -11386.26365557117,
+            7.204589922953852,
+            -1015.6578254651198
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:a247831ef74b798c",
+          "building": "BATIMENT0000000258929389:a91cc87fe05c5783",
+          "pos": [
+            -11316.138819874945,
+            2.9820226831085597,
+            -967.7882378855883
+          ],
+          "levels": 8,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:4c4c397d67cb5c67",
+          "building": "BATIMENT0000000258929531:687d8460dc74b774",
+          "pos": [
+            -11475.7722704565,
+            4.165585467155562,
+            -981.0916341858995
+          ],
+          "levels": 6,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:6d5828f3f2a40f7d",
+          "building": "BATIMENT0000000258941975:84d7b8a8ecc29c34",
+          "pos": [
+            -11459.413116617556,
+            1.4808090486729115,
+            -850.3195563793325
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:6281e58e8c25c9d0",
+          "building": "BATIMENT0000000258929731:c4f3ee3d01990ba9",
+          "pos": [
+            -11354.877909780585,
+            6.667723230905869,
+            -1015.1623684620968
+          ],
+          "levels": 4,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:032f0d83be947a1d",
+          "building": "BATIMENT0000000258929536:328d79bd205ef229",
+          "pos": [
+            -11492.43926138106,
+            3.917240548508563,
+            -960.6234851038917
+          ],
+          "levels": 8,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:29cc88d675ad030c",
+          "building": "BATIMENT0000000258929392:2d70d55b3b0c6adf",
+          "pos": [
+            -11301.992856649018,
+            2.597443650254662,
+            -950.723081628458
+          ],
+          "levels": 7,
+          "streetFloor": 0,
+          "provenance": "invented"
+        }
+      ],
+      "origins": {
+        "pack local": 34
+      },
+      "metric_facade_samples": [
+        {
+          "id": "BATIMENT0000000258927778:2c66ff1e67bfbc22",
+          "sourceId": "batiment.9968149",
+          "baseY": 1.6,
+          "height": 24.799999999999997,
+          "levels": 8,
+          "levelHeight": 3.0999999999999996,
+          "levelsBasis": "invented",
+          "renderedOpenings": 82,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258927776:823ead136147462f",
+          "sourceId": "batiment.9968147",
+          "baseY": 1,
+          "height": 23.2,
+          "levels": 1,
+          "levelHeight": 23.2,
+          "levelsBasis": "source-declared",
+          "renderedOpenings": 22,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258927777:266fd67c8d066310",
+          "sourceId": "batiment.9968148",
+          "baseY": 1.9,
+          "height": 18.5,
+          "levels": 6,
+          "levelHeight": 3.0833333333333335,
+          "levelsBasis": "invented",
+          "renderedOpenings": 48,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258930406:55abd31e9a3465da",
+          "sourceId": "batiment.9970416",
+          "baseY": 1.5,
+          "height": 4.5,
+          "levels": 1,
+          "levelHeight": 4.5,
+          "levelsBasis": "invented",
+          "renderedOpenings": 14,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        }
+      ]
+    },
+    "estaque": {
+      "anchor": [
+        43.362,
+        5.312
+      ],
+      "camera": {
+        "ll": [
+          43.362,
+          5.312
+        ],
+        "p": [
+          -16323.16807007417,
+          0,
+          -8064.9527812656015
+        ],
+        "height": 13.305174796130645,
+        "sources": [
+          "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+        ],
+        "clear": true
+      },
+      "city": {
+        "indexPresent": true,
+        "municipality": {
+          "code": "13055",
+          "name": "Marseille",
+          "bbox": [
+            43.1696313,
+            5.22875102,
+            43.39105653,
+            5.53254336
+          ]
+        },
+        "coverage": {
+          "administrativeEnvelopeBorderObjects": 4,
+          "complete": true,
+          "expandedBytes": 759922557,
+          "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+          "nonAcquiredZAnomalies": 1,
+          "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+          "partitionStepDegrees": 0.025,
+          "queryTileCount": 77,
+          "tileCount": 290,
+          "uniqueBuildings": 291001,
+          "uniqueRoads": 55449
+        },
+        "registered": true,
+        "tilesAvailable": 290,
+        "sourceBuildings": 291001,
+        "sourceRoads": 55449,
+        "loadedPartitions": 23,
+        "loadedBuildings": 15421,
+        "loadedRoads": 3089,
+        "loadedWireBytes": 38678806,
+        "sharedProvenanceRecords": 232,
+        "cache": {
+          "entries": 23,
+          "bytes": 64233326,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 277,
+          "misses": 149,
+          "evictions": 79
+        },
+        "terrainCache": {
+          "entries": 8,
+          "bytes": 19139448,
+          "budgetBytes": 50331648,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 1,
+          "misses": 8,
+          "evictions": 0
+        },
+        "terrainIndexPresent": true,
+        "terrainTilesAvailable": 24,
+        "inflight": 0,
+        "requests": 110,
+        "errors": []
+      },
+      "facades": {
+        "buildings": 4955,
+        "visibleBuildings": 64,
+        "quads": 5606,
+        "openings": 875,
+        "fictionalBuildings": 64,
+        "documentedBuildings": 0,
+        "cache": {
+          "bytes": 3720770,
+          "entries": 64,
+          "hits": 100,
+          "builds": 100,
+          "evictions": 0
+        },
+        "radius": 145,
+        "selection": [
+          {
+            "id": "BATIMENT0000000258947632:23f484f52642af31",
+            "distance": 0.5236880455631763,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947296:b7da4049d864d0e5",
+            "distance": 5.948266093482133,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947295:c29ffea70a8ab043",
+            "distance": 6.985913958622175,
+            "style": "commercial",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947537:4acb4ea464a8fe80",
+            "distance": 8.74733264464885,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947536:f6402f1d7b583181",
+            "distance": 9.223628941183119,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947294:f69e4e20361c73a4",
+            "distance": 16.906199786007523,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947637:22bf5de56a09d769",
+            "distance": 20.975925300619565,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947340:850edb16285bc902",
+            "distance": 24.576193783771245,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947641:bafab81bb4c1ebaf",
+            "distance": 24.662019673307334,
+            "style": "residential",
+            "provenance": "invented"
+          },
+          {
+            "id": "BATIMENT0000000258947284:bb544ec0d2045fcc",
+            "distance": 27.498410875983332,
+            "style": "residential",
+            "provenance": "invented"
+          }
+        ],
+        "limit": "Les détails inventés sont cohérents avec l’emprise et la hauteur disponibles ; ils ne constituent pas un relevé de façade."
+      },
+      "doors": [
+        {
+          "id": "city-door:4501672a9f49e9a8",
+          "building": "BATIMENT0000000258947296:b7da4049d864d0e5",
+          "pos": [
+            -16329.878182733695,
+            13.00476033700337,
+            -8061.710903415165
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:5273c93c809efdb6",
+          "building": "BATIMENT0000000258947536:f6402f1d7b583181",
+          "pos": [
+            -16315.253529580094,
+            12.213736163777636,
+            -8057.017643618993
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:1dd22423d2768e85",
+          "building": "BATIMENT0000000258947295:c29ffea70a8ab043",
+          "pos": [
+            -16329.805388157429,
+            9.415139792760414,
+            -8052.184536486076
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:ae5fc9de473b8a30",
+          "building": "BATIMENT0000000258947537:4acb4ea464a8fe80",
+          "pos": [
+            -16327.023339695545,
+            9.475993790497057,
+            -8050.902745669251
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:25d8cf1b41053b95",
+          "building": "BATIMENT0000000258947294:f69e4e20361c73a4",
+          "pos": [
+            -16340.064484667279,
+            9.126828826016771,
+            -8045.966721753552
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:4a598033c5bc39bb",
+          "building": "BATIMENT0000000258947284:bb544ec0d2045fcc",
+          "pos": [
+            -16308.088180369423,
+            22.74391080719344,
+            -8091.460288384364
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:d1611020af1f4f1e",
+          "building": "BATIMENT0000000258947283:604938728d236dee",
+          "pos": [
+            -16297.929342807745,
+            23.090022978453185,
+            -8092.411213419765
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:0e682ae5de4cd86f",
+          "building": "BATIMENT0000000258947635:71292fc41f2c1920",
+          "pos": [
+            -16351.689511211707,
+            7.8703943198365405,
+            -8036.136014306345
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:51b48c6eeb179d4c",
+          "building": "BATIMENT0000000258947340:850edb16285bc902",
+          "pos": [
+            -16363.995116843833,
+            10.074081027399911,
+            -8060.986768561688
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:a1e567981c48a382",
+          "building": "BATIMENT0000000258947633:f61836a26f03c6b6",
+          "pos": [
+            -16360.538584350033,
+            8.376691680895021,
+            -8046.7500907647145
+          ],
+          "levels": 4,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:36ae216b32040e95",
+          "building": "BATIMENT0000000258947336:6c9fa2b41b06e568",
+          "pos": [
+            -16365.480278956951,
+            13.15277080406818,
+            -8071.796160031539
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:bf8492869710af0c",
+          "building": "BATIMENT0000000258947641:bafab81bb4c1ebaf",
+          "pos": [
+            -16341.117598322804,
+            6.787095823320566,
+            -8024.789153951128
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:ad89c0cee3f18544",
+          "building": "BATIMENT0000000258947337:78213f338e5d7f9f",
+          "pos": [
+            -16367.2468139942,
+            10.024299602203143,
+            -8061.560095546558
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:d5c0654c9af7cb8e",
+          "building": "BATIMENT0000000258947348:9aead90d1de14241",
+          "pos": [
+            -16340.413013815483,
+            26.23277748314988,
+            -8106.663192261179
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:377e1d0ad39df514",
+          "building": "BATIMENT0000000258947636:a52659ff669b6c73",
+          "pos": [
+            -16331.400389307064,
+            6.49043123327581,
+            -8018.428252569071
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:b14ede44f05abeae",
+          "building": "BATIMENT0000000258946400:589a149b186ac8e7",
+          "pos": [
+            -16332.349539826251,
+            26.304581714641113,
+            -8111.456540356957
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:911f00868cd12298",
+          "building": "BATIMENT0000000258947351:3e3a95a6df6b62fa",
+          "pos": [
+            -16308.822034979037,
+            27.7294798283522,
+            -8111.829602322142
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:be14716ae4dffc6c",
+          "building": "BATIMENT0000000258947341:026ebe8c0e7dafe0",
+          "pos": [
+            -16371.403790046963,
+            14.082993283441477,
+            -8075.253527115691
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:d7e3ad290b567207",
+          "building": "BATIMENT0000000258947338:b18fed7ab5b854b6",
+          "pos": [
+            -16373.043180765622,
+            9.445703365445697,
+            -8058.044567618738
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:871ab396fe6d980c",
+          "building": "BATIMENT0000000258947339:355ebeffb576181b",
+          "pos": [
+            -16374.830727760911,
+            14.332868369636495,
+            -8076.346072539436
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:4524304640d9a4ec",
+          "building": "BATIMENT0000000258947678:ed361c9f7332d88b",
+          "pos": [
+            -16283.680148825206,
+            25.542598714787772,
+            -8100.632547716385
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:654729aa2cbb9ca8",
+          "building": "BATIMENT0000000258947634:32eda6555912f331",
+          "pos": [
+            -16377.208904259958,
+            8.841109912478261,
+            -8052.338163958366
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:f8ff78786e09d38e",
+          "building": "BATIMENT0000000258946401:e0438f15919d88c1",
+          "pos": [
+            -16333.116639151545,
+            27.037614817696756,
+            -8120.905029576538
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:df2edb7c5e840ef6",
+          "building": "BATIMENT0000000258947347:6bb261e92433ae55",
+          "pos": [
+            -16357.627728483094,
+            26.74184928031378,
+            -8113.690393955527
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:d34b6729f9b8d6e7",
+          "building": "BATIMENT0000000258947342:06b4d490cb3accc4",
+          "pos": [
+            -16382.654866495091,
+            12.297886774164665,
+            -8074.803659295142
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:df63e6c41f5fcb5e",
+          "building": "BATIMENT0000000258947558:a354ab350b421811",
+          "pos": [
+            -16268.843777587335,
+            15.464249459641799,
+            -8034.2895963151595
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:39ba123df6cbd54f",
+          "building": "BATIMENT0000000258947298:18e1db789f277bfc",
+          "pos": [
+            -16385.586834828126,
+            10.774745785107894,
+            -8072.945004902945
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:04e886225f7e76f4",
+          "building": "BATIMENT0000000258947025:970f3522a13fcca6",
+          "pos": [
+            -16298.350281131248,
+            29.282980209312925,
+            -8123.546612042394
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:556e7b7871dcdb48",
+          "building": "BATIMENT0000000258946961:33b7b0a1bc2d038d",
+          "pos": [
+            -16260.356817855882,
+            17.823535326808596,
+            -8048.606552635188
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:cdd656f2b52333e8",
+          "building": "BATIMENT0000000258947642:cf223ea485192a78",
+          "pos": [
+            -16353.165804519782,
+            3.8319249924924597,
+            -8001.7338766378125
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:c1c083316a280597",
+          "building": "BATIMENT0000000258947297:638f42be4ee9103a",
+          "pos": [
+            -16393.827977416906,
+            8.100566263022401,
+            -8065.504943151344
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:69556fda77b114f0",
+          "building": "BATIMENT0000000258947557:4d613345ce7ed8b9",
+          "pos": [
+            -16266.696885958574,
+            13.99854447381553,
+            -8021.920478463861
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:3322dc137882e905",
+          "building": "BATIMENT0000000258947559:497cdf904f6199cc",
+          "pos": [
+            -16259.85920883481,
+            15.776836091074353,
+            -8027.607082698618
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:daadeb2122c24f9b",
+          "building": "BATIMENT0000000258946613:ea08eaef1f485ecb",
+          "pos": [
+            -16308.628749659098,
+            4.24818514706266,
+            -7992.3367787347
+          ],
+          "levels": 4,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:faaa80f60047c900",
+          "building": "BATIMENT0000000258946960:a30a124f4287f48b",
+          "pos": [
+            -16250.253569088838,
+            18.167962271453856,
+            -8050.806705839744
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:5eed52c821fe319a",
+          "building": "BATIMENT0000000258947560:71697172f1c7fb7e",
+          "pos": [
+            -16253.50594564084,
+            16.036806644560983,
+            -8027.256935651161
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:14c056d28dc09ce4",
+          "building": "BATIMENT0000000258947551:80583e6d4dbbf249",
+          "pos": [
+            -16252.631855061734,
+            27.392494177462545,
+            -8103.2246861666035
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:6b668e6c9a10649e",
+          "building": "BATIMENT0000000258946963:ab3dac22a9e8292e",
+          "pos": [
+            -16243.692422202474,
+            18.43011455262361,
+            -8051.009432350752
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:f545bf781cde2bf2",
+          "building": "BATIMENT0000000258946964:4cc5a4b6430230b2",
+          "pos": [
+            -16242.145101006163,
+            20.092740374764087,
+            -8065.260644371817
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:10b75c53122dcb09",
+          "building": "BATIMENT0000000258947281:edb017fa9ba4e7d6",
+          "pos": [
+            -16383.273931161873,
+            25.789536639528635,
+            -8119.4149013077395
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:3c22f17cc3222ce6",
+          "building": "BATIMENT0000000258947280:b6f9662764405553",
+          "pos": [
+            -16383.53333610108,
+            25.710176348487607,
+            -8119.219308223006
+          ],
+          "levels": 3,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:84d96475b4f846af",
+          "building": "BATIMENT0000000258947027:8b7c2b4960f83a65",
+          "pos": [
+            -16264.072695316996,
+            9.280255523166666,
+            -8009.104734456322
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:cf9a120e592dad34",
+          "building": "BATIMENT0000000258947343:e2e1612f27bd71e3",
+          "pos": [
+            -16404.221448256532,
+            8.10566249944764,
+            -8072.137190712661
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:af50d8f6cf955c34",
+          "building": "BATIMENT0000000258946590:bf3ce449ffa8e5a5",
+          "pos": [
+            -16297.743887318484,
+            4.397850798637306,
+            -7986.544866973045
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:af3a8ac97d8b5841",
+          "building": "BATIMENT0000000258946550:a9365848f711a8dc",
+          "pos": [
+            -16282.533246888539,
+            8.317385611343534,
+            -7992.6476995576895
+          ],
+          "levels": 3,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:da44b9d0ddc0ac36",
+          "building": "BATIMENT0000000258947350:d12355d381e67d77",
+          "pos": [
+            -16291.34303808158,
+            31.52761508366619,
+            -8141.69460710776
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:a09681b28eb0ff3c",
+          "building": "BATIMENT0000000258947370:a3850c15f772b391",
+          "pos": [
+            -16406.815152429666,
+            5.682170697907251,
+            -8059.5872294530245
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:7223b313751677a9",
+          "building": "BATIMENT0000000258947552:fd140a6ec13ededa",
+          "pos": [
+            -16242.805340511864,
+            25.540982262494268,
+            -8089.285176965112
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:9e1f196b11072fbd",
+          "building": "BATIMENT0000000258947344:4b9a362c7bb88030",
+          "pos": [
+            -16406.02406725608,
+            8.356270324882797,
+            -8080.500120033229
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:bd5053e14ba85a9f",
+          "building": "BATIMENT0000000258946967:3129129c0b74a210",
+          "pos": [
+            -16237.972272293591,
+            20.180684265633545,
+            -8064.85322948187
+          ],
+          "levels": 3,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:3ef08332df476900",
+          "building": "BATIMENT0000000258946559:593964b276e74d0e",
+          "pos": [
+            -16275.724214301625,
+            7.883496941225959,
+            -7991.722926116679
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:faa1bcffebd55bf5",
+          "building": "BATIMENT0000000258946900:9bbf5565445baae1",
+          "pos": [
+            -16348.583099467669,
+            30.601286740402657,
+            -8148.956847014107
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:37373d03156138ed",
+          "building": "BATIMENT0000000258947578:870de7f861b34464",
+          "pos": [
+            -16244.404426563377,
+            15.824745746669437,
+            -8024.7566484335985
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:66d907ceaf2f1e5c",
+          "building": "BATIMENT0000000258946560:2dff4328ee777d2c",
+          "pos": [
+            -16290.270250679414,
+            4.396273874728475,
+            -7982.5825086237555
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:08fde9280d87263a",
+          "building": "BATIMENT0000000258947311:e6846feb6d02889f",
+          "pos": [
+            -16251.023186314596,
+            29.22821306381537,
+            -8118.239916552378
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:43a22d7a80b67e7c",
+          "building": "BATIMENT0000000258946966:7349a8f41339bd48",
+          "pos": [
+            -16233.203344665872,
+            20.872496215261595,
+            -8067.204518552558
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:bc1c0d6e8a2f8ee4",
+          "building": "BATIMENT0000000258947313:8097969a33019bf6",
+          "pos": [
+            -16260.617744788915,
+            31.326702569698295,
+            -8132.17148578422
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:1722ff202a5b2ef6",
+          "building": "BATIMENT0000000258947676:f21bee3be5a7b76f",
+          "pos": [
+            -16269.394514065705,
+            31.84355109649061,
+            -8140.509885035362
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:4894356c6014531e",
+          "building": "BATIMENT0000000258947037:2bdb62f7ebb977ab",
+          "pos": [
+            -16246.721244833474,
+            9.531797956012515,
+            -8011.305112740179
+          ],
+          "levels": 2,
+          "streetFloor": 1,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:c782352ab01a675c",
+          "building": "BATIMENT0000000258947371:a1175fcdde5fc739",
+          "pos": [
+            -16416.267100831,
+            8.065316974638918,
+            -8073.501097530497
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:88d99545401b095f",
+          "building": "BATIMENT0000000258947031:97b2cebe36131a7a",
+          "pos": [
+            -16258.751214915072,
+            6.207564354041962,
+            -7995.4058329299905
+          ],
+          "levels": 3,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:bac88ee77d8929e1",
+          "building": "BATIMENT0000000258946586:8d7cb93792e8765b",
+          "pos": [
+            -16259.25261462349,
+            6.180511306407228,
+            -7993.8997186446895
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:2421aa781ee51bf2",
+          "building": "BATIMENT0000000258947376:aa73070a7f0fa456",
+          "pos": [
+            -16416.38036568998,
+            10.279418642562145,
+            -8087.695924620906
+          ],
+          "levels": 1,
+          "streetFloor": 0,
+          "provenance": "invented"
+        },
+        {
+          "id": "city-door:c7fd065b11d8b5c1",
+          "building": "BATIMENT0000000258946968:b12b833415419fd0",
+          "pos": [
+            -16227.680430151839,
+            18.821268657843223,
+            -8052.158460717171
+          ],
+          "levels": 2,
+          "streetFloor": 0,
+          "provenance": "invented"
+        }
+      ],
+      "origins": {
+        "IGN — partition vérifiée hors du pack de base": 34
+      },
+      "metric_facade_samples": [
+        {
+          "id": "BATIMENT0000000258947632:23f484f52642af31",
+          "sourceId": "batiment.9984180",
+          "baseY": 11.6,
+          "height": 1.8000000000000007,
+          "levels": 1,
+          "levelHeight": 1.8000000000000007,
+          "levelsBasis": "invented",
+          "renderedOpenings": 2,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258947296:b7da4049d864d0e5",
+          "sourceId": "batiment.9983894",
+          "baseY": 8.2,
+          "height": 7.5,
+          "levels": 2,
+          "levelHeight": 3.75,
+          "levelsBasis": "invented",
+          "renderedOpenings": 8,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258947295:c29ffea70a8ab043",
+          "sourceId": "batiment.9983893",
+          "baseY": 8.8,
+          "height": 8.8,
+          "levels": 1,
+          "levelHeight": 8.8,
+          "levelsBasis": "source-declared",
+          "renderedOpenings": 13,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        },
+        {
+          "id": "BATIMENT0000000258947537:4acb4ea464a8fe80",
+          "sourceId": "batiment.9984098",
+          "baseY": 8.6,
+          "height": 9.6,
+          "levels": 3,
+          "levelHeight": 3.1999999999999997,
+          "levelsBasis": "invented",
+          "renderedOpenings": 33,
+          "provenance": "invented",
+          "sourceEnvelopePreserved": true,
+          "openingsWithinSourceFaces": true
+        }
+      ]
+    }
+  },
+  "stage_history": [
+    {
+      "stage": "municipal_server_audit",
+      "elapsed_seconds": 0.018
+    },
+    {
+      "stage": "city_source_panel",
+      "elapsed_seconds": 76.336
+    },
+    {
+      "stage": "initial_macro",
+      "elapsed_seconds": 92.844
+    },
+    {
+      "stage": "maritime_diagnostic",
+      "elapsed_seconds": 110.127
+    },
+    {
+      "stage": "vieux_port",
+      "elapsed_seconds": 114.252
+    },
+    {
+      "stage": "estaque",
+      "elapsed_seconds": 136.838
+    },
+    {
+      "stage": "interior_ui",
+      "elapsed_seconds": 144.702
+    },
+    {
+      "stage": "native_continue",
+      "elapsed_seconds": 149.744
+    },
+    {
+      "stage": "finite_loot",
+      "elapsed_seconds": 166.326
+    },
+    {
+      "stage": "return_exterior",
+      "elapsed_seconds": 169.089
+    },
+    {
+      "stage": "complete",
+      "elapsed_seconds": 178.487
+    }
+  ],
+  "timings": {
+    "server_full_partition_audit_seconds": 63.89,
+    "initial_macro_staging_seconds": 17.252,
+    "vieux_port_staging_seconds": 18.045,
+    "estaque_staging_seconds": 5.288
+  },
+  "elapsed_seconds": 178.961,
+  "passed": 76,
+  "failed": 0,
+  "total": 76,
+  "source_snapshot": {
+    "html_sha256": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+    "index_sha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "terrain_index_sha256": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "water_index_sha256": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927",
+    "boundary_sha256": "c15532675daf55dc629c3f92f876e032715bf49ed2ade423f520dca36b792138",
+    "municipality": {
+      "bbox": [
+        43.1696313,
+        5.22875102,
+        43.39105653,
+        5.53254336
+      ],
+      "boundary": {
+        "bytes": 950873,
+        "path": "data/map_pack/city/boundary-c15532675daf55dc.json",
+        "sha256": "c15532675daf55dc629c3f92f876e032715bf49ed2ade423f520dca36b792138"
+      },
+      "code": "13055",
+      "name": "Marseille",
+      "source": {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme",
+        "license": "Licence Ouverte 2.0",
+        "name": "IGN BD TOPO — commune",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows"
+      }
+    },
+    "coverage": {
+      "administrativeEnvelopeBorderObjects": 4,
+      "complete": true,
+      "expandedBytes": 759922557,
+      "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+      "nonAcquiredZAnomalies": 1,
+      "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+      "partitionStepDegrees": 0.025,
+      "queryTileCount": 77,
+      "tileCount": 290,
+      "uniqueBuildings": 291001,
+      "uniqueRoads": 55449
+    }
+  },
+  "server_audit": {
+    "ok": true,
+    "present": true,
+    "municipality": {
+      "code": "13055",
+      "name": "Marseille",
+      "bbox": [
+        43.1696313,
+        5.22875102,
+        43.39105653,
+        5.53254336
+      ]
+    },
+    "coverage": {
+      "administrativeEnvelopeBorderObjects": 4,
+      "complete": true,
+      "expandedBytes": 759922557,
+      "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+      "nonAcquiredZAnomalies": 1,
+      "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+      "partitionStepDegrees": 0.025,
+      "queryTileCount": 77,
+      "tileCount": 290,
+      "uniqueBuildings": 291001,
+      "uniqueRoads": 55449
+    },
+    "tileCount": 290,
+    "totalBuildings": 291001,
+    "totalRoads": 55449,
+    "terrain": {
+      "present": true,
+      "base": {
+        "allNoData": false,
+        "bbox": [
+          43.1696313,
+          5.22875102,
+          43.39105653,
+          5.53254336
+        ],
+        "bytes": 5613054,
+        "height": 985,
+        "macro": "geo_marseille_commune",
+        "missingPoints": 232492,
+        "outOfSupportedRangePoints": 11433,
+        "path": "data/map_pack/city/terrain-f9ea94a8973316e9.json",
+        "providerInvalidPoints": 11433,
+        "providerNoDataPoints": 221059,
+        "sha256": "f9ea94a8973316e9fbcc5e3e9fe48b4a6e78f0e6e0b6d7878cb27458d02211bc",
+        "sourceResource": "ign_rge_alti_wld",
+        "validPoints": 740688,
+        "width": 988
+      },
+      "tileCount": 24,
+      "noDataTileCount": 1,
+      "coverage": {
+        "complete": true,
+        "completedFinePartitions": 25,
+        "fineComplete": true,
+        "requestedFinePartitions": 25,
+        "scope": "commune bounding envelope, without fabrication in source NoData"
+      }
+    },
+    "water": {
+      "present": true,
+      "tileCount": 118,
+      "source": {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme",
+        "license": "Licence Ouverte 2.0",
+        "resource": "ign-city-water",
+        "source": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+        "url": "https://data.geopf.fr/wfs/ows"
+      },
+      "derivation": {
+        "algorithm": "Exact GEOS intersection and planar polygonization; no coordinate snapping or simplification",
+        "artificialEdges": "Outer XYZ tile coverage rectangle, XYZ tile cuts, and exact polygon subdivision only",
+        "noSimplification": true,
+        "polygonizedFaces": 103,
+        "renderSeaLevelBasis": "Nominal game sea surface, not an instantaneous tidal measurement",
+        "renderSeaLevelMetres": 0,
+        "seaHoles": 97,
+        "seaSeedOverlapRatio": 0.9977208187799319,
+        "shorelineFeatures": 148,
+        "shorelineLevel": "Plus hautes eaux",
+        "sourceSeedId": "occupation_du_sol.97",
+        "unsupportedTinyFragments": []
+      }
+    },
+    "sources": [
+      {
+        "name": "IGN BD TOPO — commune",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows"
+      },
+      {
+        "name": "IGN BD TOPO — BDTOPO_V3:batiment",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "name": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "name": "IGN — MNT RGE ALTI, API points",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — RGE ALTI",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign_rge_alti_wld",
+        "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      {
+        "name": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-city-water",
+        "url": "https://data.geopf.fr/wfs/ows"
+      }
+    ],
+    "indexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "inspectedAt": "2026-10-23T22:32:41Z",
+    "scope": "Partitions communales locales vérifiées ; détails documentés et inventions architecturales distingués dans le jeu."
+  },
+  "city_panel": {
+    "pending": false,
+    "error": null,
+    "data": {
+      "present": true,
+      "municipality": {
+        "name": "Marseille",
+        "code": "13055",
+        "bbox": [
+          43.1696313,
+          5.22875102,
+          43.39105653,
+          5.53254336
+        ]
+      },
+      "totalBuildings": 291001,
+      "totalRoads": 55449,
+      "tileCount": 290,
+      "coverageComplete": true,
+      "terrainPresent": true
+    }
+  },
+  "maritime": {
+    "sea": {
+      "latlon": [
+        43.35,
+        5.3
+      ],
+      "projected": [
+        -17257.154154217453,
+        0,
+        -6703.181174496189
+      ],
+      "ground": {
+        "height": 0,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.969249779515213,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "maritimePolygonsLoaded": 12,
+      "maritimeHits": [
+        {
+          "id": "water:ign-sea:14:8433:5998:0",
+          "mesh": "flatpoly",
+          "renderY": 0.02,
+          "rings": 1
+        }
+      ],
+      "collision": true
+    },
+    "runtime": {
+      "present": true,
+      "source": {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme",
+        "license": "Licence Ouverte 2.0",
+        "resource": "ign-city-water",
+        "source": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+        "url": "https://data.geopf.fr/wfs/ows"
+      },
+      "derivation": {
+        "algorithm": "Exact GEOS intersection and planar polygonization; no coordinate snapping or simplification",
+        "artificialEdges": "Outer XYZ tile coverage rectangle, XYZ tile cuts, and exact polygon subdivision only",
+        "noSimplification": true,
+        "polygonizedFaces": 103,
+        "renderSeaLevelBasis": "Nominal game sea surface, not an instantaneous tidal measurement",
+        "renderSeaLevelMetres": 0,
+        "seaHoles": 97,
+        "seaSeedOverlapRatio": 0.9977208187799319,
+        "shorelineFeatures": 148,
+        "shorelineLevel": "Plus hautes eaux",
+        "sourceSeedId": "occupation_du_sol.97",
+        "unsupportedTinyFragments": []
+      },
+      "tiles": 118,
+      "cache": {
+        "entries": 4,
+        "bytes": 101360,
+        "budgetBytes": 8388608,
+        "pinned": 0,
+        "overBudgetBytes": 0,
+        "hits": 0,
+        "misses": 4,
+        "evictions": 0
+      },
+      "requests": 4,
+      "errors": []
+    },
+    "land": {
+      "latlon": [
+        43.362,
+        5.312
+      ],
+      "projected": [
+        -16323.16807007417,
+        0,
+        -8064.9527812656015
+      ],
+      "ground": {
+        "height": 13.305174796130645,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.969249779515213,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "maritimePolygonsLoaded": 11,
+      "maritimeHits": [],
+      "collision": false
+    }
+  },
+  "entrance_approach": {
+    "interaction": "city-door:08fde9280d87263a",
+    "approach": {
+      "pos": [
+        -16251.023186314596,
+        29.87821306381537,
+        -8116.639916552378
+      ],
+      "physical": true
+    },
+    "latlon": [
+      43.36244577860904,
+      5.312907816809886
+    ],
+    "ground": {
+      "height": 27.924799875719586,
+      "missing": null,
+      "sources": [
+        "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+      ],
+      "noData": [],
+      "resolutionMeters": [
+        9.969249779515213,
+        10.01994170878003
+      ],
+      "sourceResource": "ign_rge_alti_wld",
+      "interpolation": "bilinéaire, quatre échantillons valides requis",
+      "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+    },
+    "canonical_position": [
+      -16251.023186314596,
+      29.574799875719584,
+      -8116.639916552378
+    ]
+  },
+  "interior": {
+    "portal": {
+      "id": "city-door:08fde9280d87263a",
+      "building": "BATIMENT0000000258947311:e6846feb6d02889f",
+      "pos": [
+        -16251.023186314596,
+        29.22821306381537,
+        -8118.239916552378
+      ],
+      "levels": 2,
+      "streetFloor": 0,
+      "provenance": "invented"
+    },
+    "building": {
+      "id": "BATIMENT0000000258947311:e6846feb6d02889f",
+      "name": "Bâtiment",
+      "floor": 0,
+      "streetFloor": 0,
+      "levels": 2,
+      "origin": [
+        -16250.794109538605,
+        27.9,
+        -8124.155400895979
+      ],
+      "signature": "dd089021c1905eed",
+      "layoutProvenance": "invented",
+      "furnishing": {
+        "objects": 3,
+        "byKind": {
+          "bed": 1,
+          "kitchen": 1,
+          "wardrobe": 1
+        },
+        "functionalUses": [
+          "Coin nuit",
+          "Coin cuisine",
+          "Rangement"
+        ],
+        "roomsBasis": "invented-functional-zones",
+        "roomCoverage": "partial",
+        "provenance": "invented"
+      }
+    },
+    "street_floor": 0,
+    "adjacent_floor": 1,
+    "return_point": {
+      "macro": "geo_marseille_commune",
+      "pos": [
+        -16251.023186314596,
+        29.574799875719584,
+        -8116.639916552378
+      ],
+      "yaw": 0,
+      "pitch": 0
+    },
+    "adjacent": {
+      "id": "BATIMENT0000000258947311:e6846feb6d02889f",
+      "name": "Bâtiment",
+      "floor": 1,
+      "streetFloor": 0,
+      "levels": 2,
+      "origin": [
+        -16250.794109538605,
+        27.9,
+        -8124.155400895979
+      ],
+      "signature": "b95a48d1f3f77ab3",
+      "layoutProvenance": "invented",
+      "furnishing": {
+        "objects": 3,
+        "byKind": {
+          "bed": 1,
+          "wardrobe": 2
+        },
+        "functionalUses": [
+          "Coin nuit",
+          "Rangement"
+        ],
+        "roomsBasis": "invented-functional-zones",
+        "roomCoverage": "partial",
+        "provenance": "invented"
+      }
+    },
+    "restored": {
+      "id": "BATIMENT0000000258947311:e6846feb6d02889f",
+      "name": "Bâtiment",
+      "floor": 1,
+      "streetFloor": 0,
+      "levels": 2,
+      "origin": [
+        -16250.794109538605,
+        27.9,
+        -8124.155400895979
+      ],
+      "signature": "b95a48d1f3f77ab3",
+      "layoutProvenance": "invented",
+      "furnishing": {
+        "objects": 3,
+        "byKind": {
+          "bed": 1,
+          "wardrobe": 2
+        },
+        "functionalUses": [
+          "Coin nuit",
+          "Rangement"
+        ],
+        "roomsBasis": "invented-functional-zones",
+        "roomCoverage": "partial",
+        "provenance": "invented"
+      }
+    },
+    "saved_key": "fallout_mistral_save_v050",
+    "loot_key": "v050_city_interior|city:3e68b620ab89bf4c:1",
+    "returned_position": [
+      -16251.023186314618,
+      29.574799875719584,
+      -8116.639916551299
+    ],
+    "returned_ground": {
+      "height": 27.924799875719586,
+      "missing": null,
+      "sources": [
+        "enrichment:geo_marseille_commune:9b5ff6a36e008238"
+      ],
+      "noData": [],
+      "resolutionMeters": [
+        9.969249779515213,
+        10.01994170878003
+      ],
+      "sourceResource": "ign_rge_alti_wld",
+      "interpolation": "bilinéaire, quatre échantillons valides requis",
+      "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+    },
+    "returned_latlon": [
+      43.36244577860904,
+      5.312907816809886
+    ],
+    "inventory_preserved": true,
+    "return_point_cleared": true
+  },
+  "final_city": {
+    "indexPresent": true,
+    "municipality": {
+      "code": "13055",
+      "name": "Marseille",
+      "bbox": [
+        43.1696313,
+        5.22875102,
+        43.39105653,
+        5.53254336
+      ]
+    },
+    "coverage": {
+      "administrativeEnvelopeBorderObjects": 4,
+      "complete": true,
+      "expandedBytes": 759922557,
+      "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+      "nonAcquiredZAnomalies": 1,
+      "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+      "partitionStepDegrees": 0.025,
+      "queryTileCount": 77,
+      "tileCount": 290,
+      "uniqueBuildings": 291001,
+      "uniqueRoads": 55449
+    },
+    "registered": true,
+    "tilesAvailable": 290,
+    "sourceBuildings": 291001,
+    "sourceRoads": 55449,
+    "loadedPartitions": 22,
+    "loadedBuildings": 13459,
+    "loadedRoads": 2955,
+    "loadedWireBytes": 34658621,
+    "sharedProvenanceRecords": 223,
+    "cache": {
+      "entries": 22,
+      "bytes": 57586292,
+      "budgetBytes": 67108864,
+      "pinned": 0,
+      "overBudgetBytes": 0,
+      "hits": 70,
+      "misses": 32,
+      "evictions": 0
+    },
+    "terrainCache": {
+      "entries": 2,
+      "bytes": 7940736,
+      "budgetBytes": 50331648,
+      "pinned": 0,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 2,
+      "evictions": 0
+    },
+    "terrainIndexPresent": true,
+    "terrainTilesAvailable": 24,
+    "inflight": 0,
+    "requests": 24,
+    "errors": []
+  },
+  "final_interior": {
+    "version": 1,
+    "zone": "geo_marseille_commune",
+    "active": null,
+    "doors": [
+      {
+        "id": "city-door:08fde9280d87263a",
+        "building": "BATIMENT0000000258947311:e6846feb6d02889f",
+        "pos": [
+          -16251.023186314596,
+          29.22821306381537,
+          -8118.239916552378
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:14c056d28dc09ce4",
+        "building": "BATIMENT0000000258947551:80583e6d4dbbf249",
+        "pos": [
+          -16252.631855061734,
+          27.392494177462545,
+          -8103.2246861666035
+        ],
+        "levels": 2,
+        "streetFloor": 1,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:bc1c0d6e8a2f8ee4",
+        "building": "BATIMENT0000000258947313:8097969a33019bf6",
+        "pos": [
+          -16260.617744788915,
+          31.326702569698295,
+          -8132.17148578422
+        ],
+        "levels": 2,
+        "streetFloor": 1,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:7223b313751677a9",
+        "building": "BATIMENT0000000258947552:fd140a6ec13ededa",
+        "pos": [
+          -16242.805340511864,
+          25.540982262494268,
+          -8089.285176965112
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:caa824d697aa6ccc",
+        "building": "BATIMENT0000000258947021:2830323b77699e47",
+        "pos": [
+          -16222.169784690397,
+          29.429298968136415,
+          -8118.572101053878
+        ],
+        "levels": 2,
+        "streetFloor": 1,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:1722ff202a5b2ef6",
+        "building": "BATIMENT0000000258947676:f21bee3be5a7b76f",
+        "pos": [
+          -16269.394514065705,
+          31.84355109649061,
+          -8140.509885035362
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:6f1b7807501164e5",
+        "building": "BATIMENT0000000258947420:1cf2cc628f86b90e",
+        "pos": [
+          -16238.787226234283,
+          31.95977951650073,
+          -8144.335395890914
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:dc3e2fae9a03ead0",
+        "building": "BATIMENT0000000258947675:bbbfb11a5129b746",
+        "pos": [
+          -16264.810971135554,
+          32.02748640405445,
+          -8144.508246889171
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:65d086126a4263ba",
+        "building": "BATIMENT0000000258947245:1f4021321c66d1ee",
+        "pos": [
+          -16252.786822129076,
+          32.74761457990515,
+          -8148.049258138711
+        ],
+        "levels": 3,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:0397739d8f91b30f",
+        "building": "BATIMENT0000000258947421:428e2df28a047016",
+        "pos": [
+          -16217.852062007894,
+          31.157276591835892,
+          -8130.473286382281
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:4524304640d9a4ec",
+        "building": "BATIMENT0000000258947678:ed361c9f7332d88b",
+        "pos": [
+          -16283.680148825206,
+          25.542598714787772,
+          -8100.632547716385
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:839ef12065a5b8be",
+        "building": "BATIMENT0000000258947422:39de046d0d8b6dd1",
+        "pos": [
+          -16217.764670793096,
+          31.447716097304472,
+          -8138.498162947428
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:1d944053f08c07d9",
+        "building": "BATIMENT0000000258947020:bd5eb37c3d92c810",
+        "pos": [
+          -16212.685698182893,
+          26.866409151647844,
+          -8104.39290371217
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:2e138a5e025d7ab4",
+        "building": "BATIMENT0000000258947234:549d19a91189c69d",
+        "pos": [
+          -16213.954640870787,
+          31.444909672849512,
+          -8139.406051060276
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:e6743e2e342e5a30",
+        "building": "BATIMENT0000000258947233:7b526c0660c5bb02",
+        "pos": [
+          -16220.042041002946,
+          31.79772443537665,
+          -8147.339846896652
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:da44b9d0ddc0ac36",
+        "building": "BATIMENT0000000258947350:d12355d381e67d77",
+        "pos": [
+          -16291.34303808158,
+          31.52761508366619,
+          -8141.69460710776
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:04e886225f7e76f4",
+        "building": "BATIMENT0000000258947025:970f3522a13fcca6",
+        "pos": [
+          -16298.350281131248,
+          29.282980209312925,
+          -8123.546612042394
+        ],
+        "levels": 3,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:a81af069c491df5f",
+        "building": "BATIMENT0000000258947232:f0c84f9bf924ef97",
+        "pos": [
+          -16207.998920433474,
+          31.36002168866178,
+          -8143.309346844438
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:f545bf781cde2bf2",
+        "building": "BATIMENT0000000258946964:4cc5a4b6430230b2",
+        "pos": [
+          -16242.145101006163,
+          20.092740374764087,
+          -8065.260644371817
+        ],
+        "levels": 2,
+        "streetFloor": 1,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:acb99e6cb2cb3b0a",
+        "building": "BATIMENT0000000258947231:38c1186194470b85",
+        "pos": [
+          -16206.002959197007,
+          31.25722407927116,
+          -8143.408758289519
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:43a22d7a80b67e7c",
+        "building": "BATIMENT0000000258946966:7349a8f41339bd48",
+        "pos": [
+          -16233.203344665872,
+          20.872496215261595,
+          -8067.204518552558
+        ],
+        "levels": 2,
+        "streetFloor": 1,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:d1611020af1f4f1e",
+        "building": "BATIMENT0000000258947283:604938728d236dee",
+        "pos": [
+          -16297.929342807745,
+          23.090022978453185,
+          -8092.411213419765
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:7073e5a234e3624c",
+        "building": "BATIMENT0000000258947241:37cf15af2892acfb",
+        "pos": [
+          -16214.962940046771,
+          33.395874917697235,
+          -8155.205704624204
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:bd5053e14ba85a9f",
+        "building": "BATIMENT0000000258946967:3129129c0b74a210",
+        "pos": [
+          -16237.972272293591,
+          20.180684265633545,
+          -8064.85322948187
+        ],
+        "levels": 3,
+        "streetFloor": 1,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:c1356d078b528651",
+        "building": "BATIMENT0000000258947236:3846582c238e53a8",
+        "pos": [
+          -16198.536694964456,
+          30.801401090509394,
+          -8140.659835464011
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:911f00868cd12298",
+        "building": "BATIMENT0000000258947351:3e3a95a6df6b62fa",
+        "pos": [
+          -16308.822034979037,
+          27.7294798283522,
+          -8111.829602322142
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:463137303055ee1e",
+        "building": "BATIMENT0000000258947364:b60ddee1ad9bb88d",
+        "pos": [
+          -16285.8444888533,
+          34.353043009478654,
+          -8163.755211020805
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:cf62537331e345ad",
+        "building": "BATIMENT0000000258947525:b69d19838fcb7e1f",
+        "pos": [
+          -16194.24127718174,
+          26.107145105549115,
+          -8100.455815862283
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:fe324d2febd26a01",
+        "building": "BATIMENT0000000258947240:c14dee57661780cb",
+        "pos": [
+          -16203.758144354444,
+          32.28626301572881,
+          -8152.308589262589
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:20fcd3867d4f49c4",
+        "building": "BATIMENT0000000258947693:e4bd84f55e876651",
+        "pos": [
+          -16258.494122734579,
+          35.51687734445846,
+          -8175.654936611194
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:4241c54beabf7fb1",
+        "building": "BATIMENT0000000258947522:79ef52d8322cef5c",
+        "pos": [
+          -16193.04335149356,
+          25.51132008663643,
+          -8097.851625782726
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:4a598033c5bc39bb",
+        "building": "BATIMENT0000000258947284:bb544ec0d2045fcc",
+        "pos": [
+          -16308.088180369423,
+          22.74391080719344,
+          -8091.460288384364
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:6f99f2c2f49f63dc",
+        "building": "BATIMENT0000000258946979:9fbdc4891ae0ca55",
+        "pos": [
+          -16193.133911480258,
+          25.037379099214775,
+          -8090.853421542465
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:a0df027cb8fb9226",
+        "building": "BATIMENT0000000258947242:2f497ccda39e47d1",
+        "pos": [
+          -16197.602953938947,
+          31.760539443709384,
+          -8152.805869458793
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:f4d3d863ea02531d",
+        "building": "BATIMENT0000000258947526:98af9801f7623925",
+        "pos": [
+          -16186.344883006486,
+          27.22512429968054,
+          -8115.667025142903
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:7bcac5592e7fe05f",
+        "building": "BATIMENT0000000258947687:b9cb4de36e84f91f",
+        "pos": [
+          -16279.305681429689,
+          35.830576617602915,
+          -8175.705078915267
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:faaa80f60047c900",
+        "building": "BATIMENT0000000258946960:a30a124f4287f48b",
+        "pos": [
+          -16250.253569088838,
+          18.167962271453856,
+          -8050.806705839744
+        ],
+        "levels": 3,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:a7d97161c789c5b7",
+        "building": "BATIMENT0000000258945426:b09382b0f5c31ea4",
+        "pos": [
+          -16234.793180431176,
+          35.31868903839199,
+          -8180.508630442805
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:01e2e576671336c0",
+        "building": "BATIMENT0000000258947237:931fc04fb4932a8b",
+        "pos": [
+          -16193.648225371742,
+          31.02615895456881,
+          -8149.247909757211
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:6b668e6c9a10649e",
+        "building": "BATIMENT0000000258946963:ab3dac22a9e8292e",
+        "pos": [
+          -16243.692422202474,
+          18.43011455262361,
+          -8051.009432350752
+        ],
+        "levels": 3,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:ea37479092b671c2",
+        "building": "BATIMENT0000000258945427:e480e61d6bd58a79",
+        "pos": [
+          -16214.979969482592,
+          35.00947508307134,
+          -8174.717273708657
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:c7fd065b11d8b5c1",
+        "building": "BATIMENT0000000258946968:b12b833415419fd0",
+        "pos": [
+          -16227.680430151839,
+          18.821268657843223,
+          -8052.158460717171
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:556e7b7871dcdb48",
+        "building": "BATIMENT0000000258946961:33b7b0a1bc2d038d",
+        "pos": [
+          -16260.356817855882,
+          17.823535326808596,
+          -8048.606552635188
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:5a58ae775ddc2e3d",
+        "building": "BATIMENT0000000258947530:ef90e0a32b2b0bcf",
+        "pos": [
+          -16183.828336859391,
+          28.711923423693086,
+          -8131.229446276803
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:374a14a157a716c7",
+        "building": "BATIMENT0000000258947521:173a1f507b8ef754",
+        "pos": [
+          -16182.918652425991,
+          26.244590318181608,
+          -8102.80528824437
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:9ea82739c7d05773",
+        "building": "BATIMENT0000000258946971:c49f94936c64a42f",
+        "pos": [
+          -16221.39208761281,
+          18.886895050913367,
+          -8051.806112086017
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:c42e616acf204d4c",
+        "building": "BATIMENT0000000258945419:cab7f74c60d9c8d8",
+        "pos": [
+          -16243.206527764354,
+          36.35971688521333,
+          -8187.654920557862
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:8042aba2f967ea4c",
+        "building": "BATIMENT0000000258947520:b1eb94c564d74719",
+        "pos": [
+          -16178.113025607152,
+          26.169997328375928,
+          -8102.607271528962
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:965916c6c841fbd4",
+        "building": "BATIMENT0000000258947533:bcf3c21fba3a3cfb",
+        "pos": [
+          -16176.560474123293,
+          27.063528207111855,
+          -8119.850853494036
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:ba04a2a8f45f9246",
+        "building": "BATIMENT0000000258946973:c1cce675084b5be1",
+        "pos": [
+          -16213.968798251915,
+          19.570158382860395,
+          -8051.407522116604
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:ed6b2a424aa97bec",
+        "building": "BATIMENT0000000258945428:69b21966d2dc09f2",
+        "pos": [
+          -16205.272824226984,
+          34.88691859677709,
+          -8176.587241407544
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:7103e944ed3f55ae",
+        "building": "BATIMENT0000000258945648:b46500c239a43296",
+        "pos": [
+          -16180.561244097216,
+          29.021876144670195,
+          -8143.769646601219
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:0b9eb258d31fbf1e",
+        "building": "BATIMENT0000000258947677:966c7b651b776411",
+        "pos": [
+          -16310.17293834521,
+          33.4404897201226,
+          -8164.105281720535
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:e2dc48673938e615",
+        "building": "BATIMENT0000000258946976:4a7b971ae76f8736",
+        "pos": [
+          -16188.692993689314,
+          24.528442588159095,
+          -8072.157423881134
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:9ca17eac5e3ed2c0",
+        "building": "BATIMENT0000000258945641:4c633e3bd1d2ee4f",
+        "pos": [
+          -16186.780631597649,
+          30.54782118479507,
+          -8158.54340255496
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:1c84e297d2e6f9d9",
+        "building": "BATIMENT0000000258945421:fb189ba6e698409a",
+        "pos": [
+          -16227.015670559418,
+          37.219593408270995,
+          -8190.57652150923
+        ],
+        "levels": 2,
+        "streetFloor": 1,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:75cdf20cd55f332e",
+        "building": "BATIMENT0000000258947647:2e24024fefc4c9db",
+        "pos": [
+          -16223.456215620614,
+          18.161556823950722,
+          -8043.256594251192
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:12ac0c6fca2f1b1d",
+        "building": "BATIMENT0000000258945645:c4b241052a84eb31",
+        "pos": [
+          -16196.226692751901,
+          34.18780805679854,
+          -8173.589962259431
+        ],
+        "levels": 2,
+        "streetFloor": 1,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:cbd2ee7308cb103d",
+        "building": "BATIMENT0000000258947519:c7f0ef39775636d5",
+        "pos": [
+          -16173.243192661093,
+          26.10780994910494,
+          -8102.35641622231
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:385b58950bb0cb37",
+        "building": "BATIMENT0000000258945767:bb419ece0e231f72",
+        "pos": [
+          -16266.917413762325,
+          42.02823992868608,
+          -8194.455217174733
+        ],
+        "levels": 2,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:64245c140c6fbf4e",
+        "building": "BATIMENT0000000258946982:343e967060855154",
+        "pos": [
+          -16176.075030300852,
+          25.0098216904282,
+          -8090.203327412328
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:b14ede44f05abeae",
+        "building": "BATIMENT0000000258946400:589a149b186ac8e7",
+        "pos": [
+          -16332.349539826251,
+          26.304581714641113,
+          -8111.456540356957
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:63b01a7fdc73b335",
+        "building": "BATIMENT0000000258947505:5172a24e206371da",
+        "pos": [
+          -16171.744946420822,
+          25.466741736564178,
+          -8097.555898433524
+        ],
+        "levels": 1,
+        "streetFloor": 0,
+        "provenance": "invented"
+      },
+      {
+        "id": "city-door:54a24b6f5a52496d",
+        "building": "BATIMENT0000000258947880:755096c2659e9e46",
+        "pos": [
+          -16207.494536681552,
+          37.30427879447022,
+          -8185.794917133397
+        ],
+        "levels": 2,
+        "streetFloor": 1,
+        "provenance": "invented"
+      }
+    ],
+    "rejections": {
+      "nearbyBuildings": 250,
+      "invalidVolume": 6,
+      "unmeasuredApproach": 0,
+      "unmatchedStreetLevel": 138,
+      "blockedApproach": 178,
+      "narrowDoor": 5,
+      "noCandidate": 115,
+      "eligible": 129,
+      "interactions": 64
+    },
+    "interactionBudget": 64,
+    "entered": 0,
+    "returned": 1,
+    "exitPending": false,
+    "last": {
+      "event": "return",
+      "building": "BATIMENT0000000258947311:e6846feb6d02889f",
+      "position": [
+        -16251.023186314618,
+        29.574799875719584,
+        -8116.639916551299
+      ]
+    },
+    "errors": []
+  }
+}

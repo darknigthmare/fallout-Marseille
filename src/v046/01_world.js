@@ -43,7 +43,15 @@ async function v046Resource(key,signal){
 /* All geometry is built against this staging world. No mutation of the live
    scene, inventory, NPC map or old pipeline readiness during preparation. */
 function v046SourceRoad(w,path,props,color,key,layerName){
- const geometry=MistralIntegrity.roadMesh(path,props,(x,z)=>{const bank=w.v047TerrainBank||V046.terrain,[lat,lon]=v015GeoUnproject(w.id,x,z);return bank.read(lat,lon).height;},layerName==='waterway');
+ const water=layerName==='waterway',originalProfile=MistralIntegrity.roadProfile(props,water),groundContact=!water&&props.provenance?.resource==='ign-bdtopo'&&originalProfile.ordinalPosition===0&&!originalProfile.bridge&&!originalProfile.tunnel&&originalProfile.absoluteHeight===null&&!['bridge:height','min_height'].includes(originalProfile.heightBasis),terrainSources=new Map();let noDataVertices=0;
+ /* At-grade BD TOPO describes a ground route, not an elevated slab. Its old
+    sparse axis Z may disagree with the available MNT. Derive only the visible
+    ground ribbon from the same bank used by physics; retain the entire input
+    path and original feature geometry, with a distinct representation receipt.
+    Bridges, tunnels and explicit vertical dimensions keep their source Z. */
+ const renderPath=groundContact?path.map(p=>p.slice(0,2)):path;
+ const geometry=MistralIntegrity.roadMesh(renderPath,props,(x,z)=>{const bank=w.v047TerrainBank||V046.terrain,[lat,lon]=v015GeoUnproject(w.id,x,z),sample=bank.read(lat,lon);if(groundContact){if(sample.height===null)noDataVertices++;for(const id of sample.sources||[])if(!terrainSources.has(id))terrainSources.set(id,{id,sourceResource:sample.sourceResource||null,verticalDatum:sample.verticalDatum||null,resolutionMeters:sample.resolutionMeters?.slice()||null,interpolation:sample.interpolation||null});}return sample.height;},water);
+ if(groundContact){const complete=path.every(p=>Number.isFinite(p[2])),partial=path.some(p=>Number.isFinite(p[2]));Object.assign(geometry,{surfaceDerived:true,surfaceElevationPolicy:'ground-contact-mnt',sourceHeightBasis:complete?'coordonnées Z source':partial?'coordonnées Z partielles et terrain':originalProfile.heightBasis,sourceGeometryUnmodified:true,sourceXYZPreserved:partial,heightBasis:'MNT local — surface au sol dérivée',elevationAssumed:true,surfaceVisualOffsetMeters:.085,surfaceNoDataVertices:noDataVertices,surfaceTerrainSources:[...terrainSources.values()]});}
  if(path.length<2||!geometry.faces.length)return null;
  const {vertices,faces,...profile}=geometry,bounds=v017PolyBounds([path]),d={mesh:'geoSurface',pos:[bounds.cx,0,bounds.cz],scale:[1,1,1],color:layerName==='waterway'?COLORS.water:color,vertices,faces,roadPath:path.map(p=>p.slice()),roadProperties:{...props},roadWidth:geometry.width,widthAssumed:geometry.widthAssumed,elevationAssumed:geometry.elevationAssumed,sourceProfile:profile,geoTile:key,geoLayer:layerName,revision:0,alpha:1};w.staticDraws.push(d);return d;
 }

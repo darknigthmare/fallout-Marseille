@@ -1,0 +1,15 @@
+{
+  "scope": "Production builder in a new ordinary temporary directory from copied source files; all three outputs compared byte for byte, original outputs unmodified",
+  "passed": 3,
+  "failed": 0,
+  "total": 3,
+  "html_sha256": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+  "files": {
+    "index.html": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+    "src/game.js": "c3cfa485003f64faa33715ce0b3d1ce3fd7878ed342f6ba7caab23f3953417f6"
+  },
+  "builder_sha256": "7dbd34bbc2402466ba8ebf6e98ee9a55d8b97a7e8cc6809df55aad99f8657fd6",
+  "node_check": true,
+  "worktree_created": false
+}

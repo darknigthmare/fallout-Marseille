@@ -1,0 +1,3986 @@
+{
+  "version": "0.50.0",
+  "scope": "Real HTTP + native Chromium + installed geographic data",
+  "native_navigation": true,
+  "assistance": [
+    "UI menu, character creation and dialogue choice buttons",
+    "Existing v020Approach and v35p* story actions",
+    "Existing measured camera placement and v046Move collision-controlled steps",
+    "Simulation freeze and day/night clock for repeatable measurements; geography and collisions remain production data",
+    "Two explicitly named POIs discovered through the existing debug discovery action before their UI-only fast travel tests"
+  ],
+  "network_mocked": false,
+  "storage_mocked": false,
+  "html_injected": false,
+  "synthetic_lab_used": false,
+  "checks": [
+    {
+      "name": "Server delivers the exact index.html",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Installed pack complete with all coordinates and terrain grids",
+      "ok": true,
+      "detail": {
+        "version": "0.50.0",
+        "vector": {
+          "expected": 5884,
+          "pbf": 4557,
+          "officialEmpty": 1327,
+          "missing": 0,
+          "invalid": 0,
+          "bytes": 86973739,
+          "examples": []
+        },
+        "terrain": {
+          "expected": 8,
+          "valid": 8,
+          "missing": 0,
+          "invalid": 0,
+          "samples": 174944,
+          "noData": 32424,
+          "examples": []
+        },
+        "complete": true,
+        "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+        "inspectedAt": "2026-10-23T22:31:53Z"
+      }
+    },
+    {
+      "name": "Native HTTP document matches the served game",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Global v050 and historical module versions reported honestly",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "All visible menu actions fit the viewport",
+      "ok": true,
+      "detail": [
+        {
+          "id": "btnContinue",
+          "text": "Continuer",
+          "visible": true,
+          "inViewport": true,
+          "top": 268.078125,
+          "bottom": 312.078125
+        },
+        {
+          "id": "btnNew",
+          "text": "Nouvelle campagne",
+          "visible": true,
+          "inViewport": true,
+          "top": 319.265625,
+          "bottom": 363.265625
+        },
+        {
+          "id": "btnV035Load",
+          "text": "Charger une sauvegarde",
+          "visible": true,
+          "inViewport": true,
+          "top": 370.453125,
+          "bottom": 414.453125
+        },
+        {
+          "id": "btnV035Career",
+          "text": "Carrière",
+          "visible": true,
+          "inViewport": true,
+          "top": 370.453125,
+          "bottom": 414.453125
+        },
+        {
+          "id": "btnV035Operations",
+          "text": "Opérations rejouables",
+          "visible": true,
+          "inViewport": true,
+          "top": 421.640625,
+          "bottom": 465.640625
+        },
+        {
+          "id": "btnChapter",
+          "text": "Exploration libre",
+          "visible": true,
+          "inViewport": true,
+          "top": 421.640625,
+          "bottom": 465.640625
+        },
+        {
+          "id": "btnOptions",
+          "text": "Options",
+          "visible": true,
+          "inViewport": true,
+          "top": 472.828125,
+          "bottom": 516.828125
+        },
+        {
+          "id": "btnCredits",
+          "text": "Crédits & statut",
+          "visible": true,
+          "inViewport": true,
+          "top": 472.828125,
+          "bottom": 516.828125
+        },
+        {
+          "id": "v050MapStatus",
+          "text": "Cartes & territoire",
+          "visible": true,
+          "inViewport": true,
+          "top": 524.015625,
+          "bottom": 568.015625
+        },
+        {
+          "id": "btnV035Admin",
+          "text": "Admin",
+          "visible": true,
+          "inViewport": true,
+          "top": 524.015625,
+          "bottom": 568.015625
+        }
+      ]
+    },
+    {
+      "name": "Menu status uses the live local audit",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mobile menu actions can all be reached by scrolling",
+      "ok": true,
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "buttons": [
+          {
+            "id": "btnContinue",
+            "text": "Continuer",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnNew",
+            "text": "Nouvelle campagne",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnV035Load",
+            "text": "Charger une sauvegarde",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnV035Career",
+            "text": "Carrière",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnV035Operations",
+            "text": "Opérations rejouables",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnChapter",
+            "text": "Exploration libre",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnOptions",
+            "text": "Options",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnCredits",
+            "text": "Crédits & statut",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "v050MapStatus",
+            "text": "Cartes & territoire",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          },
+          {
+            "id": "btnV035Admin",
+            "text": "Admin",
+            "reachable": true,
+            "width": 345.21875,
+            "height": 44
+          }
+        ]
+      }
+    },
+    {
+      "name": "New campaign reaches the vault prologue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-locker",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pLocker reaches stage 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-clinic",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pClinic reaches stage 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-filter",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pFilter reaches stage 3",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pBreakfast reaches stage 4",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-ration",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pRation reaches stage 5",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-records",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pRecords reaches stage 6",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pBrief reaches stage 7",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Debug physical approach: v35p-issue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Story action v35pIssue reaches stage 8",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Airlock commits directly to real exterior",
+      "ok": true,
+      "detail": {
+        "before": {
+          "started": true,
+          "titleSeen": true,
+          "stage": 8,
+          "locker": true,
+          "clinic": true,
+          "filter": true,
+          "breakfast": true,
+          "records": true,
+          "briefed": true,
+          "loadout": "patrol",
+          "complete": false
+        },
+        "after": {
+          "started": true,
+          "titleSeen": true,
+          "stage": 9,
+          "locker": true,
+          "clinic": true,
+          "filter": true,
+          "breakfast": true,
+          "records": true,
+          "briefed": true,
+          "loadout": "patrol",
+          "complete": true
+        },
+        "world": "geo_huveaune",
+        "real": true,
+        "info": {
+          "version": "0.47.0",
+          "scene": null,
+          "region": "geo_huveaune",
+          "lab": false,
+          "loading": false,
+          "anticipating": false,
+          "phase": "ready",
+          "done": 46,
+          "total": 46,
+          "anchor": [
+            4893.191229318152,
+            0,
+            -1447.666434998624
+          ],
+          "pos": [
+            4907.191229318152,
+            106.50681448257473,
+            -1425.666434998624
+          ],
+          "stats": {
+            "warmStarted": 0,
+            "warmCommitted": 0,
+            "blocking": 1,
+            "cancelled": 0,
+            "failed": 0,
+            "stale": 0,
+            "reusedTiles": 0,
+            "builtTiles": 42,
+            "reusedTerrain": 0,
+            "builtTerrain": 25
+          },
+          "resources": {
+            "entries": 46,
+            "bytes": 36195030,
+            "budgetBytes": 50331648,
+            "pinned": 48,
+            "overBudgetBytes": 0,
+            "hits": 0,
+            "misses": 0,
+            "evictions": 0
+          },
+          "geometry": {
+            "entries": 38,
+            "bytes": 38412848,
+            "budgetBytes": 41943040,
+            "pinned": 42,
+            "overBudgetBytes": 0,
+            "hits": 0,
+            "misses": 42,
+            "evictions": 4
+          },
+          "terrainMeshes": {
+            "entries": 25,
+            "bytes": 775430,
+            "budgetBytes": 12582912,
+            "pinned": 31,
+            "overBudgetBytes": 0,
+            "hits": 0,
+            "misses": 25,
+            "evictions": 0
+          },
+          "terrain": [
+            {
+              "id": "geo_etoile",
+              "width": 161,
+              "height": 161,
+              "valid": 25921,
+              "noData": 0
+            },
+            {
+              "id": "geo_garlaban",
+              "width": 161,
+              "height": 161,
+              "valid": 25921,
+              "noData": 0
+            },
+            {
+              "id": "geo_huveaune",
+              "width": 161,
+              "height": 161,
+              "valid": 25921,
+              "noData": 0
+            },
+            {
+              "id": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+              "width": 447,
+              "height": 391,
+              "valid": 174777,
+              "noData": 0
+            },
+            {
+              "id": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+              "width": 326,
+              "height": 446,
+              "valid": 145396,
+              "noData": 0
+            },
+            {
+              "id": "geo_saintebaume",
+              "width": 161,
+              "height": 161,
+              "valid": 25921,
+              "noData": 0
+            }
+          ],
+          "tiles": 42,
+          "nature": 219,
+          "origins": {
+            "pack local": 42
+          },
+          "history": [
+            {
+              "type": "publication",
+              "at": "2026-10-23T22:34:28.706Z",
+              "id": 1,
+              "warm": false,
+              "ms": 59001,
+              "tiles": 42
+            }
+          ],
+          "localData": {
+            "version": "0.50.0",
+            "vector": {
+              "expected": 5884,
+              "pbf": 4557,
+              "officialEmpty": 1327,
+              "missing": 0,
+              "invalid": 0,
+              "bytes": 86973739,
+              "examples": []
+            },
+            "terrain": {
+              "expected": 8,
+              "valid": 8,
+              "missing": 0,
+              "invalid": 0,
+              "samples": 174944,
+              "noData": 32424,
+              "examples": []
+            },
+            "complete": true,
+            "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+            "inspectedAt": "2026-10-23T22:31:53Z",
+            "live": true
+          }
+        }
+      }
+    },
+    {
+      "name": "Campaign progresses only after the exit succeeds",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Exterior is live geography, not a synthetic lab",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "All active vectors came from the installed pack",
+      "ok": true,
+      "detail": {
+        "pack local": 42
+      }
+    },
+    {
+      "name": "Committed terrain grids contain measured heights",
+      "ok": true,
+      "detail": [
+        {
+          "id": "geo_etoile",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_garlaban",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_huveaune",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+          "width": 447,
+          "height": 391,
+          "valid": 174777,
+          "noData": 0
+        },
+        {
+          "id": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+          "width": 326,
+          "height": 446,
+          "valid": 145396,
+          "noData": 0
+        },
+        {
+          "id": "geo_saintebaume",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        }
+      ]
+    },
+    {
+      "name": "Arrival has measured terrain with source attribution",
+      "ok": true,
+      "detail": {
+        "player": [
+          4907.191229318152,
+          106.50681448257473,
+          -1425.666434998624
+        ],
+        "latlon": [
+          43.29639810121816,
+          5.570963510120153
+        ],
+        "ground": {
+          "height": 104.85681448257472,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_huveaune:61e243f5fe4f2c16"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            0.4985858071445592,
+            0.5003146067421845
+          ],
+          "sourceResource": "ign_lidar_hd_mnt",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69"
+        },
+        "eye_minus_ground": 1.6500000000000057,
+        "collision": false
+      }
+    },
+    {
+      "name": "Player footing is finite and above measured ground",
+      "ok": true,
+      "detail": {
+        "player": [
+          4907.191229318152,
+          106.50681448257473,
+          -1425.666434998624
+        ],
+        "latlon": [
+          43.29639810121816,
+          5.570963510120153
+        ],
+        "ground": {
+          "height": 104.85681448257472,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_huveaune:61e243f5fe4f2c16"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            0.4985858071445592,
+            0.5003146067421845
+          ],
+          "sourceResource": "ign_lidar_hd_mnt",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69"
+        },
+        "eye_minus_ground": 1.6500000000000057,
+        "collision": false
+      }
+    },
+    {
+      "name": "Arrival is clear of collision geometry",
+      "ok": true,
+      "detail": {
+        "player": [
+          4907.191229318152,
+          106.50681448257473,
+          -1425.666434998624
+        ],
+        "latlon": [
+          43.29639810121816,
+          5.570963510120153
+        ],
+        "ground": {
+          "height": 104.85681448257472,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_huveaune:61e243f5fe4f2c16"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            0.4985858071445592,
+            0.5003146067421845
+          ],
+          "sourceResource": "ign_lidar_hd_mnt",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69"
+        },
+        "eye_minus_ground": 1.6500000000000057,
+        "collision": false
+      }
+    },
+    {
+      "name": "Real roads and building geometry are present",
+      "ok": true,
+      "detail": {
+        "buildings": 9693,
+        "roads": 3521,
+        "nature": 108
+      }
+    },
+    {
+      "name": "All building ground and roof heights are finite",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A physical workshop gateway exists in the geographic scene",
+      "ok": true,
+      "detail": {
+        "id": "v050-campaign-workshops",
+        "label": "Ateliers d’Aubagne — poursuivre la campagne",
+        "pos": [
+          4907.191229318152,
+          106.62548585047931,
+          -1447.666434998624
+        ],
+        "radius": 4.5
+      }
+    },
+    {
+      "name": "Measured exterior gateway can be approached",
+      "ok": true,
+      "detail": {
+        "pos": [
+          4907.191229318152,
+          107.27548585047931,
+          -1446.0664349986241
+        ],
+        "physical": true
+      }
+    },
+    {
+      "name": "Nearby workshop gateway opens the actual dialogue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Workshop dialogue identifies the narrative scene",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Campaign gateway enters the authored workshop scene",
+      "ok": true,
+      "detail": {
+        "saved": {
+          "schema": 1,
+          "route": "geographic",
+          "gateway": [
+            4907.191229318152,
+            105.4254858504793,
+            -1447.666434998624
+          ],
+          "returnPoint": {
+            "macro": "geo_huveaune",
+            "pos": [
+              4907.191229318152,
+              106.80037186896672,
+              -1446.0664349989966
+            ],
+            "yaw": 0,
+            "pitch": 0
+          },
+          "workshopVisits": 1
+        },
+        "prologue": {
+          "started": true,
+          "titleSeen": true,
+          "stage": 9,
+          "locker": true,
+          "clinic": true,
+          "filter": true,
+          "breakfast": true,
+          "records": true,
+          "briefed": true,
+          "loadout": "patrol",
+          "complete": true
+        },
+        "main": 2,
+        "zone": "aubagne",
+        "pending": null,
+        "last": {
+          "id": 2,
+          "kind": "workshops",
+          "status": "complete",
+          "zone": "aubagne",
+          "real": false
+        },
+        "completed": 2,
+        "cancelled": 0,
+        "failed": 0,
+        "gateway": {
+          "id": "v050-campaign-territory",
+          "label": "Retourner au territoire d’Aubagne",
+          "pos": [
+            5,
+            1.1,
+            86
+          ],
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "Geographic return point is stored before the workshop visit",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mireille is present in the connected workshop scene",
+      "ok": true,
+      "detail": {
+        "id": "mireille",
+        "site": null,
+        "pos": [
+          -18,
+          0,
+          6
+        ]
+      }
+    },
+    {
+      "name": "Mireille has an accessible physical dialogue approach",
+      "ok": true,
+      "detail": [
+        -18.0,
+        1.65,
+        8.0
+      ]
+    },
+    {
+      "name": "Mireille dialogue advances the existing campaign to stage 3",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Narrative return gateway can be approached",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Workshop return opens the actual dialogue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Return restores the saved geographic point",
+      "ok": true,
+      "detail": {
+        "before": [
+          4907.191229318152,
+          106.80037186896672,
+          -1446.0664349989966
+        ],
+        "after": [
+          4907.191229318152,
+          106.80037186896672,
+          -1446.0664349989966
+        ]
+      }
+    },
+    {
+      "name": "Workshop return preserves newly acquired campaign progress and inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production movement crosses the real cadastre tile boundary",
+      "ok": true,
+      "detail": {
+        "start": [
+          4819.86014478188,
+          107.4034263964888,
+          -1443.2225765371695
+        ],
+        "target": [
+          4847.906112206285,
+          0,
+          -1444.135738445446
+        ],
+        "actual": [
+          4847.906112206266,
+          107.18668550897154,
+          -1444.1357384454434
+        ],
+        "distance": 28.06082952162146,
+        "blocked_steps": 0,
+        "error": 1.926245580185241e-11,
+        "tile": [
+          33782,
+          24007
+        ]
+      }
+    },
+    {
+      "name": "The crossing publishes a different window of real tiles",
+      "ok": true,
+      "detail": {
+        "changed": true,
+        "requests": [
+          {
+            "requested_latlon": [
+              43.296581514969304,
+              5.571722267533085
+            ],
+            "published_anchor": [
+              4968.10307017609,
+              0,
+              -1448.0506797889248
+            ],
+            "ok": true,
+            "added": [],
+            "removed": [
+              "base:14:8444:6001",
+              "base:14:8444:6002",
+              "cadastre:16:33779:24004",
+              "cadastre:16:33779:24005",
+              "cadastre:16:33779:24006",
+              "cadastre:16:33779:24007",
+              "cadastre:16:33779:24008",
+              "cadastre:16:33779:24009"
+            ]
+          }
+        ],
+        "before_count": 42,
+        "after_count": 34,
+        "player": [
+          4847.906112206266,
+          107.18668550897154,
+          -1444.1357384454434
+        ]
+      }
+    },
+    {
+      "name": "Walking and publishing across the boundary keeps one scene",
+      "ok": true,
+      "detail": {
+        "before": 2,
+        "after": 2
+      }
+    },
+    {
+      "name": "Common real roads and buildings retain identical geometry",
+      "ok": true,
+      "detail": {
+        "buildings": {
+          "before": 9271,
+          "after": 8580,
+          "common": 8580,
+          "changed": [],
+          "changed_count": 0
+        },
+        "roads": {
+          "before": 3372,
+          "after": 2796,
+          "common": 2796,
+          "changed": [],
+          "changed_count": 0
+        }
+      }
+    },
+    {
+      "name": "Courtyard holes remain present after publication",
+      "ok": true,
+      "detail": {
+        "shared_courtyard_buildings": 1
+      }
+    },
+    {
+      "name": "The return publishes another real tile window",
+      "ok": true,
+      "detail": {
+        "changed": true,
+        "requests": [
+          {
+            "requested_latlon": [
+              43.296581514969304,
+              5.568414451216917
+            ],
+            "published_anchor": [
+              4747.513901975704,
+              0,
+              -1440.8670210251585
+            ],
+            "ok": true,
+            "added": [
+              "base:14:8444:6001",
+              "base:14:8444:6002",
+              "cadastre:16:33779:24004",
+              "cadastre:16:33779:24005",
+              "cadastre:16:33779:24006",
+              "cadastre:16:33779:24007",
+              "cadastre:16:33779:24008",
+              "cadastre:16:33779:24009"
+            ],
+            "removed": [
+              "base:14:8446:6001",
+              "base:14:8446:6002",
+              "cadastre:16:33784:24004",
+              "cadastre:16:33784:24005",
+              "cadastre:16:33784:24006",
+              "cadastre:16:33784:24007",
+              "cadastre:16:33784:24008",
+              "cadastre:16:33784:24009"
+            ]
+          }
+        ],
+        "before_count": 34,
+        "after_count": 34,
+        "player": [
+          4819.86014478188,
+          107.4034263964888,
+          -1443.2225765371695
+        ]
+      }
+    },
+    {
+      "name": "Return crossing retains scene, position and common geometry",
+      "ok": true,
+      "detail": {
+        "movement": {
+          "start": [
+            4847.906112206266,
+            107.18668550897154,
+            -1444.1357384454434
+          ],
+          "target": [
+            4819.86014478188,
+            0,
+            -1443.2225765371695
+          ],
+          "actual": [
+            4819.86014478188,
+            107.4034263964888,
+            -1443.2225765371695
+          ],
+          "distance": 28.06082952160229,
+          "blocked_steps": 0,
+          "error": 0.0,
+          "tile": [
+            33781,
+            24007
+          ]
+        },
+        "geometry": {
+          "buildings": {
+            "before": 9271,
+            "after": 8169,
+            "common": 8169,
+            "changed": [],
+            "changed_count": 0
+          },
+          "roads": {
+            "before": 3372,
+            "after": 2200,
+            "common": 2200,
+            "changed": [],
+            "changed_count": 0
+          }
+        },
+        "scene": 2
+      }
+    },
+    {
+      "name": "A real cadastral wall blocks production movement",
+      "ok": true,
+      "detail": {
+        "building": "cadastre:building:222ff0a4",
+        "center": [
+          4811.705767636537,
+          -1441.4055291851982
+        ],
+        "normal": [
+          -0.30637075082646814,
+          -0.9519122664605317
+        ],
+        "free": [
+          4811.184937360132,
+          -1443.0237800381813
+        ],
+        "inside": [
+          4812.2265979129415,
+          -1439.7872783322152
+        ],
+        "intended_metres": 3.4000000000001576,
+        "moved_metres": 1.3254137827987431,
+        "remaining_push_moved": 0.0,
+        "loading": false,
+        "end": [
+          4811.775211673485,
+          107.50690517685892,
+          -1441.8370627463933
+        ],
+        "end_collision": false
+      }
+    },
+    {
+      "name": "Native frames continue while the real exterior is displayed",
+      "ok": true,
+      "detail": {
+        "scope": "Native headless Chromium frame cadence in this execution environment; not a hardware or desktop FPS guarantee",
+        "samples": 6,
+        "median_ms": 599.95,
+        "p95_ms": 1100,
+        "renderer": {
+          "backend": "WebGL",
+          "customMeshes": 5017,
+          "triangles": 482569,
+          "bufferGroups": 72,
+          "drawCalls": 1157,
+          "batchedMeshes": 5016,
+          "batchGroups": 54,
+          "batchBuilds": 333
+        },
+        "gpu": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+        }
+      }
+    },
+    {
+      "name": "The courtyard probe comes from an actual source hole",
+      "ok": true,
+      "detail": {
+        "file": "data/map_pack/cadastre/16/33789/24002.pbf",
+        "feature_id": 1653439797,
+        "sha256": "321a62d2b99c258a88363e7334c0594413022c49aed2322891644e6c9467baa7",
+        "latlon": [
+          43.31400976363655,
+          5.612585060298443
+        ]
+      }
+    },
+    {
+      "name": "Native rendered geometry retains the real courtyard ring",
+      "ok": true,
+      "detail": {
+        "source_feature": 1653439797,
+        "rendered_id": "cadastre:building:aadd1dcb",
+        "rings": 2
+      }
+    },
+    {
+      "name": "The measured source courtyard is not filled by a collision",
+      "ok": true,
+      "detail": {
+        "ll": [
+          43.31400976363655,
+          5.612585060298443
+        ],
+        "p": [
+          8220.130412389291,
+          0,
+          -3493.2877204502
+        ],
+        "ground": {
+          "height": 173.02750624861622,
+          "missing": null,
+          "sources": [
+            "geo_huveaune"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            106.35054532825006,
+            62.61750000000237
+          ],
+          "sourceResource": "ign_rge_alti_wld",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+        },
+        "clear": true
+      }
+    },
+    {
+      "name": "Production movement can enter the real open courtyard",
+      "ok": true,
+      "detail": {
+        "start": [
+          8220.131412389292,
+          174.67760104214258,
+          -3493.2877204502
+        ],
+        "target": [
+          8222.13362925523,
+          0,
+          -3493.3540242267773
+        ],
+        "actual": [
+          8222.133629255231,
+          174.8720330080588,
+          -3493.3540242267777
+        ],
+        "distance": 2.0033143959535624,
+        "blocked_steps": 0,
+        "error": 1.8749713606747085e-12
+      }
+    },
+    {
+      "name": "The real courtyard survives re-publication with the same geometry",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pip-Boy shows the discovered destination Belvédère · Aubagne",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel departure is permitted 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Travel UI asks for a priced duration confirmation 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cancelling the UI confirmation preserves the player and time",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "UI fast travel reaches Belvédère · Aubagne",
+      "ok": true,
+      "detail": {
+        "id": 1,
+        "site": "v042-huveaune-landmark-02",
+        "status": "complete",
+        "minutes": 12,
+        "distance": 739,
+        "arrival": [
+          4414.685241407335,
+          117.6822857488122,
+          -788.2478749090806
+        ],
+        "loadedAnchor": [
+          4426.809597060317,
+          0,
+          -817.2478749090806
+        ]
+      }
+    },
+    {
+      "name": "Native travel keeps one scene 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel time is charged exactly once 1",
+      "ok": true,
+      "detail": {
+        "before": 12,
+        "minutes": 12,
+        "after": 12.200000000000003
+      }
+    },
+    {
+      "name": "Native travel preserves inventory, experience and capsules 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel arrival is clear of real collision 1",
+      "ok": true,
+      "detail": {
+        "player": [
+          4414.685241407335,
+          117.6822857488122,
+          -788.2478749090806
+        ],
+        "terrain": {
+          "height": 116.0322857488122,
+          "missing": null,
+          "sources": [
+            "geo_huveaune"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            106.35054532825006,
+            62.61750000000237
+          ],
+          "sourceResource": "ign_rge_alti_wld",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+        }
+      }
+    },
+    {
+      "name": "Pip-Boy shows the discovered destination Épave · Galeries de l’Huveaune",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel departure is permitted 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Travel UI asks for a priced duration confirmation 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "UI fast travel reaches Épave · Galeries de l’Huveaune",
+      "ok": true,
+      "detail": {
+        "id": 2,
+        "site": "v042-huveaune-landmark-03",
+        "status": "complete",
+        "minutes": 18,
+        "distance": 1143,
+        "arrival": [
+          3364.3968968763697,
+          94.5103109470117,
+          -431.41958711016923
+        ],
+        "loadedAnchor": [
+          3328.0238299174234,
+          0,
+          -432.41958711016923
+        ]
+      }
+    },
+    {
+      "name": "Native travel keeps one scene 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel time is charged exactly once 2",
+      "ok": true,
+      "detail": {
+        "before": 12.200000000000003,
+        "minutes": 18,
+        "after": 12.5
+      }
+    },
+    {
+      "name": "Native travel preserves inventory, experience and capsules 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native travel arrival is clear of real collision 2",
+      "ok": true,
+      "detail": {
+        "player": [
+          3364.3968968763697,
+          94.5103109470117,
+          -431.41958711016923
+        ],
+        "terrain": {
+          "height": 92.8603109470117,
+          "missing": null,
+          "sources": [
+            "geo_huveaune"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            106.35054532825006,
+            62.61750000000237
+          ],
+          "sourceResource": "ign_rge_alti_wld",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+        }
+      }
+    },
+    {
+      "name": "Native save API writes successfully",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual browser storage contains the geographic save",
+      "ok": true,
+      "detail": {
+        "key": "fallout_mistral_save_v050",
+        "bytes": 21309
+      }
+    },
+    {
+      "name": "Native reload uses the same release HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Continue restores the geographic player position",
+      "ok": true,
+      "detail": {
+        "saved": [
+          3364.3968968763697,
+          94.5103109470117,
+          -431.41958711016923
+        ],
+        "loaded": [
+          3364.3968968763947,
+          94.5103109470117,
+          -431.41958711016923
+        ]
+      }
+    },
+    {
+      "name": "Continue preserves discovered sites and campaign stage",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No installed tile or terrain request failed",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "Native browser reports no JavaScript exception",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "The tested HTML remains unchanged for the whole native run",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [
+    {
+      "file": "native_01_menu.png",
+      "label": "Real menu, loaded by HTTP in Chromium",
+      "sha256": "3192fca43f8db90e44604115e9783fe438d02a8d01d3b331acd70b77c05dd585"
+    },
+    {
+      "file": "native_02_local_maps.png",
+      "label": "Local map status from the running server",
+      "sha256": "095ed5befda4f47045fb24d393a68c37aed39f0b42b91bed98b041712debc9b4"
+    },
+    {
+      "file": "native_00_mobile_menu.png",
+      "label": "390 px mobile menu; native browser, scrollable actions",
+      "sha256": "ba317ccd60aff468ce7c15a68ba1918112a13e668c77cfee44aa3a8d97ddcd78"
+    },
+    {
+      "file": "native_03_character.png",
+      "label": "Character created with the actual UI",
+      "sha256": "673ccc10f427c15efe9c7475e855dd67f20069cf7670841198f121463d6b94f7"
+    },
+    {
+      "file": "native_04_prologue.png",
+      "label": "Native vault arrival through New campaign",
+      "sha256": "7669d5936cc4cab2bcb95c472e06c61b9233c81a66d2fb4850f477d812a166cd"
+    },
+    {
+      "file": "native_05_airlock.png",
+      "label": "Native airlock after debug-assisted story progression",
+      "sha256": "55083061eec423f743b23ea6c0048d044005b078057d8a55d55e52fbbd75af85"
+    },
+    {
+      "file": "native_06_exit.png",
+      "label": "Actual airlock destination, without changing the exit result",
+      "sha256": "3dcc1d69d4a2deef21f49de6686e6a6d9f174372246ba89381a2bcbcbb2c1b83"
+    },
+    {
+      "file": "native_07_real_aubagne.png",
+      "label": "Real vector footprints and terrain around Aubagne; interpreted game buildings",
+      "sha256": "acb44f382e1882a41cc13677e67dd38cae2d4a0f870e3c4a466c2ae62ae91594"
+    },
+    {
+      "file": "native_07b_workshop_gateway.png",
+      "label": "Physical campaign gateway in the real geographic scene; measured debug-assisted approach",
+      "sha256": "c728534ed79699043e4eda1a566b0dbe59d655e116c88285b3716a7337b6dd46"
+    },
+    {
+      "file": "native_07c_narrative_workshops.png",
+      "label": "Authored Aubagne workshops reached through the geographic gateway; explicitly a narrative scene",
+      "sha256": "1fb994ce9adb54f3f0c70e6680708a2a0720f8ca28755211e2000502aca3c010"
+    },
+    {
+      "file": "native_07e_mireille_dialogue.png",
+      "label": "Real Mireille campaign dialogue reached through the narrative workshop scene; existing dialogue API, actual choice button",
+      "sha256": "46aa003e834e9f6ea1fe6dac0ba25b79b05e34d2e3e2fb619e9214ffd704d8f7"
+    },
+    {
+      "file": "native_07d_geographic_return.png",
+      "label": "Return from the authored workshops to the saved real geographic point",
+      "sha256": "7f0cad64cd5bbe17a1ae3c94fa2254d1f4eb143aa52b7c8e986cb71be6117fb0"
+    },
+    {
+      "file": "native_08_day_road.png",
+      "label": "Measured road-side setup by a real cadastre boundary at noon; actual game render",
+      "sha256": "bd7721da972bfa98a3aed13969ea43c59af7634681e90e2472df6f70713ceb71"
+    },
+    {
+      "file": "native_09_night_road.png",
+      "label": "Same real road-side camera at 21:00; production night lighting",
+      "sha256": "dbd009ba1a8fa50c989a24f78af1cc8f358a4e87dd1574abe1c48162d62242b6"
+    },
+    {
+      "file": "native_09b_real_courtyard.png",
+      "label": "Elevated QA inspection of a real cadastral courtyard; source ring retained, measured ground, not a player traversal camera",
+      "sha256": "7de607bcc3368d61d609409f9a0e25090f11b01c16ce88172aa66eb30845d7fb"
+    },
+    {
+      "file": "native_10_travel_1_confirmation.png",
+      "label": "Native Pip-Boy confirmation for Belvédère · Aubagne; discovery precondition explicitly debug-assisted",
+      "sha256": "76b345424a70e21fd8eedc025a835fe1ee4ab716d7660364f4353711bfc8f431"
+    },
+    {
+      "file": "native_11_travel_1_arrival.png",
+      "label": "Actual geographic arrival at Belvédère · Aubagne; interpreted game landmarks on measured geography",
+      "sha256": "de964c7e6494d9942449c3d6a1860c9d2e5ab790e3099985921731b5ccc0e532"
+    },
+    {
+      "file": "native_10_travel_2_confirmation.png",
+      "label": "Native Pip-Boy confirmation for Épave · Galeries de l’Huveaune; discovery precondition explicitly debug-assisted",
+      "sha256": "908b60384adb1e2562ed7c6662612c0e613ea375ffbaacc9c585b8567700b08b"
+    },
+    {
+      "file": "native_11_travel_2_arrival.png",
+      "label": "Actual geographic arrival at Épave · Galeries de l’Huveaune; interpreted game landmarks on measured geography",
+      "sha256": "be62adc584981199f79d5a36e02043337363b825c5eed68e6bd2044b5e637310"
+    },
+    {
+      "file": "native_12_continue.png",
+      "label": "Continue after a real browser reload, using native saved progress and installed geographic files",
+      "sha256": "545056f77ea1077713c47332fa7d0e6bb28b2ec6c0d68c29e232d5875aaae717"
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:54001/index.html",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/benchmark_v041.json?t=1792794715163",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/local_pack_v041_status.json?t=1792794715161",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:54001/__mistral/local-data",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/city/terrain-index.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/city/index.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/city/water-index.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/icons/mistral-192.png",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/icons/mistral-192.png",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/__mistral/local-data",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/__mistral/world-sources",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/__mistral/city-sources",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/terrain/geo_etoile.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/terrain/geo_garlaban.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/terrain/geo_huveaune.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/terrain/geo_saintebaume.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/enrichment/index.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8444/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8444/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8445/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8445/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8446/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8446/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33781/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33781/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33781/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33781/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33781/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33781/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33782/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33782/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33782/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33782/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33782/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33782/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33783/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33783/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33783/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33783/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33783/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33783/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33784/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33784/24005.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33784/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33784/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33784/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33784/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8446/6000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8447/6000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8447/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33787/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33787/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33787/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33787/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33787/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33788/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33788/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33788/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33788/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33788/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33789/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33789/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33789/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33789/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33789/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33790/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33790/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33790/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33790/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33790/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33791/24000.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33791/24001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33791/24002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33791/24003.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33791/24004.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/terrain/geo_calanques.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24006.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33781/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33782/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33783/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/index.html",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/benchmark_v041.json?t=1792795087614",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/local_pack_v041_status.json?t=1792795087613",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/city/terrain-index.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/city/index.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/city/water-index.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/icons/mistral-192.png",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/icons/mistral-192.png",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/terrain/geo_calanques.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/terrain/geo_garlaban.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/terrain/geo_huveaune.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8444/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/enrichment/index.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8444/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8445/6001.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/france-vector/14/8445/6002.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33776/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33777/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33778/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33779/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24007.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24008.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24009.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24010.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/data/map_pack/cadastre/16/33780/24011.pbf",
+      "status": 200,
+      "from_service_worker": true
+    },
+    {
+      "url": "http://127.0.0.1:54001/verification/v050/LOCAL_DATA_STATE.json",
+      "status": 200,
+      "from_service_worker": true
+    }
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:54001/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "stage": "complete",
+  "url": "http://127.0.0.1:54001/index.html",
+  "html_sha256": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+  "passed": 84,
+  "failed": 0,
+  "total": 84,
+  "server_audit_cache_control": "no-store",
+  "server_audit": {
+    "version": "0.50.0",
+    "vector": {
+      "expected": 5884,
+      "pbf": 4557,
+      "officialEmpty": 1327,
+      "missing": 0,
+      "invalid": 0,
+      "bytes": 86973739,
+      "examples": []
+    },
+    "terrain": {
+      "expected": 8,
+      "valid": 8,
+      "missing": 0,
+      "invalid": 0,
+      "samples": 174944,
+      "noData": 32424,
+      "examples": []
+    },
+    "complete": true,
+    "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+    "inspectedAt": "2026-10-23T22:31:53Z"
+  },
+  "browser_version": "154.0.8037.57",
+  "browser_document_sha256": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+  "title": "Fallout : Mistral · v0.50 · Les routes retrouvées",
+  "menu_version": "v0.50 · LES ROUTES RETROUVÉES",
+  "storage": {
+    "localStorageType": "Storage",
+    "indexedDB": true,
+    "secureContext": true
+  },
+  "menu_buttons": [
+    {
+      "id": "btnContinue",
+      "text": "Continuer",
+      "visible": true,
+      "inViewport": true,
+      "top": 268.078125,
+      "bottom": 312.078125
+    },
+    {
+      "id": "btnNew",
+      "text": "Nouvelle campagne",
+      "visible": true,
+      "inViewport": true,
+      "top": 319.265625,
+      "bottom": 363.265625
+    },
+    {
+      "id": "btnV035Load",
+      "text": "Charger une sauvegarde",
+      "visible": true,
+      "inViewport": true,
+      "top": 370.453125,
+      "bottom": 414.453125
+    },
+    {
+      "id": "btnV035Career",
+      "text": "Carrière",
+      "visible": true,
+      "inViewport": true,
+      "top": 370.453125,
+      "bottom": 414.453125
+    },
+    {
+      "id": "btnV035Operations",
+      "text": "Opérations rejouables",
+      "visible": true,
+      "inViewport": true,
+      "top": 421.640625,
+      "bottom": 465.640625
+    },
+    {
+      "id": "btnChapter",
+      "text": "Exploration libre",
+      "visible": true,
+      "inViewport": true,
+      "top": 421.640625,
+      "bottom": 465.640625
+    },
+    {
+      "id": "btnOptions",
+      "text": "Options",
+      "visible": true,
+      "inViewport": true,
+      "top": 472.828125,
+      "bottom": 516.828125
+    },
+    {
+      "id": "btnCredits",
+      "text": "Crédits & statut",
+      "visible": true,
+      "inViewport": true,
+      "top": 472.828125,
+      "bottom": 516.828125
+    },
+    {
+      "id": "v050MapStatus",
+      "text": "Cartes & territoire",
+      "visible": true,
+      "inViewport": true,
+      "top": 524.015625,
+      "bottom": 568.015625
+    },
+    {
+      "id": "btnV035Admin",
+      "text": "Admin",
+      "visible": true,
+      "inViewport": true,
+      "top": 524.015625,
+      "bottom": 568.015625
+    }
+  ],
+  "mobile_menu": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "buttons": [
+      {
+        "id": "btnContinue",
+        "text": "Continuer",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnNew",
+        "text": "Nouvelle campagne",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnV035Load",
+        "text": "Charger une sauvegarde",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnV035Career",
+        "text": "Carrière",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnV035Operations",
+        "text": "Opérations rejouables",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnChapter",
+        "text": "Exploration libre",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnOptions",
+        "text": "Options",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnCredits",
+        "text": "Crédits & statut",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "v050MapStatus",
+        "text": "Cartes & territoire",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      },
+      {
+        "id": "btnV035Admin",
+        "text": "Admin",
+        "reachable": true,
+        "width": 345.21875,
+        "height": 44
+      }
+    ]
+  },
+  "campaign_exit": {
+    "before": {
+      "started": true,
+      "titleSeen": true,
+      "stage": 8,
+      "locker": true,
+      "clinic": true,
+      "filter": true,
+      "breakfast": true,
+      "records": true,
+      "briefed": true,
+      "loadout": "patrol",
+      "complete": false
+    },
+    "after": {
+      "started": true,
+      "titleSeen": true,
+      "stage": 9,
+      "locker": true,
+      "clinic": true,
+      "filter": true,
+      "breakfast": true,
+      "records": true,
+      "briefed": true,
+      "loadout": "patrol",
+      "complete": true
+    },
+    "world": "geo_huveaune",
+    "real": true,
+    "info": {
+      "version": "0.47.0",
+      "scene": null,
+      "region": "geo_huveaune",
+      "lab": false,
+      "loading": false,
+      "anticipating": false,
+      "phase": "ready",
+      "done": 46,
+      "total": 46,
+      "anchor": [
+        4893.191229318152,
+        0,
+        -1447.666434998624
+      ],
+      "pos": [
+        4907.191229318152,
+        106.50681448257473,
+        -1425.666434998624
+      ],
+      "stats": {
+        "warmStarted": 0,
+        "warmCommitted": 0,
+        "blocking": 1,
+        "cancelled": 0,
+        "failed": 0,
+        "stale": 0,
+        "reusedTiles": 0,
+        "builtTiles": 42,
+        "reusedTerrain": 0,
+        "builtTerrain": 25
+      },
+      "resources": {
+        "entries": 46,
+        "bytes": 36195030,
+        "budgetBytes": 50331648,
+        "pinned": 48,
+        "overBudgetBytes": 0,
+        "hits": 0,
+        "misses": 0,
+        "evictions": 0
+      },
+      "geometry": {
+        "entries": 38,
+        "bytes": 38412848,
+        "budgetBytes": 41943040,
+        "pinned": 42,
+        "overBudgetBytes": 0,
+        "hits": 0,
+        "misses": 42,
+        "evictions": 4
+      },
+      "terrainMeshes": {
+        "entries": 25,
+        "bytes": 775430,
+        "budgetBytes": 12582912,
+        "pinned": 31,
+        "overBudgetBytes": 0,
+        "hits": 0,
+        "misses": 25,
+        "evictions": 0
+      },
+      "terrain": [
+        {
+          "id": "geo_etoile",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_garlaban",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "geo_huveaune",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        },
+        {
+          "id": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+          "width": 447,
+          "height": 391,
+          "valid": 174777,
+          "noData": 0
+        },
+        {
+          "id": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+          "width": 326,
+          "height": 446,
+          "valid": 145396,
+          "noData": 0
+        },
+        {
+          "id": "geo_saintebaume",
+          "width": 161,
+          "height": 161,
+          "valid": 25921,
+          "noData": 0
+        }
+      ],
+      "tiles": 42,
+      "nature": 219,
+      "origins": {
+        "pack local": 42
+      },
+      "history": [
+        {
+          "type": "publication",
+          "at": "2026-10-23T22:34:28.706Z",
+          "id": 1,
+          "warm": false,
+          "ms": 59001,
+          "tiles": 42
+        }
+      ],
+      "localData": {
+        "version": "0.50.0",
+        "vector": {
+          "expected": 5884,
+          "pbf": 4557,
+          "officialEmpty": 1327,
+          "missing": 0,
+          "invalid": 0,
+          "bytes": 86973739,
+          "examples": []
+        },
+        "terrain": {
+          "expected": 8,
+          "valid": 8,
+          "missing": 0,
+          "invalid": 0,
+          "samples": 174944,
+          "noData": 32424,
+          "examples": []
+        },
+        "complete": true,
+        "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+        "inspectedAt": "2026-10-23T22:31:53Z",
+        "live": true
+      }
+    }
+  },
+  "exterior": {
+    "version": "0.47.0",
+    "scene": null,
+    "region": "geo_huveaune",
+    "lab": false,
+    "loading": false,
+    "anticipating": false,
+    "phase": "ready",
+    "done": 46,
+    "total": 46,
+    "anchor": [
+      4893.191229318152,
+      0,
+      -1447.666434998624
+    ],
+    "pos": [
+      4907.191229318152,
+      106.50681448257473,
+      -1425.666434998624
+    ],
+    "stats": {
+      "warmStarted": 0,
+      "warmCommitted": 0,
+      "blocking": 1,
+      "cancelled": 0,
+      "failed": 0,
+      "stale": 0,
+      "reusedTiles": 0,
+      "builtTiles": 42,
+      "reusedTerrain": 0,
+      "builtTerrain": 25
+    },
+    "resources": {
+      "entries": 46,
+      "bytes": 36195030,
+      "budgetBytes": 50331648,
+      "pinned": 48,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 0,
+      "evictions": 0
+    },
+    "geometry": {
+      "entries": 38,
+      "bytes": 38412848,
+      "budgetBytes": 41943040,
+      "pinned": 42,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 42,
+      "evictions": 4
+    },
+    "terrainMeshes": {
+      "entries": 25,
+      "bytes": 775430,
+      "budgetBytes": 12582912,
+      "pinned": 31,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 25,
+      "evictions": 0
+    },
+    "terrain": [
+      {
+        "id": "geo_etoile",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      },
+      {
+        "id": "geo_garlaban",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      },
+      {
+        "id": "geo_huveaune",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      },
+      {
+        "id": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+        "width": 447,
+        "height": 391,
+        "valid": 174777,
+        "noData": 0
+      },
+      {
+        "id": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+        "width": 326,
+        "height": 446,
+        "valid": 145396,
+        "noData": 0
+      },
+      {
+        "id": "geo_saintebaume",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      }
+    ],
+    "tiles": 42,
+    "nature": 219,
+    "origins": {
+      "pack local": 42
+    },
+    "history": [
+      {
+        "type": "publication",
+        "at": "2026-10-23T22:34:28.706Z",
+        "id": 1,
+        "warm": false,
+        "ms": 59001,
+        "tiles": 42
+      }
+    ],
+    "localData": {
+      "version": "0.50.0",
+      "vector": {
+        "expected": 5884,
+        "pbf": 4557,
+        "officialEmpty": 1327,
+        "missing": 0,
+        "invalid": 0,
+        "bytes": 86973739,
+        "examples": []
+      },
+      "terrain": {
+        "expected": 8,
+        "valid": 8,
+        "missing": 0,
+        "invalid": 0,
+        "samples": 174944,
+        "noData": 32424,
+        "examples": []
+      },
+      "complete": true,
+      "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+      "inspectedAt": "2026-10-23T22:31:53Z",
+      "live": true
+    }
+  },
+  "location": [
+    43.29639810121816,
+    5.570963510120153
+  ],
+  "footing": {
+    "player": [
+      4907.191229318152,
+      106.50681448257473,
+      -1425.666434998624
+    ],
+    "latlon": [
+      43.29639810121816,
+      5.570963510120153
+    ],
+    "ground": {
+      "height": 104.85681448257472,
+      "missing": null,
+      "sources": [
+        "enrichment:geo_huveaune:61e243f5fe4f2c16"
+      ],
+      "noData": [],
+      "resolutionMeters": [
+        0.4985858071445592,
+        0.5003146067421845
+      ],
+      "sourceResource": "ign_lidar_hd_mnt",
+      "interpolation": "bilinéaire, quatre échantillons valides requis",
+      "verticalDatum": "NGF-IGN69"
+    },
+    "eye_minus_ground": 1.6500000000000057,
+    "collision": false
+  },
+  "geometry_counts": {
+    "buildings": 9693,
+    "roads": 3521,
+    "nature": 108
+  },
+  "campaign_bridge_probe": {
+    "simulation_active": true,
+    "player": [
+      4907.191229318152,
+      106.80037186896672,
+      -1446.0664349989966
+    ],
+    "enemies": []
+  },
+  "campaign_bridge": {
+    "approach": "Existing physical approach helper and proximity-checked dialogue entry; actual dialogue choices clicked. Mireille uses the existing talkNPC API after a verified free physical approach.",
+    "gateway": {
+      "id": "v050-campaign-workshops",
+      "label": "Ateliers d’Aubagne — poursuivre la campagne",
+      "pos": [
+        4907.191229318152,
+        106.62548585047931,
+        -1447.666434998624
+      ],
+      "radius": 4.5
+    },
+    "narrative": {
+      "zone": "aubagne",
+      "name": "Ateliers d’Aubagne — scène narrative",
+      "returnPoint": {
+        "macro": "geo_huveaune",
+        "pos": [
+          4907.191229318152,
+          106.80037186896672,
+          -1446.0664349989966
+        ],
+        "yaw": 0,
+        "pitch": 0
+      },
+      "acquired_main_stage": 3
+    },
+    "returned": {
+      "position": [
+        4907.191229318152,
+        106.80037186896672,
+        -1446.0664349989966
+      ],
+      "origins": {
+        "pack local": 42
+      },
+      "main_stage": 3
+    }
+  },
+  "continuity": {
+    "method": "Measured camera setup, production collision-controlled steps across a real z16 cadastre boundary, then real look-ahead windows requested within the validated 170 m margin on each side. The scheduler request is debug-assisted; all fetched resources, preparation, publication and movement are production operations without network mocks.",
+    "seam": {
+      "tile_before": [
+        33781,
+        24007
+      ],
+      "tile_after": [
+        33782,
+        24007
+      ],
+      "center": {
+        "ll": [
+          43.296581514969304,
+          5.570068359375
+        ],
+        "p": [
+          4833.883128993679,
+          0,
+          -1443.679142148234
+        ],
+        "ground": {
+          "height": 105.49523936896517,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_huveaune:61e243f5fe4f2c16"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            0.4985858071445592,
+            0.5003146067421845
+          ],
+          "sourceResource": "ign_lidar_hd_mnt",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69"
+        },
+        "clear": true
+      },
+      "start": {
+        "ll": [
+          43.296581514969304,
+          5.569895563000275
+        ],
+        "p": [
+          4819.86014478188,
+          0,
+          -1443.2225765371695
+        ],
+        "ground": {
+          "height": 105.75342639648879,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_huveaune:61e243f5fe4f2c16"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            0.4985858071445592,
+            0.5003146067421845
+          ],
+          "sourceResource": "ign_lidar_hd_mnt",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69"
+        },
+        "clear": true
+      },
+      "end": {
+        "ll": [
+          43.296581514969304,
+          5.570241155749725
+        ],
+        "p": [
+          4847.906112206285,
+          0,
+          -1444.135738445446
+        ],
+        "ground": {
+          "height": 105.53668550897206,
+          "missing": null,
+          "sources": [
+            "enrichment:geo_huveaune:61e243f5fe4f2c16"
+          ],
+          "noData": [],
+          "resolutionMeters": [
+            0.4985858071445592,
+            0.5003146067421845
+          ],
+          "sourceResource": "ign_lidar_hd_mnt",
+          "interpolation": "bilinéaire, quatre échantillons valides requis",
+          "verticalDatum": "NGF-IGN69"
+        },
+        "clear": true
+      },
+      "samples": [
+        {
+          "ll": [
+            43.296581514969304,
+            5.569895563000275
+          ],
+          "p": [
+            4819.86014478188,
+            0,
+            -1443.2225765371695
+          ],
+          "ground": {
+            "height": 105.75342639648879,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.569920248196664
+          ],
+          "p": [
+            4821.86342830176,
+            0,
+            -1443.2877983171493
+          ],
+          "ground": {
+            "height": 105.77554353721007,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.569944933393054
+          ],
+          "p": [
+            4823.8667118015,
+            0,
+            -1443.3530207229778
+          ],
+          "ground": {
+            "height": 105.77402864255632,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.569969618589443
+          ],
+          "p": [
+            4825.869995280635,
+            0,
+            -1443.4182437555864
+          ],
+          "ground": {
+            "height": 105.73940725650775,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.569994303785832
+          ],
+          "p": [
+            4827.873278739629,
+            0,
+            -1443.4834674140438
+          ],
+          "ground": {
+            "height": 105.6112962238353,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570018988982222
+          ],
+          "p": [
+            4829.876562177902,
+            0,
+            -1443.5486916992813
+          ],
+          "ground": {
+            "height": 105.56732423673385,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570043674178611
+          ],
+          "p": [
+            4831.879845595919,
+            0,
+            -1443.6139166103676
+          ],
+          "ground": {
+            "height": 105.52899152784767,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570068359375
+          ],
+          "p": [
+            4833.883128993679,
+            0,
+            -1443.679142148234
+          ],
+          "ground": {
+            "height": 105.49523936896517,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570093044571389
+          ],
+          "p": [
+            4835.886412370834,
+            0,
+            -1443.744368311949
+          ],
+          "ground": {
+            "height": 105.47566532325028,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570117729767778
+          ],
+          "p": [
+            4837.889695727732,
+            0,
+            -1443.809595101513
+          ],
+          "ground": {
+            "height": 105.52934694277263,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570142414964168
+          ],
+          "p": [
+            4839.892979064258,
+            0,
+            -1443.874822517857
+          ],
+          "ground": {
+            "height": 105.53320747852186,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570167100160557
+          ],
+          "p": [
+            4841.8962623802945,
+            0,
+            -1443.940050560981
+          ],
+          "ground": {
+            "height": 105.54535481292632,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570191785356946
+          ],
+          "p": [
+            4843.899545676075,
+            0,
+            -1444.0052792290226
+          ],
+          "ground": {
+            "height": 105.54852149935931,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570216470553336
+          ],
+          "p": [
+            4845.902828951366,
+            0,
+            -1444.0705085238442
+          ],
+          "ground": {
+            "height": 105.53271475373066,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        },
+        {
+          "ll": [
+            43.296581514969304,
+            5.570241155749725
+          ],
+          "p": [
+            4847.906112206285,
+            0,
+            -1444.135738445446
+          ],
+          "ground": {
+            "height": 105.53668550897206,
+            "missing": null,
+            "sources": [
+              "enrichment:geo_huveaune:61e243f5fe4f2c16"
+            ],
+            "noData": [],
+            "resolutionMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "interpolation": "bilinéaire, quatre échantillons valides requis",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "clear": true
+        }
+      ]
+    },
+    "forward": {
+      "movement": {
+        "start": [
+          4819.86014478188,
+          107.4034263964888,
+          -1443.2225765371695
+        ],
+        "target": [
+          4847.906112206285,
+          0,
+          -1444.135738445446
+        ],
+        "actual": [
+          4847.906112206266,
+          107.18668550897154,
+          -1444.1357384454434
+        ],
+        "distance": 28.06082952162146,
+        "blocked_steps": 0,
+        "error": 1.926245580185241e-11,
+        "tile": [
+          33782,
+          24007
+        ]
+      },
+      "window": {
+        "changed": true,
+        "requests": [
+          {
+            "requested_latlon": [
+              43.296581514969304,
+              5.571722267533085
+            ],
+            "published_anchor": [
+              4968.10307017609,
+              0,
+              -1448.0506797889248
+            ],
+            "ok": true,
+            "added": [],
+            "removed": [
+              "base:14:8444:6001",
+              "base:14:8444:6002",
+              "cadastre:16:33779:24004",
+              "cadastre:16:33779:24005",
+              "cadastre:16:33779:24006",
+              "cadastre:16:33779:24007",
+              "cadastre:16:33779:24008",
+              "cadastre:16:33779:24009"
+            ]
+          }
+        ],
+        "before_count": 42,
+        "after_count": 34,
+        "player": [
+          4847.906112206266,
+          107.18668550897154,
+          -1444.1357384454434
+        ]
+      },
+      "geometry": {
+        "buildings": {
+          "before": 9271,
+          "after": 8580,
+          "common": 8580,
+          "changed": [],
+          "changed_count": 0
+        },
+        "roads": {
+          "before": 3372,
+          "after": 2796,
+          "common": 2796,
+          "changed": [],
+          "changed_count": 0
+        }
+      },
+      "reuse": {
+        "sameRecords": 34,
+        "sameBank": false
+      }
+    },
+    "courtyards": {
+      "shared_courtyard_buildings": 1,
+      "note": "Common hole-bearing buildings compared here."
+    },
+    "return": {
+      "movement": {
+        "start": [
+          4847.906112206266,
+          107.18668550897154,
+          -1444.1357384454434
+        ],
+        "target": [
+          4819.86014478188,
+          0,
+          -1443.2225765371695
+        ],
+        "actual": [
+          4819.86014478188,
+          107.4034263964888,
+          -1443.2225765371695
+        ],
+        "distance": 28.06082952160229,
+        "blocked_steps": 0,
+        "error": 0.0,
+        "tile": [
+          33781,
+          24007
+        ]
+      },
+      "window": {
+        "changed": true,
+        "requests": [
+          {
+            "requested_latlon": [
+              43.296581514969304,
+              5.568414451216917
+            ],
+            "published_anchor": [
+              4747.513901975704,
+              0,
+              -1440.8670210251585
+            ],
+            "ok": true,
+            "added": [
+              "base:14:8444:6001",
+              "base:14:8444:6002",
+              "cadastre:16:33779:24004",
+              "cadastre:16:33779:24005",
+              "cadastre:16:33779:24006",
+              "cadastre:16:33779:24007",
+              "cadastre:16:33779:24008",
+              "cadastre:16:33779:24009"
+            ],
+            "removed": [
+              "base:14:8446:6001",
+              "base:14:8446:6002",
+              "cadastre:16:33784:24004",
+              "cadastre:16:33784:24005",
+              "cadastre:16:33784:24006",
+              "cadastre:16:33784:24007",
+              "cadastre:16:33784:24008",
+              "cadastre:16:33784:24009"
+            ]
+          }
+        ],
+        "before_count": 34,
+        "after_count": 34,
+        "player": [
+          4819.86014478188,
+          107.4034263964888,
+          -1443.2225765371695
+        ]
+      },
+      "geometry": {
+        "buildings": {
+          "before": 9271,
+          "after": 8169,
+          "common": 8169,
+          "changed": [],
+          "changed_count": 0
+        },
+        "roads": {
+          "before": 3372,
+          "after": 2200,
+          "common": 2200,
+          "changed": [],
+          "changed_count": 0
+        }
+      }
+    }
+  },
+  "collision": {
+    "building": "cadastre:building:222ff0a4",
+    "center": [
+      4811.705767636537,
+      -1441.4055291851982
+    ],
+    "normal": [
+      -0.30637075082646814,
+      -0.9519122664605317
+    ],
+    "free": [
+      4811.184937360132,
+      -1443.0237800381813
+    ],
+    "inside": [
+      4812.2265979129415,
+      -1439.7872783322152
+    ],
+    "intended_metres": 3.4000000000001576,
+    "moved_metres": 1.3254137827987431,
+    "remaining_push_moved": 0.0,
+    "loading": false,
+    "end": [
+      4811.775211673485,
+      107.50690517685892,
+      -1441.8370627463933
+    ],
+    "end_collision": false
+  },
+  "performance": {
+    "scope": "Native headless Chromium frame cadence in this execution environment; not a hardware or desktop FPS guarantee",
+    "samples": 6,
+    "median_ms": 599.95,
+    "p95_ms": 1100,
+    "renderer": {
+      "backend": "WebGL",
+      "customMeshes": 5017,
+      "triangles": 482569,
+      "bufferGroups": 72,
+      "drawCalls": 1157,
+      "batchedMeshes": 5016,
+      "batchGroups": 54,
+      "batchBuilds": 333
+    },
+    "gpu": {
+      "vendor": "Google Inc. (Google)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    }
+  },
+  "courtyard": {
+    "source": "data/map_pack/cadastre/16/33789/24002.pbf",
+    "source_sha256": "321a62d2b99c258a88363e7334c0594413022c49aed2322891644e6c9467baa7",
+    "feature_id": 1653439797,
+    "latlon": [
+      43.31400976363655,
+      5.612585060298443
+    ],
+    "rendered_geometry_id": "cadastre:building:aadd1dcb",
+    "rings": 2,
+    "movement": {
+      "start": [
+        8220.131412389292,
+        174.67760104214258,
+        -3493.2877204502
+      ],
+      "target": [
+        8222.13362925523,
+        0,
+        -3493.3540242267773
+      ],
+      "actual": [
+        8222.133629255231,
+        174.8720330080588,
+        -3493.3540242267777
+      ],
+      "distance": 2.0033143959535624,
+      "blocked_steps": 0,
+      "error": 1.8749713606747085e-12
+    },
+    "same_geometry_after_publication": true,
+    "camera": {
+      "elevated_qa_view": true,
+      "position": [
+        8220.130412389291,
+        195.02750624861622,
+        -3483.2877204502
+      ]
+    }
+  },
+  "travel": {
+    "precondition": "Existing v042Discover debug action identifies these two catalogue POIs. This validates their subsequent UI travel, not a manual exploration to discover them.",
+    "targets": [
+      {
+        "id": "v042-huveaune-landmark-02",
+        "name": "Belvédère · Aubagne",
+        "macro": "geo_huveaune",
+        "lat": 43.2910684,
+        "lon": 5.564807,
+        "qa_distance": 739.143995608901
+      },
+      {
+        "id": "v042-huveaune-landmark-03",
+        "name": "Épave · Galeries de l’Huveaune",
+        "macro": "geo_huveaune",
+        "lat": 43.2879286,
+        "lon": 5.5511298,
+        "qa_distance": 1802.026985773674
+      }
+    ],
+    "journeys": [
+      {
+        "destination": "v042-huveaune-landmark-02",
+        "quote": {
+          "distance": 739.1439956089012,
+          "minutes": 12
+        },
+        "result": {
+          "id": 1,
+          "site": "v042-huveaune-landmark-02",
+          "status": "complete",
+          "minutes": 12,
+          "distance": 739,
+          "arrival": [
+            4414.685241407335,
+            117.6822857488122,
+            -788.2478749090806
+          ],
+          "loadedAnchor": [
+            4426.809597060317,
+            0,
+            -817.2478749090806
+          ]
+        },
+        "scene": 2,
+        "source": {
+          "pack local": 34
+        }
+      },
+      {
+        "destination": "v042-huveaune-landmark-03",
+        "quote": {
+          "distance": 1143.4363968403102,
+          "minutes": 18
+        },
+        "result": {
+          "id": 2,
+          "site": "v042-huveaune-landmark-03",
+          "status": "complete",
+          "minutes": 18,
+          "distance": 1143,
+          "arrival": [
+            3364.3968968763697,
+            94.5103109470117,
+            -431.41958711016923
+          ],
+          "loadedAnchor": [
+            3328.0238299174234,
+            0,
+            -432.41958711016923
+          ]
+        },
+        "scene": 2,
+        "source": {
+          "pack local": 29
+        }
+      }
+    ]
+  },
+  "continue_before_reload": {
+    "current": {
+      "key": "fallout_mistral_save_v050",
+      "lastSave": "2026-10-23T22:38:07.147Z",
+      "zone": "geo_huveaune",
+      "position": [
+        3364.3968968763697,
+        94.5103109470117,
+        -431.41958711016923
+      ]
+    },
+    "alternatives": [
+      {
+        "kind": "auto",
+        "slot": 0,
+        "savedAt": 1792794903471,
+        "zone": "geo_huveaune"
+      }
+    ]
+  },
+  "save_reload": {
+    "key": "fallout_mistral_save_v050",
+    "saved_position": [
+      3364.3968968763697,
+      94.5103109470117,
+      -431.41958711016923
+    ],
+    "loaded_position": [
+      3364.3968968763947,
+      94.5103109470117,
+      -431.41958711016923
+    ],
+    "source": {
+      "pack local": 29
+    },
+    "native_reload": true
+  },
+  "final_exterior": {
+    "version": "0.47.0",
+    "scene": null,
+    "region": "geo_huveaune",
+    "lab": false,
+    "loading": false,
+    "anticipating": false,
+    "phase": "ready",
+    "done": 32,
+    "total": 32,
+    "anchor": [
+      3364.3968968763947,
+      0,
+      -431.41958711016923
+    ],
+    "pos": [
+      3364.3968968763947,
+      94.5103109470117,
+      -431.41958711016923
+    ],
+    "stats": {
+      "warmStarted": 0,
+      "warmCommitted": 0,
+      "blocking": 1,
+      "cancelled": 0,
+      "failed": 0,
+      "stale": 0,
+      "reusedTiles": 0,
+      "builtTiles": 29,
+      "reusedTerrain": 0,
+      "builtTerrain": 20
+    },
+    "resources": {
+      "entries": 32,
+      "bytes": 22189235,
+      "budgetBytes": 50331648,
+      "pinned": 34,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 0,
+      "evictions": 0
+    },
+    "geometry": {
+      "entries": 29,
+      "bytes": 24493020,
+      "budgetBytes": 41943040,
+      "pinned": 29,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 29,
+      "evictions": 0
+    },
+    "terrainMeshes": {
+      "entries": 20,
+      "bytes": 620430,
+      "budgetBytes": 12582912,
+      "pinned": 20,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 20,
+      "evictions": 0
+    },
+    "terrain": [
+      {
+        "id": "geo_calanques",
+        "width": 161,
+        "height": 161,
+        "valid": 21063,
+        "noData": 4858
+      },
+      {
+        "id": "geo_garlaban",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      },
+      {
+        "id": "geo_huveaune",
+        "width": 161,
+        "height": 161,
+        "valid": 25921,
+        "noData": 0
+      },
+      {
+        "id": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+        "width": 447,
+        "height": 391,
+        "valid": 174777,
+        "noData": 0
+      },
+      {
+        "id": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+        "width": 326,
+        "height": 446,
+        "valid": 145396,
+        "noData": 0
+      }
+    ],
+    "tiles": 29,
+    "nature": 194,
+    "origins": {
+      "pack local": 29
+    },
+    "history": [
+      {
+        "type": "publication",
+        "at": "2026-10-23T22:38:37.298Z",
+        "id": 1,
+        "warm": false,
+        "ms": 20590,
+        "tiles": 29
+      }
+    ],
+    "localData": {
+      "version": "0.46.0",
+      "vector": {
+        "expected": 5884,
+        "pbf": 4557,
+        "officialEmpty": 1327,
+        "missing": 0,
+        "invalid": 0,
+        "bytes": 86973739,
+        "examples": []
+      },
+      "terrain": {
+        "expected": 8,
+        "valid": 8,
+        "missing": 0,
+        "invalid": 0,
+        "samples": 174944,
+        "noData": 32424,
+        "examples": []
+      },
+      "complete": true,
+      "scope": "État des fichiers réellement présents. Les anciens rapports de cache cloud ne sont pas une preuve de disponibilité actuelle.",
+      "live": false
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "scope": "Exact normalized geometry and original source attributes compared with complete cached official HTTPS responses; no synthetic source",
+  "network": "Explicit offline adapter rejects every new request; only original SHA-verified HTTPS response cache is read",
+  "sourceCodeSha256": "f4316428e86ce411c38c189ff39184c03ad64ddfda8259569f32e360c2d6d354",
+  "sourceIndexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+  "indexUnchanged": true,
+  "codeUnchanged": true,
+  "coverage": {
+    "complete": true,
+    "tileCount": 290,
+    "queryTileCount": 77,
+    "partitionStepDegrees": 0.025,
+    "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+    "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+    "uniqueBuildings": 291001,
+    "uniqueRoads": 55449,
+    "expandedBytes": 759922557,
+    "nonAcquiredZAnomalies": 1,
+    "administrativeEnvelopeBorderObjects": 4
+  },
+  "leafChunksCompared": 290,
+  "objectCopiesCompared": 361199,
+  "durationSeconds": 104.006,
+  "normalization": "XY unchanged; only documented unavailable-Z omissions accepted; geometry type, original attributes, IDs, provenance and input hashes compared"
+}

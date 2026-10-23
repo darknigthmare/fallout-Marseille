@@ -1,0 +1,303 @@
+{
+  "scope": "Native unchanged production HTML over real local HTTP, actual installed city sources and measured camera. Only existing diagnostic APIs load sectors, place the camera and pause continuous simulation/rendering. Read-only production geometry is queried with diagnostic rays; no HTML or network mocks. The after run is a targeted visual/classification regression and does not certify the final terrain-index snapshot or a human citywide playthrough.",
+  "html_sha256": "5efd0ee29dfc55f19537d2a2b6ac68fa900e4c1df3b51455be9485f948b37687",
+  "before_html_sha256": "b26005c1ab62d51bbd499ea7ec30dbde6d2ce339a8dedc9e70734601ecc7c923",
+  "network_mocked": false,
+  "html_injected": false,
+  "synthetic_geography": false,
+  "camera": {
+    "latlon": [
+      43.2965,
+      5.370046851632981
+    ],
+    "worldEye": [
+      -11398.888126658509,
+      3.0129979244143144,
+      -926.6633799411356
+    ],
+    "height": {
+      "height": 1.3629979244143142,
+      "missing": null,
+      "sources": [
+        "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+      ],
+      "noData": [],
+      "resolutionMeters": [
+        9.984031490488738,
+        10.01994170878003
+      ],
+      "sourceResource": "ign_rge_alti_wld",
+      "interpolation": "bilinéaire, quatre échantillons valides requis",
+      "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+    }
+  },
+  "checks": [
+    {
+      "name": "Before diagnostic identifies the preserved b260 production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "After diagnostic uses the frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production HTML remains unchanged after the browser diagnostic",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Both native captures use identical GPS and camera coordinates",
+      "ok": true,
+      "detail": [
+        -11398.888126658509,
+        3.0129979244143144,
+        -926.6633799411356
+      ]
+    },
+    {
+      "name": "The actual sampled ground and source remain identical",
+      "ok": true,
+      "detail": {
+        "height": 1.3629979244143142,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      }
+    },
+    {
+      "name": "The actual standing eye height is 1.65 m above that measured sample",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real body collision is clear at the actual camera Y in both versions",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No building footprint contains the camera in either version",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The previous overhead obstruction is the actual acquired IGN sentier",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The corrected native geometry has no overhead hit within the 500 m diagnostic ray",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The northward upward ray is also clear after correction",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native source profile declares the narrow width as an estimate",
+      "ok": true,
+      "detail": {
+        "width": 1.6,
+        "widthAssumed": true,
+        "widthBasis": "nature IGN Sentier — estimation",
+        "roadClass": "path",
+        "classificationBasis": "nature IGN Sentier",
+        "sourceNature": "Sentier",
+        "maritime": false,
+        "absoluteHeight": null,
+        "heightBasis": "coordonnées Z source",
+        "offset": 0,
+        "elevationAssumed": false,
+        "unavailableElevation": false,
+        "bridge": false,
+        "tunnel": false,
+        "sourcePosition": "0",
+        "ordinalPosition": 0,
+        "positionBasis": "Ordre de superposition BD TOPO, sans unité métrique",
+        "planimetricAccuracy": 2.5,
+        "altimetricAccuracy": 1.5
+      }
+    },
+    {
+      "name": "Native profile retains original measured source Z rather than flattening to terrain",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Source provider precision and ordinal ground position remain unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Every actual source chunk byte remains identical",
+      "ok": true,
+      "detail": "f6d76e70429bf10282a1de867fe73e3a4be98b7e758c49e953b4b3910bb53aa1"
+    },
+    {
+      "name": "Native provenance retains the original acquisition input digest",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The native browser reported no JavaScript exception",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": 17,
+  "failed": 0,
+  "total": 17,
+  "source": {
+    "sourceChunk": "data/map_pack/city/m13055-r05-c06-0-0-f6d76e70429bf102.json",
+    "sourceChunkSha256": "f6d76e70429bf10282a1de867fe73e3a4be98b7e758c49e953b4b3910bb53aa1",
+    "sourceId": "troncon_de_route.6003809",
+    "cleabs": "TRONROUT0000000040960607",
+    "nativeXYZ": [
+      [
+        5.3695973,
+        43.29679102,
+        3.1
+      ],
+      [
+        5.36981596,
+        43.29683483,
+        3.0
+      ],
+      [
+        5.36988844,
+        43.29682964,
+        3.7
+      ],
+      [
+        5.37009401,
+        43.29646514,
+        3.4
+      ]
+    ],
+    "attributes": {
+      "nature": "Sentier",
+      "largeur_de_chaussee": null,
+      "nombre_de_voies": null,
+      "position_par_rapport_au_sol": "0",
+      "precision_altimetrique": 1.5,
+      "precision_planimetrique": 2.5,
+      "date_modification": "2012-02-02T07:17:57.582Z"
+    },
+    "provenance": {
+      "acquiredAt": "2026-10-23",
+      "attribution": "IGN — Géoplateforme",
+      "coverage": {
+        "bbox": [
+          43.292645316666665,
+          5.368962869230769,
+          43.298796017499996,
+          5.374805029615384
+        ],
+        "complete": true,
+        "crs": "EPSG:4326",
+        "layer": "BDTOPO_V3:troncon_de_route",
+        "returned": 222
+      },
+      "inputCrs": "EPSG:4326",
+      "inputSha256": "7afefbc79b384b9cff129573a2eac3ca18dc6a07bc7a77bf3154a975abb1d69b",
+      "license": "Licence Ouverte 2.0",
+      "resource": "ign-bdtopo",
+      "source": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+      "url": "https://data.geopf.fr/wfs/ows",
+      "verticalDatum": "NGF-IGN69"
+    },
+    "cameraDistanceToLine": {
+      "distanceMeters": 2.0644553669225707,
+      "sourceLineZ": 3.4345131059729614,
+      "nearestWorldXZ": [
+        -11397.003741962386,
+        -927.5066297730563
+      ]
+    },
+    "previousEstimatedWidthMeters": 5.5,
+    "correctedEstimatedWidthMeters": 1.6,
+    "previousRoadRgbDerivedFromProductionBranch": [
+      0.3472,
+      0.3472,
+      0.3064
+    ],
+    "cause": "The unclassified IGN Sentier used a 5.5 m generic road width. Its genuine source Z was above the MNT here, and the inflated half-width covered a camera 2.064 m away from its centreline. No building footprint contains the camera. Source XYZ are retained by the correction.",
+    "scope": "The absence of the ceiling after correction is proved first by the production roadMesh test; native after-build verification is pending."
+  },
+  "afterProfile": {
+    "id": "source:geo_marseille_commune:road:troncon_de_route.6003809",
+    "sourceId": "troncon_de_route.6003809",
+    "kind": "transportation",
+    "baseY": null,
+    "height": null,
+    "profile": {
+      "width": 1.6,
+      "widthAssumed": true,
+      "widthBasis": "nature IGN Sentier — estimation",
+      "roadClass": "path",
+      "classificationBasis": "nature IGN Sentier",
+      "sourceNature": "Sentier",
+      "maritime": false,
+      "absoluteHeight": null,
+      "heightBasis": "coordonnées Z source",
+      "offset": 0,
+      "elevationAssumed": false,
+      "unavailableElevation": false,
+      "bridge": false,
+      "tunnel": false,
+      "sourcePosition": "0",
+      "ordinalPosition": 0,
+      "positionBasis": "Ordre de superposition BD TOPO, sans unité métrique",
+      "planimetricAccuracy": 2.5,
+      "altimetricAccuracy": 1.5
+    },
+    "footprintRings": 0,
+    "vertices": 16,
+    "provenance": {
+      "acquiredAt": "2026-10-23",
+      "attribution": "IGN — Géoplateforme",
+      "coverage": {
+        "bbox": [
+          43.292645316666665,
+          5.368962869230769,
+          43.298796017499996,
+          5.374805029615384
+        ],
+        "complete": true,
+        "crs": "EPSG:4326",
+        "layer": "BDTOPO_V3:troncon_de_route",
+        "returned": 222
+      },
+      "inputCrs": "EPSG:4326",
+      "inputSha256": "7afefbc79b384b9cff129573a2eac3ca18dc6a07bc7a77bf3154a975abb1d69b",
+      "license": "Licence Ouverte 2.0",
+      "resource": "ign-bdtopo",
+      "source": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+      "url": "https://data.geopf.fr/wfs/ows",
+      "verticalDatum": "NGF-IGN69"
+    }
+  },
+  "shots": [
+    {
+      "file": "VIEUX_BEFORE_b26005c1.png",
+      "sha256": "59eac2e8494c7c32e914aae89ed2e5e3267d0b13156ad61661d8cadd8f274918"
+    },
+    {
+      "file": "VIEUX_AFTER_5efd0ee2.png",
+      "sha256": "6016b7ed40713e5379aafda5e827a98222811318f0b13fc636180680ed62df48"
+    }
+  ],
+  "remainingScope": "The narrow path retains its original source Z and remains visible nearby. Source Z differs from the local 10 m MNT interpolation by about 2.0715 m; provider precision is 1.5 m vertically and 2.5 m horizontally. No vertical source alignment or general transportation-polygon remeshing was introduced."
+}

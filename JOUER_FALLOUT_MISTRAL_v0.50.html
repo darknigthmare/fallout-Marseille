@@ -520,6 +520,7 @@ body.v025-targeting #v023CriticalHud,body.v025-executing #v023CriticalHud,body.v
 .v050-travel{margin-top:18px;padding-top:15px;border-top:1px solid #89935f}
 @media(max-width:600px){#menuScreen .menu-copy{padding-left:1.4rem;padding-right:1.4rem}#menuScreen .menu-actions{grid-template-columns:1fr}#menuScreen .menu-version{font-size:.55rem;background:#0b120df0;padding:5px;right:10px;bottom:6px}.v050-geography{padding:13px}}
 .v050-fieldlife section{border:1px solid #66866366;padding:16px;margin:16px 0;background:#13251b66}.v050-fieldlife p{line-height:1.6}.v050-field-recipes{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.v050-field-recipes article{border:1px solid #66866355;padding:12px;min-width:0}.v050-field-recipes h4{margin:0 0 8px}.v050-fieldlife button{min-height:44px;white-space:normal}.v050-field-warning{border-left:3px solid #e9bf76;padding-left:12px;color:#eedbb4}.v050-fieldlife .p27-actions{display:flex;flex-wrap:wrap;gap:8px}
+.v051-city-status{border:1px solid #879d73;padding:18px;margin:18px 0;background:#102017}.v051-city-status p{line-height:1.6;overflow-wrap:anywhere}.v051-city-status button{min-height:44px;padding:10px 16px;white-space:normal}
 
 </style>
 </head>
@@ -9253,15 +9254,24 @@ const MistralIntegrity = (()=>{
     const roofHeight=Math.min(roof?.value||0,Math.max(0,top-minimum-.1)),shape=String(props['roof:shape']||'flat').toLowerCase(),direction=metres(props['roof:direction']);
     return{height:top-minimum,totalHeight:top,minHeight:minimum,groundElevation:ground?.value??null,groundMaximum:groundMaximum?.value??null,roofElevation:roofElevation?.value??null,roofMinimum:roofMinimum?.value??null,reportedHeight:supplied?.value??null,reportedHeightBasis:supplied?.key??null,eavesHeight:top-minimum-roofHeight,roofHeight,roofShape:shape,roofDirection:direction===null?null:((direction%360)+360)%360,estimated:!total,basis:total?.key||(levels?'niveaux × 3 m — estimation':'6 m par défaut — estimation'),minHeightBasis:lower?.key||(minLevel?'niveau inférieur × 3 m — estimation':'sol'),roofEstimated:!props['roof:shape']||roofHeight>0&&(!['flat','gabled','skillion'].includes(shape)||shape==='gabled'&&direction===null),roofRepresentation:props['roof:shape']?'Forme de toiture déclarée, construite avec ses dimensions disponibles':'Volume enveloppe ; la forme de la toiture n’est pas fournie',planimetricAccuracy:measurement(props,['precision_planimetrique'],0,100)?.value??null,altimetricAccuracy:measurement(props,['precision_altimetrique'],0,100)?.value??null};
   }
+  function roadClassification(props={}){
+    for(const key of['class','subclass','highway'])if(typeof props[key]==='string'&&props[key].trim())return{value:props[key].trim().toLowerCase(),basis:key,sourceNature:null};
+    if(props.provenance?.resource==='ign-bdtopo'&&typeof props.nature==='string'){
+      const nature=props.nature.trim(),normalized=nature.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),classes={'sentier':'path','escalier':'steps','chemin':'track','route empierree':'track','type autoroutier':'motorway','route a 1 chaussee':'road','route a 2 chaussees':'road','rond-point':'road','bretelle':'road','bac ou liaison maritime':'ferry'};
+      if(Object.hasOwn(classes,normalized))return{value:classes[normalized],basis:'nature IGN '+nature,sourceNature:nature};
+    }
+    return{value:'',basis:'classe de voie',sourceNature:null};
+  }
   function roadProfile(props={},water=false){
-    const width=measurement(props,['width','largeur_de_chaussee','largeur_chaussee','largeur','est_width'],.05,300),lanes=measurement(props,['lanes','nombre_de_voies'],.1,30),cls=String(props.class||props.subclass||props.highway||'').toLowerCase(),trail=/path|track|footway/.test(cls),rail=/rail/.test(cls),arterial=/motorway|trunk|primary/.test(cls),absolute=measurement(props,['ele','deck_height','bridge:ele'],-100,9000),clearance=measurement(props,['bridge:height','min_height'],0,100),layer=Number(props.layer)||0,structure=String(props.brunnel||props.position_par_rapport_au_sol||'').toLowerCase(),bridge=/bridge|pont/.test(structure)||props.bridge==='yes'||props.bridge===true,tunnel=/tunnel|souterrain/.test(structure)||props.tunnel==='yes'||props.tunnel===true;
+    const classification=roadClassification(props),width=measurement(props,['width','largeur_de_chaussee','largeur_chaussee','largeur','est_width'],.05,300),lanes=measurement(props,['lanes','nombre_de_voies'],.1,30),cls=classification.value,trail=/path|track|footway|steps/.test(cls),track=classification.sourceNature&&/track/.test(cls),rail=/rail/.test(cls),arterial=/motorway|trunk|primary/.test(cls),maritime=/ferry/.test(cls),absolute=measurement(props,['ele','deck_height','bridge:ele'],-100,9000),clearance=measurement(props,['bridge:height','min_height'],0,100),layer=Number(props.layer)||0,structure=String(props.brunnel||props.position_par_rapport_au_sol||'').toLowerCase(),bridge=/bridge|pont/.test(structure)||props.bridge==='yes'||props.bridge===true,tunnel=/tunnel|souterrain/.test(structure)||props.tunnel==='yes'||props.tunnel===true;
     const position=String(props.position_par_rapport_au_sol??'').trim(),ordinal=/^[+-]?\d+$/.test(position)&&Math.abs(Number(position))<100?Number(position):null,above=bridge||ordinal!==null&&ordinal>0,below=tunnel||ordinal!==null&&ordinal<0,isIGN=props.provenance?.resource==='ign-bdtopo',unavailableElevation=isIGN&&(above||below)&&!absolute&&!clearance;
-    return{width:width?.value??(lanes?lanes.value*3.1:water?3:trail?1.6:rail?1.435:arterial?10:5.5),widthAssumed:!width,widthBasis:width?.key||(lanes?'voies × 3,1 m — estimation':'classe de voie — estimation'),absoluteHeight:absolute?.value??null,heightBasis:absolute?.key||clearance?.key||'terrain',offset:absolute?0:clearance?.value??(isIGN?0:above?Math.max(4,layer*4):below?-Math.max(4,Math.abs(layer)*4):0),elevationAssumed:!absolute&&!clearance,unavailableElevation,bridge:above,tunnel:below,sourcePosition:props.position_par_rapport_au_sol??null,ordinalPosition:ordinal,positionBasis:ordinal===null?null:'Ordre de superposition BD TOPO, sans unité métrique',planimetricAccuracy:measurement(props,['precision_planimetrique'],0,100)?.value??null,altimetricAccuracy:measurement(props,['precision_altimetrique'],0,100)?.value??null};
+    return{width:width?.value??(lanes?lanes.value*3.1:water?3:track?3:trail?1.6:rail?1.435:arterial?10:5.5),widthAssumed:!width,widthBasis:width?.key||(lanes?'voies × 3,1 m — estimation':classification.basis+' — estimation'),roadClass:cls,classificationBasis:classification.basis,sourceNature:classification.sourceNature,maritime,absoluteHeight:absolute?.value??null,heightBasis:absolute?.key||clearance?.key||'terrain',offset:absolute?0:clearance?.value??(isIGN?0:above?Math.max(4,layer*4):below?-Math.max(4,Math.abs(layer)*4):0),elevationAssumed:!absolute&&!clearance,unavailableElevation,bridge:above,tunnel:below,sourcePosition:props.position_par_rapport_au_sol??null,ordinalPosition:ordinal,positionBasis:ordinal===null?null:'Ordre de superposition BD TOPO, sans unité métrique',planimetricAccuracy:measurement(props,['precision_planimetrique'],0,100)?.value??null,altimetricAccuracy:measurement(props,['precision_altimetrique'],0,100)?.value??null};
   }
   /* Stroke the unmodified source centreline. Mitred joins keep the specified
      width around normal bends; NoData removes faces instead of laying asphalt at zero. */
   function roadMesh(path,props,sample,water=false){
     const profile=roadProfile(props,water),points=[],validPath=(path||[]).filter(p=>Array.isArray(p)&&Number.isFinite(p[0])&&Number.isFinite(p[1]));
+    if(profile.maritime&&!water)return{...profile,vertices:[],faces:[],surfaceOmitted:'Itinéraire maritime documenté ; aucune chaussée physique inventée'};
     for(let i=0;i<validPath.length-1;i++){const a=validPath[i],b=validPath[i+1],steps=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/12));for(let j=0;j<steps;j++){const t=j/steps,p=[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];if(Number.isFinite(a[2])&&Number.isFinite(b[2]))p[2]=a[2]+(b[2]-a[2])*t;points.push(p);}}
     if(validPath.length)points.push(validPath.at(-1).slice());
     const vertices=[],faces=[],valid=[],lift=water?.025:.085;
@@ -9296,8 +9306,9 @@ const MistralIntegrity = (()=>{
     if(!Array.isArray(b)||b.length!==4||!b.every(Number.isFinite)||b[0]>=b[2]||b[1]>=b[3]||expected&&b.some((x,i)=>Math.abs(x-expected[i])>1e-7))throw new Error('Emprise incompatible : '+id);
     const provenance=raw.provenance,declared=String(raw.sourceResource||raw.source_resource||raw.resource||'');
     const enrichment=id.startsWith('enrichment:')&&declared&&provenance&&['source','license','attribution','acquiredAt'].every(k=>typeof provenance[k]==='string'&&provenance[k].trim());
-    if(declared!=='ign_rge_alti_wld'&&!enrichment&&!raw.qaFixture)throw new Error('Provenance altimétrique absente : '+id);
-    if(enrichment&&!compatibleDatum(raw.verticalDatum||provenance?.verticalDatum))throw Error('Référentiel vertical incompatible : conversion explicite vers NGF-IGN69 requise pour '+id);
+    const cityBase=id==='geo_marseille_commune'&&declared&&provenance&&['source','license','attribution','acquiredAt'].every(k=>typeof provenance[k]==='string'&&provenance[k].trim());
+    if(id==='geo_marseille_commune'&&!cityBase||declared!=='ign_rge_alti_wld'&&!enrichment&&!cityBase&&!raw.qaFixture)throw new Error('Provenance altimétrique absente : '+id);
+    if((enrichment||cityBase)&&!compatibleDatum(raw.verticalDatum||provenance?.verticalDatum))throw Error('Référentiel vertical incompatible : conversion explicite vers NGF-IGN69 requise pour '+id);
     if(raw.rowOrder&&raw.rowOrder!=='north-to-south')throw new Error('Ordre des lignes non pris en charge');
     const data=Float64Array.from(v,x=>x!==null&&typeof x==='number'&&Number.isFinite(x)&&x>-100&&x<9000?x:NaN);
     if(!data.some(Number.isFinite))throw new Error('Aucune altitude valide : '+id);
@@ -9325,7 +9336,7 @@ const MistralIntegrity = (()=>{
       try{this.status.phase='preparing';onProgress(this.status);const stage=await prepare(result,controller.signal);if(ticket!==this.serial||controller.signal.aborted)return{ok:false,cancelled:true};publish(stage);this.status={...this.status,phase:'ready',errors:[]};onProgress(this.status);this.current=null;return{ok:true};}catch(e){if(ticket!==this.serial)return{ok:false,cancelled:true};errors.push({key:'geometry',message:String(e.message||e)});this.status={...this.status,phase:'failed',errors};onProgress(this.status);return{ok:false,errors};}
     }
   }
-  return{hash,ringKey,footprintKey,inside,intersects,contains,metres,compatibleDatum,buildingProfile,roadProfile,roadMesh,roofMesh,terrain,sample,TerrainBank,Gate};
+  return{hash,ringKey,footprintKey,inside,intersects,contains,metres,compatibleDatum,buildingProfile,roadClassification,roadProfile,roadMesh,roofMesh,terrain,sample,TerrainBank,Gate};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralIntegrity;
 
@@ -9374,7 +9385,15 @@ async function v046Resource(key,signal){
 /* All geometry is built against this staging world. No mutation of the live
    scene, inventory, NPC map or old pipeline readiness during preparation. */
 function v046SourceRoad(w,path,props,color,key,layerName){
- const geometry=MistralIntegrity.roadMesh(path,props,(x,z)=>{const bank=w.v047TerrainBank||V046.terrain,[lat,lon]=v015GeoUnproject(w.id,x,z);return bank.read(lat,lon).height;},layerName==='waterway');
+ const water=layerName==='waterway',originalProfile=MistralIntegrity.roadProfile(props,water),groundContact=!water&&props.provenance?.resource==='ign-bdtopo'&&originalProfile.ordinalPosition===0&&!originalProfile.bridge&&!originalProfile.tunnel&&originalProfile.absoluteHeight===null&&!['bridge:height','min_height'].includes(originalProfile.heightBasis),terrainSources=new Map();let noDataVertices=0;
+ /* At-grade BD TOPO describes a ground route, not an elevated slab. Its old
+    sparse axis Z may disagree with the available MNT. Derive only the visible
+    ground ribbon from the same bank used by physics; retain the entire input
+    path and original feature geometry, with a distinct representation receipt.
+    Bridges, tunnels and explicit vertical dimensions keep their source Z. */
+ const renderPath=groundContact?path.map(p=>p.slice(0,2)):path;
+ const geometry=MistralIntegrity.roadMesh(renderPath,props,(x,z)=>{const bank=w.v047TerrainBank||V046.terrain,[lat,lon]=v015GeoUnproject(w.id,x,z),sample=bank.read(lat,lon);if(groundContact){if(sample.height===null)noDataVertices++;for(const id of sample.sources||[])if(!terrainSources.has(id))terrainSources.set(id,{id,sourceResource:sample.sourceResource||null,verticalDatum:sample.verticalDatum||null,resolutionMeters:sample.resolutionMeters?.slice()||null,interpolation:sample.interpolation||null});}return sample.height;},water);
+ if(groundContact){const complete=path.every(p=>Number.isFinite(p[2])),partial=path.some(p=>Number.isFinite(p[2]));Object.assign(geometry,{surfaceDerived:true,surfaceElevationPolicy:'ground-contact-mnt',sourceHeightBasis:complete?'coordonnées Z source':partial?'coordonnées Z partielles et terrain':originalProfile.heightBasis,sourceGeometryUnmodified:true,sourceXYZPreserved:partial,heightBasis:'MNT local — surface au sol dérivée',elevationAssumed:true,surfaceVisualOffsetMeters:.085,surfaceNoDataVertices:noDataVertices,surfaceTerrainSources:[...terrainSources.values()]});}
  if(path.length<2||!geometry.faces.length)return null;
  const {vertices,faces,...profile}=geometry,bounds=v017PolyBounds([path]),d={mesh:'geoSurface',pos:[bounds.cx,0,bounds.cz],scale:[1,1,1],color:layerName==='waterway'?COLORS.water:color,vertices,faces,roadPath:path.map(p=>p.slice()),roadProperties:{...props},roadWidth:geometry.width,widthAssumed:geometry.widthAssumed,elevationAssumed:geometry.elevationAssumed,sourceProfile:profile,geoTile:key,geoLayer:layerName,revision:0,alpha:1};w.staticDraws.push(d);return d;
 }
@@ -9832,8 +9851,8 @@ v046Prepare=async function(plan, resources, w, signal) {
   const job={id:++V048.serial,work:new MistralWork.Budget({signal}),done:0,total:1,status:'preparing'};V048.job=job;
   try {
     await v048Step(job,'validation',plan.dem.length);
-    const bank=new MistralIntegrity.TerrainBank(V046_BOUNDS);
-    for(const[id,g]of V046.terrain.grids)bank.grids.set(id,g);
+    const bank=typeof v051CityStageBank==='function'?v051CityStageBank(V046_BOUNDS,V046.terrain):new MistralIntegrity.TerrainBank(V046_BOUNDS);
+    if(typeof v051CityStageBank!=='function')for(const[id,g]of V046.terrain.grids)bank.grids.set(id,g);
     let done=0;
     for(const key of plan.dem){const r=resources.get(key);if(!r)throw Error('Terrain absent : '+key);bank.add(r.raw,r.id);v048Phase(job,'validation',++done,plan.dem.length);await job.work.checkpoint();}
     if(V047.test.delayPrepare)await new Promise(r=>setTimeout(r,V047.test.delayPrepare));
@@ -10954,7 +10973,15 @@ async function v050EnrichResource(resource,key,signal){
  const features=[];
  for(const[region,descriptor]of Object.entries(index.regions))if(MistralIntegrity.intersects(box,descriptor.bbox)){const bundle=await v050SourceBundle(region,descriptor);features.push(...bundle.projected);}
  if(signal?.aborted)throw Error('Import des sources annulé');
+ return v050ApplySourceOverlays(resource,features);
+}
+/* Shared by optional regional imports and the partitioned city atlas. Empty
+   authoritative road queries still remove old roads inside their exact query
+   rectangle; no feature is manufactured to carry that proof. */
+function v050ApplySourceOverlays(resource,features,explicitCoverages=[]){
+ const tile=v017TileBounds(resource.z,resource.x,resource.y),box=[tile.south,tile.west,tile.north,tile.east],corners=[[tile.south,tile.west],[tile.south,tile.east],[tile.north,tile.west],[tile.north,tile.east]];
  const worldCorners=corners.map(p=>v015GeoProject('geo_huveaune',p[0],p[1])),tileBounds=v017PolyBounds([worldCorners.map(p=>[p[0],p[2]])]),kind=resource.source==='cadastre'?'building':'road',overlays=features.filter(f=>f.props.kind===kind&&f.v050Paths.length&&v050BoxesTouch(tileBounds,f.v050Bounds)),coverages=[],coverageKeys=new Set();
+ if(kind==='road')for(const coverage of explicitCoverages)if(coverage.proof.layer==='BDTOPO_V3:troncon_de_route'&&MistralIntegrity.intersects(box,coverage.proof.bbox)){const key=JSON.stringify(coverage.proof);if(!coverageKeys.has(key)){coverageKeys.add(key);coverages.push(coverage);}}
  if(kind==='road')for(const feature of features)if(feature.props.kind==='road'&&feature.v050Coverage&&MistralIntegrity.intersects(box,feature.v050Coverage.proof.bbox)){const key=JSON.stringify(feature.v050Coverage.proof);if(!coverageKeys.has(key)){coverageKeys.add(key);coverages.push(feature.v050Coverage);}}
  if(!overlays.length&&!coverages.length)return resource;
  const layers={...resource.layers},names=kind==='building'?['batiments','building']:['transportation'];
@@ -11123,6 +11150,283 @@ function v050GeographyInfo(){
  return{version:'0.50.0',indexPresent:!!V050_GEOGRAPHY.index,loadedRegions:[...V050_GEOGRAPHY.bundles.keys()].sort(),sourceBuildings:bundles.reduce((n,b)=>n+b.projected.filter(f=>f.props.kind==='building').length,0),sourceRoads:bundles.reduce((n,b)=>n+b.projected.filter(f=>f.props.kind==='road').length,0),coverages:[...coverages.values()],terrainSources:[...V046.terrain.grids.values()].map(g=>({id:g.id,resource:g.sourceResource,resolutionMeters:g.resolutionMeters.slice(),enrichment:g.enrichment,verticalDatum:g.verticalDatum,conversion:g.provenance?.conversion||null})),terrainCache:V050_GEOGRAPHY.terrainMeshes?.stats()||null,missingGroundBuildings:[...world?.v046Records?.values()||[]].reduce((n,r)=>n+(r.missingGroundBuildings||0),0),sourceObjectCount:draws.length,sourceObjectsTruncated:draws.length>100,sourceObjects:draws.slice(0,100).map(v050SourceObjectSummary),terrainMesh:v050TerrainMeshInfo(),errors:V050_GEOGRAPHY.errors.slice()};
 }
 function v050GeographyAfterInit(){Object.assign(window.__MISTRAL_DEBUG,{v050GeographyInfo,v050SourceObjectInfo,v050LandSurfaceInfo,v050RefreshGeography});$('v046Retry')?.addEventListener('click',()=>{if(V050_GEOGRAPHY.errors.length)v050RefreshGeography();},true);}
+
+/* Marseille's authoritative atlas is streamed by query partition. The atlas
+   never replaces a missing survey with a fixture or a guessed empty tile. */
+const V051_CITY_ID='geo_marseille_commune',V051_CITY_BOUNDS=[43.1696313,5.22875102,43.39105653,5.53254336];
+const V051_CITY={index:null,indexPromise:null,terrainIndex:null,terrainPromise:null,epoch:0,navigationSerial:0,loads:new Map(),cache:new MistralStream.BudgetCache(64*1024*1024,24),terrainCache:new MistralStream.BudgetCache(48*1024*1024,8),errors:[],registered:false,requests:0};
+/* The identity must exist before a saved exterior is resumed. Terrain bounds
+   are installed only after both local indices validate, without touching the
+   live bank; the next prepared bank receives the new measured base grid. */
+if(!V015_GEO_MACROS[V051_CITY_ID])Object.defineProperty(V015_GEO_MACROS,V051_CITY_ID,{value:{name:'Marseille · commune entière',region:'MACRO-RÉGION · MARSEILLE',center:[43.2965,5.3698],bbox:V051_CITY_BOUNDS.slice(),scale:1,kind:'urban',internal:true,hideOnMap:true,neighbors:['geo_marseille','geo_frioul','geo_calanques','geo_etoile']},enumerable:false,configurable:true,writable:true});
+const v051CityRoadClassBase=v017ClassRoad;
+v017ClassRoad=function(props){const classification=MistralIntegrity.roadClassification(props);return classification.sourceNature?v051CityRoadClassBase({...props,class:classification.value==='steps'?'footway':classification.value}):v051CityRoadClassBase(props);};
+function v051CityError(error){V051_CITY.errors.push(String(error?.message||error));V051_CITY.errors=V051_CITY.errors.slice(-10);}
+function v051CityAbort(signal){if(signal?.aborted){const error=new Error('Chargement de Marseille annulé');error.name='AbortError';throw error;}}
+function v051CityWait(promise,signal){
+ v051CityAbort(signal);if(!signal)return promise;
+ return new Promise((resolve,reject)=>{const abort=()=>{const error=new Error('Chargement de Marseille annulé');error.name='AbortError';reject(error);};signal.addEventListener('abort',abort,{once:true});promise.then(resolve,reject).finally(()=>signal.removeEventListener('abort',abort));});
+}
+function v051CityDescriptor(d,terrain=false){
+ if(!d||typeof d.path!=='string'||!/^data\/map_pack\/city\/[a-zA-Z0-9_.-]+-[0-9a-f]{16}\.json$/.test(d.path)||!Number.isInteger(d.bytes)||d.bytes<1||d.bytes>64*1024*1024||!/^[0-9a-f]{64}$/.test(d.sha256)||!d.path.endsWith('-'+d.sha256.slice(0,16)+'.json')||!v050SourceBox(d.bbox))throw Error('Descripteur de partition de Marseille invalide');
+ if(!terrain&&(typeof d.id!=='string'||!d.id||d.id.length>128||d.region!==V051_CITY_ID||d.bytes>8*1024*1024||!v050SourceBox(d.queryBbox)||!Array.isArray(d.coverages)||d.coverages.length!==2||!d.counts||!['buildings','roads'].every(k=>Number.isInteger(d.counts[k])&&d.counts[k]>=0)||d.counts.buildings+d.counts.roads>3000))throw Error('Comptage de partition de Marseille invalide');
+ if(d.renderBbox!==undefined&&(!v050SourceBox(d.renderBbox)||d.renderBbox[0]<d.bbox[0]||d.renderBbox[1]<d.bbox[1]||d.renderBbox[2]>d.bbox[2]||d.renderBbox[3]>d.bbox[3]))throw Error('Emprise rendue de partition invalide');
+ return d;
+}
+async function v051CityIndex(){
+ if(typeof location!=='undefined'&&!['http:','https:'].includes(location.protocol))return null;
+ const epoch=V051_CITY.epoch;
+ if(!V051_CITY.indexPromise)V051_CITY.indexPromise=(async()=>{
+  const index=await v050LocalSourceJSON('data/map_pack/city/index.json',null,true);if(!index)return null;
+  const municipality=index.municipality;
+  if(index.schemaVersion!==1||municipality?.code!=='13055'||!v050SourceBox(municipality.bbox)||municipality.bbox.some((n,i)=>Math.abs(n-V051_CITY_BOUNDS[i])>1e-7)||index.coverage?.complete!==true||!Array.isArray(index.tiles)||!index.tiles.length||index.tiles.length>2048)throw Error('Index communal de Marseille incomplet ou incompatible');
+  const ids=new Set(),paths=new Set();for(const d of index.tiles){v051CityDescriptor(d);if(ids.has(d.id)||paths.has(d.path))throw Error('Partition de Marseille dupliquée');ids.add(d.id);paths.add(d.path);}
+  if(epoch!==V051_CITY.epoch)throw Error('Index communal de Marseille périmé');V051_CITY.index=index;return index;
+ })().catch(error=>{if(epoch===V051_CITY.epoch)V051_CITY.indexPromise=null;throw error;});
+ return V051_CITY.indexPromise;
+}
+async function v051CityTerrainIndex(){
+ if(typeof location!=='undefined'&&!['http:','https:'].includes(location.protocol))return null;
+ const epoch=V051_CITY.epoch;
+ if(!V051_CITY.terrainPromise)V051_CITY.terrainPromise=(async()=>{
+  const index=await v050LocalSourceJSON('data/map_pack/city/terrain-index.json',null,true);if(!index)return null;
+  if(index.schemaVersion!==1||index.region!==V051_CITY_ID||!v050SourceBox(index.bbox)||index.bbox.some((n,i)=>Math.abs(n-V051_CITY_BOUNDS[i])>1e-7)||!Array.isArray(index.tiles)||index.tiles.length>2048)throw Error('Index du relief communal incompatible');
+  v051CityDescriptor(index.base,true);if(index.base.bbox.some((n,i)=>Math.abs(n-index.bbox[i])>1e-7))throw Error('Relief communal de base incomplet');
+  const paths=new Set([index.base.path]);for(const d of index.tiles){v051CityDescriptor(d,true);if(paths.has(d.path))throw Error('Dalle de relief communal dupliquée');paths.add(d.path);}
+  if(epoch!==V051_CITY.epoch)throw Error('Index du relief communal périmé');V051_CITY.terrainIndex=index;return index;
+ })().catch(error=>{if(epoch===V051_CITY.epoch)V051_CITY.terrainPromise=null;throw error;});
+ return V051_CITY.terrainPromise;
+}
+async function v051CityReady(){
+ if(V046.lab)return null;const [index,terrain]=await Promise.all([v051CityIndex(),v051CityTerrainIndex()]);
+ if(V051_CITY.registered&&(!index||!terrain))throw Error('L’atlas communal précédemment chargé est incomplet ou absent');
+ if(index&&terrain&&!V046.lab&&!V051_CITY.registered){V046_BOUNDS[V051_CITY_ID]=index.municipality.bbox.slice();V015_GEO_MACROS[V051_CITY_ID].bbox=index.municipality.bbox.slice();V051_CITY.registered=true;}
+ return index;
+}
+function v051CityDescriptors(box){return(V051_CITY.index?.tiles||[]).filter(d=>MistralIntegrity.intersects(box,d.renderBbox||d.bbox));}
+/* Only the new plan's verified citydem resources may add fine city grids.
+   Leaving the commune therefore drops old fine tiles too. Base grids and the
+   independently acquired Aubagne sources remain exactly as the caller held
+   them. The currently published bank is never edited by this staging copy. */
+function v051CityStageBank(bounds,active){
+ const bank=new MistralIntegrity.TerrainBank(bounds);
+ for(const[id,grid]of active.grids)if(id!=='enrichment:'+V051_CITY_ID&&!id.startsWith('enrichment:'+V051_CITY_ID+':'))bank.grids.set(id,grid);
+ return bank;
+}
+async function v051CityChunk(descriptor,signal){
+ v051CityAbort(signal);const key=descriptor.path,cached=V051_CITY.cache.get(key);if(cached)return cached;
+ const epoch=V051_CITY.epoch;
+ if(!V051_CITY.loads.has(key)){
+  const load=(async()=>{
+   V051_CITY.requests++;const raw=await v050LocalSourceJSON(descriptor.path,descriptor);
+   if(raw?.schemaVersion!==1||raw.region!==V051_CITY_ID||!Array.isArray(raw.features)||raw.features.length>3000||!v050SourceBox(raw.queryBbox)||raw.queryBbox.some((n,i)=>Math.abs(n-descriptor.queryBbox[i])>1e-10)||!Array.isArray(raw.coverages)||raw.coverages.length!==2)throw Error('Partition communale incompatible');
+   const counts={buildings:0,roads:0},projected=[],spatial=new MistralStream.SpatialGrid(128),seen=new Set(),provenancePool=new Map();
+   /* Every object keeps its complete source receipt. Equal receipts share one
+      immutable in-memory object rather than thousands of duplicated query
+      records; neither the verified file bytes nor any field value changes. */
+   for(const feature of raw.features){const proof=feature?.properties?.provenance,key=JSON.stringify(proof);if(proof&&typeof proof==='object'){if(provenancePool.has(key))feature.properties.provenance=provenancePool.get(key);else provenancePool.set(key,proof);}const f=v050SourceFeature(feature,V051_CITY_ID),identity=f.props.kind+':'+f.sourceId;if(seen.has(identity))throw Error('Objet communal dupliqué dans sa partition');seen.add(identity);counts[f.props.kind==='building'?'buildings':'roads']++;projected.push(f);spatial.add(f.v050Bounds,f);}
+   if(counts.buildings!==descriptor.counts.buildings||counts.roads!==descriptor.counts.roads)throw Error('Comptage communal différent de son reçu');
+   const proofKey=coverage=>JSON.stringify([coverage?.layer,coverage?.bbox,coverage?.crs,coverage?.complete,coverage?.returned]),proofKeys=new Set(raw.coverages.map(proofKey));
+   const coverages=raw.coverages.map(coverage=>v050SourceCoverage({kind:coverage.layer==='BDTOPO_V3:troncon_de_route'?'road':'building',provenance:{resource:'ign-bdtopo',coverage}},V051_CITY_ID));
+   if(new Set(raw.coverages.map(c=>c.layer)).size!==2||descriptor.coverages.some(c=>!proofKeys.has(proofKey(c)))||raw.coverages.some(c=>c.bbox.some((n,i)=>Math.abs(n-descriptor.queryBbox[i])>1e-10)||c.returned!==counts[c.layer==='BDTOPO_V3:batiment'?'buildings':'roads'])||raw.features.some(f=>!proofKeys.has(proofKey(f.properties.provenance.coverage))))throw Error('Preuves des requêtes communales incohérentes');
+   if(epoch!==V051_CITY.epoch)throw Error('Partition communale périmée');const bundle={projected,spatial,coverages,source:raw.source,counts,path:key,wireBytes:descriptor.bytes,provenanceRecords:provenancePool.size};V051_CITY.cache.set(key,bundle);return bundle;
+  })();
+  V051_CITY.loads.set(key,load);load.then(()=>{if(V051_CITY.loads.get(key)===load)V051_CITY.loads.delete(key);},()=>{if(V051_CITY.loads.get(key)===load)V051_CITY.loads.delete(key);});
+ }
+ return v051CityWait(V051_CITY.loads.get(key),signal);
+}
+async function v051CityTerrain(descriptor,signal,base=false){
+ v051CityAbort(signal);const key=descriptor.path,cached=V051_CITY.terrainCache.get(key);if(cached)return cached;
+ const epoch=V051_CITY.epoch;
+ if(!V051_CITY.loads.has(key)){
+  const load=(async()=>{V051_CITY.requests++;const raw=await v050LocalSourceJSON(key,descriptor),id=base?V051_CITY_ID:raw.macro;
+   if(!base&&(typeof id!=='string'||!/^enrichment:geo_marseille_commune:[0-9a-f]{16}$/.test(id)))throw Error('Identité de dalle communale invalide');
+   MistralIntegrity.terrain(raw,id,descriptor.bbox);if(epoch!==V051_CITY.epoch)throw Error('Relief communal périmé');const result={raw,id,source:'IGN — atlas communal local',origin:'IGN — atlas communal local'};V051_CITY.terrainCache.set(key,result);return result;
+  })();V051_CITY.loads.set(key,load);load.then(()=>{if(V051_CITY.loads.get(key)===load)V051_CITY.loads.delete(key);},()=>{if(V051_CITY.loads.get(key)===load)V051_CITY.loads.delete(key);});
+ }
+ return v051CityWait(V051_CITY.loads.get(key),signal);
+}
+async function v051CityEnrich(resource,signal){
+ if(!V051_CITY.registered||!V051_CITY.index||!resource||!['base','cadastre'].includes(resource.source))return resource;
+ const tile=v017TileBounds(resource.z,resource.x,resource.y),box=[tile.south,tile.west,tile.north,tile.east],descriptors=v051CityDescriptors(box);if(!descriptors.length)return resource;
+ const corners=[[tile.south,tile.west],[tile.north,tile.east]].map(p=>v015GeoProject(V051_CITY_ID,...p)),bounds=v017PolyBounds([corners.map(p=>[p[0],p[2]])]),features=[],coverages=[],seen=new Set();
+ /* Sequential inside each tile keeps the existing four-worker map gate as the
+    sole concurrency bound. Shared partition promises deduplicate those workers. */
+ for(const d of descriptors){const bundle=await v051CityChunk(d,signal);v051CityAbort(signal);const radius=Math.max(bounds.maxX-bounds.minX,bounds.maxZ-bounds.minZ)/2+1;
+  for(const feature of bundle.spatial.around(bounds.cx,bounds.cz,radius))if(v050BoxesTouch(bounds,feature.v050Bounds)){const identity=feature.props.kind+':'+feature.sourceId+(feature.props.kind==='road'?':'+JSON.stringify(feature.v050Coverage?.proof.bbox||null):'');if(!seen.has(identity)){seen.add(identity);features.push(feature);}}
+  coverages.push(...bundle.coverages);
+ }
+ return v050ApplySourceOverlays(resource,features,coverages);
+}
+const v051CityPlanBase=v046Plan;
+v046Plan=function(lat,lon){
+ const plan=v051CityPlanBase(lat,lon);if(V046.lab){plan.dem=plan.dem.filter(key=>key!=='dem:'+V051_CITY_ID&&!key.startsWith('citydem:'));return plan;}if(!V051_CITY.registered)return plan;
+ if(MistralIntegrity.intersects(plan.box,V051_CITY_BOUNDS)&&!plan.dem.includes('dem:'+V051_CITY_ID))plan.dem.push('dem:'+V051_CITY_ID);
+ for(const descriptor of V051_CITY.terrainIndex?.tiles||[])if(MistralIntegrity.intersects(plan.box,descriptor.bbox))plan.dem.push('citydem:'+descriptor.sha256);
+ const keys=new Set(plan.keys);
+ for(const source of ['base','cadastre']){const z=source==='base'?14:16,a=v017LonLatToTile(plan.box[2],plan.box[1],z),b=v017LonLatToTile(plan.box[0],plan.box[3],z);
+  for(let x=Math.floor(a.x);x<=Math.floor(b.x);x++)for(let y=Math.floor(a.y);y<=Math.floor(b.y);y++){const tile=v017TileBounds(z,x,y),box=[tile.south,tile.west,tile.north,tile.east];if(v051CityDescriptors(box).length)keys.add(v046TileKey(source,z,x,y));}
+ }
+ plan.keys=[...keys];return plan;
+};
+const v051CityResourceBase=v046Resource;
+v046Resource=async function(key,signal){
+ if(V046.lab)return v051CityResourceBase(key,signal);v051CityAbort(signal);
+ if(key==='dem:'+V051_CITY_ID){if(!V051_CITY.terrainIndex)throw Error('Relief communal absent');return v051CityTerrain(V051_CITY.terrainIndex.base,signal,true);}
+ if(key.startsWith('citydem:')){const descriptor=V051_CITY.terrainIndex?.tiles.find(d=>d.sha256===key.slice(8));if(!descriptor)throw Error('Dalle communale inconnue');return v051CityTerrain(descriptor,signal);}
+ let resource;
+ if(!key.startsWith('dem:')){const[source,z0,x0,y0]=key.split(':'),z=+z0,x=+x0,y=+y0;
+  if(!v037TileAllowed(source,z,x,y)&&V051_CITY.registered){const tile=v017TileBounds(z,x,y);if(!v051CityDescriptors([tile.south,tile.west,tile.north,tile.east]).length)throw Error('Aucune source vérifiée hors du pack local');resource={source,z,x,y,layers:{},origin:'IGN — partition vérifiée hors du pack de base',empty:false,v051CityOnly:true};}
+ }
+ resource||=await v051CityResourceBase(key,signal);return v051CityEnrich(resource,signal);
+};
+const v051CityEnsureBase=v046Ensure;
+v046Ensure=async function(lat,lon,w=world,initial=false,opts={}){
+ const ticket=V051_CITY.navigationSerial;
+ if(!V046.lab)try{await v051CityReady();}catch(error){
+  if(ticket!==V051_CITY.navigationSerial)return false;v051CityError(error);V046.last={lat,lon,w,initial,opts};V046.error=[{key:'city-index',message:String(error.message||error)}];
+  if(!opts.v047Warm){V046.busy=true;zoneTransitioning=true;mode='LOADING';v046Loading({phase:'failed',done:0,total:1,errors:V046.error});}return false;
+ }
+ if(ticket!==V051_CITY.navigationSerial)return false;
+ return v051CityEnsureBase(lat,lon,w,initial,opts);
+};
+const v051CityCancelBase=v046Cancel;
+v046Cancel=function(){V051_CITY.navigationSerial++;return v051CityCancelBase();};
+/* A synthetic laboratory must continue to use only its declared fixture
+   bounds. Its bank is constructed after this removal; the retained real bank
+   itself is never edited, and its bounds return when the laboratory closes. */
+const v051CityLabBase=v046StartLab;
+v046StartLab=async function(){
+ if(!V046.lab&&V046_BOUNDS[V051_CITY_ID]){V051_CITY.labBounds=V046_BOUNDS[V051_CITY_ID];delete V046_BOUNDS[V051_CITY_ID];}
+ try{return await v051CityLabBase();}catch(error){if(!V046.lab&&V051_CITY.labBounds){V046_BOUNDS[V051_CITY_ID]=V051_CITY.labBounds;V051_CITY.labBounds=null;}throw error;}
+};
+const v051CityLeaveLabBase=v047LeaveLab;
+v047LeaveLab=function(){const result=v051CityLeaveLabBase();if(!V046.lab&&V051_CITY.labBounds){V046_BOUNDS[V051_CITY_ID]=V051_CITY.labBounds;V051_CITY.labBounds=null;}return result;};
+function v051CityRefresh(){
+ if(V046.busy||V047.pending)return false;V051_CITY.epoch++;V051_CITY.index=null;V051_CITY.indexPromise=null;V051_CITY.terrainIndex=null;V051_CITY.terrainPromise=null;V051_CITY.loads.clear();V051_CITY.cache.clear();V051_CITY.terrainCache.clear();V051_CITY.errors=[];V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();return true;
+}
+function v051CityInfo(){
+ const index=V051_CITY.index,tiles=index?.tiles||[],resident=[...V051_CITY.cache.values()];
+ return{indexPresent:!!index,municipality:index?.municipality?{code:index.municipality.code,name:index.municipality.name,bbox:index.municipality.bbox.slice()}:null,coverage:index?.coverage||null,registered:V051_CITY.registered,tilesAvailable:tiles.length,sourceBuildings:index?.coverage?.uniqueBuildings??tiles.reduce((n,d)=>n+d.counts.buildings,0),sourceRoads:index?.coverage?.uniqueRoads??tiles.reduce((n,d)=>n+d.counts.roads,0),loadedPartitions:resident.length,loadedBuildings:resident.reduce((n,b)=>n+b.counts.buildings,0),loadedRoads:resident.reduce((n,b)=>n+b.counts.roads,0),loadedWireBytes:resident.reduce((n,b)=>n+b.wireBytes,0),sharedProvenanceRecords:resident.reduce((n,b)=>n+b.provenanceRecords,0),cache:V051_CITY.cache.stats(),terrainCache:V051_CITY.terrainCache.stats(),terrainIndexPresent:!!V051_CITY.terrainIndex,terrainTilesAvailable:V051_CITY.terrainIndex?.tiles.length||0,inflight:V051_CITY.loads.size,requests:V051_CITY.requests,errors:V051_CITY.errors.slice()};
+}
+function v051CityAfterInit(){
+ Object.assign(window.__MISTRAL_DEBUG,{v051CityInfo,v051CityRefresh,v051CityReady});
+ if(typeof location==='undefined'||['http:','https:'].includes(location.protocol))v051CityReady().catch(v051CityError);
+}
+
+/* The sea is classified from official polygons and high-water shoreline, never
+   from zero elevation or an inverted administrative boundary. */
+const MistralCityWater=(()=>{
+ const finite=n=>typeof n==='number'&&Number.isFinite(n);
+ function box(b){return Array.isArray(b)&&b.length===4&&b.every(finite)&&b[0]>=-90&&b[2]<=90&&b[1]>=-180&&b[3]<=180&&b[0]<b[2]&&b[1]<b[3];}
+ function descriptor(d){
+  if(!d||!/^data\/map_pack\/city\/water-[0-9a-f]{16}\.json$/.test(d.path)||!/^[0-9a-f]{64}$/.test(d.sha256)||!d.path.endsWith(d.sha256.slice(0,16)+'.json')||!Number.isInteger(d.bytes)||d.bytes<1||d.bytes>8*1024*1024||!box(d.bbox)||d.tile?.z!==14||!Number.isInteger(d.tile.x)||!Number.isInteger(d.tile.y)||d.tile.x<0||d.tile.y<0||d.tile.x>=16384||d.tile.y>=16384||!Number.isInteger(d.features)||d.features<1||d.features>512||!Number.isInteger(d.vertices)||d.vertices<4||d.vertices>250000)throw Error('Descripteur maritime incompatible');
+  return d;
+ }
+ function index(raw){
+  const expected=[43.1696313,5.22875102,43.39105653,5.53254336],g=raw?.grid,s=raw?.source;
+  if(raw?.schemaVersion!==1||raw.crs!=='EPSG:4326'||!box(raw.bbox)||!box(raw.municipalityBbox)||raw.municipalityBbox.some((n,i)=>Math.abs(n-expected[i])>1e-10)||raw.bbox.some((n,i)=>Math.abs(n-expected[i])>.04)||!s||s.resource!=='ign-city-water'||!['source','license','attribution','acquiredAt'].every(k=>typeof s[k]==='string'&&s[k].trim())||raw.derivation?.noSimplification!==true||!Array.isArray(raw.tiles)||!raw.tiles.length||raw.tiles.length>1024||g?.zoom!==14||!['minX','maxX','minY','maxY'].every(k=>Number.isInteger(g[k]))||g.minX>g.maxX||g.minY>g.maxY||(g.maxX-g.minX+1)*(g.maxY-g.minY+1)>1024)throw Error('Atlas maritime incompatible');
+  const seen=new Set();for(const d of raw.tiles){descriptor(d);const key=d.tile.x+':'+d.tile.y;if(seen.has(key)||d.tile.x<g.minX||d.tile.x>g.maxX||d.tile.y<g.minY||d.tile.y>g.maxY)throw Error('Tuile maritime dupliquée ou hors emprise');seen.add(key);}
+  return raw;
+ }
+ function project(raw,d,projector){
+  descriptor(d);if(raw?.schemaVersion!==1||raw.role!=='water-tile'||JSON.stringify(raw.tile)!==JSON.stringify(d.tile)||JSON.stringify(raw.bbox)!==JSON.stringify(d.bbox)||raw.source?.resource!=='ign-city-water'||!Array.isArray(raw.features)||raw.features.length!==d.features)throw Error('Tuile maritime incompatible');
+  let vertices=0;const features=[];
+  function ring(r){if(!Array.isArray(r)||r.length<4||r.length>2048)throw Error('Anneau maritime hors budget');const first=r[0],last=r.at(-1);if(!Array.isArray(first)||!Array.isArray(last)||first[0]!==last[0]||first[1]!==last[1])throw Error('Anneau maritime ouvert');return r.map(p=>{if(!Array.isArray(p)||p.length!==2||!p.every(finite)||p[0]<d.bbox[1]-1e-10||p[0]>d.bbox[3]+1e-10||p[1]<d.bbox[0]-1e-10||p[1]>d.bbox[2]+1e-10||++vertices>250000)throw Error('Coordonnée maritime incompatible');const q=projector(p[1],p[0]);return[q[0],q[2]];});}
+  for(const f of raw.features){
+   if(f?.type!=='Feature'||typeof f.id!=='string'||f.properties?.kind!=='water'||f.properties.v051Water!==true||JSON.stringify(f.properties.provenance)!==JSON.stringify(raw.source)||!['Polygon','MultiPolygon'].includes(f.geometry?.type))throw Error('Polygone maritime sans provenance');
+   const groups=(f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates).map(p=>{if(!Array.isArray(p)||!p.length||p.length>512)throw Error('Polygone maritime vide');return p.map(ring);});
+   features.push({id:f.id,type:3,props:{...f.properties},v050Source:true,v050Geometry:f.geometry,v050Groups:groups,v050Paths:groups.flat()});
+  }
+  if(vertices!==d.vertices)throw Error('Comptage maritime différent de sa preuve');return features;
+ }
+ function containsTile(index,x,y){const g=index?.grid;return!!g&&x>=g.minX&&x<=g.maxX&&y>=g.minY&&y<=g.maxY;}
+ function ocean(feature){return /^(?:ocean|sea)$/i.test(String(feature?.props?.class||feature?.props?.subclass||''));}
+ return{box,descriptor,index,project,containsTile,ocean};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralCityWater;
+let v051WaterAfterInit=()=>{};
+
+if(typeof window!=='undefined'&&typeof v046Resource==='function'){
+ const maritime={index:null,promise:null,epoch:0,loads:new Map(),cache:new MistralStream.BudgetCache(8*1024*1024,16),errors:[],requests:0};
+ async function ready(){
+  if(V046.lab||typeof location!=='undefined'&&!['http:','https:'].includes(location.protocol))return null;
+  if(!maritime.promise){const epoch=maritime.epoch;maritime.promise=(async()=>{const raw=await v050LocalSourceJSON('data/map_pack/city/water-index.json',null,true);if(!raw)return null;const value=MistralCityWater.index(raw);if(epoch!==maritime.epoch)throw Error('Atlas maritime périmé');maritime.index=value;return value;})().catch(e=>{maritime.promise=null;throw e;});}
+  return maritime.promise;
+ }
+ async function chunk(descriptor,signal){
+  v051CityAbort(signal);const cached=maritime.cache.get(descriptor.path);if(cached)return cached;
+  if(!maritime.loads.has(descriptor.path)){const epoch=maritime.epoch,load=(async()=>{maritime.requests++;const raw=await v050LocalSourceJSON(descriptor.path,descriptor),features=MistralCityWater.project(raw,descriptor,(lat,lon)=>v015GeoProject('geo_huveaune',lat,lon));if(epoch!==maritime.epoch)throw Error('Tuile maritime périmée');maritime.cache.set(descriptor.path,features);return features;})();maritime.loads.set(descriptor.path,load);const release=()=>{if(maritime.loads.get(descriptor.path)===load)maritime.loads.delete(descriptor.path);};load.then(release,release);}
+  return v051CityWait(maritime.loads.get(descriptor.path),signal);
+ }
+ const previousReady=v051CityReady;v051CityReady=async function(){const city=await previousReady();if(city)await ready();return city;};
+ const previousPlan=v046Plan;v046Plan=function(lat,lon){const plan=previousPlan(lat,lon);if(V046.lab||!maritime.index)return plan;const g=maritime.index.grid,a=v017LonLatToTile(plan.box[2],plan.box[1],14),b=v017LonLatToTile(plan.box[0],plan.box[3],14),keys=new Set(plan.keys);for(let x=Math.max(g.minX,Math.floor(a.x));x<=Math.min(g.maxX,Math.floor(b.x));x++)for(let y=Math.max(g.minY,Math.floor(a.y));y<=Math.min(g.maxY,Math.floor(b.y));y++)keys.add(v046TileKey('base',14,x,y));plan.keys=[...keys];return plan;};
+ const previousResource=v046Resource;v046Resource=async function(key,signal){
+  if(V046.lab||!maritime.index||!key.startsWith('base:14:'))return previousResource(key,signal);
+  const[,z0,x0,y0]=key.split(':'),z=+z0,x=+x0,y=+y0;if(!MistralCityWater.containsTile(maritime.index,x,y))return previousResource(key,signal);
+  let resource;
+  if(!v037TileAllowed('base',z,x,y)){const tile=v017TileBounds(z,x,y);if(!v051CityDescriptors([tile.south,tile.west,tile.north,tile.east]).length)resource={source:'base',z,x,y,layers:{},empty:false,origin:'IGN — mer vérifiée ; autres couches non disponibles dans cette ressource',v051WaterOnly:true};}
+  resource||=await previousResource(key,signal);v051CityAbort(signal);
+  const descriptor=maritime.index.tiles.find(d=>d.tile.x===x&&d.tile.y===y),extra=descriptor?await chunk(descriptor,signal):[];
+  const old=resource.layers.water,retained=(old?.features||[]).filter(f=>!MistralCityWater.ocean(f));
+  return{...resource,layers:{...resource.layers,water:{...(old||{name:'water',extent:4096}),features:[...retained,...extra]}},v051WaterAtlas:true};
+ };
+ const previousRefresh=v051CityRefresh;v051CityRefresh=function(){const result=previousRefresh();if(result){maritime.epoch++;maritime.index=null;maritime.promise=null;maritime.loads.clear();maritime.cache.clear();maritime.errors=[];}return result;};
+ v051WaterAfterInit=()=>Object.assign(window.__MISTRAL_DEBUG,{v051WaterInfo:()=>({present:!!maritime.index,source:maritime.index?.source||null,derivation:maritime.index?.derivation||null,tiles:maritime.index?.tiles.length||0,cache:maritime.cache.stats(),requests:maritime.requests,errors:maritime.errors.slice()})});
+}
+
+/* A surveyed water polygon is not a walking floor, even when the elevation
+   service reports zero. This boundary is deliberately non-swimmable; measured
+   bridges and roof supports retain their existing collision behavior. */
+const MistralCityWaterPhysics=(()=>{
+ const finite=n=>typeof n==='number'&&Number.isFinite(n);
+ function measured(support){return !!(support&&support.measured===true&&finite(support.height));}
+ function blocked({water=false,deck=null,roof=null,vehicle=false,lab=false,exterior=false}={}){
+  return exterior===true&&lab!==true&&vehicle!==true&&water===true&&!measured(deck)&&!measured(roof);
+ }
+ function waterAt({x,z,records,inside,inExtent=()=>false}={}){
+  if(!finite(x)||!finite(z)||typeof inside!=='function'||!records)return false;
+  const indexed=records.v047Index?.surface;
+  const draws=indexed&&typeof indexed.at==='function'?indexed.at(x,z).filter(item=>item?.type==='water').map(item=>item.draw):typeof records.values==='function'?[...records.values()].flatMap(record=>Array.isArray(record?.water)?record.water:[]):[];
+  let extent;
+  for(const draw of draws){
+   if(!Array.isArray(draw?.rings)||!draw.rings.length||!inside(draw.rings,x,z))continue;
+   if(draw.v051Water===true||draw.geoProperties?.v051Water===true)return true;
+   if(extent===undefined)extent=typeof inExtent==='function'&&inExtent()===true;
+   if(extent)return true;
+  }
+  return false;
+ }
+ return{blocked,measured,waterAt};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralCityWaterPhysics;
+
+if(typeof window!=='undefined'&&typeof collidesAt==='function'){
+ const v051CityWaterCollisionBase=collidesAt;
+ collidesAt=function(x,z,r=.38,eyeY=null){
+  // A support over water can never erase a wall, vehicle or footprint collision.
+  if(v051CityWaterCollisionBase(x,z,r,eyeY))return true;
+  const w=typeof world==='undefined'?null:world;
+  if(!w?.v046||typeof V046==='undefined'||V046.lab||typeof isBoatZone==='function'&&isBoatZone())return false;
+  const water=MistralCityWaterPhysics.waterAt({x,z,records:w.v046Records,inside:MistralIntegrity.inside,inExtent:()=>{
+   if(typeof V051_CITY_BOUNDS==='undefined'||typeof v015GeoUnproject!=='function')return false;
+   const point=v015GeoUnproject(w.id,x,z);
+   return Array.isArray(point)&&point.length>=2&&point.slice(0,2).every(Number.isFinite)&&MistralIntegrity.contains(V051_CITY_BOUNDS,point[0],point[1]);
+  }});
+  if(!water)return false;
+  const player=typeof state==='undefined'?null:state?.player;
+  const eye=Number.isFinite(eyeY)?eyeY:Number.isFinite(player?.pos?.[1])?player.pos[1]:1.65;
+  const atPlayer=!!player&&Math.abs(x-player.pos[0])<1e-7&&Math.abs(z-player.pos[2])<1e-7&&Math.abs(eye-player.pos[1])<1e-7;
+  const roofState=typeof V050_ROOFS==='undefined'?null:V050_ROOFS;
+  const movingPlayer=Number.isFinite(roofState?.actorEye)||atPlayer;
+  const eyeHeight=movingPlayer&&typeof playerEyeHeight==='function'?playerEyeHeight():1.65;
+  const feet=Number.isFinite(roofState?.body?.feet)?roofState.body.feet:eye-eyeHeight;
+  const allowStep=!movingPlayer||typeof onGround==='undefined'||onGround;
+  const deck=typeof v050DeckSupport==='function'?v050DeckSupport(x,z,feet,allowStep):null;
+  const roof=typeof v050RoofSupport==='function'?v050RoofSupport(x,z,feet,allowStep,r):null;
+  return MistralCityWaterPhysics.blocked({water,deck,roof,exterior:true});
+ };
+}
 
 /* Measured bridge decks are physical support surfaces, never a new terrain
    sample. The original DEM and missing-data state remain unchanged below them.
@@ -11747,6 +12051,569 @@ function v050ControllerAfterInit(){
   Object.assign(window.__MISTRAL_DEBUG,{v050ControllerInfo:()=>({connected:runtime.input.connected,index:runtime.input.index,id:runtime.input.id,preferences:{...preferences},move:runtime.input.move.slice(),look:runtime.input.look.slice(),held:runtime.input.held.slice(),keyboardKeys:[...keys],mode}),v050ControllerStep:tick});
 }
 
+/* Metric facade detail on the original building edges. Source footprints and
+   collision solids are never replaced by boxes. Unless an attributed facade
+   document supplies the opening, the architectural detail is authored fiction. */
+const MistralFacades=(()=>{
+ const EPS=1e-7,limit=(v,a,b)=>Math.max(a,Math.min(b,v));
+ const finite=v=>typeof v==='number'&&Number.isFinite(v);
+ function hash(value){let h=2166136261;for(const c of String(value))h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;}
+ function text(v){return typeof v==='string'?v.trim():'';}
+ function inside(rings,x,z){let hit=false;for(const ring of rings){let part=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>z)!==(b[1]>z)&&x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])part=!part;}if(part)hit=!hit;}return hit;}
+ function normalized(raw){
+  if(!Array.isArray(raw)||!raw.length||raw.length>256)return null;
+  const rings=[];let vertices=0;
+  for(const source of raw){if(!Array.isArray(source)||source.length<3)return null;const ring=[];
+   for(const p of source){if(!Array.isArray(p)||!finite(p[0])||!finite(p[1]))return null;if(!ring.length||Math.hypot(p[0]-ring.at(-1)[0],p[1]-ring.at(-1)[1])>EPS)ring.push([p[0],p[1]]);}
+   if(ring.length>1&&Math.hypot(ring[0][0]-ring.at(-1)[0],ring[0][1]-ring.at(-1)[1])<EPS)ring.pop();
+   if(ring.length<3||ring.length>8192||(vertices+=ring.length)>16384)return null;
+   let area=0;for(let i=0;i<ring.length;i++){const a=ring[i],b=ring[(i+1)%ring.length];area+=a[0]*b[1]-b[0]*a[1];}if(Math.abs(area)<EPS)return null;
+   ring.push(ring[0].slice());rings.push(ring);
+  }return rings;
+ }
+ function ringIdentity(ring){const a=ring.slice(0,-1),orders=[];for(const points of[a,a.slice().reverse()]){let at=0;for(let i=1;i<points.length;i++)if(points[i][0]<points[at][0]||points[i][0]===points[at][0]&&points[i][1]<points[at][1])at=i;orders.push(JSON.stringify(points.slice(at).concat(points.slice(0,at))));}return orders.sort()[0];}
+ function geometryIdentity(rings){const value=JSON.stringify([ringIdentity(rings[0]),rings.slice(1).map(ringIdentity).sort()]);return hash(value).toString(16).padStart(8,'0')+hash('geometry:'+value).toString(16).padStart(8,'0');}
+ const PALETTES={
+  residential:{wall:[.73,.65,.52],trim:[.81,.76,.64],shutter:[.26,.37,.31],glass:[.14,.23,.23],iron:[.17,.20,.18]},
+  industrial:{wall:[.53,.55,.51],trim:[.66,.67,.60],shutter:[.29,.35,.36],glass:[.19,.26,.27],iron:[.21,.24,.23]},
+  commercial:{wall:[.68,.61,.48],trim:[.80,.73,.59],shutter:[.29,.38,.33],glass:[.13,.24,.25],iron:[.18,.21,.18]},
+  civic:{wall:[.72,.70,.62],trim:[.84,.81,.70],shutter:[.31,.38,.35],glass:[.15,.22,.23],iron:[.20,.22,.20]},
+  religious:{wall:[.75,.73,.65],trim:[.85,.82,.71],shutter:[.34,.35,.29],glass:[.20,.25,.28],iron:[.20,.20,.18]}
+ };
+ function style(properties={}){
+  const type=['nature','usage_1','usage_2','building','amenity','shop'].map(k=>String(properties[k]||'')).join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  if(/religieu|eglise|chapelle|cathedral|church|mosque|synagogue/.test(type))return'religious';
+  if(/industri|agricol|entrepot|warehouse|hangar|serre|greenhouse/.test(type))return'industrial';
+  if(/commercial|commerce|magasin|shop|retail|restaurant/.test(type))return'commercial';
+  if(/public|mairie|administr|ecole|school|hopital|hospital|musee|museum|gare|station/.test(type))return'civic';
+  return'residential';
+ }
+ function document(raw){
+  if(!raw||typeof raw!=='object'||raw.schemaVersion!==1||!['source','license','attribution','acquiredAt'].every(k=>text(raw[k])))return null;
+  if(!Array.isArray(raw.openings)||raw.openings.length>2048)return null;
+  const openings=[];
+  for(const o of raw.openings){
+   if(!o||!['door','window','shopfront'].includes(o.type)||!Number.isInteger(o.ringIndex??0)||!Number.isInteger(o.edgeIndex)||o.edgeIndex<0||!['offset','bottom','width','height'].every(k=>finite(o[k]))||o.offset<0||o.bottom<0||o.width<=0||o.height<=0)return null;
+   openings.push({type:o.type,ringIndex:o.ringIndex??0,edgeIndex:o.edgeIndex,offset:o.offset,bottom:o.bottom,width:o.width,height:o.height});
+  }
+  const completeEdges=raw.completeEdges??[];if(!Array.isArray(completeEdges)||completeEdges.length>16384||completeEdges.some(e=>!e||!Number.isInteger(e.ringIndex)||e.ringIndex<0||!Number.isInteger(e.edgeIndex)||e.edgeIndex<0))return null;
+  return{source:text(raw.source),license:text(raw.license),attribution:text(raw.attribution),acquiredAt:text(raw.acquiredAt),openings,completeEdges:completeEdges.map(e=>({ringIndex:e.ringIndex,edgeIndex:e.edgeIndex}))};
+ }
+ function describe(draw){
+  if(!draw||draw.mesh!=='prism'||!finite(draw.baseY)||!finite(draw.height)||draw.height<=0||draw.height>1000)return null;
+  const rings=normalized(draw.rings);if(!rings)return null;
+  const properties=draw.geoProperties||{},sourceId=String(properties.sourceId||draw.geoFeatureId||draw.id||draw.v046GeometryId||'building'),declaredKey=text(properties.cleabs),stableSourceId=declaredKey&&declaredKey.length<=512?declaredKey:sourceId,id=stableSourceId+':'+geometryIdentity(rings);
+  const levelsRaw=['building:levels','levels','nombre_d_etages'].map(k=>Number(properties[k])).find(n=>Number.isInteger(n)&&n>=1&&n<=200);
+  // The original metric height is never stretched to fit a guessed floor count.
+  const levels=levelsRaw||Math.max(1,Math.round(draw.height/(style(properties)==='industrial'?4.2:3.05)));
+  const declared=!!levelsRaw,facadeDocument=document(properties.facadeDocument);
+  const bounds={minX:Infinity,minZ:Infinity,maxX:-Infinity,maxZ:-Infinity};
+  for(const r of rings)for(const p of r){bounds.minX=Math.min(bounds.minX,p[0]);bounds.maxX=Math.max(bounds.maxX,p[0]);bounds.minZ=Math.min(bounds.minZ,p[1]);bounds.maxZ=Math.max(bounds.maxZ,p[1]);}
+  return{id,sourceId,stableSourceId,rings,baseY:draw.baseY,height:draw.height,levels,levelHeight:draw.height/levels,levelsBasis:declared?'source-declared':'invented',style:style(properties),properties,bounds,facadeDocument,provenance:facadeDocument?'mixed':'invented',heightBasis:draw.heightBasis||draw.sourceProfile?.basis||'existing-building-envelope'};
+ }
+ function edges(description){const out=[];for(let r=0;r<description.rings.length;r++){const ring=description.rings[r];let signed=0;for(let i=1;i<ring.length;i++)signed+=ring[i-1][0]*ring[i][1]-ring[i][0]*ring[i-1][1];const direction=(signed>0?1:-1)*(r===0?1:-1);for(let i=0;i<ring.length-1;i++){
+  const a=ring[i],b=ring[i+1],length=Math.hypot(b[0]-a[0],b[1]-a[1]);if(length<.08)continue;const tangent=[(b[0]-a[0])/length,(b[1]-a[1])/length],normal=[tangent[1]*direction,-tangent[0]*direction];
+  out.push({ringIndex:r,edgeIndex:i,a:a.slice(),b:b.slice(),length,tangent,normal});
+ }}return out;}
+ function supportedOpening(o,e,d){return e&&o.offset+o.width<=e.length+EPS&&o.bottom+o.height<=d.height+EPS;}
+ function entrances(draw){
+  const d=draw?.rings&&draw.baseY!==undefined&&draw.height!==undefined&&draw.levelHeight?draw:describe(draw);if(!d||d.height<1.95)return[];
+  const all=edges(d),edgeMap=new Map(all.map(e=>[e.ringIndex+':'+e.edgeIndex,e])),documented=[];
+  for(const o of d.facadeDocument?.openings||[]){if(o.type!=='door'||o.ringIndex!==0)continue;const e=edgeMap.get(o.ringIndex+':'+o.edgeIndex);if(supportedOpening(o,e,d)&&o.bottom<=.35)documented.push({o,e});}
+  const complete=new Set((d.facadeDocument?.completeEdges||[]).map(e=>e.ringIndex+':'+e.edgeIndex));
+  const candidates=documented.length?documented:all.filter(e=>e.ringIndex===0&&e.length>=1.6&&!complete.has(e.ringIndex+':'+e.edgeIndex)).sort((a,b)=>b.length-a.length||Math.min(a.a[0],a.b[0])-Math.min(b.a[0],b.b[0])||Math.min(a.a[1],a.b[1])-Math.min(b.a[1],b.b[1])||Math.max(a.a[0],a.b[0])-Math.max(b.a[0],b.b[0])||Math.max(a.a[1],a.b[1])-Math.max(b.a[1],b.b[1])).map(e=>({e,o:null}));
+  const result=[];
+  for(const {e,o}of candidates.slice(0,64)){const width=o?.width??Math.min(d.style==='industrial'?2.4:1.15,e.length*.6),height=o?.height??Math.min(2.35,d.levelHeight-.08,d.height-.08),fractions=o?[(o.offset+o.width/2)/e.length]:[.5,.34,.66];
+   if(height<1.85||width<.78)continue;
+   for(const t of fractions){if(!o&&(d.facadeDocument?.openings||[]).some(known=>known.ringIndex===e.ringIndex&&known.edgeIndex===e.edgeIndex&&known.offset<t*e.length+width/2&&known.offset+known.width>t*e.length-width/2&&known.bottom<height))continue;const p=[e.a[0]+(e.b[0]-e.a[0])*t,e.a[1]+(e.b[1]-e.a[1])*t];let candidate=null;
+    for(const inset of[.95,.7,.5]){const ip=[p[0]-e.normal[0]*inset,p[1]-e.normal[1]*inset],op=[p[0]+e.normal[0]*1.15,p[1]+e.normal[1]*1.15];
+     if(!inside(d.rings,...ip)||inside(d.rings,...op))continue;
+     // A player-width clearance must exist; a sliver is not an accessible room.
+     if([-1,1].some(s=>!inside(d.rings,ip[0]+e.tangent[0]*.4*s,ip[1]+e.tangent[1]*.4*s)))continue;
+     candidate={id:d.id+':entrance:'+e.ringIndex+':'+e.edgeIndex+':'+Math.round(t*10000),buildingId:d.id,center:[p[0],d.baseY+(o?.bottom||0),p[1]],outside:[op[0],d.baseY+(o?.bottom||0),op[1]],inside:[ip[0],d.baseY+(o?.bottom||0),ip[1]],tangent:e.tangent.slice(),normal:e.normal.slice(),ringIndex:0,edgeIndex:e.edgeIndex,width,height,offset:t*e.length-width/2,provenance:o?'documented':'invented',source:o?d.facadeDocument.source:null};break;
+    }if(candidate){result.push(candidate);break;}
+   }
+  }return result;
+ }
+ function floorSchedule(d,selection){
+  const levels=selection?.levelElevations;
+  if(Array.isArray(levels)&&levels.length===d.levels&&levels.every(finite)&&Math.abs(levels[0])<EPS&&levels.every((y,i)=>y>=0&&y<d.height&&(i===0||y-levels[i-1]>=1.95-EPS))&&d.height-levels.at(-1)>=1.95-EPS)return levels.slice();
+  return Array.from({length:d.levels},(_,i)=>i*d.levelHeight);
+ }
+ function selectedEntrance(door,selection,d,levelElevations){
+  if(door.provenance==='documented')return door;
+  const elevationOffset=selection?.elevationOffset??0;let height=selection?.height??door.height;
+  if(!finite(elevationOffset)||elevationOffset<0||!finite(height)||height<1.85||height>door.height+EPS)return null;
+  const floor=levelElevations.findIndex(y=>Math.abs(y-elevationOffset)<EPS);
+  if(floor>=0)height=Math.min(height,(levelElevations[floor+1]??d.height)-elevationOffset-.08);
+  if(height<1.85||elevationOffset+height>d.height+EPS)return null;
+  const at=p=>[p[0],d.baseY+elevationOffset,p[2]];
+  return{...door,height,elevationOffset,center:at(door.center),inside:at(door.inside),outside:at(door.outside)};
+ }
+ function facadePlan(draw,options={}){
+  const d=describe(draw);if(!d)return null;const all=edges(d),candidates=entrances(d),selection=draw.v050EntranceSelection,levelElevations=floorSchedule(d,selection),doors=(selection===null?[]:selection?candidates.filter(door=>door.id===selection.id).slice(0,1):candidates.slice(0,1)).map(door=>selectedEntrance(door,selection,d,levelElevations)).filter(Boolean),openings=[],maxOpenings=limit(Math.floor(options.maxOpenings??512),1,4096),byEdge=new Map(all.map(e=>[e.ringIndex+':'+e.edgeIndex,e]));
+  const occupied=new Map(),occupy=o=>{const key=o.ringIndex+':'+o.edgeIndex;if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push(o);};
+  const documented=(d.facadeDocument?.openings||[]).slice().sort((a,b)=>(a.type==='door'?-1:0)-(b.type==='door'?-1:0));
+  for(const door of doors)if(door.provenance==='invented'){const o={type:'door',ringIndex:0,edgeIndex:door.edgeIndex,offset:door.offset,bottom:door.elevationOffset,width:door.width,height:door.height,provenance:'invented',source:null};if(openings.length<maxOpenings)openings.push(o);occupy(o);}
+  for(const o of documented){const e=byEdge.get(o.ringIndex+':'+o.edgeIndex);if(!supportedOpening(o,e,d))continue;const item={...o,provenance:'documented',source:d.facadeDocument.source};if(openings.length<maxOpenings)openings.push(item);occupy(item);}
+  // Documented openings define only what is actually documented. Missing faces
+  // and floors can be completed coherently, always with invented provenance.
+  const seed=hash(d.id),bay=d.style==='industrial'?4.8:d.style==='religious'?4.2:2.8+(seed%50)/100,rows=[];let potentialOpenings=0;
+  const complete=new Set((d.facadeDocument?.completeEdges||[]).map(e=>e.ringIndex+':'+e.edgeIndex));
+  for(const e of all){if(e.length<1.45||complete.has(e.ringIndex+':'+e.edgeIndex))continue;const count=Math.min(160,Math.floor(e.length/bay));if(!count)continue;rows.push({edge:e,count,start:potentialOpenings,end:potentialOpenings+count*d.levels});potentialOpenings+=count*d.levels;}
+  // Sample candidate indices directly. A complex 200-storey polygon never
+  // materialises millions of window objects before the renderer's LOD budget.
+  const remaining=maxOpenings-openings.length,sampleCount=Math.min(potentialOpenings,Math.max(0,remaining)),attempts=Math.min(potentialOpenings,Math.max(0,remaining*4)),visited=new Set();let rowIndex=0,attempted=0;
+  for(let n=0;n<attempts&&openings.length<maxOpenings;n++){const slot=n%sampleCount,phase=Math.floor(n/sampleCount),index=Math.min(potentialOpenings-1,Math.floor(slot*potentialOpenings/sampleCount)+phase);if(slot===0)rowIndex=0;if(visited.has(index))continue;visited.add(index);while(rowIndex<rows.length&&index>=rows[rowIndex].end)rowIndex++;const row=rows[rowIndex];if(!row)break;attempted++;const e=row.edge,local=index-row.start,floor=Math.floor(local/row.count),column=local%row.count,step=e.length/row.count,levelHeight=(levelElevations[floor+1]??d.height)-levelElevations[floor],bottom=levelElevations[floor]+Math.min(.95,levelHeight*.29),height=Math.min(d.style==='religious'?2.25:1.55,levelHeight*.53),width=Math.min(d.style==='industrial'?2.2:1.12,step*.53),offset=step*(column+.5)-width/2;
+   if(height<.5||bottom+height>d.height-.15||offset<.12||offset+width>e.length-.12)continue;
+   const o={type:floor===0&&d.style==='commercial'?'shopfront':'window',ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,bottom,width,height,provenance:'invented',source:null};
+   if((occupied.get(e.ringIndex+':'+e.edgeIndex)||[]).some(a=>a.offset<o.offset+o.width+.15&&a.offset+a.width+.15>o.offset&&a.bottom<o.bottom+o.height+.12&&a.bottom+a.height+.12>o.bottom))continue;
+   openings.push(o);
+  }
+  return{...d,levelElevations,edges:all,doors,openings,seed,detailCoverage:{budgeted:attempted<potentialOpenings||documented.length>maxOpenings,potentialOpenings,attempted,maxOpenings,retainedOpenings:openings.length}};
+ }
+ function geometry(draw,options={}){
+  const maxQuads=limit(Math.floor(options.maxQuads??512),8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads/(detail?6:1))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
+  const groups=new Map(),palette=PALETTES[plan.style],shade=((plan.seed%21)-10)/550;
+  const material=name=>name==='wall'?palette.wall.map(v=>limit(v+shade,0,1)):palette[name]||palette.trim;
+  let quads=0,openingCount=0;const renderedOpenings=[];
+  function quad(e,x0,y0,x1,y1,name,offset=.018){if(quads>=maxQuads||x1<=x0||y1<=y0)return false;let g=groups.get(name);if(!g){g={vertices:[],faces:[]};groups.set(name,g);}const at=(x,y)=>[e.a[0]+e.tangent[0]*x+e.normal[0]*offset,plan.baseY+y,e.a[1]+e.tangent[1]*x+e.normal[1]*offset],k=g.vertices.length;g.vertices.push(at(x0,y0),at(x1,y0),at(x1,y1),at(x0,y1));g.faces.push([k,k+1,k+2],[k,k+2,k+3]);quads++;return true;}
+  // Every panel follows an actual outer or courtyard edge. The tiny offset is
+  // a rendering separation only and never changes the measured footprint.
+  const openingReserve=plan.openings.length?Math.min(maxQuads,Math.max(8,Math.min(Math.floor(maxQuads*.7),Math.min(plan.openings.length,16)*(detail?8:1)))):0,panelBudget=maxQuads-openingReserve;
+  for(const e of plan.edges){if(quads>=panelBudget)break;quad(e,0,0,e.length,plan.height,'wall',.008);if(detail&&plan.height>3&&quads<panelBudget)quad(e,0,Math.max(.1,plan.height-.20),e.length,plan.height-.05,'trim',.024);}
+  for(const o of plan.openings){const e=plan.edges.find(e=>e.ringIndex===o.ringIndex&&e.edgeIndex===o.edgeIndex);if(!e||quads+(detail?8:1)>maxQuads)continue;
+   const x=o.offset,y=o.bottom,w=o.width,h=o.height;quad(e,x,y,x+w,y+h,o.type==='door'?'iron':'glass',.027);openingCount++;renderedOpenings.push({...o});
+   if(!detail)continue;const trim=Math.min(.09,w*.075,h*.06),lo=Math.max(0,x-trim),hi=Math.min(e.length,x+w+trim),bottom=Math.max(0,y-trim),top=Math.min(plan.height,y+h+trim);
+   quad(e,lo,bottom,x,top,'trim',.042);quad(e,x+w,bottom,hi,top,'trim',.042);quad(e,x,y+h,x+w,top,'trim',.042);if(y>0)quad(e,x,bottom,x+w,y,'trim',.042);
+   if(o.type==='window'&&plan.style==='residential'&&o.provenance!=='documented'){const sw=Math.min(.30,w*.28);if(x-sw>.08)quad(e,x-sw,y,x-.03,y+h,'shutter',.038);if(x+w+sw<e.length-.08)quad(e,x+w+.03,y,x+w+sw,y+h,'shutter',.038);}
+   if(o.type==='window'&&y>.4)quad(e,lo,Math.max(0,y-.13),hi,y-.06,'trim',.075);
+  }
+  const tile=draw.v046Tile||draw.geoTile||'facade:'+plan.id,center=[(plan.bounds.minX+plan.bounds.maxX)/2,plan.baseY+plan.height/2,(plan.bounds.minZ+plan.bounds.maxZ)/2];
+  const draws=[...groups].map(([name,g])=>({mesh:'geoSurface',vertices:g.vertices,faces:g.faces,pos:center.slice(),scale:[1,1,1],color:material(name),alpha:1,revision:0,v046Tile:tile,v046GeometryId:'facade:'+plan.id+':'+name,id:'facade:'+plan.id+':'+name,v050Facade:true,geoLayer:'facade',facadeBuildingId:plan.id,facadeProvenance:plan.provenance,sourceProvenance:plan.facadeDocument?{source:plan.facadeDocument.source,license:plan.facadeDocument.license,attribution:plan.facadeDocument.attribution,acquiredAt:plan.facadeDocument.acquiredAt}:null,renderOffsetMeters:.075}));
+  const bytes=draws.reduce((n,g)=>n+g.vertices.length*96+g.faces.length*96,0);
+  return{draws,quads,openings:openingCount,renderedOpenings,bytes:bytes+renderedOpenings.length*256,description:{id:plan.id,sourceId:plan.sourceId,stableSourceId:plan.stableSourceId,style:plan.style,baseY:plan.baseY,height:plan.height,levels:plan.levels,levelHeight:plan.levelHeight,levelElevations:plan.levelElevations.slice(),provenance:plan.provenance,detailCoverage:plan.detailCoverage}};
+ }
+ function distance(bounds,x,z){return Math.hypot(Math.max(bounds.minX-x,0,x-bounds.maxX),Math.max(bounds.minZ-z,0,z-bounds.maxZ));}
+ class Index{
+  constructor(draws=[],size=96){this.size=size;this.cells=new Map();this.large=[];this.count=0;this.rebuild(draws);}
+  rebuild(draws){this.cells.clear();this.large=[];this.count=0;const seen=new Set();for(const draw of draws){if(draw?.mesh!=='prism'||draw.geoLayer!=='building')continue;const d=describe(draw);if(!d||seen.has(d.id))continue;seen.add(d.id);this.count++;const item={draw,description:d},a=Math.floor(d.bounds.minX/this.size),b=Math.floor(d.bounds.maxX/this.size),c=Math.floor(d.bounds.minZ/this.size),e=Math.floor(d.bounds.maxZ/this.size);if((b-a+1)*(e-c+1)>128){this.large.push(item);continue;}for(let x=a;x<=b;x++)for(let z=c;z<=e;z++){const key=x+':'+z;if(!this.cells.has(key))this.cells.set(key,[]);this.cells.get(key).push(item);}}
+  }
+  around(x,z,radius=120,maxBuildings=48){const set=new Set(this.large);for(let a=Math.floor((x-radius)/this.size);a<=Math.floor((x+radius)/this.size);a++)for(let b=Math.floor((z-radius)/this.size);b<=Math.floor((z+radius)/this.size);b++)for(const item of this.cells.get(a+':'+b)||[])set.add(item);return[...set].map(item=>({...item,distance:distance(item.description.bounds,x,z)})).filter(item=>item.distance<=radius).sort((a,b)=>a.distance-b.distance||a.description.id.localeCompare(b.description.id)).slice(0,maxBuildings);}
+ }
+ class Cache{
+  constructor(maxBytes=8*1024*1024,maxEntries=64){this.maxBytes=Math.max(1,maxBytes);this.maxEntries=Math.max(1,maxEntries);this.entries=new Map();this.bytes=0;this.hits=0;this.builds=0;this.evictions=0;}
+  key(draw,options){return JSON.stringify([draw.geoProperties?.sourceId||draw.geoFeatureId||draw.v046GeometryId||draw.id,draw.baseY,draw.height,draw.rings,draw.geoProperties,draw.v050EntranceSelection??null,draw.v050EntranceSelection===undefined,options]);}
+  get(draw,options={}){const key=this.key(draw,options);if(this.entries.has(key)){const value=this.entries.get(key);this.entries.delete(key);this.entries.set(key,value);this.hits++;return value;}const value=geometry(draw,options);value.bytes+=key.length*2+512;this.builds++;if(value.bytes>this.maxBytes)return value;while(this.entries.size>=this.maxEntries||this.bytes+value.bytes>this.maxBytes){const [first,old]=this.entries.entries().next().value;this.entries.delete(first);this.bytes-=old.bytes;this.evictions++;}this.entries.set(key,value);this.bytes+=value.bytes;return value;}
+  clear(){this.entries.clear();this.bytes=0;}
+ }
+ return{hash,inside,normalized,geometryIdentity,style,document,describe,edges,entrances,floorSchedule,facadePlan,geometry,distance,Index,Cache};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralFacades;
+
+function v050FacadesAfterInit(){
+ if(typeof window==='undefined'||window.__mistralFacadesInstalled)return;window.__mistralFacadesInstalled=true;
+ const runtime={world:null,source:null,index:null,cache:new MistralFacades.Cache(),draws:[],selection:[],live:new Map(),last:null,lastTime:0,stats:{buildings:0,visibleBuildings:0,quads:0,openings:0,fictionalBuildings:0,documentedBuildings:0}};
+ const quality=()=>settings?.quality==='high'?{radius:145,buildings:64,quads:8192,perBuilding:512}:settings?.quality==='low'?{radius:65,buildings:24,quads:2048,perBuilding:256}:{radius:105,buildings:40,quads:4096,perBuilding:384};
+ function reset(w){runtime.world=w;runtime.source=null;runtime.index=null;runtime.draws=[];runtime.selection=[];runtime.live=new Map();runtime.last=null;runtime.lastTime=0;runtime.cache.clear();runtime.stats={buildings:0,visibleBuildings:0,quads:0,openings:0,fictionalBuildings:0,documentedBuildings:0};}
+ function refresh(force=false){
+  if(!world?.v046||!world.geoMacro){if(runtime.world)reset(null);return[];}
+  if(runtime.world!==world)reset(world);
+  if(runtime.source!==world.staticDraws){runtime.source=world.staticDraws;runtime.index=new MistralFacades.Index(world.staticDraws);runtime.last=null;}
+  const p=state.player.pos,o=quality(),now=Date.now();
+  if(!force&&runtime.last&&runtime.last.quality===settings.quality&&Math.hypot(p[0]-runtime.last.x,p[2]-runtime.last.z)<3&&now-runtime.lastTime<1000)return runtime.draws;
+  const selected=runtime.index.around(p[0],p[2],o.radius,o.buildings),draws=[],live=new Map();let quads=0,openings=0,visible=0,documented=0;
+  for(const item of selected){const remaining=o.quads-quads;if(remaining<8)break;const result=runtime.cache.get(item.draw,{detail:item.distance>70?'low':'high',maxQuads:Math.min(o.perBuilding,remaining)});if(!result.draws.length)continue;draws.push(...result.draws);live.set(item.description.id,result);quads+=result.quads;openings+=result.openings;visible++;if(item.description.facadeDocument)documented++;}
+  runtime.draws=draws;runtime.selection=selected;runtime.live=live;runtime.last={x:p[0],z:p[2],quality:settings.quality};runtime.lastTime=now;
+  runtime.stats={buildings:runtime.index.count,visibleBuildings:visible,quads,openings,fictionalBuildings:visible-documented,documentedBuildings:documented};return draws;
+ }
+ const previousPublish=v046Publish;v046Publish=function(...args){const result=previousPublish(...args);if(args[0]===world)reset(world);return result;};
+ const previousCollect=collectDraws;collectDraws=function(t){const draws=previousCollect(t);return draws.concat(refresh());};
+ if(window.__MISTRAL_DEBUG)Object.assign(window.__MISTRAL_DEBUG,{
+  v050FacadeInfo:()=>({...runtime.stats,cache:{bytes:runtime.cache.bytes,entries:runtime.cache.entries.size,hits:runtime.cache.hits,builds:runtime.cache.builds,evictions:runtime.cache.evictions},radius:quality().radius,selection:runtime.selection.slice(0,10).map(item=>({id:item.description.id,distance:item.distance,style:item.description.style,provenance:item.description.provenance})),limit:'Les détails inventés sont cohérents avec l’emprise et la hauteur disponibles ; ils ne constituent pas un relevé de façade.'}),
+  v050FacadeRefresh:()=>{refresh(true);return runtime.stats;},
+  v050FacadeDoors:()=>runtime.selection.flatMap(item=>MistralFacades.entrances(item.description)),
+  v050FacadeBuilding:(id)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);if(!item)return null;const d=item.description,result=runtime.live.get(d.id);return{id:d.id,sourceId:d.sourceId,stableSourceId:d.stableSourceId,baseY:d.baseY,height:d.height,levels:d.levels,levelHeight:d.levelHeight,levelsBasis:d.levelsBasis,style:d.style,provenance:d.provenance,rings:d.rings.slice(0,32).map(r=>r.slice(0,2048).map(p=>p.slice())),ringsTruncated:d.rings.length>32||d.rings.some(r=>r.length>2048),rendered:!!result,openings:result?.renderedOpenings.slice(0,128)||[],openingsTruncated:(result?.renderedOpenings.length||0)>128,detailCoverage:result?.description.detailCoverage||null};}
+ });
+}
+
+/* Metre based interiors for streamed source footprints. A source outline is
+   preserved, including courtyards. Unrecorded layouts are explicitly invented;
+   a documentary plan must carry its own source and is checked before use. */
+const MistralCityInteriors=(()=>{
+ const EPS=1e-7,MAX_POINTS=8192,MAX_LEVELS=512;
+ const finite=n=>typeof n==='number'&&Number.isFinite(n),copy=v=>JSON.parse(JSON.stringify(v));
+ function hash(value){let a=2166136261,b=2246822519;for(const c of JSON.stringify(value)){a=Math.imul(a^c.charCodeAt(0),16777619);b=Math.imul(b^c.charCodeAt(0),3266489917);}return(a>>>0).toString(16).padStart(8,'0')+(b>>>0).toString(16).padStart(8,'0');}
+ function area(ring){let n=0;for(let i=0,j=ring.length-1;i<ring.length;j=i++)n+=ring[j][0]*ring[i][1]-ring[i][0]*ring[j][1];return n/2;}
+ function bounds(rings){let minX=Infinity,maxX=-Infinity,minZ=Infinity,maxZ=-Infinity;for(const ring of rings)for(const[x,z]of ring){minX=Math.min(minX,x);maxX=Math.max(maxX,x);minZ=Math.min(minZ,z);maxZ=Math.max(maxZ,z);}return{minX,maxX,minZ,maxZ,cx:(minX+maxX)/2,cz:(minZ+maxZ)/2};}
+ function ringContains(ring,x,z){let yes=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>z)!==(b[1]>z)&&x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])yes=!yes;}return yes;}
+ function inside(rings,x,z){return ringContains(rings[0],x,z)&&!rings.slice(1).some(r=>ringContains(r,x,z));}
+ function segmentDistance(p,a,b){const dx=b[0]-a[0],dz=b[1]-a[1],t=Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dz)/(dx*dx+dz*dz||1)));return Math.hypot(p[0]-a[0]-t*dx,p[1]-a[1]-t*dz);}
+ function clearance(rings,x,z){let d=Infinity;for(const ring of rings)for(let i=0;i<ring.length;i++)d=Math.min(d,segmentDistance([x,z],ring[i],ring[(i+1)%ring.length]));return inside(rings,x,z)?d:d<EPS?0:-1;}
+ function cleanRings(raw){
+  if(!Array.isArray(raw)||!raw.length||raw.length>128)throw Error('Empreinte intérieure absente ou trop complexe');let count=0;
+  const rings=raw.map(r=>{if(!Array.isArray(r))throw Error('Anneau intérieur invalide');const out=[];for(const p of r){if(!Array.isArray(p)||p.length<2||!p.slice(0,2).every(finite)||p.slice(0,2).some(n=>Math.abs(n)>1000000))throw Error('Coordonnée intérieure invalide');if(!out.length||Math.hypot(p[0]-out.at(-1)[0],p[1]-out.at(-1)[1])>EPS)out.push(p.slice(0,2));}if(out.length>1&&Math.hypot(out[0][0]-out.at(-1)[0],out[0][1]-out.at(-1)[1])<EPS)out.pop();count+=out.length;if(out.length<3||Math.abs(area(out))<.02)throw Error('Anneau intérieur dégénéré');return out;});
+  if(count>MAX_POINTS)throw Error('Budget de l’empreinte intérieure dépassé');return rings;
+ }
+ function building(raw){
+  if(!raw||typeof raw.id!=='string'||!raw.id.trim()||raw.id.length>512||!finite(raw.baseY)||!finite(raw.height)||raw.height<=0||raw.height>2000)throw Error('Volume de bâtiment invalide');
+  const source=cleanRings(raw.rings),b=bounds(source),origin=[b.cx,raw.baseY,b.cz],rings=source.map(r=>r.map(p=>[p[0]-b.cx,p[1]-b.cz]));
+  const levels=Number.isInteger(raw.levels)&&raw.levels>0?raw.levels:Math.max(1,Math.round(raw.height/3));if(levels>MAX_LEVELS)throw Error('Nombre de niveaux non pris en charge');if(raw.height/levels<1.95)throw Error('Le volume et les niveaux renseignés ne laissent pas la hauteur d’un personnage');
+  const properties=raw.properties||{},use=String(properties.usage_1||properties['building:use']||properties.building||properties.nature||'').slice(0,160),name=String(properties.name||properties.nom||properties.nom_du_batiment||'Bâtiment').slice(0,160);
+  const levelsBasis=properties.nombre_d_etages!=null?'nombre_d_etages IGN, rez-de-chaussée compris':properties['building:levels']!=null?'building:levels':'estimation du volume';
+  return{id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name,origin,rings,height:raw.height,levels,levelHeight:raw.height/levels,use,levelsBasis,outlineBasis:raw.provenance||'empreinte source',schema:1};
+ }
+ function validateBuilding(raw){
+  if(!raw||raw.schema!==1||typeof raw.id!=='string'||raw.id.length>512||!raw.id||!Array.isArray(raw.origin)||raw.origin.length!==3||!raw.origin.every(finite)||!finite(raw.height)||raw.height<=0||raw.height>2000||!Number.isInteger(raw.levels)||raw.levels<1||raw.levels>MAX_LEVELS)throw Error('Bâtiment sauvegardé invalide');
+  const rings=cleanRings(raw.rings),b=bounds(rings);if(Math.max(b.maxX-b.minX,b.maxZ-b.minZ)>10000)throw Error('Emprise intérieure hors budget');if(raw.height/raw.levels<1.95)throw Error('Niveaux sauvegardés incompatibles avec leur volume');
+  let levelElevations=null;if(raw.levelElevations!=null){if(!Array.isArray(raw.levelElevations)||raw.levelElevations.length!==raw.levels||raw.levelElevations.some(n=>!finite(n))||Math.abs(raw.levelElevations[0])>EPS)throw Error('Altitudes de planchers invalides');levelElevations=raw.levelElevations.slice();for(let i=0;i<raw.levels;i++)if((levelElevations[i+1]??raw.height)-levelElevations[i]<1.95-EPS)throw Error('Planchers inventés non praticables');}
+  return{schema:1,id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name:String(raw.name||'Bâtiment').slice(0,160),origin:raw.origin.slice(),rings,height:raw.height,levels:raw.levels,levelHeight:raw.height/raw.levels,use:String(raw.use||'').slice(0,160),levelsBasis:String(raw.levelsBasis||'estimation').slice(0,160),outlineBasis:typeof raw.outlineBasis==='string'?raw.outlineBasis.slice(0,240):'empreinte source',...(levelElevations?{levelElevations}:{} )};
+ }
+ function point(rings,preferred=null,radius=.43){
+  if(preferred&&clearance(rings,...preferred)>=radius)return preferred.slice();
+  const b=bounds(rings);if(clearance(rings,b.cx,b.cz)>=radius)return[b.cx,b.cz];const w=b.maxX-b.minX,d=b.maxZ-b.minZ,nx=Math.max(1,Math.min(4096,Math.round(Math.sqrt(4096*w/d)))),nz=Math.max(1,Math.floor(4096/nx));let best=null,max=-1;
+  for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){const x=b.minX+w*(i+.5)/nx,z=b.minZ+d*(j+.5)/nz,c=clearance(rings,x,z);if(c>=radius&&c>max){max=c;best=[x,z];}}
+  return best;
+ }
+ function intervals(rings,axis,at){
+  const fixed=axis==='x'?0:1,vary=1-fixed,cuts=[];
+  for(const ring of rings)for(let i=0;i<ring.length;i++){const a=ring[i],b=ring[(i+1)%ring.length];if((a[fixed]>at)!==(b[fixed]>at))cuts.push(a[vary]+(b[vary]-a[vary])*(at-a[fixed])/(b[fixed]-a[fixed]));}
+  cuts.sort((a,b)=>a-b);const out=[];for(let i=1;i<cuts.length;i++){const lo=cuts[i-1],hi=cuts[i],p=axis==='x'?[at,(lo+hi)/2]:[(lo+hi)/2,at];if(hi-lo>EPS&&inside(rings,...p))out.push([lo,hi]);}return out;
+ }
+ function inventedWalls(b,entry){
+  const box=bounds(b.rings),axis=box.maxX-box.minX>=box.maxZ-box.minZ?'x':'z',lo=axis==='x'?box.minX:box.minZ,hi=axis==='x'?box.maxX:box.maxZ,walls=[];
+  const count=Math.min(48,Math.max(0,Math.floor((hi-lo)/6)-1));
+  for(let i=1;i<=count;i++){const at=lo+(hi-lo)*i/(count+1);for(const[a,c]of intervals(b.rings,axis,at)){
+    if(c-a<2.4)continue;const gap=Math.min(1.4,(c-a)*.4),toPoint=q=>axis==='x'?[at,q]:[q,at],samples=Math.min(2048,Math.max(16,Math.ceil((c-a)/.25))),runs=[];let start=null,last=null;
+    // A courtyard can split the actor's clearance along an otherwise solid
+    // source band. Give each such circulation band its own doorway.
+    for(let j=1;j<samples;j++){const q=a+(c-a)*j/samples,good=clearance(b.rings,...toPoint(q))>=.65;if(good){if(start===null)start=q;last=q;}if((!good||j===samples-1)&&start!==null){runs.push([start,last]);start=null;}}
+    const gaps=runs.map(([lo,hi])=>{const center=(lo+hi)/2;return[Math.max(a+.1,center-gap/2),Math.min(c-.1,center+gap/2)];});if(!gaps.length)continue;let cursor=a;
+    for(const[lo,hi]of[...gaps,[c,c]]){if(lo>cursor+.25){const p=toPoint(cursor),q=toPoint(lo);if(segmentDistance(entry,p,q)>=1.1)walls.push({a:p,b:q,thickness:.16,provenance:'invented'});}cursor=Math.max(cursor,hi);}
+  }}return walls;
+ }
+ function publicSource(s){
+  if(!s||!['url','license','attribution','title','accessedAt'].every(k=>typeof s[k]==='string'&&s[k].trim()&&s[k].length<=2000))throw Error('Le plan documentaire doit indiquer sa provenance complète');
+  let u;try{u=new URL(s.url);}catch{throw Error('URL de provenance invalide');}if(u.protocol!=='https:'||u.username||u.password)throw Error('La provenance doit être une URL HTTPS publique sans identifiants');
+  if(!/^\d{4}-\d{2}-\d{2}(?:T|$)/.test(s.accessedAt))throw Error('Date de consultation documentaire invalide');return Object.fromEntries(['url','license','attribution','title','accessedAt'].map(k=>[k,s[k]]));
+ }
+ function segmentInside(rings,a,b,margin=0){const n=Math.max(1,Math.ceil(Math.hypot(a[0]-b[0],a[1]-b[1])/.2));if(n>50000)return false;for(let i=0;i<=n;i++){const t=i/n,x=a[0]+(b[0]-a[0])*t,z=a[1]+(b[1]-a[1])*t;if(clearance(rings,x,z)<margin-EPS)return false;}return true;}
+ function document(raw,b){
+  if(!raw||raw.schemaVersion!==1||raw.frame!=='building-local-metre'||raw.buildingId!==b.id||!Array.isArray(raw.levels)||!raw.levels.length||raw.levels.length>b.levels)throw Error('Plan documentaire incompatible avec le bâtiment');
+  const source=publicSource(raw.source),seen=new Set(),levels=[];
+  for(const l of raw.levels){
+   if(!Number.isInteger(l.level)||l.level<0||l.level>=b.levels||seen.has(l.level)||!finite(l.elevation)||!finite(l.height)||l.height<1.95||l.height>12||l.elevation<-.02||l.elevation+l.height>b.height+.25||!Array.isArray(l.walls)||l.walls.length>2048||!Array.isArray(l.rooms)||l.rooms.length>512)throw Error('Niveau documentaire invalide');seen.add(l.level);
+   const walls=l.walls.map(w=>{if(!w||!Array.isArray(w.a)||!Array.isArray(w.b)||w.a.length!==2||w.b.length!==2||![...w.a,...w.b].every(finite)||!segmentInside(b.rings,w.a,w.b)||Math.hypot(w.a[0]-w.b[0],w.a[1]-w.b[1])<.05)throw Error('Mur documentaire hors emprise');return{a:w.a.slice(),b:w.b.slice(),thickness:finite(w.thickness)?Math.max(.06,Math.min(.8,w.thickness)):.16,provenance:'documented'};});
+   const rooms=l.rooms.map(r=>{const rings=cleanRings([r.ring]);if(rings[0].some(p=>clearance(b.rings,...p)<-.001)||rings[0].some((p,i)=>!segmentInside(b.rings,p,rings[0][(i+1)%rings[0].length])))throw Error('Pièce documentaire hors emprise');return{id:String(r.id||'pièce').slice(0,160),use:String(r.use||'').slice(0,160),ring:rings[0]};});
+   if(l.entry&&(!Array.isArray(l.entry)||l.entry.length!==2||!l.entry.every(finite)||clearance(b.rings,...l.entry)<.43))throw Error('Entrée documentaire impraticable');
+   levels.push({level:l.level,elevation:l.elevation,height:l.height,walls,rooms,entry:l.entry?.slice()||null});
+  }
+  levels.sort((a,c)=>a.level-c.level);for(let i=1;i<levels.length;i++)if(levels[i].elevation<levels[i-1].elevation+levels[i-1].height-.1)throw Error('Niveaux documentaires superposés');
+  const out={schemaVersion:1,frame:raw.frame,buildingId:b.id,source,levels};floorLevels(b,out);return out;
+ }
+ function floorLevels(b,doc=null){
+  if(!doc)return b.levelElevations?.slice()||Array.from({length:b.levels},(_,i)=>i*b.levelHeight);
+  const fixed=new Map([[0,0],[b.levels,b.height]]),put=(i,y)=>{if(fixed.has(i)&&Math.abs(fixed.get(i)-y)>.05)throw Error('Le plan et le volume source ont des planchers incompatibles');fixed.set(i,y);};
+  for(const l of doc.levels){put(l.level,l.elevation);put(l.level+1,l.elevation+l.height);}
+  const ordered=[...fixed].sort((a,c)=>a[0]-c[0]),out=Array(b.levels);
+  for(let k=1;k<ordered.length;k++){const[a,y]=ordered[k-1],[c,z]=ordered[k],h=(z-y)/(c-a);if(h<1.95-EPS)throw Error('Les niveaux documentés ne laissent pas de hauteur praticable');for(let i=a;i<c;i++)out[i]=y+(i-a)*h;}return out;
+ }
+ function alignStreet(raw,groundY,doc=null){
+  const b=validateBuilding(raw);if(!finite(groundY))return null;const relative=groundY-b.origin[1],grid=floorLevels(b,doc),near=grid.map((elevation,level)=>({elevation,level,distance:Math.abs(elevation-relative)})).sort((a,c)=>a.distance-c.distance||a.level-c.level)[0];
+  if(near.distance<=.65)return{building:b,level:near.level,elevation:near.elevation,thresholdMeters:groundY-b.origin[1]-near.elevation};
+  if(doc||relative<1.95||relative>b.height-1.95)return null;
+  const candidates=[];for(let i=1;i<b.levels;i++)if(relative/i>=1.95&&(b.height-relative)/(b.levels-i)>=1.95)candidates.push(i);
+  candidates.sort((a,c)=>Math.abs(a-relative/b.height*b.levels)-Math.abs(c-relative/b.height*b.levels)||a-c);if(!candidates.length)return null;const level=candidates[0],elevations=Array.from({length:b.levels},(_,i)=>i<=level?relative*i/level:relative+(i-level)*(b.height-relative)/(b.levels-level));
+  return{building:validateBuilding({...b,levelElevations:elevations}),level,elevation:relative,thresholdMeters:0};
+ }
+ function theme(use){const t=String(use).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();return /hopital|medical|sante|clinique/.test(t)?'medical':/industri|entrepot|agric|hangar/.test(t)?'industrial':/commercial|commerce|bureau|service/.test(t)?'commercial':/eglise|relig|culte/.test(t)?'civic':'residential';}
+ const FURNITURE={
+  bed:{size:[1.55,2.05],height:.95,label:'Lit et chevet',zone:'Coin nuit'},
+  sofa:{size:[1.9,.9],height:.95,label:'Canapé',zone:'Salon'},
+  kitchen:{size:[1.9,.7],height:1.15,label:'Cuisine, évier et plaques',zone:'Coin cuisine'},
+  sanitary:{size:[1.3,1.15],height:1.15,label:'WC et lavabo',zone:'Coin sanitaire'},
+  wardrobe:{size:[1.15,.6],height:1.8,label:'Armoire',zone:'Rangement'},
+  dining:{size:[1.5,1.35],height:.95,label:'Table et chaises',zone:'Coin repas'},
+  desk:{size:[1.3,1.15],height:1.3,label:'Bureau et terminal',zone:'Bureau'},
+  reception:{size:[1.9,.75],height:1.17,label:'Comptoir d’accueil',zone:'Accueil'},
+  shelf:{size:[1.2,.55],height:1.75,label:'Rayonnage de commerce',zone:'Rayonnage'},
+  workbench:{size:[1.8,.8],height:1.1,label:'Établi et étau',zone:'Atelier'},
+  crate:{size:[1.25,1.05],height:1.4,label:'Caisses empilées',zone:'Logistique'},
+  pallet:{size:[2,.9],height:1.75,label:'Rack et palettes',zone:'Stockage industriel'},
+  medical_bed:{size:[.95,2.1],height:1,label:'Lit médical',zone:'Soins'},
+  medical_cabinet:{size:[.95,.55],height:1.75,label:'Armoire de soins',zone:'Réserve médicale'},
+  washbasin:{size:[.7,.55],height:1.15,label:'Poste de lavage',zone:'Hygiène'},
+  bench:{size:[1.75,.6],height:1,label:'Banc',zone:'Attente'},
+  lectern:{size:[.7,.6],height:1.2,label:'Pupitre',zone:'Salle commune'},
+  archive:{size:[1.2,.55],height:1.75,label:'Étagères et registres',zone:'Archives'}
+ };
+ function program(use,level=0){
+  const kind=theme(use);return(kind==='residential'?(level>0?['bed','wardrobe','sanitary','desk','sofa','kitchen','dining']:['bed','kitchen','sofa','sanitary','wardrobe','dining','desk']):kind==='medical'?['medical_bed','medical_cabinet','washbasin','desk','bench','medical_bed']:kind==='industrial'?['workbench','crate','pallet','wardrobe','desk','crate']:kind==='commercial'?['reception','shelf','desk','crate','shelf','bench']:['bench','lectern','archive','desk','wardrobe']).slice();
+ }
+ function roomProgram(room,base,level){
+  const use=String(room?.use||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  if(/chambre|nuit|bed|sleep/.test(use))return['bed','wardrobe','desk'];
+  if(/cuisine|kitchen|repas|dining/.test(use))return['kitchen','dining','wardrobe'];
+  if(/bain|sanitaire|toilet|lavabo|bath/.test(use))return['sanitary','washbasin','wardrobe'];
+  if(/salon|sejour|living/.test(use))return['sofa','dining','archive'];
+  if(/bureau|office/.test(use))return['desk','archive','wardrobe'];
+  return program(base,level);
+ }
+ /* Bounding rectangles include an aisle around each prop. Test their interior
+    too: four corners alone can miss a courtyard contained in the rectangle. */
+ function furnishingFits(l,x,z,size,other=[]){
+  if(Math.hypot(x-l.entry[0],z-l.entry[1])<2.4||!walkable(l,x,z,Math.hypot(size[0]/2,size[1]/2)+1))return false;
+  const hx=size[0]/2+.85,hz=size[1]/2+.85,nx=Math.max(2,Math.ceil(hx*2/.4)),nz=Math.max(2,Math.ceil(hz*2/.4));
+  for(let i=0;i<=nx;i++)for(let j=0;j<=nz;j++)if(!walkable(l,x-hx+hx*2*i/nx,z-hz+hz*2*j/nz,.08))return false;
+  return!other.some(f=>Math.hypot(Math.max(Math.abs(x-f.pos[0])-(size[0]+f.size[0])/2,0),Math.max(Math.abs(z-f.pos[1])-(size[1]+f.size[1])/2,0))<.95);
+ }
+ function furnish(l,b,recorded=false){
+  const bb=bounds(l.rings),step=Math.max(3,Math.sqrt((bb.maxX-bb.minX)*(bb.maxZ-bb.minZ)/64)),points=[],preferred=program(b.use,l.level);
+  for(const phase of[.5,.25,.75])for(let z=bb.minZ+step*phase;z<bb.maxZ;z+=step)for(let x=bb.minX+step*phase;x<bb.maxX;x+=step)points.push([x,z]);
+  // A different floor keeps its own stable arrangement, without changing the
+  // measured outline, existing walls or documented room geometry.
+  const seed=parseInt(hash([b.id,l.level,'furnishing']).slice(0,6),16);if(seed%2)points.reverse();
+  const furniture=[],zones=[],used=new Set();
+  const place=(kind,p)=>{
+   if(used.has(p)||furniture.length>=32)return false;const room=recorded?l.rooms.find(r=>inside([r.ring],...p)):null,def=FURNITURE[kind];
+   if(recorded&&l.rooms.length&&!room||!roomProgram(room,b.use,l.level).includes(kind)||def.height>l.height-.1||!furnishingFits(l,...p,def.size,furniture))return false;
+   if(room){const hx=def.size[0]/2+.03,hz=def.size[1]/2+.03;if([[-hx,-hz],[hx,-hz],[hx,hz],[-hx,hz]].some(([dx,dz])=>clearance([room.ring],p[0]+dx,p[1]+dz)<0))return false;}
+   const selected={id:'furnishing:'+hash([b.id,l.level,p,kind]),pos:p.slice(),kind,size:def.size.slice(),height:def.height,label:def.label,zone:def.zone,roomId:room?.id||null,provenance:'invented',seed:parseInt(hash([b.id,l.level,p,kind]).slice(0,6),16)};used.add(p);furniture.push(selected);const[x,z]=p,[sx,sz]=selected.size,hx=sx/2+.25,hz=sz/2+.25;
+   zones.push({id:'invented-zone:'+selected.id,use:selected.zone,ring:[[x-hx,z-hz],[x+hx,z-hz],[x+hx,z+hz],[x-hx,z+hz],[x-hx,z-hz]],anchor:p.slice(),provenance:'invented',coverage:'partial'});
+   return true;
+  };
+  // Reserve space for different essential uses before repeating racks or beds.
+  const goals=[...new Set(recorded&&l.rooms.length?l.rooms.flatMap(r=>roomProgram(r,b.use,l.level)):preferred)];
+  for(const kind of goals)for(const p of points)if(place(kind,p))break;
+  for(const p of points){if(furniture.length>=32)break;const room=recorded?l.rooms.find(r=>inside([r.ring],...p)):null,choices=roomProgram(room,b.use,l.level),n=furniture.length;for(let i=0;i<choices.length;i++)if(place(choices[(n+i)%choices.length],p))break;}
+  return{furniture,zones,program:preferred};
+ }
+ /* Small distinct models use at most ten boxes each. The declared footprint
+    and top bound every visible part and the actor's conservative solid. */
+ function furnitureModel(f){
+  const d=FURNITURE[f.kind];if(!d)throw Error('Mobilier inconnu');const out=[],box=(pos,size,material)=>out.push({pos,size,material}),kind=f.kind;
+  if(kind==='bed'||kind==='medical_bed'){
+   const[sx,sz]=d.size;box([0,.22,0],[sx,.28,sz],'metal');box([0,.5,0],[sx-.08,.25,sz-.1],kind==='medical_bed'?'medical':'fabric');box([0,.72,-sz*.31],[sx-.18,.18,.42],'paper');box([0,d.height/2,-sz/2+.04],[sx,d.height,.08],'wood');box([0,.64,sz*.16],[sx-.12,.06,sz*.55],kind==='medical_bed'?'medical':'blanket');
+  }else if(kind==='sofa'){
+   box([0,.25,0],[1.9,.35,.9],'wood');box([0,.7,-.34],[1.9,.5,.22],'fabric');box([-.84,.54,0],[.22,.38,.9],'fabric');box([.84,.54,0],[.22,.38,.9],'fabric');for(const x of[-.39,.39])box([x,.48,.08],[.72,.17,.66],'blanket');
+  }else if(kind==='kitchen'){
+   box([0,.43,0],[1.9,.86,.7],'wood');box([0,.91,0],[1.9,.1,.7],'porcelain');box([-.48,.973,0],[.62,.026,.48],'dark');box([-.48,.986,0],[.42,.025,.28],'water');box([.43,.973,0],[.58,.026,.5],'metal');for(const x of[.28,.58])box([x,1.002,0],[.18,.03,.28],'dark');box([-.48,1.07,-.27],[.055,.16,.055],'metal');box([-.48,1.13,-.2],[.055,.04,.18],'metal');
+  }else if(kind==='sanitary'||kind==='washbasin'){
+   if(kind==='sanitary'){box([-.35,.35,.14],[.52,.7,.72],'porcelain');box([-.35,.83,-.42],[.52,.34,.3],'porcelain');box([-.35,.72,.16],[.47,.05,.58],'dark');}
+   const x=kind==='sanitary'?.4:0,sx=kind==='sanitary'?.5:.7,sz=kind==='sanitary'?.48:.55,z=kind==='sanitary'?-.1:0;box([x,.4,z],[sx,.8,sz],'wood');box([x,.83,z],[sx,.06,sz],'porcelain');box([x,.87,z],[sx*.65,.025,sz*.65],'dark');box([x,1.02,kind==='sanitary'?-.29:-.22],[.05,.26,.05],'metal');
+  }else if(kind==='dining'){
+   box([0,.77,0],[1.5,.1,.72],'wood');for(const x of[-.57,.57])box([x,.38,0],[.12,.76,.5],'wood');for(const z of[-.53,.53]){box([0,.42,z],[.54,.08,.29],'wood');box([0,.72,z+(z>0?.1:-.1)],[.54,.46,.09],'wood');}
+  }else if(kind==='desk'){
+   box([0,.78,-.2],[1.3,.12,.75],'wood');for(const x of[-.52,.52])box([x,.36,-.2],[.12,.72,.65],'metal');box([0,.96,-.35],[.54,.24,.24],'dark');box([0,1.21,-.4],[.56,.18,.12],'glass');box([0,.43,.42],[.5,.12,.3],'wood');box([0,.74,.53],[.5,.42,.09],'fabric');
+  }else if(kind==='reception'){
+   box([0,.5,0],[1.9,1,.7],'wood');box([0,1.07,0],[1.9,.1,.75],'porcelain');box([0,.66,.36],[1.5,.15,.025],'amber');box([.55,1.145,-.2],[.3,.05,.22],'dark');
+  }else if(['wardrobe','medical_cabinet'].includes(kind)){
+   const[sx,sz]=d.size;box([0,d.height/2,0],[sx,d.height,sz],'metal');for(const x of[-sx*.245,sx*.245]){box([x,d.height*.52,sz/2-.035],[sx*.46,d.height*.92,.05],kind==='medical_cabinet'?'medical':'wood');box([x+(x<0?.12:-.12),d.height*.52,sz/2-.008],[.025,.2,.015],'dark');}if(kind==='medical_cabinet'){box([0,d.height*.69,sz/2-.004],[.34,.09,.008],'paper');box([0,d.height*.69,sz/2-.004],[.09,.34,.008],'paper');}
+  }else if(['shelf','archive','pallet'].includes(kind)){
+   const[sx,sz]=d.size;for(const x of[-sx/2+.04,sx/2-.04])box([x,d.height/2,0],[.08,d.height,sz],'metal');for(const y of[.12,.62,1.12,1.62])box([0,y,0],[sx,.08,sz],'wood');for(const y of[.36,.87,1.37])box([0,y,0],[sx*.7,.38,sz*.75],kind==='archive'?'paper':kind==='pallet'?'wood':'fabric');
+  }else if(kind==='workbench'){
+   box([0,.82,0],[1.8,.14,.8],'wood');for(const x of[-.72,.72])for(const z of[-.28,.28])box([x,.38,z],[.12,.76,.12],'metal');box([.5,1.0,-.1],[.34,.2,.3],'metal');box([-.45,.98,0],[.5,.18,.4],'amber');
+  }else if(kind==='crate'){
+   box([0,.38,0],[1.25,.76,1.05],'wood');box([0,1.08,0],[1.05,.64,.88],'wood');for(const x of[-.44,.44])box([x,.38,.515],[.07,.7,.02],'metal');for(const x of[-.35,.35])box([x,1.08,.43],[.06,.6,.02],'metal');
+  }else if(kind==='bench'){
+   box([0,.46,0],[1.75,.1,.6],'wood');box([0,.75,-.24],[1.75,.5,.12],'wood');for(const x of[-.63,.63])box([x,.22,0],[.12,.44,.48],'metal');
+  }else if(kind==='lectern'){
+   box([0,.08,0],[.7,.16,.6],'wood');box([0,.6,0],[.22,1.04,.24],'wood');box([0,1.15,0],[.7,.1,.6],'wood');box([0,1.19,0],[.36,.02,.35],'paper');
+  }
+  return out;
+ }
+ function walkable(layout,x,z,radius=.38){if(clearance(layout.rings,x,z)<radius)return false;return !layout.walls.some(w=>segmentDistance([x,z],w.a,w.b)<radius+w.thickness/2-EPS);}
+ function canTravel(layout,from,to,radius=.38){const distance=Math.hypot(to[0]-from[0],to[1]-from[1]);if(distance>400)return false;const n=Math.max(1,Math.ceil(distance/.15));for(let i=0;i<=n;i++)if(!walkable(layout,from[0]+(to[0]-from[0])*i/n,from[1]+(to[1]-from[1])*i/n,radius))return false;return true;}
+ function layout(b,level=0,entry=null,doc=null){
+  b=validateBuilding(b);if(!Number.isInteger(level)||level<0||level>=b.levels)throw Error('Étage intérieur invalide');
+  const checked=doc?document(doc,b):null,recorded=checked?.levels.find(l=>l.level===level),grid=floorLevels(b,checked),start=point(b.rings,recorded?.entry||entry,.43);
+  if(!start)throw Error('L’emprise ne contient pas d’espace praticable pour un personnage');
+  const walls=recorded?recorded.walls:inventedWalls(b,start),result={buildingId:b.id,level,rings:copy(b.rings),height:(grid[level+1]??b.height)-grid[level],elevation:grid[level],walls,entry:start,theme:theme(b.use),rooms:recorded?.rooms||[],provenance:recorded?'documented':'invented',source:recorded?doc.source:null,levels:b.levels};
+  if(!walkable(result,...start,.4)){const p=point(b.rings,null,.7);if(!p||!walkable(result,...p,.4))throw Error('Le plan documentaire bloque son entrée');result.entry=p;}
+  result.stair=result.entry.slice();const contents=furnish(result,b,!!recorded);result.furniture=contents.furniture;result.functionalZones=contents.zones;result.furnishingProgram=contents.program;result.roomsBasis=recorded?'documented':'invented-functional-zones';result.roomCoverage=recorded?'documented-record':'partial';if(!recorded)result.rooms=copy(contents.zones);
+  result.signature=hash([b.id,b.rings,level,result.elevation,result.height,walls,result.furniture]);return result;
+ }
+ return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,FURNITURE,program,roomProgram,furnishingFits,furnitureModel,walkable,canTravel,layout};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralCityInteriors;
+
+/* Runtime is separate from the geometry module so source tests can exercise
+   real polygon logic without fabricating the rest of a campaign. */
+if(typeof baseState==='function'){
+ const V050_CITY_ZONE='v050_city_interior';
+ const V050_CITY={doors:new Map(),owner:null,tick:0,documents:new Map(),holding:false,exitPending:null,entered:0,returned:0,errors:[],last:null,rejections:{}};
+ if(!ALL_ZONE_IDS.includes(V050_CITY_ZONE))ALL_ZONE_IDS.push(V050_CITY_ZONE);
+ function fresh(){return{schema:1,active:null,returnPoint:null,visits:{}};}
+ function migrate(raw){
+  const f=fresh();if(!raw||typeof raw!=='object'||Array.isArray(raw))return f;
+  const r=raw.returnPoint;if(r&&typeof r.macro==='string'&&V015_GEO_MACROS[r.macro]&&Array.isArray(r.pos)&&r.pos.length===3&&r.pos.every(Number.isFinite)){
+   // Source identities and their declared bounds exist before asynchronous
+   // city index loading. A cold interior save must not depend on whether the
+   // measured exterior bank has finished registering those same bounds.
+   const box=V015_GEO_MACROS[r.macro].bbox,ll=v015GeoUnproject(r.macro,r.pos[0],r.pos[2]);
+   if(Array.isArray(box)&&box.length===4&&box.every(Number.isFinite)&&box[0]<box[2]&&box[1]<box[3]&&Array.isArray(ll)&&ll.length>=2&&ll.slice(0,2).every(Number.isFinite)&&ll[0]>=box[0]&&ll[0]<=box[2]&&ll[1]>=box[1]&&ll[1]<=box[3])f.returnPoint={macro:r.macro,pos:r.pos.slice(),yaw:Number.isFinite(r.yaw)?r.yaw:0,pitch:Number.isFinite(r.pitch)?r.pitch:0};
+  }
+  if(raw.active&&f.returnPoint){try{const b=MistralCityInteriors.validateBuilding(raw.active.building),floor=raw.active.floor,entry=raw.active.entry,streetFloor=raw.active.streetFloor??0;if(!Number.isInteger(floor)||floor<0||floor>=b.levels||!Number.isInteger(streetFloor)||streetFloor<0||streetFloor>=b.levels||!Array.isArray(entry)||entry.length!==2||!entry.every(Number.isFinite))throw Error('Étage sauvegardé invalide');const doc=raw.active.document?MistralCityInteriors.document(raw.active.document,b):null;MistralCityInteriors.layout(b,floor,entry,doc);const facing=Array.isArray(raw.active.facing)&&raw.active.facing.length===2&&raw.active.facing.every(Number.isFinite)?raw.active.facing.slice():[-entry[0],-entry[1]];f.active={building:b,floor,streetFloor,entry:entry.slice(),facing,document:doc};}catch{}}
+  if(raw.visits&&typeof raw.visits==='object'&&!Array.isArray(raw.visits))for(const[k,v]of Object.entries(raw.visits).slice(0,20000))if(/^[a-f0-9]{16}$/.test(k)&&Number.isInteger(v)&&v>0)f.visits[k]=Math.min(v,1000000);
+  return f;
+ }
+ const base=baseState;baseState=function(){const s=base();s.v050City=fresh();return s;};
+ const migration=migrateState;migrateState=function(input={}){const s=migration(input);s.v050City=migrate(input.v050City);if(s.player.zone===V050_CITY_ZONE&&!s.v050City.active){const r=s.v050City.returnPoint;s.player.zone=r?.macro||'geo_marseille';if(r)s.player.pos=r.pos.slice();}return s;};
+ state=migrateState(state);if(world)v049Own(world);
+ const saveBase=saveGame;saveGame=function(...args){if(V050_CITY.holding||V050_CITY.exitPending?.owner===state)return false;return saveBase(...args);};
+ function surface(w,rings,y,color,id){const triangles=v018Triangulate(rings);if(!triangles.length)throw Error('Sol intérieur sans triangulation');const vertices=[],faces=[];for(const t of triangles){const k=vertices.length;vertices.push(...t.map(p=>[p[0],y,p[1]]));faces.push([k,k+2,k+1]);}const d={mesh:'geoSurface',vertices,faces,pos:[MistralCityInteriors.bounds(rings).cx,y,MistralCityInteriors.bounds(rings).cz],scale:[1,1,1],color,id,revision:0};w.staticDraws.push(d);return d;}
+ function wall(w,a,b,y,h,color,id,thickness=.18){
+  const length=Math.hypot(b[0]-a[0],b[1]-a[1]);if(length<.02)return;const nx=-(b[1]-a[1])/length*thickness/2,nz=(b[0]-a[0])/length*thickness/2,r=[[a[0]+nx,a[1]+nz],[b[0]+nx,b[1]+nz],[b[0]-nx,b[1]-nz],[a[0]-nx,a[1]-nz]];
+  r.push(r[0].slice());V017_PRISM_BASE(w,[r],y,h,color,{id});v017AddPolyCollider(w,r,y,y+h,{id,rings:[r]});
+ }
+ function build(){
+  const a=state.v050City.active;if(!a)throw Error('Aucun intérieur de bâtiment sélectionné');const b=a.building,l=MistralCityInteriors.layout(b,a.floor,a.entry,a.document),palette={residential:{floor:[.34,.29,.22],wall:[.62,.56,.44]},medical:{floor:[.37,.43,.39],wall:[.58,.65,.59]},industrial:{floor:[.29,.29,.27],wall:[.42,.43,.40]},commercial:{floor:[.34,.33,.29],wall:[.58,.57,.49]},civic:{floor:[.42,.38,.31],wall:[.64,.60,.50]}}[l.theme];
+  const w=createWorld(V050_CITY_ZONE,b.name,`MARSEILLE · ${a.floor?'NIVEAU '+a.floor:'REZ-DE-CHAUSSÉE'}`,{indoor:true,daylight:.32,fog:[.21,.24,.20],wind:0});w.v050CityInterior=l;w.v050CityBuilding=b;const bb=MistralCityInteriors.bounds(l.rings);w.bounds=[bb.minX-.1,bb.maxX+.1,bb.minZ-.1,bb.maxZ+.1];w.spawn=[l.entry[0],l.elevation+playerEyeHeight(),l.entry[1]];const facing=a.facing||[-l.entry[0],-l.entry[1]];w.spawnYaw=Math.atan2(facing[0],-facing[1]);
+  surface(w,l.rings,l.elevation,palette.floor,'city-floor:'+l.signature);surface(w,l.rings,l.elevation+l.height-.08,cMix(palette.wall,COLORS.black,.25),'city-ceiling:'+l.signature);
+  for(let r=0;r<l.rings.length;r++)for(let i=0;i<l.rings[r].length;i++)wall(w,l.rings[r][i],l.rings[r][(i+1)%l.rings[r].length],l.elevation,l.height,palette.wall,`city-boundary:${r}:${i}`,.2);
+  for(let i=0;i<l.walls.length;i++){const p=l.walls[i];wall(w,p.a,p.b,l.elevation,Math.max(1.8,l.height-.08),cMix(palette.wall,COLORS.limestone,.08),'city-partition:'+i,p.thickness);}
+  const materials={wood:[.39,.30,.21],fabric:[.32,.39,.32],blanket:[.43,.45,.28],metal:[.29,.32,.29],dark:[.15,.18,.16],porcelain:[.69,.70,.61],medical:[.48,.62,.54],paper:[.72,.68,.53],glass:[.17,.31,.28],water:[.25,.37,.35],amber:[.64,.48,.22]};
+  for(let i=0;i<l.furniture.length;i++){const f=l.furniture[i],[x,z]=f.pos,y=l.elevation,parts=MistralCityInteriors.furnitureModel(f);for(let j=0;j<parts.length;j++){const part=parts[j],draw=addBox(w,[x+part.pos[0],y+part.pos[1],z+part.pos[2]],part.size,materials[part.material]||materials.wood,0,{id:`city-furniture:${i}:part:${j}`});draw.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}const collider=addCollider(w,x,z,f.size[0],f.size[1],{id:'city-furniture:'+i,minY:y,maxY:y+f.height});collider.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}
+  const[x,z]=l.entry,y=l.elevation;
+  addBox(w,[x,y+.06,z],[.65,.12,.65],[.57,.52,.28]);
+  const inspect=()=>{
+   const source=l.source,uses=[...new Set(l.functionalZones.map(z=>z.use))].join(', '),text=`${b.name}\nEmpreinte extérieure conservée à l’échelle métrique, cours exclues.\n${l.levels} niveau(x) : ${b.levelsBasis}.\nNiveau courant : ${l.provenance==='documented'?'plan documenté':'plan inventé, cohérent avec le volume et l’usage disponibles'}.\nLe mobilier et les réserves sont fictifs.\nProgramme inventé : ${uses||'pas de mobilier ajouté lorsque le passage manque'}. Ces zones fonctionnelles sont partielles et ne constituent pas un relevé des pièces.\n${source?source.title+'\n'+source.url+'\n'+source.license+' · '+source.attribution:'Aucun relevé public des pièces n’est attaché à ce bâtiment.'}`;
+   openNote('city-plan:'+MistralCityInteriors.hash(b.id),b.name,text);
+  };
+  addInteract(w,'city-interior-landing',[x,y+1.1,z],'Palier · niveau '+a.floor+' · accès et provenance',()=>{
+   const choices=[];
+   if(a.floor+1<b.levels)choices.push({text:'Monter au niveau '+(a.floor+1),onChoose:()=>floor(1)});
+   if(a.floor>0)choices.push({text:'Descendre au niveau '+(a.floor-1),onChoose:()=>floor(-1)});
+   if(a.floor===(a.streetFloor??0))choices.push({text:'Sortir vers la rue',onChoose:exit});
+   choices.push({text:'Consulter la provenance du plan',onChoose:()=>{closeDialogue();inspect();}},{text:'Continuer la visite',onChoose:closeDialogue});
+   openDialogue(speaker(b.name,'PALIER · NIVEAU '+a.floor,'P'),l.provenance==='documented'?'Ce niveau utilise un plan documenté. Le mobilier et les réserves sont fictifs.':'Cet aménagement est inventé dans l’emprise extérieure source, à l’échelle métrique. Les niveaux sont reliés par ce palier ; le dessin de l’escalier n’est pas un relevé réel.',choices);
+  },{kind:'door',radius:3,priority:8});
+  // Every level is a separate physical storey, loaded at its metric elevation.
+  // The landing changes floors explicitly; it is not a measured stair design.
+  if(b.levels>1){const p=l.entry;for(let i=0;i<3;i++){const q=[p[0]+.65+i*.18,p[1]];if(MistralCityInteriors.clearance(l.rings,...q)>.35)addBox(w,[q[0],y+.06+i*.06,q[1]],[.16,.12+i*.12,.6],[.42,.43,.38]);}}
+  const stash=l.furniture.find(f=>MistralCityInteriors.walkable(l,...f.pos,.8));
+  if(stash&&typeof v026NewContainer==='function'){const id='city:'+MistralCityInteriors.hash(b.id)+':'+a.floor,p=[stash.pos[0],y,stash.pos[1]+stash.size[1]/2+.12],seed=parseInt(MistralCityInteriors.hash(id).slice(0,6),16),items=l.theme==='medical'?{cloth:1,water:1}:l.theme==='industrial'?{scrap:1+seed%3}:{cloth:1,scrap:1};const[key,c]=v026NewContainer(w,id,'Réserve fictive · '+b.name,p,items,{kind:'chest'});c.pos=p.slice();v026Attach(w,key,c);}
+  w.subzones=[{id:'city-landing',name:'Palier · niveau '+a.floor,pos:[x,y,z]}];w.levelRoutes=[];return w;
+ }
+ const builder=buildWorld;buildWorld=function(id){return id===V050_CITY_ZONE?build():builder(id);};
+ const unlock=isZoneUnlocked;isZoneUnlocked=function(id){return id===V050_CITY_ZONE?!!state.v050City?.active:unlock(id);};
+ const region=worldRegionLabel;worldRegionLabel=function(id){return id===V050_CITY_ZONE?'MARSEILLE · INTÉRIEUR '+(state.v050City?.active?.floor||0):region(id);};
+ const zoneName=v018ZoneName;v018ZoneName=function(id){return id===V050_CITY_ZONE?state.v050City?.active?.building?.name||'Intérieur de bâtiment':zoneName(id);};
+ const ground=groundHeightAt;groundHeightAt=function(x,z,reference=0){const l=world?.v050CityInterior;return l?MistralCityInteriors.inside(l.rings,x,z)?l.elevation:0:ground(x,z,reference);};
+ const collision=collidesAt;collidesAt=function(x,z,r=.38,y=null){const l=world?.v050CityInterior;if(l&&!MistralCityInteriors.walkable(l,x,z,r))return true;return collision(x,z,r,y);};
+ const movement=tryPlayerMove;tryPlayerMove=function(dx,dz){const l=world?.v050CityInterior,p=state.player.pos;if(l&&!MistralCityInteriors.canTravel(l,[p[0],p[2]],[p[0]+dx,p[2]+dz],state.player.crouched?.32:.38))return false;return movement(dx,dz);};
+ function snapshot(){return{owner:state,state:deepClone(state),world,mode,bank:V046.terrain,ready:V046.readyAnchor,loaded:new Map(V017_RUNTIME.loaded),active:new Map(V042_RUNTIME.active),npc:new Map(V042_RUNTIME.npcData),runtimeId:V042_RUNTIME.worldId};}
+ function restore(s){if(state!==s.owner)return false;for(const k of Object.keys(state))delete state[k];Object.assign(state,deepClone(s.state));world=s.world;mode=s.mode;V046.terrain=s.bank;V046.readyAnchor=s.ready;V046.prepared=null;V046.busy=false;zoneTransitioning=false;V017_RUNTIME.loaded=new Map(s.loaded);V042_RUNTIME.active=new Map(s.active);V042_RUNTIME.npcData=new Map(s.npc);V042_RUNTIME.worldId=s.runtimeId;V050_CITY.holding=false;V050_CITY.exitPending=null;V050_CITY.owner=null;jumpVelocity=0;onGround=true;v049Own(world);updateLocation();updateHUD();return true;}
+ function commit(s,change){V050_CITY.holding=true;try{change();V050_CITY.holding=false;if(state!==s.owner||saveBase(false)===false)throw Error('Sauvegarde impossible : le passage est annulé.');return true;}catch(e){restore(s);V050_CITY.errors.push(String(e.message||e));V050_CITY.errors=V050_CITY.errors.slice(-12);toast(String(e.message||e),'bad');return false;}finally{V050_CITY.holding=false;}}
+ function near(it,r=3.5){return!!it&&Math.hypot(it.pos[0]-state.player.pos[0],it.pos[2]-state.player.pos[2])<=r&&Math.abs(it.pos[1]-state.player.pos[1])<3;}
+ function enter(id){
+  const rec=V050_CITY.doors.get(id);if(!rec||rec.world!==world||!world?.v046||V046.busy||V047.pending||zoneTransitioning||!['PLAYING','DIALOGUE'].includes(mode)||state.player.hp<=0||!near(rec.interaction,rec.interaction.radius+.1)||!lineOfSight(state.player.pos,rec.interaction.pos))return false;
+  if(typeof v050TravelNearbyThreat==='function'&&v050TravelNearbyThreat()){toast('Éloignez-vous du danger avant d’entrer.','bad');return false;}
+  closeDialogue();const s=snapshot(),descriptor=rec.building,entry=[rec.door.inside[0]-descriptor.origin[0],rec.door.inside[2]-descriptor.origin[2]],doc=V050_CITY.documents.get(descriptor.id)||null,streetFloor=rec.streetFloor??0;
+  const ok=commit(s,()=>{MistralCityInteriors.layout(descriptor,streetFloor,entry,doc);state.v050City.returnPoint={macro:world.id,pos:state.player.pos.slice(),yaw:state.player.yaw,pitch:state.player.pitch};state.v050City.active={building:descriptor,floor:streetFloor,streetFloor,entry,facing:rec.door.normal.map(n=>-n),document:doc};const k=MistralCityInteriors.hash(descriptor.id);state.v050City.visits[k]=(state.v050City.visits[k]||0)+1;loadZone(V050_CITY_ZONE,{instance:true,force:true,silent:true,noTravel:true});if(world?.id!==V050_CITY_ZONE)throw Error('L’intérieur n’a pas été chargé');});
+  if(ok){V050_CITY.doors.clear();V050_CITY.owner=null;V050_CITY.entered++;V050_CITY.last={event:'enter',building:descriptor.id,provenance:doc?'documented or mixed':'invented'};toast('Intérieur · '+(doc?'plan documentaire selon les niveaux disponibles':'aménagement inventé dans l’emprise source'),'good');}return ok;
+ }
+ function floor(delta){
+  if(world?.id!==V050_CITY_ZONE||zoneTransitioning||V050_CITY.exitPending||![1,-1].includes(delta)||!['PLAYING','DIALOGUE'].includes(mode))return false;const a=state.v050City.active,l=world.v050CityInterior;
+  if(!a||a.floor+delta<0||a.floor+delta>=a.building.levels||Math.hypot(state.player.pos[0]-l.stair[0],state.player.pos[2]-l.stair[1])>3)return false;
+  closeDialogue();const s=snapshot();return commit(s,()=>{a.floor+=delta;loadZone(V050_CITY_ZONE,{instance:true,force:true,silent:true,noTravel:true});if(world?.v050CityInterior?.level!==a.floor)throw Error('Le palier n’a pas été chargé');});
+ }
+ function finishExit(ctx){
+  if(V050_CITY.exitPending!==ctx||state!==ctx.owner||!world?.v046)return false;
+  V050_CITY.exitPending=null;state.v050City.active=null;state.v050City.returnPoint=null;state.player.pitch=ctx.returnPoint.pitch;
+  if(saveBase(false)===false){restore(ctx.snapshot);toast('La sortie n’a pas été sauvegardée. Votre intérieur est conservé.','bad');return false;}
+  V050_CITY.returned++;V050_CITY.last={event:'return',building:ctx.building,position:state.player.pos.slice()};V050_CITY.owner=null;bind(true);return true;
+ }
+ function exit(){
+  const s=state.v050City,a=s?.active,r=s?.returnPoint,it=world?.interactables.find(i=>i.id==='city-interior-landing');
+  if(world?.id!==V050_CITY_ZONE||!a||a.floor!==(a.streetFloor??0)||!r||V050_CITY.exitPending||!near(it,3.2)||!['PLAYING','DIALOGUE'].includes(mode))return false;
+  closeDialogue();const ctx={owner:state,snapshot:snapshot(),returnPoint:deepClone(r),building:a.building.id};V050_CITY.exitPending=ctx;
+  try{const result=loadZone(r.macro,{geoDirect:true,force:true,noTravel:true,spawn:r.pos.slice(),yaw:r.yaw,v050CityReturn:true});if(world?.v046)finishExit(ctx);if(result&&typeof result.catch==='function')result.catch(e=>{if(V050_CITY.exitPending===ctx){V050_CITY.exitPending=null;toast('Retour interrompu : '+String(e.message||e),'bad');}});return true;}catch(e){V050_CITY.exitPending=null;restore(ctx.snapshot);toast('Retour interrompu : '+String(e.message||e),'bad');return false;}
+ }
+ const ensure=v046Ensure;v046Ensure=async function(...args){const ctx=V050_CITY.exitPending,ok=await ensure(...args);if(ok&&ctx&&V050_CITY.exitPending===ctx)finishExit(ctx);else if(!ok&&ctx&&V050_CITY.exitPending===ctx&&world!==ctx.snapshot.world)restore(ctx.snapshot);return ok;};
+ const cancel=v046Cancel;v046Cancel=function(){const ctx=V050_CITY.exitPending;cancel();if(ctx&&ctx.owner===state){if(world!==ctx.snapshot.world)restore(ctx.snapshot);else{V050_CITY.exitPending=null;mode='PLAYING';zoneTransitioning=false;}}};
+ const load=loadZone;loadZone=function(id,opts={}){const ctx=V050_CITY.exitPending;if(ctx&&!opts.v050CityReturn&&id!==ctx.returnPoint.macro)V050_CITY.exitPending=null;return load(id,opts);};
+ const newGame=startNewGame;startNewGame=function(...args){V050_CITY.exitPending=null;V050_CITY.doors.clear();V050_CITY.owner=null;return newGame(...args);};
+ function bind(force=false){
+  if(!world?.v046||typeof MistralFacades==='undefined'){V050_CITY.doors.clear();V050_CITY.owner=null;return 0;}
+  const pos=state.player.pos,stamp=world.v046Records;if(!force&&V050_CITY.owner?.world===world&&V050_CITY.owner.stamp===stamp&&Math.hypot(pos[0]-V050_CITY.owner.x,pos[2]-V050_CITY.owner.z)<12)return V050_CITY.doors.size;
+  world.interactables=world.interactables.filter(i=>!i.v050CityDoor);V050_CITY.doors.clear();const candidates=[],seen=new Set(),rejections={nearbyBuildings:0,invalidVolume:0,unmeasuredApproach:0,unmatchedStreetLevel:0,blockedApproach:0,narrowDoor:0,noCandidate:0,eligible:0,interactions:0};
+  for(const d of world.staticDraws){if(d.geoLayer!=='building'||!d.rings||d.hidden)continue;d.v050EntranceSelection=null;const bb=MistralCityInteriors.bounds(d.rings);if(pos[0]<bb.minX-100||pos[0]>bb.maxX+100||pos[2]<bb.minZ-100||pos[2]>bb.maxZ+100)continue;
+   try{const description=MistralFacades.describe(d);if(!description||seen.has(description.id))continue;seen.add(description.id);rejections.nearbyBuildings++;const b=MistralCityInteriors.building(description);let accepted=false;
+    for(const original of MistralFacades.entrances(d)){const p=original.outside;if(!p||!p.every(Number.isFinite))continue;const distance=Math.hypot(p[0]-pos[0],p[2]-pos[2]);if(distance>100)continue;const h=v047Height(v047Bank(world),p[0],p[2]).height;if(h===null){rejections.unmeasuredApproach++;continue;}if(collidesAt(p[0],p[2],.38,h+playerEyeHeight())){rejections.blockedApproach++;continue;}
+     const local=[original.inside[0]-b.origin[0],original.inside[2]-b.origin[2]];if(MistralCityInteriors.clearance(b.rings,...local)<.43){rejections.narrowDoor++;continue;}const doc=V050_CITY.documents.get(b.id)||null,aligned=MistralCityInteriors.alignStreet(b,h,doc);if(!aligned||original.provenance==='documented'&&Math.abs(original.center[1]-(b.origin[1]+aligned.elevation))>.05){rejections.unmatchedStreetLevel++;continue;}
+     const grid=MistralCityInteriors.floorLevels(aligned.building,doc),storeyHeight=(grid[aligned.level+1]??b.height)-grid[aligned.level],doorHeight=original.provenance==='documented'?original.height:Math.min(original.height,storeyHeight-.08);if(doorHeight<1.85||doorHeight>storeyHeight-.08+1e-7||aligned.elevation+doorHeight>b.height){rejections.unmatchedStreetLevel++;continue;}
+     const door={...original,height:doorHeight,levelElevations:grid.slice(),elevationOffset:aligned.elevation,thresholdMeters:aligned.thresholdMeters,center:[original.center[0],b.origin[1]+aligned.elevation,original.center[2]],inside:[original.inside[0],b.origin[1]+aligned.elevation,original.inside[2]],outside:[original.outside[0],h,original.outside[2]]};candidates.push({distance,door,draw:d,building:aligned.building,streetFloor:aligned.level,pos:[p[0],h+1.1,p[2]]});accepted=true;break;}
+    if(!accepted)rejections.noCandidate++;
+   }catch(e){rejections.invalidVolume++;/* A tiny non-visitable shed remains a real exterior footprint. */}
+  }
+  candidates.sort((a,b)=>a.distance-b.distance||a.door.id.localeCompare(b.door.id));
+  for(const c of candidates.slice(0,64)){c.draw.v050EntranceSelection=c.door;const id='city-door:'+MistralCityInteriors.hash([c.building.id,c.door.id]),it=addInteract(world,id,c.pos,'Entrer · '+c.building.name+' · intérieur '+(V050_CITY.documents.has(c.building.id)?'documenté selon niveaux':'inventé'),()=>enter(id),{kind:'door',radius:3.2,priority:2});it.v050CityDoor=true;V050_CITY.doors.set(id,{world,door:c.door,building:c.building,streetFloor:c.streetFloor,interaction:it});}
+  rejections.eligible=candidates.length;rejections.interactions=V050_CITY.doors.size;V050_CITY.rejections=rejections;V050_CITY.owner={world,stamp,x:pos[0],z:pos[2]};return V050_CITY.doors.size;
+ }
+ const publish=v046Publish;v046Publish=function(...args){const result=publish(...args);V050_CITY.owner=null;if(args[0]===world)bind(true);return result;};
+ const update=updatePlayer;updatePlayer=function(dt){const r=update(dt),l=world?.v050CityInterior;if(l&&state.player.pos[1]+.18>l.elevation+l.height-.08){state.player.pos[1]=Math.max(l.elevation+playerEyeHeight(),l.elevation+l.height-.261);if(jumpVelocity>0)jumpVelocity=0;onGround=false;}V050_CITY.tick+=Number.isFinite(dt)?dt:0;if(V050_CITY.tick>.5){V050_CITY.tick=0;if(!V046.busy&&!V047.pending&&!zoneTransitioning)bind();}return r;};
+ function registerDocument(raw){const current=[...V050_CITY.doors.values()].find(x=>x.building.id===raw?.buildingId)?.building||state.v050City.active?.building;if(!current||current.id!==raw?.buildingId)throw Error('Le bâtiment du plan doit être chargé');const doc=MistralCityInteriors.document(raw,current);V050_CITY.documents.set(current.id,doc);V050_CITY.owner=null;bind(true);return{buildingId:current.id,documentedLevels:doc.levels.map(l=>l.level),source:doc.source};}
+ function info(){const a=state.v050City.active,l=world?.v050CityInterior;return{version:1,zone:world?.id,active:a?{id:a.building.id,name:a.building.name,floor:a.floor,streetFloor:a.streetFloor??0,levels:a.building.levels,origin:a.building.origin.slice(),signature:l?.signature,layoutProvenance:l?.provenance,furnishing:l?{objects:l.furniture.length,byKind:Object.fromEntries([...new Set(l.furniture.map(f=>f.kind))].map(kind=>[kind,l.furniture.filter(f=>f.kind===kind).length])),functionalUses:[...new Set(l.functionalZones.map(z=>z.use))],roomsBasis:l.roomsBasis,roomCoverage:l.roomCoverage,provenance:'invented'}:null}:null,doors:[...V050_CITY.doors].map(([id,r])=>({id,building:r.building.id,pos:r.interaction.pos.slice(),levels:r.building.levels,streetFloor:r.streetFloor,provenance:V050_CITY.documents.has(r.building.id)?'documented or mixed':'invented'})),rejections:{...V050_CITY.rejections},interactionBudget:64,entered:V050_CITY.entered,returned:V050_CITY.returned,exitPending:!!V050_CITY.exitPending,last:V050_CITY.last,errors:V050_CITY.errors.slice()};}
+ globalThis.v050CityInteriorAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v050CityInteriorInfo:info,v050CityInteriorEnter:enter,v050CityInteriorExit:exit,v050CityInteriorFloor:floor,v050CityInteriorBind:()=>bind(true),v050CityRegisterDocument:registerDocument});bind(true);};
+}
+
+/* Installed municipal coverage and architectural interpretation are reported
+   separately. Displayed totals are audited files, never the active draw count. */
+function v051CityPanelAfterInit(){
+ if(typeof window==='undefined'||window.__mistralCityPanelInstalled)return;
+ window.__mistralCityPanelInstalled=true;
+ const status={data:null,error:null,pending:null,attempted:false};
+ const number=n=>n.toLocaleString('fr-FR');
+ const count=n=>Number.isSafeInteger(n)&&n>=0&&n<=10000000;
+ function parse(raw){
+  if(!raw||raw.ok!==true||typeof raw.present!=='boolean')throw Error('Inventaire municipal incompatible.');
+  if(!raw.present)return{present:false};
+  const m=raw.municipality,b=m?.bbox;
+  if(m?.code!=='13055'||!Array.isArray(b)||b.length!==4||!b.every(Number.isFinite)||b[0]>=b[2]||b[1]>=b[3]||b[0]<-90||b[2]>90||b[1]<-180||b[3]>180)throw Error('Limite municipale incompatible.');
+  if(!count(raw.totalBuildings)||!count(raw.totalRoads)||!count(raw.tileCount))throw Error('Comptage municipal incompatible.');
+  return{present:true,municipality:{name:'Marseille',code:'13055',bbox:b.slice()},totalBuildings:raw.totalBuildings,totalRoads:raw.totalRoads,tileCount:raw.tileCount,coverageComplete:raw.coverage?.complete===true,terrainPresent:raw.terrain?.present===true};
+ }
+ function node(tag,text){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;}
+ function paragraph(parent,text){parent.appendChild(node('p',text));}
+ function show(section){
+  section.replaceChildren();section.appendChild(node('h2','Marseille : territoire et architecture'));
+  const stateLine=node('p');stateLine.setAttribute('role','status');stateLine.setAttribute('aria-live','polite');section.appendChild(stateLine);
+  const refresh=node('button','Vérifier les données de Marseille');refresh.type='button';refresh.dataset.cityRefresh='';refresh.disabled=!!status.pending||location.protocol==='file:';refresh.onclick=()=>load(true);section.appendChild(refresh);
+  if(location.protocol==='file:'){stateLine.textContent='Lancez le serveur local du jeu pour lire les cartes municipales.';return;}
+  if(status.pending){stateLine.textContent='Vérification des fichiers de Marseille… La partie reste accessible.';return;}
+  if(status.error){stateLine.textContent=status.error;paragraph(section,'Aucun inventaire municipal actualisé n’est confirmé. Les sources du pack de base et les ajouts d’Aubagne ont leurs audits séparés.');return;}
+  const d=status.data;
+  if(!d){stateLine.textContent='Les fichiers municipaux n’ont pas encore été vérifiés.';return;}
+  if(!d.present){stateLine.textContent='Aucun complément municipal de Marseille installé selon cet audit.';return;}
+  stateLine.textContent=number(d.totalBuildings)+' objets bâtiment · '+number(d.totalRoads)+' tronçons routiers dans '+number(d.tileCount)+' secteurs vérifiés.';
+  paragraph(section,d.coverageComplete?'Les requêtes vectorielles couvrent la limite administrative officielle de Marseille (13055). Les objets renvoyés sont conservés entiers, y compris les objets de bordure que l’index spatial du fournisseur peut renvoyer hors de cette limite.':'La présence de ces fichiers ne confirme pas encore une acquisition vectorielle de toute la commune.');
+  paragraph(section,d.terrainPresent?'Un relief municipal supplémentaire est installé. Sa résolution et les absences de mesure restent celles de ses sources.':'Aucun relief municipal supplémentaire n’est confirmé dans cet inventaire.');
+  paragraph(section,'Les coordonnées, contours, cours et hauteurs disponibles viennent des relevés. Leurs précisions et dates peuvent varier ; une échelle d’un mètre dans le jeu ne certifie pas chaque détail architectural.');
+  paragraph(section,'Les façades et intérieurs sont complétés de façon cohérente et déterministe. Seules les parties accompagnées d’un document attribué sont présentées comme documentées. Les autres fenêtres, portes, pièces et aménagements sont inventés.');
+  paragraph(section,'Approchez-vous d’une porte accessible et utilisez Interagir pour entrer. Les étages et le retour extérieur appartiennent au même bâtiment ; les intérieurs historiques de la campagne gardent leurs accès.');
+ }
+ function refresh(){for(const section of document.querySelectorAll('[data-city-source-status]'))show(section);}
+ function load(force=false){
+  if(status.pending)return status.pending;
+  if(!force&&status.attempted)return Promise.resolve(status.data);
+  status.attempted=true;status.error=null;
+  const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),180000);
+  status.pending=Promise.resolve().then(async()=>{
+   try{
+    const response=await fetch('/__mistral/city-sources',{cache:'no-store',credentials:'same-origin',redirect:'error',signal:ctrl.signal});
+    if(!response.ok)throw Error(response.status===404?'Le serveur ne fournit pas encore l’audit municipal. Relancez le serveur actuel.':'Les fichiers municipaux n’ont pas pu être vérifiés. Consultez leur installation puis réessayez.');
+    const body=await response.text();if(body.length>2097152)throw Error('Inventaire municipal trop volumineux.');
+    status.data=parse(JSON.parse(body));return status.data;
+   }catch(error){status.error=error?.name==='AbortError'?'La vérification municipale a dépassé le délai. Vous pouvez réessayer.':error instanceof SyntaxError?'Le diagnostic municipal est illisible. Relancez le serveur actuel.':String(error?.message||'Audit municipal indisponible.').slice(0,600);return null;}
+   finally{clearTimeout(timer);status.pending=null;refresh();}
+  });refresh();return status.pending;
+ }
+ const previous=v047Panel;
+ v047Panel=function(container){previous(container);const box=container.querySelector('.v047-integrity');if(!box)return;const section=node('section');section.className='v051-city-status';section.dataset.citySourceStatus='';section.setAttribute('aria-label','Couverture municipale et architecture de Marseille');box.prepend(section);show(section);if(!status.attempted)load();};
+ Object.assign(window.__MISTRAL_DEBUG,{v051ReadCityStatus:()=>load(true),v051CityPanel:()=>({pending:!!status.pending,error:status.error,data:status.data?JSON.parse(JSON.stringify(status.data)):null})});
+}
+
 init();
 v018AfterInit();
 v020AfterInit();
@@ -11778,6 +12645,11 @@ if(typeof v050RoofAfterInit==='function')v050RoofAfterInit();
 if(typeof v050SourceStatusAfterInit==='function')v050SourceStatusAfterInit();
 if(typeof v050WastelandAfterInit==='function')v050WastelandAfterInit();
 if(typeof v050ControllerAfterInit==='function')v050ControllerAfterInit();
+if(typeof v051CityAfterInit==='function')v051CityAfterInit();
+if(typeof v051WaterAfterInit==='function')v051WaterAfterInit();
+if(typeof v050FacadesAfterInit==='function')v050FacadesAfterInit();
+if(typeof v050CityInteriorAfterInit==='function')v050CityInteriorAfterInit();
+if(typeof v051CityPanelAfterInit==='function')v051CityPanelAfterInit();
 })();
 
 </script>

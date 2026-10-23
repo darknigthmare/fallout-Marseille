@@ -143,7 +143,15 @@ async function v050EnrichResource(resource,key,signal){
  const features=[];
  for(const[region,descriptor]of Object.entries(index.regions))if(MistralIntegrity.intersects(box,descriptor.bbox)){const bundle=await v050SourceBundle(region,descriptor);features.push(...bundle.projected);}
  if(signal?.aborted)throw Error('Import des sources annulé');
+ return v050ApplySourceOverlays(resource,features);
+}
+/* Shared by optional regional imports and the partitioned city atlas. Empty
+   authoritative road queries still remove old roads inside their exact query
+   rectangle; no feature is manufactured to carry that proof. */
+function v050ApplySourceOverlays(resource,features,explicitCoverages=[]){
+ const tile=v017TileBounds(resource.z,resource.x,resource.y),box=[tile.south,tile.west,tile.north,tile.east],corners=[[tile.south,tile.west],[tile.south,tile.east],[tile.north,tile.west],[tile.north,tile.east]];
  const worldCorners=corners.map(p=>v015GeoProject('geo_huveaune',p[0],p[1])),tileBounds=v017PolyBounds([worldCorners.map(p=>[p[0],p[2]])]),kind=resource.source==='cadastre'?'building':'road',overlays=features.filter(f=>f.props.kind===kind&&f.v050Paths.length&&v050BoxesTouch(tileBounds,f.v050Bounds)),coverages=[],coverageKeys=new Set();
+ if(kind==='road')for(const coverage of explicitCoverages)if(coverage.proof.layer==='BDTOPO_V3:troncon_de_route'&&MistralIntegrity.intersects(box,coverage.proof.bbox)){const key=JSON.stringify(coverage.proof);if(!coverageKeys.has(key)){coverageKeys.add(key);coverages.push(coverage);}}
  if(kind==='road')for(const feature of features)if(feature.props.kind==='road'&&feature.v050Coverage&&MistralIntegrity.intersects(box,feature.v050Coverage.proof.bbox)){const key=JSON.stringify(feature.v050Coverage.proof);if(!coverageKeys.has(key)){coverageKeys.add(key);coverages.push(feature.v050Coverage);}}
  if(!overlays.length&&!coverages.length)return resource;
  const layers={...resource.layers},names=kind==='building'?['batiments','building']:['transportation'];

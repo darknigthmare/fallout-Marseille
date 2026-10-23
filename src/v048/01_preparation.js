@@ -82,8 +82,8 @@ v046Prepare=async function(plan, resources, w, signal) {
   const job={id:++V048.serial,work:new MistralWork.Budget({signal}),done:0,total:1,status:'preparing'};V048.job=job;
   try {
     await v048Step(job,'validation',plan.dem.length);
-    const bank=new MistralIntegrity.TerrainBank(V046_BOUNDS);
-    for(const[id,g]of V046.terrain.grids)bank.grids.set(id,g);
+    const bank=typeof v051CityStageBank==='function'?v051CityStageBank(V046_BOUNDS,V046.terrain):new MistralIntegrity.TerrainBank(V046_BOUNDS);
+    if(typeof v051CityStageBank!=='function')for(const[id,g]of V046.terrain.grids)bank.grids.set(id,g);
     let done=0;
     for(const key of plan.dem){const r=resources.get(key);if(!r)throw Error('Terrain absent : '+key);bank.add(r.raw,r.id);v048Phase(job,'validation',++done,plan.dem.length);await job.work.checkpoint();}
     if(V047.test.delayPrepare)await new Promise(r=>setTimeout(r,V047.test.delayPrepare));

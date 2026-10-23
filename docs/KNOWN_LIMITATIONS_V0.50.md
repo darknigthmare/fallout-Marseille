@@ -1,5 +1,7 @@
 # Limites connues — v0.50
 
+**Rapport de la livraison initiale v0.50.** Pour l’extension communale actuelle, ses façades, ses intérieurs et leurs limites, consulter [Marseille entière](MARSEILLE_ENTIERE.md) et le [bilan de validation distinct](../verification/expansion/city/CITY_INTEGRATION.json).
+
 La v0.50 a passé **83 contrôles natifs**, **95 contrôles ciblés**, **42 tests unitaires d’installateurs** et **434 contrats hérités**, soit **654 assertions**. Ces groupes emploient des méthodes différentes. L’agrégateur conserve leurs sources et leurs périmètres ; le total ne doit pas être présenté comme 654 parcours de jeu natifs. [QA_GLOBAL.json](../verification/v050/QA_GLOBAL.json)
 
 ## Territoire et représentation

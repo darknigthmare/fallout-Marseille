@@ -1,0 +1,4799 @@
+{
+  "scope": "Native final production HTML, real installed city sources and unchanged measured camera. Existing diagnostic APIs pause rendering/simulation, load the real sector and read geometry; browser receives no injected HTML, network mocks or synthetic geography. The targeted correction preserves raw sourceXYZ while deriving only eligible at-grade IGN ribbons from the MNT used by physics. This is a regression diagnostic at one location, not a citywide visual certification.",
+  "html_sha256": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+  "before_html_sha256": "b26005c1ab62d51bbd499ea7ec30dbde6d2ce339a8dedc9e70734601ecc7c923",
+  "previous_html_sha256": "5efd0ee29dfc55f19537d2a2b6ac68fa900e4c1df3b51455be9485f948b37687",
+  "terrain_index_sha256": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+  "network_mocked": false,
+  "html_injected": false,
+  "synthetic_geography": false,
+  "camera": {
+    "latlon": [
+      43.2965,
+      5.370046851632981
+    ],
+    "worldEye": [
+      -11398.888126658509,
+      3.0129979244143144,
+      -926.6633799411356
+    ],
+    "height": {
+      "height": 1.3629979244143142,
+      "missing": null,
+      "sources": [
+        "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+      ],
+      "noData": [],
+      "resolutionMeters": [
+        9.984031490488738,
+        10.01994170878003
+      ],
+      "sourceResource": "ign_rge_alti_wld",
+      "interpolation": "bilinéaire, quatre échantillons valides requis",
+      "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+    }
+  },
+  "checks": [
+    {
+      "name": "Native diagnostic uses the frozen final production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production HTML remains byte-identical after the diagnostic",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The final terrain-index snapshot is certified and unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Same measured GPS and exact eye as both historical native captures",
+      "ok": true,
+      "detail": [
+        -11398.888126658509,
+        3.0129979244143144,
+        -926.6633799411356
+      ]
+    },
+    {
+      "name": "Same actual ground value and source as before",
+      "ok": true,
+      "detail": {
+        "height": 1.3629979244143142,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      }
+    },
+    {
+      "name": "Actual standing eye is 1.65m above the production MNT",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real body collision is clear at the actual camera Y",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No building footprint contains the measured camera",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The original gray overhead hit was this acquired IGN path",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No geometry crosses the upward or north-up diagnostic ray within500m",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native path retains its estimated1.6m width and IGN nature",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Source XYZ metadata remains distinct from the derived at-grade surface",
+      "ok": true,
+      "detail": {
+        "width": 1.6,
+        "widthAssumed": true,
+        "widthBasis": "nature IGN Sentier — estimation",
+        "roadClass": "path",
+        "classificationBasis": "nature IGN Sentier",
+        "sourceNature": "Sentier",
+        "maritime": false,
+        "absoluteHeight": null,
+        "heightBasis": "MNT local — surface au sol dérivée",
+        "offset": 0,
+        "elevationAssumed": true,
+        "unavailableElevation": false,
+        "bridge": false,
+        "tunnel": false,
+        "sourcePosition": "0",
+        "ordinalPosition": 0,
+        "positionBasis": "Ordre de superposition BD TOPO, sans unité métrique",
+        "planimetricAccuracy": 2.5,
+        "altimetricAccuracy": 1.5,
+        "surfaceDerived": true,
+        "surfaceElevationPolicy": "ground-contact-mnt",
+        "sourceHeightBasis": "coordonnées Z source",
+        "sourceGeometryUnmodified": true,
+        "sourceXYZPreserved": true,
+        "surfaceVisualOffsetMeters": 0.085,
+        "surfaceNoDataVertices": 0,
+        "surfaceTerrainSources": [
+          {
+            "id": "enrichment:geo_marseille_commune:63a214b4ef147ed4",
+            "sourceResource": "ign_rge_alti_wld",
+            "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale",
+            "resolutionMeters": [
+              9.984031490488738,
+              10.01994170878003
+            ],
+            "interpolation": "bilinéaire, quatre échantillons valides requis"
+          }
+        ]
+      }
+    },
+    {
+      "name": "The ground derivation is restricted to the documented at-grade route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native ground receipt names the real NGF69 MNT and bilinear sampling",
+      "ok": true,
+      "detail": [
+        {
+          "id": "enrichment:geo_marseille_commune:63a214b4ef147ed4",
+          "sourceResource": "ign_rge_alti_wld",
+          "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale",
+          "resolutionMeters": [
+            9.984031490488738,
+            10.01994170878003
+          ],
+          "interpolation": "bilinéaire, quatre échantillons valides requis"
+        }
+      ]
+    },
+    {
+      "name": "All16 native surface vertices have an available real MNT sample",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Every native surface vertex contacts the real MNT plus its declared0.085m visual offset",
+      "ok": true,
+      "detail": {
+        "vertices": 16,
+        "maxAbsErrorMeters": 4.163336342344337e-17,
+        "offsetMeters": 0.085
+      }
+    },
+    {
+      "name": "Near-camera path end is below the actual standing eye",
+      "ok": true,
+      "detail": [
+        [
+          -11394.214244858635,
+          1.332734818627341,
+          -923.2315961801786
+        ],
+        [
+          -11395.674685981317,
+          1.3031018888872872,
+          -922.5780583257448
+        ]
+      ]
+    },
+    {
+      "name": "Native roadPath retains every original projected source XY and originalZ",
+      "ok": true,
+      "detail": {
+        "maxProjectionErrorMeters": 1.862645149230957e-09,
+        "nativeRoadPath": [
+          [
+            -11436.344327306258,
+            -957.9047132395208,
+            3.1
+          ],
+          [
+            -11418.744158137357,
+            -963.3053934387863,
+            3
+          ],
+          [
+            -11412.844418070046,
+            -962.9053058279678,
+            3.7
+          ],
+          [
+            -11394.944465419976,
+            -922.9048272529617,
+            3.4
+          ]
+        ],
+        "originalSourceXYZ": [
+          [
+            5.3695973,
+            43.29679102,
+            3.1
+          ],
+          [
+            5.36981596,
+            43.29683483,
+            3.0
+          ],
+          [
+            5.36988844,
+            43.29682964,
+            3.7
+          ],
+          [
+            5.37009401,
+            43.29646514,
+            3.4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Every byte of the acquired source chunk stays unchanged",
+      "ok": true,
+      "detail": "f6d76e70429bf10282a1de867fe73e3a4be98b7e758c49e953b4b3910bb53aa1"
+    },
+    {
+      "name": "Native source acquisition proof and provider precision remain unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The native browser reported zero JavaScript exceptions",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "Production regression tests preserve bridges/tunnels/explicitZ/clearances, measuredwidth and missing-MNT holes",
+      "ok": true,
+      "detail": {
+        "command": "node tests/expansion/ground_road_surfaces.cjs",
+        "result": "6/6",
+        "log": "GROUND_ROAD_UNIT_FINAL.txt",
+        "counterexamples": [
+          "position +1",
+          "position -1",
+          "bridge=yes",
+          "tunnel=yes",
+          "ele",
+          "deck_height",
+          "bridge:ele",
+          "bridge:height",
+          "min_height",
+          "non-IGN",
+          "waterway",
+          "unspecified ordinal",
+          "no MNT",
+          "measured width"
+        ]
+      }
+    }
+  ],
+  "passed": 22,
+  "failed": 0,
+  "total": 22,
+  "source": {
+    "sourceChunk": "data/map_pack/city/m13055-r05-c06-0-0-f6d76e70429bf102.json",
+    "sourceChunkSha256": "f6d76e70429bf10282a1de867fe73e3a4be98b7e758c49e953b4b3910bb53aa1",
+    "sourceId": "troncon_de_route.6003809",
+    "cleabs": "TRONROUT0000000040960607",
+    "nativeXYZ": [
+      [
+        5.3695973,
+        43.29679102,
+        3.1
+      ],
+      [
+        5.36981596,
+        43.29683483,
+        3.0
+      ],
+      [
+        5.36988844,
+        43.29682964,
+        3.7
+      ],
+      [
+        5.37009401,
+        43.29646514,
+        3.4
+      ]
+    ],
+    "attributes": {
+      "nature": "Sentier",
+      "largeur_de_chaussee": null,
+      "nombre_de_voies": null,
+      "position_par_rapport_au_sol": "0",
+      "precision_altimetrique": 1.5,
+      "precision_planimetrique": 2.5,
+      "date_modification": "2012-02-02T07:17:57.582Z"
+    },
+    "provenance": {
+      "acquiredAt": "2026-10-23",
+      "attribution": "IGN — Géoplateforme",
+      "coverage": {
+        "bbox": [
+          43.292645316666665,
+          5.368962869230769,
+          43.298796017499996,
+          5.374805029615384
+        ],
+        "complete": true,
+        "crs": "EPSG:4326",
+        "layer": "BDTOPO_V3:troncon_de_route",
+        "returned": 222
+      },
+      "inputCrs": "EPSG:4326",
+      "inputSha256": "7afefbc79b384b9cff129573a2eac3ca18dc6a07bc7a77bf3154a975abb1d69b",
+      "license": "Licence Ouverte 2.0",
+      "resource": "ign-bdtopo",
+      "source": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+      "url": "https://data.geopf.fr/wfs/ows",
+      "verticalDatum": "NGF-IGN69"
+    },
+    "cameraDistanceToLine": {
+      "distanceMeters": 2.0644553669225707,
+      "sourceLineZ": 3.4345131059729614,
+      "nearestWorldXZ": [
+        -11397.003741962386,
+        -927.5066297730563
+      ]
+    },
+    "previousEstimatedWidthMeters": 5.5,
+    "correctedEstimatedWidthMeters": 1.6,
+    "previousRoadRgbDerivedFromProductionBranch": [
+      0.3472,
+      0.3472,
+      0.3064
+    ],
+    "cause": "The IGN Sentier previously used a generic5.5m road width and its sparse sourceZ placed the display ribbon above the localMNT. Classification now uses an explicitly estimated1.6m width. This at-grade route retains its original sourceXYZ and its visible surface is separately derived from the available realMNT used by physics.",
+    "scope": "Final native verification covers both the narrow-width correction and the explicit ground-contact display policy on frozenHTML36205. Original acquisition information is retained here; the superseded5efd proof remains separately preserved."
+  },
+  "afterProfile": {
+    "id": "source:geo_marseille_commune:road:troncon_de_route.6003809",
+    "sourceId": "troncon_de_route.6003809",
+    "kind": "transportation",
+    "baseY": null,
+    "height": null,
+    "profile": {
+      "width": 1.6,
+      "widthAssumed": true,
+      "widthBasis": "nature IGN Sentier — estimation",
+      "roadClass": "path",
+      "classificationBasis": "nature IGN Sentier",
+      "sourceNature": "Sentier",
+      "maritime": false,
+      "absoluteHeight": null,
+      "heightBasis": "MNT local — surface au sol dérivée",
+      "offset": 0,
+      "elevationAssumed": true,
+      "unavailableElevation": false,
+      "bridge": false,
+      "tunnel": false,
+      "sourcePosition": "0",
+      "ordinalPosition": 0,
+      "positionBasis": "Ordre de superposition BD TOPO, sans unité métrique",
+      "planimetricAccuracy": 2.5,
+      "altimetricAccuracy": 1.5,
+      "surfaceDerived": true,
+      "surfaceElevationPolicy": "ground-contact-mnt",
+      "sourceHeightBasis": "coordonnées Z source",
+      "sourceGeometryUnmodified": true,
+      "sourceXYZPreserved": true,
+      "surfaceVisualOffsetMeters": 0.085,
+      "surfaceNoDataVertices": 0,
+      "surfaceTerrainSources": [
+        {
+          "id": "enrichment:geo_marseille_commune:63a214b4ef147ed4",
+          "sourceResource": "ign_rge_alti_wld",
+          "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale",
+          "resolutionMeters": [
+            9.984031490488738,
+            10.01994170878003
+          ],
+          "interpolation": "bilinéaire, quatre échantillons valides requis"
+        }
+      ]
+    },
+    "footprintRings": 0,
+    "vertices": 16,
+    "provenance": {
+      "acquiredAt": "2026-10-23",
+      "attribution": "IGN — Géoplateforme",
+      "coverage": {
+        "bbox": [
+          43.292645316666665,
+          5.368962869230769,
+          43.298796017499996,
+          5.374805029615384
+        ],
+        "complete": true,
+        "crs": "EPSG:4326",
+        "layer": "BDTOPO_V3:troncon_de_route",
+        "returned": 222
+      },
+      "inputCrs": "EPSG:4326",
+      "inputSha256": "7afefbc79b384b9cff129573a2eac3ca18dc6a07bc7a77bf3154a975abb1d69b",
+      "license": "Licence Ouverte 2.0",
+      "resource": "ign-bdtopo",
+      "source": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+      "url": "https://data.geopf.fr/wfs/ows",
+      "verticalDatum": "NGF-IGN69"
+    }
+  },
+  "nativeSurfaceSamples": [
+    {
+      "ll": [
+        43.29679796014034,
+        5.369594693594505
+      ],
+      "vertex": [
+        -11436.579010142053,
+        3.283475595492848,
+        -958.6695164603449
+      ],
+      "sample": {
+        "height": 3.198475595492848,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29678407985964,
+        5.369599906404867
+      ],
+      "vertex": [
+        -11436.109644470464,
+        3.072946336791183,
+        -957.1399100186967
+      ],
+      "sample": {
+        "height": 2.987946336791183,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.296819865198195,
+        5.369704023565147
+      ],
+      "vertex": [
+        -11427.778925557603,
+        3.602265233332359,
+        -961.3698565599776
+      ],
+      "sample": {
+        "height": 3.517265233332359,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29680598491198,
+        5.369709236351178
+      ],
+      "vertex": [
+        -11427.309559886013,
+        3.4239816756229113,
+        -959.8402501183294
+      ],
+      "sample": {
+        "height": 3.3389816756229114,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29684212192141,
+        5.369815109375331
+      ],
+      "vertex": [
+        -11418.837518444021,
+        3.86065589992332,
+        -964.1135620260146
+      ],
+      "sample": {
+        "height": 3.77565589992332,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29682753807861,
+        5.369816810624455
+      ],
+      "vertex": [
+        -11418.650797830693,
+        3.641477016809628,
+        -962.4972248515579
+      ],
+      "sample": {
+        "height": 3.556477016809628,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29683638017965,
+        5.369895294602846
+      ],
+      "vertex": [
+        -11412.310587652351,
+        3.650671561114932,
+        -963.6709418229848
+      ],
+      "sample": {
+        "height": 3.565671561114932,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29682289981997,
+        5.36988158539876
+      ],
+      "vertex": [
+        -11413.378248487741,
+        3.4654920452939013,
+        -962.1396698329509
+      ],
+      "sample": {
+        "height": 3.3804920452939013,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29674125607518,
+        5.36994894276897
+      ],
+      "vertex": [
+        -11407.639209346187,
+        2.8199465533878523,
+        -953.2319551114332
+      ],
+      "sample": {
+        "height": 2.7349465533878523,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29673577397805,
+        5.36993072271909
+      ],
+      "vertex": [
+        -11409.09965046887,
+        2.727554724186368,
+        -952.5784172569994
+      ],
+      "sample": {
+        "height": 2.642554724186368,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29665013107963,
+        5.370000335338218
+      ],
+      "vertex": [
+        -11403.16422118367,
+        2.350135972204507,
+        -943.2318354676817
+      ],
+      "sample": {
+        "height": 2.265135972204507,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29664464899156,
+        5.36998211531224
+      ],
+      "vertex": [
+        -11404.624662306353,
+        2.292347875572016,
+        -942.5782976132479
+      ],
+      "sample": {
+        "height": 2.207347875572016,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29655900606612,
+        5.370051727745068
+      ],
+      "vertex": [
+        -11398.689233021152,
+        1.7174203571376505,
+        -933.2317158239301
+      ],
+      "sample": {
+        "height": 1.6324203571376505,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.296553523987086,
+        5.370033507742992
+      ],
+      "vertex": [
+        -11400.149674143835,
+        1.695615507043565,
+        -932.5781779694963
+      ],
+      "sample": {
+        "height": 1.610615507043565,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.296467881034616,
+        5.370103119989521
+      ],
+      "vertex": [
+        -11394.214244858635,
+        1.332734818627341,
+        -923.2315961801786
+      ],
+      "sample": {
+        "height": 1.247734818627341,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    },
+    {
+      "ll": [
+        43.29646239896464,
+        5.370084900011347
+      ],
+      "vertex": [
+        -11395.674685981317,
+        1.3031018888872872,
+        -922.5780583257448
+      ],
+      "sample": {
+        "height": 1.2181018888872872,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          9.984031490488738,
+          10.01994170878003
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      "delta": 0.08499999999999996
+    }
+  ],
+  "rays": {
+    "up": [],
+    "north": [
+      {
+        "index": 25,
+        "mesh": "terrain",
+        "layer": null,
+        "id": null,
+        "pos": [
+          -11418.256243599346,
+          0,
+          -921.165137338452
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 27.227380220938525,
+        "point": [
+          -11398.888126658509,
+          3.0129979244143144,
+          -953.8907601620741
+        ],
+        "triangle": [
+          [
+            -11399.471232434269,
+            3.59,
+            -961.7666867319494
+          ],
+          [
+            -11399.17094856198,
+            2.86,
+            -951.7652065334842
+          ],
+          [
+            -11389.473023706581,
+            3.55,
+            -962.0668801888824
+          ]
+        ],
+        "part": "triangle",
+        "rings": null,
+        "roadPath": null
+      },
+      {
+        "index": 1551,
+        "mesh": "geoSurface",
+        "layer": "transportation",
+        "id": "transportation:0",
+        "pos": [
+          -11389.565099824802,
+          0.025,
+          -948.2971370224841
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 36.38101842102289,
+        "point": [
+          -11398.888126658509,
+          3.0129979244143144,
+          -963.0443983621585
+        ],
+        "triangle": [
+          [
+            -11390.684390521143,
+            4.171509355001837,
+            -968.5431031119078
+          ],
+          [
+            -11415.331290621078,
+            3.465758258107498,
+            -962.1583286691457
+          ],
+          [
+            -11368.913287322446,
+            1.5028359641774698,
+            -962.1583286691457
+          ]
+        ],
+        "part": "triangle",
+        "rings": [
+          [
+            [
+              -11370.787544332561,
+              -973.4826875571162
+            ],
+            [
+              -11365.996366584674,
+              -944.5341410022229
+            ],
+            [
+              -11363.798909028526,
+              -929.4025439107791
+            ],
+            [
+              -11379.40726943477,
+              -926.7627675505355
+            ],
+            [
+              -11399.778718011454,
+              -923.111586487852
+            ],
+            [
+              -11400.344343692646,
+              -927.4367779074237
+            ],
+            [
+              -11401.397443212452,
+              -933.4841981865466
+            ],
+            [
+              -11414.4084491533,
+              -960.4491742737591
+            ],
+            [
+              -11415.331290621078,
+              -962.1583286691457
+            ],
+            [
+              -11390.684390521143,
+              -968.5431031119078
+            ],
+            [
+              -11370.787544332561,
+              -973.4826875571162
+            ]
+          ]
+        ],
+        "roadPath": null
+      }
+    ],
+    "north_up": [],
+    "north_down": [
+      {
+        "index": 1551,
+        "mesh": "geoSurface",
+        "layer": "transportation",
+        "id": "transportation:0",
+        "pos": [
+          -11389.565099824802,
+          0.025,
+          -948.2971370224841
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 8.38213843184216,
+        "point": [
+          -11398.888126658509,
+          1.7695877129108382,
+          -934.9527813511588
+        ],
+        "triangle": [
+          [
+            -11406.729206576743,
+            2.318319029622578,
+            -944.5341410022229
+          ],
+          [
+            -11401.397443212452,
+            1.7198982882987648,
+            -933.4841981865466
+          ],
+          [
+            -11364.391659547568,
+            1.3767056428886255,
+            -933.4841981865466
+          ]
+        ],
+        "part": "triangle",
+        "rings": [
+          [
+            [
+              -11370.787544332561,
+              -973.4826875571162
+            ],
+            [
+              -11365.996366584674,
+              -944.5341410022229
+            ],
+            [
+              -11363.798909028526,
+              -929.4025439107791
+            ],
+            [
+              -11379.40726943477,
+              -926.7627675505355
+            ],
+            [
+              -11399.778718011454,
+              -923.111586487852
+            ],
+            [
+              -11400.344343692646,
+              -927.4367779074237
+            ],
+            [
+              -11401.397443212452,
+              -933.4841981865466
+            ],
+            [
+              -11414.4084491533,
+              -960.4491742737591
+            ],
+            [
+              -11415.331290621078,
+              -962.1583286691457
+            ],
+            [
+              -11390.684390521143,
+              -968.5431031119078
+            ],
+            [
+              -11370.787544332561,
+              -973.4826875571162
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 25,
+        "mesh": "terrain",
+        "layer": null,
+        "id": null,
+        "pos": [
+          -11418.256243599346,
+          0,
+          -921.165137338452
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 8.731464844506412,
+        "point": [
+          -11398.888126658509,
+          1.7177684746357254,
+          -935.2982429396595
+        ],
+        "triangle": [
+          [
+            -11398.870664668619,
+            2.16,
+            -941.763725630939
+          ],
+          [
+            -11408.56863676128,
+            1.63,
+            -931.4620647700503
+          ],
+          [
+            -11398.570380754303,
+            1.47,
+            -931.7622440326959
+          ]
+        ],
+        "part": "triangle",
+        "rings": null,
+        "roadPath": null
+      }
+    ],
+    "east": [
+      {
+        "index": 11655,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9969778:27819f0b",
+        "pos": [
+          -11317.294078735402,
+          13.65,
+          -924.9550942298956
+        ],
+        "baseY": 1.2,
+        "height": 24.900000000000002,
+        "t": 59.07006992322428,
+        "point": [
+          -11339.818056735285,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11362.644277517567,
+            1.2,
+            -922.704721769318
+          ],
+          [
+            -11273.844019639422,
+            1.2,
+            -938.104987536557
+          ],
+          [
+            -11273.844019639422,
+            26.1,
+            -938.104987536557
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11362.644277517567,
+              -922.704721769318
+            ],
+            [
+              -11273.844019639422,
+              -938.104987536557
+            ],
+            [
+              -11271.943879953236,
+              -927.2051583379507
+            ],
+            [
+              -11360.844213225297,
+              -911.8052009232342
+            ],
+            [
+              -11362.644277517567,
+              -922.704721769318
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 11656,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9969779:28838fa6",
+        "pos": [
+          -11317.043834482727,
+          13,
+          -923.1546502131969
+        ],
+        "baseY": 1.7,
+        "height": 22.6,
+        "t": 123.81668740498255,
+        "point": [
+          -11275.071439253526,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11271.943879953236,
+            1.7,
+            -927.2051583379507
+          ],
+          [
+            -11360.844213225297,
+            24.3,
+            -911.8052009232342
+          ],
+          [
+            -11271.943879953236,
+            24.3,
+            -927.2051583379507
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11362.644277517567,
+              -922.704721769318
+            ],
+            [
+              -11366.04375654296,
+              -922.1055064843968
+            ],
+            [
+              -11363.544176942902,
+              -907.6047144774348
+            ],
+            [
+              -11268.043912422494,
+              -924.2049681460485
+            ],
+            [
+              -11270.544482800644,
+              -938.704585948959
+            ],
+            [
+              -11273.844019639422,
+              -938.104987536557
+            ],
+            [
+              -11271.943879953236,
+              -927.2051583379507
+            ],
+            [
+              -11360.844213225297,
+              -911.8052009232342
+            ],
+            [
+              -11362.644277517567,
+              -922.704721769318
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 14765,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9969838:d296a2a2",
+        "pos": [
+          -11135.244093125395,
+          14.4,
+          -933.0551808215678
+        ],
+        "baseY": 1.3,
+        "height": 26.2,
+        "t": 265.1883824435963,
+        "point": [
+          -11133.699744214911,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11132.14442064194,
+            1.3,
+            -926.1051450548694
+          ],
+          [
+            -11139.944108213065,
+            1.3,
+            -928.9045996377245
+          ],
+          [
+            -11139.944108213065,
+            27.5,
+            -928.9045996377245
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11132.14442064194,
+              -926.1051450548694
+            ],
+            [
+              -11139.944108213065,
+              -928.9045996377245
+            ],
+            [
+              -11139.744330049492,
+              -931.9056317005306
+            ],
+            [
+              -11137.344368860824,
+              -931.7053080899641
+            ],
+            [
+              -11136.644289778313,
+              -940.0052165882662
+            ],
+            [
+              -11133.943773659063,
+              -939.8050332814455
+            ],
+            [
+              -11130.544078037725,
+              -939.5046478705481
+            ],
+            [
+              -11131.344067783328,
+              -929.2054212754592
+            ],
+            [
+              -11132.14442064194,
+              -926.1051450548694
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 14799,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9969836:53899bc2",
+        "pos": [
+          -11127.793749805016,
+          16.35,
+          -936.6050730012357
+        ],
+        "baseY": 1.6,
+        "height": 29.5,
+        "t": 266.88781733285475,
+        "point": [
+          -11132.000309325655,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11132.14442064194,
+            1.6,
+            -926.1051450548694
+          ],
+          [
+            -11131.344067783328,
+            1.6,
+            -929.2054212754592
+          ],
+          [
+            -11131.344067783328,
+            31.1,
+            -929.2054212754592
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11124.44390057365,
+              -923.6052234880626
+            ],
+            [
+              -11132.14442064194,
+              -926.1051450548694
+            ],
+            [
+              -11131.344067783328,
+              -929.2054212754592
+            ],
+            [
+              -11130.544078037725,
+              -939.5046478705481
+            ],
+            [
+              -11133.943773659063,
+              -939.8050332814455
+            ],
+            [
+              -11133.544061393477,
+              -944.504772035405
+            ],
+            [
+              -11132.644251537859,
+              -944.4050398627296
+            ],
+            [
+              -11129.943737086141,
+              -944.2048582499847
+            ],
+            [
+              -11129.944401512621,
+              -944.6052130460739
+            ],
+            [
+              -11129.444047242054,
+              -949.6049225144088
+            ],
+            [
+              -11121.644390910282,
+              -948.8051304006949
+            ],
+            [
+              -11121.64372595097,
+              -948.4047756139189
+            ],
+            [
+              -11121.844345450518,
+              -946.4046547096223
+            ],
+            [
+              -11122.043913948233,
+              -944.5046590827405
+            ],
+            [
+              -11122.444201041479,
+              -941.9046454429626
+            ],
+            [
+              -11124.44390057365,
+              -923.6052234880626
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 14803,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9969841:31dbab01",
+        "pos": [
+          -11121.243945561873,
+          16.15,
+          -932.0050943419337
+        ],
+        "baseY": 1.5,
+        "height": 29.3,
+        "t": 274.7784111778957,
+        "point": [
+          -11124.109715480612,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11124.44390057365,
+            1.5,
+            -923.6052234880626
+          ],
+          [
+            -11122.444201041479,
+            1.5,
+            -941.9046454429626
+          ],
+          [
+            -11122.444201041479,
+            30.8,
+            -941.9046454429626
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11122.444201041479,
+              -941.9046454429626
+            ],
+            [
+              -11118.043990550097,
+              -941.5053396588191
+            ],
+            [
+              -11118.244509980199,
+              -938.2051155399531
+            ],
+            [
+              -11118.544297395623,
+              -935.5046931430697
+            ],
+            [
+              -11120.243731757393,
+              -922.1055432409048
+            ],
+            [
+              -11124.44390057365,
+              -923.6052234880626
+            ],
+            [
+              -11122.444201041479,
+              -941.9046454429626
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 14806,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9969844:ebcae449",
+        "pos": [
+          -11115.043927124876,
+          15.749999999999998,
+          -927.2546200128272
+        ],
+        "baseY": 1.1,
+        "height": 29.299999999999997,
+        "t": 279.22247219409775,
+        "point": [
+          -11119.66565446441,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11118.544297395623,
+            1.1,
+            -935.5046931430697
+          ],
+          [
+            -11120.243731757393,
+            1.1,
+            -922.1055432409048
+          ],
+          [
+            -11120.243731757393,
+            30.4,
+            -922.1055432409048
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11118.544297395623,
+              -935.5046931430697
+            ],
+            [
+              -11120.243731757393,
+              -922.1055432409048
+            ],
+            [
+              -11111.044245884637,
+              -919.0045468825847
+            ],
+            [
+              -11110.14447908604,
+              -928.6050097569823
+            ],
+            [
+              -11109.844122492359,
+              -931.2053561797366
+            ],
+            [
+              -11109.944109190721,
+              -931.5048551242799
+            ],
+            [
+              -11111.74450661987,
+              -934.4045958593488
+            ],
+            [
+              -11112.244259627769,
+              -935.0045891795307
+            ],
+            [
+              -11118.544297395623,
+              -935.5046931430697
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 14805,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9969843:5938c0bb",
+        "pos": [
+          -11098.144146641484,
+          17.25,
+          -927.3054229156114
+        ],
+        "baseY": 1.3,
+        "height": 31.900000000000002,
+        "t": 288.5616757169106,
+        "point": [
+          -11110.326450941599,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11111.044245884637,
+            1.3,
+            -919.0045468825847
+          ],
+          [
+            -11110.14447908604,
+            1.3,
+            -928.6050097569823
+          ],
+          [
+            -11110.14447908604,
+            33.2,
+            -928.6050097569823
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11099.3438566369,
+              -942.3056387472898
+            ],
+            [
+              -11085.943880310282,
+              -921.405318477191
+            ],
+            [
+              -11085.244436754612,
+              -919.4055714318529
+            ],
+            [
+              -11085.24404739833,
+              -917.2046331698075
+            ],
+            [
+              -11085.94425846776,
+              -915.2050564484671
+            ],
+            [
+              -11087.443880022736,
+              -913.5050759511068
+            ],
+            [
+              -11089.344477246632,
+              -912.6049090297893
+            ],
+            [
+              -11091.544199440628,
+              -912.305207083933
+            ],
+            [
+              -11092.943949418259,
+              -912.605657289736
+            ],
+            [
+              -11111.044245884637,
+              -919.0045468825847
+            ],
+            [
+              -11110.14447908604,
+              -928.6050097569823
+            ],
+            [
+              -11107.84415822383,
+              -930.205612196587
+            ],
+            [
+              -11107.743914244696,
+              -932.0047525381669
+            ],
+            [
+              -11108.244240042637,
+              -932.70482206624
+            ],
+            [
+              -11110.043826352572,
+              -935.6045867027715
+            ],
+            [
+              -11099.3438566369,
+              -942.3056387472898
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 1401,
+        "mesh": "geoSurface",
+        "layer": "landuse",
+        "id": "landuse:0",
+        "pos": [
+          -10821.798737321515,
+          0.025,
+          -1247.4912073044106
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 357.979898618055,
+        "point": [
+          -11040.908228040453,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11077.54911942291,
+            1.6798136588170358,
+            -931.0573512446135
+          ],
+          [
+            -11075.228728579707,
+            1.6380403600481366,
+            -926.3507323050871
+          ],
+          [
+            -10294.328227716154,
+            32.71996651565921,
+            -926.3507323050871
+          ]
+        ],
+        "part": "triangle",
+        "rings": [
+          [
+            [
+              -11044.422890882008,
+              -1365.389058507979
+            ],
+            [
+              -11044.039742402267,
+              -1367.1373408120126
+            ],
+            [
+              -11042.9424952775,
+              -1374.117369743064
+            ],
+            [
+              -11042.533249252243,
+              -1374.9980577463284
+            ],
+            [
+              -11037.987694489071,
+              -1397.712564931251
+            ],
+            [
+              -11031.14332701359,
+              -1430.9165992159396
+            ],
+            [
+              -11025.883784488891,
+              -1458.862601174973
+            ],
+            [
+              -11032.875305440975,
+              -1459.5206340523437
+            ],
+            [
+              -11046.413562877104,
+              -1489.5061041181907
+            ],
+            [
+              -11043.77544413996,
+              -1488.717101414688
+            ],
+            [
+              -11040.266651051817,
+              -1487.954291632399
+            ],
+            [
+              -11029.048607890029,
+              -1462.6750356387347
+            ],
+            [
+              -11021.886485680705,
+              -1499.7959362715483
+            ],
+            [
+              -10933.813592558377,
+              -1512.4323924770579
+            ],
+            [
+              -10933.839705821243,
+              -1513.2999660437927
+            ],
+            [
+              -10911.293688252917,
+              -1517.0178804835305
+            ],
+            [
+              -10913.892437310773,
+              -1559.9232874978334
+            ],
+            [
+              -10836.190443258965,
+              -1613.0612775739282
+            ],
+            [
+              -10690.832714588149,
+              -1705.577029241249
+            ],
+            [
+              -10685.713437511818,
+              -1709.204657856375
+            ],
+            [
+              -10530.852022746345,
+              -1789.8528114631772
+            ],
+            [
+              -10524.0439742218,
+              -1795.2681206166744
+            ],
+            [
+              -10521.919732529088,
+              -1797.0688472660258
+            ],
+            [
+              -10520.21772310289,
+              -1798.4226752435789
+            ],
+            [
+              -10401.61888720002,
+              -1896.6480533676222
+            ],
+            [
+              -10394.388844210189,
+              -1902.5103172659874
+            ],
+            [
+              -10390.56272011064,
+              -1905.6649006791413
+            ],
+            [
+              -10332.749099759967,
+              -1953.4306555902585
+            ],
+            [
+              -10327.22110913042,
+              -1957.939100955613
+            ],
+            [
+              -10325.53228078247,
+              -1959.7267061257735
+            ],
+            [
+              -10290.924778116634,
+              -813.6396355517209
+            ],
+            [
+              -10295.805685979547,
+              -816.5318571869284
+            ],
+            [
+              -10350.431618353352,
+              -850.4893171740696
+            ],
+            [
+              -10358.86098781065,
+              -855.4455818394199
+            ],
+            [
+              -10365.496445782366,
+              -858.7190977176651
+            ],
+            [
+              -10382.964005478425,
+              -859.9287704871967
+            ],
+            [
+              -10396.68335129181,
+              -866.8965420341119
+            ],
+            [
+              -10409.558093764703,
+              -874.7582715824246
+            ],
+            [
+              -10435.29439220205,
+              -890.0479480205104
+            ],
+            [
+              -10455.26596048486,
+              -902.0378281222656
+            ],
+            [
+              -10458.379041039385,
+              -904.1150175156072
+            ],
+            [
+              -10469.472862823284,
+              -910.727878308855
+            ],
+            [
+              -10464.97859137028,
+              -891.7576650734991
+            ],
+            [
+              -10462.975312265335,
+              -883.133629122749
+            ],
+            [
+              -10460.035827621352,
+              -872.3667040467262
+            ],
+            [
+              -10456.09468526754,
+              -857.2877262737602
+            ],
+            [
+              -10445.24663615541,
+              -815.4949902324006
+            ],
+            [
+              -10442.346363641089,
+              -806.0294617330655
+            ],
+            [
+              -10439.855286638485,
+              -795.6831136662513
+            ],
+            [
+              -10426.633741162485,
+              -747.4481178140268
+            ],
+            [
+              -10419.700471929042,
+              -719.8663420146331
+            ],
+            [
+              -10396.684074629564,
+              -635.884503223002
+            ],
+            [
+              -10392.294164741412,
+              -620.3842966305092
+            ],
+            [
+              -10390.817763586412,
+              -614.7837062105536
+            ],
+            [
+              -10406.308733232436,
+              -608.2368172854185
+            ],
+            [
+              -10407.16643416381,
+              -607.7766915801913
+            ],
+            [
+              -10411.04572785995,
+              -606.3568985890597
+            ],
+            [
+              -10417.972801002907,
+              -604.8451389921829
+            ],
+            [
+              -10422.300586860278,
+              -603.8460619254038
+            ],
+            [
+              -10427.43371343345,
+              -600.6514721419662
+            ],
+            [
+              -10433.476911183097,
+              -598.7321553770453
+            ],
+            [
+              -10551.202216607286,
+              -557.4018659945577
+            ],
+            [
+              -11287.029579117894,
+              -535.2557084830478
+            ],
+            [
+              -11293.711653430597,
+              -554.5959364641458
+            ],
+            [
+              -11297.046160045196,
+              -564.0491056088358
+            ],
+            [
+              -11301.817171205534,
+              -577.8015255499631
+            ],
+            [
+              -11306.087607878027,
+              -589.397753030993
+            ],
+            [
+              -11352.672696526395,
+              -733.0332591338083
+            ],
+            [
+              -11093.315289737191,
+              -774.2627598093823
+            ],
+            [
+              -11043.463059604284,
+              -797.4734580749646
+            ],
+            [
+              -11051.35088192462,
+              -842.3956963960081
+            ],
+            [
+              -11058.803225360345,
+              -887.3307233657688
+            ],
+            [
+              -11071.458688173094,
+              -916.9112985171378
+            ],
+            [
+              -11072.921381618362,
+              -922.0779371969402
+            ],
+            [
+              -11075.228728579707,
+              -926.3507323050871
+            ],
+            [
+              -11077.54911942291,
+              -931.0573512446135
+            ],
+            [
+              -11109.590721838176,
+              -982.1997866854072
+            ],
+            [
+              -11118.71555781993,
+              -995.8202712619677
+            ],
+            [
+              -11159.90725944005,
+              -1061.4504155116156
+            ],
+            [
+              -11166.750727532897,
+              -1071.6657039299607
+            ],
+            [
+              -11197.393580517266,
+              -1119.8099932540208
+            ],
+            [
+              -11232.585111967404,
+              -1174.3303718334064
+            ],
+            [
+              -11242.632277881028,
+              -1189.659679915756
+            ],
+            [
+              -11253.140822490095,
+              -1205.8434992721304
+            ],
+            [
+              -11265.495007832069,
+              -1225.4454204700887
+            ],
+            [
+              -11266.853208184475,
+              -1227.1414027232677
+            ],
+            [
+              -11266.866242267424,
+              -1227.57520870585
+            ],
+            [
+              -11257.108576575061,
+              -1250.8808261938393
+            ],
+            [
+              -11194.313450347632,
+              -1249.2944010505453
+            ],
+            [
+              -11078.565192349022,
+              -1283.6024174625054
+            ],
+            [
+              -11064.738351984415,
+              -1287.4918379383162
+            ],
+            [
+              -11047.718236669432,
+              -1373.5395213430747
+            ],
+            [
+              -11044.422890882008,
+              -1365.389058507979
+            ]
+          ]
+        ],
+        "roadPath": null
+      }
+    ],
+    "south": [
+      {
+        "index": 11637,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9968147:68fd15ca",
+        "pos": [
+          -11409.593946801033,
+          12.6,
+          -907.6553850253113
+        ],
+        "baseY": 1,
+        "height": 23.2,
+        "t": 9.006513187627514,
+        "point": [
+          -11398.888126658509,
+          3.0129979244143144,
+          -917.6568667535081
+        ],
+        "triangle": [
+          [
+            -11407.844006748404,
+            1,
+            -916.104876733385
+          ],
+          [
+            -11395.144306859234,
+            1,
+            -918.3056439710781
+          ],
+          [
+            -11395.144306859234,
+            24.2,
+            -918.3056439710781
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11424.34392466594,
+              -898.1053885770962
+            ],
+            [
+              -11425.343733579037,
+              -904.404625210911
+            ],
+            [
+              -11425.744214254548,
+              -906.7047645188868
+            ],
+            [
+              -11426.4442341252,
+              -910.4050068445504
+            ],
+            [
+              -11426.743851997657,
+              -912.1053882306442
+            ],
+            [
+              -11426.843745461316,
+              -912.104613785632
+            ],
+            [
+              -11426.943874555174,
+              -913.0046743936837
+            ],
+            [
+              -11423.044040423818,
+              -913.6055319635198
+            ],
+            [
+              -11416.744375732844,
+              -914.6054091854021
+            ],
+            [
+              -11416.143792591523,
+              -914.704626346007
+            ],
+            [
+              -11414.043742050417,
+              -915.104654260911
+            ],
+            [
+              -11414.044309501303,
+              -915.2047308012843
+            ],
+            [
+              -11413.644391604,
+              -915.3045968450606
+            ],
+            [
+              -11413.644470777246,
+              -915.6048751892522
+            ],
+            [
+              -11408.34422083071,
+              -916.5046913810074
+            ],
+            [
+              -11408.244248000556,
+              -916.2051877696067
+            ],
+            [
+              -11407.94425701024,
+              -916.3053905842826
+            ],
+            [
+              -11407.844006748404,
+              -916.104876733385
+            ],
+            [
+              -11395.144306859234,
+              -918.3056439710781
+            ],
+            [
+              -11392.544007020886,
+              -903.5053612869233
+            ],
+            [
+              -11392.444080049288,
+              -903.5050251139328
+            ],
+            [
+              -11392.244019046891,
+              -902.6046288115904
+            ],
+            [
+              -11393.244521450484,
+              -902.4055420570076
+            ],
+            [
+              -11393.244000416249,
+              -902.6046327352524
+            ],
+            [
+              -11400.844412329607,
+              -901.2053426317871
+            ],
+            [
+              -11400.744359213277,
+              -900.6055607274175
+            ],
+            [
+              -11401.044271127903,
+              -900.2050791895017
+            ],
+            [
+              -11401.944002159056,
+              -900.0045707020909
+            ],
+            [
+              -11401.944081837777,
+              -900.3048490788788
+            ],
+            [
+              -11405.244460467715,
+              -899.7052938314155
+            ],
+            [
+              -11405.144084198284,
+              -898.9053343860433
+            ],
+            [
+              -11405.54400301585,
+              -898.8054678039625
+            ],
+            [
+              -11410.444348450517,
+              -898.0055154580623
+            ],
+            [
+              -11410.84426739742,
+              -897.9056492028758
+            ],
+            [
+              -11411.043725038762,
+              -898.7048584148288
+            ],
+            [
+              -11414.144006954506,
+              -898.2047357466072
+            ],
+            [
+              -11414.14396121027,
+              -897.9055685130879
+            ],
+            [
+              -11415.24408108159,
+              -897.8047003094107
+            ],
+            [
+              -11415.54415209347,
+              -898.0047762095928
+            ],
+            [
+              -11415.644203846343,
+              -898.604558352381
+            ],
+            [
+              -11423.344029708882,
+              -897.4047221224755
+            ],
+            [
+              -11423.244380323798,
+              -897.3053957046941
+            ],
+            [
+              -11424.244283745997,
+              -897.0051260795444
+            ],
+            [
+              -11424.34392466594,
+              -898.1053885770962
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 11646,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.49696461:f0ffc727",
+        "pos": [
+          -11403.044044666516,
+          3.3000000000000003,
+          -578.3553014849313
+        ],
+        "baseY": 0.1,
+        "height": 6.4,
+        "t": 343.6971757816236,
+        "point": [
+          -11398.888126658509,
+          3.0129979244143144,
+          -582.966204159512
+        ],
+        "triangle": [
+          [
+            -11404.844063079217,
+            0.1,
+            -597.0050719957799
+          ],
+          [
+            -11390.843982713879,
+            6.5,
+            -564.0051767546684
+          ],
+          [
+            -11404.844063079217,
+            6.5,
+            -597.0050719957799
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11401.14417335298,
+              -559.7055309740826
+            ],
+            [
+              -11415.244106619153,
+              -592.7046750448644
+            ],
+            [
+              -11410.34388431476,
+              -595.0049091484398
+            ],
+            [
+              -11404.844063079217,
+              -597.0050719957799
+            ],
+            [
+              -11390.843982713879,
+              -564.0051767546684
+            ],
+            [
+              -11401.14417335298,
+              -559.7055309740826
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 3953,
+        "mesh": "geoSurface",
+        "layer": "landuse",
+        "id": "landuse:0",
+        "pos": [
+          -11176.703767403262,
+          0.025,
+          323.0429651341401
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 386.21414732476654,
+        "point": [
+          -11398.888126658509,
+          3.0129979244143144,
+          -540.449232616369
+        ],
+        "triangle": [
+          [
+            -11455.470546532413,
+            1.0000631927298695,
+            -540.6728453803807
+          ],
+          [
+            -11457.52183637788,
+            1.0017246916887723,
+            -540.1228873403743
+          ],
+          [
+            -10282.665604938617,
+            42.176583928275754,
+            -540.1228873403743
+          ]
+        ],
+        "part": "triangle",
+        "rings": [
+          [
+            [
+              -10285.108227999066,
+              -621.0145579958335
+            ],
+            [
+              -10229.7637149808,
+              1211.8143349066377
+            ],
+            [
+              -12069.409185511991,
+              1267.1004882641137
+            ],
+            [
+              -12123.643819825724,
+              -546.2209097649902
+            ],
+            [
+              -12115.08571836818,
+              -536.9235946051776
+            ],
+            [
+              -12107.885706970585,
+              -529.3226181259379
+            ],
+            [
+              -12098.443777274573,
+              -519.6174929151312
+            ],
+            [
+              -12096.188896603882,
+              -517.0794918658212
+            ],
+            [
+              -12092.446110747522,
+              -508.506606195122
+            ],
+            [
+              -12089.60007984261,
+              -500.77537129539996
+            ],
+            [
+              -12085.382935739355,
+              -490.91392586007714
+            ],
+            [
+              -12053.513482443523,
+              -503.5919435536489
+            ],
+            [
+              -12058.088188403985,
+              -510.83719850797206
+            ],
+            [
+              -12053.376638071146,
+              -513.5836201841012
+            ],
+            [
+              -12052.928254180588,
+              -513.162793373689
+            ],
+            [
+              -12049.919375988073,
+              -514.5555464560166
+            ],
+            [
+              -12053.109986149473,
+              -519.236746747978
+            ],
+            [
+              -12049.256267928286,
+              -521.5232603466138
+            ],
+            [
+              -12053.843947409885,
+              -529.2023448646069
+            ],
+            [
+              -12037.17483780079,
+              -540.1228873403743
+            ],
+            [
+              -12044.400886501418,
+              -548.5914771938697
+            ],
+            [
+              -12076.848270129412,
+              -540.6728453803807
+            ],
+            [
+              -12077.361546580214,
+              -543.2629322968423
+            ],
+            [
+              -12043.620955661638,
+              -551.6544935395941
+            ],
+            [
+              -12041.677622813033,
+              -559.5289540188387
+            ],
+            [
+              -12039.324859202607,
+              -568.2841344270855
+            ],
+            [
+              -11936.135246604448,
+              -571.3726325156167
+            ],
+            [
+              -11935.595937092672,
+              -567.914865937084
+            ],
+            [
+              -11925.140109617729,
+              -553.463755371049
+            ],
+            [
+              -11919.915305829258,
+              -553.6201881757006
+            ],
+            [
+              -11920.045204443275,
+              -557.9586996603757
+            ],
+            [
+              -11914.820404319325,
+              -558.1151366196573
+            ],
+            [
+              -11915.671489677858,
+              -571.9853168912232
+            ],
+            [
+              -11885.62895645795,
+              -572.8849080754444
+            ],
+            [
+              -11882.587813980761,
+              -558.6460743835196
+            ],
+            [
+              -11882.353950770572,
+              -550.836752445437
+            ],
+            [
+              -11879.969369028695,
+              -514.8660957682878
+            ],
+            [
+              -11877.779361606692,
+              -514.4974370207638
+            ],
+            [
+              -11877.688412562013,
+              -511.4604588346556
+            ],
+            [
+              -11856.841037750244,
+              -513.8217864623293
+            ],
+            [
+              -11840.295723852469,
+              -514.3173479447141
+            ],
+            [
+              -11835.031901320443,
+              -513.1722880098969
+            ],
+            [
+              -11829.319677652675,
+              -511.6064204145223
+            ],
+            [
+              -11820.917052060366,
+              -507.5156888673082
+            ],
+            [
+              -11812.858839457505,
+              -500.3749384926632
+            ],
+            [
+              -11805.658420079271,
+              -492.7742463732138
+            ],
+            [
+              -11801.518816291937,
+              -485.5160980215296
+            ],
+            [
+              -11798.672421527444,
+              -477.7849539555609
+            ],
+            [
+              -11794.090856055496,
+              -455.77564196195453
+            ],
+            [
+              -11787.468654664233,
+              -423.83966523595154
+            ],
+            [
+              -11803.936215862981,
+              -420.74080653861165
+            ],
+            [
+              -11826.473533135606,
+              -416.59166896902025
+            ],
+            [
+              -11833.706552775227,
+              -410.72975992038846
+            ],
+            [
+              -11857.804091548314,
+              -342.2646232964471
+            ],
+            [
+              -11858.583962807199,
+              -339.2014831667766
+            ],
+            [
+              -11858.928419767413,
+              -336.15138207096606
+            ],
+            [
+              -11858.38905248954,
+              -332.69349421933293
+            ],
+            [
+              -11857.414269131375,
+              -329.2486450225115
+            ],
+            [
+              -11855.581647422514,
+              -326.2637418676168
+            ],
+            [
+              -11853.339596816571,
+              -324.1596120689064
+            ],
+            [
+              -11850.662128695752,
+              -322.06852325890213
+            ],
+            [
+              -11847.562237394508,
+              -320.4243429703638
+            ],
+            [
+              -11844.475339441793,
+              -319.21403077896684
+            ],
+            [
+              -11840.543598126853,
+              -318.89753724541515
+            ],
+            [
+              -11837.495684352587,
+              -318.98882942739874
+            ],
+            [
+              -11834.89618248446,
+              -319.5009480705485
+            ],
+            [
+              -11796.300121637993,
+              -325.8682064265013
+            ],
+            [
+              -11793.278208050877,
+              -326.8272527931258
+            ],
+            [
+              -11790.243296688772,
+              -327.35243397485465
+            ],
+            [
+              -11785.07030453696,
+              -329.244442502968
+            ],
+            [
+              -11783.341641437844,
+              -329.73049071989954
+            ],
+            [
+              -11774.737328754389,
+              -333.46233679540455
+            ],
+            [
+              -11768.297100754455,
+              -336.6950935954228
+            ],
+            [
+              -11764.878782203421,
+              -338.9687958918512
+            ],
+            [
+              -11758.899980687886,
+              -343.0562439057976
+            ],
+            [
+              -11754.649843010586,
+              -346.65763981826603
+            ],
+            [
+              -11752.537777146557,
+              -348.8922032015398
+            ],
+            [
+              -11750.451715427916,
+              -351.9944963082671
+            ],
+            [
+              -11747.95624496392,
+              -355.9775657961145
+            ],
+            [
+              -11746.318602965912,
+              -359.50067342910916
+            ],
+            [
+              -11745.961199317011,
+              -362.11690701916814
+            ],
+            [
+              -11745.259394675377,
+              -367.78323490638286
+            ],
+            [
+              -11744.86298688408,
+              -369.09787426143885
+            ],
+            [
+              -11745.363408138743,
+              -371.25414427090436
+            ],
+            [
+              -11746.416256140918,
+              -377.30213504843414
+            ],
+            [
+              -11747.839506654302,
+              -381.1677582571283
+            ],
+            [
+              -11765.789201516192,
+              -427.52898344863206
+            ],
+            [
+              -11777.506242997246,
+              -425.87515340093523
+            ],
+            [
+              -11787.618300653994,
+              -472.47093995753676
+            ],
+            [
+              -11776.362747468753,
+              -474.9794092634693
+            ],
+            [
+              -11740.854516797583,
+              -482.5571248019114
+            ],
+            [
+              -11716.60186677496,
+              -487.6264408538118
+            ],
+            [
+              -11710.65551607334,
+              -478.2512612482533
+            ],
+            [
+              -11708.374455480604,
+              -474.84566214866936
+            ],
+            [
+              -11702.753195649013,
+              -476.31689225602895
+            ],
+            [
+              -11666.848663119134,
+              -485.2096377192065
+            ],
+            [
+              -11659.485801449511,
+              -486.7331179212779
+            ],
+            [
+              -11591.173294520006,
+              -504.8486482454464
+            ],
+            [
+              -11551.824879065156,
+              -515.1480391640216
+            ],
+            [
+              -11514.640577056445,
+              -524.9484863318503
+            ],
+            [
+              -11511.618796281633,
+              -525.9076398620382
+            ],
+            [
+              -11508.58399866242,
+              -526.4329415969551
+            ],
+            [
+              -11450.221409108723,
+              -542.0801576310769
+            ],
+            [
+              -11428.594609930413,
+              -547.5059727523476
+            ],
+            [
+              -11426.008252194384,
+              -548.4520943537354
+            ],
+            [
+              -11413.03740201972,
+              -551.8811621749774
+            ],
+            [
+              -11406.98086987657,
+              -553.3657086379826
+            ],
+            [
+              -11401.372765571112,
+              -555.2710402635857
+            ],
+            [
+              -11395.342289775726,
+              -557.6232992336154
+            ],
+            [
+              -11363.01297879091,
+              -569.4500382663682
+            ],
+            [
+              -11316.010544140241,
+              -586.0600250801072
+            ],
+            [
+              -11312.56645226106,
+              -587.4661913653836
+            ],
+            [
+              -11306.087607878027,
+              -589.397753030993
+            ],
+            [
+              -11305.665241446462,
+              -589.8446798566729
+            ],
+            [
+              -11304.372079437715,
+              -590.3177627483383
+            ],
+            [
+              -10285.108227999066,
+              -621.0145579958335
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 3920,
+        "mesh": "geoSurface",
+        "layer": "landuse",
+        "id": "landuse:0",
+        "pos": [
+          -11543.881365518842,
+          0.025,
+          338.42405772861093
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 395.3271407303805,
+        "point": [
+          -11398.888126658509,
+          3.0129979244143144,
+          -531.3362392107551
+        ],
+        "triangle": [
+          [
+            -12123.894308520563,
+            0.21007482628828106,
+            -554.5959364641458
+          ],
+          [
+            -11268.471815832658,
+            5.643966639137868,
+            -483.2694569826126
+          ],
+          [
+            -11293.711653430597,
+            2.1288061701409986,
+            -554.5959364641458
+          ]
+        ],
+        "part": "triangle",
+        "rings": [
+          [
+            [
+              -11306.549068535212,
+              -590.2523728068918
+            ],
+            [
+              -11306.087607878027,
+              -589.397753030993
+            ],
+            [
+              -11301.817171205534,
+              -577.8015255499631
+            ],
+            [
+              -11297.046160045196,
+              -564.0491056088358
+            ],
+            [
+              -11293.711653430597,
+              -554.5959364641458
+            ],
+            [
+              -11268.471815832658,
+              -483.2694569826126
+            ],
+            [
+              -11257.044491133536,
+              -451.04411588888615
+            ],
+            [
+              -11254.671931387158,
+              -444.6016466934234
+            ],
+            [
+              -11238.011740377406,
+              -397.7687561446801
+            ],
+            [
+              -11210.885633164202,
+              -321.72053039539605
+            ],
+            [
+              -11212.431731203687,
+              -315.1601864863187
+            ],
+            [
+              -11216.965745891444,
+              -292.00816749595106
+            ],
+            [
+              -11219.356620674953,
+              -284.55388884432614
+            ],
+            [
+              -11235.21160971024,
+              -261.06160464696586
+            ],
+            [
+              -11240.74695220578,
+              -242.22197026852518
+            ],
+            [
+              -11251.129383236635,
+              -210.6429609283805
+            ],
+            [
+              -11252.90241629642,
+              -197.12743400316685
+            ],
+            [
+              -11251.781401869492,
+              -159.81405416410416
+            ],
+            [
+              -11259.379180810414,
+              -166.0998340472579
+            ],
+            [
+              -11269.036770584411,
+              -168.4153202297166
+            ],
+            [
+              -11280.91058395512,
+              -171.96705222316086
+            ],
+            [
+              -11283.919468909036,
+              -170.5738643631339
+            ],
+            [
+              -11299.136422698153,
+              -125.82125316374004
+            ],
+            [
+              -11317.401624071877,
+              -80.97683333326131
+            ],
+            [
+              -11325.771490886458,
+              -69.43432567082345
+            ],
+            [
+              -11341.658953344333,
+              -32.478011867031455
+            ],
+            [
+              -11357.630288770655,
+              16.206551615148783
+            ],
+            [
+              -11363.549581713276,
+              36.79550904035568
+            ],
+            [
+              -11366.856263580383,
+              57.306083131581545
+            ],
+            [
+              -11368.635177045828,
+              85.15369692444801
+            ],
+            [
+              -11370.185175767983,
+              135.14324295613915
+            ],
+            [
+              -11368.123257809551,
+              160.27013165969402
+            ],
+            [
+              -11360.672097160015,
+              205.212778926827
+            ],
+            [
+              -11352.774342857534,
+              221.47882086411119
+            ],
+            [
+              -11343.244465219439,
+              248.55329063721
+            ],
+            [
+              -11337.920263790293,
+              266.1995974862948
+            ],
+            [
+              -11315.621949365712,
+              341.098230025731
+            ],
+            [
+              -11309.6091140114,
+              352.6438420014456
+            ],
+            [
+              -11306.086324796895,
+              353.8409561775625
+            ],
+            [
+              -11304.266287805047,
+              356.39211847260594
+            ],
+            [
+              -11311.05124715995,
+              362.6761414874345
+            ],
+            [
+              -11277.166425391799,
+              402.4831725470722
+            ],
+            [
+              -11282.631979109952,
+              409.16194592416286
+            ],
+            [
+              -11285.322970316163,
+              406.6369269909337
+            ],
+            [
+              -11287.012701731408,
+              408.4249078342691
+            ],
+            [
+              -11287.909698342672,
+              407.58323437254876
+            ],
+            [
+              -11295.23442103481,
+              410.4090722752735
+            ],
+            [
+              -11301.954272142844,
+              418.8627389576286
+            ],
+            [
+              -11306.269841786008,
+              420.295269924216
+            ],
+            [
+              -11313.002748773317,
+              428.31501992139965
+            ],
+            [
+              -11314.165810451028,
+              433.1273444145918
+            ],
+            [
+              -11320.872680205037,
+              442.014937764965
+            ],
+            [
+              -11322.406067325734,
+              449.00994078535587
+            ],
+            [
+              -11321.496039396385,
+              450.2855432778597
+            ],
+            [
+              -11322.750323837157,
+              452.06044923327863
+            ],
+            [
+              -11318.278362377314,
+              455.8349508792162
+            ],
+            [
+              -11330.08059860859,
+              469.21868725214154
+            ],
+            [
+              -11330.899419315392,
+              470.98052030429244
+            ],
+            [
+              -11330.847300409572,
+              472.71620125323534
+            ],
+            [
+              -11329.911211392842,
+              474.85965050011873
+            ],
+            [
+              -11328.11721102905,
+              476.5430269315839
+            ],
+            [
+              -11326.79777014372,
+              476.93771801237017
+            ],
+            [
+              -11309.287739655701,
+              479.4520773170516
+            ],
+            [
+              -11308.865300379228,
+              479.0050788419321
+            ],
+            [
+              -11293.66833819868,
+              491.578051767312
+            ],
+            [
+              -11287.35782409017,
+              484.0052044643089
+            ],
+            [
+              -11264.126803435734,
+              502.8515200121328
+            ],
+            [
+              -11265.394117217511,
+              504.19252937007695
+            ],
+            [
+              -11262.716112499707,
+              506.2836569696665
+            ],
+            [
+              -11249.313027284341,
+              517.1732123969123
+            ],
+            [
+              -11209.724139676895,
+              587.2118663163856
+            ],
+            [
+              -11208.827108078636,
+              588.0535533111542
+            ],
+            [
+              -11194.813483362319,
+              662.7702445061877
+            ],
+            [
+              -11209.385221172357,
+              671.0259351562709
+            ],
+            [
+              -11179.706902488135,
+              744.8385579269379
+            ],
+            [
+              -11180.577879535733,
+              744.8647309318185
+            ],
+            [
+              -11165.236592609435,
+              762.2112793345004
+            ],
+            [
+              -11158.015847806702,
+              755.9136337637901
+            ],
+            [
+              -11156.735463007935,
+              755.0064910072833
+            ],
+            [
+              -11152.21102737065,
+              760.5168215185404
+            ],
+            [
+              -11149.95532764052,
+              763.0550175094977
+            ],
+            [
+              -11145.430880570086,
+              768.5653504477814
+            ],
+            [
+              -11143.597623260925,
+              771.5505767539144
+            ],
+            [
+              -11142.238982292241,
+              773.247071435675
+            ],
+            [
+              -11156.729865368921,
+              813.2069682432339
+            ],
+            [
+              -11159.147204291192,
+              819.794647433795
+            ],
+            [
+              -11167.131942191161,
+              858.6905876779929
+            ],
+            [
+              -11117.097018029424,
+              841.1162645574659
+            ],
+            [
+              -11114.989796738606,
+              853.214374281466
+            ],
+            [
+              -11118.040347208269,
+              896.7400164995342
+            ],
+            [
+              -11108.743357348489,
+              916.0059210425243
+            ],
+            [
+              -11116.412785197143,
+              921.8829145506024
+            ],
+            [
+              -11111.152674383833,
+              937.3611499369144
+            ],
+            [
+              -11101.075919505907,
+              953.5633152471855
+            ],
+            [
+              -11088.01581870555,
+              967.5040900874883
+            ],
+            [
+              -11074.741956789629,
+              974.0545542286709
+            ],
+            [
+              -11035.564505588845,
+              986.7756415316835
+            ],
+            [
+              -11023.132083273376,
+              1023.3213932868093
+            ],
+            [
+              -10989.742838311242,
+              1060.9744323529303
+            ],
+            [
+              -10975.236889327178,
+              1093.9833279596642
+            ],
+            [
+              -10963.534988745698,
+              1106.2276184121147
+            ],
+            [
+              -10972.659388306201,
+              1121.7045576153323
+            ],
+            [
+              -10975.046984870336,
+              1158.26243487373
+            ],
+            [
+              -10975.20006076619,
+              1182.156831108965
+            ],
+            [
+              -10980.44408828346,
+              1196.214125183411
+            ],
+            [
+              -10994.15881020145,
+              1204.0107888681814
+            ],
+            [
+              -11090.614385443623,
+              1229.0636513223872
+            ],
+            [
+              -11089.917943656212,
+              1237.7299874890596
+            ],
+            [
+              -12069.409185511991,
+              1267.1004882641137
+            ],
+            [
+              -12124.227742291987,
+              -565.7442109975964
+            ],
+            [
+              -11306.549068535212,
+              -590.2523728068918
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 12,
+        "mesh": "terrain",
+        "layer": null,
+        "id": null,
+        "pos": [
+          -11520,
+          0,
+          -768
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 396.2912177610486,
+        "point": [
+          -11398.888126658509,
+          3.0129979244143144,
+          -530.3721621800871
+        ],
+        "triangle": [
+          [
+            -11392,
+            1.2728750630599297,
+            -544
+          ],
+          [
+            -11424,
+            3.7518146429384727,
+            -512
+          ],
+          [
+            -11392,
+            7.001411618074832,
+            -512
+          ]
+        ],
+        "part": "triangle",
+        "rings": null,
+        "roadPath": null
+      },
+      {
+        "index": 12267,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.10629250:0bf85023",
+        "pos": [
+          -11399.94415280933,
+          12.25,
+          -516.2549233245663
+        ],
+        "baseY": 1.7,
+        "height": 21.1,
+        "t": 398.3108038352665,
+        "point": [
+          -11398.888126658509,
+          3.0129979244143144,
+          -528.3525761058692
+        ],
+        "triangle": [
+          [
+            -11414.844197037164,
+            1.7,
+            -524.2046861350536
+          ],
+          [
+            -11387.14376070723,
+            1.7,
+            -531.4056046139449
+          ],
+          [
+            -11387.14376070723,
+            22.8,
+            -531.4056046139449
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11387.14376070723,
+              -531.4056046139449
+            ],
+            [
+              -11386.643886155682,
+              -531.5051364889368
+            ],
+            [
+              -11386.343756735325,
+              -527.7050204249099
+            ],
+            [
+              -11385.844446634641,
+              -521.0048261536285
+            ],
+            [
+              -11385.743985391804,
+              -519.9045856557786
+            ],
+            [
+              -11385.344040929573,
+              -515.4045848101377
+            ],
+            [
+              -11385.044108581496,
+              -511.2051991187036
+            ],
+            [
+              -11402.644370718393,
+              -506.60519585199654
+            ],
+            [
+              -11401.84404198255,
+              -503.70536992978305
+            ],
+            [
+              -11413.043716837885,
+              -501.0047101601958
+            ],
+            [
+              -11414.844197037164,
+              -524.2046861350536
+            ],
+            [
+              -11387.14376070723,
+              -531.4056046139449
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 3931,
+        "mesh": "geoSurface",
+        "layer": "landuse",
+        "id": "landuse:0",
+        "pos": [
+          -11564.271568672266,
+          0.025,
+          -61.33732590544969
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 399.5352170414595,
+        "point": [
+          -11398.888126658509,
+          3.0129979244143144,
+          -527.1281628996762
+        ],
+        "triangle": [
+          [
+            -11806.115789956946,
+            0.035,
+            -554.5959364641458
+          ],
+          [
+            -11268.471815832658,
+            5.643966639137868,
+            -483.2694569826126
+          ],
+          [
+            -11293.711653430597,
+            2.1288061701409986,
+            -554.5959364641458
+          ]
+        ],
+        "part": "triangle",
+        "rings": [
+          [
+            [
+              -11306.549068535212,
+              -590.2523728068918
+            ],
+            [
+              -11306.087607878027,
+              -589.397753030993
+            ],
+            [
+              -11301.817171205534,
+              -577.8015255499631
+            ],
+            [
+              -11297.046160045196,
+              -564.0491056088358
+            ],
+            [
+              -11293.711653430597,
+              -554.5959364641458
+            ],
+            [
+              -11268.471815832658,
+              -483.2694569826126
+            ],
+            [
+              -11257.044491133536,
+              -451.04411588888615
+            ],
+            [
+              -11254.671931387158,
+              -444.6016466934234
+            ],
+            [
+              -11238.011740377406,
+              -397.7687561446801
+            ],
+            [
+              -11210.885633164202,
+              -321.72053039539605
+            ],
+            [
+              -11212.431731203687,
+              -315.1601864863187
+            ],
+            [
+              -11216.965745891444,
+              -292.00816749595106
+            ],
+            [
+              -11219.356620674953,
+              -284.55388884432614
+            ],
+            [
+              -11235.21160971024,
+              -261.06160464696586
+            ],
+            [
+              -11240.74695220578,
+              -242.22197026852518
+            ],
+            [
+              -11251.129383236635,
+              -210.6429609283805
+            ],
+            [
+              -11252.90241629642,
+              -197.12743400316685
+            ],
+            [
+              -11251.781401869492,
+              -159.81405416410416
+            ],
+            [
+              -11259.379180810414,
+              -166.0998340472579
+            ],
+            [
+              -11269.036770584411,
+              -168.4153202297166
+            ],
+            [
+              -11280.91058395512,
+              -171.96705222316086
+            ],
+            [
+              -11283.919468909036,
+              -170.5738643631339
+            ],
+            [
+              -11299.136422698153,
+              -125.82125316374004
+            ],
+            [
+              -11317.401624071877,
+              -80.97683333326131
+            ],
+            [
+              -11325.771490886458,
+              -69.43432567082345
+            ],
+            [
+              -11341.658953344333,
+              -32.478011867031455
+            ],
+            [
+              -11357.630288770655,
+              16.206551615148783
+            ],
+            [
+              -11363.549581713276,
+              36.79550904035568
+            ],
+            [
+              -11366.856263580383,
+              57.306083131581545
+            ],
+            [
+              -11368.635177045828,
+              85.15369692444801
+            ],
+            [
+              -11370.185175767983,
+              135.14324295613915
+            ],
+            [
+              -11368.123257809551,
+              160.27013165969402
+            ],
+            [
+              -11360.672097160015,
+              205.212778926827
+            ],
+            [
+              -11352.774342857534,
+              221.47882086411119
+            ],
+            [
+              -11343.244465219439,
+              248.55329063721
+            ],
+            [
+              -11337.920263790293,
+              266.1995974862948
+            ],
+            [
+              -11315.621949365712,
+              341.098230025731
+            ],
+            [
+              -11309.6091140114,
+              352.6438420014456
+            ],
+            [
+              -11306.086324796895,
+              353.8409561775625
+            ],
+            [
+              -11304.266287805047,
+              356.39211847260594
+            ],
+            [
+              -11311.05124715995,
+              362.6761414874345
+            ],
+            [
+              -11277.166425391799,
+              402.4831725470722
+            ],
+            [
+              -11282.631979109952,
+              409.16194592416286
+            ],
+            [
+              -11285.322970316163,
+              406.6369269909337
+            ],
+            [
+              -11287.012701731408,
+              408.4249078342691
+            ],
+            [
+              -11287.909698342672,
+              407.58323437254876
+            ],
+            [
+              -11295.23442103481,
+              410.4090722752735
+            ],
+            [
+              -11301.954272142844,
+              418.8627389576286
+            ],
+            [
+              -11306.269841786008,
+              420.295269924216
+            ],
+            [
+              -11313.002748773317,
+              428.31501992139965
+            ],
+            [
+              -11314.165810451028,
+              433.1273444145918
+            ],
+            [
+              -11320.872680205037,
+              442.014937764965
+            ],
+            [
+              -11322.406067325734,
+              449.00994078535587
+            ],
+            [
+              -11321.496039396385,
+              450.2855432778597
+            ],
+            [
+              -11322.750323837157,
+              452.06044923327863
+            ],
+            [
+              -11318.278362377314,
+              455.8349508792162
+            ],
+            [
+              -11327.87170808157,
+              455.6887211399153
+            ],
+            [
+              -11339.999691511504,
+              458.2244468284771
+            ],
+            [
+              -11358.22425308812,
+              460.94319485034794
+            ],
+            [
+              -11375.168473790283,
+              462.7548328489065
+            ],
+            [
+              -11381.160834354698,
+              466.40921353083104
+            ],
+            [
+              -11391.15058426978,
+              467.5777209959924
+            ],
+            [
+              -11407.367159704212,
+              464.59001198690385
+            ],
+            [
+              -11421.00997405604,
+              460.2220850046724
+            ],
+            [
+              -11423.888953872374,
+              465.9545307327062
+            ],
+            [
+              -11448.762808168307,
+              464.9637900739908
+            ],
+            [
+              -11530.351816652576,
+              462.1999989170581
+            ],
+            [
+              -11536.857825010782,
+              463.2637755079195
+            ],
+            [
+              -11568.289705604198,
+              461.60066429525614
+            ],
+            [
+              -11567.055364962434,
+              444.6255833506584
+            ],
+            [
+              -11566.126361202216,
+              432.0027810269967
+            ],
+            [
+              -11570.923492677044,
+              417.38020182959735
+            ],
+            [
+              -11576.43537656404,
+              407.9907612549141
+            ],
+            [
+              -11589.870638235705,
+              381.4667424019426
+            ],
+            [
+              -11613.867863083608,
+              337.0188330607489
+            ],
+            [
+              -11616.662773437332,
+              331.0224210796878
+            ],
+            [
+              -11641.94615815254,
+              301.8137808488682
+            ],
+            [
+              -11652.918097121408,
+              255.67290894221514
+            ],
+            [
+              -11655.30411074066,
+              219.69799861311913
+            ],
+            [
+              -11645.369418855407,
+              100.40490544401109
+            ],
+            [
+              -11675.369316392462,
+              117.37282281182706
+            ],
+            [
+              -11676.948786661844,
+              108.30016307439655
+            ],
+            [
+              -11673.913676241878,
+              107.77489731647074
+            ],
+            [
+              -11676.9425499168,
+              93.96856490243226
+            ],
+            [
+              -11679.964647876099,
+              94.92772317770869
+            ],
+            [
+              -11695.985503915115,
+              69.350900917314
+            ],
+            [
+              -11714.884906058898,
+              78.60300660505891
+            ],
+            [
+              -11733.31047568249,
+              30.94990483764559
+            ],
+            [
+              -11737.76252640551,
+              13.277853636071086
+            ],
+            [
+              -11745.054590346292,
+              2.6394012942910194
+            ],
+            [
+              -11758.813365443028,
+              -34.73042375128716
+            ],
+            [
+              -11743.332713075448,
+              -41.70843069907278
+            ],
+            [
+              -11837.249669856858,
+              -136.17170338146389
+            ],
+            [
+              -11861.02932813624,
+              -129.81401099264622
+            ],
+            [
+              -11917.65750418033,
+              -332.65573489572853
+            ],
+            [
+              -11896.256796404137,
+              -360.22027221042663
+            ],
+            [
+              -11885.968410098227,
+              -438.6934788171202
+            ],
+            [
+              -11840.088055382716,
+              -449.1867624381557
+            ],
+            [
+              -11807.036087666522,
+              -451.4795892313123
+            ],
+            [
+              -11804.423644185765,
+              -451.5578532423824
+            ],
+            [
+              -11794.090856055496,
+              -455.77564196195453
+            ],
+            [
+              -11787.618300653994,
+              -472.47093995753676
+            ],
+            [
+              -11810.740341284312,
+              -575.1279803207144
+            ],
+            [
+              -11306.549068535212,
+              -590.2523728068918
+            ]
+          ]
+        ],
+        "roadPath": null
+      }
+    ],
+    "west": [
+      {
+        "index": 11639,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9968149:93d6754d",
+        "pos": [
+          -11417.99405050202,
+          13.999999999999998,
+          -941.75511021493
+        ],
+        "baseY": 1.6,
+        "height": 24.799999999999997,
+        "t": 6.057753723084794,
+        "point": [
+          -11404.945880381594,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11409.44445352978,
+            1.6,
+            -925.9049230068922
+          ],
+          [
+            -11400.544135127682,
+            1.6,
+            -927.405511746183
+          ],
+          [
+            -11400.544135127682,
+            26.4,
+            -927.405511746183
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11435.443965876359,
+              -955.4049348179251
+            ],
+            [
+              -11428.943965786137,
+              -922.8049614019692
+            ],
+            [
+              -11415.544286212767,
+              -924.9054767610505
+            ],
+            [
+              -11415.543962940108,
+              -924.7052993318066
+            ],
+            [
+              -11415.243972250959,
+              -924.8055017963052
+            ],
+            [
+              -11415.144210651051,
+              -924.4047860521823
+            ],
+            [
+              -11409.64439205185,
+              -925.2049383334816
+            ],
+            [
+              -11409.743876557448,
+              -925.7046437375247
+            ],
+            [
+              -11409.444130065036,
+              -925.7047455795109
+            ],
+            [
+              -11409.44445352978,
+              -925.9049230068922
+            ],
+            [
+              -11400.544135127682,
+              -927.405511746183
+            ],
+            [
+              -11401.544162137783,
+              -933.3054753299803
+            ],
+            [
+              -11414.444447030663,
+              -960.7052590278909
+            ],
+            [
+              -11434.444315666799,
+              -955.6051017092541
+            ],
+            [
+              -11435.443965876359,
+              -955.4049348179251
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 11629,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.3121488:9ea63706",
+        "pos": [
+          -11467.744171616272,
+          3.95,
+          -933.0049356725067
+        ],
+        "baseY": 2,
+        "height": 3.9000000000000004,
+        "t": 37.839680222804844,
+        "point": [
+          -11436.727806881314,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11441.544409357593,
+            2,
+            -958.4047871027142
+          ],
+          [
+            -11435.444229138433,
+            2,
+            -918.2046034568921
+          ],
+          [
+            -11435.444229138433,
+            5.9,
+            -918.2046034568921
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11492.643980114255,
+              -907.6050842422992
+            ],
+            [
+              -11500.044114094111,
+              -949.205427121371
+            ],
+            [
+              -11441.544409357593,
+              -958.4047871027142
+            ],
+            [
+              -11435.444229138433,
+              -918.2046034568921
+            ],
+            [
+              -11492.643980114255,
+              -907.6050842422992
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 25,
+        "mesh": "terrain",
+        "layer": null,
+        "id": null,
+        "pos": [
+          -11418.256243599346,
+          0,
+          -921.165137338452
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 67.54441208478465,
+        "point": [
+          -11466.432538743293,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11468.558182636625,
+            3.7399999999999998,
+            -929.6613167636096
+          ],
+          [
+            -11468.258007927216,
+            2.64,
+            -919.6598311886191
+          ],
+          [
+            -11458.559923820081,
+            1.8199999999999998,
+            -929.9614024348557
+          ]
+        ],
+        "part": "triangle",
+        "rings": null,
+        "roadPath": null
+      },
+      {
+        "index": 11595,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9968045:4f899297",
+        "pos": [
+          -11525.79414653714,
+          16.2,
+          -930.8550047576427
+        ],
+        "baseY": 2.2,
+        "height": 28,
+        "t": 120.71851871151819,
+        "point": [
+          -11519.606645370026,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11522.444099423126,
+            2.2,
+            -942.3052432583645
+          ],
+          [
+            -11518.544000940281,
+            2.2,
+            -920.8054035250098
+          ],
+          [
+            -11518.544000940281,
+            30.2,
+            -920.8054035250098
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11532.144256187603,
+              -940.6051066396758
+            ],
+            [
+              -11522.444099423126,
+              -942.3052432583645
+            ],
+            [
+              -11518.544000940281,
+              -920.8054035250098
+            ],
+            [
+              -11524.943811529782,
+              -919.7047526147217
+            ],
+            [
+              -11525.044058029656,
+              -919.9052682863548
+            ],
+            [
+              -11528.344156807056,
+              -919.404766256921
+            ],
+            [
+              -11528.943903260399,
+              -922.905614794232
+            ],
+            [
+              -11530.544111612719,
+              -922.6051449710503
+            ],
+            [
+              -11533.044292134,
+              -936.7055965093896
+            ],
+            [
+              -11531.444053898798,
+              -937.0049545355141
+            ],
+            [
+              -11532.144256187603,
+              -940.6051066396758
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 11592,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9968042:484b6698",
+        "pos": [
+          -11532.39426031278,
+          15.75,
+          -929.6552749411203
+        ],
+        "baseY": 2.3,
+        "height": 26.9,
+        "t": 132.37555907532254,
+        "point": [
+          -11531.263685733831,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11533.044292134,
+            2.3,
+            -936.7055965093896
+          ],
+          [
+            -11530.544111612719,
+            2.3,
+            -922.6051449710503
+          ],
+          [
+            -11530.544111612719,
+            29.2,
+            -922.6051449710503
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11534.243853486376,
+              -925.7049188883975
+            ],
+            [
+              -11536.444363818504,
+              -937.8047071099281
+            ],
+            [
+              -11536.243747471599,
+              -939.1052686721087
+            ],
+            [
+              -11535.24395977403,
+              -940.0049661584198
+            ],
+            [
+              -11535.144033444696,
+              -940.0046277679503
+            ],
+            [
+              -11532.144256187603,
+              -940.6051066396758
+            ],
+            [
+              -11531.444053898798,
+              -937.0049545355141
+            ],
+            [
+              -11533.044292134,
+              -936.7055965093896
+            ],
+            [
+              -11530.544111612719,
+              -922.6051449710503
+            ],
+            [
+              -11528.943903260399,
+              -922.905614794232
+            ],
+            [
+              -11528.344156807056,
+              -919.404766256921
+            ],
+            [
+              -11533.044432865107,
+              -918.7054432425648
+            ],
+            [
+              -11533.244267870206,
+              -920.0051118852571
+            ],
+            [
+              -11534.243853486376,
+              -925.7049188883975
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 11597,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9968047:0fc12b72",
+        "pos": [
+          -11622.644153133733,
+          18.499999999999996,
+          -922.7052100235596
+        ],
+        "baseY": 1.7,
+        "height": 33.599999999999994,
+        "t": 214.989094450495,
+        "point": [
+          -11613.877221109004,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11611.244309835602,
+            1.7,
+            -911.8054445507005
+          ],
+          [
+            -11615.444020317169,
+            1.7,
+            -935.5050760665908
+          ],
+          [
+            -11615.444020317169,
+            35.3,
+            -935.5050760665908
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11611.244309835602,
+              -911.8054445507005
+            ],
+            [
+              -11615.444020317169,
+              -935.5050760665908
+            ],
+            [
+              -11631.744120773626,
+              -932.6051147459075
+            ],
+            [
+              -11634.043996431865,
+              -932.2047269456089
+            ],
+            [
+              -11632.043870129506,
+              -921.9050324195996
+            ],
+            [
+              -11631.144135989482,
+              -922.1055085649714
+            ],
+            [
+              -11625.244126297068,
+              -923.1054291697219
+            ],
+            [
+              -11624.144308908959,
+              -916.904812422581
+            ],
+            [
+              -11622.944174127537,
+              -909.9053439805284
+            ],
+            [
+              -11611.244309835602,
+              -911.8054445507005
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 11583,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9968060:dcc9fd01",
+        "pos": [
+          -11647.144369330548,
+          18.549999999999997,
+          -917.9550989605486
+        ],
+        "baseY": 1.7,
+        "height": 33.699999999999996,
+        "t": 239.24475708022032,
+        "point": [
+          -11638.132883738728,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11637.144288238254,
+            1.7,
+            -921.0047213295475
+          ],
+          [
+            -11638.943775406573,
+            1.7,
+            -931.3048729654402
+          ],
+          [
+            -11638.943775406573,
+            35.4,
+            -931.3048729654402
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11637.144288238254,
+              -921.0047213295475
+            ],
+            [
+              -11638.943775406573,
+              -931.3048729654402
+            ],
+            [
+              -11642.044055879815,
+              -930.8048606589437
+            ],
+            [
+              -11648.143913438427,
+              -929.8056358741596
+            ],
+            [
+              -11657.144450422842,
+              -928.2056305073202
+            ],
+            [
+              -11656.044494354399,
+              -921.1052847467363
+            ],
+            [
+              -11655.944252024055,
+              -920.904767033644
+            ],
+            [
+              -11653.043725525378,
+              -904.6053249556571
+            ],
+            [
+              -11643.743972742232,
+              -906.3055037464947
+            ],
+            [
+              -11641.543980683782,
+              -906.7051170263439
+            ],
+            [
+              -11642.744095475296,
+              -913.7045890828595
+            ],
+            [
+              -11643.843895170372,
+              -919.9052091408521
+            ],
+            [
+              -11638.04380838084,
+              -920.9054580600932
+            ],
+            [
+              -11637.144288238254,
+              -921.0047213295475
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 8141,
+        "mesh": "prism",
+        "layer": "building",
+        "id": "cad:source:geo_marseille_commune:building:batiment.9968054:400681cb",
+        "pos": [
+          -11665.644217524852,
+          10.2,
+          -923.1054484047927
+        ],
+        "baseY": 1.7,
+        "height": 17,
+        "t": 258.01740471355265,
+        "point": [
+          -11656.905531372062,
+          3.0129979244143144,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11656.044494354399,
+            1.7,
+            -921.1052847467363
+          ],
+          [
+            -11657.144450422842,
+            1.7,
+            -928.2056305073202
+          ],
+          [
+            -11657.144450422842,
+            18.7,
+            -928.2056305073202
+          ]
+        ],
+        "part": "wall",
+        "rings": [
+          [
+            [
+              -11662.644145784085,
+              -932.3047129586339
+            ],
+            [
+              -11675.243940695305,
+              -925.6054923767224
+            ],
+            [
+              -11669.744164339732,
+              -915.7054301286116
+            ],
+            [
+              -11668.643922828836,
+              -913.9055948909372
+            ],
+            [
+              -11656.044494354399,
+              -921.1052847467363
+            ],
+            [
+              -11657.144450422842,
+              -928.2056305073202
+            ],
+            [
+              -11657.443870697054,
+              -929.3054657736793
+            ],
+            [
+              -11658.944067696226,
+              -931.3046152889729
+            ],
+            [
+              -11659.243881310918,
+              -931.6048034159467
+            ],
+            [
+              -11660.844047581311,
+              -932.3053019186482
+            ],
+            [
+              -11662.644145784085,
+              -932.3047129586339
+            ]
+          ]
+        ],
+        "roadPath": null
+      }
+    ],
+    "down": [
+      {
+        "index": 1551,
+        "mesh": "geoSurface",
+        "layer": "transportation",
+        "id": "transportation:0",
+        "pos": [
+          -11389.565099824802,
+          0.025,
+          -948.2971370224841
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 1.598727416328545,
+        "point": [
+          -11398.888126658509,
+          1.4142705080857694,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11400.256200179385,
+            1.4199198449629173,
+            -926.7627675505355
+          ],
+          [
+            -11399.778718011454,
+            1.2870534063302692,
+            -923.111586487852
+          ],
+          [
+            -11379.40726943477,
+            1.388646315532102,
+            -926.7627675505355
+          ]
+        ],
+        "part": "triangle",
+        "rings": [
+          [
+            [
+              -11370.787544332561,
+              -973.4826875571162
+            ],
+            [
+              -11365.996366584674,
+              -944.5341410022229
+            ],
+            [
+              -11363.798909028526,
+              -929.4025439107791
+            ],
+            [
+              -11379.40726943477,
+              -926.7627675505355
+            ],
+            [
+              -11399.778718011454,
+              -923.111586487852
+            ],
+            [
+              -11400.344343692646,
+              -927.4367779074237
+            ],
+            [
+              -11401.397443212452,
+              -933.4841981865466
+            ],
+            [
+              -11414.4084491533,
+              -960.4491742737591
+            ],
+            [
+              -11415.331290621078,
+              -962.1583286691457
+            ],
+            [
+              -11390.684390521143,
+              -968.5431031119078
+            ],
+            [
+              -11370.787544332561,
+              -973.4826875571162
+            ]
+          ]
+        ],
+        "roadPath": null
+      },
+      {
+        "index": 25,
+        "mesh": "terrain",
+        "layer": null,
+        "id": null,
+        "pos": [
+          -11418.256243599346,
+          0,
+          -921.165137338452
+        ],
+        "baseY": null,
+        "height": null,
+        "t": 1.7116190719212652,
+        "point": [
+          -11398.888126658509,
+          1.3013788524930492,
+          -926.6633799411356
+        ],
+        "triangle": [
+          [
+            -11398.570380754303,
+            1.47,
+            -931.7622440326959
+          ],
+          [
+            -11408.268368429737,
+            1.22,
+            -921.46058200486
+          ],
+          [
+            -11398.27009681915,
+            1.13,
+            -921.7607617359608
+          ]
+        ],
+        "part": "triangle",
+        "rings": null,
+        "roadPath": null
+      }
+    ],
+    "footprintsAtCamera": []
+  },
+  "shots": [
+    {
+      "file": "VIEUX_BEFORE_b26005c1.png",
+      "sha256": "59eac2e8494c7c32e914aae89ed2e5e3267d0b13156ad61661d8cadd8f274918"
+    },
+    {
+      "file": "VIEUX_AFTER_5efd0ee2.png",
+      "sha256": "6016b7ed40713e5379aafda5e827a98222811318f0b13fc636180680ed62df48"
+    },
+    {
+      "file": "VIEUX_AFTER_36205a8f.png",
+      "sha256": "c64f1b26a0ddbb08bbe50275788855f1b6a6417ad1fe3c40d973eeead0287d00"
+    }
+  ],
+  "remainingScope": "The MVT transportation ground polygon and the actual sampled terrain remain visible. At the camera the nearest downward hit is the old ground surface atY1.4142705, about0.05127m above the sampledMNT1.3629979. This targeted change does not alter that ground polygon, general terrain geometry, buildings, sourceXYZ or non-ground roads. The16 actual sentier surface vertices now contact availableMNT+0.085m and the former floating gray ceiling and narrow elevated path are removed.",
+  "historicalProof": "ROAD_CLASSIFICATION_NATIVE_5efd0ee2.json preserved unchanged; its old17/17 checks described the previous sourceXYZ-only display policy, superseded here by explicit ground derivation."
+}

@@ -1,0 +1,110 @@
+{
+  "scope": "Pure production geometry/physics/input/model tests and validated source tools; fixtures explicitly isolated",
+  "html_sha256": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+  "suites": [
+    {
+      "suite": "source_tools",
+      "exitCode": 0,
+      "total": 194,
+      "log": "source_tools.log"
+    },
+    {
+      "suite": "base_installers",
+      "exitCode": 0,
+      "total": 42,
+      "log": "base_installers.log"
+    },
+    {
+      "suite": "renderer_batches.cjs",
+      "exitCode": 0,
+      "total": 33,
+      "log": "renderer_batches.cjs.log"
+    },
+    {
+      "suite": "geography.test.cjs",
+      "exitCode": 0,
+      "total": 50,
+      "log": "geography.test.cjs.log"
+    },
+    {
+      "suite": "dense_geometry.cjs",
+      "exitCode": 0,
+      "total": 8,
+      "log": "dense_geometry.cjs.log"
+    },
+    {
+      "suite": "surfaces_physics.cjs",
+      "exitCode": 0,
+      "total": 38,
+      "log": "surfaces_physics.cjs.log"
+    },
+    {
+      "suite": "roof_solids.cjs",
+      "exitCode": 0,
+      "total": 49,
+      "log": "roof_solids.cjs.log"
+    },
+    {
+      "suite": "gameplay_wasteland.cjs",
+      "exitCode": 0,
+      "total": 45,
+      "log": "gameplay_wasteland.cjs.log"
+    },
+    {
+      "suite": "controller_model.cjs",
+      "exitCode": 0,
+      "total": 15,
+      "log": "controller_model.cjs.log"
+    },
+    {
+      "suite": "source_status_model.cjs",
+      "exitCode": 0,
+      "total": 17,
+      "log": "source_status_model.cjs.log"
+    },
+    {
+      "suite": "city_streaming.cjs",
+      "exitCode": 0,
+      "total": 17,
+      "log": "city_streaming.cjs.log"
+    },
+    {
+      "suite": "facades_model.cjs",
+      "exitCode": 0,
+      "total": 63,
+      "log": "facades_model.cjs.log"
+    },
+    {
+      "suite": "city_interiors.cjs",
+      "exitCode": 0,
+      "total": 117,
+      "log": "city_interiors.cjs.log"
+    },
+    {
+      "suite": "city_water.cjs",
+      "exitCode": 0,
+      "total": 20,
+      "log": "city_water.cjs.log"
+    },
+    {
+      "suite": "city_water_physics.cjs",
+      "exitCode": 0,
+      "total": 24,
+      "log": "city_water_physics.cjs.log"
+    },
+    {
+      "suite": "road_classification.cjs",
+      "exitCode": 0,
+      "total": 6,
+      "log": "road_classification.cjs.log"
+    },
+    {
+      "suite": "ground_road_surfaces.cjs",
+      "exitCode": 0,
+      "total": 6,
+      "log": "ground_road_surfaces.cjs.log"
+    }
+  ],
+  "total": 744,
+  "failedProcesses": 0
+}

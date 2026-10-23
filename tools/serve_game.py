@@ -7,15 +7,41 @@ import argparse, json, time, webbrowser
 from validate_real_map_v046 import audit
 from prepare_local_pack_v050 import prepare_if_bundled
 from world_source_bundle import prepare_if_bundled as prepare_world_sources, audit_details as source_audit
+from city_sources import prepare_if_bundled as prepare_city_sources, audit_details as city_audit
 ROOT = Path(__file__).resolve().parents[1]
 class GameHandler(SimpleHTTPRequestHandler):
     _audit_lock = Lock()
     _audit_cache = None
     _audit_time = 0.0
+    _city_audit_lock = Lock()
+    _city_audit_cache = None
+    _city_audit_time = 0.0
+    _city_audit_stamp = None
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
     def do_GET(self):
         route = self.path.split('?', 1)[0]
+        if route == '/__mistral/city-sources':
+            try:
+                with type(self)._city_audit_lock:
+                    directory = ROOT / 'data/map_pack/city'
+                    stamp = self.city_fingerprint(directory)
+                    if type(self)._city_audit_cache is None or stamp != type(self)._city_audit_stamp or time.monotonic() - type(self)._city_audit_time > 30:
+                        data = city_audit(directory)
+                        # Preserve the actual inspection time on cache hits. A
+                        # changed or replaced source file invalidates the cache
+                        # immediately; concurrent panels share one heavy audit.
+                        if self.city_fingerprint(directory) != stamp:
+                            raise ValueError('City sources changed during inspection')
+                        data.update(inspectedAt=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), scope='Partitions communales locales vérifiées ; détails documentés et inventions architecturales distingués dans le jeu.')
+                        type(self)._city_audit_cache = data
+                        type(self)._city_audit_time = time.monotonic()
+                        type(self)._city_audit_stamp = stamp
+                    data = type(self)._city_audit_cache
+                self.send_json(200, data)
+            except (OSError, ValueError, KeyError):
+                self.send_json(503, {'ok': False, 'error': 'Les partitions communales ne passent pas la vérification.'})
+            return
         if route == '/__mistral/world-sources':
             try:
                 data = source_audit(ROOT / 'data/map_pack/enrichment')
@@ -50,6 +76,19 @@ class GameHandler(SimpleHTTPRequestHandler):
         self.send_header('Content-Length', str(len(payload)))
         self.end_headers()
         self.wfile.write(payload)
+    @staticmethod
+    def city_fingerprint(directory):
+        if not directory.exists():
+            return ()
+        rows = []
+        for item in directory.iterdir():
+            if item.suffix != '.json':
+                continue
+            if len(rows) >= 8192:
+                raise ValueError('City source directory exceeds its metadata budget')
+            stat = item.lstat()
+            rows.append((item.name, stat.st_size, stat.st_mtime_ns, stat.st_ino, stat.st_mode))
+        return tuple(sorted(rows))
     def end_headers(self):
         self.send_header('X-Content-Type-Options', 'nosniff')
         super().end_headers()
@@ -64,6 +103,7 @@ def main():
     if not args.no_prepare:
         prepare_if_bundled(ROOT)
         prepare_world_sources(ROOT)
+        prepare_city_sources(ROOT)
     url = f'http://127.0.0.1:{args.port}/index.html'
     print('Application locale v0.50 :', url, flush=True)
     try:

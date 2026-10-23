@@ -116,12 +116,21 @@ def main():
     log = (out / 'NATIVE_SERVER.log').open('w')
     server = subprocess.Popen([sys.executable, str(root / 'tools/serve_game.py'), '--no-browser', '--port', str(port)], cwd=root, stdout=log, stderr=log)
     try:
-        for _ in range(100):
+        # Startup validates the retained municipal archive as well as the base
+        # pack. This is bounded IO preparation before the HTTP listener opens.
+        server_deadline = time.monotonic() + 300
+        server_wait_print = 0
+        while time.monotonic() < server_deadline:
+            if server.poll() is not None:
+                raise RuntimeError('Local game server exited during validated source preparation; see NATIVE_SERVER.log')
             try:
                 with urllib.request.urlopen(report['url'], timeout=2) as response:
                     served = response.read()
                 break
             except OSError:
+                if time.monotonic() - server_wait_print > 15:
+                    print('WAIT validated source preparation before HTTP startup', flush=True)
+                    server_wait_print = time.monotonic()
                 time.sleep(.1)
         else:
             raise RuntimeError('Local game server did not start')

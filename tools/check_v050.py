@@ -36,7 +36,7 @@ def adapt(name, text):
     text = text.replace("local['version']=='0.49.0'", "local['version']=='0.50.0'")
     text = text.replace('0.49.0 · Le quartier se souvient', '0.50.0 · Les routes retrouvées')
     if name.endswith('distribution.cjs'):
-        text = text.replace('fallout-mistral-v049-1', 'fallout-mistral-v050-4').replace('/v0.49.html/', '/v0.50.html/')
+        text = text.replace('fallout-mistral-v049-1', 'fallout-mistral-v050-7').replace('/v0.49.html/', '/v0.50.html/')
     if name == 'v048_runtime.py':
         # The controlled pause must outlast Playwright's two stable animation
         # frames even when another software-rendered browser uses the CPU.
@@ -67,6 +67,21 @@ def adapt(name, text):
     if name.endswith('server_io.py'):
         text = text.replace("'Absence de pack signalée et non masquée',local['vector']['missing']==5884 and local['terrain']['missing']==8 and not local['complete']",
                             "'Pack complet confirmé par le disque',local['vector']['missing']==0 and local['vector']['invalid']==0 and local['vector']['pbf']+local['vector']['officialEmpty']==5884 and local['terrain']['valid']==8 and local['terrain']['invalid']==0 and local['complete']")
+        # Startup now validates the communal atlas before opening HTTP. Match
+        # the current delivery check's bounded readiness window while retaining
+        # every historical assertion and leaving the historical source intact.
+        waits = [
+            (' for _ in range(80):',
+             ' readiness_deadline=time.monotonic()+300\n while time.monotonic()<readiness_deadline:'),
+            ("urllib.request.urlopen(base+'/index.html',timeout=2)",
+             "urllib.request.urlopen(base+'/index.html',timeout=3)"),
+            ("urllib.request.urlopen(base+'/__mistral/local-data')",
+             "urllib.request.urlopen(base+'/__mistral/local-data',timeout=300)"),
+        ]
+        for old, new in waits:
+            if text.count(old) != 1:
+                raise RuntimeError('Délai serveur historique introuvable ou ambigu : ' + old)
+            text = text.replace(old, new, 1)
     return text
 
 
@@ -99,11 +114,13 @@ def main():
             def run(spec):
                 name, _ = spec
                 cmd = ['node' if name.endswith('.cjs') else sys.executable, str(staging / name)]
+                # Only the server suite waits for full communal-atlas startup.
+                timeout_seconds = 420 if name.endswith('server_io.py') else 240
                 try:
-                    result = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, timeout=240)
+                    result = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, timeout=timeout_seconds)
                     log, code = result.stdout + '\n' + result.stderr, result.returncode
                 except subprocess.TimeoutExpired as error:
-                    log, code = f'Timeout de 240 secondes : {error}', 124
+                    log, code = f'Timeout de {timeout_seconds} secondes : {error}', 124
                 (LEGACY / (name + '.log')).write_text(log, encoding='utf-8')
                 print(('PASS ' if code == 0 else 'FAIL ') + name, flush=True)
                 return {'test': name, 'exitCode': code}

@@ -1,0 +1,497 @@
+{
+  "scope": "Restore the shipped REAL Marseille archive into an empty temporary directory.\n\nThis verifies archive restoration, every runtime byte and the production HTTP\naudit, including immediate corruption detection. It does not certify rendering\nor an unassisted playthrough. No remote acquisition or synthetic map is used.\n",
+  "checks": [
+    {
+      "name": "Final source indices cover the complete official vector and fine-terrain acquisition",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The final source-derived water atlas is present and frozen",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The final game HTML is identical to its standalone distribution entry",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The final game HTML matches the explicitly frozen build SHA-256",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A fresh destination contains no extracted municipal files",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The normal server preparation helper installs the actual city archive offline",
+      "ok": true,
+      "detail": {
+        "status": "installed",
+        "files": 440,
+        "archive": "city-sources-70fd7a2ddfb7fcd1.zip"
+      }
+    },
+    {
+      "name": "Every restored runtime file is byte-identical to the acquired active atlas",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A second launch preserves already valid imports",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Preservation leaves all source bytes unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The isolated distribution contains exactly the real playable Python tool set",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The isolated server has no regional or enrichment archive to prepare",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The real standard-library server starts through normal offline preparation within 300 seconds",
+      "ok": true,
+      "detail": {
+        "seconds": 153.431,
+        "log": "/workspace/.cloud-setup/fallout-marseille/city-implementation/restore-final/CITY_RESTORE_DISTRIBUTION_SERVER.log"
+      }
+    },
+    {
+      "name": "The isolated server actually preserves the restored city through its normal startup helper",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The isolated production server returns the exact frozen game HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The isolated production city audit is successful no-store JSON",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The isolated distribution verifies the frozen official city index and complete vector totals",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The isolated distribution verifies all 25 measured terrain partitions",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The isolated distribution verifies its frozen source-derived sea atlas",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The isolated HTTP water index matches the frozen acquired bytes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The production HTTP route serves a real no-store JSON audit",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The restored administrative coverage and unique source totals match the frozen acquisition",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The restored terrain includes the measured base and complete retained fine tiles",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The restored production audit includes the exact source-derived sea atlas",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A content-addressed city URL serves the exact restored source bytes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Corruption invalidates the live audit cache immediately",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Startup refuses corrupt user imports instead of replacing them silently",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The original city, terrain and water indices stayed unchanged during the restore proof",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The final game HTML stayed unchanged during the restore proof",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "synthetic_geography": false,
+  "network_acquisition": false,
+  "stage": "complete",
+  "passed": 28,
+  "failed": 0,
+  "source_snapshot": {
+    "index_sha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "terrain_index_sha256": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "water_index_sha256": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927",
+    "html_sha256": "36205a8fbb8045445e666f6c2435e9ef25880a3d2088b1a8febf72f65e4132aa",
+    "coverage": {
+      "administrativeEnvelopeBorderObjects": 4,
+      "complete": true,
+      "expandedBytes": 759922557,
+      "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+      "nonAcquiredZAnomalies": 1,
+      "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+      "partitionStepDegrees": 0.025,
+      "queryTileCount": 77,
+      "tileCount": 290,
+      "uniqueBuildings": 291001,
+      "uniqueRoads": 55449
+    },
+    "terrain_coverage": {
+      "complete": true,
+      "completedFinePartitions": 25,
+      "fineComplete": true,
+      "requestedFinePartitions": 25,
+      "scope": "commune bounding envelope, without fabrication in source NoData"
+    }
+  },
+  "files": 440,
+  "archive_sha256": "70fd7a2ddfb7fcd1036f73d8a95e4303989498329f7db9356616d8262ec1844c",
+  "distribution": {
+    "command": [
+      "/usr/bin/python3",
+      "-S",
+      "-u",
+      "tools/serve_game.py",
+      "--port",
+      "54031",
+      "--no-browser"
+    ],
+    "python_site_packages": false,
+    "pythonpath_injected": false,
+    "tools": {
+      "serve_game.py": "f77b5863714ce0753e83a82f876dd3afeeeecf7a4523d104a763d830bd6208dd",
+      "prepare_local_pack_v050.py": "99b0ea54ceb875ca3f840ba48789bcbf678d13af1545b71d0ac8007323d9a5b7",
+      "validate_real_map_v046.py": "b758b002e26b194afa590075076acd718de638b6cf1f776f612f8e7d01a3105a",
+      "install_local_pack_v041.py": "13131719c53f4d72441139808a13df8be221f4f317110efb72be6bec53f070d6",
+      "install_real_map_v038.py": "fb5f5b3fe6194ba0722c28f7fe8728184e2def9dada711e40b5a88d584280242",
+      "install_real_map_v039.py": "937bed91d6f13d9f07971c54fe2c221bfff5158788641770487a3b5a2c6d61cf",
+      "install_terrain_v039.py": "c31632b5c6934a6deb9aeb57cf2317bad20f51afa7115c5bca07ea9fdba2eb5c",
+      "mvt_audit_v036.py": "4e04441678c230b907d27f960d9c81cf36862e31d324664dd03b6468e1bb8979",
+      "benchmark_map_v041.py": "e39c70c94bcd1f830283731bbc6a6dd7c6416141a23f57d9903cf10d86f86770",
+      "audit_real_map_v039.py": "9f539600a1e2f11339ba3078d2e263f2ac1cad2dbe001ff2dd5bce0cefa431fa",
+      "audit_real_map_v038.py": "e1b4d839eceedf8ab528eaba189ad556561f8d1d5aec53547921eba46c8fb77a",
+      "audit_terrain_v039.py": "7d57d8586221d71e91527ad958a5caf0ef1af910a86df08c8188f232a1451361",
+      "audit_corridors_v040.py": "6a0077f5147e71468a60f66b4b694ea8b20cfd048bffab40e3127f69918ba834",
+      "world_source_bundle.py": "96f64c2f8e0eba1588ab69c276fd965df722d4896738ec73b2c5e017d83fe44f",
+      "world_sources.py": "eb2a24b5c7f86ea4f4b76c90dc1a817256b30904a72094524ad2eabfefdfa3e2",
+      "city_sources.py": "aab465f8dd47f71710e86689e61a06f0b85e02d03a8e2aebcc0b39b44c50cf3d",
+      "city_water_sources.py": "95964d2f5cc6012688652b994f43472a5dda5938976ae7e3592938f8e63795d6",
+      "acquire_city_world.py": "f4316428e86ce411c38c189ff39184c03ad64ddfda8259569f32e360c2d6d354",
+      "acquire_public_world.py": "5d7c3428f0eec382020fb22f9ab51c2db26b60673fe1b201bb630f317c3fcfea"
+    },
+    "server_log": "/workspace/.cloud-setup/fallout-marseille/city-implementation/restore-final/CITY_RESTORE_DISTRIBUTION_SERVER.log",
+    "readiness_timeout_seconds": 300,
+    "audit": {
+      "ok": true,
+      "present": true,
+      "municipality": {
+        "code": "13055",
+        "name": "Marseille",
+        "bbox": [
+          43.1696313,
+          5.22875102,
+          43.39105653,
+          5.53254336
+        ]
+      },
+      "coverage": {
+        "administrativeEnvelopeBorderObjects": 4,
+        "complete": true,
+        "expandedBytes": 759922557,
+        "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+        "nonAcquiredZAnomalies": 1,
+        "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+        "partitionStepDegrees": 0.025,
+        "queryTileCount": 77,
+        "tileCount": 290,
+        "uniqueBuildings": 291001,
+        "uniqueRoads": 55449
+      },
+      "tileCount": 290,
+      "totalBuildings": 291001,
+      "totalRoads": 55449,
+      "terrain": {
+        "present": true,
+        "base": {
+          "allNoData": false,
+          "bbox": [
+            43.1696313,
+            5.22875102,
+            43.39105653,
+            5.53254336
+          ],
+          "bytes": 5613054,
+          "height": 985,
+          "macro": "geo_marseille_commune",
+          "missingPoints": 232492,
+          "outOfSupportedRangePoints": 11433,
+          "path": "data/map_pack/city/terrain-f9ea94a8973316e9.json",
+          "providerInvalidPoints": 11433,
+          "providerNoDataPoints": 221059,
+          "sha256": "f9ea94a8973316e9fbcc5e3e9fe48b4a6e78f0e6e0b6d7878cb27458d02211bc",
+          "sourceResource": "ign_rge_alti_wld",
+          "validPoints": 740688,
+          "width": 988
+        },
+        "tileCount": 24,
+        "noDataTileCount": 1,
+        "coverage": {
+          "complete": true,
+          "completedFinePartitions": 25,
+          "fineComplete": true,
+          "requestedFinePartitions": 25,
+          "scope": "commune bounding envelope, without fabrication in source NoData"
+        }
+      },
+      "water": {
+        "present": true,
+        "tileCount": 118,
+        "source": {
+          "acquiredAt": "2026-10-23",
+          "attribution": "IGN — Géoplateforme",
+          "license": "Licence Ouverte 2.0",
+          "resource": "ign-city-water",
+          "source": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+          "url": "https://data.geopf.fr/wfs/ows"
+        },
+        "derivation": {
+          "algorithm": "Exact GEOS intersection and planar polygonization; no coordinate snapping or simplification",
+          "artificialEdges": "Outer XYZ tile coverage rectangle, XYZ tile cuts, and exact polygon subdivision only",
+          "noSimplification": true,
+          "polygonizedFaces": 103,
+          "renderSeaLevelBasis": "Nominal game sea surface, not an instantaneous tidal measurement",
+          "renderSeaLevelMetres": 0,
+          "seaHoles": 97,
+          "seaSeedOverlapRatio": 0.9977208187799319,
+          "shorelineFeatures": 148,
+          "shorelineLevel": "Plus hautes eaux",
+          "sourceSeedId": "occupation_du_sol.97",
+          "unsupportedTinyFragments": []
+        }
+      },
+      "sources": [
+        {
+          "name": "IGN BD TOPO — commune",
+          "license": "Licence Ouverte 2.0",
+          "attribution": "IGN — Géoplateforme",
+          "acquiredAt": "2026-10-23",
+          "resource": "ign-bdtopo",
+          "url": "https://data.geopf.fr/wfs/ows"
+        },
+        {
+          "name": "IGN BD TOPO — BDTOPO_V3:batiment",
+          "license": "Licence Ouverte 2.0",
+          "attribution": "IGN — Géoplateforme",
+          "acquiredAt": "2026-10-23",
+          "resource": "ign-bdtopo",
+          "url": "https://data.geopf.fr/wfs/ows",
+          "verticalDatum": "NGF-IGN69"
+        },
+        {
+          "name": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+          "license": "Licence Ouverte 2.0",
+          "attribution": "IGN — Géoplateforme",
+          "acquiredAt": "2026-10-23",
+          "resource": "ign-bdtopo",
+          "url": "https://data.geopf.fr/wfs/ows",
+          "verticalDatum": "NGF-IGN69"
+        },
+        {
+          "name": "IGN — MNT RGE ALTI, API points",
+          "license": "Licence Ouverte 2.0",
+          "attribution": "IGN — RGE ALTI",
+          "acquiredAt": "2026-10-23",
+          "resource": "ign_rge_alti_wld",
+          "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+          "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+        },
+        {
+          "name": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+          "license": "Licence Ouverte 2.0",
+          "attribution": "IGN — Géoplateforme",
+          "acquiredAt": "2026-10-23",
+          "resource": "ign-city-water",
+          "url": "https://data.geopf.fr/wfs/ows"
+        }
+      ],
+      "indexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+      "inspectedAt": "2026-10-23T22:35:28Z",
+      "scope": "Partitions communales locales vérifiées ; détails documentés et inventions architecturales distingués dans le jeu."
+    },
+    "duration_seconds": 212.221,
+    "server_returncode": -15
+  },
+  "audit": {
+    "ok": true,
+    "present": true,
+    "municipality": {
+      "code": "13055",
+      "name": "Marseille",
+      "bbox": [
+        43.1696313,
+        5.22875102,
+        43.39105653,
+        5.53254336
+      ]
+    },
+    "coverage": {
+      "administrativeEnvelopeBorderObjects": 4,
+      "complete": true,
+      "expandedBytes": 759922557,
+      "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+      "nonAcquiredZAnomalies": 1,
+      "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+      "partitionStepDegrees": 0.025,
+      "queryTileCount": 77,
+      "tileCount": 290,
+      "uniqueBuildings": 291001,
+      "uniqueRoads": 55449
+    },
+    "tileCount": 290,
+    "totalBuildings": 291001,
+    "totalRoads": 55449,
+    "terrain": {
+      "present": true,
+      "base": {
+        "allNoData": false,
+        "bbox": [
+          43.1696313,
+          5.22875102,
+          43.39105653,
+          5.53254336
+        ],
+        "bytes": 5613054,
+        "height": 985,
+        "macro": "geo_marseille_commune",
+        "missingPoints": 232492,
+        "outOfSupportedRangePoints": 11433,
+        "path": "data/map_pack/city/terrain-f9ea94a8973316e9.json",
+        "providerInvalidPoints": 11433,
+        "providerNoDataPoints": 221059,
+        "sha256": "f9ea94a8973316e9fbcc5e3e9fe48b4a6e78f0e6e0b6d7878cb27458d02211bc",
+        "sourceResource": "ign_rge_alti_wld",
+        "validPoints": 740688,
+        "width": 988
+      },
+      "tileCount": 24,
+      "noDataTileCount": 1,
+      "coverage": {
+        "complete": true,
+        "completedFinePartitions": 25,
+        "fineComplete": true,
+        "requestedFinePartitions": 25,
+        "scope": "commune bounding envelope, without fabrication in source NoData"
+      }
+    },
+    "water": {
+      "present": true,
+      "tileCount": 118,
+      "source": {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme",
+        "license": "Licence Ouverte 2.0",
+        "resource": "ign-city-water",
+        "source": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+        "url": "https://data.geopf.fr/wfs/ows"
+      },
+      "derivation": {
+        "algorithm": "Exact GEOS intersection and planar polygonization; no coordinate snapping or simplification",
+        "artificialEdges": "Outer XYZ tile coverage rectangle, XYZ tile cuts, and exact polygon subdivision only",
+        "noSimplification": true,
+        "polygonizedFaces": 103,
+        "renderSeaLevelBasis": "Nominal game sea surface, not an instantaneous tidal measurement",
+        "renderSeaLevelMetres": 0,
+        "seaHoles": 97,
+        "seaSeedOverlapRatio": 0.9977208187799319,
+        "shorelineFeatures": 148,
+        "shorelineLevel": "Plus hautes eaux",
+        "sourceSeedId": "occupation_du_sol.97",
+        "unsupportedTinyFragments": []
+      }
+    },
+    "sources": [
+      {
+        "name": "IGN BD TOPO — commune",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows"
+      },
+      {
+        "name": "IGN BD TOPO — BDTOPO_V3:batiment",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "name": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "name": "IGN — MNT RGE ALTI, API points",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — RGE ALTI",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign_rge_alti_wld",
+        "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      {
+        "name": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-city-water",
+        "url": "https://data.geopf.fr/wfs/ows"
+      }
+    ],
+    "indexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "inspectedAt": "2026-10-23T22:36:30Z",
+    "scope": "Partitions communales locales vérifiées ; détails documentés et inventions architecturales distingués dans le jeu."
+  }
+}

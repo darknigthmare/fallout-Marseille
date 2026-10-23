@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-23T21:16:03.156510+00:00",
+  "scope": "Recherche non exhaustive dans le catalogue data.gouv.fr et documentation IGN ; aucune preuve d’absence universelle de plans publics.",
+  "licensing": "Chaque jeu conserve sa licence ; la visibilité publique seule ne confère pas un droit de redistribution.",
+  "documentedFacadeOrInteriorPlansAcquired": 0,
+  "measuredArchitecturalDetailsInstalled": 0,
+  "queries": [
+    {
+      "query": "Marseille 3D",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+3D&page_size=6",
+      "httpStatus": 200,
+      "bytes": 232986,
+      "sha256": "e84f796dba0f306b0f278c944681919a5c7a697217426ca34a60c87bd4491f4b",
+      "totalReported": 5,
+      "returned": 5,
+      "pageSize": 6
+    },
+    {
+      "query": "Marseille bâtiments",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+b%C3%A2timents&page_size=6",
+      "httpStatus": 200,
+      "bytes": 5821,
+      "sha256": "72e5f1dcc06963ece151c6623f8ba9e2ce9441c22cc648d46076fe9f8b32d845",
+      "totalReported": 1,
+      "returned": 1,
+      "pageSize": 6
+    },
+    {
+      "query": "Marseille plans architecture",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+plans+architecture&page_size=6",
+      "httpStatus": 200,
+      "bytes": 93,
+      "sha256": "d36c583aea94ef64c0686bfd43443dac1a7e2ddc08f772820f567b076773a5ea",
+      "totalReported": 0,
+      "returned": 0,
+      "pageSize": 6
+    },
+    {
+      "query": "Marseille façades",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+fa%C3%A7ades&page_size=6",
+      "httpStatus": 200,
+      "bytes": 93,
+      "sha256": "d36c583aea94ef64c0686bfd43443dac1a7e2ddc08f772820f567b076773a5ea",
+      "totalReported": 0,
+      "returned": 0,
+      "pageSize": 6
+    },
+    {
+      "query": "Mucem plan",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Mucem+plan&page_size=6",
+      "httpStatus": 200,
+      "bytes": 93,
+      "sha256": "d36c583aea94ef64c0686bfd43443dac1a7e2ddc08f772820f567b076773a5ea",
+      "totalReported": 0,
+      "returned": 0,
+      "pageSize": 6
+    },
+    {
+      "query": "Bati3D",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Bati3D&page_size=6",
+      "httpStatus": 200,
+      "bytes": 93,
+      "sha256": "d36c583aea94ef64c0686bfd43443dac1a7e2ddc08f772820f567b076773a5ea",
+      "totalReported": 0,
+      "returned": 0,
+      "pageSize": 6
+    },
+    {
+      "query": "maquette numérique Marseille",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=maquette+num%C3%A9rique+Marseille&page_size=6",
+      "httpStatus": 200,
+      "bytes": 93,
+      "sha256": "d36c583aea94ef64c0686bfd43443dac1a7e2ddc08f772820f567b076773a5ea",
+      "totalReported": 0,
+      "returned": 0,
+      "pageSize": 6
+    },
+    {
+      "query": "Longchamp Marseille",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Longchamp+Marseille&page_size=6",
+      "httpStatus": 200,
+      "bytes": 22595,
+      "sha256": "6ed4ae5ac938593542a3a486d97f434b2fd999ae8feac1527f35fb0e439da5b6",
+      "totalReported": 2,
+      "returned": 2,
+      "pageSize": 6
+    },
+    {
+      "query": "Vieille Charité",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Vieille+Charit%C3%A9&page_size=6",
+      "httpStatus": 200,
+      "bytes": 11396,
+      "sha256": "5b0f5d7847e4f1f2cebd5250d5951dced83064d64bf2464b1a1b383ec6d048ed",
+      "totalReported": 1,
+      "returned": 1,
+      "pageSize": 6
+    },
+    {
+      "query": "Marseille monuments historiques",
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+monuments+historiques&page_size=6",
+      "httpStatus": 200,
+      "bytes": 7142,
+      "sha256": "9842352d86fe5e054dafaaad423a9fe43bada64ded817237a1cdf7f2027f7450",
+      "totalReported": 1,
+      "returned": 1,
+      "pageSize": 6
+    }
+  ],
+  "verifiedCatalogues": [
+    {
+      "id": "66dada843b30732f47709431",
+      "title": "Marseille - Bâtiments institutionnels",
+      "page": "https://www.data.gouv.fr/datasets/marseille-batiments-institutionnels-1",
+      "license": "lov2",
+      "publisher": "Ville de Marseille",
+      "description": "Liste des bâtiments institutionnels sur le territoire de la ville de Marseille : coordonnées, informations et points de géolocalisation  \n  \nPlus d'informations sur les **bureaux municipaux de proximité** : [https://www.marseille.fr/bmdp](https://www.marseille.fr/bmdp)  \n  \nPlus d'informations sur les **mairies de secteurs** : [https://www.marseille.fr/mairie/mairies-de-secteur](https://www.marseille.fr/mairie/mairies-de-secteur)  \n  \nPlus d'informations sur les **consulats** : [https://www.marseille.fr/international/bienvenue-a-marseille/consulats](https://www.marseille.fr/international/bienvenue-a-marseille/consulats)",
+      "resources": [
+        {
+          "title": "MARSEILLE_BATIMENTS_INSTITUTIONNELS_2018.csv",
+          "format": "csv",
+          "url": "https://www.datasud.fr/fr/dataset/datasets/1822/resource/2282/download/"
+        }
+      ],
+      "verified": "catalogue_metadata_only",
+      "architecturalMeasurementsAcquired": false
+    },
+    {
+      "id": "66dada943b30732f47709449",
+      "title": "Marseille_Parcours culturels_8 de Longchamp à l’Évêché",
+      "page": "https://www.data.gouv.fr/datasets/marseille-parcours-culturels-8-de-longchamp-a-leveche",
+      "license": "lov2",
+      "publisher": "Ville de Marseille",
+      "description": "Ce jeu de données propose le tracé du parcours 8 de Longchamp à l’Évêché contenant les informations culturelles relatives aux bâtiments et monuments historiques ainsi que leur géolocalisation.  \n  \nLa ville de Marseille met à disposition les données des tracés de 10 parcours culturels à faire sur son territoire :  \n  \n* Parcours 1 : du musée d'histoire aux Réformés;  \n* Parcours 2 : du Vieux-Port au port moderne;  \n* Parcours 3 : de l'esplanade du Général de Gaulle à la place Castellane;  \n* Parcours 4 : d'un fort à l'autre;  \n* Parcours 5 : de Belsunce à la gare Saint Charles;  \n* Parcours 6 : de l'Hôtel Dieu à la Vieille Charité;  \n* Parcours 7 : des Danaïdes au Palais Longchamp;  \n* Parcours 8 : de Longchamp à l’Évêché;  \n* Parcours 9 : des Catalans à Borély;  \n* Parcours 10 : de Thiers au cours Saint Louis.  \n  \nLes données étaient valorisées sur le site http://parcours.marseille.fr/ qui n'est plus maintenu",
+      "resources": [
+        {
+          "title": "MARSEILLE-PARCOURS-CULTURELS-PARCOURS8.geojson",
+          "format": "geojson",
+          "url": "https://www.datasud.fr/fr/dataset/datasets/2050/resource/2529/download/"
+        },
+        {
+          "title": "ville-de-marseille:marseille-parcours-culturels-parcours8.geojson",
+          "format": "ogc:wfs",
+          "url": "https://www.datasud.fr/geoserver/ville-de-marseille/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ville-de-marseille:marseille-parcours-culturels-parcours8.geojson&maxFeatures=50&outputFormat=application/json"
+        },
+        {
+          "title": "ville-de-marseille:marseille-parcours-culturels-parcours8.geojson",
+          "format": "ogc:wms",
+          "url": "https://www.datasud.fr/geoserver/ville-de-marseille/ows"
+        },
+        {
+          "title": "ville-de-marseille:marseille-parcours-culturels-parcours8.geojson",
+          "format": "ogc:wfs",
+          "url": "https://www.datasud.fr/geoserver/ville-de-marseille/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ville-de-marseille:marseille-parcours-culturels-parcours8.geojson&maxFeatures=50&outputFormat=application/json"
+        }
+      ],
+      "verified": "catalogue_metadata_only",
+      "architecturalMeasurementsAcquired": false
+    },
+    {
+      "id": "66dada953b30732f4770944a",
+      "title": "Marseille_Parcours culturels_7 des Danaïdes au Palais Longchamp",
+      "page": "https://www.data.gouv.fr/datasets/marseille-parcours-culturels-7-des-danaides-au-palais-longchamp",
+      "license": "lov2",
+      "publisher": "Ville de Marseille",
+      "description": "Ce jeu de données propose le tracé du parcours 7 des Danaïdes au Palais Longchamp contenant les informations culturelles relatives aux bâtiments et monuments historiques ainsi que leur géolocalisation.  \n  \nLa ville de Marseille met à disposition les données des tracés de 10 parcours culturels à faire sur son territoire :  \n  \n* Parcours 1 : du musée d'histoire aux Réformés;  \n* Parcours 2 : du Vieux-Port au port moderne;  \n* Parcours 3 : de l'esplanade du Général de Gaulle à la place Castellane;  \n* Parcours 4 : d'un fort à l'autre;  \n* Parcours 5 : de Belsunce à la gare Saint Charles;  \n* Parcours 6 : de l'Hôtel Dieu à la Vieille Charité;  \n* Parcours 7 : des Danaïdes au Palais Longchamp;  \n* Parcours 8 : de Longchamp à l’Évêché;  \n* Parcours 9 : des Catalans à Borély;  \n* Parcours 10 : de Thiers au cours Saint Louis.  \n  \nLes données étaient valorisées sur le site http://parcours.marseille.fr/ qui n'est plus maintenu",
+      "resources": [
+        {
+          "title": "MARSEILLE-PARCOURS-CULTURELS-PARCOURS7.geojson",
+          "format": "geojson",
+          "url": "https://www.datasud.fr/fr/dataset/datasets/1993/resource/2474/download/"
+        },
+        {
+          "title": "ville-de-marseille:marseille-parcours-culturels-parcours7.geojson",
+          "format": "ogc:wfs",
+          "url": "https://www.datasud.fr/geoserver/ville-de-marseille/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ville-de-marseille:marseille-parcours-culturels-parcours7.geojson&maxFeatures=50&outputFormat=application/json"
+        },
+        {
+          "title": "ville-de-marseille:marseille-parcours-culturels-parcours7.geojson",
+          "format": "ogc:wms",
+          "url": "https://www.datasud.fr/geoserver/ville-de-marseille/ows"
+        },
+        {
+          "title": "ville-de-marseille:marseille-parcours-culturels-parcours7.geojson",
+          "format": "ogc:wfs",
+          "url": "https://www.datasud.fr/geoserver/ville-de-marseille/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ville-de-marseille:marseille-parcours-culturels-parcours7.geojson&maxFeatures=50&outputFormat=application/json"
+        }
+      ],
+      "verified": "catalogue_metadata_only",
+      "architecturalMeasurementsAcquired": false
+    },
+    {
+      "id": "66dada533b30732f477093e9",
+      "title": "Marseille_Parcours culturels_6 de l'Hôtel Dieu à la Vieille Charité",
+      "page": "https://www.data.gouv.fr/datasets/marseille-parcours-culturels-6-de-lhotel-dieu-a-la-vieille-charite",
+      "license": "lov2",
+      "publisher": "Ville de Marseille",
+      "description": "Ce jeu de données propose le tracé du parcours 6 de l'Hôtel Dieu à la Vieille Charité contenant les informations culturelles relatives aux bâtiments et monuments historiques ainsi que leur géolocalisation.  \n  \nLa ville de Marseille met à disposition les données des tracés de 10 parcours culturels à faire sur son territoire :  \n  \n* Parcours 1 : du musée d'histoire aux Réformés;  \n* Parcours 2 : du Vieux-Port au port moderne;  \n* Parcours 3 : de l'esplanade du Général de Gaulle à la place Castellane;  \n* Parcours 4 : d'un fort à l'autre;  \n* Parcours 5 : de Belsunce à la gare Saint Charles;  \n* Parcours 6 : de l'Hôtel Dieu à la Vieille Charité;  \n* Parcours 7 : des Danaïdes au Palais Longchamp;  \n* Parcours 8 : de Longchamp à l’Évêché;  \n* Parcours 9 : des Catalans à Borély;  \n* Parcours 10 : de Thiers au cours Saint Louis.  \n  \nLes données proposées étaient valorisées sur le site http://parcours.marseille.fr/ qui n'est plus maintenu",
+      "resources": [
+        {
+          "title": "MARSEILLE-PARCOURS-CULTURELS-PARCOURS6.geojson",
+          "format": "geojson",
+          "url": "https://www.datasud.fr/fr/dataset/datasets/1992/resource/2473/download/"
+        },
+        {
+          "title": "ville-de-marseille:marseille-parcours-culturels-parcours6.geojson",
+          "format": "ogc:wfs",
+          "url": "https://www.datasud.fr/geoserver/ville-de-marseille/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ville-de-marseille:marseille-parcours-culturels-parcours6.geojson&maxFeatures=50&outputFormat=application/json"
+        },
+        {
+          "title": "ville-de-marseille:marseille-parcours-culturels-parcours6.geojson",
+          "format": "ogc:wms",
+          "url": "https://www.datasud.fr/geoserver/ville-de-marseille/ows"
+        },
+        {
+          "title": "ville-de-marseille:marseille-parcours-culturels-parcours6.geojson",
+          "format": "ogc:wfs",
+          "url": "https://www.datasud.fr/geoserver/ville-de-marseille/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ville-de-marseille:marseille-parcours-culturels-parcours6.geojson&maxFeatures=50&outputFormat=application/json"
+        }
+      ],
+      "verified": "catalogue_metadata_only",
+      "architecturalMeasurementsAcquired": false
+    },
+    {
+      "id": "66dada643b30732f47709403",
+      "title": "Marseille - Monuments historiques",
+      "page": "https://www.data.gouv.fr/datasets/marseille-monuments-historiques-1",
+      "license": "lov2",
+      "publisher": "Ville de Marseille",
+      "description": "Monuments historiques situés sur le territoire de Marseille, avec adresse, numéro de base Mérimée (base de données du Ministère de la Culture recensant les monuments historiques de toute la France) et points de géolocalisation",
+      "resources": [
+        {
+          "title": "Plan des Monuments historiques de Marseille",
+          "format": "pdf",
+          "url": "https://www.datasud.fr/fr/dataset/datasets/1867/resource/2328/download/"
+        },
+        {
+          "title": "MARSEILLE_MONUMENTS_HISTORIQUES_2018.csv",
+          "format": "csv",
+          "url": "https://www.datasud.fr/fr/dataset/datasets/1867/resource/2327/download/"
+        }
+      ],
+      "verified": "catalogue_metadata_only",
+      "architecturalMeasurementsAcquired": false
+    }
+  ],
+  "verifiedBuildingSchema": {
+    "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Abatiment",
+    "httpStatus": 200,
+    "bytes": 4040,
+    "sha256": "e02f6bb989a80ab542c583545280b0600025bb5497ac3c363fd54eb799e2472e",
+    "fields": [
+      "nature",
+      "usage_1",
+      "usage_2",
+      "nombre_d_etages",
+      "nombre_de_logements",
+      "materiaux_des_murs",
+      "materiaux_de_la_toiture",
+      "hauteur",
+      "altitude_minimale_sol",
+      "altitude_maximale_toit"
+    ],
+    "scope": "Attributs et volume/enveloppe ; pas de fenêtres, portes, façades relevées, pièces ou circulations intérieures."
+  },
+  "verifiedDefinitions": {
+    "url": "https://data.geopf.fr/annexes/ressources/documentation/DC_BDTOPO_3-5.pdf",
+    "sha256": "0542356dcf921bff5263043fe2af288a018d61d8e0f4d750005142f09cdb7331",
+    "bytes": 5608070,
+    "title": "BD TOPO Version 3.5 — Descriptif de contenu — Juillet 2026",
+    "pages": [
+      69,
+      75,
+      76
+    ],
+    "floorCount": "nombre_d_etages décrit le nombre total de niveaux, rez-de-chaussée compris ; les sous-sols sont exclus. Valeur facultative issue des fichiers fonciers.",
+    "materials": "Codes Dmatgm/Dmatto sur deux caractères ; leur présence ne décrit ni enduit apparent ni disposition des baies.",
+    "dates": "date_creation/date_modification concernent l’objet de base ; ne sont pas une date de construction. Date_d_apparition peut provenir des locaux appariés si leurs dates sont homogènes.",
+    "dwellings": "Le nombre de logements peut être reporté sur un seul bâtiment, le plus grand, lors d’un appariement n:m."
+  },
+  "unavailableThroughCurrentNetwork": [
+    {
+      "url": "https://www.datasud.fr/fr/dataset/datasets/1993/resource/2474/download/",
+      "result": "Tunnel connection failed: 403 Forbidden",
+      "interpretation": "Accès bloqué par le proxy courant ; aucune conclusion sur la disponibilité publique du fichier."
+    },
+    {
+      "url": "https://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/annexes/desc_pb40_pevprincipale_dmatgm.html",
+      "result": "Tunnel connection failed: 403 Forbidden",
+      "interpretation": "Table officielle liée depuis le PDF IGN ; correspondance numérique non acquise ici."
+    },
+    {
+      "url": "https://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/annexes/desc_pb40_pevprincipale_dmatto.html",
+      "result": "Tunnel connection failed: 403 Forbidden",
+      "interpretation": "Table officielle liée depuis le PDF IGN ; correspondance numérique non acquise ici."
+    }
+  ],
+  "generationPolicy": {
+    "measuredEnvelope": "Conserver les emprises, les trous, le positionnement et les attributs source avec leur précision ; ne pas appeler les éléments calculés ou estimés des mesures nouvelles.",
+    "inventedDetails": "Ouvertures, volets, balcons, partitions, escaliers, mobilier et décors sans plan licencié et coté sont explicitement des créations procédurales cohérentes.",
+    "determinism": "Identifiant source stable, coordonnées métriques et fonction déterministe ; ne pas tirer un nouveau plan à chaque retour.",
+    "documentedOverride": "Accepter seulement des annotations dont l’identité, les unités, la projection locale, les dimensions, la provenance et le droit de réutilisation sont explicités. Une photo non cotée ne suffit pas à certifier une mesure."
+  }
+}

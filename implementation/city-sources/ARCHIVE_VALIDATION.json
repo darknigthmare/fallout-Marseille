@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "validatedAt": "2026-10-23T22:11:09.162284+00:00",
+  "archive": "data/map_pack/city_archives/city-sources-70fd7a2ddfb7fcd1.zip",
+  "archiveSha256": "70fd7a2ddfb7fcd1036f73d8a95e4303989498329f7db9356616d8262ec1844c",
+  "archiveBytes": 58986741,
+  "manifestSha256": "ff7697aa71948e5cf484500eecf15574bf02eee1841c86a8c469425481182f0f",
+  "memberCount": 440,
+  "expandedBytes": 804518071,
+  "checks": [
+    "Full semantic schema, provenance, geometry and exhaustive municipality-partition coverage validation before packaging",
+    "All fine terrain partitions present, shared boundaries equal, 24 valid grids and one entirely NoData grid retained",
+    "Optional measured-source sea atlas and original response wrappers validated",
+    "Archive SHA-256 and byte count verified after packaging",
+    "Every extracted ZIP member CRC, byte count and SHA-256 checked against the manifest",
+    "Every ZIP member equals its frozen installed source bytes",
+    "ZIP archive smaller than GitHub 100 MiB file limit"
+  ],
+  "indices": {
+    "index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927"
+  },
+  "semanticAudit": "implementation/city-sources/INSTALLED_CITY_AUDIT.json",
+  "exactSourceReplay": "implementation/city-sources/EXACT_SOURCE_GEOMETRY_REPLAY.json",
+  "scope": "Whole IGN WFS objects from exhaustive municipality rectangle queries, including conservative border results; API point-sampled relief and source-derived coastline. Scale and sampling spacing do not certify sub-metre survey accuracy or documentary facade/interior coverage."
+}

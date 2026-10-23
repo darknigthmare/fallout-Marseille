@@ -158,7 +158,41 @@ def main():
             check("Actual building ground and roof elevations control its envelope", building is not None and abs(building["baseY"]-props["altitude_minimale_sol"]) < 1e-7 and abs(building["baseY"]+building["height"]-props["altitude_maximale_toit"]) < 1e-7, building)
             check("Unspecified building roof shape is still identified as unknown", building is not None and building["profile"]["roofEstimated"] is True)
             road = call("v050SourceObjectInfo", known_road["properties"]["sourceId"])
-            check("Actual carriageway width and source XYZ survive road import", road is not None and road["profile"]["width"] == known_road["properties"]["largeur_de_chaussee"] and road["profile"]["heightBasis"] == "coordonnées Z source" and not road["profile"]["elevationAssumed"], road)
+            road_proof = page.evaluate("""([id,region,geometry])=>{
+              const D=__MISTRAL_DEBUG, lines=geometry.type==='LineString'?[geometry.coordinates]:geometry.coordinates;
+              return {paths:D.v018Geometry().filter(d=>d.roadPath&&(d.id===id||String(d.id).startsWith(id+':'))).map(d=>d.roadPath),
+                sourceLines:lines.map(line=>line.map(p=>{const q=D.v046Project(region,p[1],p[0]);return[q[0],q[2],p[2]];}))};
+            }""", [road["id"] if road else "", args.region, known_road["geometry"]])
+
+            def on_source_segment(point, a, b):
+                dx, dz = b[0]-a[0], b[1]-a[1]
+                length = dx*dx+dz*dz
+                t = ((point[0]-a[0])*dx+(point[1]-a[1])*dz)/length if length else 0
+                return (-1e-8 <= t <= 1+1e-8 and len(point) == 3
+                        and math.dist(point, [a[k]+(b[k]-a[k])*t for k in range(3)]) < 1e-6)
+
+            xyz_preserved = bool(road_proof["paths"]) and all(
+                any(on_source_segment(point, line[i-1], line[i])
+                    for line in road_proof["sourceLines"] for i in range(1, len(line)))
+                for path in road_proof["paths"] for point in path)
+            profile = road["profile"] if road else {}
+            if profile.get("surfaceDerived"):
+                elevation_contract = (profile.get("sourceHeightBasis") == "coordonnées Z source"
+                                      and profile.get("sourceXYZPreserved") is True
+                                      and profile.get("sourceGeometryUnmodified") is True
+                                      and profile.get("surfaceElevationPolicy") == "ground-contact-mnt"
+                                      and profile.get("surfaceVisualOffsetMeters") == .085
+                                      and bool(profile.get("surfaceTerrainSources"))
+                                      and profile.get("ordinalPosition") == 0
+                                      and not profile.get("bridge") and not profile.get("tunnel")
+                                      and profile.get("elevationAssumed") is True)
+            else:
+                elevation_contract = (profile.get("heightBasis") == "coordonnées Z source"
+                                      and not profile.get("elevationAssumed"))
+            report["road_source_geometry"] = road_proof
+            check("Actual carriageway width and raw XYZ survive import with a separately declared ground-surface derivation",
+                  road is not None and profile["width"] == known_road["properties"]["largeur_de_chaussee"]
+                  and xyz_preserved and elevation_contract, {"road": road, "raw_xyz_preserved": xyz_preserved})
             if unknown_buildings:
                 unknown = call("v050SourceObjectInfo", nearest_feature(unknown_buildings, lat, lon)["properties"]["sourceId"])
                 check("Actual missing building heights remain estimates rather than fabricated measurements", unknown is not None and unknown["profile"]["estimated"] is True and unknown["profile"]["roofEstimated"] is True and unknown["profile"]["reportedHeight"] is None, unknown)
