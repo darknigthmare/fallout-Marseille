@@ -63,30 +63,38 @@ function v018MeshData(d){
   const chunks=[];for(let i=0;i<tris.length;i+=9*18000)chunks.push(flatMesh(tris.slice(i,i+9*18000)));return chunks;
 }
 function v018MeshRevision(d){return`${d.revision||0}/${d.baseY}/${d.height}/${d.pos?.[1]}`;}
-function v018DeleteGLMesh(gl,m){gl.deleteBuffer(m.p);gl.deleteBuffer(m.n);gl.deleteBuffer(m.i);}
+function v018DeleteGLMesh(gl,m){gl.deleteBuffer(m.p);gl.deleteBuffer(m.n);gl.deleteBuffer(m.i);if(m.c)gl.deleteBuffer(m.c);}
 const v018OriginalGLRender=GLRenderer.prototype.render;
 GLRenderer.prototype.render=function(draws,camera,env){
   const gl=this.gl;this.resize();this.geoMeshes??=new Map();
-  const active=new Set(draws.filter(d=>['prism','flatpoly','terrain','geoSurface'].includes(d.mesh)));
+  this.staticGeoBatches??=new GLStaticGeometryBatches(v018MeshData,data=>this.createMesh(data),mesh=>v018DeleteGLMesh(gl,mesh));
+  const custom=d=>['prism','flatpoly','terrain','geoSurface'].includes(d.mesh);
+  const lamp=typeof v028LampActive==='function'&&v028LampActive()?v028LampOrigin():null;
+  // Custom geometry uses absolute vertices. Preserve transparent ordering and
+  // keep pieces reached by the wrist light separate for their visibility test.
+  // All other pieces in an exterior share ambient=1 and wrist visibility=0.
+  const prepared=this.staticGeoBatches.prepare(draws,d=>!!(world?.v046&&(d.v046Tile||d.v046Terrain)&&custom(d)&&!d.hidden&&(d.alpha??1)===1&&(!lamp||vLen(vSub(d.pos,lamp))>=12)));
+  const active=new Set(prepared.filter(custom));
   for(const[d,entry]of this.geoMeshes)if(!active.has(d)){for(const m of entry.meshes)v018DeleteGLMesh(gl,m);this.geoMeshes.delete(d);}
   gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(this.program);
   const far=world?.geoMacro?8000:400,proj=m4Perspective(rad(camera.fov||67),this.canvas.width/this.canvas.height,.08,far),vp=m4Multiply(proj,m4LookAt(camera.pos,vAdd(camera.pos,camera.dir)));
   gl.uniformMatrix4fv(this.loc.viewProj,false,vp);gl.uniform3fv(this.loc.sun,env.sunDir||[.4,.8,.2]);gl.uniform3fv(this.loc.fog,env.fog||[.45,.58,.58]);gl.uniform3fv(this.loc.cam,camera.pos);
   const nearFog=gl.getUniformLocation(this.program,'uFogNear'),farFog=gl.getUniformLocation(this.program,'uFogFar');
   if(nearFog)gl.uniform1f(nearFog,world?.geoMacro?1200:65);if(farFog)gl.uniform1f(farFog,world?.geoMacro?6500:280);
-  let count=0,triangles=0;
-  for(const d of draws){
+  let count=0,triangles=0,drawCalls=0;
+  for(const d of prepared){
     if(d.hidden)continue;let meshes,model;
-    if(active.has(d)){
+    if(d._v018Batch){meshes=d._v018Batch.meshes;model=m4Identity();gl.disable(gl.CULL_FACE);count+=d._v018Batch.sources.length;}
+    else if(active.has(d)){
       let e=this.geoMeshes.get(d);const revision=v018MeshRevision(d);
-      if(!e||e.revision!==revision){if(e)for(const m of e.meshes)v018DeleteGLMesh(gl,m);e={revision,meshes:v018MeshData(d).map(x=>this.createMesh(x))};this.geoMeshes.set(d,e);}
+      if(!e||e.revision!==revision||e.rings!==d.rings||e.vertices!==d.vertices||e.faces!==d.faces){if(e)for(const m of e.meshes)v018DeleteGLMesh(gl,m);e={revision,rings:d.rings,vertices:d.vertices,faces:d.faces,meshes:v018MeshData(d).map(x=>this.createMesh(x))};this.geoMeshes.set(d,e);}
       meshes=e.meshes;model=m4Identity();gl.disable(gl.CULL_FACE);count++;
     }else{const m=this.meshes[d.mesh||'cube'];if(!m)continue;meshes=[m];model=m4TRS(d.pos,d.rotY||0,d.scale||[1,1,1]);gl.enable(gl.CULL_FACE);}
     if(typeof v028SetGLPiece==='function')v028SetGLPiece(this,d);gl.uniformMatrix4fv(this.loc.model,false,model);gl.uniform3fv(this.loc.color,d.color||COLORS.white);gl.uniform1f(this.loc.emissive,d.emissive||0);const alpha=d.alpha??1;gl.uniform1f(this.loc.alpha,alpha);
     if(alpha<1){gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.depthMask(false);}else{gl.disable(gl.BLEND);gl.depthMask(true);}
-    for(const m of meshes){gl.bindBuffer(gl.ARRAY_BUFFER,m.p);gl.enableVertexAttribArray(this.loc.pos);gl.vertexAttribPointer(this.loc.pos,3,gl.FLOAT,false,0,0);gl.bindBuffer(gl.ARRAY_BUFFER,m.n);gl.enableVertexAttribArray(this.loc.nor);gl.vertexAttribPointer(this.loc.nor,3,gl.FLOAT,false,0,0);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.i);gl.drawElements(gl.TRIANGLES,m.count,gl.UNSIGNED_SHORT,0);triangles+=m.count/3;}
+    for(const m of meshes){gl.bindBuffer(gl.ARRAY_BUFFER,m.p);gl.enableVertexAttribArray(this.loc.pos);gl.vertexAttribPointer(this.loc.pos,3,gl.FLOAT,false,0,0);gl.bindBuffer(gl.ARRAY_BUFFER,m.n);gl.enableVertexAttribArray(this.loc.nor);gl.vertexAttribPointer(this.loc.nor,3,gl.FLOAT,false,0,0);if(this.loc.vertexColor>=0){if(m.c){gl.bindBuffer(gl.ARRAY_BUFFER,m.c);gl.enableVertexAttribArray(this.loc.vertexColor);gl.vertexAttribPointer(this.loc.vertexColor,3,gl.FLOAT,false,0,0);}else{gl.disableVertexAttribArray(this.loc.vertexColor);gl.vertexAttrib3f(this.loc.vertexColor,0,0,0);}}gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.i);gl.drawElements(gl.TRIANGLES,m.count,gl.UNSIGNED_SHORT,0);triangles+=m.count/3;drawCalls++;}
   }
-  gl.depthMask(true);gl.enable(gl.CULL_FACE);gl.disable(gl.BLEND);V018.render={backend:'WebGL',customMeshes:count,triangles,bufferGroups:this.geoMeshes.size};
+  gl.depthMask(true);gl.enable(gl.CULL_FACE);gl.disable(gl.BLEND);V018.render={backend:'WebGL',customMeshes:count,triangles,bufferGroups:[...this.geoMeshes.values()].reduce((n,e)=>n+e.meshes.length,0)+this.staticGeoBatches.stats.uploads,drawCalls,batchedMeshes:this.staticGeoBatches.stats.sources,batchGroups:this.staticGeoBatches.stats.groups,batchBuilds:this.staticGeoBatches.stats.builds};
 };
 /* The software fallback uses the same triangles, clipped against the near plane.
    It no longer drops an entire building when one corner is behind the camera. */

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "report": "surfaces",
+  "html_sha256": null,
+  "completeHtmlValidated": false,
+  "scope": "Isolated surface/underpass/player-physics component harness with declared source fixtures; no complete-HTML hash is established.",
+  "originalScope": null,
+  "passed": 8,
+  "failed": 0,
+  "total": 8,
+  "checks": [
+    {
+      "name": "underpass_keeps_dem",
+      "ok": true
+    },
+    {
+      "name": "ramp_entry",
+      "ok": true
+    },
+    {
+      "name": "measured_slope",
+      "ok": true
+    },
+    {
+      "name": "falling_lands_on_deck",
+      "ok": true
+    },
+    {
+      "name": "head_stays_below_plane",
+      "ok": true
+    },
+    {
+      "name": "edge_starts_fall",
+      "ok": true
+    },
+    {
+      "name": "guessed_bridge_not_promoted",
+      "ok": true
+    },
+    {
+      "name": "nodata_preserved",
+      "ok": true
+    }
+  ]
+}

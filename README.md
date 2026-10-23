@@ -37,11 +37,11 @@ Les 248 lieux du catalogue, les rencontres persistantes, les blessures, les dép
 
 ## Données et portée
 
-Le pack comprend **4 557 fichiers PBF**, **1 327 coordonnées officiellement vides**, **8 grilles de 161 × 161 points**, **174 944 altitudes valides** et **32 424 points sans mesure**. L’audit ne relève aucun fichier attendu manquant ou invalide. Une grille complète peut contenir des points sans mesure ; le jeu conserve ces absences.
+Le pack de base comprend **4 557 fichiers PBF**, **1 327 coordonnées officiellement vides**, **8 grilles de 161 × 161 points**, **174 944 altitudes valides** et **32 424 points sans mesure**. L’audit ne relève aucun fichier attendu manquant ou invalide. Une grille complète peut contenir des points sans mesure ; le jeu conserve ces absences.
 
 Les emprises et routes reposent sur les sources OpenStreetMap et cadastrales, le relief sur un échantillonnage de données IGN. Les décors et bâtiments sont interprétés par le jeu ; les hauteurs de toiture non documentées restent estimées. La campagne historique utilise encore des scènes narratives distinctes, clairement indiquées. Il ne s’agit pas d’une reproduction photoréaliste ni d’un relevé de chaque rue validé à pied.
 
-Les essais actuels comprennent des parcours dans Chromium avec **vrais fichiers HTTP et stockage natif**, ainsi que des tests de régression sur bancs synthétiques distincts. Le rapport visuel v0.50 présente les captures de cette exécution. Les anciens rapports v0.49 et antérieurs restent historiques.
+Les essais comprennent des parcours dans Chromium avec **vrais fichiers HTTP et stockage natif**, ainsi que des tests de régression sur bancs synthétiques distincts. Le rapport visuel v0.50 présente les captures de la livraison initiale v0.50 ; il reste historique, comme les rapports v0.49 et antérieurs. La validation des extensions actuelles est détaillée plus bas.
 
 ## Vérifier et reconstruire
 
@@ -63,3 +63,30 @@ python3 tools/package_v050.py
 Les tests de navigateur nécessitent les dépendances de `requirements-dev.txt` et Chromium installé par Playwright, ou `CHROMIUM_PATH` pointant vers un navigateur existant. Le rapport de livraison regroupe les résultats et précise leur périmètre. Les PBF extraits sont ignorés dans Git parce que les archives vérifiées qui les reconstituent sont déjà suivies ; ils figurent dans les archives de jeu distribuées sur Drive.
 
 Prototype de fan non officiel. © contributeurs OpenStreetMap — ODbL · Cadastre Etalab / DGFiP — Licence Ouverte 2.0 · IGN RGE ALTI — Licence Ouverte 2.0. [Sources et provenance](docs/PROVENANCE_V050.md).
+
+## Extensions du territoire et de l’exploration
+
+Des sources IGN ont réellement été acquises et intégrées autour d’Aubagne, en complément du pack de base :
+
+- **1 404 objets bâtiment et 472 tronçons de route BD TOPO**, sur une emprise d’acquisition demandée de `[43.293, 5.565, 43.300, 5.576]` (sud, ouest, nord, est). Les objets intersectants sont conservés entiers.
+- **174 777 altitudes RGE ALTI**, interrogées au pas demandé d’environ **2 m** sur ce secteur.
+- **145 396 nœuds MNT LiDAR HD** sur le plus petit extrait `[43.2956, 5.5698, 43.2976, 5.5718]`. Le GeoTIFF source possède des pixels natifs de **50 cm** ; la grille WGS84 du jeu est reprojetée par échantillonnage **au plus proche (`nearest`)**, explicitement déclaré dans sa provenance.
+
+Le pas d’échantillonnage ne garantit pas une précision absolue de 50 cm. Les précisions XY et Z et les dates restent celles des sources ; les façades, formes de toiture inconnues et intérieurs ne sont pas inventés. Ce secteur ne constitue pas une reproduction exhaustive de Marseille « 1:1 ». Les formes de toiture prises en charge, à deux pans ou à un pan, explicitement cotées et orientées, disposent d’une collision par faces et de surfaces accessibles ; les bâtiments BD TOPO sans forme de toiture renseignée conservent une enveloppe estimée.
+
+Le conditionnement reproductible des enrichissements utilise `tools/world_source_bundle.py`. Au lancement normal, le serveur restaure **sans réseau** les sources dont l’archive est fournie, avec vérification du reçu et des fichiers, tout en conservant les imports utilisateur déjà valides. L’archive fournie et sa restauration ont été vérifiées. Le [bilan de cette livraison](verification/expansion/real_sources/REAL_SOURCE_INTEGRATION.json) regroupe 397 contrôles de logique et d’outils, 434 contrats hérités et 84 contrôles du parcours natif ; les autres essais et leurs fixtures restent séparés. Les rapports v0.50 et le bilan précédent associé au HTML `8f4619bc…22d5aaa` restent historiques et ne valident pas automatiquement cette livraison enrichie.
+
+Dans le Pip-Boy, **STAT → BIVOUAC** permet de construire un kit portable puis de le déployer sur un sol mesuré, cuisiner, purifier et se reposer avec des réserves finies. **DATA → ENTRAIDE** permet d’apporter des fournitures aux habitants des relais découverts. Le matériel, le camp et les livraisons sont conservés dans la sauvegarde. Les commandes et réglages de manette sont disponibles dans les options.
+
+- [Sources publiques identifiées : IGN, BD TOPO et LiDAR HD](docs/SOURCES_GEOGRAPHIQUES_PUBLIQUES.md)
+- [Importer des sources locales et convertir un GeoTIFF](docs/IMPORT_SOURCES_REELLES.md)
+- [Fonctionnalités, validation et limites actuelles](docs/ETAT_TERRITOIRE_ET_JEU.md)
+
+Pour préparer le plan du secteur RGE ALTI acquis, sans faire de requête réseau :
+
+```bash
+python3 tools/acquire_public_world.py terrain --region geo_huveaune \
+  --bbox 43.293,5.565,43.300,5.576 --spacing 2 --dry-run
+```
+
+Retirer `--dry-run` demande les altitudes à l’IGN et importe seulement une acquisition complète et validée. Les commandes `buildings`, `roads` et `layers` utilisent les capacités WFS courantes ; les imports successifs conservent les autres couches. Une nouvelle acquisition dépend des services distants et peut recevoir une autre édition ; les données préparées pour le jeu restent utilisables localement. La documentation distingue la présence des fichiers, leur résolution et la validation de leur comportement.

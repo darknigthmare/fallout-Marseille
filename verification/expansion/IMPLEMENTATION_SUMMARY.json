@@ -1,0 +1,162 @@
+{
+  "html_sha256": "8f4619bcda4e7231af7ca1d096af47683f26aaa7da7bd68a2b875eda922d5aaa",
+  "unitSuites": [
+    {
+      "suite": "renderer_batches.cjs",
+      "exitCode": 0,
+      "results": {
+        "passed": 28,
+        "failed": 0,
+        "total": null,
+        "scope": null
+      },
+      "testCount": null
+    },
+    {
+      "suite": "geography.test.cjs",
+      "exitCode": 0,
+      "results": {
+        "passed": 24,
+        "failed": 0
+      },
+      "testCount": null
+    },
+    {
+      "suite": "surfaces_physics.cjs",
+      "exitCode": 0,
+      "results": {
+        "passed": 38,
+        "failed": 0,
+        "total": null,
+        "scope": null
+      },
+      "testCount": null
+    },
+    {
+      "suite": "controller_model.cjs",
+      "exitCode": 0,
+      "results": {
+        "passed": 15,
+        "failed": 0,
+        "total": null,
+        "scope": "Pure standard-controller sampler; simulated inputs, no physical hardware claim"
+      },
+      "testCount": null
+    },
+    {
+      "suite": "gameplay_wasteland.cjs",
+      "exitCode": 0,
+      "results": {
+        "passed": 45,
+        "failed": 0,
+        "total": 45,
+        "scope": "Production field-life module with controlled geometry, session and persistence seams"
+      },
+      "testCount": null
+    },
+    {
+      "suite": "importer_sources.py",
+      "exitCode": 0,
+      "results": null,
+      "testCount": 37
+    },
+    {
+      "suite": "test_acquisition.py",
+      "exitCode": 0,
+      "results": null,
+      "testCount": 14
+    },
+    {
+      "suite": "test_dem_conversion.py",
+      "exitCode": 0,
+      "results": null,
+      "testCount": 10
+    },
+    {
+      "suite": "installers",
+      "exitCode": 0,
+      "results": null,
+      "testCount": 42
+    }
+  ],
+  "browserSuites": {
+    "native": {
+      "passed": 83,
+      "failed": 0,
+      "html_sha256": "8f4619bcda4e7231af7ca1d096af47683f26aaa7da7bd68a2b875eda922d5aaa",
+      "report": "/workspace/.cloud-setup/fallout-marseille/implementation/final/native/NATIVE_REAL_MAP.json"
+    },
+    "legacy": {
+      "passed": 434,
+      "failed": 0,
+      "html_sha256": "8f4619bcda4e7231af7ca1d096af47683f26aaa7da7bd68a2b875eda922d5aaa",
+      "report": "/workspace/.cloud-setup/fallout-marseille/implementation/final/legacy-wbruvenr/verification/v050/QA_LEGACY.json"
+    },
+    "controller": {
+      "passed": 33,
+      "failed": 0,
+      "html_sha256": "8f4619bcda4e7231af7ca1d096af47683f26aaa7da7bd68a2b875eda922d5aaa",
+      "report": "/workspace/.cloud-setup/fallout-marseille/implementation/final/controller/CONTROLLER_BROWSER.json"
+    },
+    "gameplay": {
+      "passed": 19,
+      "failed": 0,
+      "html_sha256": "8f4619bcda4e7231af7ca1d096af47683f26aaa7da7bd68a2b875eda922d5aaa",
+      "report": "/workspace/.cloud-setup/fallout-marseille/implementation/final/gameplay/GAMEPLAY_UI.json"
+    },
+    "sourceImport": {
+      "passed": 15,
+      "failed": 0,
+      "html_sha256": "8f4619bcda4e7231af7ca1d096af47683f26aaa7da7bd68a2b875eda922d5aaa",
+      "report": "/workspace/.cloud-setup/fallout-marseille/implementation/final/source-browser/GEOGRAPHY_SOURCE_BROWSER.json"
+    }
+  },
+  "browserKernels": [
+    {
+      "suite": "renderer_browser.py",
+      "passed": 9,
+      "failed": 0
+    },
+    {
+      "suite": "surfaces_browser.py",
+      "passed": 8,
+      "failed": 0
+    }
+  ],
+  "nativeMapPerformance": {
+    "scope": "Native headless Chromium frame cadence in this execution environment; not a hardware or desktop FPS guarantee",
+    "samples": 27,
+    "median_ms": 133.3,
+    "p95_ms": 166.6,
+    "renderer": {
+      "backend": "WebGL",
+      "customMeshes": 4732,
+      "triangles": 169949,
+      "bufferGroups": 20,
+      "drawCalls": 1078,
+      "batchedMeshes": 4732,
+      "batchGroups": 19,
+      "batchBuilds": 88
+    },
+    "gpu": {
+      "vendor": "Google Inc. (Google)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    }
+  },
+  "newRealHighResolutionDataInstalled": false,
+  "networkAccess": "Official IGN/data.gouv requests returned proxy403; required domains saved in draft, not applied",
+  "limitations": [
+    "No exhaustive 1:1 certification or complete Fallout content claim",
+    "Imported fine terrain limited near player; 32m far LOD",
+    "Pitched roof collisions remain conservative prisms",
+    "Measured bridge surfaces have no inferred slab or railings",
+    "Gamepad API tested with simulated inputs; physical device unverified",
+    "SwiftShader software rendering; hardware performance unverified"
+  ],
+  "configurationFieldsSaved": [
+    "network.allowed_domains",
+    "install_script",
+    "start_skill"
+  ],
+  "publication": "Draft saved; not published by agent"
+}

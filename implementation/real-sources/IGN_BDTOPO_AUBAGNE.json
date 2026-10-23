@@ -1,0 +1,717 @@
+{
+  "schemaVersion": 1,
+  "provider": "IGN — Géoplateforme",
+  "license": "Licence Ouverte 2.0",
+  "endpoint": "https://data.geopf.fr/wfs/ows",
+  "acquisitionStatus": "Actual HTTPS responses acquired with certificate verification and configured proxy",
+  "bbox": [
+    43.293,
+    5.565,
+    43.3,
+    5.576
+  ],
+  "crs": "EPSG:4326; WFS queries explicitly use OGC CRS84 longitude/latitude",
+  "sourceCounts": {
+    "BDTOPO_V3:batiment": 1404,
+    "BDTOPO_V3:troncon_de_route": 472
+  },
+  "completePagesVerified": true,
+  "schemas": {
+    "BDTOPO_V3:troncon_de_route": {
+      "sha256": "e39093509379a2348118a5cd52da55ede266d54c735085be3dc66ecf7d76b977",
+      "fields": [
+        {
+          "name": "cleabs",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "nature",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "nom_collaboratif_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "nom_collaboratif_droite",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "importance",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "fictif",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "position_par_rapport_au_sol",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "etat_de_l_objet",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "date_creation",
+          "type": "xsd:dateTime",
+          "nillable": true
+        },
+        {
+          "name": "date_modification",
+          "type": "xsd:dateTime",
+          "nillable": true
+        },
+        {
+          "name": "date_d_apparition",
+          "type": "xsd:date",
+          "nillable": true
+        },
+        {
+          "name": "date_de_confirmation",
+          "type": "xsd:date",
+          "nillable": true
+        },
+        {
+          "name": "sources",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "identifiants_sources",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "methode_d_acquisition_planimetrique",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "precision_planimetrique",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "methode_d_acquisition_altimetrique",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "precision_altimetrique",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "nombre_de_voies",
+          "type": "xsd:int",
+          "nillable": true
+        },
+        {
+          "name": "largeur_de_chaussee",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "itineraire_vert",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "prive",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "sens_de_circulation",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "reserve_aux_bus",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "urbain",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "vitesse_moyenne_vl",
+          "type": "xsd:int",
+          "nillable": true
+        },
+        {
+          "name": "acces_vehicule_leger",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "acces_pieton",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "periode_de_fermeture",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "nature_de_la_restriction",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "restriction_de_hauteur",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "restriction_de_poids_total",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "restriction_de_poids_par_essieu",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "restriction_de_largeur",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "restriction_de_longueur",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "matieres_dangereuses_interdites",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "borne_debut_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "borne_debut_droite",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "borne_fin_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "borne_fin_droite",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "insee_commune_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "insee_commune_droite",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "alias_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "alias_droit",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "date_de_mise_en_service",
+          "type": "xsd:date",
+          "nillable": true
+        },
+        {
+          "name": "liens_vers_route_nommee",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "liens_vers_itineraire_autre",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "cpx_numero",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "cpx_numero_route_europeenne",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "cpx_classement_administratif",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "cpx_gestionnaire",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "cpx_toponyme_route_nommee",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "cpx_toponyme_itineraire_cyclable",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "cpx_toponyme_voie_verte",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "cpx_nature_itineraire_autre",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "cpx_toponyme_itineraire_autre",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "delestage",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "source_voie_ban_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "source_voie_ban_droite",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "nom_voie_ban_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "nom_voie_ban_droite",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "lieux_dits_ban_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "lieux_dits_ban_droite",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "identifiant_voie_ban_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "identifiant_voie_ban_droite",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "sens_amenagement_cyclable_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "sens_amenagement_cyclable_droit",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "amenagement_cyclable_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "amenagement_cyclable_droit",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "aire_de_retournement_dfci",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "gabarit_dfci",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "impasse_dfci",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "nature_detaillee_dfci",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "ouvrage_d_art_limitant_dfci",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "pente_maximale_dfci",
+          "type": "xsd:int",
+          "nillable": true
+        },
+        {
+          "name": "piste_dfci",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "piste_dfci_debroussaillee",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "piste_dfci_fosses",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "sens_de_circulation_dfci",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "tout_terrain_dfci",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "vitesse_moyenne_dfci",
+          "type": "xsd:int",
+          "nillable": true
+        },
+        {
+          "name": "zone_de_croisement_dfci",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "categorie_dfci",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "vitesse_collaborative",
+          "type": "xsd:int",
+          "nillable": true
+        },
+        {
+          "name": "id_ban_odonyme_droite",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "id_ban_odonyme_gauche",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "geometrie",
+          "type": "gml:CurvePropertyType",
+          "nillable": true
+        }
+      ]
+    },
+    "BDTOPO_V3:batiment": {
+      "sha256": "e02f6bb989a80ab542c583545280b0600025bb5497ac3c363fd54eb799e2472e",
+      "fields": [
+        {
+          "name": "cleabs",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "nature",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "usage_1",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "usage_2",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "construction_legere",
+          "type": "xsd:boolean",
+          "nillable": true
+        },
+        {
+          "name": "etat_de_l_objet",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "date_creation",
+          "type": "xsd:dateTime",
+          "nillable": true
+        },
+        {
+          "name": "date_modification",
+          "type": "xsd:dateTime",
+          "nillable": true
+        },
+        {
+          "name": "date_d_apparition",
+          "type": "xsd:date",
+          "nillable": true
+        },
+        {
+          "name": "date_de_confirmation",
+          "type": "xsd:date",
+          "nillable": true
+        },
+        {
+          "name": "sources",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "identifiants_sources",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "methode_d_acquisition_planimetrique",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "methode_d_acquisition_altimetrique",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "precision_planimetrique",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "precision_altimetrique",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "nombre_de_logements",
+          "type": "xsd:int",
+          "nillable": true
+        },
+        {
+          "name": "nombre_d_etages",
+          "type": "xsd:int",
+          "nillable": true
+        },
+        {
+          "name": "materiaux_des_murs",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "materiaux_de_la_toiture",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "hauteur",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "altitude_minimale_sol",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "altitude_minimale_toit",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "altitude_maximale_toit",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "altitude_maximale_sol",
+          "type": "xsd:double",
+          "nillable": true
+        },
+        {
+          "name": "origine_du_batiment",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "appariement_fichiers_fonciers",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "identifiants_rnb",
+          "type": "xsd:string",
+          "nillable": true
+        },
+        {
+          "name": "geometrie",
+          "type": "gml:MultiSurfacePropertyType",
+          "nillable": true
+        }
+      ]
+    }
+  },
+  "getFeatureResponses": [
+    {
+      "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Atroncon_de_route&OUTPUTFORMAT=application%2Fjson&SRSNAME=urn%3Aogc%3Adef%3Acrs%3AOGC%3A%3ACRS84&BBOX=5.565%2C43.293%2C5.576%2C43.3%2Curn%3Aogc%3Adef%3Acrs%3AOGC%3A%3ACRS84&COUNT=1000&STARTINDEX=0",
+      "acquiredAt": "2026-10-23T03:54:25.305539+00:00",
+      "bytes": 1387707,
+      "sha256": "a01eb8024441d7b9a1bc727a9963b49c5e553d288c412c496780a674b4d10dfe"
+    },
+    {
+      "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Abatiment&OUTPUTFORMAT=application%2Fjson&SRSNAME=urn%3Aogc%3Adef%3Acrs%3AOGC%3A%3ACRS84&BBOX=5.565%2C43.293%2C5.576%2C43.3%2Curn%3Aogc%3Adef%3Acrs%3AOGC%3A%3ACRS84&COUNT=1000&STARTINDEX=0",
+      "acquiredAt": "2026-10-23T03:54:25.185667+00:00",
+      "bytes": 1258502,
+      "sha256": "eb8220bdd73eacc98df1d9f69fa494bca8d502a84c584a94e04c1bf0d9b901d6"
+    },
+    {
+      "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Abatiment&OUTPUTFORMAT=application%2Fjson&SRSNAME=urn%3Aogc%3Adef%3Acrs%3AOGC%3A%3ACRS84&BBOX=5.565%2C43.293%2C5.576%2C43.3%2Curn%3Aogc%3Adef%3Acrs%3AOGC%3A%3ACRS84&COUNT=1000&STARTINDEX=1000",
+      "acquiredAt": "2026-10-23T03:54:26.330588+00:00",
+      "bytes": 513930,
+      "sha256": "9fd433e63b40f06523906c0f64965a53ea6780e27cc493a8051c91804f3ab946"
+    }
+  ],
+  "sourceGeometryUnchanged": true,
+  "missingGeometryZPolicy": {
+    "provider": "ign-bdtopo",
+    "condition": "methode_d_acquisition_altimetrique = Pas de Z and geometry Z = -1000",
+    "action": "Retain original XY; omit missing Z with per-feature proof",
+    "features": {
+      "building": 11,
+      "road": 51
+    }
+  },
+  "declaredAccuracyMetres": {
+    "buildings": {
+      "precision_planimetrique": [
+        2.5,
+        3,
+        5
+      ],
+      "precision_altimetrique": [
+        1,
+        1.5,
+        2.5
+      ]
+    },
+    "roads": {
+      "precision_planimetrique": [
+        2.5,
+        3,
+        5,
+        20
+      ],
+      "precision_altimetrique": [
+        1.5,
+        2.5
+      ]
+    }
+  },
+  "deliveredMergedBundle": {
+    "sha256": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61",
+    "bytes": 8047268,
+    "features": 1876,
+    "validatedCoveragePresentOnEveryFeature": true,
+    "terrainTiles": [
+      {
+        "id": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+        "resource": "ign_rge_alti_wld",
+        "samples": 174777,
+        "bbox": [
+          43.293,
+          5.565,
+          43.3,
+          5.576
+        ],
+        "nodeSpacingApproxMeters": [
+          1.9982591836363173,
+          1.9980512820506815
+        ],
+        "valid": 174777,
+        "missing": 0
+      },
+      {
+        "id": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+        "resource": "ign_lidar_hd_mnt",
+        "samples": 145396,
+        "bbox": [
+          43.2956,
+          5.5698,
+          43.2976,
+          5.5718
+        ],
+        "nodeSpacingApproxMeters": [
+          0.4985858071445592,
+          0.5003146067421845
+        ],
+        "valid": 145396,
+        "missing": 0
+      }
+    ]
+  },
+  "reimportedFromVerifiedCachedPages": {
+    "networkRepeated": false,
+    "geometryAndPropertiesComparedToEveryOriginalPage": true,
+    "coverageFieldAdded": "acquisitionCoverage",
+    "sourceRectangle": "Actual completed WFS query, not geometry union"
+  },
+  "localRawEvidenceDirectory": "/workspace/.cloud-setup/fallout-marseille/implementation/real-sources",
+  "limitation": "Faithful source geometry and declared measurements; neither centimetric survey accuracy nor complete roof/facade/indoor reconstruction is certified"
+}

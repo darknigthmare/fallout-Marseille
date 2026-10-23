@@ -971,16 +971,100 @@ function wedgeData(){return flatMesh([
   -.5,.5,-.5,.5,.5,-.5,.5,-.5,-.5, -.5,.5,-.5,.5,-.5,-.5,-.5,-.5,-.5
 ])}
 
+/* Static geographic batching preserves the complete indexed triangle stream.
+   Colors travel with each vertex so buildings with different materials share
+   buffers without palette quantization. The cache owns only GPU uploads; source
+   geometry is weakly held and a scene replacement can release every upload. */
+// BEGIN GL_STATIC_GEOMETRY_BATCHES
+class GLStaticGeometryBatches {
+  constructor(geometry, upload, dispose){
+    this.geometry=geometry;this.upload=upload;this.dispose=dispose;
+    this.entries=new Map();this.sourceData=new WeakMap();this.builds=0;
+    this.stats={groups:0,sources:0,uploads:0,builds:0,hits:0};
+  }
+  stamp(d){
+    return[d.revision||0,d.baseY,d.height,d.pos?.[1],d.rings,d.vertices,d.faces,
+      d.color?.[0],d.color?.[1],d.color?.[2]];
+  }
+  same(a,b){return a.length===b.length&&a.every((v,i)=>v===b[i]);}
+  data(d,stamp){
+    let e=this.sourceData.get(d);
+    if(!e||!this.same(e.stamp,stamp)){
+      e={stamp,data:this.geometry(d)};this.sourceData.set(d,e);
+    }
+    return e.data;
+  }
+  pack(sources,stamps){
+    const chunks=[];let out={positions:[],normals:[],colors:[],indices:[]};
+    const flush=()=>{if(out.indices.length)chunks.push(out);out={positions:[],normals:[],colors:[],indices:[]};};
+    for(let s=0;s<sources.length;s++){
+      const d=sources[s],color=d.color||[1,1,1];
+      for(const data of this.data(d,stamps[s])){
+        if(data.indices.length%3)throw new Error('Maillage statique : triangle incomplet');
+        for(let i=0;i<data.indices.length;i+=3){
+          // Stay below WebGL 1's Uint16 limit; never split a triangle.
+          if(out.positions.length/3+3>54000)flush();
+          for(let j=0;j<3;j++){
+            const index=data.indices[i+j],offset=index*3;
+            if(!Number.isInteger(index)||index<0||offset+2>=data.positions.length||offset+2>=data.normals.length)throw new Error('Maillage statique : indice invalide');
+            out.indices.push(out.positions.length/3);
+            out.positions.push(data.positions[offset],data.positions[offset+1],data.positions[offset+2]);
+            out.normals.push(data.normals[offset],data.normals[offset+1],data.normals[offset+2]);
+            out.colors.push(color[0],color[1],color[2]);
+          }
+        }
+      }
+    }
+    flush();return chunks;
+  }
+  prepare(draws,candidate){
+    const runs=[],batchRuns=new Set(),ordinals=new Map();let run=null;
+    for(const d of draws){
+      if(!candidate(d)){runs.push(d);run=null;continue;}
+      const group=JSON.stringify([d.v046Tile||'terrain',d.emissive||0]);
+      if(!run||run.group!==group){
+        const ordinal=ordinals.get(group)||0;ordinals.set(group,ordinal+1);
+        run={group,key:group+':'+ordinal,sources:[]};runs.push(run);batchRuns.add(run);
+      }
+      run.sources.push(d);
+    }
+    const active=new Set(),prepared=[];let hits=0,sources=0,uploads=0;
+    for(const item of runs){
+      if(!batchRuns.has(item)){prepared.push(item);continue;}
+      if(item.sources.length<2){prepared.push(item.sources[0]);continue;}
+      const key=item.key,stamps=item.sources.map(d=>this.stamp(d));let entry=this.entries.get(key);
+      if(entry&&entry.sources.length===item.sources.length&&entry.sources.every((d,i)=>d===item.sources[i]&&this.same(entry.stamps[i],stamps[i]))){hits++;}
+      else{
+        const meshes=[];
+        try{for(const data of this.pack(item.sources,stamps))meshes.push(this.upload(data));}
+        catch(error){for(const mesh of meshes)this.dispose(mesh);throw error;}
+        if(entry)for(const mesh of entry.meshes)this.dispose(mesh);
+        entry={sources:item.sources.slice(),stamps,meshes};this.entries.set(key,entry);this.builds++;
+      }
+      active.add(key);sources+=item.sources.length;uploads+=entry.meshes.length;
+      // Absolute geographic vertices already include their model transform.
+      // Keep a representative position for the unchanged lighting uniforms.
+      prepared.push({...item.sources[0],mesh:'staticGeoBatch',color:[0,0,0],_v018Batch:entry});
+    }
+    for(const[key,entry]of this.entries)if(!active.has(key)){
+      for(const mesh of entry.meshes)this.dispose(mesh);this.entries.delete(key);
+    }
+    this.stats={groups:active.size,sources,uploads,builds:this.builds,hits};return prepared;
+  }
+  clear(){for(const entry of this.entries.values())for(const mesh of entry.meshes)this.dispose(mesh);this.entries.clear();}
+}
+// END GL_STATIC_GEOMETRY_BATCHES
+
 class GLRenderer {
   constructor(canvas){
     this.canvas=canvas;this.gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false,preserveDrawingBuffer:true});
     if(!this.gl) throw new Error('WebGL indisponible');
     const gl=this.gl;
-    const vs=`attribute vec3 aPosition;attribute vec3 aNormal;uniform mat4 uViewProj;uniform mat4 uModel;varying vec3 vN;varying vec3 vW;void main(){vec4 w=uModel*vec4(aPosition,1.0);vW=w.xyz;vN=normalize(mat3(uModel)*aNormal);gl_Position=uViewProj*w;}`;
-    const fs=`precision mediump float;varying vec3 vN;varying vec3 vW;uniform vec3 uColor;uniform vec3 uSunDir;uniform vec3 uFogColor;uniform vec3 uCamera; uniform float uFogNear; uniform float uFogFar;uniform float uEmissive;uniform float uAlpha;void main(){float sun=max(dot(normalize(vN),normalize(uSunDir)),0.0);float hemi=vN.y*.15+.15;float light=.42+sun*.52+hemi+uEmissive;vec3 col=uColor*light;float d=distance(vW,uCamera);float fog=smoothstep(uFogNear,uFogFar,d);float noise=fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233)))*43758.5453)*.018;col+=noise;gl_FragColor=vec4(mix(col,uFogColor,fog),uAlpha);}`;
+    const vs=`attribute vec3 aPosition;attribute vec3 aNormal;attribute vec3 aColor;uniform mat4 uViewProj;uniform mat4 uModel;varying vec3 vN;varying vec3 vW;varying vec3 vColor;void main(){vec4 w=uModel*vec4(aPosition,1.0);vW=w.xyz;vColor=aColor;vN=normalize(mat3(uModel)*aNormal);gl_Position=uViewProj*w;}`;
+    const fs=`precision mediump float;varying vec3 vN;varying vec3 vW;varying vec3 vColor;uniform vec3 uColor;uniform vec3 uSunDir;uniform vec3 uFogColor;uniform vec3 uCamera; uniform float uFogNear; uniform float uFogFar;uniform float uEmissive;uniform float uAlpha;void main(){float sun=max(dot(normalize(vN),normalize(uSunDir)),0.0);float hemi=vN.y*.15+.15;float light=.42+sun*.52+hemi+uEmissive;vec3 col=(uColor+vColor)*light;float d=distance(vW,uCamera);float fog=smoothstep(uFogNear,uFogFar,d);float noise=fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233)))*43758.5453)*.018;col+=noise;gl_FragColor=vec4(mix(col,uFogColor,fog),uAlpha);}`;
     this.program=this.makeProgram(vs,fs);gl.useProgram(this.program);
     this.loc={
-      pos:gl.getAttribLocation(this.program,'aPosition'),nor:gl.getAttribLocation(this.program,'aNormal'),
+      pos:gl.getAttribLocation(this.program,'aPosition'),nor:gl.getAttribLocation(this.program,'aNormal'),vertexColor:gl.getAttribLocation(this.program,'aColor'),
       viewProj:gl.getUniformLocation(this.program,'uViewProj'),model:gl.getUniformLocation(this.program,'uModel'),color:gl.getUniformLocation(this.program,'uColor'),
       sun:gl.getUniformLocation(this.program,'uSunDir'),fog:gl.getUniformLocation(this.program,'uFogColor'),cam:gl.getUniformLocation(this.program,'uCamera'),
       emissive:gl.getUniformLocation(this.program,'uEmissive'),alpha:gl.getUniformLocation(this.program,'uAlpha')
@@ -991,7 +1075,7 @@ class GLRenderer {
   }
   shader(type,src){const gl=this.gl,s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));return s}
   makeProgram(vs,fs){const gl=this.gl,p=gl.createProgram();gl.attachShader(p,this.shader(gl.VERTEX_SHADER,vs));gl.attachShader(p,this.shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));return p}
-  createMesh(data){const gl=this.gl,m={};m.p=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.p);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.positions),gl.STATIC_DRAW);m.n=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.n);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.normals),gl.STATIC_DRAW);m.i=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.i);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(data.indices),gl.STATIC_DRAW);m.count=data.indices.length;return m}
+  createMesh(data){const gl=this.gl,m={};m.p=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.p);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.positions),gl.STATIC_DRAW);m.n=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.n);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.normals),gl.STATIC_DRAW);if(data.colors){m.c=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.c);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.colors),gl.STATIC_DRAW);}m.i=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.i);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(data.indices),gl.STATIC_DRAW);m.count=data.indices.length;return m}
   resize(){const dpr=settings.quality==='high'?Math.min(devicePixelRatio,1.6):settings.quality==='medium'?Math.min(devicePixelRatio,1.1):.75;const w=Math.max(1,Math.floor(innerWidth*dpr)),h=Math.max(1,Math.floor(innerHeight*dpr));if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;this.gl.viewport(0,0,w,h)}}
   render(draws,camera,env){
     const gl=this.gl;this.resize();gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(this.program);
@@ -4695,30 +4779,38 @@ function v018MeshData(d){
   const chunks=[];for(let i=0;i<tris.length;i+=9*18000)chunks.push(flatMesh(tris.slice(i,i+9*18000)));return chunks;
 }
 function v018MeshRevision(d){return`${d.revision||0}/${d.baseY}/${d.height}/${d.pos?.[1]}`;}
-function v018DeleteGLMesh(gl,m){gl.deleteBuffer(m.p);gl.deleteBuffer(m.n);gl.deleteBuffer(m.i);}
+function v018DeleteGLMesh(gl,m){gl.deleteBuffer(m.p);gl.deleteBuffer(m.n);gl.deleteBuffer(m.i);if(m.c)gl.deleteBuffer(m.c);}
 const v018OriginalGLRender=GLRenderer.prototype.render;
 GLRenderer.prototype.render=function(draws,camera,env){
   const gl=this.gl;this.resize();this.geoMeshes??=new Map();
-  const active=new Set(draws.filter(d=>['prism','flatpoly','terrain','geoSurface'].includes(d.mesh)));
+  this.staticGeoBatches??=new GLStaticGeometryBatches(v018MeshData,data=>this.createMesh(data),mesh=>v018DeleteGLMesh(gl,mesh));
+  const custom=d=>['prism','flatpoly','terrain','geoSurface'].includes(d.mesh);
+  const lamp=typeof v028LampActive==='function'&&v028LampActive()?v028LampOrigin():null;
+  // Custom geometry uses absolute vertices. Preserve transparent ordering and
+  // keep pieces reached by the wrist light separate for their visibility test.
+  // All other pieces in an exterior share ambient=1 and wrist visibility=0.
+  const prepared=this.staticGeoBatches.prepare(draws,d=>!!(world?.v046&&(d.v046Tile||d.v046Terrain)&&custom(d)&&!d.hidden&&(d.alpha??1)===1&&(!lamp||vLen(vSub(d.pos,lamp))>=12)));
+  const active=new Set(prepared.filter(custom));
   for(const[d,entry]of this.geoMeshes)if(!active.has(d)){for(const m of entry.meshes)v018DeleteGLMesh(gl,m);this.geoMeshes.delete(d);}
   gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(this.program);
   const far=world?.geoMacro?850:400,proj=m4Perspective(rad(camera.fov||67),this.canvas.width/this.canvas.height,.08,far),vp=m4Multiply(proj,m4LookAt(camera.pos,vAdd(camera.pos,camera.dir)));
   gl.uniformMatrix4fv(this.loc.viewProj,false,vp);gl.uniform3fv(this.loc.sun,env.sunDir||[.4,.8,.2]);gl.uniform3fv(this.loc.fog,env.fog||[.45,.58,.58]);gl.uniform3fv(this.loc.cam,camera.pos);
   const nearFog=gl.getUniformLocation(this.program,'uFogNear'),farFog=gl.getUniformLocation(this.program,'uFogFar');
   if(nearFog)gl.uniform1f(nearFog,world?.geoMacro?430:65);if(farFog)gl.uniform1f(farFog,world?.geoMacro?720:280);
-  let count=0,triangles=0;
-  for(const d of draws){
+  let count=0,triangles=0,drawCalls=0;
+  for(const d of prepared){
     if(d.hidden)continue;let meshes,model;
-    if(active.has(d)){
+    if(d._v018Batch){meshes=d._v018Batch.meshes;model=m4Identity();gl.disable(gl.CULL_FACE);count+=d._v018Batch.sources.length;}
+    else if(active.has(d)){
       let e=this.geoMeshes.get(d);const revision=v018MeshRevision(d);
-      if(!e||e.revision!==revision){if(e)for(const m of e.meshes)v018DeleteGLMesh(gl,m);e={revision,meshes:v018MeshData(d).map(x=>this.createMesh(x))};this.geoMeshes.set(d,e);}
+      if(!e||e.revision!==revision||e.rings!==d.rings||e.vertices!==d.vertices||e.faces!==d.faces){if(e)for(const m of e.meshes)v018DeleteGLMesh(gl,m);e={revision,rings:d.rings,vertices:d.vertices,faces:d.faces,meshes:v018MeshData(d).map(x=>this.createMesh(x))};this.geoMeshes.set(d,e);}
       meshes=e.meshes;model=m4Identity();gl.disable(gl.CULL_FACE);count++;
     }else{const m=this.meshes[d.mesh||'cube'];if(!m)continue;meshes=[m];model=m4TRS(d.pos,d.rotY||0,d.scale||[1,1,1]);gl.enable(gl.CULL_FACE);}
     if(typeof v028SetGLPiece==='function')v028SetGLPiece(this,d);gl.uniformMatrix4fv(this.loc.model,false,model);gl.uniform3fv(this.loc.color,d.color||COLORS.white);gl.uniform1f(this.loc.emissive,d.emissive||0);const alpha=d.alpha??1;gl.uniform1f(this.loc.alpha,alpha);
     if(alpha<1){gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.depthMask(false);}else{gl.disable(gl.BLEND);gl.depthMask(true);}
-    for(const m of meshes){gl.bindBuffer(gl.ARRAY_BUFFER,m.p);gl.enableVertexAttribArray(this.loc.pos);gl.vertexAttribPointer(this.loc.pos,3,gl.FLOAT,false,0,0);gl.bindBuffer(gl.ARRAY_BUFFER,m.n);gl.enableVertexAttribArray(this.loc.nor);gl.vertexAttribPointer(this.loc.nor,3,gl.FLOAT,false,0,0);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.i);gl.drawElements(gl.TRIANGLES,m.count,gl.UNSIGNED_SHORT,0);triangles+=m.count/3;}
+    for(const m of meshes){gl.bindBuffer(gl.ARRAY_BUFFER,m.p);gl.enableVertexAttribArray(this.loc.pos);gl.vertexAttribPointer(this.loc.pos,3,gl.FLOAT,false,0,0);gl.bindBuffer(gl.ARRAY_BUFFER,m.n);gl.enableVertexAttribArray(this.loc.nor);gl.vertexAttribPointer(this.loc.nor,3,gl.FLOAT,false,0,0);if(this.loc.vertexColor>=0){if(m.c){gl.bindBuffer(gl.ARRAY_BUFFER,m.c);gl.enableVertexAttribArray(this.loc.vertexColor);gl.vertexAttribPointer(this.loc.vertexColor,3,gl.FLOAT,false,0,0);}else{gl.disableVertexAttribArray(this.loc.vertexColor);gl.vertexAttrib3f(this.loc.vertexColor,0,0,0);}}gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.i);gl.drawElements(gl.TRIANGLES,m.count,gl.UNSIGNED_SHORT,0);triangles+=m.count/3;drawCalls++;}
   }
-  gl.depthMask(true);gl.enable(gl.CULL_FACE);gl.disable(gl.BLEND);V018.render={backend:'WebGL',customMeshes:count,triangles,bufferGroups:this.geoMeshes.size};
+  gl.depthMask(true);gl.enable(gl.CULL_FACE);gl.disable(gl.BLEND);V018.render={backend:'WebGL',customMeshes:count,triangles,bufferGroups:[...this.geoMeshes.values()].reduce((n,e)=>n+e.meshes.length,0)+this.staticGeoBatches.stats.uploads,drawCalls,batchedMeshes:this.staticGeoBatches.stats.sources,batchGroups:this.staticGeoBatches.stats.groups,batchBuilds:this.staticGeoBatches.stats.builds};
 };
 /* The software fallback uses the same triangles, clipped against the near plane.
    It no longer drops an entire building when one corner is behind the camera. */
@@ -8347,26 +8439,90 @@ const MistralIntegrity = (()=>{
   const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
   function hash(value){let h=2166136261;const s=typeof value==='string'?value:JSON.stringify(value);for(let i=0;i<s.length;i++)h=Math.imul(h^s.charCodeAt(i),16777619);return(h>>>0).toString(16).padStart(8,'0');}
   function ringKey(r){let a=r.map(p=>p.map(v=>Math.round(v*1000)/1000));if(a.length>1&&JSON.stringify(a[0])===JSON.stringify(a.at(-1)))a.pop();if(!a.length)return'';const candidates=[];for(const b of[a,a.slice().reverse()]){let m=0;for(let i=1;i<b.length;i++)if(JSON.stringify(b[i])<JSON.stringify(b[m]))m=i;candidates.push(JSON.stringify(b.slice(m).concat(b.slice(0,m))));}return candidates.sort()[0];}
-  function footprintKey(source,rings,props={}){return source+':'+hash([rings.map(ringKey).sort(),props.height??props.render_height??null,props.levels??props['building:levels']??null]);}
+  function footprintKey(source,rings,props={}){return source+':'+hash([rings.map(ringKey).sort(),['height','render_height','building:height','hauteur','z_min_sol','z_max_toit','altitude_minimale_sol','altitude_maximale_sol','altitude_minimale_toit','altitude_maximale_toit','ground_elevation','roof_elevation','levels','building:levels','nombre_d_etages','min_height','render_min_height','building:min_height','building:min_level','roof:height','roof:shape','roof:direction','width','largeur_de_chaussee','largeur_chaussee','lanes','nombre_de_voies','bridge','brunnel','position_par_rapport_au_sol','layer','ele','deck_height','sourceId'].map(k=>props[k]??null)]);}
   function inside(rings,x,z){function ring(r){let hit=false;for(let i=0,j=r.length-1;i<r.length;j=i++){const a=r[i],b=r[j];if((a[1]>z)!==(b[1]>z)&&x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])hit=!hit;}return hit;}return !!rings.length&&ring(rings[0])&&!rings.slice(1).some(ring);}
   function intersects(a,b){return a[0]<b[2]&&a[2]>b[0]&&a[1]<b[3]&&a[3]>b[1];}
   function contains(b,lat,lon){return lat>=b[0]&&lat<=b[2]&&lon>=b[1]&&lon<=b[3];}
+  /* Measurements are not parseFloat prefixes: an unknown unit must never turn
+     into a plausible metre value. OSM feet/inches and decimal commas are explicit. */
+  function metres(value){
+    if(typeof value==='number')return Number.isFinite(value)?value:null;
+    if(typeof value!=='string')return null;
+    const s=value.trim(),feet=s.match(/^([+-]?\d+(?:[.,]\d+)?)\s*(?:ft|feet|'|′)(?:\s*(\d+(?:[.,]\d+)?)\s*(?:in|inches|"|″))?$/i);
+    if(feet)return Number(feet[1].replace(',','.'))*.3048+(feet[2]?Number(feet[2].replace(',','.'))*.0254:0);
+    const match=s.match(/^([+-]?\d+(?:[.,]\d+)?)\s*(m|metres?|mètres?|meters?|cm)?$/i);
+    return match?Number(match[1].replace(',','.'))*(match[2]?.toLowerCase()==='cm'?.01:1):null;
+  }
+  function measurement(props,keys,min=0,max=1000){for(const key of keys){const n=metres(props[key]);if(n!==null&&n>=min&&n<=max)return{value:n,key};}return null;}
+  function compatibleDatum(value){
+    if(typeof value!=='string')return false;
+    const text=value.trim().toUpperCase(),prefix=text.match(/^(?:NGF[\s_\/-]*IGN[\s_-]*(?:1969|69)|IGN[\s_-]*(?:1969|69)|EPSG\s*:\s*5720)/);
+    if(!prefix)return false;const rest=text.slice(prefix[0].length).trim();return!rest||/^[—–,:;(\/-]/.test(rest);
+  }
+  function buildingProfile(props={}){
+    const ground=measurement(props,['altitude_minimale_sol','z_min_sol','altitude_sol','ground_elevation'],-100,9000),groundMaximum=measurement(props,['altitude_maximale_sol','z_max_sol'],-100,9000),roofElevation=measurement(props,['altitude_maximale_toit','z_max_toit','altitude_toit','roof_elevation'],-100,10000),roofMinimum=measurement(props,['altitude_minimale_toit','z_min_toit'],-100,10000),supplied=measurement(props,['render_height','height','building:height','hauteur'],.1,1000),absoluteHeight=ground&&roofElevation&&roofElevation.value>ground.value&&roofElevation.value-ground.value<=1000?{value:roofElevation.value-ground.value,key:roofElevation.key+' − '+ground.key}:null,total=absoluteHeight||supplied,levels=measurement(props,['building:levels','levels','nombre_d_etages'],.1,200),roof=measurement(props,['roof:height'],0,200),lower=measurement(props,['render_min_height','min_height','building:min_height'],0,1000),minLevel=measurement(props,['building:min_level','min_level'],0,200);
+    const top=total?.value??(levels?levels.value*3+(roof?.value||0):6),minimum=Math.min(lower?.value??(minLevel?minLevel.value*3:0),Math.max(0,top-.1));
+    const roofHeight=Math.min(roof?.value||0,Math.max(0,top-minimum-.1)),shape=String(props['roof:shape']||'flat').toLowerCase(),direction=metres(props['roof:direction']);
+    return{height:top-minimum,totalHeight:top,minHeight:minimum,groundElevation:ground?.value??null,groundMaximum:groundMaximum?.value??null,roofElevation:roofElevation?.value??null,roofMinimum:roofMinimum?.value??null,reportedHeight:supplied?.value??null,reportedHeightBasis:supplied?.key??null,eavesHeight:top-minimum-roofHeight,roofHeight,roofShape:shape,roofDirection:direction===null?null:((direction%360)+360)%360,estimated:!total,basis:total?.key||(levels?'niveaux × 3 m — estimation':'6 m par défaut — estimation'),minHeightBasis:lower?.key||(minLevel?'niveau inférieur × 3 m — estimation':'sol'),roofEstimated:!props['roof:shape']||roofHeight>0&&(!['flat','gabled','skillion'].includes(shape)||shape==='gabled'&&direction===null),roofRepresentation:props['roof:shape']?'Forme de toiture déclarée, construite avec ses dimensions disponibles':'Volume enveloppe ; la forme de la toiture n’est pas fournie',planimetricAccuracy:measurement(props,['precision_planimetrique'],0,100)?.value??null,altimetricAccuracy:measurement(props,['precision_altimetrique'],0,100)?.value??null};
+  }
+  function roadProfile(props={},water=false){
+    const width=measurement(props,['width','largeur_de_chaussee','largeur_chaussee','largeur','est_width'],.05,300),lanes=measurement(props,['lanes','nombre_de_voies'],.1,30),cls=String(props.class||props.subclass||props.highway||'').toLowerCase(),trail=/path|track|footway/.test(cls),rail=/rail/.test(cls),arterial=/motorway|trunk|primary/.test(cls),absolute=measurement(props,['ele','deck_height','bridge:ele'],-100,9000),clearance=measurement(props,['bridge:height','min_height'],0,100),layer=Number(props.layer)||0,structure=String(props.brunnel||props.position_par_rapport_au_sol||'').toLowerCase(),bridge=/bridge|pont/.test(structure)||props.bridge==='yes'||props.bridge===true,tunnel=/tunnel|souterrain/.test(structure)||props.tunnel==='yes'||props.tunnel===true;
+    const position=String(props.position_par_rapport_au_sol??'').trim(),ordinal=/^[+-]?\d+$/.test(position)&&Math.abs(Number(position))<100?Number(position):null,above=bridge||ordinal!==null&&ordinal>0,below=tunnel||ordinal!==null&&ordinal<0,isIGN=props.provenance?.resource==='ign-bdtopo',unavailableElevation=isIGN&&(above||below)&&!absolute&&!clearance;
+    return{width:width?.value??(lanes?lanes.value*3.1:water?3:trail?1.6:rail?1.435:arterial?10:5.5),widthAssumed:!width,widthBasis:width?.key||(lanes?'voies × 3,1 m — estimation':'classe de voie — estimation'),absoluteHeight:absolute?.value??null,heightBasis:absolute?.key||clearance?.key||'terrain',offset:absolute?0:clearance?.value??(isIGN?0:above?Math.max(4,layer*4):below?-Math.max(4,Math.abs(layer)*4):0),elevationAssumed:!absolute&&!clearance,unavailableElevation,bridge:above,tunnel:below,sourcePosition:props.position_par_rapport_au_sol??null,ordinalPosition:ordinal,positionBasis:ordinal===null?null:'Ordre de superposition BD TOPO, sans unité métrique',planimetricAccuracy:measurement(props,['precision_planimetrique'],0,100)?.value??null,altimetricAccuracy:measurement(props,['precision_altimetrique'],0,100)?.value??null};
+  }
+  /* Stroke the unmodified source centreline. Mitred joins keep the specified
+     width around normal bends; NoData removes faces instead of laying asphalt at zero. */
+  function roadMesh(path,props,sample,water=false){
+    const profile=roadProfile(props,water),points=[],validPath=(path||[]).filter(p=>Array.isArray(p)&&Number.isFinite(p[0])&&Number.isFinite(p[1]));
+    for(let i=0;i<validPath.length-1;i++){const a=validPath[i],b=validPath[i+1],steps=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/12));for(let j=0;j<steps;j++){const t=j/steps,p=[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];if(Number.isFinite(a[2])&&Number.isFinite(b[2]))p[2]=a[2]+(b[2]-a[2])*t;points.push(p);}}
+    if(validPath.length)points.push(validPath.at(-1).slice());
+    const vertices=[],faces=[],valid=[],lift=water?.025:.085;
+    for(let i=0;i<points.length;i++){
+      const p=points[i],a=points[Math.max(0,i-1)],b=points[Math.min(points.length-1,i+1)],normal=(a,b)=>{const len=Math.hypot(b[0]-a[0],b[1]-a[1])||1;return[-(b[1]-a[1])/len,(b[0]-a[0])/len];},n0=normal(a,p),n1=normal(p,b);let nx=n0[0]+n1[0],nz=n0[1]+n1[1],len=Math.hypot(nx,nz);if(len<1e-8){[nx,nz]=normal(a,b);len=1;}nx/=len;nz/=len;const active=i===points.length-1?n0:n1,den=Math.abs(nx*active[0]+nz*active[1]),half=Math.min(profile.width*2,profile.width*.5/Math.max(.25,den));
+      for(const side of[-1,1]){const x=p[0]+nx*half*side,z=p[1]+nz*half*side,ground=sample(x,z),height=Number.isFinite(p[2])?p[2]:profile.absoluteHeight!==null?profile.absoluteHeight:profile.unavailableElevation||ground===null?null:ground+profile.offset;vertices.push([x,height===null?0:height+lift,z]);valid.push(height!==null);}
+      if(i){const k=i*2;if(valid[k-2]&&valid[k-1]&&valid[k])faces.push([k-2,k-1,k]);if(valid[k-1]&&valid[k+1]&&valid[k])faces.push([k-1,k+1,k]);}
+    }
+    if(validPath.length&&validPath.every(p=>Number.isFinite(p[2]))){profile.heightBasis='coordonnées Z source';profile.elevationAssumed=false;profile.unavailableElevation=false;}
+    else if(validPath.some(p=>Number.isFinite(p[2]))){profile.heightBasis='coordonnées Z partielles et terrain';profile.elevationAssumed=true;}
+    return{...profile,vertices,faces};
+  }
+  function roofMesh(rings,profile,ground,triangulate){
+    if(!(profile.roofHeight>0)||!['gabled','skillion'].includes(profile.roofShape)||profile.roofDirection===null)return null;
+    const axis=[Math.sin(profile.roofDirection*Math.PI/180),-Math.cos(profile.roofDirection*Math.PI/180)];let lo=Infinity,hi=-Infinity;
+    for(const ring of rings)for(const p of ring){const projection=p[0]*axis[0]+p[1]*axis[1];lo=Math.min(lo,projection);hi=Math.max(hi,projection);}const middle=(lo+hi)/2;
+    if(hi-lo<1e-6)return null;
+    const signed=p=>p[0]*axis[0]+p[1]*axis[1]-middle,height=p=>ground+profile.minHeight+profile.eavesHeight+profile.roofHeight*(profile.roofShape==='gabled'?1-Math.abs(signed(p))/((hi-lo)/2):(hi-(p[0]*axis[0]+p[1]*axis[1]))/(hi-lo)),vertices=[],faces=[];
+    const triangle=(a,b,c)=>{const k=vertices.length;vertices.push(a,b,c);faces.push([k,k+1,k+2]);};
+    function clip(points,side){const out=[];for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length],da=signed(a)*side,db=signed(b)*side;if(da>=-1e-9)out.push(a);if((da>1e-9&&db< -1e-9)||(da< -1e-9&&db>1e-9)){const t=da/(da-db);out.push([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]);}}return out;}
+    for(const t of triangulate(rings))for(const part of profile.roofShape==='gabled'?[clip(t,1),clip(t,-1)]:[t])for(let i=1;i<part.length-1;i++)triangle([part[0][0],height(part[0]),part[0][1]],[part[i+1][0],height(part[i+1]),part[i+1][1]],[part[i][0],height(part[i]),part[i][1]]);
+    const eaves=ground+profile.minHeight+profile.eavesHeight;
+    for(const ring of rings)for(let i=1;i<ring.length;i++){
+      const a=ring[i-1],b=ring[i],points=[a];if(signed(a)*signed(b)<0){const t=signed(a)/(signed(a)-signed(b));points.push([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]);}points.push(b);
+      for(let j=1;j<points.length;j++){const p=points[j-1],q=points[j];triangle([p[0],eaves,p[1]],[q[0],eaves,q[1]],[q[0],height(q),q[1]]);triangle([p[0],eaves,p[1]],[q[0],height(q),q[1]],[p[0],height(p),p[1]]);}
+    }
+    return{vertices,faces,sourceBasis:'forme, hauteur et direction de toiture déclarées'};
+  }
   function terrain(raw,id,expected){
     const {width:w,height:h,bbox:b,values:v}=raw||{};
     if(raw?.macro!==id||!Number.isInteger(w)||!Number.isInteger(h)||w<2||h<2||w*h>1048576||!Array.isArray(v)||v.length!==w*h)throw new Error('Grille incomplète : '+id);
     if(!Array.isArray(b)||b.length!==4||!b.every(Number.isFinite)||b[0]>=b[2]||b[1]>=b[3]||expected&&b.some((x,i)=>Math.abs(x-expected[i])>1e-7))throw new Error('Emprise incompatible : '+id);
-    if((raw.sourceResource||raw.source_resource||raw.resource)!=='ign_rge_alti_wld'&&!raw.qaFixture)throw new Error('Provenance altimétrique absente : '+id);
+    const provenance=raw.provenance,declared=String(raw.sourceResource||raw.source_resource||raw.resource||'');
+    const enrichment=id.startsWith('enrichment:')&&declared&&provenance&&['source','license','attribution','acquiredAt'].every(k=>typeof provenance[k]==='string'&&provenance[k].trim());
+    if(declared!=='ign_rge_alti_wld'&&!enrichment&&!raw.qaFixture)throw new Error('Provenance altimétrique absente : '+id);
+    if(enrichment&&!compatibleDatum(raw.verticalDatum||provenance?.verticalDatum))throw Error('Référentiel vertical incompatible : conversion explicite vers NGF-IGN69 requise pour '+id);
     if(raw.rowOrder&&raw.rowOrder!=='north-to-south')throw new Error('Ordre des lignes non pris en charge');
     const data=Float64Array.from(v,x=>x!==null&&typeof x==='number'&&Number.isFinite(x)&&x>-100&&x<9000?x:NaN);
     if(!data.some(Number.isFinite))throw new Error('Aucune altitude valide : '+id);
-    return{id,width:w,height:h,bbox:b.slice(),data,qa:!!raw.qaFixture};
+    const resolutionMeters=[(b[3]-b[1])*111320*Math.cos((b[0]+b[2])*Math.PI/360)/(w-1),(b[2]-b[0])*111320/(h-1)];
+    return{id,width:w,height:h,bbox:b.slice(),data,qa:!!raw.qaFixture,enrichment:!!enrichment,sourceResource:declared,provenance:provenance?{...provenance}:null,verticalDatum:raw.verticalDatum||provenance?.verticalDatum||'NGF-IGN69 — RGE ALTI, France continentale',resolutionMeters};
   }
-  function sample(t,lat,lon){if(!contains(t.bbox,lat,lon))return null;const b=t.bbox,x=(lon-b[1])/(b[3]-b[1])*(t.width-1),y=(b[2]-lat)/(b[2]-b[0])*(t.height-1),a=Math.floor(x),c=Math.floor(y),d=Math.min(t.width-1,a+1),e=Math.min(t.height-1,c+1),u=x-a,v=y-c;let sum=0,n=0;for(const[xx,yy,weight]of[[a,c,(1-u)*(1-v)],[d,c,u*(1-v)],[a,e,(1-u)*v],[d,e,u*v]]){const z=t.data[yy*t.width+xx];if(Number.isFinite(z)&&weight>0){sum+=z*weight;n+=weight;}}return n>0?sum/n:null;}
+  function sample(t,lat,lon){if(!contains(t.bbox,lat,lon))return null;const b=t.bbox,x=clamp((lon-b[1])/(b[3]-b[1])*(t.width-1),0,t.width-1),y=clamp((b[2]-lat)/(b[2]-b[0])*(t.height-1),0,t.height-1),a=Math.floor(x),c=Math.floor(y),d=Math.min(t.width-1,a+1),e=Math.min(t.height-1,c+1),u=x-a,v=y-c;let sum=0,n=0;for(const[xx,yy,weight]of[[a,c,(1-u)*(1-v)],[d,c,u*(1-v)],[a,e,(1-u)*v],[d,e,u*v]]){if(weight<=1e-12)continue;const z=t.data[yy*t.width+xx];if(!Number.isFinite(z))return null;sum+=z*weight;n+=weight;}return n>0?sum/n:null;}
   class TerrainBank{
-    constructor(bounds){this.bounds=bounds;this.grids=new Map();}
-    add(raw,id){const t=terrain(raw,id,this.bounds[id]);this.grids.set(id,t);return t;}
-    required(b){return Object.keys(this.bounds).filter(id=>intersects(this.bounds[id],b)).sort();}
-    read(lat,lon){let sum=0,w=0;const sources=[];for(const id of Object.keys(this.bounds).sort()){const b=this.bounds[id];if(!contains(b,lat,lon))continue;if(!this.grids.has(id))return{height:null,missing:id,sources};const t=this.grids.get(id),z=sample(t,lat,lon);if(z===null)continue;const edge=Math.min((lat-b[0])/(b[2]-b[0]),(b[2]-lat)/(b[2]-b[0]),(lon-b[1])/(b[3]-b[1]),(b[3]-lon)/(b[3]-b[1]));const weight=Math.max(.0001,Math.min(1,edge*12));sum+=z*weight;w+=weight;sources.push(id);}return{height:w?sum/w:null,missing:null,sources};}
+    constructor(bounds){this.bounds=Object.fromEntries(Object.entries(bounds).map(([k,b])=>[k,b.slice()]));this.grids=new Map();}
+    add(raw,id){const t=terrain(raw,id,this.bounds[id]);if(!this.bounds[id])this.bounds[id]=t.bbox.slice();this.grids.set(id,t);return t;}
+    required(b){return Object.keys(this.bounds).filter(id=>!id.startsWith('enrichment:')&&intersects(this.bounds[id],b)).sort();}
+    read(lat,lon){const candidates=[],sources=[],noData=[];for(const id of Object.keys(this.bounds).sort()){const b=this.bounds[id];if(!contains(b,lat,lon))continue;if(!this.grids.has(id))return{height:null,missing:id,sources};const t=this.grids.get(id),height=sample(t,lat,lon);if(height===null){noData.push(id);continue;}candidates.push({id,t,height,resolution:t.resolutionMeters[0]*t.resolutionMeters[1]});}
+      candidates.sort((a,b)=>a.resolution-b.resolution||Number(b.t.enrichment)-Number(a.t.enrichment)||a.id.localeCompare(b.id));const chosen=candidates[0];if(chosen)sources.push(chosen.id);return{height:chosen?.height??null,missing:null,sources,noData,resolutionMeters:chosen?.t.resolutionMeters.slice()||null,sourceResource:chosen?.t.sourceResource||null,interpolation:'bilinéaire, quatre échantillons valides requis',verticalDatum:chosen?.t.verticalDatum||null};}
   }
   class Gate{
     constructor(maxParallel=4){this.maxParallel=maxParallel;this.serial=0;this.current=null;this.cache=new Map();this.status={phase:'idle',done:0,total:0,errors:[]};}
@@ -8381,7 +8537,7 @@ const MistralIntegrity = (()=>{
       try{this.status.phase='preparing';onProgress(this.status);const stage=await prepare(result,controller.signal);if(ticket!==this.serial||controller.signal.aborted)return{ok:false,cancelled:true};publish(stage);this.status={...this.status,phase:'ready',errors:[]};onProgress(this.status);this.current=null;return{ok:true};}catch(e){if(ticket!==this.serial)return{ok:false,cancelled:true};errors.push({key:'geometry',message:String(e.message||e)});this.status={...this.status,phase:'failed',errors};onProgress(this.status);return{ok:false,errors};}
     }
   }
-  return{hash,ringKey,footprintKey,inside,intersects,contains,terrain,sample,TerrainBank,Gate};
+  return{hash,ringKey,footprintKey,inside,intersects,contains,metres,compatibleDatum,buildingProfile,roadProfile,roadMesh,roofMesh,terrain,sample,TerrainBank,Gate};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralIntegrity;
 
@@ -8401,7 +8557,7 @@ v015GeoUnproject=function(id,x,z){return v018InverseLambert(x+V046_ORIGIN[0],V04
 function v046Region(lat,lon){return Object.keys(V046_BOUNDS).filter(id=>MistralIntegrity.contains(V046_BOUNDS[id],lat,lon)).sort((a,b)=>{const A=V046_BOUNDS[a],B=V046_BOUNDS[b];return((A[2]-A[0])*(A[3]-A[1]))-((B[2]-B[0])*(B[3]-B[1]))||a.localeCompare(b);})[0]||null;}
 function v046World(id){const d=V015_GEO_MACROS[id],w=createWorld(id,d.name,d.region,{skyTop:[71,110,137],skyBottom:[179,178,144],fog:[.53,.60,.54],wind:1.2,daylight:1});w.geoMacro=true;w.v046=true;w.geo={...d,strict:true,scale:1};w.geoTiles=new Set();w.geoTileStats={};w.geoPortals={};w.surfaceSites=[];w.surfaceRoutes=[];w.zoneLinks=[];w.zoneGates=[];w.levelRoutes=[];w.subzones=[];w.v018Entities=new Map();w.v018TileCoords={};w.geoTerrain={v046:true,source:'RGE ALTI — échantillonnage global',valid:0,missing:0,origin:'ensemble',absoluteMin:0,absoluteMax:0};w.bounds=[-26000,26000,-26000,26000];w.spawn=v015GeoProject(id,...d.center);w.spawn[1]=1.65;w.spawnYaw=0;return w;}
 function v046HeightAt(x,z){const[lat,lon]=v015GeoUnproject('geo_huveaune',x,z);return V046.terrain.read(lat,lon);}
-const v046TerrainHeightOld=v017TerrainHeight;v017TerrainHeight=function(w,x,z){if(!w?.v046)return v046TerrainHeightOld(w,x,z);const a=v046HeightAt(x,z);return a.height===null?0:Math.max(0,a.height);};
+const v046TerrainHeightOld=v017TerrainHeight;v017TerrainHeight=function(w,x,z){if(!w?.v046)return v046TerrainHeightOld(w,x,z);const a=v046HeightAt(x,z);return a.height===null?0:a.height;};
 const v046GroundOld=groundHeightAt;groundHeightAt=function(x,z,ground=0){if(world?.v046)return v017TerrainHeight(world,x,z);return v046GroundOld(x,z,ground);};
 /* Disable destructive legacy macro swaps, convex merges, and independent queues
    for the canonical scene. Indoor historical levels keep their old behavior. */
@@ -8429,18 +8585,32 @@ async function v046Resource(key,signal){
 }
 /* All geometry is built against this staging world. No mutation of the live
    scene, inventory, NPC map or old pipeline readiness during preparation. */
+function v046SourceRoad(w,path,props,color,key,layerName){
+ const geometry=MistralIntegrity.roadMesh(path,props,(x,z)=>{const bank=w.v047TerrainBank||V046.terrain,[lat,lon]=v015GeoUnproject(w.id,x,z);return bank.read(lat,lon).height;},layerName==='waterway');
+ if(path.length<2||!geometry.faces.length)return null;
+ const {vertices,faces,...profile}=geometry,bounds=v017PolyBounds([path]),d={mesh:'geoSurface',pos:[bounds.cx,0,bounds.cz],scale:[1,1,1],color:layerName==='waterway'?COLORS.water:color,vertices,faces,roadPath:path.map(p=>p.slice()),roadProperties:{...props},roadWidth:geometry.width,widthAssumed:geometry.widthAssumed,elevationAssumed:geometry.elevationAssumed,sourceProfile:profile,geoTile:key,geoLayer:layerName,revision:0,alpha:1};w.staticDraws.push(d);return d;
+}
+function v046SourceBuilding(w,rings,f,key){
+ const props=f.props||{},profile=MistralIntegrity.buildingProfile(props),bounds=v017PolyBounds(rings),bank=w.v047TerrainBank||V046.terrain,[lat,lon]=v015GeoUnproject(w.id,bounds.cx,bounds.cz),ground=profile.groundElevation??bank.read(lat,lon).height;
+ if(ground===null){w.v050MissingGroundBuildings=(w.v050MissingGroundBuildings||0)+1;return null;}
+ const roof=MistralIntegrity.roofMesh(rings,profile,ground,v018Triangulate),base=ground+profile.minHeight,height=roof?profile.eavesHeight:profile.height;
+ const d=V017_PRISM_BASE(w,rings,base,height,cMix(COLORS.plaster,COLORS.limestone,(detailHash(String(f.id))%100)/150),{id:`cad:${f.id}:${MistralIntegrity.hash(rings)}`,geoTile:key,roofColor:COLORS.roof});
+ d.geoSource=f.v050Source?'source importée':'cadastre';d.heightAssumed=profile.estimated;d.heightBasis=profile.basis;d.sourceProfile=profile;d.geoFeatureId=String(f.id);d.sourceProvenance=props.provenance||null;d.sourceGeometry=f.v050Geometry||null;d.sourceGeometryInterpretation=f.v050Geometry?'Empreinte XY conservée ; les Z de l’objet source restent disponibles, le volume utilise les attributs d’altitude documentés.':null;
+ if(roof){const cap={mesh:'geoSurface',pos:[bounds.cx,ground+profile.totalHeight,bounds.cz],scale:[1,1,1],color:COLORS.roof,vertices:roof.vertices,faces:roof.faces,geoTile:key,v046Tile:key,v046Source:props.provenance?.source||d.geoSource,geoLayer:'roof',geoProperties:props,geoFeatureId:String(f.id),v046GeometryId:MistralIntegrity.footprintKey('source:roof',rings,props),sourceProvenance:props.provenance||null,roofBasis:roof.sourceBasis,revision:0,alpha:1};w.staticDraws.push(cap);}
+ const collider=v017AddPolyCollider(w,rings[0],base,ground+profile.totalHeight,{rings,id:d.id,geoTile:key});collider.v046Tile=key;collider.sourceProfile=profile;return d;
+}
 function v046Import(w,record,key){const{layers,source,z,x,y}=record,water=[],land=[],buildings=[],roads=[];let est=0;
- const meta=(d,layer,f)=>{d.v046Tile=key;d.v046Source=record.origin;d.geoLayer=layer;d.geoProperties=f.props||{};d.v046GeometryId=MistralIntegrity.footprintKey(source+':'+layer,d.rings||[d.roadPath||[]],f.props||{});return d;};
+ const meta=(d,layer,f)=>{d.v046Tile=key;d.v046Source=f.v050Source?f.props.provenance.source:record.origin;d.geoLayer=layer;d.geoProperties=f.props||{};if(f.v050Source){d.geoFeatureId=String(f.id);d.id=d.id||String(f.id);d.sourceGeometry=f.v050Geometry||d.sourceGeometry;d.sourceProvenance=f.props.provenance;}d.v046GeometryId=MistralIntegrity.footprintKey(source+':'+layer,d.rings||[d.roadPath||[]],f.props||{});return d;};
  for(const lname of source==='cadastre'?['batiments','building']:['water','landcover','landuse','park','waterway','transportation']){const layer=layers[lname];if(!layer)continue;
- for(const f of layer.features){const paths=v017FeatureWorldPaths(layer,f,z,x,y,w.id);if(f.type===2&&(lname==='transportation'||lname==='waterway')){for(const path of paths){if(path.length<2)continue;const d=v018AddRoad(w,path,f.props||{},v017ClassRoad(f.props||{}).color,key,lname);if(d){meta(d,lname,f);roads.push(d);}}continue;}if(f.type!==3)continue;
- for(const rings of v018PolygonGroups(paths)){const bounds=v017PolyBounds(rings);if(source==='cadastre'){const hi=v018HeightInfo(f),base=v017TerrainHeight(w,bounds.cx,bounds.cz),d=V017_PRISM_BASE(w,rings,base,hi.height,cMix(COLORS.plaster,COLORS.limestone,(detailHash(String(f.id))%100)/150),{id:`cad:${f.id}:${MistralIntegrity.hash(rings)}`,geoTile:key,roofColor:COLORS.roof});meta(d,'building',f);d.geoSource='cadastre';d.heightAssumed=hi.estimated;d.geoFeatureId=String(f.id);if(hi.estimated)est++;const c=v017AddPolyCollider(w,rings[0],base,base+hi.height,{rings,id:d.id,geoTile:key});c.v046Tile=key;buildings.push(d);}
+ for(const f of layer.features){const paths=f.v050Paths||v017FeatureWorldPaths(layer,f,z,x,y,w.id);if(f.type===2&&(lname==='transportation'||lname==='waterway')){for(const path of paths){if(path.length<2)continue;const d=v046SourceRoad(w,path,f.props||{},v017ClassRoad(f.props||{}).color,key,lname);if(d){meta(d,lname,f);roads.push(d);}}continue;}if(f.type!==3)continue;
+ for(const rings of f.v050Groups||v018PolygonGroups(paths)){const bounds=v017PolyBounds(rings);if(source==='cadastre'){const d=v046SourceBuilding(w,rings,f,key);if(!d)continue;meta(d,'building',f);if(d.heightAssumed)est++;buildings.push(d);}
  else {const d=V017_FLATPOLY_BASE(w,rings,lname==='water'?.02:.025,v017PolygonColor(lname,f.props||{}),{id:`${lname}:${f.id}`,geoTile:key});meta(d,lname,f);if(lname==='water')water.push(d);else{v018DrapePolygon(w,d);land.push(d);}}
  }} }
  for(const d of w.staticDraws){if(!d.v046Tile)d.v046Tile=key;if(!d.v046GeometryId)d.v046GeometryId=key+':'+MistralIntegrity.hash(d.vertices||d.pos);}
- return{key,draws:w.staticDraws,colliders:w.colliders,land,water,buildings,roads,estimatedHeights:est,empty:record.empty,source:record.origin};
+ return{key,draws:w.staticDraws,colliders:w.colliders,land,water,buildings,roads,estimatedHeights:est,missingGroundBuildings:w.v050MissingGroundBuildings||0,empty:record.empty,source:record.origin};
 }
 function v046SurfaceAt(point,records){const[x,,z]=point;let water=false,forest=false,urban=false;for(const r of records.values()){for(const d of r.water)if(MistralIntegrity.inside(d.rings,x,z))water=true;for(const d of r.land)if(MistralIntegrity.inside(d.rings,x,z)){const cls=String(d.geoProperties?.class||d.geoProperties?.subclass||'');if(/wood|forest|scrub/.test(cls))forest=true;if(/residential|commercial|industrial/.test(cls))urban=true;}}return{water,forest,urban};}
-function v046TerrainMesh(w,plan,records){const step=32,n=32,snap=128,cx=Math.floor(plan.p[0]/snap)*snap,cz=Math.floor(plan.p[2]/snap)*snap,draws=[];for(let bx=-2;bx<=1;bx++)for(let bz=-2;bz<=1;bz++){const size=n*step/2,grid=16,verts=[],faces=[],valid=[];for(let j=0;j<=grid;j++)for(let i=0;i<=grid;i++){const x=cx+bx*size+i*step,z=cz+bz*size+j*step,h=v046HeightAt(x,z);verts.push([x,h.height===null?0:Math.max(0,h.height)-.06,z]);valid.push(h.height!==null);}for(let j=0;j<grid;j++)for(let i=0;i<grid;i++){const a=j*(grid+1)+i,b=a+1,c=a+grid+1,d=c+1;if(valid[a]&&valid[b]&&valid[c])faces.push([a,c,b]);if(valid[b]&&valid[c]&&valid[d])faces.push([b,c,d]);}draws.push({mesh:'terrain',vertices:verts,faces,pos:[cx+(bx+.5)*size,0,cz+(bz+.5)*size],scale:[1,1,1],color:[.30,.33,.25],v046Terrain:true});}return draws;}
+function v046TerrainMesh(w,plan,records){const step=32,n=32,snap=128,cx=Math.floor(plan.p[0]/snap)*snap,cz=Math.floor(plan.p[2]/snap)*snap,draws=[];for(let bx=-2;bx<=1;bx++)for(let bz=-2;bz<=1;bz++){const size=n*step/2,grid=16,verts=[],faces=[],valid=[];for(let j=0;j<=grid;j++)for(let i=0;i<=grid;i++){const x=cx+bx*size+i*step,z=cz+bz*size+j*step,h=v046HeightAt(x,z);verts.push([x,h.height===null?0:h.height-.06,z]);valid.push(h.height!==null);}for(let j=0;j<grid;j++)for(let i=0;i<grid;i++){const a=j*(grid+1)+i,b=a+1,c=a+grid+1,d=c+1;if(valid[a]&&valid[b]&&valid[c])faces.push([a,c,b]);if(valid[b]&&valid[c]&&valid[d])faces.push([b,c,d]);}draws.push({mesh:'terrain',vertices:verts,faces,pos:[cx+(bx+.5)*size,0,cz+(bz+.5)*size],scale:[1,1,1],color:[.30,.33,.25],v046Terrain:true});}return draws;}
 async function v046Prepare(plan,resources,w){for(const k of plan.dem){const r=resources.get(k);V046.terrain.add(r.raw,r.id);}const tileMap=new Map();for(const key of plan.keys){const existing=w?.v046Records?.get(key);if(existing){tileMap.set(key,existing);continue;}const tmp=v046World(w.id);tileMap.set(key,v046Import(tmp,resources.get(key),key));await new Promise(resolve=>setTimeout(resolve,0));}
  const surface=v046SurfaceAt(plan.p,tileMap),h=v046HeightAt(plan.p[0],plan.p[2]);if(h.height===null&&!surface.water)throw new Error('Aucune altitude valide sous le joueur : sol non inventé');const terrain=v046TerrainMesh(w,plan,tileMap);return{records:tileMap,terrain,height:h.height===null?0:Math.max(0,h.height)};}
 function v046Publish(w,stage,plan){const draws=[],colliders=[],seen=new Set();for(const r of stage.records.values()){for(const d of r.draws){const id=d.v046GeometryId;if(seen.has(id))continue;seen.add(id);draws.push(d);}colliders.push(...r.colliders);}w.staticDraws=[...stage.terrain,...draws,...w.staticDraws.filter(d=>!d.v046Tile&&!d.v046Terrain&&!d.v046Nature)];w.colliders=[...colliders,...w.colliders.filter(c=>!c.v046Tile)];w.v046Records=stage.records;w.geoTiles=new Set(stage.records.keys());w.geoTileStats=Object.fromEntries([...stage.records].map(([k,r])=>[k,{source:r.source,sourceBuildings:r.buildings.length,renderedBuildings:r.buildings.length,sourceRoads:r.roads.length,renderedRoads:r.roads.length}]));V046.readyAnchor=plan.p.slice();w.v046Anchor=plan.p.slice();V046.commits++;w.geoTerrain.valid=[...V046.terrain.grids.values()].reduce((n,g)=>n+g.data.filter(Number.isFinite).length,0);V017_RUNTIME.loaded=new Map();for(const key of w.geoTiles)V017_RUNTIME.loaded.set(key,{});v017RecountAudit(w);v046Nature(w,plan);const retained=new Set([...plan.dem,...plan.keys]);for(const key of V046.gate.cache.keys()){if(V046.gate.cache.size<=128)break;if(!retained.has(key))V046.gate.cache.delete(key);}}
@@ -8448,7 +8618,7 @@ function v046Loading(s){const el=$('v046Loading');if(!el)return;el.hidden=s.phas
 async function v046Ensure(lat,lon,w=world,initial=false,opts={}){const region=v046Region(lat,lon);if(!region)return false;const plan=v046Plan(lat,lon);V046.last={lat,lon,w,initial,opts};V046.busy=true;const oldMode=mode;mode='LOADING';zoneTransitioning=true;const result=await V046.gate.run([...plan.dem,...plan.keys],v046Resource,async res=>{await new Promise(r=>setTimeout(r,0));return v046Prepare(plan,res,w);},stage=>{if(!initial&&world!==w)throw new Error('Scène remplacée');v046Publish(w,stage,plan);if(initial){V046.prepared=w;zoneTransitioning=false;v046LegacyLoad(w.id,{...opts,force:true,geoDirect:true,noTravel:true,silent:true,spawn:[plan.p[0],stage.height+playerEyeHeight(),plan.p[2]]});}else if(world!==w)throw new Error('Scène remplacée');else if(opts.v046Reposition){state.player.pos=[plan.p[0],stage.height+playerEyeHeight(),plan.p[2]];if(Number.isFinite(opts.yaw))state.player.yaw=opts.yaw;world.id=region;state.player.zone=region;world.region=V015_GEO_MACROS[region].region;V042_RUNTIME.worldId=region;updateLocation();}mode='PLAYING';zoneTransitioning=false;V046.busy=false;V046.error=null;},v046Loading);if(!result.ok&&!result.cancelled){V046.error=result.errors;mode='LOADING';zoneTransitioning=true;}if(result.ok){$('v046LabBadge').hidden=!V046.lab;state.v046.lastLocation=[lat,lon];}return result.ok;}
 const v046LegacyBuild=buildWorld;buildWorld=function(id){if(V046.prepared?.id===id){const w=V046.prepared;V046.prepared=null;return w;}return v046LegacyBuild(id);};
 const v046LegacyLoad=loadZone;loadZone=function(id,opts={}){if(!V015_GEO_MACROS[id]){V046.gate.cancel();V046.busy=false;V046.prepared=null;v046Loading({phase:'idle'});zoneTransitioning=false;return v046LegacyLoad(id,opts);}if(V046.busy)V046.gate.cancel();const ll=opts.spawn?v015GeoUnproject(id,opts.spawn[0],opts.spawn[2]):V015_GEO_MACROS[id].center;const w=world?.v046?world:v046World(id);return v046Ensure(ll[0],ll[1],w,!world?.v046,{...opts,v046Reposition:true});};
-const v046MoveOld=tryPlayerMove;tryPlayerMove=function(dx,dz){if(!world?.v046)return v046MoveOld(dx,dz);if(V046.busy||(!dx&&!dz))return false;const p=state.player.pos,nx=p[0]+dx,nz=p[2]+dz,[lat,lon]=v015GeoUnproject(world.id,nx,nz),id=v046Region(lat,lon);if(!id)return false;if(!world.v046Anchor||Math.hypot(nx-world.v046Anchor[0],nz-world.v046Anchor[2])>170){v046Ensure(lat,lon);return false;}const h=v046HeightAt(nx,nz);if(h.height===null&&!v046SurfaceAt([nx,0,nz],world.v046Records).water)return false;const r=v046MoveOld(dx,dz);const[a,b]=v015GeoUnproject(world.id,p[0],p[2]),region=v046Region(a,b);if(region&&region!==world.id){world.id=region;world.name=V015_GEO_MACROS[region].name;world.region=V015_GEO_MACROS[region].region;state.player.zone=region;V042_RUNTIME.worldId=region;V046.regionChanges++;updateLocation();}return r;};
+const v046MoveOld=tryPlayerMove;tryPlayerMove=function(dx,dz){if(!world?.v046)return v046MoveOld(dx,dz);if(V046.busy||(!dx&&!dz))return false;const p=state.player.pos,nx=p[0]+dx,nz=p[2]+dz,[lat,lon]=v015GeoUnproject(world.id,nx,nz),id=v046Region(lat,lon);if(!id)return false;if(!world.v046Anchor||Math.hypot(nx-world.v046Anchor[0],nz-world.v046Anchor[2])>170){v046Ensure(lat,lon);return false;}const h=v046HeightAt(nx,nz);if(h.height===null&&!v046SurfaceAt([nx,0,nz],world.v046Records).water&&!(typeof v050DeckSupport==='function'&&v050DeckSupport(nx,nz,p[1]-playerEyeHeight(),typeof onGround==='undefined'||onGround))&&!(typeof v050RoofSupport==='function'&&v050RoofSupport(nx,nz,p[1]-playerEyeHeight(),typeof onGround==='undefined'||onGround)))return false;const r=v046MoveOld(dx,dz);const[a,b]=v015GeoUnproject(world.id,p[0],p[2]),region=v046Region(a,b);if(region&&region!==world.id){world.id=region;world.name=V015_GEO_MACROS[region].name;world.region=V015_GEO_MACROS[region].region;state.player.zone=region;V042_RUNTIME.worldId=region;V046.regionChanges++;updateLocation();}return r;};
 
 /* One decoration identity per global metre cell, admitted only by source land
    coverage. Roads/buildings never come from random population in real mode. */
@@ -8469,7 +8639,23 @@ const v046LayerOld=v042UpdateLayer;v042UpdateLayer=function(dt){if(!world?.v046)
 };
 /* Source coverage is always retained beyond the visible distance. Cull custom
    geometry by its extents, never just the centre of a large road/forest. */
-const v046CollectOld=collectDraws;collectDraws=function(t){const ds=v046CollectOld(t);if(!world?.v046)return ds;const[x,,z]=state.player.pos;return ds.filter(d=>{if(!d.v046Tile&&!d.v046Nature&&!d.v046Terrain)return true;let b=d.v046Bounds;if(!b){const pts=d.vertices?.map(p=>[p[0],p[2]])||d.rings?.flat()||d.roadPath;if(pts?.length){b=d.v046Bounds={minX:Math.min(...pts.map(p=>p[0])),maxX:Math.max(...pts.map(p=>p[0])),minZ:Math.min(...pts.map(p=>p[1])),maxZ:Math.max(...pts.map(p=>p[1]))};}else b=d.v046Bounds={minX:d.pos[0]-10,maxX:d.pos[0]+10,minZ:d.pos[2]-10,maxZ:d.pos[2]+10};}return Math.hypot(x-Math.max(b.minX,Math.min(b.maxX,x)),z-Math.max(b.minZ,Math.min(b.maxZ,z)))<720;});};
+/* Native-resolution terrain can contain more vertices than JavaScript permits
+   function arguments. Visit coordinates directly; never spread a mesh into
+   Math.min/max or allocate a second full array just to calculate its bounds. */
+function v046DrawBounds(draw){
+ let minX=Infinity,maxX=-Infinity,minZ=Infinity,maxZ=-Infinity;
+ function point(p,zIndex){
+  const x=p?.[0],z=p?.[zIndex];if(!Number.isFinite(x)||!Number.isFinite(z))return;
+  if(x<minX)minX=x;if(x>maxX)maxX=x;if(z<minZ)minZ=z;if(z>maxZ)maxZ=z;
+ }
+ if(draw.vertices){for(const p of draw.vertices)point(p,2);}
+ else if(draw.rings){for(const ring of draw.rings)for(const p of ring)point(p,1);}
+ else if(draw.roadPath){for(const p of draw.roadPath)point(p,1);}
+ if(minX!==Infinity)return{minX,maxX,minZ,maxZ};
+ const x=Number.isFinite(draw.pos?.[0])?draw.pos[0]:0,z=Number.isFinite(draw.pos?.[2])?draw.pos[2]:0;
+ return{minX:x-10,maxX:x+10,minZ:z-10,maxZ:z+10};
+}
+const v046CollectOld=collectDraws;collectDraws=function(t){const ds=v046CollectOld(t);if(!world?.v046)return ds;const[x,,z]=state.player.pos;return ds.filter(d=>{if(!d.v046Tile&&!d.v046Nature&&!d.v046Terrain)return true;const b=d.v046Bounds||(d.v046Bounds=v046DrawBounds(d));return Math.hypot(x-Math.max(b.minX,Math.min(b.maxX,x)),z-Math.max(b.minZ,Math.min(b.maxZ,z)))<720;});};
 
 /* Stable HUD dimensions; reload overlay no longer resizes the weapon panel. */
 function v046InstallSky(){const fallback=sky.draw.bind(sky);const rng=detailRng('Mistral-world-sky'),clouds=Array.from({length:35},()=>({az:rng()*TAU,el:.10+rng()*.7,size:.4+rng()*.6}));sky.draw=function(env,ts){if(env.indoor)return fallback(env,ts);this.resize();const c=this.ctx,W=this.c.width,H=this.c.height,cam=getCamera(ts/1000),f=vNorm(cam.dir),right=vNorm(vCross(f,[0,1,0])),up=vCross(right,f),k=H/(2*Math.tan(rad(cam.fov||67)/2));const project=(az,el)=>{const d=[Math.sin(az)*Math.cos(el),Math.sin(el),-Math.cos(az)*Math.cos(el)],z=vDot(d,f);return z>.05?{x:W/2+vDot(d,right)*k/z,y:H/2-vDot(d,up)*k/z,z}:null;};const top=env.skyTop||[60,110,142],bot=env.skyBottom||[190,185,148],g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,`rgb(${top.join(',')})`);g.addColorStop(1,`rgb(${bot.join(',')})`);c.fillStyle=g;c.fillRect(0,0,W,H);const time=state.worldTime||12,az=time/24*TAU,el=Math.sin((time-6)/24*TAU)*.85,sun=project(az,el);if(sun&&el>0){const glow=c.createRadialGradient(sun.x,sun.y,3,sun.x,sun.y,90);glow.addColorStop(0,'rgba(255,242,194,.9)');glow.addColorStop(1,'rgba(255,228,152,0)');c.fillStyle=glow;c.fillRect(0,0,W,H);}c.fillStyle='rgba(228,231,211,.32)';for(const a of clouds){const p=project(a.az+(state.playTime||0)*.00018,a.el);if(!p)continue;const s=55*a.size/p.z;c.beginPath();c.ellipse(p.x,p.y,s,s*.21,0,0,TAU);c.fill();}V046.sky={worldAzimuth:az,worldElevation:el,cameraDirection:f,screen:sun};};}
@@ -8615,10 +8801,10 @@ const V047={version:'0.47.0',pending:null,serial:0,stats:{warmStarted:0,warmComm
 V046.gate.cache=new MistralStream.BudgetCache(48*1024*1024,128);
 function v047Bank(w){return w?.v047TerrainBank||V046.terrain;}
 function v047Height(bank,x,z){const ll=v015GeoUnproject('geo_huveaune',x,z);return bank.read(...ll);}
-const v047TerrainHeightBase=v017TerrainHeight;v017TerrainHeight=function(w,x,z){if(!w?.v046)return v047TerrainHeightBase(w,x,z);const h=v047Height(v047Bank(w),x,z).height;return h===null?0:Math.max(0,h);};
+const v047TerrainHeightBase=v017TerrainHeight;v017TerrainHeight=function(w,x,z){if(!w?.v046)return v047TerrainHeightBase(w,x,z);const h=v047Height(v047Bank(w),x,z).height;return h===null?0:h;};
 function v047BankStamp(bank){return MistralIntegrity.hash([...bank.grids].sort(([a],[b])=>a.localeCompare(b)).map(([id,g])=>[id,g.v047Digest||(g.v047Digest=MistralIntegrity.hash(Array.from(g.data)))]));}
 function v047TileStamp(record,bankStamp){return bankStamp+':'+MistralIntegrity.hash([record.empty,record.layers,record.origin]);}
-function v047TerrainMeshes(plan,bank,stamp){const size=512,step=32,grid=16,radius=940,out=[];for(let cx=Math.floor((plan.p[0]-radius)/size);cx<=Math.floor((plan.p[0]+radius)/size);cx++)for(let cz=Math.floor((plan.p[2]-radius)/size);cz<=Math.floor((plan.p[2]+radius)/size);cz++){const key='terrain:'+cx+':'+cz+':'+stamp;let d=V047.meshes.get(key);if(d){V047.stats.reusedTerrain++;out.push(d);continue;}const vertices=[],faces=[],valid=[];for(let j=0;j<=grid;j++)for(let i=0;i<=grid;i++){const x=cx*size+i*step,z=cz*size+j*step,h=v047Height(bank,x,z);vertices.push([x,h.height===null?0:Math.max(0,h.height)-.06,z]);valid.push(h.height!==null);}for(let j=0;j<grid;j++)for(let i=0;i<grid;i++){const a=j*(grid+1)+i,b=a+1,c=a+grid+1,e=c+1;if(valid[a]&&valid[b]&&valid[c])faces.push([a,c,b]);if(valid[b]&&valid[c]&&valid[e])faces.push([b,c,e]);}d={mesh:'terrain',vertices,faces,pos:[(cx+.5)*size,0,(cz+.5)*size],scale:[1,1,1],color:[.30,.33,.25],v046Terrain:true,v047GeometryId:key};V047.meshes.set(key,d);V047.stats.builtTerrain++;out.push(d);}return out;}
+function v047TerrainMeshes(plan,bank,stamp){const size=512,step=32,grid=16,radius=940,out=[];for(let cx=Math.floor((plan.p[0]-radius)/size);cx<=Math.floor((plan.p[0]+radius)/size);cx++)for(let cz=Math.floor((plan.p[2]-radius)/size);cz<=Math.floor((plan.p[2]+radius)/size);cz++){const key='terrain:'+cx+':'+cz+':'+stamp;let d=V047.meshes.get(key);if(d){V047.stats.reusedTerrain++;out.push(d);continue;}const vertices=[],faces=[],valid=[];for(let j=0;j<=grid;j++)for(let i=0;i<=grid;i++){const x=cx*size+i*step,z=cz*size+j*step,h=v047Height(bank,x,z);vertices.push([x,h.height===null?0:h.height-.06,z]);valid.push(h.height!==null);}for(let j=0;j<grid;j++)for(let i=0;i<grid;i++){const a=j*(grid+1)+i,b=a+1,c=a+grid+1,e=c+1;if(valid[a]&&valid[b]&&valid[c])faces.push([a,c,b]);if(valid[b]&&valid[c]&&valid[e])faces.push([b,c,e]);}d={mesh:'terrain',vertices,faces,pos:[(cx+.5)*size,0,(cz+.5)*size],scale:[1,1,1],color:[.30,.33,.25],v046Terrain:true,v047GeometryId:key};V047.meshes.set(key,d);V047.stats.builtTerrain++;out.push(d);}return out;}
 function v047Index(records,colliders){const surface=new MistralStream.SpatialGrid(96),solids=new MistralStream.SpatialGrid(48),roads=new MistralStream.SpatialGrid(48);for(const r of records.values()){for(const d of r.water)surface.add(v017PolyBounds(d.rings),{type:'water',draw:d});for(const d of r.land)surface.add(v017PolyBounds(d.rings),{type:'land',draw:d});for(const d of r.roads){if(d.geoLayer!=='transportation')continue;const ps=d.roadPath||[];for(let i=1;i<ps.length;i++)roads.add({minX:Math.min(ps[i-1][0],ps[i][0])-8,maxX:Math.max(ps[i-1][0],ps[i][0])+8,minZ:Math.min(ps[i-1][1],ps[i][1])-8,maxZ:Math.max(ps[i-1][1],ps[i][1])+8},{a:ps[i-1],b:ps[i],width:d.widthAssumed?7:5});}}for(const c of colliders)if(!c.v042Site&&!c.disabled)solids.add({minX:c.minX-2,maxX:c.maxX+2,minZ:c.minZ-2,maxZ:c.maxZ+2},c);return{surface,solids,roads};}
 const v047SurfaceBase=v046SurfaceAt;v046SurfaceAt=function(point,records){const idx=records?.v047Index;if(!idx)return v047SurfaceBase(point,records);const[x,,z]=point;let water=false,forest=false,urban=false;for(const item of idx.surface.at(x,z)){const d=item.draw;if(!MistralIntegrity.inside(d.rings,x,z))continue;if(item.type==='water')water=true;else{const cls=String(d.geoProperties?.class||d.geoProperties?.subclass||'');forest||=/wood|forest|scrub/.test(cls);urban||=/residential|commercial|industrial/.test(cls);}}return{water,forest,urban};};
 const v047BlockedBase=v046Blocked;v046Blocked=function(w,x,z){const idx=w?.v046Records?.v047Index;if(!idx)return v047BlockedBase(w,x,z);for(const c of idx.solids.at(x,z))if(!c.disabled&&v017ColliderHit(c,x,z,2))return true;for(const road of idx.roads.at(x,z))if(v017PointSegDist(x,z,road.a,road.b)<road.width)return true;return false;};
@@ -8791,7 +8977,7 @@ async function v048Step(job, phase, total) {
   }
 }
 async function v048Import(w, resource, key, work) {
-  const out={key,draws:[],colliders:[],land:[],water:[],buildings:[],roads:[],estimatedHeights:0,empty:resource.empty,source:resource.origin};
+  const out={key,draws:[],colliders:[],land:[],water:[],buildings:[],roads:[],estimatedHeights:0,missingGroundBuildings:0,empty:resource.empty,source:resource.origin};
   const names=resource.source==='cadastre'?['batiments','building']:['water','landcover','landuse','park','waterway','transportation'];
   for(const name of names) {
     const layer=resource.layers[name];if(!layer)continue;
@@ -8801,7 +8987,7 @@ async function v048Import(w, resource, key, work) {
       const batch={...resource,layers:{[name]:{...layer,features:layer.features.slice(offset,offset+8)}}};
       const r=v046Import(tmp,batch,key);
       for(const field of ['draws','colliders','land','water','buildings','roads'])out[field].push(...r[field]);
-      out.estimatedHeights+=r.estimatedHeights;await work.checkpoint(8);
+      out.estimatedHeights+=r.estimatedHeights;out.missingGroundBuildings+=r.missingGroundBuildings||0;await work.checkpoint(8);
     }
   }
   return out;
@@ -8827,7 +9013,7 @@ async function v048Meshes(plan, bank, stamp, job) {
     if(d){V047.stats.reusedTerrain++;out.push(d);v048Phase(job,'relief',++done,total);await job.work.checkpoint();continue;}
     const vertices=[],faces=[],valid=[];
     for(let j=0;j<=grid;j++) {
-      for(let i=0;i<=grid;i++){const x=cx*size+i*step,z=cz*size+j*step,h=v047Height(bank,x,z);vertices.push([x,h.height===null?0:Math.max(0,h.height)-.06,z]);valid.push(h.height!==null);}
+      for(let i=0;i<=grid;i++){const x=cx*size+i*step,z=cz*size+j*step,h=v047Height(bank,x,z);vertices.push([x,h.height===null?0:h.height-.06,z]);valid.push(h.height!==null);}
       await job.work.checkpoint(grid+1);
     }
     for(let j=0;j<grid;j++) {
@@ -8837,7 +9023,7 @@ async function v048Meshes(plan, bank, stamp, job) {
     d={mesh:'terrain',vertices,faces,pos:[(cx+.5)*size,0,(cz+.5)*size],scale:[1,1,1],color:[.30,.33,.25],v046Terrain:true,v047GeometryId:key};
     MistralWork.check(job.work.signal);V047.meshes.set(key,d);V047.stats.builtTerrain++;out.push(d);v048Phase(job,'relief',++done,total);
   }
-  return out;
+  return typeof v050RefineTerrainMeshes==='function'?await v050RefineTerrainMeshes(out,plan,bank,stamp,job):out;
 }
 async function v048Nature(w, plan, bank, job) {
   const out=[],ids=[],size=64,n=13,gx=Math.floor((plan.p[0]+V046_ORIGIN[0])/size),gy=Math.floor((V046_ORIGIN[1]-plan.p[2])/size);
@@ -8884,9 +9070,9 @@ v046Prepare=async function(plan, resources, w, signal) {
     }
     records.v047Index=await v048Index(records,colliders,job.work);
     const h=v047Height(bank,plan.p[0],plan.p[2]),s=v046SurfaceAt(plan.p,records);if(h.height===null&&!s.water)throw Error('Aucune altitude valide sous le joueur');
-    const ground=await v048Meshes(plan,bank,stamp,job),temp=v046World(w.id);temp.v047TerrainBank=bank;temp.v046Records=records;temp.colliders=colliders;
+    const ground=await v048Meshes(plan,bank,stamp,job),land=typeof v050RefineLandSurfaces==='function'?await v050RefineLandSurfaces(ground,draws,job):{terrain:ground,draws},temp=v046World(w.id);temp.v047TerrainBank=bank;temp.v046Records=records;temp.colliders=colliders;
     const nature=await v048Nature(temp,plan,bank,job);await v048Step(job,'publication',1);MistralWork.check(signal);job.status='prepared';
-    return {records,terrain:ground,height:h.height===null?0:Math.max(0,h.height),bank,geoDraws:draws,geoColliders:colliders,nature,bankStamp:stamp};
+    return {records,terrain:land.terrain,height:h.height===null?0:Math.max(0,h.height),bank,geoDraws:land.draws,geoColliders:colliders,nature,bankStamp:stamp};
   } catch(e) {job.status=signal?.aborted?'cancelled':'failed';throw e;}
   finally {const report={id:job.id,status:job.status,...job.work.snapshot()};if(!V048.lastJob||report.id>=V048.lastJob.id)V048.lastJob=report;V048.jobs.push(report);if(V048.jobs.length>20)V048.jobs.shift();if(V048.job===job)V048.job=null;}
 };
@@ -9804,7 +9990,7 @@ v047Panel=function(container){
   const box=container.querySelector('.v047-integrity');if(!box)return;
   const summary=v050LocalSummary(),data=V047.localData,section=document.createElement('section');section.className='v050-geography';
   section.innerHTML=`<p class="p27-kicker">v0.50 / LES ROUTES RETROUVÉES</p><h2>${escapeHtml(summary.title)}</h2><p>${escapeHtml(summary.detail)}</p>
-    <p>Les routes et emprises proviennent des tuiles OpenStreetMap et du cadastre ; les hauteurs du terrain proviennent de grilles IGN. Les bâtiments et décors sont une interprétation du jeu. Les hauteurs de toiture non documentées restent estimées.</p>
+    <p>Le pack de base utilise OpenStreetMap, le cadastre et des grilles IGN. Les ajouts IGN BD TOPO, RGE ALTI et LiDAR HD éventuellement installés sont détaillés dans l’audit des sources complémentaires. Les bâtiments et décors sont une interprétation du jeu. Les formes de toiture non documentées restent estimées.</p>
     <p>Dans MAP → LIEUX ET VOYAGES, sélectionnez un lieu découvert pour y voyager. Le départ exige un extérieur praticable, à distance du danger ; la destination est vérifiée avant le déplacement.</p>
     ${!data?.live||!data?.complete?'<p class="v050-install-note">Après extraction, lancez l’application avec son lanceur. Les archives géographiques fournies sont préparées sur votre ordinateur. Pour réparer un pack incomplet, utilisez INSTALLER_PACK_LOCAL_WINDOWS.bat ou INSTALLER_PACK_LOCAL_LINUX_MAC.sh.</p>':''}
     <small>Une grille est un échantillonnage du relief. Les points sans mesure restent absents et peuvent empêcher un chargement dans les zones concernées.</small>`;
@@ -9826,13 +10012,951 @@ function v050AfterInit(){
     const summary=document.createElement('p');summary.id='v050MapSummary';summary.setAttribute('aria-live','polite');nav.after(summary);v050RefreshMenu();
   }
   const credits=document.querySelector('#creditsScreen .credits-card');if(credits){
-    credits.innerHTML='<h2>FALLOUT : MISTRAL</h2><p>0.50.0 · Les routes retrouvées</p><p>Territoire géographique local, 248 lieux à découvrir, voyage rapide et rencontres persistantes. Campagne, prologue, intérieurs et lore des versions précédentes conservés.</p><p>Sources géographiques : © contributeurs OpenStreetMap — ODbL · Cadastre Etalab / DGFiP — Licence Ouverte 2.0 · IGN RGE ALTI — Licence Ouverte 2.0. La carte utilise les fichiers effectivement installés. Géométrie des bâtiments interprétée, hauteurs non documentées estimées.</p><p>Prototype de fan non officiel. Les anciens rapports inclus décrivent leurs versions respectives.</p><button id="btnCreditsClose" class="primary">Fermer</button>';
+    credits.innerHTML='<h2>FALLOUT : MISTRAL</h2><p>0.50.0 · Les routes retrouvées</p><p>Territoire géographique local, 248 lieux à découvrir, voyage rapide et rencontres persistantes. Campagne, prologue, intérieurs et lore des versions précédentes conservés.</p><p>Sources géographiques : © contributeurs OpenStreetMap — ODbL · Cadastre Etalab / DGFiP — Licence Ouverte 2.0 · IGN BD TOPO, RGE ALTI et LiDAR HD — Licence Ouverte 2.0. Les sources complémentaires et leurs dates sont détaillées dans Cartes & territoire. La carte utilise les fichiers effectivement installés. Géométrie des bâtiments interprétée, hauteurs non documentées estimées.</p><p>Prototype de fan non officiel. Les anciens rapports inclus décrivent leurs versions respectives.</p><button id="btnCreditsClose" class="primary">Fermer</button>';
     $('btnCreditsClose').onclick=closeCredits;
   }
   if(typeof v050CampaignAfterInit==='function')v050CampaignAfterInit();
   if(typeof v050TravelAfterInit==='function')v050TravelAfterInit();
   Object.assign(window.__MISTRAL_DEBUG,{v050Info:()=>({version:V050.version,lab:V046.lab,localData:V047.localData,summary:v050LocalSummary(),saveKey:SAVE_KEY,settingsKey:SETTINGS_KEY}),v050ReadLocal:v047ReadLocal});
   if(location.protocol!=='file:')v047ReadLocal();
+}
+
+/* Optional measured-source layers. A validated local import enriches the base
+   pack; the engine never manufactures a survey or downloads one implicitly. */
+const V050_GEOGRAPHY={index:null,indexPromise:null,bundles:new Map(),loads:new Map(),errors:[],loaded:false,epoch:0};
+async function v050LocalSourceJSON(path,descriptor=null,optional=false){
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+ try{
+  const response=await fetch(path,{signal:controller.signal,cache:'no-store'});
+  if(optional&&response.status===404)return null;
+  if(!response.ok)throw Error('Source locale indisponible : HTTP '+response.status);
+  const limit=descriptor?.bytes??(optional?1024*1024:64*1024*1024),declared=Number(response.headers?.get?.('content-length'));
+  if(Number.isFinite(declared)&&declared>limit)throw Error('Source locale hors budget');
+  let bytes;
+  if(response.body?.getReader){
+   const reader=response.body.getReader(),chunks=[];let total=0;
+   try{while(true){const part=await reader.read();if(part.done)break;total+=part.value.byteLength;if(total>limit){await reader.cancel();throw Error('Source locale hors budget');}chunks.push(part.value);}const joined=new Uint8Array(total);let offset=0;for(const chunk of chunks){joined.set(chunk,offset);offset+=chunk.byteLength;}bytes=joined.buffer;}finally{reader.releaseLock?.();}
+  }else bytes=await response.arrayBuffer();
+  if(!bytes.byteLength||bytes.byteLength>limit)throw Error('Source locale hors budget');
+  if(descriptor){
+   if(bytes.byteLength!==descriptor.bytes)throw Error('Taille de source incohérente');
+   if(!crypto.subtle)throw Error('Vérification SHA-256 indisponible');
+   const digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(n=>n.toString(16).padStart(2,'0')).join('');
+   if(digest!==descriptor.sha256)throw Error('Empreinte SHA-256 de source incorrecte');
+  }
+  return JSON.parse(new TextDecoder().decode(bytes));
+ }finally{clearTimeout(timer);}
+}
+function v050SourceBox(value){return Array.isArray(value)&&value.length===4&&value.every(Number.isFinite)&&value[0]<value[2]&&value[1]<value[3]&&value[0]>=-90&&value[2]<=90&&value[1]>=-180&&value[3]<=180;}
+function v050SourceCoverage(properties,region){
+ const proof=properties.provenance,coverage=proof?.coverage;if(!coverage)return null;
+ const expected=properties.kind==='road'?'BDTOPO_V3:troncon_de_route':'BDTOPO_V3:batiment',bbox=coverage.bbox,bounds=V046_BOUNDS[region];
+ if(proof.resource!=='ign-bdtopo'||coverage.complete!==true||coverage.crs!=='EPSG:4326'||coverage.layer!==expected||!Number.isInteger(coverage.returned)||coverage.returned<0||!v050SourceBox(bbox)||bbox[0]<bounds[0]||bbox[1]<bounds[1]||bbox[2]>bounds[2]||bbox[3]>bounds[3])throw Error('Preuve de couverture géographique incomplète');
+ const polygon=[[bbox[0],bbox[1]],[bbox[0],bbox[3]],[bbox[2],bbox[3]],[bbox[2],bbox[1]]].map(p=>{const q=v015GeoProject(region,...p);return[q[0],q[2]];});
+ return{proof:coverage,polygon};
+}
+/* Clip existing straight metric segments against the projected query boundary.
+   Parameters are reused for Z, so no terrain height or guessed road connection
+   is invented at the edge of an authoritative extract. Source files stay whole. */
+function v050ClipSourcePaths(paths,polygon,inside=true){
+ const area=polygon.reduce((sum,a,i)=>{const b=polygon[(i+1)%polygon.length];return sum+a[0]*b[1]-b[0]*a[1];},0),orientation=Math.sign(area);if(!orientation)throw Error('Emprise de couverture dégénérée');
+ const fragments=[];let current=[];
+ const same=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1])<1e-7&&(Number.isFinite(a[2])===Number.isFinite(b[2]))&&(!Number.isFinite(a[2])||Math.abs(a[2]-b[2])<1e-7),flush=()=>{if(current.length>1)fragments.push(current);current=[];};
+ const at=(a,b,t)=>{if(t<=1e-12)return a.slice();if(t>=1-1e-12)return b.slice();const p=[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];if(Number.isFinite(a[2])&&Number.isFinite(b[2]))p[2]=a[2]+(b[2]-a[2])*t;return p;};
+ for(const path of paths){
+  flush();
+  for(let i=1;i<path.length;i++){
+   const a=path[i-1],b=path[i],dx=b[0]-a[0],dz=b[1]-a[1];let entry=0,exit=1,intersects=true;
+   for(let j=0;j<polygon.length;j++){
+    const p=polygon[j],q=polygon[(j+1)%polygon.length],ex=q[0]-p[0],ez=q[1]-p[1],offset=orientation*(ex*(a[1]-p[1])-ez*(a[0]-p[0])),direction=orientation*(ex*dz-ez*dx);
+    if(Math.abs(direction)<1e-12){if(offset< -1e-7){intersects=false;break;}continue;}
+    const t=-offset/direction;if(direction>0)entry=Math.max(entry,t);else exit=Math.min(exit,t);if(entry>exit+1e-12){intersects=false;break;}
+   }
+   let intervals;if(!intersects)intervals=inside?[]:[[0,1]];else if(inside)intervals=exit-entry>1e-12?[[Math.max(0,entry),Math.min(1,exit)]]:[];else intervals=[[0,Math.max(0,entry)],[Math.min(1,exit),1]].filter(([lo,hi])=>hi-lo>1e-12);
+   if(!intervals.length){flush();continue;}
+   for(const[lo,hi]of intervals){const first=at(a,b,lo),last=at(a,b,hi);if(Math.hypot(last[0]-first[0],last[1]-first[1])<1e-8)continue;if(current.length&&same(current.at(-1),first))current.push(last);else{flush();current=[first,last];}}
+  }
+  flush();
+ }
+ return fragments;
+}
+async function v050SourceIndex(){
+ if(typeof location!=='undefined'&&!['http:','https:'].includes(location.protocol))return null;
+ const epoch=V050_GEOGRAPHY.epoch;
+ if(!V050_GEOGRAPHY.indexPromise)V050_GEOGRAPHY.indexPromise=(async()=>{
+  const index=await v050LocalSourceJSON('data/map_pack/enrichment/index.json',null,true);
+  if(index&&(index.schemaVersion!==1||index.crs!=='EPSG:4326'||!index.regions||typeof index.regions!=='object'||Array.isArray(index.regions)))throw Error('Index des sources incompatible');
+  for(const[id,d]of Object.entries(index?.regions||{})){
+   if(!V046_BOUNDS[id]||!/^data\/map_pack\/enrichment\/[a-zA-Z0-9_.-]+\.json$/.test(d.path)||!Number.isInteger(d.bytes)||d.bytes<1||d.bytes>64*1024*1024||!/^[0-9a-f]{64}$/.test(d.sha256)||!v050SourceBox(d.bbox))throw Error('Descripteur de source invalide : '+id);
+  }
+  if(epoch!==V050_GEOGRAPHY.epoch)throw Error('Index de sources périmé');
+  V050_GEOGRAPHY.index=index;V050_GEOGRAPHY.loaded=true;return index;
+ })().catch(error=>{if(epoch===V050_GEOGRAPHY.epoch)V050_GEOGRAPHY.indexPromise=null;throw error;});
+ return V050_GEOGRAPHY.indexPromise;
+}
+function v050SourceFeature(feature,region){
+ const p=feature?.properties,g=feature?.geometry;
+ if(feature?.type!=='Feature'||!p||!['building','road'].includes(p.kind)||typeof p.sourceId!=='string'||!p.sourceId||!p.provenance||!['source','license','attribution','acquiredAt'].every(k=>typeof p.provenance[k]==='string'&&p.provenance[k].trim()))throw Error('Objet sans identité ou provenance de source');
+ const expected=p.kind==='building'?['Polygon','MultiPolygon']:['LineString','MultiLineString'];if(!g||!expected.includes(g.type))throw Error('Type géographique incompatible avec '+p.kind);
+ const absolute=['altitude_minimale_sol','altitude_maximale_sol','altitude_minimale_toit','altitude_maximale_toit','z_min_sol','z_max_sol','z_min_toit','z_max_toit','ground_elevation','roof_elevation','ele','deck_height','bridge:ele'].some(key=>MistralIntegrity.metres(p[key])!==null);
+ if(absolute&&!MistralIntegrity.compatibleDatum(p.provenance.verticalDatum))throw Error('Référentiel vertical incompatible : conversion explicite vers NGF-IGN69 requise pour '+p.sourceId);
+ let count=0;
+ const project=coordinate=>{if(!Array.isArray(coordinate)||coordinate.length<2||coordinate.length>3||!coordinate.every(Number.isFinite)||coordinate[0]<-180||coordinate[0]>180||coordinate[1]<-90||coordinate[1]>90||++count>250000)throw Error('Coordonnée de source invalide');if(coordinate.length===3&&!MistralIntegrity.compatibleDatum(p.provenance.verticalDatum))throw Error('Référentiel vertical incompatible : conversion explicite vers NGF-IGN69 requise pour '+p.sourceId);const q=v015GeoProject(region,coordinate[1],coordinate[0]),out=[q[0],q[2]];if(coordinate.length===3)out[2]=coordinate[2];return out;};
+ const ring=coordinates=>{if(!Array.isArray(coordinates)||coordinates.length<4||coordinates.length>2048)throw Error('Anneau source invalide');const points=coordinates.map(project),first=points[0],last=points.at(-1);if(first[0]!==last[0]||first[1]!==last[1])throw Error('Anneau source ouvert');return points.map(q=>q.slice(0,2));};
+ const polygon=coordinates=>{if(!Array.isArray(coordinates)||!coordinates.length)throw Error('Polygone source vide');return coordinates.map(ring);};
+ let groups=null,paths;
+ if(g.type==='Polygon'){groups=[polygon(g.coordinates)];paths=groups.flat();}
+ else if(g.type==='MultiPolygon'){groups=g.coordinates.map(polygon);paths=groups.flat();}
+ else {const line=coordinates=>{if(!Array.isArray(coordinates)||coordinates.length<2)throw Error('Route source vide');return coordinates.map(project);};paths=g.type==='LineString'?[line(g.coordinates)]:g.coordinates.map(line);}
+ const bounds=v017PolyBounds(paths),identity='source:'+region+':'+p.kind+':'+p.sourceId,coverage=v050SourceCoverage(p,region);
+ if(p.kind==='road'&&coverage)paths=v050ClipSourcePaths(paths,coverage.polygon,true);
+ return{id:identity,sourceId:p.sourceId,type:p.kind==='building'?3:2,props:{...p},v050Paths:paths,v050Groups:groups,v050Source:true,v050Geometry:g,v050Coverage:coverage,v050Bounds:bounds};
+}
+async function v050SourceBundle(region,descriptor){
+ if(V050_GEOGRAPHY.bundles.has(region))return V050_GEOGRAPHY.bundles.get(region);
+ const epoch=V050_GEOGRAPHY.epoch;
+ if(!V050_GEOGRAPHY.loads.has(region))V050_GEOGRAPHY.loads.set(region,(async()=>{
+  const raw=await v050LocalSourceJSON(descriptor.path,descriptor);
+  if(raw?.schemaVersion!==1||raw.region!==region||!Array.isArray(raw.features)||raw.features.length>20000)throw Error('Fichier régional de sources invalide');
+  const features=raw.features.map(feature=>v050SourceFeature(feature,region));
+  if(raw.terrainTiles!==undefined&&(!Array.isArray(raw.terrainTiles)||raw.terrainTiles.length>16))throw Error('Atlas de terrain hors budget');
+  const terrainGrids=[...(raw.terrain?[raw.terrain]:[]),...(raw.terrainTiles||[])],identities=new Set();let cells=0;
+  if(terrainGrids.length>16)throw Error('Atlas de terrain hors budget');
+  for(const grid of terrainGrids){
+   const prefix='enrichment:'+region;
+   if(typeof grid?.macro!=='string'||!grid.macro.startsWith(prefix)||grid.macro!==prefix&&!/^:[0-9a-f]{16}$/.test(grid.macro.slice(prefix.length))||identities.has(grid.macro))throw Error('Terrain source associé à une autre région ou identifiant dupliqué');
+   identities.add(grid.macro);cells+=grid.width*grid.height;if(cells>4194304)throw Error('Atlas de terrain hors budget');
+   MistralIntegrity.terrain(grid,grid.macro);
+  }
+  if(epoch!==V050_GEOGRAPHY.epoch)throw Error('Sources régionales périmées');
+  const bundle={...raw,projected:features,terrainGrids};V050_GEOGRAPHY.bundles.set(region,bundle);return bundle;
+ })().catch(error=>{if(epoch===V050_GEOGRAPHY.epoch)V050_GEOGRAPHY.loads.delete(region);throw error;}));
+ return V050_GEOGRAPHY.loads.get(region);
+}
+function v050BoxesTouch(a,b){return a.minX<=b.maxX&&a.maxX>=b.minX&&a.minZ<=b.maxZ&&a.maxZ>=b.minZ;}
+function v050FootprintsOverlap(a,b){
+ if(MistralIntegrity.ringKey(a[0])===MistralIntegrity.ringKey(b[0]))return true;
+ const orientation=(a,b,p)=>(b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]);
+ const boundary=(rings,p)=>rings.some(r=>r.some((a,i)=>{const q=r[(i+1)%r.length];return Math.abs(orientation(a,q,p))<1e-7&&p[0]>=Math.min(a[0],q[0])-1e-7&&p[0]<=Math.max(a[0],q[0])+1e-7&&p[1]>=Math.min(a[1],q[1])-1e-7&&p[1]<=Math.max(a[1],q[1])+1e-7;}));
+ if(a[0].some(p=>!boundary(b,p)&&MistralIntegrity.inside(b,p[0],p[1]))||b[0].some(p=>!boundary(a,p)&&MistralIntegrity.inside(a,p[0],p[1])))return true;
+ for(const ar of a)for(let i=1;i<ar.length;i++)for(const br of b)for(let j=1;j<br.length;j++)if(orientation(ar[i-1],ar[i],br[j-1])*orientation(ar[i-1],ar[i],br[j])< -1e-8&&orientation(br[j-1],br[j],ar[i-1])*orientation(br[j-1],br[j],ar[i])< -1e-8)return true;
+ return false;
+}
+function v050SourceReplaces(feature,paths,overlays){
+ const props=feature.props||{},id=String(props.sourceId??feature.id),bounds=v017PolyBounds(paths);
+ for(const replacement of overlays){
+  const replaces=replacement.props.replaces;
+  if(id===replacement.sourceId||typeof replaces==='string'&&replaces===id||Array.isArray(replaces)&&replaces.includes(id))return true;
+  if(feature.type===2){const lineKey=path=>{const points=path.map(p=>[Math.round(p[0]*1000),Math.round(p[1]*1000)]);return[JSON.stringify(points),JSON.stringify(points.slice().reverse())].sort()[0];};if(paths.every(original=>replacement.v050Paths.some(path=>lineKey(path)===lineKey(original))))return true;continue;}
+  if(feature.type!==3||replacement.type!==3||!v050BoxesTouch(bounds,replacement.v050Bounds))continue;
+  /* Positive footprint overlap, including an old solid roof over a newly
+     surveyed courtyard. Touching adjacent walls alone never remove a neighbour. */
+  const originalGroups=v018PolygonGroups(paths);
+  if(replacement.v050Groups.some(rings=>originalGroups.some(original=>v050FootprintsOverlap(original,rings))))return true;
+ }
+ return false;
+}
+async function v050EnrichResource(resource,key,signal){
+ const index=await v050SourceIndex();if(!index)return resource;
+ if(signal?.aborted)throw Error('Import des sources annulé');
+ if(key.startsWith('dem:')){
+  const region=key.slice(4),descriptor=index.regions[region];if(descriptor)await v050SourceBundle(region,descriptor);return resource;
+ }
+ const tile=v017TileBounds(resource.z,resource.x,resource.y),box=[tile.south,tile.west,tile.north,tile.east],corners=[[tile.south,tile.west],[tile.south,tile.east],[tile.north,tile.west],[tile.north,tile.east]];
+ const features=[];
+ for(const[region,descriptor]of Object.entries(index.regions))if(MistralIntegrity.intersects(box,descriptor.bbox)){const bundle=await v050SourceBundle(region,descriptor);features.push(...bundle.projected);}
+ if(signal?.aborted)throw Error('Import des sources annulé');
+ const worldCorners=corners.map(p=>v015GeoProject('geo_huveaune',p[0],p[1])),tileBounds=v017PolyBounds([worldCorners.map(p=>[p[0],p[2]])]),kind=resource.source==='cadastre'?'building':'road',overlays=features.filter(f=>f.props.kind===kind&&f.v050Paths.length&&v050BoxesTouch(tileBounds,f.v050Bounds)),coverages=[],coverageKeys=new Set();
+ if(kind==='road')for(const feature of features)if(feature.props.kind==='road'&&feature.v050Coverage&&MistralIntegrity.intersects(box,feature.v050Coverage.proof.bbox)){const key=JSON.stringify(feature.v050Coverage.proof);if(!coverageKeys.has(key)){coverageKeys.add(key);coverages.push(feature.v050Coverage);}}
+ if(!overlays.length&&!coverages.length)return resource;
+ const layers={...resource.layers},names=kind==='building'?['batiments','building']:['transportation'];
+ for(const name of names){const layer=layers[name];if(!layer)continue;const retained=[];
+  for(const f of layer.features){let paths=v017FeatureWorldPaths(layer,f,resource.z,resource.x,resource.y,'geo_huveaune');
+   if(kind==='road'&&f.type===2&&coverages.length){for(const coverage of coverages)paths=v050ClipSourcePaths(paths,coverage.polygon,false);if(!paths.length)continue;const unscoped=overlays.filter(overlay=>!overlay.v050Coverage);if(!v050SourceReplaces(f,paths,unscoped))retained.push({...f,v050Paths:paths});}
+   else if(!v050SourceReplaces(f,paths,overlays))retained.push(f);
+  }
+  layers[name]={...layer,features:retained};
+ }
+ const target=kind==='building'?'building':'transportation',original=layers[target];layers[target]={...(original||{name:target,extent:4096}),features:[...(original?.features||[]),...overlays]};
+ return{...resource,layers};
+}
+const v050SourceResourceBase=v046Resource;
+v046Resource=async function(key,signal){const resource=await v050SourceResourceBase(key,signal);if(V046.lab)return resource;try{return await v050EnrichResource(resource,key,signal);}catch(error){if(!signal?.aborted){V050_GEOGRAPHY.errors.push(String(error.message||error));V050_GEOGRAPHY.errors=V050_GEOGRAPHY.errors.slice(-10);}throw error;}};
+const v050SourceTerrainBase=MistralIntegrity.TerrainBank.prototype.add;
+MistralIntegrity.TerrainBank.prototype.add=function(raw,id){
+ const grid=v050SourceTerrainBase.call(this,raw,id);
+ if(V046_BOUNDS[id]){
+  const bundle=V046.lab?null:V050_GEOGRAPHY.bundles.get(id),overlays=bundle?.terrainGrids||(bundle?.terrain?[bundle.terrain]:[]),retained=new Set(overlays.map(overlay=>overlay.macro));
+  for(const key of this.grids.keys())if((key==='enrichment:'+id||key.startsWith('enrichment:'+id+':'))&&!retained.has(key)){this.grids.delete(key);delete this.bounds[key];}
+  for(const overlay of overlays)v050SourceTerrainBase.call(this,overlay,overlay.macro);
+ }
+ return grid;
+};
+function v050RefreshGeography(){
+ if(V046.busy&&V046.gate?.status.phase!=='failed')return false;
+ V050_GEOGRAPHY.epoch++;V050_GEOGRAPHY.index=null;V050_GEOGRAPHY.indexPromise=null;V050_GEOGRAPHY.loaded=false;V050_GEOGRAPHY.bundles.clear();V050_GEOGRAPHY.loads.clear();V050_GEOGRAPHY.errors=[];
+ V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();V050_GEOGRAPHY.terrainMeshes?.clear();return true;
+}
+/* Cache identities cover georeferencing and dimensions as well as elevations. */
+v047BankStamp=function(bank){return MistralIntegrity.hash([...bank.grids].sort(([a],[b])=>a.localeCompare(b)).map(([id,g])=>[id,g.width,g.height,g.bbox,g.sourceResource,g.verticalDatum,g.v047Digest||(g.v047Digest=MistralIntegrity.hash(Array.from(g.data)))]));};
+/* Fine patches exceed the 12 MiB cache used by coarse terrain. Retain at most
+   two in their own LRU; BudgetCache counts shared arrays once per patch with
+   MistralStream.bytes rather than mistaking a mesh count for a memory bound. */
+function v050TerrainCache(){return V050_GEOGRAPHY.terrainMeshes||(V050_GEOGRAPHY.terrainMeshes=new MistralStream.BudgetCache(64*1024*1024,2));}
+/* Render native imported nodes near the player. The surrounding coarse cells
+   are removed, then a sampled annulus joins the exact grid boundary to the
+   global 32 m mesh. This is an explicit local LOD, not a claim that the entire
+   territory is rendered at survey resolution. NoData never gets a triangle. */
+async function v050RefineTerrainMeshes(coarse,plan,bank,stamp,job){
+ const sources=[...bank.grids.values()].filter(g=>g.enrichment&&Math.max(...g.resolutionMeters)<32).map(g=>{
+  const lat=Math.max(g.bbox[0],Math.min(g.bbox[2],plan.lat)),lon=Math.max(g.bbox[1],Math.min(g.bbox[3],plan.lon)),p=v015GeoProject('geo_huveaune',lat,lon);
+  return{g,lat,lon,distance:Math.hypot(p[0]-plan.p[0],p[2]-plan.p[2])};
+ }).filter(item=>item.distance<720&&![...bank.grids.values()].some(other=>!other.enrichment&&MistralIntegrity.contains(other.bbox,item.lat,item.lon)&&other.resolutionMeters[0]*other.resolutionMeters[1]<item.g.resolutionMeters[0]*item.g.resolutionMeters[1])).sort((a,b)=>a.distance-b.distance||a.g.resolutionMeters[0]*a.g.resolutionMeters[1]-b.g.resolutionMeters[0]*b.g.resolutionMeters[1]||a.g.id.localeCompare(b.g.id));
+ if(!sources.length)return coarse;
+ const {g,lat,lon}=sources[0],centerX=Math.round((lon-g.bbox[1])/(g.bbox[3]-g.bbox[1])*(g.width-1)),centerY=Math.round((g.bbox[2]-lat)/(g.bbox[2]-g.bbox[0])*(g.height-1)),halfX=Math.max(1,Math.min(255,Math.ceil(256/g.resolutionMeters[0]))),halfY=Math.max(1,Math.min(255,Math.ceil(256/g.resolutionMeters[1]))),whole=g.width*g.height<=262144&&(g.width-1)*g.resolutionMeters[0]<=512&&(g.height-1)*g.resolutionMeters[1]<=512;
+ const x0=whole?0:Math.max(0,centerX-halfX),x1=whole?g.width-1:Math.min(g.width-1,centerX+halfX),y0=whole?0:Math.max(0,centerY-halfY),y1=whole?g.height-1:Math.min(g.height-1,centerY+halfY),width=x1-x0+1,height=y1-y0+1;
+ if(width<2||height<2||width*height>262144)return coarse;
+ const key='source-terrain:'+g.id+':'+[x0,x1,y0,y1].join(':')+':'+stamp;
+ const cache=v050TerrainCache();let patch=cache.get(key);
+ if(!patch){
+  const vertices=[],faces=[],valid=[];let minX=Infinity,maxX=-Infinity,minZ=Infinity,maxZ=-Infinity;
+  for(let j=y0;j<=y1;j++){
+   for(let i=x0;i<=x1;i++){
+    const lat=g.bbox[2]-(g.bbox[2]-g.bbox[0])*j/(g.height-1),lon=g.bbox[1]+(g.bbox[3]-g.bbox[1])*i/(g.width-1),p=v015GeoProject('geo_huveaune',lat,lon),elevation=g.data[j*g.width+i];
+    vertices.push([p[0],Number.isFinite(elevation)?elevation-.06:0,p[2]]);valid.push(Number.isFinite(elevation));minX=Math.min(minX,p[0]);maxX=Math.max(maxX,p[0]);minZ=Math.min(minZ,p[2]);maxZ=Math.max(maxZ,p[2]);
+   }
+   await job.work.checkpoint(width);
+  }
+  for(let j=0;j<height-1;j++){
+   for(let i=0;i<width-1;i++){const a=j*width+i,b=a+1,c=a+width,d=c+1;if(valid[a]&&valid[b]&&valid[c])faces.push([a,c,b]);if(valid[b]&&valid[c]&&valid[d])faces.push([b,c,d]);}
+   await job.work.checkpoint(width);
+  }
+  const border=[];
+  for(let i=0;i<width;i++)border.push(vertices[i]);
+  for(let j=1;j<height;j++)border.push(vertices[j*width+width-1]);
+  for(let i=width-2;i>=0;i--)border.push(vertices[(height-1)*width+i]);
+  for(let j=height-2;j>0;j--)border.push(vertices[j*width]);
+  const inner=border.map(p=>[p[0],p[2]]);inner.push(inner[0].slice());
+  const box={minX:Math.floor(minX/32)*32-32,maxX:Math.ceil(maxX/32)*32+32,minZ:Math.floor(minZ/32)*32-32,maxZ:Math.ceil(maxZ/32)*32+32},outer=[];
+  for(let x=box.minX;x<box.maxX;x+=32)outer.push([x,box.minZ]);
+  for(let z=box.minZ;z<box.maxZ;z+=32)outer.push([box.maxX,z]);
+  for(let x=box.maxX;x>box.minX;x-=32)outer.push([x,box.maxZ]);
+  for(let z=box.maxZ;z>box.minZ;z-=32)outer.push([box.minX,z]);outer.push(outer[0].slice());
+  const seamVertices=[],seamFaces=[];
+  for(const tri of v018Triangulate([outer,inner])){
+   const points=tri.map(p=>{const ll=v015GeoUnproject('geo_huveaune',p[0],p[1]),h=bank.read(...ll).height;return h===null?null:[p[0],h-.06,p[1]];});
+   if(points.every(Boolean)){const k=seamVertices.length;seamVertices.push(...points);seamFaces.push([k,k+2,k+1]);}
+   if(seamFaces.length%128===0)await job.work.checkpoint(128);
+  }
+  const common={mesh:'terrain',pos:[(minX+maxX)/2,0,(minZ+maxZ)/2],scale:[1,1,1],color:[.30,.33,.25],v046Terrain:true,v046Bounds:box,revision:0,sourceResource:g.sourceResource,sourceSpacingMeters:g.resolutionMeters.slice(),sourceScope:'Nœuds de la grille importée dans un voisinage borné à 262144 sommets ; LOD de 32 m au-delà',v050LandMask:box,v050LandMaskId:key};
+  patch={box,draws:[{...common,vertices,faces,v050FineTerrain:true,v047GeometryId:key},{...common,vertices:seamVertices,faces:seamFaces,v050TerrainSeam:true,v047GeometryId:key+':seam'}]};
+  cache.set(key,patch);
+ }
+ const out=[];
+ for(const draw of coarse){
+  const faces=draw.faces.filter(face=>{const p=face.map(i=>draw.vertices[i]),x=(p[0][0]+p[1][0]+p[2][0])/3,z=(p[0][2]+p[1][2]+p[2][2])/3;return x<=patch.box.minX||x>=patch.box.maxX||z<=patch.box.minZ||z>=patch.box.maxZ;});
+  if(faces.length===draw.faces.length)out.push(draw);else if(faces.length)out.push({...draw,faces,revision:(draw.revision||0)+1,v047GeometryId:draw.v047GeometryId+':cut:'+key});
+  await job.work.checkpoint(draw.faces.length);
+ }
+ out.push(...patch.draws);return out;
+}
+/* Only render faces are replaced. Original land rings, records, surface indices
+   and caches remain available for geography/gameplay. The sampled land colour
+   follows the fine DEM triangles instead of bridging their measured relief. */
+const V050_LAND_SUPPORT=new WeakMap(),V050_LAND_STYLES=new WeakMap(),V050_LAND_CUTS=new WeakMap();
+async function v050TerrainSupport(draw,work){
+ if(V050_LAND_SUPPORT.has(draw))return V050_LAND_SUPPORT.get(draw);
+ let bounds=draw.v050LandMask;
+ if(!bounds){bounds={minX:Infinity,maxX:-Infinity,minZ:Infinity,maxZ:-Infinity};let done=0;for(const p of draw.vertices){bounds.minX=Math.min(bounds.minX,p[0]);bounds.maxX=Math.max(bounds.maxX,p[0]);bounds.minZ=Math.min(bounds.minZ,p[2]);bounds.maxZ=Math.max(bounds.maxZ,p[2]);if(++done%2048===0)await work.checkpoint(2048);}}
+ if(!Object.values(bounds).every(Number.isFinite)||bounds.minX>=bounds.maxX||bounds.minZ>=bounds.maxZ)return null;
+ const support={bounds,key:draw.v050LandMaskId||draw.v047GeometryId};V050_LAND_SUPPORT.set(draw,support);return support;
+}
+function v050SurfaceInside(support,p){const b=support.bounds;return p[0]>b.minX&&p[0]<b.maxX&&p[1]>b.minZ&&p[1]<b.maxZ;}
+/* A triangle/rectangle difference is partitioned into at most four convex
+   pieces. Every boundary point interpolates XYZ on its original triangle;
+   the interior is discarded even where the DEM deliberately has NoData. */
+function v050ClipLandTriangle(triangle,support){
+ const b=support.bounds;let minX=Infinity,maxX=-Infinity,minZ=Infinity,maxZ=-Infinity;
+ for(const p of triangle){minX=Math.min(minX,p[0]);maxX=Math.max(maxX,p[0]);minZ=Math.min(minZ,p[2]);maxZ=Math.max(maxZ,p[2]);}
+ if(maxX<=b.minX||minX>=b.maxX||maxZ<=b.minZ||minZ>=b.maxZ)return[triangle];
+ const planes=[[0,b.minX,1],[0,b.maxX,-1],[2,b.minZ,1],[2,b.maxZ,-1]],outside=[];let remaining=triangle;
+ for(const[axis,edge,sign]of planes){if(remaining.length<3)break;const inside=[],piece=[];
+  for(let i=0;i<remaining.length;i++){const a=remaining[i],q=remaining[(i+1)%remaining.length],da=(a[axis]-edge)*sign,dq=(q[axis]-edge)*sign;
+   if(da>=0)inside.push(a);if(da<=0)piece.push(a);
+   if(da>0&&dq<0||da<0&&dq>0){const t=da/(da-dq),p=a.map((value,k)=>value+(q[k]-value)*t);p[axis]=edge;inside.push(p);piece.push(p);}
+  }
+  for(let i=1;i<piece.length-1;i++){const a=piece[0],q=piece[i],c=piece[i+1];if(Math.abs((q[0]-a[0])*(c[2]-a[2])-(q[2]-a[2])*(c[0]-a[0]))>1e-10)outside.push([a,q,c]);}remaining=inside;
+ }
+ return outside;
+}
+async function v050RefineLandSurfaces(terrain,draws,job){
+ const fine=terrain.filter(d=>d.v050FineTerrain||d.v050TerrainSeam);if(!fine.some(d=>d.v050FineTerrain))return{terrain,draws};
+ const land=draws.filter(d=>!d.hidden&&['landcover','landuse','park'].includes(d.geoLayer)&&d.rings?.length&&d.vertices&&d.faces),landSet=new Set(land),supports=[];
+ for(const draw of fine){const support=await v050TerrainSupport(draw,job.work);if(support&&!supports.some(s=>s.key===support.key))supports.push(support);}if(!supports.length)return{terrain,draws};
+ const styled=new Map();
+ for(const draw of fine){const support=V050_LAND_SUPPORT.get(draw);if(!support)continue;const relevant=land.filter(d=>v050BoxesTouch(v017PolyBounds(d.rings),support.bounds)),stamp=MistralIntegrity.hash(relevant.map(d=>[d.v046GeometryId,d.color])),cached=V050_LAND_STYLES.get(draw);if(cached?.stamp===stamp){styled.set(draw,cached.draws);continue;}
+  const index=new MistralStream.SpatialGrid(32),priority={landcover:0,landuse:1,park:2};let ordinal=0;
+  for(const d of relevant){const b=v017PolyBounds(d.rings);index.add({minX:Math.max(b.minX,support.bounds.minX),maxX:Math.min(b.maxX,support.bounds.maxX),minZ:Math.max(b.minZ,support.bounds.minZ),maxZ:Math.min(b.maxZ,support.bounds.maxZ)},{draw:d,rank:priority[d.geoLayer]*100000+ordinal++});await job.work.checkpoint();}
+  const groups=new Map();let tests=0,done=0;
+  for(const face of draw.faces){const p=face.map(i=>draw.vertices[i]),x=(p[0][0]+p[1][0]+p[2][0])/3,z=(p[0][2]+p[1][2]+p[2][2])/3;let chosen=null;
+   for(const candidate of index.at(x,z)){tests++;if((!chosen||candidate.rank>chosen.rank)&&MistralIntegrity.inside(candidate.draw.rings,x,z))chosen=candidate;}
+   const color=chosen?.draw.color||draw.color,key=color.join(',');if(!groups.has(key))groups.set(key,{color,faces:[]});groups.get(key).faces.push(face);if(++done%1024===0)await job.work.checkpoint(1024);
+  }
+  const pieces=[...groups].map(([key,group])=>({...draw,color:group.color,faces:group.faces,v050TerrainPatchId:draw.v047GeometryId,v047GeometryId:draw.v047GeometryId+':land:'+stamp+':'+key,landColorSampling:'Couleur au centre de chaque triangle ; anneaux et trous conservés, altitudes inchangées',landColorPolygons:relevant.length,landColorCandidateTests:tests,revision:(draw.revision||0)+1}));
+  V050_LAND_STYLES.set(draw,{stamp,draws:pieces});styled.set(draw,pieces);
+ }
+ const output=[];let added=0;
+ for(const draw of draws){if(!landSet.has(draw)){output.push(draw);continue;}const candidates=supports.filter(s=>v050BoxesTouch(v017PolyBounds(draw.rings),s.bounds));if(!candidates.length){output.push(draw);continue;}const key=candidates.map(s=>s.key).join('|');let cache=V050_LAND_CUTS.get(draw);if(!cache){cache=new Map();V050_LAND_CUTS.set(draw,cache);}if(cache.has(key)){const cached=cache.get(key);if(cached)output.push(cached);continue;}
+  const vertices=[],faces=[];let done=0;
+  for(const face of draw.faces){let triangles=[face.map(i=>draw.vertices[i])];for(const support of candidates)triangles=triangles.flatMap(tri=>v050ClipLandTriangle(tri,support));for(const tri of triangles){const k=vertices.length;vertices.push(...tri);const orientation=(tri[1][0]-tri[0][0])*(tri[2][2]-tri[0][2])-(tri[1][2]-tri[0][2])*(tri[2][0]-tri[0][0]);faces.push(orientation<0?[k,k+1,k+2]:[k,k+2,k+1]);}if((added+=triangles.length*3)>1048576)throw Error('Découpe des surfaces au-delà du budget géométrique');if(++done%32===0)await job.work.checkpoint(32);}
+  const cut=faces.length?{...draw,vertices,faces,v050LandCut:true,v050LandCutSupports:candidates.map(s=>s.key),revision:(draw.revision||0)+1,v047GeometryId:(draw.v047GeometryId||draw.v046GeometryId)+':fine-cut:'+MistralIntegrity.hash(key)}:null;cache.set(key,cut);if(cache.size>4)cache.delete(cache.keys().next().value);if(cut)output.push(cut);await job.work.checkpoint();
+ }
+ return{terrain:terrain.flatMap(d=>styled.get(d)||[d]),draws:output};
+}
+function v050TerrainMeshInfo(){
+ const patches=new Map();for(const d of world?.staticDraws||[]){if(!d.v050FineTerrain)continue;const key=d.v050TerrainPatchId||d.v047GeometryId;if(!patches.has(key))patches.set(key,{source:d.sourceResource,nodeSpacingMeters:d.sourceSpacingMeters,vertices:d.vertices.length,faces:0,scope:d.sourceScope,colorGroups:0,colorSampling:d.landColorSampling||null,colorPolygonCount:d.landColorPolygons||0,colorCandidateTests:d.landColorCandidateTests||0});const p=patches.get(key);p.faces+=d.faces.length;p.colorGroups++;}return[...patches.values()];
+}
+function v050LandSurfaceInfo(){
+ const draws=world?.staticDraws||[],masks=new Map();for(const d of draws)if(d.v050LandMask)masks.set(d.v050LandMaskId,{bounds:d.v050LandMask,key:d.v050LandMaskId});
+ let trianglesInside=0,clippedDraws=0,coloredFaces=0,seamColoredFaces=0;
+ for(const d of draws){if(d.v050FineTerrain&&d.landColorSampling)coloredFaces+=d.faces.length;if(d.v050TerrainSeam&&d.landColorSampling)seamColoredFaces+=d.faces.length;if(d.v050LandCut)clippedDraws++;
+  if(d.hidden||!['landcover','landuse','park'].includes(d.geoLayer)||!d.vertices||!d.faces)continue;
+  for(const face of d.faces){const tri=face.map(i=>d.vertices[i]),area=t=>Math.abs((t[1][0]-t[0][0])*(t[2][2]-t[0][2])-(t[1][2]-t[0][2])*(t[2][0]-t[0][0]))/2;for(const support of masks.values())if(area(tri)-v050ClipLandTriangle(tri,support).reduce((sum,t)=>sum+area(t),0)>1e-6){trianglesInside++;break;}}
+ }
+ return{masks:[...masks.values()].map(s=>s.bounds),clippedDraws,coloredFaces,seamColoredFaces,oldLandTrianglesInside:trianglesInside,colorSampling:'Centre des triangles, index spatial de 32 m ; eau et routes inchangées'};
+}
+function v050SourceObjectInfo(sourceId){
+ const draw=(world?.staticDraws||[]).find(d=>d.geoProperties?.sourceId===sourceId&&d.sourceProfile);return draw?v050SourceObjectSummary(draw):null;
+}
+function v050SourceObjectSummary(draw){return{id:draw.geoFeatureId||draw.id,sourceId:draw.geoProperties.sourceId,kind:draw.geoLayer,baseY:draw.baseY??null,height:draw.height??null,profile:{...draw.sourceProfile},footprintRings:draw.rings?.length||0,vertices:draw.vertices?.length||0,provenance:draw.geoProperties.provenance||null};}
+function v050GeographyInfo(){
+ const bundles=[...V050_GEOGRAPHY.bundles.values()],draws=(world?.staticDraws||[]).filter(d=>d.geoProperties?.sourceId&&d.sourceProfile),coverages=new Map();
+ for(const bundle of bundles)for(const feature of bundle.projected){const proof=feature.props.provenance;if(proof?.coverage)coverages.set(JSON.stringify([proof.resource,proof.coverage]),{...proof.coverage,source:proof.source,resource:proof.resource,inputSha256:proof.inputSha256});}
+ return{version:'0.50.0',indexPresent:!!V050_GEOGRAPHY.index,loadedRegions:[...V050_GEOGRAPHY.bundles.keys()].sort(),sourceBuildings:bundles.reduce((n,b)=>n+b.projected.filter(f=>f.props.kind==='building').length,0),sourceRoads:bundles.reduce((n,b)=>n+b.projected.filter(f=>f.props.kind==='road').length,0),coverages:[...coverages.values()],terrainSources:[...V046.terrain.grids.values()].map(g=>({id:g.id,resource:g.sourceResource,resolutionMeters:g.resolutionMeters.slice(),enrichment:g.enrichment,verticalDatum:g.verticalDatum,conversion:g.provenance?.conversion||null})),terrainCache:V050_GEOGRAPHY.terrainMeshes?.stats()||null,missingGroundBuildings:[...world?.v046Records?.values()||[]].reduce((n,r)=>n+(r.missingGroundBuildings||0),0),sourceObjectCount:draws.length,sourceObjectsTruncated:draws.length>100,sourceObjects:draws.slice(0,100).map(v050SourceObjectSummary),terrainMesh:v050TerrainMeshInfo(),errors:V050_GEOGRAPHY.errors.slice()};
+}
+function v050GeographyAfterInit(){Object.assign(window.__MISTRAL_DEBUG,{v050GeographyInfo,v050SourceObjectInfo,v050LandSurfaceInfo,v050RefreshGeography});$('v046Retry')?.addEventListener('click',()=>{if(V050_GEOGRAPHY.errors.length)v050RefreshGeography();},true);}
+
+/* Measured bridge decks are physical support surfaces, never a new terrain
+   sample. The original DEM and missing-data state remain unchanged below them.
+   Only the published road triangles participate; no inferred deck/railing or
+   underground passage is manufactured from a bridge label. */
+const MistralSurfaces=(()=>{
+ const STEP=.72,EPS=1e-7,CELL=32,MAX_SLOPE=1;
+ function measuredBridge(d){
+  const p=d?.sourceProfile,props=d?.roadProperties||d?.geoProperties||{},width=d?.roadWidth??p?.width;
+  if(d?.mesh!=='geoSurface'||d.geoLayer!=='transportation'||d.hidden||!p?.bridge||p.tunnel||p.elevationAssumed!==false||!Number.isFinite(width)||width<=0||width>300)return false;
+  if(/rail|tram|ferry|aerial|construction|proposed|abandoned/.test(String(props.class||props.subclass||props.highway||props.railway||'')))return false;
+  const xyz=p.heightBasis==='coordonnées Z source'&&Array.isArray(d.roadPath)&&d.roadPath.length>=2&&d.roadPath.every(q=>Array.isArray(q)&&q.length>=3&&q.slice(0,3).every(Number.isFinite));
+  const absolute=Number.isFinite(p.absoluteHeight),clearance=['bridge:height','min_height'].includes(p.heightBasis)&&Number.isFinite(p.offset)&&p.offset>=0;
+  return xyz||absolute||clearance;
+ }
+ function triangle(vertices,face,id){
+  if(!Array.isArray(face)||face.length!==3||face.some(i=>!Number.isInteger(i)||i<0||i>=vertices.length))return null;
+  const points=face.map(i=>vertices[i]);if(points.some(p=>!Array.isArray(p)||p.length<3||!p.slice(0,3).every(Number.isFinite)))return null;
+  const[a,b,c]=points,den=(b[2]-c[2])*(a[0]-c[0])+(c[0]-b[0])*(a[2]-c[2]);if(Math.abs(den)<1e-10)return null;
+  const gx=((b[1]-a[1])*(c[2]-a[2])-(c[1]-a[1])*(b[2]-a[2]))/den,gz=((b[0]-a[0])*(c[1]-a[1])-(c[0]-a[0])*(b[1]-a[1]))/den;
+  if(Math.hypot(gx,gz)>MAX_SLOPE+EPS)return null;
+  return{a:a.slice(0,3),b:b.slice(0,3),c:c.slice(0,3),den,id,minX:Math.min(a[0],b[0],c[0]),maxX:Math.max(a[0],b[0],c[0]),minZ:Math.min(a[2],b[2],c[2]),maxZ:Math.max(a[2],b[2],c[2])};
+ }
+ function height(t,x,z){
+  if(!Number.isFinite(x)||!Number.isFinite(z)||x<t.minX-EPS||x>t.maxX+EPS||z<t.minZ-EPS||z>t.maxZ+EPS)return null;
+  const u=((t.b[2]-t.c[2])*(x-t.c[0])+(t.c[0]-t.b[0])*(z-t.c[2]))/t.den,v=((t.c[2]-t.a[2])*(x-t.c[0])+(t.a[0]-t.c[0])*(z-t.c[2]))/t.den,w=1-u-v;
+  return u>=-EPS&&v>=-EPS&&w>=-EPS?u*t.a[1]+v*t.b[1]+w*t.c[1]:null;
+ }
+ class DeckIndex{
+  constructor(draws=[]){
+   this.cells=new Map();this.broad=[];this.decks=0;this.triangles=0;const seen=new Set();
+   for(const d of draws){
+    if(!measuredBridge(d)||!Array.isArray(d.vertices)||!Array.isArray(d.faces))continue;
+    const id=d.v046GeometryId||d.id||d;if(seen.has(id))continue;seen.add(id);let admitted=false;
+    for(const face of d.faces){const t=triangle(d.vertices,face,typeof id==='string'?id:'measured-bridge');if(!t)continue;admitted=true;this.triangles++;
+     const x0=Math.floor(t.minX/CELL),x1=Math.floor(t.maxX/CELL),z0=Math.floor(t.minZ/CELL),z1=Math.floor(t.maxZ/CELL);
+     if((x1-x0+1)*(z1-z0+1)>4096)this.broad.push(t);
+     else for(let x=x0;x<=x1;x++)for(let z=z0;z<=z1;z++){const key=x+':'+z;if(!this.cells.has(key))this.cells.set(key,[]);this.cells.get(key).push(t);}
+    }
+    if(admitted)this.decks++;
+   }
+  }
+  at(x,z){return Number.isFinite(x)&&Number.isFinite(z)?[...(this.cells.get(Math.floor(x/CELL)+':'+Math.floor(z/CELL))||[]),...this.broad]:[];}
+  support(x,z,feet,allowStep=true){
+   if(!Number.isFinite(feet))return null;
+   const ceiling=feet+(allowStep?STEP:EPS);let result=null;
+   for(const t of this.at(x,z)){const y=height(t,x,z);if(y!==null&&y<=ceiling&&(!result||y>result.height+EPS||Math.abs(y-result.height)<=EPS&&t.id<result.id))result={height:y,id:t.id,measured:true};}
+   return result;
+  }
+  ceiling(x,z,previousHead,nextHead){
+   if(![previousHead,nextHead].every(Number.isFinite)||nextHead<=previousHead)return null;
+   let result=null;for(const t of this.at(x,z)){const y=height(t,x,z);if(y!==null&&y>=previousHead-EPS&&y<=nextHead+EPS&&(!result||y<result.height))result={height:y,id:t.id};}return result;
+  }
+ }
+ return{STEP,triangle,height,measuredBridge,DeckIndex};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralSurfaces;
+
+const V050_SURFACES={cache:new WeakMap(),contact:null};
+function v050DeckIndex(w=world){
+ if(!w?.v046)return null;
+ const owner=w.v046Records||w.staticDraws;let cached=V050_SURFACES.cache.get(w);
+ if(!cached||cached.owner!==owner){
+  const draws=w.v046Records?[...w.v046Records.values()].flatMap(r=>r.roads||[]):w.staticDraws||[];
+  cached={owner,index:new MistralSurfaces.DeckIndex(draws)};V050_SURFACES.cache.set(w,cached);
+ }
+ return cached.index;
+}
+function v050DeckSupport(x,z,referenceFeet,allowStep=true){return v050DeckIndex()?.support(x,z,referenceFeet,allowStep)||null;}
+const v050SurfaceGroundBase=groundHeightAt;
+groundHeightAt=function(x,z,referenceFeet=0){
+ const ground=v050SurfaceGroundBase(x,z,referenceFeet);if(!world?.v046)return ground;
+ const atPlayer=state?.player?.pos&&Math.abs(x-state.player.pos[0])<1e-7&&Math.abs(z-state.player.pos[2])<1e-7;
+ // A rising or falling body cannot step up onto a surface above its feet.
+ // The core integrator will land on the measured plane when descending through it.
+ const deck=v050DeckSupport(x,z,referenceFeet,!(atPlayer&&!onGround));if(!deck)return ground;
+ const terrain=v047Height(v047Bank(world),x,z).height;
+ return terrain===null?deck.height:Math.max(ground,deck.height);
+};
+const v050SurfaceUpdateBase=updatePlayer;
+updatePlayer=function(dt){
+ const active=world?.v046&&gameStarted&&mode==='PLAYING'&&!zoneTransitioning&&!V018.qaFreeze&&Number.isFinite(dt)&&dt>0;
+ const w=world,s=state,p=state.player,eye=playerEyeHeight(),feet=p.pos[1]-eye,head=p.pos[1]+.18,wasRising=active&&!onGround&&jumpVelocity>0,previous=V050_SURFACES.contact;
+ if(active&&onGround&&previous?.world===w&&previous.state===s&&Math.hypot(previous.x-p.pos[0],previous.z-p.pos[2])<2){
+  const deck=v050DeckSupport(p.pos[0],p.pos[2],feet,false),ground=v050SurfaceGroundBase(p.pos[0],p.pos[2],feet);
+  if(!deck&&feet-ground>.95){onGround=false;jumpVelocity=0;}
+ }
+ const result=v050SurfaceUpdateBase(dt);
+ if(active&&world===w&&state===s){
+  // Deck data supplies a top plane, not an invented thickness. Stop an upward
+  // head crossing at that same measured plane; never snap the player above it.
+  if(wasRising&&!onGround){const ceiling=v050DeckIndex(w).ceiling(p.pos[0],p.pos[2],head,p.pos[1]+.18);if(ceiling){p.pos[1]=ceiling.height-.181;jumpVelocity=0;}}
+  const support=onGround?v050DeckSupport(p.pos[0],p.pos[2],p.pos[1]-playerEyeHeight(),false):null;
+  V050_SURFACES.contact=support&&Math.abs(support.height-(p.pos[1]-playerEyeHeight()))<.05?{world:w,state:s,x:p.pos[0],z:p.pos[2],...support}:null;
+ }else if(world!==w||state!==s||!world?.v046)V050_SURFACES.contact=null;
+ return result;
+};
+function v050SurfacesAfterInit(){
+ Object.assign(window.__MISTRAL_DEBUG,{v050DeckSupport,v050SurfaceInfo:()=>{const index=v050DeckIndex();return{decks:index?.decks||0,triangles:index?.triangles||0,contact:V050_SURFACES.contact?{id:V050_SURFACES.contact.id,height:V050_SURFACES.contact.height}:null};}});
+}
+
+/* Exact narrow phase for a roof whose shape, direction and height were supplied.
+   Unknown roof shapes retain their labelled bounding volume. A closed solid is
+   a collision model of the rendered exterior, never an invented interior. */
+const MistralRoofSolids=(()=>{
+ const EPS=1e-7;
+ const sub=(a,b)=>a.map((v,i)=>v-b[i]),dot=(a,b)=>a.reduce((n,v,i)=>n+v*b[i],0),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+ function face(a,b,c){
+  if([a,b,c].some(p=>!Array.isArray(p)||p.length<3||!p.slice(0,3).every(Number.isFinite)))return null;
+  const normal=cross(sub(b,a),sub(c,a));return Math.hypot(...normal)>1e-10?[a.slice(0,3),b.slice(0,3),c.slice(0,3)]:null;
+ }
+ function projected(points){
+  const[a,b,c]=points,den=(b[2]-c[2])*(a[0]-c[0])+(c[0]-b[0])*(a[2]-c[2]);if(Math.abs(den)<1e-10)return null;
+  const gx=((b[1]-a[1])*(c[2]-a[2])-(c[1]-a[1])*(b[2]-a[2]))/den,gz=((b[0]-a[0])*(c[1]-a[1])-(c[0]-a[0])*(b[1]-a[1]))/den;
+  return{a,b,c,den,gx,gz,walkable:Math.hypot(gx,gz)<=1+EPS};
+ }
+ function plane(t,x,z){
+  const u=((t.b[2]-t.c[2])*(x-t.c[0])+(t.c[0]-t.b[0])*(z-t.c[2]))/t.den,v=((t.c[2]-t.a[2])*(x-t.c[0])+(t.a[0]-t.c[0])*(z-t.c[2]))/t.den,w=1-u-v;
+  return u>=-EPS&&v>=-EPS&&w>=-EPS?u*t.a[1]+v*t.b[1]+w*t.c[1]:null;
+ }
+ function rayFace(origin,direction,points,maxDistance){
+  const[a,b,c]=points,e1=sub(b,a),e2=sub(c,a),p=cross(direction,e2),det=dot(e1,p);if(Math.abs(det)<1e-10)return Infinity;
+  const inv=1/det,s=sub(origin,a),u=dot(s,p)*inv;if(u< -EPS||u>1+EPS)return Infinity;
+  const q=cross(s,e1),v=dot(direction,q)*inv;if(v< -EPS||u+v>1+EPS)return Infinity;
+  const distance=dot(e2,q)*inv;return distance>=-EPS&&distance<=maxDistance+EPS?Math.max(0,distance):Infinity;
+ }
+ function rayBounds(o,d,b,limit){
+  let lo=0,hi=limit;
+  for(const[axis,min,max]of[[0,b.minX,b.maxX],[1,b.minY,b.maxY],[2,b.minZ,b.maxZ]]){
+   if(Math.abs(d[axis])<1e-12){if(o[axis]<min-EPS||o[axis]>max+EPS)return false;}
+   else{let a=(min-o[axis])/d[axis],c=(max-o[axis])/d[axis];if(a>c)[a,c]=[c,a];lo=Math.max(lo,a);hi=Math.min(hi,c);if(lo>hi+EPS)return false;}
+  }
+  return true;
+ }
+ /* A linear roof plane reaches its maximum over triangle∩foot-disc at a
+    vertex, a circle/edge intersection, or the circle's uphill tangent. */
+ function diskHeight(t,x,z,r){
+  let result=plane(t,x,z),r2=r*r;
+  const admit=(px,pz)=>{if((px-x)**2+(pz-z)**2>r2+EPS)return;const y=plane(t,px,pz);if(y!==null&&(result===null||y>result))result=y;};
+  for(const p of[t.a,t.b,t.c])admit(p[0],p[2]);
+  for(const[a,b]of[[t.a,t.b],[t.b,t.c],[t.c,t.a]]){
+   const dx=b[0]-a[0],dz=b[2]-a[2],sx=a[0]-x,sz=a[2]-z,A=dx*dx+dz*dz;if(A<1e-12)continue;
+   const B=2*(sx*dx+sz*dz),C=sx*sx+sz*sz-r2,discriminant=B*B-4*A*C;if(discriminant< -EPS)continue;
+   const root=Math.sqrt(Math.max(0,discriminant));for(const u of[(-B-root)/(2*A),(-B+root)/(2*A)])if(u>=-EPS&&u<=1+EPS)admit(a[0]+u*dx,a[2]+u*dz);
+  }
+  const gradient=Math.hypot(t.gx,t.gz);if(gradient>1e-12)admit(x+r*t.gx/gradient,z+r*t.gz/gradient);
+  return result;
+ }
+ class Solid{
+  constructor(body,cap,collider,geometry,inside){
+   this.id=collider.id;this.rings=body.rings;this.minY=collider.minY;this.maxY=collider.maxY;this.bounds={...collider};this.inside=inside;
+   this.faces=[];this.tops=[];const eaves=body.baseY+body.height;
+   for(const data of geometry(body))for(let i=0;i<data.indices.length;i+=3){
+    const points=data.indices.slice(i,i+3).map(index=>data.positions.slice(index*3,index*3+3)),valid=face(...points);if(!valid)continue;
+    if(points.every(p=>Math.abs(p[1]-eaves)<EPS)){
+     const bottom=face(...points.map(p=>[p[0],this.minY,p[2]]).reverse());if(bottom)this.faces.push(bottom);
+    }else this.faces.push(valid);
+   }
+   for(const indices of cap.faces||[]){
+    if(!Array.isArray(indices)||indices.length!==3||indices.some(i=>!Number.isInteger(i)||i<0||i>=cap.vertices.length))throw Error('Face de toiture invalide');
+    const valid=face(...indices.map(i=>cap.vertices[i]));if(!valid)continue;
+    this.faces.push(valid);const top=projected(valid);if(top)this.tops.push(top);
+   }
+   if(!this.tops.length)throw Error('Toiture sans surface supérieure');
+  }
+  heightAt(x,z){let result=null;for(const t of this.tops){const y=plane(t,x,z);if(y!==null&&(result===null||y>result))result=y;}return result;}
+  contains(p){const y=this.heightAt(p[0],p[2]);return y!==null&&this.inside(this.rings,p[0],p[2])&&p[1]>=this.minY-EPS&&p[1]<=y+EPS;}
+  ray(origin,direction,maxDistance=200){
+   if(!Array.isArray(origin)||!Array.isArray(direction)||origin.length<3||direction.length<3||!origin.slice(0,3).every(Number.isFinite)||!direction.slice(0,3).every(Number.isFinite)||!(Number.isFinite(maxDistance)||maxDistance===Infinity)||maxDistance<0)return Infinity;
+   if(!rayBounds(origin,direction,this.bounds,maxDistance))return Infinity;if(this.contains(origin))return 0;
+   let result=Infinity;for(const points of this.faces)result=Math.min(result,rayFace(origin,direction,points,maxDistance));return result;
+  }
+  maxDisk(x,z,r=0,walkableOnly=false){
+   if(![x,z,r].every(Number.isFinite)||r<0||x+r<this.bounds.minX||x-r>this.bounds.maxX||z+r<this.bounds.minZ||z-r>this.bounds.maxZ)return null;
+   let result=null;for(const t of this.tops){if(walkableOnly&&!t.walkable)continue;const y=diskHeight(t,x,z,r);if(y!==null&&(result===null||y>result))result=y;}return result;
+  }
+  cylinder(x,z,r,feet,head){
+   if(![feet,head].every(Number.isFinite)||head<feet||head<this.minY-EPS||feet>this.maxY+EPS)return false;
+   const top=this.maxDisk(x,z,r);return top!==null&&feet<top-EPS;
+  }
+  support(x,z,feet,r=0,allowStep=true){
+   if(!Number.isFinite(feet))return null;const y=this.maxDisk(x,z,r,true);
+   return y!==null&&y<=feet+(allowStep?.72:EPS)?{id:this.id,height:y,measured:true}:null;
+  }
+ }
+ function explicit(body,cap){const p=body?.sourceProfile;return !!(p&&cap?.geoLayer==='roof'&&p.estimated===false&&p.roofEstimated===false&&p.roofHeight>0&&Number.isFinite(p.roofDirection)&&['gabled','skillion'].includes(p.roofShape));}
+ return{EPS,face,plane,projected,rayFace,diskHeight,Solid,explicit};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralRoofSolids;
+
+const V050_ROOFS={cache:new WeakMap(),body:null,actorEye:null,contact:null,attached:0};
+const v050RoofBuildingBase=v046SourceBuilding;
+v046SourceBuilding=function(w,rings,feature,key){
+ const start=w.staticDraws.length,body=v050RoofBuildingBase(w,rings,feature,key);if(!body)return body;
+ const cap=w.staticDraws.slice(start).find(d=>d.geoLayer==='roof'&&d.geoFeatureId===body.geoFeatureId),collider=w.colliders.findLast(c=>c.id===body.id);
+ if(collider&&MistralRoofSolids.explicit(body,cap)){
+  try{collider.v050RoofSolid=new MistralRoofSolids.Solid(body,cap,collider,v018MeshData,MistralIntegrity.inside);V050_ROOFS.attached++;}
+  catch(error){collider.v050RoofError=String(error.message||error);}
+ }
+ return body;
+};
+const v050RoofRayBase=rayAABB;
+rayAABB=function(origin,direction,collider,maxDistance=200){return collider.v050RoofSolid?collider.v050RoofSolid.ray(origin,direction,maxDistance):v050RoofRayBase(origin,direction,collider,maxDistance);};
+const v050RoofFootprintBase=v017ColliderHit;
+v017ColliderHit=function(c,x,z,r=0){
+ if(!v050RoofFootprintBase(c,x,z,r))return false;
+ return c.v050RoofSolid&&V050_ROOFS.body?c.v050RoofSolid.cylinder(x,z,r,V050_ROOFS.body.feet,V050_ROOFS.body.head):true;
+};
+const v050RoofCollisionBase=collidesAt;
+collidesAt=function(x,z,r=.38,eyeY=null){
+ const previous=V050_ROOFS.body,eye=eyeY??state.player?.pos?.[1]??1.65,atPlayer=Math.abs(x-state.player.pos[0])<1e-7&&Math.abs(z-state.player.pos[2])<1e-7&&Math.abs(eye-state.player.pos[1])<1e-7;
+ V050_ROOFS.body={feet:eye-(V050_ROOFS.actorEye??(atPlayer?playerEyeHeight():1.65)),head:eye+.18};
+ try{return v050RoofCollisionBase(x,z,r,eyeY);}finally{V050_ROOFS.body=previous;}
+};
+const v050RoofMoveBase=tryPlayerMove;
+tryPlayerMove=function(...args){const previous=V050_ROOFS.actorEye;V050_ROOFS.actorEye=playerEyeHeight();try{return v050RoofMoveBase(...args);}finally{V050_ROOFS.actorEye=previous;}};
+function v050RoofEntries(w=world){
+ if(!w?.v046)return[];const owner=w.v046Records||w.colliders;let cache=V050_ROOFS.cache.get(w);
+ if(!cache||cache.owner!==owner){cache={owner,entries:w.colliders.filter(c=>!c.disabled&&c.v050RoofSolid)};V050_ROOFS.cache.set(w,cache);}return cache.entries.filter(c=>!c.disabled);
+}
+function v050RoofSupport(x,z,feet,allowStep=true,radius=.38){
+ let result=null;for(const c of v050RoofEntries()){const support=c.v050RoofSolid.support(x,z,feet,radius,allowStep);if(support&&(!result||support.height>result.height))result=support;}return result;
+}
+const v050RoofGroundBase=groundHeightAt;
+groundHeightAt=function(x,z,referenceFeet=0){
+ const ground=v050RoofGroundBase(x,z,referenceFeet);if(!world?.v046)return ground;
+ const atPlayer=Math.abs(x-state.player.pos[0])<1e-7&&Math.abs(z-state.player.pos[2])<1e-7,support=v050RoofSupport(x,z,referenceFeet,!(atPlayer&&!onGround),state.player.crouched?.32:.38);
+ if(!support)return ground;return v047Height(v047Bank(world),x,z).height===null?support.height:Math.max(ground,support.height);
+};
+const v050RoofUpdateBase=updatePlayer;
+updatePlayer=function(dt){
+ const active=world?.v046&&gameStarted&&mode==='PLAYING'&&!zoneTransitioning&&!V018.qaFreeze&&Number.isFinite(dt)&&dt>0,w=world,s=state,p=state.player,eye=playerEyeHeight(),feet=p.pos[1]-eye,head=p.pos[1]+.18,wasRising=active&&!onGround&&jumpVelocity>0,radius=p.crouched?.32:.38,previous=V050_ROOFS.contact;
+ if(active&&onGround&&previous?.world===w&&previous.state===s&&Math.hypot(previous.x-p.pos[0],previous.z-p.pos[2])<2&&!v050RoofSupport(p.pos[0],p.pos[2],feet,false,radius)&&feet-v050RoofGroundBase(p.pos[0],p.pos[2],feet)>.95){onGround=false;jumpVelocity=0;}
+ const result=v050RoofUpdateBase(dt);
+ if(active&&world===w&&state===s){
+  if(wasRising&&!onGround&&p.pos[1]+.18>head){let distance=p.pos[1]+.18-head;for(const c of v050RoofEntries(w))distance=Math.min(distance,c.v050RoofSolid.ray([p.pos[0],head,p.pos[2]],[0,1,0],distance));if(distance<p.pos[1]+.18-head){p.pos[1]=head+distance-.181;jumpVelocity=0;}}
+  const support=onGround?v050RoofSupport(p.pos[0],p.pos[2],p.pos[1]-playerEyeHeight(),false,radius):null;
+  V050_ROOFS.contact=support&&Math.abs(support.height-(p.pos[1]-playerEyeHeight()))<.05?{world:w,state:s,x:p.pos[0],z:p.pos[2],...support}:null;
+ }else if(world!==w||state!==s||!world?.v046)V050_ROOFS.contact=null;
+ return result;
+};
+function v050RoofAfterInit(){Object.assign(window.__MISTRAL_DEBUG,{v050RoofSupport,v050RoofInfo:()=>({precise:v050RoofEntries().length,triangles:v050RoofEntries().reduce((n,c)=>n+c.v050RoofSolid.faces.length,0),contact:V050_ROOFS.contact?{id:V050_ROOFS.contact.id,height:V050_ROOFS.contact.height}:null})});}
+
+/* The server's verified local source inventory is distinct from active scene
+   geometry, horizontal sample spacing, survey accuracy and acquisition dates. */
+const MistralSourceStatus=(()=>{
+  const text=(value,limit=1000)=>typeof value==='string'?value.trim().slice(0,limit):'';
+  function count(value,optional=false){if(optional&&value===undefined)return null;if(!Number.isSafeInteger(value)||value<0||value>100000000)throw Error('Comptage de sources incompatible');return value;}
+  function bbox(value){if(!Array.isArray(value)||value.length!==4||!value.every(Number.isFinite)||value[0]<-90||value[2]>90||value[1]<-180||value[3]>180||value[0]>=value[2]||value[1]>=value[3])throw Error('Emprise de source incompatible');return value.slice();}
+  function date(value){const s=text(value,100),day=s.slice(0,10);if(!/^\d{4}-\d{2}-\d{2}(?:T[\d:.+-]+Z?)?$/.test(s)||!Number.isFinite(Date.parse(s))||new Date(day+'T00:00:00Z').toISOString().slice(0,10)!==day)return null;return s;}
+  function source(value){if(typeof value==='string')return{name:text(value),date:null,attribution:'',license:''};const s=value&&typeof value==='object'?value:{};return{name:text(s.name)||text(s.source)||text(s.resource)||'Source non renseignée',date:date(s.acquiredAt),attribution:text(s.attribution,2000),license:text(s.license)};}
+  function spacing(value,box,width,height){if(typeof value==='number'&&Number.isFinite(value)&&value>0)return{meters:[value,value],derived:false};if(Array.isArray(value)&&value.length===2&&value.every(v=>Number.isFinite(v)&&v>0))return{meters:value.slice(),derived:false};const latitude=(box[0]+box[2])/2*Math.PI/180;return{meters:[(box[3]-box[1])*111320*Math.cos(latitude)/(width-1),(box[2]-box[0])*111320/(height-1)],derived:true};}
+  function conversion(value){if(!value||typeof value!=='object')return null;const native=Array.isArray(value.nativePixelSize)&&value.nativePixelSize.length===2&&value.nativePixelSize.every(v=>Number.isFinite(v)&&v>0)?value.nativePixelSize.slice():null;return{resampled:value.resampled===true,resampling:text(value.resampling,100),format:text(value.format,100),crs:text(value.crs,100),nativePixelSize:native};}
+  function terrain(value){if(!value||typeof value!=='object')throw Error('Grille de source incompatible');const width=count(value.width),height=count(value.height);if(width<2||height<2||width*height>4194304)throw Error('Dimensions de source incompatibles');const box=bbox(value.bbox),valid=count(value.validSamples),missing=count(value.noDataSamples);if(valid+missing!==width*height)throw Error('Échantillons de source incohérents');const proof=value.provenance||{},src=source(value.source||proof.source||value.sourceResource),d=date(value.acquiredAt)||date(proof.acquiredAt);return{id:text(value.id,160),width,height,bbox:box,validSamples:valid,noDataSamples:missing,source:src.name,sourceResource:text(value.sourceResource,120),verticalDatum:text(value.verticalDatum,300)||text(proof.verticalDatum,300)||'Référentiel vertical non renseigné',date:d,attribution:text(value.attribution,2000)||text(proof.attribution,2000),spacing:spacing(value.resolutionMeters,box,width,height),conversion:conversion(value.conversion||proof.conversion)};}
+  function summary(value){
+    if(!value||value.ok!==true||!Array.isArray(value.regions)||value.regions.length>64)throw Error('Rapport des sources incompatible');
+    const seen=new Set(),regions=value.regions.map(region=>{
+      if(!region||typeof region!=='object'||!text(region.id,160)||seen.has(region.id))throw Error('Région de source incompatible');seen.add(region.id);
+      const buildings=count(region.buildings),roads=count(region.roads),withoutHeight=count(region.estimatedBuildingHeights,true),unknownZ=count(region.unknownGeometryZ,true);
+      if(withoutHeight!==null&&withoutHeight>buildings||unknownZ!==null&&unknownZ>buildings+roads)throw Error('Qualité de source incohérente');
+      const coverage=region.coverage||[],grids=region.terrain||[];if(!Array.isArray(coverage)||coverage.length>128||!Array.isArray(grids)||grids.length>32)throw Error('Inventaire de source hors budget');
+      return{id:text(region.id,160),source:source(region.source),buildings,roads,withoutHeight,unknownZ,coverage:coverage.map(c=>({bbox:bbox(c.bbox),layer:text(c.layer,200)||'Couche non renseignée',source:text(c.source,1000),date:date(c.acquiredAt)})),terrain:grids.map(terrain)};
+    });
+    const totalBuildings=count(value.totalBuildings??0),totalRoads=count(value.totalRoads??0);
+    if(totalBuildings!==regions.reduce((n,r)=>n+r.buildings,0)||totalRoads!==regions.reduce((n,r)=>n+r.roads,0))throw Error('Totaux des sources incohérents');
+    if(value.present===false&&regions.length)throw Error('Présence des sources incohérente');
+    return{present:value.present!==false&&regions.length>0,inspectedAt:date(value.inspectedAt),totalBuildings,totalRoads,regions};
+  }
+  return{summary,bbox,spacing,date};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralSourceStatus;
+
+function v050SourceStatusAfterInit(){
+  if(typeof window==='undefined'||window.__mistralSourceStatusInstalled)return;
+  window.__mistralSourceStatusInstalled=true;
+  const state={data:null,error:null,pending:null,attempted:false};
+  const number=value=>value.toLocaleString('fr-FR',{maximumFractionDigits:2});
+  const shownDate=value=>value?value.slice(0,10).split('-').reverse().join('/'):'non renseignée';
+  const boxText=b=>'sud '+b[0].toFixed(5)+'° · ouest '+b[1].toFixed(5)+'° · nord '+b[2].toFixed(5)+'° · est '+b[3].toFixed(5)+'°';
+  function node(tag,content,cls){const el=document.createElement(tag);if(content!==undefined)el.textContent=content;if(cls)el.className=cls;return el;}
+  function paragraph(parent,content,cls){const p=node('p',content,cls);parent.appendChild(p);return p;}
+  function show(section){
+    section.replaceChildren();section.appendChild(node('p','SOURCES COMPLÉMENTAIRES · AUDIT DU DISQUE','p27-kicker'));
+    section.appendChild(node('h2','Qualité et couverture des données'));
+    paragraph(section,'Ces compteurs décrivent les fichiers complémentaires installés. Ils ne comptent pas les objets visibles à cet instant dans la scène.');
+    const status=node('p',undefined,'v050-source-state');status.setAttribute('role','status');status.setAttribute('aria-live','polite');section.appendChild(status);
+    const refresh=node('button','Rafraîchir');refresh.type='button';refresh.dataset.sourceRefresh='';refresh.setAttribute('aria-label','Rafraîchir l’audit des sources locales');refresh.disabled=!!state.pending||location.protocol==='file:';refresh.onclick=()=>load(true);section.appendChild(refresh);
+    if(location.protocol==='file:'){status.textContent='Audit indisponible dans un fichier ouvert directement. Lancez le serveur local du jeu, puis ouvrez Cartes & territoire.';return;}
+    if(state.pending){status.textContent='Lecture et vérification des sources locales… Le jeu reste accessible.';return;}
+    if(state.error){status.textContent=state.error;paragraph(section,'Aucun état actualisé des sources complémentaires n’est confirmé. Le pack de base possède son audit distinct ; ce panneau ne modifie ni la partie ni les fichiers.');return;}
+    if(!state.data){status.textContent='L’audit des sources complémentaires n’a pas encore été lancé.';return;}
+    const data=state.data;
+    if(!data.present){status.textContent='Aucune source complémentaire installée selon cet audit.';paragraph(section,'Le pack géographique de base est présenté séparément. L’absence d’ajout ne certifie pas une fidélité 1:1.');return;}
+    status.textContent=number(data.totalBuildings)+' bâtiments · '+number(data.totalRoads)+' tronçons de route dans les ajouts vérifiés.';
+    paragraph(section,'Couverture locale uniquement : un extrait ne couvre pas toute la ville ni l’ensemble du territoire du jeu. Le pas d’une grille mesure l’espacement des échantillons ; il ne garantit pas la précision du levé.','v050-source-limit');
+    if(data.inspectedAt)paragraph(section,'Audit du disque : '+shownDate(data.inspectedAt)+'. Cette date d’inspection n’est pas une date de levé.');
+    for(const region of data.regions){
+      const article=node('article');article.className='v050-source-region';section.appendChild(article);
+      const label=typeof V015_GEO_MACROS!=='undefined'&&V015_GEO_MACROS[region.id]?.name||region.id;
+      article.appendChild(node('h3',label+' · '+number(region.buildings)+' bâtiments / '+number(region.roads)+' tronçons'));
+      paragraph(article,'Source : '+region.source.name+'. Date déclarée : '+shownDate(region.source.date)+'.');
+      if(region.source.attribution)paragraph(article,region.source.attribution,'v050-source-attribution');
+      if(region.source.license)paragraph(article,'Licence : '+region.source.license+'.');
+      paragraph(article,(region.withoutHeight===null?'Nombre de bâtiments sans hauteur déclarée non renseigné.':number(region.withoutHeight)+' bâtiment(s) sans hauteur déclarée.')+' '+(region.unknownZ===null?'Nombre d’objets avec Z signalé manquant non renseigné.':number(region.unknownZ)+' objet(s) avec Z signalé comme manquant.'));
+      const list=node('ul');article.appendChild(list);
+      for(const coverage of region.coverage){const line=node('li');list.appendChild(line);line.appendChild(node('b',coverage.layer));paragraph(line,boxText(coverage.bbox));if(coverage.source)paragraph(line,'Source : '+coverage.source+'. Date d’extraction déclarée : '+shownDate(coverage.date)+'.');}
+      if(!region.coverage.length)paragraph(article,'Emprise des objets vectoriels non renseignée : aucune couverture exhaustive n’est déduite de leur présence.');
+      for(const grid of region.terrain){
+        const tile=node('section');tile.className='v050-source-terrain';article.appendChild(tile);
+        tile.appendChild(node('h4',grid.source));
+        paragraph(tile,number(grid.width)+' × '+number(grid.height)+' échantillons · '+number(grid.validSamples)+' altitudes présentes · '+number(grid.noDataSamples)+' valeurs NoData conservées.');
+        paragraph(tile,'Pas horizontal '+(grid.spacing.derived?'estimé à partir de l’emprise':'déclaré')+' : environ '+grid.spacing.meters.map(v=>number(v)).join(' × ')+' m. Ce pas n’est pas une précision altimétrique.');
+        paragraph(tile,'Emprise de cette grille : '+boxText(grid.bbox)+'.');
+        paragraph(tile,'Référentiel vertical : '+grid.verticalDatum+'. Date déclarée pour la source : '+shownDate(grid.date)+'.');
+        if(grid.conversion){const c=grid.conversion;paragraph(tile,c.resampled?'Grille rééchantillonnée'+(c.resampling?' par '+c.resampling:'')+' depuis la source'+(c.format?' '+c.format:'')+'.':'Conversion de la source documentée ; aucun rééchantillonnage déclaré.');if(c.nativePixelSize){const unit=c.crs==='EPSG:4326'?'°':c.crs==='EPSG:2154'?' m':' unités de la source';paragraph(tile,'Taille native des pixels déclarée : '+c.nativePixelSize.map(v=>number(v)).join(' × ')+unit+(c.crs?' ('+c.crs+')':'')+'. Elle est distincte de la précision du relevé.');}}
+        if(grid.attribution)paragraph(tile,grid.attribution,'v050-source-attribution');
+      }
+      if(!region.terrain.length)paragraph(article,'Aucune grille complémentaire dans ce secteur. Le relief du pack de base reste distinct.');
+    }
+    paragraph(section,'Une date d’extraction ou de téléchargement ne prouve pas la date de levé de chaque bâtiment ou route. Les altitudes manquantes et les hauteurs estimées ne deviennent pas des mesures par interpolation.','v050-source-limit');
+  }
+  function refresh(){for(const section of document.querySelectorAll('[data-v050-source-status]'))show(section);}
+  function load(force=false){
+    if(state.pending)return state.pending;
+    if(location.protocol==='file:'){state.attempted=true;refresh();return Promise.resolve(null);}
+    if(!force&&state.attempted)return Promise.resolve(state.data);
+    state.attempted=true;state.error=null;
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+    state.pending=Promise.resolve().then(async()=>{
+      try{
+        const response=await fetch('/__mistral/world-sources',{method:'GET',cache:'no-store',credentials:'same-origin',redirect:'error',signal:controller.signal});
+        if(response.status===404)throw Error('Le serveur local ne fournit pas ce diagnostic. Relancez la version actuelle du serveur, puis rafraîchissez.');
+        if(!response.ok){const json=response.headers.get('Content-Type')?.includes('json');throw Error(response.status===503?(json?'Le serveur n’a pas pu valider les sources locales. Vérifiez les fichiers puis rafraîchissez.':'Le serveur local est inaccessible ou ne fournit pas de sources vérifiées. Relancez le serveur puis rafraîchissez.'):'Audit des sources locales indisponible. Relancez le serveur puis rafraîchissez.');}
+        const payload=await response.text();if(payload.length>2097152)throw Error('Rapport des sources trop volumineux. Aucun compteur actualisé confirmé.');
+        state.data=MistralSourceStatus.summary(JSON.parse(payload));return state.data;
+      }catch(error){state.error=error?.name==='AbortError'?'Le serveur local n’a pas répondu à temps. La partie reste accessible ; vous pouvez rafraîchir plus tard.':error instanceof TypeError?'Le serveur local est inaccessible. Lancez le serveur du jeu puis rafraîchissez.':error instanceof SyntaxError?'Le diagnostic local est illisible. Relancez la version actuelle du serveur puis rafraîchissez.':String(error?.message||'Audit des sources locales indisponible.');return null;}
+      finally{clearTimeout(timer);state.pending=null;refresh();}
+    });
+    refresh();return state.pending;
+  }
+  const style=node('style');style.textContent='.v050-source-status{border:1px solid #84966e;background:#102017;padding:18px;margin:18px 0}.v050-source-status p,.v050-source-status li{line-height:1.6;overflow-wrap:anywhere}.v050-source-status button{padding:10px 16px;min-height:44px;margin:0 0 10px;color:#e5e8c9;background:#233826;border:1px solid #859966}.v050-source-status button:disabled{opacity:.65}.v050-source-state{font-weight:700}.v050-source-limit{border-left:3px solid #d6bf63;padding-left:12px}.v050-source-region{border-top:1px solid #526747;margin-top:18px;padding-top:12px}.v050-source-status ul{padding-left:22px}.v050-source-status li p{margin:4px 0 10px}.v050-source-terrain{padding:12px;background:#07150f;margin:12px 0}.v050-source-attribution{font-size:12px;color:#b8c8ac}';document.head.appendChild(style);
+  const panelBase=v047Panel;
+  v047Panel=function(container){panelBase(container);const box=container.querySelector('.v047-integrity');if(!box)return;const section=node('section');section.className='v050-source-status';section.dataset.v050SourceStatus='';section.setAttribute('aria-label','Qualité et couverture des sources locales complémentaires');box.prepend(section);show(section);if(!state.attempted)load();};
+  if(window.__MISTRAL_DEBUG)Object.assign(window.__MISTRAL_DEBUG,{v050SourceStatus:()=>({pending:!!state.pending,error:state.error,data:state.data?JSON.parse(JSON.stringify(state.data)):null}),v050RefreshSourceStatus:()=>load(true)});
+}
+
+/* Geographic field life. A bivouac is a player's temporary addition, never a
+   surveyed building. Every service rechecks its physical context at payment. */
+const V050_WASTELAND={binding:null,clock:0,drawCache:null};
+const V050_CAMP_COST={scrap:3,cloth:1};
+const V050_CAMP_RECIPES=['ration','purify','bandage'];
+const V050_AID={
+ water:{name:'Eau potable',cost:{water:2},caps:10,rep:1},
+ food:{name:'Vivres',cost:{food:3},caps:10,rep:1},
+ medicine:{name:'Trousse de soins',cost:{stimpak:1,cloth:1},caps:16,rep:2}
+};
+const V050_AID_FACTIONS={ligue:'ligue',ateliers:'artisans',collines:'collines',vigies:'secours',rade:'rade',insulaires:'francs',arsenal:'arsenal',concorde:'continuite'};
+function v050WastelandFresh(){return{schema:1,kitOwned:false,camp:null,restHours:0,crafts:0,aid:{}};}
+function v050AidSite(site){return!!site&&site.safe===true&&['settlement','outpost','caravan'].includes(site.kind);}
+function v050WastelandMigrate(raw){
+ const f=v050WastelandFresh(),old=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};
+ f.kitOwned=old.kitOwned===true;
+ for(const k of ['restHours','crafts'])f[k]=typeof old[k]==='number'&&Number.isFinite(old[k])?Math.floor(clamp(old[k],0,100000)):0;
+ const c=old.camp;
+ if(f.kitOwned&&c&&typeof c==='object'&&typeof c.lat==='number'&&typeof c.lon==='number'&&Number.isFinite(c.lat)&&Number.isFinite(c.lon)){
+  const macro=v046Region(c.lat,c.lon);
+  if(macro)f.camp={lat:c.lat,lon:c.lon,macro,yaw:typeof c.yaw==='number'&&Number.isFinite(c.yaw)?c.yaw%TAU:0};
+ }
+ if(old.aid&&typeof old.aid==='object'&&!Array.isArray(old.aid))for(const site of V042_CATALOG){
+  if(!v050AidSite(site)||!Object.hasOwn(old.aid,site.id))continue;
+  const p=old.aid[site.id];if(!p||typeof p!=='object'||Array.isArray(p))continue;
+  const record={};for(const type of Object.keys(V050_AID))if(Object.hasOwn(p,type)&&p[type]===true)record[type]=true;
+  if(Object.keys(record).length)f.aid[site.id]=record;
+ }
+ return f;
+}
+const v050WastelandBase=baseState;
+baseState=function(){const s=v050WastelandBase();s.v050Wasteland=v050WastelandFresh();return s;};
+const v050WastelandMigration=migrateState;
+migrateState=function(input={}){const s=v050WastelandMigration(input);s.v050Wasteland=v050WastelandMigrate(input.v050Wasteland);return s;};
+state=migrateState(state);if(world)v049Own(world);
+
+function v050WastelandBlocked(){
+ if(!v027CanAct())return'Action disponible dans le Pip-Boy, pendant une partie active.';
+ if(V046.lab)return'Le banc synthétique ne modifie pas votre matériel de campagne.';
+ if(!world?.v046||!world.geoMacro)return'Rejoignez le territoire géographique extérieur.';
+ if(V046.busy||V047.pending||zoneTransitioning)return'Attendez la fin du chargement du secteur.';
+ const p=state.player.pos,ground=v050TravelGround(v050CampStage(),world,p[0],p[2],.38);
+ if(!onGround||ground===null||!Number.isFinite(ground)||Math.abs(p[1]-ground-playerEyeHeight())>.75)return'Rejoignez un sol stable et dégagé avant cette opération.';
+ if(v050TravelNearbyThreat(world,state.player.pos))return'Éloignez-vous du combat et des menaces avant cette opération.';
+ if((world.enemies||[]).some(e=>e.alive&&dist2(e.pos,state.player.pos)<55))return'Une menace est encore trop proche pour installer une halte.';
+ return null;
+}
+function v050WastelandNotify(reason){return v027Notify(reason);}
+/* Roll back these synchronous transactions when browser persistence fails. No
+   second wallet or world-state owner is created. Nothing waits on a callback. */
+function v050WastelandCommit(change,message){
+ const owner=state,keys=['inventory','player','needs','rep','worldTime','v050Wasteland','v020','status','lastSave'];
+ const snapshot=Object.fromEntries(keys.map(k=>[k,owner[k]===undefined?undefined:deepClone(owner[k])]));
+ try{
+  change();
+  if(state!==owner||saveGame(false)===false)throw Error('La sauvegarde ne peut pas être conservée dans ce navigateur.');
+ }catch(error){
+  if(state===owner)for(const k of keys){if(snapshot[k]===undefined)delete owner[k];else owner[k]=snapshot[k];}
+  return v050WastelandNotify(error.message||'Opération annulée sans paiement.');
+ }
+ V050_WASTELAND.binding=null;V050_WASTELAND.drawCache=null;v050CampBind();
+ V027.message=message;toast(message,'good');renderPipboy();return true;
+}
+function v050CampStage(){return{records:world.v046Records,bank:world.v047TerrainBank||V046.terrain,geoColliders:(world.colliders||[]).filter(c=>c.v046Tile)};}
+function v050CampGround(x,z,stage=v050CampStage()){
+ const y=v050TravelGround(stage,world,x,z,.5);
+ return y!==null&&Number.isFinite(y)&&!v046Blocked(world,x,z)?y:null;
+}
+function v050CampSpot(){
+ if(!world?.v046)return null;
+ const p=state.player.pos,stage=v050CampStage(),yaw=state.player.yaw||0;
+ for(const r of[2.6,4.2])for(const angle of[0,-.8,.8,Math.PI]){
+  const x=p[0]+Math.sin(yaw+angle)*r,z=p[2]-Math.cos(yaw+angle)*r,y=v050CampGround(x,z,stage);
+  if(y===null)continue;
+  const margin=[[1.3,0],[-1.3,0],[0,1.3],[0,-1.3],[1,1],[-1,-1],[1,-1],[-1,1]];
+  if(margin.some(([dx,dz])=>{const h=v050CampGround(x+dx,z+dz,stage);return h===null||Math.abs(h-y)>.45;}))continue;
+  const[lat,lon]=v015GeoUnproject(world.id,x,z),macro=v046Region(lat,lon);
+  if(macro)return{lat,lon,macro,yaw};
+ }
+ return null;
+}
+function v050CampPosition(){
+ const c=state.v050Wasteland?.camp;if(!c||!world?.v046)return null;
+ const p=v015GeoProject(world.id,c.lat,c.lon);
+ if(!p||!p.every(Number.isFinite)||Math.hypot(p[0]-state.player.pos[0],p[2]-state.player.pos[2])>720)return null;
+ const h=v046HeightAt(p[0],p[2]);if(h.height===null||!Number.isFinite(h.height))return null;
+ return[p[0],Math.max(0,h.height),p[2]];
+}
+function v050CampNear(){const p=v050CampPosition();return!!p&&dist2(p,state.player.pos)<=5&&Math.abs(p[1]+playerEyeHeight()-state.player.pos[1])<2.5;}
+function v050CampUsable(){const p=v050CampPosition();return!!p&&v050CampNear()&&v050CampGround(p[0],p[2])!==null&&lineOfSight(state.player.pos,[p[0],p[1]+.6,p[2]]);}
+function v050CampPlace(){
+ const blocked=v050WastelandBlocked();if(blocked)return v050WastelandNotify(blocked);
+ const s=state.v050Wasteland;if(s.camp)return v050WastelandNotify('Repliez votre bivouac existant avant de le déplacer.');
+ if(!s.kitOwned&&!hasCost(V050_CAMP_COST))return v050WastelandNotify('Kit : il faut 3 ferrailles et 1 tissu. Aucun matériau dépensé.');
+ const spot=v050CampSpot();if(!spot)return v050WastelandNotify('Pas de sol dégagé à proximité : évitez routes, murs, eau et pente, puis réessayez.');
+ return v050WastelandCommit(()=>{if(!s.kitOwned&&!v020Spend(V050_CAMP_COST))throw Error('Matériaux devenus insuffisants.');s.kitOwned=true;s.camp=spot;},'Bivouac déployé. Votre halte est prête.');
+}
+function v050CampPack(){
+ const blocked=v050WastelandBlocked();if(blocked)return v050WastelandNotify(blocked);
+ if(!v050CampNear())return v050WastelandNotify('Approchez votre bivouac à moins de 5 m pour le replier.');
+ return v050WastelandCommit(()=>{state.v050Wasteland.camp=null;},'Bivouac replié : le même kit pourra être redéployé.');
+}
+function v050CampRest(hours){
+ const blocked=v050WastelandBlocked();if(blocked)return v050WastelandNotify(blocked);
+ if(![1,4].includes(hours)||!v050CampUsable())return v050WastelandNotify('Le repos demande votre bivouac accessible à moins de 5 m, sur un sol toujours dégagé.');
+ if(state.status?.infection>0||state.status?.bleeding>0||state.status?.burning>0)return v050WastelandNotify('Traitez l’infection, le saignement ou la brûlure avant de dormir en plein air.');
+ const cost=hours===1?{water:1}:{water:1,ration:1};
+ if(!hasCost(cost))return v050WastelandNotify('Réserves insuffisantes : aucun temps ni objet dépensé.');
+ return v050WastelandCommit(()=>{
+  if(!v020Spend(cost))throw Error('Réserves devenues insuffisantes.');
+  state.worldTime=(state.worldTime+hours)%24;state.v050Wasteland.restHours+=hours;
+  state.player.hp=Math.min(state.player.maxHp,state.player.hp+12*hours);state.player.ap=state.player.maxAp;
+  if(state.needs){state.needs.fatigue=Math.max(0,state.needs.fatigue-25*hours);state.needs.thirst=Math.max(0,state.needs.thirst-20);if(hours===4)state.needs.hunger=Math.max(0,state.needs.hunger-25);}
+  if(state.v020)state.v020.restHours+=hours;
+ },`${hours} h de repos au bivouac. Les radiations et les blessures ne sont pas effacées.`);
+}
+function v050CampCraft(id){
+ const blocked=v050WastelandBlocked();if(blocked)return v050WastelandNotify(blocked);
+ const recipe=V050_CAMP_RECIPES.includes(id)&&V020_RECIPES.find(r=>r.id===id);
+ if(!recipe||!v050CampUsable())return v050WastelandNotify('Cette préparation demande votre bivouac accessible à moins de 5 m.');
+ if(!hasCost(recipe.cost))return v050WastelandNotify('Ingrédients insuffisants : aucun paiement partiel.');
+ return v050WastelandCommit(()=>{if(!v020Spend(recipe.cost))throw Error('Ingrédients devenus insuffisants.');state.inventory[recipe.item]=(state.inventory[recipe.item]||0)+recipe.count;state.v050Wasteland.crafts++;},recipe.name+' · préparation au bivouac terminée.');
+}
+function v050AidContact(site){
+ if(!v050AidSite(site)||!v042SiteDiscovered(site)||!world?.v046)return false;
+ const p=state.player.pos;
+ return(world.npcs||[]).some(n=>n.alive!==false&&n.v042Site===site.id&&dist2(n.pos,p)<=8&&Math.abs((n.pos[1]||0)+playerEyeHeight()-p[1])<3&&lineOfSight([p[0],p[1],p[2]],[n.pos[0],(n.pos[1]||0)+1.4,n.pos[2]]));
+}
+function v050AidDeliver(siteId,type){
+ const blocked=v050WastelandBlocked();if(blocked)return v050WastelandNotify(blocked);
+ const site=v042Site(siteId),aid=Object.hasOwn(V050_AID,type)&&V050_AID[type];
+ if(!aid||!v050AidContact(site))return v050WastelandNotify('Approchez un habitant du relais découvert à moins de 8 m, avec un accès dégagé.');
+ if(state.v050Wasteland.aid[siteId]?.[type])return v050WastelandNotify('Cette livraison a déjà été reçue : aucune seconde récompense.');
+ if(!hasCost(aid.cost))return v050WastelandNotify('Il manque des fournitures : aucun paiement partiel.');
+ return v050WastelandCommit(()=>{
+  if(!v020Spend(aid.cost))throw Error('Fournitures devenues insuffisantes.');
+  const ledger=state.v050Wasteland.aid;ledger[siteId]??={};ledger[siteId][type]=true;
+  state.player.caps+=aid.caps;const faction=V050_AID_FACTIONS[site.faction];if(faction)state.rep[faction]=clamp((state.rep[faction]||0)+aid.rep,-100,100);
+ },`${site.name} reçoit ${aid.name.toLocaleLowerCase('fr')} : ${aid.caps} capsules${V050_AID_FACTIONS[site.faction]?' et confiance accrue':''}.`);
+}
+function v050CampBind(){
+ if(!world)return;const c=state.v050Wasteland?.camp,token=V050_WASTELAND.binding;
+ if(token?.world===world&&token.state===state&&token.camp===c)return;
+ world.interactables=(world.interactables||[]).filter(i=>i.id!=='v050-camp');
+ const p=v050CampPosition();if(p)addInteract(world,'v050-camp',[p[0],p[1]+.6,p[2]],'Bivouac · repos et préparations',()=>v027Open('status','camp'),{radius:4.5,kind:'bench'});
+ V050_WASTELAND.binding={world,state,camp:c};
+}
+const v050CampPublish=v046Publish;
+v046Publish=function(...args){const result=v050CampPublish(...args);V050_WASTELAND.binding=null;if(args[0]===world)v050CampBind();return result;};
+const v050CampUpdate=updatePlayer;
+updatePlayer=function(dt){const result=v050CampUpdate(dt);if(mode==='PLAYING'&&gameStarted&&!zoneTransitioning){V050_WASTELAND.clock+=dt;if(V050_WASTELAND.clock>=1){V050_WASTELAND.clock=0;v050CampBind();}}return result;};
+const v050CampDraws=collectDraws;
+collectDraws=function(t){
+ const draws=v050CampDraws(t),p=v050CampPosition(),c=state.v050Wasteland?.camp;if(!p||!c)return draws;
+ let cache=V050_WASTELAND.drawCache;
+ if(!cache||cache.world!==world||cache.camp!==c||cache.height!==p[1]){
+  const temp={staticDraws:[]};addBox(temp,[p[0],p[1]+.09,p[2]],[1.05,.18,2.1],[.27,.35,.22],c.yaw);
+  addBox(temp,[p[0]+1.1,p[1]+.28,p[2]+.6],[.6,.56,.65],COLORS.clothTan,c.yaw);
+  addPart(temp,'cylinder',[p[0]-1,p[1]+.18,p[2]],[.28,.36,.28],COLORS.darkMetal);
+  cache=V050_WASTELAND.drawCache={world,camp:c,height:p[1],draws:temp.staticDraws};
+ }
+ return draws.concat(cache.draws);
+};
+function v050CampPanel(c){
+ const s=state.v050Wasteland,p=v050CampPosition(),near=v050CampNear(),usable=near&&v050CampUsable(),blocked=v050WastelandBlocked(),distance=p?Math.round(dist2(p,state.player.pos)):null;
+ c.innerHTML=`<div class="p27-long v050-fieldlife"><p class="p27-kicker">EXPLORATION / HALTE PORTABLE</p><h2>Votre bivouac</h2><p>Installez une halte, reposez-vous et préparez vos réserves avant de reprendre la route.</p>
+ <section><h3>${s.camp?'BIVOUAC DÉPLOYÉ':s.kitOwned?'KIT REPLIÉ':'CONSTRUIRE UN KIT'}</h3><p>${s.camp?`${escapeHtml(V015_GEO_MACROS[s.camp.macro]?.name||'Territoire')}${distance===null?' · hors du secteur chargé':` · ${distance} m`}. Repliez le bivouac sur place avant de le déplacer.`:s.kitOwned?'Votre kit existant sera réutilisé. Aucun remboursement de matériaux ni second kit gratuit.':'Première installation : 3 ferrailles et 1 tissu. Le kit se replie puis se redéploie sans nouvelle construction.'}</p>
+ <div class="p27-actions">${v027Button(s.kitOwned?'Déployer près de moi':'Construire et déployer','w50:pitch','',!!blocked||!!s.camp||(!s.kitOwned&&!hasCost(V050_CAMP_COST)))}${v027Button('Replier le bivouac','w50:pack','',!!blocked||!near)}</div>
+ ${blocked?`<p class="v050-field-warning">${escapeHtml(blocked)}</p>`:'<p>Choisissez un emplacement plat et dégagé, à l’écart des routes, de l’eau et des menaces.</p>'}</section>
+ <section><h3>REPOS ET RÉSERVES</h3><p>À moins de 5 m du bivouac, sans ennemi proche. Une heure rend 12 PV et réduit la fatigue de 25. Les blessures et radiations exigent leurs soins habituels.</p><div class="p27-actions">${v027Button('Repos 1 h · 1 eau','w50:rest','1',!!blocked||!usable||!hasCost({water:1}))}${v027Button('Repos 4 h · 1 eau, 1 ration','w50:rest','4',!!blocked||!usable||!hasCost({water:1,ration:1}))}</div><p>${s.restHours} h au bivouac · ${s.crafts} préparations.</p></section>
+ <section><h3>PRÉPARATIONS DE TERRAIN</h3><p>L’établi reste nécessaire aux armes, aux munitions et aux réparations. Le bivouac ne sert qu’à ces préparations.</p><div class="v050-field-recipes">${V020_RECIPES.filter(r=>V050_CAMP_RECIPES.includes(r.id)).map(r=>`<article><h4>${escapeHtml(r.name)}</h4><p>${v020HtmlCost(r.cost)} → ${r.count} ${escapeHtml(v020Label(r.item))}</p>${v027Button('Préparer','w50:craft',r.id,!!blocked||!usable||!hasCost(r.cost))}</article>`).join('')}</div></section></div>`;
+}
+function v050AidPanel(c){
+ const sites=V042_CATALOG.filter(s=>v050AidSite(s)&&v042SiteDiscovered(s)),blocked=v050WastelandBlocked();
+ sites.sort((a,b)=>Number(v050AidContact(b))-Number(v050AidContact(a))||a.name.localeCompare(b.name,'fr'));
+ c.innerHTML=`<div class="p27-long v050-fieldlife"><p class="p27-kicker">RÉSEAU RÉGIONAL / FOURNITURES</p><h2>Entraide des relais</h2><p>Apportez des réserves à un habitant d’un relais découvert. Chaque relais accepte une seule livraison de chaque type, conservée dans votre sauvegarde. Les capsules couvrent une partie du transport ; la confiance progresse auprès de sa faction.</p>${blocked?`<p class="v050-field-warning">${escapeHtml(blocked)}</p>`:''}${sites.length?sites.map(site=>{const ledger=state.v050Wasteland.aid[site.id]||{},contact=v050AidContact(site);return`<section><h3>${escapeHtml(site.name)}</h3><p>${escapeHtml(site.factionLabel||site.faction)} · ${Object.keys(ledger).length}/3 livraisons${contact?' · HABITANT À PORTÉE':' · approchez un habitant à moins de 8 m'}</p><div class="v050-field-recipes">${Object.entries(V050_AID).map(([type,aid])=>`<article><h4>${aid.name}</h4><p>${v020HtmlCost(aid.cost)}</p><p>${aid.caps} capsules · ${aid.rep} confiance</p>${v027Button(ledger[type]?'Livraison reçue':'Remettre les fournitures','w50:aid',site.id+'|'+type,!!blocked||!contact||!!ledger[type]||!hasCost(aid.cost))}</article>`).join('')}</div></section>`;}).join(''):'<p>Aucun relais découvert. Explorez les implantations habitées du territoire pour les voir ici.</p>'}</div>`;
+}
+const v050CampStatus=v027Status;
+v027Status=function(c){if(V027.sub==='camp')return v050CampPanel(c);return v050CampStatus(c);};
+const v050AidData=v027Data;
+v027Data=function(c){if(V027.sub==='aid')return v050AidPanel(c);return v050AidData(c);};
+const v050WastelandDispatch=v027Dispatch;
+v027Dispatch=function(action,arg=''){
+ if(!action.startsWith('w50:'))return v050WastelandDispatch(action,arg);
+ if(!v027CanAct())return false;
+ if(action==='w50:pitch')return v050CampPlace();
+ if(action==='w50:pack')return v050CampPack();
+ if(action==='w50:rest')return v050CampRest(Number(arg));
+ if(action==='w50:craft')return v050CampCraft(arg);
+ if(action==='w50:aid'){const parts=arg.split('|');return parts.length===2?v050AidDeliver(...parts):false;}
+ return false;
+};
+function v050WastelandAfterInit(){
+ V027_SUBS.status.camp='BIVOUAC';V027_SUBS.data.aid='ENTRAIDE';
+ Object.assign(window.__MISTRAL_DEBUG,{v050WastelandInfo:()=>({schema:1,state:deepClone(state.v050Wasteland),campPosition:v050CampPosition(),campNear:v050CampNear(),blocked:v050WastelandBlocked(),nearbyAid:V042_CATALOG.filter(v050AidContact).map(s=>s.id)}),v050WastelandAction:v027Dispatch});
+}
+
+/* Standard Gamepad API. The sampler is pure; game input never overwrites the
+   keyboard/touch collections. Browser/OS confirmation and text entry remain native. */
+const MistralController=(()=>{
+  const finite=(n,f=0)=>typeof n==='number'&&Number.isFinite(n)?n:f;
+  const limit=(n,a,b)=>Math.max(a,Math.min(b,n));
+  function options(raw={}){if(!raw||typeof raw!=='object')raw={};return{enabled:raw.enabled!==false,deadZone:limit(finite(raw.deadZone,.18),.08,.4),look:limit(finite(raw.look,1),.25,3),invertY:raw.invertY===true};}
+  function stick(x,y,deadZone=.18){x=limit(finite(x),-1,1);y=limit(finite(y),-1,1);const length=Math.hypot(x,y);if(length<=deadZone)return[0,0];const strength=Math.pow(limit((length-deadZone)/(1-deadZone),0,1),1.25);return[x/length*strength,y/length*strength];}
+  function button(raw,previous=false){const value=limit(finite(raw?.value,raw?.pressed?1:0),0,1);return raw?.pressed===true||value>=(previous?.35:.55);}
+  function choose(pads,index=null){const all=Array.from(pads||[]).filter(p=>p&&p.connected!==false&&p.mapping==='standard');return all.find(p=>p.index===index)||all[0]||null;}
+  const empty=()=>({connected:false,index:null,id:'',move:[0,0],look:[0,0],held:Array(17).fill(false),pressed:[],navigation:null,dt:0});
+  class Tracker{
+    constructor(){this.reset();}
+    reset(){this.index=null;this.id=null;this.context=null;this.previous=Array(17).fill(false);this.blocked=new Set();this.direction=null;this.repeatAt=0;this.navigationBlocked=false;this.lastTime=null;}
+    sample(pads,context,now,settings={}){
+      const o=options(settings),g=o.enabled?choose(pads,this.index):null;
+      if(!g){this.reset();return empty();}
+      now=finite(now);const dt=this.lastTime===null?0:limit((now-this.lastTime)/1000,0,.05);this.lastTime=now;
+      const changed=this.index!==g.index||this.id!==g.id||this.context!==context;
+      const down=Array.from({length:17},(_,i)=>button(g.buttons?.[i],this.previous[i]));
+      const move=stick(g.axes?.[0],g.axes?.[1],o.deadZone),look=stick(g.axes?.[2],g.axes?.[3],o.deadZone);
+      let dx=down[14]?-1:down[15]?1:Math.abs(move[0])>.5?Math.sign(move[0]):0;
+      let dy=down[12]?-1:down[13]?1:Math.abs(move[1])>.5?Math.sign(move[1]):0;
+      if(dx&&dy){if(Math.abs(move[0])>Math.abs(move[1]))dy=0;else dx=0;}
+      const direction=dx?(dx<0?'left':'right'):dy?(dy<0?'up':'down'):null;
+      if(changed){this.blocked=new Set(down.flatMap((v,i)=>v?[i]:[]));this.direction=null;this.repeatAt=0;this.navigationBlocked=!!direction;}
+      for(const i of this.blocked)if(!down[i])this.blocked.delete(i);
+      const held=down.map((v,i)=>v&&!this.blocked.has(i));
+      const pressed=held.flatMap((v,i)=>v&&!this.previous[i]?[i]:[]);
+      if(!direction)this.navigationBlocked=false;
+      let navigation=null;
+      if(!this.navigationBlocked&&direction){if(this.direction!==direction){navigation=direction;this.repeatAt=now+360;}else if(now>=this.repeatAt){navigation=direction;this.repeatAt=now+130;}}
+      this.direction=direction;this.index=g.index;this.id=g.id;this.context=context;this.previous=down;
+      return{connected:true,index:g.index,id:String(g.id||'Manette standard').slice(0,120),move,look,held,pressed,navigation,dt};
+    }
+  }
+  return{options,stick,button,choose,Tracker,empty};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralController;
+
+function v050ControllerAfterInit(){
+  if(typeof window==='undefined'||window.__mistralControllerInstalled)return;
+  window.__mistralControllerInstalled=true;
+  const preferenceKey='mistral_controller_v1';let preferences=MistralController.options();
+  try{preferences=MistralController.options(JSON.parse(localStorage.getItem(preferenceKey)||'{}'));}catch{}
+  const runtime={tracker:new MistralController.Tracker(),input:MistralController.empty(),lastMode:null,lastId:null,installed:true};
+  const neutral=()=>{runtime.tracker.reset();runtime.input=MistralController.empty();runtime.lastMode=null;};
+  const active=()=>preferences.enabled&&!document.hidden&&mode==='PLAYING'&&runtime.tracker.context==='PLAYING'&&gameStarted&&!zoneTransitioning&&state.player.hp>0;
+  function storePreferences(){try{localStorage.setItem(preferenceKey,JSON.stringify(preferences));return true;}catch{return false;}}
+  function controlMarkup(){return '<h3>MANETTE STANDARD</h3><p>Stick gauche : marcher · L3 : courir · stick droit : regarder · LT : visée fine · RT : tirer.</p><p>A : sauter · B : s’accroupir · X : interagir · Y : recharger · LB : V.A.T.S. · RB : soin · R3 : caméra · Affichage/Select : Pip-Boy · Menu/Start : pause.</p><p>Menus : croix ou stick gauche pour déplacer le focus, A pour valider, B pour revenir. Gauche/droite règlent les curseurs et listes. Pip-Boy : LB/RB changent de mode, LT/RT de rubrique. V.A.T.S. : croix pour cible/membre, A réserve, X retire, Y réserve un critique, RT exécute, B annule.</p><p>La saisie d’un nom et les confirmations du navigateur utilisent les commandes du navigateur. Un bouton maintenu à la connexion ou au changement d’écran doit être relâché avant de déclencher une action.</p>';}
+  const style=document.createElement('style');style.textContent='.v050-controller{border:1px solid #779566;padding:14px;margin:18px 0;color:inherit}.v050-controller p{font-size:12px;line-height:1.6}.v050-controller label{display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap}.v050-controller input[type=range]{max-width:230px}body.v050-controller-input :focus-visible,body.v050-controller-input .v050-pad-focus{outline:3px solid #f4d98b!important;outline-offset:3px!important}.v050-pad-status{font-size:12px}';document.head.appendChild(style);
+  const optionsRoot=$('optionsScreen')?.querySelector('.options-card');
+  if(optionsRoot){const section=document.createElement('fieldset');section.className='v050-controller';section.innerHTML='<legend>Manette</legend><p class="v050-pad-status" data-pad-status aria-live="polite">Appuyez sur un bouton pour autoriser la détection de votre manette.</p><label><input id="v050PadEnabled" type="checkbox"> Activer la manette</label><label>Zone morte <input id="v050PadDeadZone" type="range" min="0.08" max="0.40" step="0.01"><output id="v050PadDeadZoneOut"></output></label><label>Sensibilité du regard <input id="v050PadLook" type="range" min="0.25" max="3" step="0.05"><output id="v050PadLookOut"></output></label><label><input id="v050PadInvert" type="checkbox"> Inverser le regard vertical</label><details><summary>Commandes et navigation</summary>'+controlMarkup()+'</details>';optionsRoot.insertBefore(section,optionsRoot.querySelector('footer'));
+    const sync=()=>{$('v050PadEnabled').checked=preferences.enabled;$('v050PadDeadZone').value=String(preferences.deadZone);$('v050PadLook').value=String(preferences.look);$('v050PadInvert').checked=preferences.invertY;$('v050PadDeadZoneOut').textContent=Math.round(preferences.deadZone*100)+' %';$('v050PadLookOut').textContent=preferences.look.toFixed(2)+'×';};
+    section.addEventListener('input',()=>{preferences=MistralController.options({enabled:$('v050PadEnabled').checked,deadZone:Number($('v050PadDeadZone').value),look:Number($('v050PadLook').value),invertY:$('v050PadInvert').checked});sync();if(!preferences.enabled)neutral();storePreferences();});
+    $('btnOptionsReset')?.addEventListener('click',()=>{preferences=MistralController.options();neutral();sync();storePreferences();});sync();
+  }
+  const systemBase=v027System;v027System=function(container){systemBase(container);const section=document.createElement('section');section.className='v050-controller';section.innerHTML=controlMarkup();container.appendChild(section);};
+  function focusables(){const roots={MENU:'#menuScreen',PAUSE:'#pauseScreen',OPTIONS:'#optionsScreen',CREATOR:'#creatorScreen',CREDITS:'#creditsScreen',DIALOGUE:'#dialogueChoices',PIP:'#pipboy',TRADE:'#tradeScreen',HACK:'#hackScreen',PROJECTION:'#projectionScreen',STATUS:'#v018StatusScreen',ENDING:'#endingScreen',DEAD:'#deathModal',FIELD:'#v020Panel',V035_SCREEN:'#v035Screen',TERMINAL:'#terminalLoreScreen',HOLOTAPE:'#holotapeScreen',CONSTRUCTION:'#constructionScreen',PETANQUE:'#petanqueScreen',LOCKPICK:'#lockpickScreen',LOADING:'#v046Loading'};const root=document.querySelector(roots[mode]||'.modal:not(.hidden)');if(!root)return[];return [...root.querySelectorAll('button:not([disabled]),input:not([disabled]),select:not([disabled]),summary,a[href]')].filter(el=>!el.hidden&&el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden');}
+  function focus(element){document.querySelector('.v050-pad-focus')?.classList.remove('v050-pad-focus');if(!element)return;element.classList.add('v050-pad-focus');element.focus({preventScroll:true});element.scrollIntoView({block:'nearest',inline:'nearest'});}
+  function adjust(element,sign){if(element?.tagName==='SELECT'){const choices=[...element.options].filter(o=>!o.disabled);const index=choices.indexOf(element.selectedOptions[0]);const next=choices[Math.max(0,Math.min(choices.length-1,index+sign))];if(next)element.value=next.value;}else if(element?.tagName==='INPUT'&&['range','number'].includes(element.type)){const old=Number(element.value),step=Number(element.step)||1;const min=element.min===''?-Infinity:Number(element.min),max=element.max===''?Infinity:Number(element.max);element.value=String(Math.max(min,Math.min(max,Number((old+sign*step).toFixed(6)))));}else return false;element.dispatchEvent(new Event('input',{bubbles:true}));element.dispatchEvent(new Event('change',{bubbles:true}));return true;}
+  function navigate(direction){const list=focusables();if(!list.length)return;const selected=list.includes(document.activeElement)?document.activeElement:null;const sign=['left','up'].includes(direction)?-1:1;if(['left','right'].includes(direction)&&adjust(selected,sign))return;const index=list.indexOf(selected);focus(list[index<0?(sign>0?0:list.length-1):(index+sign+list.length)%list.length]);}
+  function confirmFocus(){const list=focusables();let target=list.find(el=>el===document.activeElement);if(!target){focus(list[0]);return;}if(target.tagName==='INPUT'&&['range','number','text','search'].includes(target.type)||target.tagName==='SELECT'){target.focus();return;}target.click();}
+  function back(){if(mode==='PLAYING')toggleCrouch();else if(mode==='PIP')closePipboy();else if(mode==='VATS')closeVATS();else if(mode==='PAUSE')resumeGame();else if(mode==='OPTIONS')closeOptions();else if(mode==='CREDITS')closeCredits();else if(mode==='DIALOGUE')closeDialogue();else if(mode==='TRADE')closeTrade();else if(mode==='HACK')closeHack();else if(mode==='PROJECTION')closeProjection();else if(mode==='CREATOR')$('btnCreatorBack')?.click();else if(mode==='STATUS')($('v047CloseStatus')||$('v046CloseStatus'))?.click();else if(mode==='FIELD')v020CloseField();else if(mode==='V035_SCREEN')v035CloseScreen();else if(mode==='TERMINAL')closeLoreTerminal();else if(mode==='HOLOTAPE')closeHolotape();else if(mode==='CONSTRUCTION')closeConstruction();else if(mode==='PETANQUE')closePetanque();else if(mode==='LOCKPICK')closeLockpick();else if(mode==='LOADING')v046Cancel();else if(mode==='DEAD')$('deathMenu')?.click();}
+  function pipStep(button){const tabs=Object.keys(V027_TABS),subs=Object.keys(V027_SUBS[V027.tab]);if(button===4||button===5)v027Set(tabs[(tabs.indexOf(V027.tab)+(button===4?-1:1)+tabs.length)%tabs.length]);else v027Set(V027.tab,subs[(subs.indexOf(V027.sub)+(button===6?-1:1)+subs.length)%subs.length]);focus(null);}
+  function perform(button,origin){if(mode!==origin)return;if(button===9){if(['PLAYING','PAUSE'].includes(mode))togglePause();else back();return;}if(origin==='PLAYING'){if(!active())return;const actions={0:jump,1:toggleCrouch,2:doInteract,3:reload,4:toggleVATS,5:healPlayer,8:togglePipboy,11:toggleCamera};if(actions[button])actions[button]();else if(button===7)fireWeapon();return;}if(origin==='VATS'){if(button===0)vatsAddCurrent();else if(button===1||button===4)closeVATS();else if(button===7)executeVATS();else if(button===2)document.querySelector('#vats [data-v25="undo"]:not([disabled])')?.click();else if(button===3)document.querySelector('#vats [data-v23="vats-critical"]:not([disabled])')?.click();return;}if(origin==='PIP'&&[4,5,6,7].includes(button)){pipStep(button);return;}if(button===1||button===8&&origin==='PIP')back();else if(button===0)confirmFocus();}
+  function tick(now){let pads=[];try{pads=navigator.getGamepads?.()||[];}catch{}if(document.hidden){neutral();return;}const input=runtime.tracker.sample(pads,mode,now,preferences);runtime.input=input;
+    if(input.connected){if(runtime.lastId!==input.index){runtime.lastId=input.index;for(const node of document.querySelectorAll('[data-pad-status]'))node.textContent='Manette standard détectée · '+input.id;}if(input.pressed.length||input.navigation||input.look.some(x=>Math.abs(x)>.1))document.body.classList.add('v050-controller-input');}
+    else if(runtime.lastId!==null){runtime.lastId=null;for(const node of document.querySelectorAll('[data-pad-status]'))node.textContent='Manette déconnectée. Le clavier, la souris et le tactile restent disponibles.';}
+    const origin=mode;
+    if(active()){const sensitivity=preferences.look,fine=input.held[6]?.42:1;state.player.yaw+=input.look[0]*input.dt*2.2*sensitivity*fine;state.player.pitch=clamp(state.player.pitch+input.look[1]*input.dt*1.7*sensitivity*fine*(preferences.invertY?1:-1),-1.3,1.3);}
+    if(input.navigation&&origin!=='PLAYING'){if(origin==='VATS'){const d=input.navigation;vatsNavigate(d==='left'?-1:d==='right'?1:0,d==='up'?-1:d==='down'?1:0);}else navigate(input.navigation);}
+    for(const button of input.pressed)perform(button,origin);
+  }
+  const frameBase=frame;frame=function(now){tick(now);return frameBase(now);};
+  pollGamepad=function(){if(!active())return{x:0,y:0,lookX:0,lookY:0,sprint:false};return{x:runtime.input.move[0],y:runtime.input.move[1],lookX:runtime.input.look[0],lookY:runtime.input.look[1],sprint:!!runtime.input.held[10]};};
+  const boatBase=updateBoat;updateBoat=function(...args){if(!active())return boatBase(...args);const original=keys;keys=new Set(original);if(runtime.input.move[1]<-.1)keys.add('KeyW');if(runtime.input.move[1]>.1)keys.add('KeyS');if(runtime.input.move[0]<-.1)keys.add('KeyA');if(runtime.input.move[0]>.1)keys.add('KeyD');try{return boatBase(...args);}finally{keys=original;}};
+  const combatBase=v020TickCombat;v020TickCombat=function(...args){const mouse=V020.heldFire;V020.heldFire=mouse||active()&&runtime.input.held[7];try{return combatBase(...args);}finally{V020.heldFire=mouse;}};
+  window.addEventListener('gamepaddisconnected',neutral);window.addEventListener('blur',neutral);document.addEventListener('visibilitychange',()=>{if(document.hidden)neutral();});document.addEventListener('pointerdown',()=>document.body.classList.remove('v050-controller-input'),{passive:true});document.addEventListener('keydown',()=>document.body.classList.remove('v050-controller-input'));
+  Object.assign(window.__MISTRAL_DEBUG,{v050ControllerInfo:()=>({connected:runtime.input.connected,index:runtime.input.index,id:runtime.input.id,preferences:{...preferences},move:runtime.input.move.slice(),look:runtime.input.look.slice(),held:runtime.input.held.slice(),keyboardKeys:[...keys],mode}),v050ControllerStep:tick});
 }
 
 init();
@@ -9860,4 +10984,10 @@ v047AfterInit();
 v048AfterInit();
 v049AfterInit();
 v050AfterInit();
+if(typeof v050GeographyAfterInit==='function')v050GeographyAfterInit();
+if(typeof v050SurfacesAfterInit==='function')v050SurfacesAfterInit();
+if(typeof v050RoofAfterInit==='function')v050RoofAfterInit();
+if(typeof v050SourceStatusAfterInit==='function')v050SourceStatusAfterInit();
+if(typeof v050WastelandAfterInit==='function')v050WastelandAfterInit();
+if(typeof v050ControllerAfterInit==='function')v050ControllerAfterInit();
 })();

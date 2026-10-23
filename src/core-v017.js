@@ -971,16 +971,100 @@ function wedgeData(){return flatMesh([
   -.5,.5,-.5,.5,.5,-.5,.5,-.5,-.5, -.5,.5,-.5,.5,-.5,-.5,-.5,-.5,-.5
 ])}
 
+/* Static geographic batching preserves the complete indexed triangle stream.
+   Colors travel with each vertex so buildings with different materials share
+   buffers without palette quantization. The cache owns only GPU uploads; source
+   geometry is weakly held and a scene replacement can release every upload. */
+// BEGIN GL_STATIC_GEOMETRY_BATCHES
+class GLStaticGeometryBatches {
+  constructor(geometry, upload, dispose){
+    this.geometry=geometry;this.upload=upload;this.dispose=dispose;
+    this.entries=new Map();this.sourceData=new WeakMap();this.builds=0;
+    this.stats={groups:0,sources:0,uploads:0,builds:0,hits:0};
+  }
+  stamp(d){
+    return[d.revision||0,d.baseY,d.height,d.pos?.[1],d.rings,d.vertices,d.faces,
+      d.color?.[0],d.color?.[1],d.color?.[2]];
+  }
+  same(a,b){return a.length===b.length&&a.every((v,i)=>v===b[i]);}
+  data(d,stamp){
+    let e=this.sourceData.get(d);
+    if(!e||!this.same(e.stamp,stamp)){
+      e={stamp,data:this.geometry(d)};this.sourceData.set(d,e);
+    }
+    return e.data;
+  }
+  pack(sources,stamps){
+    const chunks=[];let out={positions:[],normals:[],colors:[],indices:[]};
+    const flush=()=>{if(out.indices.length)chunks.push(out);out={positions:[],normals:[],colors:[],indices:[]};};
+    for(let s=0;s<sources.length;s++){
+      const d=sources[s],color=d.color||[1,1,1];
+      for(const data of this.data(d,stamps[s])){
+        if(data.indices.length%3)throw new Error('Maillage statique : triangle incomplet');
+        for(let i=0;i<data.indices.length;i+=3){
+          // Stay below WebGL 1's Uint16 limit; never split a triangle.
+          if(out.positions.length/3+3>54000)flush();
+          for(let j=0;j<3;j++){
+            const index=data.indices[i+j],offset=index*3;
+            if(!Number.isInteger(index)||index<0||offset+2>=data.positions.length||offset+2>=data.normals.length)throw new Error('Maillage statique : indice invalide');
+            out.indices.push(out.positions.length/3);
+            out.positions.push(data.positions[offset],data.positions[offset+1],data.positions[offset+2]);
+            out.normals.push(data.normals[offset],data.normals[offset+1],data.normals[offset+2]);
+            out.colors.push(color[0],color[1],color[2]);
+          }
+        }
+      }
+    }
+    flush();return chunks;
+  }
+  prepare(draws,candidate){
+    const runs=[],batchRuns=new Set(),ordinals=new Map();let run=null;
+    for(const d of draws){
+      if(!candidate(d)){runs.push(d);run=null;continue;}
+      const group=JSON.stringify([d.v046Tile||'terrain',d.emissive||0]);
+      if(!run||run.group!==group){
+        const ordinal=ordinals.get(group)||0;ordinals.set(group,ordinal+1);
+        run={group,key:group+':'+ordinal,sources:[]};runs.push(run);batchRuns.add(run);
+      }
+      run.sources.push(d);
+    }
+    const active=new Set(),prepared=[];let hits=0,sources=0,uploads=0;
+    for(const item of runs){
+      if(!batchRuns.has(item)){prepared.push(item);continue;}
+      if(item.sources.length<2){prepared.push(item.sources[0]);continue;}
+      const key=item.key,stamps=item.sources.map(d=>this.stamp(d));let entry=this.entries.get(key);
+      if(entry&&entry.sources.length===item.sources.length&&entry.sources.every((d,i)=>d===item.sources[i]&&this.same(entry.stamps[i],stamps[i]))){hits++;}
+      else{
+        const meshes=[];
+        try{for(const data of this.pack(item.sources,stamps))meshes.push(this.upload(data));}
+        catch(error){for(const mesh of meshes)this.dispose(mesh);throw error;}
+        if(entry)for(const mesh of entry.meshes)this.dispose(mesh);
+        entry={sources:item.sources.slice(),stamps,meshes};this.entries.set(key,entry);this.builds++;
+      }
+      active.add(key);sources+=item.sources.length;uploads+=entry.meshes.length;
+      // Absolute geographic vertices already include their model transform.
+      // Keep a representative position for the unchanged lighting uniforms.
+      prepared.push({...item.sources[0],mesh:'staticGeoBatch',color:[0,0,0],_v018Batch:entry});
+    }
+    for(const[key,entry]of this.entries)if(!active.has(key)){
+      for(const mesh of entry.meshes)this.dispose(mesh);this.entries.delete(key);
+    }
+    this.stats={groups:active.size,sources,uploads,builds:this.builds,hits};return prepared;
+  }
+  clear(){for(const entry of this.entries.values())for(const mesh of entry.meshes)this.dispose(mesh);this.entries.clear();}
+}
+// END GL_STATIC_GEOMETRY_BATCHES
+
 class GLRenderer {
   constructor(canvas){
     this.canvas=canvas;this.gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false,preserveDrawingBuffer:true});
     if(!this.gl) throw new Error('WebGL indisponible');
     const gl=this.gl;
-    const vs=`attribute vec3 aPosition;attribute vec3 aNormal;uniform mat4 uViewProj;uniform mat4 uModel;varying vec3 vN;varying vec3 vW;void main(){vec4 w=uModel*vec4(aPosition,1.0);vW=w.xyz;vN=normalize(mat3(uModel)*aNormal);gl_Position=uViewProj*w;}`;
-    const fs=`precision mediump float;varying vec3 vN;varying vec3 vW;uniform vec3 uColor;uniform vec3 uSunDir;uniform vec3 uFogColor;uniform vec3 uCamera;uniform float uEmissive;uniform float uAlpha;void main(){float sun=max(dot(normalize(vN),normalize(uSunDir)),0.0);float hemi=vN.y*.15+.15;float light=.42+sun*.52+hemi+uEmissive;vec3 col=uColor*light;float d=distance(vW,uCamera);float fog=smoothstep(65.0,220.0,d);float noise=fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233)))*43758.5453)*.018;col+=noise;gl_FragColor=vec4(mix(col,uFogColor,fog),uAlpha);}`;
+    const vs=`attribute vec3 aPosition;attribute vec3 aNormal;attribute vec3 aColor;uniform mat4 uViewProj;uniform mat4 uModel;varying vec3 vN;varying vec3 vW;varying vec3 vColor;void main(){vec4 w=uModel*vec4(aPosition,1.0);vW=w.xyz;vColor=aColor;vN=normalize(mat3(uModel)*aNormal);gl_Position=uViewProj*w;}`;
+    const fs=`precision mediump float;varying vec3 vN;varying vec3 vW;varying vec3 vColor;uniform vec3 uColor;uniform vec3 uSunDir;uniform vec3 uFogColor;uniform vec3 uCamera;uniform float uEmissive;uniform float uAlpha;void main(){float sun=max(dot(normalize(vN),normalize(uSunDir)),0.0);float hemi=vN.y*.15+.15;float light=.42+sun*.52+hemi+uEmissive;vec3 col=(uColor+vColor)*light;float d=distance(vW,uCamera);float fog=smoothstep(65.0,220.0,d);float noise=fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233)))*43758.5453)*.018;col+=noise;gl_FragColor=vec4(mix(col,uFogColor,fog),uAlpha);}`;
     this.program=this.makeProgram(vs,fs);gl.useProgram(this.program);
     this.loc={
-      pos:gl.getAttribLocation(this.program,'aPosition'),nor:gl.getAttribLocation(this.program,'aNormal'),
+      pos:gl.getAttribLocation(this.program,'aPosition'),nor:gl.getAttribLocation(this.program,'aNormal'),vertexColor:gl.getAttribLocation(this.program,'aColor'),
       viewProj:gl.getUniformLocation(this.program,'uViewProj'),model:gl.getUniformLocation(this.program,'uModel'),color:gl.getUniformLocation(this.program,'uColor'),
       sun:gl.getUniformLocation(this.program,'uSunDir'),fog:gl.getUniformLocation(this.program,'uFogColor'),cam:gl.getUniformLocation(this.program,'uCamera'),
       emissive:gl.getUniformLocation(this.program,'uEmissive'),alpha:gl.getUniformLocation(this.program,'uAlpha')
@@ -991,7 +1075,7 @@ class GLRenderer {
   }
   shader(type,src){const gl=this.gl,s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));return s}
   makeProgram(vs,fs){const gl=this.gl,p=gl.createProgram();gl.attachShader(p,this.shader(gl.VERTEX_SHADER,vs));gl.attachShader(p,this.shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));return p}
-  createMesh(data){const gl=this.gl,m={};m.p=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.p);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.positions),gl.STATIC_DRAW);m.n=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.n);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.normals),gl.STATIC_DRAW);m.i=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.i);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(data.indices),gl.STATIC_DRAW);m.count=data.indices.length;return m}
+  createMesh(data){const gl=this.gl,m={};m.p=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.p);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.positions),gl.STATIC_DRAW);m.n=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.n);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.normals),gl.STATIC_DRAW);if(data.colors){m.c=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,m.c);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data.colors),gl.STATIC_DRAW);}m.i=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.i);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(data.indices),gl.STATIC_DRAW);m.count=data.indices.length;return m}
   resize(){const dpr=settings.quality==='high'?Math.min(devicePixelRatio,1.6):settings.quality==='medium'?Math.min(devicePixelRatio,1.1):.75;const w=Math.max(1,Math.floor(innerWidth*dpr)),h=Math.max(1,Math.floor(innerHeight*dpr));if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;this.gl.viewport(0,0,w,h)}}
   render(draws,camera,env){
     const gl=this.gl;this.resize();gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(this.program);

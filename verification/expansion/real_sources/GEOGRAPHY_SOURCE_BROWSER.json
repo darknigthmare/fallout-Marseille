@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "report": "sourceFixtures",
+  "html_sha256": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+  "scope": "Production HTML, real loopback HTTP, original map pack, isolated SYNTHETIC source fixture; not real-world acquisition evidence",
+  "passed": 16,
+  "failed": 0,
+  "total": 16,
+  "checks": [
+    {
+      "name": "Native HTTP document matches the current build",
+      "ok": true
+    },
+    {
+      "name": "Measured overlay is loaded through the production resource path",
+      "ok": true
+    },
+    {
+      "name": "Optional source index passes SHA-256 verification",
+      "ok": true
+    },
+    {
+      "name": "Source area preparation succeeds",
+      "ok": true
+    },
+    {
+      "name": "Both source objects retain their identities",
+      "ok": true
+    },
+    {
+      "name": "Source building uses measured absolute ground and minimum floor",
+      "ok": true
+    },
+    {
+      "name": "Source courtyard remains a hole in the imported footprint",
+      "ok": true
+    },
+    {
+      "name": "Pitched roof separates measured eaves from ridge",
+      "ok": true
+    },
+    {
+      "name": "Route preserves source width and explicit XYZ deck height",
+      "ok": true
+    },
+    {
+      "name": "Fine terrain samples actual source elevations",
+      "ok": true
+    },
+    {
+      "name": "Fine terrain mesh retains every native imported grid node",
+      "ok": true
+    },
+    {
+      "name": "Old land planes leave the fine relief and its NoData holes visible",
+      "ok": true
+    },
+    {
+      "name": "Measured negative elevations are not flattened to sea level",
+      "ok": true
+    },
+    {
+      "name": "A second sector loads without requesting a fictitious enrichment DEM",
+      "ok": true
+    },
+    {
+      "name": "No JavaScript exception in source-enriched navigation",
+      "ok": true
+    },
+    {
+      "name": "Production HTML unchanged throughout the fixture run",
+      "ok": true
+    }
+  ],
+  "network_mocked": false,
+  "html_injected": false,
+  "geography": {
+    "version": "0.50.0",
+    "indexPresent": true,
+    "loadedRegions": [
+      "geo_huveaune"
+    ],
+    "sourceBuildings": 1,
+    "sourceRoads": 1,
+    "coverages": [],
+    "terrainSources": [
+      {
+        "id": "geo_calanques",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          162.2576694397984,
+          97.40499999999545
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "geo_garlaban",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          103.7714372383252,
+          100.88375000000218
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "geo_huveaune",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          106.35054532825006,
+          62.61750000000237
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "enrichment:geo_huveaune",
+        "resource": "qa-source-fixture",
+        "resolutionMeters": [
+          8.102019366099087,
+          11.131999999974056
+        ],
+        "enrichment": true,
+        "verticalDatum": "NGF-IGN69 (synthetic test values, not a survey)",
+        "conversion": null
+      },
+      {
+        "id": "geo_marseille",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          113.96574560086738,
+          83.49000000000316
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "geo_etoile",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          83.46491006390673,
+          83.49000000000316
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "geo_saintebaume",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          96.18631902417567,
+          135.67124999999527
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      }
+    ],
+    "terrainCache": {
+      "entries": 1,
+      "bytes": 33330,
+      "budgetBytes": 67108864,
+      "pinned": 0,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 1,
+      "evictions": 0
+    },
+    "missingGroundBuildings": 0,
+    "sourceObjectCount": 2,
+    "sourceObjectsTruncated": false,
+    "terrainMesh": [
+      {
+        "source": "qa-source-fixture",
+        "nodeSpacingMeters": [
+          8.102019366099087,
+          11.131999999974056
+        ],
+        "vertices": 81,
+        "faces": 126,
+        "scope": "Nœuds de la grille importée dans un voisinage borné à 262144 sommets ; LOD de 32 m au-delà",
+        "colorGroups": 3,
+        "colorSampling": "Couleur au centre de chaque triangle ; anneaux et trous conservés, altitudes inchangées",
+        "colorPolygonCount": 5,
+        "colorCandidateTests": 327
+      }
+    ],
+    "errors": []
+  },
+  "terrainCacheReuse": [],
+  "syntheticSourceFixture": true
+}

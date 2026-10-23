@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "report": "units",
+  "html_sha256": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+  "scope": "Pure production geometry/physics/input/model tests and validated source tools; fixtures explicitly isolated",
+  "passed": 397,
+  "failed": 0,
+  "total": 397,
+  "suites": [
+    {
+      "suite": "source_tools",
+      "exitCode": 0,
+      "total": 100
+    },
+    {
+      "suite": "base_installers",
+      "exitCode": 0,
+      "total": 42
+    },
+    {
+      "suite": "renderer_batches.cjs",
+      "exitCode": 0,
+      "total": 33
+    },
+    {
+      "suite": "geography.test.cjs",
+      "exitCode": 0,
+      "total": 50
+    },
+    {
+      "suite": "dense_geometry.cjs",
+      "exitCode": 0,
+      "total": 8
+    },
+    {
+      "suite": "surfaces_physics.cjs",
+      "exitCode": 0,
+      "total": 38
+    },
+    {
+      "suite": "roof_solids.cjs",
+      "exitCode": 0,
+      "total": 49
+    },
+    {
+      "suite": "gameplay_wasteland.cjs",
+      "exitCode": 0,
+      "total": 45
+    },
+    {
+      "suite": "controller_model.cjs",
+      "exitCode": 0,
+      "total": 15
+    },
+    {
+      "suite": "source_status_model.cjs",
+      "exitCode": 0,
+      "total": 17
+    }
+  ]
+}

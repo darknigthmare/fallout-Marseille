@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "report": "sourceStatus",
+  "html_sha256": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+  "scope": "Actual local inventory and UI first; labelled controlled error/presentation fixtures thereafter. Service worker disabled to intercept only this diagnostic endpoint. No PWA or full-territory accuracy claim.",
+  "passed": 22,
+  "failed": 0,
+  "total": 22,
+  "checks": [
+    {
+      "name": "Live endpoint confirms the installed vector additions",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "Live inventory lists both real terrain grids",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "Visible panel distinguishes sample spacing and survey accuracy",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "Visible panel identifies local coverage instead of a whole-city claim",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "LiDAR source date and nearest resampling remain visible",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "Missing heights and missing-Z flags keep precise labels",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "Inspection/extraction are not described as a new survey",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "Opening the inventory leaves campaign storage unchanged",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "Concurrent refreshes share a single real local request",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "Unavailable server has a clear state and hides stale ready counters",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "A failed optional audit does not trap the player in a loading screen",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "Unverified source files are not presented as ready",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "Service-worker network fallback does not claim a failed file validation",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "An older server explains that this diagnostic is unavailable",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "Source names are inert text, never executable markup",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "Undeclared quality values remain unknown",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "An absent optional pack is clearly distinguished from verified additions",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "A malformed summary cannot become a successful inventory",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "Unreadable JSON has a user-facing recovery message",
+      "ok": true,
+      "scope": "controlled summary-endpoint presentation fixture"
+    },
+    {
+      "name": "Retry restores the actual verified local inventory after controlled failures",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "All summary requests remain on the local server origin",
+      "ok": true,
+      "scope": "real local server and UI"
+    },
+    {
+      "name": "No JavaScript exceptions in the source-quality panel",
+      "ok": true,
+      "scope": "real local server and UI"
+    }
+  ],
+  "realInventory": {
+    "present": true,
+    "inspectedAt": "2026-10-23T05:01:48Z",
+    "totalBuildings": 1404,
+    "totalRoads": 472,
+    "regions": [
+      {
+        "id": "geo_huveaune",
+        "source": {
+          "name": "Sources multiples documentées",
+          "date": "2026-10-23",
+          "attribution": "IGN — Géoplateforme · IGN — LiDAR HD — mission 21LHD7PQ, édition 2025-03-14",
+          "license": "Voir les licences de chaque source et objet"
+        },
+        "buildings": 1404,
+        "roads": 472,
+        "withoutHeight": 13,
+        "unknownZ": 62,
+        "coverage": [
+          {
+            "bbox": [
+              43.293,
+              5.565,
+              43.3,
+              5.576
+            ],
+            "layer": "BDTOPO_V3:batiment",
+            "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+            "date": "2026-10-23"
+          },
+          {
+            "bbox": [
+              43.293,
+              5.565,
+              43.3,
+              5.576
+            ],
+            "layer": "BDTOPO_V3:troncon_de_route",
+            "source": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+            "date": "2026-10-23"
+          }
+        ],
+        "terrain": [
+          {
+            "id": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+            "width": 447,
+            "height": 391,
+            "bbox": [
+              43.293,
+              5.565,
+              43.3,
+              5.576
+            ],
+            "validSamples": 174777,
+            "noDataSamples": 0,
+            "source": "IGN RGE ALTI — points échantillonnés",
+            "sourceResource": "ign_rge_alti_wld",
+            "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+            "date": "2026-10-23",
+            "attribution": "IGN — Géoplateforme",
+            "spacing": {
+              "meters": [
+                1.9982591836363173,
+                1.9980512820506815
+              ],
+              "derived": false
+            },
+            "conversion": null
+          },
+          {
+            "id": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+            "width": 326,
+            "height": 446,
+            "bbox": [
+              43.2956,
+              5.5698,
+              43.2976,
+              5.5718
+            ],
+            "validSamples": 145396,
+            "noDataSamples": 0,
+            "source": "IGN LiDAR HD MNT — mission 21LHD7PQ",
+            "sourceResource": "ign_lidar_hd_mnt",
+            "verticalDatum": "NGF-IGN69",
+            "date": "2021-06-26",
+            "attribution": "IGN — LiDAR HD — mission 21LHD7PQ, édition 2025-03-14",
+            "spacing": {
+              "meters": [
+                0.4985858071445592,
+                0.5003146067421845
+              ],
+              "derived": false
+            },
+            "conversion": {
+              "resampled": true,
+              "resampling": "nearest",
+              "format": "GeoTIFF",
+              "crs": "EPSG:2154",
+              "nativePixelSize": [
+                0.5,
+                0.5
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "controlledPresentationCases": true,
+  "serviceWorkerDisabledForInterception": true
+}

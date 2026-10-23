@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "report": "gameplay",
+  "html_sha256": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+  "scope": "Field-life UI contracts in real Chromium with installed map data.\n\nThe private document adapter prepares a funded character, places the camera on\nmeasured clear ground, freezes simulation and introduces a named aid recipient.\nMap/terrain HTTP, the production buttons, costs, guards, migrations and browser\nstorage are real. This is an assisted contract test, not an unmodified playthrough.\n",
+  "passed": 19,
+  "failed": 0,
+  "total": 19,
+  "checks": [
+    {
+      "name": "Funded test character loads installed real geography",
+      "ok": true
+    },
+    {
+      "name": "Camp footprint is found on production measured terrain",
+      "ok": true
+    },
+    {
+      "name": "Real pack supplies active geographic vectors",
+      "ok": true
+    },
+    {
+      "name": "Player-visible BIVOUAC tab and deployment button are present",
+      "ok": true
+    },
+    {
+      "name": "Deployment UI spends exact finite materials and persists camp",
+      "ok": true
+    },
+    {
+      "name": "Camp creates actual rendered props and a physical service interaction",
+      "ok": true
+    },
+    {
+      "name": "Production cooking UI pays recipe cost and produces two rations",
+      "ok": true
+    },
+    {
+      "name": "Rejected browser save rolls back rest clock, health and supplies",
+      "ok": true
+    },
+    {
+      "name": "Rest UI advances exactly one hour and spends one water",
+      "ok": true
+    },
+    {
+      "name": "Rest reduces fatigue while leaving radiation intact",
+      "ok": true
+    },
+    {
+      "name": "Packing UI retains owned kit and removes deployed camp",
+      "ok": true
+    },
+    {
+      "name": "Existing kit redeploys without creating or refunding resources",
+      "ok": true
+    },
+    {
+      "name": "ENTRAIDE exposes an enabled delivery only near the fixture recipient",
+      "ok": true
+    },
+    {
+      "name": "Delivery UI spends exact supplies and saves a finite receipt",
+      "ok": true
+    },
+    {
+      "name": "Received delivery becomes disabled and pays its reward once",
+      "ok": true
+    },
+    {
+      "name": "Real Continue and migration restore camp, kit and delivery ledger",
+      "ok": true
+    },
+    {
+      "name": "Restored camp remains physically available in its saved geographic scene",
+      "ok": true
+    },
+    {
+      "name": "No JavaScript exception in the assisted gameplay contracts",
+      "ok": true
+    },
+    {
+      "name": "Coordinated source HTML remains unchanged during the run",
+      "ok": true
+    }
+  ],
+  "storage_mocked": false,
+  "instrumented_document": true,
+  "map_http_mocked": false
+}

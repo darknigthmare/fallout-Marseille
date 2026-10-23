@@ -1,0 +1,80 @@
+/* Standard Gamepad API. The sampler is pure; game input never overwrites the
+   keyboard/touch collections. Browser/OS confirmation and text entry remain native. */
+const MistralController=(()=>{
+  const finite=(n,f=0)=>typeof n==='number'&&Number.isFinite(n)?n:f;
+  const limit=(n,a,b)=>Math.max(a,Math.min(b,n));
+  function options(raw={}){if(!raw||typeof raw!=='object')raw={};return{enabled:raw.enabled!==false,deadZone:limit(finite(raw.deadZone,.18),.08,.4),look:limit(finite(raw.look,1),.25,3),invertY:raw.invertY===true};}
+  function stick(x,y,deadZone=.18){x=limit(finite(x),-1,1);y=limit(finite(y),-1,1);const length=Math.hypot(x,y);if(length<=deadZone)return[0,0];const strength=Math.pow(limit((length-deadZone)/(1-deadZone),0,1),1.25);return[x/length*strength,y/length*strength];}
+  function button(raw,previous=false){const value=limit(finite(raw?.value,raw?.pressed?1:0),0,1);return raw?.pressed===true||value>=(previous?.35:.55);}
+  function choose(pads,index=null){const all=Array.from(pads||[]).filter(p=>p&&p.connected!==false&&p.mapping==='standard');return all.find(p=>p.index===index)||all[0]||null;}
+  const empty=()=>({connected:false,index:null,id:'',move:[0,0],look:[0,0],held:Array(17).fill(false),pressed:[],navigation:null,dt:0});
+  class Tracker{
+    constructor(){this.reset();}
+    reset(){this.index=null;this.id=null;this.context=null;this.previous=Array(17).fill(false);this.blocked=new Set();this.direction=null;this.repeatAt=0;this.navigationBlocked=false;this.lastTime=null;}
+    sample(pads,context,now,settings={}){
+      const o=options(settings),g=o.enabled?choose(pads,this.index):null;
+      if(!g){this.reset();return empty();}
+      now=finite(now);const dt=this.lastTime===null?0:limit((now-this.lastTime)/1000,0,.05);this.lastTime=now;
+      const changed=this.index!==g.index||this.id!==g.id||this.context!==context;
+      const down=Array.from({length:17},(_,i)=>button(g.buttons?.[i],this.previous[i]));
+      const move=stick(g.axes?.[0],g.axes?.[1],o.deadZone),look=stick(g.axes?.[2],g.axes?.[3],o.deadZone);
+      let dx=down[14]?-1:down[15]?1:Math.abs(move[0])>.5?Math.sign(move[0]):0;
+      let dy=down[12]?-1:down[13]?1:Math.abs(move[1])>.5?Math.sign(move[1]):0;
+      if(dx&&dy){if(Math.abs(move[0])>Math.abs(move[1]))dy=0;else dx=0;}
+      const direction=dx?(dx<0?'left':'right'):dy?(dy<0?'up':'down'):null;
+      if(changed){this.blocked=new Set(down.flatMap((v,i)=>v?[i]:[]));this.direction=null;this.repeatAt=0;this.navigationBlocked=!!direction;}
+      for(const i of this.blocked)if(!down[i])this.blocked.delete(i);
+      const held=down.map((v,i)=>v&&!this.blocked.has(i));
+      const pressed=held.flatMap((v,i)=>v&&!this.previous[i]?[i]:[]);
+      if(!direction)this.navigationBlocked=false;
+      let navigation=null;
+      if(!this.navigationBlocked&&direction){if(this.direction!==direction){navigation=direction;this.repeatAt=now+360;}else if(now>=this.repeatAt){navigation=direction;this.repeatAt=now+130;}}
+      this.direction=direction;this.index=g.index;this.id=g.id;this.context=context;this.previous=down;
+      return{connected:true,index:g.index,id:String(g.id||'Manette standard').slice(0,120),move,look,held,pressed,navigation,dt};
+    }
+  }
+  return{options,stick,button,choose,Tracker,empty};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralController;
+
+function v050ControllerAfterInit(){
+  if(typeof window==='undefined'||window.__mistralControllerInstalled)return;
+  window.__mistralControllerInstalled=true;
+  const preferenceKey='mistral_controller_v1';let preferences=MistralController.options();
+  try{preferences=MistralController.options(JSON.parse(localStorage.getItem(preferenceKey)||'{}'));}catch{}
+  const runtime={tracker:new MistralController.Tracker(),input:MistralController.empty(),lastMode:null,lastId:null,installed:true};
+  const neutral=()=>{runtime.tracker.reset();runtime.input=MistralController.empty();runtime.lastMode=null;};
+  const active=()=>preferences.enabled&&!document.hidden&&mode==='PLAYING'&&runtime.tracker.context==='PLAYING'&&gameStarted&&!zoneTransitioning&&state.player.hp>0;
+  function storePreferences(){try{localStorage.setItem(preferenceKey,JSON.stringify(preferences));return true;}catch{return false;}}
+  function controlMarkup(){return '<h3>MANETTE STANDARD</h3><p>Stick gauche : marcher · L3 : courir · stick droit : regarder · LT : visée fine · RT : tirer.</p><p>A : sauter · B : s’accroupir · X : interagir · Y : recharger · LB : V.A.T.S. · RB : soin · R3 : caméra · Affichage/Select : Pip-Boy · Menu/Start : pause.</p><p>Menus : croix ou stick gauche pour déplacer le focus, A pour valider, B pour revenir. Gauche/droite règlent les curseurs et listes. Pip-Boy : LB/RB changent de mode, LT/RT de rubrique. V.A.T.S. : croix pour cible/membre, A réserve, X retire, Y réserve un critique, RT exécute, B annule.</p><p>La saisie d’un nom et les confirmations du navigateur utilisent les commandes du navigateur. Un bouton maintenu à la connexion ou au changement d’écran doit être relâché avant de déclencher une action.</p>';}
+  const style=document.createElement('style');style.textContent='.v050-controller{border:1px solid #779566;padding:14px;margin:18px 0;color:inherit}.v050-controller p{font-size:12px;line-height:1.6}.v050-controller label{display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap}.v050-controller input[type=range]{max-width:230px}body.v050-controller-input :focus-visible,body.v050-controller-input .v050-pad-focus{outline:3px solid #f4d98b!important;outline-offset:3px!important}.v050-pad-status{font-size:12px}';document.head.appendChild(style);
+  const optionsRoot=$('optionsScreen')?.querySelector('.options-card');
+  if(optionsRoot){const section=document.createElement('fieldset');section.className='v050-controller';section.innerHTML='<legend>Manette</legend><p class="v050-pad-status" data-pad-status aria-live="polite">Appuyez sur un bouton pour autoriser la détection de votre manette.</p><label><input id="v050PadEnabled" type="checkbox"> Activer la manette</label><label>Zone morte <input id="v050PadDeadZone" type="range" min="0.08" max="0.40" step="0.01"><output id="v050PadDeadZoneOut"></output></label><label>Sensibilité du regard <input id="v050PadLook" type="range" min="0.25" max="3" step="0.05"><output id="v050PadLookOut"></output></label><label><input id="v050PadInvert" type="checkbox"> Inverser le regard vertical</label><details><summary>Commandes et navigation</summary>'+controlMarkup()+'</details>';optionsRoot.insertBefore(section,optionsRoot.querySelector('footer'));
+    const sync=()=>{$('v050PadEnabled').checked=preferences.enabled;$('v050PadDeadZone').value=String(preferences.deadZone);$('v050PadLook').value=String(preferences.look);$('v050PadInvert').checked=preferences.invertY;$('v050PadDeadZoneOut').textContent=Math.round(preferences.deadZone*100)+' %';$('v050PadLookOut').textContent=preferences.look.toFixed(2)+'×';};
+    section.addEventListener('input',()=>{preferences=MistralController.options({enabled:$('v050PadEnabled').checked,deadZone:Number($('v050PadDeadZone').value),look:Number($('v050PadLook').value),invertY:$('v050PadInvert').checked});sync();if(!preferences.enabled)neutral();storePreferences();});
+    $('btnOptionsReset')?.addEventListener('click',()=>{preferences=MistralController.options();neutral();sync();storePreferences();});sync();
+  }
+  const systemBase=v027System;v027System=function(container){systemBase(container);const section=document.createElement('section');section.className='v050-controller';section.innerHTML=controlMarkup();container.appendChild(section);};
+  function focusables(){const roots={MENU:'#menuScreen',PAUSE:'#pauseScreen',OPTIONS:'#optionsScreen',CREATOR:'#creatorScreen',CREDITS:'#creditsScreen',DIALOGUE:'#dialogueChoices',PIP:'#pipboy',TRADE:'#tradeScreen',HACK:'#hackScreen',PROJECTION:'#projectionScreen',STATUS:'#v018StatusScreen',ENDING:'#endingScreen',DEAD:'#deathModal',FIELD:'#v020Panel',V035_SCREEN:'#v035Screen',TERMINAL:'#terminalLoreScreen',HOLOTAPE:'#holotapeScreen',CONSTRUCTION:'#constructionScreen',PETANQUE:'#petanqueScreen',LOCKPICK:'#lockpickScreen',LOADING:'#v046Loading'};const root=document.querySelector(roots[mode]||'.modal:not(.hidden)');if(!root)return[];return [...root.querySelectorAll('button:not([disabled]),input:not([disabled]),select:not([disabled]),summary,a[href]')].filter(el=>!el.hidden&&el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden');}
+  function focus(element){document.querySelector('.v050-pad-focus')?.classList.remove('v050-pad-focus');if(!element)return;element.classList.add('v050-pad-focus');element.focus({preventScroll:true});element.scrollIntoView({block:'nearest',inline:'nearest'});}
+  function adjust(element,sign){if(element?.tagName==='SELECT'){const choices=[...element.options].filter(o=>!o.disabled);const index=choices.indexOf(element.selectedOptions[0]);const next=choices[Math.max(0,Math.min(choices.length-1,index+sign))];if(next)element.value=next.value;}else if(element?.tagName==='INPUT'&&['range','number'].includes(element.type)){const old=Number(element.value),step=Number(element.step)||1;const min=element.min===''?-Infinity:Number(element.min),max=element.max===''?Infinity:Number(element.max);element.value=String(Math.max(min,Math.min(max,Number((old+sign*step).toFixed(6)))));}else return false;element.dispatchEvent(new Event('input',{bubbles:true}));element.dispatchEvent(new Event('change',{bubbles:true}));return true;}
+  function navigate(direction){const list=focusables();if(!list.length)return;const selected=list.includes(document.activeElement)?document.activeElement:null;const sign=['left','up'].includes(direction)?-1:1;if(['left','right'].includes(direction)&&adjust(selected,sign))return;const index=list.indexOf(selected);focus(list[index<0?(sign>0?0:list.length-1):(index+sign+list.length)%list.length]);}
+  function confirmFocus(){const list=focusables();let target=list.find(el=>el===document.activeElement);if(!target){focus(list[0]);return;}if(target.tagName==='INPUT'&&['range','number','text','search'].includes(target.type)||target.tagName==='SELECT'){target.focus();return;}target.click();}
+  function back(){if(mode==='PLAYING')toggleCrouch();else if(mode==='PIP')closePipboy();else if(mode==='VATS')closeVATS();else if(mode==='PAUSE')resumeGame();else if(mode==='OPTIONS')closeOptions();else if(mode==='CREDITS')closeCredits();else if(mode==='DIALOGUE')closeDialogue();else if(mode==='TRADE')closeTrade();else if(mode==='HACK')closeHack();else if(mode==='PROJECTION')closeProjection();else if(mode==='CREATOR')$('btnCreatorBack')?.click();else if(mode==='STATUS')($('v047CloseStatus')||$('v046CloseStatus'))?.click();else if(mode==='FIELD')v020CloseField();else if(mode==='V035_SCREEN')v035CloseScreen();else if(mode==='TERMINAL')closeLoreTerminal();else if(mode==='HOLOTAPE')closeHolotape();else if(mode==='CONSTRUCTION')closeConstruction();else if(mode==='PETANQUE')closePetanque();else if(mode==='LOCKPICK')closeLockpick();else if(mode==='LOADING')v046Cancel();else if(mode==='DEAD')$('deathMenu')?.click();}
+  function pipStep(button){const tabs=Object.keys(V027_TABS),subs=Object.keys(V027_SUBS[V027.tab]);if(button===4||button===5)v027Set(tabs[(tabs.indexOf(V027.tab)+(button===4?-1:1)+tabs.length)%tabs.length]);else v027Set(V027.tab,subs[(subs.indexOf(V027.sub)+(button===6?-1:1)+subs.length)%subs.length]);focus(null);}
+  function perform(button,origin){if(mode!==origin)return;if(button===9){if(['PLAYING','PAUSE'].includes(mode))togglePause();else back();return;}if(origin==='PLAYING'){if(!active())return;const actions={0:jump,1:toggleCrouch,2:doInteract,3:reload,4:toggleVATS,5:healPlayer,8:togglePipboy,11:toggleCamera};if(actions[button])actions[button]();else if(button===7)fireWeapon();return;}if(origin==='VATS'){if(button===0)vatsAddCurrent();else if(button===1||button===4)closeVATS();else if(button===7)executeVATS();else if(button===2)document.querySelector('#vats [data-v25="undo"]:not([disabled])')?.click();else if(button===3)document.querySelector('#vats [data-v23="vats-critical"]:not([disabled])')?.click();return;}if(origin==='PIP'&&[4,5,6,7].includes(button)){pipStep(button);return;}if(button===1||button===8&&origin==='PIP')back();else if(button===0)confirmFocus();}
+  function tick(now){let pads=[];try{pads=navigator.getGamepads?.()||[];}catch{}if(document.hidden){neutral();return;}const input=runtime.tracker.sample(pads,mode,now,preferences);runtime.input=input;
+    if(input.connected){if(runtime.lastId!==input.index){runtime.lastId=input.index;for(const node of document.querySelectorAll('[data-pad-status]'))node.textContent='Manette standard détectée · '+input.id;}if(input.pressed.length||input.navigation||input.look.some(x=>Math.abs(x)>.1))document.body.classList.add('v050-controller-input');}
+    else if(runtime.lastId!==null){runtime.lastId=null;for(const node of document.querySelectorAll('[data-pad-status]'))node.textContent='Manette déconnectée. Le clavier, la souris et le tactile restent disponibles.';}
+    const origin=mode;
+    if(active()){const sensitivity=preferences.look,fine=input.held[6]?.42:1;state.player.yaw+=input.look[0]*input.dt*2.2*sensitivity*fine;state.player.pitch=clamp(state.player.pitch+input.look[1]*input.dt*1.7*sensitivity*fine*(preferences.invertY?1:-1),-1.3,1.3);}
+    if(input.navigation&&origin!=='PLAYING'){if(origin==='VATS'){const d=input.navigation;vatsNavigate(d==='left'?-1:d==='right'?1:0,d==='up'?-1:d==='down'?1:0);}else navigate(input.navigation);}
+    for(const button of input.pressed)perform(button,origin);
+  }
+  const frameBase=frame;frame=function(now){tick(now);return frameBase(now);};
+  pollGamepad=function(){if(!active())return{x:0,y:0,lookX:0,lookY:0,sprint:false};return{x:runtime.input.move[0],y:runtime.input.move[1],lookX:runtime.input.look[0],lookY:runtime.input.look[1],sprint:!!runtime.input.held[10]};};
+  const boatBase=updateBoat;updateBoat=function(...args){if(!active())return boatBase(...args);const original=keys;keys=new Set(original);if(runtime.input.move[1]<-.1)keys.add('KeyW');if(runtime.input.move[1]>.1)keys.add('KeyS');if(runtime.input.move[0]<-.1)keys.add('KeyA');if(runtime.input.move[0]>.1)keys.add('KeyD');try{return boatBase(...args);}finally{keys=original;}};
+  const combatBase=v020TickCombat;v020TickCombat=function(...args){const mouse=V020.heldFire;V020.heldFire=mouse||active()&&runtime.input.held[7];try{return combatBase(...args);}finally{V020.heldFire=mouse;}};
+  window.addEventListener('gamepaddisconnected',neutral);window.addEventListener('blur',neutral);document.addEventListener('visibilitychange',()=>{if(document.hidden)neutral();});document.addEventListener('pointerdown',()=>document.body.classList.remove('v050-controller-input'),{passive:true});document.addEventListener('keydown',()=>document.body.classList.remove('v050-controller-input'));
+  Object.assign(window.__MISTRAL_DEBUG,{v050ControllerInfo:()=>({connected:runtime.input.connected,index:runtime.input.index,id:runtime.input.id,preferences:{...preferences},move:runtime.input.move.slice(),look:runtime.input.look.slice(),held:runtime.input.held.slice(),keyboardKeys:[...keys],mode}),v050ControllerStep:tick});
+}

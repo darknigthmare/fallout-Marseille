@@ -17,4 +17,20 @@ const v046LayerOld=v042UpdateLayer;v042UpdateLayer=function(dt){if(!world?.v046)
 };
 /* Source coverage is always retained beyond the visible distance. Cull custom
    geometry by its extents, never just the centre of a large road/forest. */
-const v046CollectOld=collectDraws;collectDraws=function(t){const ds=v046CollectOld(t);if(!world?.v046)return ds;const[x,,z]=state.player.pos;return ds.filter(d=>{if(!d.v046Tile&&!d.v046Nature&&!d.v046Terrain)return true;let b=d.v046Bounds;if(!b){const pts=d.vertices?.map(p=>[p[0],p[2]])||d.rings?.flat()||d.roadPath;if(pts?.length){b=d.v046Bounds={minX:Math.min(...pts.map(p=>p[0])),maxX:Math.max(...pts.map(p=>p[0])),minZ:Math.min(...pts.map(p=>p[1])),maxZ:Math.max(...pts.map(p=>p[1]))};}else b=d.v046Bounds={minX:d.pos[0]-10,maxX:d.pos[0]+10,minZ:d.pos[2]-10,maxZ:d.pos[2]+10};}return Math.hypot(x-Math.max(b.minX,Math.min(b.maxX,x)),z-Math.max(b.minZ,Math.min(b.maxZ,z)))<720;});};
+/* Native-resolution terrain can contain more vertices than JavaScript permits
+   function arguments. Visit coordinates directly; never spread a mesh into
+   Math.min/max or allocate a second full array just to calculate its bounds. */
+function v046DrawBounds(draw){
+ let minX=Infinity,maxX=-Infinity,minZ=Infinity,maxZ=-Infinity;
+ function point(p,zIndex){
+  const x=p?.[0],z=p?.[zIndex];if(!Number.isFinite(x)||!Number.isFinite(z))return;
+  if(x<minX)minX=x;if(x>maxX)maxX=x;if(z<minZ)minZ=z;if(z>maxZ)maxZ=z;
+ }
+ if(draw.vertices){for(const p of draw.vertices)point(p,2);}
+ else if(draw.rings){for(const ring of draw.rings)for(const p of ring)point(p,1);}
+ else if(draw.roadPath){for(const p of draw.roadPath)point(p,1);}
+ if(minX!==Infinity)return{minX,maxX,minZ,maxZ};
+ const x=Number.isFinite(draw.pos?.[0])?draw.pos[0]:0,z=Number.isFinite(draw.pos?.[2])?draw.pos[2]:0;
+ return{minX:x-10,maxX:x+10,minZ:z-10,maxZ:z+10};
+}
+const v046CollectOld=collectDraws;collectDraws=function(t){const ds=v046CollectOld(t);if(!world?.v046)return ds;const[x,,z]=state.player.pos;return ds.filter(d=>{if(!d.v046Tile&&!d.v046Nature&&!d.v046Terrain)return true;const b=d.v046Bounds||(d.v046Bounds=v046DrawBounds(d));return Math.hypot(x-Math.max(b.minX,Math.min(b.maxX,x)),z-Math.max(b.minZ,Math.min(b.maxZ,z)))<720;});};

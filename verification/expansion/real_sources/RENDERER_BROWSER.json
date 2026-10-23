@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "report": "renderer",
+  "html_sha256": null,
+  "completeHtmlValidated": false,
+  "scope": "Isolated native-WebGL component harness with declared geometry and pixel comparisons; no complete-HTML hash is established.",
+  "originalScope": null,
+  "passed": 18,
+  "failed": 0,
+  "total": 18,
+  "checks": [
+    {
+      "name": "native_shader_and_draw_without_exception",
+      "ok": true
+    },
+    {
+      "name": "real_pixels_rendered",
+      "ok": true
+    },
+    {
+      "name": "same_geometry_coverage",
+      "ok": true
+    },
+    {
+      "name": "same_materials_with_one_byte_rounding_tolerance",
+      "ok": true
+    },
+    {
+      "name": "three_sources_one_draw",
+      "ok": true
+    },
+    {
+      "name": "same_triangle_count",
+      "ok": true
+    },
+    {
+      "name": "frame_reuses_native_uploads",
+      "ok": true
+    },
+    {
+      "name": "native_buffers_released",
+      "ok": true
+    },
+    {
+      "name": "no_webgl_error",
+      "ok": true
+    },
+    {
+      "name": "shared_fine_terrain_vertices_and_source_faces_unchanged",
+      "ok": true
+    },
+    {
+      "name": "fine_terrain_real_pixels_rendered",
+      "ok": true
+    },
+    {
+      "name": "fine_terrain_two_materials_one_draw",
+      "ok": true
+    },
+    {
+      "name": "fine_terrain_source_triangle_count",
+      "ok": true
+    },
+    {
+      "name": "fine_terrain_identical_coverage_and_materials",
+      "ok": true
+    },
+    {
+      "name": "fine_terrain_nodata_sample_never_referenced",
+      "ok": true
+    },
+    {
+      "name": "fine_terrain_visible_nodata_hole_preserved",
+      "ok": true
+    },
+    {
+      "name": "fine_terrain_republication_restores_exact_pixels",
+      "ok": true
+    },
+    {
+      "name": "fine_terrain_no_webgl_error",
+      "ok": true
+    }
+  ],
+  "measurements": {
+    "individual": {
+      "backend": "WebGL",
+      "customMeshes": 3,
+      "triangles": 72,
+      "bufferGroups": 3,
+      "drawCalls": 3,
+      "batchedMeshes": 0,
+      "batchGroups": 0,
+      "batchBuilds": 0
+    },
+    "batched": {
+      "backend": "WebGL",
+      "customMeshes": 3,
+      "triangles": 72,
+      "bufferGroups": 1,
+      "drawCalls": 1,
+      "batchedMeshes": 3,
+      "batchGroups": 1,
+      "batchBuilds": 1
+    },
+    "cached": {
+      "backend": "WebGL",
+      "customMeshes": 3,
+      "triangles": 72,
+      "bufferGroups": 1,
+      "drawCalls": 1,
+      "batchedMeshes": 3,
+      "batchGroups": 1,
+      "batchBuilds": 1
+    },
+    "cleared": {
+      "backend": "WebGL",
+      "customMeshes": 0,
+      "triangles": 0,
+      "bufferGroups": 0,
+      "drawCalls": 0,
+      "batchedMeshes": 0,
+      "batchGroups": 0,
+      "batchBuilds": 1
+    },
+    "nonempty": 19801,
+    "alphaChanges": 0,
+    "maxColorDelta": 0,
+    "changedColorChannels": 0,
+    "glError": 0,
+    "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "terrain": {
+      "individual": {
+        "backend": "WebGL",
+        "customMeshes": 2,
+        "triangles": 122,
+        "bufferGroups": 2,
+        "drawCalls": 2,
+        "batchedMeshes": 0,
+        "batchGroups": 0,
+        "batchBuilds": 0
+      },
+      "batched": {
+        "backend": "WebGL",
+        "customMeshes": 2,
+        "triangles": 122,
+        "bufferGroups": 1,
+        "drawCalls": 1,
+        "batchedMeshes": 2,
+        "batchGroups": 1,
+        "batchBuilds": 1
+      },
+      "nonempty": 54654,
+      "alphaChanges": 0,
+      "maxColorDelta": 1,
+      "changedColorChannels": 2,
+      "holePixel": [
+        320,
+        240
+      ],
+      "holeAlpha": 0,
+      "filledHoleAlpha": 255,
+      "extraCoverage": 2527,
+      "restoredChanges": 0,
+      "sourceUnchanged": true,
+      "sharedVertices": true,
+      "noDataReferenced": false,
+      "glError": 0
+    }
+  }
+}

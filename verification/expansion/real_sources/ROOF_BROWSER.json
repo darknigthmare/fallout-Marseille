@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "report": "roofs",
+  "html_sha256": null,
+  "completeHtmlValidated": false,
+  "scope": "Isolated source-roof construction, collision and movement fixtures in Chromium; no complete-HTML hash is established.",
+  "originalScope": "Native Chromium executes production roof construction, tessellation, ray/LOS, body collision and player integrator against declared source fixtures.",
+  "passed": 14,
+  "failed": 0,
+  "total": 14,
+  "checks": [
+    {
+      "name": "explicit_source_attached",
+      "ok": true
+    },
+    {
+      "name": "empty_air_ray",
+      "ok": true
+    },
+    {
+      "name": "actual_roof_ray",
+      "ok": true
+    },
+    {
+      "name": "solid_wall_ray",
+      "ok": true
+    },
+    {
+      "name": "projectile_path_clear",
+      "ok": true
+    },
+    {
+      "name": "los_above_pitch_clear",
+      "ok": true
+    },
+    {
+      "name": "empty_air_body",
+      "ok": true
+    },
+    {
+      "name": "wall_body",
+      "ok": true
+    },
+    {
+      "name": "walk_source_roof",
+      "ok": true
+    },
+    {
+      "name": "fall_lands_on_source_roof",
+      "ok": true
+    },
+    {
+      "name": "source_base_stops_upward_head",
+      "ok": true
+    },
+    {
+      "name": "courtyard_has_no_roof",
+      "ok": true
+    },
+    {
+      "name": "unknown_shape_keeps_envelope",
+      "ok": true
+    },
+    {
+      "name": "ground_cannot_teleport_onto_roof",
+      "ok": true
+    }
+  ]
+}

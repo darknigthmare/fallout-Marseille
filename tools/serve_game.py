@@ -6,6 +6,7 @@ from threading import Lock
 import argparse, json, time, webbrowser
 from validate_real_map_v046 import audit
 from prepare_local_pack_v050 import prepare_if_bundled
+from world_source_bundle import prepare_if_bundled as prepare_world_sources, audit_details as source_audit
 ROOT = Path(__file__).resolve().parents[1]
 class GameHandler(SimpleHTTPRequestHandler):
     _audit_lock = Lock()
@@ -14,7 +15,16 @@ class GameHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
     def do_GET(self):
-        if self.path.split('?', 1)[0] != '/__mistral/local-data':
+        route = self.path.split('?', 1)[0]
+        if route == '/__mistral/world-sources':
+            try:
+                data = source_audit(ROOT / 'data/map_pack/enrichment')
+                data.update(inspectedAt=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), scope='Fichiers locaux vérifiés ; aucun téléchargement. Espacement des échantillons distinct de la précision du relevé.')
+                self.send_json(200, data)
+            except (OSError, ValueError, KeyError):
+                self.send_json(503, {'ok': False, 'error': 'Les sources locales ne passent pas la vérification.'})
+            return
+        if route != '/__mistral/local-data':
             return super().do_GET()
         try:
             with type(self)._audit_lock:
@@ -32,6 +42,14 @@ class GameHandler(SimpleHTTPRequestHandler):
             self.wfile.write(payload)
         except (OSError, ValueError, KeyError) as e:
             self.send_error(503, 'Local audit unavailable')
+    def send_json(self, status, data):
+        payload = json.dumps(data, ensure_ascii=False).encode('utf-8')
+        self.send_response(status)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Cache-Control', 'no-store')
+        self.send_header('Content-Length', str(len(payload)))
+        self.end_headers()
+        self.wfile.write(payload)
     def end_headers(self):
         self.send_header('X-Content-Type-Options', 'nosniff')
         super().end_headers()
@@ -45,6 +63,7 @@ def main():
         parser.error('Le port doit être compris entre 1 et 65535.')
     if not args.no_prepare:
         prepare_if_bundled(ROOT)
+        prepare_world_sources(ROOT)
     url = f'http://127.0.0.1:{args.port}/index.html'
     print('Application locale v0.50 :', url, flush=True)
     try:

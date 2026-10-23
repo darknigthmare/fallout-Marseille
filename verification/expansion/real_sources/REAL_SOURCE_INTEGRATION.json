@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23T05:04:35.651239+00:00",
+  "html_sha256": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+  "scope": "Final compiled game and verified installed IGN extracts. Results remain separated by native traversal, assisted integration, isolated fixtures and component harnesses; counts do not represent equivalent playthroughs.",
+  "status": "all required reports passed and match the final HTML where that comparison is applicable",
+  "completeGameOrOneToOneWorldClaimed": false,
+  "fullBuildReports": {
+    "units": {
+      "passed": 397,
+      "failed": 0,
+      "total": 397,
+      "report": "UNITS.json",
+      "scope": "Pure production geometry/physics/input/model tests and validated source tools; fixtures explicitly isolated"
+    },
+    "legacy": {
+      "passed": 434,
+      "failed": 0,
+      "total": 434,
+      "report": "QA_LEGACY.json",
+      "scope": "Contrats hérités exécutés sur le programme actuel. Bancs synthétiques et réseau contrôlé ; voir NATIVE_REAL_MAP.json pour les parcours HTTP réels."
+    },
+    "native": {
+      "passed": 84,
+      "failed": 0,
+      "total": 84,
+      "report": "NATIVE_REAL_MAP.json",
+      "scope": "Real HTTP + native Chromium + installed geographic data"
+    },
+    "realSources": {
+      "passed": 26,
+      "failed": 0,
+      "total": 26,
+      "report": "GEOGRAPHY_REAL_SOURCES.json",
+      "scope": "Installed REAL official IGN source files, current production HTML, native Chromium, loopback HTTP; diagnostic scene/camera selection"
+    },
+    "sourceFixtures": {
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "report": "GEOGRAPHY_SOURCE_BROWSER.json",
+      "scope": "Production HTML, real loopback HTTP, original map pack, isolated SYNTHETIC source fixture; not real-world acquisition evidence"
+    },
+    "gameplay": {
+      "passed": 19,
+      "failed": 0,
+      "total": 19,
+      "report": "GAMEPLAY_UI.json",
+      "scope": "Field-life UI contracts in real Chromium with installed map data.\n\nThe private document adapter prepares a funded character, places the camera on\nmeasured clear ground, freezes simulation and introduces a named aid recipient.\nMap/terrain HTTP, the production buttons, costs, guards, migrations and browser\nstorage are real. This is an assisted contract test, not an unmodified playthrough.\n"
+    },
+    "controller": {
+      "passed": 33,
+      "failed": 0,
+      "total": 33,
+      "report": "CONTROLLER_BROWSER.json",
+      "scope": "Actual game + Chromium DOM and keyboard/storage; navigator.getGamepads explicitly simulated, no physical device validation"
+    },
+    "sourceStatus": {
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "report": "SOURCE_STATUS_BROWSER.json",
+      "scope": "Actual local inventory and UI first; labelled controlled error/presentation fixtures thereafter. Service worker disabled to intercept only this diagnostic endpoint. No PWA or full-territory accuracy claim."
+    }
+  },
+  "componentReportsWithoutCompleteHtmlClaim": {
+    "renderer": {
+      "passed": 18,
+      "failed": 0,
+      "total": 18,
+      "completeHtmlValidated": false,
+      "scope": "Isolated native-WebGL component harness with declared geometry and pixel comparisons; no complete-HTML hash is established.",
+      "report": "RENDERER_BROWSER.json"
+    },
+    "surfaces": {
+      "passed": 8,
+      "failed": 0,
+      "total": 8,
+      "completeHtmlValidated": false,
+      "scope": "Isolated surface/underpass/player-physics component harness with declared source fixtures; no complete-HTML hash is established.",
+      "report": "SURFACES_BROWSER.json"
+    },
+    "roofs": {
+      "passed": 14,
+      "failed": 0,
+      "total": 14,
+      "completeHtmlValidated": false,
+      "scope": "Isolated source-roof construction, collision and movement fixtures in Chromium; no complete-HTML hash is established.",
+      "report": "ROOF_BROWSER.json"
+    }
+  },
+  "offlineSourceRestore": {
+    "passed": 11,
+    "failed": 0,
+    "total": 11,
+    "report": "SOURCE_RESTORE.json",
+    "completeHtmlValidated": false
+  },
+  "reproducibleBuild": {
+    "report": "BUILD_REPRODUCIBLE.json",
+    "allThreeOutputsByteIdentical": true,
+    "nodeSyntax": true
+  },
+  "sourceData": {
+    "counts": {
+      "buildings": 1404,
+      "roads": 472,
+      "terrain_grids": 2,
+      "terrain_nodes": 320173
+    },
+    "indexSha256": "0348b0d91ca8ec7dd707f41b57fa425f4b0f2000a9dc8327ce6ca01d4f4bfa84",
+    "archive": {
+      "path": "data/map_pack/enrichment_archives/world-sources-2686ff2f412c6915.zip",
+      "sha256": "2686ff2f412c69158b2b94ff79b50f16673a305ce08655fba857c51ec4f8d5b8",
+      "bytes": 1201519,
+      "receiptSha256": "fb6772e9dd4e10e3cd32ae2a1af2847073f22dd20d2364d849d843bab51910e2",
+      "members": [
+        {
+          "bytes": 8047268,
+          "name": "geo_huveaune-edd6959ca0dd2701.json",
+          "sha256": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61"
+        },
+        {
+          "bytes": 582,
+          "name": "index.json",
+          "sha256": "0348b0d91ca8ec7dd707f41b57fa425f4b0f2000a9dc8327ce6ca01d4f4bfa84"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "geo_huveaune",
+        "bundlePath": "data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json",
+        "sha256": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61",
+        "bytes": 8047268,
+        "buildings": 1404,
+        "roads": 472,
+        "coverage": [
+          {
+            "bbox": [
+              43.293,
+              5.565,
+              43.3,
+              5.576
+            ],
+            "complete": true,
+            "crs": "EPSG:4326",
+            "layer": "BDTOPO_V3:batiment",
+            "returned": 1404,
+            "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+            "extractedAt": "2026-10-23"
+          },
+          {
+            "bbox": [
+              43.293,
+              5.565,
+              43.3,
+              5.576
+            ],
+            "complete": true,
+            "crs": "EPSG:4326",
+            "layer": "BDTOPO_V3:troncon_de_route",
+            "returned": 472,
+            "source": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+            "extractedAt": "2026-10-23"
+          }
+        ],
+        "terrain": [
+          {
+            "macro": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+            "width": 447,
+            "height": 391,
+            "bbox": [
+              43.293,
+              5.565,
+              43.3,
+              5.576
+            ],
+            "sourceResource": "ign_rge_alti_wld",
+            "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+            "samples": 174777,
+            "validSamples": 174777,
+            "noDataSamples": 0,
+            "source": {
+              "source": "IGN RGE ALTI — points échantillonnés",
+              "resource": "ign_rge_alti_wld",
+              "acquiredAt": "2026-10-23",
+              "license": "Licence Ouverte 2.0",
+              "attribution": "IGN — Géoplateforme",
+              "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+              "resampled": false
+            }
+          },
+          {
+            "macro": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+            "width": 326,
+            "height": 446,
+            "bbox": [
+              43.2956,
+              5.5698,
+              43.2976,
+              5.5718
+            ],
+            "sourceResource": "ign_lidar_hd_mnt",
+            "verticalDatum": "NGF-IGN69",
+            "samples": 145396,
+            "validSamples": 145396,
+            "noDataSamples": 0,
+            "source": {
+              "source": "IGN LiDAR HD MNT — mission 21LHD7PQ",
+              "resource": "ign_lidar_hd_mnt",
+              "acquiredAt": "2021-06-26",
+              "license": "Licence Ouverte 2.0",
+              "attribution": "IGN — LiDAR HD — mission 21LHD7PQ, édition 2025-03-14",
+              "url": "https://data.geopf.fr/wms-r",
+              "conversion": {
+                "actualSpacingMeters": [
+                  0.4993702257409165,
+                  0.4993191781914614
+                ],
+                "crs": "EPSG:2154",
+                "format": "GeoTIFF",
+                "inputSha256": "51f2638620a03f04891910f5e07e3e897e37c97e158d7320d631f97d0323435c",
+                "nativePixelSize": [
+                  0.5,
+                  0.5
+                ],
+                "nativeTransform": [
+                  0.5,
+                  0.0,
+                  907999.75,
+                  0.0,
+                  -0.5,
+                  6248000.25
+                ],
+                "nodataPreserved": true,
+                "requestedSpacingMeters": 0.5,
+                "resampled": true,
+                "resampling": "nearest",
+                "sampleConvention": "WGS84 regular nodes",
+                "sourceSize": [
+                  2000,
+                  2000
+                ],
+                "verticalDatum": "NGF-IGN69"
+              },
+              "resampled": true
+            }
+          }
+        ],
+        "withoutDeclaredHeight": 13,
+        "sourceGeometryZFlaggedMissing": 62
+      }
+    ],
+    "sources": [
+      {
+        "source": "IGN RGE ALTI — points échantillonnés",
+        "resource": "ign_rge_alti_wld",
+        "acquiredAt": "2026-10-23",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+      },
+      {
+        "source": "IGN LiDAR HD MNT — mission 21LHD7PQ",
+        "resource": "ign_lidar_hd_mnt",
+        "acquiredAt": "2021-06-26",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — LiDAR HD — mission 21LHD7PQ, édition 2025-03-14",
+        "url": "https://data.geopf.fr/wms-r",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+        "resource": "ign-bdtopo",
+        "acquiredAt": "2026-10-23",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "source": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+        "resource": "ign-bdtopo",
+        "acquiredAt": "2026-10-23",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      }
+    ],
+    "sourceCatalogNote": "Only current feature/grid provenances are summarized here. The unmodified shipped receipt can retain catalog entries from earlier imports; those entries do not establish a currently installed resolution."
+  },
+  "methodDeclarations": {
+    "nativeTraversal": {
+      "assistance": [
+        "UI menu, character creation and dialogue choice buttons",
+        "Existing v020Approach and v35p* story actions",
+        "Existing measured camera placement and v046Move collision-controlled steps",
+        "Simulation freeze and day/night clock for repeatable measurements; geography and collisions remain production data",
+        "Two explicitly named POIs discovered through the existing debug discovery action before their UI-only fast travel tests"
+      ],
+      "networkMocked": false,
+      "storageMocked": false,
+      "htmlInjected": false,
+      "syntheticGeography": false
+    },
+    "realSourceIntegration": "Installed REAL official IGN source files, current production HTML, native Chromium, loopback HTTP; diagnostic scene/camera selection",
+    "sourceFixtures": "Production HTML, real loopback HTTP, original map pack, isolated SYNTHETIC source fixture; not real-world acquisition evidence",
+    "gameplay": "Field-life UI contracts in real Chromium with installed map data.\n\nThe private document adapter prepares a funded character, places the camera on\nmeasured clear ground, freezes simulation and introduces a named aid recipient.\nMap/terrain HTTP, the production buttons, costs, guards, migrations and browser\nstorage are real. This is an assisted contract test, not an unmodified playthrough.\n",
+    "controller": "Gamepad API explicitly simulated; real browser UI/keyboard/storage. No physical-controller compatibility certification.",
+    "sourceStatus": "Actual local inventory and UI first; labelled controlled error/presentation fixtures thereafter. Service worker disabled to intercept only this diagnostic endpoint. No PWA or full-territory accuracy claim."
+  },
+  "limitations": [
+    "Official vector coverage is limited to the declared extraction boxes near Aubagne; 1,404 buildings and 472 road sections are not an exhaustive reconstruction of Marseille or the game territory.",
+    "The LiDAR source date is 2021-06-26 and its attribution mentions edition 2025-03-14. October 2026 extraction/inspection dates are not new survey dates.",
+    "Native 0.5 m pixels and reprojected WGS84 sample spacing are documented separately; spacing is not an altimetric or building-position accuracy guarantee.",
+    "Nearest-neighbor conversion and runtime terrain interpolation remain declared. The high-resolution mesh is bounded; it does not certify fine rendering across the entire territory.",
+    "Building envelopes, unknown roof shapes, absent declared heights, and geometry Z flagged as missing do not become measured architectural reconstructions. Source-panel counters use their explicit declared meanings.",
+    "The authored campaign scenes, actors and Fallout-like systems remain game content, not geographic survey data. Assisted/funded-character tests are not a complete human campaign playthrough.",
+    "Rendering and controller component fixtures do not independently certify the final complete HTML or physical hardware. No full PWA, cross-browser, console, mobile-performance or publication certification is inferred."
+  ],
+  "reportInputs": {
+    "index.html": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+    "UNITS.json": "2cdff35d0bd9561d474bfbdbfb0b635161386c3f5e5fe1d517a1d52b425a6807",
+    "legacy-final4/verification/v050/QA_LEGACY.json": "aec28e81c710b5b1ef03244c439bd0d1fb9f8fe6a44335f9f9d578ece301cb24",
+    "native-final/NATIVE_REAL_MAP.json": "0a6c2e6db280997cc33562f312ae19ab706ec11482a7d2e3be69cd330bbd95fe",
+    "real-sources-final/GEOGRAPHY_REAL_SOURCES.json": "188684ad8d2fbfcd4d2750d73c6c4c6b01c9267696239f59d03af217dd1e473d",
+    "source-browser-final/GEOGRAPHY_SOURCE_BROWSER.json": "d64054bfa8340802c6797430bc44e0d56aa29ad665dafbc7f21e77f889c1ab47",
+    "gameplay-final/GAMEPLAY_UI.json": "f6e895d9d264c860ad7cdf6486e9e682ef8696f8b2f2974db57ad69d3f7b0fe3",
+    "controller-final/CONTROLLER_BROWSER.json": "8815431c768aad79b19eafeb62f728092b982aa1d336b67a5c575188e25af728",
+    "source-status-final/SOURCE_STATUS_BROWSER.json": "d3fbab960b330d3217133434118e31da37e79255f464a29e479df5558ba5f338",
+    "BUILD_REPRODUCIBLE.json": "21762cf7bf17ca8b43c4b517b830c20d9ae748a27d638cb89f8a704f756a5fb2",
+    "src/game.js": "15374592c6d582cf26dab1fa922944c5d71cd546831c55e23b359ac60c9e0cd9",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+    "RENDERER_BROWSER.json": "f1bcc8ef664da3da5916157890254e37a2e2c2129b94d2290178ae1ca5fc449e",
+    "SURFACES_BROWSER.json": "510a63dd281eecf2f57456556afa0aec318cecae2f8a20fd0f7c5f8f6ba1977c",
+    "ROOF_BROWSER.json": "5de6c0dd7b8b58943d62dcf2022850930245d85cbe579cfd97466be5a4bd21ad",
+    "SOURCE_RESTORE.json": "c1761062a74cc435bfa17910baf37a8f0b30fbf3e1ed24c74559a0e1ce39b97f",
+    "data/map_pack/enrichment_archives/manifest.json": "fb6772e9dd4e10e3cd32ae2a1af2847073f22dd20d2364d849d843bab51910e2",
+    "data/map_pack/enrichment_archives/world-sources-2686ff2f412c6915.zip": "2686ff2f412c69158b2b94ff79b50f16673a305ce08655fba857c51ec4f8d5b8",
+    "data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61",
+    "data/map_pack/enrichment/index.json": "0348b0d91ca8ec7dd707f41b57fa425f4b0f2000a9dc8327ce6ca01d4f4bfa84"
+  }
+}

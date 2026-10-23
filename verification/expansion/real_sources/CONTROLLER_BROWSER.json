@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "report": "controller",
+  "html_sha256": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+  "scope": "Actual game + Chromium DOM and keyboard/storage; navigator.getGamepads explicitly simulated, no physical device validation",
+  "passed": 33,
+  "failed": 0,
+  "total": 33,
+  "checks": [
+    {
+      "name": "Production controller initialization is exposed",
+      "ok": true
+    },
+    {
+      "name": "Held confirm on nonzero-slot connection does not enter a menu",
+      "ok": true
+    },
+    {
+      "name": "Gamepad navigation focuses an actual visible menu button",
+      "ok": true
+    },
+    {
+      "name": "Focused menu confirmation runs a real UI action",
+      "ok": true
+    },
+    {
+      "name": "Physical keyboard state is present before gamepad input",
+      "ok": true
+    },
+    {
+      "name": "Gamepad disconnect preserves a held physical keyboard key",
+      "ok": true
+    },
+    {
+      "name": "Right stick changes the actual player view with finite pitch",
+      "ok": true
+    },
+    {
+      "name": "RT fires the actual equipped weapon once on its edge",
+      "ok": true
+    },
+    {
+      "name": "Select opens the real Pip-Boy",
+      "ok": true
+    },
+    {
+      "name": "Pip-Boy shoulder navigation changes its real tab",
+      "ok": true
+    },
+    {
+      "name": "Pip-Boy trigger navigation changes its real subtab without firing",
+      "ok": true
+    },
+    {
+      "name": "Held trigger across closing a menu does not fire into the world",
+      "ok": true
+    },
+    {
+      "name": "Start opens actual pause and release does not resume it",
+      "ok": true
+    },
+    {
+      "name": "Gamepad adjusts real range control and persists preferences",
+      "ok": true
+    },
+    {
+      "name": "Gamepad toggles a real checkbox and updates settings",
+      "ok": true
+    },
+    {
+      "name": "B closes options through the real options callback",
+      "ok": true
+    },
+    {
+      "name": "B resumes through the real pause callback",
+      "ok": true
+    },
+    {
+      "name": "V.A.T.S. A reserves a real target/limb shot",
+      "ok": true
+    },
+    {
+      "name": "V.A.T.S. directional selection changes the queued limb",
+      "ok": true
+    },
+    {
+      "name": "V.A.T.S. X removes the final reserved shot",
+      "ok": true
+    },
+    {
+      "name": "V.A.T.S. RT executes the actual reserved shot",
+      "ok": true
+    },
+    {
+      "name": "Field services receive real controller focus",
+      "ok": true
+    },
+    {
+      "name": "B closes field services with their own callback",
+      "ok": true
+    },
+    {
+      "name": "Career panel receives real controller focus",
+      "ok": true
+    },
+    {
+      "name": "B closes career to the recorded previous mode",
+      "ok": true
+    },
+    {
+      "name": "Controller adjusts actual lockpick angle input",
+      "ok": true
+    },
+    {
+      "name": "B exits the real lockpicking activity",
+      "ok": true
+    },
+    {
+      "name": "Controller adjusts the actual pétanque angle",
+      "ok": true
+    },
+    {
+      "name": "B exits the real pétanque activity",
+      "ok": true
+    },
+    {
+      "name": "Terminal controls receive real controller focus",
+      "ok": true
+    },
+    {
+      "name": "B exits the terminal with its own callback",
+      "ok": true
+    },
+    {
+      "name": "B exits the actual holotape player",
+      "ok": true
+    },
+    {
+      "name": "No JavaScript exceptions during controller integration",
+      "ok": true
+    }
+  ],
+  "gamepadApi": "explicitly simulated",
+  "physicalHardwareValidated": false
+}

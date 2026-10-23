@@ -36,7 +36,12 @@ def adapt(name, text):
     text = text.replace("local['version']=='0.49.0'", "local['version']=='0.50.0'")
     text = text.replace('0.49.0 · Le quartier se souvient', '0.50.0 · Les routes retrouvées')
     if name.endswith('distribution.cjs'):
-        text = text.replace('fallout-mistral-v049-1', 'fallout-mistral-v050-1').replace('/v0.49.html/', '/v0.50.html/')
+        text = text.replace('fallout-mistral-v049-1', 'fallout-mistral-v050-4').replace('/v0.49.html/', '/v0.50.html/')
+    if name == 'v048_runtime.py':
+        # The controlled pause must outlast Playwright's two stable animation
+        # frames even when another software-rendered browser uses the CPU.
+        # Keep the real Cancel button and every stage/rollback assertion.
+        text = text.replace("'pausePhase':phase,'pauseMs':350", "'pausePhase':phase,'pauseMs':1500")
     if name.endswith('regression_campaign.py'):
         text = text.replace('Menu joueur structuré en neuf entrées', 'Menu joueur et accès aux cartes : dix entrées')
         text = text.replace("'btnOptions','btnCredits','btnV035Admin']", "'btnOptions','btnCredits','v050MapStatus','btnV035Admin']")

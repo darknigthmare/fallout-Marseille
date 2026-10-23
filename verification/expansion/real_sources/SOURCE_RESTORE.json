@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "html_sha256": null,
+  "completeHtmlValidated": false,
+  "scope": "Fresh temporary source directory; shipped real archive, actual HTTP handler; no network data acquisition",
+  "passed": 11,
+  "failed": 0,
+  "total": 11,
+  "checks": [
+    {
+      "name": "Fresh directory starts with no extracted sources",
+      "ok": true
+    },
+    {
+      "name": "Default server helper restores shipped sources offline",
+      "ok": true
+    },
+    {
+      "name": "All restored runtime bytes match the active validated real sources",
+      "ok": true
+    },
+    {
+      "name": "Second preparation preserves the existing valid imports",
+      "ok": true
+    },
+    {
+      "name": "Rerun does not alter index or source bytes",
+      "ok": true
+    },
+    {
+      "name": "Source audit endpoint is uncached JSON with HTTP 200",
+      "ok": true
+    },
+    {
+      "name": "Restored source counts are the real WFS query counts",
+      "ok": true
+    },
+    {
+      "name": "Both source resolutions and their full node counts survive restoration",
+      "ok": true
+    },
+    {
+      "name": "Native 50 cm and explicit reprojection receipt survive HTTP audit",
+      "ok": true
+    },
+    {
+      "name": "Browser source URL serves the exact restored content-addressed bundle",
+      "ok": true
+    },
+    {
+      "name": "Corrupt runtime sources are refused by the live audit",
+      "ok": true
+    }
+  ],
+  "archiveSha256": "2686ff2f412c69158b2b94ff79b50f16673a305ce08655fba857c51ec4f8d5b8",
+  "indexSha256": "0348b0d91ca8ec7dd707f41b57fa425f4b0f2000a9dc8327ce6ca01d4f4bfa84",
+  "counts": {
+    "buildings": 1404,
+    "roads": 472,
+    "terrain_grids": 2,
+    "terrain_nodes": 320173
+  }
+}

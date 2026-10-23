@@ -99,10 +99,12 @@ def main():
             if info['tiles'] > 0 and not info['loading'] and not info['anticipating']:
                 return info
             if time.monotonic() - last_print > 12:
-                print('LOAD ' + json.dumps({k: info[k] for k in ('phase', 'done', 'total', 'tiles', 'loading', 'anticipating')}), flush=True)
+                progress = {k: info[k] for k in ('phase', 'done', 'total', 'tiles', 'loading', 'anticipating')}
+                progress['preparation'] = debug('v048Info').get('preparation')
+                print('LOAD ' + json.dumps(progress), flush=True)
                 last_print = time.monotonic()
             page.wait_for_timeout(250)
-        report['readiness_failure'] = {'info': debug('v047Info'), 'zone': debug('getWorld'), 'mode': debug('getMode'), 'diagnostic': debug('v035Diagnostic')}
+        report['readiness_failure'] = {'info': debug('v047Info'), 'preparation': debug('v048Info'), 'zone': debug('getWorld'), 'mode': debug('getMode'), 'diagnostic': debug('v035Diagnostic')}
         shot('readiness_failure', 'Actual native UI at a geography-readiness failure')
         raise RuntimeError('Real geography readiness timeout: ' + json.dumps(debug('v047Info'), ensure_ascii=False))
 

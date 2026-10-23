@@ -15,7 +15,7 @@ async function v048Step(job, phase, total) {
   }
 }
 async function v048Import(w, resource, key, work) {
-  const out={key,draws:[],colliders:[],land:[],water:[],buildings:[],roads:[],estimatedHeights:0,empty:resource.empty,source:resource.origin};
+  const out={key,draws:[],colliders:[],land:[],water:[],buildings:[],roads:[],estimatedHeights:0,missingGroundBuildings:0,empty:resource.empty,source:resource.origin};
   const names=resource.source==='cadastre'?['batiments','building']:['water','landcover','landuse','park','waterway','transportation'];
   for(const name of names) {
     const layer=resource.layers[name];if(!layer)continue;
@@ -25,7 +25,7 @@ async function v048Import(w, resource, key, work) {
       const batch={...resource,layers:{[name]:{...layer,features:layer.features.slice(offset,offset+8)}}};
       const r=v046Import(tmp,batch,key);
       for(const field of ['draws','colliders','land','water','buildings','roads'])out[field].push(...r[field]);
-      out.estimatedHeights+=r.estimatedHeights;await work.checkpoint(8);
+      out.estimatedHeights+=r.estimatedHeights;out.missingGroundBuildings+=r.missingGroundBuildings||0;await work.checkpoint(8);
     }
   }
   return out;
@@ -51,7 +51,7 @@ async function v048Meshes(plan, bank, stamp, job) {
     if(d){V047.stats.reusedTerrain++;out.push(d);v048Phase(job,'relief',++done,total);await job.work.checkpoint();continue;}
     const vertices=[],faces=[],valid=[];
     for(let j=0;j<=grid;j++) {
-      for(let i=0;i<=grid;i++){const x=cx*size+i*step,z=cz*size+j*step,h=v047Height(bank,x,z);vertices.push([x,h.height===null?0:Math.max(0,h.height)-.06,z]);valid.push(h.height!==null);}
+      for(let i=0;i<=grid;i++){const x=cx*size+i*step,z=cz*size+j*step,h=v047Height(bank,x,z);vertices.push([x,h.height===null?0:h.height-.06,z]);valid.push(h.height!==null);}
       await job.work.checkpoint(grid+1);
     }
     for(let j=0;j<grid;j++) {
@@ -61,7 +61,7 @@ async function v048Meshes(plan, bank, stamp, job) {
     d={mesh:'terrain',vertices,faces,pos:[(cx+.5)*size,0,(cz+.5)*size],scale:[1,1,1],color:[.30,.33,.25],v046Terrain:true,v047GeometryId:key};
     MistralWork.check(job.work.signal);V047.meshes.set(key,d);V047.stats.builtTerrain++;out.push(d);v048Phase(job,'relief',++done,total);
   }
-  return out;
+  return typeof v050RefineTerrainMeshes==='function'?await v050RefineTerrainMeshes(out,plan,bank,stamp,job):out;
 }
 async function v048Nature(w, plan, bank, job) {
   const out=[],ids=[],size=64,n=13,gx=Math.floor((plan.p[0]+V046_ORIGIN[0])/size),gy=Math.floor((V046_ORIGIN[1]-plan.p[2])/size);
@@ -108,9 +108,9 @@ v046Prepare=async function(plan, resources, w, signal) {
     }
     records.v047Index=await v048Index(records,colliders,job.work);
     const h=v047Height(bank,plan.p[0],plan.p[2]),s=v046SurfaceAt(plan.p,records);if(h.height===null&&!s.water)throw Error('Aucune altitude valide sous le joueur');
-    const ground=await v048Meshes(plan,bank,stamp,job),temp=v046World(w.id);temp.v047TerrainBank=bank;temp.v046Records=records;temp.colliders=colliders;
+    const ground=await v048Meshes(plan,bank,stamp,job),land=typeof v050RefineLandSurfaces==='function'?await v050RefineLandSurfaces(ground,draws,job):{terrain:ground,draws},temp=v046World(w.id);temp.v047TerrainBank=bank;temp.v046Records=records;temp.colliders=colliders;
     const nature=await v048Nature(temp,plan,bank,job);await v048Step(job,'publication',1);MistralWork.check(signal);job.status='prepared';
-    return {records,terrain:ground,height:h.height===null?0:Math.max(0,h.height),bank,geoDraws:draws,geoColliders:colliders,nature,bankStamp:stamp};
+    return {records,terrain:land.terrain,height:h.height===null?0:Math.max(0,h.height),bank,geoDraws:land.draws,geoColliders:colliders,nature,bankStamp:stamp};
   } catch(e) {job.status=signal?.aborted?'cancelled':'failed';throw e;}
   finally {const report={id:job.id,status:job.status,...job.work.snapshot()};if(!V048.lastJob||report.id>=V048.lastJob.id)V048.lastJob=report;V048.jobs.push(report);if(V048.jobs.length>20)V048.jobs.shift();if(V048.job===job)V048.job=null;}
 };

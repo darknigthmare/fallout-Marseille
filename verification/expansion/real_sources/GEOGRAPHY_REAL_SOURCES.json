@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "report": "realSources",
+  "html_sha256": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+  "scope": "Installed REAL official IGN source files, current production HTML, native Chromium, loopback HTTP; diagnostic scene/camera selection",
+  "passed": 26,
+  "failed": 0,
+  "total": 26,
+  "checks": [
+    {
+      "name": "Real HTTP serves the exact requested production build",
+      "ok": true
+    },
+    {
+      "name": "Real source area commits successfully",
+      "ok": true
+    },
+    {
+      "name": "Hash-verified official building and road counts match disk",
+      "ok": true
+    },
+    {
+      "name": "Every retained fine and broader terrain grid reaches the staged bank",
+      "ok": true
+    },
+    {
+      "name": "The finest actual source is selected at its documented imported node",
+      "ok": true
+    },
+    {
+      "name": "Actual source datum remains explicit NGF-IGN69",
+      "ok": true
+    },
+    {
+      "name": "Actual high-resolution terrain builds a bounded fine mesh",
+      "ok": true
+    },
+    {
+      "name": "Old land planes cannot mask real fine relief or its stitched boundary",
+      "ok": true
+    },
+    {
+      "name": "Fine terrain colour sampling is explicit and indexed without changing its geometry",
+      "ok": true
+    },
+    {
+      "name": "Native raster spacing and WGS84 resampling stay separately documented",
+      "ok": true
+    },
+    {
+      "name": "Actual building ground and roof elevations control its envelope",
+      "ok": true
+    },
+    {
+      "name": "Unspecified building roof shape is still identified as unknown",
+      "ok": true
+    },
+    {
+      "name": "Actual carriageway width and source XYZ survive road import",
+      "ok": true
+    },
+    {
+      "name": "Actual missing building heights remain estimates rather than fabricated measurements",
+      "ok": true
+    },
+    {
+      "name": "Road replacement exposes complete official query coverage",
+      "ok": true
+    },
+    {
+      "name": "Old base-map roads are absent inside the completed authoritative query",
+      "ok": true
+    },
+    {
+      "name": "Imported road strokes stop at their actual acquisition boundary",
+      "ok": true
+    },
+    {
+      "name": "A second anchor near the actual workshop gateway prepares successfully",
+      "ok": true
+    },
+    {
+      "name": "The complete small LiDAR patch reuses its bounded cache near the gateway",
+      "ok": true
+    },
+    {
+      "name": "Returning to the actual fine-grid centre prepares successfully",
+      "ok": true
+    },
+    {
+      "name": "The centre return reuses the same complete LiDAR node count and cache",
+      "ok": true
+    },
+    {
+      "name": "Broader real source remains available outside the fine patch",
+      "ok": true
+    },
+    {
+      "name": "A second actual sector prepares with the retained terrain atlas",
+      "ok": true
+    },
+    {
+      "name": "No source-fetch, hash, coverage or staging error was recorded",
+      "ok": true
+    },
+    {
+      "name": "No JavaScript exception occurred while loading actual sources",
+      "ok": true
+    },
+    {
+      "name": "Production HTML and actual source snapshot remained unchanged",
+      "ok": true
+    }
+  ],
+  "network_mocked": false,
+  "html_injected": false,
+  "synthetic_geography": false,
+  "index_sha256": "0348b0d91ca8ec7dd707f41b57fa425f4b0f2000a9dc8327ce6ca01d4f4bfa84",
+  "source_bundle_sha256": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61",
+  "source_bundle_path": "data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json",
+  "source_counts": {
+    "buildings": 1404,
+    "roads": 472,
+    "terrain_grids": 2,
+    "terrain_nodes": 320173
+  },
+  "geography": {
+    "version": "0.50.0",
+    "indexPresent": true,
+    "loadedRegions": [
+      "geo_huveaune"
+    ],
+    "sourceBuildings": 1404,
+    "sourceRoads": 472,
+    "coverages": [
+      {
+        "bbox": [
+          43.293,
+          5.565,
+          43.3,
+          5.576
+        ],
+        "complete": true,
+        "crs": "EPSG:4326",
+        "layer": "BDTOPO_V3:batiment",
+        "returned": 1404,
+        "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+        "resource": "ign-bdtopo",
+        "inputSha256": "926ba5241a504dfa2ae53d3be3dfd2e160e7546d7df83215d4dc2088063a69ac"
+      },
+      {
+        "bbox": [
+          43.293,
+          5.565,
+          43.3,
+          5.576
+        ],
+        "complete": true,
+        "crs": "EPSG:4326",
+        "layer": "BDTOPO_V3:troncon_de_route",
+        "returned": 472,
+        "source": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+        "resource": "ign-bdtopo",
+        "inputSha256": "1d1ce40a03b295c6d5cf77464c7173c69082e1a66150a9c262395f821fd98a51"
+      }
+    ],
+    "terrainSources": [
+      {
+        "id": "geo_calanques",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          162.2576694397984,
+          97.40499999999545
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "geo_garlaban",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          103.7714372383252,
+          100.88375000000218
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "geo_huveaune",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          106.35054532825006,
+          62.61750000000237
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          1.9982591836363173,
+          1.9980512820506815
+        ],
+        "enrichment": true,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+        "resource": "ign_lidar_hd_mnt",
+        "resolutionMeters": [
+          0.4985858071445592,
+          0.5003146067421845
+        ],
+        "enrichment": true,
+        "verticalDatum": "NGF-IGN69",
+        "conversion": {
+          "actualSpacingMeters": [
+            0.4993702257409165,
+            0.4993191781914614
+          ],
+          "crs": "EPSG:2154",
+          "format": "GeoTIFF",
+          "inputSha256": "51f2638620a03f04891910f5e07e3e897e37c97e158d7320d631f97d0323435c",
+          "nativePixelSize": [
+            0.5,
+            0.5
+          ],
+          "nativeTransform": [
+            0.5,
+            0,
+            907999.75,
+            0,
+            -0.5,
+            6248000.25
+          ],
+          "nodataPreserved": true,
+          "requestedSpacingMeters": 0.5,
+          "resampled": true,
+          "resampling": "nearest",
+          "sampleConvention": "WGS84 regular nodes",
+          "sourceSize": [
+            2000,
+            2000
+          ],
+          "verticalDatum": "NGF-IGN69"
+        }
+      },
+      {
+        "id": "geo_marseille",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          113.96574560086738,
+          83.49000000000316
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "geo_etoile",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          83.46491006390673,
+          83.49000000000316
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      },
+      {
+        "id": "geo_saintebaume",
+        "resource": "ign_rge_alti_wld",
+        "resolutionMeters": [
+          96.18631902417567,
+          135.67124999999527
+        ],
+        "enrichment": false,
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+        "conversion": null
+      }
+    ],
+    "terrainCache": {
+      "entries": 1,
+      "bytes": 18378734,
+      "budgetBytes": 67108864,
+      "pinned": 0,
+      "overBudgetBytes": 0,
+      "hits": 0,
+      "misses": 1,
+      "evictions": 0
+    },
+    "missingGroundBuildings": 0,
+    "sourceObjectCount": 1875,
+    "sourceObjectsTruncated": true,
+    "terrainMesh": [
+      {
+        "source": "ign_lidar_hd_mnt",
+        "nodeSpacingMeters": [
+          0.4985858071445592,
+          0.5003146067421845
+        ],
+        "vertices": 145396,
+        "faces": 289250,
+        "scope": "Nœuds de la grille importée dans un voisinage borné à 262144 sommets ; LOD de 32 m au-delà",
+        "colorGroups": 3,
+        "colorSampling": "Couleur au centre de chaque triangle ; anneaux et trous conservés, altitudes inchangées",
+        "colorPolygonCount": 7,
+        "colorCandidateTests": 739492
+      }
+    ],
+    "errors": []
+  },
+  "landSurface": {
+    "masks": [
+      {
+        "minX": 4768,
+        "maxX": 5024,
+        "minZ": -1600,
+        "maxZ": -1280
+      }
+    ],
+    "clippedDraws": 5,
+    "coloredFaces": 289250,
+    "seamColoredFaces": 6192,
+    "oldLandTrianglesInside": 0,
+    "colorSampling": "Centre des triangles, index spatial de 32 m ; eau et routes inchangées"
+  },
+  "terrainCacheReuse": [
+    {
+      "name": "The complete small LiDAR patch reuses its bounded cache near the gateway",
+      "detail": {
+        "before": {
+          "entries": 1,
+          "bytes": 18378734,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 0,
+          "misses": 1,
+          "evictions": 0
+        },
+        "after": {
+          "entries": 1,
+          "bytes": 18378734,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 1,
+          "misses": 1,
+          "evictions": 0
+        },
+        "elapsed_seconds": 1.5783129949995782,
+        "mesh": [
+          {
+            "source": "ign_lidar_hd_mnt",
+            "nodeSpacingMeters": [
+              0.4985858071445592,
+              0.5003146067421845
+            ],
+            "vertices": 145396,
+            "faces": 289250,
+            "scope": "Nœuds de la grille importée dans un voisinage borné à 262144 sommets ; LOD de 32 m au-delà",
+            "colorGroups": 3,
+            "colorSampling": "Couleur au centre de chaque triangle ; anneaux et trous conservés, altitudes inchangées",
+            "colorPolygonCount": 7,
+            "colorCandidateTests": 739492
+          }
+        ]
+      }
+    },
+    {
+      "name": "The centre return reuses the same complete LiDAR node count and cache",
+      "detail": {
+        "before": {
+          "entries": 1,
+          "bytes": 18378734,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 1,
+          "misses": 1,
+          "evictions": 0
+        },
+        "after": {
+          "entries": 1,
+          "bytes": 18378734,
+          "budgetBytes": 67108864,
+          "pinned": 0,
+          "overBudgetBytes": 0,
+          "hits": 2,
+          "misses": 1,
+          "evictions": 0
+        },
+        "elapsed_seconds": 1.437928283000474
+      }
+    }
+  ],
+  "cacheProbeScope": "Diagnostic scene preparation with continuous rendering paused; durations do not establish displayed frame cadence or a hardware guarantee.",
+  "syntheticSourceFixture": false
+}

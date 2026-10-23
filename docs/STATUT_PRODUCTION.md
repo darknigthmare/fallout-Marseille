@@ -1,7 +1,13 @@
-# Statut de production — v0.49
+# Statut de production
 
-Le projet complet livré est basé sur la v0.48 fournie. Les nouvelles fonctions concernent la persistance des rencontres, blessures, dépouilles, habitants et accessoires de site. Les systèmes de continuité géométrique et de retour extérieur restent conservés.
+Le projet dispose de son pack géographique de base : les archives fournies reconstituent les 5 884 coordonnées et les huit grilles de relief. Il est désormais enrichi par des sources IGN réellement acquises autour d’Aubagne : **1 404 objets bâtiment et 472 tronçons de route BD TOPO**, sur une emprise demandée de `[43.293, 5.565, 43.300, 5.576]`.
 
-434 contrôles ciblés passent : 84 nouveaux et 350 hérités. Ils exécutent le vrai programme avec un banc synthétique et des entrées contrôlées ; ce n’est pas un parcours de la carte réelle.
+Le relief comprend **174 777 nœuds RGE ALTI au pas demandé d’environ 2 m** sur ce secteur et un extrait local de **145 396 nœuds MNT LiDAR HD**, provenant d’un GeoTIFF natif au pas de 50 cm. Ce dernier est reprojeté vers une grille WGS84 par échantillonnage au plus proche (`nearest`), avec conversion déclarée. Les précisions XY et Z restent celles des sources et varient selon les objets ; le pas de grille n’est pas une garantie d’exactitude absolue.
 
-Le pack complet est toujours absent. Les prochains travaux de terrain demandent des PBF et des grilles disponibles localement, puis une inspection des passages, bâtiments, forêts et portes réels. La nouvelle persistance ne résout pas une donnée cadastrale absente et n’en fabrique pas.
+Les changements comprennent l’import de relevés documentés, le relief fin local, les surfaces de pont explicitement cotées, le regroupement des géométries pour le rendu, les bivouacs, l’entraide et les commandes de manette. Pour les toitures prises en charge, à deux pans ou à un pan, dont les dimensions et l’orientation sont renseignées, les collisions, rayons et supports de marche utilisent les faces effectivement produites. Les toitures BD TOPO dont la forme est inconnue conservent leur enveloppe estimée ; aucun intérieur réel n’est déduit.
+
+La distribution reproductible des enrichissements utilise `tools/world_source_bundle.py`. Le serveur restaure hors réseau les archives fournies au démarrage normal, en vérifiant leurs empreintes et en conservant les imports utilisateur valides. L’archive est fournie et sa restauration sur une destination vierge a été vérifiée. La validation actuelle comprend 397 contrôles de logique et d’outils, 434 contrats hérités et 84 contrôles du parcours natif, tous réussis. Les méthodes et les fixtures sont distinguées dans le [bilan courant](../verification/expansion/real_sources/REAL_SOURCE_INTEGRATION.json).
+
+Consulter l’[état détaillé du territoire et du jeu](ETAT_TERRITOIRE_ET_JEU.md) pour les emprises, les preuves et les limites. Cette livraison locale ne constitue pas une ville complète certifiée « 1:1 ». Le projet reste un prototype en développement ; les travaux artistiques, l’équilibrage et la validation de toute la campagne ne sont pas déclarés terminés.
+
+Les rapports historiques v0.49 et v0.50 décrivent leurs propres exécutables. Le bilan d’étape conservé sous `/workspace/.cloud-setup/fallout-marseille/implementation/final/`, associé au HTML `8f4619bc…22d5aaa`, précède cette acquisition et ne valide pas automatiquement les nouvelles sources ou le programme actuel.

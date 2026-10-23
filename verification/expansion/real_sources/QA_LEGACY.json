@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "report": "legacy",
+  "html_sha256": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+  "scope": "Contrats hérités exécutés sur le programme actuel. Bancs synthétiques et réseau contrôlé ; voir NATIVE_REAL_MAP.json pour les parcours HTTP réels.",
+  "passed": 434,
+  "failed": 0,
+  "total": 434,
+  "allHtmlMatch": true,
+  "suites": [
+    {
+      "test": "kernel.test.cjs",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "test": "runtime.py",
+      "passed": 47,
+      "failed": 0,
+      "total": 47,
+      "sameHtml": true
+    },
+    {
+      "test": "saves.py",
+      "passed": 15,
+      "failed": 0,
+      "total": 15,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_kernel.test.cjs",
+      "passed": 25,
+      "failed": 0,
+      "total": 25,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_runtime.py",
+      "passed": 62,
+      "failed": 0,
+      "total": 62,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_kernel.test.cjs",
+      "passed": 33,
+      "failed": 0,
+      "total": 33,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_kernel.test.cjs",
+      "passed": 23,
+      "failed": 0,
+      "total": 23,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_distribution.cjs",
+      "passed": 9,
+      "failed": 0,
+      "total": 9,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_runtime.py",
+      "passed": 52,
+      "failed": 0,
+      "total": 52,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_server_io.py",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_lab_isolation.py",
+      "passed": 14,
+      "failed": 0,
+      "total": 14,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_runtime.py",
+      "passed": 49,
+      "failed": 0,
+      "total": 49,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_regression_campaign.py",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_regression_prologue.py",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    }
+  ],
+  "processes": [
+    {
+      "test": "kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "saves.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_distribution.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_server_io.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_lab_isolation.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_regression_campaign.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_regression_prologue.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "exitCode": 0
+    }
+  ]
+}

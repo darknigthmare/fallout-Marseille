@@ -1,0 +1,127 @@
+{
+  "provider": "IGN",
+  "product": "MNT LiDAR HD",
+  "catalogue": {
+    "resources": 116,
+    "pages": 3,
+    "lidarResources": [
+      {
+        "title": "20260430-LiDAR-SMi2B",
+        "links": [
+          "https://data.geopf.fr/telechargement/resource/LiDAR_SMi2B_20260430"
+        ]
+      },
+      {
+        "title": "LiDARHD-NUALID",
+        "links": [
+          "https://data.geopf.fr/telechargement/resource/LiDARHD-NUALID"
+        ]
+      }
+    ]
+  },
+  "discovery": "Catalogue Atom + actual WFS metadata url_mnt export; no guessed tile URL",
+  "metadataUrl": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=IGNF_LIDAR-HD_METADONNEE%3Ametadata&srsName=urn%3Aogc%3Adef%3Acrs%3AOGC%3A1.3%3ACRS84&bbox=5.5698%2C43.2956%2C5.5718%2C43.2976%2Curn%3Aogc%3Adef%3Acrs%3AOGC%3A1.3%3ACRS84&count=32&outputFormat=application%2Fjson",
+  "metadataFeature": {
+    "type": "Feature",
+    "id": "metadata.62849",
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              5.56233177,
+              43.30078954
+            ],
+            [
+              5.57464196,
+              43.30049698
+            ],
+            [
+              5.5742405,
+              43.29150612
+            ],
+            [
+              5.56193222,
+              43.29179864
+            ],
+            [
+              5.56233177,
+              43.30078954
+            ]
+          ]
+        ]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "capteur": "[\"Leica TerrainMapper:90560\"]",
+      "url_mnh": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNH_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=907999.75,6247000.25,908999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0908_6248_MNH_O_0M50_LAMB93_IGN69.tif",
+      "url_mns": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=907999.75,6247000.25,908999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0908_6248_MNS_O_0M50_LAMB93_IGN69.tif",
+      "url_mnt": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=907999.75,6247000.25,908999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0908_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "url_npl": "https://data.geopf.fr/telechargement/download/LiDARHD-NUALID/NUALHD_1-0__LAZ_LAMB93_PQ_2025-03-14/LHD_FXX_0908_6248_PTS_LAMB93_IGN69.copc.laz",
+      "code_mission": "21LHD7PQ",
+      "date_edition": "2025-03-14Z",
+      "nombre_points": 24475725,
+      "coordonnees_nw": "0908-6248",
+      "moa_acquisition": "IGN",
+      "moe_acquisition": "APEI",
+      "procede_classement": "IGN_AUTO_V5",
+      "date_fin_acquisition": "2021-06-26Z",
+      "systeme_altimetrique": "IGN69",
+      "moe_classement_manuel": "NR",
+      "systeme_planimetrique": "LAMB93",
+      "date_debut_acquisition": "2021-06-26Z",
+      "moe_classement_automatique": "IGN"
+    }
+  },
+  "downloadUrl": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=907999.75,6247000.25,908999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0908_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+  "downloadedAt": "2026-10-23T03:55:34.213605+00:00",
+  "tile": "51f2638620a03f04-LHD_FXX_0908_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+  "bytes": 16000513,
+  "sha256": "51f2638620a03f04891910f5e07e3e897e37c97e158d7320d631f97d0323435c",
+  "upstreamChecksum": null,
+  "checksumScope": "SHA-256 of bytes received over verified HTTPS; no upstream checksum was supplied",
+  "license": "Licence Ouverte 2.0",
+  "attribution": "IGN — LiDAR HD",
+  "nativeRequest": {
+    "bounds": [
+      907999.75,
+      6247000.25,
+      908999.75,
+      6248000.25
+    ],
+    "size": [
+      2000,
+      2000
+    ],
+    "filename": "LHD_FXX_0908_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+    "crs": "EPSG:2154"
+  },
+  "nativeHeader": {
+    "wkt": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+    "epsg": null,
+    "nativePixelSize": [
+      0.5,
+      0.5
+    ],
+    "nodata": -9999.0
+  },
+  "effectiveCrs": "EPSG:2154",
+  "crsOverrideExplicit": true,
+  "verticalDatum": "NGF-IGN69",
+  "patch": "51f2638620a03f04-cf303d6a685e-grid.json",
+  "bbox": [
+    43.2956,
+    5.5698,
+    43.2976,
+    5.5718
+  ],
+  "width": 326,
+  "height": 446,
+  "validPoints": 145396,
+  "missingPoints": 0,
+  "resampling": "nearest",
+  "resampled": true,
+  "distributionNote": "Original GeoTIFF retained in the prepared environment; runtime distribution contains the validated converted grid. Reacquisition uses tools/acquire_ign_dem.py and may receive a newer service edition."
+}

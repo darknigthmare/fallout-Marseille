@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "report": "native",
+  "html_sha256": "8fa283b9d27e58299ab3c291a180084d8d5760716b6afc84c498f03831d19a16",
+  "scope": "Real HTTP + native Chromium + installed geographic data",
+  "passed": 84,
+  "failed": 0,
+  "total": 84,
+  "checks": [
+    {
+      "name": "Server delivers the exact index.html",
+      "ok": true
+    },
+    {
+      "name": "Installed pack complete with all coordinates and terrain grids",
+      "ok": true
+    },
+    {
+      "name": "Native HTTP document matches the served game",
+      "ok": true
+    },
+    {
+      "name": "Global v050 and historical module versions reported honestly",
+      "ok": true
+    },
+    {
+      "name": "All visible menu actions fit the viewport",
+      "ok": true
+    },
+    {
+      "name": "Menu status uses the live local audit",
+      "ok": true
+    },
+    {
+      "name": "Mobile menu actions can all be reached by scrolling",
+      "ok": true
+    },
+    {
+      "name": "New campaign reaches the vault prologue",
+      "ok": true
+    },
+    {
+      "name": "Debug physical approach: v35p-locker",
+      "ok": true
+    },
+    {
+      "name": "Story action v35pLocker reaches stage 2",
+      "ok": true
+    },
+    {
+      "name": "Debug physical approach: v35p-clinic",
+      "ok": true
+    },
+    {
+      "name": "Story action v35pClinic reaches stage 2",
+      "ok": true
+    },
+    {
+      "name": "Debug physical approach: v35p-filter",
+      "ok": true
+    },
+    {
+      "name": "Story action v35pFilter reaches stage 3",
+      "ok": true
+    },
+    {
+      "name": "Story action v35pBreakfast reaches stage 4",
+      "ok": true
+    },
+    {
+      "name": "Debug physical approach: v35p-ration",
+      "ok": true
+    },
+    {
+      "name": "Story action v35pRation reaches stage 5",
+      "ok": true
+    },
+    {
+      "name": "Debug physical approach: v35p-records",
+      "ok": true
+    },
+    {
+      "name": "Story action v35pRecords reaches stage 6",
+      "ok": true
+    },
+    {
+      "name": "Story action v35pBrief reaches stage 7",
+      "ok": true
+    },
+    {
+      "name": "Debug physical approach: v35p-issue",
+      "ok": true
+    },
+    {
+      "name": "Story action v35pIssue reaches stage 8",
+      "ok": true
+    },
+    {
+      "name": "Airlock commits directly to real exterior",
+      "ok": true
+    },
+    {
+      "name": "Campaign progresses only after the exit succeeds",
+      "ok": true
+    },
+    {
+      "name": "Exterior is live geography, not a synthetic lab",
+      "ok": true
+    },
+    {
+      "name": "All active vectors came from the installed pack",
+      "ok": true
+    },
+    {
+      "name": "Committed terrain grids contain measured heights",
+      "ok": true
+    },
+    {
+      "name": "Arrival has measured terrain with source attribution",
+      "ok": true
+    },
+    {
+      "name": "Player footing is finite and above measured ground",
+      "ok": true
+    },
+    {
+      "name": "Arrival is clear of collision geometry",
+      "ok": true
+    },
+    {
+      "name": "Real roads and building geometry are present",
+      "ok": true
+    },
+    {
+      "name": "All building ground and roof heights are finite",
+      "ok": true
+    },
+    {
+      "name": "A physical workshop gateway exists in the geographic scene",
+      "ok": true
+    },
+    {
+      "name": "Measured exterior gateway can be approached",
+      "ok": true
+    },
+    {
+      "name": "Nearby workshop gateway opens the actual dialogue",
+      "ok": true
+    },
+    {
+      "name": "Workshop dialogue identifies the narrative scene",
+      "ok": true
+    },
+    {
+      "name": "Campaign gateway enters the authored workshop scene",
+      "ok": true
+    },
+    {
+      "name": "Geographic return point is stored before the workshop visit",
+      "ok": true
+    },
+    {
+      "name": "Mireille is present in the connected workshop scene",
+      "ok": true
+    },
+    {
+      "name": "Mireille has an accessible physical dialogue approach",
+      "ok": true
+    },
+    {
+      "name": "Mireille dialogue advances the existing campaign to stage 3",
+      "ok": true
+    },
+    {
+      "name": "Narrative return gateway can be approached",
+      "ok": true
+    },
+    {
+      "name": "Workshop return opens the actual dialogue",
+      "ok": true
+    },
+    {
+      "name": "Return restores the saved geographic point",
+      "ok": true
+    },
+    {
+      "name": "Workshop return preserves newly acquired campaign progress and inventory",
+      "ok": true
+    },
+    {
+      "name": "Production movement crosses the real cadastre tile boundary",
+      "ok": true
+    },
+    {
+      "name": "The crossing publishes a different window of real tiles",
+      "ok": true
+    },
+    {
+      "name": "Walking and publishing across the boundary keeps one scene",
+      "ok": true
+    },
+    {
+      "name": "Common real roads and buildings retain identical geometry",
+      "ok": true
+    },
+    {
+      "name": "Courtyard holes remain present after publication",
+      "ok": true
+    },
+    {
+      "name": "The return publishes another real tile window",
+      "ok": true
+    },
+    {
+      "name": "Return crossing retains scene, position and common geometry",
+      "ok": true
+    },
+    {
+      "name": "A real cadastral wall blocks production movement",
+      "ok": true
+    },
+    {
+      "name": "Native frames continue while the real exterior is displayed",
+      "ok": true
+    },
+    {
+      "name": "The courtyard probe comes from an actual source hole",
+      "ok": true
+    },
+    {
+      "name": "Native rendered geometry retains the real courtyard ring",
+      "ok": true
+    },
+    {
+      "name": "The measured source courtyard is not filled by a collision",
+      "ok": true
+    },
+    {
+      "name": "Production movement can enter the real open courtyard",
+      "ok": true
+    },
+    {
+      "name": "The real courtyard survives re-publication with the same geometry",
+      "ok": true
+    },
+    {
+      "name": "Pip-Boy shows the discovered destination Belvédère · Aubagne",
+      "ok": true
+    },
+    {
+      "name": "Native travel departure is permitted 1",
+      "ok": true
+    },
+    {
+      "name": "Travel UI asks for a priced duration confirmation 1",
+      "ok": true
+    },
+    {
+      "name": "Cancelling the UI confirmation preserves the player and time",
+      "ok": true
+    },
+    {
+      "name": "UI fast travel reaches Belvédère · Aubagne",
+      "ok": true
+    },
+    {
+      "name": "Native travel keeps one scene 1",
+      "ok": true
+    },
+    {
+      "name": "Native travel time is charged exactly once 1",
+      "ok": true
+    },
+    {
+      "name": "Native travel preserves inventory, experience and capsules 1",
+      "ok": true
+    },
+    {
+      "name": "Native travel arrival is clear of real collision 1",
+      "ok": true
+    },
+    {
+      "name": "Pip-Boy shows the discovered destination Épave · Galeries de l’Huveaune",
+      "ok": true
+    },
+    {
+      "name": "Native travel departure is permitted 2",
+      "ok": true
+    },
+    {
+      "name": "Travel UI asks for a priced duration confirmation 2",
+      "ok": true
+    },
+    {
+      "name": "UI fast travel reaches Épave · Galeries de l’Huveaune",
+      "ok": true
+    },
+    {
+      "name": "Native travel keeps one scene 2",
+      "ok": true
+    },
+    {
+      "name": "Native travel time is charged exactly once 2",
+      "ok": true
+    },
+    {
+      "name": "Native travel preserves inventory, experience and capsules 2",
+      "ok": true
+    },
+    {
+      "name": "Native travel arrival is clear of real collision 2",
+      "ok": true
+    },
+    {
+      "name": "Native save API writes successfully",
+      "ok": true
+    },
+    {
+      "name": "Actual browser storage contains the geographic save",
+      "ok": true
+    },
+    {
+      "name": "Native reload uses the same release HTML",
+      "ok": true
+    },
+    {
+      "name": "Continue restores the geographic player position",
+      "ok": true
+    },
+    {
+      "name": "Continue preserves discovered sites and campaign stage",
+      "ok": true
+    },
+    {
+      "name": "No installed tile or terrain request failed",
+      "ok": true
+    },
+    {
+      "name": "Native browser reports no JavaScript exception",
+      "ok": true
+    },
+    {
+      "name": "The tested HTML remains unchanged for the whole native run",
+      "ok": true
+    }
+  ],
+  "assistance": [
+    "UI menu, character creation and dialogue choice buttons",
+    "Existing v020Approach and v35p* story actions",
+    "Existing measured camera placement and v046Move collision-controlled steps",
+    "Simulation freeze and day/night clock for repeatable measurements; geography and collisions remain production data",
+    "Two explicitly named POIs discovered through the existing debug discovery action before their UI-only fast travel tests"
+  ],
+  "native_navigation": true,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "html_injected": false,
+  "synthetic_lab_used": false,
+  "stage": "complete",
+  "browserVersion": "154.0.8037.57",
+  "shotCount": 20,
+  "performance": {
+    "scope": "Native headless Chromium frame cadence in this execution environment; not a hardware or desktop FPS guarantee",
+    "samples": 5,
+    "median_ms": 700,
+    "p95_ms": 1116.6,
+    "renderer": {
+      "backend": "WebGL",
+      "customMeshes": 4764,
+      "triangles": 468403,
+      "bufferGroups": 36,
+      "drawCalls": 1121,
+      "batchedMeshes": 4764,
+      "batchGroups": 19,
+      "batchBuilds": 90
+    },
+    "gpu": {
+      "vendor": "Google Inc. (Google)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    }
+  },
+  "serverAudit": {
+    "version": "0.50.0",
+    "vector": {
+      "expected": 5884,
+      "pbf": 4557,
+      "officialEmpty": 1327,
+      "missing": 0,
+      "invalid": 0,
+      "bytes": 86973739,
+      "examples": []
+    },
+    "terrain": {
+      "expected": 8,
+      "valid": 8,
+      "missing": 0,
+      "invalid": 0,
+      "samples": 174944,
+      "noData": 32424,
+      "examples": []
+    },
+    "complete": true,
+    "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+    "inspectedAt": "2026-10-23T04:53:41Z"
+  },
+  "networkObservationCounts": {
+    "consoleErrors": 18,
+    "failedRequests": 19
+  }
+}
