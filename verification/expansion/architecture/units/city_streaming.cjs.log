@@ -1,0 +1,26 @@
+✔ Missing optional city atlas leaves the base map and old bounds unchanged (6.856486ms)
+✔ A complete city registers its extent without mutating the active terrain bank (3.009626ms)
+✔ A partial atlas never registers a city extent or starts a source-only scene (2.380452ms)
+✔ City resources outside the old tile pack come only from verified source partitions (8.115105ms)
+✔ Corrupt partition bytes reject before any feature is published or cached (2.323436ms)
+✔ An explicit empty road query removes old road strokes only within its receipt (3.73455ms)
+✔ Concurrent map workers share one immutable chunk request and release settled promises (12.609602ms)
+✔ An aborted waiter cannot publish while another map worker can reuse the completed chunk (2.353893ms)
+✔ Byte budget eviction releases cached partitions and does not retain hidden resolved promises (2.588521ms)
+✔ Refreshing while a chunk is in flight refuses its late response (2.28217ms)
+✔ Synthetic laboratory ignores city resources and restores the exact prior real extent (1.65044ms)
+✔ The verified coarse city DEM stages with its own datum and never mutates the live bank (3.325275ms)
+✔ A city base DEM requires explicit provenance and a compatible normal-height datum (0.2786ms)
+✔ A vector-only city installation leaves old source enrichment usable until terrain is present (1.423747ms)
+✔ A cancelled navigation never starts later when its optional index finishes loading (1.355871ms)
+✔ Rendered partition bounds exclude distant whole-road tails while keeping the raw descriptor intact (1.396636ms)
+✔ Twenty streamed city terrain windows never accumulate in a staged bank or alter the published bank before commit (2.236864ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65.206743
+

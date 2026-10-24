@@ -1,0 +1,3663 @@
+{
+  "schemaVersion": 1,
+  "kind": "official-site-context-research-catalogue",
+  "observedAt": "2026-10-24T01:52:52.741327+00:00",
+  "attribution": "IGN — Géoplateforme, BD TOPO",
+  "license": "Licence Ouverte 2.0",
+  "licenseUrl": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
+  "scope": "Named source zones and geometric building candidates; no facade or interior survey.",
+  "zoneSource": {
+    "layer": "BDTOPO_V3:zone_d_activite_ou_d_interet",
+    "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Azone_d_activite_ou_d_interet&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.22875102%2C43.1696313%2C5.53254336%2C43.39105653%2C%27EPSG%3A4326%27%29+AND+%28toponyme+ILIKE+%27%25charit%25%27+OR+toponyme+ILIKE+%27%25longchamp%25%27+OR+toponyme+ILIKE+%27%25garde%25%27+OR+toponyme+ILIKE+%27%25mucem%25%27+OR+toponyme+ILIKE+%27%25radieuse%25%27+OR+toponyme+ILIKE+%27%25h%C3%B4tel+de+ville%25%27+OR+toponyme+ILIKE+%27%25pharo%25%27+OR+toponyme+ILIKE+%27%25major%25%27%29&COUNT=1000&SORTBY=cleabs&STARTINDEX=0",
+    "status": 200,
+    "sha256": "3a46168b2b65e4f4646959dc5049c327d16fc613a2153a1ba3cf0df3f9121734",
+    "bytes": 43358,
+    "numberMatched": 28,
+    "numberReturned": 28
+  },
+  "bundledZoneResponse": {
+    "path": "implementation/architecture-continuation/IGN_SITES_3a46168b2b65e4f4.geojson",
+    "bytes": 43358,
+    "sha256": "3a46168b2b65e4f4646959dc5049c327d16fc613a2153a1ba3cf0df3f9121734",
+    "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Azone_d_activite_ou_d_interet&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.22875102%2C43.1696313%2C5.53254336%2C43.39105653%2C%27EPSG%3A4326%27%29+AND+%28toponyme+ILIKE+%27%25charit%25%27+OR+toponyme+ILIKE+%27%25longchamp%25%27+OR+toponyme+ILIKE+%27%25garde%25%27+OR+toponyme+ILIKE+%27%25mucem%25%27+OR+toponyme+ILIKE+%27%25radieuse%25%27+OR+toponyme+ILIKE+%27%25h%C3%B4tel+de+ville%25%27+OR+toponyme+ILIKE+%27%25pharo%25%27+OR+toponyme+ILIKE+%27%25major%25%27%29&COUNT=1000&SORTBY=cleabs&STARTINDEX=0"
+  },
+  "buildingSource": {
+    "indexPath": "data/map_pack/city/index.json",
+    "indexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "immutable": true,
+    "geometryUsed": "Original atlas coordinates; an XY-only analysis copy is projected for overlap calculations."
+  },
+  "method": {
+    "projectedAreaCRS": "EPSG:2154",
+    "sourceGeometryUntouched": true,
+    "maximumZonePlanimetricAccuracyMetres": 3,
+    "minimumBuildingOverlapFraction": 0.99,
+    "centroidRequiredInside": true,
+    "centroidMinimumBoundaryDistance": "strictly greater than declared zone planimetric accuracy",
+    "sourceZoneMustBeNonFictitious": true,
+    "acceptance": "A unique dominant building covering at least90% of the zone, or a source religious building in a source religious site. Context membership never identifies every component as the central monument.",
+    "buildingCandidateRule": "Source building intersects source zone with projected intersection area at least 0.01 square metres.",
+    "deduplication": "Repeated atlas feature copies deduplicated by sourceId.",
+    "projection": "EPSG:4326 to EPSG:2154 using rasterio.warp.transform; Shapely polygon intersection and geometric centroid.",
+    "centroidTest": "Zone covers the area centroid of the whole source building polygon, including multipart geometry and holes.",
+    "reportedRounding": "Areas to 0.001 square metre; centroid boundary distances to 0.000001 metre. These are calculation digits, not measurement accuracy.",
+    "fictifMeaning": "Fictitious source zone geometry; it does not mean that the named place is imaginary."
+  },
+  "zoneCount": 28,
+  "geometricCandidateCount": 106,
+  "strictProposedLinkCount": 12,
+  "strictProposalSha256": "54e69c1afcfcd056765840662b0c9103d7896530149703129020ae914db7e0bc",
+  "rows": [
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.48974",
+      "zoneCleabs": "SURFACTI0000000040209473",
+      "name": "Cathédrale de la Major",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Culte chrétien",
+      "zoneDetailedNature": "Cathédrale",
+      "zoneCategory": "Religieux",
+      "zoneAreaSquareMetres": 5464.713,
+      "candidates": [
+        {
+          "sourceId": "batiment.9970437",
+          "cleabs": "BATIMENT0000000258930470",
+          "intersectedAreaSquareMetres": 3094.395,
+          "fractionOfBuilding": 1.0000000000000007,
+          "fractionOfZone": 0.5662501646185739,
+          "sourceBuildingAreaSquareMetres": 3094.395,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 28.6,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 14.319805,
+          "geometry2dFingerprint": "046f0bd14373a211d5979f0c15988dabb908f96dfc0cbcab869a1332763001d7",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970434",
+          "cleabs": "BATIMENT0000000258930468",
+          "intersectedAreaSquareMetres": 815.664,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.14926008716968484,
+          "sourceBuildingAreaSquareMetres": 815.664,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 15,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 7.140924,
+          "geometry2dFingerprint": "298f371d52db3cea991f408efc722a3fbaa45dc913b0bdbf4e354928fb0cbebd",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970436",
+          "cleabs": "BATIMENT0000000258930469",
+          "intersectedAreaSquareMetres": 721.104,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.13195640651772786,
+          "sourceBuildingAreaSquareMetres": 721.104,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 11,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 8.093026,
+          "geometry2dFingerprint": "2ab1459ec2ea7d1beb76127b79389764f34fdece9a3b514d0f31fce2f9bc465b",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        },
+        {
+          "sourceId": "batiment.9976522",
+          "cleabs": "BATIMENT0000000258938065",
+          "intersectedAreaSquareMetres": 432.292,
+          "fractionOfBuilding": 0.9999999999999999,
+          "fractionOfZone": 0.0791059938378787,
+          "sourceBuildingAreaSquareMetres": 432.292,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 40.1,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 17.33323,
+          "geometry2dFingerprint": "bcc6220375642e911907cfa38d6809a24f33d8a272b21e9ce1fe4d4bd614ecf3",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        },
+        {
+          "sourceId": "batiment.9976521",
+          "cleabs": "BATIMENT0000000258938064",
+          "intersectedAreaSquareMetres": 298.323,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.05459075028664199,
+          "sourceBuildingAreaSquareMetres": 298.323,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 17.5,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 6.073147,
+          "geometry2dFingerprint": "55dddebab379bd2ecc9f2e9739c88549b49e7f35c26b13d68bdca75bba5e1ef4",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040209473",
+        "categorie": "Religieux",
+        "nature": "Culte chrétien",
+        "nature_detaillee": "Cathédrale",
+        "toponyme": "Cathédrale de la Major",
+        "statut_du_toponyme": "Collecté",
+        "importance": "3",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2026-04-10T14:24:51.050Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-03-24Z",
+        "sources": "ADN TOUR 2026",
+        "identifiants_sources": "ADN TOUR:acd11f42-d4a5-3b48-881a-ff1c069595f9",
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE 2E ARRONDISSEMENT",
+        "adresse_postale": "place de la major",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.48989",
+      "zoneCleabs": "SURFACTI0000000040209488",
+      "name": "Chapelle et Hospice de la Vieille Charité",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Culte chrétien",
+      "zoneDetailedNature": "Chapelle",
+      "zoneCategory": "Religieux",
+      "zoneAreaSquareMetres": 702.629,
+      "candidates": [
+        {
+          "sourceId": "batiment.9969425",
+          "cleabs": "BATIMENT0000000258929268",
+          "intersectedAreaSquareMetres": 702.629,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 1.0000000000000002,
+          "sourceBuildingAreaSquareMetres": 702.629,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Chapelle",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 10.8,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 9.824072,
+          "geometry2dFingerprint": "b59e3f49f773fbc619fdd61198c48c4e158ec2c8cfe2f25405bb3ae689657e17",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040209488",
+        "categorie": "Religieux",
+        "nature": "Culte chrétien",
+        "nature_detaillee": "Chapelle",
+        "toponyme": "Chapelle et Hospice de la Vieille Charité",
+        "statut_du_toponyme": "Collecté",
+        "importance": "3",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2026-02-02T12:14:55.064Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": null,
+        "sources": null,
+        "identifiants_sources": null,
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE 2E ARRONDISSEMENT",
+        "adresse_postale": null,
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.48993",
+      "zoneCleabs": "SURFACTI0000000040209492",
+      "name": "Ancienne Église de la Major",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Culte chrétien",
+      "zoneDetailedNature": "Eglise",
+      "zoneCategory": "Religieux",
+      "zoneAreaSquareMetres": 880.072,
+      "candidates": [
+        {
+          "sourceId": "batiment.9967947",
+          "cleabs": "BATIMENT0000000258927550",
+          "intersectedAreaSquareMetres": 880.072,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 1.0000000000000002,
+          "sourceBuildingAreaSquareMetres": 880.072,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 10.4,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 13.13449,
+          "geometry2dFingerprint": "805938e22e7f510145713567c72c50eb008ca0baa96773c3a43410f1dd3757f6",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040209492",
+        "categorie": "Religieux",
+        "nature": "Culte chrétien",
+        "nature_detaillee": "Eglise",
+        "toponyme": "Ancienne Église de la Major",
+        "statut_du_toponyme": "Collecté",
+        "importance": "3",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2026-04-10T14:24:51.050Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-03-24Z",
+        "sources": "ADN TOUR 2026",
+        "identifiants_sources": "ADN TOUR:9b8a7300-5c80-329c-8c4f-3d5d1cca8d0f",
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE 2E ARRONDISSEMENT",
+        "adresse_postale": "place de la major",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.49001",
+      "zoneCleabs": "SURFACTI0000000040209501",
+      "name": "Notre-Dame de la Garde",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 3,
+      "zoneNature": "Culte chrétien",
+      "zoneDetailedNature": "Basilique",
+      "zoneCategory": "Religieux",
+      "zoneAreaSquareMetres": 3724.597,
+      "candidates": [
+        {
+          "sourceId": "batiment.10628844",
+          "cleabs": "BATIMENT0000000273400964",
+          "intersectedAreaSquareMetres": 764.879,
+          "fractionOfBuilding": 0.9999999999999997,
+          "fractionOfZone": 0.20535895099543572,
+          "sourceBuildingAreaSquareMetres": 764.879,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 17.5,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 8.114862,
+          "geometry2dFingerprint": "c78615c34010d22fe737859e839154b056f621c852c85b91ab601d97e68f9933",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628330",
+          "cleabs": "BATIMENT0000000273400278",
+          "intersectedAreaSquareMetres": 731.72,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.1964561839220224,
+          "sourceBuildingAreaSquareMetres": 731.72,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 23,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 5.53603,
+          "geometry2dFingerprint": "d7b382ef3ed9da63623e60306397287ae92d4b6cb91fd41bcb2e2f0dafa18fa3",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628845",
+          "cleabs": "BATIMENT0000000273400965",
+          "intersectedAreaSquareMetres": 651.552,
+          "fractionOfBuilding": 1.0000000000000007,
+          "fractionOfZone": 0.17493208842072483,
+          "sourceBuildingAreaSquareMetres": 651.552,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 17.5,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 16.963457,
+          "geometry2dFingerprint": "9f8a66dd9be27aaf6caadaaef799283e9dd849334e3c3624dad589d2514f79ee",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628331",
+          "cleabs": "BATIMENT0000000273400280",
+          "intersectedAreaSquareMetres": 573.962,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.1541005169727746,
+          "sourceBuildingAreaSquareMetres": 573.962,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 17.1,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 4.148355,
+          "geometry2dFingerprint": "3e4d6c5cf1b8186996c6f37b193a0e712ca6f5f71d8589d347ca4379e3c04f45",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628865",
+          "cleabs": "BATIMENT0000000273400987",
+          "intersectedAreaSquareMetres": 352.83,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.09472959393480382,
+          "sourceBuildingAreaSquareMetres": 352.83,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 8,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 20.130054,
+          "geometry2dFingerprint": "25b97686fe829ab019d1d3ce6dba774483574a8bd4148c4ed69a8a5907c30649",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628866",
+          "cleabs": "BATIMENT0000000273400988",
+          "intersectedAreaSquareMetres": 203.63,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.054671798801210904,
+          "sourceBuildingAreaSquareMetres": 203.63,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 12,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 18.888271,
+          "geometry2dFingerprint": "4fc26a24dac1758a64691519466195be5d3ff6bb90ff0f7f5ecc9fe0856b81a9",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628333",
+          "cleabs": "BATIMENT0000000273400282",
+          "intersectedAreaSquareMetres": 170.971,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.045903322032330655,
+          "sourceBuildingAreaSquareMetres": 170.971,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 20.7,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 9.254835,
+          "geometry2dFingerprint": "c87956abfcd6ca0c90d84f38c89e21bccecb5b5cc5190d2b1e554d81a1b8772d",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628864",
+          "cleabs": "BATIMENT0000000273400986",
+          "intersectedAreaSquareMetres": 142.003,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.038125675354418465,
+          "sourceBuildingAreaSquareMetres": 142.003,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 8,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 8.504756,
+          "geometry2dFingerprint": "787d52ce77e99fbfd85eac73f7ba4fe4439c4ca78f5131a97616d542b7e65cb5",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628863",
+          "cleabs": "BATIMENT0000000273400985",
+          "intersectedAreaSquareMetres": 65.026,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.017458427295480854,
+          "sourceBuildingAreaSquareMetres": 65.026,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 15.9,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 10.855538,
+          "geometry2dFingerprint": "c35196bc291d5b4b2f5b339e6c6354d8bd48c2206c4daaac49d0145d88bc3f17",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628338",
+          "cleabs": "BATIMENT0000000273400287",
+          "intersectedAreaSquareMetres": 35.975,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.009658740418592639,
+          "sourceBuildingAreaSquareMetres": 35.975,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 17.5,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 3.353013,
+          "geometry2dFingerprint": "5dcc97505b9507a794d6ebdf40488e05f23640fe475ec300e29946bfd853902d",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628339",
+          "cleabs": "BATIMENT0000000273400288",
+          "intersectedAreaSquareMetres": 16.786,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.004506898593432181,
+          "sourceBuildingAreaSquareMetres": 16.786,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 16.4,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 3.013541,
+          "geometry2dFingerprint": "9af1f70150c2975636efe673f11377223b8b18a4e36f09057abb919d5c395520",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        },
+        {
+          "sourceId": "batiment.10628337",
+          "cleabs": "BATIMENT0000000273400286",
+          "intersectedAreaSquareMetres": 15.263,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.004097803258772898,
+          "sourceBuildingAreaSquareMetres": 15.263,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 17.2,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 1.283785,
+          "geometry2dFingerprint": "5a3848e5df9dff21e68b746a3e0a0606aa559d8a2d84ab46dbe7363efd31c698",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040209501",
+        "categorie": "Religieux",
+        "nature": "Culte chrétien",
+        "nature_detaillee": "Basilique",
+        "toponyme": "Notre-Dame de la Garde",
+        "statut_du_toponyme": "Validé",
+        "importance": "3",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2026-04-10T14:24:51.050Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-03-24Z",
+        "sources": "ADN TOUR 2026",
+        "identifiants_sources": "ADN TOUR:80bf2f07-fca3-3651-8031-aa7397d28bd2",
+        "methode_d_acquisition_planimetrique": "Orthophotographie",
+        "precision_planimetrique": 3,
+        "insee_commune": "13206",
+        "commune": "MARSEILLE 6E ARRONDISSEMENT",
+        "adresse_postale": "rue fort du sanctuaire",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 11,
+      "contextStatus": "strict_site_context_proposed"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.50052",
+      "zoneCleabs": "SURFACTI0000000040211053",
+      "name": "Collège Longchamp",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 2.5,
+      "zoneNature": "Collège",
+      "zoneDetailedNature": null,
+      "zoneCategory": "Science et enseignement",
+      "zoneAreaSquareMetres": 9433.271,
+      "candidates": [
+        {
+          "sourceId": "batiment.10317859",
+          "cleabs": "BATIMENT0000000266948704",
+          "intersectedAreaSquareMetres": 1973.238,
+          "fractionOfBuilding": 0.9999999999999996,
+          "fractionOfZone": 0.20917858472238526,
+          "sourceBuildingAreaSquareMetres": 1973.238,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 18,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 35.863083,
+          "geometry2dFingerprint": "bf00da55a7598a8025bd1ecb51cdf6c580e3752cf60f5407ddbebd1ce635084b",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10317715",
+          "cleabs": "BATIMENT0000000266948536",
+          "intersectedAreaSquareMetres": 1094.233,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.11599721232026047,
+          "sourceBuildingAreaSquareMetres": 1094.233,
+          "sourceDeclaredUse": [
+            "Sportif",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 12.7,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 14.504482,
+          "geometry2dFingerprint": "07747c754757f014e9f9a6463b9929242b685a4c6fd51cca2f1a4fbf71d2be71",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10317721",
+          "cleabs": "BATIMENT0000000266948542",
+          "intersectedAreaSquareMetres": 1054.776,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.1118144596866397,
+          "sourceBuildingAreaSquareMetres": 1054.776,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 10.7,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 15.785088,
+          "geometry2dFingerprint": "a6bdd7755e183638a3090a4b381dc055240f22b1091ba74cf39241223bcb1c71",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10317722",
+          "cleabs": "BATIMENT0000000266948543",
+          "intersectedAreaSquareMetres": 169.897,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.018010366798025264,
+          "sourceBuildingAreaSquareMetres": 169.897,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 7.2,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 27.739834,
+          "geometry2dFingerprint": "e1caadeb8facaac692e85fb340fd66da7bebcf4ba032972027c40284af425f04",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10317718",
+          "cleabs": "BATIMENT0000000266948539",
+          "intersectedAreaSquareMetres": 54.664,
+          "fractionOfBuilding": 0.9989831811597819,
+          "fractionOfZone": 0.005794808607184152,
+          "sourceBuildingAreaSquareMetres": 54.72,
+          "sourceDeclaredUse": [
+            "Résidentiel",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 2,
+          "sourceDeclaredHeight": 7.4,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 2.137744,
+          "geometry2dFingerprint": "b3dcde34da238a1311c27549d927d98926b8587ac7787f821e540f49ff0cc97d",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10317717",
+          "cleabs": "BATIMENT0000000266948538",
+          "intersectedAreaSquareMetres": 46.43,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0049219736501561135,
+          "sourceBuildingAreaSquareMetres": 46.43,
+          "sourceDeclaredUse": [
+            "Annexe",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 3.3,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 5.667966,
+          "geometry2dFingerprint": "edba89538d5b3640606ea66fa43b1c8104e96c54e0a687bff4638b39190172a0",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10317723",
+          "cleabs": "BATIMENT0000000266948544",
+          "intersectedAreaSquareMetres": 21.713,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.002301796103311133,
+          "sourceBuildingAreaSquareMetres": 21.713,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 5.5,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 14.470817,
+          "geometry2dFingerprint": "5088c488dd6ff1b8ec40ab1a71cc858426a52e4f2d6829dbaed451fee6182fec",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10317716",
+          "cleabs": "BATIMENT0000000266948537",
+          "intersectedAreaSquareMetres": 11.257,
+          "fractionOfBuilding": 0.9999999999999999,
+          "fractionOfZone": 0.0011933674779381637,
+          "sourceBuildingAreaSquareMetres": 11.257,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.7,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 6.938474,
+          "geometry2dFingerprint": "09e7e01a42b71bf19dd88311033e914f9ab465c84a6541c0c09339d80d68b2e3",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10317724",
+          "cleabs": "BATIMENT0000000266948545",
+          "intersectedAreaSquareMetres": 0.093,
+          "fractionOfBuilding": 0.00045120275078667306,
+          "fractionOfZone": 9.886374474490398e-06,
+          "sourceBuildingAreaSquareMetres": 206.694,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            "Résidentiel"
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 2,
+          "sourceDeclaredHeight": 6.5,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": false,
+          "buildingCentroidBoundaryDistanceMetres": 6.98471,
+          "geometry2dFingerprint": "32964a6f859565a5ec75e5a829eadb15c51a6bbbf332b0c8d505e705f1606c1c",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_overlap_below_99_percent",
+            "building_centroid_outside_zone",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040211053",
+        "categorie": "Science et enseignement",
+        "nature": "Collège",
+        "nature_detaillee": null,
+        "toponyme": "Collège Longchamp",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2026-05-04T15:39:45.095Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-04-10Z",
+        "sources": "MEN 2026",
+        "identifiants_sources": "MEN:0131932E",
+        "methode_d_acquisition_planimetrique": "BDTopo",
+        "precision_planimetrique": 2.5,
+        "insee_commune": "13201",
+        "commune": "MARSEILLE 1ER ARRONDISSEMENT",
+        "adresse_postale": "23 R JEAN DE BERNARDY",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "ambiguous_site_context_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.50059",
+      "zoneCleabs": "SURFACTI0000000040211065",
+      "name": "École Maternelle Longchamp",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 3,
+      "zoneNature": "Enseignement primaire",
+      "zoneDetailedNature": "Ecole maternelle",
+      "zoneCategory": "Science et enseignement",
+      "zoneAreaSquareMetres": 1700.233,
+      "candidates": [
+        {
+          "sourceId": "batiment.10335654",
+          "cleabs": "BATIMENT0000000266968928",
+          "intersectedAreaSquareMetres": 479.949,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.2822843320841655,
+          "sourceBuildingAreaSquareMetres": 479.949,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 6.5,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 9.912078,
+          "geometry2dFingerprint": "e745a5244f21cf8610ee503a76fd4ed6dcec82936c48b52a20690a6de7a13e3a",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10335656",
+          "cleabs": "BATIMENT0000000266968931",
+          "intersectedAreaSquareMetres": 84.814,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.04988377341673077,
+          "sourceBuildingAreaSquareMetres": 84.814,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 8.2,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 6.351994,
+          "geometry2dFingerprint": "c1823c42588aa0fbc6d7d713d54571ade268522d5a9ce3f9db5e6efdc288b2f5",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10335655",
+          "cleabs": "BATIMENT0000000266968930",
+          "intersectedAreaSquareMetres": 58.281,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.03427813012039629,
+          "sourceBuildingAreaSquareMetres": 58.281,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 8.8,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 5.100159,
+          "geometry2dFingerprint": "a0b8f6eea3a5d89a2cd3633d1db3a89f0a424a77df8920b59c009a79c0466f84",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10335657",
+          "cleabs": "BATIMENT0000000266968932",
+          "intersectedAreaSquareMetres": 45.601,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.026820653871527805,
+          "sourceBuildingAreaSquareMetres": 45.601,
+          "sourceDeclaredUse": [
+            "Résidentiel",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 7.1,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 7.446731,
+          "geometry2dFingerprint": "365ec0b7792f5b0ff5c88edd5996ee9baf826bb0c9a7d22d25a463e5bc02f586",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10336058",
+          "cleabs": "BATIMENT0000000266969408",
+          "intersectedAreaSquareMetres": 19.974,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.011747957799618845,
+          "sourceBuildingAreaSquareMetres": 19.974,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 5.5,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 5.197928,
+          "geometry2dFingerprint": "78f57332f36987fdad0c353c2a220b0d06423d7bb5dae49f00fd69b945244506",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10335653",
+          "cleabs": "BATIMENT0000000266968927",
+          "intersectedAreaSquareMetres": 11.6,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.006822673065591169,
+          "sourceBuildingAreaSquareMetres": 11.6,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 8.9,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 6.226499,
+          "geometry2dFingerprint": "1fbc5f6db73e6745dd0c73d52c31460e96b544fbd5fe8229836443940c1ba41d",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10336057",
+          "cleabs": "BATIMENT0000000266969407",
+          "intersectedAreaSquareMetres": 5.751,
+          "fractionOfBuilding": 0.9586247897257667,
+          "fractionOfZone": 0.003382335395380209,
+          "sourceBuildingAreaSquareMetres": 5.999,
+          "sourceDeclaredUse": [
+            "Annexe",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 4.3,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 0.754608,
+          "geometry2dFingerprint": "5190b253d431e322d9987a3ccf44886f5d060b1235a3e224d8aca12b0325ee9c",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_overlap_below_99_percent",
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040211065",
+        "categorie": "Science et enseignement",
+        "nature": "Enseignement primaire",
+        "nature_detaillee": "Ecole maternelle",
+        "toponyme": "École Maternelle Longchamp",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2026-05-04T15:39:45.095Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-04-10Z",
+        "sources": "MEN 2026",
+        "identifiants_sources": "MEN:0130885S",
+        "methode_d_acquisition_planimetrique": "Orthophotographie",
+        "precision_planimetrique": 3,
+        "insee_commune": "13204",
+        "commune": "MARSEILLE 4E ARRONDISSEMENT",
+        "adresse_postale": "2 IMPASSE DE MONTBARD",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "ambiguous_site_context_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.50199",
+      "zoneCleabs": "SURFACTI0000000040211292",
+      "name": "École Primaire Major Cathédrale",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 2.5,
+      "zoneNature": "Enseignement primaire",
+      "zoneDetailedNature": "Ecole primaire",
+      "zoneCategory": "Science et enseignement",
+      "zoneAreaSquareMetres": 3031.437,
+      "candidates": [
+        {
+          "sourceId": "batiment.9970163",
+          "cleabs": "BATIMENT0000000258930083",
+          "intersectedAreaSquareMetres": 844.206,
+          "fractionOfBuilding": 0.9999625864416704,
+          "fractionOfZone": 0.27848373661723164,
+          "sourceBuildingAreaSquareMetres": 844.237,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 7.4,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 13.431522,
+          "geometry2dFingerprint": "b1d4ccca71e48d59e9b6cf49b0468c1a9ba0d889cc1a8093b90a9f8e94b056f1",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970166",
+          "cleabs": "BATIMENT0000000258930088",
+          "intersectedAreaSquareMetres": 310.621,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.10246664720773893,
+          "sourceBuildingAreaSquareMetres": 310.621,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 6.1,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 9.261018,
+          "geometry2dFingerprint": "02dacafd35db17b3d6a474485668581a727d360ca4083ea1cacf1bebcda4a69e",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970164",
+          "cleabs": "BATIMENT0000000258930085",
+          "intersectedAreaSquareMetres": 250.299,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.08256780740276723,
+          "sourceBuildingAreaSquareMetres": 250.299,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 6.5,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 8.881107,
+          "geometry2dFingerprint": "e5ce2225048a90ec2093a7122490aebf624b08e687137777d360cc26259efa10",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970168",
+          "cleabs": "BATIMENT0000000258930091",
+          "intersectedAreaSquareMetres": 76.842,
+          "fractionOfBuilding": 1.0000000000000004,
+          "fractionOfZone": 0.02534850673453073,
+          "sourceBuildingAreaSquareMetres": 76.842,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 4.8,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 12.580625,
+          "geometry2dFingerprint": "d7fd7a6cbff2a751abd3e939f0749bddd8ae0f66ca8227d1550d96a03c06cf2e",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970161",
+          "cleabs": "BATIMENT0000000258930081",
+          "intersectedAreaSquareMetres": 75.764,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.024992786730948416,
+          "sourceBuildingAreaSquareMetres": 75.764,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 9.4,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 10.22616,
+          "geometry2dFingerprint": "017de0bb01410d6fa2d235a284aef3d5a3fdb8b5f8f7ff02436395697dd81f6a",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970169",
+          "cleabs": "BATIMENT0000000258930092",
+          "intersectedAreaSquareMetres": 68.631,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0226398084343778,
+          "sourceBuildingAreaSquareMetres": 68.631,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 6.5,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 5.743756,
+          "geometry2dFingerprint": "20374b581024178c6acc638df23b6daf1b3e76eb48b6f928a667f3fd3708b8be",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970162",
+          "cleabs": "BATIMENT0000000258930082",
+          "intersectedAreaSquareMetres": 51.639,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.01703459154545806,
+          "sourceBuildingAreaSquareMetres": 51.639,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.7,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 11.377933,
+          "geometry2dFingerprint": "b871fa71af3c7570313cd885569107825fb56deaa42b162a3c56f8ef6e0df90e",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970165",
+          "cleabs": "BATIMENT0000000258930086",
+          "intersectedAreaSquareMetres": 34.814,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0114844008281225,
+          "sourceBuildingAreaSquareMetres": 34.814,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 4,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 12.881974,
+          "geometry2dFingerprint": "f163ea0e484fb68523ee61745ad42faa3ab3916aa20dd1783b663832104755fd",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970167",
+          "cleabs": "BATIMENT0000000258930090",
+          "intersectedAreaSquareMetres": 20.449,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.006745565705311947,
+          "sourceBuildingAreaSquareMetres": 20.449,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 9.3,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 9.57683,
+          "geometry2dFingerprint": "d1b93bef0f312e50e94901a61c6f8764d68340d010e44cf028fecd858fa36b2a",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970114",
+          "cleabs": "BATIMENT0000000258930087",
+          "intersectedAreaSquareMetres": 16.939,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.005587853936584816,
+          "sourceBuildingAreaSquareMetres": 16.939,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 9.3,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 9.530798,
+          "geometry2dFingerprint": "da701628d3ce327ec58cc4bc2814bce9dfc58da4bf055f86a50e145477d5c64d",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040211292",
+        "categorie": "Science et enseignement",
+        "nature": "Enseignement primaire",
+        "nature_detaillee": "Ecole primaire",
+        "toponyme": "École Primaire Major Cathédrale",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2026-05-04T15:39:45.095Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-04-10Z",
+        "sources": "MEN 2026",
+        "identifiants_sources": "MEN:0130741K",
+        "methode_d_acquisition_planimetrique": "BDTopo",
+        "precision_planimetrique": 2.5,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE 2E ARRONDISSEMENT",
+        "adresse_postale": "41 A RUE DE L'EVECHE",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "ambiguous_site_context_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.50231",
+      "zoneCleabs": "SURFACTI0000000040211334",
+      "name": "Collège Notre-Dame de la Major",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 3,
+      "zoneNature": "Collège",
+      "zoneDetailedNature": null,
+      "zoneCategory": "Science et enseignement",
+      "zoneAreaSquareMetres": 527.266,
+      "candidates": [
+        {
+          "sourceId": "batiment.9968511",
+          "cleabs": "BATIMENT0000000258928219",
+          "intersectedAreaSquareMetres": 205.818,
+          "fractionOfBuilding": 0.9999491811183743,
+          "fractionOfZone": 0.39034822729022756,
+          "sourceBuildingAreaSquareMetres": 205.828,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 14.9,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 6.115506,
+          "geometry2dFingerprint": "7807dbbbf1ed72c9847c65bd4e2ef63b63a385d797b2377f04ddd4d518491f69",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9968516",
+          "cleabs": "BATIMENT0000000258928225",
+          "intersectedAreaSquareMetres": 106.03,
+          "fractionOfBuilding": 0.9991277652089401,
+          "fractionOfZone": 0.20109295475411265,
+          "sourceBuildingAreaSquareMetres": 106.122,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 15,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 5.232279,
+          "geometry2dFingerprint": "6749836532b66ebfd4c8f8a1d47ec5ced9d7b25a84ca53517120c6a80a27b24e",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9968515",
+          "cleabs": "BATIMENT0000000258928224",
+          "intersectedAreaSquareMetres": 56.715,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.10756482617831854,
+          "sourceBuildingAreaSquareMetres": 56.715,
+          "sourceDeclaredUse": [
+            "Résidentiel",
+            "Annexe"
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 6,
+          "sourceDeclaredHeight": 14.7,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 3.36609,
+          "geometry2dFingerprint": "5faaef1ed2ff500187d03bf090cc69c3e578f5f8730d65d3a3d801bd8bb504c1",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9968513",
+          "cleabs": "BATIMENT0000000258928221",
+          "intersectedAreaSquareMetres": 49.941,
+          "fractionOfBuilding": 0.9982966297070055,
+          "fractionOfZone": 0.09471597372012647,
+          "sourceBuildingAreaSquareMetres": 50.026,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 16.1,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 2.309029,
+          "geometry2dFingerprint": "f90449a40cc6effce847e803ed4c3d79bcb7f448327c3f1caeac67d52c7a0f6b",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9968512",
+          "cleabs": "BATIMENT0000000258928220",
+          "intersectedAreaSquareMetres": 16.137,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.030605010936552275,
+          "sourceBuildingAreaSquareMetres": 16.137,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 14.4,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 1.717029,
+          "geometry2dFingerprint": "26dd393c839f356df0052c89affbcb9a1d72c4acfee395e41b94f18eefa884b3",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970415",
+          "cleabs": "BATIMENT0000000258930402",
+          "intersectedAreaSquareMetres": 5.712,
+          "fractionOfBuilding": 0.2093356350032095,
+          "fractionOfZone": 0.010833793808003525,
+          "sourceBuildingAreaSquareMetres": 27.288,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.3,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": false,
+          "buildingCentroidBoundaryDistanceMetres": 2.598242,
+          "geometry2dFingerprint": "372dc54951a52f4c610829eced4972faf92ba43599a6eb1cea7b6f093d9f1555",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_overlap_below_99_percent",
+            "building_centroid_outside_zone",
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040211334",
+        "categorie": "Science et enseignement",
+        "nature": "Collège",
+        "nature_detaillee": null,
+        "toponyme": "Collège Notre-Dame de la Major",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2026-06-18T13:25:26.333Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-04-10Z",
+        "sources": "MEN 2026",
+        "identifiants_sources": "MEN:0133278T",
+        "methode_d_acquisition_planimetrique": "Orthophotographie",
+        "precision_planimetrique": 3,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE 2E ARRONDISSEMENT",
+        "adresse_postale": "31 - 33 MTE DES ACCOULES",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "ambiguous_site_context_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.50862",
+      "zoneCleabs": "SURFACTI0000000040212110",
+      "name": "Parc Longchamp",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 5,
+      "zoneNature": "Espace public",
+      "zoneDetailedNature": "Parc",
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 59088.88,
+      "candidates": [
+        {
+          "sourceId": "batiment.9689883",
+          "cleabs": "BATIMENT0000000258446331",
+          "intersectedAreaSquareMetres": 206.602,
+          "fractionOfBuilding": 0.9999999999999999,
+          "fractionOfZone": 0.0034964670881442845,
+          "sourceBuildingAreaSquareMetres": 206.602,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 2.2,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 4.182224,
+          "geometry2dFingerprint": "c16f95021618b24a4da0ce71492255699dfb058ed0d1eb54a7461b96d095f6b1",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689890",
+          "cleabs": "BATIMENT0000000258446344",
+          "intersectedAreaSquareMetres": 86.101,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.0014571490569685733,
+          "sourceBuildingAreaSquareMetres": 86.101,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 34.640844,
+          "geometry2dFingerprint": "e509c146d3c933b24dd7ec34528e41bccfdf8d5ada9e67294a55365ca5120d72",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689716",
+          "cleabs": "BATIMENT0000000258446148",
+          "intersectedAreaSquareMetres": 85.656,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0014496096701817646,
+          "sourceBuildingAreaSquareMetres": 85.656,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 2.9,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 41.398231,
+          "geometry2dFingerprint": "4a47874251495b0143d0d0e1f1b8d83d43909829fae57f0830b73fbfde0a3965",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689724",
+          "cleabs": "BATIMENT0000000258446156",
+          "intersectedAreaSquareMetres": 74.038,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0012529979155343838,
+          "sourceBuildingAreaSquareMetres": 74.038,
+          "sourceDeclaredUse": [
+            "Résidentiel",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 5.6,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 33.970113,
+          "geometry2dFingerprint": "b90371b428260de509741979db8e67ccdd478c730d0faca9a67282be5eb9cab3",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689706",
+          "cleabs": "BATIMENT0000000258446138",
+          "intersectedAreaSquareMetres": 69.475,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0011757792953981385,
+          "sourceBuildingAreaSquareMetres": 69.475,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 2.1,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 8.640232,
+          "geometry2dFingerprint": "212594df1be87bb7553cb2ef1b690af21f67673ec97866d851582c4700c1d711",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689700",
+          "cleabs": "BATIMENT0000000258446130",
+          "intersectedAreaSquareMetres": 44.859,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0007591799228093942,
+          "sourceBuildingAreaSquareMetres": 44.859,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 7.8,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 30.191391,
+          "geometry2dFingerprint": "d61ca5c634d6c8706c09fde7b97e42cf04f38e2f58ae84a413a49fc4e5dc0da7",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9687084",
+          "cleabs": "BATIMENT0000000258443203",
+          "intersectedAreaSquareMetres": 42.367,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.0007170003700415825,
+          "sourceBuildingAreaSquareMetres": 42.367,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 5.5,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 22.527183,
+          "geometry2dFingerprint": "c9e57ce44001cbff64aa28cc05b98c2430ad41a2d013905df3f1b1faa7ee68fa",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689726",
+          "cleabs": "BATIMENT0000000258446158",
+          "intersectedAreaSquareMetres": 37.823,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0006401013568605394,
+          "sourceBuildingAreaSquareMetres": 37.823,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 6.5,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 23.103015,
+          "geometry2dFingerprint": "723365f0cf783145c641a1bdd279e252d5f80275e44068ce5140a54295edd460",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689897",
+          "cleabs": "BATIMENT0000000258446364",
+          "intersectedAreaSquareMetres": 34.416,
+          "fractionOfBuilding": 0.9993023313700132,
+          "fractionOfZone": 0.0005824446817024364,
+          "sourceBuildingAreaSquareMetres": 34.44,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 7.7,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 2.869971,
+          "geometry2dFingerprint": "3cbb7c8b3ce57fa556fab5f06fd8e25a4af914cb9c4ba2264437170fea91b392",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689727",
+          "cleabs": "BATIMENT0000000258446159",
+          "intersectedAreaSquareMetres": 33.115,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.000560429262289674,
+          "sourceBuildingAreaSquareMetres": 33.115,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.6,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 19.087112,
+          "geometry2dFingerprint": "31c2ed9401697e28f6a88c526f06a6114e16b3ca59519c36afc7d5c5599b109c",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689723",
+          "cleabs": "BATIMENT0000000258446155",
+          "intersectedAreaSquareMetres": 27.676,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.00046838404036990926,
+          "sourceBuildingAreaSquareMetres": 27.676,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 4.2,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 48.801986,
+          "geometry2dFingerprint": "945d677ebc2c5173c1477e686e56c336551c6e14aff9644c10218f825bca54d8",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689884",
+          "cleabs": "BATIMENT0000000258446332",
+          "intersectedAreaSquareMetres": 26.507,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.0004486004078121691,
+          "sourceBuildingAreaSquareMetres": 26.507,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 6.9,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 3.39485,
+          "geometry2dFingerprint": "efaf4c968b8bb873f048c6d0910abe547d7bb4aef63cf5cb9ceb592fc3f52a4a",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9687269",
+          "cleabs": "BATIMENT0000000258443422",
+          "intersectedAreaSquareMetres": 26.443,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.00044750564074816135,
+          "sourceBuildingAreaSquareMetres": 26.443,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 1.4,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 58.459725,
+          "geometry2dFingerprint": "afc3d255cc8649d2982392601fce511a197e27eeaab6b8bd67ce058c81498626",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689889",
+          "cleabs": "BATIMENT0000000258446343",
+          "intersectedAreaSquareMetres": 18.016,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.00030489933887317726,
+          "sourceBuildingAreaSquareMetres": 18.016,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 2.5,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 40.54264,
+          "geometry2dFingerprint": "f0e1824f9b7022a00919a4c63bc8d3e4eee1c47f34bb94057503e685fb8e64bf",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689725",
+          "cleabs": "BATIMENT0000000258446157",
+          "intersectedAreaSquareMetres": 15.242,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0002579429122236004,
+          "sourceBuildingAreaSquareMetres": 15.242,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 0,
+          "sourceDeclaredHeight": 4.4,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 19.397704,
+          "geometry2dFingerprint": "243140f43da6f725fdca60de6cda093b7ac5492074392c6b3fd5f365f1758252",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689895",
+          "cleabs": "BATIMENT0000000258446362",
+          "intersectedAreaSquareMetres": 7.42,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.00012556547407243296,
+          "sourceBuildingAreaSquareMetres": 7.42,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 9.7,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 6.347974,
+          "geometry2dFingerprint": "c9503695169d156a7f91b4b2fd5641f3d890e7591e29c8c7b3cd857655774c7c",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9689891",
+          "cleabs": "BATIMENT0000000258446345",
+          "intersectedAreaSquareMetres": 7.005,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.00011855736663846233,
+          "sourceBuildingAreaSquareMetres": 7.005,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": null,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 25.442972,
+          "geometry2dFingerprint": "bac24b31aea6418cbe5852b658d2d1b1905176b00582e818e7a517bf128842ae",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040212110",
+        "categorie": "Culture et loisirs",
+        "nature": "Espace public",
+        "nature_detaillee": "Parc",
+        "toponyme": "Parc Longchamp",
+        "statut_du_toponyme": "Collecté",
+        "importance": "3",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2026-04-10T20:56:05.144Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-03-24Z",
+        "sources": "ADN TOUR 2026",
+        "identifiants_sources": "ADN TOUR:91220d41-cd99-3078-8a2c-343dd42c161d",
+        "methode_d_acquisition_planimetrique": "Levé non GPS",
+        "precision_planimetrique": 5,
+        "insee_commune": "13204",
+        "commune": "MARSEILLE 4E ARRONDISSEMENT",
+        "adresse_postale": "Bd Montricher Ou Bd du Jardin Zoologique",
+        "identifiant_voie_ban": "13204_jlsbwq",
+        "nom_commercial": null,
+        "id_ban_odonyme": "b5ea918f-88af-4ea2-9f39-f2d76e50c565"
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.50942",
+      "zoneCleabs": "SURFACTI0000000040212203",
+      "name": "Cour d'Honneur de l'Hôtel de Ville",
+      "zoneGeometryFictitious": true,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Espace public",
+      "zoneDetailedNature": null,
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 24.999,
+      "candidates": [],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040212203",
+        "categorie": "Culture et loisirs",
+        "nature": "Espace public",
+        "nature_detaillee": null,
+        "toponyme": "Cour d'Honneur de l'Hôtel de Ville",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": true,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2017-12-19T13:45:26.342Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": null,
+        "sources": null,
+        "identifiants_sources": null,
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13070",
+        "commune": "LA PENNE-SUR-HUVEAUNE",
+        "adresse_postale": "sans objet",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_geometry_fictitious_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.50969",
+      "zoneCleabs": "SURFACTI0000000040212255",
+      "name": "Place de la Major",
+      "zoneGeometryFictitious": true,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Espace public",
+      "zoneDetailedNature": "Place",
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 24.999,
+      "candidates": [],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040212255",
+        "categorie": "Culture et loisirs",
+        "nature": "Espace public",
+        "nature_detaillee": "Place",
+        "toponyme": "Place de la Major",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": true,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2024-08-27T07:29:39.850Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": null,
+        "sources": null,
+        "identifiants_sources": null,
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE",
+        "adresse_postale": null,
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_geometry_fictitious_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.51418",
+      "zoneCleabs": "SURFACTI0000000040212852",
+      "name": "État-Major du Bataillon de Marins-Pompiers de Marseille",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 5,
+      "zoneNature": "Caserne de pompiers",
+      "zoneDetailedNature": "Centre de secours principal",
+      "zoneCategory": "Administratif ou militaire",
+      "zoneAreaSquareMetres": 2446.418,
+      "candidates": [
+        {
+          "sourceId": "batiment.9967588",
+          "cleabs": "BATIMENT0000000258927046",
+          "intersectedAreaSquareMetres": 1447.603,
+          "fractionOfBuilding": 0.9874622969862955,
+          "fractionOfZone": 0.5917235622281378,
+          "sourceBuildingAreaSquareMetres": 1465.983,
+          "sourceDeclaredUse": [
+            "Résidentiel",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 5,
+          "sourceDeclaredHeight": 20.7,
+          "sourceChunkSha256": "b0e357371ff41cded80e20890d65c906443dc9572f6d0a31b23ed6df54d18c94",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 13.034737,
+          "geometry2dFingerprint": "74ad71eb81178327ef9255404c404a492026e7eee81bffb4e1264775b3f4e051",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_overlap_below_99_percent",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9967586",
+          "cleabs": "BATIMENT0000000258927044",
+          "intersectedAreaSquareMetres": 464.95,
+          "fractionOfBuilding": 0.9961873101707092,
+          "fractionOfZone": 0.1900533883354458,
+          "sourceBuildingAreaSquareMetres": 466.73,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 11,
+          "sourceChunkSha256": "836d471012d6ae8c728c79ccb33394dd8796440029b6594c331ce8ba7da324e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 6.476788,
+          "geometry2dFingerprint": "05d1d6250e23df87cb25ca0acc2edea8c534a5b55af5ffcf90ba7cb9823c6a63",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9967589",
+          "cleabs": "BATIMENT0000000258927047",
+          "intersectedAreaSquareMetres": 15.181,
+          "fractionOfBuilding": 0.9541454268796196,
+          "fractionOfZone": 0.006205574670422754,
+          "sourceBuildingAreaSquareMetres": 15.911,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 22.1,
+          "sourceChunkSha256": "836d471012d6ae8c728c79ccb33394dd8796440029b6594c331ce8ba7da324e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 1.310555,
+          "geometry2dFingerprint": "a89fc0a1e50d0f5d2939540c5c5dc46350fbe835c05bdb8a5838ce3a2604fe60",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_overlap_below_99_percent",
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9967587",
+          "cleabs": "BATIMENT0000000258927045",
+          "intersectedAreaSquareMetres": 13.098,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0053537753034342385,
+          "sourceBuildingAreaSquareMetres": 13.098,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 8.5,
+          "sourceChunkSha256": "836d471012d6ae8c728c79ccb33394dd8796440029b6594c331ce8ba7da324e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 14.329479,
+          "geometry2dFingerprint": "13b45e33d1c25760a22fefd37a5ffd072ae68f55c26616edc79d088b71300a01",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000040212852",
+        "categorie": "Administratif ou militaire",
+        "nature": "Caserne de pompiers",
+        "nature_detaillee": "Centre de secours principal",
+        "toponyme": "État-Major du Bataillon de Marins-Pompiers de Marseille",
+        "statut_du_toponyme": "Collecté",
+        "importance": "4",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2006-11-22T11:22:15.462Z",
+        "date_modification": "2024-09-30T14:59:25.588Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2024-09-04Z",
+        "sources": "SDIS13 2022",
+        "identifiants_sources": "BMPM:CLETMP33",
+        "methode_d_acquisition_planimetrique": "Fichier numérique non métrique",
+        "precision_planimetrique": 5,
+        "insee_commune": "13203",
+        "commune": "MARSEILLE 3E ARRONDISSEMENT",
+        "adresse_postale": "9 BD DE STRASBOURG",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.199359",
+      "zoneCleabs": "SURFACTI0000000222672597",
+      "name": "École Primaire Pharo Catalans",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 3,
+      "zoneNature": "Enseignement primaire",
+      "zoneDetailedNature": "Ecole primaire",
+      "zoneCategory": "Science et enseignement",
+      "zoneAreaSquareMetres": 4381.011,
+      "candidates": [
+        {
+          "sourceId": "batiment.10623462",
+          "cleabs": "BATIMENT0000000273394073",
+          "intersectedAreaSquareMetres": 560.341,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.1279022893922187,
+          "sourceBuildingAreaSquareMetres": 560.341,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 7.3,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 10.651647,
+          "geometry2dFingerprint": "6c256c774e032efacd47641b6416fc09faf067c135f5b00842a3e8d467a3aa92",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10623464",
+          "cleabs": "BATIMENT0000000273394075",
+          "intersectedAreaSquareMetres": 366.1,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0835652165093762,
+          "sourceBuildingAreaSquareMetres": 366.1,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 11.9,
+          "sourceChunkSha256": "573be7fb8a82e5a9bf8d63e9627b6a0d77ac889be2921bee92d29cb6daca00a7",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 8.435583,
+          "geometry2dFingerprint": "4a02831e26b8e58b55e3defee6db94b875c2c1d540739850671681f844c783cd",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10623465",
+          "cleabs": "BATIMENT0000000273394076",
+          "intersectedAreaSquareMetres": 232.025,
+          "fractionOfBuilding": 0.9999999999999997,
+          "fractionOfZone": 0.05296145757633387,
+          "sourceBuildingAreaSquareMetres": 232.025,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 4.3,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 13.833649,
+          "geometry2dFingerprint": "ba873fb589329378a1c7b0a3fbe1adb7db6766a6708d5c490d2ae26caf2fc049",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10623463",
+          "cleabs": "BATIMENT0000000273394074",
+          "intersectedAreaSquareMetres": 133.192,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.030402105026671476,
+          "sourceBuildingAreaSquareMetres": 133.192,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 4.8,
+          "sourceChunkSha256": "573be7fb8a82e5a9bf8d63e9627b6a0d77ac889be2921bee92d29cb6daca00a7",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 7.455269,
+          "geometry2dFingerprint": "7fcba2bda658f6bbab6823be092d579740ab8b3f5cc53c79e08f702f0cdc1fc4",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10623472",
+          "cleabs": "BATIMENT0000000273394083",
+          "intersectedAreaSquareMetres": 56.958,
+          "fractionOfBuilding": 0.9999999999999999,
+          "fractionOfZone": 0.01300101167684546,
+          "sourceBuildingAreaSquareMetres": 56.958,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 4.7,
+          "sourceChunkSha256": "573be7fb8a82e5a9bf8d63e9627b6a0d77ac889be2921bee92d29cb6daca00a7",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 10.028178,
+          "geometry2dFingerprint": "dd97a2e3978a141474400f1f3da604cbd213240e462512fb770d3b60c015599f",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10623469",
+          "cleabs": "BATIMENT0000000273394080",
+          "intersectedAreaSquareMetres": 16.935,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0038655084622735646,
+          "sourceBuildingAreaSquareMetres": 16.935,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.5,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 13.521796,
+          "geometry2dFingerprint": "7626c01586e4cd5581f6967057934793b73cf9a970a72049e972b0f198f76442",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10623471",
+          "cleabs": "BATIMENT0000000273394082",
+          "intersectedAreaSquareMetres": 12.644,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.0028861716526655205,
+          "sourceBuildingAreaSquareMetres": 12.644,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 4,
+          "sourceChunkSha256": "573be7fb8a82e5a9bf8d63e9627b6a0d77ac889be2921bee92d29cb6daca00a7",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 8.717408,
+          "geometry2dFingerprint": "be8259166b189bfee4e9371d611dc716f2f889f74f515e03719b1f203cc43c83",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000222672597",
+        "categorie": "Science et enseignement",
+        "nature": "Enseignement primaire",
+        "nature_detaillee": "Ecole primaire",
+        "toponyme": "École Primaire Pharo Catalans",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2009-07-03T15:03:27.208Z",
+        "date_modification": "2026-05-04T15:39:45.095Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-04-10Z",
+        "sources": "MEN 2026",
+        "identifiants_sources": "MEN:0130605M",
+        "methode_d_acquisition_planimetrique": "Orthophotographie",
+        "precision_planimetrique": 3,
+        "insee_commune": "13207",
+        "commune": "MARSEILLE 7E ARRONDISSEMENT",
+        "adresse_postale": "RUE DES CATALANS",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "ambiguous_site_context_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.199361",
+      "zoneCleabs": "SURFACTI0000000222672598",
+      "name": "École Maternelle le Pharo",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 3,
+      "zoneNature": "Enseignement primaire",
+      "zoneDetailedNature": "Ecole maternelle",
+      "zoneCategory": "Science et enseignement",
+      "zoneAreaSquareMetres": 1721.023,
+      "candidates": [
+        {
+          "sourceId": "batiment.10623466",
+          "cleabs": "BATIMENT0000000273394077",
+          "intersectedAreaSquareMetres": 493.141,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.2865395767016821,
+          "sourceBuildingAreaSquareMetres": 493.141,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 6.9,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 4.696023,
+          "geometry2dFingerprint": "d7ab8740d67022a5f4af7070c265ca24e1ab240f732d079379dc5bf883701d1a",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10623468",
+          "cleabs": "BATIMENT0000000273394079",
+          "intersectedAreaSquareMetres": 150.272,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.08731532278383522,
+          "sourceBuildingAreaSquareMetres": 150.272,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 5.1,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 11.357091,
+          "geometry2dFingerprint": "12a82f65573a4ca43b1fe5e4365e6584f94308c6d446c00104556b560ec8d475",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10623470",
+          "cleabs": "BATIMENT0000000273394081",
+          "intersectedAreaSquareMetres": 34.601,
+          "fractionOfBuilding": 0.9489362122269198,
+          "fractionOfZone": 0.02010481684323827,
+          "sourceBuildingAreaSquareMetres": 36.463,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.3,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 1.583987,
+          "geometry2dFingerprint": "b58d58d11375cead1ade58036faa01ad0b19c7ba5ced459266cc4b8d77c0854b",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_overlap_below_99_percent",
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10623467",
+          "cleabs": "BATIMENT0000000273394078",
+          "intersectedAreaSquareMetres": 19.132,
+          "fractionOfBuilding": 0.9999999999999997,
+          "fractionOfZone": 0.011116390312808944,
+          "sourceBuildingAreaSquareMetres": 19.132,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 5,
+          "sourceChunkSha256": "573be7fb8a82e5a9bf8d63e9627b6a0d77ac889be2921bee92d29cb6daca00a7",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 4.530345,
+          "geometry2dFingerprint": "75f66ed4a91d70f12e6116d3fa38c5abf612be1fb16432ff17bb23b15cc77d03",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000222672598",
+        "categorie": "Science et enseignement",
+        "nature": "Enseignement primaire",
+        "nature_detaillee": "Ecole maternelle",
+        "toponyme": "École Maternelle le Pharo",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2009-07-03T15:03:27.208Z",
+        "date_modification": "2024-04-17T12:57:25.903Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2024-04-09Z",
+        "sources": "MEN 2024",
+        "identifiants_sources": "MEN:0130910U",
+        "methode_d_acquisition_planimetrique": "Orthophotographie",
+        "precision_planimetrique": 3,
+        "insee_commune": "13207",
+        "commune": "MARSEILLE 7E ARRONDISSEMENT",
+        "adresse_postale": "19 RUE DES CATALANS",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "ambiguous_site_context_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.199521",
+      "zoneCleabs": "SURFACTI0000000222672772",
+      "name": "École Maternelle Rose la Garde",
+      "zoneGeometryFictitious": true,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Enseignement primaire",
+      "zoneDetailedNature": "Ecole maternelle",
+      "zoneCategory": "Science et enseignement",
+      "zoneAreaSquareMetres": 25.0,
+      "candidates": [
+        {
+          "sourceId": "batiment.10442925",
+          "cleabs": "BATIMENT0000000271214138",
+          "intersectedAreaSquareMetres": 25.0,
+          "fractionOfBuilding": 0.031894566495669845,
+          "fractionOfZone": 0.9999999999999999,
+          "sourceBuildingAreaSquareMetres": 783.828,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.7,
+          "sourceChunkSha256": "419b5c31fe13c5c731e54718f41a6abc1928cde6c28447688783926df5df49d0",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 0.211992,
+          "geometry2dFingerprint": "15c94c3f9e5e32f80fc68703bde20b717f73383de97019a9f347d852e05655d9",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_geometry_fictitious",
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_overlap_below_99_percent",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000222672772",
+        "categorie": "Science et enseignement",
+        "nature": "Enseignement primaire",
+        "nature_detaillee": "Ecole maternelle",
+        "toponyme": "École Maternelle Rose la Garde",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": true,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2009-07-03T15:36:57.965Z",
+        "date_modification": "2026-05-04T15:39:45.095Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-04-10Z",
+        "sources": "MEN 2026",
+        "identifiants_sources": "MEN:0131267G",
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13213",
+        "commune": "MARSEILLE 13E ARRONDISSEMENT",
+        "adresse_postale": "11 BOULEVARD DU METRO",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_geometry_fictitious_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.199522",
+      "zoneCleabs": "SURFACTI0000000222672773",
+      "name": "École Primaire Rose la Garde",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 2.5,
+      "zoneNature": "Enseignement primaire",
+      "zoneDetailedNature": "Ecole primaire",
+      "zoneCategory": "Science et enseignement",
+      "zoneAreaSquareMetres": 8251.317,
+      "candidates": [
+        {
+          "sourceId": "batiment.10442925",
+          "cleabs": "BATIMENT0000000271214138",
+          "intersectedAreaSquareMetres": 783.828,
+          "fractionOfBuilding": 1.0000000000000002,
+          "fractionOfZone": 0.09499426637175028,
+          "sourceBuildingAreaSquareMetres": 783.828,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.7,
+          "sourceChunkSha256": "419b5c31fe13c5c731e54718f41a6abc1928cde6c28447688783926df5df49d0",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 11.177849,
+          "geometry2dFingerprint": "15c94c3f9e5e32f80fc68703bde20b717f73383de97019a9f347d852e05655d9",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10442933",
+          "cleabs": "BATIMENT0000000271214164",
+          "intersectedAreaSquareMetres": 702.273,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.08511039495112853,
+          "sourceBuildingAreaSquareMetres": 702.273,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 6.1,
+          "sourceChunkSha256": "419b5c31fe13c5c731e54718f41a6abc1928cde6c28447688783926df5df49d0",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 16.248562,
+          "geometry2dFingerprint": "2e841fd6a8e8ff39b0e9aa34b4f5504e07ff6f9074e1cc2e968e0b5f730909cf",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10442995",
+          "cleabs": "BATIMENT0000000271214214",
+          "intersectedAreaSquareMetres": 389.726,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.047232022996154664,
+          "sourceBuildingAreaSquareMetres": 389.726,
+          "sourceDeclaredUse": [
+            "Sportif",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 8,
+          "sourceChunkSha256": "419b5c31fe13c5c731e54718f41a6abc1928cde6c28447688783926df5df49d0",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 16.402091,
+          "geometry2dFingerprint": "c0161d66d35b5a291dd75d6d935d56deb94486cb751491f8d3c684466bc877b5",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10443811",
+          "cleabs": "BATIMENT0000000271215169",
+          "intersectedAreaSquareMetres": 154.363,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.01870768549386975,
+          "sourceBuildingAreaSquareMetres": 154.363,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 6,
+          "sourceChunkSha256": "419b5c31fe13c5c731e54718f41a6abc1928cde6c28447688783926df5df49d0",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 14.90418,
+          "geometry2dFingerprint": "dc30bc7e81d733a719eb260202d3dad1b8dcac7a328905bd6e339f90ff0ce812",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10442924",
+          "cleabs": "BATIMENT0000000271214137",
+          "intersectedAreaSquareMetres": 39.903,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.004835910851333001,
+          "sourceBuildingAreaSquareMetres": 39.903,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.3,
+          "sourceChunkSha256": "419b5c31fe13c5c731e54718f41a6abc1928cde6c28447688783926df5df49d0",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 23.314107,
+          "geometry2dFingerprint": "4c9b50eb5ef1e33d4be2232e9699dfb95f60f0a652f66ce1ccc6cb8b87edc008",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10443773",
+          "cleabs": "BATIMENT0000000271215102",
+          "intersectedAreaSquareMetres": 13.283,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.001609752534782502,
+          "sourceBuildingAreaSquareMetres": 13.283,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3,
+          "sourceChunkSha256": "419b5c31fe13c5c731e54718f41a6abc1928cde6c28447688783926df5df49d0",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 6.065208,
+          "geometry2dFingerprint": "0fdb79690092016b209ab453e3fa629882d3d4ec4d950cb01107e30e9eb94492",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10443145",
+          "cleabs": "BATIMENT0000000271214385",
+          "intersectedAreaSquareMetres": 6.744,
+          "fractionOfBuilding": 0.0352580559377655,
+          "fractionOfZone": 0.0008173303103909935,
+          "sourceBuildingAreaSquareMetres": 191.277,
+          "sourceDeclaredUse": [
+            "Résidentiel",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 2,
+          "sourceDeclaredHeight": 6.5,
+          "sourceChunkSha256": "419b5c31fe13c5c731e54718f41a6abc1928cde6c28447688783926df5df49d0",
+          "buildingCentroidInsideZone": false,
+          "buildingCentroidBoundaryDistanceMetres": 9.463901,
+          "geometry2dFingerprint": "7c8606313c91d7063a41aa0883f2342f50bc3b46b5294714accb424f185cd017",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_overlap_below_99_percent",
+            "building_centroid_outside_zone",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.10443774",
+          "cleabs": "BATIMENT0000000271215103",
+          "intersectedAreaSquareMetres": 6.697,
+          "fractionOfBuilding": 0.9999999999999999,
+          "fractionOfZone": 0.0008116056381591874,
+          "sourceBuildingAreaSquareMetres": 6.697,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 4.2,
+          "sourceChunkSha256": "419b5c31fe13c5c731e54718f41a6abc1928cde6c28447688783926df5df49d0",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 5.358909,
+          "geometry2dFingerprint": "99ce51b84608791dd90050992927d2c8b16de086cb5c520fb0c08cb1e0d55b1c",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000222672773",
+        "categorie": "Science et enseignement",
+        "nature": "Enseignement primaire",
+        "nature_detaillee": "Ecole primaire",
+        "toponyme": "École Primaire Rose la Garde",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2009-07-03T15:36:57.965Z",
+        "date_modification": "2026-05-04T15:39:45.095Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-04-10Z",
+        "sources": "MEN 2026",
+        "identifiants_sources": "MEN:0132267U",
+        "methode_d_acquisition_planimetrique": "BDTopo",
+        "precision_planimetrique": 2.5,
+        "insee_commune": "13213",
+        "commune": "MARSEILLE 13E ARRONDISSEMENT",
+        "adresse_postale": "RUE AUGUSTIN MERLHOU",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "ambiguous_site_context_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.201411",
+      "zoneCleabs": "SURFACTI0000000222874782",
+      "name": "École Primaire Notre-Dame de la Major",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 3,
+      "zoneNature": "Enseignement primaire",
+      "zoneDetailedNature": "Ecole primaire",
+      "zoneCategory": "Science et enseignement",
+      "zoneAreaSquareMetres": 684.949,
+      "candidates": [
+        {
+          "sourceId": "batiment.9968508",
+          "cleabs": "BATIMENT0000000258928215",
+          "intersectedAreaSquareMetres": 240.105,
+          "fractionOfBuilding": 0.989878698947104,
+          "fractionOfZone": 0.3505438749697711,
+          "sourceBuildingAreaSquareMetres": 242.56,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 3,
+          "sourceDeclaredHeight": 18.3,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 5.412207,
+          "geometry2dFingerprint": "04f2abf30603da8358f97095349ed9bc5c1c92b1c32c14c2e43fb9f1fb09a986",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_overlap_below_99_percent",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970415",
+          "cleabs": "BATIMENT0000000258930402",
+          "intersectedAreaSquareMetres": 21.575,
+          "fractionOfBuilding": 0.7906643649915946,
+          "fractionOfZone": 0.03149933591724822,
+          "sourceBuildingAreaSquareMetres": 27.288,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 3.3,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 2.598242,
+          "geometry2dFingerprint": "372dc54951a52f4c610829eced4972faf92ba43599a6eb1cea7b6f093d9f1555",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_overlap_below_99_percent",
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970414",
+          "cleabs": "BATIMENT0000000258930401",
+          "intersectedAreaSquareMetres": 13.692,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.019989437224139615,
+          "sourceBuildingAreaSquareMetres": 13.692,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 10.6,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 2.883745,
+          "geometry2dFingerprint": "a0ebc3a61139c694761f316f01f5dbc0fb4f4528cd1cc22879752f4b616632aa",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970413",
+          "cleabs": "BATIMENT0000000258930400",
+          "intersectedAreaSquareMetres": 12.005,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.017526396647456186,
+          "sourceBuildingAreaSquareMetres": 12.005,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 4.2,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 3.028974,
+          "geometry2dFingerprint": "1d940e9f000af516bb721da6f90ca25d1b4a270e1dcc95bba31a842ac9245660",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        },
+        {
+          "sourceId": "batiment.9970412",
+          "cleabs": "BATIMENT0000000258930397",
+          "intersectedAreaSquareMetres": 5.498,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.008027578184928481,
+          "sourceBuildingAreaSquareMetres": 5.498,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 8,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 2.70013,
+          "geometry2dFingerprint": "3f710bd939bdd480f2f2fb879f6bb30b7624e6c7f03c68ceca97493d23e40aed",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "centroid_boundary_margin_not_above_source_accuracy",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000222874782",
+        "categorie": "Science et enseignement",
+        "nature": "Enseignement primaire",
+        "nature_detaillee": "Ecole primaire",
+        "toponyme": "École Primaire Notre-Dame de la Major",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2009-07-23T10:04:55.833Z",
+        "date_modification": "2026-06-18T13:25:26.333Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-04-10Z",
+        "sources": "MEN 2026",
+        "identifiants_sources": "MEN:0131812Z",
+        "methode_d_acquisition_planimetrique": "Orthophotographie",
+        "precision_planimetrique": 3,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE 2E ARRONDISSEMENT",
+        "adresse_postale": "31 MONTEE DES ACCOULES",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "ambiguous_site_context_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.259424",
+      "zoneCleabs": "SURFACTI0000000245684280",
+      "name": "Hôtel de Ville Pavillon Daviel",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Mairie",
+      "zoneDetailedNature": null,
+      "zoneCategory": "Administratif ou militaire",
+      "zoneAreaSquareMetres": 878.889,
+      "candidates": [
+        {
+          "sourceId": "batiment.9969815",
+          "cleabs": "BATIMENT0000000258929729",
+          "intersectedAreaSquareMetres": 878.889,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.9999999999999998,
+          "sourceBuildingAreaSquareMetres": 878.889,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 0,
+          "sourceDeclaredHeight": 21.3,
+          "sourceChunkSha256": "f6d76e70429bf10282a1de867fe73e3a4be98b7e758c49e953b4b3910bb53aa1",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 9.238307,
+          "geometry2dFingerprint": "f921b6ce4c92922322719ad53058e5fe4cf79fb8508349cebbd9b37e64678e4c",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000245684280",
+        "categorie": "Administratif ou militaire",
+        "nature": "Mairie",
+        "nature_detaillee": null,
+        "toponyme": "Hôtel de Ville Pavillon Daviel",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2010-12-01T06:23:41.884Z",
+        "date_modification": "2023-01-05T11:19:47.881Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2021-03-17Z",
+        "sources": null,
+        "identifiants_sources": null,
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE 2E ARRONDISSEMENT",
+        "adresse_postale": null,
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.303543",
+      "zoneCleabs": "SURFACTI0000000300201626",
+      "name": "Jardin du Pharo",
+      "zoneGeometryFictitious": true,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Espace public",
+      "zoneDetailedNature": null,
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 24.999,
+      "candidates": [],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000300201626",
+        "categorie": "Culture et loisirs",
+        "nature": "Espace public",
+        "nature_detaillee": null,
+        "toponyme": "Jardin du Pharo",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": true,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2012-04-19T12:18:54.043Z",
+        "date_modification": "2026-04-10T14:24:51.050Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-03-24Z",
+        "sources": "ADN TOUR 2026",
+        "identifiants_sources": "ADN TOUR:3be77be4-f000-303f-84ed-5bec3769dde5",
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13207",
+        "commune": "MARSEILLE 7E ARRONDISSEMENT",
+        "adresse_postale": "boulevard charles livon",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_geometry_fictitious_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.345095",
+      "zoneCleabs": "SURFACTI0000000322750565",
+      "name": "Mucem-Musée des Civilisations de l'Europe et de la Méditerranée",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 5,
+      "zoneNature": "Musée",
+      "zoneDetailedNature": null,
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 5029.307,
+      "candidates": [
+        {
+          "sourceId": "batiment.39063588",
+          "cleabs": "BATIMENT0000000356338983",
+          "intersectedAreaSquareMetres": 5029.307,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 1.0,
+          "sourceBuildingAreaSquareMetres": 5029.307,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 17.7,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 34.82186,
+          "geometry2dFingerprint": "12c9e1f186c5cb57377577e8ced3ea2b557a2fb8281a9ddf50cbc043a58ca10c",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000322750565",
+        "categorie": "Culture et loisirs",
+        "nature": "Musée",
+        "nature_detaillee": null,
+        "toponyme": "Mucem-Musée des Civilisations de l'Europe et de la Méditerranée",
+        "statut_du_toponyme": "Collecté",
+        "importance": "1",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2013-06-05T13:39:47.543Z",
+        "date_modification": "2026-04-10T14:24:51.050Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-03-24Z",
+        "sources": "ADN TOUR 2026",
+        "identifiants_sources": "ADN TOUR:5a7d0dc3-e38e-3509-a961-81303ca57278",
+        "methode_d_acquisition_planimetrique": "Levé non GPS",
+        "precision_planimetrique": 5,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE 2E ARRONDISSEMENT",
+        "adresse_postale": "1 Esplanade du J4, 7 Prom. Robert Laffont",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.345395",
+      "zoneCleabs": "SURFACTI0000000322830531",
+      "name": "Palais du Pharo",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 5,
+      "zoneNature": "Parc des expositions",
+      "zoneDetailedNature": "Palais des congrès",
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 3257.138,
+      "candidates": [
+        {
+          "sourceId": "batiment.10624139",
+          "cleabs": "BATIMENT0000000273394896",
+          "intersectedAreaSquareMetres": 1446.271,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.444031419007069,
+          "sourceBuildingAreaSquareMetres": 1446.271,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Château",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 21.8,
+          "sourceChunkSha256": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 19.587719,
+          "geometry2dFingerprint": "521c954692ae8bcb27c59f718d4d91468391791b94d5be6e25828d3cd3f803d6",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_identity_or_site_membership_ambiguous"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000000322830531",
+        "categorie": "Culture et loisirs",
+        "nature": "Parc des expositions",
+        "nature_detaillee": "Palais des congrès",
+        "toponyme": "Palais du Pharo",
+        "statut_du_toponyme": "Validé",
+        "importance": "3",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2013-06-07T09:19:47.113Z",
+        "date_modification": "2022-03-30T12:42:24.020Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2022-03-23Z",
+        "sources": null,
+        "identifiants_sources": null,
+        "methode_d_acquisition_planimetrique": "Levé non GPS",
+        "precision_planimetrique": 5,
+        "insee_commune": "13207",
+        "commune": "MARSEILLE 7E ARRONDISSEMENT",
+        "adresse_postale": null,
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.440488",
+      "zoneCleabs": "SURFACTI0000002000114903",
+      "name": "Esplanade de la Major",
+      "zoneGeometryFictitious": true,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Espace public",
+      "zoneDetailedNature": "Esplanade",
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 25.001,
+      "candidates": [],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000002000114903",
+        "categorie": "Culture et loisirs",
+        "nature": "Espace public",
+        "nature_detaillee": "Esplanade",
+        "toponyme": "Esplanade de la Major",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": true,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2016-09-28T07:29:03.544Z",
+        "date_modification": "2026-06-17T15:24:36.014Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": null,
+        "sources": null,
+        "identifiants_sources": null,
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13202",
+        "commune": "MARSEILLE",
+        "adresse_postale": null,
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_geometry_fictitious_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.496193",
+      "zoneCleabs": "SURFACTI0000002201648897",
+      "name": "Palais de Longchamp",
+      "zoneGeometryFictitious": true,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Salle de spectacle ou conférence",
+      "zoneDetailedNature": "Centre culturel",
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 25.002,
+      "candidates": [
+        {
+          "sourceId": "batiment.10333853",
+          "cleabs": "BATIMENT0000000266966980",
+          "intersectedAreaSquareMetres": 25.002,
+          "fractionOfBuilding": 0.03926646516475374,
+          "fractionOfZone": 1.0000000000000002,
+          "sourceBuildingAreaSquareMetres": 636.715,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 17.4,
+          "sourceChunkSha256": "21746b13aa7a02b3ddafd2854946f0d8fbe367c77370513816521718cdb10fc9",
+          "buildingCentroidInsideZone": false,
+          "buildingCentroidBoundaryDistanceMetres": 0.526842,
+          "geometry2dFingerprint": "d28192c9090b3a1db0f013c945e031a3b305f1ebe103970910a2d80820fb7832",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_geometry_fictitious",
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_overlap_below_99_percent",
+            "building_centroid_outside_zone",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000002201648897",
+        "categorie": "Culture et loisirs",
+        "nature": "Salle de spectacle ou conférence",
+        "nature_detaillee": "Centre culturel",
+        "toponyme": "Palais de Longchamp",
+        "statut_du_toponyme": "Validé",
+        "importance": "1",
+        "fictif": true,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2019-02-25T09:48:08.920Z",
+        "date_modification": "2023-08-28T08:18:36.958Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2022-03-23Z",
+        "sources": null,
+        "identifiants_sources": null,
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13204",
+        "commune": "MARSEILLE 4E ARRONDISSEMENT",
+        "adresse_postale": null,
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_geometry_fictitious_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.500401",
+      "zoneCleabs": "SURFACTI0000002203841907",
+      "name": "EHPAD Résidence Longchamp",
+      "zoneGeometryFictitious": true,
+      "zonePlanimetricAccuracyMetres": 5,
+      "zoneNature": "Maison de retraite",
+      "zoneDetailedNature": null,
+      "zoneCategory": "Santé",
+      "zoneAreaSquareMetres": 25.0,
+      "candidates": [
+        {
+          "sourceId": "batiment.48324971",
+          "cleabs": "BATIMENT0000002487993809",
+          "intersectedAreaSquareMetres": 25.0,
+          "fractionOfBuilding": 0.06752928598130487,
+          "fractionOfZone": 0.9999999999999999,
+          "sourceBuildingAreaSquareMetres": 370.215,
+          "sourceDeclaredUse": [
+            "Indifférencié",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 18.7,
+          "sourceChunkSha256": "1f7d546c4a8d9ace58b5dcaf7ee3bf46448812ef30e8ff650a7ab772ba8b77e8",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 0.523391,
+          "geometry2dFingerprint": "f2a6c349303cc8d4b1a440c406499fdb6bea58df2fe1487681bce3c671793906",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_geometry_fictitious",
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_overlap_below_99_percent",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000002203841907",
+        "categorie": "Santé",
+        "nature": "Maison de retraite",
+        "nature_detaillee": null,
+        "toponyme": "EHPAD Résidence Longchamp",
+        "statut_du_toponyme": "Collecté",
+        "importance": "6",
+        "fictif": true,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2019-08-20T10:02:17.259Z",
+        "date_modification": "2024-08-13T12:56:07.209Z",
+        "date_d_apparition": "2017-12-29Z",
+        "date_de_confirmation": "2024-07-17Z",
+        "sources": "FINESS 2024",
+        "identifiants_sources": "FINESS:130029929",
+        "methode_d_acquisition_planimetrique": "Fichier numérique non métrique",
+        "precision_planimetrique": 5,
+        "insee_commune": "13204",
+        "commune": "MARSEILLE 4E ARRONDISSEMENT",
+        "adresse_postale": "14 r bénédit",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_geometry_fictitious_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.512453",
+      "zoneCleabs": "SURFACTI0000002216058264",
+      "name": "Poste de Marseille-Longchamp",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 5,
+      "zoneNature": "Poste",
+      "zoneDetailedNature": "Agence postale",
+      "zoneCategory": "Administratif ou militaire",
+      "zoneAreaSquareMetres": 176.677,
+      "candidates": [
+        {
+          "sourceId": "batiment.10318169",
+          "cleabs": "BATIMENT0000000266949047",
+          "intersectedAreaSquareMetres": 176.677,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 1.0,
+          "sourceBuildingAreaSquareMetres": 176.677,
+          "sourceDeclaredUse": [
+            "Résidentiel",
+            "Commercial et services"
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 6,
+          "sourceDeclaredHeight": 21.1,
+          "sourceChunkSha256": "76ac58d0b4aa2911dddc8769b732931f8c54abc29a922bd252977a4deb90af52",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 3.905457,
+          "geometry2dFingerprint": "f2eed1e35da550aeb4f04e6c01c8739dbe70eb30ef2ddbe9d24842047e3d590d",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000002216058264",
+        "categorie": "Administratif ou militaire",
+        "nature": "Poste",
+        "nature_detaillee": "Agence postale",
+        "toponyme": "Poste de Marseille-Longchamp",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2020-11-17T11:10:27.780Z",
+        "date_modification": "2023-08-25T12:41:15.662Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2022-09-19Z",
+        "sources": null,
+        "identifiants_sources": null,
+        "methode_d_acquisition_planimetrique": "Fichier numérique non métrique",
+        "precision_planimetrique": 5,
+        "insee_commune": "13201",
+        "commune": "MARSEILLE 1ER ARRONDISSEMENT",
+        "adresse_postale": "50 boulevard longchamp",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.519090",
+      "zoneCleabs": "SURFACTI0000002223831867",
+      "name": "Pôle Emploi de Marseille le Pharo",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Divers public ou administratif",
+      "zoneDetailedNature": "Agence France travail",
+      "zoneCategory": "Administratif ou militaire",
+      "zoneAreaSquareMetres": 292.437,
+      "candidates": [
+        {
+          "sourceId": "batiment.10623628",
+          "cleabs": "BATIMENT0000000273394293",
+          "intersectedAreaSquareMetres": 292.437,
+          "fractionOfBuilding": 0.9999999999999998,
+          "fractionOfZone": 0.9999999999999998,
+          "sourceBuildingAreaSquareMetres": 292.437,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Indifférenciée",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 11.5,
+          "sourceChunkSha256": "4102f23d2e9456998ae6b4a2a71673c67756ed85871387fa32d1597d4c8a317f",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 4.735366,
+          "geometry2dFingerprint": "df9c9ed47209cf8904d5133d0308bf7c8a65ed3e399d0a5e2cb2dca26f548f64",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_accuracy_missing_or_above_3m",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000002223831867",
+        "categorie": "Administratif ou militaire",
+        "nature": "Divers public ou administratif",
+        "nature_detaillee": "Agence France travail",
+        "toponyme": "Pôle Emploi de Marseille le Pharo",
+        "statut_du_toponyme": "Collecté",
+        "importance": "4",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2021-05-05T15:48:04.396Z",
+        "date_modification": "2025-06-20T10:28:57.212Z",
+        "date_d_apparition": null,
+        "date_de_confirmation": "2023-04-21Z",
+        "sources": "DILA 2023",
+        "identifiants_sources": "DILA:pole_emploi-13207-01",
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13207",
+        "commune": "MARSEILLE 7E ARRONDISSEMENT",
+        "adresse_postale": "23 avenue de la corse",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_accuracy_above_3m_no_automatic_link"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.599852",
+      "zoneCleabs": "SURFACTI0000002500096309",
+      "name": "Centre de Conservation et de Ressources du Mucem",
+      "zoneGeometryFictitious": false,
+      "zonePlanimetricAccuracyMetres": 3,
+      "zoneNature": "Musée",
+      "zoneDetailedNature": null,
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 4236.026,
+      "candidates": [
+        {
+          "sourceId": "batiment.39112220",
+          "cleabs": "BATIMENT0000000356609909",
+          "intersectedAreaSquareMetres": 4108.786,
+          "fractionOfBuilding": 1.0,
+          "fractionOfZone": 0.9699624016981365,
+          "sourceBuildingAreaSquareMetres": 4108.786,
+          "sourceDeclaredUse": [
+            "Commercial et services",
+            null
+          ],
+          "sourceDeclaredNature": "Industriel, agricole ou commercial",
+          "sourceDeclaredFloors": 1,
+          "sourceDeclaredHeight": 9.1,
+          "sourceChunkSha256": "aee24c2b2aba45474de6ba72fa76b5dbcaee951fc09ec036583ca1b098ec7388",
+          "buildingCentroidInsideZone": true,
+          "buildingCentroidBoundaryDistanceMetres": 16.4173,
+          "geometry2dFingerprint": "64ec35fee600ef908b6ee3196574694eaa88413c8490f98a07034d163065612f",
+          "strictContextLinkProposed": true,
+          "rejectionReasons": []
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000002500096309",
+        "categorie": "Culture et loisirs",
+        "nature": "Musée",
+        "nature_detaillee": null,
+        "toponyme": "Centre de Conservation et de Ressources du Mucem",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": false,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2026-06-04T15:17:52.023Z",
+        "date_modification": null,
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-03-24Z",
+        "sources": "ADN TOUR 2026",
+        "identifiants_sources": "ADN TOUR:9b6ce00f-7c85-395d-a800-7e8ac40585f3",
+        "methode_d_acquisition_planimetrique": "Orthophotographie",
+        "precision_planimetrique": 3,
+        "insee_commune": "13203",
+        "commune": "MARSEILLE 3E ARRONDISSEMENT",
+        "adresse_postale": "1 rue clovis hugues",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 1,
+      "contextStatus": "strict_site_context_proposed"
+    },
+    {
+      "zoneSourceId": "zone_d_activite_ou_d_interet.600526",
+      "zoneCleabs": "SURFACTI0000002500339430",
+      "name": "Musée de Notre-Dame de la Garde",
+      "zoneGeometryFictitious": true,
+      "zonePlanimetricAccuracyMetres": 20,
+      "zoneNature": "Musée",
+      "zoneDetailedNature": null,
+      "zoneCategory": "Culture et loisirs",
+      "zoneAreaSquareMetres": 25.002,
+      "candidates": [
+        {
+          "sourceId": "batiment.10628331",
+          "cleabs": "BATIMENT0000000273400280",
+          "intersectedAreaSquareMetres": 25.002,
+          "fractionOfBuilding": 0.04356068658083393,
+          "fractionOfZone": 0.9999999999999999,
+          "sourceBuildingAreaSquareMetres": 573.962,
+          "sourceDeclaredUse": [
+            "Religieux",
+            null
+          ],
+          "sourceDeclaredNature": "Eglise",
+          "sourceDeclaredFloors": null,
+          "sourceDeclaredHeight": 17.1,
+          "sourceChunkSha256": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+          "buildingCentroidInsideZone": false,
+          "buildingCentroidBoundaryDistanceMetres": 6.604947,
+          "geometry2dFingerprint": "3e4d6c5cf1b8186996c6f37b193a0e712ca6f5f71d8589d347ca4379e3c04f45",
+          "strictContextLinkProposed": false,
+          "rejectionReasons": [
+            "source_zone_geometry_fictitious",
+            "source_zone_accuracy_missing_or_above_3m",
+            "building_overlap_below_99_percent",
+            "building_centroid_outside_zone",
+            "centroid_boundary_margin_not_above_source_accuracy"
+          ]
+        }
+      ],
+      "sourceProperties": {
+        "cleabs": "SURFACTI0000002500339430",
+        "categorie": "Culture et loisirs",
+        "nature": "Musée",
+        "nature_detaillee": null,
+        "toponyme": "Musée de Notre-Dame de la Garde",
+        "statut_du_toponyme": "Collecté",
+        "importance": "5",
+        "fictif": true,
+        "etat_de_l_objet": "En service",
+        "date_creation": "2026-06-18T15:11:59.815Z",
+        "date_modification": null,
+        "date_d_apparition": null,
+        "date_de_confirmation": "2026-03-24Z",
+        "sources": "ADN TOUR 2026",
+        "identifiants_sources": "ADN TOUR:e94deee8-d637-30b9-825f-99881f76f015",
+        "methode_d_acquisition_planimetrique": "Calculé",
+        "precision_planimetrique": 20,
+        "insee_commune": "13206",
+        "commune": "MARSEILLE 6E ARRONDISSEMENT",
+        "adresse_postale": "place colonel edon",
+        "identifiant_voie_ban": null,
+        "nom_commercial": null,
+        "id_ban_odonyme": null
+      },
+      "automaticLinkCount": 0,
+      "contextStatus": "source_geometry_fictitious_no_automatic_link"
+    }
+  ],
+  "limitations": [
+    "Site name/use only; not a facade survey, room plan, opening annotation or central-monument identity.",
+    "A religious site can consist of several separate IGN building volumes. These records retain each original source identity.",
+    "Zones with fictitious geometry or declared accuracy above3m are excluded from these strict automatic-link proposals.",
+    "Area and overlap figures are computed from source polygons, not new physical measurements.",
+    "The query is limited to selected name fragments and the municipal bounding box, not every named place in Marseille.",
+    "The bounding box includes neighbouring communes; the Cour d’Honneur de l’Hôtel de Ville returned by this query is in LA PENNE-SUR-HUVEAUNE.",
+    "A site name is not the individual architectural identity of every intersecting building.",
+    "The 12 selected records are a strict proposal for site context only; no facadeDocument or interiorDocument is supplied."
+  ]
+}

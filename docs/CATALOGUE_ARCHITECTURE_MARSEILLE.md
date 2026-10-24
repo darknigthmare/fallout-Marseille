@@ -1,6 +1,6 @@
 # Architecture de Marseille : sources et créations
 
-Ce catalogue distingue les données géographiques réellement obtenues des détails d’architecture à créer. La recherche du 23 octobre 2026 a vérifié le catalogue data.gouv.fr et la documentation IGN. Elle n’est pas une recherche exhaustive de toutes les archives d’architectes, et ne prouve pas qu’aucun plan public n’existe.
+Ce catalogue distingue les données géographiques réellement obtenues des détails d’architecture à créer. La recherche du 23 octobre 2026 a vérifié le catalogue data.gouv.fr et la documentation IGN ; son prolongement du 24 octobre est décrit ci-dessous. Ces recherches ne sont pas un inventaire exhaustif des archives d’architectes et ne prouvent pas qu’aucun plan public n’existe.
 
 Le [reçu de recherche](../implementation/city-sources/ARCHITECTURE_CATALOGUE.json) conserve les requêtes, réponses et empreintes, ainsi que les limites d’accès. **Aucun plan coté de façade ou d’intérieur n’a été acquis par cette recherche.** Aucun modèle architectural mesuré n’est donc déclaré installé sur cette seule base.
 
@@ -31,6 +31,63 @@ Les métadonnées ci-dessous ont été lues dans l’API officielle data.gouv.fr
 | [Parcours 6 — de l’Hôtel Dieu à la Vieille Charité](https://www.data.gouv.fr/datasets/marseille-parcours-culturels-6-de-lhotel-dieu-a-la-vieille-charite) · [GeoJSON annoncé](https://www.datasud.fr/fr/dataset/datasets/1992/resource/2473/download/) | Tracé culturel et informations patrimoniales | Aucun plan coté de la cour, des galeries ou de la chapelle acquis. |
 
 Les requêtes du reçu incluent notamment « Marseille plans architecture », « Marseille façades », « Mucem plan », « Bati3D » et « maquette numérique Marseille ». Aucun de leurs résultats n’a fourni ici un plan coté exploitable. Les recherches « Longchamp Marseille » et « Vieille Charité » ont identifié les parcours ci-dessus. Le catalogue peut évoluer ; les résultats ne constituent pas une affirmation sur toutes les ressources publiques hors de ce catalogue.
+
+## Recherche complémentaire du 24 octobre 2026
+
+Le [nouveau reçu](../implementation/architecture-continuation/ARCHITECTURE_RESEARCH_2026-10-24.json) conserve les URL, résultats, empreintes et limites de cette recherche distincte. Sur 14 requêtes ciblées supplémentaires à data.gouv.fr, quatre ont répondu sans résultat pour leurs termes exacts, sept ont échoué avec HTTP 503 et trois ont expiré. Une erreur ou une expiration ne constitue pas une preuve d’absence de données. Les recherches comprenaient notamment « Marseille modèle bâtiment », « Marseille relevé architecture », « Marseille plan intérieur », « Vieille Charité plan » et « Marseille construction BIM ».
+
+L’ancienne adresse officielle `geoservices.ign.fr/bati3d` a redirigé vers une page générique d’exploration de cartes ; aucun modèle BATI3D n’a été acquis. Une recherche complémentaire « merimee » a renvoyé un jeu toulousain hors périmètre et les métadonnées photographiques nationales « Mémoire — illustration Mérimée et Palissy ». La licence ODbL annoncée pour ces métadonnées ne certifie pas le droit de réutiliser les photographies correspondantes. Aucun plan coté ou relevé de façade ou d’intérieur supplémentaire n’a été obtenu.
+
+Cinq schémas WFS IGN ont été acquis et conservés : zones d’activité ou d’intérêt, constructions surfaciques, linéaires, ponctuelles et toponymie. Ils décrivent des objets géographiques et leurs attributs, sans fournir ici une disposition des ouvertures ou des pièces. Les trois requêtes de constructions filtrées sur les fragments de noms choisis ont répondu sans objet ; ce constat porte sur ces filtres, pas sur toutes les constructions de Marseille.
+
+## Noms et usages de sites réellement acquis
+
+Une requête de la couche IGN `BDTOPO_V3:zone_d_activite_ou_d_interet` a fourni **28 zones nommées**, avec catégorie, nature, commune, précision planimétrique et indicateur `fictif`. La [réponse GeoJSON originale](../implementation/architecture-continuation/IGN_SITES_3a46168b2b65e4f4.geojson), acquise le 24 octobre 2026, contient 28 objets annoncés et 28 retournés, sous Licence Ouverte 2.0, attribution IGN — Géoplateforme, BD TOPO. Son SHA-256 est `3a46168b2b65e4f4646959dc5049c327d16fc613a2153a1ba3cf0df3f9121734`.
+
+Le [catalogue des associations géométriques](../implementation/architecture-continuation/IGN_SITE_CONTEXT_CATALOGUE.json) conserve les identifiants des 28 zones et de leurs 106 candidats bâtiments, les attributs source, les recouvrements et chaque motif de rejet. La requête porte sur les fragments « charit », « longchamp », « garde », « mucem », « radieuse », « hôtel de ville », « pharo » et « major » dans l’enveloppe de Marseille ; elle ne couvre pas tous les sites de la commune. L’enveloppe inclut aussi des communes voisines : la « Cour d’Honneur de l’Hôtel de Ville » retournée appartient à La Penne-sur-Huveaune et ne doit pas être assimilée à l’hôtel de ville de Marseille.
+
+Dans cette couche, `fictif` qualifie **la géométrie de la zone source**, pas l’existence du lieu. Huit des 28 géométries portent ce drapeau. La précision de 2,5 à 20 m est celle déclarée pour la zone IGN ; elle ne devient pas la précision d’une façade, d’un intérieur ou du bâtiment associé.
+
+| Nom de la zone source | Précision de la zone (m) | Géométrie fictive | Candidats par recouvrement | Liens contextuels stricts proposés |
+|---|---:|:---:|---:|---:|
+| Cathédrale de la Major | 20 | non | 5 | 0 |
+| Chapelle et Hospice de la Vieille Charité | 20 | non | 1 | 0 |
+| Ancienne Église de la Major | 20 | non | 1 | 0 |
+| Notre-Dame de la Garde | 3 | non | 12 | 11 |
+| Collège Longchamp | 2,5 | non | 9 | 0 |
+| École Maternelle Longchamp | 3 | non | 7 | 0 |
+| École Primaire Major Cathédrale | 2,5 | non | 10 | 0 |
+| Collège Notre-Dame de la Major | 3 | non | 6 | 0 |
+| Parc Longchamp | 5 | non | 17 | 0 |
+| Cour d’Honneur de l’Hôtel de Ville — La Penne-sur-Huveaune | 20 | oui | 0 | 0 |
+| Place de la Major | 20 | oui | 0 | 0 |
+| État-Major du Bataillon de Marins-Pompiers de Marseille | 5 | non | 4 | 0 |
+| École Primaire Pharo Catalans | 3 | non | 7 | 0 |
+| École Maternelle le Pharo | 3 | non | 4 | 0 |
+| École Maternelle Rose la Garde | 20 | oui | 1 | 0 |
+| École Primaire Rose la Garde | 2,5 | non | 8 | 0 |
+| École Primaire Notre-Dame de la Major | 3 | non | 5 | 0 |
+| Hôtel de Ville Pavillon Daviel | 20 | non | 1 | 0 |
+| Jardin du Pharo | 20 | oui | 0 | 0 |
+| Mucem-Musée des Civilisations de l’Europe et de la Méditerranée | 5 | non | 1 | 0 |
+| Palais du Pharo | 5 | non | 1 | 0 |
+| Esplanade de la Major | 20 | oui | 0 | 0 |
+| Palais de Longchamp | 20 | oui | 1 | 0 |
+| EHPAD Résidence Longchamp | 5 | oui | 1 | 0 |
+| Poste de Marseille-Longchamp | 5 | non | 1 | 0 |
+| Pôle Emploi de Marseille le Pharo | 20 | non | 1 | 0 |
+| Centre de Conservation et de Ressources du Mucem | 3 | non | 1 | 1 |
+| Musée de Notre-Dame de la Garde | 20 | oui | 1 | 0 |
+
+Les calculs utilisent des copies XY des géométries existantes, projetées de WGS84 vers Lambert-93 pour mesurer les surfaces et les distances. Les trous et composantes multiples des polygones sont conservés. Les copies d’un même bâtiment dans plusieurs tuiles sont dédupliquées par identifiant source. Un candidat exige une intersection d’au moins 0,01 m² ; ce seuil de calcul ne donne aucune précision de relevé supplémentaire. Les coordonnées originales de l’atlas ne sont pas modifiées.
+
+Les **12 propositions strictes** exigent une zone non fictive d’une précision déclarée d’au plus 3 m, au moins 99 % de l’emprise du bâtiment dans cette zone, et un centroïde intérieur situé à une distance du bord supérieure à la précision déclarée. Il faut en plus soit un candidat unique couvrant au moins 90 % de la zone, soit un bâtiment que l’IGN qualifie déjà d’église à usage religieux dans une zone religieuse. Les autres candidats restent des recouvrements à examiner, même lorsque leurs emprises semblent coïncider.
+
+Onze volumes IGN satisfont ces règles sur le site Notre-Dame de la Garde ; leur libellé proposé est « Bâtiment religieux du site Notre-Dame de la Garde ». Ils ne sont pas tous identifiés comme la basilique centrale. Un douzième lien concerne le « Bâtiment du Centre de Conservation et de Ressources du Mucem ». Le dernier volume candidat de Notre-Dame de la Garde a un centroïde à environ 1,28 m du bord de la zone, donc sous la marge exigée de 3 m : il est rejeté. Le bâtiment principal du Mucem, le Palais du Pharo et la Poste de Marseille-Longchamp ne passent pas ce filtre, leur zone annonçant une précision de 5 m. Les établissements scolaires comportent plusieurs candidats sans identité individuelle suffisamment établie par ce seul recouvrement.
+
+Les douze liens stricts sont installés dans [l’atlas architectural local](../data/map_pack/architecture/index.json), avec la géométrie originale de chaque bâtiment et les éléments de calcul conservés.
+
+Ces propositions associent un **contexte de site** à des identifiants de bâtiments existants. Elles n’ajoutent aucun `facadeDocument` ou `interiorDocument`, aucune mesure de baie et aucun plan de pièce. Les façades et intérieurs sans référence appropriée continuent donc à relever des créations décrites ci-dessous.
 
 ## Règles de reconstruction
 

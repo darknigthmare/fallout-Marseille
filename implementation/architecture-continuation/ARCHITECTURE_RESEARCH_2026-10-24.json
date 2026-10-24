@@ -1,0 +1,1321 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-source-research-receipt",
+  "date": "2026-10-24",
+  "purpose": "Find attributable architecture references for Marseille and distinguish site context from measured facade/interior data.",
+  "network": {
+    "policyInspected": "/etc/codex/network-policy.json",
+    "environmentStatusInspected": true,
+    "transport": "Normal session proxy and TLS validation; no blocked-host bypass.",
+    "relevantHostsUsed": [
+      "www.data.gouv.fr",
+      "data.geopf.fr",
+      "geoservices.ign.fr",
+      "cartes.gouv.fr"
+    ],
+    "previouslyBlockedHostsNotRetried": [
+      "www.datasud.fr",
+      "piece-jointe-carto.developpement-durable.gouv.fr"
+    ]
+  },
+  "targetedCatalogueSearch": {
+    "observedAt": "2026-10-24T01:52:23.320713+00:00",
+    "queryCount": 14,
+    "queries": [
+      {
+        "query": "Marseille maquette 3D",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+maquette+3D&page_size=10",
+        "error": "HTTP Error 503: Service Unavailable",
+        "status": 503,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      },
+      {
+        "query": "Marseille modèle bâtiment",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+mod%C3%A8le+b%C3%A2timent&page_size=10",
+        "status": 200,
+        "sha256": "25ef77d4d1135ece379317940174cf8dd42ca3baf61d7bb78e835a1a256f4b70",
+        "bytes": 94,
+        "total": 0,
+        "datasets": [],
+        "bodySaved": true,
+        "bodyBundled": false,
+        "interpretation": "Search result for this exact query and page size only."
+      },
+      {
+        "query": "Marseille relevé architecture",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+relev%C3%A9+architecture&page_size=10",
+        "status": 200,
+        "sha256": "25ef77d4d1135ece379317940174cf8dd42ca3baf61d7bb78e835a1a256f4b70",
+        "bytes": 94,
+        "total": 0,
+        "datasets": [],
+        "bodySaved": true,
+        "bodyBundled": false,
+        "interpretation": "Search result for this exact query and page size only."
+      },
+      {
+        "query": "Marseille plan intérieur",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+plan+int%C3%A9rieur&page_size=10",
+        "error": "HTTP Error 503: Service Unavailable",
+        "status": 503,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      },
+      {
+        "query": "Vieille Charité plan",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Vieille+Charit%C3%A9+plan&page_size=10",
+        "error": "HTTP Error 503: Service Unavailable",
+        "status": 503,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      },
+      {
+        "query": "Palais Longchamp",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Palais+Longchamp&page_size=10",
+        "error": "HTTP Error 503: Service Unavailable",
+        "status": 503,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      },
+      {
+        "query": "Notre-Dame de la Garde",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Notre-Dame+de+la+Garde&page_size=10",
+        "error": "HTTP Error 503: Service Unavailable",
+        "status": 503,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      },
+      {
+        "query": "Marseille plans architecte",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+plans+architecte&page_size=10",
+        "status": 200,
+        "sha256": "25ef77d4d1135ece379317940174cf8dd42ca3baf61d7bb78e835a1a256f4b70",
+        "bytes": 94,
+        "total": 0,
+        "datasets": [],
+        "bodySaved": true,
+        "bodyBundled": false,
+        "interpretation": "Search result for this exact query and page size only."
+      },
+      {
+        "query": "Marseille patrimoine architecture",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+patrimoine+architecture&page_size=10",
+        "status": 200,
+        "sha256": "25ef77d4d1135ece379317940174cf8dd42ca3baf61d7bb78e835a1a256f4b70",
+        "bytes": 94,
+        "total": 0,
+        "datasets": [],
+        "bodySaved": true,
+        "bodyBundled": false,
+        "interpretation": "Search result for this exact query and page size only."
+      },
+      {
+        "query": "Monuments historiques protection immeubles",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Monuments+historiques+protection+immeubles&page_size=10",
+        "error": "The read operation timed out",
+        "status": null,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      },
+      {
+        "query": "Marseille construction BIM",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+construction+BIM&page_size=10",
+        "error": "The read operation timed out",
+        "status": null,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      },
+      {
+        "query": "Marseille photogrammétrie",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+photogramm%C3%A9trie&page_size=10",
+        "error": "The read operation timed out",
+        "status": null,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      },
+      {
+        "query": "Marseille façades architecture",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+fa%C3%A7ades+architecture&page_size=10",
+        "error": "HTTP Error 503: Service Unavailable",
+        "status": 503,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      },
+      {
+        "query": "Marseille inventaire patrimoine",
+        "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille+inventaire+patrimoine&page_size=10",
+        "error": "HTTP Error 503: Service Unavailable",
+        "status": 503,
+        "sha256": null,
+        "bytes": null,
+        "bodySaved": false,
+        "interpretation": "Request failed; no inference that the requested public data do not exist."
+      }
+    ]
+  },
+  "officialPageChecks": [
+    {
+      "url": "https://geoservices.ign.fr/bati3d",
+      "status": 200,
+      "finalUrl": "https://cartes.gouv.fr/explorer-les-cartes/",
+      "contentType": "text/html",
+      "sha256": "8cb3f283a57be4da694297526359379a3aeead9dbfdd89ed8b7775c54734cc6d",
+      "bytes": 1221,
+      "bodySaved": true,
+      "bodyBundled": false,
+      "interpretation": "Redirected to a generic map explorer; no 3D model, metric facade or room plan acquired.",
+      "datasets": []
+    },
+    {
+      "url": "https://geoservices.ign.fr/bdtopo",
+      "status": 200,
+      "finalUrl": "https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-TOPO?redirected_from=geoservices.ign.fr",
+      "contentType": "text/html",
+      "sha256": "6677a9f153bd83b8f6dfd89a1e5bb0c6ce87b3198bc073e38cc5d7b66a7cb403",
+      "bytes": 115499,
+      "bodySaved": true,
+      "bodyBundled": false,
+      "interpretation": "Redirected to the BD TOPO dataset page; no metric architectural annotation extracted.",
+      "datasets": []
+    },
+    {
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=merimee&page_size=5",
+      "status": 200,
+      "finalUrl": "https://www.data.gouv.fr/api/1/datasets/?q=merimee&page_size=5",
+      "contentType": "application/json",
+      "sha256": "c1ddd4bbbadf6b584bbefab87f2f9bb5b7e5198c80df828f802afa5758cdfbc1",
+      "bytes": 22979,
+      "total": 2,
+      "bodySaved": true,
+      "bodyBundled": false,
+      "interpretation": "Two metadata records: Toulouse architecture (outside scope) and national photo metadata. No Marseille plan acquired; metadata license is not a grant of image reuse rights.",
+      "datasets": [
+        {
+          "id": "56b0c2e8b595086d5569cb8b",
+          "title": "Base Mérimée",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/base-merimee-1",
+          "resources": [
+            {
+              "id": "cd045db0-4be3-4110-879e-65dbe21e040a",
+              "title": "base-merimee.csv",
+              "url": "https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/base-merimee/exports/csv?use_labels=true",
+              "format": "csv"
+            },
+            {
+              "id": "65cedca9-e45a-49a8-b342-f2c511d65f9c",
+              "title": "base-merimee.json",
+              "url": "https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/base-merimee/exports/json",
+              "format": "json"
+            },
+            {
+              "id": "ad9edb2a-1f46-4d57-b491-50e4dcae637e",
+              "title": "base-merimee.geojson",
+              "url": "https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/base-merimee/exports/geojson",
+              "format": "json"
+            },
+            {
+              "id": "e3e59781-efc6-43c9-ade1-a79df0f7c0e9",
+              "title": "base-merimee.zip",
+              "url": "https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/base-merimee/exports/shp",
+              "format": "zip"
+            }
+          ]
+        },
+        {
+          "id": "68e8bbfa16a41347e37c821c",
+          "title": "Mémoire – illustration Mérimée et Palissy (Monuments historiques)",
+          "license": "odc-odbl",
+          "page": "https://www.data.gouv.fr/datasets/memoire-illustration-merimee-et-palissy-monuments-historiques",
+          "resources": [
+            {
+              "id": "a99781f1-f760-4dbb-9c83-e1524ef1aff5",
+              "title": "MEMOIRE_ILLUSTRATIONS_PALISSY_MERIMEE",
+              "url": "https://ministere-culture.s3.sbg.io.cloud.ovh.net/POP/memoire_palissy_merimee.csv",
+              "format": "csv"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille&page_size=10",
+      "status": 200,
+      "finalUrl": "https://www.data.gouv.fr/api/1/datasets/?q=Marseille&page_size=10",
+      "contentType": "application/json",
+      "sha256": "fcc7c1c1d48a790fcc4f5b9c34a3104b6424e3e63c4d69fd6ba5ad2f986f42d3",
+      "bytes": 78053,
+      "total": 269,
+      "bodySaved": true,
+      "bodyBundled": false,
+      "interpretation": "Search result for this exact query and page size only.",
+      "datasets": [
+        {
+          "id": "64028c78544a2b2436be3876",
+          "title": "ZFE-Marseille",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/zfe-marseille",
+          "resources": [
+            {
+              "id": "b7f75f21-8847-4648-b439-6f558d3cd60c",
+              "title": "zfe_zone_metropole-aix-marseille-provence.csv",
+              "url": "https://data.ampmetropole.fr/api/explore/v2.1/catalog/datasets/zfe_zone_metropole-aix-marseille-provence/exports/csv?use_labels=true",
+              "format": "csv"
+            },
+            {
+              "id": "dccb0adf-9406-4a19-af3b-716a3e967081",
+              "title": "zfe_zone_metropole-aix-marseille-provence.json",
+              "url": "https://data.ampmetropole.fr/api/explore/v2.1/catalog/datasets/zfe_zone_metropole-aix-marseille-provence/exports/json",
+              "format": "json"
+            },
+            {
+              "id": "76371a7d-0511-4e8f-bac2-8eaba16e4239",
+              "title": "zfe_zone_metropole-aix-marseille-provence.geojson",
+              "url": "https://data.ampmetropole.fr/api/explore/v2.1/catalog/datasets/zfe_zone_metropole-aix-marseille-provence/exports/geojson",
+              "format": "json"
+            },
+            {
+              "id": "a4ccd270-9fb9-40a1-8b10-08ae1e7facd6",
+              "title": "zfe_zone_metropole-aix-marseille-provence.zip",
+              "url": "https://data.ampmetropole.fr/api/explore/v2.1/catalog/datasets/zfe_zone_metropole-aix-marseille-provence/exports/shp",
+              "format": "zip"
+            },
+            {
+              "id": "03077533-6c35-4be6-a50e-784bef4f58ba",
+              "title": "Arretes-ZFE-Marseille.pdf",
+              "url": "https://data.ampmetropole.fr/api/v2/catalog/datasets/zfe_zone_metropole-aix-marseille-provence/attachments/arretes_zfe_marseille_pdf",
+              "format": "pdf"
+            },
+            {
+              "id": "d1adb793-3881-4523-9728-3f409e1abf16",
+              "title": "Arretes-ZFE-Marseille.pdf",
+              "url": "https://data.ampmetropole.fr/api/v2/catalog/datasets/zfe_zone_metropole-aix-marseille-provence/alternative_exports/arretes_zfe_marseille_pdf",
+              "format": "pdf"
+            }
+          ]
+        },
+        {
+          "id": "697a32257d70ec1afaec3037",
+          "title": "GBFS Marseille",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/gbfs-marseille",
+          "resources": [
+            {
+              "id": "570eddad-4135-46ee-b69d-d8c3d8cb8ce3",
+              "title": "GBFS Marseille",
+              "url": "https://data.lime.bike/api/partners/v2/gbfs/marseille/gbfs.json",
+              "format": "gbfs"
+            }
+          ]
+        },
+        {
+          "id": "66dada293b30732f477093ab",
+          "title": "Marseille - Crèches",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/marseille-creches-1",
+          "resources": [
+            {
+              "id": "a3155892-7400-42a2-8838-84c1328389e0",
+              "title": "MARSEILLE_CRECHES_2015-2016",
+              "url": "https://www.datasud.fr/fr/dataset/datasets/3872/resource/4671/download/",
+              "format": "zip"
+            },
+            {
+              "id": "3091ffa0-05cf-4936-9264-f9478bc10fd0",
+              "title": "MARSEILLE_CRECHES_2018",
+              "url": "https://www.datasud.fr/fr/dataset/datasets/3872/resource/4672/download/",
+              "format": "csv"
+            },
+            {
+              "id": "967256d8-e343-41e2-be6a-c5c77be045da",
+              "title": "MARSEILLE_CRECHES_2023.csv",
+              "url": "https://www.datasud.fr/fr/dataset/datasets/3872/resource/4670/download/",
+              "format": "csv"
+            }
+          ]
+        },
+        {
+          "id": "66dada763b30732f4770941e",
+          "title": "Marseille - Cimetières",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/marseille-cimetieres-1",
+          "resources": [
+            {
+              "id": "253a0fe5-c114-49c7-9859-f50279703fe1",
+              "title": "MARSEILLE_cimetieres_2018.csv",
+              "url": "https://www.datasud.fr/fr/dataset/datasets/1843/resource/2303/download/",
+              "format": "csv"
+            }
+          ]
+        },
+        {
+          "id": "624d93692e9ae994cc305587",
+          "title": "DLM MARSEILLE",
+          "license": "notspecified",
+          "page": "https://www.data.gouv.fr/datasets/dlm-marseille",
+          "resources": [
+            {
+              "id": "78db3188-2232-4f87-acd2-7b5b688809ad",
+              "title": "DLM MARSEILLE",
+              "url": "https://static.data.gouv.fr/resources/dlm-marseille/20220406-151937/data.csv",
+              "format": "csv"
+            }
+          ]
+        },
+        {
+          "id": "66dada673b30732f47709408",
+          "title": "Marseille - Délibérations 2018",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/marseille-deliberations-2018",
+          "resources": [
+            {
+              "id": "453260ee-8484-4c75-b97a-39ab49962cd5",
+              "title": "Marseille - Délibérations 2018",
+              "url": "https://www.datasud.fr/fr/dataset/datasets/3154/resource/4090/download/",
+              "format": "csv"
+            }
+          ]
+        },
+        {
+          "id": "5dd7a9a78b4c41277a7fb9e5",
+          "title": "Quartiers de Marseille",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/quartiers-de-marseille-1",
+          "resources": [
+            {
+              "id": "786874c2-d61a-4099-9703-7bbda7ff20ed",
+              "title": "quartiers-marseille.parquet",
+              "url": "https://static.data.gouv.fr/resources/quartiers-de-marseille-1/20260722-092747/quartiers-marseille.parquet",
+              "format": "parquet"
+            },
+            {
+              "id": "1d4fbc3a-3dff-4633-a4e6-052064c38f4a",
+              "title": "quartiers-marseille.gpkg",
+              "url": "https://static.data.gouv.fr/resources/quartiers-de-marseille-1/20260722-092818/quartiers-marseille.gpkg",
+              "format": "gpkg"
+            },
+            {
+              "id": "8a8f7f54-7f91-482c-a78c-dd09d893d1b6",
+              "title": "quartiers-marseille.geojson",
+              "url": "https://static.data.gouv.fr/resources/quartiers-de-marseille-1/20260722-092916/quartiers-marseille.geojson",
+              "format": "geojson"
+            },
+            {
+              "id": "a7104f3c-e487-4af3-82ad-6197cedfaeb1",
+              "title": "quartiers-marseille-shp.zip",
+              "url": "https://static.data.gouv.fr/resources/quartiers-de-marseille-1/20260722-092942/quartiers-marseille-shp.zip",
+              "format": "zip"
+            }
+          ]
+        },
+        {
+          "id": "66dada993b30732f4770944f",
+          "title": "Marseille - Wifi public",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/marseille-wifi-public-1",
+          "resources": [
+            {
+              "id": "c24ca1cf-e1b3-4c50-8299-72954e105b44",
+              "title": "MARSEILLE_WIFI.csv",
+              "url": "https://www.datasud.fr/fr/dataset/datasets/1978/resource/2460/download/",
+              "format": "csv"
+            }
+          ]
+        },
+        {
+          "id": "66dada673b30732f47709407",
+          "title": "Marseille - Lieux culturels",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/marseille-lieux-culturels-1",
+          "resources": [
+            {
+              "id": "3d80dd19-763b-4738-b2fa-921b36894624",
+              "title": "MARSEILLE_LIEUX_CULTURELS_2018.csv",
+              "url": "https://www.datasud.fr/fr/dataset/datasets/1862/resource/2322/download/",
+              "format": "csv"
+            }
+          ]
+        },
+        {
+          "id": "66dada843b30732f47709431",
+          "title": "Marseille - Bâtiments institutionnels",
+          "license": "lov2",
+          "page": "https://www.data.gouv.fr/datasets/marseille-batiments-institutionnels-1",
+          "resources": [
+            {
+              "id": "b3f63c7b-1b42-49f7-90c5-43804e1c6153",
+              "title": "MARSEILLE_BATIMENTS_INSTITUTIONNELS_2018.csv",
+              "url": "https://www.datasud.fr/fr/dataset/datasets/1822/resource/2282/download/",
+              "format": "csv"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://www.data.gouv.fr/api/1/datasets/?q=dmatgm&page_size=5",
+      "error": "HTTP Error 503: Service Unavailable",
+      "status": 503,
+      "sha256": null,
+      "bytes": null,
+      "bodySaved": false,
+      "interpretation": "Request failed; no inference that the requested public data do not exist.",
+      "datasets": []
+    }
+  ],
+  "ignArchitectureSchemas": [
+    {
+      "layer": "BDTOPO_V3:zone_d_activite_ou_d_interet",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Azone_d_activite_ou_d_interet",
+      "status": 200,
+      "sha256": "cfe3778aa2948dd58936444097a946dd76535cce9d613479222732c9fadfc2f4",
+      "bytes": 3460,
+      "elements": [
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "cleabs",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "categorie",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature_detaillee",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "statut_du_toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "importance",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "fictif",
+          "nillable": "true",
+          "type": "xsd:boolean"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "etat_de_l_objet",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_creation",
+          "nillable": "true",
+          "type": "xsd:dateTime"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_modification",
+          "nillable": "true",
+          "type": "xsd:dateTime"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_d_apparition",
+          "nillable": "true",
+          "type": "xsd:date"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_de_confirmation",
+          "nillable": "true",
+          "type": "xsd:date"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "sources",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "identifiants_sources",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "methode_d_acquisition_planimetrique",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "precision_planimetrique",
+          "nillable": "true",
+          "type": "xsd:double"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "insee_commune",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "commune",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "adresse_postale",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "identifiant_voie_ban",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nom_commercial",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "id_ban_odonyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "geometrie",
+          "nillable": "true",
+          "type": "gml:MultiSurfacePropertyType"
+        },
+        {
+          "name": "zone_d_activite_ou_d_interet",
+          "substitutionGroup": "gml:AbstractFeature",
+          "type": "BDTOPO_V3:zone_d_activite_ou_d_interetType"
+        }
+      ],
+      "bundledResponse": {
+        "path": "implementation/architecture-continuation/IGN_SCHEMA_cfe3778aa2948dd5.xml",
+        "bytes": 3460,
+        "sha256": "cfe3778aa2948dd58936444097a946dd76535cce9d613479222732c9fadfc2f4",
+        "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Azone_d_activite_ou_d_interet"
+      },
+      "observation": "Schema only; no per-building facade openings or room plans acquired."
+    },
+    {
+      "layer": "BDTOPO_V3:construction_surfacique",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Aconstruction_surfacique",
+      "status": 200,
+      "sha256": "766cd6389a0e188868054860ce33b88d7cafc6eead047d0592ace894ea42230a",
+      "bytes": 2832,
+      "elements": [
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "cleabs",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature_detaillee",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "statut_du_toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "importance",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "etat_de_l_objet",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_creation",
+          "nillable": "true",
+          "type": "xsd:dateTime"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_modification",
+          "nillable": "true",
+          "type": "xsd:dateTime"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_d_apparition",
+          "nillable": "true",
+          "type": "xsd:date"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_de_confirmation",
+          "nillable": "true",
+          "type": "xsd:date"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "sources",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "identifiants_sources",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "methode_d_acquisition_planimetrique",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "precision_planimetrique",
+          "nillable": "true",
+          "type": "xsd:double"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "methode_d_acquisition_altimetrique",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "precision_altimetrique",
+          "nillable": "true",
+          "type": "xsd:double"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "geometrie",
+          "nillable": "true",
+          "type": "gml:MultiSurfacePropertyType"
+        },
+        {
+          "name": "construction_surfacique",
+          "substitutionGroup": "gml:AbstractFeature",
+          "type": "BDTOPO_V3:construction_surfaciqueType"
+        }
+      ],
+      "bundledResponse": {
+        "path": "implementation/architecture-continuation/IGN_SCHEMA_766cd6389a0e1888.xml",
+        "bytes": 2832,
+        "sha256": "766cd6389a0e188868054860ce33b88d7cafc6eead047d0592ace894ea42230a",
+        "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Aconstruction_surfacique"
+      },
+      "observation": "Schema only; no per-building facade openings or room plans acquired."
+    },
+    {
+      "layer": "BDTOPO_V3:construction_lineaire",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Aconstruction_lineaire",
+      "status": 200,
+      "sha256": "0d61c43eddac914b7e6c024447f9bb8eb8db9188df3dba0bdd8ca3c14526e031",
+      "bytes": 2819,
+      "elements": [
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "cleabs",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature_detaillee",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "statut_du_toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "importance",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "etat_de_l_objet",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_creation",
+          "nillable": "true",
+          "type": "xsd:dateTime"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_modification",
+          "nillable": "true",
+          "type": "xsd:dateTime"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_d_apparition",
+          "nillable": "true",
+          "type": "xsd:date"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_de_confirmation",
+          "nillable": "true",
+          "type": "xsd:date"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "sources",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "identifiants_sources",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "methode_d_acquisition_planimetrique",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "precision_planimetrique",
+          "nillable": "true",
+          "type": "xsd:double"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "methode_d_acquisition_altimetrique",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "precision_altimetrique",
+          "nillable": "true",
+          "type": "xsd:double"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "geometrie",
+          "nillable": "true",
+          "type": "gml:CurvePropertyType"
+        },
+        {
+          "name": "construction_lineaire",
+          "substitutionGroup": "gml:AbstractFeature",
+          "type": "BDTOPO_V3:construction_lineaireType"
+        }
+      ],
+      "bundledResponse": {
+        "path": "implementation/architecture-continuation/IGN_SCHEMA_0d61c43eddac914b.xml",
+        "bytes": 2819,
+        "sha256": "0d61c43eddac914b7e6c024447f9bb8eb8db9188df3dba0bdd8ca3c14526e031",
+        "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Aconstruction_lineaire"
+      },
+      "observation": "Schema only; no per-building facade openings or room plans acquired."
+    },
+    {
+      "layer": "BDTOPO_V3:construction_ponctuelle",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Aconstruction_ponctuelle",
+      "status": 200,
+      "sha256": "5c2ce0bf5fdea03c2926521f1f46093fb4c7e09623f93652d17f985598a44750",
+      "bytes": 2927,
+      "elements": [
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "cleabs",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature_detaillee",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "statut_du_toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "importance",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "etat_de_l_objet",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_creation",
+          "nillable": "true",
+          "type": "xsd:dateTime"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_modification",
+          "nillable": "true",
+          "type": "xsd:dateTime"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_d_apparition",
+          "nillable": "true",
+          "type": "xsd:date"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_de_confirmation",
+          "nillable": "true",
+          "type": "xsd:date"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "sources",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "identifiants_sources",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "methode_d_acquisition_planimetrique",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "precision_planimetrique",
+          "nillable": "true",
+          "type": "xsd:double"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "methode_d_acquisition_altimetrique",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "precision_altimetrique",
+          "nillable": "true",
+          "type": "xsd:double"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "hauteur",
+          "nillable": "true",
+          "type": "xsd:double"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "geometrie",
+          "nillable": "true",
+          "type": "gml:PointPropertyType"
+        },
+        {
+          "name": "construction_ponctuelle",
+          "substitutionGroup": "gml:AbstractFeature",
+          "type": "BDTOPO_V3:construction_ponctuelleType"
+        }
+      ],
+      "bundledResponse": {
+        "path": "implementation/architecture-continuation/IGN_SCHEMA_5c2ce0bf5fdea03c.xml",
+        "bytes": 2927,
+        "sha256": "5c2ce0bf5fdea03c2926521f1f46093fb4c7e09623f93652d17f985598a44750",
+        "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Aconstruction_ponctuelle"
+      },
+      "observation": "Schema only; no per-building facade openings or room plans acquired."
+    },
+    {
+      "layer": "BDTOPO_V3:toponymie",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Atoponymie",
+      "status": 200,
+      "sha256": "6fe8e8173ad131c552ff13ba1d2eb7235f2d3c110eefb032132f13d8b6216d85",
+      "bytes": 1901,
+      "elements": [
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "classe_de_l_objet",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature_de_l_objet",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "nature_detaillee_de_l_objet",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "graphie_du_toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "source_du_toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "statut_du_toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "date_du_toponyme",
+          "nillable": "true",
+          "type": "xsd:date"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "langue_du_toponyme",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "cleabs_de_l_objet",
+          "nillable": "true",
+          "type": "xsd:string"
+        },
+        {
+          "maxOccurs": "1",
+          "minOccurs": "0",
+          "name": "geometrie",
+          "nillable": "true",
+          "type": "gml:PointPropertyType"
+        },
+        {
+          "name": "toponymie",
+          "substitutionGroup": "gml:AbstractFeature",
+          "type": "BDTOPO_V3:toponymieType"
+        }
+      ],
+      "bundledResponse": {
+        "path": "implementation/architecture-continuation/IGN_SCHEMA_6fe8e8173ad131c5.xml",
+        "bytes": 1901,
+        "sha256": "6fe8e8173ad131c552ff13ba1d2eb7235f2d3c110eefb032132f13d8b6216d85",
+        "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Atoponymie"
+      },
+      "observation": "Schema only; no per-building facade openings or room plans acquired."
+    }
+  ],
+  "ignNamedFeatureQueries": {
+    "observedAt": "2026-10-24T01:52:52.741327+00:00",
+    "queries": [
+      {
+        "layer": "BDTOPO_V3:zone_d_activite_ou_d_interet",
+        "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Azone_d_activite_ou_d_interet&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.22875102%2C43.1696313%2C5.53254336%2C43.39105653%2C%27EPSG%3A4326%27%29+AND+%28toponyme+ILIKE+%27%25charit%25%27+OR+toponyme+ILIKE+%27%25longchamp%25%27+OR+toponyme+ILIKE+%27%25garde%25%27+OR+toponyme+ILIKE+%27%25mucem%25%27+OR+toponyme+ILIKE+%27%25radieuse%25%27+OR+toponyme+ILIKE+%27%25h%C3%B4tel+de+ville%25%27+OR+toponyme+ILIKE+%27%25pharo%25%27+OR+toponyme+ILIKE+%27%25major%25%27%29&COUNT=1000&SORTBY=cleabs&STARTINDEX=0",
+        "status": 200,
+        "sha256": "3a46168b2b65e4f4646959dc5049c327d16fc613a2153a1ba3cf0df3f9121734",
+        "bytes": 43358,
+        "numberMatched": 28,
+        "numberReturned": 28
+      },
+      {
+        "layer": "BDTOPO_V3:construction_surfacique",
+        "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Aconstruction_surfacique&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.22875102%2C43.1696313%2C5.53254336%2C43.39105653%2C%27EPSG%3A4326%27%29+AND+%28toponyme+ILIKE+%27%25charit%25%27+OR+toponyme+ILIKE+%27%25longchamp%25%27+OR+toponyme+ILIKE+%27%25garde%25%27+OR+toponyme+ILIKE+%27%25mucem%25%27+OR+toponyme+ILIKE+%27%25radieuse%25%27+OR+toponyme+ILIKE+%27%25h%C3%B4tel+de+ville%25%27+OR+toponyme+ILIKE+%27%25pharo%25%27+OR+toponyme+ILIKE+%27%25major%25%27%29&COUNT=1000&SORTBY=cleabs&STARTINDEX=0",
+        "status": 200,
+        "sha256": "c113d0855c1c21e0ca778d10cbfe502f89d07fa328cc40bfcdf46741213dbfd7",
+        "bytes": 147,
+        "numberMatched": 0,
+        "numberReturned": 0
+      },
+      {
+        "layer": "BDTOPO_V3:construction_lineaire",
+        "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Aconstruction_lineaire&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.22875102%2C43.1696313%2C5.53254336%2C43.39105653%2C%27EPSG%3A4326%27%29+AND+%28toponyme+ILIKE+%27%25charit%25%27+OR+toponyme+ILIKE+%27%25longchamp%25%27+OR+toponyme+ILIKE+%27%25garde%25%27+OR+toponyme+ILIKE+%27%25mucem%25%27+OR+toponyme+ILIKE+%27%25radieuse%25%27+OR+toponyme+ILIKE+%27%25h%C3%B4tel+de+ville%25%27+OR+toponyme+ILIKE+%27%25pharo%25%27+OR+toponyme+ILIKE+%27%25major%25%27%29&COUNT=1000&SORTBY=cleabs&STARTINDEX=0",
+        "status": 200,
+        "sha256": "23d894b185dbe9917966bc6a62a932401147ea8273196a977a27656907a85588",
+        "bytes": 147,
+        "numberMatched": 0,
+        "numberReturned": 0
+      },
+      {
+        "layer": "BDTOPO_V3:construction_ponctuelle",
+        "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Aconstruction_ponctuelle&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.22875102%2C43.1696313%2C5.53254336%2C43.39105653%2C%27EPSG%3A4326%27%29+AND+%28toponyme+ILIKE+%27%25charit%25%27+OR+toponyme+ILIKE+%27%25longchamp%25%27+OR+toponyme+ILIKE+%27%25garde%25%27+OR+toponyme+ILIKE+%27%25mucem%25%27+OR+toponyme+ILIKE+%27%25radieuse%25%27+OR+toponyme+ILIKE+%27%25h%C3%B4tel+de+ville%25%27+OR+toponyme+ILIKE+%27%25pharo%25%27+OR+toponyme+ILIKE+%27%25major%25%27%29&COUNT=1000&SORTBY=cleabs&STARTINDEX=0",
+        "status": 200,
+        "sha256": "81d420d7f73c99a8517996942da6eee2e788382a65b8d2604a32c12ab1c76d5d",
+        "bytes": 147,
+        "numberMatched": 0,
+        "numberReturned": 0
+      }
+    ],
+    "interpretation": "28 named zones acquired; construction layer name-filter queries returned zero records. This does not prove those layers contain no Marseille constructions."
+  },
+  "cachedWfsCapabilitiesObservation": {
+    "sourcePathDuringResearch": "/workspace/.cloud-setup/fallout-marseille/results/native-wfs-capabilities.xml",
+    "freshlyFetched": false,
+    "advertisedLayerCount": 864,
+    "interpretation": "Targeted name inspection found no dedicated facade or room layer. A cached layer-name inspection is not proof that all possible public architectural sources are absent."
+  },
+  "publishedArtifacts": [
+    {
+      "path": "implementation/architecture-continuation/IGN_SITES_3a46168b2b65e4f4.geojson",
+      "bytes": 43358,
+      "sha256": "3a46168b2b65e4f4646959dc5049c327d16fc613a2153a1ba3cf0df3f9121734",
+      "url": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Azone_d_activite_ou_d_interet&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.22875102%2C43.1696313%2C5.53254336%2C43.39105653%2C%27EPSG%3A4326%27%29+AND+%28toponyme+ILIKE+%27%25charit%25%27+OR+toponyme+ILIKE+%27%25longchamp%25%27+OR+toponyme+ILIKE+%27%25garde%25%27+OR+toponyme+ILIKE+%27%25mucem%25%27+OR+toponyme+ILIKE+%27%25radieuse%25%27+OR+toponyme+ILIKE+%27%25h%C3%B4tel+de+ville%25%27+OR+toponyme+ILIKE+%27%25pharo%25%27+OR+toponyme+ILIKE+%27%25major%25%27%29&COUNT=1000&SORTBY=cleabs&STARTINDEX=0"
+    },
+    {
+      "path": "implementation/architecture-continuation/IGN_SCHEMA_cfe3778aa2948dd5.xml",
+      "bytes": 3460,
+      "sha256": "cfe3778aa2948dd58936444097a946dd76535cce9d613479222732c9fadfc2f4",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Azone_d_activite_ou_d_interet"
+    },
+    {
+      "path": "implementation/architecture-continuation/IGN_SCHEMA_766cd6389a0e1888.xml",
+      "bytes": 2832,
+      "sha256": "766cd6389a0e188868054860ce33b88d7cafc6eead047d0592ace894ea42230a",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Aconstruction_surfacique"
+    },
+    {
+      "path": "implementation/architecture-continuation/IGN_SCHEMA_0d61c43eddac914b.xml",
+      "bytes": 2819,
+      "sha256": "0d61c43eddac914b7e6c024447f9bb8eb8db9188df3dba0bdd8ca3c14526e031",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Aconstruction_lineaire"
+    },
+    {
+      "path": "implementation/architecture-continuation/IGN_SCHEMA_5c2ce0bf5fdea03c.xml",
+      "bytes": 2927,
+      "sha256": "5c2ce0bf5fdea03c2926521f1f46093fb4c7e09623f93652d17f985598a44750",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Aconstruction_ponctuelle"
+    },
+    {
+      "path": "implementation/architecture-continuation/IGN_SCHEMA_6fe8e8173ad131c5.xml",
+      "bytes": 1901,
+      "sha256": "6fe8e8173ad131c552ff13ba1d2eb7235f2d3c110eefb032132f13d8b6216d85",
+      "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=DescribeFeatureType&typenames=BDTOPO_V3%3Atoponymie"
+    },
+    {
+      "path": "implementation/architecture-continuation/IGN_SITE_CONTEXT_CATALOGUE.json",
+      "bytes": 157073,
+      "sha256": "2bd8f85196b0d667d81948c4375a5be409393801cee85cee9426e0e841223e5c"
+    }
+  ],
+  "outcome": {
+    "namedSourceZonesAcquired": 28,
+    "geometricBuildingCandidates": 106,
+    "strictSiteContextLinksProposed": 12,
+    "measuredFacadeDocumentsAcquired": 0,
+    "measuredInteriorDocumentsAcquired": 0,
+    "architectural3dModelsAcquired": 0
+  },
+  "limits": [
+    "Finite targeted research, not an exhaustive claim about every archive or dataset on the internet.",
+    "HTTP 503 responses and timeouts are acquisition failures, not evidence that plans do not exist.",
+    "Site names and uses, overlap calculations and source precision do not establish openings, facades, rooms or construction dates.",
+    "Photos require their own reuse rights and metric calibration before claiming measured geometry.",
+    "Strict site context remains distinct from the procedural architecture used where no documentary plan was acquired."
+  ]
+}

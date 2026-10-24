@@ -1,0 +1,109 @@
+OK The requested frozen production HTML is installed
+OK Official full-commune boundary is locally pinned by bytes and SHA-256
+OK The installed city index identifies a completed Marseille acquisition
+OK The frozen city acquisition contains the expected complete source inventory
+OK All twenty-five requested fine terrain partitions are certified complete
+STAGE municipal_server_audit
+OK Actual server verifies every installed partition and returns an uncached complete audit
+OK Real municipal terrain accompanies the full-boundary source index
+OK Native Chromium receives the unchanged production document over real HTTP
+OK Runtime registers the real commune and complete partition inventory
+STAGE city_source_panel
+OK Player-visible city panel reports the actual audited building and road totals
+STAGE initial_macro
+LOAD {"phase": "loading", "done": 0, "total": 48, "tiles": 0}
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 40108)
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tools/serve_game.py", line 68, in do_GET
+    self.wfile.write(payload)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/workspace/fallout-Marseille/tools/serve_game.py", line 21, in __init__
+    super().__init__(*args, directory=str(ROOT), **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/workspace/fallout-Marseille/tools/serve_game.py", line 70, in do_GET
+    self.send_error(503, 'Local audit unavailable')
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 492, in send_error
+    self.end_headers()
+  File "/workspace/fallout-Marseille/tools/serve_game.py", line 94, in end_headers
+    super().end_headers()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 542, in end_headers
+    self.flush_headers()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 546, in flush_headers
+    self.wfile.write(b"".join(self._headers_buffer))
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+LOAD {"phase": "preparing", "done": 48, "total": 48, "tiles": 0}
+STAGE maritime_diagnostic
+OK The real maritime diagnostic sector prepares successfully
+OK The actual official water atlas is present with its pinned source and unsimplified shoreline
+OK The loaded official sea polygon blocks walking independently of missing or zero terrain
+OK The water atlas declares nominal sea level without claiming a tidal measurement
+OK The maritime projected cache stays within its byte budget
+STAGE vieux_port
+OK vieux_port: production staging loads actual city sources
+OK vieux_port: a measured collision-free camera point exists
+OK vieux_port: real city buildings and roads are streamed instead of the whole atlas
+OK vieux_port: municipal vector and terrain caches remain within their byte budgets
+OK vieux_port: nearby source buildings receive bounded rendered facade details
+OK vieux_port: rendered facade details preserve the actual source outline and metric envelope
+OK vieux_port: generated doors use plausible metric dimensions and explicit provenance
+OK vieux_port: actual accessible building portals are available
+STAGE estaque
+OK estaque: production staging loads actual city sources
+OK estaque: a measured collision-free camera point exists
+OK estaque: real city buildings and roads are streamed instead of the whole atlas
+OK estaque: municipal vector and terrain caches remain within their byte budgets
+OK estaque: nearby source buildings receive bounded rendered facade details
+OK estaque: rendered facade details preserve the actual source outline and metric envelope
+OK estaque: generated doors use plausible metric dimensions and explicit provenance
+OK estaque: actual accessible building portals are available
+OK Estaque demonstrates actual coverage beyond all eight original base-region rectangles
+OK The actual Estaque land point is outside every loaded maritime polygon
+STAGE interior_ui
+OK Portal setup places a standing player at the measured production ground height
+OK A real multi-storey building is entered through its keyboard portal interaction
+OK Cold Continue is exercised inside a building whose saved street lies beyond the original eight regions
+OK Entered building identity, source footprint and explicit invented plan survive the portal
+OK The requested storey is adjacent to the current landing
+OK The real interior exposes an accessible landing interaction
+OK Landing camera remains on clear interior floor
+OK The visible interaction targets the actual landing
+OK The landing dialog closes after its storey transition
+OK The landing UI reaches a different storey of the same actual building
+OK Native localStorage contains the current building, floor and exterior return point
+STAGE native_continue
+OK Reload retains the exact frozen production HTML
+OK Actual Continue restores the same floor, deterministic plan and source-building identity
+OK Continue preserves inventory and the exact geographic return coordinates
+STAGE finite_loot
+FAIL An actual finite interior reserve can be opened through the proximity interaction
+FAIL The native municipal architecture pilot completes
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/city_architecture_browser.py", line 432, in main
+    require("An actual finite interior reserve can be opened through the proximity interaction", chosen is not None)
+  File "/workspace/fallout-Marseille/tests/expansion/city_architecture_browser.py", line 85, in require
+    raise AssertionError(name)
+AssertionError: An actual finite interior reserve can be opened through the proximity interaction
+
+OK Production HTML, all three city indices and official boundary stayed unchanged
+{"passed": 48, "failed": 2, "total": 50, "stage": "finite_loot"}

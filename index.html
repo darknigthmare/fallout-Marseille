@@ -11970,6 +11970,96 @@ function v050WastelandAfterInit(){
  Object.assign(window.__MISTRAL_DEBUG,{v050WastelandInfo:()=>({schema:1,state:deepClone(state.v050Wasteland),campPosition:v050CampPosition(),campNear:v050CampNear(),blocked:v050WastelandBlocked(),nearbyAid:V042_CATALOG.filter(v050AidContact).map(s=>s.id)}),v050WastelandAction:v027Dispatch});
 }
 
+/* Attributed architecture is an optional overlay. Official source geometry and
+   cached WFS properties remain untouched. A site label is never a room plan. */
+const MistralArchitectureSources=(()=>{
+ const MAX_BYTES=1024*1024,MAX_RECORDS=128,EPS=1e-7;
+ const finite=n=>typeof n==='number'&&Number.isFinite(n),clone=v=>JSON.parse(JSON.stringify(v));
+ function fail(message){throw Error('Sources architecturales : '+message);}
+ function text(value,name,max=2000){if(typeof value!=='string'||!value.trim()||value.length>max)fail(name+' absent ou trop long');return value.trim();}
+ function source(raw){
+  if(!raw||typeof raw!=='object')fail('attribution absente');
+  const out=Object.fromEntries(['url','title','license','attribution','accessedAt'].map(k=>[k,text(raw[k],k)]));let u;
+  try{u=new URL(out.url);}catch{fail('URL de provenance invalide');}
+  if(u.protocol!=='https:'||u.username||u.password||!/^\d{4}-\d{2}-\d{2}(?:T|$)/.test(out.accessedAt))fail('provenance HTTPS ou date invalide');
+  if(raw.responseSha256!==undefined){if(!/^[a-f0-9]{64}$/.test(raw.responseSha256))fail('empreinte de réponse invalide');out.responseSha256=raw.responseSha256;}
+  return out;
+ }
+ function geometry(raw){
+  if(!raw||!['Polygon','MultiPolygon'].includes(raw.type))fail('empreinte source requise');let count=0;
+  const polygons=raw.type==='Polygon'?[raw.coordinates]:raw.coordinates;
+  if(!Array.isArray(polygons)||!polygons.length||polygons.length>128)fail('polygones source hors budget');
+  for(const polygon of polygons){if(!Array.isArray(polygon)||!polygon.length||polygon.length>128)fail('anneaux source invalides');
+   for(const ring of polygon){if(!Array.isArray(ring)||ring.length<4)fail('anneau source ouvert');
+    for(const p of ring){if(!Array.isArray(p)||![2,3].includes(p.length)||!p.every(finite)||Math.abs(p[0])>180||Math.abs(p[1])>90||++count>16384)fail('coordonnées source invalides');}
+    if(ring[0][0]!==ring.at(-1)[0]||ring[0][1]!==ring.at(-1)[1])fail('anneau source ouvert');
+   }
+  }return JSON.stringify([raw.type,raw.coordinates]);
+ }
+ function component(raw){
+  if(!raw||typeof raw.id!=='string'||!raw.id||raw.id.length>512||!finite(raw.baseY)||!finite(raw.height)||raw.height<=0||raw.height>1000||!Number.isInteger(raw.levels)||raw.levels<1||raw.levels>200||!Array.isArray(raw.rings)||!raw.rings.length)fail('liaison métrique du composant invalide');
+  let count=0;for(const ring of raw.rings){if(!Array.isArray(ring)||ring.length<4)fail('anneau métrique invalide');for(const p of ring)if(!Array.isArray(p)||p.length!==2||!p.every(finite)||++count>16384)fail('anneau métrique hors budget');if(ring[0][0]!==ring.at(-1)[0]||ring[0][1]!==ring.at(-1)[1])fail('anneau métrique ouvert');}
+  return clone(raw);
+ }
+ function sameRings(a,b){return a.length===b.length&&a.every((r,i)=>r.length===b[i].length&&r.every((p,j)=>p.every((n,k)=>Math.abs(n-b[i][j][k])<=EPS)));}
+ function knownUse(properties){const normalized=v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().toLowerCase(),specific=v=>{const n=normalized(v);return !!n&&!/^(indifferenciee?|autre|inconnu|unknown|00|yes|true|batiment|building|bati|non renseigne|no|none)$/.test(n);};return ['usage_1','usage_2','building:use','building','amenity','shop'].some(k=>specific(properties[k]))||specific(properties.nature)&&!/industri.*agricol.*commercial/.test(normalized(properties.nature));}
+ function matches(c,d){return c.id===d.id&&c.levels===d.levels&&Math.abs(c.baseY-d.baseY)<=EPS&&Math.abs(c.height-d.height)<=EPS&&sameRings(c.rings,d.rings);}
+ function validate(raw,adapters){
+  if(!raw||raw.schemaVersion!==1||raw.frame!=='engine-lambert93-metre'||!Array.isArray(raw.records)||raw.records.length>MAX_RECORDS||JSON.stringify(raw).length*2>MAX_BYTES)fail('atlas incompatible ou hors budget');
+  const records=[],ids=new Set(),targets=new Set();
+  for(const value of raw.records){
+   const id=text(value?.id,'identifiant',160),target=value?.target;if(ids.has(id))fail('identifiant dupliqué');ids.add(id);
+   if(!target||typeof target.cleabs!=='string'||!target.cleabs.trim()||target.cleabs.length>512)fail('identité IGN absente');
+   const rawGeometry=geometry(target.rawGeometry),bound=target.component?component(target.component):null,key=target.cleabs+':'+(bound?.id||'*');if(targets.has(key))fail('cible architecturale dupliquée');targets.add(key);
+   const entry={id,target:{cleabs:target.cleabs,rawGeometry:clone(target.rawGeometry),component:bound},geometryKey:rawGeometry,source:source(value.source)};
+   if(value.label){const l=value.label;if(l.kind!=='site-context'||l.geometryFictive!==false||!finite(l.precisionMeters)||l.precisionMeters<0||l.precisionMeters>3||!finite(l.buildingOverlapRatio)||l.buildingOverlapRatio<.99-EPS||l.buildingOverlapRatio>1+EPS||l.centroidInside!==true)fail('association de site insuffisamment établie');entry.label={kind:l.kind,text:text(l.text,'libellé',240),siteName:text(l.siteName,'site',240),use:typeof l.use==='string'?l.use.slice(0,160):'',precisionMeters:l.precisionMeters,geometryFictive:false,buildingOverlapRatio:l.buildingOverlapRatio,centroidInside:true};}
+   if(value.facadeDocument||value.interiorDocument){if(!bound||!adapters?.facades||!adapters?.interiors)fail('plans sans liaison métrique ni validateurs');
+    const d={...bound,sourceId:target.cleabs,stableSourceId:target.cleabs,levelHeight:bound.height/bound.levels,properties:{},provenance:'source'};
+    if(value.facadeDocument){const doc=adapters.facades.document(value.facadeDocument);if(!doc)fail('plan de façade invalide');source({url:doc.source,title:entry.source.title,license:doc.license,attribution:doc.attribution,accessedAt:doc.acquiredAt});const edges=new Map(adapters.facades.edges(d).map(e=>[e.ringIndex+':'+e.edgeIndex,e]));
+     for(const o of doc.openings){const edge=edges.get(o.ringIndex+':'+o.edgeIndex);if(!edge||o.offset+o.width>edge.length+EPS||o.bottom+o.height>bound.height+EPS)fail('ouverture documentaire hors de la façade');}
+     for(const e of doc.completeEdges)if(!edges.has(e.ringIndex+':'+e.edgeIndex))fail('face documentaire inconnue');entry.facadeDocument=clone(value.facadeDocument);
+    }
+    if(value.interiorDocument){const b=adapters.interiors.building(d);adapters.interiors.document(value.interiorDocument,b);entry.interiorDocument=clone(value.interiorDocument);}
+   }
+   if(!entry.label&&!entry.facadeDocument&&!entry.interiorDocument)fail('annotation vide');records.push(entry);
+  }
+  return{schemaVersion:1,frame:raw.frame,records};
+ }
+ class Registry{
+  constructor(raw,adapters){const atlas=validate(raw,adapters);this.adapters=adapters;this.bySource=new Map();this.records=atlas.records;this.applied=new Set();this.rejected=new Map();for(const entry of this.records){const id=entry.target.cleabs;if(!this.bySource.has(id))this.bySource.set(id,[]);this.bySource.get(id).push(entry);}}
+  apply(draw){
+   const props=draw?.geoProperties,entries=this.bySource.get(props?.cleabs);if(!entries||!draw.sourceGeometry)return false;let key;try{key=geometry(draw.sourceGeometry);}catch{for(const entry of entries)this.rejected.set(entry.id,'source-geometry-invalid');return false;}let changed=false;
+   for(const entry of entries){if(key!==entry.geometryKey){this.rejected.set(entry.id,'source-geometry-changed');continue;}
+    const next={...draw.geoProperties};
+    if(entry.label){if(!String(next.name||next.nom||next.nom_du_batiment||'').trim())next.name=entry.label.text;
+     if(!knownUse(next)&&entry.label.use)next.architectureUse=entry.label.use;next.architectureSite={...entry.label,source:clone(entry.source)};
+    }
+    // Context can change an inferred floor count. Bind the final descriptor
+    // before applying any part, so a plan cannot invalidate its own volume.
+    if(entry.target.component){const d=this.adapters.facades.describe({...draw,geoProperties:next});if(!d||!matches(entry.target.component,d)){this.rejected.set(entry.id,'component-or-edge-order-changed');continue;}}
+    for(const field of ['facadeDocument','interiorDocument'])if(entry[field]&&!next[field])next[field]=clone(entry[field]);
+    draw.geoProperties=next;draw.v052ArchitectureSource={recordId:entry.id,source:clone(entry.source),scope:entry.label?'site-context-and-attributed-parts':'attributed-parts'};this.applied.add(entry.id);changed=true;
+   }return changed;
+  }
+  info(){return{records:this.records.length,siteLabels:this.records.filter(r=>r.label).length,facadeDocuments:this.records.filter(r=>r.facadeDocument).length,interiorDocuments:this.records.filter(r=>r.interiorDocument).length,appliedRecords:this.applied.size,rejected:[...this.rejected].map(([id,reason])=>({id,reason}))};}
+ }
+ return{MAX_BYTES,MAX_RECORDS,EPS,source,geometry,component,sameRings,matches,validate,Registry};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralArchitectureSources;
+
+if(typeof v046Import==='function'&&typeof window!=='undefined'){
+ const clone=v=>JSON.parse(JSON.stringify(v));
+ const runtime={promise:null,registry:null,loaded:false,missing:false,error:null,serial:0};
+ function info(){return{loaded:runtime.loaded,missing:runtime.missing,error:runtime.error,...(runtime.registry?.info()||{records:0,siteLabels:0,facadeDocuments:0,interiorDocuments:0,appliedRecords:0,rejected:[]})};}
+ async function ready(){
+  if(!runtime.promise)runtime.promise=(async()=>{try{const raw=await v050LocalSourceJSON('data/map_pack/architecture/index.json',null,true);runtime.missing=raw===null;runtime.registry=new MistralArchitectureSources.Registry(raw||{schemaVersion:1,frame:'engine-lambert93-metre',records:[]},{facades:MistralFacades,interiors:MistralCityInteriors});runtime.loaded=true;if(!V046.lab&&world?.v046){let changed=false;for(const draw of world.staticDraws||[])if(draw.geoLayer==='building')changed=runtime.registry.apply(draw)||changed;if(changed){window.__MISTRAL_DEBUG?.v050FacadeRefresh?.();window.__MISTRAL_DEBUG?.v050CityInteriorBind?.();}}return info();}catch(error){runtime.error=String(error.message||error);throw error;}finally{window.dispatchEvent?.(new Event('mistral-architecture-ready'));}})();return runtime.promise;
+ }
+ const importing=v046Import;v046Import=function(...args){const result=importing(...args);if(!V046.lab&&runtime.registry)for(const draw of result.buildings||[])runtime.registry.apply(draw);return result;};
+ const ensure=v046Ensure;v046Ensure=async function(...args){const serial=++runtime.serial;if(!V046.lab)try{await ready();}catch{if(typeof toast==='function')toast('Les sources architecturales locales ne sont pas valides. Leurs annotations ne sont pas appliquées.','bad');}if(serial!==runtime.serial)return false;return ensure(...args);};
+ const cancel=v046Cancel;v046Cancel=function(...args){runtime.serial++;return cancel(...args);};
+ globalThis.v052ArchitectureAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v052ArchitectureInfo:info,v052ArchitectureReady:ready,v052ArchitectureTarget:id=>{const draw=world?.staticDraws.find(d=>d.geoLayer==='building'&&[d.geoProperties?.cleabs,d.geoProperties?.sourceId,d.geoFeatureId,MistralFacades.describe(d)?.id].includes(id));if(!draw||!draw.sourceGeometry)return null;const d=MistralFacades.describe(draw);if(!d)return null;return{cleabs:draw.geoProperties.cleabs,rawGeometry:clone(draw.sourceGeometry),component:{id:d.id,baseY:d.baseY,height:d.height,levels:d.levels,rings:clone(d.rings)},annotation:clone({name:draw.geoProperties.name||draw.geoProperties.nom||null,architectureSite:draw.geoProperties.architectureSite||null,appliedSource:draw.v052ArchitectureSource||null})};}});ready().catch(()=>{});};
+}
+
 /* Standard Gamepad API. The sampler is pure; game input never overwrites the
    keyboard/touch collections. Browser/OS confirmation and text entry remain native. */
 const MistralController=(()=>{
@@ -12080,13 +12170,30 @@ const MistralFacades=(()=>{
   civic:{wall:[.72,.70,.62],trim:[.84,.81,.70],shutter:[.31,.38,.35],glass:[.15,.22,.23],iron:[.20,.22,.20]},
   religious:{wall:[.75,.73,.65],trim:[.85,.82,.71],shutter:[.34,.35,.29],glass:[.20,.25,.28],iron:[.20,.20,.18]}
  };
- function style(properties={}){
-  const type=['nature','usage_1','usage_2','building','amenity','shop'].map(k=>String(properties[k]||'')).join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-  if(/religieu|eglise|chapelle|cathedral|church|mosque|synagogue/.test(type))return'religious';
-  if(/industri|agricol|entrepot|warehouse|hangar|serre|greenhouse/.test(type))return'industrial';
-  if(/commercial|commerce|magasin|shop|retail|restaurant/.test(type))return'commercial';
-  if(/public|mairie|administr|ecole|school|hopital|hospital|musee|museum|gare|station/.test(type))return'civic';
-  return'residential';
+ function words(value){return String(value||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+ function appearance(properties={}){
+  // IGN's broad nature "Industriel, agricole ou commercial" is ambiguous.
+  // A specific usage wins over that fallback instead of hiding shops/housing.
+  for(const field of['usage_1','usage_2','architectureUse','building','amenity','shop','nature']){
+   const value=words(properties[field]);if(!value.trim())continue;let name=null;
+   if(/religieu|eglise|chapelle|cathedral|church|mosque|synagogue|culte/.test(value))name='religious';
+   else if(/resident|habitat|appartement|apartments|house|residential|logement/.test(value))name='residential';
+   else if(/public|mairie|administr|ecole|school|hopital|hospital|musee|museum|gare|station|sportif|tribune|gymnase/.test(value))name='civic';
+   else if(field==='shop'&&!/^(no|none|vacant)$/.test(value)||/commerce|commercial|magasin|shop|retail|restaurant|bureau|service/.test(value)&&!/industri.*commercial/.test(value))name='commercial';
+   else if(/industri|agricol|entrepot|warehouse|hangar|serre|greenhouse|silo/.test(value))name='industrial';
+   if(name)return{style:name,basis:field};
+  }return{style:'residential',basis:'invented-fallback'};
+ }
+ function style(properties={}){return appearance(properties).style;}
+ function typology(properties={},category=style(properties)){
+  const value=words([properties.nature,properties.building,properties.amenity,properties.usage_1,properties.usage_2,properties.architectureUse].join(' '));
+  if(/serre|greenhouse/.test(value))return'greenhouse';
+  if(/silo|chateau d.eau|reservoir|tour de refroidissement|cheminee/.test(value))return'technical-tower';
+  if(/tribune|gradin|grandstand/.test(value))return'grandstand';
+  if(category==='religious')return'nave';
+  if(/hangar|entrepot|warehouse|hall industriel|halle|gymnase/.test(value))return'open-hall';
+  if(/annexe|garage|carport/.test(value))return'annexe';
+  return'stacked';
  }
  function document(raw){
   if(!raw||typeof raw!=='object'||raw.schemaVersion!==1||!['source','license','attribution','acquiredAt'].every(k=>text(raw[k])))return null;
@@ -12103,34 +12210,90 @@ const MistralFacades=(()=>{
   if(!draw||draw.mesh!=='prism'||!finite(draw.baseY)||!finite(draw.height)||draw.height<=0||draw.height>1000)return null;
   const rings=normalized(draw.rings);if(!rings)return null;
   const properties=draw.geoProperties||{},sourceId=String(properties.sourceId||draw.geoFeatureId||draw.id||draw.v046GeometryId||'building'),declaredKey=text(properties.cleabs),stableSourceId=declaredKey&&declaredKey.length<=512?declaredKey:sourceId,id=stableSourceId+':'+geometryIdentity(rings);
-  const levelsRaw=['building:levels','levels','nombre_d_etages'].map(k=>Number(properties[k])).find(n=>Number.isInteger(n)&&n>=1&&n<=200);
+  const character=appearance(properties),volumeType=typology(properties,character.style),levelsRaw=['building:levels','levels','nombre_d_etages'].map(k=>Number(properties[k])).find(n=>Number.isInteger(n)&&n>=1&&n<=200);
   // The original metric height is never stretched to fit a guessed floor count.
-  const levels=levelsRaw||Math.max(1,Math.round(draw.height/(style(properties)==='industrial'?4.2:3.05)));
+  const levels=levelsRaw||(volumeType==='stacked'?Math.max(1,Math.round(draw.height/(character.style==='industrial'?4.2:3.05))):1);
   const declared=!!levelsRaw,facadeDocument=document(properties.facadeDocument);
   const bounds={minX:Infinity,minZ:Infinity,maxX:-Infinity,maxZ:-Infinity};
   for(const r of rings)for(const p of r){bounds.minX=Math.min(bounds.minX,p[0]);bounds.maxX=Math.max(bounds.maxX,p[0]);bounds.minZ=Math.min(bounds.minZ,p[1]);bounds.maxZ=Math.max(bounds.maxZ,p[1]);}
-  return{id,sourceId,stableSourceId,rings,baseY:draw.baseY,height:draw.height,levels,levelHeight:draw.height/levels,levelsBasis:declared?'source-declared':'invented',style:style(properties),properties,bounds,facadeDocument,provenance:facadeDocument?'mixed':'invented',heightBasis:draw.heightBasis||draw.sourceProfile?.basis||'existing-building-envelope'};
+  return{id,sourceId,stableSourceId,rings,baseY:draw.baseY,height:draw.height,levels,levelHeight:draw.height/levels,levelsBasis:declared?'source-declared':'invented',levelInferenceBasis:declared?'source-declared':volumeType==='stacked'?'metric-height-estimate':'invented-functional-volume',typology:volumeType,style:character.style,styleBasis:character.basis,properties,bounds,facadeDocument,provenance:facadeDocument?'mixed':'invented',heightBasis:draw.heightBasis||draw.sourceProfile?.basis||'existing-building-envelope'};
  }
  function edges(description){const out=[];for(let r=0;r<description.rings.length;r++){const ring=description.rings[r];let signed=0;for(let i=1;i<ring.length;i++)signed+=ring[i-1][0]*ring[i][1]-ring[i][0]*ring[i-1][1];const direction=(signed>0?1:-1)*(r===0?1:-1);for(let i=0;i<ring.length-1;i++){
-  const a=ring[i],b=ring[i+1],length=Math.hypot(b[0]-a[0],b[1]-a[1]);if(length<.08)continue;const tangent=[(b[0]-a[0])/length,(b[1]-a[1])/length],normal=[tangent[1]*direction,-tangent[0]*direction];
+  const a=ring[i],b=ring[i+1],length=Math.hypot(b[0]-a[0],b[1]-a[1]);if(length<EPS)continue;const tangent=[(b[0]-a[0])/length,(b[1]-a[1])/length],normal=[tangent[1]*direction,-tangent[0]*direction];
   out.push({ringIndex:r,edgeIndex:i,a:a.slice(),b:b.slice(),length,tangent,normal});
  }}return out;}
- function supportedOpening(o,e,d){return e&&o.offset+o.width<=e.length+EPS&&o.bottom+o.height<=d.height+EPS;}
- function entrances(draw){
-  const d=draw?.rings&&draw.baseY!==undefined&&draw.height!==undefined&&draw.levelHeight?draw:describe(draw);if(!d||d.height<1.95)return[];
-  const all=edges(d),edgeMap=new Map(all.map(e=>[e.ringIndex+':'+e.edgeIndex,e])),documented=[];
-  for(const o of d.facadeDocument?.openings||[]){if(o.type!=='door'||o.ringIndex!==0)continue;const e=edgeMap.get(o.ringIndex+':'+o.edgeIndex);if(supportedOpening(o,e,d)&&o.bottom<=.35)documented.push({o,e});}
-  const complete=new Set((d.facadeDocument?.completeEdges||[]).map(e=>e.ringIndex+':'+e.edgeIndex));
-  const candidates=documented.length?documented:all.filter(e=>e.ringIndex===0&&e.length>=1.6&&!complete.has(e.ringIndex+':'+e.edgeIndex)).sort((a,b)=>b.length-a.length||Math.min(a.a[0],a.b[0])-Math.min(b.a[0],b.b[0])||Math.min(a.a[1],a.b[1])-Math.min(b.a[1],b.b[1])||Math.max(a.a[0],a.b[0])-Math.max(b.a[0],b.b[0])||Math.max(a.a[1],a.b[1])-Math.max(b.a[1],b.b[1])).map(e=>({e,o:null}));
+ function edgeKey(e){return e.ringIndex+':'+e.edgeIndex;}
+ function surfaceBounds(e,lo,hi){
+  lo=Math.max(0,lo);hi=Math.min(e.length,hi);if(hi-lo<EPS)return[0,-1];if(!e.pieces)return[0,0];
+  let a=0,b=e.pieces.length;while(a<b){const m=(a+b)>>1;if(e.pieces[m].end<=lo+EPS)a=m+1;else b=m;}const first=a;
+  a=first;b=e.pieces.length;while(a<b){const m=(a+b)>>1;if(e.pieces[m].start<hi-EPS)a=m+1;else b=m;}return[first,a-1];
+ }
+ function surfaceCount(e,lo,hi){const[a,b]=surfaceBounds(e,lo,hi);return Math.max(0,b-a+1);}
+ function surfacePoint(e,offset){
+  offset=limit(offset,0,e.length);if(!e.pieces)return{point:[e.a[0]+e.tangent[0]*offset,e.a[1]+e.tangent[1]*offset],tangent:e.tangent,normal:e.normal,edgeIndex:e.edgeIndex,sourceOffset:offset};
+  const[a]=surfaceBounds(e,Math.min(offset,e.length-EPS*2),Math.min(e.length,offset+EPS*4)),part=e.pieces[Math.min(e.pieces.length-1,a)],local=limit(offset-part.start,0,part.source.length);
+  return{point:[part.a[0]+part.tangent[0]*local,part.a[1]+part.tangent[1]*local],tangent:part.tangent,normal:part.source.normal,edgeIndex:part.source.edgeIndex,sourceOffset:part.forward?local:part.source.length-local};
+ }
+ function surfaceDistance(e,p){
+  let best={distance:Infinity,offset:0};for(const part of e.pieces||[{source:e,a:e.a,b:e.b,tangent:e.tangent,start:0,end:e.length}]){const local=limit((p[0]-part.a[0])*part.tangent[0]+(p[1]-part.a[1])*part.tangent[1],0,part.source.length),distance=Math.hypot(p[0]-part.a[0]-part.tangent[0]*local,p[1]-part.a[1]-part.tangent[1]*local);if(distance<best.distance)best={distance,offset:part.start+local};}return best;
+ }
+ function curveSurfaces(d,all=edges(d)){
   const result=[];
-  for(const {e,o}of candidates.slice(0,64)){const width=o?.width??Math.min(d.style==='industrial'?2.4:1.15,e.length*.6),height=o?.height??Math.min(2.35,d.levelHeight-.08,d.height-.08),fractions=o?[(o.offset+o.width/2)/e.length]:[.5,.34,.66];
-   if(height<1.85||width<.78)continue;
-   for(const t of fractions){if(!o&&(d.facadeDocument?.openings||[]).some(known=>known.ringIndex===e.ringIndex&&known.edgeIndex===e.edgeIndex&&known.offset<t*e.length+width/2&&known.offset+known.width>t*e.length-width/2&&known.bottom<height))continue;const p=[e.a[0]+(e.b[0]-e.a[0])*t,e.a[1]+(e.b[1]-e.a[1])*t];let candidate=null;
-    for(const inset of[.95,.7,.5]){const ip=[p[0]-e.normal[0]*inset,p[1]-e.normal[1]*inset],op=[p[0]+e.normal[0]*1.15,p[1]+e.normal[1]*1.15];
-     if(!inside(d.rings,...ip)||inside(d.rings,...op))continue;
-     // A player-width clearance must exist; a sliver is not an accessible room.
-     if([-1,1].some(s=>!inside(d.rings,ip[0]+e.tangent[0]*.4*s,ip[1]+e.tangent[1]*.4*s)))continue;
-     candidate={id:d.id+':entrance:'+e.ringIndex+':'+e.edgeIndex+':'+Math.round(t*10000),buildingId:d.id,center:[p[0],d.baseY+(o?.bottom||0),p[1]],outside:[op[0],d.baseY+(o?.bottom||0),op[1]],inside:[ip[0],d.baseY+(o?.bottom||0),ip[1]],tangent:e.tangent.slice(),normal:e.normal.slice(),ringIndex:0,edgeIndex:e.edgeIndex,width,height,offset:t*e.length-width/2,provenance:o?'documented':'invented',source:o?d.facadeDocument.source:null};break;
+  for(let ringIndex=0;ringIndex<d.rings.length;ringIndex++){
+   const ring=all.filter(e=>e.ringIndex===ringIndex);if(ring.length<3)continue;
+   const join=(a,b)=>a.length<2.8&&b.length<2.8&&Math.hypot(a.b[0]-b.a[0],a.b[1]-b.a[1])<EPS&&a.tangent[0]*b.tangent[0]+a.tangent[1]*b.tangent[1]>=Math.cos(Math.PI/4);
+   let cut=ring.findIndex((e,i)=>!join(ring[(i+ring.length-1)%ring.length],e));if(cut<0)cut=0;
+   const ordered=ring.slice(cut).concat(ring.slice(0,cut)),chains=[];let chain=[];
+   for(const e of ordered){if(chain.length&&!join(chain.at(-1),e)){chains.push(chain);chain=[];}chain.push(e);}if(chain.length)chains.push(chain);
+   for(const source of chains){if(source.length<3||source.reduce((n,e)=>n+e.length,0)<1.45)continue;let oriented=source.map(e=>({source:e,a:e.a,b:e.b,tangent:e.tangent,forward:true}));const closed=Math.hypot(source[0].a[0]-source.at(-1).b[0],source[0].a[1]-source.at(-1).b[1])<EPS,less=(a,b)=>a[0]<b[0]||a[0]===b[0]&&a[1]<b[1];
+    const reverse=parts=>parts.slice().reverse().map(part=>({...part,a:part.b,b:part.a,tangent:part.tangent.map(v=>-v),forward:!part.forward}));
+    if(closed){let start=0;for(let i=1;i<oriented.length;i++)if(less(oriented[i].a,oriented[start].a))start=i;oriented=oriented.slice(start).concat(oriented.slice(0,start));if(less(oriented.at(-1).a,oriented[0].b)){oriented=reverse(oriented);}}
+    else if(less(oriented.at(-1).b,oriented[0].a))oriented=reverse(oriented);
+    let length=0;for(const part of oriented){part.start=length;length+=part.source.length;part.end=length;}
+    const signature=JSON.stringify([ringIndex===0?'outer':'courtyard',...oriented.map(part=>part.a),oriented.at(-1).b]),surfaceId='curve:'+hash(signature).toString(16).padStart(8,'0')+hash('surface:'+signature).toString(16).padStart(8,'0');
+    result.push({ringIndex,edgeIndex:oriented[0].source.edgeIndex,surfaceId,a:oriented[0].a,b:oriented.at(-1).b,tangent:oriented[0].tangent,normal:oriented[0].source.normal,length,pieces:oriented,closed});
+   }
+  }return result;
+ }
+ function spanSummary(e,offset,width){
+  if(!e.surfaceId)return null;const[a,b]=surfaceBounds(e,offset,offset+width);return{surfaceId:e.surfaceId,offsetMeters:offset,widthMeters:width,firstSourceEdgeIndex:e.pieces[a]?.source.edgeIndex??null,lastSourceEdgeIndex:e.pieces[b]?.source.edgeIndex??null,segments:Math.max(0,b-a+1)};
+ }
+ function sourceSpans(e,offset,width){
+  if(!e.pieces)return[{ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,width}];const[first,last]=surfaceBounds(e,offset,offset+width),spans=[];
+  for(let i=first;i<=last;i++){const part=e.pieces[i],lo=Math.max(offset,part.start)-part.start,hi=Math.min(offset+width,part.end)-part.start;spans.push({ringIndex:e.ringIndex,edgeIndex:part.source.edgeIndex,offset:part.forward?lo:part.source.length-hi,width:hi-lo});}return spans;
+ }
+ function openingSurface(o,byEdge,bySurface){return o.surfaceId?bySurface.get(o.surfaceId):byEdge.get(o.ringIndex+':'+o.edgeIndex);}
+ function openingConflict(o,e,occupied,complete=null){
+  // Check source segments incrementally, without expanding every curved span
+  // into a retained array for each window in a high-complexity building.
+  const check=(source,offset,width)=>complete?.has(edgeKey(source))||(occupied.get(edgeKey(source))||[]).some(a=>a.offset<offset+width+.15&&a.offset+a.width+.15>offset&&a.bottom<o.bottom+o.height+.12&&a.bottom+a.height+.12>o.bottom);
+  if(!e.pieces)return check(e,o.offset,o.width);const[first,last]=surfaceBounds(e,o.offset,o.offset+o.width);
+  for(let i=first;i<=last;i++){const part=e.pieces[i],lo=Math.max(o.offset,part.start)-part.start,hi=Math.min(o.offset+o.width,part.end)-part.start;if(check(part.source,part.forward?lo:part.source.length-hi,hi-lo))return true;}return false;
+ }
+ function supportedOpening(o,e,d){return e&&o.offset+o.width<=e.length+EPS&&o.bottom+o.height<=d.height+EPS;}
+ function entrances(draw,options={}){
+  const d=draw?.rings&&draw.baseY!==undefined&&draw.height!==undefined&&draw.levelHeight?draw:describe(draw);if(!d||d.height<1.95)return[];
+  const all=edges(d),curves=curveSurfaces(d,all),edgeMap=new Map(all.map(e=>[edgeKey(e),e])),documented=[];
+  for(const o of d.facadeDocument?.openings||[]){if(o.type!=='door'||o.ringIndex!==0)continue;const e=edgeMap.get(o.ringIndex+':'+o.edgeIndex);if(supportedOpening(o,e,d)&&o.bottom<=.35)documented.push({o,e});}
+  const complete=new Set((d.facadeDocument?.completeEdges||[]).map(e=>e.ringIndex+':'+e.edgeIndex)),near=Array.isArray(options.near)&&options.near.length===2&&options.near.every(finite)?options.near:null,preferred=options.preferredEdge,preferredId=text(options.preferredId);
+  const preferredSurface=e=>preferred&&preferred.ringIndex===e.ringIndex&&(e.edgeIndex===preferred.edgeIndex||e.pieces?.some(part=>part.source.edgeIndex===preferred.edgeIndex));
+  const documentedId=item=>item.o?d.id+':entrance:'+item.e.ringIndex+':'+item.e.edgeIndex+':'+Math.round((item.o.offset+item.o.width/2)/item.e.length*10000):null;
+  const approach=item=>item.o?Math.hypot(...surfacePoint(item.e,item.o.offset+item.o.width/2).point.map((v,i)=>v-near[i])):surfaceDistance(item.e,near).distance;
+  const compare=(a,b)=>{const exact=Number(documentedId(b)===preferredId)-Number(documentedId(a)===preferredId);if(exact)return exact;const preferredOrder=Number(!!preferredSurface(b.e))-Number(!!preferredSurface(a.e));if(preferredOrder)return preferredOrder;if(near){const distance=approach(a)-approach(b);if(Math.abs(distance)>EPS)return distance;}return b.e.length-a.e.length||Math.min(a.e.a[0],a.e.b[0])-Math.min(b.e.a[0],b.e.b[0])||Math.min(a.e.a[1],a.e.b[1])-Math.min(b.e.a[1],b.e.b[1])||Math.max(a.e.a[0],a.e.b[0])-Math.max(b.e.a[0],b.e.b[0])||Math.max(a.e.a[1],a.e.b[1])-Math.max(b.e.a[1],b.e.b[1]);};
+  // Width is limited to 60% of its supporting facade: 1.30m is the
+  // geometric minimum for a .78m door. Clearance checks still decide access.
+  const candidates=(documented.length?documented:all.concat(curves).filter(e=>e.ringIndex===0&&e.length>=1.3-EPS&&(!complete.has(edgeKey(e))||e.surfaceId)).map(e=>({e,o:null}))).sort(compare),known=new Map();
+  for(const o of d.facadeDocument?.openings||[]){const key=o.ringIndex+':'+o.edgeIndex;if(!known.has(key))known.set(key,[]);known.get(key).push(o);}
+  const result=[];
+  for(const {e,o}of candidates.slice(0,64)){
+   const width=o?.width??Math.min(d.style==='industrial'?2.4:1.15,e.length*.6),height=o?.height??Math.min(2.35,d.levelHeight-.08,d.height-.08);if(height<1.85||width<.78-EPS)continue;
+   const idAt=t=>d.id+':entrance:'+(e.surfaceId?e.surfaceId+':'+Math.floor(t*Math.max(1,Math.floor(e.length/3.2))):e.ringIndex+':'+e.edgeIndex+':'+Math.round(t*10000));
+   let fractions=o?[(o.offset+o.width/2)/e.length]:[.5,.34,.66];
+   if(e.surfaceId&&!o){const count=Math.max(1,Math.floor(e.length/3.2)),at=near?Math.floor(surfaceDistance(e,near).offset/e.length*count):Math.floor(count/2),prefix=d.id+':entrance:'+e.surfaceId+':',preferredSlot=preferredId.startsWith(prefix)?Number(preferredId.slice(prefix.length)):null,slots=[...(Number.isInteger(preferredSlot)&&preferredSlot>=0&&preferredSlot<count?[preferredSlot]:[]),at,at-1,at+1,Math.floor(count/2),0,count-1];fractions=[...new Set(slots.filter(n=>n>=0&&n<count))].slice(0,7).map(n=>(n+.5)/count);}
+   else if(!o)fractions.sort((a,b)=>Number(idAt(b)===preferredId)-Number(idAt(a)===preferredId)||(near?Math.hypot(...surfacePoint(e,a*e.length).point.map((v,i)=>v-near[i]))-Math.hypot(...surfacePoint(e,b*e.length).point.map((v,i)=>v-near[i])):0));
+   for(const t of fractions){const offset=t*e.length-width/2;if(offset<0||offset+width>e.length+EPS)continue;const opening={ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,bottom:0,width,height};if(!o&&openingConflict(opening,e,known,complete))continue;const at=surfacePoint(e,t*e.length),p=at.point;let candidate=null;
+    for(const inset of[.95,.7,.5]){const ip=[p[0]-at.normal[0]*inset,p[1]-at.normal[1]*inset],op=[p[0]+at.normal[0]*1.15,p[1]+at.normal[1]*1.15];if(!inside(d.rings,...ip)||inside(d.rings,...op))continue;if([-1,1].some(s=>!inside(d.rings,ip[0]+at.tangent[0]*.4*s,ip[1]+at.tangent[1]*.4*s)))continue;
+     candidate={id:idAt(t),buildingId:d.id,center:[p[0],d.baseY+(o?.bottom||0),p[1]],outside:[op[0],d.baseY+(o?.bottom||0),op[1]],inside:[ip[0],d.baseY+(o?.bottom||0),ip[1]],tangent:at.tangent.slice(),normal:at.normal.slice(),ringIndex:0,edgeIndex:at.edgeIndex,width,height,offset,provenance:o?'documented':'invented',source:o?d.facadeDocument.source:null,...(e.surfaceId?{surfaceId:e.surfaceId,arclength:t*e.length,span:spanSummary(e,offset,width)}:{})};break;
     }if(candidate){result.push(candidate);break;}
    }
   }return result;
@@ -12150,49 +12313,97 @@ const MistralFacades=(()=>{
   const at=p=>[p[0],d.baseY+elevationOffset,p[2]];
   return{...door,height,elevationOffset,center:at(door.center),inside:at(door.inside),outside:at(door.outside)};
  }
+ function windowRegisters(d,levels){
+  if(d.typology==='technical-tower')return[];
+  if(d.levels===1&&d.typology==='nave'&&d.height>6){const registers=[{storey:0,bottom:Math.min(2,d.height*.12),height:Math.min(8,d.height*.40),kind:'nave'}];if(d.height>10)registers.push({storey:0,bottom:d.height*.72,height:Math.min(2.4,d.height*.14),kind:'clerestory'});return registers;}
+  if(d.levels===1&&d.typology==='grandstand')return[{storey:0,bottom:Math.min(2,d.height*.10),height:Math.min(2.6,d.height*.30),kind:'concourse'}];
+  if(d.levels===1&&d.typology==='open-hall'&&d.height>7)return[{storey:0,bottom:1.25,height:1.4,kind:'hall'},{storey:0,bottom:d.height*.70,height:Math.min(1.55,d.height*.16),kind:'clerestory'}];
+  return levels.map((bottom,storey)=>{const height=(levels[storey+1]??d.height)-bottom,shop=storey===0&&d.style==='commercial',greenhouse=d.typology==='greenhouse';return{storey,bottom:bottom+(shop||greenhouse?Math.min(.15,height*.06):Math.min(d.style==='industrial'?1.25:.95,height*.29)),height:Math.min(greenhouse?height*.82:shop?2.75:d.style==='religious'?2.25:1.55,height*(shop||greenhouse?.82:.53)),kind:greenhouse?'greenhouse':shop?'shopfront':'standard'};});
+ }
+ function program(draw){
+  const d=describe(draw);if(!d)return null;
+  const all=edges(d),curves=curveSurfaces(d,all),byEdge=new Map(all.map(e=>[edgeKey(e),e])),bySurface=new Map(curves.map(e=>[e.surfaceId,e])),selection=draw.v050EntranceSelection;
+  // Interior08 may select a short nearby edge outside the canonical 64 longest
+  // candidates. Recover that same physical candidate instead of losing its door.
+  const candidates=entrances(d,{near:selection?.center?[selection.center[0],selection.center[2]]:null,preferredEdge:selection,preferredId:selection?.id}),levelElevations=floorSchedule(d,selection),doors=(selection===null?[]:selection?candidates.filter(door=>door.id===selection.id).slice(0,1):candidates.slice(0,1)).map(door=>selectedEntrance(door,selection,d,levelElevations)).filter(Boolean),fixed=[],occupied=new Map();
+  const occupy=o=>{const e=openingSurface(o,byEdge,bySurface);if(!e)return;for(const span of sourceSpans(e,o.offset,o.width)){const key=edgeKey(span);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({...o,...span});}};
+  for(const door of doors)if(door.provenance==='invented'){const o={type:'door',ringIndex:0,edgeIndex:door.edgeIndex,offset:door.offset,bottom:door.elevationOffset,width:door.width,height:door.height,provenance:'invented',source:null,...(door.surfaceId?{surfaceId:door.surfaceId,arclength:door.arclength,span:{...door.span}}:{})};fixed.push(o);occupy(o);}
+  const documented=(d.facadeDocument?.openings||[]).slice().sort((a,b)=>(a.type==='door'?-1:0)-(b.type==='door'?-1:0));let rejectedDocumented=0;
+  for(const o of documented){const e=byEdge.get(edgeKey(o));if(!supportedOpening(o,e,d)){rejectedDocumented++;continue;}const item={...o,provenance:'documented',source:d.facadeDocument.source};fixed.push(item);occupy(item);}
+  const seed=hash(d.id),bay=d.style==='industrial'?4.8:d.style==='religious'?4.2:2.8+(seed%50)/100,registers=windowRegisters(d,levelElevations),rows=[],complete=new Set((d.facadeDocument?.completeEdges||[]).map(edgeKey)),curvedEdges=new Set(curves.flatMap(e=>e.pieces.map(part=>edgeKey(part.source))));let potentialOpenings=0;
+  // Every source segment remains intact. Short consecutive segments may share
+  // an arclength chart, so a circular source contour can carry a real-width bay.
+  // The grid has no arbitrary column cap; bounded pages materialise its slots.
+  const canonical=e=>{const forward=!!e.surfaceId||e.a[0]<e.b[0]||e.a[0]===e.b[0]&&e.a[1]<e.b[1],a=forward?e.a:e.b,b=forward?e.b:e.a;return{edge:e,reverse:!forward,key:[e.ringIndex===0?0:1,...a,...b,e.surfaceId||'']};};
+  const ordered=all.filter(e=>!curvedEdges.has(edgeKey(e))).concat(curves).map(canonical).sort((a,b)=>{for(let i=0;i<a.key.length;i++)if(a.key[i]!==b.key[i])return typeof a.key[i]==='string'?a.key[i].localeCompare(b.key[i]):a.key[i]-b.key[i];return 0;});
+  for(const item of ordered){const e=item.edge;if(e.length<1.45||!e.surfaceId&&complete.has(edgeKey(e)))continue;const count=Math.max(1,Math.floor(e.length/bay));const slots=count*registers.length;if(!Number.isSafeInteger(slots)||!Number.isSafeInteger(potentialOpenings+slots))return null;rows.push({edge:e,count,reverse:item.reverse,start:potentialOpenings,end:potentialOpenings+slots});potentialOpenings+=slots;}
+  return{...d,edges:all,curves,doors,levelElevations,seed,bay,registers,rows,fixed,occupied,complete,potentialOpenings,totalSlots:fixed.length+potentialOpenings,documentedCoverage:{declared:documented.length,accepted:documented.length-rejectedDocumented,rejected:rejectedDocumented}};
+ }
+ function candidateAt(p,index){
+  if(!Number.isSafeInteger(index)||index<0||index>=p.potentialOpenings)return null;
+  let lo=0,hi=p.rows.length-1,row=null;while(lo<=hi){const mid=(lo+hi)>>1,r=p.rows[mid];if(index<r.start)hi=mid-1;else if(index>=r.end)lo=mid+1;else{row=r;break;}}
+  if(!row)return null;const e=row.edge,local=index-row.start,register=p.registers[Math.floor(local/row.count)],canonicalColumn=local%row.count,column=row.reverse?row.count-1-canonicalColumn:canonicalColumn,step=e.length/row.count,shop=register.kind==='shopfront',greenhouse=register.kind==='greenhouse',bottom=register.bottom,height=register.height,width=Math.min(greenhouse?3.8:shop?2.6:p.style==='industrial'?2.2:1.12,step*(greenhouse?.86:shop?.74:.53)),offset=step*(column+.5)-width/2;
+  if(height<.5||bottom+height>p.height-.15||offset<.12||offset+width>e.length-.12)return null;
+  const at=e.surfaceId?surfacePoint(e,offset+width/2):null,o={type:shop?'shopfront':'window',ringIndex:e.ringIndex,edgeIndex:at?.edgeIndex??e.edgeIndex,offset,bottom,width,height,provenance:'invented',source:null,...(e.surfaceId?{surfaceId:e.surfaceId,arclength:offset+width/2,span:spanSummary(e,offset,width)}:{})};
+  return openingConflict(o,e,p.occupied,p.complete)?null:o;
+ }
+ function inventory(p){return{schemaVersion:1,method:'Complete metric facade/storey bay program; openings materialised in bounded pages',totalSlots:p.totalSlots,fixedOpenings:p.fixed.length,potentialOpenings:p.potentialOpenings,eligibleEdges:p.rows.length,sourceEdges:p.edges.length,curvedSurfaces:p.curves.length,storeys:p.levels,typology:p.typology,levelInferenceBasis:p.levelInferenceBasis,windowRegisters:p.registers.length,baySpacingMeters:p.bay,documentedCoverage:{...p.documentedCoverage},provenance:p.provenance};}
+ function openingSpans(draw,opening){
+  const d=describe(draw);if(!d||!opening||!finite(opening.offset)||!finite(opening.width)||opening.offset<0||opening.width<=0)return[];
+  const all=edges(d),e=opening.surfaceId?curveSurfaces(d,all).find(e=>e.surfaceId===opening.surfaceId):all.find(e=>e.ringIndex===opening.ringIndex&&e.edgeIndex===opening.edgeIndex);return e&&opening.offset+opening.width<=e.length+EPS?sourceSpans(e,opening.offset,opening.width):[];
+ }
+ function facadePage(draw,options={}){
+  const p=program(draw);if(!p)return null;const cursor=options.cursor??0,size=options.limit??128;
+  if(!Number.isSafeInteger(cursor)||cursor<0||cursor>p.totalSlots||!Number.isInteger(size)||size<1||size>4096)throw new RangeError('Facade page requires a valid slot cursor and 1..4096 openings');
+  // Even a fully occupied/documented edge cannot force an unbounded search.
+  // A page may contain fewer than limit openings; nextCursor still advances
+  // over every examined slot, so collecting pages never drops a later storey.
+  const scanLimit=Math.min(16384,Math.max(size,size*8)),openings=[];let nextCursor=cursor,scanned=0;
+  while(nextCursor<p.totalSlots&&openings.length<size&&scanned<scanLimit){const index=nextCursor++,o=index<p.fixed.length?p.fixed[index]:candidateAt(p,index-p.fixed.length);scanned++;if(o)openings.push({...o});}
+  return{buildingId:p.id,cursor,nextCursor,scanned,done:nextCursor===p.totalSlots,openings,inventory:inventory(p)};
+ }
  function facadePlan(draw,options={}){
-  const d=describe(draw);if(!d)return null;const all=edges(d),candidates=entrances(d),selection=draw.v050EntranceSelection,levelElevations=floorSchedule(d,selection),doors=(selection===null?[]:selection?candidates.filter(door=>door.id===selection.id).slice(0,1):candidates.slice(0,1)).map(door=>selectedEntrance(door,selection,d,levelElevations)).filter(Boolean),openings=[],maxOpenings=limit(Math.floor(options.maxOpenings??512),1,4096),byEdge=new Map(all.map(e=>[e.ringIndex+':'+e.edgeIndex,e]));
-  const occupied=new Map(),occupy=o=>{const key=o.ringIndex+':'+o.edgeIndex;if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push(o);};
-  const documented=(d.facadeDocument?.openings||[]).slice().sort((a,b)=>(a.type==='door'?-1:0)-(b.type==='door'?-1:0));
-  for(const door of doors)if(door.provenance==='invented'){const o={type:'door',ringIndex:0,edgeIndex:door.edgeIndex,offset:door.offset,bottom:door.elevationOffset,width:door.width,height:door.height,provenance:'invented',source:null};if(openings.length<maxOpenings)openings.push(o);occupy(o);}
-  for(const o of documented){const e=byEdge.get(o.ringIndex+':'+o.edgeIndex);if(!supportedOpening(o,e,d))continue;const item={...o,provenance:'documented',source:d.facadeDocument.source};if(openings.length<maxOpenings)openings.push(item);occupy(item);}
-  // Documented openings define only what is actually documented. Missing faces
-  // and floors can be completed coherently, always with invented provenance.
-  const seed=hash(d.id),bay=d.style==='industrial'?4.8:d.style==='religious'?4.2:2.8+(seed%50)/100,rows=[];let potentialOpenings=0;
-  const complete=new Set((d.facadeDocument?.completeEdges||[]).map(e=>e.ringIndex+':'+e.edgeIndex));
-  for(const e of all){if(e.length<1.45||complete.has(e.ringIndex+':'+e.edgeIndex))continue;const count=Math.min(160,Math.floor(e.length/bay));if(!count)continue;rows.push({edge:e,count,start:potentialOpenings,end:potentialOpenings+count*d.levels});potentialOpenings+=count*d.levels;}
-  // Sample candidate indices directly. A complex 200-storey polygon never
-  // materialises millions of window objects before the renderer's LOD budget.
-  const remaining=maxOpenings-openings.length,sampleCount=Math.min(potentialOpenings,Math.max(0,remaining)),attempts=Math.min(potentialOpenings,Math.max(0,remaining*4)),visited=new Set();let rowIndex=0,attempted=0;
-  for(let n=0;n<attempts&&openings.length<maxOpenings;n++){const slot=n%sampleCount,phase=Math.floor(n/sampleCount),index=Math.min(potentialOpenings-1,Math.floor(slot*potentialOpenings/sampleCount)+phase);if(slot===0)rowIndex=0;if(visited.has(index))continue;visited.add(index);while(rowIndex<rows.length&&index>=rows[rowIndex].end)rowIndex++;const row=rows[rowIndex];if(!row)break;attempted++;const e=row.edge,local=index-row.start,floor=Math.floor(local/row.count),column=local%row.count,step=e.length/row.count,levelHeight=(levelElevations[floor+1]??d.height)-levelElevations[floor],bottom=levelElevations[floor]+Math.min(.95,levelHeight*.29),height=Math.min(d.style==='religious'?2.25:1.55,levelHeight*.53),width=Math.min(d.style==='industrial'?2.2:1.12,step*.53),offset=step*(column+.5)-width/2;
-   if(height<.5||bottom+height>d.height-.15||offset<.12||offset+width>e.length-.12)continue;
-   const o={type:floor===0&&d.style==='commercial'?'shopfront':'window',ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,bottom,width,height,provenance:'invented',source:null};
-   if((occupied.get(e.ringIndex+':'+e.edgeIndex)||[]).some(a=>a.offset<o.offset+o.width+.15&&a.offset+a.width+.15>o.offset&&a.bottom<o.bottom+o.height+.12&&a.bottom+a.height+.12>o.bottom))continue;
-   openings.push(o);
-  }
-  return{...d,levelElevations,edges:all,doors,openings,seed,detailCoverage:{budgeted:attempted<potentialOpenings||documented.length>maxOpenings,potentialOpenings,attempted,maxOpenings,retainedOpenings:openings.length}};
+  const p=program(draw);if(!p)return null;const maxOpenings=limit(Math.floor(options.maxOpenings??512),1,4096),openings=p.fixed.slice(0,maxOpenings).map(o=>({...o})),remaining=Math.max(0,maxOpenings-openings.length),sampleCount=Math.min(p.potentialOpenings,remaining),attempts=Math.min(p.potentialOpenings,remaining*4),visited=new Set();let attempted=0;
+  // The render LOD samples the complete program; it never substitutes a sparse
+  // sample for the model's authoritative, cursor-addressable opening inventory.
+  for(let n=0;n<attempts&&openings.length<maxOpenings;n++){const slot=n%sampleCount,phase=Math.floor(n/sampleCount),index=Math.min(p.potentialOpenings-1,Math.floor(slot*p.potentialOpenings/sampleCount)+phase);if(visited.has(index))continue;visited.add(index);attempted++;const o=candidateAt(p,index);if(o)openings.push(o);}
+  return{...p,openings,openingInventory:inventory(p),detailCoverage:{budgeted:attempted<p.potentialOpenings||p.fixed.length>maxOpenings,potentialOpenings:p.potentialOpenings,attempted,maxOpenings,retainedOpenings:openings.length,completeInventorySlots:p.totalSlots,documentedCoverage:{...p.documentedCoverage}}};
  }
  function geometry(draw,options={}){
-  const maxQuads=limit(Math.floor(options.maxQuads??512),8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads/(detail?6:1))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
+  const maxQuads=limit(Math.floor(options.maxQuads??512),8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads*(detail?.60:.85))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
   const groups=new Map(),palette=PALETTES[plan.style],shade=((plan.seed%21)-10)/550;
   const material=name=>name==='wall'?palette.wall.map(v=>limit(v+shade,0,1)):palette[name]||palette.trim;
-  let quads=0,openingCount=0;const renderedOpenings=[];
-  function quad(e,x0,y0,x1,y1,name,offset=.018){if(quads>=maxQuads||x1<=x0||y1<=y0)return false;let g=groups.get(name);if(!g){g={vertices:[],faces:[]};groups.set(name,g);}const at=(x,y)=>[e.a[0]+e.tangent[0]*x+e.normal[0]*offset,plan.baseY+y,e.a[1]+e.tangent[1]*x+e.normal[1]*offset],k=g.vertices.length;g.vertices.push(at(x0,y0),at(x1,y0),at(x1,y1),at(x0,y1));g.faces.push([k,k+1,k+2],[k,k+2,k+3]);quads++;return true;}
-  // Every panel follows an actual outer or courtyard edge. The tiny offset is
-  // a rendering separation only and never changes the measured footprint.
-  const openingReserve=plan.openings.length?Math.min(maxQuads,Math.max(8,Math.min(Math.floor(maxQuads*.7),Math.min(plan.openings.length,16)*(detail?8:1)))):0,panelBudget=maxQuads-openingReserve;
-  for(const e of plan.edges){if(quads>=panelBudget)break;quad(e,0,0,e.length,plan.height,'wall',.008);if(detail&&plan.height>3&&quads<panelBudget)quad(e,0,Math.max(.1,plan.height-.20),e.length,plan.height-.05,'trim',.024);}
-  for(const o of plan.openings){const e=plan.edges.find(e=>e.ringIndex===o.ringIndex&&e.edgeIndex===o.edgeIndex);if(!e||quads+(detail?8:1)>maxQuads)continue;
-   const x=o.offset,y=o.bottom,w=o.width,h=o.height;quad(e,x,y,x+w,y+h,o.type==='door'?'iron':'glass',.027);openingCount++;renderedOpenings.push({...o});
-   if(!detail)continue;const trim=Math.min(.09,w*.075,h*.06),lo=Math.max(0,x-trim),hi=Math.min(e.length,x+w+trim),bottom=Math.max(0,y-trim),top=Math.min(plan.height,y+h+trim);
-   quad(e,lo,bottom,x,top,'trim',.042);quad(e,x+w,bottom,hi,top,'trim',.042);quad(e,x,y+h,x+w,top,'trim',.042);if(y>0)quad(e,x,bottom,x+w,y,'trim',.042);
-   if(o.type==='window'&&plan.style==='residential'&&o.provenance!=='documented'){const sw=Math.min(.30,w*.28);if(x-sw>.08)quad(e,x-sw,y,x-.03,y+h,'shutter',.038);if(x+w+sw<e.length-.08)quad(e,x+w+.03,y,x+w+sw,y+h,'shutter',.038);}
-   if(o.type==='window'&&y>.4)quad(e,lo,Math.max(0,y-.13),hi,y-.06,'trim',.075);
+  let quads=0,openingCount=0;const renderedOpenings=[],deferredOpenings=[],byEdge=new Map(plan.edges.map(e=>[edgeKey(e),e])),bySurface=new Map(plan.curves.map(e=>[e.surfaceId,e]));
+  function fragment(e,x0,y0,x1,y1,name,offset){if(quads>=maxQuads||x1<=x0||y1<=y0)return false;let g=groups.get(name);if(!g){g={vertices:[],faces:[]};groups.set(name,g);}const at=(x,y)=>[e.a[0]+e.tangent[0]*x+e.normal[0]*offset,plan.baseY+y,e.a[1]+e.tangent[1]*x+e.normal[1]*offset],k=g.vertices.length;g.vertices.push(at(x0,y0),at(x1,y0),at(x1,y1),at(x0,y1));g.faces.push([k,k+1,k+2],[k,k+2,k+3]);quads++;return true;}
+  function quad(e,x0,y0,x1,y1,name,offset=.018){
+   if(!e||x1<=x0||y1<=y0)return false;if(!e.pieces)return fragment(e,x0,y0,x1,y1,name,offset);
+   const[first,last]=surfaceBounds(e,x0,x1);let painted=false;
+   for(let i=first;i<=last&&quads<maxQuads;i++){const part=e.pieces[i],lo=Math.max(x0,part.start)-part.start,hi=Math.min(x1,part.end)-part.start;painted=fragment(part.source,part.forward?lo:part.source.length-hi,y0,part.forward?hi:part.source.length-lo,y1,name,offset)||painted;}return painted;
+  }
+  // A curved opening is a set of quads on the original source segments. Reserve
+  // all of them before panels/ornament; an opening never stops halfway through.
+  const retained=[];let openingQuads=0;
+  for(const o of plan.openings){const e=openingSurface(o,byEdge,bySurface),cost=e?surfaceCount(e,o.offset,o.offset+o.width):0;if(!cost||openingQuads+cost>maxQuads){deferredOpenings.push({...o,requiredQuads:cost,reason:cost?'quad-budget':'unsupported-source-surface'});continue;}retained.push({o,e});openingQuads+=cost;}
+  const panelBudget=maxQuads-openingQuads;let panelEdges=0;
+  for(const e of plan.edges){if(quads>=panelBudget)break;if(quad(e,0,0,e.length,plan.height,'wall',.008))panelEdges++;}
+  // Glazing/door faces on every retained facade and storey precede decoration.
+  for(const {o,e}of retained)if(quad(e,o.offset,o.bottom,o.offset+o.width,o.bottom+o.height,o.type==='door'?'iron':'glass',.027)){openingCount++;renderedOpenings.push({...o});}
+  const baseQuads=quads;
+  if(detail){
+   for(const e of plan.edges){if(quads>=maxQuads)break;if(plan.height>3)quad(e,0,Math.max(.1,plan.height-.20),e.length,plan.height-.05,'trim',.024);}
+   for(const o of renderedOpenings){const e=openingSurface(o,byEdge,bySurface),x=o.offset,y=o.bottom,w=o.width,h=o.height,trim=Math.min(.09,w*.075,h*.06),lo=Math.max(0,x-trim),hi=Math.min(e.length,x+w+trim),bottom=Math.max(0,y-trim),top=Math.min(plan.height,y+h+trim);if(quads>=maxQuads)break;
+    quad(e,lo,bottom,x,top,'trim',.042);quad(e,x+w,bottom,hi,top,'trim',.042);quad(e,x,y+h,x+w,top,'trim',.042);if(y>0)quad(e,x,bottom,x+w,y,'trim',.042);
+    if(o.type==='window'&&plan.style==='residential'&&o.provenance!=='documented'){const sw=Math.min(.30,w*.28);if(x-sw>.08)quad(e,x-sw,y,x-.03,y+h,'shutter',.038);if(x+w+sw<e.length-.08)quad(e,x+w+.03,y,x+w+sw,y+h,'shutter',.038);}
+    if(o.type==='window'&&y>.4)quad(e,lo,Math.max(0,y-.13),hi,y-.06,'trim',.075);
+    if(o.type==='shopfront'&&o.provenance==='invented'){quad(e,x+w/2-.025,y,x+w/2+.025,y+h,'iron',.045);if(top+.18<plan.height)quad(e,lo,top+.04,hi,top+.18,'shutter',.033);}
+   }
+   // The same floor schedule as interior08 aligns a sloping street entrance.
+   for(let floor=1;floor<plan.levelElevations.length&&quads<maxQuads;floor++){const y=plan.levelElevations[floor];for(const e of plan.edges){if(quads>=maxQuads)break;quad(e,0,Math.max(0,y-.075),e.length,Math.min(plan.height,y-.025),'trim',.022);}}
   }
   const tile=draw.v046Tile||draw.geoTile||'facade:'+plan.id,center=[(plan.bounds.minX+plan.bounds.maxX)/2,plan.baseY+plan.height/2,(plan.bounds.minZ+plan.bounds.maxZ)/2];
   const draws=[...groups].map(([name,g])=>({mesh:'geoSurface',vertices:g.vertices,faces:g.faces,pos:center.slice(),scale:[1,1,1],color:material(name),alpha:1,revision:0,v046Tile:tile,v046GeometryId:'facade:'+plan.id+':'+name,id:'facade:'+plan.id+':'+name,v050Facade:true,geoLayer:'facade',facadeBuildingId:plan.id,facadeProvenance:plan.provenance,sourceProvenance:plan.facadeDocument?{source:plan.facadeDocument.source,license:plan.facadeDocument.license,attribution:plan.facadeDocument.attribution,acquiredAt:plan.facadeDocument.acquiredAt}:null,renderOffsetMeters:.075}));
-  const bytes=draws.reduce((n,g)=>n+g.vertices.length*96+g.faces.length*96,0);
-  return{draws,quads,openings:openingCount,renderedOpenings,bytes:bytes+renderedOpenings.length*256,description:{id:plan.id,sourceId:plan.sourceId,stableSourceId:plan.stableSourceId,style:plan.style,baseY:plan.baseY,height:plan.height,levels:plan.levels,levelHeight:plan.levelHeight,levelElevations:plan.levelElevations.slice(),provenance:plan.provenance,detailCoverage:plan.detailCoverage}};
+  const bytes=draws.reduce((n,g)=>n+g.vertices.length*96+g.faces.length*96,0),detailCoverage={...plan.detailCoverage,renderedOpenings:openingCount,unrenderedPlannedOpenings:plan.openings.length-openingCount,deferredOpenings:deferredOpenings.length,openingQuads,panelEdges,totalFacadeEdges:plan.edges.length,decorationQuads:quads-baseQuads};
+  return{draws,quads,openings:openingCount,renderedOpenings,deferredOpenings,bytes:bytes+(renderedOpenings.length+deferredOpenings.length)*512,description:{id:plan.id,sourceId:plan.sourceId,stableSourceId:plan.stableSourceId,style:plan.style,styleBasis:plan.styleBasis,typology:plan.typology,levelInferenceBasis:plan.levelInferenceBasis,baseY:plan.baseY,height:plan.height,levels:plan.levels,levelHeight:plan.levelHeight,levelElevations:plan.levelElevations.slice(),provenance:plan.provenance,openingInventory:plan.openingInventory,detailCoverage}};
  }
  function distance(bounds,x,z){return Math.hypot(Math.max(bounds.minX-x,0,x-bounds.maxX),Math.max(bounds.minZ-z,0,z-bounds.maxZ));}
  class Index{
@@ -12207,7 +12418,7 @@ const MistralFacades=(()=>{
   get(draw,options={}){const key=this.key(draw,options);if(this.entries.has(key)){const value=this.entries.get(key);this.entries.delete(key);this.entries.set(key,value);this.hits++;return value;}const value=geometry(draw,options);value.bytes+=key.length*2+512;this.builds++;if(value.bytes>this.maxBytes)return value;while(this.entries.size>=this.maxEntries||this.bytes+value.bytes>this.maxBytes){const [first,old]=this.entries.entries().next().value;this.entries.delete(first);this.bytes-=old.bytes;this.evictions++;}this.entries.set(key,value);this.bytes+=value.bytes;return value;}
   clear(){this.entries.clear();this.bytes=0;}
  }
- return{hash,inside,normalized,geometryIdentity,style,document,describe,edges,entrances,floorSchedule,facadePlan,geometry,distance,Index,Cache};
+ return{hash,inside,normalized,geometryIdentity,style,typology,document,describe,edges,curveSurfaces,openingSpans,entrances,floorSchedule,facadePlan,facadePage,geometry,distance,Index,Cache};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralFacades;
 
@@ -12219,6 +12430,7 @@ function v050FacadesAfterInit(){
  function refresh(force=false){
   if(!world?.v046||!world.geoMacro){if(runtime.world)reset(null);return[];}
   if(runtime.world!==world)reset(world);
+  if(force){runtime.source=null;runtime.cache.clear();}
   if(runtime.source!==world.staticDraws){runtime.source=world.staticDraws;runtime.index=new MistralFacades.Index(world.staticDraws);runtime.last=null;}
   const p=state.player.pos,o=quality(),now=Date.now();
   if(!force&&runtime.last&&runtime.last.quality===settings.quality&&Math.hypot(p[0]-runtime.last.x,p[2]-runtime.last.z)<3&&now-runtime.lastTime<1000)return runtime.draws;
@@ -12233,7 +12445,9 @@ function v050FacadesAfterInit(){
   v050FacadeInfo:()=>({...runtime.stats,cache:{bytes:runtime.cache.bytes,entries:runtime.cache.entries.size,hits:runtime.cache.hits,builds:runtime.cache.builds,evictions:runtime.cache.evictions},radius:quality().radius,selection:runtime.selection.slice(0,10).map(item=>({id:item.description.id,distance:item.distance,style:item.description.style,provenance:item.description.provenance})),limit:'Les détails inventés sont cohérents avec l’emprise et la hauteur disponibles ; ils ne constituent pas un relevé de façade.'}),
   v050FacadeRefresh:()=>{refresh(true);return runtime.stats;},
   v050FacadeDoors:()=>runtime.selection.flatMap(item=>MistralFacades.entrances(item.description)),
-  v050FacadeBuilding:(id)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);if(!item)return null;const d=item.description,result=runtime.live.get(d.id);return{id:d.id,sourceId:d.sourceId,stableSourceId:d.stableSourceId,baseY:d.baseY,height:d.height,levels:d.levels,levelHeight:d.levelHeight,levelsBasis:d.levelsBasis,style:d.style,provenance:d.provenance,rings:d.rings.slice(0,32).map(r=>r.slice(0,2048).map(p=>p.slice())),ringsTruncated:d.rings.length>32||d.rings.some(r=>r.length>2048),rendered:!!result,openings:result?.renderedOpenings.slice(0,128)||[],openingsTruncated:(result?.renderedOpenings.length||0)>128,detailCoverage:result?.description.detailCoverage||null};}
+  v050FacadePage:(id,cursor=0,limit=128)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);return item?MistralFacades.facadePage(item.draw,{cursor,limit}):null;},
+  v050FacadeOpeningSpans:(id,opening)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);return item?MistralFacades.openingSpans(item.draw,opening):[];},
+  v050FacadeBuilding:(id)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);if(!item)return null;const d=item.description,result=runtime.live.get(d.id);return{id:d.id,sourceId:d.sourceId,stableSourceId:d.stableSourceId,baseY:d.baseY,height:d.height,levels:d.levels,levelHeight:d.levelHeight,levelsBasis:d.levelsBasis,levelInferenceBasis:d.levelInferenceBasis,style:d.style,styleBasis:d.styleBasis,typology:d.typology,provenance:d.provenance,rings:d.rings.slice(0,32).map(r=>r.slice(0,2048).map(p=>p.slice())),ringsTruncated:d.rings.length>32||d.rings.some(r=>r.length>2048),rendered:!!result,openings:result?.renderedOpenings.slice(0,128)||[],openingsTruncated:(result?.renderedOpenings.length||0)>128,openingInventory:result?.description.openingInventory||MistralFacades.facadePage(item.draw,{limit:1})?.inventory||null,deferredOpenings:result?.deferredOpenings.slice(0,128)||[],deferredOpeningsTruncated:(result?.deferredOpenings.length||0)>128,detailCoverage:result?.description.detailCoverage||null};}
  });
 }
 
@@ -12258,16 +12472,16 @@ const MistralCityInteriors=(()=>{
  function building(raw){
   if(!raw||typeof raw.id!=='string'||!raw.id.trim()||raw.id.length>512||!finite(raw.baseY)||!finite(raw.height)||raw.height<=0||raw.height>2000)throw Error('Volume de bâtiment invalide');
   const source=cleanRings(raw.rings),b=bounds(source),origin=[b.cx,raw.baseY,b.cz],rings=source.map(r=>r.map(p=>[p[0]-b.cx,p[1]-b.cz]));
-  const levels=Number.isInteger(raw.levels)&&raw.levels>0?raw.levels:Math.max(1,Math.round(raw.height/3));if(levels>MAX_LEVELS)throw Error('Nombre de niveaux non pris en charge');if(raw.height/levels<1.95)throw Error('Le volume et les niveaux renseignés ne laissent pas la hauteur d’un personnage');
-  const properties=raw.properties||{},use=String(properties.usage_1||properties['building:use']||properties.building||properties.nature||'').slice(0,160),name=String(properties.name||properties.nom||properties.nom_du_batiment||'Bâtiment').slice(0,160);
-  const levelsBasis=properties.nombre_d_etages!=null?'nombre_d_etages IGN, rez-de-chaussée compris':properties['building:levels']!=null?'building:levels':'estimation du volume';
-  return{id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name,origin,rings,height:raw.height,levels,levelHeight:raw.height/levels,use,levelsBasis,outlineBasis:raw.provenance||'empreinte source',schema:1};
+  const properties=raw.properties||{},knownUse=v=>v&&!/^(?:indifferenciee?|inconnue?|unknown|yes|true|batiment|building|bati|non renseignee?)$/.test(normalText(v).trim()),sourceUse=[properties.usage_1,properties.usage_2,properties['building:use'],properties.building].find(knownUse),nature=knownUse(properties.nature)?properties.nature:'',genericNature=/industri.*agric.*commercial/.test(normalText(nature)),use=String(sourceUse||(!genericNature&&nature)||properties.architectureUse||nature||'').slice(0,160),name=String(properties.name||properties.nom||properties.nom_du_batiment||'Bâtiment').slice(0,160);
+  const kind=programTheme(use),single=['industrial','annex','sports'].includes(kind)||/relig|eglise|culte|chapelle|cathedr|basilique|abbat|synagog|mosquee|temple/.test(normalText(use)),levels=Number.isInteger(raw.levels)&&raw.levels>0?raw.levels:single?1:Math.max(1,Math.round(raw.height/3));if(levels>MAX_LEVELS)throw Error('Nombre de niveaux non pris en charge');if(raw.height/levels<1.95-EPS)throw Error('Le volume et les niveaux renseignés ne laissent pas la hauteur d’un personnage');
+  const declared=['building:levels','levels','nombre_d_etages'].find(k=>{const n=Number(properties[k]);return Number.isInteger(n)&&n>=1&&n<=200&&n===levels;}),levelsBasis=declared==='nombre_d_etages'?'nombre_d_etages IGN, rez-de-chaussée compris':declared||'estimation du volume et de l’usage';
+  return{id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name,origin,rings,height:raw.height,levels,levelHeight:raw.height/levels,use,levelsBasis,outlineBasis:raw.provenance||'empreinte source',schema:1,layoutVersion:2};
  }
  function validateBuilding(raw){
   if(!raw||raw.schema!==1||typeof raw.id!=='string'||raw.id.length>512||!raw.id||!Array.isArray(raw.origin)||raw.origin.length!==3||!raw.origin.every(finite)||!finite(raw.height)||raw.height<=0||raw.height>2000||!Number.isInteger(raw.levels)||raw.levels<1||raw.levels>MAX_LEVELS)throw Error('Bâtiment sauvegardé invalide');
-  const rings=cleanRings(raw.rings),b=bounds(rings);if(Math.max(b.maxX-b.minX,b.maxZ-b.minZ)>10000)throw Error('Emprise intérieure hors budget');if(raw.height/raw.levels<1.95)throw Error('Niveaux sauvegardés incompatibles avec leur volume');
+  const rings=cleanRings(raw.rings),b=bounds(rings);if(Math.max(b.maxX-b.minX,b.maxZ-b.minZ)>10000)throw Error('Emprise intérieure hors budget');if(raw.height/raw.levels<1.95-EPS)throw Error('Niveaux sauvegardés incompatibles avec leur volume');
   let levelElevations=null;if(raw.levelElevations!=null){if(!Array.isArray(raw.levelElevations)||raw.levelElevations.length!==raw.levels||raw.levelElevations.some(n=>!finite(n))||Math.abs(raw.levelElevations[0])>EPS)throw Error('Altitudes de planchers invalides');levelElevations=raw.levelElevations.slice();for(let i=0;i<raw.levels;i++)if((levelElevations[i+1]??raw.height)-levelElevations[i]<1.95-EPS)throw Error('Planchers inventés non praticables');}
-  return{schema:1,id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name:String(raw.name||'Bâtiment').slice(0,160),origin:raw.origin.slice(),rings,height:raw.height,levels:raw.levels,levelHeight:raw.height/raw.levels,use:String(raw.use||'').slice(0,160),levelsBasis:String(raw.levelsBasis||'estimation').slice(0,160),outlineBasis:typeof raw.outlineBasis==='string'?raw.outlineBasis.slice(0,240):'empreinte source',...(levelElevations?{levelElevations}:{} )};
+  return{schema:1,id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name:String(raw.name||'Bâtiment').slice(0,160),origin:raw.origin.slice(),rings,height:raw.height,levels:raw.levels,levelHeight:raw.height/raw.levels,use:String(raw.use||'').slice(0,160),levelsBasis:String(raw.levelsBasis||'estimation').slice(0,160),outlineBasis:typeof raw.outlineBasis==='string'?raw.outlineBasis.slice(0,240):'empreinte source',layoutVersion:raw.layoutVersion===2?2:1,...(levelElevations?{levelElevations}:{} )};
  }
  function point(rings,preferred=null,radius=.43){
   if(preferred&&clearance(rings,...preferred)>=radius)return preferred.slice();
@@ -12302,7 +12516,7 @@ const MistralCityInteriors=(()=>{
   if(!raw||raw.schemaVersion!==1||raw.frame!=='building-local-metre'||raw.buildingId!==b.id||!Array.isArray(raw.levels)||!raw.levels.length||raw.levels.length>b.levels)throw Error('Plan documentaire incompatible avec le bâtiment');
   const source=publicSource(raw.source),seen=new Set(),levels=[];
   for(const l of raw.levels){
-   if(!Number.isInteger(l.level)||l.level<0||l.level>=b.levels||seen.has(l.level)||!finite(l.elevation)||!finite(l.height)||l.height<1.95||l.height>12||l.elevation<-.02||l.elevation+l.height>b.height+.25||!Array.isArray(l.walls)||l.walls.length>2048||!Array.isArray(l.rooms)||l.rooms.length>512)throw Error('Niveau documentaire invalide');seen.add(l.level);
+   if(!Number.isInteger(l.level)||l.level<0||l.level>=b.levels||seen.has(l.level)||!finite(l.elevation)||!finite(l.height)||l.height<1.95-EPS||l.height>2000||l.elevation<-.02||l.elevation+l.height>b.height+.25||!Array.isArray(l.walls)||l.walls.length>2048||!Array.isArray(l.rooms)||l.rooms.length>512)throw Error('Niveau documentaire invalide');seen.add(l.level);
    const walls=l.walls.map(w=>{if(!w||!Array.isArray(w.a)||!Array.isArray(w.b)||w.a.length!==2||w.b.length!==2||![...w.a,...w.b].every(finite)||!segmentInside(b.rings,w.a,w.b)||Math.hypot(w.a[0]-w.b[0],w.a[1]-w.b[1])<.05)throw Error('Mur documentaire hors emprise');return{a:w.a.slice(),b:w.b.slice(),thickness:finite(w.thickness)?Math.max(.06,Math.min(.8,w.thickness)):.16,provenance:'documented'};});
    const rooms=l.rooms.map(r=>{const rings=cleanRings([r.ring]);if(rings[0].some(p=>clearance(b.rings,...p)<-.001)||rings[0].some((p,i)=>!segmentInside(b.rings,p,rings[0][(i+1)%rings[0].length])))throw Error('Pièce documentaire hors emprise');return{id:String(r.id||'pièce').slice(0,160),use:String(r.use||'').slice(0,160),ring:rings[0]};});
    if(l.entry&&(!Array.isArray(l.entry)||l.entry.length!==2||!l.entry.every(finite)||clearance(b.rings,...l.entry)<.43))throw Error('Entrée documentaire impraticable');
@@ -12422,18 +12636,167 @@ const MistralCityInteriors=(()=>{
   }
   return out;
  }
+ /* Version two uses real, enclosed invented rooms. The residual source area
+    stays an explicitly described open/common space; no bounding-box floor is
+    substituted for the measured outline. Saved version-one interiors retain
+    their former layout, so a new partition cannot trap an existing save. */
+ const PLAN_BUDGET={rooms:10,furniture:32,gridCells:4096,candidates:256,navigationChecks:180,accessProbesPerObject:25,cacheEntries:4,cacheBytes:1048576};
+ const layoutCache=new Map();let layoutCacheBytes=0;
+ function cacheLayout(key,result){const text=JSON.stringify(result),bytes=text.length*2;if(bytes>PLAN_BUDGET.cacheBytes)return result;while(layoutCache.size>=PLAN_BUDGET.cacheEntries||layoutCacheBytes+bytes>PLAN_BUDGET.cacheBytes){const id=layoutCache.keys().next().value;layoutCacheBytes-=layoutCache.get(id).length*2;layoutCache.delete(id);}layoutCache.set(key,text);layoutCacheBytes+=bytes;return result;}
+ const normalText=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ function programTheme(use){const t=normalText(use);return /hopital|medical|sante|clinique/.test(t)?'medical':/sport|tribune|gymnas|stade|piscin/.test(t)?'sports':/annexe|garage|dependance|abri|remise/.test(t)?'annex':/bureau|office|administr/.test(t)?'office':/industri|entrepot|agric|hangar|silo|reservoir|serre|halle|usine|atelier|cuve|chateau.*eau/.test(t)?'industrial':/commercial|commerce|magasin|boutique|service/.test(t)?'commercial':/eglise|relig|culte|chapelle|cathedr|basilique|abbat|synagog|mosquee|temple|civic|mairie|ecole|musee/.test(t)?'civic':'residential';}
+ function rotate(p,angle){const c=Math.cos(angle),s=Math.sin(angle);return[c*p[0]-s*p[1],s*p[0]+c*p[1]];}
+ function planAngle(rings){let longest=0,angle=0;for(let i=0;i<rings[0].length;i++){const a=rings[0][i],b=rings[0][(i+1)%rings[0].length],n=Math.hypot(b[0]-a[0],b[1]-a[1]);if(n>longest+EPS){longest=n;angle=Math.atan2(b[1]-a[1],b[0]-a[0]);}}return((angle+Math.PI/4)% (Math.PI/2)+Math.PI/2)%(Math.PI/2)-Math.PI/4;}
+ const rectangle=(x,z,w,d)=>[[x,z],[x+w,z],[x+w,z+d],[x,z+d],[x,z]];
+ function segmentsCross(a,b,c,d){const cross=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);return cross(a,b,c)*cross(a,b,d)<-EPS&&cross(c,d,a)*cross(c,d,b)<-EPS;}
+ function segmentGap(a,b,c,d){return segmentsCross(a,b,c,d)?0:Math.min(segmentDistance(a,c,d),segmentDistance(b,c,d),segmentDistance(c,a,b),segmentDistance(d,a,b));}
+ function containedRectangle(rings,ring,margin){
+  if(!ring.every(p=>clearance(rings,...p)>=margin-EPS))return false;
+  for(const source of rings)for(let i=0;i<source.length;i++){const a=source[i],b=source[(i+1)%source.length];
+   // A hole or re-entrant corner wholly enclosed by the proposed rectangle
+   // must be rejected even when no sampled furniture corner touches it.
+   if(inside([ring],...a))return false;
+   for(let j=0;j<4;j++){const c=ring[j],d=ring[j+1];if(segmentsCross(a,b,c,d))return false;const distance=Math.min(segmentDistance(a,c,d),segmentDistance(b,c,d),segmentDistance(c,a,b),segmentDistance(d,a,b));if(distance<margin-EPS)return false;}
+  }return true;
+ }
+ function furnitureRing(f){if(f.ring)return f.ring;const size=f.localSize||f.size;return rectangle(-size[0]/2,-size[1]/2,...size).map(p=>{const q=rotate(p,f.rotation||0);return[q[0]+f.pos[0],q[1]+f.pos[1]];});}
+ const furnitureGeometry=new WeakMap();
+ function furnitureBlocked(f,x,z,radius=.38){let shape=furnitureGeometry.get(f);if(!shape){const ring=furnitureRing(f);shape={ring,bb:bounds([ring])};furnitureGeometry.set(f,shape);}const{ring,bb}=shape;if(x<bb.minX-radius||x>bb.maxX+radius||z<bb.minZ-radius||z>bb.maxZ+radius)return false;return inside([ring],x,z)||ring.some((a,i)=>segmentDistance([x,z],a,ring[(i+1)%ring.length])<radius-EPS);}
+ function navigationGrid(rings){
+  const bb=bounds(rings),width=bb.maxX-bb.minX,depth=bb.maxZ-bb.minZ,cellBudget=Math.max(96,Math.min(PLAN_BUDGET.gridCells,Math.floor(1000000/rings.reduce((n,r)=>n+r.length,0))));let step=Math.max(.25,Math.sqrt(width*depth/cellBudget)),nx=Math.max(1,Math.ceil(width/step)),nz=Math.max(1,Math.ceil(depth/step));while(nx*nz>cellBudget){step*=1.02;nx=Math.max(1,Math.ceil(width/step));nz=Math.max(1,Math.ceil(depth/step));}
+  const dx=width/nx,dz=depth/nz,points=Array(nx*nz),clearances=new Float64Array(nx*nz);for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){const p=[bb.minX+(i+.5)*dx,bb.minZ+(j+.5)*dz],gap=clearance(rings,...p);if(gap>=.5-EPS){points[j*nx+i]=p;clearances[j*nx+i]=gap-.1;}}
+  return{nx,nz,dx,dz,minX:bb.minX,minZ:bb.minZ,step:Math.max(dx,dz),points,clearances};
+ }
+ function navigation(l,grid,furniture=[],required=null){
+  const free=p=>walkable(l,...p,.4)&&!furniture.some(f=>furnitureBlocked(f,...p,.4)),directions=[[1,0],[-1,0],[0,1],[0,-1]],flags=new Uint8Array(grid.points.length),seen=new Uint8Array(grid.points.length),queue=[];let freeCount=0;
+  let cache=l.navigationCache;if(!cache||cache.walls!==l.walls||cache.length!==l.walls.length){
+   cache={walls:l.walls,length:l.walls.length,flags:new Uint8Array(grid.points.length),links:new Uint8Array(grid.points.length),clearances:new Float64Array(grid.points.length)};
+   for(let i=0;i<grid.points.length;i++)if(grid.points[i]){const gap=Math.min(grid.clearances[i],...l.walls.map(w=>segmentDistance(grid.points[i],w.a,w.b)-w.thickness/2));cache.clearances[i]=gap;if(gap>=.4-EPS)cache.flags[i]=1;}
+   const capsule=(a,b)=>!l.walls.some(w=>segmentGap(a,b,w.a,w.b)<.4+w.thickness/2-EPS)&&!l.rings.some(r=>r.some((p,i)=>segmentGap(a,b,p,r[(i+1)%r.length])<.5-EPS));
+   for(let k=0;k<grid.points.length;k++)if(cache.flags[k]){const i=k%grid.nx,j=Math.floor(k/grid.nx);for(let d=0;d<directions.length;d++){const[di,dj]=directions[d],x=i+di,z=j+dj,n=z*grid.nx+x;if(x<0||x>=grid.nx||z<0||z>=grid.nz||!cache.flags[n])continue;const safe=Math.min(cache.clearances[k],cache.clearances[n])>=.4+Math.hypot(di*grid.dx,dj*grid.dz)/2-EPS;if(safe||capsule(grid.points[k],grid.points[n]))cache.links[k]|=1<<d;}}
+   l.navigationCache=cache;
+  }
+  for(let i=0;i<grid.points.length;i++)if(cache.flags[i]&&!furniture.some(f=>furnitureBlocked(f,...grid.points[i],.4))){flags[i]=1;freeCount++;}
+  const furnitureTravel=(a,b)=>{const n=Math.max(1,Math.ceil(Math.hypot(a[0]-b[0],a[1]-b[1])/.18));for(let i=0;i<=n;i++)if(furniture.some(f=>furnitureBlocked(f,a[0]+(b[0]-a[0])*i/n,a[1]+(b[1]-a[1])*i/n,.4)))return false;return true;};
+  const travel=(a,b)=>canTravel(l,a,b,.4)&&furnitureTravel(a,b);
+  const nearby=(p,visit)=>{const radius=grid.step*1.8+.05,cx=Math.floor((p[0]-grid.minX)/grid.dx),cz=Math.floor((p[1]-grid.minZ)/grid.dz),rx=Math.ceil(radius/grid.dx),rz=Math.ceil(radius/grid.dz);for(let z=Math.max(0,cz-rz);z<=Math.min(grid.nz-1,cz+rz);z++)for(let x=Math.max(0,cx-rx);x<=Math.min(grid.nx-1,cx+rx);x++){const i=z*grid.nx+x,q=grid.points[i];if(q&&Math.hypot(q[0]-p[0],q[1]-p[1])<=radius&&visit(i,q))return true;}return false;};
+  const reach=p=>nearby(p,(i,q)=>{if(flags[i]&&!seen[i]&&travel(p,q)){seen[i]=1;queue.push(i);}return false;});
+  reach(l.entry);
+  // Door anchors retain a physical 1.2 m opening when the bounded grid is
+  // coarser than the room plan. Their connecting segments use the same radius.
+  const anchors=(l.roomDoors||[]).flatMap(d=>[d.inside,d.center,d.outside]),used=new Uint8Array(anchors.length);
+  for(let head=0;head<queue.length;head++){
+   const k=queue[head],p=grid.points[k];
+   for(let d=0;d<directions.length;d++)if(cache.links[k]&(1<<d)){const[di,dj]=directions[d],n=k+dj*grid.nx+di;if(flags[n]&&!seen[n]&&furnitureTravel(p,grid.points[n])){seen[n]=1;queue.push(n);}}
+   for(let a=0;a<anchors.length;a++)if(!used[a]&&Math.hypot(p[0]-anchors[a][0],p[1]-anchors[a][1])<=grid.step*1.8+.05&&free(anchors[a])&&travel(p,anchors[a])){used[a]=1;reach(anchors[a]);for(let b=0;b<anchors.length;b++)if(!used[b]&&Math.hypot(anchors[a][0]-anchors[b][0],anchors[a][1]-anchors[b][1])<1.6&&free(anchors[b])&&travel(anchors[a],anchors[b])){used[b]=1;reach(anchors[b]);}}
+  }
+  let disconnected=0;for(let i=0;i<flags.length;i++)if(flags[i]&&!seen[i]&&(!required||required[i]))disconnected++;
+  const reaches=p=>free(p)&&nearby(p,(i,q)=>seen[i]&&travel(q,p));
+  return{seen,freeCount,reached:queue.length,disconnected,reaches,step:grid.step,cells:grid.points.length};
+ }
+ const ROOM_TYPES={
+  sanitary:{use:'Sanitaires',size:[2.4,2.4],required:['sanitary'],optional:['washbasin']},
+  bedroom:{use:'Chambre',size:[3.5,3.4],required:['bed','wardrobe'],optional:['desk']},
+  kitchen:{use:'Cuisine',size:[3.1,3.2],required:['kitchen'],optional:['dining']},
+  living:{use:'Séjour',size:[4.1,3.7],required:['sofa','dining'],optional:['archive']},
+  office:{use:'Bureau',size:[3.2,3.2],required:['desk','archive'],optional:['wardrobe']},
+  stock:{use:'Réserve',size:[3.6,3.4],required:['shelf','crate'],optional:['wardrobe']},
+  treatment:{use:'Salle de soins',size:[3.4,3.8],required:['medical_bed','medical_cabinet'],optional:['washbasin']},
+  changing:{use:'Vestiaire',size:[3.1,3.1],required:['bench','wardrobe'],optional:['washbasin']},
+  archive:{use:'Archives',size:[3.2,3.2],required:['archive'],optional:['desk']}
+ };
+ function floorProgram(kind,area){
+  const roomTypes=kind==='residential'?['sanitary',...(area>=35?['bedroom']:[]),...(area>=70?['kitchen']:[]),...(area>=120?['living']:[]),...(area>=240?['bedroom']:[])]:kind==='medical'?['treatment','stock','sanitary']:kind==='industrial'?['office','sanitary']:kind==='commercial'?['stock','office','sanitary']:kind==='office'?['office','archive','sanitary']:kind==='sports'?['changing','sanitary']:kind==='annex'?[]:['archive','office','sanitary'];
+  const openRequired=kind==='residential'?['bed','kitchen','sofa','dining','wardrobe']:kind==='medical'?['reception','bench','washbasin']:kind==='industrial'?['workbench','crate','pallet']:kind==='commercial'?['reception','shelf','bench']:kind==='office'?['desk','archive','bench']:kind==='sports'?['bench','wardrobe','washbasin']:kind==='annex'?['crate','shelf','workbench']:['bench','lectern','archive'];
+  return{roomTypes,openRequired};
+ }
+ function candidatePoints(bb,size){const[w,d]=size,xs=[bb.minX+.22,bb.maxX-w-.22],zs=[bb.minZ+.22,bb.maxZ-d-.22],step=Math.max(.8,Math.sqrt((bb.maxX-bb.minX)*(bb.maxZ-bb.minZ)/144));for(let x=bb.minX+.22;x+w<bb.maxX-.2;x+=step)xs.push(x);for(let z=bb.minZ+.22;z+d<bb.maxZ-.2;z+=step)zs.push(z);const points=[];for(const z of [...new Set(zs)])for(const x of [...new Set(xs)])points.push([x,z]);return points.slice(0,PLAN_BUDGET.candidates);}
+ function rectFits(l,ring,rooms){
+  const bb=bounds([ring]);if(bb.maxX-bb.minX<1.9||bb.maxZ-bb.minZ<1.9)return false;
+  if(rooms.some(r=>{const b=r.bounds;return Math.hypot(Math.max(b.minX-bb.maxX,bb.minX-b.maxX,0),Math.max(b.minZ-bb.maxZ,bb.minZ-b.maxZ,0))<1.18;}))return false;
+  if(Math.hypot(Math.max(bb.minX-l.entry[0],l.entry[0]-bb.maxX,0),Math.max(bb.minZ-l.entry[1],l.entry[1]-bb.maxZ,0))<1.2)return false;
+  return containedRectangle(l.rings,ring,.19);
+ }
+ function roomWalls(ring,side,width=1.2){
+  const walls=[];let door=null;for(let i=0;i<4;i++){const a=ring[i],b=ring[i+1],length=Math.hypot(b[0]-a[0],b[1]-a[1]),t=[(b[0]-a[0])/length,(b[1]-a[1])/length];if(i!==side){walls.push({a:a.slice(),b:b.slice(),thickness:.16,provenance:'invented'});continue;}const center=[(a[0]+b[0])/2,(a[1]+b[1])/2],normal=[t[1],-t[0]],left=[center[0]-t[0]*width/2,center[1]-t[1]*width/2],right=[center[0]+t[0]*width/2,center[1]+t[1]*width/2];walls.push({a:a.slice(),b:left,thickness:.16,provenance:'invented'},{a:right,b:b.slice(),thickness:.16,provenance:'invented'});door={center,inside:[center[0]-normal[0]*.7,center[1]-normal[1]*.7],outside:[center[0]+normal[0]*.7,center[1]+normal[1]*.7],width,side,provenance:'invented'};}
+  return{walls,door};
+ }
+ function generatedRooms(l,b,grid,baseline,program,checks){
+  const rooms=[],omissions=[],bb=bounds(l.rings),unproven=baseline.freeCount>baseline.reached,limited=unproven||grid.step>.65||l.rings.reduce((n,r)=>n+r.length,0)>512;
+  for(const type of program.roomTypes){
+   if(limited||rooms.length>=PLAN_BUDGET.rooms){omissions.push({type,reason:unproven?'source-circulation-unproven':'room-proof-budget'});continue;}const spec=ROOM_TYPES[type];let found=null;
+   for(const size of[spec.size,spec.size.slice().reverse()]){for(const p of candidatePoints(bb,size)){
+    const ring=rectangle(...p,...size);if(!rectFits(l,ring,rooms))continue;
+    for(const side of[0,1,2,3]){const shape=roomWalls(ring,side);shape.door.height=Math.min(2.12,l.height-.1);if(clearance(l.rings,...shape.door.outside)<.48||checks.count>=PLAN_BUDGET.navigationChecks)continue;checks.count++;const test={...l,walls:l.walls.concat(shape.walls),roomDoors:l.roomDoors.concat(shape.door)},nav=navigation(test,grid,[],baseline.seen);if(nav.disconnected||!nav.reaches(shape.door.inside)||!nav.reaches(shape.door.outside))continue;
+     found={id:'room:'+hash([b.id,l.level,type,rooms.length]),type,use:spec.use,ring,bounds:bounds([ring]),door:shape.door,required:spec.required.slice(),optional:spec.optional.slice(),provenance:'invented',coverage:'enclosed-room'};l.walls.push(...shape.walls);l.roomDoors.push({...shape.door,roomId:found.id});break;
+    }if(found)break;
+   }if(found)break;}
+   if(found)rooms.push(found);else omissions.push({type,reason:checks.count>=PLAN_BUDGET.navigationChecks?'navigation-budget':'no-contained-connected-room'});
+  }
+  return{rooms,omissions,limited};
+ }
+ function furnitureFitsNew(l,p,size,furniture){
+  const bb={minX:p[0]-size[0]/2,maxX:p[0]+size[0]/2,minZ:p[1]-size[1]/2,maxZ:p[1]+size[1]/2};
+  if(Math.hypot(Math.max(bb.minX-l.entry[0],l.entry[0]-bb.maxX,0),Math.max(bb.minZ-l.entry[1],l.entry[1]-bb.maxZ,0))<.9)return false;
+  if(furniture.some(f=>Math.hypot(Math.max(Math.abs(p[0]-f.pos[0])-(size[0]+f.size[0])/2,0),Math.max(Math.abs(p[1]-f.pos[1])-(size[1]+f.size[1])/2,0))<.16))return false;
+  const ring=rectangle(bb.minX,bb.minZ,...size);if(!containedRectangle(l.rings,ring,.14))return false;
+  for(const w of l.walls){if(inside([ring],...w.a)||inside([ring],...w.b))return false;const thick=w.thickness/2+.04;for(let j=0;j<4;j++){const a=ring[j],b=ring[j+1];if(segmentsCross(w.a,w.b,a,b)||Math.min(segmentDistance(w.a,a,b),segmentDistance(w.b,a,b),segmentDistance(a,w.a,w.b),segmentDistance(b,w.a,w.b))<thick-EPS)return false;}}
+  return true;
+ }
+ function furnishNew(l,b,grid,baseline,program,checks,recorded){
+  const furniture=[],zones=[],omissions=[],requirements=[],rooms=l.rooms;
+  for(const room of rooms){const kinds=room.required||roomProgram(room,b.use,l.level);for(const kind of kinds)requirements.push({kind,room,required:true});}
+  const inRooms=new Set(requirements.map(r=>r.kind));for(const kind of program.openRequired)if(!inRooms.has(kind))requirements.push({kind,room:null,required:true});
+  if(!rooms.some(r=>r.required?.includes('sanitary'))&&!requirements.some(r=>r.kind==='sanitary')&&!['annex','industrial','sports'].includes(l.theme))requirements.push({kind:'sanitary',room:null,required:true});
+  if(!recorded&&baseline.freeCount>baseline.reached)return{furniture,zones,omissions:requirements.map(r=>({kind:r.kind,roomId:r.room?.id||null,reason:'source-circulation-unproven'})),requirements:requirements.map(r=>({kind:r.kind,roomId:r.room?.id||null})),program:[...new Set(requirements.map(r=>r.kind))]};
+  const positions=(region,size)=>{
+   const bb=region?bounds([region.ring]):bounds(l.rings),hx=size[0]/2+.14,hz=size[1]/2+.14,xs=[bb.minX+hx,bb.maxX-hx],zs=[bb.minZ+hz,bb.maxZ-hz],step=Math.max(.6,Math.sqrt((bb.maxX-bb.minX)*(bb.maxZ-bb.minZ)/196));for(let x=bb.minX+hx;x<bb.maxX-hx;x+=step)xs.push(x);for(let z=bb.minZ+hz;z<bb.maxZ-hz;z+=step)zs.push(z);const points=[];for(const z of [...new Set(zs)])for(const x of [...new Set(xs)])points.push([x,z]);return points.slice(0,PLAN_BUDGET.candidates);
+  };
+  const approachValid=(f,p)=>{const room=f.roomId?rooms.find(r=>r.id===f.roomId):null;return(!room||clearance([room.ring],...p)>=.4-EPS)&&canTravel(l,f.pos,p,.04);};
+  const approaches=f=>{const[p,q]=f.pos,[w,d]=f.size;return[[p,q+d/2+.64],[p,q-d/2-.64],[p+w/2+.64,q],[p-w/2-.64,q]].filter(a=>approachValid(f,a));};
+  const probesClear=(nav,all,newFurniture)=>{for(const f of all){if(Math.hypot(f.pos[0]-newFurniture.pos[0],f.pos[1]-newFurniture.pos[1])>5)continue;const room=rooms.find(r=>r.id===f.roomId),bb=room?bounds([room.ring]):bounds(l.rings),[x,z]=f.pos,[w,d]=f.size,xs=[x,(x-w/2+bb.minX)/2,(x+w/2+bb.maxX)/2,x-w/2-.42,x+w/2+.42],zs=[z,(z-d/2+bb.minZ)/2,(z+d/2+bb.maxZ)/2,z-d/2-.42,z+d/2+.42];for(const a of xs)for(const b of zs){const p=[a,b];if(walkable(l,...p,.38)&&!all.some(v=>furnitureBlocked(v,...p,.38))&&baseline.reaches(p)&&!nav.reaches(p))return false;}}return true;};
+  const place=(kind,room)=>{
+   const def=FURNITURE[kind];if(!def||def.height>l.height-.1||furniture.length>=PLAN_BUDGET.furniture)return false;
+   for(const turn of[0,Math.PI/2]){const size=turn?def.size.slice().reverse():def.size;
+    for(const p of positions(room,size)){
+     if(room&&!containedRectangle([room.ring],rectangle(p[0]-size[0]/2,p[1]-size[1]/2,...size),.12)||!room&&rooms.some(r=>inside([r.ring],...p))||!furnitureFitsNew(l,p,size,furniture))continue;
+     const approachCandidates=[[p[0],p[1]+size[1]/2+.64],[p[0],p[1]-size[1]/2-.64],[p[0]+size[0]/2+.64,p[1]],[p[0]-size[0]/2-.64,p[1]]],f={id:'furnishing:'+hash([b.id,l.level,p,kind,turn,'rooms-v2']),pos:p.slice(),kind,size:size.slice(),localSize:def.size.slice(),rotation:turn,height:def.height,label:def.label,zone:def.zone,roomId:room?.id||null,provenance:'invented',seed:parseInt(hash([b.id,l.level,p,kind]).slice(0,6),16)};
+     const possible=approachCandidates.filter(q=>approachValid(f,q)&&walkable(l,...q,.4)&&!furniture.concat(f).some(a=>furnitureBlocked(a,...q,.4)));if(!possible.length||checks.count>=PLAN_BUDGET.navigationChecks)continue;checks.count++;const nav=navigation(l,grid,furniture.concat(f),baseline.seen);if(nav.disconnected||l.roomDoors.some(d=>!nav.reaches(d.center)||!nav.reaches(d.outside))||!probesClear(nav,furniture.concat(f),f))continue;const retained=furniture.map(a=>[a,[a.approach,...approaches(a)].find(q=>q&&nav.reaches(q))]);if(retained.some(a=>!a[1]))continue;const approach=possible.find(q=>nav.reaches(q));if(!approach)continue;
+     for(const[a,q]of retained)a.approach=q.slice();f.approach=approach.slice();furniture.push(f);const[x,z]=p,[sx,sz]=size;zones.push({id:'invented-zone:'+f.id,use:def.zone,ring:rectangle(x-sx/2,z-sz/2,sx,sz),anchor:p.slice(),roomId:f.roomId,provenance:'invented',coverage:'furnished-function'});return true;
+    }
+   }return false;
+  };
+  for(const r of requirements)if(!place(r.kind,r.room))omissions.push({kind:r.kind,roomId:r.room?.id||null,reason:checks.count>=PLAN_BUDGET.navigationChecks?'navigation-budget':furniture.length>=PLAN_BUDGET.furniture?'furniture-budget':'metric-fit-or-access'});
+  for(const room of rooms)for(const kind of room.optional||[])if(furniture.length<PLAN_BUDGET.furniture&&checks.count<PLAN_BUDGET.navigationChecks)place(kind,room);
+  // Large halls may repeat their useful equipment, while small dwellings keep
+  // the complete distinct programme ahead of decoration and repeated storage.
+  const target=omissions.length||Math.abs(area(l.rings[0]))<180?furniture.length:Math.min(PLAN_BUDGET.furniture,Math.floor(Math.abs(area(l.rings[0]))/40));for(let repeat=0;furniture.length<target&&repeat<3;repeat++)for(const kind of program.openRequired){if(furniture.length>=target||checks.count>=PLAN_BUDGET.navigationChecks)break;place(kind,null);}
+  return{furniture,zones,omissions,requirements:requirements.map(r=>({kind:r.kind,roomId:r.room?.id||null})),program:[...new Set(requirements.map(r=>r.kind))]};
+ }
+ function layoutNew(b,level,start,gridLevels,recorded,doc){
+  const angle=planAngle(b.rings),toLocal=p=>rotate(p,-angle),toWorld=p=>rotate(p,angle),sourceArea=Math.max(0,Math.abs(area(b.rings[0]))-b.rings.slice(1).reduce((s,r)=>s+Math.abs(area(r)),0)),kind=programTheme(b.use),l={buildingId:b.id,level,rings:b.rings.map(r=>r.map(toLocal)),height:(gridLevels[level+1]??b.height)-gridLevels[level],elevation:gridLevels[level],entry:toLocal(start),walls:recorded?recorded.walls.map(w=>({...w,a:toLocal(w.a),b:toLocal(w.b)})):[],rooms:recorded?recorded.rooms.map(r=>({...r,ring:r.ring.map(toLocal)})):[],roomDoors:[],theme:kind};
+  if(!walkable(l,...l.entry,.4)){const fallback=point(l.rings,null,.7);if(!fallback||!walkable(l,...fallback,.4))throw Error('Le plan documentaire bloque son entrée');l.entry=fallback;start=toWorld(fallback);}
+  const grid=navigationGrid(l.rings),baseline=navigation({...l,walls:l.walls.slice()},grid),checks={count:0},program=floorProgram(kind,sourceArea);
+  const generated=recorded?{rooms:l.rooms,omissions:[],limited:false}:generatedRooms(l,b,grid,baseline,program,checks);l.rooms=generated.rooms;const contents=furnishNew(l,b,grid,baseline,program,checks,!!recorded),nav=navigation(l,grid,contents.furniture,baseline.seen);
+  const walls=recorded?copy(recorded.walls):l.walls.map(w=>({...w,a:toWorld(w.a),b:toWorld(w.b)})),rooms=recorded?copy(recorded.rooms):l.rooms.map(r=>({...r,ring:r.ring.map(toWorld),bounds:bounds([r.ring.map(toWorld)]),door:{...r.door,center:toWorld(r.door.center),inside:toWorld(r.door.inside),outside:toWorld(r.door.outside)}})),furniture=contents.furniture.map(f=>{const ring=furnitureRing(f).map(toWorld),bb=bounds([ring]);return{...f,pos:toWorld(f.pos),approach:toWorld(f.approach),ring,localSize:f.localSize.slice(),size:[bb.maxX-bb.minX,bb.maxZ-bb.minZ],rotation:angle+f.rotation};}),roomArea=recorded?null:l.rooms.reduce((s,r)=>s+Math.abs(area(r.ring)),0);
+  const result={buildingId:b.id,level,rings:copy(b.rings),height:l.height,elevation:l.elevation,walls,entry:start.slice(),stair:start.slice(),theme:kind,rooms,roomDoors:l.roomDoors.map(d=>({...d,center:toWorld(d.center),inside:toWorld(d.inside),outside:toWorld(d.outside)})),provenance:recorded?'documented':'invented',source:recorded?doc.source:null,levels:b.levels,furniture,functionalZones:contents.zones.map(z=>({...z,ring:z.ring.map(toWorld),anchor:toWorld(z.anchor)})),furnishingProgram:contents.program,roomsBasis:recorded?'documented':'invented-enclosed-rooms',roomCoverage:recorded?'documented-record':'rooms-and-open-source-space',layoutVersion:2,
+   openSpace:recorded?null:{id:'open:'+hash([b.id,level]),use:kind==='residential'?'Pièce de vie et circulation ouverte':kind==='industrial'?'Halle de travail et circulation':kind==='commercial'?'Espace de vente et circulation':'Espace commun et circulation',rings:copy(b.rings),excludedRooms:l.rooms.map(r=>r.id),provenance:'invented',area:Math.max(0,sourceArea-roomArea)},
+   programCoverage:{provenance:'invented',frame:'building-local-metre',orientationRadians:angle,footprintArea:sourceArea,enclosedRoomArea:roomArea,openSourceArea:recorded?null:Math.max(0,sourceArea-roomArea),enclosedRooms:rooms.length,requestedRoomTypes:program.roomTypes,roomOmissions:generated.omissions,furnishingRequirements:contents.requirements,furnishingOmissions:contents.omissions,allRequestedFunctionsPlaced:!contents.omissions.length,allRequestedRoomsPlaced:!generated.omissions.length,completeInventedProgram:!recorded&&!contents.omissions.length&&!generated.omissions.length&&baseline.freeCount===baseline.reached,roomsLimited:generated.limited,navigation:{sampledCells:nav.cells,stepMeters:nav.step,sourceUnreachableCells:baseline.freeCount-baseline.reached,newUnreachableCells:nav.disconnected,reachableCells:nav.reached,freeCells:nav.freeCount},budgets:{...PLAN_BUDGET},navigationChecks:checks.count}};
+  result.signature=hash([2,b.id,b.rings,level,result.elevation,result.height,walls,rooms,furniture]);return result;
+ }
  function walkable(layout,x,z,radius=.38){if(clearance(layout.rings,x,z)<radius)return false;return !layout.walls.some(w=>segmentDistance([x,z],w.a,w.b)<radius+w.thickness/2-EPS);}
  function canTravel(layout,from,to,radius=.38){const distance=Math.hypot(to[0]-from[0],to[1]-from[1]);if(distance>400)return false;const n=Math.max(1,Math.ceil(distance/.15));for(let i=0;i<=n;i++)if(!walkable(layout,from[0]+(to[0]-from[0])*i/n,from[1]+(to[1]-from[1])*i/n,radius))return false;return true;}
  function layout(b,level=0,entry=null,doc=null){
   b=validateBuilding(b);if(!Number.isInteger(level)||level<0||level>=b.levels)throw Error('Étage intérieur invalide');
   const checked=doc?document(doc,b):null,recorded=checked?.levels.find(l=>l.level===level),grid=floorLevels(b,checked),start=point(b.rings,recorded?.entry||entry,.43);
   if(!start)throw Error('L’emprise ne contient pas d’espace praticable pour un personnage');
+  if(b.layoutVersion===2){const key=hash([b,level,start,checked]),cached=layoutCache.get(key);if(cached){layoutCache.delete(key);layoutCache.set(key,cached);return JSON.parse(cached);}return cacheLayout(key,layoutNew(b,level,start,grid,recorded,checked));}
   const walls=recorded?recorded.walls:inventedWalls(b,start),result={buildingId:b.id,level,rings:copy(b.rings),height:(grid[level+1]??b.height)-grid[level],elevation:grid[level],walls,entry:start,theme:theme(b.use),rooms:recorded?.rooms||[],provenance:recorded?'documented':'invented',source:recorded?doc.source:null,levels:b.levels};
   if(!walkable(result,...start,.4)){const p=point(b.rings,null,.7);if(!p||!walkable(result,...p,.4))throw Error('Le plan documentaire bloque son entrée');result.entry=p;}
   result.stair=result.entry.slice();const contents=furnish(result,b,!!recorded);result.furniture=contents.furniture;result.functionalZones=contents.zones;result.furnishingProgram=contents.program;result.roomsBasis=recorded?'documented':'invented-functional-zones';result.roomCoverage=recorded?'documented-record':'partial';if(!recorded)result.rooms=copy(contents.zones);
   result.signature=hash([b.id,b.rings,level,result.elevation,result.height,walls,result.furniture]);return result;
  }
- return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,FURNITURE,program,roomProgram,furnishingFits,furnitureModel,walkable,canTravel,layout};
+ return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,programTheme,PLAN_BUDGET,FURNITURE,program,roomProgram,furnishingFits,furnitureModel,furnitureRing,furnitureBlocked,walkable,canTravel,layout};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralCityInteriors;
 
@@ -12441,11 +12804,32 @@ if(typeof module!=='undefined'&&module.exports)module.exports=MistralCityInterio
    real polygon logic without fabricating the rest of a campaign. */
 if(typeof baseState==='function'){
  const V050_CITY_ZONE='v050_city_interior';
- const V050_CITY={doors:new Map(),owner:null,tick:0,documents:new Map(),holding:false,exitPending:null,entered:0,returned:0,errors:[],last:null,rejections:{}};
+ // User registrations live in the save, bounded in UTF-16 storage bytes.
+ // Installed atlas plans remain source data; only the active visit snapshots one.
+ const V050_DOCUMENT_LIMITS={buildings:32,bytes:512*1024};
+ const V050_CITY={doors:new Map(),owner:null,tick:0,documentOwner:null,documentRejections:new Map(),holding:false,exitPending:null,entered:0,returned:0,errors:[],last:null,rejections:{}};
  if(!ALL_ZONE_IDS.includes(V050_CITY_ZONE))ALL_ZONE_IDS.push(V050_CITY_ZONE);
- function fresh(){return{schema:1,active:null,returnPoint:null,visits:{}};}
+ function fresh(){return{schema:2,active:null,returnPoint:null,visits:{},documents:[],documentOmissions:0,documentWarnings:[]};}
+ function documentBytes(records){return JSON.stringify(records).length*2;}
+ // Guessed floor schedules and labels are not measurements. A documentary
+ // schedule replaces those guesses, but never a changed footprint or volume.
+ function documentMetricKey(b){const rings=MistralFacades.normalized(b.rings);if(!rings)throw Error('Empreinte documentaire invalide');return MistralCityInteriors.hash([b.id,b.origin,b.height,b.levels,MistralFacades.geometryIdentity(rings)]);}
+ function documentRecord(building,raw){const b=MistralCityInteriors.validateBuilding(building);return{building:b,document:MistralCityInteriors.document(raw,b)};}
+ function documentPut(records,record){const next=records.filter(r=>r.building.id!==record.building.id).concat([record]);if(next.length>V050_DOCUMENT_LIMITS.buildings)throw Error('Registre des plans limité à '+V050_DOCUMENT_LIMITS.buildings+' bâtiments ; utilisez un atlas installé pour les collections plus grandes.');if(documentBytes(next)>V050_DOCUMENT_LIMITS.bytes)throw Error('Registre des plans limité à 512 Kio dans la sauvegarde ; utilisez un atlas installé pour les plans volumineux.');return next;}
+ function documentWarning(target,message,count=1){target.documentOmissions+=count;if(target.documentWarnings.length<12)target.documentWarnings.push(String(message).slice(0,240));}
+ function documentRejected(id,message){if(V050_CITY.documentOwner!==state){V050_CITY.documentOwner=state;V050_CITY.documentRejections.clear();}const key=id+':'+message;if(!V050_CITY.documentRejections.has(key)){if(V050_CITY.documentRejections.size>=64)V050_CITY.documentRejections.delete(V050_CITY.documentRejections.keys().next().value);V050_CITY.documentRejections.set(key,{building:id,reason:String(message).slice(0,240)});}}
+ function resolvedDocument(b,attached=null){
+  if(V050_CITY.documentOwner!==state){V050_CITY.documentOwner=state;V050_CITY.documentRejections.clear();}
+  const records=state.v050City?.documents;if(Array.isArray(records)){const record=records.find(r=>r?.building?.id===b.id);if(record)try{if(documentMetricKey(record.building)!==documentMetricKey(b))throw Error('Le volume source a changé ; le plan sauvegardé ne lui est pas appliqué.');return{document:MistralCityInteriors.document(record.document,b),origin:'registered'};}catch(e){documentRejected(b.id,e.message||e);}}
+  if(attached!=null)try{return{document:MistralCityInteriors.document(attached,b),origin:'installed'};}catch(e){documentRejected(b.id,'Plan installé refusé : '+String(e.message||e));}
+  return null;
+ }
  function migrate(raw){
   const f=fresh();if(!raw||typeof raw!=='object'||Array.isArray(raw))return f;
+  if(raw.documents!=null){if(!Array.isArray(raw.documents))documentWarning(f,'Registre documentaire sauvegardé invalide.');else{
+   if(raw.documents.length>V050_DOCUMENT_LIMITS.buildings)documentWarning(f,'Plans supplémentaires hors budget du registre sauvegardé.',raw.documents.length-V050_DOCUMENT_LIMITS.buildings);
+   const seen=new Set();for(const entry of raw.documents.slice(0,V050_DOCUMENT_LIMITS.buildings))try{if(documentBytes([entry])>V050_DOCUMENT_LIMITS.bytes)throw Error('Plan sauvegardé hors budget.');const record=documentRecord(entry?.building,entry?.document);if(seen.has(record.building.id))throw Error('Identifiant de plan sauvegardé dupliqué.');seen.add(record.building.id);f.documents=documentPut(f.documents,record);}catch(e){documentWarning(f,e.message||e);}
+  }}
   const r=raw.returnPoint;if(r&&typeof r.macro==='string'&&V015_GEO_MACROS[r.macro]&&Array.isArray(r.pos)&&r.pos.length===3&&r.pos.every(Number.isFinite)){
    // Source identities and their declared bounds exist before asynchronous
    // city index loading. A cold interior save must not depend on whether the
@@ -12453,7 +12837,11 @@ if(typeof baseState==='function'){
    const box=V015_GEO_MACROS[r.macro].bbox,ll=v015GeoUnproject(r.macro,r.pos[0],r.pos[2]);
    if(Array.isArray(box)&&box.length===4&&box.every(Number.isFinite)&&box[0]<box[2]&&box[1]<box[3]&&Array.isArray(ll)&&ll.length>=2&&ll.slice(0,2).every(Number.isFinite)&&ll[0]>=box[0]&&ll[0]<=box[2]&&ll[1]>=box[1]&&ll[1]<=box[3])f.returnPoint={macro:r.macro,pos:r.pos.slice(),yaw:Number.isFinite(r.yaw)?r.yaw:0,pitch:Number.isFinite(r.pitch)?r.pitch:0};
   }
-  if(raw.active&&f.returnPoint){try{const b=MistralCityInteriors.validateBuilding(raw.active.building),floor=raw.active.floor,entry=raw.active.entry,streetFloor=raw.active.streetFloor??0;if(!Number.isInteger(floor)||floor<0||floor>=b.levels||!Number.isInteger(streetFloor)||streetFloor<0||streetFloor>=b.levels||!Array.isArray(entry)||entry.length!==2||!entry.every(Number.isFinite))throw Error('Étage sauvegardé invalide');const doc=raw.active.document?MistralCityInteriors.document(raw.active.document,b):null;MistralCityInteriors.layout(b,floor,entry,doc);const facing=Array.isArray(raw.active.facing)&&raw.active.facing.length===2&&raw.active.facing.every(Number.isFinite)?raw.active.facing.slice():[-entry[0],-entry[1]];f.active={building:b,floor,streetFloor,entry:entry.slice(),facing,document:doc};}catch{}}
+  if(raw.active&&f.returnPoint){try{const b=MistralCityInteriors.validateBuilding(raw.active.building),floor=raw.active.floor,entry=raw.active.entry,streetFloor=raw.active.streetFloor??0;if(!Number.isInteger(floor)||floor<0||floor>=b.levels||!Number.isInteger(streetFloor)||streetFloor<0||streetFloor>=b.levels||!Array.isArray(entry)||entry.length!==2||!entry.every(Number.isFinite))throw Error('Étage sauvegardé invalide');const doc=raw.active.document?MistralCityInteriors.document(raw.active.document,b):null;MistralCityInteriors.layout(b,floor,entry,doc);const facing=Array.isArray(raw.active.facing)&&raw.active.facing.length===2&&raw.active.facing.every(Number.isFinite)?raw.active.facing.slice():[-entry[0],-entry[1]],documentOrigin=doc?(['registered','installed','legacy'].includes(raw.active.documentOrigin)?raw.active.documentOrigin:'legacy'):null;f.active={building:b,floor,streetFloor,entry:entry.slice(),facing,document:doc,documentOrigin};}catch{}}
+  // Older saves held only the current documentary snapshot. Recover it before
+  // leaving that interior; a later explicit registry revision remains separate
+  // from the immutable geometry of the currently visited floor.
+  if(f.active?.document&&f.active.documentOrigin!=='installed')try{const a=f.active,record=f.documents.find(r=>r.building.id===a.building.id);if(!record)f.documents=documentPut(f.documents,documentRecord(a.building,a.document));else if(documentMetricKey(record.building)!==documentMetricKey(a.building))documentWarning(f,'Le plan actif et le registre désignent deux volumes différents ; leurs instantanés restent séparés.');}catch(e){documentWarning(f,e.message||e);}
   if(raw.visits&&typeof raw.visits==='object'&&!Array.isArray(raw.visits))for(const[k,v]of Object.entries(raw.visits).slice(0,20000))if(/^[a-f0-9]{16}$/.test(k)&&Number.isInteger(v)&&v>0)f.visits[k]=Math.min(v,1000000);
   return f;
  }
@@ -12467,17 +12855,18 @@ if(typeof baseState==='function'){
   r.push(r[0].slice());V017_PRISM_BASE(w,[r],y,h,color,{id});v017AddPolyCollider(w,r,y,y+h,{id,rings:[r]});
  }
  function build(){
-  const a=state.v050City.active;if(!a)throw Error('Aucun intérieur de bâtiment sélectionné');const b=a.building,l=MistralCityInteriors.layout(b,a.floor,a.entry,a.document),palette={residential:{floor:[.34,.29,.22],wall:[.62,.56,.44]},medical:{floor:[.37,.43,.39],wall:[.58,.65,.59]},industrial:{floor:[.29,.29,.27],wall:[.42,.43,.40]},commercial:{floor:[.34,.33,.29],wall:[.58,.57,.49]},civic:{floor:[.42,.38,.31],wall:[.64,.60,.50]}}[l.theme];
+  const a=state.v050City.active;if(!a)throw Error('Aucun intérieur de bâtiment sélectionné');const b=a.building,l=MistralCityInteriors.layout(b,a.floor,a.entry,a.document),palette={residential:{floor:[.34,.29,.22],wall:[.62,.56,.44]},medical:{floor:[.37,.43,.39],wall:[.58,.65,.59]},industrial:{floor:[.29,.29,.27],wall:[.42,.43,.40]},annex:{floor:[.29,.29,.27],wall:[.42,.43,.40]},sports:{floor:[.35,.37,.30],wall:[.61,.61,.49]},office:{floor:[.35,.34,.28],wall:[.60,.59,.50]},commercial:{floor:[.34,.33,.29],wall:[.58,.57,.49]},civic:{floor:[.42,.38,.31],wall:[.64,.60,.50]}}[l.theme];
   const w=createWorld(V050_CITY_ZONE,b.name,`MARSEILLE · ${a.floor?'NIVEAU '+a.floor:'REZ-DE-CHAUSSÉE'}`,{indoor:true,daylight:.32,fog:[.21,.24,.20],wind:0});w.v050CityInterior=l;w.v050CityBuilding=b;const bb=MistralCityInteriors.bounds(l.rings);w.bounds=[bb.minX-.1,bb.maxX+.1,bb.minZ-.1,bb.maxZ+.1];w.spawn=[l.entry[0],l.elevation+playerEyeHeight(),l.entry[1]];const facing=a.facing||[-l.entry[0],-l.entry[1]];w.spawnYaw=Math.atan2(facing[0],-facing[1]);
   surface(w,l.rings,l.elevation,palette.floor,'city-floor:'+l.signature);surface(w,l.rings,l.elevation+l.height-.08,cMix(palette.wall,COLORS.black,.25),'city-ceiling:'+l.signature);
   for(let r=0;r<l.rings.length;r++)for(let i=0;i<l.rings[r].length;i++)wall(w,l.rings[r][i],l.rings[r][(i+1)%l.rings[r].length],l.elevation,l.height,palette.wall,`city-boundary:${r}:${i}`,.2);
   for(let i=0;i<l.walls.length;i++){const p=l.walls[i];wall(w,p.a,p.b,l.elevation,Math.max(1.8,l.height-.08),cMix(palette.wall,COLORS.limestone,.08),'city-partition:'+i,p.thickness);}
+  for(let i=0;i<(l.roomDoors||[]).length;i++){const d=l.roomDoors[i],dx=d.outside[0]-d.inside[0],dz=d.outside[1]-d.inside[1],length=Math.hypot(dx,dz),tx=-dz/length*d.width/2,tz=dx/length*d.width/2;if(d.height<l.height-.08)wall(w,[d.center[0]-tx,d.center[1]-tz],[d.center[0]+tx,d.center[1]+tz],l.elevation+d.height,l.height-.08-d.height,palette.wall,'city-room-lintel:'+i,.16);}
   const materials={wood:[.39,.30,.21],fabric:[.32,.39,.32],blanket:[.43,.45,.28],metal:[.29,.32,.29],dark:[.15,.18,.16],porcelain:[.69,.70,.61],medical:[.48,.62,.54],paper:[.72,.68,.53],glass:[.17,.31,.28],water:[.25,.37,.35],amber:[.64,.48,.22]};
-  for(let i=0;i<l.furniture.length;i++){const f=l.furniture[i],[x,z]=f.pos,y=l.elevation,parts=MistralCityInteriors.furnitureModel(f);for(let j=0;j<parts.length;j++){const part=parts[j],draw=addBox(w,[x+part.pos[0],y+part.pos[1],z+part.pos[2]],part.size,materials[part.material]||materials.wood,0,{id:`city-furniture:${i}:part:${j}`});draw.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}const collider=addCollider(w,x,z,f.size[0],f.size[1],{id:'city-furniture:'+i,minY:y,maxY:y+f.height});collider.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}
+  for(let i=0;i<l.furniture.length;i++){const f=l.furniture[i],[x,z]=f.pos,y=l.elevation,parts=MistralCityInteriors.furnitureModel(f),angle=f.rotation||0,c=Math.cos(angle),s=Math.sin(angle);for(let j=0;j<parts.length;j++){const part=parts[j],draw=addBox(w,[x+c*part.pos[0]-s*part.pos[2],y+part.pos[1],z+s*part.pos[0]+c*part.pos[2]],part.size,materials[part.material]||materials.wood,-angle,{id:`city-furniture:${i}:part:${j}`});draw.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}const collider=f.ring?v017AddPolyCollider(w,f.ring,y,y+f.height,{id:'city-furniture:'+i}):addCollider(w,x,z,f.size[0],f.size[1],{id:'city-furniture:'+i,minY:y,maxY:y+f.height});collider.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}
   const[x,z]=l.entry,y=l.elevation;
   addBox(w,[x,y+.06,z],[.65,.12,.65],[.57,.52,.28]);
   const inspect=()=>{
-   const source=l.source,uses=[...new Set(l.functionalZones.map(z=>z.use))].join(', '),text=`${b.name}\nEmpreinte extérieure conservée à l’échelle métrique, cours exclues.\n${l.levels} niveau(x) : ${b.levelsBasis}.\nNiveau courant : ${l.provenance==='documented'?'plan documenté':'plan inventé, cohérent avec le volume et l’usage disponibles'}.\nLe mobilier et les réserves sont fictifs.\nProgramme inventé : ${uses||'pas de mobilier ajouté lorsque le passage manque'}. Ces zones fonctionnelles sont partielles et ne constituent pas un relevé des pièces.\n${source?source.title+'\n'+source.url+'\n'+source.license+' · '+source.attribution:'Aucun relevé public des pièces n’est attaché à ce bâtiment.'}`;
+   const source=l.source,uses=[...new Set(l.functionalZones.map(z=>z.use))].join(', '),coverage=l.programCoverage,description=coverage?`${l.rooms.length} pièce(s) close(s), portes de 1,20 m et espace restant conservé comme volume ouvert et circulation. ${coverage.roomOmissions.length} pièce(s) et ${coverage.furnishingOmissions.length} fonction(s) du programme non placées faute de place, de passage ou de budget.`:'Zones fonctionnelles partielles ; aucun relevé des pièces.',text=`${b.name}\nEmpreinte extérieure conservée à l’échelle métrique, cours exclues.\n${l.levels} niveau(x) : ${b.levelsBasis}.\nNiveau courant : ${l.provenance==='documented'?'plan documenté':'plan inventé, cohérent avec le volume et l’usage disponibles'}.\nLe mobilier et les réserves sont fictifs.\nProgramme inventé : ${uses||'pas de mobilier ajouté lorsque le passage manque'}. ${l.provenance==='documented'?'Les contours et murs documentés sont conservés ; leurs équipements sont inventés.':description}\n${source?source.title+'\n'+source.url+'\n'+source.license+' · '+source.attribution:'Aucun relevé public des pièces n’est attaché à ce bâtiment.'}`;
    openNote('city-plan:'+MistralCityInteriors.hash(b.id),b.name,text);
   };
   addInteract(w,'city-interior-landing',[x,y+1.1,z],'Palier · niveau '+a.floor+' · accès et provenance',()=>{
@@ -12491,8 +12880,8 @@ if(typeof baseState==='function'){
   // Every level is a separate physical storey, loaded at its metric elevation.
   // The landing changes floors explicitly; it is not a measured stair design.
   if(b.levels>1){const p=l.entry;for(let i=0;i<3;i++){const q=[p[0]+.65+i*.18,p[1]];if(MistralCityInteriors.clearance(l.rings,...q)>.35)addBox(w,[q[0],y+.06+i*.06,q[1]],[.16,.12+i*.12,.6],[.42,.43,.38]);}}
-  const stash=l.furniture.find(f=>MistralCityInteriors.walkable(l,...f.pos,.8));
-  if(stash&&typeof v026NewContainer==='function'){const id='city:'+MistralCityInteriors.hash(b.id)+':'+a.floor,p=[stash.pos[0],y,stash.pos[1]+stash.size[1]/2+.12],seed=parseInt(MistralCityInteriors.hash(id).slice(0,6),16),items=l.theme==='medical'?{cloth:1,water:1}:l.theme==='industrial'?{scrap:1+seed%3}:{cloth:1,scrap:1};const[key,c]=v026NewContainer(w,id,'Réserve fictive · '+b.name,p,items,{kind:'chest'});c.pos=p.slice();v026Attach(w,key,c);}
+  const stash=l.furniture.find(f=>f.approach||MistralCityInteriors.walkable(l,...f.pos,.8));
+  if(stash&&typeof v026NewContainer==='function'){const id='city:'+MistralCityInteriors.hash(b.id)+':'+a.floor,p=stash.approach?[stash.approach[0],y,stash.approach[1]]:[stash.pos[0],y,stash.pos[1]+stash.size[1]/2+.12],seed=parseInt(MistralCityInteriors.hash(id).slice(0,6),16),items=l.theme==='medical'?{cloth:1,water:1}:l.theme==='industrial'?{scrap:1+seed%3}:{cloth:1,scrap:1};const[key,c]=v026NewContainer(w,id,'Réserve fictive · '+b.name,p,items,{kind:'chest'});c.pos=p.slice();v026Attach(w,key,c);}
   w.subzones=[{id:'city-landing',name:'Palier · niveau '+a.floor,pos:[x,y,z]}];w.levelRoutes=[];return w;
  }
  const builder=buildWorld;buildWorld=function(id){return id===V050_CITY_ZONE?build():builder(id);};
@@ -12507,10 +12896,11 @@ if(typeof baseState==='function'){
  function commit(s,change){V050_CITY.holding=true;try{change();V050_CITY.holding=false;if(state!==s.owner||saveBase(false)===false)throw Error('Sauvegarde impossible : le passage est annulé.');return true;}catch(e){restore(s);V050_CITY.errors.push(String(e.message||e));V050_CITY.errors=V050_CITY.errors.slice(-12);toast(String(e.message||e),'bad');return false;}finally{V050_CITY.holding=false;}}
  function near(it,r=3.5){return!!it&&Math.hypot(it.pos[0]-state.player.pos[0],it.pos[2]-state.player.pos[2])<=r&&Math.abs(it.pos[1]-state.player.pos[1])<3;}
  function enter(id){
+  if(world?.v046&&V050_CITY.owner?.state!==state)bind(true);
   const rec=V050_CITY.doors.get(id);if(!rec||rec.world!==world||!world?.v046||V046.busy||V047.pending||zoneTransitioning||!['PLAYING','DIALOGUE'].includes(mode)||state.player.hp<=0||!near(rec.interaction,rec.interaction.radius+.1)||!lineOfSight(state.player.pos,rec.interaction.pos))return false;
   if(typeof v050TravelNearbyThreat==='function'&&v050TravelNearbyThreat()){toast('Éloignez-vous du danger avant d’entrer.','bad');return false;}
-  closeDialogue();const s=snapshot(),descriptor=rec.building,entry=[rec.door.inside[0]-descriptor.origin[0],rec.door.inside[2]-descriptor.origin[2]],doc=V050_CITY.documents.get(descriptor.id)||null,streetFloor=rec.streetFloor??0;
-  const ok=commit(s,()=>{MistralCityInteriors.layout(descriptor,streetFloor,entry,doc);state.v050City.returnPoint={macro:world.id,pos:state.player.pos.slice(),yaw:state.player.yaw,pitch:state.player.pitch};state.v050City.active={building:descriptor,floor:streetFloor,streetFloor,entry,facing:rec.door.normal.map(n=>-n),document:doc};const k=MistralCityInteriors.hash(descriptor.id);state.v050City.visits[k]=(state.v050City.visits[k]||0)+1;loadZone(V050_CITY_ZONE,{instance:true,force:true,silent:true,noTravel:true});if(world?.id!==V050_CITY_ZONE)throw Error('L’intérieur n’a pas été chargé');});
+  closeDialogue();const s=snapshot(),descriptor=rec.building,entry=[rec.door.inside[0]-descriptor.origin[0],rec.door.inside[2]-descriptor.origin[2]],resolved=rec.document?{document:rec.document,origin:rec.documentOrigin}:resolvedDocument(descriptor),doc=resolved?.document||null,documentOrigin=resolved?.origin||null,streetFloor=rec.streetFloor??0;
+  const ok=commit(s,()=>{MistralCityInteriors.layout(descriptor,streetFloor,entry,doc);state.v050City.returnPoint={macro:world.id,pos:state.player.pos.slice(),yaw:state.player.yaw,pitch:state.player.pitch};state.v050City.active={building:descriptor,floor:streetFloor,streetFloor,entry,facing:rec.door.normal.map(n=>-n),document:doc,documentOrigin};const k=MistralCityInteriors.hash(descriptor.id);state.v050City.visits[k]=(state.v050City.visits[k]||0)+1;loadZone(V050_CITY_ZONE,{instance:true,force:true,silent:true,noTravel:true});if(world?.id!==V050_CITY_ZONE)throw Error('L’intérieur n’a pas été chargé');});
   if(ok){V050_CITY.doors.clear();V050_CITY.owner=null;V050_CITY.entered++;V050_CITY.last={event:'enter',building:descriptor.id,provenance:doc?'documented or mixed':'invented'};toast('Intérieur · '+(doc?'plan documentaire selon les niveaux disponibles':'aménagement inventé dans l’emprise source'),'good');}return ok;
  }
  function floor(delta){
@@ -12533,29 +12923,44 @@ if(typeof baseState==='function'){
  const ensure=v046Ensure;v046Ensure=async function(...args){const ctx=V050_CITY.exitPending,ok=await ensure(...args);if(ok&&ctx&&V050_CITY.exitPending===ctx)finishExit(ctx);else if(!ok&&ctx&&V050_CITY.exitPending===ctx&&world!==ctx.snapshot.world)restore(ctx.snapshot);return ok;};
  const cancel=v046Cancel;v046Cancel=function(){const ctx=V050_CITY.exitPending;cancel();if(ctx&&ctx.owner===state){if(world!==ctx.snapshot.world)restore(ctx.snapshot);else{V050_CITY.exitPending=null;mode='PLAYING';zoneTransitioning=false;}}};
  const load=loadZone;loadZone=function(id,opts={}){const ctx=V050_CITY.exitPending;if(ctx&&!opts.v050CityReturn&&id!==ctx.returnPoint.macro)V050_CITY.exitPending=null;return load(id,opts);};
- const newGame=startNewGame;startNewGame=function(...args){V050_CITY.exitPending=null;V050_CITY.doors.clear();V050_CITY.owner=null;return newGame(...args);};
+ const newGame=startNewGame;startNewGame=function(...args){V050_CITY.exitPending=null;V050_CITY.doors.clear();V050_CITY.owner=null;V050_CITY.documentOwner=null;V050_CITY.documentRejections.clear();return newGame(...args);};
  function bind(force=false){
   if(!world?.v046||typeof MistralFacades==='undefined'){V050_CITY.doors.clear();V050_CITY.owner=null;return 0;}
-  const pos=state.player.pos,stamp=world.v046Records;if(!force&&V050_CITY.owner?.world===world&&V050_CITY.owner.stamp===stamp&&Math.hypot(pos[0]-V050_CITY.owner.x,pos[2]-V050_CITY.owner.z)<12)return V050_CITY.doors.size;
+  const pos=state.player.pos,stamp=world.v046Records;if(!force&&V050_CITY.owner?.state===state&&V050_CITY.owner.world===world&&V050_CITY.owner.stamp===stamp&&Math.hypot(pos[0]-V050_CITY.owner.x,pos[2]-V050_CITY.owner.z)<12)return V050_CITY.doors.size;
   world.interactables=world.interactables.filter(i=>!i.v050CityDoor);V050_CITY.doors.clear();const candidates=[],seen=new Set(),rejections={nearbyBuildings:0,invalidVolume:0,unmeasuredApproach:0,unmatchedStreetLevel:0,blockedApproach:0,narrowDoor:0,noCandidate:0,eligible:0,interactions:0};
   for(const d of world.staticDraws){if(d.geoLayer!=='building'||!d.rings||d.hidden)continue;d.v050EntranceSelection=null;const bb=MistralCityInteriors.bounds(d.rings);if(pos[0]<bb.minX-100||pos[0]>bb.maxX+100||pos[2]<bb.minZ-100||pos[2]>bb.maxZ+100)continue;
-   try{const description=MistralFacades.describe(d);if(!description||seen.has(description.id))continue;seen.add(description.id);rejections.nearbyBuildings++;const b=MistralCityInteriors.building(description);let accepted=false;
-    for(const original of MistralFacades.entrances(d)){const p=original.outside;if(!p||!p.every(Number.isFinite))continue;const distance=Math.hypot(p[0]-pos[0],p[2]-pos[2]);if(distance>100)continue;const h=v047Height(v047Bank(world),p[0],p[2]).height;if(h===null){rejections.unmeasuredApproach++;continue;}if(collidesAt(p[0],p[2],.38,h+playerEyeHeight())){rejections.blockedApproach++;continue;}
-     const local=[original.inside[0]-b.origin[0],original.inside[2]-b.origin[2]];if(MistralCityInteriors.clearance(b.rings,...local)<.43){rejections.narrowDoor++;continue;}const doc=V050_CITY.documents.get(b.id)||null,aligned=MistralCityInteriors.alignStreet(b,h,doc);if(!aligned||original.provenance==='documented'&&Math.abs(original.center[1]-(b.origin[1]+aligned.elevation))>.05){rejections.unmatchedStreetLevel++;continue;}
+   try{const description=MistralFacades.describe(d);if(!description||seen.has(description.id))continue;seen.add(description.id);rejections.nearbyBuildings++;const b=MistralCityInteriors.building(description),resolved=resolvedDocument(b,description.properties?.interiorDocument),doc=resolved?.document||null,documentOrigin=resolved?.origin||null;let accepted=false;
+    for(const original of MistralFacades.entrances(d,{near:[pos[0],pos[2]]})){const p=original.outside;if(!p||!p.every(Number.isFinite))continue;const distance=Math.hypot(p[0]-pos[0],p[2]-pos[2]);if(distance>100)continue;const h=v047Height(v047Bank(world),p[0],p[2]).height;if(h===null){rejections.unmeasuredApproach++;continue;}if(collidesAt(p[0],p[2],.38,h+playerEyeHeight())){rejections.blockedApproach++;continue;}
+     const local=[original.inside[0]-b.origin[0],original.inside[2]-b.origin[2]];if(MistralCityInteriors.clearance(b.rings,...local)<.43){rejections.narrowDoor++;continue;}const aligned=MistralCityInteriors.alignStreet(b,h,doc);if(!aligned||original.provenance==='documented'&&Math.abs(original.center[1]-(b.origin[1]+aligned.elevation))>.05){rejections.unmatchedStreetLevel++;continue;}
      const grid=MistralCityInteriors.floorLevels(aligned.building,doc),storeyHeight=(grid[aligned.level+1]??b.height)-grid[aligned.level],doorHeight=original.provenance==='documented'?original.height:Math.min(original.height,storeyHeight-.08);if(doorHeight<1.85||doorHeight>storeyHeight-.08+1e-7||aligned.elevation+doorHeight>b.height){rejections.unmatchedStreetLevel++;continue;}
-     const door={...original,height:doorHeight,levelElevations:grid.slice(),elevationOffset:aligned.elevation,thresholdMeters:aligned.thresholdMeters,center:[original.center[0],b.origin[1]+aligned.elevation,original.center[2]],inside:[original.inside[0],b.origin[1]+aligned.elevation,original.inside[2]],outside:[original.outside[0],h,original.outside[2]]};candidates.push({distance,door,draw:d,building:aligned.building,streetFloor:aligned.level,pos:[p[0],h+1.1,p[2]]});accepted=true;break;}
+     const door={...original,height:doorHeight,levelElevations:grid.slice(),elevationOffset:aligned.elevation,thresholdMeters:aligned.thresholdMeters,center:[original.center[0],b.origin[1]+aligned.elevation,original.center[2]],inside:[original.inside[0],b.origin[1]+aligned.elevation,original.inside[2]],outside:[original.outside[0],h,original.outside[2]]};candidates.push({distance,door,draw:d,building:aligned.building,document:doc,documentOrigin,streetFloor:aligned.level,pos:[p[0],h+1.1,p[2]]});accepted=true;break;}
     if(!accepted)rejections.noCandidate++;
    }catch(e){rejections.invalidVolume++;/* A tiny non-visitable shed remains a real exterior footprint. */}
   }
   candidates.sort((a,b)=>a.distance-b.distance||a.door.id.localeCompare(b.door.id));
-  for(const c of candidates.slice(0,64)){c.draw.v050EntranceSelection=c.door;const id='city-door:'+MistralCityInteriors.hash([c.building.id,c.door.id]),it=addInteract(world,id,c.pos,'Entrer · '+c.building.name+' · intérieur '+(V050_CITY.documents.has(c.building.id)?'documenté selon niveaux':'inventé'),()=>enter(id),{kind:'door',radius:3.2,priority:2});it.v050CityDoor=true;V050_CITY.doors.set(id,{world,door:c.door,building:c.building,streetFloor:c.streetFloor,interaction:it});}
-  rejections.eligible=candidates.length;rejections.interactions=V050_CITY.doors.size;V050_CITY.rejections=rejections;V050_CITY.owner={world,stamp,x:pos[0],z:pos[2]};return V050_CITY.doors.size;
+  for(const c of candidates.slice(0,64)){c.draw.v050EntranceSelection=c.door;const id='city-door:'+MistralCityInteriors.hash([c.building.id,c.door.id]),it=addInteract(world,id,c.pos,'Entrer · '+c.building.name+' · intérieur '+(c.document?'documenté selon niveaux':'inventé'),()=>enter(id),{kind:'door',radius:3.2,priority:2});it.v050CityDoor=true;V050_CITY.doors.set(id,{world,door:c.door,building:c.building,document:c.document,documentOrigin:c.documentOrigin,streetFloor:c.streetFloor,interaction:it});}
+  rejections.eligible=candidates.length;rejections.interactions=V050_CITY.doors.size;V050_CITY.owner={state,world,stamp,x:pos[0],z:pos[2]};return V050_CITY.doors.size;
  }
  const publish=v046Publish;v046Publish=function(...args){const result=publish(...args);V050_CITY.owner=null;if(args[0]===world)bind(true);return result;};
  const update=updatePlayer;updatePlayer=function(dt){const r=update(dt),l=world?.v050CityInterior;if(l&&state.player.pos[1]+.18>l.elevation+l.height-.08){state.player.pos[1]=Math.max(l.elevation+playerEyeHeight(),l.elevation+l.height-.261);if(jumpVelocity>0)jumpVelocity=0;onGround=false;}V050_CITY.tick+=Number.isFinite(dt)?dt:0;if(V050_CITY.tick>.5){V050_CITY.tick=0;if(!V046.busy&&!V047.pending&&!zoneTransitioning)bind();}return r;};
- function registerDocument(raw){const current=[...V050_CITY.doors.values()].find(x=>x.building.id===raw?.buildingId)?.building||state.v050City.active?.building;if(!current||current.id!==raw?.buildingId)throw Error('Le bâtiment du plan doit être chargé');const doc=MistralCityInteriors.document(raw,current);V050_CITY.documents.set(current.id,doc);V050_CITY.owner=null;bind(true);return{buildingId:current.id,documentedLevels:doc.levels.map(l=>l.level),source:doc.source};}
- function info(){const a=state.v050City.active,l=world?.v050CityInterior;return{version:1,zone:world?.id,active:a?{id:a.building.id,name:a.building.name,floor:a.floor,streetFloor:a.streetFloor??0,levels:a.building.levels,origin:a.building.origin.slice(),signature:l?.signature,layoutProvenance:l?.provenance,furnishing:l?{objects:l.furniture.length,byKind:Object.fromEntries([...new Set(l.furniture.map(f=>f.kind))].map(kind=>[kind,l.furniture.filter(f=>f.kind===kind).length])),functionalUses:[...new Set(l.functionalZones.map(z=>z.use))],roomsBasis:l.roomsBasis,roomCoverage:l.roomCoverage,provenance:'invented'}:null}:null,doors:[...V050_CITY.doors].map(([id,r])=>({id,building:r.building.id,pos:r.interaction.pos.slice(),levels:r.building.levels,streetFloor:r.streetFloor,provenance:V050_CITY.documents.has(r.building.id)?'documented or mixed':'invented'})),rejections:{...V050_CITY.rejections},interactionBudget:64,entered:V050_CITY.entered,returned:V050_CITY.returned,exitPending:!!V050_CITY.exitPending,last:V050_CITY.last,errors:V050_CITY.errors.slice()};}
- globalThis.v050CityInteriorAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v050CityInteriorInfo:info,v050CityInteriorEnter:enter,v050CityInteriorExit:exit,v050CityInteriorFloor:floor,v050CityInteriorBind:()=>bind(true),v050CityRegisterDocument:registerDocument});bind(true);};
+ function registerDocument(raw){
+  if(V046.busy||V047.pending||zoneTransitioning||V050_CITY.holding||V050_CITY.exitPending)throw Error('Attendez la fin du passage avant d’enregistrer un plan.');
+  if(world?.v046&&V050_CITY.owner?.state!==state)bind(true);
+  const current=[...V050_CITY.doors.values()].find(x=>x.building.id===raw?.buildingId)?.building||state.v050City.active?.building;if(!current||current.id!==raw?.buildingId)throw Error('Le bâtiment du plan doit être chargé');
+  let record,next;try{if(documentBytes([{building:current,document:raw}])>V050_DOCUMENT_LIMITS.bytes)throw Error('Plan fourni hors budget du registre de 512 Kio.');record=documentRecord(current,raw);next=documentPut(state.v050City.documents||[],record);}catch(e){documentRejected(current.id,e.message||e);throw e;}
+  const s=snapshot(),activeSnapshotPreserved=state.v050City.active?.building.id===current.id;
+  V050_CITY.holding=true;try{state.v050City.documents=next;V050_CITY.owner=null;bind(true);V050_CITY.holding=false;if(state!==s.owner||saveBase(false)===false)throw Error('Le plan n’a pas été sauvegardé ; l’enregistrement est annulé.');}catch(e){restore(s);bind(true);documentRejected(current.id,e.message||e);throw e;}finally{V050_CITY.holding=false;}
+  return{buildingId:current.id,documentedLevels:record.document.levels.map(l=>l.level),source:{...record.document.source},persisted:true,activeSnapshotPreserved,appliesOnNextEntry:activeSnapshotPreserved};
+ }
+ function info(){
+  if(world?.v046&&V050_CITY.owner?.state!==state)bind(true);
+  if(V050_CITY.documentOwner!==state){V050_CITY.documentOwner=state;V050_CITY.documentRejections.clear();}
+  const a=state.v050City.active,l=world?.v050CityInterior,records=state.v050City.documents||[];
+  return{version:2,zone:world?.id,active:a?{id:a.building.id,name:a.building.name,floor:a.floor,streetFloor:a.streetFloor??0,levels:a.building.levels,origin:a.building.origin.slice(),signature:l?.signature,layoutProvenance:l?.provenance,documentOrigin:a.documentOrigin||null,documentedLevels:a.document?.levels.map(r=>r.level)||[],documentSource:a.document?{...a.document.source}:null,currentLevelSource:l?.source?{...l.source}:null,furnishing:l?{objects:l.furniture.length,renderFurniture:world.staticDraws.filter(d=>d.v050CityFurnishing).length,colliderFurniture:world.colliders.filter(c=>c.v050CityFurnishing).length,byKind:Object.fromEntries([...new Set(l.furniture.map(f=>f.kind))].map(kind=>[kind,l.furniture.filter(f=>f.kind===kind).length])),functionalUses:[...new Set(l.functionalZones.map(z=>z.use))],roomsBasis:l.roomsBasis,roomCoverage:l.roomCoverage,programCoverage:l.programCoverage||null,provenance:'invented'}:null}:null,
+   doors:[...V050_CITY.doors].map(([id,r])=>({id,building:r.building.id,pos:r.interaction.pos.slice(),levels:r.building.levels,streetFloor:r.streetFloor,provenance:r.document?'documented or mixed':'invented',documentOrigin:r.documentOrigin||null,documentedLevels:r.document?.levels.map(l=>l.level)||[],documentSource:r.document?{...r.document.source}:null})),
+   documentRegistry:{entries:records.length,bytes:documentBytes(records),maxBuildings:V050_DOCUMENT_LIMITS.buildings,maxBytes:V050_DOCUMENT_LIMITS.bytes,omissions:state.v050City.documentOmissions||0,warnings:(state.v050City.documentWarnings||[]).slice(),rejections:[...V050_CITY.documentRejections.values()].map(r=>({...r}))},rejections:{...V050_CITY.rejections},interactionBudget:64,entered:V050_CITY.entered,returned:V050_CITY.returned,exitPending:!!V050_CITY.exitPending,last:V050_CITY.last,errors:V050_CITY.errors.slice()};
+ }
+ globalThis.v050CityInteriorAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v050CityInteriorInfo:info,v050CityInteriorEnter:enter,v050CityInteriorExit:exit,v050CityInteriorFloor:floor,v050CityInteriorBind:()=>bind(true),v050CityRegisterDocument:registerDocument,v052CityInteriorLayout:()=>world?.v050CityInterior?deepClone(world.v050CityInterior):null});bind(true);};
 }
 
 /* Installed municipal coverage and architectural interpretation are reported
@@ -12591,9 +12996,14 @@ function v051CityPanelAfterInit(){
   paragraph(section,d.terrainPresent?'Un relief municipal supplémentaire est installé. Sa résolution et les absences de mesure restent celles de ses sources.':'Aucun relief municipal supplémentaire n’est confirmé dans cet inventaire.');
   paragraph(section,'Les coordonnées, contours, cours et hauteurs disponibles viennent des relevés. Leurs précisions et dates peuvent varier ; une échelle d’un mètre dans le jeu ne certifie pas chaque détail architectural.');
   paragraph(section,'Les façades et intérieurs sont complétés de façon cohérente et déterministe. Seules les parties accompagnées d’un document attribué sont présentées comme documentées. Les autres fenêtres, portes, pièces et aménagements sont inventés.');
+  const architecture=window.__MISTRAL_DEBUG?.v052ArchitectureInfo?.();
+  if(architecture?.error)paragraph(section,'Les annotations architecturales locales sont invalides et ne sont pas appliquées. Vérifiez leur installation.');
+  else if(architecture?.loaded)paragraph(section,number(architecture.siteLabels)+' associations de bâtiments à un site identifié · '+number(architecture.facadeDocuments)+' plans de façade · '+number(architecture.interiorDocuments)+' plans d’intérieur attribués installés. L’appartenance à un site ne décrit pas ses fenêtres ou ses pièces.');
+  if(architecture?.rejected?.length)paragraph(section,number(architecture.rejected.length)+' annotation(s) ne correspondent plus à la géométrie chargée et sont écartées.');
   paragraph(section,'Approchez-vous d’une porte accessible et utilisez Interagir pour entrer. Les étages et le retour extérieur appartiennent au même bâtiment ; les intérieurs historiques de la campagne gardent leurs accès.');
  }
  function refresh(){for(const section of document.querySelectorAll('[data-city-source-status]'))show(section);}
+ window.addEventListener('mistral-architecture-ready',refresh);
  function load(force=false){
   if(status.pending)return status.pending;
   if(!force&&status.attempted)return Promise.resolve(status.data);
@@ -12649,6 +13059,7 @@ if(typeof v051CityAfterInit==='function')v051CityAfterInit();
 if(typeof v051WaterAfterInit==='function')v051WaterAfterInit();
 if(typeof v050FacadesAfterInit==='function')v050FacadesAfterInit();
 if(typeof v050CityInteriorAfterInit==='function')v050CityInteriorAfterInit();
+if(typeof v052ArchitectureAfterInit==='function')v052ArchitectureAfterInit();
 if(typeof v051CityPanelAfterInit==='function')v051CityPanelAfterInit();
 })();
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:BDTOPO_V3="http://BDTOPO_V3" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://BDTOPO_V3">
+  <xsd:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="https://data.geopf.fr/wfs/schemas/gml/3.2.1/gml.xsd"/>
+  <xsd:complexType name="toponymieType">
+    <xsd:complexContent>
+      <xsd:extension base="gml:AbstractFeatureType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="classe_de_l_objet" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="nature_de_l_objet" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="nature_detaillee_de_l_objet" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="graphie_du_toponyme" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="source_du_toponyme" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="statut_du_toponyme" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="date_du_toponyme" nillable="true" type="xsd:date"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="langue_du_toponyme" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="cleabs_de_l_objet" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="geometrie" nillable="true" type="gml:PointPropertyType"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="toponymie" substitutionGroup="gml:AbstractFeature" type="BDTOPO_V3:toponymieType"/>
+</xsd:schema>

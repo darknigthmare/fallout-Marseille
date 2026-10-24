@@ -1,0 +1,555 @@
+{
+  "version": "0.49.0",
+  "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+  "passed": 47,
+  "failed": 0,
+  "total": 47,
+  "errors": [],
+  "tests": [
+    {
+      "name": "Build v0.49 exécutée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Banc identifié chargé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Rencontre territoriale instanciée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Santé effectivement réduite",
+      "ok": true,
+      "detail": {
+        "id": "v042:v042-marseille-nest-01:outside:0",
+        "kind": "enemy",
+        "site": "v042-marseille-nest-01",
+        "pos": [
+          -6534.948279925107,
+          47.85366872139184,
+          -311.17663907383184
+        ],
+        "home": [
+          -6535.648279925107,
+          47.85366872139184,
+          -312.0766390738318
+        ],
+        "alive": true,
+        "hp": 68.35,
+        "max": 85,
+        "limbs": {
+          "head": 0,
+          "body": 0,
+          "arm_l": 0,
+          "arm_r": 0,
+          "leg_l": 0.4080882352941178,
+          "leg_r": 0
+        },
+        "yaw": 0.75,
+        "status": {},
+        "alerted": true
+      }
+    },
+    {
+      "name": "Jambe gauche enregistrée",
+      "ok": true,
+      "detail": {
+        "head": 0,
+        "body": 0,
+        "arm_l": 0,
+        "arm_r": 0,
+        "leg_l": 0.4080882352941178,
+        "leg_r": 0
+      }
+    },
+    {
+      "name": "Acteurs réellement retirés de la scène",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Journal conservé sans acteur visible",
+      "ok": true,
+      "detail": {
+        "version": "0.49.0",
+        "entries": 4,
+        "enemies": 4,
+        "npcs": 0,
+        "wounded": 1,
+        "dead": 0,
+        "sites": 1,
+        "bytes": 2575,
+        "budget": 2097152,
+        "corpses": 0,
+        "availableCorpses": 0,
+        "stats": {
+          "snapshots": 9,
+          "restored": 0,
+          "unloads": 1,
+          "cycles": 0,
+          "bodiesBound": 0,
+          "duplicatesMerged": 0
+        },
+        "last": {
+          "event": "unloaded",
+          "site": "v042-marseille-nest-01"
+        },
+        "lab": true,
+        "rows": [
+          {
+            "id": "v042:v042-marseille-nest-01:outside:0",
+            "site": "v042-marseille-nest-01",
+            "scope": "outside",
+            "kind": "enemy",
+            "hp": 68.35,
+            "max": 85,
+            "alive": true
+          },
+          {
+            "id": "v042:v042-marseille-nest-01:outside:1",
+            "site": "v042-marseille-nest-01",
+            "scope": "outside",
+            "kind": "enemy",
+            "hp": 78,
+            "max": 78,
+            "alive": true
+          },
+          {
+            "id": "v042:v042-marseille-nest-01:outside:2",
+            "site": "v042-marseille-nest-01",
+            "scope": "outside",
+            "kind": "enemy",
+            "hp": 109,
+            "max": 109,
+            "alive": true
+          },
+          {
+            "id": "v042:v042-marseille-nest-01:outside:3",
+            "site": "v042-marseille-nest-01",
+            "scope": "outside",
+            "kind": "enemy",
+            "hp": 85,
+            "max": 85,
+            "alive": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "Pas de soin au rechargement",
+      "ok": true,
+      "detail": {
+        "before": 68.35,
+        "after": 68.35
+      }
+    },
+    {
+      "name": "Position et orientation retrouvées",
+      "ok": true,
+      "detail": {
+        "id": "v042:v042-marseille-nest-01:outside:0",
+        "kind": "enemy",
+        "site": "v042-marseille-nest-01",
+        "pos": [
+          -6534.948279925107,
+          47.85366872139184,
+          -311.17663907383184
+        ],
+        "home": [
+          -6535.648279925107,
+          47.85366872139184,
+          -312.0766390738318
+        ],
+        "alive": true,
+        "hp": 68.35,
+        "max": 85,
+        "limbs": {
+          "head": 0,
+          "body": 0,
+          "arm_l": 0,
+          "arm_r": 0,
+          "leg_l": 0.4080882352941178,
+          "leg_r": 0
+        },
+        "yaw": 0.75,
+        "status": {},
+        "alerted": true
+      }
+    },
+    {
+      "name": "Membre blessé retrouvé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Décor du site déterministe",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Nouvelle blessure cumulative après retour",
+      "ok": true,
+      "detail": {
+        "head": 0,
+        "body": 0,
+        "arm_l": 0,
+        "arm_r": 0,
+        "leg_l": 0.5214460784313727,
+        "leg_r": 0
+      }
+    },
+    {
+      "name": "Blessure indépendante du nom de macro-région",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ancienne scène ne pollue pas une sauvegarde restaurée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Santé chargée depuis le JSON",
+      "ok": true,
+      "detail": {
+        "id": "v042:v042-marseille-nest-01:outside:0",
+        "kind": "enemy",
+        "site": "v042-marseille-nest-01",
+        "pos": [
+          -6534.948279925107,
+          47.85366872139184,
+          -311.17663907383184
+        ],
+        "home": [
+          -6535.648279925107,
+          47.85366872139184,
+          -312.0766390738318
+        ],
+        "alive": true,
+        "hp": 21,
+        "max": 85,
+        "limbs": {
+          "head": 0,
+          "body": 0,
+          "arm_l": 0,
+          "arm_r": 0,
+          "leg_l": 0.5214460784313727,
+          "leg_r": 0
+        },
+        "yaw": 0.75,
+        "status": {},
+        "alerted": true
+      }
+    },
+    {
+      "name": "Clé de dépouille canonique",
+      "ok": true,
+      "detail": "territory|remains:v042:v042-marseille-nest-01:outside:0"
+    },
+    {
+      "name": "Mort inscrite au journal et flags",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Dépouille fouillable physiquement",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Prélèvement réel du butin",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Capsules réellement reçues",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mort non ressuscité au retour",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Butin partiellement pris non recréé",
+      "ok": true,
+      "detail": {
+        "key": "territory|remains:v042:v042-marseille-nest-01:outside:0",
+        "zone": "geo_marseille",
+        "id": "remains:v042:v042-marseille-nest-01:outside:0",
+        "title": "Pillard",
+        "pos": [
+          -6534.948279925107,
+          47.85366872139184,
+          -311.17663907383184
+        ],
+        "kind": "remains",
+        "items": {
+          "caps": 7,
+          "scrap": 1,
+          "rationTin": 1
+        },
+        "initial": {
+          "caps": 10,
+          "scrap": 1,
+          "rationTin": 1
+        },
+        "gear": {},
+        "owned": false,
+        "permission": false,
+        "reported": false,
+        "lock": 0,
+        "unlocked": true,
+        "visited": true,
+        "pinWear": 0,
+        "actor": {
+          "type": "raider",
+          "yaw": 0.75,
+          "boss": false
+        }
+      }
+    },
+    {
+      "name": "Dépouille liée à la région actuellement affichée",
+      "ok": true,
+      "detail": "geo_marseille"
+    },
+    {
+      "name": "Interaction de dépouille réattachée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Le corps reste rendu",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Un seul inventaire de dépouille",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Habitant conserve sa position et son orientation",
+      "ok": true,
+      "detail": {
+        "id": "v042-npc:v042-marseille-settlement-01:0",
+        "kind": "npc",
+        "site": "v042-marseille-settlement-01",
+        "pos": [
+          -6545.524566446097,
+          47.85405618586202,
+          -307.91367487575155
+        ],
+        "home": [
+          -6545.724566446097,
+          47.85405618586202,
+          -308.21367487575156
+        ],
+        "alive": true,
+        "hp": null,
+        "max": null,
+        "limbs": {},
+        "yaw": 1.12,
+        "status": {},
+        "alerted": false
+      }
+    },
+    {
+      "name": "Intérieur reconstruit conserve santé et pose",
+      "ok": true,
+      "detail": {
+        "id": "v042:v042-marseille-shelter-01:inside:0",
+        "kind": "enemy",
+        "site": "v042-marseille-shelter-01",
+        "pos": [
+          -19,
+          0,
+          24
+        ],
+        "home": [
+          4.265481228073664,
+          0,
+          0.2196765152024609
+        ],
+        "alive": true,
+        "hp": 69.275,
+        "max": 85,
+        "limbs": {
+          "head": 0,
+          "body": 0,
+          "arm_l": 0,
+          "arm_r": 0.3854166666666666,
+          "leg_l": 0,
+          "leg_r": 0
+        },
+        "yaw": 0.22,
+        "status": {},
+        "alerted": true
+      }
+    },
+    {
+      "name": "Blessure intérieure conservée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Dépouille intérieure rattachée après reconstruction",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucun adversaire mort recréé dans l’intérieur",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Dépouille du premier intérieur absente du second",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Inventaire intérieur caché sans être perdu",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Deux sites intérieurs utilisent des identités distinctes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Migration fusionne les anciens doublons",
+      "ok": true,
+      "detail": [
+        {
+          "key": "territory|remains:v042:v042-marseille-nest-01:outside:0",
+          "zone": "geo_marseille",
+          "id": "remains:v042:v042-marseille-nest-01:outside:0",
+          "kind": "remains",
+          "title": "Pillard",
+          "pos": [
+            -6534.948279925107,
+            47.85366872139184,
+            -311.17663907383184
+          ],
+          "items": {
+            "caps": 1,
+            "scrap": 1,
+            "rationTin": 1
+          },
+          "initial": {
+            "caps": 10,
+            "scrap": 1,
+            "rationTin": 1
+          },
+          "gear": {},
+          "owned": false,
+          "permission": false,
+          "reported": false,
+          "unlocked": true,
+          "visited": true,
+          "pinWear": 0,
+          "lock": 0,
+          "actor": {
+            "type": "raider",
+            "yaw": 0.75,
+            "boss": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Site ordinaire sécurisable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pas de respawn avant le délai",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Respawn autorisé après le délai",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Anciennes blessures retirées pour le nouveau cycle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Anciennes dépouilles retirées au nouveau cycle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Nouveau cycle à santé normale",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Boss unique jamais réinitialisé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Journal de taille bornée",
+      "ok": true,
+      "detail": 8925
+    },
+    {
+      "name": "Diagnostic de persistance dans le Pip-Boy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Banc ne contamine pas le journal campagne",
+      "ok": true,
+      "detail": {
+        "version": "0.49.0",
+        "entries": 0,
+        "enemies": 0,
+        "npcs": 0,
+        "wounded": 0,
+        "dead": 0,
+        "sites": 0,
+        "bytes": 24,
+        "budget": 2097152,
+        "corpses": 0,
+        "availableCorpses": 0,
+        "stats": {
+          "snapshots": 286,
+          "restored": 25,
+          "unloads": 6,
+          "cycles": 1,
+          "bodiesBound": 17,
+          "duplicatesMerged": 1
+        },
+        "last": {
+          "event": "unloaded",
+          "site": "v042-marseille-nest-01"
+        },
+        "lab": false,
+        "rows": []
+      }
+    },
+    {
+      "name": "Nouvelle session de banc réinitialise les rencontres",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "HTML final, vrais acteurs des sites placés explicitement dans le banc synthétique. Déchargement/rechargement, dégâts, inventaire de dépouille, instances, migration et respawn utilisent les fonctions de production. Pas de pack géographique réel installé."
+}

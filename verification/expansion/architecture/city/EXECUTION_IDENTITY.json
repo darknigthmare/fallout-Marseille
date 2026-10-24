@@ -1,0 +1,18 @@
+{
+  "scope": "Post-completion archive identity: the unchanged script used by the recorded successful command and its original redirected output. The inherited runtime report does not pin its own script hash.",
+  "capturedAt": "2026-10-24T02:40:56.220726+00:00",
+  "capturedAfterExecution": true,
+  "runtimeReportContainsScriptHash": false,
+  "scriptSha256": "8c2c41d64f0009b47a711ba03d41f29a926c5b9a39c2a88019dd029a4201d178",
+  "scriptLastModifiedAt": "2026-10-24T02:37:41.077356+00:00",
+  "reportSha256": "4f4a0265b552d817ab5e8290cff99c4516373a74004960d3f5e9033cf8649c27",
+  "executionLogSha256": "a33f53325d5ad3229c217618cab666dcb6fd592730501a68b9283d787e2123cb",
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/city_architecture_browser.py",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native",
+    "--expect-html-sha",
+    "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817"
+  ]
+}

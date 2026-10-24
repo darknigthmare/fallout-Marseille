@@ -1,0 +1,1184 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-24T02:43:06.883470+00:00",
+  "stage": "complete",
+  "ok": true,
+  "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+  "allHtmlMatch": true,
+  "completeGameOrOneToOneWorldClaimed": false,
+  "scope": "Separate reported assertion totals by method. Unit fixtures, inherited synthetic/controlled contracts, byte comparisons, assisted native pilots and source-geometry comparisons are distinct evidence; their counts are not equivalent gameplay runs.",
+  "checksByMethod": {
+    "isolatedUnits": {
+      "passed": 877,
+      "failed": 0,
+      "total": 877,
+      "suites": 20,
+      "method": "Isolated production model/tool assertions, including explicitly synthetic documentary fixtures.",
+      "executedTestScriptHashesProvided": false,
+      "scriptIdentityLimit": "Current runner and test sources archived; original unit report pins production modules and logs but does not pin every executed test script."
+    },
+    "inheritedControlledContracts": {
+      "passed": 434,
+      "failed": 0,
+      "total": 434,
+      "method": "15 inherited suites with controlled/synthetic harnesses, adapted for current contracts; not native city playthroughs.",
+      "adapterExecutedBytesRecreatedAndMatched": true
+    },
+    "independentRebuildOutputs": {
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "method": "Independent staging rebuild: three byte-identical outputs and JavaScript syntax check; no gameplay count."
+    },
+    "assistedCityBrowser": {
+      "passed": 77,
+      "failed": 0,
+      "total": 77,
+      "method": "Assisted native-browser contracts for the installed Marseille city atlas.\n\nThe exact production HTML, real GameHandler, city partitions, terrain, source\nhashes, UI and browser storage are used. Existing diagnostic APIs load sectors,\nplace a camera on measured clear ground and pause simulation/rendering. They do\nnot fabricate buildings, substitute HTTP, inject HTML or grant a documentary\nplan. Small enclosed reserves may use their real retained furniture access anchor when the legacy six-point approach sampler has no clear candidate. Portal, landing and container actions use actual keyboard/UI controls.\nThis is a bounded integration pilot, not an unassisted citywide playthrough.\n\nThe executed script/report/stdout identity was captured after completion, rather than pinned inside the runtime report.",
+      "scriptIdentity": {
+        "method": "Post-completion archive identity: the unchanged script used by the recorded successful command and its original redirected output. The inherited runtime report does not pin its own script hash.",
+        "capturedAfterExecution": true,
+        "runtimeReportContainsScriptHash": false,
+        "scriptReportAndStdoutHashesVerified": true,
+        "archivedAndCurrentScriptMatch": true
+      },
+      "assistance": [
+        "Existing macro/sector loading APIs",
+        "Measured, collision-free camera selection and existing physical approach helper",
+        "Existing QA simulation freeze and paused continuous rendering; explicit real WebGL captures"
+      ],
+      "nativePilotCount": 1,
+      "remoteNetworkObservations": {
+        "external_request_failures": [],
+        "resource_console_diagnostics": [],
+        "request_failures": [
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "http://127.0.0.1:41511/__mistral/local-data",
+            "failure": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          }
+        ]
+      },
+      "rawNetworkObservationsAreNotJavaScriptFailures": true
+    },
+    "assistedArchitectureBrowser": {
+      "passed": 101,
+      "failed": 0,
+      "total": 101,
+      "method": "Prepared native HTTP architecture pilot. No browser starts without --run.\n\nUses the unchanged production HTML, GameHandler, installed source geometry and\nnative browser storage. One fresh context is reused through a document reload.\nExisting diagnostic sector loading, measured placement, render/simulation freeze\nand collision-controlled walking are declared assistance. Portal and landing\nactions use real E key presses and visible buttons. This is not a human or an\nunassisted citywide playthrough. No synthetic documentary plan is installed.\n",
+      "scriptIdentity": {
+        "method": "Script SHA recorded by the browser runner in its runtime report.",
+        "capturedAfterExecution": false,
+        "runtimeReportContainsScriptHash": true
+      },
+      "assistance": [
+        "Existing native macro and sector loading debug APIs; no lab or geography fixture.",
+        "Existing measured collision-free camera placement and QA simulation/render freeze.",
+        "Existing v020Approach for collision/LOS checked placement before real E-key portal actions.",
+        "Native KeyW plus existing v020Tick advances production movement/collisions in fixed 0.05 s steps under QA freeze; this is assisted movement, not recorded human walking.",
+        "Landing placement on a verified clear floor precedes real E-key and visible floor/exit buttons.",
+        "Read-only debug exports inspect actual runtime annotations, geometry and interior layout."
+      ],
+      "nativePilotCount": 1,
+      "remoteNetworkObservations": {
+        "external_request_failures": [
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          }
+        ],
+        "resource_console_diagnostics": [
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          },
+          {
+            "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+            "location": {
+              "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+              "line": 0,
+              "column": 0,
+              "lineNumber": 0,
+              "columnNumber": 0
+            }
+          }
+        ],
+        "request_failures": [
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          },
+          {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          }
+        ]
+      },
+      "rawNetworkObservationsAreNotJavaScriptFailures": true
+    }
+  },
+  "nativePilotCount": 2,
+  "comparisonsExcludedFromValidationTotals": {
+    "countedInValidationTotals": false,
+    "scope": "Actual IGN source comparisons; counts describe sampled model coverage, not browser playthroughs. Initial documentary roundtrip/order reproducers use explicitly synthetic fixtures.",
+    "curves": {
+      "targetedCurves": 192,
+      "baselineCompatibleCurves": 191,
+      "baselineCompatibleWithEntrances": 0,
+      "currentCompatibleWithEntrances": 188,
+      "currentCompatibleWithUsableInteriorCandidates": 188,
+      "currentCompatibleWithWindows": 183,
+      "currentCompatibleWithRenderedDoor": 188,
+      "currentCompatibleSpanFailures": 0,
+      "compatibleResiduals": [
+        {
+          "sourceId": "batiment.10611104",
+          "reason": "no-eligible-multisegment-chain"
+        },
+        {
+          "sourceId": "batiment.10626012",
+          "reason": "no-eligible-multisegment-chain"
+        },
+        {
+          "sourceId": "batiment.9609229",
+          "reason": "no-eligible-multisegment-chain"
+        }
+      ],
+      "sourcesUnchanged": true,
+      "allPaginationConsistent": true,
+      "sampledExcludedEdges": 72,
+      "sampledExcludedEdgesRecovered": 72,
+      "sampledRecoveredDoorsRendered": 72,
+      "sampledRecoveredDoorsWithUsableInsideClearance": 72,
+      "compatibleWindowOmissions": [
+        {
+          "sourceId": "batiment.10611104",
+          "reason": "no-three-segment-chain-with-turns-at-most45deg",
+          "typology": "stacked"
+        },
+        {
+          "sourceId": "batiment.10626012",
+          "reason": "no-three-segment-chain-with-turns-at-most45deg",
+          "typology": "stacked"
+        },
+        {
+          "sourceId": "batiment.9609229",
+          "reason": "no-three-segment-chain-with-turns-at-most45deg",
+          "typology": "stacked"
+        },
+        {
+          "sourceId": "batiment.9972671",
+          "reason": "candidate-clearance-height-or-door-overlap",
+          "typology": "stacked"
+        },
+        {
+          "sourceId": "batiment.9695780",
+          "reason": "technical-typology-without-window-register",
+          "typology": "technical-tower"
+        },
+        {
+          "sourceId": "batiment.9695781",
+          "reason": "technical-typology-without-window-register",
+          "typology": "technical-tower"
+        },
+        {
+          "sourceId": "batiment.9695783",
+          "reason": "technical-typology-without-window-register",
+          "typology": "technical-tower"
+        },
+        {
+          "sourceId": "batiment.8923767",
+          "reason": "candidate-clearance-height-or-door-overlap",
+          "typology": "stacked"
+        }
+      ]
+    },
+    "attributes": {
+      "targetBuildings": 67,
+      "chunksRead": 34,
+      "sourceChunkBytesRead": 113856905,
+      "allDrawsAndFootprintsUnchanged": true,
+      "baselineInteriorAccepted": 22,
+      "currentInteriorAccepted": 49,
+      "boundary195": {
+        "examples": 27,
+        "baselineAccepted": 0,
+        "currentAccepted": 27,
+        "facadeLevelsUnchanged": true,
+        "baselineInteriorOnCurrentFacadeAccepted": 0,
+        "currentInteriorOnBaselineFacadeAccepted": 27,
+        "rescuedIds": [
+          "batiment.10119924",
+          "batiment.10167227",
+          "batiment.10325786",
+          "batiment.10434295",
+          "batiment.10435096",
+          "batiment.10440283",
+          "batiment.10615575",
+          "batiment.10618598",
+          "batiment.10624222",
+          "batiment.3123999",
+          "batiment.9283565",
+          "batiment.9284126",
+          "batiment.9300900",
+          "batiment.9304152",
+          "batiment.9304154",
+          "batiment.9304156",
+          "batiment.9306134",
+          "batiment.9310052",
+          "batiment.9617675",
+          "batiment.9624351",
+          "batiment.9688541",
+          "batiment.9695401",
+          "batiment.9844982",
+          "batiment.9973264",
+          "batiment.9977332",
+          "batiment.9980597",
+          "batiment.9995132"
+        ]
+      },
+      "invalidZeroLevels": {
+        "examples": 12,
+        "baselineMisattributedIgn": 12,
+        "currentMisattributedIgn": 0,
+        "currentEstimated": 12
+      },
+      "retainedFloorHeightRejections": {
+        "examples": 20,
+        "numericEpsilon": 1e-07,
+        "realConflictsBelow195MinusEpsilon": {
+          "examples": 18,
+          "baselineAccepted": 0,
+          "currentAccepted": 0,
+          "declaredLevelsPreserved": true,
+          "ids": [
+            "batiment.9617417",
+            "batiment.9617597",
+            "batiment.9617603",
+            "batiment.9617688",
+            "batiment.9617692",
+            "batiment.9617695",
+            "batiment.9617697",
+            "batiment.9617754",
+            "batiment.9617783",
+            "batiment.9617927",
+            "batiment.9618490",
+            "batiment.9618681",
+            "batiment.9620523",
+            "batiment.9620525",
+            "batiment.9623465",
+            "batiment.9623979",
+            "batiment.9624214",
+            "batiment.9624420"
+          ]
+        },
+        "floatBoundariesWithinEpsilon": {
+          "examples": 2,
+          "baselineAccepted": 0,
+          "currentAccepted": 2,
+          "declaredLevelsPreserved": true,
+          "ids": [
+            "batiment.9617675",
+            "batiment.9624351"
+          ]
+        },
+        "otherAtOrAbove195": []
+      },
+      "ambiguousClassification": [
+        {
+          "sourceId": "batiment.9309670",
+          "primaryUse": "Sportif",
+          "baselineStyle": "industrial",
+          "currentStyle": "civic",
+          "currentStyleBasis": "usage_1",
+          "currentTypology": "stacked",
+          "baselineLevels": 1,
+          "currentLevels": 1
+        },
+        {
+          "sourceId": "batiment.9617560",
+          "primaryUse": "Résidentiel",
+          "baselineStyle": "industrial",
+          "currentStyle": "residential",
+          "currentStyleBasis": "usage_1",
+          "currentTypology": "stacked",
+          "baselineLevels": 1,
+          "currentLevels": 1
+        },
+        {
+          "sourceId": "batiment.9617561",
+          "primaryUse": "Indifférencié",
+          "baselineStyle": "industrial",
+          "currentStyle": "industrial",
+          "currentStyleBasis": "nature",
+          "currentTypology": "stacked",
+          "baselineLevels": 2,
+          "currentLevels": 2
+        },
+        {
+          "sourceId": "batiment.9617563",
+          "primaryUse": "Annexe",
+          "baselineStyle": "industrial",
+          "currentStyle": "residential",
+          "currentStyleBasis": "usage_2",
+          "currentTypology": "annexe",
+          "baselineLevels": 1,
+          "currentLevels": 1
+        },
+        {
+          "sourceId": "batiment.9617971",
+          "primaryUse": "Industriel",
+          "baselineStyle": "industrial",
+          "currentStyle": "industrial",
+          "currentStyleBasis": "usage_1",
+          "currentTypology": "stacked",
+          "baselineLevels": 2,
+          "currentLevels": 2
+        },
+        {
+          "sourceId": "batiment.9620087",
+          "primaryUse": "Agricole",
+          "baselineStyle": "industrial",
+          "currentStyle": "industrial",
+          "currentStyleBasis": "usage_1",
+          "currentTypology": "stacked",
+          "baselineLevels": 2,
+          "currentLevels": 2
+        },
+        {
+          "sourceId": "batiment.9624218",
+          "primaryUse": "Commercial et services",
+          "baselineStyle": "industrial",
+          "currentStyle": "commercial",
+          "currentStyleBasis": "usage_1",
+          "currentTypology": "stacked",
+          "baselineLevels": 1,
+          "currentLevels": 2
+        }
+      ],
+      "specialVolumes": [
+        {
+          "sourceId": "batiment.26019993",
+          "case": "143.9m-one-declared-level",
+          "sourceDeclaredLevels": 1,
+          "height": 143.9,
+          "baselineLevels": 1,
+          "currentLevels": 1,
+          "currentLevelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+          "currentTypology": "stacked",
+          "currentUse": "Commercial et services"
+        },
+        {
+          "sourceId": "batiment.39111842",
+          "case": "sports-grandstand",
+          "sourceDeclaredLevels": null,
+          "height": 67.3,
+          "baselineLevels": 22,
+          "currentLevels": 1,
+          "currentLevelsBasis": "estimation du volume et de l’usage",
+          "currentTypology": "grandstand",
+          "currentUse": "Sportif"
+        },
+        {
+          "sourceId": "batiment.49696442",
+          "case": "religious-complex",
+          "sourceDeclaredLevels": null,
+          "height": 45.8,
+          "baselineLevels": 15,
+          "currentLevels": 1,
+          "currentLevelsBasis": "estimation du volume et de l’usage",
+          "currentTypology": "nave",
+          "currentUse": "Religieux"
+        }
+      ]
+    },
+    "baselineCommit": "cac50f305db69fcd4827da2c8ac34295e8b68d7a"
+  },
+  "historicalReportsExcludedFromValidationTotals": [
+    {
+      "path": "historical/failed-initial-network/ARCHITECTURE_NATIVE.json",
+      "stage": "cold_document_continue",
+      "passed": 97,
+      "failed": 2,
+      "total": 99,
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "countedInValidationTotals": false,
+      "role": "Failed superseded attempt retained verbatim; not final validation."
+    },
+    {
+      "path": "historical/city-failed-helper/CITY_ARCHITECTURE_BROWSER.json",
+      "stage": "finite_loot",
+      "passed": 48,
+      "failed": 2,
+      "total": 50,
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "countedInValidationTotals": false,
+      "role": "Failed superseded attempt retained verbatim; not final validation."
+    },
+    {
+      "path": "historical/city-failed-helper-anchor/CITY_ARCHITECTURE_BROWSER.json",
+      "stage": "finite_loot",
+      "passed": 50,
+      "failed": 2,
+      "total": 52,
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "countedInValidationTotals": false,
+      "role": "Failed superseded attempt retained verbatim; not final validation."
+    }
+  ],
+  "sourceIndices": {
+    "index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927"
+  },
+  "frozenProduction": {
+    "index.html": {
+      "sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "bytes": 2636858
+    },
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": {
+      "sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "bytes": 2636858
+    },
+    "src/game.js": {
+      "sha256": "3c8284c33d238e22c4f8efd1154c06484e5a014de9012a342b4922fae8cff9a0",
+      "bytes": 2459437
+    },
+    "src/v050/06_architecture_sources.js": {
+      "sha256": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+      "bytes": 11584
+    },
+    "src/v050/07_facades.js": {
+      "sha256": "9ccc2c01a9c91d5b1c2f0611f8d18c814f2616e0ec9711b37393c2cb78ec8335",
+      "bytes": 42404
+    },
+    "src/v050/08_city_interiors.js": {
+      "sha256": "94fc240ce308f71c0618ae1c1fec611b00b9867b2a91355579c3615b33cf7ce5",
+      "bytes": 80373
+    },
+    "src/v050/09_city_interface.js": {
+      "sha256": "1c8e7d35750696bf81eb1432a030a4a71e9fb099055e45d8a50853631bfc8004",
+      "bytes": 7100
+    },
+    "data/map_pack/architecture/index.json": {
+      "sha256": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+      "bytes": 69162
+    },
+    "sw.js": {
+      "sha256": "52cb1e15236eb3fca7a29cbd64aa54ff2037bc952bc4f669effb2bff7749bf8b",
+      "bytes": 1182
+    }
+  },
+  "captures": [
+    {
+      "path": "city/01_city_sources.png",
+      "sha256": "c3f6b46fcf454e2f206fd3cedb8f600e2784cd3fffa1ff4a5ac9ea0dc68f77c7",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Unmodified menu source panel, actual municipal HTTP audit",
+      "method": "Actual WebGL capture with diagnostic assistance declared in report"
+    },
+    {
+      "path": "city/02_vieux_port.png",
+      "sha256": "4a8ce5607255c624ac9510de1706383eae9c82fd79d83ab025bc3142e33ccd85",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Actual municipal sector; measured diagnostic camera, source buildings and facade LOD",
+      "method": "Actual WebGL capture with diagnostic assistance declared in report"
+    },
+    {
+      "path": "city/02_estaque.png",
+      "sha256": "f0120f98b3fb9da87a9f64d2acafee857034c55a601fca3c2c5a2dd436c2a88e",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Actual municipal sector; measured diagnostic camera, source buildings and facade LOD",
+      "method": "Actual WebGL capture with diagnostic assistance declared in report"
+    },
+    {
+      "path": "city/03_interior_entry.png",
+      "sha256": "78ca114e28447dd76c954b0bf3c3f246d718a18d248e771b5b545310e4179848",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Actual source-footprint building, explicitly invented arrangement at the measured street-entry storey",
+      "method": "Actual WebGL capture with diagnostic assistance declared in report"
+    },
+    {
+      "path": "city/04_interior_adjacent.png",
+      "sha256": "530128ed3397e77d8b72f41b17206c62324e5c423bb017b74f521ca90dd6d5a0",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Same building, actual landing UI and a different metric storey",
+      "method": "Actual WebGL capture with diagnostic assistance declared in report"
+    },
+    {
+      "path": "city/05_return_estaque.png",
+      "sha256": "5056ca4d4babacae7ee32ef08ef0b4882c93567744f9563dee36870cb1f1f2b3",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Real reloaded municipal exterior at the conserved entrance position",
+      "method": "Actual WebGL capture with diagnostic assistance declared in report"
+    },
+    {
+      "path": "native/01_real_site_context.png",
+      "sha256": "892f618d04ff9f01f97950b4537aecb466749ddd2761c2cd851725065416e050",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Real site geometry; names are context, procedural facades remain inventions.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "native/02_real_site_context.png",
+      "sha256": "3af73ee6315461cdd3d716c23ee21fd7c34db340d5c729618cfa6c57b344909e",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Real site geometry; names are context, procedural facades remain inventions.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "native/03_curved_source_interior.png",
+      "sha256": "dc63842218b0d1c6400a2faa0fe0930496f67687259fb84d3c17ddf6bf5c1028",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Real curved source footprint; invented arrangement, assisted E-key entrance.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "native/04a_enclosed_room_doorway.png",
+      "sha256": "bea3813c34d77765bffac8993a1329d64f02ddb71864f81707a503d340714fad",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Actual invented room doorway after collision-controlled crossing, looking back into the source-footprint common space.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "native/04_enclosed_room_furniture.png",
+      "sha256": "e4b24fe5b9838ec93965cf1b538e52f9c03708b78e99d7f536d7a8f2618c38bd",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Actual clear doorway/landing camera towards multiple invented furnishings when visible; no scene or image modification.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "native/05_adjacent_floor.png",
+      "sha256": "cea5e802d6bd209a49404c9b3df701f51b66841a7ac7d01f630eba238df61ac3",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Actual adjacent floor loaded by the visible landing controls.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "native/06_continue_same_floor.png",
+      "sha256": "d33d7f5f5cc8a7531f91e3c19a21ed03e1b6883921c9afbba17479e289a2a708",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Same fresh-context native storage and a real document reload; no save injection.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "native/07_return_real_street.png",
+      "sha256": "6b9e4901e882a5557ecc8f3f27f5147feb017113121b3dcb143edd5a47c75a68",
+      "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "label": "Actual geographic return after native Continue and floor controls.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    }
+  ],
+  "documentaryFixtures": {
+    "isolatedTests": "Explicit synthetic attributed plans test validation/persistence; they are never installed in the delivered atlas.",
+    "browserPilots": "Actual IGN geometry and 12 attributed site contexts; procedural rooms/facades are invented and no synthetic documentary plan is installed."
+  },
+  "limits": [
+    "Source acquisition and metric reproduction do not certify a surveyed 1:1 facade/interior for every real building.",
+    "Diagnostic sector/camera placement, frozen simulation/rendering and stepped native physics remain declared assistance.",
+    "Remote request failures remain observations in original native reports; qualified local-geography and JavaScript errors must be empty.",
+    "Comparison coverage cases and failed historical attempts are excluded from final assertion totals."
+  ],
+  "inputHashes": {
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/FROZEN_BUILD.json": "be8dd139fb6ca3bd9eaf326add1a09a539402e9f538f1b25819221916c1ee675",
+    "/workspace/fallout-Marseille/index.html": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+    "/workspace/fallout-Marseille/JOUER_FALLOUT_MISTRAL_v0.50.html": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+    "/workspace/fallout-Marseille/src/game.js": "3c8284c33d238e22c4f8efd1154c06484e5a014de9012a342b4922fae8cff9a0",
+    "/workspace/fallout-Marseille/src/v050/06_architecture_sources.js": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+    "/workspace/fallout-Marseille/src/v050/07_facades.js": "9ccc2c01a9c91d5b1c2f0611f8d18c814f2616e0ec9711b37393c2cb78ec8335",
+    "/workspace/fallout-Marseille/src/v050/08_city_interiors.js": "94fc240ce308f71c0618ae1c1fec611b00b9867b2a91355579c3615b33cf7ce5",
+    "/workspace/fallout-Marseille/src/v050/09_city_interface.js": "1c8e7d35750696bf81eb1432a030a4a71e9fb099055e45d8a50853631bfc8004",
+    "/workspace/fallout-Marseille/data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "/workspace/fallout-Marseille/sw.js": "52cb1e15236eb3fca7a29cbd64aa54ff2037bc952bc4f669effb2bff7749bf8b",
+    "/workspace/fallout-Marseille/data/map_pack/city/index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "/workspace/fallout-Marseille/data/map_pack/city/terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "/workspace/fallout-Marseille/data/map_pack/city/water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/UNITS.json": "6ece9786021782f49590fe7d6c46681c01439182a80f00fad7960220815d6d2d",
+    "/workspace/fallout-Marseille/src/v050/00_continue.js": "a1640e1a859d54f91afbc665b8a805ca66d9574070178a9d4d7184d24980e66d",
+    "/workspace/fallout-Marseille/src/v050/01_campaign.js": "df102b02ca8751c6376dd4753daef64489c42c3749615620aba50188fe786567",
+    "/workspace/fallout-Marseille/src/v050/02_poi_travel.js": "fb9e198270a6f74869dac352d5339439585fe1d19870572d2e27b97d815a7133",
+    "/workspace/fallout-Marseille/src/v050/03_interface.js": "924fc8e210b72b39938dbc9c48f708942108e527889e0e7291cccb2941874fa9",
+    "/workspace/fallout-Marseille/src/v050/04_source_geometry.js": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+    "/workspace/fallout-Marseille/src/v050/04a_city_sources.js": "45bbe45c0a8209644c6f371380af3a14bc72fef20d8ce5c6db7f9b464a81c96e",
+    "/workspace/fallout-Marseille/src/v050/04aa_city_water.js": "567038786b30df531de51f4477b1a6ca0c2d4ac70439537aec7df4b21fc6235f",
+    "/workspace/fallout-Marseille/src/v050/04ab_city_water_physics.js": "c8ae99b72af72f81a432d0a3708d1dd5a9c536f6f89ede1b62c9c5454cede2a4",
+    "/workspace/fallout-Marseille/src/v050/04b_surfaces.js": "9039907e5b949e09d9327a72b2952de3a20252f0c5cf349add0386280ce40b01",
+    "/workspace/fallout-Marseille/src/v050/04c_roof_collisions.js": "e67887b2a274cf570fa22075ce45e516b462d2090114a1d34cd785a53e33d824",
+    "/workspace/fallout-Marseille/src/v050/04d_source_status.js": "da9a17ded6a7d515400014c8e536d210b5fb302f122409bc53ff6a473953b916",
+    "/workspace/fallout-Marseille/src/v050/05_wasteland.js": "de26ba8913138f5423037e86bcb44369f9aece1881cfae8c9e7d48a22e9f5075",
+    "/workspace/fallout-Marseille/src/v050/06_controller.js": "7ed416a99e27a213c8ad05501edc4d2827ceddf738af121c22dce1a56080aad0",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/source_tools.log": "dc23f7fb423cba66435c3a78d9b1efa8ddfba035c4bc28ff7d012037ed8b54d4",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/base_installers.log": "64aeb6e97185ebf2a2ae9e05c399ca4363ea79340a4d9ccf629ef99d8c7e5ced",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/renderer_batches.cjs.log": "3022789bb2e525b44569c3ce90d76179d8aa73f7b2e9229d10858eea73ea8975",
+    "/workspace/fallout-Marseille/tests/expansion/renderer_batches.cjs": "934c160e25aff9da123bda4696dac774d61c6cddead4b92723804881dc06c804",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/geography.test.cjs.log": "c07c7a86cd85335c2bfacb7e8dd13553f7844459434f7f93e9bf14950142f3c0",
+    "/workspace/fallout-Marseille/tests/expansion/geography.test.cjs": "e501eb85c228a39e0407f2470c56028db89b3b76e9107909a654ca19bd5dc32a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/dense_geometry.cjs.log": "d23b9853ba76a40e715f78f8e358c6020b9d4baaf1dbfae27fab03a89fb22c02",
+    "/workspace/fallout-Marseille/tests/expansion/dense_geometry.cjs": "28d0e1e7533a11f7d078b171f6281c2937866044b378d69341ca1c2aacace336",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/surfaces_physics.cjs.log": "3db3dc1dbd0b8282bfc126dc849c0a95dd70db6ad873ae21f0df67949959b5f1",
+    "/workspace/fallout-Marseille/tests/expansion/surfaces_physics.cjs": "7b23d23cd31df16b99630119b9bc242cdc339396d6c283549051785adde836e0",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/roof_solids.cjs.log": "fd417a4e949d96005ce86e26761a460c5ffbeadd83fa30325834512903d59e79",
+    "/workspace/fallout-Marseille/tests/expansion/roof_solids.cjs": "af9eec6c9b64b64a488bccf64216b05d6cb462826f72f1640f53a92ff9ba363a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/gameplay_wasteland.cjs.log": "b53696da994ec22ec7376cb69bb37a527163a2c2ef3954ebfd36ffd58f1ff6cd",
+    "/workspace/fallout-Marseille/tests/expansion/gameplay_wasteland.cjs": "5175048a81f6a5d1ef106970ddb1565abf768e780c915bf17f99a7c4574919fd",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/controller_model.cjs.log": "7d3106f605f6972a3868456fe3943ddd6066ed6694e27a33385c9f388573ba08",
+    "/workspace/fallout-Marseille/tests/expansion/controller_model.cjs": "abb09ebd3c87093deba0f9e34c4f3556684a77890b383db6583b93fb49fdd84b",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/source_status_model.cjs.log": "42b6c64500a37ffca05483cf590233adf2b5a928b93b281eb9312b2cc5b0aed3",
+    "/workspace/fallout-Marseille/tests/expansion/source_status_model.cjs": "23773ad627279427839bd4d65bf68f4a44ee4ab10ae8556d132332ea7e40a18f",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city_streaming.cjs.log": "1614041483a37f9f491bec3d5a7c2f614096ae2d0adf56058a3570215642ccec",
+    "/workspace/fallout-Marseille/tests/expansion/city_streaming.cjs": "dbd885c4489800ad8e298bb8ce852b2e3cff9edfd6cf452a3bf1c6302f8d696f",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/facades_model.cjs.log": "c31cf6b15dd562efb6a787a27dc466d9199f3d2c4fe88469fedc3c15704d8d13",
+    "/workspace/fallout-Marseille/tests/expansion/facades_model.cjs": "9fe20450ea228d85863ff36f89ecc1566d9d0ae7776b38724ea7e9c0b9ce3faa",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city_interiors.cjs.log": "5f5abe8ec8e1c1362508020381b7d776b541f00f7c962a915499f42278b75b84",
+    "/workspace/fallout-Marseille/tests/expansion/city_interiors.cjs": "f29daaaca0afde6818da376673ff33a1d74d35c110d5eb1b5013f0e8c1d0eb26",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city_water.cjs.log": "fc1737ebc13a280082dc49ac4f55bc5f47d87c2b1406680efab37f1023ea6879",
+    "/workspace/fallout-Marseille/tests/expansion/city_water.cjs": "7b9098b40ba884f9272fe0561d8082240e9c84b027c666133b973c79744a1443",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city_water_physics.cjs.log": "0db0cfe28974005e1e7f3e1cbcc684f9efdb38c0876d88e61c024a32ce02fe73",
+    "/workspace/fallout-Marseille/tests/expansion/city_water_physics.cjs": "b84674ec59eb2d75aeafbd303101bf2697bc1744b80ca0e76332a5fb2532aee4",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/road_classification.cjs.log": "69e78057eed27091f726ef274864aef088ae714490e6c1776ddc5971d9bc5a33",
+    "/workspace/fallout-Marseille/tests/expansion/road_classification.cjs": "579f94db2f8983bb69156e5bfed35b3a39a37fd1c4c7af28cc5dd051238591c4",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/ground_road_surfaces.cjs.log": "8874fe6f861fb5bbea957a95974375733917dda13ffea73fa7cb1f5cad438c57",
+    "/workspace/fallout-Marseille/tests/expansion/ground_road_surfaces.cjs": "19886b3ffca41aeed7a146c40ad319b90bd56a5555a7a99c631a7e44669187ac",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/interior_document_persistence.cjs.log": "4bf7eddcb8be1e982c901b1884a5c5e8bc4baae125278c20c7e7a77f40014e4c",
+    "/workspace/fallout-Marseille/tests/expansion/interior_document_persistence.cjs": "04d1ce51a6adfed4f7a1ec2b8fae88c55a09c4f4efb93ab2b688e8ac63d2be51",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/architecture_sources.cjs.log": "cb71e42c91edd862005b9c04f26ff58b318550fe397e0ed48955260ee0970e39",
+    "/workspace/fallout-Marseille/tests/expansion/architecture_sources.cjs": "02ca8d0ee1cade7a1d8f5aa85e44eab950e75cc231ddbb20d2c652fbfce9081d",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/architecture_runtime.cjs.log": "d7eba6e1b5f4d1677ed7506c879fe27a12947ce90ec92496c1cefb0a48bb1d08",
+    "/workspace/fallout-Marseille/tests/expansion/architecture_runtime.cjs": "0f0c3d7eceb45a43e7654e1358a9fd7402f34f12e1ee968c8694c0332e4323ae",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/UNITS_RUN.log": "6ece9786021782f49590fe7d6c46681c01439182a80f00fad7960220815d6d2d",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/verify_units.py": "0912f65e894e55b916c66e0ad492823e1b2fe9d34505331f305f196341f60cc2",
+    "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py": "78fc89e7aea306d70fc3f76353f11fd742a1c6347f4b58d22e3017a89210ccb1",
+    "/workspace/fallout-Marseille/tests/expansion/city_architecture_browser.py": "8c2c41d64f0009b47a711ba03d41f29a926c5b9a39c2a88019dd029a4201d178",
+    "/workspace/fallout-Marseille/tests/expansion/city_restore.py": "54a40d5196da726684be5721ed495afc21733d65e0fccdc893064b72a1ac292a",
+    "/workspace/fallout-Marseille/tests/expansion/controller_browser.py": "c0155d438fadc50c52626aa5bdf64614525024a8ca3731484fe51008c4922854",
+    "/workspace/fallout-Marseille/tests/expansion/gameplay_native.py": "12bd5227620ba9672cd3207fab7573b8b6e5f72aeb1e3d63c7fb7eb587f41525",
+    "/workspace/fallout-Marseille/tests/expansion/geography_browser.py": "e25bf88897691fa7cc3f82bf121160ee7244b64ce9a79fd1e3c538b86bf3a33a",
+    "/workspace/fallout-Marseille/tests/expansion/geography_real_sources.py": "301a4b1cf6bdfbc7e808b57c2b5e04bbdea7fc93949381c316a2cfeaa3d27017",
+    "/workspace/fallout-Marseille/tests/expansion/importer_sources.py": "7555333fb45f3558d5e973e37669e1c9947d12601567a46062f9f742119edca0",
+    "/workspace/fallout-Marseille/tests/expansion/renderer_browser.py": "f32a3e5ddb51fe52f07e49256c294f577251459017030382c654e2241cbbe33b",
+    "/workspace/fallout-Marseille/tests/expansion/roof_browser.py": "a484e3134f342d356963e82579b2f1c4106ac2170af85e7ffe9fd6adfbf92f9a",
+    "/workspace/fallout-Marseille/tests/expansion/source_status_browser.py": "c121ede99bf5cc8678e2c51f22dafe8cc53c41110ee8b3cd639d17f147e7e537",
+    "/workspace/fallout-Marseille/tests/expansion/surfaces_browser.py": "be0c3d898fdec7836ebb2106cf6ac3c24d7a8973742f36acd1667b685590bdd8",
+    "/workspace/fallout-Marseille/tests/expansion/test_acquisition.py": "3aa40f1e6a509218d82721ac4db40913850a83f29905b5eea72b703309e39d99",
+    "/workspace/fallout-Marseille/tests/expansion/test_city_sources.py": "19fc6c1d3aed897aa78e08477ee9bcd0050fbed6a638e68f7ab05ccc946e1ef8",
+    "/workspace/fallout-Marseille/tests/expansion/test_city_terrain.py": "3361d93776a1b6e24c96c9769c62f667572cd4879099d80662ca5aef78db4548",
+    "/workspace/fallout-Marseille/tests/expansion/test_city_water.py": "e5f4186495cc8867ef0d9d035d9e6315b9cef941eff7548f9e501a49f866ad99",
+    "/workspace/fallout-Marseille/tests/expansion/test_dem_acquisition.py": "0350b488185caecdb2354a5126428d4d7fe96988dac37f93ce5ab9c29bb56754",
+    "/workspace/fallout-Marseille/tests/expansion/test_dem_conversion.py": "36d86cf1ab65a443e63a5cf61aa1a95f3f99a164b093ba70723841636b685cc9",
+    "/workspace/fallout-Marseille/tests/expansion/test_geometry_broadphase.py": "7cd0a8cd872887efc7a6f06b4c7b2021141180edad2a66a52fceb4ec408e92b4",
+    "/workspace/fallout-Marseille/tests/expansion/test_world_source_bundle.py": "59a2a2bb7045cdef7bbf4198a4174d8c0ca966a4e5b6e9f0df41655fe1d7235d",
+    "/workspace/fallout-Marseille/tests/v050/test_installers.py": "dd41b0f3b03aea09faf83d2fee96548adebae013fa011cfff1db091981457215",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/REBUILD.json": "77d7eb4dd2f985aed892880359cb8ddbd3d14ab499d4faef93f0c0df66f52b94",
+    "/workspace/fallout-Marseille/tools/build_single.py": "51a7085138d8713f98ae13845843c105e027d1d32741f38f4b4d37ff26b78a38",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/QA_LEGACY.json": "a86fce0f39bb087a7b2b503c24becef8fd5d64d52597f1b4970f7a341004f9c3",
+    "/workspace/fallout-Marseille/tools/check_v050.py": "d40e008ddf69976fa7a0f168bf014ec20c6d5aa05bd1245172fc786a7ce3eb4b",
+    "/workspace/fallout-Marseille/tools/check_v049.py": "a8779307a214e5afaa271569026d860f4e5405301ff3335aa033c452d97f1562",
+    "/workspace/fallout-Marseille/tests/v049/kernel.test.cjs": "7cf4df83ab2a17a64f17cdd6c54a3e655b400b04acfaad097e864d70079a7d8a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_ENCOUNTER_KERNEL.json": "dfc8a37813ca488fa99ba5d3e9bb7fe74309ba001cd66031a81c69b200d74465",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/kernel.test.cjs.log": "02164b378ef253630e9e2f7795fa4079a21d294d8378fb7573ee85b2729c2258",
+    "/workspace/fallout-Marseille/tests/v049/runtime.py": "494cd3bd321687f76be484ebcc2f3946136af8cc6403227299d8e37ae333055a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_ENCOUNTERS.json": "f63c22778edcee3011bf99f9dd1b3ae5baaaa80e4b6027ab7bceabe14b2b66d3",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/runtime.py.log": "424b0c15d30a6b58b37a697c3fc1c9bdaeeed2ff365413b3826b9b59e39930c5",
+    "/workspace/fallout-Marseille/tests/v049/saves.py": "8bbd65103be8f37762dfea9db95aa7f9e0e558c0bc7174e5f320ec55c17bbc66",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_ENCOUNTER_SAVES.json": "770925d31cbd924b5f0217b5ae7c1ac0c5a23c34801989312a263fbe99b1b4aa",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/saves.py.log": "e343a931e6939b0d706d3091063266b8d26d47c62e10e42e60542aa041c8fd34",
+    "/workspace/fallout-Marseille/tests/v049/v048_kernel.test.cjs": "0673864faa14ca62d4ffde3b320ca9d5ebbc4a2381ab3674aa1354624f59a0be",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_BUDGET_PASSAGES.json": "c35157bb6632a37b4f3c8ebe51db0502468bed78d9e2f9a661a5f4ab7448050b",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_kernel.test.cjs.log": "4ebe42dab38aeb651b5fb9d9345d0f79f0d12117295690b9deba74824f114009",
+    "/workspace/fallout-Marseille/tests/v049/v048_runtime.py": "5107d8407043bc99fc4c7df7a02c4bd8a7fb517fc7c93bb86ed2ab95bab77074",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_PREPARATION_RETURNS.json": "0ff189c21832d6ceb29c9a3ae82f67be5eba0e4728685dad7803f9ed4f2f5d19",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_runtime.py.log": "cda071b84927bb4bf158a94a78ba63e47718159545e0d59c5127e2769d27b2ab",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_kernel.test.cjs": "ac3d62c67240e25c44baaba26a44996283655fe5d27df799a3f6f096596b18ef",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_KERNEL_NEW.json": "8f07e18ac10f1c69e99f4581fa5486bd9f10bb01f89400c5c03014e79cbeee38",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_kernel.test.cjs.log": "b857eab57e499c19f408cc16dd0f52b16bd617084dde7db530faecab6241a98e",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_legacy_kernel.test.cjs": "f0e142fedec5db69183d7fb6aefc372c125c66b05c5095c13512b99ecc4da288",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_KERNEL_LEGACY.json": "a74a5fb0363579ea49b452142b496510a5a28c48e49c0110545098369665c08a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_legacy_kernel.test.cjs.log": "5abde2cf0ebedaf151406943099cf5f93ed7b50bd95e6cfac0ff677217bddbd8",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_legacy_distribution.cjs": "5bbc218ecf136d5676b981ac702eb124d73b20220acd646bf3d18dbb1c9d8cda",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_DISTRIBUTION.json": "9061175c8e272da3c05c488849d3cd6f6648c2ac9c6fb541d4c1c58d10d79473",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_legacy_distribution.cjs.log": "756d98066dc7cf9e52d1fe6a9d2d3d5440b2913cd28e795257dcd2ec248f3a1b",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_runtime.py": "531da8ada7b1fe27f6e83d5b0d39e4d911e6e7b9088a4177efc1c6276d0c1a3b",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_STREAMING_NEW.json": "f8525fd1a1839e581f3325b78eb42eb0316242e7b51bc0c0398d792bbbd27d6a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_runtime.py.log": "86283ff86d964ccb47b877ad85c94d87b665b6b92e1f62d9477c05e233f0ceb6",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_server_io.py": "0355f38e42e9668c59664130b4972d805a498833916e42c83c7b97e596c9f206",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_SERVER_IO.json": "6d0e2d76fe61e9042e8e1751ef24d04183f7859f7666fd6c96d74162d081079f",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_server_io.py.log": "c99012972cc41d4efd91dde0e1aca5f4e321218d437b6020c162c9948a60203b",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_lab_isolation.py": "5f4e6a73adbd3e6ce68c608794f15afb43d80e2f73e65d84d8a9a9b3432799be",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_LAB_ISOLATION.json": "c5c0bc98bf852dd77e52c0e1cbe830ef0f74c8d41ab79214af6d688ff708329f",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_lab_isolation.py.log": "0fcae94ff58613056ad38714b3b4473a73614f39d25564a2ad4c0bdbef94ab3b",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_legacy_runtime.py": "71ddfeb247d19671ab727013a8af39cf5f23a660c3e769042a9c10c5a8ec5182",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_RUNTIME.json": "10171ba9201b5a2ef9a78c91fc1816baaa125493448d9c824becc077a68d6042",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_legacy_runtime.py.log": "3efdaee16b39bc5115f4b7bc1f984fafda5fb82fc3abe7536769ba52b7296ff7",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_legacy_regression_campaign.py": "65a0f2dd5604b1c1e8063a8657b1c7d16b3f4f33fa4f9399cb2b70cd5c4a537a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_CAMPAIGN.json": "b93f3f9fb5cb38c656f551a0bb1b6cc9b5310e37ba6e30e2610396c3a6e2a661",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_legacy_regression_campaign.py.log": "da3651142d22ed6620034d4a977b98136a0e95a99c04adf5bf60ffddd80abc03",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_legacy_regression_prologue.py": "3da693ca150250f2be66301147b36d46e975b83e18636f5435a75be94d24ce4a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_PROLOGUE.json": "080ef871981c7bb25f88e836c2221563ea6c232a554a6808f17474835a590ae6",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_legacy_regression_prologue.py.log": "e5fa77dcb3b38ae8c89115a876212fd4d4e8ee7aaa6f62c291b3fd4197b80651",
+    "/workspace/fallout-Marseille/tests/v049/v048_inherited_legacy_regression_product.py": "9189642a1d77ffadbb13810ac9ce945560feb78fb880bdc00e5e51490ef60092",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/QA_PRODUCT.json": "73eeebb2dd5c1b0af0da838995e28e2c767361ae207ded1cdf55beb202d6b203",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/legacy-final/verification/v050/legacy/v048_inherited_legacy_regression_product.py.log": "7433d96894834341d11d2703675093f8afc02cb469d89987d29d39e68a893847",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/CITY_ARCHITECTURE_BROWSER.json": "4f4a0265b552d817ab5e8290cff99c4516373a74004960d3f5e9033cf8649c27",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/01_city_sources.png": "c3f6b46fcf454e2f206fd3cedb8f600e2784cd3fffa1ff4a5ac9ea0dc68f77c7",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/02_vieux_port.png": "4a8ce5607255c624ac9510de1706383eae9c82fd79d83ab025bc3142e33ccd85",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/02_estaque.png": "f0120f98b3fb9da87a9f64d2acafee857034c55a601fca3c2c5a2dd436c2a88e",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/03_interior_entry.png": "78ca114e28447dd76c954b0bf3c3f246d718a18d248e771b5b545310e4179848",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/04_interior_adjacent.png": "530128ed3397e77d8b72f41b17206c62324e5c423bb017b74f521ca90dd6d5a0",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/05_return_estaque.png": "5056ca4d4babacae7ee32ef08ef0b4882c93567744f9563dee36870cb1f1f2b3",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/EXECUTED_SCRIPT.py": "8c2c41d64f0009b47a711ba03d41f29a926c5b9a39c2a88019dd029a4201d178",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/EXECUTION.log": "a33f53325d5ad3229c217618cab666dcb6fd592730501a68b9283d787e2123cb",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-native/EXECUTION_IDENTITY.json": "291ed456afd1fc4ef9a26f8350ec48e0c81ed4376a7c6846ad09be50f0168f54",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/ARCHITECTURE_NATIVE.json": "da672c6747ad96d62914ee9cfa8acfb3082d215b162d7d1aa4943244fcca9370",
+    "/workspace/fallout-Marseille/data/map_pack/city/boundary-c15532675daf55dc.json": "c15532675daf55dc629c3f92f876e032715bf49ed2ade423f520dca36b792138",
+    "/workspace/fallout-Marseille/data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63",
+    "/workspace/fallout-Marseille/data/map_pack/city/m13055-r05-c06-3-1-aee24c2b2aba4547.json": "aee24c2b2aba45474de6ba72fa76b5dbcaee951fc09ec036583ca1b098ec7388",
+    "/workspace/fallout-Marseille/data/map_pack/city/m13055-r01-c12-c869798b17b6560c.json": "c869798b17b6560c0ed887e7c43c588988b550f9e3fbd8c4960dad9e89e6d0fe",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/01_real_site_context.png": "892f618d04ff9f01f97950b4537aecb466749ddd2761c2cd851725065416e050",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/02_real_site_context.png": "3af73ee6315461cdd3d716c23ee21fd7c34db340d5c729618cfa6c57b344909e",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/03_curved_source_interior.png": "dc63842218b0d1c6400a2faa0fe0930496f67687259fb84d3c17ddf6bf5c1028",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/04a_enclosed_room_doorway.png": "bea3813c34d77765bffac8993a1329d64f02ddb71864f81707a503d340714fad",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/04_enclosed_room_furniture.png": "e4b24fe5b9838ec93965cf1b538e52f9c03708b78e99d7f536d7a8f2618c38bd",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/05_adjacent_floor.png": "cea5e802d6bd209a49404c9b3df701f51b66841a7ac7d01f630eba238df61ac3",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/06_continue_same_floor.png": "d33d7f5f5cc8a7531f91e3c19a21ed03e1b6883921c9afbba17479e289a2a708",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/07_return_real_street.png": "6b9e4901e882a5557ecc8f3f27f5147feb017113121b3dcb143edd5a47c75a68",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/EXECUTED_SCRIPT.py": "78fc89e7aea306d70fc3f76353f11fd742a1c6347f4b58d22e3017a89210ccb1",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/EXECUTION.log": "1fcb41a7a316fe52f106e9b8a1c265778aa4079ab51bc5735a3089de5d1da67f",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/ACTUAL_LAYOUT_READONLY.json": "c6de47681158c5b02b328dfbddb28b31dc14fa06dac3def9091bc7add5795a60",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/ACTUAL_LAYOUT_AUDIT.svg": "4c00dd00f3a86ad4213219be8ac11c8be3ed5bcb672f915bf7c59c6374dc41ca",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final/EVIDENCE_INTEGRITY.json": "b68e9c98e0116a4f8e0b9a78ce05efc32a4818c0d5842798a0de39f85a3c1ebf",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/COVERAGE_MANIFEST.json": "82bb90f625f6cd3672483d4ec0a98abf311873321daad413fe2d9adef657f2f2",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/ACTUAL_ENTRANCE_COVERAGE.json": "3eb361f21360da8c7884a619cf5d9d496ce4c1d69e121a345976fc568c08d97e",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/COVERAGE_AUDIT.md": "e556dc6d9a1c7076a2ee47e75c955c52815e9f501adaeee2225368584c8a1540",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/DOCUMENT_EDGE_ORDER.json": "b22d57eaab66b610ef7fe7c65122162f60f5339bcb22f69cdfdbfd72db3917d3",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/DOCUMENT_ROUNDTRIP.json": "bc1b3033ce196eafa813652b2c5900debff3fdfce666bf29d1ffd3c13024c447",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/actual_entrances.cjs": "b0eaf3669a79f151c173a0bf6e9d56eaa55a4ea753a8aa1daae23f0e5b469c2e",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/document_edge_order.cjs": "a2de0c8e0f2a3073a52f86d704bcf0b4a9452f5df2d1efbf16c5aa407f90c64e",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/document_roundtrip.cjs": "f22295cc4666933a179b41a2b93fa1b1009d7e047f163b61d5e846101ec60426",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/facades-baseline.cjs": "4a54881ba8b8fe973048814d2f47d6a450df004a8e511e0e535ee34889f870b6",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/interiors-baseline.cjs": "f279ef34cba9adce3371ac29f16f25ecca127ae87712f2ad98b095447e55c1a1",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/runtime-harness.inc": "7e586dc686f76e6623bb87f195f314ea2b29cb0c6cecef1197ce69a72f606c6d",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/source-shapes/ATTRIBUTE_CROSS_TABS.json": "52e9a9ceaa1b72959b11abf67f01cc0f7813e6cf776cc0f6fb913eede4b04587",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/source-shapes/AUDIT_FILES.json": "9557abd6e087a8d338efab23410229b65cf830dda0cf53859809489aa4909c6f",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/source-shapes/CURVED_ELIGIBILITY.json": "9e2cc1dd179f06a6fb9048b7ca4f5deed8adc17cde24b8809a8a681e4c199057",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/source-shapes/RUN.log": "76d160252fa86f8cd13ebfdddebe342a03fb9c81c9b6c210e98cd091855de119",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/source-shapes/SOURCE_SHAPES.json": "479650bdebd9db57c54b59c2db0ac3595f95573d74f5a04a8290cf0443e232cd",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/source-shapes/SUMMARY.md": "65ea2fb150588d597d2e3866482458051b8ccd42ef59f1f4ff26fc4374a61217",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/source-shapes/cross_tabs.py": "9235f5432d0ef901e410f0fc83dc91235ca1a330adff423415954b0b4a027aeb",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/source-shapes/curved_eligibility.py": "2c13514d93248a35a66f19567e7d39a54809522d31c85229b14b5e142059d250",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage/source-shapes/scan.py": "0895cf01ecbf1c22933a7edb1b03a5957515dae77f06b1c423850693c1656070",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage-final/MANIFEST.json": "698000d1d62ae406c8351ebb940b56256a6304c0aafca29fc02575c2d8bd6475",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage-final/ATTRIBUTES_COMPARE.json": "88c8f74cbd2b448217a3f4851b994d0342620cb33d28038405c8c02857fb36ea",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage-final/CURVES_COMPARE.json": "d059f95bd80295117470a3f3108ceebebf15648be4b37bcabd81a0147e34b4ab",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage-final/DOOR_THRESHOLD_CASES.json": "be4632116a8fa68f20457bd938312f733c96edba5600841c8f8fb8f65c8e7b5b",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage-final/SUMMARY.md": "a3d6a7ada3ea6d859fd0ab89f95223c84e6e47153e439d9969e721c386ad1170",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage-final/attributes_compare.cjs": "a307cf4b951a02633566b22deb49bcbaebbae1a22909724eb1f8a7fcdfa510d5",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage-final/curves_compare.cjs": "45974b3c33547963c9306f4bd299d24adfc9c9ab9e2430f50f578597a099004b",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/coverage-final/summarize.py": "21158d18bf44c6425f0ab619dc8005fb232fbef098e69287bca35dc0b224b8f3",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/ARCHITECTURE_NATIVE.json": "b9df759a9a866646dafcd0e152ffed0cf83a8bb43c953f9598e274c872d5064b",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/01_real_site_context.png": "a8ed2744d33c857197052d8211ae3f07445caed3ff26c23c81e90441ff5cca7b",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/02_real_site_context.png": "222a8666e3ccc7a60741089ed824606198464e6eb0c974830f458cdc7f3c29e1",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/03_curved_source_interior.png": "c675284f691e8200b20e4d0431d2cd821b2cc405925ad10c3136d4ca0eb93f03",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/04_enclosed_room_furniture.png": "ea058a97eef9669f95cb6a7d8cf8f27ddec73ff6cf0c7f76a0f2a0dd65714bd4",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/05_adjacent_floor.png": "11891d5c9e39cb8aa6cfeab2d5acca719e8ed3bd12a4370baadc5bf9f213b7dd",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/06_continue_same_floor.png": "7905d0c70a6fa45110d61360c9c46c88e5de802039e16ac603ad703c602a3784",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/07_return_real_street.png": "b283bff26c6d6d129f44d751adb6864aef2e7aefb9449d23e512d4580bc867f9",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/ACTUAL_LAYOUT_AUDIT.svg": "30f1bc03a4a22e61a10d570213ac2f10aed08c050d67ad338bfec84b17139da2",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/ACTUAL_LAYOUT_READONLY.json": "c84be443779c546b6d026d9111bf7f32d4816c55e3921dae2b42f9d81397ad8e",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/failed-initial-network/EXECUTED_SCRIPT.py": "8a52239d80478f4e40f64bbaf15069124d6a97cf5713158e6a64bd3f4c0dbcb5",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/CITY_ARCHITECTURE_BROWSER.json": "834c4453b94317a3533b424ce84294e5f379e1eb047d811392f696037e2b892d",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/01_city_sources.png": "63f6a5c56a41ffae012905824d00f329bcfbdbfafeb007a6a392c0bf7d67c547",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/02_estaque.png": "2b4ca5eacd7568240ed1f282d089fd69858d83aace87323560ebff09e44e08bd",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/02_vieux_port.png": "2db64753e9595d70030c0413dbdb8d31b369d201a3450dd66e5909078d45943c",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/03_interior_entry.png": "f0c73c298e810b2ef55a1b0a2fc244a5d2edb1ad9425ece127dbb9059d1b13d3",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/04_interior_adjacent.png": "3ed1397940715d634079c4cc666c698fec962239261dbbbdfccf0690ed20c4d6",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/DIAGNOSTIC_SCOPE.md": "66635c2cd6d288b70f9b7f6a3e8187efd84782a9a666567087bd4211a32e5388",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/EXECUTED_SCRIPT.py": "f402148a27de55cd3015e8008ec9800b06072369b1c90fa6f84ed9f8915d298a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/EXECUTION.log": "e4b0743fef05f245084fadf057e5d69c705fb43521a96e3329ecb831e7a74540",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/diagnose-interior-reserve.cjs": "f2834c3fda2ae33bd5bbb5eebfaab66704d3b3686f0c01fc1594e5c6fa2e966c",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper/diagnose-interior-reserve.json": "e2f7435579a5b57ca409d0902b3dbb1379393ac78ccb54a979c6b4a624e12f96",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/CITY_ARCHITECTURE_BROWSER.json": "ad398708f1282a7782da27ab674adad99adfe00dfb4d3331bbe5b6ff155a7f9c",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/01_city_sources.png": "216f7b7a538875434e56aabc41c3c6c13f7988ea43afbc8ca2795e7f2f7632f3",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/02_estaque.png": "b2aec473a9a394392717946e4c50180cb9b95f4ec64a731f8d226a74a783adfc",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/02_vieux_port.png": "3375d0d23e10f9204d51a8fd48e271675309d41e2ca03ba5fa4abc55159203ec",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/03_interior_entry.png": "6e5ccbffeefc5481cb5f8566c74418d3dd39cf5278c9655234d2948f903f5840",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/04_interior_adjacent.png": "4bfa5082c0cd2257619df8b1563e4d5f43959fa8d912088a7eccb3f193750c55",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/DIAGNOSTIC_SCOPE.md": "66635c2cd6d288b70f9b7f6a3e8187efd84782a9a666567087bd4211a32e5388",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/EXECUTED_SCRIPT.py": "c9d25dec5030fb233ab0496e818155c846fa369bae689f3dad9ba76ac75dc5f6",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/EXECUTION.log": "f044e2dda85675e2fb8e3bf7e8145de4380ff63c040f6254745f7a78d2c09d59",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/diagnose-reserve-selection.cjs": "d7539eea6e32002fb815597be31a34cee7326cee523f84cf14b8d8513207da09",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/city-failed-helper-anchor/diagnose-reserve-selection.json": "f3dbe24c978cf02eabdf2d65c6aa21efac47739eb79005b723afa2eba3df797a",
+    "/workspace/.cloud-setup/fallout-marseille/architecture-continuation/collect_architecture.py": "3f6edb615fd2ff12ab92f163a6be51ff4076f57054d644eae22385829a9faaa3",
+    "/workspace/fallout-Marseille/tools/architecture_documents.cjs": "31e286bf427b937674f8f4bc1b3bf44cb3917e31a3c671b9d42a401b36db7b46"
+  },
+  "reportedAssertionSum": 1492,
+  "assertionSumIsNotEquivalentPlaythroughCount": true
+}

@@ -1,0 +1,21 @@
+target [ 1.0403756204599524, 3.95, 0.07191690455417676 ] eye [ 1.0403756204599524, 4.550000000000001, 0.07191690455417676 ] entry [ -1.8658627353106567, -0.06263585114720627 ] height 2.9000000000000004
+containers [
+  'v050_city_interior|city:6e43b6b34940d3ed:0',
+  'v050_city_interior|city:6e43b6b34940d3ed:1'
+] interactables [
+  {
+    id: 'city-interior-landing',
+    pos: [ -1.8658627353106567, 4, -0.06263585114720627 ],
+    priority: 8,
+    radius: 3
+  },
+  {
+    id: 'v026:v050_city_interior|city:6e43b6b34940d3ed:1',
+    pos: [ 1.0403756204599524, 3.95, 0.07191690455417676 ],
+    priority: 5,
+    radius: 3.3
+  }
+]
+selection {"pitch":0,"selected":{"id":"city-interior-landing","label":"Palier · niveau 1 · accès et provenance","pos":[-1.8658627353106567,4,-0.06263585114720627]},"label":"Palier · niveau 1 · accès et provenance","landingLOS":true,"targetLOS":true}
+selection {"pitch":-1.3,"selected":{"id":"v026:v050_city_interior|city:6e43b6b34940d3ed:1","label":"Fouiller · Réserve fictive · Bâtiment","pos":[1.0403756204599524,3.95,0.07191690455417676]},"label":"Fouiller · Réserve fictive · Bâtiment","landingLOS":true,"targetLOS":true}
+selection {"pitch":-1.5707963267948966,"selected":{"id":"v026:v050_city_interior|city:6e43b6b34940d3ed:1","label":"Fouiller · Réserve fictive · Bâtiment","pos":[1.0403756204599524,3.95,0.07191690455417676]},"label":"Fouiller · Réserve fictive · Bâtiment","landingLOS":true,"targetLOS":true}

@@ -1,0 +1,3577 @@
+{
+  "scope": "Read-only statistical audit of actual pinned IGN city vectors; area and dimensions projected by the exact current engine Lambert-93 formula (copied without modification), translation-stable area arithmetic; source IDs deduplicated, returned border objects included",
+  "indexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+  "counts": {
+    "uniqueBuildings": 291001,
+    "singlepartBuildings": 291001,
+    "buildingComponents": 291001,
+    "heightBasis:absolute-roof-ground": 261741,
+    "buildingsWithCourtyards": 344,
+    "componentsGuaranteedOverHighQualityOpeningBudgetApprox85": 11889,
+    "componentsPossiblyOverHighQualityOpeningBudgetApprox85": 15552,
+    "nonNullSourceLevels": 133248,
+    "heightBasis:hauteur": 27907,
+    "declaredOrDerivedFloorsTooLowBuildings": 1593,
+    "declaredFloorsOver8m": 13890,
+    "rejectedOnlyByFloatThresholdAt195cm": 27,
+    "heightBelowActorMinimumBuildings": 3144,
+    "missingPositiveDeclaredHeight": 1694,
+    "heightBasis:default-estimate": 1245,
+    "buildingsOver1000m2": 3085,
+    "componentsBBoxNarrowerThanActorDiameter": 21,
+    "nonNullInvalidSourceLevels": 355,
+    "invalidSourceLevelsValue:0": 355,
+    "heightBasis:levels-estimate": 108,
+    "missingAbsoluteGround": 275,
+    "buildingsOver10000m2": 46,
+    "componentsGuaranteedOverMaxFacadeOpeningPlan4096": 3,
+    "componentsPossiblyOverMaxFacadeOpeningPlan4096": 4,
+    "buildingsOver50000m2": 2
+  },
+  "primaryUses": {
+    "Indifférencié": 150233,
+    "Résidentiel": 104404,
+    "Commercial et services": 15436,
+    "Annexe": 18887,
+    "Religieux": 431,
+    "Industriel": 1137,
+    "Sportif": 327,
+    "Agricole": 146
+  },
+  "natures": {
+    "Indifférenciée": 280359,
+    "Fort, blockhaus, casemate": 50,
+    "Industriel, agricole ou commercial": 9983,
+    "Eglise": 352,
+    "Serre": 110,
+    "Château": 34,
+    "Chapelle": 21,
+    "Tribune": 38,
+    "Tour, donjon": 15,
+    "Arène ou théâtre antique": 4,
+    "Monument": 6,
+    "Arc de triomphe": 1,
+    "Silo": 25,
+    "Moulin à vent": 3
+  },
+  "sourceLevelsDistribution": {
+    "2.0": 46388,
+    "1.0": 57668,
+    "4.0": 6388,
+    "3.0": 8759,
+    "5.0": 6229,
+    "6.0": 3383,
+    "0.0": 355,
+    "9.0": 673,
+    "7.0": 1487,
+    "15.0": 20,
+    "8.0": 1020,
+    "11.0": 229,
+    "17.0": 18,
+    "18.0": 13,
+    "12.0": 69,
+    "10.0": 420,
+    "13.0": 37,
+    "21.0": 5,
+    "16.0": 28,
+    "26.0": 2,
+    "14.0": 36,
+    "19.0": 8,
+    "22.0": 2,
+    "23.0": 3,
+    "20.0": 8
+  },
+  "largest": [
+    {
+      "id": "batiment.49693149",
+      "cleabs": "BATIMENT0000000040578362",
+      "path": "data/map_pack/city/m13055-r07-c05-2-6b7b35206c68b5c3.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 28.4,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 14.2,
+      "areaM2": 68352.437,
+      "components": [
+        {
+          "areaM2": 68352.437,
+          "bboxMetres": [
+            575.2,
+            263.9
+          ],
+          "rings": 1,
+          "nodes": 92,
+          "potentialOpeningCandidateBounds": [
+            630,
+            630
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 92,
+      "rawMaxRingNodes": 92
+    },
+    {
+      "id": "batiment.49693150",
+      "cleabs": "BATIMENT0000000040578365",
+      "path": "data/map_pack/city/m13055-r07-c05-2-6b7b35206c68b5c3.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 19.4,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 19.4,
+      "areaM2": 56993.557,
+      "components": [
+        {
+          "areaM2": 56993.557,
+          "bboxMetres": [
+            576.1,
+            269.199
+          ],
+          "rings": 2,
+          "nodes": 82,
+          "potentialOpeningCandidateBounds": [
+            318,
+            318
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 82,
+      "rawMaxRingNodes": 62
+    },
+    {
+      "id": "batiment.39111842",
+      "cleabs": "BATIMENT0000000356606134",
+      "path": "data/map_pack/city/m13055-r04-c07-0-38c606670112446a.json",
+      "nature": "Tribune",
+      "usage_1": "Sportif",
+      "heightM": 67.3,
+      "heightBasis": "hauteur",
+      "levels": 22,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0591,
+      "areaM2": 40715.481,
+      "components": [
+        {
+          "areaM2": 40715.481,
+          "bboxMetres": [
+            252.0,
+            253.801
+          ],
+          "rings": 2,
+          "nodes": 74,
+          "potentialOpeningCandidateBounds": [
+            6864,
+            8206
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 74,
+      "rawMaxRingNodes": 45
+    },
+    {
+      "id": "batiment.26084875",
+      "cleabs": "BATIMENT0000000318264299",
+      "path": "data/map_pack/city/m13055-r05-c10-1-7c754ef400e02b93.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 9.5,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 4.75,
+      "areaM2": 35307.362,
+      "components": [
+        {
+          "areaM2": 35307.362,
+          "bboxMetres": [
+            268.5,
+            188.601
+          ],
+          "rings": 1,
+          "nodes": 96,
+          "potentialOpeningCandidateBounds": [
+            266,
+            266
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 96,
+      "rawMaxRingNodes": 96
+    },
+    {
+      "id": "batiment.39112127",
+      "cleabs": "BATIMENT0000000356608359",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 23.3,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 4,
+      "levelsDeclared": true,
+      "sourceLevels": 4,
+      "levelHeightM": 5.825,
+      "areaM2": 33814.747,
+      "components": [
+        {
+          "areaM2": 33814.747,
+          "bboxMetres": [
+            200.5,
+            290.199
+          ],
+          "rings": 1,
+          "nodes": 26,
+          "potentialOpeningCandidateBounds": [
+            712,
+            712
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 26,
+      "rawMaxRingNodes": 26
+    },
+    {
+      "id": "batiment.9597952",
+      "cleabs": "BATIMENT0000000258332107",
+      "path": "data/map_pack/city/m13055-r04-c10-3-6311bf4871a90bd4.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 9.2,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 4.6,
+      "areaM2": 25458.148,
+      "components": [
+        {
+          "areaM2": 25458.148,
+          "bboxMetres": [
+            264.0,
+            151.6
+          ],
+          "rings": 1,
+          "nodes": 35,
+          "potentialOpeningCandidateBounds": [
+            244,
+            244
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 35,
+      "rawMaxRingNodes": 35
+    },
+    {
+      "id": "batiment.9980946",
+      "cleabs": "BATIMENT0000000258943716",
+      "path": "data/map_pack/city/m13055-r07-c05-2-6b7b35206c68b5c3.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel",
+      "heightM": 16.6,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 16.6,
+      "areaM2": 22327.74,
+      "components": [
+        {
+          "areaM2": 22327.74,
+          "bboxMetres": [
+            248.401,
+            202.799
+          ],
+          "rings": 1,
+          "nodes": 31,
+          "potentialOpeningCandidateBounds": [
+            157,
+            157
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 31,
+      "rawMaxRingNodes": 31
+    },
+    {
+      "id": "batiment.47151515",
+      "cleabs": "BATIMENT0000002276334174",
+      "path": "data/map_pack/city/m13055-r06-c04-16022882c640604d.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié",
+      "heightM": 9.6,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 4.8,
+      "areaM2": 20741.672,
+      "components": [
+        {
+          "areaM2": 20741.672,
+          "bboxMetres": [
+            212.0,
+            267.4
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            286,
+            286
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9975915",
+      "cleabs": "BATIMENT0000000258937351",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel",
+      "heightM": 26.1,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 3,
+      "levelsDeclared": true,
+      "sourceLevels": 3,
+      "levelHeightM": 8.7,
+      "areaM2": 20632.586,
+      "components": [
+        {
+          "areaM2": 20632.586,
+          "bboxMetres": [
+            265.7,
+            163.999
+          ],
+          "rings": 1,
+          "nodes": 28,
+          "potentialOpeningCandidateBounds": [
+            393,
+            393
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 28,
+      "rawMaxRingNodes": 28
+    },
+    {
+      "id": "batiment.39112380",
+      "cleabs": "BATIMENT0000000356610393",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 13.6,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 13.6,
+      "areaM2": 19863.261,
+      "components": [
+        {
+          "areaM2": 19863.261,
+          "bboxMetres": [
+            211.199,
+            313.1
+          ],
+          "rings": 1,
+          "nodes": 27,
+          "potentialOpeningCandidateBounds": [
+            160,
+            160
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 27,
+      "rawMaxRingNodes": 27
+    },
+    {
+      "id": "batiment.9279961",
+      "cleabs": "BATIMENT0000000257907574",
+      "path": "data/map_pack/city/m13055-r02-c07-2-9513a55ebd02852a.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 8.3,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 8.3,
+      "areaM2": 17366.215,
+      "components": [
+        {
+          "areaM2": 17366.215,
+          "bboxMetres": [
+            143.1,
+            220.0
+          ],
+          "rings": 1,
+          "nodes": 26,
+          "potentialOpeningCandidateBounds": [
+            120,
+            120
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 26,
+      "rawMaxRingNodes": 26
+    },
+    {
+      "id": "batiment.9603580",
+      "cleabs": "BATIMENT0000000258338768",
+      "path": "data/map_pack/city/m13055-r05-c10-1-7c754ef400e02b93.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel",
+      "heightM": 11.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 3,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.9667,
+      "areaM2": 17059.744,
+      "components": [
+        {
+          "areaM2": 17059.744,
+          "bboxMetres": [
+            200.6,
+            181.7
+          ],
+          "rings": 1,
+          "nodes": 12,
+          "potentialOpeningCandidateBounds": [
+            366,
+            366
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 12,
+      "rawMaxRingNodes": 12
+    },
+    {
+      "id": "batiment.9973475",
+      "cleabs": "BATIMENT0000000258934285",
+      "path": "data/map_pack/city/m13055-r06-c05-3-1-8b4bc1be5abebc6e.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel",
+      "heightM": 9.5,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 4.75,
+      "areaM2": 16596.372,
+      "components": [
+        {
+          "areaM2": 16596.372,
+          "bboxMetres": [
+            133.9,
+            235.099
+          ],
+          "rings": 1,
+          "nodes": 48,
+          "potentialOpeningCandidateBounds": [
+            226,
+            226
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 48,
+      "rawMaxRingNodes": 48
+    },
+    {
+      "id": "batiment.9598332",
+      "cleabs": "BATIMENT0000000258332578",
+      "path": "data/map_pack/city/m13055-r04-c10-3-6311bf4871a90bd4.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 13.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 13.9,
+      "areaM2": 16333.46,
+      "components": [
+        {
+          "areaM2": 16333.46,
+          "bboxMetres": [
+            167.7,
+            161.301
+          ],
+          "rings": 1,
+          "nodes": 48,
+          "potentialOpeningCandidateBounds": [
+            95,
+            95
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 48,
+      "rawMaxRingNodes": 48
+    },
+    {
+      "id": "batiment.39112208",
+      "cleabs": "BATIMENT0000000356609877",
+      "path": "data/map_pack/city/m13055-r04-c08-2-6987b66ce033f6c1.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 10.5,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 10.5,
+      "areaM2": 16168.554,
+      "components": [
+        {
+          "areaM2": 16168.554,
+          "bboxMetres": [
+            122.2,
+            211.7
+          ],
+          "rings": 1,
+          "nodes": 23,
+          "potentialOpeningCandidateBounds": [
+            114,
+            114
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 23,
+      "rawMaxRingNodes": 23
+    }
+  ],
+  "complexest": [
+    {
+      "id": "batiment.49696442",
+      "cleabs": "BATIMENT0000000040642373",
+      "path": "data/map_pack/city/m13055-r04-c08-2-6987b66ce033f6c1.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Religieux",
+      "heightM": 45.8,
+      "heightBasis": "hauteur",
+      "levels": 15,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0533,
+      "areaM2": 12333.952,
+      "components": [
+        {
+          "areaM2": 12333.952,
+          "bboxMetres": [
+            291.7,
+            290.8
+          ],
+          "rings": 2,
+          "nodes": 568,
+          "potentialOpeningCandidateBounds": [
+            8190,
+            8190
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 568,
+      "rawMaxRingNodes": 541
+    },
+    {
+      "id": "batiment.49696644",
+      "cleabs": "BATIMENT0000000040645751",
+      "path": "data/map_pack/city/m13055-r04-c08-3-2-aeba8504e3688b05.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 36.8,
+      "heightBasis": "hauteur",
+      "levels": 12,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0667,
+      "areaM2": 11205.082,
+      "components": [
+        {
+          "areaM2": 11205.082,
+          "bboxMetres": [
+            288.9,
+            241.5
+          ],
+          "rings": 3,
+          "nodes": 527,
+          "potentialOpeningCandidateBounds": [
+            8220,
+            11016
+          ]
+        }
+      ],
+      "ringCount": 3,
+      "nodeCount": 527,
+      "rawMaxRingNodes": 454
+    },
+    {
+      "id": "batiment.9833556",
+      "cleabs": "BATIMENT0000000258758997",
+      "path": "data/map_pack/city/m13055-r05-c09-0-a82568fa80b2cdf0.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 8.7,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 8.7,
+      "areaM2": 3491.2,
+      "components": [
+        {
+          "areaM2": 3491.2,
+          "bboxMetres": [
+            102.5,
+            74.1
+          ],
+          "rings": 1,
+          "nodes": 393,
+          "potentialOpeningCandidateBounds": [
+            87,
+            106
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 393,
+      "rawMaxRingNodes": 393
+    },
+    {
+      "id": "batiment.10635908",
+      "cleabs": "BATIMENT0000000273409007",
+      "path": "data/map_pack/city/m13055-r04-c06-2-3-5ab5bc4abf8d98e3.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 28.8,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 9,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.2,
+      "areaM2": 4511.427,
+      "components": [
+        {
+          "areaM2": 4511.427,
+          "bboxMetres": [
+            115.8,
+            108.0
+          ],
+          "rings": 2,
+          "nodes": 315,
+          "potentialOpeningCandidateBounds": [
+            909,
+            1116
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 315,
+      "rawMaxRingNodes": 244
+    },
+    {
+      "id": "batiment.10162399",
+      "cleabs": "BATIMENT0000000259321612",
+      "path": "data/map_pack/city/m13055-r05-c07-3-1-c9417ade874c3f71.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 13.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 5,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.78,
+      "areaM2": 3575.08,
+      "components": [
+        {
+          "areaM2": 3575.08,
+          "bboxMetres": [
+            105.0,
+            76.0
+          ],
+          "rings": 1,
+          "nodes": 273,
+          "potentialOpeningCandidateBounds": [
+            425,
+            550
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 273,
+      "rawMaxRingNodes": 273
+    },
+    {
+      "id": "batiment.9294848",
+      "cleabs": "BATIMENT0000000257925921",
+      "path": "data/map_pack/city/m13055-r04-c07-1-0-beb5d737bcc2d664.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 13.4,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 13.4,
+      "areaM2": 3698.881,
+      "components": [
+        {
+          "areaM2": 3698.881,
+          "bboxMetres": [
+            117.6,
+            93.101
+          ],
+          "rings": 2,
+          "nodes": 253,
+          "potentialOpeningCandidateBounds": [
+            88,
+            146
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 253,
+      "rawMaxRingNodes": 249
+    },
+    {
+      "id": "batiment.9295829",
+      "cleabs": "BATIMENT0000000257927073",
+      "path": "data/map_pack/city/m13055-r04-c07-0-38c606670112446a.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 31.7,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 11,
+      "levelsDeclared": true,
+      "sourceLevels": 11,
+      "levelHeightM": 2.8818,
+      "areaM2": 2017.926,
+      "components": [
+        {
+          "areaM2": 2017.926,
+          "bboxMetres": [
+            170.001,
+            132.5
+          ],
+          "rings": 1,
+          "nodes": 220,
+          "potentialOpeningCandidateBounds": [
+            836,
+            1001
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 220,
+      "rawMaxRingNodes": 220
+    },
+    {
+      "id": "batiment.9978032",
+      "cleabs": "BATIMENT0000000258939953",
+      "path": "data/map_pack/city/m13055-r06-c05-1-b7e7165c0751cadd.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 15.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 3,
+      "levelsDeclared": true,
+      "sourceLevels": 3,
+      "levelHeightM": 5.3,
+      "areaM2": 8923.634,
+      "components": [
+        {
+          "areaM2": 8923.634,
+          "bboxMetres": [
+            205.4,
+            112.5
+          ],
+          "rings": 1,
+          "nodes": 207,
+          "potentialOpeningCandidateBounds": [
+            162,
+            162
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 207,
+      "rawMaxRingNodes": 207
+    },
+    {
+      "id": "batiment.10635832",
+      "cleabs": "BATIMENT0000000273408921",
+      "path": "data/map_pack/city/m13055-r04-c06-2-3-5ab5bc4abf8d98e3.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 20.0,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 4,
+      "levelsDeclared": true,
+      "sourceLevels": 4,
+      "levelHeightM": 5.0,
+      "areaM2": 1071.585,
+      "components": [
+        {
+          "areaM2": 1071.585,
+          "bboxMetres": [
+            55.5,
+            57.9
+          ],
+          "rings": 1,
+          "nodes": 199,
+          "potentialOpeningCandidateBounds": [
+            120,
+            180
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 199,
+      "rawMaxRingNodes": 199
+    },
+    {
+      "id": "batiment.9376007",
+      "cleabs": "BATIMENT0000000258035753",
+      "path": "data/map_pack/city/m13055-r02-c12-f63b7db3435557c3.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 13.1,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 4,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.275,
+      "areaM2": 1757.008,
+      "components": [
+        {
+          "areaM2": 1757.008,
+          "bboxMetres": [
+            112.8,
+            74.0
+          ],
+          "rings": 1,
+          "nodes": 184,
+          "potentialOpeningCandidateBounds": [
+            216,
+            412
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 184,
+      "rawMaxRingNodes": 184
+    },
+    {
+      "id": "batiment.8928094",
+      "cleabs": "BATIMENT0000000257241147",
+      "path": "data/map_pack/city/m13055-r07-c10-1-69a0b143bb798f20.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 5.7,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 5.7,
+      "areaM2": 226.076,
+      "components": [
+        {
+          "areaM2": 226.076,
+          "bboxMetres": [
+            25.8,
+            19.8
+          ],
+          "rings": 1,
+          "nodes": 180,
+          "potentialOpeningCandidateBounds": [
+            17,
+            19
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 180,
+      "rawMaxRingNodes": 180
+    },
+    {
+      "id": "batiment.10166557",
+      "cleabs": "BATIMENT0000000259326670",
+      "path": "data/map_pack/city/m13055-r05-c07-3-3-d5ef1e11cb9c7937.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Annexe",
+      "heightM": 9.8,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 9.8,
+      "areaM2": 64.806,
+      "components": [
+        {
+          "areaM2": 64.806,
+          "bboxMetres": [
+            10.801,
+            10.8
+          ],
+          "rings": 2,
+          "nodes": 180,
+          "potentialOpeningCandidateBounds": [
+            0,
+            0
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 180,
+      "rawMaxRingNodes": 90
+    },
+    {
+      "id": "batiment.9279779",
+      "cleabs": "BATIMENT0000000257907376",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel",
+      "heightM": 7.6,
+      "heightBasis": "hauteur",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 7.6,
+      "areaM2": 2145.19,
+      "components": [
+        {
+          "areaM2": 2145.19,
+          "bboxMetres": [
+            70.9,
+            53.9
+          ],
+          "rings": 1,
+          "nodes": 175,
+          "potentialOpeningCandidateBounds": [
+            23,
+            23
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 175,
+      "rawMaxRingNodes": 175
+    },
+    {
+      "id": "batiment.8924376",
+      "cleabs": "BATIMENT0000000257236744",
+      "path": "data/map_pack/city/m13055-r07-c10-1-69a0b143bb798f20.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 4.1,
+      "heightBasis": "hauteur",
+      "levels": 1,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 4.1,
+      "areaM2": 78.815,
+      "components": [
+        {
+          "areaM2": 78.815,
+          "bboxMetres": [
+            6.9,
+            15.3
+          ],
+          "rings": 1,
+          "nodes": 168,
+          "potentialOpeningCandidateBounds": [
+            3,
+            3
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 168,
+      "rawMaxRingNodes": 168
+    },
+    {
+      "id": "batiment.10434282",
+      "cleabs": "BATIMENT0000000271203411",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié",
+      "heightM": 6,
+      "heightBasis": "default-estimate",
+      "levels": 1,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 6.0,
+      "areaM2": 5392.504,
+      "components": [
+        {
+          "areaM2": 5392.504,
+          "bboxMetres": [
+            93.5,
+            90.0
+          ],
+          "rings": 1,
+          "nodes": 168,
+          "potentialOpeningCandidateBounds": [
+            38,
+            38
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 168,
+      "rawMaxRingNodes": 168
+    }
+  ],
+  "tallest": [
+    {
+      "id": "batiment.26019993",
+      "cleabs": "BATIMENT0000000318180832",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 143.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 143.9,
+      "areaM2": 1548.691,
+      "components": [
+        {
+          "areaM2": 1548.691,
+          "bboxMetres": [
+            51.899,
+            57.5
+          ],
+          "rings": 1,
+          "nodes": 23,
+          "potentialOpeningCandidateBounds": [
+            26,
+            26
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 23,
+      "rawMaxRingNodes": 23
+    },
+    {
+      "id": "batiment.48325656",
+      "cleabs": "BATIMENT0000002487994488",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 143.5,
+      "heightBasis": "hauteur",
+      "levels": 34,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 4.2206,
+      "areaM2": 384.01,
+      "components": [
+        {
+          "areaM2": 384.01,
+          "bboxMetres": [
+            38.6,
+            21.9
+          ],
+          "rings": 1,
+          "nodes": 15,
+          "potentialOpeningCandidateBounds": [
+            510,
+            510
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 15,
+      "rawMaxRingNodes": 15
+    },
+    {
+      "id": "batiment.41230122",
+      "cleabs": "BATIMENT0000002012108785",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 135.5,
+      "heightBasis": "hauteur",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 135.5,
+      "areaM2": 1702.331,
+      "components": [
+        {
+          "areaM2": 1702.331,
+          "bboxMetres": [
+            71.4,
+            41.401
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            53,
+            64
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.10615475",
+      "cleabs": "BATIMENT0000000273384124",
+      "path": "data/map_pack/city/m13055-r04-c06-1-1-7e14c77f2d5e4113.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 102.8,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 34,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0235,
+      "areaM2": 1288.416,
+      "components": [
+        {
+          "areaM2": 1288.416,
+          "bboxMetres": [
+            51.2,
+            52.401
+          ],
+          "rings": 1,
+          "nodes": 10,
+          "potentialOpeningCandidateBounds": [
+            1326,
+            1564
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 10,
+      "rawMaxRingNodes": 10
+    },
+    {
+      "id": "batiment.10315898",
+      "cleabs": "BATIMENT0000000266946470",
+      "path": "data/map_pack/city/m13055-r04-c06-3-1-dc34d74068f2bd2f.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 86.2,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 13,
+      "levelsDeclared": true,
+      "sourceLevels": 13,
+      "levelHeightM": 6.6308,
+      "areaM2": 1068.518,
+      "components": [
+        {
+          "areaM2": 1068.518,
+          "bboxMetres": [
+            38.9,
+            47.0
+          ],
+          "rings": 1,
+          "nodes": 16,
+          "potentialOpeningCandidateBounds": [
+            494,
+            585
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 16,
+      "rawMaxRingNodes": 16
+    },
+    {
+      "id": "batiment.10322104",
+      "cleabs": "BATIMENT0000000266953552",
+      "path": "data/map_pack/city/m13055-r04-c06-3-1-dc34d74068f2bd2f.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 79.1,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 26,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0423,
+      "areaM2": 39.33,
+      "components": [
+        {
+          "areaM2": 39.33,
+          "bboxMetres": [
+            9.4,
+            6.4
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            156,
+            208
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.10165994",
+      "cleabs": "BATIMENT0000000259326020",
+      "path": "data/map_pack/city/m13055-r04-c07-3-1-9f39a937c7c8e89a.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 78.6,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 26,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0231,
+      "areaM2": 32.551,
+      "components": [
+        {
+          "areaM2": 32.551,
+          "bboxMetres": [
+            8.8,
+            6.3
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            156,
+            156
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.10165996",
+      "cleabs": "BATIMENT0000000259326022",
+      "path": "data/map_pack/city/m13055-r04-c07-3-1-9f39a937c7c8e89a.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 76.6,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 25,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.064,
+      "areaM2": 242.6,
+      "components": [
+        {
+          "areaM2": 242.6,
+          "bboxMetres": [
+            21.4,
+            18.301
+          ],
+          "rings": 1,
+          "nodes": 17,
+          "potentialOpeningCandidateBounds": [
+            275,
+            375
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 17,
+      "rawMaxRingNodes": 17
+    },
+    {
+      "id": "batiment.9285793",
+      "cleabs": "BATIMENT0000000257915076",
+      "path": "data/map_pack/city/m13055-r03-c07-1-7e27e29560b53856.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 76.5,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 26,
+      "levelsDeclared": true,
+      "sourceLevels": 26,
+      "levelHeightM": 2.9423,
+      "areaM2": 700.699,
+      "components": [
+        {
+          "areaM2": 700.699,
+          "bboxMetres": [
+            39.4,
+            35.5
+          ],
+          "rings": 1,
+          "nodes": 12,
+          "potentialOpeningCandidateBounds": [
+            780,
+            962
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 12,
+      "rawMaxRingNodes": 12
+    },
+    {
+      "id": "batiment.9292814",
+      "cleabs": "BATIMENT0000000257923498",
+      "path": "data/map_pack/city/m13055-r03-c08-0-9f3f565f6a82417f.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 75.6,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 37.8,
+      "areaM2": 3459.388,
+      "components": [
+        {
+          "areaM2": 3459.388,
+          "bboxMetres": [
+            146.5,
+            232.0
+          ],
+          "rings": 1,
+          "nodes": 11,
+          "potentialOpeningCandidateBounds": [
+            230,
+            230
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 11,
+      "rawMaxRingNodes": 11
+    },
+    {
+      "id": "batiment.9292817",
+      "cleabs": "BATIMENT0000000257923501",
+      "path": "data/map_pack/city/m13055-r03-c08-0-9f3f565f6a82417f.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 72.0,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 24,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0,
+      "areaM2": 1611.579,
+      "components": [
+        {
+          "areaM2": 1611.579,
+          "bboxMetres": [
+            76.1,
+            119.3
+          ],
+          "rings": 1,
+          "nodes": 6,
+          "potentialOpeningCandidateBounds": [
+            2112,
+            2544
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 6,
+      "rawMaxRingNodes": 6
+    },
+    {
+      "id": "batiment.10165995",
+      "cleabs": "BATIMENT0000000259326021",
+      "path": "data/map_pack/city/m13055-r04-c07-3-1-9f39a937c7c8e89a.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 71.6,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 26,
+      "levelsDeclared": true,
+      "sourceLevels": 26,
+      "levelHeightM": 2.7538,
+      "areaM2": 268.665,
+      "components": [
+        {
+          "areaM2": 268.665,
+          "bboxMetres": [
+            21.8,
+            18.8
+          ],
+          "rings": 1,
+          "nodes": 24,
+          "potentialOpeningCandidateBounds": [
+            260,
+            364
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 24,
+      "rawMaxRingNodes": 24
+    },
+    {
+      "id": "batiment.9292815",
+      "cleabs": "BATIMENT0000000257923499",
+      "path": "data/map_pack/city/m13055-r03-c08-0-9f3f565f6a82417f.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 71.4,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 22,
+      "levelsDeclared": true,
+      "sourceLevels": 22,
+      "levelHeightM": 3.2455,
+      "areaM2": 1618.536,
+      "components": [
+        {
+          "areaM2": 1618.536,
+          "bboxMetres": [
+            78.201,
+            120.8
+          ],
+          "rings": 1,
+          "nodes": 6,
+          "potentialOpeningCandidateBounds": [
+            1936,
+            2332
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 6,
+      "rawMaxRingNodes": 6
+    },
+    {
+      "id": "batiment.9289544",
+      "cleabs": "BATIMENT0000000257919608",
+      "path": "data/map_pack/city/m13055-r03-c07-2-3-0fddcce10b494f7a.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 71.2,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 23,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0957,
+      "areaM2": 49.686,
+      "components": [
+        {
+          "areaM2": 49.686,
+          "bboxMetres": [
+            12.9,
+            11.1
+          ],
+          "rings": 1,
+          "nodes": 15,
+          "potentialOpeningCandidateBounds": [
+            161,
+            184
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 15,
+      "rawMaxRingNodes": 15
+    },
+    {
+      "id": "batiment.49696656",
+      "cleabs": "BATIMENT0000000040646041",
+      "path": "data/map_pack/city/m13055-r04-c07-2-3-0b37821b77f8f986.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 69.8,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 23,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0348,
+      "areaM2": 1874.316,
+      "components": [
+        {
+          "areaM2": 1874.316,
+          "bboxMetres": [
+            81.8,
+            58.6
+          ],
+          "rings": 1,
+          "nodes": 18,
+          "potentialOpeningCandidateBounds": [
+            1357,
+            1702
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 18,
+      "rawMaxRingNodes": 18
+    }
+  ],
+  "mostComponents": [
+    {
+      "id": "batiment.9617298",
+      "cleabs": "BATIMENT0000000258360113",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 4.5,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 4.5,
+      "areaM2": 12.282,
+      "components": [
+        {
+          "areaM2": 12.282,
+          "bboxMetres": [
+            5.0,
+            5.2
+          ],
+          "rings": 1,
+          "nodes": 5,
+          "potentialOpeningCandidateBounds": [
+            2,
+            2
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 5,
+      "rawMaxRingNodes": 5
+    },
+    {
+      "id": "batiment.9617297",
+      "cleabs": "BATIMENT0000000258360112",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 4.4,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 4.4,
+      "areaM2": 13.505,
+      "components": [
+        {
+          "areaM2": 13.505,
+          "bboxMetres": [
+            5.2,
+            5.601
+          ],
+          "rings": 1,
+          "nodes": 7,
+          "potentialOpeningCandidateBounds": [
+            2,
+            2
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 7,
+      "rawMaxRingNodes": 7
+    },
+    {
+      "id": "batiment.9617296",
+      "cleabs": "BATIMENT0000000258360111",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 5.0,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.5,
+      "areaM2": 12.099,
+      "components": [
+        {
+          "areaM2": 12.099,
+          "bboxMetres": [
+            5.3,
+            5.0
+          ],
+          "rings": 1,
+          "nodes": 5,
+          "potentialOpeningCandidateBounds": [
+            2,
+            2
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 5,
+      "rawMaxRingNodes": 5
+    },
+    {
+      "id": "batiment.9617295",
+      "cleabs": "BATIMENT0000000258360110",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 3.4,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.4,
+      "areaM2": 13.735,
+      "components": [
+        {
+          "areaM2": 13.735,
+          "bboxMetres": [
+            5.599,
+            5.3
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            2,
+            3
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9617294",
+      "cleabs": "BATIMENT0000000258360108",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 4.8,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 4.8,
+      "areaM2": 56.07,
+      "components": [
+        {
+          "areaM2": 56.07,
+          "bboxMetres": [
+            10.6,
+            10.599
+          ],
+          "rings": 1,
+          "nodes": 6,
+          "potentialOpeningCandidateBounds": [
+            7,
+            7
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 6,
+      "rawMaxRingNodes": 6
+    },
+    {
+      "id": "batiment.9617293",
+      "cleabs": "BATIMENT0000000258360107",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 5.0,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.5,
+      "areaM2": 12.594,
+      "components": [
+        {
+          "areaM2": 12.594,
+          "bboxMetres": [
+            5.2,
+            5.299
+          ],
+          "rings": 1,
+          "nodes": 6,
+          "potentialOpeningCandidateBounds": [
+            4,
+            4
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 6,
+      "rawMaxRingNodes": 6
+    },
+    {
+      "id": "batiment.9617292",
+      "cleabs": "BATIMENT0000000258360105",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 5.1,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.55,
+      "areaM2": 12.475,
+      "components": [
+        {
+          "areaM2": 12.475,
+          "bboxMetres": [
+            5.3,
+            5.1
+          ],
+          "rings": 1,
+          "nodes": 5,
+          "potentialOpeningCandidateBounds": [
+            4,
+            4
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 5,
+      "rawMaxRingNodes": 5
+    },
+    {
+      "id": "batiment.9617291",
+      "cleabs": "BATIMENT0000000258360104",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 5.3,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 5.3,
+      "areaM2": 33.876,
+      "components": [
+        {
+          "areaM2": 33.876,
+          "bboxMetres": [
+            8.4,
+            8.2
+          ],
+          "rings": 1,
+          "nodes": 6,
+          "potentialOpeningCandidateBounds": [
+            5,
+            6
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 6,
+      "rawMaxRingNodes": 6
+    },
+    {
+      "id": "batiment.9617290",
+      "cleabs": "BATIMENT0000000258360103",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 5.3,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 2.65,
+      "areaM2": 33.671,
+      "components": [
+        {
+          "areaM2": 33.671,
+          "bboxMetres": [
+            8.4,
+            8.2
+          ],
+          "rings": 1,
+          "nodes": 6,
+          "potentialOpeningCandidateBounds": [
+            10,
+            10
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 6,
+      "rawMaxRingNodes": 6
+    },
+    {
+      "id": "batiment.9617289",
+      "cleabs": "BATIMENT0000000258360102",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 3.8,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.8,
+      "areaM2": 23.65,
+      "components": [
+        {
+          "areaM2": 23.65,
+          "bboxMetres": [
+            6.9,
+            6.899
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            4,
+            4
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9617288",
+      "cleabs": "BATIMENT0000000258360101",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 3.3,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.3,
+      "areaM2": 21.952,
+      "components": [
+        {
+          "areaM2": 21.952,
+          "bboxMetres": [
+            6.4,
+            6.801
+          ],
+          "rings": 1,
+          "nodes": 5,
+          "potentialOpeningCandidateBounds": [
+            3,
+            4
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 5,
+      "rawMaxRingNodes": 5
+    },
+    {
+      "id": "batiment.49698478",
+      "cleabs": "BATIMENT0000000040685538",
+      "path": "data/map_pack/city/m13055-r00-c06-c913ce364df41dc1.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 6.7,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.35,
+      "areaM2": 39.064,
+      "components": [
+        {
+          "areaM2": 39.064,
+          "bboxMetres": [
+            9.1,
+            8.301
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            12,
+            12
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.49698477",
+      "cleabs": "BATIMENT0000000040685537",
+      "path": "data/map_pack/city/m13055-r00-c06-c913ce364df41dc1.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 4.3,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 4.3,
+      "areaM2": 21.445,
+      "components": [
+        {
+          "areaM2": 21.445,
+          "bboxMetres": [
+            5.0,
+            5.1
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            4,
+            4
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.45132438",
+      "cleabs": "BATIMENT0000002221676722",
+      "path": "data/map_pack/city/m13055-r01-c00-fda68e759f4dc0b4.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 8.5,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 3,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.8333,
+      "areaM2": 720.431,
+      "components": [
+        {
+          "areaM2": 720.431,
+          "bboxMetres": [
+            65.9,
+            21.899
+          ],
+          "rings": 1,
+          "nodes": 12,
+          "potentialOpeningCandidateBounds": [
+            141,
+            171
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 12,
+      "rawMaxRingNodes": 12
+    },
+    {
+      "id": "batiment.45132437",
+      "cleabs": "BATIMENT0000002221676721",
+      "path": "data/map_pack/city/m13055-r01-c00-fda68e759f4dc0b4.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié",
+      "heightM": 6.4,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.2,
+      "areaM2": 217.561,
+      "components": [
+        {
+          "areaM2": 217.561,
+          "bboxMetres": [
+            25.9,
+            11.3
+          ],
+          "rings": 1,
+          "nodes": 6,
+          "potentialOpeningCandidateBounds": [
+            36,
+            46
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 6,
+      "rawMaxRingNodes": 6
+    }
+  ],
+  "floorHeightRejectedExamples": [
+    {
+      "id": "batiment.9617597",
+      "cleabs": "BATIMENT0000000258360425",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 2.5,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.25,
+      "areaM2": 20.519,
+      "components": [
+        {
+          "areaM2": 20.519,
+          "bboxMetres": [
+            5.6,
+            4.7
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            8,
+            8
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9617603",
+      "cleabs": "BATIMENT0000000258360431",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 2.6,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.3,
+      "areaM2": 24.357,
+      "components": [
+        {
+          "areaM2": 24.357,
+          "bboxMetres": [
+            8.2,
+            4.3
+          ],
+          "rings": 1,
+          "nodes": 5,
+          "potentialOpeningCandidateBounds": [
+            6,
+            10
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 5,
+      "rawMaxRingNodes": 5
+    },
+    {
+      "id": "batiment.9617675",
+      "cleabs": "BATIMENT0000000258360513",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.95,
+      "areaM2": 29.712,
+      "components": [
+        {
+          "areaM2": 29.712,
+          "bboxMetres": [
+            5.9,
+            6.8
+          ],
+          "rings": 1,
+          "nodes": 5,
+          "potentialOpeningCandidateBounds": [
+            6,
+            12
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 5,
+      "rawMaxRingNodes": 5
+    },
+    {
+      "id": "batiment.9624214",
+      "cleabs": "BATIMENT0000000258368028",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 5.8,
+      "heightBasis": "hauteur",
+      "levels": 4,
+      "levelsDeclared": true,
+      "sourceLevels": 4,
+      "levelHeightM": 1.45,
+      "areaM2": 64.094,
+      "components": [
+        {
+          "areaM2": 64.094,
+          "bboxMetres": [
+            13.7,
+            6.2
+          ],
+          "rings": 1,
+          "nodes": 9,
+          "potentialOpeningCandidateBounds": [
+            24,
+            32
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 9,
+      "rawMaxRingNodes": 9
+    },
+    {
+      "id": "batiment.9624420",
+      "cleabs": "BATIMENT0000000258368244",
+      "path": "data/map_pack/city/m13055-r01-c04-ddf0bdc637b1ebbe.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 4.5,
+      "heightBasis": "hauteur",
+      "levels": 3,
+      "levelsDeclared": true,
+      "sourceLevels": 3,
+      "levelHeightM": 1.5,
+      "areaM2": 220.241,
+      "components": [
+        {
+          "areaM2": 220.241,
+          "bboxMetres": [
+            15.5,
+            22.501
+          ],
+          "rings": 1,
+          "nodes": 16,
+          "potentialOpeningCandidateBounds": [
+            54,
+            75
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 16,
+      "rawMaxRingNodes": 16
+    },
+    {
+      "id": "batiment.9617417",
+      "cleabs": "BATIMENT0000000258360235",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.3,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.65,
+      "areaM2": 9.12,
+      "components": [
+        {
+          "areaM2": 9.12,
+          "bboxMetres": [
+            4.0,
+            3.3
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            4,
+            4
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9617688",
+      "cleabs": "BATIMENT0000000258360526",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.4,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.7,
+      "areaM2": 17.34,
+      "components": [
+        {
+          "areaM2": 17.34,
+          "bboxMetres": [
+            4.6,
+            5.4
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            8,
+            8
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9617692",
+      "cleabs": "BATIMENT0000000258360530",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.6,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.8,
+      "areaM2": 9.634,
+      "components": [
+        {
+          "areaM2": 9.634,
+          "bboxMetres": [
+            4.0,
+            3.5
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            4,
+            4
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9617695",
+      "cleabs": "BATIMENT0000000258360533",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.7,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.85,
+      "areaM2": 17.39,
+      "components": [
+        {
+          "areaM2": 17.39,
+          "bboxMetres": [
+            4.4,
+            5.601
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            8,
+            8
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9617697",
+      "cleabs": "BATIMENT0000000258360535",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.2,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.6,
+      "areaM2": 7.84,
+      "components": [
+        {
+          "areaM2": 7.84,
+          "bboxMetres": [
+            3.9,
+            2.9
+          ],
+          "rings": 1,
+          "nodes": 5,
+          "potentialOpeningCandidateBounds": [
+            2,
+            2
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 5,
+      "rawMaxRingNodes": 5
+    },
+    {
+      "id": "batiment.9617754",
+      "cleabs": "BATIMENT0000000258360594",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.8,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.9,
+      "areaM2": 60.046,
+      "components": [
+        {
+          "areaM2": 60.046,
+          "bboxMetres": [
+            14.6,
+            10.5
+          ],
+          "rings": 1,
+          "nodes": 6,
+          "potentialOpeningCandidateBounds": [
+            20,
+            20
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 6,
+      "rawMaxRingNodes": 6
+    },
+    {
+      "id": "batiment.9617783",
+      "cleabs": "BATIMENT0000000258360625",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.2,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.6,
+      "areaM2": 69.097,
+      "components": [
+        {
+          "areaM2": 69.097,
+          "bboxMetres": [
+            10.6,
+            9.2
+          ],
+          "rings": 1,
+          "nodes": 9,
+          "potentialOpeningCandidateBounds": [
+            12,
+            16
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 9,
+      "rawMaxRingNodes": 9
+    },
+    {
+      "id": "batiment.9617927",
+      "cleabs": "BATIMENT0000000258360796",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 2.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.45,
+      "areaM2": 42.733,
+      "components": [
+        {
+          "areaM2": 42.733,
+          "bboxMetres": [
+            7.201,
+            8.1
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            12,
+            16
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9620523",
+      "cleabs": "BATIMENT0000000258363781",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.0,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.5,
+      "areaM2": 23.714,
+      "components": [
+        {
+          "areaM2": 23.714,
+          "bboxMetres": [
+            6.6,
+            6.9
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            8,
+            10
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9620525",
+      "cleabs": "BATIMENT0000000258363783",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.0,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.5,
+      "areaM2": 23.207,
+      "components": [
+        {
+          "areaM2": 23.207,
+          "bboxMetres": [
+            6.4,
+            6.999
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            8,
+            12
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9624351",
+      "cleabs": "BATIMENT0000000258368173",
+      "path": "data/map_pack/city/m13055-r01-c05-d58b3c495fda93a8.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.95,
+      "areaM2": 15.337,
+      "components": [
+        {
+          "areaM2": 15.337,
+          "bboxMetres": [
+            4.5,
+            5.501
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            6,
+            8
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9618490",
+      "cleabs": "BATIMENT0000000258361432",
+      "path": "data/map_pack/city/m13055-r02-c05-0-70c9ab0508025e45.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 5.8,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 3,
+      "levelsDeclared": true,
+      "sourceLevels": 3,
+      "levelHeightM": 1.9333,
+      "areaM2": 9.589,
+      "components": [
+        {
+          "areaM2": 9.589,
+          "bboxMetres": [
+            4.2,
+            4.899
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            6,
+            6
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9618681",
+      "cleabs": "BATIMENT0000000258361642",
+      "path": "data/map_pack/city/m13055-r02-c05-0-70c9ab0508025e45.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 2.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.45,
+      "areaM2": 37.993,
+      "components": [
+        {
+          "areaM2": 37.993,
+          "bboxMetres": [
+            3.3,
+            16.299
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            16,
+            20
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    {
+      "id": "batiment.9623465",
+      "cleabs": "BATIMENT0000000258367168",
+      "path": "data/map_pack/city/m13055-r02-c05-1-69baf1c86d782234.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 3.8,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.9,
+      "areaM2": 76.349,
+      "components": [
+        {
+          "areaM2": 76.349,
+          "bboxMetres": [
+            12.1,
+            11.7
+          ],
+          "rings": 1,
+          "nodes": 10,
+          "potentialOpeningCandidateBounds": [
+            16,
+            18
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 10,
+      "rawMaxRingNodes": 10
+    },
+    {
+      "id": "batiment.9623979",
+      "cleabs": "BATIMENT0000000258367734",
+      "path": "data/map_pack/city/m13055-r02-c05-1-69baf1c86d782234.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 2.9,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 1.45,
+      "areaM2": 6.936,
+      "components": [
+        {
+          "areaM2": 6.936,
+          "bboxMetres": [
+            2.3,
+            3.201
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            0,
+            4
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    }
+  ],
+  "nonNullInvalidLevelExamples": [
+    {
+      "id": "batiment.9375741",
+      "cleabs": "BATIMENT0000000258035461",
+      "path": "data/map_pack/city/m13055-r01-c12-c869798b17b6560c.json",
+      "value": 0,
+      "heightM": 4.700000000000001
+    },
+    {
+      "id": "batiment.9618500",
+      "cleabs": "BATIMENT0000000258361442",
+      "path": "data/map_pack/city/m13055-r02-c05-0-70c9ab0508025e45.json",
+      "value": 0,
+      "heightM": 4.199999999999999
+    },
+    {
+      "id": "batiment.9618463",
+      "cleabs": "BATIMENT0000000258361403",
+      "path": "data/map_pack/city/m13055-r02-c05-2-79e15417bcc09c65.json",
+      "value": 0,
+      "heightM": 7.5
+    },
+    {
+      "id": "batiment.9618742",
+      "cleabs": "BATIMENT0000000258361742",
+      "path": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json",
+      "value": 0,
+      "heightM": 8.299999999999999
+    },
+    {
+      "id": "batiment.9619850",
+      "cleabs": "BATIMENT0000000258362991",
+      "path": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json",
+      "value": 0,
+      "heightM": 5.800000000000001
+    },
+    {
+      "id": "batiment.9620281",
+      "cleabs": "BATIMENT0000000258363474",
+      "path": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json",
+      "value": 0,
+      "heightM": 18.9
+    },
+    {
+      "id": "batiment.9617201",
+      "cleabs": "BATIMENT0000000258359996",
+      "path": "data/map_pack/city/m13055-r02-c06-ffa6dc953c357015.json",
+      "value": 0,
+      "heightM": 12.400000000000002
+    },
+    {
+      "id": "batiment.9622887",
+      "cleabs": "BATIMENT0000000258366486",
+      "path": "data/map_pack/city/m13055-r02-c06-ffa6dc953c357015.json",
+      "value": 0,
+      "heightM": 3.900000000000002
+    },
+    {
+      "id": "batiment.9280317",
+      "cleabs": "BATIMENT0000000257907985",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "value": 0,
+      "heightM": 9.200000000000003
+    },
+    {
+      "id": "batiment.9279818",
+      "cleabs": "BATIMENT0000000257907419",
+      "path": "data/map_pack/city/m13055-r02-c07-2-9513a55ebd02852a.json",
+      "value": 0,
+      "heightM": 14.5
+    },
+    {
+      "id": "batiment.9280031",
+      "cleabs": "BATIMENT0000000257907647",
+      "path": "data/map_pack/city/m13055-r02-c07-2-9513a55ebd02852a.json",
+      "value": 0,
+      "heightM": 20.799999999999997
+    },
+    {
+      "id": "batiment.9281739",
+      "cleabs": "BATIMENT0000000257909648",
+      "path": "data/map_pack/city/m13055-r02-c07-2-9513a55ebd02852a.json",
+      "value": 0,
+      "heightM": 3.999999999999993
+    }
+  ],
+  "largestByUseOrNature": {
+    "residential": {
+      "id": "batiment.39111842",
+      "cleabs": "BATIMENT0000000356606134",
+      "path": "data/map_pack/city/m13055-r04-c07-0-38c606670112446a.json",
+      "nature": "Tribune",
+      "usage_1": "Sportif",
+      "heightM": 67.3,
+      "heightBasis": "hauteur",
+      "levels": 22,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0591,
+      "areaM2": 40715.481,
+      "components": [
+        {
+          "areaM2": 40715.481,
+          "bboxMetres": [
+            252.0,
+            253.801
+          ],
+          "rings": 2,
+          "nodes": 74,
+          "potentialOpeningCandidateBounds": [
+            6864,
+            8206
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 74,
+      "rawMaxRingNodes": 45
+    },
+    "nature:Indifférenciée": {
+      "id": "batiment.49091679",
+      "cleabs": "BATIMENT0000002499743221",
+      "path": "data/map_pack/city/m13055-r04-c07-2-3-0b37821b77f8f986.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 6,
+      "heightBasis": "default-estimate",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0,
+      "areaM2": 12390.242,
+      "components": [
+        {
+          "areaM2": 12390.242,
+          "bboxMetres": [
+            106.5,
+            165.2
+          ],
+          "rings": 1,
+          "nodes": 12,
+          "potentialOpeningCandidateBounds": [
+            268,
+            322
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 12,
+      "rawMaxRingNodes": 12
+    },
+    "usage:Indifférencié": {
+      "id": "batiment.47151515",
+      "cleabs": "BATIMENT0000002276334174",
+      "path": "data/map_pack/city/m13055-r06-c04-16022882c640604d.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié",
+      "heightM": 9.6,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 4.8,
+      "areaM2": 20741.672,
+      "components": [
+        {
+          "areaM2": 20741.672,
+          "bboxMetres": [
+            212.0,
+            267.4
+          ],
+          "rings": 1,
+          "nodes": 4,
+          "potentialOpeningCandidateBounds": [
+            286,
+            286
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 4,
+      "rawMaxRingNodes": 4
+    },
+    "usage:Résidentiel": {
+      "id": "batiment.26080487",
+      "cleabs": "BATIMENT0000000318259205",
+      "path": "data/map_pack/city/m13055-r04-c06-1-3-e3cec123eaee8f5c.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel",
+      "heightM": 32.4,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 11,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.9455,
+      "areaM2": 9214.453,
+      "components": [
+        {
+          "areaM2": 9214.453,
+          "bboxMetres": [
+            123.5,
+            132.9
+          ],
+          "rings": 1,
+          "nodes": 19,
+          "potentialOpeningCandidateBounds": [
+            1166,
+            1463
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 19,
+      "rawMaxRingNodes": 19
+    },
+    "commercial": {
+      "id": "batiment.49091679",
+      "cleabs": "BATIMENT0000002499743221",
+      "path": "data/map_pack/city/m13055-r04-c07-2-3-0b37821b77f8f986.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services",
+      "heightM": 6,
+      "heightBasis": "default-estimate",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0,
+      "areaM2": 12390.242,
+      "components": [
+        {
+          "areaM2": 12390.242,
+          "bboxMetres": [
+            106.5,
+            165.2
+          ],
+          "rings": 1,
+          "nodes": 12,
+          "potentialOpeningCandidateBounds": [
+            268,
+            322
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 12,
+      "rawMaxRingNodes": 12
+    },
+    "usage:Commercial et services": {
+      "id": "batiment.49693149",
+      "cleabs": "BATIMENT0000000040578362",
+      "path": "data/map_pack/city/m13055-r07-c05-2-6b7b35206c68b5c3.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 28.4,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 14.2,
+      "areaM2": 68352.437,
+      "components": [
+        {
+          "areaM2": 68352.437,
+          "bboxMetres": [
+            575.2,
+            263.9
+          ],
+          "rings": 1,
+          "nodes": 92,
+          "potentialOpeningCandidateBounds": [
+            630,
+            630
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 92,
+      "rawMaxRingNodes": 92
+    },
+    "usage:Annexe": {
+      "id": "batiment.9289652",
+      "cleabs": "BATIMENT0000000257919732",
+      "path": "data/map_pack/city/m13055-r03-c08-0-9f3f565f6a82417f.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Annexe",
+      "heightM": 11.1,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 11.1,
+      "areaM2": 5358.384,
+      "components": [
+        {
+          "areaM2": 5358.384,
+          "bboxMetres": [
+            83.1,
+            103.2
+          ],
+          "rings": 2,
+          "nodes": 20,
+          "potentialOpeningCandidateBounds": [
+            130,
+            153
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 20,
+      "rawMaxRingNodes": 13
+    },
+    "nature:Fort, blockhaus, casemate": {
+      "id": "batiment.47146432",
+      "cleabs": "BATIMENT0000002276328684",
+      "path": "data/map_pack/city/m13055-r04-c04-d75ed9e35803049b.json",
+      "nature": "Fort, blockhaus, casemate",
+      "usage_1": "Indifférencié",
+      "heightM": 10.9,
+      "heightBasis": "hauteur",
+      "levels": 4,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.725,
+      "areaM2": 1795.777,
+      "components": [
+        {
+          "areaM2": 1795.777,
+          "bboxMetres": [
+            58.5,
+            53.801
+          ],
+          "rings": 1,
+          "nodes": 20,
+          "potentialOpeningCandidateBounds": [
+            168,
+            196
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 20,
+      "rawMaxRingNodes": 20
+    },
+    "industrial": {
+      "id": "batiment.49693149",
+      "cleabs": "BATIMENT0000000040578362",
+      "path": "data/map_pack/city/m13055-r07-c05-2-6b7b35206c68b5c3.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 28.4,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 14.2,
+      "areaM2": 68352.437,
+      "components": [
+        {
+          "areaM2": 68352.437,
+          "bboxMetres": [
+            575.2,
+            263.9
+          ],
+          "rings": 1,
+          "nodes": 92,
+          "potentialOpeningCandidateBounds": [
+            630,
+            630
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 92,
+      "rawMaxRingNodes": 92
+    },
+    "nature:Industriel, agricole ou commercial": {
+      "id": "batiment.49693149",
+      "cleabs": "BATIMENT0000000040578362",
+      "path": "data/map_pack/city/m13055-r07-c05-2-6b7b35206c68b5c3.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services",
+      "heightM": 28.4,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": true,
+      "sourceLevels": 2,
+      "levelHeightM": 14.2,
+      "areaM2": 68352.437,
+      "components": [
+        {
+          "areaM2": 68352.437,
+          "bboxMetres": [
+            575.2,
+            263.9
+          ],
+          "rings": 1,
+          "nodes": 92,
+          "potentialOpeningCandidateBounds": [
+            630,
+            630
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 92,
+      "rawMaxRingNodes": 92
+    },
+    "religious": {
+      "id": "batiment.49696442",
+      "cleabs": "BATIMENT0000000040642373",
+      "path": "data/map_pack/city/m13055-r04-c08-2-6987b66ce033f6c1.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Religieux",
+      "heightM": 45.8,
+      "heightBasis": "hauteur",
+      "levels": 15,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0533,
+      "areaM2": 12333.952,
+      "components": [
+        {
+          "areaM2": 12333.952,
+          "bboxMetres": [
+            291.7,
+            290.8
+          ],
+          "rings": 2,
+          "nodes": 568,
+          "potentialOpeningCandidateBounds": [
+            8190,
+            8190
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 568,
+      "rawMaxRingNodes": 541
+    },
+    "nature:Eglise": {
+      "id": "batiment.9970437",
+      "cleabs": "BATIMENT0000000258930470",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "nature": "Eglise",
+      "usage_1": "Religieux",
+      "heightM": 28.6,
+      "heightBasis": "hauteur",
+      "levels": 9,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.1778,
+      "areaM2": 3094.395,
+      "components": [
+        {
+          "areaM2": 3094.395,
+          "bboxMetres": [
+            60.399,
+            107.4
+          ],
+          "rings": 2,
+          "nodes": 133,
+          "potentialOpeningCandidateBounds": [
+            558,
+            558
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 133,
+      "rawMaxRingNodes": 124
+    },
+    "usage:Religieux": {
+      "id": "batiment.49696442",
+      "cleabs": "BATIMENT0000000040642373",
+      "path": "data/map_pack/city/m13055-r04-c08-2-6987b66ce033f6c1.json",
+      "nature": "Indifférenciée",
+      "usage_1": "Religieux",
+      "heightM": 45.8,
+      "heightBasis": "hauteur",
+      "levels": 15,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0533,
+      "areaM2": 12333.952,
+      "components": [
+        {
+          "areaM2": 12333.952,
+          "bboxMetres": [
+            291.7,
+            290.8
+          ],
+          "rings": 2,
+          "nodes": 568,
+          "potentialOpeningCandidateBounds": [
+            8190,
+            8190
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 568,
+      "rawMaxRingNodes": 541
+    },
+    "usage:Industriel": {
+      "id": "batiment.9980946",
+      "cleabs": "BATIMENT0000000258943716",
+      "path": "data/map_pack/city/m13055-r07-c05-2-6b7b35206c68b5c3.json",
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel",
+      "heightM": 16.6,
+      "heightBasis": "absolute-roof-ground",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 16.6,
+      "areaM2": 22327.74,
+      "components": [
+        {
+          "areaM2": 22327.74,
+          "bboxMetres": [
+            248.401,
+            202.799
+          ],
+          "rings": 1,
+          "nodes": 31,
+          "potentialOpeningCandidateBounds": [
+            157,
+            157
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 31,
+      "rawMaxRingNodes": 31
+    },
+    "usage:Sportif": {
+      "id": "batiment.39111842",
+      "cleabs": "BATIMENT0000000356606134",
+      "path": "data/map_pack/city/m13055-r04-c07-0-38c606670112446a.json",
+      "nature": "Tribune",
+      "usage_1": "Sportif",
+      "heightM": 67.3,
+      "heightBasis": "hauteur",
+      "levels": 22,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0591,
+      "areaM2": 40715.481,
+      "components": [
+        {
+          "areaM2": 40715.481,
+          "bboxMetres": [
+            252.0,
+            253.801
+          ],
+          "rings": 2,
+          "nodes": 74,
+          "potentialOpeningCandidateBounds": [
+            6864,
+            8206
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 74,
+      "rawMaxRingNodes": 45
+    },
+    "usage:Agricole": {
+      "id": "batiment.49693906",
+      "cleabs": "BATIMENT0000000040590195",
+      "path": "data/map_pack/city/m13055-r07-c10-0-0-46757643206a5462.json",
+      "nature": "Serre",
+      "usage_1": "Agricole",
+      "heightM": 6.7,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.35,
+      "areaM2": 3787.176,
+      "components": [
+        {
+          "areaM2": 3787.176,
+          "bboxMetres": [
+            98.3,
+            84.3
+          ],
+          "rings": 1,
+          "nodes": 10,
+          "potentialOpeningCandidateBounds": [
+            110,
+            110
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 10,
+      "rawMaxRingNodes": 10
+    },
+    "nature:Serre": {
+      "id": "batiment.49693906",
+      "cleabs": "BATIMENT0000000040590195",
+      "path": "data/map_pack/city/m13055-r07-c10-0-0-46757643206a5462.json",
+      "nature": "Serre",
+      "usage_1": "Agricole",
+      "heightM": 6.7,
+      "heightBasis": "hauteur",
+      "levels": 2,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.35,
+      "areaM2": 3787.176,
+      "components": [
+        {
+          "areaM2": 3787.176,
+          "bboxMetres": [
+            98.3,
+            84.3
+          ],
+          "rings": 1,
+          "nodes": 10,
+          "potentialOpeningCandidateBounds": [
+            110,
+            110
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 10,
+      "rawMaxRingNodes": 10
+    },
+    "nature:Château": {
+      "id": "batiment.10624139",
+      "cleabs": "BATIMENT0000000273394896",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "nature": "Château",
+      "usage_1": "Commercial et services",
+      "heightM": 21.8,
+      "heightBasis": "hauteur",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 21.8,
+      "areaM2": 1446.271,
+      "components": [
+        {
+          "areaM2": 1446.271,
+          "bboxMetres": [
+            75.301,
+            63.4
+          ],
+          "rings": 1,
+          "nodes": 26,
+          "potentialOpeningCandidateBounds": [
+            62,
+            79
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 26,
+      "rawMaxRingNodes": 26
+    },
+    "nature:Chapelle": {
+      "id": "batiment.9969425",
+      "cleabs": "BATIMENT0000000258929268",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "nature": "Chapelle",
+      "usage_1": "Religieux",
+      "heightM": 10.8,
+      "heightBasis": "hauteur",
+      "levels": 4,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.7,
+      "areaM2": 702.629,
+      "components": [
+        {
+          "areaM2": 702.629,
+          "bboxMetres": [
+            24.5,
+            38.5
+          ],
+          "rings": 1,
+          "nodes": 72,
+          "potentialOpeningCandidateBounds": [
+            24,
+            24
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 72,
+      "rawMaxRingNodes": 72
+    },
+    "nature:Tribune": {
+      "id": "batiment.39111842",
+      "cleabs": "BATIMENT0000000356606134",
+      "path": "data/map_pack/city/m13055-r04-c07-0-38c606670112446a.json",
+      "nature": "Tribune",
+      "usage_1": "Sportif",
+      "heightM": 67.3,
+      "heightBasis": "hauteur",
+      "levels": 22,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.0591,
+      "areaM2": 40715.481,
+      "components": [
+        {
+          "areaM2": 40715.481,
+          "bboxMetres": [
+            252.0,
+            253.801
+          ],
+          "rings": 2,
+          "nodes": 74,
+          "potentialOpeningCandidateBounds": [
+            6864,
+            8206
+          ]
+        }
+      ],
+      "ringCount": 2,
+      "nodeCount": 74,
+      "rawMaxRingNodes": 45
+    },
+    "nature:Tour, donjon": {
+      "id": "batiment.47146434",
+      "cleabs": "BATIMENT0000002276328686",
+      "path": "data/map_pack/city/m13055-r03-c06-1-1a01ef72f0a06c8f.json",
+      "nature": "Tour, donjon",
+      "usage_1": "Indifférencié",
+      "heightM": 34.5,
+      "heightBasis": "hauteur",
+      "levels": 11,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.1364,
+      "areaM2": 2128.804,
+      "components": [
+        {
+          "areaM2": 2128.804,
+          "bboxMetres": [
+            58.001,
+            70.0
+          ],
+          "rings": 1,
+          "nodes": 15,
+          "potentialOpeningCandidateBounds": [
+            803,
+            935
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 15,
+      "rawMaxRingNodes": 15
+    },
+    "nature:Arène ou théâtre antique": {
+      "id": "batiment.26058485",
+      "cleabs": "BATIMENT0000000318227662",
+      "path": "data/map_pack/city/m13055-r06-c09-2-9176f7b7338c5513.json",
+      "nature": "Arène ou théâtre antique",
+      "usage_1": "Indifférencié",
+      "heightM": 10.5,
+      "heightBasis": "hauteur",
+      "levels": 3,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 3.5,
+      "areaM2": 2243.646,
+      "components": [
+        {
+          "areaM2": 2243.646,
+          "bboxMetres": [
+            55.901,
+            53.1
+          ],
+          "rings": 1,
+          "nodes": 22,
+          "potentialOpeningCandidateBounds": [
+            132,
+            153
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 22,
+      "rawMaxRingNodes": 22
+    },
+    "nature:Monument": {
+      "id": "batiment.9967974",
+      "cleabs": "BATIMENT0000000258927584",
+      "path": "data/map_pack/city/m13055-r05-c06-0-1-bc93c7f7ec8b18f4.json",
+      "nature": "Monument",
+      "usage_1": "Indifférencié",
+      "heightM": 26.1,
+      "heightBasis": "hauteur",
+      "levels": 9,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.9,
+      "areaM2": 3049.082,
+      "components": [
+        {
+          "areaM2": 3049.082,
+          "bboxMetres": [
+            70.1,
+            78.099
+          ],
+          "rings": 1,
+          "nodes": 60,
+          "potentialOpeningCandidateBounds": [
+            468,
+            585
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 60,
+      "rawMaxRingNodes": 60
+    },
+    "nature:Arc de triomphe": {
+      "id": "batiment.9970261",
+      "cleabs": "BATIMENT0000000258930196",
+      "path": "data/map_pack/city/m13055-r05-c06-0-2-75ad391514851309.json",
+      "nature": "Arc de triomphe",
+      "usage_1": "Indifférencié",
+      "heightM": 20.4,
+      "heightBasis": "hauteur",
+      "levels": 7,
+      "levelsDeclared": false,
+      "sourceLevels": null,
+      "levelHeightM": 2.9143,
+      "areaM2": 188.279,
+      "components": [
+        {
+          "areaM2": 188.279,
+          "bboxMetres": [
+            21.0,
+            18.601
+          ],
+          "rings": 1,
+          "nodes": 36,
+          "potentialOpeningCandidateBounds": [
+            42,
+            70
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 36,
+      "rawMaxRingNodes": 36
+    },
+    "nature:Silo": {
+      "id": "batiment.9979961",
+      "cleabs": "BATIMENT0000000258942453",
+      "path": "data/map_pack/city/m13055-r06-c05-2-752b7a6fa2b6010d.json",
+      "nature": "Silo",
+      "usage_1": "Agricole",
+      "heightM": 8.4,
+      "heightBasis": "hauteur",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 8.4,
+      "areaM2": 3757.535,
+      "components": [
+        {
+          "areaM2": 3757.535,
+          "bboxMetres": [
+            81.9,
+            92.9
+          ],
+          "rings": 1,
+          "nodes": 12,
+          "potentialOpeningCandidateBounds": [
+            46,
+            46
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 12,
+      "rawMaxRingNodes": 12
+    },
+    "nature:Moulin à vent": {
+      "id": "batiment.8924067",
+      "cleabs": "BATIMENT0000000257236368",
+      "path": "data/map_pack/city/m13055-r06-c10-3-58dcad4a9267f76b.json",
+      "nature": "Moulin à vent",
+      "usage_1": "Indifférencié",
+      "heightM": 3.0,
+      "heightBasis": "levels-estimate",
+      "levels": 1,
+      "levelsDeclared": true,
+      "sourceLevels": 1,
+      "levelHeightM": 3.0,
+      "areaM2": 35.574,
+      "components": [
+        {
+          "areaM2": 35.574,
+          "bboxMetres": [
+            6.701,
+            6.701
+          ],
+          "rings": 1,
+          "nodes": 90,
+          "potentialOpeningCandidateBounds": [
+            0,
+            0
+          ]
+        }
+      ],
+      "ringCount": 1,
+      "nodeCount": 90,
+      "rawMaxRingNodes": 90
+    }
+  },
+  "seconds": 23.847,
+  "baselineCommit": "cac50f3",
+  "limitations": "Statistical audit of the pinned real source corpus, not actual facade/room surveys or a renderer certification. Opening counts are conservative bounds before overlap filtering, using the baseline07bay policy."
+}

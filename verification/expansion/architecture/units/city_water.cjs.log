@@ -1,0 +1,29 @@
+✔ Water polygons and island rings project without modifying any source coordinates (3.102831ms)
+✔ A water report is not inferred from altitude or administrative complement (0.428921ms)
+✔ An open water ring is rejected before import (0.582577ms)
+✔ A derived point beyond its declared tile boundary is rejected (0.289701ms)
+✔ Counts and provenance must match the byte-pinned source descriptor (1.524305ms)
+✔ Unsafe paths and altered content-addressed filenames are rejected (0.454137ms)
+✔ Repeated maritime tile identities cannot be loaded as separate surveys (0.429391ms)
+✔ A false municipality and excessive resource budget are rejected (0.324686ms)
+✔ Only ocean or sea classes replace an older ocean polygon; inland water remains (0.350134ms)
+✔ Production wrapper installs before debug initialization without a boot exception (2.114136ms)
+✔ Ready loads a real optional descriptor through the shared source reader (1.515539ms)
+✔ Maritime planning includes verified water-only tiles beyond the old pack (1.309223ms)
+✔ The verified high-water sea replaces the old coarse ocean and preserves inland lakes (2.261ms)
+✔ A fully surveyed land tile removes an old ocean polygon without inventing water (1.059427ms)
+✔ Outside the atlas the original resource is untouched (1.06578ms)
+✔ Water-only coverage never masquerades as an officially empty base vector tile (1.208926ms)
+✔ A repeated unchanged water tile reuses bounded projected geometry (2.911194ms)
+✔ Synthetic laboratory worlds do not receive the real municipal water atlas (1.739387ms)
+✔ Refreshing the source atlas releases maritime ownership and cached geometry (1.445928ms)
+✔ An obsolete load settling after refresh cannot release a replacement shared load (4.814006ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35.667773
+

@@ -5,7 +5,7 @@ The exact production HTML, real GameHandler, city partitions, terrain, source
 hashes, UI and browser storage are used. Existing diagnostic APIs load sectors,
 place a camera on measured clear ground and pause simulation/rendering. They do
 not fabricate buildings, substitute HTTP, inject HTML or grant a documentary
-plan. Portal, landing and container actions use actual keyboard/UI controls.
+plan. Small enclosed reserves may use their real retained furniture access anchor when the legacy six-point approach sampler has no clear candidate. Portal, landing and container actions use actual keyboard/UI controls.
 This is a bounded integration pilot, not an unassisted citywide playthrough.
 """
 from pathlib import Path
@@ -116,6 +116,24 @@ def main():
     def physical_interaction(interaction_id, expected_label):
         """Use the existing collision/LOS-checked approach, then a real E key."""
         approach = debug("v020Approach", interaction_id)
+        if not approach and interaction_id.startswith("v026:"):
+            # The legacy helper samples six positions exactly 1.60 m away.
+            # An enclosed small room can contain none of them. The furniture
+            # access anchor is real layout data, retained after collider checks.
+            layout = debug("v052CityInteriorLayout")
+            interaction = next((i for i in debug("v020Stats")["interactables"] if i["id"] == interaction_id), None)
+            anchor = next((f.get("approach") for f in (layout or {}).get("furniture", [])
+                           if f.get("approach") and interaction
+                           and math.hypot(f["approach"][0] - interaction["pos"][0], f["approach"][1] - interaction["pos"][2]) < 1e-7), None)
+            if anchor and layout and interaction:
+                point = [anchor[0], layout["elevation"] + 1.65, anchor[1]]
+                clear = not debug("v020Collides", point)
+                sight = debug("v020LOS", point, interaction["pos"])
+                require("The small-room reserve uses a clear retained furniture access anchor and real line of sight",
+                        clear and sight, {"position": point, "target": interaction["pos"], "collision": not clear, "lineOfSight": sight})
+                debug("v018CaptureAt", point, 0, 0)
+                approach = {"pos": point, "pitch": -1.3, "method": "retained furniture access anchor and normal downward view after the legacy six-point sampler found no space"}
+                report.setdefault("small_room_access", []).append(approach)
         if not approach:
             return False
         if interaction_id.startswith("city-door:"):
@@ -133,9 +151,12 @@ def main():
                     not placed.get("crouched", False) and abs(placed["pos"][1] - ground["height"] - 1.65) < 1e-7,
                     {"ground": ground, "position": placed["pos"], "eye_height": 1.65})
         else:
-            capture_here(pitch=0)
+            capture_here(pitch=approach.get("pitch", 0))
         label = page.locator("#interactLabel").inner_text()
         if expected_label.casefold() not in label.casefold():
+            report.setdefault("interaction_sampler_misses", []).append({"id": interaction_id, "expected": expected_label,
+                "actual": label, "approach": approach, "player": debug("getState")["player"],
+                "interactions": debug("v020Stats")["interactables"]})
             return False
         if interaction_id.startswith("city-door:"):
             ll = debug("v046LL")
@@ -335,7 +356,7 @@ def main():
                   const sameRing=(a,b)=>{const trim=r=>r.length>1&&Math.hypot(r[0][0]-r.at(-1)[0],r[0][1]-r.at(-1)[1])<1e-7?r.slice(0,-1):r; a=trim(a);b=trim(b);return a.length===b.length&&a.every((p,i)=>Math.hypot(p[0]-b[i][0],p[1]-b[i][1])<1e-7);};
                   return samples.map(s=>({id:s.id,sourceId:s.sourceId,baseY:s.baseY,height:s.height,levels:s.levels,levelHeight:s.levelHeight,levelsBasis:s.levelsBasis,renderedOpenings:s.openings.length,provenance:s.provenance,
                     sourceEnvelopePreserved:geometry.some(g=>Math.abs(g.baseY-s.baseY)<1e-7&&Math.abs(g.height-s.height)<1e-7&&g.rings.length===s.rings.length&&g.rings.every((r,i)=>sameRing(r,s.rings[i]))),
-                    openingsWithinSourceFaces:s.openings.every(o=>{const r=s.rings[o.ringIndex],a=r?.[o.edgeIndex],b=r?.[o.edgeIndex+1];return a&&b&&o.width>0&&o.height>0&&o.offset>=0&&o.bottom>=0&&o.offset+o.width<=Math.hypot(b[0]-a[0],b[1]-a[1])+1e-6&&o.bottom+o.height<=s.height+1e-6&&['invented','documented'].includes(o.provenance);})}));
+                    openingsWithinSourceFaces:s.openings.every(o=>{const spans=d.v050FacadeOpeningSpans(s.id,o);return spans.length>0&&spans.every(p=>{const r=s.rings[p.ringIndex],a=r?.[p.edgeIndex],b=r?.[p.edgeIndex+1];return a&&b&&p.width>0&&p.offset>=-1e-7&&p.offset+p.width<=Math.hypot(b[0]-a[0],b[1]-a[1])+1e-6;})&&Math.abs(spans.reduce((n,p)=>n+p.width,0)-o.width)<1e-6&&o.width>0&&o.height>0&&o.offset>=0&&o.bottom>=0&&o.bottom+o.height<=s.height+1e-6&&['invented','documented'].includes(o.provenance);})}));
                 }""")
                 report["sectors"][name]["metric_facade_samples"] = metric
                 require(name + ": rendered facade details preserve the actual source outline and metric envelope",

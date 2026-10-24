@@ -1,0 +1,33 @@
+{
+  "scope": "Read-only actual-source statistical audit, no production or geographic file mutations, no browsers",
+  "files": {
+    "SUMMARY.md": {
+      "bytes": 6684,
+      "sha256": "65ea2fb150588d597d2e3866482458051b8ccd42ef59f1f4ff26fc4374a61217"
+    },
+    "CURVED_ELIGIBILITY.json": {
+      "bytes": 117037,
+      "sha256": "9e2cc1dd179f06a6fb9048b7ca4f5deed8adc17cde24b8809a8a681e4c199057"
+    },
+    "SOURCE_SHAPES.json": {
+      "bytes": 90394,
+      "sha256": "479650bdebd9db57c54b59c2db0ac3595f95573d74f5a04a8290cf0443e232cd"
+    },
+    "cross_tabs.py": {
+      "bytes": 2969,
+      "sha256": "9235f5432d0ef901e410f0fc83dc91235ca1a330adff423415954b0b4a027aeb"
+    },
+    "curved_eligibility.py": {
+      "bytes": 4329,
+      "sha256": "2c13514d93248a35a66f19567e7d39a54809522d31c85229b14b5e142059d250"
+    },
+    "ATTRIBUTE_CROSS_TABS.json": {
+      "bytes": 56824,
+      "sha256": "52e9a9ceaa1b72959b11abf67f01cc0f7813e6cf776cc0f6fb913eede4b04587"
+    },
+    "scan.py": {
+      "bytes": 8077,
+      "sha256": "0895cf01ecbf1c22933a7edb1b03a5957515dae77f06b1c423850693c1656070"
+    }
+  }
+}

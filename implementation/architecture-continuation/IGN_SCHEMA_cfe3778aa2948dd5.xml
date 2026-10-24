@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:BDTOPO_V3="http://BDTOPO_V3" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://BDTOPO_V3">
+  <xsd:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="https://data.geopf.fr/wfs/schemas/gml/3.2.1/gml.xsd"/>
+  <xsd:complexType name="zone_d_activite_ou_d_interetType">
+    <xsd:complexContent>
+      <xsd:extension base="gml:AbstractFeatureType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="cleabs" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="categorie" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="nature" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="nature_detaillee" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="toponyme" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="statut_du_toponyme" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="importance" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="fictif" nillable="true" type="xsd:boolean"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="etat_de_l_objet" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="date_creation" nillable="true" type="xsd:dateTime"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="date_modification" nillable="true" type="xsd:dateTime"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="date_d_apparition" nillable="true" type="xsd:date"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="date_de_confirmation" nillable="true" type="xsd:date"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="sources" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="identifiants_sources" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="methode_d_acquisition_planimetrique" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="precision_planimetrique" nillable="true" type="xsd:double"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="insee_commune" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="commune" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="adresse_postale" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="identifiant_voie_ban" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="nom_commercial" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="id_ban_odonyme" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="geometrie" nillable="true" type="gml:MultiSurfacePropertyType"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="zone_d_activite_ou_d_interet" substitutionGroup="gml:AbstractFeature" type="BDTOPO_V3:zone_d_activite_ou_d_interetType"/>
+</xsd:schema>

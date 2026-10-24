@@ -1,0 +1,27 @@
+{
+  "scope": "One independent production rebuild in the isolated legacy staging copy, original repository untouched; three byte-identical outputs and Node syntax validation.",
+  "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+  "passed": 3,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "index.html",
+      "ok": true,
+      "sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "bytes": 2636858
+    },
+    {
+      "name": "JOUER_FALLOUT_MISTRAL_v0.50.html",
+      "ok": true,
+      "sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+      "bytes": 2636858
+    },
+    {
+      "name": "src/game.js",
+      "ok": true,
+      "sha256": "3c8284c33d238e22c4f8efd1154c06484e5a014de9012a342b4922fae8cff9a0",
+      "bytes": 2459437
+    }
+  ],
+  "syntaxExitCode": 0
+}

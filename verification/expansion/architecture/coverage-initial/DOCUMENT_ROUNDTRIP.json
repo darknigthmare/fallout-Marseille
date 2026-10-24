@@ -1,0 +1,161 @@
+{
+  "scope": "Production08 source from cac50f3 executed in original controlled scene/persistence harness; documentary geometry is an explicit synthetic fixture. No browser/native claim.",
+  "sourceSha256": "f279ef34cba9adce3371ac29f16f25ecca127ae87712f2ad98b095447e55c1a1",
+  "entered": true,
+  "before": {
+    "id": "runtime-source:d434795bcf52283f",
+    "name": "Bâtiment",
+    "floor": 0,
+    "streetFloor": 0,
+    "levels": 3,
+    "origin": [
+      10,
+      0,
+      10
+    ],
+    "signature": "fc857d908258aad0",
+    "layoutProvenance": "documented",
+    "furnishing": {
+      "objects": 7,
+      "byKind": {
+        "bed": 1,
+        "kitchen": 1,
+        "sofa": 1,
+        "sanitary": 1,
+        "wardrobe": 1,
+        "desk": 2
+      },
+      "functionalUses": [
+        "Coin nuit",
+        "Coin cuisine",
+        "Salon",
+        "Coin sanitaire",
+        "Rangement",
+        "Bureau"
+      ],
+      "roomsBasis": "documented",
+      "roomCoverage": "documented-record",
+      "provenance": "invented"
+    }
+  },
+  "afterCold": {
+    "id": "runtime-source:d434795bcf52283f",
+    "name": "Bâtiment",
+    "floor": 0,
+    "streetFloor": 0,
+    "levels": 3,
+    "origin": [
+      10,
+      0,
+      10
+    ],
+    "signature": "fc857d908258aad0",
+    "layoutProvenance": "documented",
+    "furnishing": {
+      "objects": 7,
+      "byKind": {
+        "bed": 1,
+        "kitchen": 1,
+        "sofa": 1,
+        "sanitary": 1,
+        "wardrobe": 1,
+        "desk": 2
+      },
+      "functionalUses": [
+        "Coin nuit",
+        "Coin cuisine",
+        "Salon",
+        "Coin sanitaire",
+        "Rangement",
+        "Bureau"
+      ],
+      "roomsBasis": "documented",
+      "roomCoverage": "documented-record",
+      "provenance": "invented"
+    }
+  },
+  "exterior": {
+    "version": 1,
+    "zone": "geo_marseille",
+    "active": null,
+    "doors": [
+      {
+        "id": "city-door:a5eecaa9854a92d7",
+        "building": "runtime-source:d434795bcf52283f",
+        "pos": [
+          -1.15,
+          1.1,
+          10
+        ],
+        "levels": 3,
+        "streetFloor": 0,
+        "provenance": "invented"
+      }
+    ],
+    "rejections": {
+      "nearbyBuildings": 1,
+      "invalidVolume": 0,
+      "unmeasuredApproach": 0,
+      "unmatchedStreetLevel": 0,
+      "blockedApproach": 0,
+      "narrowDoor": 0,
+      "noCandidate": 0,
+      "eligible": 1,
+      "interactions": 1
+    },
+    "interactionBudget": 64,
+    "entered": 0,
+    "returned": 1,
+    "exitPending": false,
+    "last": {
+      "event": "return",
+      "building": "runtime-source:d434795bcf52283f",
+      "position": [
+        -1.15,
+        1.65,
+        10
+      ]
+    },
+    "errors": []
+  },
+  "reentered": true,
+  "afterReentry": {
+    "id": "runtime-source:d434795bcf52283f",
+    "name": "Bâtiment",
+    "floor": 0,
+    "streetFloor": 0,
+    "levels": 3,
+    "origin": [
+      10,
+      0,
+      10
+    ],
+    "signature": "7c8ee5e571536913",
+    "layoutProvenance": "invented",
+    "furnishing": {
+      "objects": 17,
+      "byKind": {
+        "bed": 3,
+        "kitchen": 3,
+        "sofa": 3,
+        "sanitary": 2,
+        "wardrobe": 2,
+        "dining": 2,
+        "desk": 2
+      },
+      "functionalUses": [
+        "Coin nuit",
+        "Coin cuisine",
+        "Salon",
+        "Coin sanitaire",
+        "Rangement",
+        "Coin repas",
+        "Bureau"
+      ],
+      "roomsBasis": "invented-functional-zones",
+      "roomCoverage": "partial",
+      "provenance": "invented"
+    }
+  },
+  "documentLost": true
+}

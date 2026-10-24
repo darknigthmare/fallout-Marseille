@@ -4,7 +4,9 @@
 
 Le jeu couvre désormais **toute la commune officielle de Marseille, îles comprises**, avec des sources IGN acquises : 291 001 identifiants d’objets bâtiment, 55 449 tronçons routiers, relief communal et littoral. Des façades et intérieurs cohérents sont générés dans les emprises disponibles ; les détails sans document restent explicitement inventés. L’échelle est métrique, avec la précision et les absences propres aux relevés. Voir [la portée et le fonctionnement de cette extension](docs/MARSEILLE_ENTIERE.md).
 
-**[Ancienne distribution Google Drive v0.50](https://drive.google.com/drive/folders/1xE5VpELY64tz5GV9CHHrlsIb_rfahRnQ)** · [Rapport visuel initial](RAPPORT_VISUEL_V0.50.png) · [Installation](docs/INSTALLATION_V050.md) · [Validation communale actuelle](verification/expansion/city/CITY_INTEGRATION.json)
+**[Ancienne distribution Google Drive v0.50](https://drive.google.com/drive/folders/1xE5VpELY64tz5GV9CHHrlsIb_rfahRnQ)** · [Rapport visuel initial](RAPPORT_VISUEL_V0.50.png) · [Installation](docs/INSTALLATION_V050.md) · [Validation architecturale actuelle](verification/expansion/architecture/ARCHITECTURE_INTEGRATION.json)
+
+Le prolongement architectural du 24 octobre est validé par **1 492 contrôles**, avec deux parcours natifs, captures et un plan d’audit. Les détails non relevés restent inventés ; la reproduction intégrale 1:1 de chaque façade et intérieur réel n’est pas certifiée.
 
 L’extension communale est livrée dans ce dépôt et ses archives vérifiées. Le lien Drive et les rapports visuels initiaux n’ont pas été actualisés pour cette extension.
 
@@ -29,7 +31,7 @@ Utiliser le lanceur de l’application pour lire les données cartographiques. L
 ## Ce qui change
 
 - **Commune entière disponible.** Les requêtes officielles couvrent Marseille et ses îles ; le voisinage est chargé à la demande, avec des caches bornés. Les objets de bordure sont conservés entiers.
-- **Façades et intérieurs jouables.** Portes accessibles, niveaux, cours préservées, mobilier adapté à l’usage, contenants finis et retour extérieur persistant. Les annotations documentées et les créations procédurales sont distinguées.
+- **Façades et intérieurs jouables.** Ouvertures sur les contours courbes, inventaire paginé, pièces closes avec passages contrôlés, mobilier orienté selon l’emprise et programmes par usage. Les budgets et omissions restent explicites. Les plans enregistrés persistent après reprise et réentrée ; les anciennes visites gardent leur disposition. [Annotations architecturales](docs/ARCHITECTURE_DOCUMENTEE.md).
 - **Relief et littoral communaux.** Un fond au pas demandé de 25 m et 25 partitions au pas de 10 m complètent les relevés locaux plus fins. La mer suit les géométries IGN et bloque la marche hors supports appropriés.
 - **Carte réelle disponible localement.** Les fichiers sont validés, les vides officiels portent leur preuve et les huit grilles de relief de base sont incluses.
 - **Sortie de campagne reliée à la carte.** Le sas propose la sortie géographique et un accès direct explicitement nommé « scène narrative ». La balise des ateliers permet de retrouver Mireille ; la sortie des ateliers retrouve le point géographique enregistré, y compris après recharge.
@@ -71,7 +73,7 @@ Prototype de fan non officiel. © contributeurs OpenStreetMap — ODbL · Cadast
 
 ## Acquisition précédente d’Aubagne et exploration
 
-Cette section décrit la livraison précédente `bb122d0`. L’état courant de Marseille, des façades et des intérieurs figure dans [Marseille entière](docs/MARSEILLE_ENTIERE.md) et son [bilan de validation](verification/expansion/city/CITY_INTEGRATION.json).
+Cette section décrit la livraison précédente `bb122d0`. L’état courant de Marseille, des façades et des intérieurs figure dans [Marseille entière](docs/MARSEILLE_ENTIERE.md) et son [bilan de validation courant](verification/expansion/architecture/ARCHITECTURE_INTEGRATION.json).
 
 Des sources IGN ont réellement été acquises et intégrées autour d’Aubagne, en complément du pack de base :
 

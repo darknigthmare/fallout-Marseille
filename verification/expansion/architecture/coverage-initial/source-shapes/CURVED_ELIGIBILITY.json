@@ -1,0 +1,4044 @@
+{
+  "scope": "Pinned source corpus; geometric actor compatibility only, not proof of actual habitable use or access. Source floor count or baseline estimated count, boundary EPS1e-7; exact point-in-polygon/segment clearance, center then bounded64x64search.",
+  "counts": {
+    "noEdge16": 301,
+    "noEdge145": 254,
+    "heightPerFloorAtLeast195cmWithEPS": 282,
+    "heightAndBBoxAtLeast2m": 192,
+    "heightAndBBoxNoEdge145": 170,
+    "heightBBoxAndActorClearance043": 191,
+    "heightBBoxButNoActorClearanceFound": 1
+  },
+  "examples": [
+    {
+      "id": "batiment.9374717",
+      "path": "data/map_pack/city/m13055-r01-c12-c869798b17b6560c.json",
+      "cleabs": "BATIMENT0000000258034351",
+      "height": 3.3999999999999986,
+      "levels": 1,
+      "heightPerFloor": 3.3999999999999986,
+      "bboxMetres": [
+        4.500575093086809,
+        4.50087764300406
+      ],
+      "maxEdgeLength": 0.28322889593778783,
+      "noEdge145": true,
+      "actorPoint": [
+        904982.6499832745,
+        6237512.250035952
+      ],
+      "actorClearance": 2.178276724089592,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9374753",
+      "path": "data/map_pack/city/m13055-r01-c12-c869798b17b6560c.json",
+      "cleabs": "BATIMENT0000000258034389",
+      "height": 3.1000000000000014,
+      "levels": 1,
+      "heightPerFloor": 3.1000000000000014,
+      "bboxMetres": [
+        4.300654014805332,
+        4.4006712371483445
+      ],
+      "maxEdgeLength": 0.28240034279002096,
+      "noEdge145": true,
+      "actorPoint": [
+        904898.3499537674,
+        6237510.499983313
+      ],
+      "actorClearance": 2.1359167123418383,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9375073",
+      "path": "data/map_pack/city/m13055-r01-c12-c869798b17b6560c.json",
+      "cleabs": "BATIMENT0000000258034732",
+      "height": 3.1000000000000014,
+      "levels": 1,
+      "heightPerFloor": 3.1000000000000014,
+      "bboxMetres": [
+        5.8002156398724765,
+        5.700917003676295
+      ],
+      "maxEdgeLength": 0.31647972166333477,
+      "noEdge145": true,
+      "actorPoint": [
+        905635.900075006,
+        6237950.350078659
+      ],
+      "actorClearance": 2.7876714785156844,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9375075",
+      "path": "data/map_pack/city/m13055-r01-c12-c869798b17b6560c.json",
+      "cleabs": "BATIMENT0000000258034734",
+      "height": 7.6,
+      "levels": 2,
+      "heightPerFloor": 3.8,
+      "bboxMetres": [
+        6.100592552102171,
+        6.100933484733105
+      ],
+      "maxEdgeLength": 0.3168713211170879,
+      "noEdge145": true,
+      "actorPoint": [
+        905621.6500915634,
+        6237926.749985814
+      ],
+      "actorClearance": 2.9811260524319083,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9279775",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907372",
+      "height": 6.9,
+      "levels": 2,
+      "heightPerFloor": 3.45,
+      "bboxMetres": [
+        23.900697303703055,
+        23.900142607279122
+      ],
+      "maxEdgeLength": 0.9222977793646744,
+      "noEdge145": true,
+      "actorPoint": [
+        895288.2500398417,
+        6238686.750279695
+      ],
+      "actorClearance": 11.851980417500215,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9279777",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907374",
+      "height": 9.0,
+      "levels": 2,
+      "heightPerFloor": 4.5,
+      "bboxMetres": [
+        23.500616342877038,
+        23.400743635371327
+      ],
+      "maxEdgeLength": 0.9056743814927916,
+      "noEdge145": true,
+      "actorPoint": [
+        895316.4500912193,
+        6238689.399927945
+      ],
+      "actorClearance": 11.671314622058482,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9279780",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907377",
+      "height": 7.299999999999997,
+      "levels": 2,
+      "heightPerFloor": 3.6499999999999986,
+      "bboxMetres": [
+        29.100448484765366,
+        29.100942709483206
+      ],
+      "maxEdgeLength": 1.1182201637725977,
+      "noEdge145": true,
+      "actorPoint": [
+        895374.6501118529,
+        6238712.550019329
+      ],
+      "actorClearance": 14.46529615147902,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9279781",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907378",
+      "height": 16.89999999999999,
+      "levels": 4,
+      "heightPerFloor": 4.224999999999998,
+      "bboxMetres": [
+        27.900491499807686,
+        27.900851619429886
+      ],
+      "maxEdgeLength": 1.044643818425443,
+      "noEdge145": true,
+      "actorPoint": [
+        895322.2500086359,
+        6238661.650047472
+      ],
+      "actorClearance": 13.895256350073913,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9279784",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907381",
+      "height": 7.299999999999997,
+      "levels": 2,
+      "heightPerFloor": 3.6499999999999986,
+      "bboxMetres": [
+        29.19987668248359,
+        29.100936913862824
+      ],
+      "maxEdgeLength": 1.1174112120720343,
+      "noEdge145": true,
+      "actorPoint": [
+        895390.1997183536,
+        6238742.349976305
+      ],
+      "actorClearance": 14.507735032367107,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9279785",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907382",
+      "height": 18.200000000000017,
+      "levels": 4,
+      "heightPerFloor": 4.550000000000004,
+      "bboxMetres": [
+        28.70050548936706,
+        28.700938218273222
+      ],
+      "maxEdgeLength": 1.1183117038304544,
+      "noEdge145": true,
+      "actorPoint": [
+        895268.1500044016,
+        6238649.049955394
+      ],
+      "actorClearance": 14.31671231241325,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9279787",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907384",
+      "height": 10.899999999999991,
+      "levels": 3,
+      "heightPerFloor": 3.6333333333333306,
+      "bboxMetres": [
+        29.200327480910346,
+        29.200643074698746
+      ],
+      "maxEdgeLength": 1.1185390025207353,
+      "noEdge145": true,
+      "actorPoint": [
+        895298.6999473403,
+        6238639.700102944
+      ],
+      "actorClearance": 14.530121128840134,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9279788",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907385",
+      "height": 6.799999999999997,
+      "levels": 2,
+      "heightPerFloor": 3.3999999999999986,
+      "bboxMetres": [
+        21.799602728919126,
+        21.800546826794744
+      ],
+      "maxEdgeLength": 0.8604662265509574,
+      "noEdge145": true,
+      "actorPoint": [
+        895360.2001214575,
+        6238754.2002584925
+      ],
+      "actorClearance": 10.81707355127271,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9279789",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907386",
+      "height": 5.200000000000003,
+      "levels": 1,
+      "heightPerFloor": 5.200000000000003,
+      "bboxMetres": [
+        22.09992512012832,
+        22.000576686114073
+      ],
+      "maxEdgeLength": 0.8544082436656972,
+      "noEdge145": true,
+      "actorPoint": [
+        895348.1503253026,
+        6238730.999757862
+      ],
+      "actorClearance": 10.950440496796368,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9279790",
+      "path": "data/map_pack/city/m13055-r02-c07-0-1085d12f4c4c5ecc.json",
+      "cleabs": "BATIMENT0000000257907387",
+      "height": 9.0,
+      "levels": 2,
+      "heightPerFloor": 4.5,
+      "bboxMetres": [
+        23.80073727760464,
+        23.90028171800077
+      ],
+      "maxEdgeLength": 0.9224502235270045,
+      "noEdge145": true,
+      "actorPoint": [
+        895261.6000048337,
+        6238677.150097393
+      ],
+      "actorClearance": 11.874172899528004,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9280841",
+      "path": "data/map_pack/city/m13055-r02-c07-3-f95668ca5f9b4d50.json",
+      "cleabs": "BATIMENT0000000257908561",
+      "height": 6.600000000000001,
+      "levels": 2,
+      "heightPerFloor": 3.3000000000000007,
+      "bboxMetres": [
+        2.8000169242732227,
+        2.900098009966314
+      ],
+      "maxEdgeLength": 1.077080974762467,
+      "noEdge145": true,
+      "actorPoint": [
+        895882.8998540563,
+        6240953.850230893
+      ],
+      "actorClearance": 1.2772901969847894,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9281793",
+      "path": "data/map_pack/city/m13055-r02-c07-3-f95668ca5f9b4d50.json",
+      "cleabs": "BATIMENT0000000257909715",
+      "height": 7.600000000000001,
+      "levels": 2,
+      "heightPerFloor": 3.8000000000000007,
+      "bboxMetres": [
+        3.4997111831326038,
+        3.400007830001414
+      ],
+      "maxEdgeLength": 1.2206358621288709,
+      "noEdge145": true,
+      "actorPoint": [
+        895792.8497679228,
+        6240910.899561938
+      ],
+      "actorClearance": 1.628170269520608,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9621107",
+      "path": "data/map_pack/city/m13055-r03-c06-1-1a01ef72f0a06c8f.json",
+      "cleabs": "BATIMENT0000000258364440",
+      "height": 4.899999999999999,
+      "levels": 2,
+      "heightPerFloor": 2.4499999999999993,
+      "bboxMetres": [
+        3.299922256730497,
+        4.100005690008402
+      ],
+      "maxEdgeLength": 1.5525453832169698,
+      "noEdge145": false,
+      "actorPoint": [
+        893435.2501002019,
+        6241764.450353633
+      ],
+      "actorClearance": 0.8824734864776037,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9621780",
+      "path": "data/map_pack/city/m13055-r03-c06-1-1a01ef72f0a06c8f.json",
+      "cleabs": "BATIMENT0000000258365204",
+      "height": 7.6,
+      "levels": 1,
+      "heightPerFloor": 7.6,
+      "bboxMetres": [
+        3.600531372590922,
+        3.400194739922881
+      ],
+      "maxEdgeLength": 1.441401116730149,
+      "noEdge145": true,
+      "actorPoint": [
+        893443.7971225466,
+        6241849.869839305
+      ],
+      "actorClearance": 0.45232200662172095,
+      "nature": "Indifférenciée",
+      "usage_1": "Annexe"
+    },
+    {
+      "id": "batiment.9623108",
+      "path": "data/map_pack/city/m13055-r03-c06-1-1a01ef72f0a06c8f.json",
+      "cleabs": "BATIMENT0000000258366741",
+      "height": 4.800000000000001,
+      "levels": 2,
+      "heightPerFloor": 2.4000000000000004,
+      "bboxMetres": [
+        2.6000467920675874,
+        2.600985455326736
+      ],
+      "maxEdgeLength": 1.1399634629826982,
+      "noEdge145": true,
+      "actorPoint": [
+        893788.4999400186,
+        6241341.50005685
+      ],
+      "actorClearance": 1.1752703901110124,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9631483",
+      "path": "data/map_pack/city/m13055-r03-c06-2-6d0ef6e7dba0c60a.json",
+      "cleabs": "BATIMENT0000000258376586",
+      "height": 11.799999999999999,
+      "levels": 4,
+      "heightPerFloor": 2.9499999999999997,
+      "bboxMetres": [
+        2.7994884601794183,
+        2.6997659541666508
+      ],
+      "maxEdgeLength": 1.1173172681882308,
+      "noEdge145": true,
+      "actorPoint": [
+        893313.199946991,
+        6243444.15001275
+      ],
+      "actorClearance": 1.2641152801178095,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9631485",
+      "path": "data/map_pack/city/m13055-r03-c06-2-6d0ef6e7dba0c60a.json",
+      "cleabs": "BATIMENT0000000258376588",
+      "height": 9.6,
+      "levels": 1,
+      "heightPerFloor": 9.6,
+      "bboxMetres": [
+        2.700665363576263,
+        2.7000798135995865
+      ],
+      "maxEdgeLength": 1.0770805995859905,
+      "noEdge145": true,
+      "actorPoint": [
+        893352.3499369958,
+        6243441.249576323
+      ],
+      "actorClearance": 1.2501455983762084,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9631145",
+      "path": "data/map_pack/city/m13055-r03-c06-3-4c2c9936e9523108.json",
+      "cleabs": "BATIMENT0000000258376177",
+      "height": 6.399999999999999,
+      "levels": 1,
+      "heightPerFloor": 6.399999999999999,
+      "bboxMetres": [
+        5.300010263221338,
+        5.200421506538987
+      ],
+      "maxEdgeLength": 1.513024367241018,
+      "noEdge145": false,
+      "actorPoint": [
+        893779.4499433538,
+        6242563.900090835
+      ],
+      "actorClearance": 2.5309273740853566,
+      "nature": "Indifférenciée",
+      "usage_1": "Annexe"
+    },
+    {
+      "id": "batiment.9631359",
+      "path": "data/map_pack/city/m13055-r03-c06-3-4c2c9936e9523108.json",
+      "cleabs": "BATIMENT0000000258376431",
+      "height": 8.5,
+      "levels": 3,
+      "heightPerFloor": 2.8333333333333335,
+      "bboxMetres": [
+        3.1007419211091474,
+        3.100948365405202
+      ],
+      "maxEdgeLength": 0.19909623949712754,
+      "noEdge145": true,
+      "actorPoint": [
+        893676.0500052301,
+        6243633.949970977
+      ],
+      "actorClearance": 1.4574245774260661,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9631481",
+      "path": "data/map_pack/city/m13055-r03-c06-3-4c2c9936e9523108.json",
+      "cleabs": "BATIMENT0000000258376584",
+      "height": 6.2,
+      "levels": 2,
+      "heightPerFloor": 3.1,
+      "bboxMetres": [
+        4.199832129874267,
+        3.9995772847905755
+      ],
+      "maxEdgeLength": 0.9484548427597104,
+      "noEdge145": true,
+      "actorPoint": [
+        893505.7000019592,
+        6243572.0001666695
+      ],
+      "actorClearance": 1.9436633256893798,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9631482",
+      "path": "data/map_pack/city/m13055-r03-c06-3-4c2c9936e9523108.json",
+      "cleabs": "BATIMENT0000000258376585",
+      "height": 8.399999999999999,
+      "levels": 3,
+      "heightPerFloor": 2.7999999999999994,
+      "bboxMetres": [
+        3.9998061432270333,
+        4.2003980949521065
+      ],
+      "maxEdgeLength": 1.4412815821265157,
+      "noEdge145": true,
+      "actorPoint": [
+        893497.2000813526,
+        6243554.099839746
+      ],
+      "actorClearance": 1.8305041856298496,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9631720",
+      "path": "data/map_pack/city/m13055-r03-c06-3-4c2c9936e9523108.json",
+      "cleabs": "BATIMENT0000000258376906",
+      "height": 9.4,
+      "levels": 3,
+      "heightPerFloor": 3.1333333333333333,
+      "bboxMetres": [
+        2.900384767446667,
+        2.899463769979775
+      ],
+      "maxEdgeLength": 1.4041186705307627,
+      "noEdge145": true,
+      "actorPoint": [
+        893898.9498268722,
+        6243894.750248905
+      ],
+      "actorClearance": 1.3465351570169621,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9627342",
+      "path": "data/map_pack/city/m13055-r03-c07-0-0-0f9e3a3871b90449.json",
+      "cleabs": "BATIMENT0000000258371615",
+      "height": 10.5,
+      "levels": 3,
+      "heightPerFloor": 3.5,
+      "bboxMetres": [
+        3.0005172637756914,
+        2.9999213963747025
+      ],
+      "maxEdgeLength": 1.3156760979565802,
+      "noEdge145": true,
+      "actorPoint": [
+        894670.8999043579,
+        6241460.199871862
+      ],
+      "actorClearance": 1.3708062162640633,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9629217",
+      "path": "data/map_pack/city/m13055-r03-c07-0-3-c5f770d0f62ac464.json",
+      "cleabs": "BATIMENT0000000258373835",
+      "height": 5.600000000000001,
+      "levels": 2,
+      "heightPerFloor": 2.8000000000000007,
+      "bboxMetres": [
+        3.7005817422177643,
+        3.500457249581814
+      ],
+      "maxEdgeLength": 1.2160573854429206,
+      "noEdge145": true,
+      "actorPoint": [
+        895265.9500762849,
+        6241940.349770718
+      ],
+      "actorClearance": 1.6771190012214818,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9285694",
+      "path": "data/map_pack/city/m13055-r03-c07-2-2-316f3838c5515b70.json",
+      "cleabs": "BATIMENT0000000257914966",
+      "height": 3.700000000000001,
+      "levels": 1,
+      "heightPerFloor": 3.700000000000001,
+      "bboxMetres": [
+        3.399515431956388,
+        3.6007610578089952
+      ],
+      "maxEdgeLength": 1.2371792371677692,
+      "noEdge145": true,
+      "actorPoint": [
+        894760.1999738333,
+        6243931.40012636
+      ],
+      "actorClearance": 1.6975744728396067,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9285812",
+      "path": "data/map_pack/city/m13055-r03-c07-3-1-8539aa717e809bd1.json",
+      "cleabs": "BATIMENT0000000257915096",
+      "height": 4.799999999999997,
+      "levels": 2,
+      "heightPerFloor": 2.3999999999999986,
+      "bboxMetres": [
+        3.999798647360876,
+        3.7998904045671225
+      ],
+      "maxEdgeLength": 1.3455465118875443,
+      "noEdge145": true,
+      "actorPoint": [
+        895838.7997351183,
+        6242837.5001136325
+      ],
+      "actorClearance": 1.8972847057124023,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.9285814",
+      "path": "data/map_pack/city/m13055-r03-c07-3-1-8539aa717e809bd1.json",
+      "cleabs": "BATIMENT0000000257915098",
+      "height": 4.399999999999999,
+      "levels": 1,
+      "heightPerFloor": 4.399999999999999,
+      "bboxMetres": [
+        3.9000320131890476,
+        3.700804495252669
+      ],
+      "maxEdgeLength": 1.3005948885816205,
+      "noEdge145": true,
+      "actorPoint": [
+        895842.8502838289,
+        6242840.250118749
+      ],
+      "actorClearance": 1.8309314103578433,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.9284179",
+      "path": "data/map_pack/city/m13055-r03-c08-0-9f3f565f6a82417f.json",
+      "cleabs": "BATIMENT0000000257912632",
+      "height": 9.900000000000006,
+      "levels": 2,
+      "heightPerFloor": 4.950000000000003,
+      "bboxMetres": [
+        2.900085236527957,
+        2.900071596726775
+      ],
+      "maxEdgeLength": 1.14056942962656,
+      "noEdge145": true,
+      "actorPoint": [
+        896784.8499650527,
+        6241748.349677983
+      ],
+      "actorClearance": 1.3330529604928423,
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel"
+    },
+    {
+      "id": "batiment.9290520",
+      "path": "data/map_pack/city/m13055-r03-c08-0-9f3f565f6a82417f.json",
+      "cleabs": "BATIMENT0000000257920771",
+      "height": 4.900000000000006,
+      "levels": 2,
+      "heightPerFloor": 2.450000000000003,
+      "bboxMetres": [
+        3.0996487515512854,
+        3.100572575815022
+      ],
+      "maxEdgeLength": 1.1405636525980005,
+      "noEdge145": true,
+      "actorPoint": [
+        896868.5498327179,
+        6242500.650098411
+      ],
+      "actorClearance": 1.457849070421873,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9292965",
+      "path": "data/map_pack/city/m13055-r03-c08-1-48bf41903922ba93.json",
+      "cleabs": "BATIMENT0000000257923667",
+      "height": 11.099999999999994,
+      "levels": 1,
+      "heightPerFloor": 11.099999999999994,
+      "bboxMetres": [
+        3.5006436614785343,
+        3.5008968515321612
+      ],
+      "maxEdgeLength": 1.5130371879505236,
+      "noEdge145": false,
+      "actorPoint": [
+        897921.850001908,
+        6242548.049995296
+      ],
+      "actorClearance": 1.5578391406282075,
+      "nature": "Indifférenciée",
+      "usage_1": "Annexe"
+    },
+    {
+      "id": "batiment.9293366",
+      "path": "data/map_pack/city/m13055-r03-c08-1-48bf41903922ba93.json",
+      "cleabs": "BATIMENT0000000257924112",
+      "height": 7.199999999999989,
+      "levels": 1,
+      "heightPerFloor": 7.199999999999989,
+      "bboxMetres": [
+        3.5001495325705037,
+        3.3995353244245052
+      ],
+      "maxEdgeLength": 1.4558635360585241,
+      "noEdge145": false,
+      "actorPoint": [
+        897335.5497579074,
+        6242644.900010747
+      ],
+      "actorClearance": 1.3047459413318319,
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel"
+    },
+    {
+      "id": "batiment.9289875",
+      "path": "data/map_pack/city/m13055-r03-c08-2-321c56ecbac9d6ef.json",
+      "cleabs": "BATIMENT0000000257920001",
+      "height": 10.100000000000001,
+      "levels": 2,
+      "heightPerFloor": 5.050000000000001,
+      "bboxMetres": [
+        2.9006432953756303,
+        3.1007876014336944
+      ],
+      "maxEdgeLength": 1.3890678663616391,
+      "noEdge145": true,
+      "actorPoint": [
+        896461.7180658204,
+        6242869.759768682
+      ],
+      "actorClearance": 0.43259079667571165,
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel"
+    },
+    {
+      "id": "batiment.10610756",
+      "path": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "cleabs": "BATIMENT0000000273378328",
+      "height": 10.399999999999991,
+      "levels": 3,
+      "heightPerFloor": 3.4666666666666637,
+      "bboxMetres": [
+        5.600373752997257,
+        8.60088734794408
+      ],
+      "maxEdgeLength": 0.9894046405198227,
+      "noEdge145": true,
+      "actorPoint": [
+        891938.0999352133,
+        6244706.899940468
+      ],
+      "actorClearance": 2.3997287229979114,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10611104",
+      "path": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "cleabs": "BATIMENT0000000273378724",
+      "height": 11.900000000000002,
+      "levels": 4,
+      "heightPerFloor": 2.9750000000000005,
+      "bboxMetres": [
+        3.200728795491159,
+        3.2009711349382997
+      ],
+      "maxEdgeLength": 0.20020593087463925,
+      "noEdge145": true,
+      "actorPoint": [
+        891849.6999762226,
+        6244549.100027904
+      ],
+      "actorClearance": 1.5232088325557323,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10611121",
+      "path": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "cleabs": "BATIMENT0000000273378749",
+      "height": 10.899999999999999,
+      "levels": 4,
+      "heightPerFloor": 2.7249999999999996,
+      "bboxMetres": [
+        2.800601144088432,
+        2.900955008342862
+      ],
+      "maxEdgeLength": 0.14208866896078212,
+      "noEdge145": true,
+      "actorPoint": [
+        891869.6999381724,
+        6244656.449982598
+      ],
+      "actorClearance": 1.3198088634250191,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10612640",
+      "path": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "cleabs": "BATIMENT0000000273380678",
+      "height": 6.0,
+      "levels": 1,
+      "heightPerFloor": 6.0,
+      "bboxMetres": [
+        2.8002076997654513,
+        2.79965977743268
+      ],
+      "maxEdgeLength": 1.081218964913284,
+      "noEdge145": true,
+      "actorPoint": [
+        892065.6999247484,
+        6244738.500317227
+      ],
+      "actorClearance": 1.272972986506004,
+      "nature": "Indifférenciée",
+      "usage_1": "Annexe"
+    },
+    {
+      "id": "batiment.10626012",
+      "path": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "cleabs": "BATIMENT0000000273397378",
+      "height": 5.299999999999997,
+      "levels": 2,
+      "heightPerFloor": 2.6499999999999986,
+      "bboxMetres": [
+        2.900656664161943,
+        2.900957316160202
+      ],
+      "maxEdgeLength": 0.14216083020406803,
+      "noEdge145": true,
+      "actorPoint": [
+        892296.049966386,
+        6245198.650038108
+      ],
+      "actorClearance": 1.3941516710462811,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.10624072",
+      "path": "data/map_pack/city/m13055-r04-c05-3-2-027bcb2f780b3c32.json",
+      "cleabs": "BATIMENT0000000273394820",
+      "height": 3.799999999999997,
+      "levels": 1,
+      "heightPerFloor": 3.799999999999997,
+      "bboxMetres": [
+        3.999982711276971,
+        4.000626331195235
+      ],
+      "maxEdgeLength": 1.2726353223980398,
+      "noEdge145": true,
+      "actorPoint": [
+        891654.0000831701,
+        6246087.400225138
+      ],
+      "actorClearance": 1.8770742049189741,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.10612846",
+      "path": "data/map_pack/city/m13055-r04-c06-0-0-fc2e847464ac12fe.json",
+      "cleabs": "BATIMENT0000000273380938",
+      "height": 6.700000000000003,
+      "levels": 2,
+      "heightPerFloor": 3.3500000000000014,
+      "bboxMetres": [
+        3.8006603221874684,
+        3.200290959328413
+      ],
+      "maxEdgeLength": 1.389625418147888,
+      "noEdge145": true,
+      "actorPoint": [
+        892586.5999959962,
+        6244297.799707983
+      ],
+      "actorClearance": 0.6982099519277627,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10613339",
+      "path": "data/map_pack/city/m13055-r04-c06-0-0-fc2e847464ac12fe.json",
+      "cleabs": "BATIMENT0000000273381505",
+      "height": 6,
+      "levels": 2,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        3.8998405422316864,
+        3.800384427420795
+      ],
+      "maxEdgeLength": 1.3036292412036339,
+      "noEdge145": true,
+      "actorPoint": [
+        892667.1498775091,
+        6244382.80023778
+      ],
+      "actorClearance": 1.7751885905470877,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10612077",
+      "path": "data/map_pack/city/m13055-r04-c06-0-2-76dc685b64bfee26.json",
+      "cleabs": "BATIMENT0000000273380003",
+      "height": 10.5,
+      "levels": 1,
+      "heightPerFloor": 10.5,
+      "bboxMetres": [
+        3.0000942347105592,
+        3.199873035773635
+      ],
+      "maxEdgeLength": 1.4209921642910368,
+      "noEdge145": true,
+      "actorPoint": [
+        892789.3999103162,
+        6244959.100268839
+      ],
+      "actorClearance": 1.4530736310367665,
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel"
+    },
+    {
+      "id": "batiment.10625994",
+      "path": "data/map_pack/city/m13055-r04-c06-0-3-03d19464727a1e06.json",
+      "cleabs": "BATIMENT0000000273397354",
+      "height": 7.099999999999994,
+      "levels": 2,
+      "heightPerFloor": 3.549999999999997,
+      "bboxMetres": [
+        2.899925045669079,
+        2.899767206981778
+      ],
+      "maxEdgeLength": 1.1176550803840921,
+      "noEdge145": true,
+      "actorPoint": [
+        892900.6501549704,
+        6245075.249993312
+      ],
+      "actorClearance": 1.3403763504440938,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10632676",
+      "path": "data/map_pack/city/m13055-r04-c06-0-3-03d19464727a1e06.json",
+      "cleabs": "BATIMENT0000000273405314",
+      "height": 9.900000000000006,
+      "levels": 3,
+      "heightPerFloor": 3.300000000000002,
+      "bboxMetres": [
+        3.9003070214530453,
+        4.100569240748882
+      ],
+      "maxEdgeLength": 1.303960409376469,
+      "noEdge145": true,
+      "actorPoint": [
+        893138.3500683694,
+        6245065.149836966
+      ],
+      "actorClearance": 1.8789676297082827,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10615286",
+      "path": "data/map_pack/city/m13055-r04-c06-1-0-a262d4b38c85499d.json",
+      "cleabs": "BATIMENT0000000273383884",
+      "height": 5.6,
+      "levels": 2,
+      "heightPerFloor": 2.8,
+      "bboxMetres": [
+        5.40034488379024,
+        5.1000815918669105
+      ],
+      "maxEdgeLength": 1.5619136181054343,
+      "noEdge145": false,
+      "actorPoint": null,
+      "actorClearance": null,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9294267",
+      "path": "data/map_pack/city/m13055-r04-c07-0-38c606670112446a.json",
+      "cleabs": "BATIMENT0000000257925201",
+      "height": 4.9,
+      "levels": 2,
+      "heightPerFloor": 2.45,
+      "bboxMetres": [
+        2.999973929603584,
+        2.8999226400628686
+      ],
+      "maxEdgeLength": 1.1704902801684764,
+      "noEdge145": true,
+      "actorPoint": [
+        894889.2000829626,
+        6244020.650202986
+      ],
+      "actorClearance": 1.3602185059662761,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10324715",
+      "path": "data/map_pack/city/m13055-r04-c07-2-3-0b37821b77f8f986.json",
+      "cleabs": "BATIMENT0000000266956653",
+      "height": 4.800000000000001,
+      "levels": 2,
+      "heightPerFloor": 2.4000000000000004,
+      "bboxMetres": [
+        3.3997893559280783,
+        3.300399952568114
+      ],
+      "maxEdgeLength": 1.204346420677578,
+      "noEdge145": true,
+      "actorPoint": [
+        894803.9999525457,
+        6246041.050223101
+      ],
+      "actorClearance": 1.5653419915663562,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10324716",
+      "path": "data/map_pack/city/m13055-r04-c07-2-3-0b37821b77f8f986.json",
+      "cleabs": "BATIMENT0000000266956654",
+      "height": 9.700000000000003,
+      "levels": 3,
+      "heightPerFloor": 3.2333333333333343,
+      "bboxMetres": [
+        2.7995560687268153,
+        2.8008092492818832
+      ],
+      "maxEdgeLength": 1.118006174643003,
+      "noEdge145": true,
+      "actorPoint": [
+        894838.1001326591,
+        6246087.1000705855
+      ],
+      "actorClearance": 1.2970503015959685,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10324719",
+      "path": "data/map_pack/city/m13055-r04-c07-2-3-0b37821b77f8f986.json",
+      "cleabs": "BATIMENT0000000266956657",
+      "height": 22.7,
+      "levels": 7,
+      "heightPerFloor": 3.242857142857143,
+      "bboxMetres": [
+        2.8002117342548445,
+        2.6999103911221027
+      ],
+      "maxEdgeLength": 0.707564237834835,
+      "noEdge145": true,
+      "actorPoint": [
+        894825.1998735068,
+        6246087.249614383
+      ],
+      "actorClearance": 1.2525861931043316,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9300967",
+      "path": "data/map_pack/city/m13055-r04-c07-3-1-9f39a937c7c8e89a.json",
+      "cleabs": "BATIMENT0000000257933612",
+      "height": 3.700000000000003,
+      "levels": 1,
+      "heightPerFloor": 3.700000000000003,
+      "bboxMetres": [
+        2.899906959850341,
+        2.900574875064194
+      ],
+      "maxEdgeLength": 1.1186033529051909,
+      "noEdge145": true,
+      "actorPoint": [
+        896014.5498352246,
+        6245594.149887461
+      ],
+      "actorClearance": 1.344998489947537,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9300969",
+      "path": "data/map_pack/city/m13055-r04-c07-3-1-9f39a937c7c8e89a.json",
+      "cleabs": "BATIMENT0000000257933614",
+      "height": 4.399999999999999,
+      "levels": 1,
+      "heightPerFloor": 4.399999999999999,
+      "bboxMetres": [
+        2.799936120165512,
+        2.900560344569385
+      ],
+      "maxEdgeLength": 1.1186102898473527,
+      "noEdge145": true,
+      "actorPoint": [
+        896006.5996873593,
+        6245592.749972729
+      ],
+      "actorClearance": 1.3240492060618776,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9300984",
+      "path": "data/map_pack/city/m13055-r04-c07-3-1-9f39a937c7c8e89a.json",
+      "cleabs": "BATIMENT0000000257933636",
+      "height": 8.7,
+      "levels": 2,
+      "heightPerFloor": 4.35,
+      "bboxMetres": [
+        3.7994159266818315,
+        3.8000529455021024
+      ],
+      "maxEdgeLength": 1.2810133134896036,
+      "noEdge145": true,
+      "actorPoint": [
+        896015.0000626558,
+        6245598.699958222
+      ],
+      "actorClearance": 1.7679320368041336,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9300985",
+      "path": "data/map_pack/city/m13055-r04-c07-3-1-9f39a937c7c8e89a.json",
+      "cleabs": "BATIMENT0000000257933637",
+      "height": 14.7,
+      "levels": 3,
+      "heightPerFloor": 4.8999999999999995,
+      "bboxMetres": [
+        3.7997912362916395,
+        3.700246388092637
+      ],
+      "maxEdgeLength": 1.2803944218865304,
+      "noEdge145": true,
+      "actorPoint": [
+        896015.5000647008,
+        6245603.650409392
+      ],
+      "actorClearance": 1.7866250563265185,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10174666",
+      "path": "data/map_pack/city/m13055-r04-c07-3-3-9a42182477902ea2.json",
+      "cleabs": "BATIMENT0000000259336123",
+      "height": 2.4000000000000057,
+      "levels": 1,
+      "heightPerFloor": 2.4000000000000057,
+      "bboxMetres": [
+        4.500365233048797,
+        4.400859241373837
+      ],
+      "maxEdgeLength": 0.4469752853837124,
+      "noEdge145": true,
+      "actorPoint": [
+        895904.250029628,
+        6246240.599930817
+      ],
+      "actorClearance": 2.163347807590771,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9303284",
+      "path": "data/map_pack/city/m13055-r04-c08-1-1-a10ea01120cefa9f.json",
+      "cleabs": "BATIMENT0000000257936310",
+      "height": 6.900000000000006,
+      "levels": 2,
+      "heightPerFloor": 3.450000000000003,
+      "bboxMetres": [
+        3.399899130803533,
+        3.000607054680586
+      ],
+      "maxEdgeLength": 1.2994863183693746,
+      "noEdge145": true,
+      "actorPoint": [
+        898080.5001524684,
+        6244418.399972506
+      ],
+      "actorClearance": 0.935538909627003,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9304628",
+      "path": "data/map_pack/city/m13055-r04-c08-3-1-9767208f8ada2b28.json",
+      "cleabs": "BATIMENT0000000257937867",
+      "height": 6.600000000000001,
+      "levels": 2,
+      "heightPerFloor": 3.3000000000000007,
+      "bboxMetres": [
+        10.100509397685528,
+        10.001054246909916
+      ],
+      "maxEdgeLength": 0.4474648715873649,
+      "noEdge145": true,
+      "actorPoint": [
+        897934.349883851,
+        6245921.4000026155
+      ],
+      "actorClearance": 4.972651847973817,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9833261",
+      "path": "data/map_pack/city/m13055-r04-c09-2-db2de7330d0ce52e.json",
+      "cleabs": "BATIMENT0000000258758657",
+      "height": 12.700000000000003,
+      "levels": 4,
+      "heightPerFloor": 3.1750000000000007,
+      "bboxMetres": [
+        4.5998225482180715,
+        4.699933839961886
+      ],
+      "maxEdgeLength": 1.4554645916090574,
+      "noEdge145": false,
+      "actorPoint": [
+        898828.7998001992,
+        6246634.749544818
+      ],
+      "actorClearance": 1.9503568064710186,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9833262",
+      "path": "data/map_pack/city/m13055-r04-c09-2-db2de7330d0ce52e.json",
+      "cleabs": "BATIMENT0000000258758658",
+      "height": 13.299999999999997,
+      "levels": 4,
+      "heightPerFloor": 3.3249999999999993,
+      "bboxMetres": [
+        3.8998115961439908,
+        3.8995749773457646
+      ],
+      "maxEdgeLength": 1.5228766469837014,
+      "noEdge145": false,
+      "actorPoint": [
+        898794.5499228723,
+        6246639.550133234
+      ],
+      "actorClearance": 1.7549629758710248,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9833263",
+      "path": "data/map_pack/city/m13055-r04-c09-2-db2de7330d0ce52e.json",
+      "cleabs": "BATIMENT0000000258758659",
+      "height": 12.600000000000001,
+      "levels": 4,
+      "heightPerFloor": 3.1500000000000004,
+      "bboxMetres": [
+        3.899910023319535,
+        3.899811437353492
+      ],
+      "maxEdgeLength": 1.5232792906558217,
+      "noEdge145": false,
+      "actorPoint": [
+        898785.4497535636,
+        6246659.249578064
+      ],
+      "actorClearance": 1.7858500460965874,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9598276",
+      "path": "data/map_pack/city/m13055-r04-c10-2-210b9f5e6b3763b8.json",
+      "cleabs": "BATIMENT0000000258332513",
+      "height": 8.900000000000006,
+      "levels": 3,
+      "heightPerFloor": 2.9666666666666686,
+      "bboxMetres": [
+        4.199467188096605,
+        4.2000195905566216
+      ],
+      "maxEdgeLength": 1.3423778032899332,
+      "noEdge145": true,
+      "actorPoint": [
+        900305.3999012331,
+        6246829.699767459
+      ],
+      "actorClearance": 1.9679467537427395,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9319501",
+      "path": "data/map_pack/city/m13055-r04-c11-3-505d26514fa0068a.json",
+      "cleabs": "BATIMENT0000000257955055",
+      "height": 5.400000000000006,
+      "levels": 1,
+      "heightPerFloor": 5.400000000000006,
+      "bboxMetres": [
+        3.899723470560275,
+        3.90026559215039
+      ],
+      "maxEdgeLength": 1.3002719345287914,
+      "noEdge145": true,
+      "actorPoint": [
+        903319.05017864,
+        6246064.350100843
+      ],
+      "actorClearance": 1.8553840631228364,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9319510",
+      "path": "data/map_pack/city/m13055-r04-c11-3-505d26514fa0068a.json",
+      "cleabs": "BATIMENT0000000257955064",
+      "height": 3.6000000000000085,
+      "levels": 1,
+      "heightPerFloor": 3.6000000000000085,
+      "bboxMetres": [
+        3.7003741012886167,
+        3.900544237345457
+      ],
+      "maxEdgeLength": 1.3001900108613034,
+      "noEdge145": true,
+      "actorPoint": [
+        903284.1500579274,
+        6246115.349940975
+      ],
+      "actorClearance": 1.7804020574427057,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9319511",
+      "path": "data/map_pack/city/m13055-r04-c11-3-505d26514fa0068a.json",
+      "cleabs": "BATIMENT0000000257955065",
+      "height": 5.0,
+      "levels": 2,
+      "heightPerFloor": 2.5,
+      "bboxMetres": [
+        2.7998307776870206,
+        2.9002224653959274
+      ],
+      "maxEdgeLength": 1.1176823187290432,
+      "noEdge145": true,
+      "actorPoint": [
+        903190.1001126242,
+        6246097.850261102
+      ],
+      "actorClearance": 1.3326474068605663,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9319514",
+      "path": "data/map_pack/city/m13055-r04-c11-3-505d26514fa0068a.json",
+      "cleabs": "BATIMENT0000000257955068",
+      "height": 6.700000000000003,
+      "levels": 2,
+      "heightPerFloor": 3.3500000000000014,
+      "bboxMetres": [
+        3.1999353296123445,
+        3.100728442892432
+      ],
+      "maxEdgeLength": 1.1708097579902845,
+      "noEdge145": true,
+      "actorPoint": [
+        903303.7999587953,
+        6246020.949944017
+      ],
+      "actorClearance": 1.4568424388532633,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9319519",
+      "path": "data/map_pack/city/m13055-r04-c11-3-505d26514fa0068a.json",
+      "cleabs": "BATIMENT0000000257955074",
+      "height": 5.400000000000006,
+      "levels": 1,
+      "heightPerFloor": 5.400000000000006,
+      "bboxMetres": [
+        3.200095161097124,
+        3.100113463588059
+      ],
+      "maxEdgeLength": 1.1697759734494295,
+      "noEdge145": true,
+      "actorPoint": [
+        903318.5001148268,
+        6246070.349738173
+      ],
+      "actorClearance": 1.4557982462923313,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9615253",
+      "path": "data/map_pack/city/m13055-r04-c12-1-39cd85831e67f147.json",
+      "cleabs": "BATIMENT0000000258352576",
+      "height": 3.0999999999999943,
+      "levels": 1,
+      "heightPerFloor": 3.0999999999999943,
+      "bboxMetres": [
+        3.5000405471073464,
+        3.500437516719103
+      ],
+      "maxEdgeLength": 1.2204608981542178,
+      "noEdge145": true,
+      "actorPoint": [
+        905277.8498092694,
+        6244978.550026231
+      ],
+      "actorClearance": 1.594785399078103,
+      "nature": "Indifférenciée",
+      "usage_1": "Annexe"
+    },
+    {
+      "id": "batiment.9616012",
+      "path": "data/map_pack/city/m13055-r04-c12-1-39cd85831e67f147.json",
+      "cleabs": "BATIMENT0000000258353378",
+      "height": 5.4,
+      "levels": 2,
+      "heightPerFloor": 2.7,
+      "bboxMetres": [
+        2.100626027677208,
+        2.1000118562951684
+      ],
+      "maxEdgeLength": 1.4872672948686025,
+      "noEdge145": false,
+      "actorPoint": [
+        905405.8500468557,
+        6245609.850512026
+      ],
+      "actorClearance": 0.7432225558201992,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9600009",
+      "path": "data/map_pack/city/m13055-r04-c12-2-4a5cd5771c94fe9f.json",
+      "cleabs": "BATIMENT0000000258334598",
+      "height": 3.6000000000000085,
+      "levels": 1,
+      "heightPerFloor": 3.6000000000000085,
+      "bboxMetres": [
+        4.500567142735235,
+        4.299399545416236
+      ],
+      "maxEdgeLength": 1.3922185683141757,
+      "noEdge145": true,
+      "actorPoint": [
+        903918.5500834552,
+        6246040.949933352
+      ],
+      "actorClearance": 2.069384262116782,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9602391",
+      "path": "data/map_pack/city/m13055-r04-c12-2-4a5cd5771c94fe9f.json",
+      "cleabs": "BATIMENT0000000258337328",
+      "height": 6,
+      "levels": 2,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        2.899926321581006,
+        3.0002185786142945
+      ],
+      "maxEdgeLength": 1.1180978720515138,
+      "noEdge145": true,
+      "actorPoint": [
+        904603.0502620628,
+        6246967.400413828
+      ],
+      "actorClearance": 1.3647599406330084,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9761918",
+      "path": "data/map_pack/city/m13055-r04-c12-3-3637ed1309581c10.json",
+      "cleabs": "BATIMENT0000000258551166",
+      "height": 3.700000000000003,
+      "levels": 1,
+      "heightPerFloor": 3.700000000000003,
+      "bboxMetres": [
+        3.3004391957074404,
+        3.400674837641418
+      ],
+      "maxEdgeLength": 0.7075350091311653,
+      "noEdge145": true,
+      "actorPoint": [
+        905390.8498271296,
+        6246688.200184582
+      ],
+      "actorClearance": 1.6005067452316635,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9761941",
+      "path": "data/map_pack/city/m13055-r04-c12-3-3637ed1309581c10.json",
+      "cleabs": "BATIMENT0000000258551191",
+      "height": 5.1000000000000085,
+      "levels": 2,
+      "heightPerFloor": 2.5500000000000043,
+      "bboxMetres": [
+        3.4001548415981233,
+        3.4003340378403664
+      ],
+      "maxEdgeLength": 0.9490550906619705,
+      "noEdge145": true,
+      "actorPoint": [
+        905410.6998188237,
+        6246949.900113434
+      ],
+      "actorClearance": 1.5944419913879364,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9968893",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "cleabs": "BATIMENT0000000258928672",
+      "height": 17.800000000000004,
+      "levels": 6,
+      "heightPerFloor": 2.9666666666666672,
+      "bboxMetres": [
+        5.800667416420765,
+        5.900720755569637
+      ],
+      "maxEdgeLength": 0.9484932503528712,
+      "noEdge145": true,
+      "actorPoint": [
+        892313.4999977727,
+        6247298.649895756
+      ],
+      "actorClearance": 2.8662411227437605,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9969926",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "cleabs": "BATIMENT0000000258929845",
+      "height": 18.1,
+      "levels": 4,
+      "heightPerFloor": 4.525,
+      "bboxMetres": [
+        5.5004542582901195,
+        5.400583792477846
+      ],
+      "maxEdgeLength": 1.5301064287944652,
+      "noEdge145": false,
+      "actorPoint": [
+        892207.9498418188,
+        6247180.399783485
+      ],
+      "actorClearance": 2.5788516997771636,
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel"
+    },
+    {
+      "id": "batiment.9969933",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "cleabs": "BATIMENT0000000258929852",
+      "height": 12.900000000000006,
+      "levels": 4,
+      "heightPerFloor": 3.2250000000000014,
+      "bboxMetres": [
+        5.1001147056231275,
+        5.299267856404185
+      ],
+      "maxEdgeLength": 1.5227932249353768,
+      "noEdge145": false,
+      "actorPoint": [
+        892220.2497642899,
+        6247190.95014638
+      ],
+      "actorClearance": 2.303619651145842,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10624217",
+      "path": "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "cleabs": "BATIMENT0000000273395032",
+      "height": 5.0,
+      "levels": 2,
+      "heightPerFloor": 2.5,
+      "bboxMetres": [
+        3.9999609320657328,
+        4.600363817997277
+      ],
+      "maxEdgeLength": 1.1400316217915953,
+      "noEdge145": true,
+      "actorPoint": [
+        891474.8996345198,
+        6246803.6998501085
+      ],
+      "actorClearance": 0.8945618359639046,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10320827",
+      "path": "data/map_pack/city/m13055-r05-c06-1-2-dbfa824052cbaf70.json",
+      "cleabs": "BATIMENT0000000266951978",
+      "height": 6,
+      "levels": 2,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        4.199898133054376,
+        5.999621118418872
+      ],
+      "maxEdgeLength": 1.581248597728087,
+      "noEdge145": false,
+      "actorPoint": [
+        893651.1000266792,
+        6247489.700186256
+      ],
+      "actorClearance": 0.7589899603157721,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9967144",
+      "path": "data/map_pack/city/m13055-r05-c06-2-2-e26ed8be87151cca.json",
+      "cleabs": "BATIMENT0000000258926355",
+      "height": 25.6,
+      "levels": 8,
+      "heightPerFloor": 3.2,
+      "bboxMetres": [
+        2.7996924847830087,
+        2.800232688896358
+      ],
+      "maxEdgeLength": 1.0823746353955492,
+      "noEdge145": true,
+      "actorPoint": [
+        892664.6002168603,
+        6248877.600225508
+      ],
+      "actorClearance": 1.2797266091115413,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9967146",
+      "path": "data/map_pack/city/m13055-r05-c06-2-2-e26ed8be87151cca.json",
+      "cleabs": "BATIMENT0000000258926357",
+      "height": 19.8,
+      "levels": 6,
+      "heightPerFloor": 3.3000000000000003,
+      "bboxMetres": [
+        2.7002086635911837,
+        2.6996074970811605
+      ],
+      "maxEdgeLength": 1.1047332705856425,
+      "noEdge145": true,
+      "actorPoint": [
+        892667.2503013152,
+        6248873.64978522
+      ],
+      "actorClearance": 1.2986953043938603,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9967526",
+      "path": "data/map_pack/city/m13055-r05-c06-2-2-e26ed8be87151cca.json",
+      "cleabs": "BATIMENT0000000258926885",
+      "height": 7.499999999999998,
+      "levels": 2,
+      "heightPerFloor": 3.749999999999999,
+      "bboxMetres": [
+        3.2006202186457813,
+        3.1008709389716387
+      ],
+      "maxEdgeLength": 0.22338737312387297,
+      "noEdge145": true,
+      "actorPoint": [
+        892572.9999041681,
+        6248808.049992102
+      ],
+      "actorClearance": 1.5043262724153614,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9991223",
+      "path": "data/map_pack/city/m13055-r05-c06-2-2-e26ed8be87151cca.json",
+      "cleabs": "BATIMENT0000000258956729",
+      "height": 10.3,
+      "levels": 3,
+      "heightPerFloor": 3.4333333333333336,
+      "bboxMetres": [
+        3.300757474033162,
+        3.2999155446887016
+      ],
+      "maxEdgeLength": 1.2161139836724815,
+      "noEdge145": true,
+      "actorPoint": [
+        892340.3499784813,
+        6249198.549970724
+      ],
+      "actorClearance": 1.5334628461632998,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10336152",
+      "path": "data/map_pack/city/m13055-r05-c07-1-0-0456f3b6d3e38b3c.json",
+      "cleabs": "BATIMENT0000000266969511",
+      "height": 7.899999999999999,
+      "levels": 3,
+      "heightPerFloor": 2.633333333333333,
+      "bboxMetres": [
+        2.70049707533326,
+        2.700598898343742
+      ],
+      "maxEdgeLength": 1.1400135316772926,
+      "noEdge145": true,
+      "actorPoint": [
+        895352.1500843209,
+        6246982.749919614
+      ],
+      "actorClearance": 1.2301519594730683,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10175070",
+      "path": "data/map_pack/city/m13055-r05-c07-1-1-46e67f84969d2827.json",
+      "cleabs": "BATIMENT0000000259336631",
+      "height": 3.8000000000000043,
+      "levels": 1,
+      "heightPerFloor": 3.8000000000000043,
+      "bboxMetres": [
+        2.999699395499192,
+        5.000080596655607
+      ],
+      "maxEdgeLength": 1.1178959925465828,
+      "noEdge145": true,
+      "actorPoint": [
+        895776.5325428502,
+        6246915.607873944
+      ],
+      "actorClearance": 0.4322132405573539,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10163538",
+      "path": "data/map_pack/city/m13055-r05-c07-3-1-c9417ade874c3f71.json",
+      "cleabs": "BATIMENT0000000259322940",
+      "height": 6.2,
+      "levels": 1,
+      "heightPerFloor": 6.2,
+      "bboxMetres": [
+        3.6999712858814746,
+        3.600054208189249
+      ],
+      "maxEdgeLength": 1.4206106997396917,
+      "noEdge145": true,
+      "actorPoint": [
+        895885.9500476924,
+        6248447.499970642
+      ],
+      "actorClearance": 1.6378896570584087,
+      "nature": "Indifférenciée",
+      "usage_1": "Résidentiel"
+    },
+    {
+      "id": "batiment.10166555",
+      "path": "data/map_pack/city/m13055-r05-c07-3-3-d5ef1e11cb9c7937.json",
+      "cleabs": "BATIMENT0000000259326667",
+      "height": 9.900000000000006,
+      "levels": 3,
+      "heightPerFloor": 3.300000000000002,
+      "bboxMetres": [
+        5.800553255598061,
+        5.900539354421198
+      ],
+      "maxEdgeLength": 0.28346288365272576,
+      "noEdge145": true,
+      "actorPoint": [
+        895721.8999627852,
+        6249206.749927169
+      ],
+      "actorClearance": 2.8430739851484295,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10166557",
+      "path": "data/map_pack/city/m13055-r05-c07-3-3-d5ef1e11cb9c7937.json",
+      "cleabs": "BATIMENT0000000259326670",
+      "height": 9.799999999999997,
+      "levels": 1,
+      "heightPerFloor": 9.799999999999997,
+      "bboxMetres": [
+        10.800500879995525,
+        10.80013289488852
+      ],
+      "maxEdgeLength": 0.44828519060859773,
+      "noEdge145": true,
+      "actorPoint": [
+        895720.734313267,
+        6249202.090346468
+      ],
+      "actorClearance": 0.48266414480899145,
+      "nature": "Indifférenciée",
+      "usage_1": "Annexe"
+    },
+    {
+      "id": "batiment.10168954",
+      "path": "data/map_pack/city/m13055-r05-c08-0-0-12e54ad6b25fa70b.json",
+      "cleabs": "BATIMENT0000000259329352",
+      "height": 5.5,
+      "levels": 2,
+      "heightPerFloor": 2.75,
+      "bboxMetres": [
+        2.899552032351494,
+        2.899971074424684
+      ],
+      "maxEdgeLength": 1.140445723201981,
+      "noEdge145": true,
+      "actorPoint": [
+        896340.7499204916,
+        6247214.8496231325
+      ],
+      "actorClearance": 1.3593472211495388,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10177735",
+      "path": "data/map_pack/city/m13055-r05-c08-2-0-38352866b8cc2052.json",
+      "cleabs": "BATIMENT0000000259339689",
+      "height": 6.5,
+      "levels": 2,
+      "heightPerFloor": 3.25,
+      "bboxMetres": [
+        2.799970086896792,
+        2.699809091165662
+      ],
+      "maxEdgeLength": 1.5296882815562485,
+      "noEdge145": false,
+      "actorPoint": [
+        896195.2997261753,
+        6248299.950383206
+      ],
+      "actorClearance": 1.2153959506050527,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9838771",
+      "path": "data/map_pack/city/m13055-r05-c09-3-41c739ac3a03484b.json",
+      "cleabs": "BATIMENT0000000258765192",
+      "height": 8.300000000000011,
+      "levels": 3,
+      "heightPerFloor": 2.7666666666666706,
+      "bboxMetres": [
+        4.600629819207825,
+        4.69984383508563
+      ],
+      "maxEdgeLength": 1.442814799878962,
+      "noEdge145": true,
+      "actorPoint": [
+        899533.0999642988,
+        6248782.149759933
+      ],
+      "actorClearance": 2.1003632088675923,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9838937",
+      "path": "data/map_pack/city/m13055-r05-c09-3-41c739ac3a03484b.json",
+      "cleabs": "BATIMENT0000000258765391",
+      "height": 4.199999999999989,
+      "levels": 1,
+      "heightPerFloor": 4.199999999999989,
+      "bboxMetres": [
+        2.699900768348016,
+        2.7997816242277622
+      ],
+      "maxEdgeLength": 1.140047194196301,
+      "noEdge145": true,
+      "actorPoint": [
+        899515.9496683378,
+        6248827.500072715
+      ],
+      "actorClearance": 1.2743346079455762,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9847276",
+      "path": "data/map_pack/city/m13055-r05-c09-3-41c739ac3a03484b.json",
+      "cleabs": "BATIMENT0000000258775209",
+      "height": 9.199999999999989,
+      "levels": 3,
+      "heightPerFloor": 3.066666666666663,
+      "bboxMetres": [
+        3.6994218659820035,
+        3.6003373144194484
+      ],
+      "maxEdgeLength": 1.2373044115797525,
+      "noEdge145": true,
+      "actorPoint": [
+        899397.4500046324,
+        6249004.299736617
+      ],
+      "actorClearance": 1.7545078722961251,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.9602422",
+      "path": "data/map_pack/city/m13055-r05-c10-0-6fa91ae65bdc0e88.json",
+      "cleabs": "BATIMENT0000000258337367",
+      "height": 3.799999999999997,
+      "levels": 1,
+      "heightPerFloor": 3.799999999999997,
+      "bboxMetres": [
+        4.500576226040721,
+        4.3998483987525105
+      ],
+      "maxEdgeLength": 0.5387354413268733,
+      "noEdge145": true,
+      "actorPoint": [
+        899926.8499181003,
+        6247097.100404117
+      ],
+      "actorClearance": 2.1564115550379896,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9603402",
+      "path": "data/map_pack/city/m13055-r05-c10-0-6fa91ae65bdc0e88.json",
+      "cleabs": "BATIMENT0000000258338540",
+      "height": 4.599999999999994,
+      "levels": 2,
+      "heightPerFloor": 2.299999999999997,
+      "bboxMetres": [
+        3.0000765720615163,
+        2.4001047406345606
+      ],
+      "maxEdgeLength": 1.3932189771750547,
+      "noEdge145": true,
+      "actorPoint": [
+        900537.3000092702,
+        6247195.500157074
+      ],
+      "actorClearance": 1.068848494961587,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9603629",
+      "path": "data/map_pack/city/m13055-r05-c10-1-7c754ef400e02b93.json",
+      "cleabs": "BATIMENT0000000258338825",
+      "height": 10.799999999999997,
+      "levels": 3,
+      "heightPerFloor": 3.599999999999999,
+      "bboxMetres": [
+        9.60044687683694,
+        9.50075332634151
+      ],
+      "maxEdgeLength": 1.2799681745867193,
+      "noEdge145": true,
+      "actorPoint": [
+        901323.5000724554,
+        6247044.750029587
+      ],
+      "actorClearance": 4.672629296733213,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9848642",
+      "path": "data/map_pack/city/m13055-r05-c10-2-89859db5bc222d25.json",
+      "cleabs": "BATIMENT0000000258776822",
+      "height": 7.0,
+      "levels": 2,
+      "heightPerFloor": 3.5,
+      "bboxMetres": [
+        3.4997364210430533,
+        3.5000027595087886
+      ],
+      "maxEdgeLength": 1.2208714873485762,
+      "noEdge145": true,
+      "actorPoint": [
+        899925.4497550603,
+        6249316.849689554
+      ],
+      "actorClearance": 1.6285690694834025,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.9605657",
+      "path": "data/map_pack/city/m13055-r05-c10-3-a727902ff7017fe2.json",
+      "cleabs": "BATIMENT0000000258341193",
+      "height": 3.1999999999999886,
+      "levels": 1,
+      "heightPerFloor": 3.1999999999999886,
+      "bboxMetres": [
+        2.700268782209605,
+        2.6999701224267483
+      ],
+      "maxEdgeLength": 1.0766356438830802,
+      "noEdge145": true,
+      "actorPoint": [
+        900872.0501738202,
+        6248747.249631459
+      ],
+      "actorClearance": 1.2350570254349174,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9598875",
+      "path": "data/map_pack/city/m13055-r05-c11-1-9a61d2fc418fa241.json",
+      "cleabs": "BATIMENT0000000258333211",
+      "height": 6.800000000000011,
+      "levels": 2,
+      "heightPerFloor": 3.4000000000000057,
+      "bboxMetres": [
+        4.999979905318469,
+        4.900746000930667
+      ],
+      "maxEdgeLength": 1.4315015355304481,
+      "noEdge145": true,
+      "actorPoint": [
+        902798.7998952649,
+        6246974.250135044
+      ],
+      "actorClearance": 2.3795786813326014,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9611324",
+      "path": "data/map_pack/city/m13055-r05-c11-2-1cf58495f7823684.json",
+      "cleabs": "BATIMENT0000000258347933",
+      "height": 2.5,
+      "levels": 1,
+      "heightPerFloor": 2.5,
+      "bboxMetres": [
+        3.6002150347921997,
+        3.7002566708251834
+      ],
+      "maxEdgeLength": 1.2729331808047424,
+      "noEdge145": true,
+      "actorPoint": [
+        902505.9002594409,
+        6249257.749915469
+      ],
+      "actorClearance": 1.723437810990329,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9602257",
+      "path": "data/map_pack/city/m13055-r05-c12-0-3cb638d53d1747cb.json",
+      "cleabs": "BATIMENT0000000258337176",
+      "height": 2.299999999999983,
+      "levels": 1,
+      "heightPerFloor": 2.299999999999983,
+      "bboxMetres": [
+        2.7000978593714535,
+        2.7002797154709697
+      ],
+      "maxEdgeLength": 1.1044467642227942,
+      "noEdge145": true,
+      "actorPoint": [
+        904092.2497317077,
+        6246970.7502510585
+      ],
+      "actorClearance": 1.2502328570044456,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9608969",
+      "path": "data/map_pack/city/m13055-r05-c12-0-3cb638d53d1747cb.json",
+      "cleabs": "BATIMENT0000000258345142",
+      "height": 8.400000000000006,
+      "levels": 1,
+      "heightPerFloor": 8.400000000000006,
+      "bboxMetres": [
+        6.000627763220109,
+        6.000682815909386
+      ],
+      "maxEdgeLength": 0.29973767939064627,
+      "noEdge145": true,
+      "actorPoint": [
+        904188.9000121744,
+        6247591.699969044
+      ],
+      "actorClearance": 2.9408136428426097,
+      "nature": "Indifférenciée",
+      "usage_1": "Annexe"
+    },
+    {
+      "id": "batiment.9609229",
+      "path": "data/map_pack/city/m13055-r05-c12-0-3cb638d53d1747cb.json",
+      "cleabs": "BATIMENT0000000258345416",
+      "height": 6,
+      "levels": 2,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        2.300254609202966,
+        2.199597267434001
+      ],
+      "maxEdgeLength": 1.2731049363392488,
+      "noEdge145": true,
+      "actorPoint": [
+        904204.25018608,
+        6247745.200318111
+      ],
+      "actorClearance": 0.954402412365276,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9977532",
+      "path": "data/map_pack/city/m13055-r06-c05-1-b7e7165c0751cadd.json",
+      "cleabs": "BATIMENT0000000258939339",
+      "height": 11.999999999999996,
+      "levels": 4,
+      "heightPerFloor": 2.999999999999999,
+      "bboxMetres": [
+        3.299979195231572,
+        3.2003885162994266
+      ],
+      "maxEdgeLength": 1.2646659006090537,
+      "noEdge145": true,
+      "actorPoint": [
+        891450.7502425914,
+        6250573.999737864
+      ],
+      "actorClearance": 1.5201739078148602,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9972666",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933242",
+      "height": 17.9,
+      "levels": 4,
+      "heightPerFloor": 4.475,
+      "bboxMetres": [
+        9.300392838777043,
+        9.200435658916831
+      ],
+      "maxEdgeLength": 0.4123414667939978,
+      "noEdge145": true,
+      "actorPoint": [
+        891804.1498811853,
+        6251448.300275984
+      ],
+      "actorClearance": 4.5405290619218475,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9972669",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933246",
+      "height": 8.0,
+      "levels": 2,
+      "heightPerFloor": 4.0,
+      "bboxMetres": [
+        2.900080321007408,
+        2.9003941966220737
+      ],
+      "maxEdgeLength": 1.1661537679445446,
+      "noEdge145": true,
+      "actorPoint": [
+        891815.5499370298,
+        6251421.2503536325
+      ],
+      "actorClearance": 1.316830557311,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9972671",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933248",
+      "height": 6.1,
+      "levels": 1,
+      "heightPerFloor": 6.1,
+      "bboxMetres": [
+        2.599443666753359,
+        2.7000247361138463
+      ],
+      "maxEdgeLength": 1.0295524203995805,
+      "noEdge145": true,
+      "actorPoint": [
+        891817.0000459359,
+        6251415.650096493
+      ],
+      "actorClearance": 1.1982332848174329,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9972673",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933251",
+      "height": 6.2,
+      "levels": 1,
+      "heightPerFloor": 6.2,
+      "bboxMetres": [
+        4.0004427577368915,
+        3.800091741606593
+      ],
+      "maxEdgeLength": 1.299644409097843,
+      "noEdge145": true,
+      "actorPoint": [
+        891812.0998718118,
+        6251419.300044466
+      ],
+      "actorClearance": 1.8974797920457946,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9972674",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933252",
+      "height": 6.1,
+      "levels": 1,
+      "heightPerFloor": 6.1,
+      "bboxMetres": [
+        3.9003055373905227,
+        3.9996689604595304
+      ],
+      "maxEdgeLength": 1.3338188263176713,
+      "noEdge145": true,
+      "actorPoint": [
+        891807.7500713824,
+        6251417.899892826
+      ],
+      "actorClearance": 1.8392680291958086,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9972675",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933253",
+      "height": 6.1,
+      "levels": 1,
+      "heightPerFloor": 6.1,
+      "bboxMetres": [
+        4.10033447179012,
+        4.000704012811184
+      ],
+      "maxEdgeLength": 1.3040276284963608,
+      "noEdge145": true,
+      "actorPoint": [
+        891813.3498994483,
+        6251414.699802401
+      ],
+      "actorClearance": 1.889770722160782,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9972677",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933255",
+      "height": 6.2,
+      "levels": 1,
+      "heightPerFloor": 6.2,
+      "bboxMetres": [
+        2.599940691026859,
+        2.6002243692055345
+      ],
+      "maxEdgeLength": 1.0632888825244906,
+      "noEdge145": true,
+      "actorPoint": [
+        891816.2002392423,
+        6251418.0996776
+      ],
+      "actorClearance": 1.228812275284604,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9972686",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933267",
+      "height": 6.0,
+      "levels": 1,
+      "heightPerFloor": 6.0,
+      "bboxMetres": [
+        3.9003106908639893,
+        3.8007086664438248
+      ],
+      "maxEdgeLength": 1.3037437809703332,
+      "noEdge145": true,
+      "actorPoint": [
+        891814.7498557428,
+        6251409.999845517
+      ],
+      "actorClearance": 1.8361659403452286,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9972687",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933268",
+      "height": 6.0,
+      "levels": 1,
+      "heightPerFloor": 6.0,
+      "bboxMetres": [
+        3.800079601118341,
+        3.799571448005736
+      ],
+      "maxEdgeLength": 1.3042345236830353,
+      "noEdge145": true,
+      "actorPoint": [
+        891808.7999300986,
+        6251413.30032878
+      ],
+      "actorClearance": 1.7945310504549212,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9972688",
+      "path": "data/map_pack/city/m13055-r06-c05-3-3-072f569364a1dd2b.json",
+      "cleabs": "BATIMENT0000000258933269",
+      "height": 6.0,
+      "levels": 1,
+      "heightPerFloor": 6.0,
+      "bboxMetres": [
+        3.8006083564832807,
+        3.7004369907081127
+      ],
+      "maxEdgeLength": 1.3000627172329358,
+      "noEdge145": true,
+      "actorPoint": [
+        891810.199994084,
+        6251408.54993986
+      ],
+      "actorClearance": 1.773052491898142,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9695780",
+      "path": "data/map_pack/city/m13055-r06-c06-0-0664acdfb3fdd1b9.json",
+      "cleabs": "BATIMENT0000000258453871",
+      "height": 25.2,
+      "levels": 6,
+      "heightPerFloor": 4.2,
+      "bboxMetres": [
+        4.800195367541164,
+        4.700622977688909
+      ],
+      "maxEdgeLength": 1.4316672807663338,
+      "noEdge145": true,
+      "actorPoint": [
+        893111.7002807814,
+        6250473.949754524
+      ],
+      "actorClearance": 2.197035782249572,
+      "nature": "Silo",
+      "usage_1": "Agricole"
+    },
+    {
+      "id": "batiment.9695781",
+      "path": "data/map_pack/city/m13055-r06-c06-0-0664acdfb3fdd1b9.json",
+      "cleabs": "BATIMENT0000000258453872",
+      "height": 24.9,
+      "levels": 6,
+      "heightPerFloor": 4.1499999999999995,
+      "bboxMetres": [
+        4.800176808843389,
+        4.800456027500331
+      ],
+      "maxEdgeLength": 1.431481772272937,
+      "noEdge145": true,
+      "actorPoint": [
+        893116.4999889188,
+        6250473.000277115
+      ],
+      "actorClearance": 2.311931798681831,
+      "nature": "Silo",
+      "usage_1": "Agricole"
+    },
+    {
+      "id": "batiment.9695783",
+      "path": "data/map_pack/city/m13055-r06-c06-0-0664acdfb3fdd1b9.json",
+      "cleabs": "BATIMENT0000000258453874",
+      "height": 24.9,
+      "levels": 6,
+      "heightPerFloor": 4.1499999999999995,
+      "bboxMetres": [
+        4.6006763010518625,
+        4.699842824600637
+      ],
+      "maxEdgeLength": 1.4313220540620333,
+      "noEdge145": true,
+      "actorPoint": [
+        893121.1999535358,
+        6250472.050277723
+      ],
+      "actorClearance": 2.233591154236518,
+      "nature": "Silo",
+      "usage_1": "Agricole"
+    },
+    {
+      "id": "batiment.9696153",
+      "path": "data/map_pack/city/m13055-r06-c06-0-0664acdfb3fdd1b9.json",
+      "cleabs": "BATIMENT0000000258454302",
+      "height": 11.199999999999996,
+      "levels": 3,
+      "heightPerFloor": 3.733333333333332,
+      "bboxMetres": [
+        5.10018379369285,
+        5.099941775202751
+      ],
+      "maxEdgeLength": 1.4865323731908635,
+      "noEdge145": false,
+      "actorPoint": [
+        893142.1497948437,
+        6250389.349742481
+      ],
+      "actorClearance": 2.4384697870255696,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9990751",
+      "path": "data/map_pack/city/m13055-r06-c06-0-0664acdfb3fdd1b9.json",
+      "cleabs": "BATIMENT0000000258956069",
+      "height": 6.800000000000001,
+      "levels": 2,
+      "heightPerFloor": 3.4000000000000004,
+      "bboxMetres": [
+        3.4993258378235623,
+        3.500199976377189
+      ],
+      "maxEdgeLength": 1.2163413145963586,
+      "noEdge145": true,
+      "actorPoint": [
+        892261.649972362,
+        6249792.24962095
+      ],
+      "actorClearance": 1.6291560524463764,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9696442",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258454682",
+      "height": 10.800000000000004,
+      "levels": 4,
+      "heightPerFloor": 2.700000000000001,
+      "bboxMetres": [
+        2.8003223484847695,
+        2.799216641113162
+      ],
+      "maxEdgeLength": 1.1404083846646842,
+      "noEdge145": true,
+      "actorPoint": [
+        893116.8002226449,
+        6251105.400080692
+      ],
+      "actorClearance": 1.2887236135038185,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9696444",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258454684",
+      "height": 9.300000000000004,
+      "levels": 3,
+      "heightPerFloor": 3.1000000000000014,
+      "bboxMetres": [
+        2.6000474429456517,
+        2.6000256715342402
+      ],
+      "maxEdgeLength": 1.2037429856910664,
+      "noEdge145": true,
+      "actorPoint": [
+        893115.5000845506,
+        6251102.899933755
+      ],
+      "actorClearance": 1.2416778588200714,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9975947",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937383",
+      "height": 5.299999999999997,
+      "levels": 2,
+      "heightPerFloor": 2.6499999999999986,
+      "bboxMetres": [
+        2.700130937038921,
+        3.2005469985306263
+      ],
+      "maxEdgeLength": 1.0297388697041587,
+      "noEdge145": true,
+      "actorPoint": [
+        892494.0503503643,
+        6251869.400254341
+      ],
+      "actorClearance": 0.6090563646981489,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9975948",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937384",
+      "height": 2.3999999999999986,
+      "levels": 1,
+      "heightPerFloor": 2.3999999999999986,
+      "bboxMetres": [
+        2.8005291775334626,
+        3.300823515281081
+      ],
+      "maxEdgeLength": 1.0297409437659233,
+      "noEdge145": true,
+      "actorPoint": [
+        892501.6001220007,
+        6251856.25006287
+      ],
+      "actorClearance": 0.6093227508821492,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9975973",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937411",
+      "height": 5.600000000000001,
+      "levels": 2,
+      "heightPerFloor": 2.8000000000000007,
+      "bboxMetres": [
+        3.8001206587068737,
+        3.6005299584940076
+      ],
+      "maxEdgeLength": 1.4213799652816912,
+      "noEdge145": true,
+      "actorPoint": [
+        892574.199878698,
+        6251840.799996445
+      ],
+      "actorClearance": 0.7069355320285436,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9975974",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937412",
+      "height": 6.200000000000003,
+      "levels": 2,
+      "heightPerFloor": 3.1000000000000014,
+      "bboxMetres": [
+        3.799854710116051,
+        3.600997311063111
+      ],
+      "maxEdgeLength": 1.0634853673856692,
+      "noEdge145": true,
+      "actorPoint": [
+        892581.2998099641,
+        6251834.899996111
+      ],
+      "actorClearance": 0.706954672632771,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9975980",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937418",
+      "height": 6.299999999999997,
+      "levels": 2,
+      "heightPerFloor": 3.1499999999999986,
+      "bboxMetres": [
+        4.200701833819039,
+        4.10077085532248
+      ],
+      "maxEdgeLength": 1.5621404450500653,
+      "noEdge145": false,
+      "actorPoint": [
+        892563.6000404595,
+        6251851.249968501
+      ],
+      "actorClearance": 0.9013022112013449,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9975984",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937422",
+      "height": 4.900000000000006,
+      "levels": 2,
+      "heightPerFloor": 2.450000000000003,
+      "bboxMetres": [
+        3.600333447684534,
+        3.600643747486174
+      ],
+      "maxEdgeLength": 0.8603557107640325,
+      "noEdge145": true,
+      "actorPoint": [
+        892544.399807967,
+        6251866.999899613
+      ],
+      "actorClearance": 0.804373136546462,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9975988",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937426",
+      "height": 2.8,
+      "levels": 1,
+      "heightPerFloor": 2.8,
+      "bboxMetres": [
+        3.500377327320166,
+        3.5002377536147833
+      ],
+      "maxEdgeLength": 0.7081277855055556,
+      "noEdge145": true,
+      "actorPoint": [
+        892532.9499288131,
+        6251876.649645855
+      ],
+      "actorClearance": 0.7911757947179067,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976169",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937644",
+      "height": 9.799999999999997,
+      "levels": 3,
+      "heightPerFloor": 3.2666666666666657,
+      "bboxMetres": [
+        2.6003846215317026,
+        2.5009576845914125
+      ],
+      "maxEdgeLength": 0.31578454380941823,
+      "noEdge145": true,
+      "actorPoint": [
+        892739.9000117544,
+        6251004.649988811
+      ],
+      "actorClearance": 1.2074345168802187,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976170",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937645",
+      "height": 12.700000000000003,
+      "levels": 4,
+      "heightPerFloor": 3.1750000000000007,
+      "bboxMetres": [
+        3.0997832322027534,
+        3.200035738758743
+      ],
+      "maxEdgeLength": 0.36075571121111694,
+      "noEdge145": true,
+      "actorPoint": [
+        892748.6499311962,
+        6251004.900033249
+      ],
+      "actorClearance": 1.5206547020847874,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976171",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937646",
+      "height": 9.5,
+      "levels": 3,
+      "heightPerFloor": 3.1666666666666665,
+      "bboxMetres": [
+        2.6002055058488622,
+        2.500697148963809
+      ],
+      "maxEdgeLength": 0.3163444786127443,
+      "noEdge145": true,
+      "actorPoint": [
+        892743.1997649723,
+        6251004.850176129
+      ],
+      "actorClearance": 1.2077070911422167,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976205",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937695",
+      "height": 2.0,
+      "levels": 1,
+      "heightPerFloor": 2.0,
+      "bboxMetres": [
+        3.099909996963106,
+        3.100891847163439
+      ],
+      "maxEdgeLength": 1.1183552231744325,
+      "noEdge145": true,
+      "actorPoint": [
+        892581.7498475257,
+        6251766.349939843
+      ],
+      "actorClearance": 1.4086068111427592,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976206",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937696",
+      "height": 11.600000000000001,
+      "levels": 4,
+      "heightPerFloor": 2.9000000000000004,
+      "bboxMetres": [
+        3.200068589299917,
+        3.2002117736265063
+      ],
+      "maxEdgeLength": 1.170477342087201,
+      "noEdge145": true,
+      "actorPoint": [
+        892584.0000051012,
+        6251763.699588506
+      ],
+      "actorClearance": 1.469261152500755,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976207",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937697",
+      "height": 11.700000000000003,
+      "levels": 4,
+      "heightPerFloor": 2.9250000000000007,
+      "bboxMetres": [
+        2.9995856842724606,
+        2.9003004357218742
+      ],
+      "maxEdgeLength": 1.1404615503699689,
+      "noEdge145": true,
+      "actorPoint": [
+        892586.3001256103,
+        6251761.149668898
+      ],
+      "actorClearance": 1.3465152178176494,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976208",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937698",
+      "height": 7.400000000000006,
+      "levels": 2,
+      "heightPerFloor": 3.700000000000003,
+      "bboxMetres": [
+        2.8999734147218987,
+        2.8998331651091576
+      ],
+      "maxEdgeLength": 1.1183398918114769,
+      "noEdge145": true,
+      "actorPoint": [
+        892581.1500814848,
+        6251752.450009104
+      ],
+      "actorClearance": 1.3645056599133454,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976209",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937699",
+      "height": 11.399999999999999,
+      "levels": 4,
+      "heightPerFloor": 2.8499999999999996,
+      "bboxMetres": [
+        2.9005792029201984,
+        2.9001663643866777
+      ],
+      "maxEdgeLength": 1.1320695701014967,
+      "noEdge145": true,
+      "actorPoint": [
+        892583.2499799979,
+        6251754.850131633
+      ],
+      "actorClearance": 1.3648692932474542,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976210",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937700",
+      "height": 5.0,
+      "levels": 2,
+      "heightPerFloor": 2.5,
+      "bboxMetres": [
+        3.2003134271362796,
+        3.1000043926760554
+      ],
+      "maxEdgeLength": 1.1401044394881292,
+      "noEdge145": true,
+      "actorPoint": [
+        892576.5000774169,
+        6251747.549927011
+      ],
+      "actorClearance": 1.438935376554045,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976211",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937701",
+      "height": 10.600000000000001,
+      "levels": 3,
+      "heightPerFloor": 3.5333333333333337,
+      "bboxMetres": [
+        3.0000936723081395,
+        3.1006937315687537
+      ],
+      "maxEdgeLength": 1.1404619150280284,
+      "noEdge145": true,
+      "actorPoint": [
+        892584.8002784566,
+        6251757.84994239
+      ],
+      "actorClearance": 1.3939827431565155,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976212",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937702",
+      "height": 5.200000000000003,
+      "levels": 2,
+      "heightPerFloor": 2.6000000000000014,
+      "bboxMetres": [
+        3.0003348879981786,
+        2.800402886234224
+      ],
+      "maxEdgeLength": 1.1183574678457358,
+      "noEdge145": true,
+      "actorPoint": [
+        892578.8001930065,
+        6251749.899709407
+      ],
+      "actorClearance": 1.3206247190050575,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9976371",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000258937868",
+      "height": 3.0,
+      "levels": 1,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        3.5002233400009573,
+        3.400705753825605
+      ],
+      "maxEdgeLength": 0.7067607373073541,
+      "noEdge145": true,
+      "actorPoint": [
+        892503.3497770999,
+        6251901.59983073
+      ],
+      "actorClearance": 0.730432297402279,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10433893",
+      "path": "data/map_pack/city/m13055-r06-c06-2-c7ca9f50160a5a3c.json",
+      "cleabs": "BATIMENT0000000271202927",
+      "height": 9.799999999999997,
+      "levels": 2,
+      "heightPerFloor": 4.899999999999999,
+      "bboxMetres": [
+        10.299964546575211,
+        10.300460647791624
+      ],
+      "maxEdgeLength": 0.4471355263771307,
+      "noEdge145": true,
+      "actorPoint": [
+        893078.9499403727,
+        6251799.54973092
+      ],
+      "actorClearance": 5.061809227564583,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.9696217",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "cleabs": "BATIMENT0000000258454410",
+      "height": 4.200000000000003,
+      "levels": 1,
+      "heightPerFloor": 4.200000000000003,
+      "bboxMetres": [
+        3.6999780097976327,
+        3.5999176539480686
+      ],
+      "maxEdgeLength": 1.2199589080044053,
+      "noEdge145": true,
+      "actorPoint": [
+        893542.2499595624,
+        6250842.000163539
+      ],
+      "actorClearance": 1.6322602458575532,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9696494",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "cleabs": "BATIMENT0000000258454738",
+      "height": 7.699999999999996,
+      "levels": 3,
+      "heightPerFloor": 2.566666666666665,
+      "bboxMetres": [
+        2.799869007547386,
+        2.8009743504226208
+      ],
+      "maxEdgeLength": 1.1315435304462167,
+      "noEdge145": true,
+      "actorPoint": [
+        893178.8998121794,
+        6251105.499956686
+      ],
+      "actorClearance": 1.3314482861240853,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9696496",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "cleabs": "BATIMENT0000000258454740",
+      "height": 8.0,
+      "levels": 3,
+      "heightPerFloor": 2.6666666666666665,
+      "bboxMetres": [
+        2.799828883027658,
+        2.8000034000724554
+      ],
+      "maxEdgeLength": 1.1047312918442542,
+      "noEdge145": true,
+      "actorPoint": [
+        893186.500232061,
+        6251122.199594487
+      ],
+      "actorClearance": 1.311772981162994,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9696497",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "cleabs": "BATIMENT0000000258454741",
+      "height": 7.900000000000006,
+      "levels": 3,
+      "heightPerFloor": 2.633333333333335,
+      "bboxMetres": [
+        2.9003077251836658,
+        2.899777367711067
+      ],
+      "maxEdgeLength": 1.1175351392626987,
+      "noEdge145": true,
+      "actorPoint": [
+        893187.950107143,
+        6251125.350059695
+      ],
+      "actorClearance": 1.3641485902696397,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9696498",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "cleabs": "BATIMENT0000000258454742",
+      "height": 7.799999999999997,
+      "levels": 3,
+      "heightPerFloor": 2.599999999999999,
+      "bboxMetres": [
+        2.90036977827549,
+        2.900404122658074
+      ],
+      "maxEdgeLength": 1.1183493771358441,
+      "noEdge145": true,
+      "actorPoint": [
+        893192.9498980339,
+        6251136.349971794
+      ],
+      "actorClearance": 1.2897015353405081,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9696499",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "cleabs": "BATIMENT0000000258454743",
+      "height": 7.300000000000004,
+      "levels": 2,
+      "heightPerFloor": 3.650000000000002,
+      "bboxMetres": [
+        2.799749046098441,
+        2.8999417573213577
+      ],
+      "maxEdgeLength": 1.078168418688464,
+      "noEdge145": true,
+      "actorPoint": [
+        893191.3002622641,
+        6251090.450501312
+      ],
+      "actorClearance": 1.2963545332813986,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9696500",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "cleabs": "BATIMENT0000000258454744",
+      "height": 7.700000000000003,
+      "levels": 3,
+      "heightPerFloor": 2.5666666666666678,
+      "bboxMetres": [
+        3.0002679901663214,
+        2.8996381713077426
+      ],
+      "maxEdgeLength": 1.1403556294107122,
+      "noEdge145": true,
+      "actorPoint": [
+        893191.5000920253,
+        6251133.149702173
+      ],
+      "actorClearance": 1.3465505688900608,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9696502",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "cleabs": "BATIMENT0000000258454746",
+      "height": 8.0,
+      "levels": 3,
+      "heightPerFloor": 2.6666666666666665,
+      "bboxMetres": [
+        2.8003195988712832,
+        2.6995812924578786
+      ],
+      "maxEdgeLength": 1.0771236260015251,
+      "noEdge145": true,
+      "actorPoint": [
+        893185.1001229449,
+        6251119.049777718
+      ],
+      "actorClearance": 1.264559122097132,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10438900",
+      "path": "data/map_pack/city/m13055-r06-c06-3-fb3a0144f73e91b2.json",
+      "cleabs": "BATIMENT0000000271209192",
+      "height": 3.200000000000003,
+      "levels": 1,
+      "heightPerFloor": 3.200000000000003,
+      "bboxMetres": [
+        5.39988597726915,
+        5.300512468442321
+      ],
+      "maxEdgeLength": 0.44783552991886727,
+      "noEdge145": true,
+      "actorPoint": [
+        893555.2999690061,
+        6252070.750025836
+      ],
+      "actorClearance": 2.6068933227528484,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9843747",
+      "path": "data/map_pack/city/m13055-r06-c08-0-28e982220d975c22.json",
+      "cleabs": "BATIMENT0000000258771047",
+      "height": 4.099999999999994,
+      "levels": 1,
+      "heightPerFloor": 4.099999999999994,
+      "bboxMetres": [
+        3.3000555919716135,
+        3.100599511526525
+      ],
+      "maxEdgeLength": 1.2171816859246536,
+      "noEdge145": true,
+      "actorPoint": [
+        896920.6498133268,
+        6250060.749918295
+      ],
+      "actorClearance": 1.4398226579104916,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10172566",
+      "path": "data/map_pack/city/m13055-r06-c08-0-28e982220d975c22.json",
+      "cleabs": "BATIMENT0000000259333603",
+      "height": 4.900000000000006,
+      "levels": 2,
+      "heightPerFloor": 2.450000000000003,
+      "bboxMetres": [
+        3.199541782727465,
+        3.2997746458277106
+      ],
+      "maxEdgeLength": 1.414910214481839,
+      "noEdge145": true,
+      "actorPoint": [
+        896282.90002545,
+        6249702.450275594
+      ],
+      "actorClearance": 1.5201644821657205,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10442710",
+      "path": "data/map_pack/city/m13055-r06-c08-0-28e982220d975c22.json",
+      "cleabs": "BATIMENT0000000271213884",
+      "height": 9.900000000000006,
+      "levels": 2,
+      "heightPerFloor": 4.950000000000003,
+      "bboxMetres": [
+        10.400587489828467,
+        10.400202770717442
+      ],
+      "maxEdgeLength": 0.44796464867517366,
+      "noEdge145": true,
+      "actorPoint": [
+        896391.199917675,
+        6250624.699712548
+      ],
+      "actorClearance": 5.100426670509812,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9847227",
+      "path": "data/map_pack/city/m13055-r06-c09-0-1-26ce8e938988579c.json",
+      "cleabs": "BATIMENT0000000258775133",
+      "height": 6,
+      "levels": 2,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        3.1998693959321827,
+        3.099056741222739
+      ],
+      "maxEdgeLength": 1.1409015978374992,
+      "noEdge145": true,
+      "actorPoint": [
+        898642.7002168394,
+        6249759.750058732
+      ],
+      "actorClearance": 1.4709643171354658,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10445632",
+      "path": "data/map_pack/city/m13055-r06-c09-2-9176f7b7338c5513.json",
+      "cleabs": "BATIMENT0000000271217312",
+      "height": 4.300000000000011,
+      "levels": 1,
+      "heightPerFloor": 4.300000000000011,
+      "bboxMetres": [
+        3.3997351182624698,
+        3.3007145477458835
+      ],
+      "maxEdgeLength": 1.2044570200860427,
+      "noEdge145": true,
+      "actorPoint": [
+        898499.3998695572,
+        6251868.14994432
+      ],
+      "actorClearance": 1.5653011976766185,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.8917927",
+      "path": "data/map_pack/city/m13055-r06-c10-0-d2031043d2c7f2e9.json",
+      "cleabs": "BATIMENT0000000257228978",
+      "height": 10.299999999999983,
+      "levels": 3,
+      "heightPerFloor": 3.433333333333328,
+      "bboxMetres": [
+        3.000657042604871,
+        3.000352398492396
+      ],
+      "maxEdgeLength": 0.6320234103141604,
+      "noEdge145": true,
+      "actorPoint": [
+        900644.5999163238,
+        6249745.100363409
+      ],
+      "actorClearance": 1.3031854827674065,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.8922525",
+      "path": "data/map_pack/city/m13055-r06-c10-2-fedc5ad33e20543b.json",
+      "cleabs": "BATIMENT0000000257234609",
+      "height": 2.8000000000000114,
+      "levels": 1,
+      "heightPerFloor": 2.8000000000000114,
+      "bboxMetres": [
+        4.699896151549183,
+        4.799818705767393
+      ],
+      "maxEdgeLength": 0.7203144434978013,
+      "noEdge145": true,
+      "actorPoint": [
+        900074.650181066,
+        6251489.499557511
+      ],
+      "actorClearance": 2.302026878593402,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.8931665",
+      "path": "data/map_pack/city/m13055-r06-c10-2-fedc5ad33e20543b.json",
+      "cleabs": "BATIMENT0000000257245425",
+      "height": 2.299999999999983,
+      "levels": 1,
+      "heightPerFloor": 2.299999999999983,
+      "bboxMetres": [
+        3.199501690804027,
+        4.500058729201555
+      ],
+      "maxEdgeLength": 1.3605005261205232,
+      "noEdge145": true,
+      "actorPoint": [
+        900286.8999252887,
+        6252081.049548877
+      ],
+      "actorClearance": 0.9541843417064011,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.8924067",
+      "path": "data/map_pack/city/m13055-r06-c10-3-58dcad4a9267f76b.json",
+      "cleabs": "BATIMENT0000000257236368",
+      "height": 3.0,
+      "levels": 1,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        6.700546642765403,
+        6.701038966886699
+      ],
+      "maxEdgeLength": 0.31671002922113994,
+      "noEdge145": true,
+      "actorPoint": [
+        901210.7500735722,
+        6251701.5500322245
+      ],
+      "actorClearance": 3.2900750880574217,
+      "nature": "Moulin à vent",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.8920434",
+      "path": "data/map_pack/city/m13055-r06-c11-50c4f3d3ccfa1926.json",
+      "cleabs": "BATIMENT0000000257232039",
+      "height": 7.699999999999989,
+      "levels": 3,
+      "heightPerFloor": 2.566666666666663,
+      "bboxMetres": [
+        5.000494536594488,
+        4.10005703009665
+      ],
+      "maxEdgeLength": 0.9433936897366177,
+      "noEdge145": true,
+      "actorPoint": [
+        902394.7998766636,
+        6250064.449886328
+      ],
+      "actorClearance": 1.0736925655287115,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.8923767",
+      "path": "data/map_pack/city/m13055-r06-c11-50c4f3d3ccfa1926.json",
+      "cleabs": "BATIMENT0000000257235995",
+      "height": 4.099999999999994,
+      "levels": 1,
+      "heightPerFloor": 4.099999999999994,
+      "bboxMetres": [
+        2.400000805966556,
+        2.7005221685394645
+      ],
+      "maxEdgeLength": 0.9008600846740825,
+      "noEdge145": true,
+      "actorPoint": [
+        901809.199738316,
+        6251192.649938112
+      ],
+      "actorClearance": 1.1928321982994634,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9974721",
+      "path": "data/map_pack/city/m13055-r07-c02-eff59ed716e714b7.json",
+      "cleabs": "BATIMENT0000000258935820",
+      "height": 2.799999999999997,
+      "levels": 1,
+      "heightPerFloor": 2.799999999999997,
+      "bboxMetres": [
+        5.099645565613173,
+        5.1997480150312185
+      ],
+      "maxEdgeLength": 1.4756814826537556,
+      "noEdge145": false,
+      "actorPoint": [
+        886383.5499913592,
+        6254235.300220907
+      ],
+      "actorClearance": 2.4827489208465185,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9984013",
+      "path": "data/map_pack/city/m13055-r07-c03-2-dbb8179f9f109f38.json",
+      "cleabs": "BATIMENT0000000258947429",
+      "height": 8.399999999999999,
+      "levels": 2,
+      "heightPerFloor": 4.199999999999999,
+      "bboxMetres": [
+        26.400397038669325,
+        26.30095650535077
+      ],
+      "maxEdgeLength": 1.0052243786009656,
+      "noEdge145": true,
+      "actorPoint": [
+        887244.7999838407,
+        6254144.049983351
+      ],
+      "actorClearance": 13.11380569789501,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.9990314",
+      "path": "data/map_pack/city/m13055-r07-c04-1-235f0829091fbade.json",
+      "cleabs": "BATIMENT0000000258955347",
+      "height": 4.999999999999999,
+      "levels": 2,
+      "heightPerFloor": 2.4999999999999996,
+      "bboxMetres": [
+        3.699518912122585,
+        3.699946074746549
+      ],
+      "maxEdgeLength": 1.220919909328423,
+      "noEdge145": true,
+      "actorPoint": [
+        889864.5500289048,
+        6253148.549639232
+      ],
+      "actorClearance": 1.7315300300543413,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9990546",
+      "path": "data/map_pack/city/m13055-r07-c04-1-235f0829091fbade.json",
+      "cleabs": "BATIMENT0000000258955696",
+      "height": 6.6,
+      "levels": 2,
+      "heightPerFloor": 3.3,
+      "bboxMetres": [
+        5.3005935630062595,
+        5.400334933772683
+      ],
+      "maxEdgeLength": 0.9432620160400029,
+      "noEdge145": true,
+      "actorPoint": [
+        889925.3500340241,
+        6252660.900175477
+      ],
+      "actorClearance": 2.6117223098753892,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9990547",
+      "path": "data/map_pack/city/m13055-r07-c04-1-235f0829091fbade.json",
+      "cleabs": "BATIMENT0000000258955698",
+      "height": 6.799999999999999,
+      "levels": 2,
+      "heightPerFloor": 3.3999999999999995,
+      "bboxMetres": [
+        5.500740223098546,
+        5.600507326424122
+      ],
+      "maxEdgeLength": 0.22459911148972206,
+      "noEdge145": true,
+      "actorPoint": [
+        889919.3500034106,
+        6252670.90009634
+      ],
+      "actorClearance": 2.711440720149073,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9990548",
+      "path": "data/map_pack/city/m13055-r07-c04-1-235f0829091fbade.json",
+      "cleabs": "BATIMENT0000000258955699",
+      "height": 6.5,
+      "levels": 2,
+      "heightPerFloor": 3.25,
+      "bboxMetres": [
+        5.500530597404577,
+        5.500420996919274
+      ],
+      "maxEdgeLength": 0.9432619820750695,
+      "noEdge145": true,
+      "actorPoint": [
+        889922.5500890305,
+        6252665.7499988265
+      ],
+      "actorClearance": 2.6875388225474155,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9987719",
+      "path": "data/map_pack/city/m13055-r07-c05-0-31911ad88b242283.json",
+      "cleabs": "BATIMENT0000000258952105",
+      "height": 10.200000000000003,
+      "levels": 3,
+      "heightPerFloor": 3.400000000000001,
+      "bboxMetres": [
+        3.2002556782681495,
+        3.5001911353319883
+      ],
+      "maxEdgeLength": 1.0998834479131365,
+      "noEdge145": true,
+      "actorPoint": [
+        891019.999937326,
+        6252433.349561046
+      ],
+      "actorClearance": 1.533728262797011,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9994633",
+      "path": "data/map_pack/city/m13055-r07-c05-0-31911ad88b242283.json",
+      "cleabs": "BATIMENT0000000258961015",
+      "height": 3.1,
+      "levels": 1,
+      "heightPerFloor": 3.1,
+      "bboxMetres": [
+        3.699577768915333,
+        3.899784045293927
+      ],
+      "maxEdgeLength": 1.2800311469856567,
+      "noEdge145": true,
+      "actorPoint": [
+        891107.1498858933,
+        6253134.350249832
+      ],
+      "actorClearance": 1.7878258776830969,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9993656",
+      "path": "data/map_pack/city/m13055-r07-c05-3-f1fce87864759245.json",
+      "cleabs": "BATIMENT0000000258959849",
+      "height": 6.999999999999993,
+      "levels": 2,
+      "heightPerFloor": 3.4999999999999964,
+      "bboxMetres": [
+        2.7993870647624135,
+        2.7994934376329184
+      ],
+      "maxEdgeLength": 1.0770606570747048,
+      "noEdge145": true,
+      "actorPoint": [
+        891637.1000279438,
+        6253463.800072269
+      ],
+      "actorClearance": 1.2723584840397073,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9994696",
+      "path": "data/map_pack/city/m13055-r07-c05-3-f1fce87864759245.json",
+      "cleabs": "BATIMENT0000000258961142",
+      "height": 6.400000000000006,
+      "levels": 2,
+      "heightPerFloor": 3.200000000000003,
+      "bboxMetres": [
+        4.399839302524924,
+        4.400072171352804
+      ],
+      "maxEdgeLength": 1.4001360539304186,
+      "noEdge145": true,
+      "actorPoint": [
+        891300.500281462,
+        6253894.200181643
+      ],
+      "actorClearance": 2.050648501138538,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10437234",
+      "path": "data/map_pack/city/m13055-r07-c05-3-f1fce87864759245.json",
+      "cleabs": "BATIMENT0000000271207064",
+      "height": 11.800000000000011,
+      "levels": 4,
+      "heightPerFloor": 2.950000000000003,
+      "bboxMetres": [
+        5.300052683218382,
+        5.1997716361656785
+      ],
+      "maxEdgeLength": 1.5131653416826938,
+      "noEdge145": false,
+      "actorPoint": [
+        892073.8501887082,
+        6253687.600427253
+      ],
+      "actorClearance": 2.51783912877862,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10466339",
+      "path": "data/map_pack/city/m13055-r07-c05-3-f1fce87864759245.json",
+      "cleabs": "BATIMENT0000000271242282",
+      "height": 5.899999999999977,
+      "levels": 2,
+      "heightPerFloor": 2.9499999999999886,
+      "bboxMetres": [
+        3.9001473650569096,
+        3.8000630531460047
+      ],
+      "maxEdgeLength": 1.3002520773195039,
+      "noEdge145": true,
+      "actorPoint": [
+        891950.4498442293,
+        6254357.800125809
+      ],
+      "actorClearance": 1.8331540607978327,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10438935",
+      "path": "data/map_pack/city/m13055-r07-c06-0-7984983d3f1177c9.json",
+      "cleabs": "BATIMENT0000000271209238",
+      "height": 6,
+      "levels": 2,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        4.099867318524048,
+        4.0009100288152695
+      ],
+      "maxEdgeLength": 0.360447351990061,
+      "noEdge145": true,
+      "actorPoint": [
+        893009.0502042219,
+        6252497.09996253
+      ],
+      "actorClearance": 1.9521580739374234,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10438919",
+      "path": "data/map_pack/city/m13055-r07-c06-1-e51e34ae0839e38b.json",
+      "cleabs": "BATIMENT0000000271209218",
+      "height": 3.3999999999999915,
+      "levels": 1,
+      "heightPerFloor": 3.3999999999999915,
+      "bboxMetres": [
+        5.300507824635133,
+        5.299700020812452
+      ],
+      "maxEdgeLength": 1.5298152153353717,
+      "noEdge145": false,
+      "actorPoint": [
+        893309.7498728731,
+        6252229.149805285
+      ],
+      "actorClearance": 2.549391465571153,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10438926",
+      "path": "data/map_pack/city/m13055-r07-c06-1-e51e34ae0839e38b.json",
+      "cleabs": "BATIMENT0000000271209225",
+      "height": 6.200000000000003,
+      "levels": 2,
+      "heightPerFloor": 3.1000000000000014,
+      "bboxMetres": [
+        5.800049281097017,
+        5.800490627065301
+      ],
+      "maxEdgeLength": 1.5553831851180873,
+      "noEdge145": false,
+      "actorPoint": [
+        893533.500013011,
+        6252160.199966962
+      ],
+      "actorClearance": 2.7579196134134283,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10470950",
+      "path": "data/map_pack/city/m13055-r07-c06-2-e3a2eda86ceb0773.json",
+      "cleabs": "BATIMENT0000000271247829",
+      "height": 2.3000000000000114,
+      "levels": 1,
+      "heightPerFloor": 2.3000000000000114,
+      "bboxMetres": [
+        3.499602774507366,
+        3.500679128803313
+      ],
+      "maxEdgeLength": 1.208522089949971,
+      "noEdge145": true,
+      "actorPoint": [
+        892540.9500609171,
+        6254581.350106619
+      ],
+      "actorClearance": 1.6550845442662347,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10458858",
+      "path": "data/map_pack/city/m13055-r07-c08-1-6c21c4dca963a039.json",
+      "cleabs": "BATIMENT0000000271233370",
+      "height": 9.4,
+      "levels": 3,
+      "heightPerFloor": 3.1333333333333333,
+      "bboxMetres": [
+        5.799792507546954,
+        5.899734495207667
+      ],
+      "maxEdgeLength": 1.581524068259314,
+      "noEdge145": false,
+      "actorPoint": [
+        897808.2998743961,
+        6253060.950023367
+      ],
+      "actorClearance": 2.7974834540658344,
+      "nature": "Tour, donjon",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10460046",
+      "path": "data/map_pack/city/m13055-r07-c08-1-6c21c4dca963a039.json",
+      "cleabs": "BATIMENT0000000271234823",
+      "height": 3.0999999999999943,
+      "levels": 1,
+      "heightPerFloor": 3.0999999999999943,
+      "bboxMetres": [
+        3.399542161379941,
+        3.400885935872793
+      ],
+      "maxEdgeLength": 1.220284823851618,
+      "noEdge145": true,
+      "actorPoint": [
+        897695.5999186179,
+        6253568.100052872
+      ],
+      "actorClearance": 1.5631718574906532,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10459174",
+      "path": "data/map_pack/city/m13055-r07-c08-3-35a34679c4b2af30.json",
+      "cleabs": "BATIMENT0000000271233738",
+      "height": 4.5,
+      "levels": 1,
+      "heightPerFloor": 4.5,
+      "bboxMetres": [
+        3.3996114393230528,
+        3.3995376303792
+      ],
+      "maxEdgeLength": 1.208245084258307,
+      "noEdge145": true,
+      "actorPoint": [
+        897378.800045821,
+        6253710.099700214
+      ],
+      "actorClearance": 1.570359535866339,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10460038",
+      "path": "data/map_pack/city/m13055-r07-c08-3-35a34679c4b2af30.json",
+      "cleabs": "BATIMENT0000000271234811",
+      "height": 2.0,
+      "levels": 1,
+      "heightPerFloor": 2.0,
+      "bboxMetres": [
+        3.299666347564198,
+        3.2999336505308747
+      ],
+      "maxEdgeLength": 1.1999965468974911,
+      "noEdge145": true,
+      "actorPoint": [
+        897385.950143845,
+        6253697.649489962
+      ],
+      "actorClearance": 1.5331862495818858,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10460045",
+      "path": "data/map_pack/city/m13055-r07-c08-3-35a34679c4b2af30.json",
+      "cleabs": "BATIMENT0000000271234822",
+      "height": 3.0,
+      "levels": 1,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        3.6003899328643456,
+        3.600300220772624
+      ],
+      "maxEdgeLength": 1.2653082568040297,
+      "noEdge145": true,
+      "actorPoint": [
+        897409.6000858503,
+        6253732.800071283
+      ],
+      "actorClearance": 1.6760640448790725,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10460074",
+      "path": "data/map_pack/city/m13055-r07-c08-3-35a34679c4b2af30.json",
+      "cleabs": "BATIMENT0000000271234853",
+      "height": 6.299999999999983,
+      "levels": 2,
+      "heightPerFloor": 3.1499999999999915,
+      "bboxMetres": [
+        4.200563873397186,
+        4.0999290039762855
+      ],
+      "maxEdgeLength": 1.3604988693563187,
+      "noEdge145": true,
+      "actorPoint": [
+        897427.6000321651,
+        6253770.849506417
+      ],
+      "actorClearance": 2.0097849651378863,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10457788",
+      "path": "data/map_pack/city/m13055-r07-c09-1-2-6f11199d917503cd.json",
+      "cleabs": "BATIMENT0000000271232114",
+      "height": 2.6,
+      "levels": 1,
+      "heightPerFloor": 2.6,
+      "bboxMetres": [
+        3.9005761307198554,
+        4.100468424148858
+      ],
+      "maxEdgeLength": 0.7218127408405018,
+      "noEdge145": true,
+      "actorPoint": [
+        899004.3500054831,
+        6252997.34976528
+      ],
+      "actorClearance": 1.1231279901967295,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.9202042",
+      "path": "data/map_pack/city/m13055-r07-c10-0-0-46757643206a5462.json",
+      "cleabs": "BATIMENT0000000257790771",
+      "height": 6,
+      "levels": 2,
+      "heightPerFloor": 3.0,
+      "bboxMetres": [
+        6.500624198815785,
+        6.50080303195864
+      ],
+      "maxEdgeLength": 0.2826357860001462,
+      "noEdge145": true,
+      "actorPoint": [
+        900155.7499985257,
+        6252959.150091449
+      ],
+      "actorClearance": 3.1759301795750225,
+      "nature": "Moulin à vent",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.8926284",
+      "path": "data/map_pack/city/m13055-r07-c10-1-69a0b143bb798f20.json",
+      "cleabs": "BATIMENT0000000257239003",
+      "height": 4.799999999999983,
+      "levels": 2,
+      "heightPerFloor": 2.3999999999999915,
+      "bboxMetres": [
+        2.8002294577891007,
+        2.8005059007555246
+      ],
+      "maxEdgeLength": 0.6407333516235968,
+      "noEdge145": true,
+      "actorPoint": [
+        900852.6002483536,
+        6253157.00007426
+      ],
+      "actorClearance": 1.2804813239397554,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.47150154",
+      "path": "data/map_pack/city/m13055-r08-c03-3571a96fdd8d5091.json",
+      "cleabs": "BATIMENT0000002276332693",
+      "height": 13.300000000000011,
+      "levels": 3,
+      "heightPerFloor": 4.433333333333337,
+      "bboxMetres": [
+        7.100019111763686,
+        7.100247365422547
+      ],
+      "maxEdgeLength": 1.5624278060846164,
+      "noEdge145": false,
+      "actorPoint": [
+        886751.0500695873,
+        6257319.650105447
+      ],
+      "actorClearance": 3.466933672380756,
+      "nature": "Industriel, agricole ou commercial",
+      "usage_1": "Industriel"
+    },
+    {
+      "id": "batiment.9996408",
+      "path": "data/map_pack/city/m13055-r08-c04-1-2c6000d959b9b88d.json",
+      "cleabs": "BATIMENT0000000258963264",
+      "height": 10.599999999999994,
+      "levels": 3,
+      "heightPerFloor": 3.5333333333333314,
+      "bboxMetres": [
+        4.200710082310252,
+        4.400106959044933
+      ],
+      "maxEdgeLength": 1.3605087030448795,
+      "noEdge145": true,
+      "actorPoint": [
+        889951.7000317443,
+        6255363.899558729
+      ],
+      "actorClearance": 2.059521592092788,
+      "nature": "Indifférenciée",
+      "usage_1": "Indifférencié"
+    },
+    {
+      "id": "batiment.10469001",
+      "path": "data/map_pack/city/m13055-r08-c05-1-25f74056a3fb34c2.json",
+      "cleabs": "BATIMENT0000000271245383",
+      "height": 4.0,
+      "levels": 1,
+      "heightPerFloor": 4.0,
+      "bboxMetres": [
+        5.299983809702098,
+        5.2996093519032
+      ],
+      "maxEdgeLength": 1.5296435045678105,
+      "noEdge145": false,
+      "actorPoint": [
+        891452.849799234,
+        6255883.050178731
+      ],
+      "actorClearance": 2.545671599197038,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.10469158",
+      "path": "data/map_pack/city/m13055-r08-c05-1-25f74056a3fb34c2.json",
+      "cleabs": "BATIMENT0000000271245559",
+      "height": 6.300000000000011,
+      "levels": 2,
+      "heightPerFloor": 3.1500000000000057,
+      "bboxMetres": [
+        3.799905732041225,
+        3.6998767238110304
+      ],
+      "maxEdgeLength": 1.3040386292471247,
+      "noEdge145": true,
+      "actorPoint": [
+        891534.3003634915,
+        6255901.5499946885
+      ],
+      "actorClearance": 1.7753616627337874,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.10469159",
+      "path": "data/map_pack/city/m13055-r08-c05-1-25f74056a3fb34c2.json",
+      "cleabs": "BATIMENT0000000271245561",
+      "height": 7.700000000000017,
+      "levels": 3,
+      "heightPerFloor": 2.566666666666672,
+      "bboxMetres": [
+        3.300488852080889,
+        3.2010002210736275
+      ],
+      "maxEdgeLength": 1.2526932319523978,
+      "noEdge145": true,
+      "actorPoint": [
+        891544.0498729353,
+        6255864.700019508
+      ],
+      "actorClearance": 1.4984019242366506,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    },
+    {
+      "id": "batiment.10474359",
+      "path": "data/map_pack/city/m13055-r08-c05-3-1069dd2903cdf595.json",
+      "cleabs": "BATIMENT0000000271251988",
+      "height": 7.799999999999983,
+      "levels": 3,
+      "heightPerFloor": 2.5999999999999943,
+      "bboxMetres": [
+        23.50045873527415,
+        18.400579451583326
+      ],
+      "maxEdgeLength": 1.3000647071043248,
+      "noEdge145": true,
+      "actorPoint": [
+        891299.2500178408,
+        6256474.199909281
+      ],
+      "actorClearance": 9.100004778746566,
+      "nature": "Indifférenciée",
+      "usage_1": "Commercial et services"
+    }
+  ],
+  "seconds": 11.979
+}

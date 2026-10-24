@@ -31,9 +31,14 @@ function v051CityPanelAfterInit(){
   paragraph(section,d.terrainPresent?'Un relief municipal supplémentaire est installé. Sa résolution et les absences de mesure restent celles de ses sources.':'Aucun relief municipal supplémentaire n’est confirmé dans cet inventaire.');
   paragraph(section,'Les coordonnées, contours, cours et hauteurs disponibles viennent des relevés. Leurs précisions et dates peuvent varier ; une échelle d’un mètre dans le jeu ne certifie pas chaque détail architectural.');
   paragraph(section,'Les façades et intérieurs sont complétés de façon cohérente et déterministe. Seules les parties accompagnées d’un document attribué sont présentées comme documentées. Les autres fenêtres, portes, pièces et aménagements sont inventés.');
+  const architecture=window.__MISTRAL_DEBUG?.v052ArchitectureInfo?.();
+  if(architecture?.error)paragraph(section,'Les annotations architecturales locales sont invalides et ne sont pas appliquées. Vérifiez leur installation.');
+  else if(architecture?.loaded)paragraph(section,number(architecture.siteLabels)+' associations de bâtiments à un site identifié · '+number(architecture.facadeDocuments)+' plans de façade · '+number(architecture.interiorDocuments)+' plans d’intérieur attribués installés. L’appartenance à un site ne décrit pas ses fenêtres ou ses pièces.');
+  if(architecture?.rejected?.length)paragraph(section,number(architecture.rejected.length)+' annotation(s) ne correspondent plus à la géométrie chargée et sont écartées.');
   paragraph(section,'Approchez-vous d’une porte accessible et utilisez Interagir pour entrer. Les étages et le retour extérieur appartiennent au même bâtiment ; les intérieurs historiques de la campagne gardent leurs accès.');
  }
  function refresh(){for(const section of document.querySelectorAll('[data-city-source-status]'))show(section);}
+ window.addEventListener('mistral-architecture-ready',refresh);
  function load(force=false){
   if(status.pending)return status.pending;
   if(!force&&status.attempted)return Promise.resolve(status.data);

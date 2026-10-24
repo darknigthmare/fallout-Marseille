@@ -1,0 +1,43 @@
+PASS Menu joueur et accès aux cartes : dix entrées ['btnContinue', 'btnNew', 'btnV035Load', 'btnV035Career', 'btnV035Operations', 'btnChapter', 'btnOptions', 'btnCredits', 'v050MapStatus', 'btnV035Admin']
+PASS Outils versionnés absents du menu principal ['btnContinue', 'btnNew', 'btnV035Load', 'btnV035Career', 'btnV035Operations', 'btnChapter', 'btnOptions', 'btnCredits', 'v050MapStatus', 'btnV035Admin']
+PASS Version et huit opérations {'version': '0.35.0', 'slots': [False, False, False], 'autosave': False, 'completion': {'percent': 0, 'rank': 'SURVIVANT', 'story': 0, 'zones': 1, 'side': 0, 'ach': 0, 'endings': 0, 'operations': 0}, 'operations': 8, 'hu
+PASS Écran carrière ouvrable 
+PASS Six chapitres affichés 
+PASS Outils internes regroupés dans Admin 
+PASS Exploration libre démarrée free
+PASS Hub A-03 disponible 
+PASS Emplacement 1 enregistré 
+PASS Mutation de contrôle appliquée 
+PASS Emplacement 1 chargé 
+PASS Chargement restaure le portefeuille 2600
+PASS Autosave créé 
+PASS Retour A-03 présent à Aubagne 
+PASS Retour A-03 approchable 
+PASS Retour A-03 activé 
+PASS Abri A-03 chargé vault
+PASS Hub possède lit, tableau et terminal ['ration-terminal', 'vault-exit', 'locker', 'vault-log', 'subzone-vault-0', 'subzone-vault-1', 'subzone-vault-2', 'subzone-vault-3', 'subzone-vault-4', 'subzone-vault-5', 'subzone-vault-6', 'ld-link-vault-aubagne', 'subz
+PASS Repos A-03 réussi 
+PASS Repos restaure PV et PA 
+PASS Repos conserve les radiations 
+PASS Repos avance de huit heures (9.507865599999988, 17.508265599999987)
+PASS Opération Ateliers lancée 
+PASS Opération charge Aubagne 
+PASS Poste 1 injecté 
+PASS Poste 1 approché 
+PASS Poste 1 validé 
+PASS Poste 2 injecté 
+PASS Poste 2 approché 
+PASS Poste 2 validé 
+PASS Poste 3 injecté 
+PASS Poste 3 approché 
+PASS Poste 3 validé 
+PASS Opération clôturée {'active': None, 'totalCompleted': 1}
+PASS Record de carrière inscrit {'percent': 72, 'rank': 'BÂTISSEUR', 'story': 100, 'zones': 100, 'side': 0, 'ach': 0, 'endings': 6, 'operations': 1}
+PASS Première prime versée (2600, 2655)
+PASS Bilan de session calculé {'reason': 'qa', 'minutes': 0, 'xpDelta': 33, 'levelDelta': 0, 'capsDelta': 55, 'discoveries': 0, 'achievements': 0, 'operations': 1, 'zone': 'aubagne', 'chapter': 'VI · La Terre et le Feu'}
+PASS Trois cartes de sauvegarde en portrait 
+PASS Interface sans débordement majeur 
+PASS Échap ferme la couche produit 
+PASS Aucune exception JavaScript 
+FINAL 41 0
+

@@ -1,0 +1,147 @@
+{
+  "scope": "Pure production geometry/physics/input/model tests and validated source tools; fixtures explicitly isolated",
+  "sourceHashes": {
+    "src/v050/00_continue.js": "a1640e1a859d54f91afbc665b8a805ca66d9574070178a9d4d7184d24980e66d",
+    "src/v050/01_campaign.js": "df102b02ca8751c6376dd4753daef64489c42c3749615620aba50188fe786567",
+    "src/v050/02_poi_travel.js": "fb9e198270a6f74869dac352d5339439585fe1d19870572d2e27b97d815a7133",
+    "src/v050/03_interface.js": "924fc8e210b72b39938dbc9c48f708942108e527889e0e7291cccb2941874fa9",
+    "src/v050/04_source_geometry.js": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+    "src/v050/04a_city_sources.js": "45bbe45c0a8209644c6f371380af3a14bc72fef20d8ce5c6db7f9b464a81c96e",
+    "src/v050/04aa_city_water.js": "567038786b30df531de51f4477b1a6ca0c2d4ac70439537aec7df4b21fc6235f",
+    "src/v050/04ab_city_water_physics.js": "c8ae99b72af72f81a432d0a3708d1dd5a9c536f6f89ede1b62c9c5454cede2a4",
+    "src/v050/04b_surfaces.js": "9039907e5b949e09d9327a72b2952de3a20252f0c5cf349add0386280ce40b01",
+    "src/v050/04c_roof_collisions.js": "e67887b2a274cf570fa22075ce45e516b462d2090114a1d34cd785a53e33d824",
+    "src/v050/04d_source_status.js": "da9a17ded6a7d515400014c8e536d210b5fb302f122409bc53ff6a473953b916",
+    "src/v050/05_wasteland.js": "de26ba8913138f5423037e86bcb44369f9aece1881cfae8c9e7d48a22e9f5075",
+    "src/v050/06_architecture_sources.js": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+    "src/v050/06_controller.js": "7ed416a99e27a213c8ad05501edc4d2827ceddf738af121c22dce1a56080aad0",
+    "src/v050/07_facades.js": "9ccc2c01a9c91d5b1c2f0611f8d18c814f2616e0ec9711b37393c2cb78ec8335",
+    "src/v050/08_city_interiors.js": "94fc240ce308f71c0618ae1c1fec611b00b9867b2a91355579c3615b33cf7ce5",
+    "src/v050/09_city_interface.js": "1c8e7d35750696bf81eb1432a030a4a71e9fb099055e45d8a50853631bfc8004"
+  },
+  "html_sha256": "72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817",
+  "suites": [
+    {
+      "suite": "source_tools",
+      "exitCode": 0,
+      "total": 194,
+      "log": "source_tools.log"
+    },
+    {
+      "suite": "base_installers",
+      "exitCode": 0,
+      "total": 42,
+      "log": "base_installers.log"
+    },
+    {
+      "suite": "renderer_batches.cjs",
+      "exitCode": 0,
+      "total": 33,
+      "log": "renderer_batches.cjs.log"
+    },
+    {
+      "suite": "geography.test.cjs",
+      "exitCode": 0,
+      "total": 50,
+      "log": "geography.test.cjs.log"
+    },
+    {
+      "suite": "dense_geometry.cjs",
+      "exitCode": 0,
+      "total": 8,
+      "log": "dense_geometry.cjs.log"
+    },
+    {
+      "suite": "surfaces_physics.cjs",
+      "exitCode": 0,
+      "total": 38,
+      "log": "surfaces_physics.cjs.log"
+    },
+    {
+      "suite": "roof_solids.cjs",
+      "exitCode": 0,
+      "total": 49,
+      "log": "roof_solids.cjs.log"
+    },
+    {
+      "suite": "gameplay_wasteland.cjs",
+      "exitCode": 0,
+      "total": 45,
+      "log": "gameplay_wasteland.cjs.log"
+    },
+    {
+      "suite": "controller_model.cjs",
+      "exitCode": 0,
+      "total": 15,
+      "log": "controller_model.cjs.log"
+    },
+    {
+      "suite": "source_status_model.cjs",
+      "exitCode": 0,
+      "total": 17,
+      "log": "source_status_model.cjs.log"
+    },
+    {
+      "suite": "city_streaming.cjs",
+      "exitCode": 0,
+      "total": 17,
+      "log": "city_streaming.cjs.log"
+    },
+    {
+      "suite": "facades_model.cjs",
+      "exitCode": 0,
+      "total": 89,
+      "log": "facades_model.cjs.log"
+    },
+    {
+      "suite": "city_interiors.cjs",
+      "exitCode": 0,
+      "total": 141,
+      "log": "city_interiors.cjs.log"
+    },
+    {
+      "suite": "city_water.cjs",
+      "exitCode": 0,
+      "total": 20,
+      "log": "city_water.cjs.log"
+    },
+    {
+      "suite": "city_water_physics.cjs",
+      "exitCode": 0,
+      "total": 24,
+      "log": "city_water_physics.cjs.log"
+    },
+    {
+      "suite": "road_classification.cjs",
+      "exitCode": 0,
+      "total": 6,
+      "log": "road_classification.cjs.log"
+    },
+    {
+      "suite": "ground_road_surfaces.cjs",
+      "exitCode": 0,
+      "total": 6,
+      "log": "ground_road_surfaces.cjs.log"
+    },
+    {
+      "suite": "interior_document_persistence.cjs",
+      "exitCode": 0,
+      "total": 23,
+      "log": "interior_document_persistence.cjs.log"
+    },
+    {
+      "suite": "architecture_sources.cjs",
+      "exitCode": 0,
+      "total": 50,
+      "log": "architecture_sources.cjs.log"
+    },
+    {
+      "suite": "architecture_runtime.cjs",
+      "exitCode": 0,
+      "total": 10,
+      "log": "architecture_runtime.cjs.log"
+    }
+  ],
+  "total": 877,
+  "failedProcesses": 0
+}

@@ -1,0 +1,142 @@
+Native execution log
+Working directory: /workspace/fallout-Marseille
+Command: /workspace/.cloud-setup/fallout-marseille/venv/bin/python tests/expansion/architecture_native_browser.py --output /workspace/.cloud-setup/fallout-marseille/architecture-continuation/native/final --expect-html-sha 72a6230345abd1bfb889896f5923f3c66962148fb70f5d941fd2e58b59a8e817 --expect-architecture-sha c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229 --run
+Executed script SHA-256: 78fc89e7aea306d70fc3f76353f11fd742a1c6347f4b58d22e3017a89210ccb1
+Native report SHA-256: da672c6747ad96d62914ee9cfa8acfb3082d215b162d7d1aa4943244fcca9370
+Exit code: 0
+Capture method: stdout transcribed from the observed exec/write_stdin chunks; successful check lines cross-checked against the unchanged native report. No second browser execution.
+--- OBSERVED STDOUT ---
+OK Coordinated production HTML is installed
+OK Coordinated architectural atlas is installed
+OK Production HTML includes the current source: src/v050/06_architecture_sources.js
+OK Production HTML includes the current source: src/v050/07_facades.js
+OK Production HTML includes the current source: src/v050/08_city_interiors.js
+OK Official site atlas has exactly 12 distinct attributed targets
+OK Source building partition matches its acquisition SHA
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400964
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400278
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400965
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400280
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400987
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400988
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400282
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400986
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400985
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400287
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400288
+OK Source building partition matches its acquisition SHA
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000356609909
+STAGE actual_server_audit
+OK Actual GameHandler audits the installed municipal sources
+OK Actual local-pack audit is complete before native menu probes
+OK Native HTTP document equals frozen production bytes
+OK Runtime reads only real context labels, with zero asserted architectural plans
+LOAD {"phase": "loading", "done": 0, "total": 48, "tiles": 0}
+OK Actual geographic world is outside the synthetic lab
+STAGE real_site_labels_1
+OK Requested real sector loads successfully
+OK Runtime source geometry is intact: BATIMENT0000000273400964
+OK Actual scene carries the attributed site label: BATIMENT0000000273400964
+OK Runtime source geometry is intact: BATIMENT0000000273400278
+OK Actual scene carries the attributed site label: BATIMENT0000000273400278
+OK Runtime source geometry is intact: BATIMENT0000000273400965
+OK Actual scene carries the attributed site label: BATIMENT0000000273400965
+OK Runtime source geometry is intact: BATIMENT0000000273400280
+OK Actual scene carries the attributed site label: BATIMENT0000000273400280
+OK Runtime source geometry is intact: BATIMENT0000000273400987
+OK Actual scene carries the attributed site label: BATIMENT0000000273400987
+OK Runtime source geometry is intact: BATIMENT0000000273400988
+OK Actual scene carries the attributed site label: BATIMENT0000000273400988
+OK Runtime source geometry is intact: BATIMENT0000000273400282
+OK Actual scene carries the attributed site label: BATIMENT0000000273400282
+OK Runtime source geometry is intact: BATIMENT0000000273400986
+OK Actual scene carries the attributed site label: BATIMENT0000000273400986
+OK Runtime source geometry is intact: BATIMENT0000000273400985
+OK Actual scene carries the attributed site label: BATIMENT0000000273400985
+OK Runtime source geometry is intact: BATIMENT0000000273400287
+OK Actual scene carries the attributed site label: BATIMENT0000000273400287
+OK Runtime source geometry is intact: BATIMENT0000000273400288
+OK Actual scene carries the attributed site label: BATIMENT0000000273400288
+STAGE real_site_labels_2
+OK Requested real sector loads successfully
+OK Runtime source geometry is intact: BATIMENT0000000356609909
+OK Actual scene carries the attributed site label: BATIMENT0000000356609909
+OK All 12 official site contexts are applied without geometry rejection
+STAGE curved_source_facade
+OK Requested real sector loads successfully
+OK Curved source building retains its complete original geometry
+OK Dense segmented real outline receives actual rendered facade details
+OK Curved facade inventory page advances or terminates
+OK Curved facade complete inventory finishes within the bounded pilot
+OK Curved openings declare source-segment spans without changing metric bounds
+OK Every curved bay follows bounded intervals on the unchanged individual source edges
+OK Accessible curved source building enters through actual E-key portal
+OK Actual interior exposes a landing interaction
+OK Diagnostic landing placement is clear of production colliders
+OK Visible interaction identifies the actual landing
+LOAD {"phase": "preparing", "done": 34, "total": 34, "tiles": 0}
+STAGE enclosed_rooms_and_furnishing
+OK Requested real sector loads successfully
+OK Real sector provides a suitably sized multi-storey source portal
+OK A real entered building contains enclosed invented rooms and furnished uses
+OK Entered plan preserves the source-derived local outline and honest invented provenance
+OK Actual room partitions enclose every side except the stated 1.20 m door
+OK Actual furniture has distinct rendered parts and one solid collider per object
+OK Production furniture colliders are solid while every reserved approach remains free
+OK Rendered floor and real partition prisms preserve metric source area
+OK Bounded circulation proof adds no unreachable source cells
+OK Both physical anchors of the enclosed-room doorway are clear
+OK Production movement crosses the actual 1.20 m room doorway into its enclosed volume
+OK Floor transition requested through adjacent physical landing
+OK Actual interior exposes a landing interaction
+OK Diagnostic landing placement is clear of production colliders
+OK Visible interaction identifies the actual landing
+OK Actual landing dialog closes after floor change
+OK Visible landing UI loads another metric floor of the same source building
+OK Real browser localStorage retains the current floor and geographic return point
+STAGE cold_document_continue
+OK Native HTTP document equals frozen production bytes
+OK Native Continue restores building, floor and deterministic room/furniture signature
+OK Native Continue preserves inventory and exact exterior return point
+OK Floor transition requested through adjacent physical landing
+OK Actual interior exposes a landing interaction
+OK Diagnostic landing placement is clear of production colliders
+OK Visible interaction identifies the actual landing
+OK Actual landing dialog closes after floor change
+OK Return to the street storey reconstructs the same full plan signature
+OK Actual interior exposes a landing interaction
+OK Diagnostic landing placement is clear of production colliders
+OK Visible interaction identifies the actual landing
+LOAD {"phase": "loading", "done": 0, "total": 36, "tiles": 0}
+OK Real exit UI restores the exact saved street position and inventory
+OK Real source and interior transactions record no runtime exception
+OK No synthetic documentary plan entered native storage
+OK All installed geographic-source and local-audit HTTP responses succeeded
+OK No installed geographic-source or local-audit request failed or was aborted
+OK No global JavaScript exception or application console error occurred
+OK Pilot used one browser context through a native document reload
+STAGE complete
+OK Frozen HTML, sources, atlas, selected geographic chunks and city indices remain unchanged
+{"passed": 101, "failed": 0, "total": 101, "stage": "complete"}
+--- RETAINED NETWORK OBSERVATIONS FROM THE UNCHANGED REPORT (not printed by the script) ---
+External legacy service probes failed 18 times (startup plus reload). They are retained explicitly; the pilot does not certify remote-service reachability.
+Installed local geographic sources and audits: zero failed/aborted requests, zero HTTP errors.
+Global JavaScript exceptions: zero. Application console errors: zero.
+EXTERNAL_PROBE_FAILURE 01 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 02 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 03 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 04 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 05 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 06 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 07 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 08 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 09 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 10 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 11 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 12 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 13 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 14 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 15 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 16 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 17 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
+EXTERNAL_PROBE_FAILURE 18 {"url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest", "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"}
