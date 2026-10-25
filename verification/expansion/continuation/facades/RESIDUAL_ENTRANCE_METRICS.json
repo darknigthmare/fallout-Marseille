@@ -1,0 +1,301 @@
+{
+  "scope": "Read-only exported candidate metrics from the exact frozen modules and acquired source cases. Projected width, source-footprint inner/outer clearance and .38m actor radius are checked; no terrain or neighboring geometry is certified.",
+  "modules": {
+    "facade": "855db991e5053752a7d1a366cac3610f6ea7b304461e448d99e45362a49eb432",
+    "interior": "1f5c099bc4082baa6c64660fe6aacb22a52b839b2cbdaf0ce29cb55a4fbc83bf"
+  },
+  "sourceCasesSha256": "7f50890a26459e089b09583ea03800554dfb2a8dfbcb7af7fc1243a9df38dbfb",
+  "executedScriptSha256": "bf295b50d8d43c9d1dd0f93643ccbe2e4983b125a8da2d5aa9f8e46869297eac",
+  "outsideDistanceMethod": "Minimum Euclidean point-to-segment distance across every original source ring, independently of the interior.clearance outside sentinel.",
+  "records": [
+    {
+      "sourceId": "batiment.10611104",
+      "cleabs": "BATIMENT0000000273378724",
+      "sourceFeatureSha256": "db7fce923a0f7b764ad5fb21866d2880d0949f2569c1ebdc2e816e261c49dfd9",
+      "doors": [
+        {
+          "id": "BATIMENT0000000273378724:2a811ba1fe707475:entrance:curve:12dc883a664960cb:1",
+          "buildingId": "BATIMENT0000000273378724:2a811ba1fe707475",
+          "center": [
+            -11957.84412834292,
+            15.2,
+            1559.9367782501029
+          ],
+          "outside": [
+            -11956.697731484592,
+            15.2,
+            1559.8458153828844
+          ],
+          "inside": [
+            -11958.791151834583,
+            15.2,
+            1560.01192148824
+          ],
+          "tangent": [
+            0.07909814540740823,
+            0.9968668333298628
+          ],
+          "normal": [
+            0.9968668333298628,
+            -0.07909814540740823
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 13,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 4.770586583705102,
+          "provenance": "invented",
+          "source": null,
+          "clearWidthMeters": 1.1073936697847893,
+          "accessRadiusMeters": 0.38,
+          "surfaceId": "curve:12dc883a664960cb",
+          "arclength": 5.345586583705102,
+          "span": {
+            "surfaceId": "curve:12dc883a664960cb",
+            "surfaceKind": "source-microjog-arclength",
+            "offsetMeters": 4.770586583705102,
+            "widthMeters": 1.15,
+            "firstSourceEdgeIndex": 9,
+            "lastSourceEdgeIndex": 19,
+            "segments": 11
+          },
+          "independentProjectedSourceSpanExtentMeters": 1.1073936697847557,
+          "insideSourceClearanceMeters": 0.9472804288505434,
+          "outsideSourceClearanceMeters": 1.1464857881206232,
+          "sourceInsidePointVerified": true,
+          "sourceOutsidePointVerified": true
+        }
+      ]
+    },
+    {
+      "sourceId": "batiment.10626012",
+      "cleabs": "BATIMENT0000000273397378",
+      "sourceFeatureSha256": "2be2142fc29986b4c19cd122c06231027502d514815792979e61d3ecbfcdf830",
+      "doors": [
+        {
+          "id": "BATIMENT0000000273397378:75d608753fcc95d9:entrance:curve:6f9d322c9c067bff:1",
+          "buildingId": "BATIMENT0000000273397378:75d608753fcc95d9",
+          "center": [
+            -11511.643891535812,
+            83,
+            910.7828018974233
+          ],
+          "outside": [
+            -11510.501882475422,
+            83,
+            910.9181359507372
+          ],
+          "inside": [
+            -11512.587290324831,
+            83,
+            910.6710042012074
+          ],
+          "tangent": [
+            -0.11768178549039374,
+            0.9930513568611609
+          ],
+          "normal": [
+            0.9930513568611609,
+            0.11768178549039374
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 20,
+          "width": 1.15,
+          "height": 2.35,
+          "offset": 4.4355456517551,
+          "provenance": "invented",
+          "source": null,
+          "clearWidthMeters": 1.054514508552884,
+          "accessRadiusMeters": 0.38,
+          "surfaceId": "curve:6f9d322c9c067bff",
+          "arclength": 5.0105456517551,
+          "span": {
+            "surfaceId": "curve:6f9d322c9c067bff",
+            "surfaceKind": "source-microjog-arclength",
+            "offsetMeters": 4.4355456517551,
+            "widthMeters": 1.15,
+            "firstSourceEdgeIndex": 15,
+            "lastSourceEdgeIndex": 25,
+            "segments": 11
+          },
+          "independentProjectedSourceSpanExtentMeters": 1.0545145085525292,
+          "insideSourceClearanceMeters": 0.9030983716565499,
+          "outsideSourceClearanceMeters": 1.1424190706736723,
+          "sourceInsidePointVerified": true,
+          "sourceOutsidePointVerified": true
+        }
+      ]
+    },
+    {
+      "sourceId": "batiment.9609229",
+      "cleabs": "BATIMENT0000000258345416",
+      "sourceFeatureSha256": "be881a03399355b9aae82210c2ccf5dcf884172c7e1eedfd5dc089182897bd4d",
+      "doors": [
+        {
+          "id": "BATIMENT0000000258345416:a8e7b9117cc70fe5:entrance:0:5:5000",
+          "buildingId": "BATIMENT0000000258345416:a8e7b9117cc70fe5",
+          "center": [
+            394.4058384572854,
+            141.7,
+            -1636.6548909130506
+          ],
+          "outside": [
+            393.59227993338476,
+            141.7,
+            -1637.4676778028247
+          ],
+          "inside": [
+            395.07790854224686,
+            141.7,
+            -1635.9834582649764
+          ],
+          "tangent": [
+            -0.7067712084991506,
+            0.7074421946962522
+          ],
+          "normal": [
+            -0.7074421946962522,
+            -0.7067712084991506
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 5,
+          "width": 0.78,
+          "height": 2.35,
+          "offset": 0.24655246907563078,
+          "provenance": "invented",
+          "source": null,
+          "clearWidthMeters": 0.7800000000000895,
+          "accessRadiusMeters": 0.38,
+          "independentProjectedSourceSpanExtentMeters": 0.7799999999999727,
+          "insideSourceClearanceMeters": 0.9499999999999915,
+          "outsideSourceClearanceMeters": 1.1500000000000297,
+          "sourceInsidePointVerified": true,
+          "sourceOutsidePointVerified": true
+        },
+        {
+          "id": "BATIMENT0000000258345416:a8e7b9117cc70fe5:entrance:0:2:5000",
+          "buildingId": "BATIMENT0000000258345416:a8e7b9117cc70fe5",
+          "center": [
+            395.80587569100317,
+            141.7,
+            -1635.35539928684
+          ],
+          "outside": [
+            396.61856153251506,
+            141.7,
+            -1634.5417398230557
+          ],
+          "inside": [
+            395.1345265175803,
+            141.7,
+            -1636.027552756923
+          ],
+          "tangent": [
+            0.7075299685082642,
+            -0.7066833404451351
+          ],
+          "normal": [
+            0.7066833404451351,
+            0.7075299685082642
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 2,
+          "width": 0.78,
+          "height": 2.35,
+          "offset": 0.24646832990005585,
+          "provenance": "invented",
+          "source": null,
+          "clearWidthMeters": 0.7800000000000022,
+          "accessRadiusMeters": 0.38,
+          "independentProjectedSourceSpanExtentMeters": 0.7799999999999727,
+          "insideSourceClearanceMeters": 0.9499999999999399,
+          "outsideSourceClearanceMeters": 1.149999999999961,
+          "sourceInsidePointVerified": true,
+          "sourceOutsidePointVerified": true
+        },
+        {
+          "id": "BATIMENT0000000258345416:a8e7b9117cc70fe5:entrance:0:4:5000",
+          "buildingId": "BATIMENT0000000258345416:a8e7b9117cc70fe5",
+          "center": [
+            395.405991778709,
+            141.7,
+            -1636.9553626081906
+          ],
+          "outside": [
+            395.70816848189173,
+            141.7,
+            -1638.0649522801207
+          ],
+          "inside": [
+            395.156367545645,
+            141.7,
+            -1636.038745053118
+          ],
+          "tangent": [
+            -0.9648605842869143,
+            -0.2627623505936769
+          ],
+          "normal": [
+            0.2627623505936769,
+            -0.9648605842869143
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 4,
+          "width": 0.78,
+          "height": 2.35,
+          "offset": 0.18029624024753388,
+          "provenance": "invented",
+          "source": null,
+          "clearWidthMeters": 0.7799999999999786,
+          "accessRadiusMeters": 0.38,
+          "independentProjectedSourceSpanExtentMeters": 0.7799999999999727,
+          "insideSourceClearanceMeters": 0.94248419430284,
+          "outsideSourceClearanceMeters": 1.1500000000001003,
+          "sourceInsidePointVerified": true,
+          "sourceOutsidePointVerified": true
+        },
+        {
+          "id": "BATIMENT0000000258345416:a8e7b9117cc70fe5:entrance:0:1:5000",
+          "buildingId": "BATIMENT0000000258345416:a8e7b9117cc70fe5",
+          "center": [
+            394.8057045196183,
+            141.7,
+            -1635.055483084172
+          ],
+          "outside": [
+            394.50329593031364,
+            141.7,
+            -1633.9459565882673
+          ],
+          "inside": [
+            395.05552031078304,
+            141.7,
+            -1635.9720484503541
+          ],
+          "tangent": [
+            0.964805648612856,
+            0.2629639906997267
+          ],
+          "normal": [
+            -0.2629639906997267,
+            0.964805648612856
+          ],
+          "ringIndex": 0,
+          "edgeIndex": 1,
+          "width": 0.78,
+          "height": 2.35,
+          "offset": 0.17990830719608075,
+          "provenance": "invented",
+          "source": null,
+          "clearWidthMeters": 0.7799999999999964,
+          "accessRadiusMeters": 0.38,
+          "independentProjectedSourceSpanExtentMeters": 0.7800000000000864,
+          "insideSourceClearanceMeters": 0.94222574886722,
+          "outsideSourceClearanceMeters": 1.1499999999998876,
+          "sourceInsidePointVerified": true,
+          "sourceOutsidePointVerified": true
+        }
+      ]
+    }
+  ]
+}

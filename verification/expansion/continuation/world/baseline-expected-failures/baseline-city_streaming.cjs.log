@@ -1,0 +1,70 @@
+✔ Missing optional city atlas leaves the base map and old bounds unchanged (8.742068ms)
+✔ A complete city registers its extent without mutating the active terrain bank (4.519275ms)
+✔ A partial atlas never registers a city extent or starts a source-only scene (2.49668ms)
+✔ City resources outside the old tile pack come only from verified source partitions (8.4915ms)
+✔ Corrupt partition bytes reject before any feature is published or cached (2.582511ms)
+✔ An explicit empty road query removes old road strokes only within its receipt (4.35016ms)
+✔ Concurrent map workers share one immutable chunk request and release settled promises (12.786507ms)
+✔ An aborted waiter cannot publish while another map worker can reuse the completed chunk (2.842526ms)
+✔ Byte budget eviction releases cached partitions and does not retain hidden resolved promises (2.977999ms)
+✔ Refreshing while a chunk is in flight refuses its late response (2.421961ms)
+✔ Synthetic laboratory ignores city resources and restores the exact prior real extent (2.146337ms)
+✔ The verified coarse city DEM stages with its own datum and never mutates the live bank (3.961855ms)
+✔ A city base DEM requires explicit provenance and a compatible normal-height datum (0.314187ms)
+✔ A vector-only city installation leaves old source enrichment usable until terrain is present (1.450066ms)
+✔ A cancelled navigation never starts later when its optional index finishes loading (1.633839ms)
+✖ Refreshing during index readiness invalidates the earlier navigation without overwriting its successful replacement (2.736267ms)
+✖ A background boot index superseded by refresh cannot append a stale error to the healthy replacement (2.500247ms)
+✔ Rendered partition bounds exclude distant whole-road tails while keeping the raw descriptor intact (1.416744ms)
+✔ Twenty streamed city terrain windows never accumulate in a staged bank or alter the published bank before commit (2.761745ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 17
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80.403398
+
+✖ failing tests:
+
+test at tests/expansion/city_streaming.cjs:76:1
+✖ Refreshing during index readiness invalidates the earlier navigation without overwriting its successful replacement (2.736267ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'LOADING'
+  - 'PLAYING'
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/city_streaming.cjs:81:39)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'LOADING',
+    expected: 'PLAYING',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/city_streaming.cjs:84:1
+✖ A background boot index superseded by refresh cannot append a stale error to the healthy replacement (2.500247ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'Index du relief communal périmé'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/city_streaming.cjs:89:58)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+

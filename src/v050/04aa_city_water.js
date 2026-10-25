@@ -35,7 +35,7 @@ if(typeof window!=='undefined'&&typeof v046Resource==='function'){
  const maritime={index:null,promise:null,epoch:0,loads:new Map(),cache:new MistralStream.BudgetCache(8*1024*1024,16),errors:[],requests:0};
  async function ready(){
   if(V046.lab||typeof location!=='undefined'&&!['http:','https:'].includes(location.protocol))return null;
-  if(!maritime.promise){const epoch=maritime.epoch;maritime.promise=(async()=>{const raw=await v050LocalSourceJSON('data/map_pack/city/water-index.json',null,true);if(!raw)return null;const value=MistralCityWater.index(raw);if(epoch!==maritime.epoch)throw Error('Atlas maritime périmé');maritime.index=value;return value;})().catch(e=>{maritime.promise=null;throw e;});}
+  if(!maritime.promise){const epoch=maritime.epoch;maritime.promise=(async()=>{const raw=await v050LocalSourceJSON('data/map_pack/city/water-index.json',null,true);if(epoch!==maritime.epoch)throw Error('Atlas maritime périmé');if(!raw)return null;const value=MistralCityWater.index(raw);maritime.index=value;return value;})().catch(e=>{if(epoch===maritime.epoch){maritime.promise=null;maritime.errors.push(String(e?.message||e));maritime.errors=maritime.errors.slice(-10);}throw e;});}
   return maritime.promise;
  }
  async function chunk(descriptor,signal){

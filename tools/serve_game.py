@@ -13,6 +13,7 @@ class GameHandler(SimpleHTTPRequestHandler):
     _audit_lock = Lock()
     _audit_cache = None
     _audit_time = 0.0
+    _audit_stamp = None
     _city_audit_lock = Lock()
     _city_audit_cache = None
     _city_audit_time = 0.0
@@ -54,18 +55,22 @@ class GameHandler(SimpleHTTPRequestHandler):
             return super().do_GET()
         try:
             with type(self)._audit_lock:
-                if type(self)._audit_cache is None or time.monotonic() - type(self)._audit_time > 30:
-                    data = audit(ROOT / 'data/map_pack')
+                pack = ROOT / 'data/map_pack'
+                stamp = self.local_fingerprint(pack)
+                if type(self)._audit_cache is None or stamp != type(self)._audit_stamp or time.monotonic() - type(self)._audit_time > 30:
+                    data = audit(pack)
+                    if self.local_fingerprint(pack) != stamp:
+                        raise ValueError('Local inputs changed during inspection')
                     data.update(version='0.50.0', inspectedAt=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), scope='Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.')
                     type(self)._audit_cache = data
                     type(self)._audit_time = time.monotonic()
-                payload = json.dumps(type(self)._audit_cache, ensure_ascii=False).encode('utf-8')
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json; charset=utf-8')
-            self.send_header('Cache-Control', 'no-store')
-            self.send_header('Content-Length', str(len(payload)))
-            self.end_headers()
-            self.wfile.write(payload)
+                    type(self)._audit_stamp = stamp
+                data = type(self)._audit_cache
+            self.send_json(200, data)
+        except (BrokenPipeError, ConnectionResetError):
+            # Closing a panel cancels its HTTP request. The inspected files
+            # remain valid; do not send a second, false 503 on that socket.
+            return
         except (OSError, ValueError, KeyError) as e:
             self.send_error(503, 'Local audit unavailable')
     def send_json(self, status, data):
@@ -74,8 +79,39 @@ class GameHandler(SimpleHTTPRequestHandler):
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Cache-Control', 'no-store')
         self.send_header('Content-Length', str(len(payload)))
-        self.end_headers()
-        self.wfile.write(payload)
+        try:
+            self.end_headers()
+            self.wfile.write(payload)
+        except (BrokenPipeError, ConnectionResetError):
+            return
+    @staticmethod
+    def local_fingerprint(pack):
+        """Metadata for exactly the input families inspected by the base audit.
+
+        A modification invalidates the shared cache immediately; a cache hit
+        keeps its actual inspection time. Content is still audited every 30 s.
+        Archives and optional municipal sources have their separate validators.
+        """
+        rows = []
+        manifest = pack / 'manifest_v038.json'
+        if manifest.exists():
+            stat = manifest.lstat()
+            rows.append((manifest.name, stat.st_size, stat.st_mtime_ns, stat.st_ino, stat.st_mode))
+        for family in ('france-vector', 'cadastre', 'terrain'):
+            directory = pack / family
+            if not directory.exists():
+                rows.append((family, None))
+                continue
+            visited = 0
+            for item in directory.rglob('*'):
+                visited += 1
+                if visited > 65536 or len(rows) >= 32768:
+                    raise ValueError('Local source directory exceeds its metadata budget')
+                if item.suffix not in ('.pbf', '.json'):
+                    continue
+                stat = item.lstat()
+                rows.append((str(item.relative_to(pack)), stat.st_size, stat.st_mtime_ns, stat.st_ino, stat.st_mode))
+        return tuple(sorted(rows))
     @staticmethod
     def city_fingerprint(directory):
         if not directory.exists():

@@ -73,6 +73,21 @@ test('A vector-only city installation leaves old source enrichment usable until 
 test('A cancelled navigation never starts later when its optional index finishes loading',async()=>{
  const f=files(),c=sandbox(f.data);let release;const fetch=c.fetch;c.fetch=url=>url==='data/map_pack/city/index.json'?new Promise(resolve=>{release=()=>fetch(url).then(resolve);}):fetch(url);const pending=run(c,'v046Ensure(43.295,5.355)');run(c,'v046Cancel()');release();assert.equal(await pending,false);assert.equal(run(c,'ensureCalls'),0);
 });
+test('Refreshing during index readiness invalidates the earlier navigation without overwriting its successful replacement',async()=>{
+ const f=files(),c=sandbox(f.data),read=c.fetch;let release,first=true;
+ c.fetch=url=>url==='data/map_pack/city/index.json'&&first?(first=false,new Promise(resolve=>{release=()=>read(url).then(resolve);})):read(url);
+ const old=run(c,'v046Ensure(43.295,5.355)');assert.equal(run(c,'v051CityRefresh()'),true);
+ assert.equal(await run(c,'v046Ensure(43.295,5.355)'),true);assert.equal(run(c,'ensureCalls'),1);release();
+ assert.equal(await old,false);assert.equal(c.mode,'PLAYING');assert.equal(c.V046.busy,false);assert.deepEqual(plain(run(c,'V051_CITY.errors')),[]);
+ assert.equal(run(c,'V051_CITY.registered'),true);assert.equal(run(c,'V051_CITY.index.tiles.length'),1);
+});
+test('A background boot index superseded by refresh cannot append a stale error to the healthy replacement',async()=>{
+ const f=files(),c=sandbox(f.data),read=c.fetch;let release,first=true;
+ c.fetch=url=>url==='data/map_pack/city/index.json'&&first?(first=false,new Promise(resolve=>{release=()=>read(url).then(resolve);})):read(url);
+ run(c,'v051CityAfterInit()');const old=run(c,'V051_CITY.indexPromise').catch(error=>error);assert.equal(run(c,'v051CityRefresh()'),true);
+ await run(c,'v051CityReady()');release();assert.match((await old).message,/périmé/);await new Promise(resolve=>setImmediate(resolve));
+ assert.equal(run(c,'V051_CITY.registered'),true);assert.deepEqual(plain(run(c,'V051_CITY.errors')),[]);
+});
 test('Rendered partition bounds exclude distant whole-road tails while keeping the raw descriptor intact',async()=>{
  const f=files(),index=JSON.parse(f.data['data/map_pack/city/index.json']);index.tiles[0].bbox=[43.2,5.2,43.4,5.6];index.tiles[0].renderBbox=Q;f.data['data/map_pack/city/index.json']=JSON.stringify(index);const c=sandbox(f.data);await run(c,'v051CityReady()');assert.equal(run(c,'v051CityDescriptors([43.21,5.21,43.22,5.22]).length'),0);assert.equal(run(c,'v051CityDescriptors([43.293,5.353,43.294,5.354]).length'),1);assert.deepEqual(plain(run(c,'V051_CITY.index.tiles[0].bbox')),[43.2,5.2,43.4,5.6]);assert.equal(run(c,'V051_CITY.requests'),0);
 });

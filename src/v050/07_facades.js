@@ -4,6 +4,7 @@
 const MistralFacades=(()=>{
  const EPS=1e-7,limit=(v,a,b)=>Math.max(a,Math.min(b,v));
  const finite=v=>typeof v==='number'&&Number.isFinite(v);
+ function budget(value,fallback,min,max){const n=value??fallback;if(!finite(n))throw new RangeError('Facade budgets require finite numeric values');return limit(Math.floor(n),min,max);}
  function hash(value){let h=2166136261;for(const c of String(value))h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;}
  function text(v){return typeof v==='string'?v.trim():'';}
  function inside(rings,x,z){let hit=false;for(const ring of rings){let part=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>z)!==(b[1]>z)&&x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])part=!part;}if(part)hit=!hit;}return hit;}
@@ -94,26 +95,40 @@ const MistralFacades=(()=>{
  function surfaceDistance(e,p){
   let best={distance:Infinity,offset:0};for(const part of e.pieces||[{source:e,a:e.a,b:e.b,tangent:e.tangent,start:0,end:e.length}]){const local=limit((p[0]-part.a[0])*part.tangent[0]+(p[1]-part.a[1])*part.tangent[1],0,part.source.length),distance=Math.hypot(p[0]-part.a[0]-part.tangent[0]*local,p[1]-part.a[1]-part.tangent[1]*local);if(distance<best.distance)best={distance,offset:part.start+local};}return best;
  }
+ function edgeClearance(all,p){let distance=Infinity;for(const e of all){const t=limit((p[0]-e.a[0])*e.tangent[0]+(p[1]-e.a[1])*e.tangent[1],0,e.length);distance=Math.min(distance,Math.hypot(p[0]-e.a[0]-e.tangent[0]*t,p[1]-e.a[1]-e.tangent[1]*t));}return distance;}
+ function surfaceChains(ring,join){
+  let cut=ring.findIndex((e,i)=>!join(ring[(i+ring.length-1)%ring.length],e));if(cut<0)cut=0;
+  const ordered=ring.slice(cut).concat(ring.slice(0,cut)),chains=[];let chain=[];
+  for(const e of ordered){if(chain.length&&!join(chain.at(-1),e)){chains.push(chain);chain=[];}chain.push(e);}if(chain.length)chains.push(chain);return chains;
+ }
+ function microjogJoin(ring){
+  // Some cadastral round contours are quantised into 10cm stair steps. Read
+  // their support direction over 50cm of source arclength, without replacing
+  // any vertex or segment. A sustained right angle still splits the chart.
+  if(ring.length<8||ring.some(e=>e.length>.3+EPS))return null;
+  const offsets=[0],positions=new Map();for(let i=0;i<ring.length;i++){positions.set(ring[i],i);offsets.push(offsets.at(-1)+ring[i].length);}const perimeter=offsets.at(-1);if(perimeter<1.45)return null;
+  const span=Math.min(.5,perimeter/4),point=raw=>{const at=(raw%perimeter+perimeter)%perimeter;let lo=0,hi=ring.length-1;while(lo<hi){const mid=(lo+hi)>>1;if(offsets[mid+1]<=at)lo=mid+1;else hi=mid;}const e=ring[lo],t=at-offsets[lo];return[e.a[0]+e.tangent[0]*t,e.a[1]+e.tangent[1]*t];};
+  return(a,b)=>{if(Math.hypot(a.b[0]-b.a[0],a.b[1]-b.a[1])>EPS)return false;const at=offsets[positions.get(b)],before=point(at-span),after=point(at+span),u=[b.a[0]-before[0],b.a[1]-before[1]],v=[after[0]-b.a[0],after[1]-b.a[1]],ul=Math.hypot(...u),vl=Math.hypot(...v);return ul>=span*.7&&vl>=span*.7&&(u[0]*v[0]+u[1]*v[1])/(ul*vl)>=Math.cos(Math.PI/4);};
+ }
  function curveSurfaces(d,all=edges(d)){
   const result=[];
   for(let ringIndex=0;ringIndex<d.rings.length;ringIndex++){
    const ring=all.filter(e=>e.ringIndex===ringIndex);if(ring.length<3)continue;
    const join=(a,b)=>a.length<2.8&&b.length<2.8&&Math.hypot(a.b[0]-b.a[0],a.b[1]-b.a[1])<EPS&&a.tangent[0]*b.tangent[0]+a.tangent[1]*b.tangent[1]>=Math.cos(Math.PI/4);
-   let cut=ring.findIndex((e,i)=>!join(ring[(i+ring.length-1)%ring.length],e));if(cut<0)cut=0;
-   const ordered=ring.slice(cut).concat(ring.slice(0,cut)),chains=[];let chain=[];
-   for(const e of ordered){if(chain.length&&!join(chain.at(-1),e)){chains.push(chain);chain=[];}chain.push(e);}if(chain.length)chains.push(chain);
+   let chains=surfaceChains(ring,join),surfaceKind='source-segment-arclength';
+   if(!chains.some(chain=>chain.length>=3&&chain.reduce((n,e)=>n+e.length,0)>=1.45)){const micro=microjogJoin(ring);if(micro){chains=surfaceChains(ring,(a,b)=>join(a,b)||micro(a,b));surfaceKind='source-microjog-arclength';}}
    for(const source of chains){if(source.length<3||source.reduce((n,e)=>n+e.length,0)<1.45)continue;let oriented=source.map(e=>({source:e,a:e.a,b:e.b,tangent:e.tangent,forward:true}));const closed=Math.hypot(source[0].a[0]-source.at(-1).b[0],source[0].a[1]-source.at(-1).b[1])<EPS,less=(a,b)=>a[0]<b[0]||a[0]===b[0]&&a[1]<b[1];
     const reverse=parts=>parts.slice().reverse().map(part=>({...part,a:part.b,b:part.a,tangent:part.tangent.map(v=>-v),forward:!part.forward}));
     if(closed){let start=0;for(let i=1;i<oriented.length;i++)if(less(oriented[i].a,oriented[start].a))start=i;oriented=oriented.slice(start).concat(oriented.slice(0,start));if(less(oriented.at(-1).a,oriented[0].b)){oriented=reverse(oriented);}}
     else if(less(oriented.at(-1).b,oriented[0].a))oriented=reverse(oriented);
     let length=0;for(const part of oriented){part.start=length;length+=part.source.length;part.end=length;}
     const signature=JSON.stringify([ringIndex===0?'outer':'courtyard',...oriented.map(part=>part.a),oriented.at(-1).b]),surfaceId='curve:'+hash(signature).toString(16).padStart(8,'0')+hash('surface:'+signature).toString(16).padStart(8,'0');
-    result.push({ringIndex,edgeIndex:oriented[0].source.edgeIndex,surfaceId,a:oriented[0].a,b:oriented.at(-1).b,tangent:oriented[0].tangent,normal:oriented[0].source.normal,length,pieces:oriented,closed});
+    result.push({ringIndex,edgeIndex:oriented[0].source.edgeIndex,surfaceId,surfaceKind,a:oriented[0].a,b:oriented.at(-1).b,tangent:oriented[0].tangent,normal:oriented[0].source.normal,length,pieces:oriented,closed});
    }
   }return result;
  }
  function spanSummary(e,offset,width){
-  if(!e.surfaceId)return null;const[a,b]=surfaceBounds(e,offset,offset+width);return{surfaceId:e.surfaceId,offsetMeters:offset,widthMeters:width,firstSourceEdgeIndex:e.pieces[a]?.source.edgeIndex??null,lastSourceEdgeIndex:e.pieces[b]?.source.edgeIndex??null,segments:Math.max(0,b-a+1)};
+  if(!e.surfaceId)return null;const[a,b]=surfaceBounds(e,offset,offset+width);return{surfaceId:e.surfaceId,surfaceKind:e.surfaceKind,offsetMeters:offset,widthMeters:width,firstSourceEdgeIndex:e.pieces[a]?.source.edgeIndex??null,lastSourceEdgeIndex:e.pieces[b]?.source.edgeIndex??null,segments:Math.max(0,b-a+1)};
  }
  function sourceSpans(e,offset,width){
   if(!e.pieces)return[{ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,width}];const[first,last]=surfaceBounds(e,offset,offset+width),spans=[];
@@ -137,20 +152,22 @@ const MistralFacades=(()=>{
   const documentedId=item=>item.o?d.id+':entrance:'+item.e.ringIndex+':'+item.e.edgeIndex+':'+Math.round((item.o.offset+item.o.width/2)/item.e.length*10000):null;
   const approach=item=>item.o?Math.hypot(...surfacePoint(item.e,item.o.offset+item.o.width/2).point.map((v,i)=>v-near[i])):surfaceDistance(item.e,near).distance;
   const compare=(a,b)=>{const exact=Number(documentedId(b)===preferredId)-Number(documentedId(a)===preferredId);if(exact)return exact;const preferredOrder=Number(!!preferredSurface(b.e))-Number(!!preferredSurface(a.e));if(preferredOrder)return preferredOrder;if(near){const distance=approach(a)-approach(b);if(Math.abs(distance)>EPS)return distance;}return b.e.length-a.e.length||Math.min(a.e.a[0],a.e.b[0])-Math.min(b.e.a[0],b.e.b[0])||Math.min(a.e.a[1],a.e.b[1])-Math.min(b.e.a[1],b.e.b[1])||Math.max(a.e.a[0],a.e.b[0])-Math.max(b.e.a[0],b.e.b[0])||Math.max(a.e.a[1],a.e.b[1])-Math.max(b.e.a[1],b.e.b[1]);};
-  // Width is limited to 60% of its supporting facade: 1.30m is the
-  // geometric minimum for a .78m door. Clearance checks still decide access.
-  const candidates=(documented.length?documented:all.concat(curves).filter(e=>e.ringIndex===0&&e.length>=1.3-EPS&&(!complete.has(edgeKey(e))||e.surfaceId)).map(e=>({e,o:null}))).sort(compare),known=new Map();
+  // Retain the ordinary width programme. A short source pan can still hold
+  // a .78m door with two .15m jambs; an arbitrary 60% rule must not erase it.
+  const candidates=(documented.length?documented:all.concat(curves).filter(e=>e.ringIndex===0&&e.length>=1.08-EPS&&(!complete.has(edgeKey(e))||e.surfaceId)).map(e=>({e,o:null}))).sort(compare),known=new Map();
   for(const o of d.facadeDocument?.openings||[]){const key=o.ringIndex+':'+o.edgeIndex;if(!known.has(key))known.set(key,[]);known.get(key).push(o);}
   const result=[];
   for(const {e,o}of candidates.slice(0,64)){
-   const width=o?.width??Math.min(d.style==='industrial'?2.4:1.15,e.length*.6),height=o?.height??Math.min(2.35,d.levelHeight-.08,d.height-.08);if(height<1.85||width<.78-EPS)continue;
+   const width=o?.width??Math.min(d.style==='industrial'?2.4:1.15,Math.max(.78,e.length*.6)),height=o?.height??Math.min(2.35,d.levelHeight-.08,d.height-.08);if(height<1.85||width<.78-EPS)continue;
    const idAt=t=>d.id+':entrance:'+(e.surfaceId?e.surfaceId+':'+Math.floor(t*Math.max(1,Math.floor(e.length/3.2))):e.ringIndex+':'+e.edgeIndex+':'+Math.round(t*10000));
    let fractions=o?[(o.offset+o.width/2)/e.length]:[.5,.34,.66];
    if(e.surfaceId&&!o){const count=Math.max(1,Math.floor(e.length/3.2)),at=near?Math.floor(surfaceDistance(e,near).offset/e.length*count):Math.floor(count/2),prefix=d.id+':entrance:'+e.surfaceId+':',preferredSlot=preferredId.startsWith(prefix)?Number(preferredId.slice(prefix.length)):null,slots=[...(Number.isInteger(preferredSlot)&&preferredSlot>=0&&preferredSlot<count?[preferredSlot]:[]),at,at-1,at+1,Math.floor(count/2),0,count-1];fractions=[...new Set(slots.filter(n=>n>=0&&n<count))].slice(0,7).map(n=>(n+.5)/count);}
    else if(!o)fractions.sort((a,b)=>Number(idAt(b)===preferredId)-Number(idAt(a)===preferredId)||(near?Math.hypot(...surfacePoint(e,a*e.length).point.map((v,i)=>v-near[i]))-Math.hypot(...surfacePoint(e,b*e.length).point.map((v,i)=>v-near[i])):0));
-   for(const t of fractions){const offset=t*e.length-width/2;if(offset<0||offset+width>e.length+EPS)continue;const opening={ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,bottom:0,width,height};if(!o&&openingConflict(opening,e,known,complete))continue;const at=surfacePoint(e,t*e.length),p=at.point;let candidate=null;
-    for(const inset of[.95,.7,.5]){const ip=[p[0]-at.normal[0]*inset,p[1]-at.normal[1]*inset],op=[p[0]+at.normal[0]*1.15,p[1]+at.normal[1]*1.15];if(!inside(d.rings,...ip)||inside(d.rings,...op))continue;if([-1,1].some(s=>!inside(d.rings,ip[0]+at.tangent[0]*.4*s,ip[1]+at.tangent[1]*.4*s)))continue;
-     candidate={id:idAt(t),buildingId:d.id,center:[p[0],d.baseY+(o?.bottom||0),p[1]],outside:[op[0],d.baseY+(o?.bottom||0),op[1]],inside:[ip[0],d.baseY+(o?.bottom||0),ip[1]],tangent:at.tangent.slice(),normal:at.normal.slice(),ringIndex:0,edgeIndex:at.edgeIndex,width,height,offset,provenance:o?'documented':'invented',source:o?d.facadeDocument.source:null,...(e.surfaceId?{surfaceId:e.surfaceId,arclength:t*e.length,span:spanSummary(e,offset,width)}:{})};break;
+   for(const t of fractions){const offset=t*e.length-width/2;if(offset<0||offset+width>e.length+EPS||!o&&(offset<.15-EPS||offset+width>e.length-.15+EPS))continue;const opening={ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,bottom:0,width,height};if(!o&&openingConflict(opening,e,known,complete))continue;const at=surfacePoint(e,t*e.length),p=at.point,start=surfacePoint(e,offset).point,end=surfacePoint(e,offset+width).point,section=[end[0]-start[0],end[1]-start[1]],sectionLength=Math.hypot(...section);let tangent=at.tangent,normal=at.normal,candidate=null;
+    if(e.surfaceKind==='source-microjog-arclength'){if(sectionLength<EPS)continue;tangent=section.map(n=>n/sectionLength);normal=[tangent[1],-tangent[0]];if(normal[0]*at.normal[0]+normal[1]*at.normal[1]<0)normal=normal.map(n=>-n);}
+    const clearWidthMeters=Math.abs(section[0]*tangent[0]+section[1]*tangent[1]);if(!o&&clearWidthMeters<.78-EPS)continue;
+    for(const inset of[.95,.7,.5]){const ip=[p[0]-normal[0]*inset,p[1]-normal[1]*inset],op=[p[0]+normal[0]*1.15,p[1]+normal[1]*1.15];if(!inside(d.rings,...ip)||inside(d.rings,...op)||edgeClearance(all,ip)<.43-EPS||edgeClearance(all,op)<.38-EPS)continue;if([-1,1].some(s=>!inside(d.rings,ip[0]+tangent[0]*.4*s,ip[1]+tangent[1]*.4*s)))continue;
+     candidate={id:idAt(t),buildingId:d.id,center:[p[0],d.baseY+(o?.bottom||0),p[1]],outside:[op[0],d.baseY+(o?.bottom||0),op[1]],inside:[ip[0],d.baseY+(o?.bottom||0),ip[1]],tangent:tangent.slice(),normal:normal.slice(),ringIndex:0,edgeIndex:at.edgeIndex,width,height,offset,provenance:o?'documented':'invented',source:o?d.facadeDocument.source:null,...(!o?{clearWidthMeters,accessRadiusMeters:.38}:{}),...(e.surfaceId?{surfaceId:e.surfaceId,arclength:t*e.length,span:spanSummary(e,offset,width)}:{})};break;
     }if(candidate){result.push(candidate);break;}
    }
   }return result;
@@ -184,7 +201,7 @@ const MistralFacades=(()=>{
   // candidates. Recover that same physical candidate instead of losing its door.
   const candidates=entrances(d,{near:selection?.center?[selection.center[0],selection.center[2]]:null,preferredEdge:selection,preferredId:selection?.id}),levelElevations=floorSchedule(d,selection),doors=(selection===null?[]:selection?candidates.filter(door=>door.id===selection.id).slice(0,1):candidates.slice(0,1)).map(door=>selectedEntrance(door,selection,d,levelElevations)).filter(Boolean),fixed=[],occupied=new Map();
   const occupy=o=>{const e=openingSurface(o,byEdge,bySurface);if(!e)return;for(const span of sourceSpans(e,o.offset,o.width)){const key=edgeKey(span);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({...o,...span});}};
-  for(const door of doors)if(door.provenance==='invented'){const o={type:'door',ringIndex:0,edgeIndex:door.edgeIndex,offset:door.offset,bottom:door.elevationOffset,width:door.width,height:door.height,provenance:'invented',source:null,...(door.surfaceId?{surfaceId:door.surfaceId,arclength:door.arclength,span:{...door.span}}:{})};fixed.push(o);occupy(o);}
+  for(const door of doors)if(door.provenance==='invented'){const o={type:'door',ringIndex:0,edgeIndex:door.edgeIndex,offset:door.offset,bottom:door.elevationOffset,width:door.width,height:door.height,clearWidthMeters:door.clearWidthMeters,accessRadiusMeters:door.accessRadiusMeters,provenance:'invented',source:null,...(door.surfaceId?{surfaceId:door.surfaceId,arclength:door.arclength,span:{...door.span}}:{})};fixed.push(o);occupy(o);}
   const documented=(d.facadeDocument?.openings||[]).slice().sort((a,b)=>(a.type==='door'?-1:0)-(b.type==='door'?-1:0));let rejectedDocumented=0;
   for(const o of documented){const e=byEdge.get(edgeKey(o));if(!supportedOpening(o,e,d)){rejectedDocumented++;continue;}const item={...o,provenance:'documented',source:d.facadeDocument.source};fixed.push(item);occupy(item);}
   const seed=hash(d.id),bay=d.style==='industrial'?4.8:d.style==='religious'?4.2:2.8+(seed%50)/100,registers=windowRegisters(d,levelElevations),rows=[],complete=new Set((d.facadeDocument?.completeEdges||[]).map(edgeKey)),curvedEdges=new Set(curves.flatMap(e=>e.pieces.map(part=>edgeKey(part.source))));let potentialOpenings=0;
@@ -193,18 +210,21 @@ const MistralFacades=(()=>{
   // The grid has no arbitrary column cap; bounded pages materialise its slots.
   const canonical=e=>{const forward=!!e.surfaceId||e.a[0]<e.b[0]||e.a[0]===e.b[0]&&e.a[1]<e.b[1],a=forward?e.a:e.b,b=forward?e.b:e.a;return{edge:e,reverse:!forward,key:[e.ringIndex===0?0:1,...a,...b,e.surfaceId||'']};};
   const ordered=all.filter(e=>!curvedEdges.has(edgeKey(e))).concat(curves).map(canonical).sort((a,b)=>{for(let i=0;i<a.key.length;i++)if(a.key[i]!==b.key[i])return typeof a.key[i]==='string'?a.key[i].localeCompare(b.key[i]):a.key[i]-b.key[i];return 0;});
-  for(const item of ordered){const e=item.edge;if(e.length<1.45||!e.surfaceId&&complete.has(edgeKey(e)))continue;const count=Math.max(1,Math.floor(e.length/bay));const slots=count*registers.length;if(!Number.isSafeInteger(slots)||!Number.isSafeInteger(potentialOpenings+slots))return null;rows.push({edge:e,count,reverse:item.reverse,start:potentialOpenings,end:potentialOpenings+slots});potentialOpenings+=slots;}
-  return{...d,edges:all,curves,doors,levelElevations,seed,bay,registers,rows,fixed,occupied,complete,potentialOpenings,totalSlots:fixed.length+potentialOpenings,documentedCoverage:{declared:documented.length,accepted:documented.length-rejectedDocumented,rejected:rejectedDocumented}};
+  // A one-metre straight pan can support a .53m invented window and its
+  // jambs even when it cannot hold a pedestrian doorway.
+  for(const item of ordered){const e=item.edge;if(e.length<1-EPS||!e.surfaceId&&complete.has(edgeKey(e)))continue;const count=Math.max(1,Math.floor(e.length/bay));const slots=count*registers.length;if(!Number.isSafeInteger(slots)||!Number.isSafeInteger(potentialOpenings+slots))return null;rows.push({edge:e,count,reverse:item.reverse,start:potentialOpenings,end:potentialOpenings+slots});potentialOpenings+=slots;}
+  const entranceCoverage={candidateCount:candidates.length,selectedCount:doors.length,reason:doors.length?null:selection===null?'runtime-access-unavailable':d.height<1.95?'insufficient-envelope-headroom':'no-source-boundary-opening-meets-clearance'};
+  return{...d,edges:all,curves,doors,entranceCoverage,levelElevations,seed,bay,registers,rows,fixed,occupied,complete,potentialOpenings,totalSlots:fixed.length+potentialOpenings,documentedCoverage:{declared:documented.length,accepted:documented.length-rejectedDocumented,rejected:rejectedDocumented}};
  }
  function candidateAt(p,index){
   if(!Number.isSafeInteger(index)||index<0||index>=p.potentialOpenings)return null;
   let lo=0,hi=p.rows.length-1,row=null;while(lo<=hi){const mid=(lo+hi)>>1,r=p.rows[mid];if(index<r.start)hi=mid-1;else if(index>=r.end)lo=mid+1;else{row=r;break;}}
   if(!row)return null;const e=row.edge,local=index-row.start,register=p.registers[Math.floor(local/row.count)],canonicalColumn=local%row.count,column=row.reverse?row.count-1-canonicalColumn:canonicalColumn,step=e.length/row.count,shop=register.kind==='shopfront',greenhouse=register.kind==='greenhouse',bottom=register.bottom,height=register.height,width=Math.min(greenhouse?3.8:shop?2.6:p.style==='industrial'?2.2:1.12,step*(greenhouse?.86:shop?.74:.53)),offset=step*(column+.5)-width/2;
-  if(height<.5||bottom+height>p.height-.15||offset<.12||offset+width>e.length-.12)return null;
+  if(height<.5||width<.5||bottom+height>p.height-.15||offset<.12||offset+width>e.length-.12)return null;
   const at=e.surfaceId?surfacePoint(e,offset+width/2):null,o={type:shop?'shopfront':'window',ringIndex:e.ringIndex,edgeIndex:at?.edgeIndex??e.edgeIndex,offset,bottom,width,height,provenance:'invented',source:null,...(e.surfaceId?{surfaceId:e.surfaceId,arclength:offset+width/2,span:spanSummary(e,offset,width)}:{})};
   return openingConflict(o,e,p.occupied,p.complete)?null:o;
  }
- function inventory(p){return{schemaVersion:1,method:'Complete metric facade/storey bay program; openings materialised in bounded pages',totalSlots:p.totalSlots,fixedOpenings:p.fixed.length,potentialOpenings:p.potentialOpenings,eligibleEdges:p.rows.length,sourceEdges:p.edges.length,curvedSurfaces:p.curves.length,storeys:p.levels,typology:p.typology,levelInferenceBasis:p.levelInferenceBasis,windowRegisters:p.registers.length,baySpacingMeters:p.bay,documentedCoverage:{...p.documentedCoverage},provenance:p.provenance};}
+ function inventory(p){return{schemaVersion:1,method:'Complete metric facade/storey bay program; openings materialised in bounded pages',totalSlots:p.totalSlots,fixedOpenings:p.fixed.length,potentialOpenings:p.potentialOpenings,eligibleEdges:p.rows.length,sourceEdges:p.edges.length,curvedSurfaces:p.curves.length,microjogSurfaces:p.curves.filter(e=>e.surfaceKind==='source-microjog-arclength').length,storeys:p.levels,typology:p.typology,levelInferenceBasis:p.levelInferenceBasis,windowRegisters:p.registers.length,baySpacingMeters:p.bay,entranceCoverage:{...p.entranceCoverage},documentedCoverage:{...p.documentedCoverage},provenance:p.provenance};}
  function openingSpans(draw,opening){
   const d=describe(draw);if(!d||!opening||!finite(opening.offset)||!finite(opening.width)||opening.offset<0||opening.width<=0)return[];
   const all=edges(d),e=opening.surfaceId?curveSurfaces(d,all).find(e=>e.surfaceId===opening.surfaceId):all.find(e=>e.ringIndex===opening.ringIndex&&e.edgeIndex===opening.edgeIndex);return e&&opening.offset+opening.width<=e.length+EPS?sourceSpans(e,opening.offset,opening.width):[];
@@ -220,14 +240,14 @@ const MistralFacades=(()=>{
   return{buildingId:p.id,cursor,nextCursor,scanned,done:nextCursor===p.totalSlots,openings,inventory:inventory(p)};
  }
  function facadePlan(draw,options={}){
-  const p=program(draw);if(!p)return null;const maxOpenings=limit(Math.floor(options.maxOpenings??512),1,4096),openings=p.fixed.slice(0,maxOpenings).map(o=>({...o})),remaining=Math.max(0,maxOpenings-openings.length),sampleCount=Math.min(p.potentialOpenings,remaining),attempts=Math.min(p.potentialOpenings,remaining*4),visited=new Set();let attempted=0;
+  const maxOpenings=budget(options.maxOpenings,512,1,4096),p=program(draw);if(!p)return null;const openings=p.fixed.slice(0,maxOpenings).map(o=>({...o})),remaining=Math.max(0,maxOpenings-openings.length),sampleCount=Math.min(p.potentialOpenings,remaining),attempts=Math.min(p.potentialOpenings,remaining*4),visited=new Set();let attempted=0;
   // The render LOD samples the complete program; it never substitutes a sparse
   // sample for the model's authoritative, cursor-addressable opening inventory.
   for(let n=0;n<attempts&&openings.length<maxOpenings;n++){const slot=n%sampleCount,phase=Math.floor(n/sampleCount),index=Math.min(p.potentialOpenings-1,Math.floor(slot*p.potentialOpenings/sampleCount)+phase);if(visited.has(index))continue;visited.add(index);attempted++;const o=candidateAt(p,index);if(o)openings.push(o);}
   return{...p,openings,openingInventory:inventory(p),detailCoverage:{budgeted:attempted<p.potentialOpenings||p.fixed.length>maxOpenings,potentialOpenings:p.potentialOpenings,attempted,maxOpenings,retainedOpenings:openings.length,completeInventorySlots:p.totalSlots,documentedCoverage:{...p.documentedCoverage}}};
  }
  function geometry(draw,options={}){
-  const maxQuads=limit(Math.floor(options.maxQuads??512),8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads*(detail?.60:.85))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
+  const maxQuads=budget(options.maxQuads,512,8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads*(detail?.60:.85))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
   const groups=new Map(),palette=PALETTES[plan.style],shade=((plan.seed%21)-10)/550;
   const material=name=>name==='wall'?palette.wall.map(v=>limit(v+shade,0,1)):palette[name]||palette.trim;
   let quads=0,openingCount=0;const renderedOpenings=[],deferredOpenings=[],byEdge=new Map(plan.edges.map(e=>[edgeKey(e),e])),bySurface=new Map(plan.curves.map(e=>[e.surfaceId,e]));

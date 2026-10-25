@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-25T07:17:32.139207+00:00",
+  "scope": "Frozen facade continuation evidence only; manifest excludes itself.",
+  "files": {
+    "ACTUAL_SOURCE_CASES.json": {
+      "sha256": "7f50890a26459e089b09583ea03800554dfb2a8dfbcb7af7fc1243a9df38dbfb",
+      "bytes": 49639
+    },
+    "EXECUTED_facades_coverage.cjs": {
+      "sha256": "5aac9048041938e2accd44fec01699c50af7773a63457410e0dce596937900cd",
+      "bytes": 44192
+    },
+    "EXECUTED_facades_model.cjs": {
+      "sha256": "34182431b14c4c35de20cf8ca891f6c9ed203269ce8db2ca818e6f02c3da1215",
+      "bytes": 55909
+    },
+    "FACADES_CONTINUATION.json": {
+      "sha256": "5ac35ecf5f52accff432a34d2f8fe4f1794d54c41c2740a8791a5807e6a27d67",
+      "bytes": 11684
+    },
+    "FACADES_TESTS.json": {
+      "sha256": "8ead144706136ef63228eb9b920edf39a2af1d4a9f14befb25a7fb3c871f0b7f",
+      "bytes": 1685
+    },
+    "ORIGINAL_COMPARATOR_IDENTITY.json": {
+      "sha256": "dd3b9c69f3458decebfc89b385e6b2ddd13c87d743746f06f72b23188be6300e",
+      "bytes": 541
+    },
+    "README.md": {
+      "sha256": "67ba6abbddf59862df8731fac55473843aedf326c6d7c1858fe7815dd2856ba1",
+      "bytes": 4523
+    },
+    "RESIDUAL_ENTRANCE_METRICS.json": {
+      "sha256": "07e77e9e5ad894a8c4e2fad6d72b146fb2fa24e0d6b5f413422dc60e081849d3",
+      "bytes": 10114
+    },
+    "RESIDUAL_METRICS_RUN.log": {
+      "sha256": "9b49e82c028b8a691fc345ccb1e946869cdaf810d3e4b3487341a10753410353",
+      "bytes": 1212
+    },
+    "TEST_RUN.log": {
+      "sha256": "8ead144706136ef63228eb9b920edf39a2af1d4a9f14befb25a7fb3c871f0b7f",
+      "bytes": 1685
+    },
+    "baseline-48418cc/BASELINE_IDENTITY.json": {
+      "sha256": "c613d3bf3a54a671c40acf5920ddc957fd1cd9724bede71f1be0f7cf7560ae0e",
+      "bytes": 375
+    },
+    "baseline-48418cc/facades-baseline.cjs": {
+      "sha256": "9ccc2c01a9c91d5b1c2f0611f8d18c814f2616e0ec9711b37393c2cb78ec8335",
+      "bytes": 42404
+    },
+    "baseline-48418cc/source-shapes/ATTRIBUTE_CROSS_TABS.json": {
+      "sha256": "52e9a9ceaa1b72959b11abf67f01cc0f7813e6cf776cc0f6fb913eede4b04587",
+      "bytes": 56824
+    },
+    "baseline-48418cc/source-shapes/CURVED_ELIGIBILITY.json": {
+      "sha256": "9e2cc1dd179f06a6fb9048b7ca4f5deed8adc17cde24b8809a8a681e4c199057",
+      "bytes": 117037
+    },
+    "baseline-cac50f3/BASELINE_IDENTITY.json": {
+      "sha256": "a31c37a6e7b5ffac2c77be4fc79431ffdfefbdf68267f9b0755e5a7e8bf99969",
+      "bytes": 375
+    },
+    "baseline-cac50f3/facades-baseline.cjs": {
+      "sha256": "4a54881ba8b8fe973048814d2f47d6a450df004a8e511e0e535ee34889f870b6",
+      "bytes": 24973
+    },
+    "baseline-cac50f3/source-shapes/ATTRIBUTE_CROSS_TABS.json": {
+      "sha256": "52e9a9ceaa1b72959b11abf67f01cc0f7813e6cf776cc0f6fb913eede4b04587",
+      "bytes": 56824
+    },
+    "baseline-cac50f3/source-shapes/CURVED_ELIGIBILITY.json": {
+      "sha256": "9e2cc1dd179f06a6fb9048b7ca4f5deed8adc17cde24b8809a8a681e4c199057",
+      "bytes": 117037
+    },
+    "comparison-48418cc/CURVES_COMPARE.json": {
+      "sha256": "aa5f4ffeb23eba250fc68f649b4d9fa9768a6d809d07f1bb7c33a33873d82b18",
+      "bytes": 1514543
+    },
+    "comparison-48418cc/EXECUTION.log": {
+      "sha256": "6b07bb41a0e4b2af93ca8afb23b16165623c4e19ce47f76824d13c92fbfd1556",
+      "bytes": 1866
+    },
+    "comparison-cac50f3/CURVES_COMPARE.json": {
+      "sha256": "ab60754ac47df63a8ca4d3fcddbccbb93e64a8f8a062d77124fc7d5c7f17b667",
+      "bytes": 1514438
+    },
+    "comparison-cac50f3/EXECUTION.log": {
+      "sha256": "3b5dd9e1cd0fcd15bfb3ccbedcce00b8f622e917e005ac1dd3c54e9ca61d367f",
+      "bytes": 1865
+    },
+    "curves_compare.cjs": {
+      "sha256": "49d3381cd65a269488413328eb13f08dfd08e9ed16e2dd567aaf0a7029f91925",
+      "bytes": 16704
+    },
+    "facades_coverage.cjs.log": {
+      "sha256": "5760f24388135ab853f88f72a47575fab12047947215e93771229ec52596fb9d",
+      "bytes": 2525
+    },
+    "facades_model.cjs.log": {
+      "sha256": "419bbd67bbb83847d4214c30bef0b3b84d052dcb3c7069b71b604012b574a0ed",
+      "bytes": 7820
+    },
+    "residual_metrics.cjs": {
+      "sha256": "bf295b50d8d43c9d1dd0f93643ccbe2e4983b125a8da2d5aa9f8e46869297eac",
+      "bytes": 3960
+    },
+    "run_facades_tests.cjs": {
+      "sha256": "489dd9a8bb4bbc6938ab9ed17885576765f8033978a46f4d2f8af25594aa7753",
+      "bytes": 3312
+    }
+  }
+}

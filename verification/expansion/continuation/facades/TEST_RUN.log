@@ -1,0 +1,36 @@
+{
+  "scope": "Production facade model/runtime hooks and three pinned real IGN source fixtures. Documentary plans and synthetic corner/clearance/stress fixtures remain explicit; this is not a native browser playthrough.",
+  "stage": "complete",
+  "passed": 108,
+  "failed": 0,
+  "modules": {
+    "src/v050/07_facades.js": "855db991e5053752a7d1a366cac3610f6ea7b304461e448d99e45362a49eb432",
+    "src/v050/08_city_interiors.js": "1f5c099bc4082baa6c64660fe6aacb22a52b839b2cbdaf0ce29cb55a4fbc83bf"
+  },
+  "nodeVersion": "v24.19.0",
+  "executedRunnerSha256": "489dd9a8bb4bbc6938ab9ed17885576765f8033978a46f4d2f8af25594aa7753",
+  "rows": [
+    {
+      "name": "facades_model.cjs",
+      "passed": 89,
+      "failed": 0,
+      "exitCode": 0,
+      "scriptSha256": "34182431b14c4c35de20cf8ca891f6c9ed203269ce8db2ca818e6f02c3da1215",
+      "archive": "EXECUTED_facades_model.cjs",
+      "log": "facades_model.cjs.log",
+      "logSha256": "419bbd67bbb83847d4214c30bef0b3b84d052dcb3c7069b71b604012b574a0ed",
+      "execution": "Unmodified archived test bytes compiled with their original module filename; relative imports resolve to the frozen repository."
+    },
+    {
+      "name": "facades_coverage.cjs",
+      "passed": 19,
+      "failed": 0,
+      "exitCode": 0,
+      "scriptSha256": "5aac9048041938e2accd44fec01699c50af7773a63457410e0dce596937900cd",
+      "archive": "EXECUTED_facades_coverage.cjs",
+      "log": "facades_coverage.cjs.log",
+      "logSha256": "5760f24388135ab853f88f72a47575fab12047947215e93771229ec52596fb9d",
+      "execution": "Unmodified archived test bytes compiled with their original module filename; relative imports resolve to the frozen repository."
+    }
+  ]
+}

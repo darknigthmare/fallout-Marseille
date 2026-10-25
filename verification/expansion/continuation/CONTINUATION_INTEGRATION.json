@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-25T07:41:42.889170+00:00",
+  "stage": "complete",
+  "ok": true,
+  "html_sha256": "ea8ba2e3d9ba9ed1925628672f4c596475ff2437de06bfa7979ee03f6f59f0bf",
+  "frozenProductionHashCount": 315,
+  "checksByMethod": {
+    "isolatedUnits": {
+      "passed": 1080,
+      "failed": 0,
+      "total": 1080,
+      "suites": 27,
+      "method": "Isolated current production model/tool tests, including explicit synthetic documentary, actor, storage and source fixtures; not native playthroughs."
+    },
+    "inheritedControlledContracts": {
+      "passed": 434,
+      "failed": 0,
+      "total": 434,
+      "processes": 15,
+      "method": "Contrats hérités exécutés sur le programme actuel. Bancs synthétiques et réseau contrôlé ; voir NATIVE_REAL_MAP.json pour les parcours HTTP réels.",
+      "adaptedExecutedBytesRecreatedAndVerified": true
+    },
+    "independentRebuildOutputs": {
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "method": "Independent source-only rebuild in a fresh directory; no installed data or browser."
+    },
+    "assistedContinuationBrowser": {
+      "passed": 206,
+      "failed": 0,
+      "total": 206,
+      "method": "Native continuation pilot, prepared without starting a browser by default.\n\nRuns unchanged production HTML and GameHandler against installed source files,\nwith native browser storage. Equipment is bought at a real counter, collections\nuse physical E interactions, and dossier actions use visible Pip-Boy buttons.\nSector/scene selection, measured camera placement, simulation freeze, resource\nsetup and a controlled armour impact are explicit diagnostic assistance. This\nis a bounded assisted pilot, not an unassisted citywide playthrough or a survey.\n",
+      "assistance": [
+        "Existing v020Load selects authored narrative scenes without granting equipment or quest outcomes. These scenes are not IGN replicas.",
+        "Existing v018LoadMacro/v046Load select installed geographic sectors; no lab or generated geographic fixture.",
+        "Existing v018CaptureAt places the player only at a measured or authored collision-free point, with actual line of sight.",
+        "Diagnostic Lambert inverse converts actual exported world points back to latitude/longitude for native terrain reads; it supplies no elevation.",
+        "Existing simulation/render freeze, and v047Control auto=false, make the bounded inspection repeatable.",
+        "One declared v020Seed sets caps=10000, scrap=100, circuitry=20, weaponParts=30. No armour, core, collectible, SPECIAL or quest is seeded.",
+        "Existing v046SetTime sets daytime once. Native KeyW plus v020Tick(.05,true) steps production movement under freeze.",
+        "One existing v030Hurt(40,torso) creates a declared controlled impact after actual equipment purchase; no HP restoration or free repair.",
+        "Read-only state/runtime exports inspect results. Native E, U, Tab and visible production buttons perform feature actions."
+      ],
+      "limitations": [
+        "One of four new faction dossiers is completed natively. Other dossier counters are exported, not claimed complete.",
+        "One of seven figurines, one of four magazines and one of two bottle types are collected and used as appropriate.",
+        "One paid armor acquisition and one paid real-relay plate repair; failure rollback/concurrency are covered by separate VM regressions.",
+        "Reload/Continue exercises current native save migration. No fabricated historical storage import is installed.",
+        "Geographic actors, stands and lore are authored fiction placed on measured terrain; no claim of surveyed facades or rooms.",
+        "The pilot uses bounded diagnostic positioning, fixed simulation steps and seeded payment materials; it is not a human walkthrough.",
+        "An ERR_ABORTED on the exact local-data diagnostic route is retained separately as a cancelled metadata probe, with its actual stage and time. Other local failures remain fatal."
+      ],
+      "remoteRequestFailuresPreserved": 18,
+      "cancelledLocalDiagnosticProbesPreserved": 1
+    },
+    "assistedArchitectureBrowser": {
+      "passed": 101,
+      "failed": 0,
+      "total": 101,
+      "method": "Prepared native HTTP architecture pilot. No browser starts without --run.\n\nUses the unchanged production HTML, GameHandler, installed source geometry and\nnative browser storage. One fresh context is reused through a document reload.\nExisting diagnostic sector loading, measured placement, render/simulation freeze\nand collision-controlled walking are declared assistance. Portal and landing\nactions use real E key presses and visible buttons. This is not a human or an\nunassisted citywide playthrough. No synthetic documentary plan is installed.\n",
+      "assistance": [
+        "Existing native macro and sector loading debug APIs; no lab or geography fixture.",
+        "Existing measured collision-free camera placement and QA simulation/render freeze.",
+        "Existing v020Approach for collision/LOS checked placement before real E-key portal actions.",
+        "Native KeyW plus existing v020Tick advances production movement/collisions in fixed 0.05 s steps under QA freeze; this is assisted movement, not recorded human walking.",
+        "Landing placement on a verified clear floor precedes real E-key and visible floor/exit buttons.",
+        "Read-only debug exports inspect actual runtime annotations, geometry and interior layout."
+      ],
+      "limitations": [],
+      "remoteRequestFailuresPreserved": 18,
+      "cancelledLocalDiagnosticProbesPreserved": 0
+    },
+    "assistedBestiaryBrowser": {
+      "passed": 23,
+      "failed": 0,
+      "total": 23,
+      "method": "Bounded assisted native bestiary pilot; no browser starts without --run.\n\nUnmodified production HTML, actual GameHandler, installed map pack and native\nstorage. Existing sector selection, measured camera placement, daytime and\nsimulation/render freeze are diagnostic assistance. Public debug APIs inspect\nactual streamed actors and step production physics. No actor, reward, HTML,\nterrain, document or save fixture is injected. This is not a human playthrough.\n",
+      "assistance": [
+        "Public v018LoadMacro/v046Load select real installed geographic sectors.",
+        "Public v018CaptureAt freezes simulation and places a measured collision-free camera with production LOS.",
+        "Public v047Control auto=false bounds background streaming; v046SetTime fixes daytime.",
+        "Public v042Update and v020Tick(.05,true) step actual production streaming/physics/AI.",
+        "Read-only public exports inspect actual actors, rigs and saves. No spawn/defeat/resource/quest debug API is used."
+      ],
+      "limitations": [
+        "One actual regional silhouette is required and captured; this does not certify all 21 potential slots or all three species natively.",
+        "Wound/old-campaign/body/loot roundtrip and the other species are covered by separate production-wrapper VM regressions.",
+        "No native enemy kill, resource grant, quest outcome or fabricated historical storage import is performed.",
+        "Camera navigation, time and freeze are declared diagnostic assistance; no human or citywide 1:1 claim."
+      ],
+      "remoteRequestFailuresPreserved": 9,
+      "cancelledLocalDiagnosticProbesPreserved": 0
+    }
+  },
+  "reportedAssertionSum": 1847,
+  "assertionSumIsNotEquivalentPlaythroughCount": true,
+  "nativePilotCount": 3,
+  "captures": [
+    {
+      "path": "native/01_finite_merchant.png",
+      "sha256": "0186b813d5bdb044a5c78405eef009a05285fcbae698a371e0e933c51c115cf3",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual merchant after paid finite T45 and core purchase; authored drydock scene.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/02_powered_u_panel.png",
+      "sha256": "09b6db7b8a1df4b9db0329db65271b37a6658a3806c07fb46c77934ffe711936",
+      "width": 1440,
+      "height": 900,
+      "label": "Native U / STAT ARMURE with six plates and paid installed core.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/physical_iconic_figurine-s.png",
+      "sha256": "790e52dfd81d1868870952d3e9d76714cbab55b95f650ff1abeafc6d89a2364e",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual original game object in its authored narrative scene, before the native E pickup.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/physical_iconic_bouteille-classique.png",
+      "sha256": "3783a735e2908ba068520dff9b7459ac6423bdf01043673e66195809f22b25d9",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual original game object in its authored narrative scene, before the native E pickup.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/03_collection_authored_world.png",
+      "sha256": "84c4040caa4bb5a7fed69bd7baeca4eecefaed3f06093d8f3b51c16d09b3d1ac",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual authored Aubagne collectibles reached by normal E.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/physical_iconic_edition-repair.png",
+      "sha256": "1d6f3781d7734aa917a2144bd2f5e72336517cc73c8cfe8f4f30a289ce9ee803",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual original game object in its authored narrative scene, before the native E pickup.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/04_collection_pipboy.png",
+      "sha256": "b25c373b0f2a06d0fb685fb46399f405a980ca3d41a151140e371f6fc26895dd",
+      "width": 1440,
+      "height": 900,
+      "label": "Normal DATA / COLLECTION, one-time figurine and temporary magazine ledger.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/05_first_cendres_contact.png",
+      "sha256": "69873a1abb495290f4d0e435d4fa1379868235ca0feee3421af9a44e1799afa8",
+      "width": 1440,
+      "height": 900,
+      "label": "Real Marseille relay contact and first witness through DATA / RELAIS ET DOSSIERS.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/06_completed_cendres.png",
+      "sha256": "87bf2546d32c3777cc5387c7dfb390cec70c600ee2cdc56e69588a99f78e1779",
+      "width": 1440,
+      "height": 900,
+      "label": "Dossier complete: physical testimony, final decision and finite reward.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/07_canal13_consequence.png",
+      "sha256": "d6ebef75bb9369879c75b239a595775a19c1d1077cf4c566fbf154ce60f66fa3",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual Canal 13 bulletin reflects the saved dossier outcome.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/08_npc_remembers.png",
+      "sha256": "a38efcd4a15389dc63de8fb4dc78adb7d774429d145480e971d5a46eb4f5a603",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual living contact remembers dossier outcome and keeps existing dialogue choices.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/09_native_technician_u.png",
+      "sha256": "d0efa38e3de5e701409717b8199562b0b0b38581f20b6360e9ba00776caf5b54",
+      "width": 1440,
+      "height": 900,
+      "label": "U / ARMURE after paid service by a real discovered Marseille mechanic.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/10_native_technician_world.png",
+      "sha256": "baefcf8d66c6b159c7b9356d66f7653031e02565d0866aecc0e353cb769ede42",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual geographically streamed mechanic at a source-measured safe fictional relay.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "native/11_collection_after_continue.png",
+      "sha256": "d3f5efa7578af49eed7b604c80b35c7e9d13a045e833587c4d8a068c693a84c1",
+      "width": 1440,
+      "height": 900,
+      "label": "Native Continue retains one-time collection and remaining skill duration.",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze."
+    },
+    {
+      "path": "architecture/01_real_site_context.png",
+      "sha256": "3c840d59e7b0751a17291d45b61c9d0bf5fe06f3cec53821db08111bfec50c2f",
+      "width": 1440,
+      "height": 900,
+      "label": "Real site geometry; names are context, procedural facades remain inventions.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "architecture/02_real_site_context.png",
+      "sha256": "7d8f6dc9c46eadfb1ee137006dcf3e213ee8c493ebfdac91f3fad6c572d39c15",
+      "width": 1440,
+      "height": 900,
+      "label": "Real site geometry; names are context, procedural facades remain inventions.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "architecture/03_curved_source_interior.png",
+      "sha256": "50bbe29a6163de2539a96722dbca20558d0e51d8feb69c5d35faab7a8f5496c5",
+      "width": 1440,
+      "height": 900,
+      "label": "Real curved source footprint; invented arrangement, assisted E-key entrance.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "architecture/04a_enclosed_room_doorway.png",
+      "sha256": "7f4467f37d91b1f88624518ce8f72c1b7a2ba33b5e3b3ef6b1cea3b67737a29f",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual invented room doorway after collision-controlled crossing, looking back into the source-footprint common space.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "architecture/04_enclosed_room_furniture.png",
+      "sha256": "f709678f06d1cd1720873a6259c7a43548ac2c337b61dcdeee4febf6e12e04f6",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual clear doorway/landing camera towards multiple invented furnishings when visible; no scene or image modification.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "architecture/05_adjacent_floor.png",
+      "sha256": "44b17819375ac49191609428b3fa148bc84820da2dda9adb6a1a98f27333b5d7",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual adjacent floor loaded by the visible landing controls.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "architecture/06_continue_same_floor.png",
+      "sha256": "be07af41d7779e91ac2af5e30761ef27de442bf1b75ec8267e9edc870c327e54",
+      "width": 1440,
+      "height": 900,
+      "label": "Same fresh-context native storage and a real document reload; no save injection.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "architecture/07_return_real_street.png",
+      "sha256": "c41dc8d06872e35ecec857062e2c838a2fdb60503b204e43690c156dba71cc13",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual geographic return after native Continue and floor controls.",
+      "method": "Actual WebGL render after declared diagnostic placement/freeze."
+    },
+    {
+      "path": "bestiary/01_real_regional_actor.png",
+      "sha256": "0a4a56b408b74a54dc0e34d5e6c31221c9cc2d9fea5e1ebab22b42087d88a151",
+      "width": 1440,
+      "height": 900,
+      "label": "Actual source-world Rat-câble on its existing territorial encounter; diagnostic camera and simulation freeze.",
+      "method": "Unmodified native production canvas and HUD after declared measured camera/freeze."
+    }
+  ],
+  "sourceIndices": {
+    "index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927"
+  },
+  "targetedEvidenceExcludedFromAssertionSum": {
+    "facades": {
+      "countedInAssertionSum": false,
+      "reason": "Facade 89+19 suites already occur in UNITS.json; coverage populations are not assertions.",
+      "comparison": {
+        "population": 191,
+        "baseline48418ccEntrances": 188,
+        "baselineCac50f3Entrances": 0,
+        "currentUsableEntrances": 191,
+        "currentRenderedDoors": 191,
+        "currentWindows": 187,
+        "currentSpanFailures": 0,
+        "recoveredApproaches": 72,
+        "recoveredApproachesRendered": 72,
+        "sourceGeometryUnchanged": true,
+        "allPaginationConsistent": true,
+        "largestPagedOpenings": 12624,
+        "remainingWindowOmissions": [
+          {
+            "sourceId": "batiment.9695780",
+            "reason": "technical-typology-without-window-register",
+            "typology": "technical-tower"
+          },
+          {
+            "sourceId": "batiment.9695781",
+            "reason": "technical-typology-without-window-register",
+            "typology": "technical-tower"
+          },
+          {
+            "sourceId": "batiment.9695783",
+            "reason": "technical-typology-without-window-register",
+            "typology": "technical-tower"
+          },
+          {
+            "sourceId": "batiment.8923767",
+            "reason": "candidate-clearance-height-or-door-overlap",
+            "typology": "stacked"
+          }
+        ]
+      }
+    },
+    "world": {
+      "countedInAssertionSum": false,
+      "reason": "These 129 checks already occur in the unit campaign; expected failed replays are clearly baseline only.",
+      "checks": 129,
+      "baselineCommit": "48418ccbe7238df6d57d300a237d9d1a01386014",
+      "limits": [
+        "Placement fixtures are synthetic and do not certify a surveyed actor location or native city playthrough.",
+        "Already active actors are intentionally not moved or respawned by a terrain update; revalidation applies at the next spawn.",
+        "Fictional site coordinates and original source geometries/indices/archives remain unchanged."
+      ]
+    }
+  },
+  "preflightSummary": "PREFLIGHT_SUMMARY.json",
+  "historicalDelivery": {
+    "path": "../architecture/ARCHITECTURE_INTEGRATION.json",
+    "reportedAssertions": 1492,
+    "countedInCurrentSum": false
+  },
+  "scope": "Separate production-unit, controlled legacy, byte-rebuild and assisted native evidence. Targeted facade/world checks already covered in units and baseline/preflight failures are excluded from the assertion sum.",
+  "limits": [
+    "Metric source footprints do not certify surveyed 1:1 facades/interiors or a complete game. Unrecorded architecture and regional game content are authored fiction.",
+    "Native pilots use declared placement, freeze, simulation steps and seeded payment materials; they are not human or citywide playthroughs.",
+    "Private ChatGPT conversations are not archived here; only allowlisted QA artifacts are copied.",
+    "Raw external network failures and exact cancelled local metadata probes remain visible in original final reports."
+  ]
+}

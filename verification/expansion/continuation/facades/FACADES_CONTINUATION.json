@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-25T07:17:32.139207+00:00",
+  "stage": "complete",
+  "scope": "Targeted pure model comparisons and isolated production facade tests. No browser, neighboring building collisions, terrain approach, public access or surveyed architectural detail is certified. Source data and authored openings remain distinguished.",
+  "modules": {
+    "currentFacade": "855db991e5053752a7d1a366cac3610f6ea7b304461e448d99e45362a49eb432",
+    "currentInterior": "1f5c099bc4082baa6c64660fe6aacb22a52b839b2cbdaf0ce29cb55a4fbc83bf"
+  },
+  "sourceIndices": {
+    "index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927"
+  },
+  "tests": {
+    "passed": 108,
+    "failed": 0,
+    "suites": [
+      {
+        "name": "facades_model.cjs",
+        "passed": 89,
+        "scriptSha256": "34182431b14c4c35de20cf8ca891f6c9ed203269ce8db2ca818e6f02c3da1215"
+      },
+      {
+        "name": "facades_coverage.cjs",
+        "passed": 19,
+        "scriptSha256": "5aac9048041938e2accd44fec01699c50af7773a63457410e0dce596937900cd"
+      }
+    ]
+  },
+  "targetedGeometryComparisonsNotCountedAsUnitAssertions": {
+    "population": 191,
+    "baseline48418ccEntrances": 188,
+    "baselineCac50f3Entrances": 0,
+    "currentUsableEntrances": 191,
+    "currentRenderedDoors": 191,
+    "currentWindows": 187,
+    "currentSpanFailures": 0,
+    "recoveredApproaches": 72,
+    "recoveredApproachesRendered": 72,
+    "sourceGeometryUnchanged": true,
+    "allPaginationConsistent": true,
+    "largestPagedOpenings": 12624,
+    "remainingWindowOmissions": [
+      {
+        "sourceId": "batiment.9695780",
+        "reason": "technical-typology-without-window-register",
+        "typology": "technical-tower"
+      },
+      {
+        "sourceId": "batiment.9695781",
+        "reason": "technical-typology-without-window-register",
+        "typology": "technical-tower"
+      },
+      {
+        "sourceId": "batiment.9695783",
+        "reason": "technical-typology-without-window-register",
+        "typology": "technical-tower"
+      },
+      {
+        "sourceId": "batiment.8923767",
+        "reason": "candidate-clearance-height-or-door-overlap",
+        "typology": "stacked"
+      }
+    ]
+  },
+  "threePreviouslyMissingCases": [
+    {
+      "sourceId": "batiment.10611104",
+      "cleabs": "BATIMENT0000000273378724",
+      "sourcePath": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "baseline": {
+        "style": "residential",
+        "levels": 4,
+        "entranceCandidates": 0,
+        "openings": 0,
+        "windows": 0
+      },
+      "current": {
+        "style": "residential",
+        "typology": "stacked",
+        "levels": 4,
+        "entranceCandidates": 1,
+        "usableEntranceCandidates": 1,
+        "openings": 12,
+        "windows": 11,
+        "curvedWindows": 11,
+        "curvedSurfaces": 1,
+        "renderedOpenings": 12,
+        "deferredOpenings": 0,
+        "renderedDoor": true,
+        "quads": 512,
+        "spanFailures": 0
+      },
+      "sourceUnchanged": true,
+      "candidateChecks": [
+        {
+          "usable": true,
+          "clearanceMeters": 0.9472804288505434,
+          "levels": 4,
+          "storeyHeightMeters": 2.9750000000000005,
+          "localEntry": [
+            0.6529892190119426,
+            -0.08295236339085932
+          ],
+          "door": {
+            "id": "BATIMENT0000000273378724:2a811ba1fe707475:entrance:curve:12dc883a664960cb:1",
+            "edgeIndex": 13,
+            "width": 1.15,
+            "height": 2.35,
+            "inside": [
+              -11958.791151834583,
+              15.2,
+              1560.01192148824
+            ],
+            "outside": [
+              -11956.697731484592,
+              15.2,
+              1559.8458153828844
+            ],
+            "center": [
+              -11957.84412834292,
+              15.2,
+              1559.9367782501029
+            ],
+            "surfaceId": "curve:12dc883a664960cb",
+            "span": {
+              "surfaceId": "curve:12dc883a664960cb",
+              "surfaceKind": "source-microjog-arclength",
+              "offsetMeters": 4.770586583705102,
+              "widthMeters": 1.15,
+              "firstSourceEdgeIndex": 9,
+              "lastSourceEdgeIndex": 19,
+              "segments": 11
+            },
+            "provenance": "invented"
+          }
+        }
+      ]
+    },
+    {
+      "sourceId": "batiment.10626012",
+      "cleabs": "BATIMENT0000000273397378",
+      "sourcePath": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "baseline": {
+        "style": "commercial",
+        "levels": 2,
+        "entranceCandidates": 0,
+        "openings": 0,
+        "windows": 0
+      },
+      "current": {
+        "style": "commercial",
+        "typology": "stacked",
+        "levels": 2,
+        "entranceCandidates": 1,
+        "usableEntranceCandidates": 1,
+        "openings": 6,
+        "windows": 5,
+        "curvedWindows": 5,
+        "curvedSurfaces": 1,
+        "renderedOpenings": 6,
+        "deferredOpenings": 0,
+        "renderedDoor": true,
+        "quads": 512,
+        "spanFailures": 0
+      },
+      "sourceUnchanged": true,
+      "candidateChecks": [
+        {
+          "usable": true,
+          "clearanceMeters": 0.9030983716565499,
+          "levels": 2,
+          "storeyHeightMeters": 2.6499999999999986,
+          "localEntry": [
+            0.506860565415991,
+            0.12614055296046445
+          ],
+          "door": {
+            "id": "BATIMENT0000000273397378:75d608753fcc95d9:entrance:curve:6f9d322c9c067bff:1",
+            "edgeIndex": 20,
+            "width": 1.15,
+            "height": 2.35,
+            "inside": [
+              -11512.587290324831,
+              83,
+              910.6710042012074
+            ],
+            "outside": [
+              -11510.501882475422,
+              83,
+              910.9181359507372
+            ],
+            "center": [
+              -11511.643891535812,
+              83,
+              910.7828018974233
+            ],
+            "surfaceId": "curve:6f9d322c9c067bff",
+            "span": {
+              "surfaceId": "curve:6f9d322c9c067bff",
+              "surfaceKind": "source-microjog-arclength",
+              "offsetMeters": 4.4355456517551,
+              "widthMeters": 1.15,
+              "firstSourceEdgeIndex": 15,
+              "lastSourceEdgeIndex": 25,
+              "segments": 11
+            },
+            "provenance": "invented"
+          }
+        }
+      ]
+    },
+    {
+      "sourceId": "batiment.9609229",
+      "cleabs": "BATIMENT0000000258345416",
+      "sourcePath": "data/map_pack/city/m13055-r05-c12-0-3cb638d53d1747cb.json",
+      "baseline": {
+        "style": "residential",
+        "levels": 2,
+        "entranceCandidates": 0,
+        "openings": 0,
+        "windows": 0
+      },
+      "current": {
+        "style": "residential",
+        "typology": "stacked",
+        "levels": 2,
+        "entranceCandidates": 4,
+        "usableEntranceCandidates": 4,
+        "openings": 12,
+        "windows": 11,
+        "curvedWindows": 0,
+        "curvedSurfaces": 0,
+        "renderedOpenings": 12,
+        "deferredOpenings": 0,
+        "renderedDoor": true,
+        "quads": 110,
+        "spanFailures": 0
+      },
+      "sourceUnchanged": true,
+      "candidateChecks": [
+        {
+          "usable": true,
+          "clearanceMeters": 0.9499999999999915,
+          "levels": 2,
+          "storeyHeightMeters": 3,
+          "localEntry": [
+            -0.028160261681932752,
+            0.021958090119369444
+          ],
+          "door": {
+            "id": "BATIMENT0000000258345416:a8e7b9117cc70fe5:entrance:0:5:5000",
+            "edgeIndex": 5,
+            "width": 0.78,
+            "height": 2.35,
+            "inside": [
+              395.07790854224686,
+              141.7,
+              -1635.9834582649764
+            ],
+            "outside": [
+              393.59227993338476,
+              141.7,
+              -1637.4676778028247
+            ],
+            "center": [
+              394.4058384572854,
+              141.7,
+              -1636.6548909130506
+            ],
+            "surfaceId": null,
+            "span": null,
+            "provenance": "invented"
+          }
+        },
+        {
+          "usable": true,
+          "clearanceMeters": 0.9499999999999399,
+          "levels": 2,
+          "storeyHeightMeters": 3,
+          "localEntry": [
+            0.0284577136515054,
+            -0.02213640182708332
+          ],
+          "door": {
+            "id": "BATIMENT0000000258345416:a8e7b9117cc70fe5:entrance:0:2:5000",
+            "edgeIndex": 2,
+            "width": 0.78,
+            "height": 2.35,
+            "inside": [
+              395.1345265175803,
+              141.7,
+              -1636.027552756923
+            ],
+            "outside": [
+              396.61856153251506,
+              141.7,
+              -1634.5417398230557
+            ],
+            "center": [
+              395.80587569100317,
+              141.7,
+              -1635.35539928684
+            ],
+            "surfaceId": null,
+            "span": null,
+            "provenance": "invented"
+          }
+        },
+        {
+          "usable": true,
+          "clearanceMeters": 0.94248419430284,
+          "levels": 2,
+          "storeyHeightMeters": 3,
+          "localEntry": [
+            0.05029874171623305,
+            -0.0333286980221601
+          ],
+          "door": {
+            "id": "BATIMENT0000000258345416:a8e7b9117cc70fe5:entrance:0:4:5000",
+            "edgeIndex": 4,
+            "width": 0.78,
+            "height": 2.35,
+            "inside": [
+              395.156367545645,
+              141.7,
+              -1636.038745053118
+            ],
+            "outside": [
+              395.70816848189173,
+              141.7,
+              -1638.0649522801207
+            ],
+            "center": [
+              395.405991778709,
+              141.7,
+              -1636.9553626081906
+            ],
+            "surfaceId": null,
+            "span": null,
+            "provenance": "invented"
+          }
+        },
+        {
+          "usable": true,
+          "clearanceMeters": 0.94222574886722,
+          "levels": 2,
+          "storeyHeightMeters": 3,
+          "localEntry": [
+            -0.05054849314575449,
+            0.03336790474168083
+          ],
+          "door": {
+            "id": "BATIMENT0000000258345416:a8e7b9117cc70fe5:entrance:0:1:5000",
+            "edgeIndex": 1,
+            "width": 0.78,
+            "height": 2.35,
+            "inside": [
+              395.05552031078304,
+              141.7,
+              -1635.9720484503541
+            ],
+            "outside": [
+              394.50329593031364,
+              141.7,
+              -1633.9459565882673
+            ],
+            "center": [
+              394.8057045196183,
+              141.7,
+              -1635.055483084172
+            ],
+            "surfaceId": null,
+            "span": null,
+            "provenance": "invented"
+          }
+        }
+      ]
+    }
+  ],
+  "artifacts": {
+    "recentComparison": "comparison-48418cc/CURVES_COMPARE.json",
+    "originalComparison": "comparison-cac50f3/CURVES_COMPARE.json",
+    "actualSourceCases": "ACTUAL_SOURCE_CASES.json",
+    "tests": "FACADES_TESTS.json",
+    "testRunner": "run_facades_tests.cjs",
+    "comparator": "curves_compare.cjs",
+    "projectedDoorAndActorMetrics": "RESIDUAL_ENTRANCE_METRICS.json",
+    "projectedMetricsScript": "residual_metrics.cjs"
+  }
+}

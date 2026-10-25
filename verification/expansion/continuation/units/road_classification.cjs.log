@@ -1,0 +1,15 @@
+✔ IGN Sentier and Escalier are narrow estimated paths with their source classification retained (2.301836ms)
+✔ IGN measured width and supplied lanes retain precedence over nature-derived estimates (0.450731ms)
+✔ The other observed IGN natures use explicit, conservative classes without changing known widths (0.625217ms)
+✔ Explicit existing classifications and non-IGN nature fields preserve their prior interpretation (0.288648ms)
+✔ A documented ferry itinerary creates no asphalt deck, while its source XYZ and attributes remain unchanged (1.285379ms)
+✔ The real Vieux-Port sentier no longer forms a phantom ceiling over the measured clear street camera (1.161568ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 37.292696
+

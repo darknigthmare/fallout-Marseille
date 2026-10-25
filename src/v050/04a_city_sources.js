@@ -150,7 +150,7 @@ v046StartLab=async function(){
 const v051CityLeaveLabBase=v047LeaveLab;
 v047LeaveLab=function(){const result=v051CityLeaveLabBase();if(!V046.lab&&V051_CITY.labBounds){V046_BOUNDS[V051_CITY_ID]=V051_CITY.labBounds;V051_CITY.labBounds=null;}return result;};
 function v051CityRefresh(){
- if(V046.busy||V047.pending)return false;V051_CITY.epoch++;V051_CITY.index=null;V051_CITY.indexPromise=null;V051_CITY.terrainIndex=null;V051_CITY.terrainPromise=null;V051_CITY.loads.clear();V051_CITY.cache.clear();V051_CITY.terrainCache.clear();V051_CITY.errors=[];V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();return true;
+ if(V046.busy||V047.pending)return false;V051_CITY.navigationSerial++;V051_CITY.epoch++;V051_CITY.index=null;V051_CITY.indexPromise=null;V051_CITY.terrainIndex=null;V051_CITY.terrainPromise=null;V051_CITY.loads.clear();V051_CITY.cache.clear();V051_CITY.terrainCache.clear();V051_CITY.errors=[];V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();return true;
 }
 function v051CityInfo(){
  const index=V051_CITY.index,tiles=index?.tiles||[],resident=[...V051_CITY.cache.values()];
@@ -158,5 +158,5 @@ function v051CityInfo(){
 }
 function v051CityAfterInit(){
  Object.assign(window.__MISTRAL_DEBUG,{v051CityInfo,v051CityRefresh,v051CityReady});
- if(typeof location==='undefined'||['http:','https:'].includes(location.protocol))v051CityReady().catch(v051CityError);
+ if(typeof location==='undefined'||['http:','https:'].includes(location.protocol)){const epoch=V051_CITY.epoch;v051CityReady().catch(error=>{if(epoch===V051_CITY.epoch)v051CityError(error);});}
 }

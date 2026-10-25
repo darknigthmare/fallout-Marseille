@@ -1,0 +1,17 @@
+OK Radial dead zone removes drift and diagonal magnitude is bounded
+OK Continuous dead-zone response and malformed axes
+OK Only connected standard mapping is selected; nonzero slot works
+OK Selected standard controller stays stable across list changes
+OK Replacing a controller in the same slot also latches held actions
+OK Connecting with a held button never immediately shoots or confirms
+OK One-shot action triggers only on a rising edge
+OK Mode changes latch held confirmation/trigger until release
+OK Disconnection clears controller state; reconnect has no phantom action
+OK Menus repeat at a bounded cadence without catch-up bursts
+OK Holding a stick while opening a menu needs neutral before navigation
+OK Delta follows elapsed seconds and clamps suspension
+OK Settings sanitize values and disabled input is neutral
+OK Null or primitive saved settings restore validated defaults
+OK Analog trigger hysteresis prevents repeated noise edges
+{"passed":15,"failed":0,"scope":"Pure standard-controller sampler; simulated inputs, no physical hardware claim"}
+

@@ -1,0 +1,12 @@
+{
+  "sourcePath": "verification/expansion/architecture/coverage-final/curves_compare.cjs",
+  "sourceSha256": "45974b3c33547963c9306f4bd299d24adfc9c9ab9e2430f50f578597a099004b",
+  "adapterChanges": [
+    "Portable root/output/baseline directory selectors",
+    "Explicit baseline commit and snapshot SHA validation",
+    "Exact current07/current08 freeze enforced",
+    "All three city source indices pinned before and after run",
+    "Executed comparator SHA recorded in each report"
+  ],
+  "geometryAndComparisonAlgorithmsChanged": false
+}

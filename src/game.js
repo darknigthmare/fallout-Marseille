@@ -8646,11 +8646,26 @@ function v046Nature(w,plan){w.staticDraws=w.staticDraws.filter(d=>!d.v046Nature)
  for(const d of tmp.staticDraws){d.pos[1]+=Math.max(0,h.height);d.v046Nature=key;d.v046GeometryId=key+':'+out.length;out.push(d);}ids.push(key);}
  w.staticDraws.push(...out);w.v046NatureIds=ids;
 }
-/* Site visibility does not depend on the macro label. Placements are resolved
-   against validated source geometry once, recorded, and reused on return. */
+/* A stored fictional site position does not certify the next source edition.
+   Retain safe XY on return, but use the current measured bank for altitude and
+   recheck source water/solids before admitting a newly loaded site. */
+function v046MeasuredPlacement(w,x,z){
+ if(!Number.isFinite(x)||!Number.isFinite(z)||!w.v046Records?.size)return null;
+ const h=typeof v047Height==='function'&&typeof v047Bank==='function'?v047Height(v047Bank(w),x,z):v046HeightAt(x,z);
+ if(!Number.isFinite(h?.height)||v046SurfaceAt([x,0,z],w.v046Records).water||v046Blocked(w,x,z))return null;
+ return[x,h.height,z];
+}
 const v046WorldPointOld=v042WorldPoint;
-v042WorldPoint=function(w,site){if(!w?.v046)return v046WorldPointOld(w,site);const old=state.v046.placements[site.id];if(old)return old.slice();const p=v015GeoProject(w.id,site.lat,site.lon);const candidates=[[0,0]];for(let r=14;r<=98;r+=14)for(let i=0;i<12;i++)candidates.push([Math.cos(i/12*TAU)*r,Math.sin(i/12*TAU)*r]);for(const[dx,dz]of candidates){const x=p[0]+dx,z=p[2]+dz,h=v046HeightAt(x,z);if(h.height===null||v046SurfaceAt([x,0,z],w.v046Records).water||v046Blocked(w,x,z))continue;const pos=[x,Math.max(0,h.height),z];state.v046.placements[site.id]=pos;return pos.slice();}return null;};
-const v046SpawnOld=v042SpawnSite;v042SpawnSite=function(w,site){if(!w?.v046)return v046SpawnOld(w,site);if(!v042WorldPoint(w,site))return null;return v046SpawnOld(w,site);};
+v042WorldPoint=function(w,site){
+ if(!w?.v046)return v046WorldPointOld(w,site);
+ const old=state.v046.placements[site.id],persist=typeof world==='undefined'||w===world,remember=pos=>{if(persist)state.v046.placements[site.id]=pos;return pos.slice();};
+ if(Array.isArray(old)&&old.length===3&&old.every(Number.isFinite)){const pos=v046MeasuredPlacement(w,old[0],old[2]);if(pos)return remember(pos);}
+ const p=v015GeoProject(w.id,site.lat,site.lon),candidates=[[0,0]];for(let r=14;r<=98;r+=14)for(let i=0;i<12;i++)candidates.push([Math.cos(i/12*TAU)*r,Math.sin(i/12*TAU)*r]);
+ for(const[dx,dz]of candidates){const pos=v046MeasuredPlacement(w,p[0]+dx,p[2]+dz);if(pos)return remember(pos);}return null;
+};
+/* Active actors keep their existing owner, health and loot. Revalidation is
+   for a new spawn after unload, never a per-frame relocation or respawn. */
+const v046SpawnOld=v042SpawnSite;v042SpawnSite=function(w,site){if(!w?.v046||V042_RUNTIME.active.has(site.id))return v046SpawnOld(w,site);if(!v042WorldPoint(w,site))return null;return v046SpawnOld(w,site);};
 const v046LayerOld=v042UpdateLayer;v042UpdateLayer=function(dt){if(!world?.v046)return v046LayerOld(dt);if(V046.busy||!settings.geoFalloutLayer)return;V042_RUNTIME.clock+=dt;if(V042_RUNTIME.clock<.7)return;V042_RUNTIME.clock=0;V042_RUNTIME.worldId=world.id;
  const rows=V042_CATALOG.map(site=>{const p=v015GeoProject(world.id,site.lat,site.lon);return{site,p,d:Math.hypot(p[0]-state.player.pos[0],p[2]-state.player.pos[2])};}).sort((a,b)=>a.d-b.d||a.site.id.localeCompare(b.site.id));V042_RUNTIME.nearest=rows[0];const allowed=rows.filter(r=>r.d<Math.min(480,r.site.activationRadius));const keep=new Set(allowed.slice(0,settings.geoContentBudget).map(r=>r.site.id));for(const[id,rec]of V042_RUNTIME.active){if(rec.enemies.some(e=>e.alive&&e.alerted))keep.add(id);}
  for(const id of[...V042_RUNTIME.active.keys()])if(!keep.has(id))v042UnloadSite(id);for(const r of allowed){if(r.d<r.site.discoverRadius&&!V046.lab)v042Discover(r.site);if(keep.has(r.site.id)&&!V042_RUNTIME.active.has(r.site.id))v042SpawnSite(world,r.site);}for(const rec of V042_RUNTIME.active.values())v042CheckSite(rec);
@@ -10514,7 +10529,7 @@ v046StartLab=async function(){
 const v051CityLeaveLabBase=v047LeaveLab;
 v047LeaveLab=function(){const result=v051CityLeaveLabBase();if(!V046.lab&&V051_CITY.labBounds){V046_BOUNDS[V051_CITY_ID]=V051_CITY.labBounds;V051_CITY.labBounds=null;}return result;};
 function v051CityRefresh(){
- if(V046.busy||V047.pending)return false;V051_CITY.epoch++;V051_CITY.index=null;V051_CITY.indexPromise=null;V051_CITY.terrainIndex=null;V051_CITY.terrainPromise=null;V051_CITY.loads.clear();V051_CITY.cache.clear();V051_CITY.terrainCache.clear();V051_CITY.errors=[];V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();return true;
+ if(V046.busy||V047.pending)return false;V051_CITY.navigationSerial++;V051_CITY.epoch++;V051_CITY.index=null;V051_CITY.indexPromise=null;V051_CITY.terrainIndex=null;V051_CITY.terrainPromise=null;V051_CITY.loads.clear();V051_CITY.cache.clear();V051_CITY.terrainCache.clear();V051_CITY.errors=[];V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();return true;
 }
 function v051CityInfo(){
  const index=V051_CITY.index,tiles=index?.tiles||[],resident=[...V051_CITY.cache.values()];
@@ -10522,7 +10537,7 @@ function v051CityInfo(){
 }
 function v051CityAfterInit(){
  Object.assign(window.__MISTRAL_DEBUG,{v051CityInfo,v051CityRefresh,v051CityReady});
- if(typeof location==='undefined'||['http:','https:'].includes(location.protocol))v051CityReady().catch(v051CityError);
+ if(typeof location==='undefined'||['http:','https:'].includes(location.protocol)){const epoch=V051_CITY.epoch;v051CityReady().catch(error=>{if(epoch===V051_CITY.epoch)v051CityError(error);});}
 }
 
 /* The sea is classified from official polygons and high-water shoreline, never
@@ -10562,7 +10577,7 @@ if(typeof window!=='undefined'&&typeof v046Resource==='function'){
  const maritime={index:null,promise:null,epoch:0,loads:new Map(),cache:new MistralStream.BudgetCache(8*1024*1024,16),errors:[],requests:0};
  async function ready(){
   if(V046.lab||typeof location!=='undefined'&&!['http:','https:'].includes(location.protocol))return null;
-  if(!maritime.promise){const epoch=maritime.epoch;maritime.promise=(async()=>{const raw=await v050LocalSourceJSON('data/map_pack/city/water-index.json',null,true);if(!raw)return null;const value=MistralCityWater.index(raw);if(epoch!==maritime.epoch)throw Error('Atlas maritime périmé');maritime.index=value;return value;})().catch(e=>{maritime.promise=null;throw e;});}
+  if(!maritime.promise){const epoch=maritime.epoch;maritime.promise=(async()=>{const raw=await v050LocalSourceJSON('data/map_pack/city/water-index.json',null,true);if(epoch!==maritime.epoch)throw Error('Atlas maritime périmé');if(!raw)return null;const value=MistralCityWater.index(raw);maritime.index=value;return value;})().catch(e=>{if(epoch===maritime.epoch){maritime.promise=null;maritime.errors.push(String(e?.message||e));maritime.errors=maritime.errors.slice(-10);}throw e;});}
   return maritime.promise;
  }
  async function chunk(descriptor,signal){
@@ -11358,6 +11373,7 @@ function v050ControllerAfterInit(){
 const MistralFacades=(()=>{
  const EPS=1e-7,limit=(v,a,b)=>Math.max(a,Math.min(b,v));
  const finite=v=>typeof v==='number'&&Number.isFinite(v);
+ function budget(value,fallback,min,max){const n=value??fallback;if(!finite(n))throw new RangeError('Facade budgets require finite numeric values');return limit(Math.floor(n),min,max);}
  function hash(value){let h=2166136261;for(const c of String(value))h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;}
  function text(v){return typeof v==='string'?v.trim():'';}
  function inside(rings,x,z){let hit=false;for(const ring of rings){let part=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>z)!==(b[1]>z)&&x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])part=!part;}if(part)hit=!hit;}return hit;}
@@ -11448,26 +11464,40 @@ const MistralFacades=(()=>{
  function surfaceDistance(e,p){
   let best={distance:Infinity,offset:0};for(const part of e.pieces||[{source:e,a:e.a,b:e.b,tangent:e.tangent,start:0,end:e.length}]){const local=limit((p[0]-part.a[0])*part.tangent[0]+(p[1]-part.a[1])*part.tangent[1],0,part.source.length),distance=Math.hypot(p[0]-part.a[0]-part.tangent[0]*local,p[1]-part.a[1]-part.tangent[1]*local);if(distance<best.distance)best={distance,offset:part.start+local};}return best;
  }
+ function edgeClearance(all,p){let distance=Infinity;for(const e of all){const t=limit((p[0]-e.a[0])*e.tangent[0]+(p[1]-e.a[1])*e.tangent[1],0,e.length);distance=Math.min(distance,Math.hypot(p[0]-e.a[0]-e.tangent[0]*t,p[1]-e.a[1]-e.tangent[1]*t));}return distance;}
+ function surfaceChains(ring,join){
+  let cut=ring.findIndex((e,i)=>!join(ring[(i+ring.length-1)%ring.length],e));if(cut<0)cut=0;
+  const ordered=ring.slice(cut).concat(ring.slice(0,cut)),chains=[];let chain=[];
+  for(const e of ordered){if(chain.length&&!join(chain.at(-1),e)){chains.push(chain);chain=[];}chain.push(e);}if(chain.length)chains.push(chain);return chains;
+ }
+ function microjogJoin(ring){
+  // Some cadastral round contours are quantised into 10cm stair steps. Read
+  // their support direction over 50cm of source arclength, without replacing
+  // any vertex or segment. A sustained right angle still splits the chart.
+  if(ring.length<8||ring.some(e=>e.length>.3+EPS))return null;
+  const offsets=[0],positions=new Map();for(let i=0;i<ring.length;i++){positions.set(ring[i],i);offsets.push(offsets.at(-1)+ring[i].length);}const perimeter=offsets.at(-1);if(perimeter<1.45)return null;
+  const span=Math.min(.5,perimeter/4),point=raw=>{const at=(raw%perimeter+perimeter)%perimeter;let lo=0,hi=ring.length-1;while(lo<hi){const mid=(lo+hi)>>1;if(offsets[mid+1]<=at)lo=mid+1;else hi=mid;}const e=ring[lo],t=at-offsets[lo];return[e.a[0]+e.tangent[0]*t,e.a[1]+e.tangent[1]*t];};
+  return(a,b)=>{if(Math.hypot(a.b[0]-b.a[0],a.b[1]-b.a[1])>EPS)return false;const at=offsets[positions.get(b)],before=point(at-span),after=point(at+span),u=[b.a[0]-before[0],b.a[1]-before[1]],v=[after[0]-b.a[0],after[1]-b.a[1]],ul=Math.hypot(...u),vl=Math.hypot(...v);return ul>=span*.7&&vl>=span*.7&&(u[0]*v[0]+u[1]*v[1])/(ul*vl)>=Math.cos(Math.PI/4);};
+ }
  function curveSurfaces(d,all=edges(d)){
   const result=[];
   for(let ringIndex=0;ringIndex<d.rings.length;ringIndex++){
    const ring=all.filter(e=>e.ringIndex===ringIndex);if(ring.length<3)continue;
    const join=(a,b)=>a.length<2.8&&b.length<2.8&&Math.hypot(a.b[0]-b.a[0],a.b[1]-b.a[1])<EPS&&a.tangent[0]*b.tangent[0]+a.tangent[1]*b.tangent[1]>=Math.cos(Math.PI/4);
-   let cut=ring.findIndex((e,i)=>!join(ring[(i+ring.length-1)%ring.length],e));if(cut<0)cut=0;
-   const ordered=ring.slice(cut).concat(ring.slice(0,cut)),chains=[];let chain=[];
-   for(const e of ordered){if(chain.length&&!join(chain.at(-1),e)){chains.push(chain);chain=[];}chain.push(e);}if(chain.length)chains.push(chain);
+   let chains=surfaceChains(ring,join),surfaceKind='source-segment-arclength';
+   if(!chains.some(chain=>chain.length>=3&&chain.reduce((n,e)=>n+e.length,0)>=1.45)){const micro=microjogJoin(ring);if(micro){chains=surfaceChains(ring,(a,b)=>join(a,b)||micro(a,b));surfaceKind='source-microjog-arclength';}}
    for(const source of chains){if(source.length<3||source.reduce((n,e)=>n+e.length,0)<1.45)continue;let oriented=source.map(e=>({source:e,a:e.a,b:e.b,tangent:e.tangent,forward:true}));const closed=Math.hypot(source[0].a[0]-source.at(-1).b[0],source[0].a[1]-source.at(-1).b[1])<EPS,less=(a,b)=>a[0]<b[0]||a[0]===b[0]&&a[1]<b[1];
     const reverse=parts=>parts.slice().reverse().map(part=>({...part,a:part.b,b:part.a,tangent:part.tangent.map(v=>-v),forward:!part.forward}));
     if(closed){let start=0;for(let i=1;i<oriented.length;i++)if(less(oriented[i].a,oriented[start].a))start=i;oriented=oriented.slice(start).concat(oriented.slice(0,start));if(less(oriented.at(-1).a,oriented[0].b)){oriented=reverse(oriented);}}
     else if(less(oriented.at(-1).b,oriented[0].a))oriented=reverse(oriented);
     let length=0;for(const part of oriented){part.start=length;length+=part.source.length;part.end=length;}
     const signature=JSON.stringify([ringIndex===0?'outer':'courtyard',...oriented.map(part=>part.a),oriented.at(-1).b]),surfaceId='curve:'+hash(signature).toString(16).padStart(8,'0')+hash('surface:'+signature).toString(16).padStart(8,'0');
-    result.push({ringIndex,edgeIndex:oriented[0].source.edgeIndex,surfaceId,a:oriented[0].a,b:oriented.at(-1).b,tangent:oriented[0].tangent,normal:oriented[0].source.normal,length,pieces:oriented,closed});
+    result.push({ringIndex,edgeIndex:oriented[0].source.edgeIndex,surfaceId,surfaceKind,a:oriented[0].a,b:oriented.at(-1).b,tangent:oriented[0].tangent,normal:oriented[0].source.normal,length,pieces:oriented,closed});
    }
   }return result;
  }
  function spanSummary(e,offset,width){
-  if(!e.surfaceId)return null;const[a,b]=surfaceBounds(e,offset,offset+width);return{surfaceId:e.surfaceId,offsetMeters:offset,widthMeters:width,firstSourceEdgeIndex:e.pieces[a]?.source.edgeIndex??null,lastSourceEdgeIndex:e.pieces[b]?.source.edgeIndex??null,segments:Math.max(0,b-a+1)};
+  if(!e.surfaceId)return null;const[a,b]=surfaceBounds(e,offset,offset+width);return{surfaceId:e.surfaceId,surfaceKind:e.surfaceKind,offsetMeters:offset,widthMeters:width,firstSourceEdgeIndex:e.pieces[a]?.source.edgeIndex??null,lastSourceEdgeIndex:e.pieces[b]?.source.edgeIndex??null,segments:Math.max(0,b-a+1)};
  }
  function sourceSpans(e,offset,width){
   if(!e.pieces)return[{ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,width}];const[first,last]=surfaceBounds(e,offset,offset+width),spans=[];
@@ -11491,20 +11521,22 @@ const MistralFacades=(()=>{
   const documentedId=item=>item.o?d.id+':entrance:'+item.e.ringIndex+':'+item.e.edgeIndex+':'+Math.round((item.o.offset+item.o.width/2)/item.e.length*10000):null;
   const approach=item=>item.o?Math.hypot(...surfacePoint(item.e,item.o.offset+item.o.width/2).point.map((v,i)=>v-near[i])):surfaceDistance(item.e,near).distance;
   const compare=(a,b)=>{const exact=Number(documentedId(b)===preferredId)-Number(documentedId(a)===preferredId);if(exact)return exact;const preferredOrder=Number(!!preferredSurface(b.e))-Number(!!preferredSurface(a.e));if(preferredOrder)return preferredOrder;if(near){const distance=approach(a)-approach(b);if(Math.abs(distance)>EPS)return distance;}return b.e.length-a.e.length||Math.min(a.e.a[0],a.e.b[0])-Math.min(b.e.a[0],b.e.b[0])||Math.min(a.e.a[1],a.e.b[1])-Math.min(b.e.a[1],b.e.b[1])||Math.max(a.e.a[0],a.e.b[0])-Math.max(b.e.a[0],b.e.b[0])||Math.max(a.e.a[1],a.e.b[1])-Math.max(b.e.a[1],b.e.b[1]);};
-  // Width is limited to 60% of its supporting facade: 1.30m is the
-  // geometric minimum for a .78m door. Clearance checks still decide access.
-  const candidates=(documented.length?documented:all.concat(curves).filter(e=>e.ringIndex===0&&e.length>=1.3-EPS&&(!complete.has(edgeKey(e))||e.surfaceId)).map(e=>({e,o:null}))).sort(compare),known=new Map();
+  // Retain the ordinary width programme. A short source pan can still hold
+  // a .78m door with two .15m jambs; an arbitrary 60% rule must not erase it.
+  const candidates=(documented.length?documented:all.concat(curves).filter(e=>e.ringIndex===0&&e.length>=1.08-EPS&&(!complete.has(edgeKey(e))||e.surfaceId)).map(e=>({e,o:null}))).sort(compare),known=new Map();
   for(const o of d.facadeDocument?.openings||[]){const key=o.ringIndex+':'+o.edgeIndex;if(!known.has(key))known.set(key,[]);known.get(key).push(o);}
   const result=[];
   for(const {e,o}of candidates.slice(0,64)){
-   const width=o?.width??Math.min(d.style==='industrial'?2.4:1.15,e.length*.6),height=o?.height??Math.min(2.35,d.levelHeight-.08,d.height-.08);if(height<1.85||width<.78-EPS)continue;
+   const width=o?.width??Math.min(d.style==='industrial'?2.4:1.15,Math.max(.78,e.length*.6)),height=o?.height??Math.min(2.35,d.levelHeight-.08,d.height-.08);if(height<1.85||width<.78-EPS)continue;
    const idAt=t=>d.id+':entrance:'+(e.surfaceId?e.surfaceId+':'+Math.floor(t*Math.max(1,Math.floor(e.length/3.2))):e.ringIndex+':'+e.edgeIndex+':'+Math.round(t*10000));
    let fractions=o?[(o.offset+o.width/2)/e.length]:[.5,.34,.66];
    if(e.surfaceId&&!o){const count=Math.max(1,Math.floor(e.length/3.2)),at=near?Math.floor(surfaceDistance(e,near).offset/e.length*count):Math.floor(count/2),prefix=d.id+':entrance:'+e.surfaceId+':',preferredSlot=preferredId.startsWith(prefix)?Number(preferredId.slice(prefix.length)):null,slots=[...(Number.isInteger(preferredSlot)&&preferredSlot>=0&&preferredSlot<count?[preferredSlot]:[]),at,at-1,at+1,Math.floor(count/2),0,count-1];fractions=[...new Set(slots.filter(n=>n>=0&&n<count))].slice(0,7).map(n=>(n+.5)/count);}
    else if(!o)fractions.sort((a,b)=>Number(idAt(b)===preferredId)-Number(idAt(a)===preferredId)||(near?Math.hypot(...surfacePoint(e,a*e.length).point.map((v,i)=>v-near[i]))-Math.hypot(...surfacePoint(e,b*e.length).point.map((v,i)=>v-near[i])):0));
-   for(const t of fractions){const offset=t*e.length-width/2;if(offset<0||offset+width>e.length+EPS)continue;const opening={ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,bottom:0,width,height};if(!o&&openingConflict(opening,e,known,complete))continue;const at=surfacePoint(e,t*e.length),p=at.point;let candidate=null;
-    for(const inset of[.95,.7,.5]){const ip=[p[0]-at.normal[0]*inset,p[1]-at.normal[1]*inset],op=[p[0]+at.normal[0]*1.15,p[1]+at.normal[1]*1.15];if(!inside(d.rings,...ip)||inside(d.rings,...op))continue;if([-1,1].some(s=>!inside(d.rings,ip[0]+at.tangent[0]*.4*s,ip[1]+at.tangent[1]*.4*s)))continue;
-     candidate={id:idAt(t),buildingId:d.id,center:[p[0],d.baseY+(o?.bottom||0),p[1]],outside:[op[0],d.baseY+(o?.bottom||0),op[1]],inside:[ip[0],d.baseY+(o?.bottom||0),ip[1]],tangent:at.tangent.slice(),normal:at.normal.slice(),ringIndex:0,edgeIndex:at.edgeIndex,width,height,offset,provenance:o?'documented':'invented',source:o?d.facadeDocument.source:null,...(e.surfaceId?{surfaceId:e.surfaceId,arclength:t*e.length,span:spanSummary(e,offset,width)}:{})};break;
+   for(const t of fractions){const offset=t*e.length-width/2;if(offset<0||offset+width>e.length+EPS||!o&&(offset<.15-EPS||offset+width>e.length-.15+EPS))continue;const opening={ringIndex:e.ringIndex,edgeIndex:e.edgeIndex,offset,bottom:0,width,height};if(!o&&openingConflict(opening,e,known,complete))continue;const at=surfacePoint(e,t*e.length),p=at.point,start=surfacePoint(e,offset).point,end=surfacePoint(e,offset+width).point,section=[end[0]-start[0],end[1]-start[1]],sectionLength=Math.hypot(...section);let tangent=at.tangent,normal=at.normal,candidate=null;
+    if(e.surfaceKind==='source-microjog-arclength'){if(sectionLength<EPS)continue;tangent=section.map(n=>n/sectionLength);normal=[tangent[1],-tangent[0]];if(normal[0]*at.normal[0]+normal[1]*at.normal[1]<0)normal=normal.map(n=>-n);}
+    const clearWidthMeters=Math.abs(section[0]*tangent[0]+section[1]*tangent[1]);if(!o&&clearWidthMeters<.78-EPS)continue;
+    for(const inset of[.95,.7,.5]){const ip=[p[0]-normal[0]*inset,p[1]-normal[1]*inset],op=[p[0]+normal[0]*1.15,p[1]+normal[1]*1.15];if(!inside(d.rings,...ip)||inside(d.rings,...op)||edgeClearance(all,ip)<.43-EPS||edgeClearance(all,op)<.38-EPS)continue;if([-1,1].some(s=>!inside(d.rings,ip[0]+tangent[0]*.4*s,ip[1]+tangent[1]*.4*s)))continue;
+     candidate={id:idAt(t),buildingId:d.id,center:[p[0],d.baseY+(o?.bottom||0),p[1]],outside:[op[0],d.baseY+(o?.bottom||0),op[1]],inside:[ip[0],d.baseY+(o?.bottom||0),ip[1]],tangent:tangent.slice(),normal:normal.slice(),ringIndex:0,edgeIndex:at.edgeIndex,width,height,offset,provenance:o?'documented':'invented',source:o?d.facadeDocument.source:null,...(!o?{clearWidthMeters,accessRadiusMeters:.38}:{}),...(e.surfaceId?{surfaceId:e.surfaceId,arclength:t*e.length,span:spanSummary(e,offset,width)}:{})};break;
     }if(candidate){result.push(candidate);break;}
    }
   }return result;
@@ -11538,7 +11570,7 @@ const MistralFacades=(()=>{
   // candidates. Recover that same physical candidate instead of losing its door.
   const candidates=entrances(d,{near:selection?.center?[selection.center[0],selection.center[2]]:null,preferredEdge:selection,preferredId:selection?.id}),levelElevations=floorSchedule(d,selection),doors=(selection===null?[]:selection?candidates.filter(door=>door.id===selection.id).slice(0,1):candidates.slice(0,1)).map(door=>selectedEntrance(door,selection,d,levelElevations)).filter(Boolean),fixed=[],occupied=new Map();
   const occupy=o=>{const e=openingSurface(o,byEdge,bySurface);if(!e)return;for(const span of sourceSpans(e,o.offset,o.width)){const key=edgeKey(span);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({...o,...span});}};
-  for(const door of doors)if(door.provenance==='invented'){const o={type:'door',ringIndex:0,edgeIndex:door.edgeIndex,offset:door.offset,bottom:door.elevationOffset,width:door.width,height:door.height,provenance:'invented',source:null,...(door.surfaceId?{surfaceId:door.surfaceId,arclength:door.arclength,span:{...door.span}}:{})};fixed.push(o);occupy(o);}
+  for(const door of doors)if(door.provenance==='invented'){const o={type:'door',ringIndex:0,edgeIndex:door.edgeIndex,offset:door.offset,bottom:door.elevationOffset,width:door.width,height:door.height,clearWidthMeters:door.clearWidthMeters,accessRadiusMeters:door.accessRadiusMeters,provenance:'invented',source:null,...(door.surfaceId?{surfaceId:door.surfaceId,arclength:door.arclength,span:{...door.span}}:{})};fixed.push(o);occupy(o);}
   const documented=(d.facadeDocument?.openings||[]).slice().sort((a,b)=>(a.type==='door'?-1:0)-(b.type==='door'?-1:0));let rejectedDocumented=0;
   for(const o of documented){const e=byEdge.get(edgeKey(o));if(!supportedOpening(o,e,d)){rejectedDocumented++;continue;}const item={...o,provenance:'documented',source:d.facadeDocument.source};fixed.push(item);occupy(item);}
   const seed=hash(d.id),bay=d.style==='industrial'?4.8:d.style==='religious'?4.2:2.8+(seed%50)/100,registers=windowRegisters(d,levelElevations),rows=[],complete=new Set((d.facadeDocument?.completeEdges||[]).map(edgeKey)),curvedEdges=new Set(curves.flatMap(e=>e.pieces.map(part=>edgeKey(part.source))));let potentialOpenings=0;
@@ -11547,18 +11579,21 @@ const MistralFacades=(()=>{
   // The grid has no arbitrary column cap; bounded pages materialise its slots.
   const canonical=e=>{const forward=!!e.surfaceId||e.a[0]<e.b[0]||e.a[0]===e.b[0]&&e.a[1]<e.b[1],a=forward?e.a:e.b,b=forward?e.b:e.a;return{edge:e,reverse:!forward,key:[e.ringIndex===0?0:1,...a,...b,e.surfaceId||'']};};
   const ordered=all.filter(e=>!curvedEdges.has(edgeKey(e))).concat(curves).map(canonical).sort((a,b)=>{for(let i=0;i<a.key.length;i++)if(a.key[i]!==b.key[i])return typeof a.key[i]==='string'?a.key[i].localeCompare(b.key[i]):a.key[i]-b.key[i];return 0;});
-  for(const item of ordered){const e=item.edge;if(e.length<1.45||!e.surfaceId&&complete.has(edgeKey(e)))continue;const count=Math.max(1,Math.floor(e.length/bay));const slots=count*registers.length;if(!Number.isSafeInteger(slots)||!Number.isSafeInteger(potentialOpenings+slots))return null;rows.push({edge:e,count,reverse:item.reverse,start:potentialOpenings,end:potentialOpenings+slots});potentialOpenings+=slots;}
-  return{...d,edges:all,curves,doors,levelElevations,seed,bay,registers,rows,fixed,occupied,complete,potentialOpenings,totalSlots:fixed.length+potentialOpenings,documentedCoverage:{declared:documented.length,accepted:documented.length-rejectedDocumented,rejected:rejectedDocumented}};
+  // A one-metre straight pan can support a .53m invented window and its
+  // jambs even when it cannot hold a pedestrian doorway.
+  for(const item of ordered){const e=item.edge;if(e.length<1-EPS||!e.surfaceId&&complete.has(edgeKey(e)))continue;const count=Math.max(1,Math.floor(e.length/bay));const slots=count*registers.length;if(!Number.isSafeInteger(slots)||!Number.isSafeInteger(potentialOpenings+slots))return null;rows.push({edge:e,count,reverse:item.reverse,start:potentialOpenings,end:potentialOpenings+slots});potentialOpenings+=slots;}
+  const entranceCoverage={candidateCount:candidates.length,selectedCount:doors.length,reason:doors.length?null:selection===null?'runtime-access-unavailable':d.height<1.95?'insufficient-envelope-headroom':'no-source-boundary-opening-meets-clearance'};
+  return{...d,edges:all,curves,doors,entranceCoverage,levelElevations,seed,bay,registers,rows,fixed,occupied,complete,potentialOpenings,totalSlots:fixed.length+potentialOpenings,documentedCoverage:{declared:documented.length,accepted:documented.length-rejectedDocumented,rejected:rejectedDocumented}};
  }
  function candidateAt(p,index){
   if(!Number.isSafeInteger(index)||index<0||index>=p.potentialOpenings)return null;
   let lo=0,hi=p.rows.length-1,row=null;while(lo<=hi){const mid=(lo+hi)>>1,r=p.rows[mid];if(index<r.start)hi=mid-1;else if(index>=r.end)lo=mid+1;else{row=r;break;}}
   if(!row)return null;const e=row.edge,local=index-row.start,register=p.registers[Math.floor(local/row.count)],canonicalColumn=local%row.count,column=row.reverse?row.count-1-canonicalColumn:canonicalColumn,step=e.length/row.count,shop=register.kind==='shopfront',greenhouse=register.kind==='greenhouse',bottom=register.bottom,height=register.height,width=Math.min(greenhouse?3.8:shop?2.6:p.style==='industrial'?2.2:1.12,step*(greenhouse?.86:shop?.74:.53)),offset=step*(column+.5)-width/2;
-  if(height<.5||bottom+height>p.height-.15||offset<.12||offset+width>e.length-.12)return null;
+  if(height<.5||width<.5||bottom+height>p.height-.15||offset<.12||offset+width>e.length-.12)return null;
   const at=e.surfaceId?surfacePoint(e,offset+width/2):null,o={type:shop?'shopfront':'window',ringIndex:e.ringIndex,edgeIndex:at?.edgeIndex??e.edgeIndex,offset,bottom,width,height,provenance:'invented',source:null,...(e.surfaceId?{surfaceId:e.surfaceId,arclength:offset+width/2,span:spanSummary(e,offset,width)}:{})};
   return openingConflict(o,e,p.occupied,p.complete)?null:o;
  }
- function inventory(p){return{schemaVersion:1,method:'Complete metric facade/storey bay program; openings materialised in bounded pages',totalSlots:p.totalSlots,fixedOpenings:p.fixed.length,potentialOpenings:p.potentialOpenings,eligibleEdges:p.rows.length,sourceEdges:p.edges.length,curvedSurfaces:p.curves.length,storeys:p.levels,typology:p.typology,levelInferenceBasis:p.levelInferenceBasis,windowRegisters:p.registers.length,baySpacingMeters:p.bay,documentedCoverage:{...p.documentedCoverage},provenance:p.provenance};}
+ function inventory(p){return{schemaVersion:1,method:'Complete metric facade/storey bay program; openings materialised in bounded pages',totalSlots:p.totalSlots,fixedOpenings:p.fixed.length,potentialOpenings:p.potentialOpenings,eligibleEdges:p.rows.length,sourceEdges:p.edges.length,curvedSurfaces:p.curves.length,microjogSurfaces:p.curves.filter(e=>e.surfaceKind==='source-microjog-arclength').length,storeys:p.levels,typology:p.typology,levelInferenceBasis:p.levelInferenceBasis,windowRegisters:p.registers.length,baySpacingMeters:p.bay,entranceCoverage:{...p.entranceCoverage},documentedCoverage:{...p.documentedCoverage},provenance:p.provenance};}
  function openingSpans(draw,opening){
   const d=describe(draw);if(!d||!opening||!finite(opening.offset)||!finite(opening.width)||opening.offset<0||opening.width<=0)return[];
   const all=edges(d),e=opening.surfaceId?curveSurfaces(d,all).find(e=>e.surfaceId===opening.surfaceId):all.find(e=>e.ringIndex===opening.ringIndex&&e.edgeIndex===opening.edgeIndex);return e&&opening.offset+opening.width<=e.length+EPS?sourceSpans(e,opening.offset,opening.width):[];
@@ -11574,14 +11609,14 @@ const MistralFacades=(()=>{
   return{buildingId:p.id,cursor,nextCursor,scanned,done:nextCursor===p.totalSlots,openings,inventory:inventory(p)};
  }
  function facadePlan(draw,options={}){
-  const p=program(draw);if(!p)return null;const maxOpenings=limit(Math.floor(options.maxOpenings??512),1,4096),openings=p.fixed.slice(0,maxOpenings).map(o=>({...o})),remaining=Math.max(0,maxOpenings-openings.length),sampleCount=Math.min(p.potentialOpenings,remaining),attempts=Math.min(p.potentialOpenings,remaining*4),visited=new Set();let attempted=0;
+  const maxOpenings=budget(options.maxOpenings,512,1,4096),p=program(draw);if(!p)return null;const openings=p.fixed.slice(0,maxOpenings).map(o=>({...o})),remaining=Math.max(0,maxOpenings-openings.length),sampleCount=Math.min(p.potentialOpenings,remaining),attempts=Math.min(p.potentialOpenings,remaining*4),visited=new Set();let attempted=0;
   // The render LOD samples the complete program; it never substitutes a sparse
   // sample for the model's authoritative, cursor-addressable opening inventory.
   for(let n=0;n<attempts&&openings.length<maxOpenings;n++){const slot=n%sampleCount,phase=Math.floor(n/sampleCount),index=Math.min(p.potentialOpenings-1,Math.floor(slot*p.potentialOpenings/sampleCount)+phase);if(visited.has(index))continue;visited.add(index);attempted++;const o=candidateAt(p,index);if(o)openings.push(o);}
   return{...p,openings,openingInventory:inventory(p),detailCoverage:{budgeted:attempted<p.potentialOpenings||p.fixed.length>maxOpenings,potentialOpenings:p.potentialOpenings,attempted,maxOpenings,retainedOpenings:openings.length,completeInventorySlots:p.totalSlots,documentedCoverage:{...p.documentedCoverage}}};
  }
  function geometry(draw,options={}){
-  const maxQuads=limit(Math.floor(options.maxQuads??512),8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads*(detail?.60:.85))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
+  const maxQuads=budget(options.maxQuads,512,8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads*(detail?.60:.85))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
   const groups=new Map(),palette=PALETTES[plan.style],shade=((plan.seed%21)-10)/550;
   const material=name=>name==='wall'?palette.wall.map(v=>limit(v+shade,0,1)):palette[name]||palette.trim;
   let quads=0,openingCount=0;const renderedOpenings=[],deferredOpenings=[],byEdge=new Map(plan.edges.map(e=>[edgeKey(e),e])),bySurface=new Map(plan.curves.map(e=>[e.surfaceId,e]));
@@ -11686,13 +11721,13 @@ const MistralCityInteriors=(()=>{
   const properties=raw.properties||{},knownUse=v=>v&&!/^(?:indifferenciee?|inconnue?|unknown|yes|true|batiment|building|bati|non renseignee?)$/.test(normalText(v).trim()),sourceUse=[properties.usage_1,properties.usage_2,properties['building:use'],properties.building].find(knownUse),nature=knownUse(properties.nature)?properties.nature:'',genericNature=/industri.*agric.*commercial/.test(normalText(nature)),use=String(sourceUse||(!genericNature&&nature)||properties.architectureUse||nature||'').slice(0,160),name=String(properties.name||properties.nom||properties.nom_du_batiment||'Bâtiment').slice(0,160);
   const kind=programTheme(use),single=['industrial','annex','sports'].includes(kind)||/relig|eglise|culte|chapelle|cathedr|basilique|abbat|synagog|mosquee|temple/.test(normalText(use)),levels=Number.isInteger(raw.levels)&&raw.levels>0?raw.levels:single?1:Math.max(1,Math.round(raw.height/3));if(levels>MAX_LEVELS)throw Error('Nombre de niveaux non pris en charge');if(raw.height/levels<1.95-EPS)throw Error('Le volume et les niveaux renseignés ne laissent pas la hauteur d’un personnage');
   const declared=['building:levels','levels','nombre_d_etages'].find(k=>{const n=Number(properties[k]);return Number.isInteger(n)&&n>=1&&n<=200&&n===levels;}),levelsBasis=declared==='nombre_d_etages'?'nombre_d_etages IGN, rez-de-chaussée compris':declared||'estimation du volume et de l’usage';
-  return{id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name,origin,rings,height:raw.height,levels,levelHeight:raw.height/levels,use,levelsBasis,outlineBasis:raw.provenance||'empreinte source',schema:1,layoutVersion:2};
+  return{id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name,origin,rings,height:raw.height,levels,levelHeight:raw.height/levels,use,levelsBasis,outlineBasis:raw.provenance||'empreinte source',schema:1,layoutVersion:3};
  }
  function validateBuilding(raw){
   if(!raw||raw.schema!==1||typeof raw.id!=='string'||raw.id.length>512||!raw.id||!Array.isArray(raw.origin)||raw.origin.length!==3||!raw.origin.every(finite)||!finite(raw.height)||raw.height<=0||raw.height>2000||!Number.isInteger(raw.levels)||raw.levels<1||raw.levels>MAX_LEVELS)throw Error('Bâtiment sauvegardé invalide');
   const rings=cleanRings(raw.rings),b=bounds(rings);if(Math.max(b.maxX-b.minX,b.maxZ-b.minZ)>10000)throw Error('Emprise intérieure hors budget');if(raw.height/raw.levels<1.95-EPS)throw Error('Niveaux sauvegardés incompatibles avec leur volume');
   let levelElevations=null;if(raw.levelElevations!=null){if(!Array.isArray(raw.levelElevations)||raw.levelElevations.length!==raw.levels||raw.levelElevations.some(n=>!finite(n))||Math.abs(raw.levelElevations[0])>EPS)throw Error('Altitudes de planchers invalides');levelElevations=raw.levelElevations.slice();for(let i=0;i<raw.levels;i++)if((levelElevations[i+1]??raw.height)-levelElevations[i]<1.95-EPS)throw Error('Planchers inventés non praticables');}
-  return{schema:1,id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name:String(raw.name||'Bâtiment').slice(0,160),origin:raw.origin.slice(),rings,height:raw.height,levels:raw.levels,levelHeight:raw.height/raw.levels,use:String(raw.use||'').slice(0,160),levelsBasis:String(raw.levelsBasis||'estimation').slice(0,160),outlineBasis:typeof raw.outlineBasis==='string'?raw.outlineBasis.slice(0,240):'empreinte source',layoutVersion:raw.layoutVersion===2?2:1,...(levelElevations?{levelElevations}:{} )};
+  return{schema:1,id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name:String(raw.name||'Bâtiment').slice(0,160),origin:raw.origin.slice(),rings,height:raw.height,levels:raw.levels,levelHeight:raw.height/raw.levels,use:String(raw.use||'').slice(0,160),levelsBasis:String(raw.levelsBasis||'estimation').slice(0,160),outlineBasis:typeof raw.outlineBasis==='string'?raw.outlineBasis.slice(0,240):'empreinte source',layoutVersion:raw.layoutVersion===3?3:raw.layoutVersion===2?2:1,...(levelElevations?{levelElevations}:{} )};
  }
  function point(rings,preferred=null,radius=.43){
   if(preferred&&clearance(rings,...preferred)>=radius)return preferred.slice();
@@ -11772,6 +11807,11 @@ const MistralCityInteriors=(()=>{
   lectern:{size:[.7,.6],height:1.2,label:'Pupitre',zone:'Salle commune'},
   archive:{size:[1.2,.55],height:1.75,label:'Étagères et registres',zone:'Archives'}
  };
+ // New compact dwellings use a real single bed and a separate WC, not a
+ // scaled actor or a smaller source volume. Saved version-two layouts keep
+ // their original equipment and partitions exactly.
+ const COMPACT_FURNITURE={bed:{...FURNITURE.bed,size:[.95,2.05],label:'Lit simple'},sanitary:{...FURNITURE.sanitary,size:[.6,.85],label:'WC séparé'}};
+ function furnitureDefinition(f){return(f.variant==='compact'&&COMPACT_FURNITURE[f.kind])||FURNITURE[f.kind];}
  function program(use,level=0){
   const kind=theme(use);return(kind==='residential'?(level>0?['bed','wardrobe','sanitary','desk','sofa','kitchen','dining']:['bed','kitchen','sofa','sanitary','wardrobe','dining','desk']):kind==='medical'?['medical_bed','medical_cabinet','washbasin','desk','bench','medical_bed']:kind==='industrial'?['workbench','crate','pallet','wardrobe','desk','crate']:kind==='commercial'?['reception','shelf','desk','crate','shelf','bench']:['bench','lectern','archive','desk','wardrobe']).slice();
  }
@@ -11816,13 +11856,15 @@ const MistralCityInteriors=(()=>{
  /* Small distinct models use at most ten boxes each. The declared footprint
     and top bound every visible part and the actor's conservative solid. */
  function furnitureModel(f){
-  const d=FURNITURE[f.kind];if(!d)throw Error('Mobilier inconnu');const out=[],box=(pos,size,material)=>out.push({pos,size,material}),kind=f.kind;
+  const d=furnitureDefinition(f);if(!d)throw Error('Mobilier inconnu');const out=[],box=(pos,size,material)=>out.push({pos,size,material}),kind=f.kind;
   if(kind==='bed'||kind==='medical_bed'){
    const[sx,sz]=d.size;box([0,.22,0],[sx,.28,sz],'metal');box([0,.5,0],[sx-.08,.25,sz-.1],kind==='medical_bed'?'medical':'fabric');box([0,.72,-sz*.31],[sx-.18,.18,.42],'paper');box([0,d.height/2,-sz/2+.04],[sx,d.height,.08],'wood');box([0,.64,sz*.16],[sx-.12,.06,sz*.55],kind==='medical_bed'?'medical':'blanket');
   }else if(kind==='sofa'){
    box([0,.25,0],[1.9,.35,.9],'wood');box([0,.7,-.34],[1.9,.5,.22],'fabric');box([-.84,.54,0],[.22,.38,.9],'fabric');box([.84,.54,0],[.22,.38,.9],'fabric');for(const x of[-.39,.39])box([x,.48,.08],[.72,.17,.66],'blanket');
   }else if(kind==='kitchen'){
    box([0,.43,0],[1.9,.86,.7],'wood');box([0,.91,0],[1.9,.1,.7],'porcelain');box([-.48,.973,0],[.62,.026,.48],'dark');box([-.48,.986,0],[.42,.025,.28],'water');box([.43,.973,0],[.58,.026,.5],'metal');for(const x of[.28,.58])box([x,1.002,0],[.18,.03,.28],'dark');box([-.48,1.07,-.27],[.055,.16,.055],'metal');box([-.48,1.13,-.2],[.055,.04,.18],'metal');
+  }else if(kind==='sanitary'&&f.variant==='compact'){
+   box([0,.35,.04],[.52,.7,.72],'porcelain');box([0,.83,-.3],[.52,.34,.18],'porcelain');box([0,.72,.05],[.47,.05,.58],'dark');
   }else if(kind==='sanitary'||kind==='washbasin'){
    if(kind==='sanitary'){box([-.35,.35,.14],[.52,.7,.72],'porcelain');box([-.35,.83,-.42],[.52,.34,.3],'porcelain');box([-.35,.72,.16],[.47,.05,.58],'dark');}
    const x=kind==='sanitary'?.4:0,sx=kind==='sanitary'?.5:.7,sz=kind==='sanitary'?.48:.55,z=kind==='sanitary'?-.1:0;box([x,.4,z],[sx,.8,sz],'wood');box([x,.83,z],[sx,.06,sz],'porcelain');box([x,.87,z],[sx*.65,.025,sz*.65],'dark');box([x,1.02,kind==='sanitary'?-.29:-.22],[.05,.26,.05],'metal');
@@ -11903,7 +11945,10 @@ const MistralCityInteriors=(()=>{
   }
   let disconnected=0;for(let i=0;i<flags.length;i++)if(flags[i]&&!seen[i]&&(!required||required[i]))disconnected++;
   const reaches=p=>free(p)&&nearby(p,(i,q)=>seen[i]&&travel(q,p));
-  return{seen,freeCount,reached:queue.length,disconnected,reaches,step:grid.step,cells:grid.points.length};
+  // The navigation grid is deliberately conservative. Boundary probes use
+  // the physical actor radius for their short link to an already reached cell.
+  const reachesAt=(p,radius=.38)=>walkable(l,...p,radius)&&!furniture.some(f=>furnitureBlocked(f,...p,radius))&&nearby(p,(i,q)=>seen[i]&&canTravel(l,q,p,radius)&&!furniture.some(f=>furnitureRing(f).some((a,j,r)=>segmentGap(q,p,a,r[(j+1)%r.length])<radius-EPS)));
+  return{seen,freeCount,reached:queue.length,disconnected,reaches,reachesAt,step:grid.step,cells:grid.points.length};
  }
  const ROOM_TYPES={
   sanitary:{use:'Sanitaires',size:[2.4,2.4],required:['sanitary'],optional:['washbasin']},
@@ -11932,13 +11977,17 @@ const MistralCityInteriors=(()=>{
   const walls=[];let door=null;for(let i=0;i<4;i++){const a=ring[i],b=ring[i+1],length=Math.hypot(b[0]-a[0],b[1]-a[1]),t=[(b[0]-a[0])/length,(b[1]-a[1])/length];if(i!==side){walls.push({a:a.slice(),b:b.slice(),thickness:.16,provenance:'invented'});continue;}const center=[(a[0]+b[0])/2,(a[1]+b[1])/2],normal=[t[1],-t[0]],left=[center[0]-t[0]*width/2,center[1]-t[1]*width/2],right=[center[0]+t[0]*width/2,center[1]+t[1]*width/2];walls.push({a:a.slice(),b:left,thickness:.16,provenance:'invented'},{a:right,b:b.slice(),thickness:.16,provenance:'invented'});door={center,inside:[center[0]-normal[0]*.7,center[1]-normal[1]*.7],outside:[center[0]+normal[0]*.7,center[1]+normal[1]*.7],width,side,provenance:'invented'};}
   return{walls,door};
  }
+ // No source coordinate is changed. At most256 points just inside source
+ // edges catch small free pockets between a curved outline and new partitions.
+ const BOUNDARY_PROBE_LIMIT=256;
+ function boundaryProbes(rings){const edges=rings.flatMap(r=>r.map((a,i)=>[a,r[(i+1)%r.length]])),out=[],stride=Math.max(1,Math.ceil(edges.length/(BOUNDARY_PROBE_LIMIT/4)));for(let i=0;i<edges.length;i+=stride){const[a,b]=edges[i],dx=b[0]-a[0],dz=b[1]-a[1],length=Math.hypot(dx,dz);if(length<EPS)continue;const p=[(a[0]+b[0])/2,(a[1]+b[1])/2];for(const gap of[.41,.58])for(const side of[-1,1]){const q=[p[0]+side*dz/length*gap,p[1]-side*dx/length*gap];if(clearance(rings,...q)>=.38-EPS)out.push(q);}}return out;}
  function generatedRooms(l,b,grid,baseline,program,checks){
   const rooms=[],omissions=[],bb=bounds(l.rings),unproven=baseline.freeCount>baseline.reached,limited=unproven||grid.step>.65||l.rings.reduce((n,r)=>n+r.length,0)>512;
   for(const type of program.roomTypes){
-   if(limited||rooms.length>=PLAN_BUDGET.rooms){omissions.push({type,reason:unproven?'source-circulation-unproven':'room-proof-budget'});continue;}const spec=ROOM_TYPES[type];let found=null;
+   if(limited||rooms.length>=PLAN_BUDGET.rooms){omissions.push({type,reason:unproven?'source-circulation-unproven':'room-proof-budget'});continue;}const original=ROOM_TYPES[type],spec=l.compactResidential&&type==='sanitary'?{...original,size:[2,2.15]}:original;let found=null;
    for(const size of[spec.size,spec.size.slice().reverse()]){for(const p of candidatePoints(bb,size)){
     const ring=rectangle(...p,...size);if(!rectFits(l,ring,rooms))continue;
-    for(const side of[0,1,2,3]){const shape=roomWalls(ring,side);shape.door.height=Math.min(2.12,l.height-.1);if(clearance(l.rings,...shape.door.outside)<.48||checks.count>=PLAN_BUDGET.navigationChecks)continue;checks.count++;const test={...l,walls:l.walls.concat(shape.walls),roomDoors:l.roomDoors.concat(shape.door)},nav=navigation(test,grid,[],baseline.seen);if(nav.disconnected||!nav.reaches(shape.door.inside)||!nav.reaches(shape.door.outside))continue;
+    for(const side of[0,1,2,3]){const shape=roomWalls(ring,side);shape.door.height=Math.min(2.12,l.height-.1);if(clearance(l.rings,...shape.door.outside)<.48||checks.count>=PLAN_BUDGET.navigationChecks)continue;checks.count++;const test={...l,walls:l.walls.concat(shape.walls),roomDoors:l.roomDoors.concat(shape.door)},nav=navigation(test,grid,[],baseline.seen);if(nav.disconnected||!nav.reaches(shape.door.inside)||!nav.reaches(shape.door.outside)||(l.boundaryAccessProbes||[]).some(p=>walkable(test,...p,.38)&&!nav.reachesAt(p,.38)))continue;
      found={id:'room:'+hash([b.id,l.level,type,rooms.length]),type,use:spec.use,ring,bounds:bounds([ring]),door:shape.door,required:spec.required.slice(),optional:spec.optional.slice(),provenance:'invented',coverage:'enclosed-room'};l.walls.push(...shape.walls);l.roomDoors.push({...shape.door,roomId:found.id});break;
     }if(found)break;
    }if(found)break;}
@@ -11965,13 +12014,13 @@ const MistralCityInteriors=(()=>{
   };
   const approachValid=(f,p)=>{const room=f.roomId?rooms.find(r=>r.id===f.roomId):null;return(!room||clearance([room.ring],...p)>=.4-EPS)&&canTravel(l,f.pos,p,.04);};
   const approaches=f=>{const[p,q]=f.pos,[w,d]=f.size;return[[p,q+d/2+.64],[p,q-d/2-.64],[p+w/2+.64,q],[p-w/2-.64,q]].filter(a=>approachValid(f,a));};
-  const probesClear=(nav,all,newFurniture)=>{for(const f of all){if(Math.hypot(f.pos[0]-newFurniture.pos[0],f.pos[1]-newFurniture.pos[1])>5)continue;const room=rooms.find(r=>r.id===f.roomId),bb=room?bounds([room.ring]):bounds(l.rings),[x,z]=f.pos,[w,d]=f.size,xs=[x,(x-w/2+bb.minX)/2,(x+w/2+bb.maxX)/2,x-w/2-.42,x+w/2+.42],zs=[z,(z-d/2+bb.minZ)/2,(z+d/2+bb.maxZ)/2,z-d/2-.42,z+d/2+.42];for(const a of xs)for(const b of zs){const p=[a,b];if(walkable(l,...p,.38)&&!all.some(v=>furnitureBlocked(v,...p,.38))&&baseline.reaches(p)&&!nav.reaches(p))return false;}}return true;};
+  const probesClear=(nav,all,newFurniture)=>{if((l.boundaryAccessProbes||[]).some(p=>walkable(l,...p,.38)&&!all.some(f=>furnitureBlocked(f,...p,.38))&&!nav.reachesAt(p,.38)))return false;for(const f of all){if(Math.hypot(f.pos[0]-newFurniture.pos[0],f.pos[1]-newFurniture.pos[1])>5)continue;const room=rooms.find(r=>r.id===f.roomId),bb=room?bounds([room.ring]):bounds(l.rings),[x,z]=f.pos,[w,d]=f.size,xs=[x,(x-w/2+bb.minX)/2,(x+w/2+bb.maxX)/2,x-w/2-.42,x+w/2+.42],zs=[z,(z-d/2+bb.minZ)/2,(z+d/2+bb.maxZ)/2,z-d/2-.42,z+d/2+.42];for(const a of xs)for(const b of zs){const p=[a,b];if(walkable(l,...p,.38)&&!all.some(v=>furnitureBlocked(v,...p,.38))&&(l.compactResidential?baseline.reachesAt(p,.38):baseline.reaches(p))&&!(l.compactResidential?nav.reachesAt(p,.38):nav.reaches(p)))return false;}}return true;};
   const place=(kind,room)=>{
-   const def=FURNITURE[kind];if(!def||def.height>l.height-.1||furniture.length>=PLAN_BUDGET.furniture)return false;
+   const variant=l.compactResidential&&COMPACT_FURNITURE[kind]?'compact':null,def=variant?COMPACT_FURNITURE[kind]:FURNITURE[kind];if(!def||def.height>l.height-.1||furniture.length>=PLAN_BUDGET.furniture)return false;
    for(const turn of[0,Math.PI/2]){const size=turn?def.size.slice().reverse():def.size;
     for(const p of positions(room,size)){
      if(room&&!containedRectangle([room.ring],rectangle(p[0]-size[0]/2,p[1]-size[1]/2,...size),.12)||!room&&rooms.some(r=>inside([r.ring],...p))||!furnitureFitsNew(l,p,size,furniture))continue;
-     const approachCandidates=[[p[0],p[1]+size[1]/2+.64],[p[0],p[1]-size[1]/2-.64],[p[0]+size[0]/2+.64,p[1]],[p[0]-size[0]/2-.64,p[1]]],f={id:'furnishing:'+hash([b.id,l.level,p,kind,turn,'rooms-v2']),pos:p.slice(),kind,size:size.slice(),localSize:def.size.slice(),rotation:turn,height:def.height,label:def.label,zone:def.zone,roomId:room?.id||null,provenance:'invented',seed:parseInt(hash([b.id,l.level,p,kind]).slice(0,6),16)};
+     const approachCandidates=[[p[0],p[1]+size[1]/2+.64],[p[0],p[1]-size[1]/2-.64],[p[0]+size[0]/2+.64,p[1]],[p[0]-size[0]/2-.64,p[1]]],f={id:'furnishing:'+hash([b.id,l.level,p,kind,turn,'rooms-v2']),pos:p.slice(),kind,size:size.slice(),localSize:def.size.slice(),rotation:turn,height:def.height,label:def.label,zone:def.zone,roomId:room?.id||null,...(variant?{variant}:{}),provenance:'invented',seed:parseInt(hash([b.id,l.level,p,kind]).slice(0,6),16)};
      const possible=approachCandidates.filter(q=>approachValid(f,q)&&walkable(l,...q,.4)&&!furniture.concat(f).some(a=>furnitureBlocked(a,...q,.4)));if(!possible.length||checks.count>=PLAN_BUDGET.navigationChecks)continue;checks.count++;const nav=navigation(l,grid,furniture.concat(f),baseline.seen);if(nav.disconnected||l.roomDoors.some(d=>!nav.reaches(d.center)||!nav.reaches(d.outside))||!probesClear(nav,furniture.concat(f),f))continue;const retained=furniture.map(a=>[a,[a.approach,...approaches(a)].find(q=>q&&nav.reaches(q))]);if(retained.some(a=>!a[1]))continue;const approach=possible.find(q=>nav.reaches(q));if(!approach)continue;
      for(const[a,q]of retained)a.approach=q.slice();f.approach=approach.slice();furniture.push(f);const[x,z]=p,[sx,sz]=size;zones.push({id:'invented-zone:'+f.id,use:def.zone,ring:rectangle(x-sx/2,z-sz/2,sx,sz),anchor:p.slice(),roomId:f.roomId,provenance:'invented',coverage:'furnished-function'});return true;
     }
@@ -11985,15 +12034,16 @@ const MistralCityInteriors=(()=>{
   return{furniture,zones,omissions,requirements:requirements.map(r=>({kind:r.kind,roomId:r.room?.id||null})),program:[...new Set(requirements.map(r=>r.kind))]};
  }
  function layoutNew(b,level,start,gridLevels,recorded,doc){
-  const angle=planAngle(b.rings),toLocal=p=>rotate(p,-angle),toWorld=p=>rotate(p,angle),sourceArea=Math.max(0,Math.abs(area(b.rings[0]))-b.rings.slice(1).reduce((s,r)=>s+Math.abs(area(r)),0)),kind=programTheme(b.use),l={buildingId:b.id,level,rings:b.rings.map(r=>r.map(toLocal)),height:(gridLevels[level+1]??b.height)-gridLevels[level],elevation:gridLevels[level],entry:toLocal(start),walls:recorded?recorded.walls.map(w=>({...w,a:toLocal(w.a),b:toLocal(w.b)})):[],rooms:recorded?recorded.rooms.map(r=>({...r,ring:r.ring.map(toLocal)})):[],roomDoors:[],theme:kind};
+  const angle=planAngle(b.rings),toLocal=p=>rotate(p,-angle),toWorld=p=>rotate(p,angle),sourceArea=Math.max(0,Math.abs(area(b.rings[0]))-b.rings.slice(1).reduce((s,r)=>s+Math.abs(area(r)),0)),kind=programTheme(b.use),l={buildingId:b.id,level,rings:b.rings.map(r=>r.map(toLocal)),height:(gridLevels[level+1]??b.height)-gridLevels[level],elevation:gridLevels[level],entry:toLocal(start),walls:recorded?recorded.walls.map(w=>({...w,a:toLocal(w.a),b:toLocal(w.b)})):[],rooms:recorded?recorded.rooms.map(r=>({...r,ring:r.ring.map(toLocal)})):[],roomDoors:[],theme:kind,compactResidential:b.layoutVersion===3&&!recorded&&kind==='residential'&&sourceArea<55};
   if(!walkable(l,...l.entry,.4)){const fallback=point(l.rings,null,.7);if(!fallback||!walkable(l,...fallback,.4))throw Error('Le plan documentaire bloque son entrée');l.entry=fallback;start=toWorld(fallback);}
   const grid=navigationGrid(l.rings),baseline=navigation({...l,walls:l.walls.slice()},grid),checks={count:0},program=floorProgram(kind,sourceArea);
+  if(l.compactResidential)l.boundaryAccessProbes=boundaryProbes(l.rings).filter(p=>baseline.reachesAt(p,.38));
   const generated=recorded?{rooms:l.rooms,omissions:[],limited:false}:generatedRooms(l,b,grid,baseline,program,checks);l.rooms=generated.rooms;const contents=furnishNew(l,b,grid,baseline,program,checks,!!recorded),nav=navigation(l,grid,contents.furniture,baseline.seen);
   const walls=recorded?copy(recorded.walls):l.walls.map(w=>({...w,a:toWorld(w.a),b:toWorld(w.b)})),rooms=recorded?copy(recorded.rooms):l.rooms.map(r=>({...r,ring:r.ring.map(toWorld),bounds:bounds([r.ring.map(toWorld)]),door:{...r.door,center:toWorld(r.door.center),inside:toWorld(r.door.inside),outside:toWorld(r.door.outside)}})),furniture=contents.furniture.map(f=>{const ring=furnitureRing(f).map(toWorld),bb=bounds([ring]);return{...f,pos:toWorld(f.pos),approach:toWorld(f.approach),ring,localSize:f.localSize.slice(),size:[bb.maxX-bb.minX,bb.maxZ-bb.minZ],rotation:angle+f.rotation};}),roomArea=recorded?null:l.rooms.reduce((s,r)=>s+Math.abs(area(r.ring)),0);
-  const result={buildingId:b.id,level,rings:copy(b.rings),height:l.height,elevation:l.elevation,walls,entry:start.slice(),stair:start.slice(),theme:kind,rooms,roomDoors:l.roomDoors.map(d=>({...d,center:toWorld(d.center),inside:toWorld(d.inside),outside:toWorld(d.outside)})),provenance:recorded?'documented':'invented',source:recorded?doc.source:null,levels:b.levels,furniture,functionalZones:contents.zones.map(z=>({...z,ring:z.ring.map(toWorld),anchor:toWorld(z.anchor)})),furnishingProgram:contents.program,roomsBasis:recorded?'documented':'invented-enclosed-rooms',roomCoverage:recorded?'documented-record':'rooms-and-open-source-space',layoutVersion:2,
+  const result={buildingId:b.id,level,rings:copy(b.rings),height:l.height,elevation:l.elevation,walls,entry:start.slice(),stair:start.slice(),theme:kind,rooms,roomDoors:l.roomDoors.map(d=>({...d,center:toWorld(d.center),inside:toWorld(d.inside),outside:toWorld(d.outside)})),provenance:recorded?'documented':'invented',source:recorded?doc.source:null,levels:b.levels,furniture,functionalZones:contents.zones.map(z=>({...z,ring:z.ring.map(toWorld),anchor:toWorld(z.anchor)})),furnishingProgram:contents.program,roomsBasis:recorded?'documented':'invented-enclosed-rooms',roomCoverage:recorded?'documented-record':'rooms-and-open-source-space',layoutVersion:b.layoutVersion,
    openSpace:recorded?null:{id:'open:'+hash([b.id,level]),use:kind==='residential'?'Pièce de vie et circulation ouverte':kind==='industrial'?'Halle de travail et circulation':kind==='commercial'?'Espace de vente et circulation':'Espace commun et circulation',rings:copy(b.rings),excludedRooms:l.rooms.map(r=>r.id),provenance:'invented',area:Math.max(0,sourceArea-roomArea)},
-   programCoverage:{provenance:'invented',frame:'building-local-metre',orientationRadians:angle,footprintArea:sourceArea,enclosedRoomArea:roomArea,openSourceArea:recorded?null:Math.max(0,sourceArea-roomArea),enclosedRooms:rooms.length,requestedRoomTypes:program.roomTypes,roomOmissions:generated.omissions,furnishingRequirements:contents.requirements,furnishingOmissions:contents.omissions,allRequestedFunctionsPlaced:!contents.omissions.length,allRequestedRoomsPlaced:!generated.omissions.length,completeInventedProgram:!recorded&&!contents.omissions.length&&!generated.omissions.length&&baseline.freeCount===baseline.reached,roomsLimited:generated.limited,navigation:{sampledCells:nav.cells,stepMeters:nav.step,sourceUnreachableCells:baseline.freeCount-baseline.reached,newUnreachableCells:nav.disconnected,reachableCells:nav.reached,freeCells:nav.freeCount},budgets:{...PLAN_BUDGET},navigationChecks:checks.count}};
-  result.signature=hash([2,b.id,b.rings,level,result.elevation,result.height,walls,rooms,furniture]);return result;
+   programCoverage:{provenance:'invented',frame:'building-local-metre',...(b.layoutVersion===3?{programVersion:3,equipmentScale:l.compactResidential?'single-bed-and-separate-wc':'standard',boundaryAccessSamples:l.boundaryAccessProbes?.length||0}:{}),orientationRadians:angle,footprintArea:sourceArea,enclosedRoomArea:roomArea,openSourceArea:recorded?null:Math.max(0,sourceArea-roomArea),enclosedRooms:rooms.length,requestedRoomTypes:program.roomTypes,roomOmissions:generated.omissions,furnishingRequirements:contents.requirements,furnishingOmissions:contents.omissions,allRequestedFunctionsPlaced:!contents.omissions.length,allRequestedRoomsPlaced:!generated.omissions.length,completeInventedProgram:!recorded&&!contents.omissions.length&&!generated.omissions.length&&baseline.freeCount===baseline.reached,roomsLimited:generated.limited,navigation:{sampledCells:nav.cells,stepMeters:nav.step,sourceUnreachableCells:baseline.freeCount-baseline.reached,newUnreachableCells:nav.disconnected,reachableCells:nav.reached,freeCells:nav.freeCount},budgets:{...PLAN_BUDGET,...(b.layoutVersion===3?{boundaryAccessProbes:BOUNDARY_PROBE_LIMIT}:{})},navigationChecks:checks.count}};
+  result.signature=hash([b.layoutVersion===3?3:2,b.id,b.rings,level,result.elevation,result.height,walls,rooms,furniture]);return result;
  }
  function walkable(layout,x,z,radius=.38){if(clearance(layout.rings,x,z)<radius)return false;return !layout.walls.some(w=>segmentDistance([x,z],w.a,w.b)<radius+w.thickness/2-EPS);}
  function canTravel(layout,from,to,radius=.38){const distance=Math.hypot(to[0]-from[0],to[1]-from[1]);if(distance>400)return false;const n=Math.max(1,Math.ceil(distance/.15));for(let i=0;i<=n;i++)if(!walkable(layout,from[0]+(to[0]-from[0])*i/n,from[1]+(to[1]-from[1])*i/n,radius))return false;return true;}
@@ -12001,13 +12051,13 @@ const MistralCityInteriors=(()=>{
   b=validateBuilding(b);if(!Number.isInteger(level)||level<0||level>=b.levels)throw Error('Étage intérieur invalide');
   const checked=doc?document(doc,b):null,recorded=checked?.levels.find(l=>l.level===level),grid=floorLevels(b,checked),start=point(b.rings,recorded?.entry||entry,.43);
   if(!start)throw Error('L’emprise ne contient pas d’espace praticable pour un personnage');
-  if(b.layoutVersion===2){const key=hash([b,level,start,checked]),cached=layoutCache.get(key);if(cached){layoutCache.delete(key);layoutCache.set(key,cached);return JSON.parse(cached);}return cacheLayout(key,layoutNew(b,level,start,grid,recorded,checked));}
+  if(b.layoutVersion===2||b.layoutVersion===3){const key=hash([b,level,start,checked]),cached=layoutCache.get(key);if(cached){layoutCache.delete(key);layoutCache.set(key,cached);return JSON.parse(cached);}return cacheLayout(key,layoutNew(b,level,start,grid,recorded,checked));}
   const walls=recorded?recorded.walls:inventedWalls(b,start),result={buildingId:b.id,level,rings:copy(b.rings),height:(grid[level+1]??b.height)-grid[level],elevation:grid[level],walls,entry:start,theme:theme(b.use),rooms:recorded?.rooms||[],provenance:recorded?'documented':'invented',source:recorded?doc.source:null,levels:b.levels};
   if(!walkable(result,...start,.4)){const p=point(b.rings,null,.7);if(!p||!walkable(result,...p,.4))throw Error('Le plan documentaire bloque son entrée');result.entry=p;}
   result.stair=result.entry.slice();const contents=furnish(result,b,!!recorded);result.furniture=contents.furniture;result.functionalZones=contents.zones;result.furnishingProgram=contents.program;result.roomsBasis=recorded?'documented':'invented-functional-zones';result.roomCoverage=recorded?'documented-record':'partial';if(!recorded)result.rooms=copy(contents.zones);
   result.signature=hash([b.id,b.rings,level,result.elevation,result.height,walls,result.furniture]);return result;
  }
- return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,programTheme,PLAN_BUDGET,FURNITURE,program,roomProgram,furnishingFits,furnitureModel,furnitureRing,furnitureBlocked,walkable,canTravel,layout};
+ return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,programTheme,PLAN_BUDGET,FURNITURE,COMPACT_FURNITURE,furnitureDefinition,program,roomProgram,furnishingFits,furnitureModel,furnitureRing,furnitureBlocked,walkable,canTravel,layout};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralCityInteriors;
 
@@ -12167,7 +12217,7 @@ if(typeof baseState==='function'){
   if(world?.v046&&V050_CITY.owner?.state!==state)bind(true);
   if(V050_CITY.documentOwner!==state){V050_CITY.documentOwner=state;V050_CITY.documentRejections.clear();}
   const a=state.v050City.active,l=world?.v050CityInterior,records=state.v050City.documents||[];
-  return{version:2,zone:world?.id,active:a?{id:a.building.id,name:a.building.name,floor:a.floor,streetFloor:a.streetFloor??0,levels:a.building.levels,origin:a.building.origin.slice(),signature:l?.signature,layoutProvenance:l?.provenance,documentOrigin:a.documentOrigin||null,documentedLevels:a.document?.levels.map(r=>r.level)||[],documentSource:a.document?{...a.document.source}:null,currentLevelSource:l?.source?{...l.source}:null,furnishing:l?{objects:l.furniture.length,renderFurniture:world.staticDraws.filter(d=>d.v050CityFurnishing).length,colliderFurniture:world.colliders.filter(c=>c.v050CityFurnishing).length,byKind:Object.fromEntries([...new Set(l.furniture.map(f=>f.kind))].map(kind=>[kind,l.furniture.filter(f=>f.kind===kind).length])),functionalUses:[...new Set(l.functionalZones.map(z=>z.use))],roomsBasis:l.roomsBasis,roomCoverage:l.roomCoverage,programCoverage:l.programCoverage||null,provenance:'invented'}:null}:null,
+  return{version:2,zone:world?.id,active:a?{id:a.building.id,name:a.building.name,layoutVersion:a.building.layoutVersion,floor:a.floor,streetFloor:a.streetFloor??0,levels:a.building.levels,origin:a.building.origin.slice(),signature:l?.signature,layoutProvenance:l?.provenance,documentOrigin:a.documentOrigin||null,documentedLevels:a.document?.levels.map(r=>r.level)||[],documentSource:a.document?{...a.document.source}:null,currentLevelSource:l?.source?{...l.source}:null,furnishing:l?{objects:l.furniture.length,renderFurniture:world.staticDraws.filter(d=>d.v050CityFurnishing).length,colliderFurniture:world.colliders.filter(c=>c.v050CityFurnishing).length,byKind:Object.fromEntries([...new Set(l.furniture.map(f=>f.kind))].map(kind=>[kind,l.furniture.filter(f=>f.kind===kind).length])),functionalUses:[...new Set(l.functionalZones.map(z=>z.use))],roomsBasis:l.roomsBasis,roomCoverage:l.roomCoverage,programCoverage:l.programCoverage||null,provenance:'invented'}:null}:null,
    doors:[...V050_CITY.doors].map(([id,r])=>({id,building:r.building.id,pos:r.interaction.pos.slice(),levels:r.building.levels,streetFloor:r.streetFloor,provenance:r.document?'documented or mixed':'invented',documentOrigin:r.documentOrigin||null,documentedLevels:r.document?.levels.map(l=>l.level)||[],documentSource:r.document?{...r.document.source}:null})),
    documentRegistry:{entries:records.length,bytes:documentBytes(records),maxBuildings:V050_DOCUMENT_LIMITS.buildings,maxBytes:V050_DOCUMENT_LIMITS.bytes,omissions:state.v050City.documentOmissions||0,warnings:(state.v050City.documentWarnings||[]).slice(),rejections:[...V050_CITY.documentRejections.values()].map(r=>({...r}))},rejections:{...V050_CITY.rejections},interactionBudget:64,entered:V050_CITY.entered,returned:V050_CITY.returned,exitPending:!!V050_CITY.exitPending,last:V050_CITY.last,errors:V050_CITY.errors.slice()};
  }
@@ -12235,6 +12285,548 @@ function v051CityPanelAfterInit(){
  Object.assign(window.__MISTRAL_DEBUG,{v051ReadCityStatus:()=>load(true),v051CityPanel:()=>({pending:!!status.pending,error:status.error,data:status.data?JSON.parse(JSON.stringify(status.data)):null})});
 }
 
+/* Continuity of the French factions already preserved in v0.46. These four
+   new dossiers extend that canon; they are not recovered v0.44 conversations. */
+const MistralLoreContinuity=(()=>{
+ const copy=v=>JSON.parse(JSON.stringify(v)),own=(v,k)=>Object.prototype.hasOwnProperty.call(v||{},k);
+ const SPECS=[
+  {id:'cendres',name:'Le droit d’être compté',faction:'convention',factionName:'Convention des Cendres',macro:'geo_marseille',kind:'testimony',required:2,contactIndex:0,
+   description:'Deux relais doivent attester l’existence de familles que les registres des Baumettes refusent. La Convention ne s’accorde pas sur ce qu’il faut garder de leurs noms.',
+   pending:'Recueillir deux témoignages auprès de relais marseillais distincts, puis revenir au contact.',
+   choices:[
+    {id:'anonymes',label:'Garantir une identité protégée sans publier les noms',cost:{},caps:45,xp:80,loreRep:3,rep:{ligue:2},text:'Les attestations restent sous la garde des familles. L’assemblée reconnaît leur droit d’exister sans afficher leurs noms.'},
+    {id:'registre',label:'Confier une copie contradictoire aux assemblées',cost:{},caps:55,xp:80,loreRep:2,rep:{ligue:1,continuite:1},text:'Une copie du registre est déposée dans les relais. Les familles gardent un droit de réponse et peuvent contester chaque ligne.'}
+   ]},
+  {id:'formulaire',name:'Le formulaire impossible',faction:'concorde',factionName:'Direction de la Continuité — CONCORDE',macro:'geo_marseille',kind:'audit',required:2,contactIndex:1,
+   description:'Une copie CERFA-77 déclare la même réserve vide et déjà saisie. Le contact accepte un diagnostic matériel ou deux déclarations contradictoires.',
+   pending:'Analyser la copie au relais avec Intelligence 5 et un circuit, ou réunir les témoignages de deux relais distincts.',
+   choices:[
+    {id:'rectifier',label:'Faire rectifier le dossier et rendre le reçu aux habitants',cost:{},caps:50,xp:90,loreRep:3,rep:{continuite:2,ligue:1},text:'Le refus CERFA-77 est remplacé par un reçu contradictoire. La réserve n’est plus déclarée saisie et les habitants gardent leur exemplaire.'},
+    {id:'publier',label:'Publier les contradictions avant toute nouvelle saisie',cost:{},caps:40,xp:90,loreRep:1,rep:{continuite:-1,ligue:3},text:'Les deux versions du formulaire circulent dans les relais. CONCORDE perd le monopole de l’explication et les saisies contestées sont dénoncées.'}
+   ]},
+  {id:'signaux',name:'Les signaux des crêtes',faction:'vigies',factionName:'Vigies des Crêtes',macro:'geo_garlaban',kind:'observation',required:3,contactIndex:0,
+   description:'Trois balises des crêtes donnent des avis contradictoires sur les fumées. Les Vigies demandent de lire chaque repère sur place avant de choisir le bulletin.',
+   pending:'Examiner les trois repères indiqués sur les crêtes, puis rapporter les observations au relais.',
+   choices:[
+    {id:'alerte',label:'Diffuser une alerte publique avec les limites des observations',cost:{},caps:45,xp:100,loreRep:3,rep:{secours:3},text:'Les fumées observées et les secteurs non vérifiés sont nommés séparément. Canal 13 transmet une alerte prudente, sans inventer une attaque.'},
+    {id:'relais',label:'Transmettre d’abord aux relais chargés de prévenir les habitants',cost:{},caps:55,xp:100,loreRep:2,rep:{secours:2,veilleurs:1},text:'Les relais reçoivent les observations avant l’annonce générale. Chaque équipe est chargée de prévenir son secteur et de conserver les incertitudes.'}
+   ]},
+  {id:'lazaret',name:'L’autre rive',faction:'insulaires',factionName:'Insulaires du Lazaret',macro:'geo_frioul',kind:'delivery',required:0,contactIndex:0,
+   description:'Au Lazaret, la même embarcation doit porter une réserve de soin ou des vivres pour un passage accompagné. Les Insulaires demandent une décision et des fournitures réelles.',
+   pending:'Rapporter au contact deux eaux et un antibiotique pour le soin, ou deux eaux et deux vivres pour le passage accompagné.',
+   choices:[
+    {id:'soins',label:'Constituer la réserve de soin · 2 eaux + 1 antibiotique',cost:{water:2,antibiotics:1},caps:35,xp:80,loreRep:3,rep:{francs:2,secours:1},text:'La réserve de soin est remise au Lazaret. Les personnes accueillies disposent d’eau et d’antibiotiques avant une nouvelle traversée.'},
+    {id:'passage',label:'Approvisionner le passage accompagné · 2 eaux + 2 vivres',cost:{water:2,food:2},caps:35,xp:80,loreRep:2,rep:{francs:2,ligue:1},text:'Le passage accompagné reçoit ses vivres et son eau. Le choix est inscrit au registre du Lazaret ; aucune réserve renouvelable n’a été créée.'}
+   ]}
+ ];
+ const IDS=SPECS.map(q=>q.id),FACTIONS=['convention','gilets','syndicat','concorde','communes','sansdossier','cochonnet','vigies','insulaires'];
+ const safe=s=>s&&s.safe===true&&['settlement','outpost','caravan'].includes(s.kind)&&s.npcSlots>0;
+ function bind(catalog){
+  if(!Array.isArray(catalog)||catalog.length>4096)throw Error('Catalogue de relais incompatible');
+  return SPECS.map(spec=>{const contacts=catalog.filter(s=>s.macro===spec.macro&&safe(s)).sort((a,b)=>a.id.localeCompare(b.id)),landmarks=catalog.filter(s=>s.macro===spec.macro&&s.kind==='landmark').sort((a,b)=>a.id.localeCompare(b.id)),contact=contacts[spec.contactIndex%Math.max(1,contacts.length)];return{...copy(spec),contactSite:contact?.id||null,witnessSites:contacts.map(s=>s.id),observationSites:landmarks.slice(0,spec.required).map(s=>s.id),available:!!contact&&(spec.kind!=='observation'||landmarks.length>=spec.required)};});
+ }
+ function fresh(){return{schema:1,quests:Object.fromEntries(IDS.map(id=>[id,{accepted:false,witnesses:[],observations:[],audit:false,outcome:null}])),journal:[]};}
+ function migrate(raw,bindings){
+  const out=fresh(),old=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{},proofs=(values,allowed,max)=>Array.isArray(values)?[...new Set(values.filter(x=>typeof x==='string'&&allowed.includes(x)))].slice(0,max):[];
+  for(const q of bindings){const s=old.quests?.[q.id];if(!s||typeof s!=='object'||Array.isArray(s))continue;const r=out.quests[q.id],choice=q.choices.find(c=>c.id===s.outcome);r.accepted=s.accepted===true||!!choice;if(r.accepted){r.witnesses=proofs(s.witnesses,q.witnessSites,q.required);r.observations=proofs(s.observations,q.observationSites,q.required);r.audit=q.kind==='audit'&&s.audit===true;r.outcome=choice?.id||null;}}
+  if(Array.isArray(old.journal))for(const row of old.journal.slice(-16)){const q=bindings.find(q=>q.id===row?.quest);if(q&&out.quests[q.id].outcome===row.choice&&!out.journal.some(r=>r.quest===q.id))out.journal.push({quest:q.id,choice:row.choice,playTime:typeof row.playTime==='number'&&Number.isFinite(row.playTime)?Math.max(0,Math.min(1e9,row.playTime)):0});}
+  return out;
+ }
+ function progress(q,s){if(!s?.accepted)return{ready:false,text:'Rencontrer le contact pour ouvrir le dossier.'};if(s.outcome)return{ready:false,text:q.choices.find(c=>c.id===s.outcome)?.text||'Décision conservée.'};if(q.kind==='delivery')return{ready:true,text:q.pending};if(q.kind==='audit'&&s.audit)return{ready:true,text:'La copie du registre a été analysée.'};const count=q.kind==='observation'?s.observations.length:s.witnesses.length;return{ready:count>=q.required,text:(q.kind==='observation'?'Repères examinés : ':'Témoignages distincts : ')+count+' / '+q.required+'.'};}
+ function enough(inventory,cost){return Object.entries(cost).every(([id,n])=>typeof inventory?.[id]==='number'&&Number.isFinite(inventory[id])&&inventory[id]>=n);}
+ function reduce(raw,bindings,action,context={}){
+  const q=bindings.find(q=>q.id===action?.quest),ledger=migrate(raw,bindings),none=reason=>({ok:false,reason});if(!q?.available)return none('Ce dossier ne possède pas de relais compatible.');if(context.blocked)return none(context.blocked);
+  const s=ledger.quests[q.id];if(s.outcome)return none('Une décision et une seule récompense sont déjà conservées.');
+  let cost={},reward=null;
+  if(action.type==='accept'){if(!context.atGiver)return none('Rencontrez le contact du dossier.');if(s.accepted)return none('Ce dossier est déjà ouvert.');s.accepted=true;}
+  else{if(!s.accepted)return none('Ouvrez ce dossier auprès de son contact.');
+   if(action.type==='witness'){if(!['testimony','audit'].includes(q.kind)||!context.contact||!q.witnessSites.includes(context.siteId))return none('Le témoignage demande un habitant présent dans un relais du secteur.');if(s.witnesses.includes(context.siteId))return none('Le témoignage de ce relais est déjà conservé.');if(s.witnesses.length>=q.required)return none('Les témoignages nécessaires sont déjà réunis.');s.witnesses.push(context.siteId);}
+   else if(action.type==='audit'){if(q.kind!=='audit'||!context.atGiver)return none('L’analyse doit être menée auprès du contact.');if(s.audit)return none('Cette copie a déjà été analysée.');if(!(context.intelligence>=5))return none('Intelligence 5 requise pour analyser la copie.');cost={circuitry:1};if(!enough(context.inventory,cost))return none('Un circuit est nécessaire ; aucun paiement partiel.');s.audit=true;}
+   else if(action.type==='observe'){if(q.kind!=='observation'||!context.physicalObservation||!q.observationSites.includes(context.siteId))return none('Examinez le vrai repère à portée et avec une ligne de vue libre.');if(s.observations.includes(context.siteId))return none('Ce repère est déjà consigné.');s.observations.push(context.siteId);}
+   else if(action.type==='resolve'){if(!context.atGiver)return none('Retournez voir le contact pour prendre la décision.');const choice=q.choices.find(c=>c.id===action.choice);if(!choice)return none('Décision inconnue.');if(!progress(q,s).ready)return none('Les preuves du dossier sont encore incomplètes.');cost=choice.cost;if(!enough(context.inventory,cost))return none('Il manque des fournitures ; aucun paiement partiel.');s.outcome=choice.id;reward={caps:choice.caps,xp:choice.xp,faction:q.faction,loreRep:choice.loreRep,rep:copy(choice.rep),text:choice.text};ledger.journal.push({quest:q.id,choice:choice.id,playTime:Math.max(0,Math.min(1e9,Number(context.playTime)||0))});ledger.journal=ledger.journal.slice(-16);}
+   else return none('Action de dossier inconnue.');
+  }
+  return{ok:true,ledger,cost:copy(cost),reward,quest:q.id};
+ }
+ function nextSite(q,s){if(!s?.accepted||s.outcome)return q.contactSite;if(q.kind==='observation')return q.observationSites.find(id=>!s.observations.includes(id))||q.contactSite;if(['testimony','audit'].includes(q.kind)&&!progress(q,s).ready)return q.witnessSites.find(id=>!s.witnesses.includes(id))||q.contactSite;return q.contactSite;}
+ function bulletin(channel,ledger,bindings,legacy={}){
+  const completed=id=>{const q=bindings.find(q=>q.id===id),s=ledger.quests[id];return s?.outcome?q?.choices.find(c=>c.id===s.outcome)?.text:null;};
+  if(channel==='centtreves'){const p=legacy.petanque||{};return`COCHONNET-3 tient le registre : ${Math.max(0,Number(p.played)||0)} mènes, ${Math.max(0,Number(p.wins)||0)} victoires. `+(legacy.done?.encore||legacy.done?.pointe?'Les abords homologués restent sous la trêve. Une victoire ne décide pas qui a le droit de manger.':'La trêve tient jusqu’à la fin de la mène. Les dossiers « On joue encore » et « Tu tires ou tu pointes ? » restent à conclure.');}
+  if(channel==='lazaret')return completed('lazaret')||'Lazaret à l’écoute. Une place à bord n’est pas une promesse d’accueil. Le contact des Insulaires attend de l’eau et une décision pour la réserve de soin ou le passage accompagné.';
+  const lines=['Canal 13 — les Ronds-Points Libres transmettent les faits, pas les listes de suspects.'];for(const id of['cendres','formulaire','signaux'])if(completed(id))lines.push(completed(id));if(lines.length===1)lines.push('Des habitants demandent des attestations, une copie CERFA-77 se contredit et les Vigies attendent les observations des crêtes.');return lines.join(' ');
+ }
+ return{catalog:()=>copy(SPECS),IDS:IDS.slice(),FACTIONS:FACTIONS.slice(),bind,fresh,migrate,progress,enough,reduce,nextSite,bulletin};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralLoreContinuity;
+
+if(typeof baseState==='function'&&typeof V042_CATALOG!=='undefined'){
+ const bindings=MistralLoreContinuity.bind(V042_CATALOG),copy=v=>JSON.parse(JSON.stringify(v));
+ const oldBase=baseState;baseState=function(){const s=oldBase();s.v053Lore=MistralLoreContinuity.fresh();return s;};
+ if(typeof V027_SUBS!=='undefined')V027_SUBS.data.continuity='RELAIS ET DOSSIERS';
+ const oldMigrate=migrateState;migrateState=function(input={}){const s=oldMigrate(input);s.v053Lore=MistralLoreContinuity.migrate(input.v053Lore,bindings);return s;};state=migrateState(state);if(world&&typeof v049Own==='function')v049Own(world);
+ function blocked(){
+  if(!gameStarted||!['PLAYING','PIP','DIALOGUE'].includes(mode)||!(state.player.hp>0))return'Reprenez une partie active avant cette opération.';
+  if(V046.lab)return'Le banc synthétique ne modifie pas les dossiers de votre campagne.';
+  if(!world?.v046||!world.geoMacro||state.v042?.activeInterior)return'Rejoignez les relais du territoire extérieur.';
+  if(V046.busy||V047.pending||zoneTransitioning)return'Attendez la fin du chargement du secteur.';
+  if(typeof onGround==='boolean'&&!onGround)return'Rejoignez un sol stable avant cet échange.';
+  if(typeof v050TravelNearbyThreat==='function'&&v050TravelNearbyThreat(world,state.player.pos))return'Éloignez-vous du combat avant cet échange.';
+  return null;
+ }
+ function contact(siteId){
+  const site=v042Site(siteId),p=state.player.pos;if(!site||!v042SiteDiscovered(site)||!world?.v046)return null;
+  const candidates=(world.npcs||[]).filter(n=>n.alive!==false&&(n.v042Site===siteId||V042_RUNTIME.npcData.get(n.id)?.siteId===siteId)&&Math.hypot(n.pos[0]-p[0],n.pos[2]-p[2])<=8&&Math.abs((n.pos[1]||0)+1.4-p[1])<2.8&&lineOfSight(p,[n.pos[0],(n.pos[1]||0)+1.4,n.pos[2]]));
+  return candidates.sort((a,b)=>dist2(a.pos,p)-dist2(b.pos,p)||String(a.id).localeCompare(String(b.id)))[0]||null;
+ }
+ function notify(message){if(typeof V027!=='undefined')V027.message=message;if(typeof toast==='function')toast(message,'bad');return false;}
+ function transact(plan,message){
+  if(!plan.ok)return notify(plan.reason);const owner=state,keys=['v053Lore','v046','inventory','player','rep','achievements','lastSave','version','equipment','ammo','flags'],snapshot=Object.fromEntries(keys.map(k=>[k,owner[k]===undefined?undefined:copy(owner[k])]));
+  try{for(const[id,n]of Object.entries(plan.cost)){if(!(owner.inventory[id]>=n))throw Error('Fournitures devenues insuffisantes.');owner.inventory[id]-=n;}owner.v053Lore=plan.ledger;
+   if(plan.reward){const r=plan.reward;owner.player.caps+=r.caps;owner.v046.lore.reputation??={};owner.v046.lore.reputation[r.faction]=Math.max(-100,Math.min(100,(owner.v046.lore.reputation[r.faction]||0)+r.loreRep));for(const[id,n]of Object.entries(r.rep))owner.rep[id]=Math.max(-100,Math.min(100,(owner.rep[id]||0)+n));gainXP(r.xp,bindings.find(q=>q.id===plan.quest).name);}
+   if(state!==owner||saveGame(false)===false)throw Error('La décision ne peut pas être sauvegardée.');
+  }catch(error){if(state===owner)for(const key of keys){if(snapshot[key]===undefined)delete owner[key];else owner[key]=snapshot[key];}return notify((error?.message||'Écriture refusée.')+' Opération annulée sans paiement ni récompense conservés.');}
+  if(typeof V027!=='undefined')V027.message=message;if(mode==='PIP')renderPipboy();return true;
+ }
+ function act(type,id,choice,siteId){
+  const q=bindings.find(q=>q.id===id);if(!q)return false;const atGiver=!!contact(q.contactSite),context={blocked:blocked(),atGiver,contact:!!contact(siteId),siteId,inventory:state.inventory,intelligence:Number(state.character.special.I||state.character.special.intelligence)||0,playTime:state.playTime};
+  const plan=MistralLoreContinuity.reduce(state.v053Lore,bindings,{type,quest:id,choice},context);return transact(plan,plan.reward?.text||(type==='accept'?'Dossier ouvert auprès du contact.':type==='audit'?'La copie CERFA-77 et le circuit utilisé sont consignés.':'Le témoignage de ce relais est conservé.'));
+ }
+ function track(id){const q=bindings.find(q=>q.id===id);if(!q||!state.v053Lore.quests[id].accepted||blocked())return false;const site=MistralLoreContinuity.nextSite(q,state.v053Lore.quests[id]);if(!v042Site(site))return false;const previous=state.v042.tracked,lastSave=state.lastSave,version=state.version;state.v042.tracked=site;try{if(saveGame(false)===false)throw Error();}catch{state.v042.tracked=previous;state.lastSave=lastSave;state.version=version;return notify('Le suivi ne peut pas être sauvegardé.');}updateQuestUI(true);if(mode==='PIP')renderPipboy();return true;}
+ function observed(id,worldOwner,stateOwner){
+  if(world!==worldOwner||state!==stateOwner)return false;const plan=MistralLoreContinuity.reduce(state.v053Lore,bindings,{type:'observe',quest:'signaux'},{siteId:id,physicalObservation:true,inventory:state.inventory,playTime:state.playTime});return plan.ok?transact(plan,'Le repère des crêtes a été observé sur place.'):false;
+ }
+ const oldRead=v042ReadSite;v042ReadSite=function(id){const it=world?.interactables?.find(i=>i.id==='v042-lore-'+id),p=state.player.pos,physical=!blocked()&&it&&dist2(p,it.pos)<=3.6&&Math.abs(p[1]-it.pos[1])<2.8&&lineOfSight(p,it.pos),owner=world,stateOwner=state,result=oldRead(...arguments);if(physical)observed(id,owner,stateOwner);return result;};
+ function info(){return{schema:1,quests:bindings.map(q=>{const s=state.v053Lore.quests[q.id];return{id:q.id,name:q.name,faction:q.faction,contactSite:q.contactSite,observationSites:q.observationSites.slice(),witnessSites:q.witnessSites.slice(),available:q.available,accepted:s.accepted,outcome:s.outcome,witnesses:s.witnesses.slice(),observations:s.observations.slice(),audit:s.audit,progress:MistralLoreContinuity.progress(q,s),contact:!!contact(q.contactSite),nextSite:MistralLoreContinuity.nextSite(q,s)};}),journal:copy(state.v053Lore.journal),stations:['canal13','centtreves','lazaret'],origin:'New extensions of the established repository canon; original v0.44 conversation/source not recovered'};}
+ function panel(c){const esc=v027Escape,deny=blocked();c.innerHTML='<div class="p27-long"><p class="p27-kicker">LES VOIX DES RELAIS</p><h2>Dossiers et engagements</h2><p>Les habitants peuvent attester une présence, contester un registre ou demander des fournitures. Chaque décision conserve ses preuves, ses coûts et ses conséquences.</p>'+(deny?'<p>'+esc(deny)+'</p>':'')+bindings.map(q=>{const s=state.v053Lore.quests[q.id],progress=MistralLoreContinuity.progress(q,s),giver=v042Site(q.contactSite),present=!!contact(q.contactSite),witness=q.witnessSites.find(id=>!!contact(id)),outcome=q.choices.find(x=>x.id===s.outcome);return'<section class="v046-notice"><h3>'+esc(q.name)+'</h3><p>'+esc(q.factionName)+' · '+esc(giver?.name||'Relais indisponible')+'</p><p>'+esc(q.description)+'</p><p>'+esc(outcome?.text||q.pending)+'</p><p>'+esc(progress.text)+'</p>'+(!q.available?'':!s.accepted?v027Button('Ouvrir le dossier au relais','l53:accept',q.id,!!deny||!present):s.outcome?'<p>Décision et récompense conservées. Ce dossier ne se renouvelle pas.</p>':v027Button('Suivre le prochain repère','l53:track',q.id,!!deny)+(['testimony','audit'].includes(q.kind)?v027Button('Recueillir le témoignage du relais présent','l53:witness',q.id+'|'+(witness||''),!!deny||!witness||s.witnesses.includes(witness)||s.witnesses.length>=q.required):'')+(q.kind==='audit'?v027Button('Analyser la copie · INT 5, 1 circuit','l53:audit',q.id,!!deny||!present||s.audit||Number(state.character.special.I||0)<5||!MistralLoreContinuity.enough(state.inventory,{circuitry:1})):'' )+q.choices.map(ch=>'<p>'+esc(ch.label)+' · '+ch.caps+' capsules, '+ch.xp+' XP.</p>'+v027Button('Conclure : '+ch.label,'l53:resolve',q.id+'|'+ch.id,!!deny||!present||!progress.ready||!MistralLoreContinuity.enough(state.inventory,ch.cost))).join(''))+'</section>';}).join('')+'<h3>Bulletins des relais</h3><p>Canal 13, la Ligue des Cent Trêves et le Lazaret rendent compte des engagements conservés. Les fréquences se consultent dans RADIO.</p>'+v027Button('Ouvrir les stations','jump','radio:stations')+'</div>';}
+ const oldData=v027Data;v027Data=function(c){if(V027.sub==='continuity')return panel(c);const result=oldData(...arguments);if(V027.sub==='france')c.insertAdjacentHTML('beforeend','<section class="v046-notice"><h2>Les voix des relais</h2><p>La Convention, CONCORDE, les Vigies et les Insulaires ont de nouveaux engagements à proposer sur le territoire.</p>'+v027Button('Consulter les dossiers des relais','jump','data:continuity')+'</section>');return result;};
+ const oldDispatch=v027Dispatch;v027Dispatch=function(action,arg=''){if(typeof action!=='string'||!action.startsWith('l53:'))return oldDispatch(...arguments);if(!v027CanAct())return false;const[a,b]=String(arg).split('|');if(action==='l53:track')return track(a);if(action==='l53:accept')return act('accept',a);if(action==='l53:audit')return act('audit',a);if(action==='l53:witness')return act('witness',a,null,b);if(action==='l53:resolve')return act('resolve',a,b);return false;};
+ function conversation(id){
+  const d=V042_RUNTIME.npcData.get(id),site=d&&v042Site(d.siteId);if(!d||!site||!contact(site.id))return false;const relevant=bindings.filter(q=>q.contactSite===site.id||q.witnessSites.includes(site.id)&&['testimony','audit'].includes(q.kind)&&state.v053Lore.quests[q.id].accepted),choices=[],lines=[];
+  for(const q of relevant){const s=state.v053Lore.quests[q.id];if(s.outcome){lines.push(q.factionName+' : '+q.choices.find(c=>c.id===s.outcome).text);continue;}if(!s.accepted&&q.contactSite===site.id)choices.push({text:'Ouvrir « '+q.name+' ».',onChoose:()=>{act('accept',q.id);conversation(id);}});if(s.accepted){lines.push(q.name+' — '+MistralLoreContinuity.progress(q,s).text);if(['testimony','audit'].includes(q.kind)&&q.witnessSites.includes(site.id)&&!s.witnesses.includes(site.id)&&s.witnesses.length<q.required)choices.push({text:'Consigner le témoignage pour « '+q.name+' ».',onChoose:()=>{act('witness',q.id,null,site.id);conversation(id);}});if(q.contactSite===site.id){if(q.kind==='audit'&&!s.audit)choices.push({text:'Analyser la copie CERFA-77 · INT 5 et 1 circuit.',condition:()=>Number(state.character.special.I||0)>=5&&MistralLoreContinuity.enough(state.inventory,{circuitry:1}),onChoose:()=>{act('audit',q.id);conversation(id);}});if(MistralLoreContinuity.progress(q,s).ready)for(const ch of q.choices)choices.push({text:q.name+' · '+ch.label,condition:()=>MistralLoreContinuity.enough(state.inventory,ch.cost),onChoose:()=>{act('resolve',q.id,ch.id);conversation(id);}});}}}
+  choices.push({text:'Parler du secteur et commercer.',onChoose:()=>oldTalk(id)},{text:'Consulter tous les dossiers des relais.',onChoose:()=>{closeDialogue();v027Open('data','continuity');}},{text:'Prendre congé.',onChoose:closeDialogue});openDialogue(speaker(d.name,d.role.toUpperCase(),'FR'),lines.join('\n\n')||'Les relais recueillent des engagements qui doivent pouvoir être tenus sur place. Les noms des factions ne remplacent pas une preuve ni les fournitures promises.',choices);return true;
+ }
+ const oldTalk=v042TalkNPC;v042TalkNPC=function(id){const d=V042_RUNTIME.npcData.get(id),site=d&&v042Site(d.siteId),relevant=site&&bindings.some(q=>q.contactSite===site.id||q.witnessSites.includes(site.id)&&['testimony','audit'].includes(q.kind)&&state.v053Lore.quests[q.id].accepted);return relevant&&conversation(id)||oldTalk(...arguments);};
+ const channels={canal13:{name:'Canal 13 — Ronds-Points Libres',freq:'107.3',hint:'Témoignages et avertissements'},centtreves:{name:'Ligue des Cent Trêves',freq:'101.3',hint:'COCHONNET et engagements tenus'},lazaret:{name:'Lazaret — l’autre rive',freq:'90.8',hint:'Accueil et traversées'}};
+ for(const[id,channel]of Object.entries(channels))V027_STATIONS[id]={...channel,available:()=>id==='centtreves'?!!(state.v046.lore.petanque?.played||state.v046.lore.accepted?.encore||state.v046.lore.accepted?.pointe):id==='lazaret'?state.v053Lore.quests.lazaret.accepted||!!(v042Site(bindings.find(q=>q.id==='lazaret').contactSite)&&v042SiteDiscovered(v042Site(bindings.find(q=>q.id==='lazaret').contactSite))):bindings.some(q=>q.id!=='lazaret'&&state.v053Lore.quests[q.id].accepted),text:()=>MistralLoreContinuity.bulletin(id,state.v053Lore,bindings,state.v046.lore)};
+ const oldRows=v027QuestRows;v027QuestRows=function(){return oldRows(...arguments).concat(bindings.filter(q=>state.v053Lore.quests[q.id].accepted).map(q=>{const s=state.v053Lore.quests[q.id],target=MistralLoreContinuity.nextSite(q,s);return{id:'l53:'+q.id,name:q.name,stage:s.outcome?'done':'active',active:!s.outcome&&state.v042.tracked===target,text:MistralLoreContinuity.progress(q,s).text,zone:null,steps:[['Engagement pris au relais',true],[q.pending,!!s.outcome||MistralLoreContinuity.progress(q,s).ready],['Décision rapportée au contact',!!s.outcome]],source:q.factionName,badge:s.outcome?'✓':'',hint:q.factionName};}));};
+ const oldTrack=v027Track;v027Track=function(id){return typeof id==='string'&&id.startsWith('l53:')?track(id.slice(4)):oldTrack(...arguments);};
+ globalThis.v053LoreAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v053LoreInfo:info,v053LoreAccept:id=>act('accept',id),v053LoreWitness:(id,siteId)=>act('witness',id,null,siteId),v053LoreAudit:id=>act('audit',id),v053LoreResolve:(id,choice)=>act('resolve',id,choice),v053LoreTrack:track,v053LoreOpen:()=>v027Open('data','continuity')});};
+}
+
+/* Keep the existing six-plate v0.30 simulation and its finite core ledger.
+   This extension closes persistence gaps and brings maintenance to technicians
+   already living in discovered geographic relays. It grants no equipment. */
+const MistralPowerConservation=(()=>{
+ const finite=n=>typeof n==='number'&&Number.isFinite(n);
+ const words=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ const technician=role=>/mecanicien|technicien|reparat/.test(words(role));
+ const serviceSite=s=>!!s&&s.safe===true&&['settlement','outpost','caravan'].includes(s.kind);
+ function contact(npc,record,site,position,eyeHeight,visible){
+  if(!npc||npc.alive!==true||npc.hidden||!record||!site||typeof visible!=='function'||record.id!==npc.id||npc.v042Site!==site.id||record.siteId!==site.id||!serviceSite(site)||!technician(record.role))return false;
+  if(!Array.isArray(position)||!Array.isArray(npc.pos)||position.length!==3||npc.pos.length!==3||![...position,...npc.pos,eyeHeight].every(finite))return false;
+  if(Math.hypot(position[0]-npc.pos[0],position[2]-npc.pos[2])>4||Math.abs(position[1]-npc.pos[1]-eyeHeight)>1.25)return false;
+  return visible(position,[npc.pos[0],npc.pos[1]+1.2,npc.pos[2]])===true;
+ }
+ return{technician,serviceSite,contact};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralPowerConservation;
+
+if(typeof v030CanAct==='function'&&typeof window!=='undefined'){
+ const runtime={depth:0,quote:null,lastError:null,commits:0,rollbacks:0};
+ const clone=v=>JSON.parse(JSON.stringify(v));
+ function available(modes=['PLAYING','PIP']){
+  return !!(gameStarted&&world&&state?.player?.hp>0&&modes.includes(mode)&&!zoneTransitioning
+   &&!V046.lab&&!V046.busy&&!V047.pending);
+ }
+ function contacts(){
+  if(!available()||!world.v046||!world.geoMacro||v020Danger())return[];
+  const result=[];
+  for(const npc of world.npcs||[]){
+   const record=V042_RUNTIME.npcData.get(npc.id),site=record&&v042Site(record.siteId);
+   if(!site||!v042SiteDiscovered(site)||!MistralPowerConservation.contact(npc,record,site,state.player.pos,playerEyeHeight(),lineOfSight))continue;
+   result.push({npc,record,site,distance:dist2(state.player.pos,npc.pos)});
+  }
+  return result.sort((a,b)=>a.distance-b.distance||a.npc.id.localeCompare(b.npc.id));
+ }
+ const originalCanAct=v030CanAct;
+ v030CanAct=function(){return available()&&originalCanAct();};
+ const originalService=v030NearService;
+ v030NearService=function(){return available()&&(originalService()||contacts().length>0);};
+ function serviceToken(){
+  if(!available()||v020Danger())return null;
+  if(originalService())return 'bench:'+world.id+':'+(world.v020Station?.id||'v030:station');
+  const c=contacts()[0];return c?'technician:'+c.npc.id:null;
+ }
+ function refreshAfterRollback(){
+  V030.quote=null;V030.restoreQuote=null;V030.endingQuote=null;runtime.quote=null;
+  if(typeof v030ApplyWorld==='function')v030ApplyWorld();
+  if(mode==='DIALOGUE'&&typeof closeDialogue==='function')closeDialogue();
+  updateHUD();
+  if(mode==='PIP')renderPipboy();
+  if(mode==='TRADE'&&typeof renderTrade==='function')renderTrade();
+ }
+ function sceneSnapshot(w){
+  const arrays={};for(const key of['staticDraws','colliders','interactables','npcs','enemies','loot','hazards','ambient'])if(Array.isArray(w?.[key]))arrays[key]=w[key].slice();
+  const flags=[];for(const key of['staticDraws','colliders'])for(const item of arrays[key]||[])if(String(item.id||'').startsWith('v030:'))flags.push([item,Object.hasOwn(item,'hidden'),item.hidden,Object.hasOwn(item,'disabled'),item.disabled]);
+  return{world:w,arrays,flags,nav:w?.v020NavEpoch,hadConsequence:Object.hasOwn(w||{},'v030Consequence'),consequence:w?.v030Consequence};
+ }
+ function restoreScene(snapshot){
+  if(world!==snapshot.world)return;
+  for(const[key,items]of Object.entries(snapshot.arrays))world[key]=items;
+  for(const[item,hadHidden,hidden,hadDisabled,disabled]of snapshot.flags){if(hadHidden)item.hidden=hidden;else delete item.hidden;if(hadDisabled)item.disabled=disabled;else delete item.disabled;}
+  world.v020NavEpoch=snapshot.nav;
+  if(snapshot.hadConsequence)world.v030Consequence=snapshot.consequence;else delete world.v030Consequence;
+ }
+ function atomic(action,args,modes=['PLAYING','PIP']){
+  if(!available(modes))return false;
+  if(runtime.depth)return action(...args);
+  const owner=state,before=clone(owner),scene=sceneSnapshot(world),save=saveGame;
+  let requested=false,saveArgs=[false],result;
+  runtime.depth++;
+  // Original actions can save twice (trade then six-plate metadata). Defer
+  // both calls so only the complete resulting ledger reaches storage.
+  saveGame=function(...a){requested=true;saveArgs=a;return true;};
+  try{
+   result=action(...args);
+   if(result?.then)throw Error('Une opération d’armure doit se terminer sans attente.');
+   if(state!==owner||world!==scene.world)throw Error('La scène de l’opération a changé.');
+   saveGame=save;
+   if(result===false){for(const key of Object.keys(owner))delete owner[key];Object.assign(owner,before);return false;}
+   if(requested&&save(...saveArgs)===false)throw Error('La sauvegarde locale est indisponible.');
+   if(requested)runtime.commits++;
+   runtime.lastError=null;
+   return result;
+  }catch(error){
+   if(state===owner){for(const key of Object.keys(owner))delete owner[key];Object.assign(owner,before);restoreScene(scene);}
+   runtime.rollbacks++;runtime.lastError=String(error?.message||error);refreshAfterRollback();
+   return v027Notify('Opération annulée : '+runtime.lastError+' Charge, pièces et matériaux conservés.');
+  }finally{saveGame=save;runtime.depth--;}
+ }
+ const switching=v030Switch;v030Switch=function(...a){return atomic(switching,a);};
+ const inserting=v030Insert;v030Insert=function(...a){return atomic(inserting,a);};
+ const ejecting=v030Eject;v030Eject=function(...a){return atomic(ejecting,a);};
+ const equipping=equipArmor;
+ equipArmor=function(id){return v030Powered(id)||v030Powered()?atomic(equipping,[id]):equipping(id);};
+ const quoting=v030Quote;
+ v030Quote=function(kind,value,confirm=false){
+  if(!available())return false;
+  if(!confirm){const result=quoting(kind,value,false);runtime.quote=result&&V030.quote?{owner:state,world,token:serviceToken()}:null;return result;}
+  const quote=runtime.quote;runtime.quote=null;
+  if(!quote||quote.owner!==state||quote.world!==world||!quote.token||quote.token!==serviceToken()){
+   V030.quote=null;return v027Notify('Le point d’entretien a changé. Demandez un nouveau devis sur place.');
+  }
+  return atomic(quoting,[kind,value,true]);
+ };
+ // The same atomic boundary also covers the original finite acquisition and
+ // its workshop gate; failed writes cannot leave a vanished core or open gate.
+ const story=v030StoryAction;v030StoryAction=function(...a){return atomic(story,a,['PLAYING','PIP','DIALOGUE']);};
+ const trial=v030Trial;v030Trial=function(...a){return atomic(trial,a,['PLAYING','PIP','DIALOGUE']);};
+ const resolving=v030Resolve;v030Resolve=function(...a){return atomic(resolving,a,['PLAYING','PIP','DIALOGUE']);};
+ const buying=buyTradeItem;
+ buyTradeItem=function(id){return v030Powered(id)||id==='fusionCore'?atomic(buying,[id],['TRADE']):buying(id);};
+ const selling=sellTradeItem;
+ sellTradeItem=function(id){return v030Powered(id)||id==='fusionCore'?atomic(selling,[id],['TRADE']):selling(id);};
+ function relays(){
+  if(!world||!state?.v042)return[];
+  return V042_CATALOG.filter(s=>MistralPowerConservation.serviceSite(s)&&s.npcRoles?.some(MistralPowerConservation.technician)&&v042SiteDiscovered(s)).map(site=>{
+   const p=world.geoMacro?v015GeoProject(world.id,site.lat,site.lon):null;
+   return{site,distance:p?dist2(p,state.player.pos):null};
+  }).sort((a,b)=>(a.distance??Infinity)-(b.distance??Infinity)||a.site.name.localeCompare(b.site.name,'fr'));
+ }
+ function acquisition(){
+  return Object.entries(MERCHANTS).map(([id,def])=>({id,name:def.name,stock:state.economy?.merchants?.[id]?.stock||def.stock})).map(row=>({...row,cores:Math.max(0,Number(row.stock.fusionCore)||0),suits:Object.entries(row.stock).filter(([id,count])=>count>0&&v030Powered(id)).map(([id,count])=>({id,count,name:ARMORS[id].name}))})).filter(row=>row.cores||row.suits.length).slice(0,8);
+ }
+ function sceneClear(w,x,z,radius=.38){
+  const bounds=w.bounds;if(!bounds||x-radius<bounds[0]||x+radius>bounds[1]||z-radius<bounds[2]||z+radius>bounds[3])return false;
+  return !(w.colliders||[]).some(c=>!c.disabled&&1.83>=(c.minY??0)&&0<=(c.maxY??Infinity)&&v017ColliderHit(c,x,z,radius));
+ }
+ function sceneSight(w,a,b){
+  const delta=b.map((n,i)=>n-a[i]),length=Math.hypot(...delta),distance=Math.max(0,length-.25),direction=delta.map(n=>n/(length||1));
+  return !(w.colliders||[]).some(c=>!c.disabled&&rayAABB(a,direction,c,distance)<distance);
+ }
+ function drydockAccess(w){
+  if(w?.id!=='drydock'||w.v046||w.geoMacro||w.v053DrydockService)return w;
+  const npc=w.npcs?.find(n=>n.id==='drydock-merchant'),it=w.interactables?.find(i=>i.id==='drydock-trade');
+  if(!npc||!it||npc.alive!==true){w.v053DrydockService={status:'merchant-unavailable'};return w;}
+  const original={merchant:npc.pos.slice(),interaction:it.pos.slice()};
+  if(sceneClear(w,npc.pos[0],npc.pos[2])&&sceneClear(w,it.pos[0],it.pos[2]))return w;
+  // The historical fictional shop is a closed solid. Put its existing person
+  // and a small physical counter on the public south quay, never through it.
+  for(const z of[80,84,88,92])for(const x of[-82,-86,-78,-90,-74,-94,-70,-66]){
+   const merchant=[x,0,z-1.2],approach=[x,1.65,z+1.95],interaction=[x,1.2,z+.35];
+   if(!sceneClear(w,x,z,1.13)||!sceneClear(w,merchant[0],merchant[2])||!sceneClear(w,approach[0],approach[2]))continue;
+   if((w.npcs||[]).some(n=>n!==npc&&n.alive!==false&&(dist2(n.pos,merchant)<1.2||dist2(n.pos,approach)<1.2)))continue;
+   if(!sceneSight(w,approach,interaction)||!sceneSight(w,approach,[merchant[0],1.2,merchant[2]]))continue;
+   let pathClear=true;for(let step=0;step<=10;step++)if(!sceneClear(w,x,z+1.95+step*.15)){pathClear=false;break;}if(!pathClear)continue;
+   npc.pos=merchant.slice();npc.home=merchant.slice();npc.yaw=Math.PI;
+   it.pos=interaction.slice();
+   addBox(w,[x,.44,z],[1.8,.88,.7],[.29,.33,.30],0,{id:'v053:drydock-counter'});
+   addBox(w,[x,.90,z],[1.9,.08,.8],[.55,.48,.32],0,{id:'v053:drydock-counter-top'});
+   addBox(w,[x-.50,1.01,z-.10],[.37,.14,.29],[.23,.26,.23],0,{id:'v053:drydock-counter-terminal'});
+   addCollider(w,x,z,1.9,.8,{id:'v053:drydock-counter',minY:0,maxY:.94});
+   addFloorZone(w,x,z,1.9,.8,.95,{id:'v053:drydock-counter',priority:3});
+   w.v053DrydockService={status:'placed',original,merchant:merchant.slice(),approach,interaction:interaction.slice(),counter:[x,0,z],actorRadius:.38,provenance:'Authored access correction in the existing fictional drydock scene'};
+   return w;
+  }
+  w.v053DrydockService={status:'no-clear-frontage',original};return w;
+ }
+ if(typeof buildWorld==='function'){
+  const building=buildWorld;buildWorld=function(...args){return drydockAccess(building(...args));};
+ }
+ const powerHTML=v030PowerHTML;
+ v030PowerHTML=function(c){
+  const result=powerHTML(c),contact=contacts()[0],sites=relays(),stocks=acquisition(),blocked=!available();
+  if(contact&&!originalService())c.innerHTML=c.innerHTML.replace('Établi local accessible · assistance arrêtée.',v027Escape(contact.record.name)+' · mécanicienne du relais accessible, assistance arrêtée.');
+  c.innerHTML+='<section class="p30-geographic-service"><h3>ENTRETIEN SUR LE TERRITOIRE</h3><p>'+ (contact?v027Escape(contact.record.name)+' · '+v027Escape(contact.site.name)+' : entretien à moins de 4 m, avec vos matériaux.':'Approchez une mécanicienne d’un relais sûr et découvert à moins de 4 m, ou utilisez un établi. La ligne de vue et le danger sont vérifiés au moment des travaux.')+'</p>'+sites.slice(0,8).map(({site,distance})=>'<p>'+v027Escape(site.name)+(distance===null?'':' · '+Math.round(distance)+' m')+' '+v027Button('Suivre le relais','p53:trackTech',site.id,blocked)+'</p>').join('')+(sites.length?'':'<p>Explorez les relais habités pour trouver leurs mécaniciennes.</p>')+'<h3>CHÂSSIS ET CŒURS</h3><p>Alba Rousset remet le M-45 en état dans la baie des amarres : le dossier « Une force empruntée » permet d’obtenir le châssis et son cœur d’essai entamé.</p>'+v027Button('Suivre le dossier d’Alba','p53:trackRig','',blocked||!!state.v030.quest.ending)+stocks.map(row=>'<p>'+v027Escape(row.name)+' : '+row.cores+' lot(s) de cœur neuf'+(row.suits.length?' · '+row.suits.map(s=>v027Escape(s.name)+' × '+s.count).join(', '):'')+'. Achats au comptoir.</p>').join('')+'</section>';
+  return result;
+ };
+ const dispatch=v027Dispatch;
+ v027Dispatch=function(action,arg=''){
+  if(!action.startsWith('p53:'))return dispatch(action,arg);
+  if(!v027CanAct()||!available())return false;
+  if(action==='p53:trackTech')return relays().some(r=>r.site.id===arg)?atomic(v042TrackSite,[arg]):false;
+  if(action==='p53:trackRig')return atomic(v027Track,['rig030']);
+  return false;
+ };
+ globalThis.v053PowerArmorAfterInit=function(){
+  Object.assign(window.__MISTRAL_DEBUG,{v053PowerArmorInfo:()=>({existingSchema:state.v030.schema,online:v030Online(),charge:state.v030.core,spares:state.v030.spares.slice(),commits:runtime.commits,rollbacks:runtime.rollbacks,lastError:runtime.lastError,service:serviceToken(),technicians:contacts().map(c=>({id:c.npc.id,name:c.record.name,site:c.site.id,distance:c.distance})),discoveredRelays:relays().map(r=>({id:r.site.id,name:r.site.name,distance:r.distance})),acquisition:acquisition().map(({stock,...row})=>clone(row)),drydockService:world?.v053DrydockService?clone(world.v053DrydockService):null})});
+ };
+}
+
+/* Collectible objects and printed skill magazines are authored game content.
+   Their placements never claim an IGN survey or a recovered studio asset. */
+const MistralIconicEcosystem=(()=>{
+ const STATS=['S','P','E','C','I','A','L'],SKILLS=['repair','medicine','science','guns'];
+ const copy=value=>JSON.parse(JSON.stringify(value)),finite=value=>typeof value==='number'&&Number.isFinite(value),clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ const DRINKS={nukaCola:{name:'Nuka-Cola',hp:12,ap:20,rad:2,value:20,mass:.4,color:[.49,.08,.05],description:'Boisson récupérée : +12 PV, +20 PA, +2 radiations et une capsule conservée.'},nukaQuantum:{name:'Nuka-Cola Quantum',hp:20,ap:60,rad:5,value:45,mass:.4,color:[.08,.43,.74],description:'Boisson luminescente : +20 PV, +60 PA, +5 radiations et une capsule conservée.'}};
+ const BOOKS={magazineRepair:{name:'Le Mécano du désert',skill:'repair',value:18,mass:.15,color:[.62,.35,.13]},magazineMedicine:{name:'Médecine de terrain',skill:'medicine',value:18,mass:.15,color:[.33,.57,.39]},magazineScience:{name:'Science ! · édition Mistral',skill:'science',value:18,mass:.15,color:[.18,.43,.61]},magazineGuns:{name:'Armes et munitions · fiche de tir',skill:'guns',value:18,mass:.15,color:[.62,.22,.16]}};
+ const OBJECTS=[
+  ...STATS.map((stat,i)=>({id:'figurine-'+stat.toLowerCase(),kind:'figurine',stat,name:'Figurine S.P.E.C.I.A.L. · '+({S:'Force',P:'Perception',E:'Endurance',C:'Charisme',I:'Intelligence',A:'Agilité',L:'Chance'})[stat],scene:['aubagne','marseille','fontdemai','saintcharles','ceramiques','panier','ciotatport'][i],macro:['geo_huveaune','geo_marseille','geo_garlaban','geo_marseille','geo_huveaune','geo_marseille','geo_laciotat'][i],siteIndex:[0,0,0,1,1,2,0][i]})),
+  ...Object.keys(BOOKS).map((item,i)=>({id:'edition-'+BOOKS[item].skill,kind:'magazine',item,name:BOOKS[item].name,scene:['relay_vent','relay_cold','traverse_archives','mooring_station'][i],macro:['geo_huveaune','geo_marseille','geo_marseille','geo_laciotat'][i],siteIndex:0})),
+  {id:'bouteille-classique',kind:'bottle',item:'nukaCola',name:'Nuka-Cola',scene:'aubagne',macro:'geo_huveaune',siteIndex:0},
+  {id:'bouteille-quantum',kind:'bottle',item:'nukaQuantum',name:'Nuka-Cola Quantum',scene:'mooring_station',macro:'geo_laciotat',siteIndex:0}
+ ];
+ const BY_ID=Object.assign(Object.create(null),Object.fromEntries(OBJECTS.map(o=>[o.id,o]))),AID=Object.assign(Object.create(null),DRINKS,BOOKS),DURATION=120,SKILL_BONUS=10;
+ function hash(value){let h=2166136261;for(const char of String(value))h=Math.imul(h^char.charCodeAt(0),16777619);return h>>>0;}
+ function fresh(){return{schema:1,found:{},read:{},effects:{},drinks:0};}
+ function migrate(raw){
+  const out=fresh(),p=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};
+  for(const id of Object.keys(BY_ID))if(Object.hasOwn(p.found||{},id)&&p.found[id]===true)out.found[id]=true;
+  for(const id of Object.keys(BOOKS))if(Object.hasOwn(p.read||{},id)&&Number.isInteger(p.read[id])&&p.read[id]>=0)out.read[id]=Math.min(100000,p.read[id]);
+  for(const key of SKILLS)if(Object.hasOwn(p.effects||{},key)&&finite(p.effects[key])&&p.effects[key]>0)out.effects[key]=clamp(p.effects[key],0,DURATION);
+  if(Number.isInteger(p.drinks)&&p.drinks>=0)out.drinks=Math.min(100000,p.drinks);return out;
+ }
+ function targets(catalog=[]){return OBJECTS.map(object=>{const sites=catalog.filter(site=>site?.safe===true&&site.macro===object.macro&&['settlement','outpost','caravan'].includes(site.kind)).sort((a,b)=>String(a.id).localeCompare(String(b.id)));return{...object,siteId:sites.length?sites[object.siteIndex%sites.length].id:null};});}
+ function award(snapshot,id){
+  const object=BY_ID[id];if(!object)throw Error('Objet de collection inconnu.');const out=copy(snapshot),ledger=migrate(out.v053Iconic);
+  if(ledger.found[id])throw Error('Cet exemplaire a déjà été récupéré.');out.inventory??={};out.character??={special:{}};out.character.special??={};let gain=0;
+  if(object.stat){const before=out.character.special[object.stat];if(!Number.isInteger(before)||before<1||before>10)throw Error('Fiche S.P.E.C.I.A.L. invalide.');const after=Math.min(10,before+1);gain=after-before;out.character.special[object.stat]=after;}
+  else{const count=out.inventory[object.item]??0;if(!Number.isInteger(count)||count<0||count>=1000000)throw Error('Inventaire hors limite.');out.inventory[object.item]=count+1;}
+  ledger.found[id]=true;out.v053Iconic=ledger;return{snapshot:out,statGain:gain,object:copy(object)};
+ }
+ function consume(snapshot,id){
+  const definition=AID[id];if(!definition)throw Error('Objet sans usage ici.');const out=copy(snapshot),quantity=out.inventory?.[id],p=out.player;
+  if(!Number.isInteger(quantity)||quantity<1||!p||!['hp','maxHp','ap','maxAp','rad','caps'].every(k=>finite(p[k]))||p.hp<=0||p.maxHp<=0||p.maxAp<0||p.caps<0)throw Error('Objet ou fiche indisponible.');
+  const ledger=migrate(out.v053Iconic);
+  if(Object.hasOwn(BOOKS,id)){const skill=definition.skill;if(ledger.effects[skill]>0)throw Error('Cette aptitude bénéficie déjà de sa lecture. L’exemplaire est conservé.');ledger.effects[skill]=DURATION;ledger.read[id]=Math.min(100000,(ledger.read[id]||0)+1);}
+  else{p.hp=Math.min(p.maxHp,p.hp+definition.hp);p.ap=Math.min(p.maxAp,p.ap+definition.ap);p.rad=clamp(p.rad+definition.rad,0,100);p.caps=Math.min(1000000000,p.caps+1);ledger.drinks=Math.min(100000,ledger.drinks+1);}
+  out.inventory[id]=quantity-1;out.v053Iconic=ledger;return out;
+ }
+ function tick(raw,dt,active=true){const out=migrate(raw);if(!active||!finite(dt)||dt<=0)return out;for(const skill of Object.keys(out.effects)){const left=Math.max(0,out.effects[skill]-dt);if(left>0)out.effects[skill]=left;else delete out.effects[skill];}return out;}
+ function skill(base,key,raw){return clamp(base+(SKILLS.includes(key)&&migrate(raw).effects[key]>0?SKILL_BONUS:0),0,100);}
+ function loot(id,items,options={},existing=false){
+  const out=copy(items||{});if(existing||!String(id).startsWith('city:')||options.owned===true||options.kind&&options.kind!=='chest')return out;
+  const seed=hash('printed-and-bottled:'+id);if(seed%5===0)out.nukaCola=Math.min(1000000,(out.nukaCola||0)+1);if(seed%19===0)out.nukaQuantum=Math.min(1000000,(out.nukaQuantum||0)+1);if(seed%31===0){const item=Object.keys(BOOKS)[(seed>>>8)%SKILLS.length];out[item]=Math.min(1000000,(out[item]||0)+1);}return out;
+ }
+ function candidates(anchor,id){if(!Array.isArray(anchor)||anchor.length!==3||!anchor.every(finite))return[];const out=[],offset=hash(id)%16*Math.PI/8;for(const radius of[2.2,3.6,5.2,7.2])for(let n=0;n<12;n++){const a=offset+n*Math.PI/6;out.push([anchor[0]+Math.cos(a)*radius,anchor[2]+Math.sin(a)*radius]);}return out;}
+ function model(object){
+  if(!object||!BY_ID[object.id])throw Error('Modèle de collection inconnu.');object=BY_ID[object.id];
+  const parts=[],box=(pos,size,color,emissive=0)=>parts.push({mesh:'cube',pos,size,color,emissive}),brown=[.30,.23,.15],blue=[.12,.28,.52],gold=[.82,.67,.25];
+  box([0,.34,0],[.68,.68,.60],brown);box([0,.695,0],[.72,.04,.64],[.43,.36,.23]);
+  if(object.kind==='figurine'){box([0,.75,0],[.28,.07,.28],blue);box([-.055,.86,0],[.075,.19,.09],blue);box([.055,.86,0],[.075,.19,.09],blue);box([0,1.005,0],[.19,.20,.12],blue);box([0,1.17,0],[.22,.22,.20],gold);box([-.14,1.04,0],[.09,.20,.09],blue);box([.14,1.07,0],[.09,.18,.09],gold);box([0,1.29,-.01],[.23,.04,.20],[.70,.57,.18]);}
+  else if(object.kind==='magazine'){const color=BOOKS[object.item].color;box([0,.74,0],[.40,.045,.29],color);box([0,.767,0],[.28,.007,.18],[.83,.78,.58]);box([0,.773,.06],[.25,.008,.035],color);}
+  else{const d=DRINKS[object.item],glow=object.item==='nukaQuantum'?.28:0;box([0,.89,0],[.16,.34,.16],d.color,glow);box([0,1.10,0],[.075,.10,.075],d.color,glow);box([0,1.16,0],[.09,.035,.09],[.72,.70,.61]);box([0,.88,-.083],[.145,.12,.008],object.item==='nukaQuantum'?[.32,.68,.81]:[.78,.13,.09],glow);}
+  return parts;
+ }
+ return{STATS,SKILLS,DRINKS,BOOKS,AID,OBJECTS,BY_ID,DURATION,SKILL_BONUS,hash,fresh,migrate,targets,award,consume,tick,skill,loot,candidates,model};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralIconicEcosystem;
+
+if(typeof window!=='undefined'&&typeof baseState==='function'){
+ const M=MistralIconicEcosystem,clone=value=>JSON.parse(JSON.stringify(value)),runtime={owner:null,previousWorld:null,entries:[],draws:[],stands:[],boundWorld:null,clock:0,sites:[],tradeDepth:0,targets:M.targets(typeof V042_CATALOG==='undefined'?[]:V042_CATALOG),error:null};
+ const itemNames=Object.assign(Object.create(null),Object.fromEntries(Object.entries(M.AID).map(([id,d])=>[id,d.name])));
+ V027_SUBS.data.iconic='COLLECTION';
+ for(const[id,d]of Object.entries(M.AID)){ITEM_VALUES[id]=d.value;V027_AID_DESC[id]=d.description||'Lecture : +10 '+(typeof V023_SKILLS!=='undefined'?V023_SKILLS[d.skill]?.name:d.skill)+' pendant 120 secondes de jeu actif. Ne se cumule pas avec la même aptitude.';}
+ const freshBase=baseState;baseState=function(...args){const s=freshBase(...args);s.v053Iconic=M.fresh();return s;};
+ const migrateBase=migrateState;migrateState=function(input={}){const s=migrateBase(input);s.v053Iconic=M.migrate(input.v053Iconic);return s;};state=migrateState(state);if(world&&typeof v049Own==='function')v049Own(world);
+ const labelBase=itemLabel;itemLabel=function(id){return itemNames[id]||labelBase(id);};
+ const categoryBase=v026Category;v026Category=function(id){return M.AID[id]?'aid':categoryBase(id);};
+ const massBase=v026Mass;v026Mass=function(id){return M.AID[id]?.mass??massBase(id);};
+ const descBase=v026Description;v026Description=function(id){return M.AID[id]?V027_AID_DESC[id]:descBase(id);};
+ const skillBase=v023Skill;v023Skill=function(key){return M.skill(skillBase(key),key,state.v053Iconic);};
+ const newContainerBase=v026NewContainer;v026NewContainer=function(w,id,title,pos,items,options={}){const exists=!!state.v026?.containers?.[v026Key(w.id,id)];return newContainerBase(w,id,title,pos,M.loot(id,items,options,exists),options);};
+ function available(){return gameStarted&&world&&state.player.hp>0&&!zoneTransitioning&&!V046.lab&&!V046.busy&&!V047.pending&&['PLAYING','PIP','SALVAGE','FIELD'].includes(mode);}
+ function snapshot(){return Object.fromEntries(['inventory','player','character','v053Iconic','lastSave','ammo','equipment','version'].map(k=>[k,state[k]===undefined?undefined:clone(state[k])]));}
+ function commit(change){const owner=state,before=snapshot();try{change();computeDerived();if(state!==owner||saveGame(false)===false)throw Error('Écriture de la sauvegarde refusée.');}catch(error){if(state===owner)for(const k of Object.keys(before)){if(before[k]===undefined)delete owner[k];else owner[k]=before[k];}runtime.error=String(error.message||error);toast('Opération annulée : '+runtime.error,'bad');return false;}runtime.error=null;runtime.owner=null;return true;}
+ function use(id){if(!available()||!M.AID[id])return false;let next;try{next=M.consume(snapshot(),id);}catch(error){toast(error.message,'bad');return false;}if(!commit(()=>{for(const k of['inventory','player','character','v053Iconic'])if(next[k]!==undefined)state[k]=next[k];}))return false;toast(M.BOOKS[id]?'Lecture retenue · '+M.BOOKS[id].name+' · 120 s actives':M.DRINKS[id].name+' · une capsule conservée','good');if(mode==='SALVAGE')v026Render();else if(mode==='PIP')renderPipboy();updateHUD();return true;}
+ const useBase=useInventoryItem;useInventoryItem=function(id){return M.AID[id]?use(id):useBase(id);};
+ const salvageUseBase=v026Use;v026Use=function(id){if(!M.AID[id])return salvageUseBase(id);return V026.open&&mode==='SALVAGE'?use(id):false;};
+ const pipUseBase=v027ItemAction;v027ItemAction=function(kind,id){return kind==='use'&&M.AID[id]?(v027CanAct()?use(id):false):pipUseBase(kind,id);};
+ const priceBase=tradePrice;tradePrice=function(id,buy=true,vendor=tradeState?.id){const quoted=priceBase(id,buy,vendor);return !M.AID[id]||buy?quoted:Math.min(quoted,Math.max(1,priceBase(id,true,vendor)-1));};
+ function restoreOwner(owner,before){for(const key of Object.keys(owner))delete owner[key];Object.assign(owner,before);}
+ function refreshTrade(){try{renderTrade();}catch{}updateHUD();}
+ function trade(action,id){
+  if(!gameStarted||!world||state.player.hp<=0||zoneTransitioning||V046.lab||V046.busy||V047.pending||mode!=='TRADE'||runtime.tradeDepth)return false;
+  const owner=state,before=clone(state),scene=world,vendor=tradeState?.id,save=saveGame;let requested=false,args=[false];runtime.tradeDepth++;
+  // The inherited barter applies stock/wallet/logs before calling saveGame.
+  // Defer that call so a rejected final write restores every participating ledger.
+  saveGame=function(...values){requested=true;args=values;return true;};
+  try{const result=action(id);if(result?.then)throw Error('Le troc doit se terminer sans attente.');if(state!==owner||world!==scene||mode!=='TRADE'||tradeState?.id!==vendor)throw Error('Le contexte du comptoir a changé.');saveGame=save;
+   if(result===false||!requested){restoreOwner(owner,before);return false;}
+   if(save(...args)===false)throw Error('Écriture de la sauvegarde refusée.');runtime.error=null;return result;
+  }catch(error){if(state===owner)restoreOwner(owner,before);runtime.owner=null;runtime.error=String(error.message||error);refreshTrade();toast('Troc annulé : '+runtime.error,'bad');return false;}
+  finally{saveGame=save;runtime.tradeDepth--;}
+ }
+ const buyBase=buyTradeItem;buyTradeItem=function(id){return M.AID[id]?trade(buyBase,id):buyBase(id);};
+ const sellBase=sellTradeItem;sellTradeItem=function(id){return M.AID[id]?trade(sellBase,id):sellBase(id);};
+ const tradeRenderBase=renderTrade;renderTrade=function(...args){const result=tradeRenderBase(...args);if(!tradeState||typeof document==='undefined')return result;const list=$('tradeSellList');if(!list)return result;
+  for(const[id,d]of Object.entries(M.AID)){if(v026Qty(id)<1||list.querySelector('[data-sell="'+id+'"]'))continue;const price=tradePrice(id,false),row=document.createElement('article');row.className='trade-row';row.innerHTML='<div><b>'+escapeHtml(d.name)+'</b><small>Disponible : '+v026Qty(id)+' · consommable conservé dans le sac</small></div><strong>'+price+' caps</strong><button data-sell="'+id+'"'+(merchantState(tradeState.id).caps<price?' disabled':'')+'>VENDRE</button>';row.querySelector('button').onclick=()=>sellTradeItem(id);list.appendChild(row);}return result;
+ };
+ const statusBase=updateStatus;updateStatus=function(dt){const out=statusBase(dt);if(mode==='PLAYING'&&!zoneTransitioning&&!V046.busy&&!V047.pending)state.v053Iconic=M.tick(state.v053Iconic,dt,true);return out;};
+ const groundBase=groundHeightAt;
+ groundHeightAt=function(x,z,referenceFeet=0){let height=groundBase(x,z,referenceFeet);if(!world||runtime.boundWorld!==world||!Number.isFinite(height))return height;const radius=state.player.crouched?.32:.38,feet=Number.isFinite(referenceFeet)?referenceFeet:0;for(const c of runtime.stands)if(c.v053Iconic&&!c.disabled&&Number.isFinite(c.v053IconicTop)&&c.v053IconicTop>=height&&c.v053IconicTop<=feet+.72+1e-7&&v017ColliderHit(c,x,z,radius))height=Math.max(height,c.v053IconicTop);return height;};
+ function ground(x,z,ignoreId=null){
+  if(world?.v046){if(typeof v050TravelGround!=='function')return null;return v050TravelGround({records:world.v046Records,bank:world.v047TerrainBank||V046.terrain,geoColliders:(world.colliders||[]).filter(c=>c.v046Tile),...(ignoreId?{v050GameplayColliders:(world.colliders||[]).filter(c=>!c.v046Tile&&c.v053Iconic!==ignoreId)}:{})},world,x,z,.43);}
+  const value=groundBase(x,z);return Number.isFinite(value)?value:null;
+ }
+ function free(x,z){const y=ground(x,z);if(y===null||!Number.isFinite(y))return null;const b=world.bounds;if(!b||x<b[0]+.8||x>b[1]-.8||z<b[2]+.8||z>b[3]-.8||collidesAt(x,z,.8,y+playerEyeHeight()))return null;
+  if(world.interactables.some(i=>!i.v053Iconic&&i.priority>=7&&Math.hypot(i.pos[0]-x,i.pos[2]-z)<(i.radius||3.2)+2))return null;
+  if((world.npcs||[]).some(n=>n.alive!==false&&Math.hypot(n.pos[0]-x,n.pos[2]-z)<1.15)|| (world.hazards||[]).some(h=>Math.hypot((h.x??h.pos?.[0]??Infinity)-x,(h.z??h.pos?.[2]??Infinity)-z)<(h.radius||0)+.8))return null;
+  for(const[dx,dz]of[[.45,0],[-.45,0],[0,.45],[0,-.45]]){const h=ground(x+dx,z+dz);if(h===null||Math.abs(h-y)>.22)return null;}return[x,y,z];
+ }
+ function anchor(object){
+  if(world?.v046){const record=object.siteId&&V042_RUNTIME.active.get(object.siteId);if(!record||record.site?.safe!==true||!record.pos?.every(Number.isFinite))return null;return record.pos.slice();}
+  return world?.id===object.scene&&world.spawn?.every(Number.isFinite)?world.spawn.slice():null;
+ }
+ function revalidate(record){const [x,y,z]=record.pos,read=ground(x,z,record.object.id);if(read===null||Math.abs(read-y)>.1||collidesAt(state.player.pos[0],state.player.pos[2],.38,state.player.pos[1]))return false;return world.v046||!world.colliders.some(c=>c.v053Iconic!==record.object.id&&!c.disabled&&y+1.83>=(c.minY??-Infinity)&&y<=(c.maxY??Infinity)&&v017ColliderHit(c,x,z,.4));}
+ function pickup(id){const rec=runtime.entries.find(e=>e.object.id===id);if(!available()||mode!=='PLAYING'||!rec||rec.world!==world||state.v053Iconic.found[id]||Math.hypot(state.player.pos[0]-rec.pos[0],state.player.pos[2]-rec.pos[2])>2.6||Math.abs(state.player.pos[1]-(rec.pos[1]+playerEyeHeight()))>1||!lineOfSight(state.player.pos,rec.interaction)||!revalidate(rec))return false;
+  let award;try{award=M.award(snapshot(),id);}catch(error){toast(error.message,'bad');return false;}if(!commit(()=>{for(const k of['inventory','player','character','v053Iconic'])state[k]=award.snapshot[k];}))return false;
+  toast(rec.object.kind==='figurine'?rec.object.name+(award.statGain?' · +1 permanent':' · maximum déjà atteint'):rec.object.name+' ajouté au sac.','good');bind(true);updateHUD();return true;
+ }
+ function bind(force=false){
+  const geo=world?.v046===true,siteKey=geo?[...V042_RUNTIME.active.keys()].sort().join('|'):'';
+  if(!force&&runtime.owner?.world===world&&runtime.owner.state===state&&runtime.owner.records===world?.v046Records&&runtime.owner.sites===siteKey&&runtime.owner.layer===settings.geoFalloutLayer)return runtime.entries.length;
+  const previous=runtime.owner?.world||runtime.previousWorld;runtime.previousWorld=null;if(previous&&previous!==world){previous.interactables=previous.interactables.filter(i=>!i.v053Iconic);previous.colliders=previous.colliders.filter(c=>!c.v053Iconic);}if(world){world.interactables=world.interactables.filter(i=>!i.v053Iconic);world.colliders=world.colliders.filter(c=>!c.v053Iconic);}runtime.entries=[];runtime.draws=[];runtime.stands=[];runtime.boundWorld=world;
+  runtime.owner={world,state,records:world?.v046Records,sites:siteKey,layer:settings.geoFalloutLayer};if(!world||V046.lab||geo&&!settings.geoFalloutLayer||world.v050CityInterior)return 0;
+  const used=[];for(const object of runtime.targets){if(state.v053Iconic.found[object.id])continue;const at=anchor(object);if(!at)continue;let pos=null;
+   for(const[x,z]of M.candidates(at,object.id)){if(used.some(p=>Math.hypot(p[0]-x,p[2]-z)<1.25))continue;const p=free(x,z);if(!p)continue;if(!lineOfSight([at[0],at[1]+playerEyeHeight(),at[2]],[x,p[1]+1.0,z]))continue;pos=p;break;}if(!pos)continue;used.push(pos);
+   const interaction=[pos[0],pos[1]+(object.kind==='figurine'?1.1:object.kind==='magazine'?.82:.95),pos[2]],record={object,world,pos,interaction};runtime.entries.push(record);
+   const collider=addCollider(world,pos[0],pos[2],.68,.60,{id:'iconic-stand:'+object.id,minY:pos[1],maxY:pos[1]+.715});collider.v053Iconic=object.id;collider.v053IconicTop=pos[1]+.72;runtime.stands.push(collider);
+   const temporary={staticDraws:[]};for(const[p,part]of M.model(object).entries()){const center=[pos[0]+part.pos[0],pos[1]+part.pos[1],pos[2]+part.pos[2]],draw=addPart(temporary,part.mesh,center,part.size,part.color,0,{id:'iconic:'+object.id+':'+p,emissive:part.emissive});draw.v053Iconic={id:object.id,kind:object.kind,provenance:'authored-game-content'};}runtime.draws.push(...temporary.staticDraws);
+   const item=addInteract(world,'iconic:'+object.id,interaction,(object.kind==='figurine'?'Récupérer · ':'Prendre · ')+object.name,()=>pickup(object.id),{radius:2.6,kind:'loot',priority:5.2});item.v053Iconic=object.id;
+  }return runtime.entries.length;
+ }
+ const publishBase=v046Publish;v046Publish=function(...args){const result=publishBase(...args);if(args[0]===world)runtime.owner=null;return result;};
+ const loadBase=loadZone;loadZone=function(...args){runtime.previousWorld=runtime.owner?.world||world;runtime.owner=null;return loadBase(...args);};
+ const updateBase=updatePlayer;updatePlayer=function(dt){const result=updateBase(dt);runtime.clock+=Number.isFinite(dt)?dt:0;if(runtime.clock>=.75){runtime.clock=0;bind();}return result;};
+ const collectBase=collectDraws;collectDraws=function(t){const draws=collectBase(t);bind();return draws.concat(runtime.draws);};
+ function panel(c){const ledger=state.v053Iconic,stats=M.OBJECTS.filter(o=>o.kind==='figurine'),esc=escapeHtml;
+  c.innerHTML=`<div class="p27-long"><p class="p27-kicker">COLLECTION ET LECTURES</p><h2>Trésors du Wasteland</h2><p>Sept figurines améliorent chacune un attribut S.P.E.C.I.A.L. de 1, une seule fois, dans la limite de 10. Les exemplaires physiques se trouvent dans les scènes habitées et leurs relais géographiques ; ces deux accès partagent la même collection.</p><p>${stats.filter(o=>ledger.found[o.id]).length}/7 figurines récupérées. Les présentoirs et leurs emplacements sont des créations du jeu, sans relevé architectural.</p>${stats.map(o=>`<section><h3>${esc(o.name)}</h3><p>${ledger.found[o.id]?'RÉCUPÉRÉE · aucun bonus à reprendre':'À DÉCOUVRIR · relais habités et scènes régionales'}</p></section>`).join('')}<h2>Magazines d’aptitudes</h2><p>La lecture consomme un exemplaire et ajoute 10 points pendant 120 secondes de jeu actif. Un même bonus ne se cumule pas ; les menus et chargements ne consomment pas la durée. La lecture n’accomplit aucune quête à votre place.</p>${Object.entries(M.BOOKS).map(([id,d])=>`<p><b>${esc(d.name)}</b> · ${ledger.read[id]||0} lecture(s)${ledger.effects[d.skill]>0?' · '+Math.ceil(ledger.effects[d.skill])+' s restantes':''}</p>`).join('')}<h2>Nuka-Cola et Quantum</h2><p>Les bouteilles rejoignent AIDE dans l’inventaire. Leurs PV et PA respectent vos maxima ; la dose de radiation et la capsule conservée sont appliquées au même paiement. ${ledger.drinks} bouteille(s) consommée(s).</p><p>Les réserves inventées de certains bâtiments peuvent aussi contenir une bouteille ou un magazine. Leur contenu est fini et ne se renouvelle pas à la réentrée.</p></div>`;
+ }
+ const dataBase=v027Data;v027Data=function(c){return V027.sub==='iconic'?panel(c):dataBase(c);};
+ globalThis.v053IconicAfterInit=function(){V027_SUBS.data.iconic='COLLECTION';Object.assign(window.__MISTRAL_DEBUG,{v053IconicInfo:()=>({schema:1,found:clone(state.v053Iconic.found),effects:clone(state.v053Iconic.effects),read:clone(state.v053Iconic.read),drinks:state.v053Iconic.drinks,physical:runtime.entries.map(e=>({id:e.object.id,kind:e.object.kind,name:e.object.name,siteId:e.object.siteId,scene:e.object.scene,pos:e.pos.slice(),interaction:e.interaction.slice()})),draws:runtime.draws.length,error:runtime.error,provenance:'Authored game objects and procedural models; not surveyed architecture or recovered studio assets'}),v053IconicBind:()=>bind(true),v053IconicPickup:pickup,v053IconicUse:use,v053IconicCatalog:()=>clone(runtime.targets)});bind(true);};
+}
+
+/* Three original regional assemblies. Encounter IDs, AI archetypes, wounds,
+   rewards and finite corpse inventories retain their existing owners. */
+const MistralRegionalBestiary=(()=>{
+ const MAX_ASSIGNMENTS=256,MAX_BYTES=96*1024,copy=v=>JSON.parse(JSON.stringify(v)),finite=Number.isFinite;
+ const SPECS={
+  ratCable:{name:'Rat-câble',baseTypes:['molerat'],macros:['geo_huveaune','geo_marseille'],radius:.9,family:'regional-rat',attack:{melee:true,duration:.68,reach:1.85,radius:.92,label:'MORSURE DU RAT-CÂBLE'}},
+  gabianBombardier:{name:'Gabian bombardier',baseTypes:['bloatfly'],macros:['geo_marseille','geo_calanques','geo_frioul','geo_laciotat'],radius:.96,family:'regional-bird',attack:{melee:false,duration:1.35,reach:14,radius:.85,label:'LÂCHER CORROSIF DU GABIAN'}},
+  cerfa77:{name:'CERFA-77',baseTypes:['protectron','concordeDrone'],macros:['geo_marseille','geo_huveaune','geo_laciotat'],radius:.9,family:'regional-automaton',attack:{melee:false,duration:1.65,reach:22,radius:.72,label:'INJONCTION ARMÉE CERFA-77'}}
+ };
+ function species(site,baseType){return Object.keys(SPECS).find(id=>SPECS[id].baseTypes.includes(baseType)&&SPECS[id].macros.includes(site?.macro))||null;}
+ function candidate(site,index,baseType){
+  if(!site||!['nest','elite','boss'].includes(site.kind)||!Array.isArray(site.enemyTypes)||!Number.isInteger(index)||index<0||index>=site.enemySlots||!species(site,baseType))return null;
+  // One regular slot per hostile site; elites and bosses retain their identity.
+  for(let i=0;i<Math.min(16,site.enemySlots);i++){if(i===0&&['elite','boss'].includes(site.kind))continue;const type=site.enemyTypes[i%site.enemyTypes.length];if(species(site,type))return i===index&&type===baseType?species(site,type):null;}return null;
+ }
+ function fresh(){return{schema:1,assignments:{}};}
+ function migrate(raw,resolve){const out=fresh();let bytes=0;for(const[id,value]of Object.entries(raw?.assignments||{}).slice(0,MAX_ASSIGNMENTS*4)){if(Object.keys(out.assignments).length>=MAX_ASSIGNMENTS)break;const expected=resolve(id);if(!expected||value?.species!==expected.species||value?.baseType!==expected.baseType)continue;const entry={species:expected.species,baseType:expected.baseType},size=JSON.stringify([id,entry]).length*2;if(bytes+size>MAX_BYTES)continue;bytes+=size;out.assignments[id]=entry;}return out;}
+ function model(id,time=0,options={}){
+  if(!SPECS[id])throw Error('Espèce régionale inconnue');if(!finite(time))time=0;const pose=options.reduceMotion?0:time,walk=options.moving===false?0:Math.sin(pose*8),wind=options.windup?Math.max(0,Math.min(1,options.windup)):0,out=[];
+  const p=(mesh,pos,size,color,group='body',yaw=0,emissive=0)=>out.push({mesh,pos,size,color,group,yaw,emissive});
+  if(id==='ratCable'){
+   const fur=[.32,.29,.23],metal=[.21,.25,.24],flesh=[.53,.33,.26],light=[.72,.63,.37];
+   p('sphere',[0,.33+wind*.05,.02],[.48,.39,.75],fur);p('sphere',[0,.32+wind*.14,-.42],[.34,.31,.37],fur,'head');p('cone',[0,.29+wind*.14,-.62],[.19,.15,.22],flesh,'head',Math.PI/2);
+   for(const side of[-1,1]){p('sphere',[side*.13,.52+wind*.12,-.35],[.16,.2,.12],flesh,'head');p('sphere',[side*.13,.37+wind*.14,-.57],[.048,.05,.04],[.8,.47,.17],'head',0,.22);for(const z of[-.22,.27]){const lift=walk*side*(z<0?1:-1)*.06,group=(z<0?'fore_':'back_')+(side<0?'l':'r');p('cylinder',[side*.2,.15+Math.max(0,lift),z],[.09,.23,.13],fur,group);p('cube',[side*.21,.055+Math.max(0,lift),z-.04],[.12,.08,.19],flesh,group);}}
+   // The cable curls inside the admitted body footprint instead of dragging a
+   // metre-long rigid tail through neighbouring source walls.
+   for(let i=0;i<7;i++){const a=i*.39,wiggle=options.reduceMotion?0:Math.sin(pose*3+i*.7)*.035;p('sphere',[Math.sin(a)*.27+wiggle,.23+i*.025,.44+Math.sin(a*.7)*.24],[.075,.075,.15],metal,'tail',a);}
+   p('cube',[0,.5,.11],[.27,.12,.38],metal);for(const side of[-1,1])p('cube',[side*.12,.53,.11],[.035,.035,.3],light);
+  }else if(id==='gabianBombardier'){
+   const feather=[.67,.68,.59],dark=[.22,.27,.27],beak=[.69,.53,.2],sac=[.34,.47,.24],flap=options.reduceMotion?0:Math.sin(pose*5)*.18,bob=options.reduceMotion?0:Math.sin(pose*3)*.045;
+   p('sphere',[0,.79+bob,0],[.35,.39,.56],feather);p('sphere',[0,.98+bob,-.27],[.25,.28,.27],feather,'head');p('cone',[0,.94+bob,-.46],[.14,.12,.26],beak,'head',Math.PI/2);p('sphere',[0,.61+bob-wind*.1,-.04],[.25,.2,.29],sac);
+   for(const side of[-1,1]){const wing=side<0?'arm_l':'arm_r';p('sphere',[side*.27,.82+bob+flap,.025],[.38,.12,.37],feather,wing,side*.18);p('cube',[side*.5,.82+bob+flap*1.6,.08],[.28,.065,.44],dark,wing,side*.26);for(let k=0;k<3;k++)p('cube',[side*(.5+k*.045),.81+bob+flap*1.6,.2+k*.035],[.09,.05,.24],feather,wing,side*.3);p('sphere',[side*.075,1.01+bob,-.383],[.035,.037,.035],[.12,.14,.11],'head');p('cylinder',[side*.09,.37+bob,0],[.045,.34,.045],beak,side<0?'leg_l':'leg_r');p('cube',[side*.09,.2+bob,-.05],[.1,.035,.18],beak,side<0?'leg_l':'leg_r');}
+   for(const side of[-1,0,1])p('cube',[side*.07,.77+bob,.38],[.12,.055,.28],dark,'tail',side*.15);
+   if(wind>.25)p('sphere',[0,.47+bob-wind*.15,-.08],[.11,.12,.12],sac,'body',0,.15);
+  }else{
+   const shell=[.45,.48,.4],dark=[.18,.23,.23],paper=[.76,.73,.56],brass=[.55,.44,.23],stamp=wind*.23,scan=options.reduceMotion?0:Math.sin(pose*1.4)*.045;
+   p('cube',[0,.86,0],[.58,.72,.43],shell);p('cube',[0,1.32,0],[.48,.29,.39],dark,'head');p('cube',[scan,1.34,-.217],[.31,.09,.035],wind?[.88,.29,.13]:[.29,.74,.56],'head',0,.5);p('cube',[0,.96,-.24],[.39,.25,.045],paper);for(let i=0;i<3;i++)p('cube',[0,.9+i*.055,-.267],[.26,.014,.012],dark);
+   p('cube',[0,.72,-.35],[.4,.08,.31],dark);p('cube',[0,.77,-.37],[.27,.025,.27],paper);p('cube',[0,.5,0],[.64,.14,.48],brass);
+   for(const side of[-1,1]){const arm=side<0?'arm_l':'arm_r',leg=side<0?'leg_l':'leg_r';p('sphere',[side*.36,1.05,0],[.19,.2,.2],shell,arm);p('cylinder',[side*.43,.85,-stamp],[.1,.35,.12],dark,arm);p('cube',[side*.43,.65,-stamp],[.18,.12,.2],brass,arm);p('cylinder',[side*.22,.28,0],[.24,.36,.42],dark,leg);p('cube',[side*.22,.105,-.02],[.28,.12,.44],shell,leg);}
+   p('cube',[-.43,.59,-stamp],[.18,.05,.15],[.47,.17,.13],'arm_l');p('cube',[.43,.69,-.06-stamp],[.12,.12,.22],dark,'arm_r');p('cube',[0,1.55,.02],[.09,.19,.08],brass,'head');p('sphere',[0,1.67,.02],[.1,.1,.1],[.75,.39,.18],'head',0,.3);
+  }
+  return out;
+ }
+ function rotate(p,a){const c=Math.cos(a),s=Math.sin(a);return[c*p[0]+s*p[2],p[1],-s*p[0]+c*p[2]];}
+ function rig(actor,id,time=0,options={}){
+  if(!Array.isArray(actor?.pos)||actor.pos.length!==3||!actor.pos.every(finite))throw Error('Position d’acteur invalide');const yaw=finite(actor.yaw)?actor.yaw:0,local=model(id,time,options),groups=new Map(),draws=[];
+  const world=p=>rotate(p,yaw).map((v,i)=>v+actor.pos[i]),groupOf=g=>/^(arm_[lr])$/.test(g)?'arms':/^(leg_[lr]|fore_[lr]|back_[lr])$/.test(g)?'legs':g==='tail'?'body':g;
+  for(const part of local){const draw={mesh:part.mesh,pos:world(part.pos),scale:part.size.slice(),color:part.color.slice(),rotY:yaw+part.yaw,emissive:part.emissive,alpha:1,v025Part:part.group,v025Enemy:actor.id,v053RegionalPart:id};draws.push(draw);let group=groups.get(part.group);if(!group){group={id:part.group,min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity],draws:[]};groups.set(part.group,group);}group.draws.push(draw);for(const x of[-.5,.5])for(const y of[-.5,.5])for(const z of[-.5,.5]){const corner=rotate([part.size[0]*x,part.size[1]*y,part.size[2]*z],part.yaw).map((v,i)=>v+part.pos[i]);for(let i=0;i<3;i++){group.min[i]=Math.min(group.min[i],corner[i]);group.max[i]=Math.max(group.max[i],corner[i]);}}}
+  const labels=id==='gabianBombardier'?{head:'TÊTE',body:'CORPS',arm_l:'AILE GAUCHE',arm_r:'AILE DROITE',leg_l:'PATTE GAUCHE',leg_r:'PATTE DROITE',tail:'QUEUE'}:id==='ratCable'?{head:'TÊTE',body:'CORPS CÂBLÉ',fore_l:'PATTE AV. GAUCHE',fore_r:'PATTE AV. DROITE',back_l:'PATTE AR. GAUCHE',back_r:'PATTE AR. DROITE',tail:'CÂBLE CAUDAL'}:{head:'LECTEUR OPTIQUE',body:'DOSSIER BLINDÉ',arm_l:'TAMPON',arm_r:'PINCE DE SAISIE',leg_l:'ROUE GAUCHE',leg_r:'ROUE DROITE'};
+  const parts=[...groups.values()].map(b=>{const group=groupOf(b.id),center=b.min.map((v,i)=>(v+b.max[i])/2),size=b.min.map((v,i)=>b.max[i]-v),corners=[];for(const x of[0,1])for(const y of[0,1])for(const z of[0,1])corners.push(world([x?b.max[0]:b.min[0],y?b.max[1]:b.min[1],z?b.max[2]:b.min[2]]));return{id:b.id,group,label:labels[b.id]||b.id,center:world(center),radius:Math.max(.06,Math.min(.72,Math.max(...size)*.43)),mult:group==='head'?1.7:group==='arms'?.72:group==='legs'?.78:1,cost:group==='head'?35:group==='body'?25:22,bounds:b,corners};});
+  const bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};for(const b of groups.values())for(let i=0;i<3;i++){bounds.min[i]=Math.min(bounds.min[i],b.min[i]);bounds.max[i]=Math.max(bounds.max[i],b.max[i]);}return{draws,parts,bounds,family:SPECS[id].family};
+ }
+ return{MAX_ASSIGNMENTS,MAX_BYTES,catalog:()=>copy(SPECS),species,candidate,fresh,migrate,model,rig};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralRegionalBestiary;
+
+if(typeof v042SpawnEnemies==='function'&&typeof v049Identify==='function'){
+ const specs=MistralRegionalBestiary.catalog(),stats={newVariants:0,restoredVariants:0,oldSlotsKept:0,unmeasuredSkipped:0,budgetSkipped:0,movementBlocked:0},rigCache=new WeakMap(),pendingWorlds=new WeakMap();let stageCache=null;
+ function expected(id){const meta=v049Identify(id);if(meta?.kind!=='enemy'||meta.scope!=='outside')return null;const site=v042Site(meta.site),index=Number(id.split(':').at(-1)),baseType=site?.enemyTypes?.[index%site.enemyTypes.length],species=MistralRegionalBestiary.candidate(site,index,baseType);return species?{species,baseType}:null;}
+ const base=baseState;baseState=function(){const s=base();s.v053Bestiary=MistralRegionalBestiary.fresh();return s;};
+ const migration=migrateState;migrateState=function(input={}){const s=migration(input);s.v053Bestiary=MistralRegionalBestiary.migrate(input.v053Bestiary,expected);return s;};state=migrateState(state);if(world)v049Own(world);
+ function stage(w){const bank=v047Bank(w);if(!stageCache||stageCache.world!==w||stageCache.bank!==bank||stageCache.records!==w.v046Records||stageCache.colliders!==w.colliders||stageCache.length!==w.colliders.length)stageCache={world:w,records:w.v046Records,bank,geoColliders:w.colliders.filter(c=>c.v046Tile),colliders:w.colliders,length:w.colliders.length};return stageCache;}
+ function ground(w,x,z,radius){if(w!==world||!w?.v046||!w.geoMacro||!w.v046Records?.size||typeof v050TravelGround!=='function')return null;return v050TravelGround(stage(w),w,x,z,radius);}
+ function valid(w,pos,radius,neighbours=false){const h=ground(w,pos[0],pos[2],radius);if(!Number.isFinite(h)||Math.abs(h-pos[1])>.35)return false;if(neighbours)for(const[dx,dz]of[[radius,0],[-radius,0],[0,radius],[0,-radius]]){const other=ground(w,pos[0]+dx,pos[2]+dz,radius*.25);if(!Number.isFinite(other)||Math.abs(other-h)>.5)return false;}return true;}
+ function prior(id){return !!state.v049?.actors?.[id]||!!state.flags?.enemyDead?.[id]||Object.keys(state.v022?.encounters||{}).some(key=>key.endsWith('|'+id))||Object.values(state.v026?.containers||{}).some(c=>c.id==='remains:'+id);}
+ function speciesOf(e){const entry=state.v053Bestiary?.assignments?.[e?.id];return e?.v053RegionalSpecies&&entry?.species===e.v053RegionalSpecies&&entry.baseType===e.type?entry.species:null;}
+ // Prepare can build a temporary world or publish while busy. Remember only
+ // actor-local eligibility here; no campaign entry exists until publication.
+ function publish(w=world){const pending=w&&pendingWorlds.get(w);if(!pending)return;if(pending.owner!==state){pendingWorlds.delete(w);return;}if(w!==world||!gameStarted||V046.lab||V046.busy||V047.pending||zoneTransitioning||!v049Allowed(w))return;
+  pendingWorlds.delete(w);for(const[e,proposal]of pending.actors){if(!w.enemies.includes(e)||e.alive===false||e.boss||proposal.baseType!==e.type)continue;const resolved=expected(e.id);if(!resolved||resolved.species!==proposal.species||resolved.baseType!==proposal.baseType)continue;let entry=state.v053Bestiary.assignments[e.id];if(!valid(w,e.pos,specs[proposal.species].radius,true)){stats.unmeasuredSkipped++;continue;}
+   if(!entry){const ledger=state.v053Bestiary.assignments,bytes=JSON.stringify(ledger).length*2;if(Object.keys(ledger).length>=MistralRegionalBestiary.MAX_ASSIGNMENTS||bytes+JSON.stringify([e.id,proposal]).length*2>MistralRegionalBestiary.MAX_BYTES){stats.budgetSkipped++;continue;}entry=ledger[e.id]={...proposal};stats.newVariants++;}else stats.restoredVariants++;
+   e.v053RegionalSpecies=entry.species;e.name=specs[entry.species].name;
+  }
+ }
+ const spawn=v042SpawnEnemies;v042SpawnEnemies=function(w,p,site,inside=false){
+  const before=new Set((w.enemies||[]).map(e=>e.id)),known=new Set();for(let i=0;i<Math.min(16,site.enemySlots||0);i++){const id=v042EnemyId(site,i,inside);if(prior(id))known.add(id);}
+  const owner=state,result=spawn(...arguments);if(inside||owner!==state||!w?.v046||!w.geoMacro||V046.lab||!v049Allowed(w))return result;
+  let pending=pendingWorlds.get(w);if(!pending||pending.owner!==state){pending={owner:state,actors:new Map()};pendingWorlds.set(w,pending);}
+  for(const e of result||[]){if(before.has(e.id)||e.alive===false||e.boss)continue;const proposal=expected(e.id);if(!proposal||proposal.baseType!==e.type)continue;if(!state.v053Bestiary.assignments[e.id]&&known.has(e.id)){stats.oldSlotsKept++;continue;}pending.actors.set(e,proposal);}
+  publish(w);return result;
+ };
+ const originalRig=v025Rig;v025Rig=function(e,t=gameClock){const id=speciesOf(e);if(!id)return originalRig(...arguments);const time=V025.active?V025.poseTime:t,key=JSON.stringify([id,time,e.pos,e.yaw,e.state,e.v021Windup?.elapsed,e.v021Windup?.duration,settings.reduceMotion]),cached=rigCache.get(e);if(cached?.key===key)return cached.rig;const rig=MistralRegionalBestiary.rig(e,id,time,{reduceMotion:settings.reduceMotion,moving:['chase','advance','retreat','search','patrol'].includes(e.state),windup:e.v021Windup?e.v021Windup.elapsed/e.v021Windup.duration:0});rig.key=key;rigCache.set(e,{key,rig});return rig;};
+ const attack=v021AttackSpec;v021AttackSpec=function(e){const id=speciesOf(e);return id?{...specs[id].attack,reach:Math.min(specs[id].attack.reach,Math.max(specs[id].attack.melee?1.8:10,e.range||specs[id].attack.reach))}:attack(...arguments);};
+ const move=tryEnemyMove;tryEnemyMove=function(e,dx,dz){const id=speciesOf(e);if(!id)return move(...arguments);const radius=specs[id].radius,h=ground(world,e.pos[0]+dx,e.pos[2],radius),h2=ground(world,e.pos[0]+dx,e.pos[2]+dz,radius);if(!Number.isFinite(h)||!Number.isFinite(h2)||Math.abs(h-e.pos[1])>.55||Math.abs(h2-h)>.55){stats.movementBlocked++;return;}return move(...arguments);};
+ const update=updateEnemies;updateEnemies=function(dt){publish();const owner=world,poses=new Map((world?.enemies||[]).filter(e=>e.alive&&speciesOf(e)).map(e=>[e,e.pos.slice()])),out=update(...arguments);if(world===owner)for(const[e,p]of poses){const id=speciesOf(e);if(e.alive&&id&&!valid(owner,e.pos,specs[id].radius)){e.pos=p;stats.movementBlocked++;}}return out;};
+ const remains=v026RemainsDraws;v026RemainsDraws=function(out,c){const id=typeof c?.id==='string'&&c.id.startsWith('remains:')?state.v053Bestiary?.assignments?.[c.id.slice(8)]?.species:null;if(!id||!specs[id])return remains(...arguments);const actor={id:c.id,pos:c.pos,yaw:c.actor?.yaw||0},rig=MistralRegionalBestiary.rig({id:c.id,pos:[0,0,0],yaw:0},id,0,{reduceMotion:true,moving:false}),yaw=actor.yaw,co=Math.cos(yaw),si=Math.sin(yaw),draws=rig.draws.map(d=>{const x=d.pos[0],z=d.pos[1]-.5;return{...d,pos:[actor.pos[0]+co*x+si*z,actor.pos[1]+.12+Math.abs(d.pos[2])*.16,actor.pos[2]-si*x+co*z],scale:[d.scale[0],Math.min(.16,d.scale[2]),d.scale[1]],rotY:yaw+d.rotY,color:d.color.map(v=>v*.72),v053RegionalCorpse:id,v026Corpse:c.id};});out.push(...draws);};
+ function info(){const assignments=state.v053Bestiary.assignments,visible=(world?.enemies||[]).filter(e=>speciesOf(e)).map(e=>({id:e.id,species:speciesOf(e),name:e.name,baseType:e.type,site:e.v042Site,alive:e.alive,health:e.health,maxHealth:e.maxHealth,pos:e.pos.slice(),parts:v025Rig(e).parts.length,meshes:v025Rig(e).draws.length})),eligible=[];for(const site of V042_CATALOG)for(let i=0;i<Math.min(16,site.enemySlots);i++){const type=site.enemyTypes?.[i%site.enemyTypes.length],id=v042EnemyId(site,i,false),species=MistralRegionalBestiary.candidate(site,i,type);if(species&&!prior(id))eligible.push({id,site:site.id,species,baseType:type,lat:site.lat,lon:site.lon,macro:site.macro});}return{schema:1,...stats,assignments:Object.keys(assignments).length,maxAssignments:MistralRegionalBestiary.MAX_ASSIGNMENTS,maxBytes:MistralRegionalBestiary.MAX_BYTES,visible,eligibleSites:eligible.slice(0,32),eligibleSitesTruncated:eligible.length>32,scope:'Three original regional silhouettes on new validated encounters; existing AI types, identities, health and finite loot are retained. Ground-following inherited AI, no full aerial navigation.'};}
+ globalThis.v053BestiaryAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v053BestiaryInfo:info,v053BestiaryCatalog:()=>MistralRegionalBestiary.catalog(),v053BestiaryActor:id=>{const e=world?.enemies?.find(e=>e.id===id);return e&&speciesOf(e)?{...info().visible.find(a=>a.id===id),rig:JSON.parse(JSON.stringify(v025Rig(e)))}:null;}});};
+}
+
 init();
 v018AfterInit();
 v020AfterInit();
@@ -12272,4 +12864,8 @@ if(typeof v050FacadesAfterInit==='function')v050FacadesAfterInit();
 if(typeof v050CityInteriorAfterInit==='function')v050CityInteriorAfterInit();
 if(typeof v052ArchitectureAfterInit==='function')v052ArchitectureAfterInit();
 if(typeof v051CityPanelAfterInit==='function')v051CityPanelAfterInit();
+if(typeof v053LoreAfterInit==='function')v053LoreAfterInit();
+if(typeof v053PowerArmorAfterInit==='function')v053PowerArmorAfterInit();
+if(typeof v053IconicAfterInit==='function')v053IconicAfterInit();
+if(typeof v053BestiaryAfterInit==='function')v053BestiaryAfterInit();
 })();

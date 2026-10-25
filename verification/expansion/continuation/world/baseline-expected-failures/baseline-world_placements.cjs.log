@@ -1,0 +1,353 @@
+✖ An unchanged measured saved placement retains exact XY, the current sampled height and an independent tuple (10.048776ms)
+✖ A finer measured terrain replaces only stale placement height when the saved XY remains clear (4.984153ms)
+✖ Negative measured land heights remain negative for both new and retained fictional placements (4.974315ms)
+✖ A saved placement newly covered by a source building is replaced with an existing checked candidate (4.28055ms)
+✖ A saved placement newly classified as source water cannot spawn the fictional site in that water (4.540365ms)
+✖ Missing measured terrain cannot reuse a historical placement or mutate its saved evidence (4.26448ms)
+✖ Real NoData interpolation at every local candidate remains NoData, with no invented fallback altitude (4.134808ms)
+✖ A whole blocked search cannot publish a site or delete its previously recorded placement (4.417897ms)
+✖ No actor is spawned before any vector records have been validated for its world (3.815311ms)
+✖ Malformed legacy placement tuples cannot bypass current source checks or crash the selector (5.226716ms)
+✖ Published actors keep their identity, health and finite loot when a source bank later changes (3.937439ms)
+✖ A staging preview uses its own measured bank without changing placements owned by the published scene (4.149665ms)
+✔ Historical scene placement remains on the historical path without source or save changes (4.010866ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 1
+ℹ fail 12
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 72.649815
+
+✖ failing tests:
+
+test at tests/expansion/world_placements.cjs:26:1
+✖ An unchanged measured saved placement retains exact XY, the current sampled height and an independent tuple (10.048776ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      3,
+  +   17.25,
+  -   17.250000000000004,
+      -4
+    ]
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:26:263)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:27:1
+✖ A finer measured terrain replaces only stale placement height when the saved XY remains clear (4.984153ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      3,
+  +   4,
+  -   17.250000000000004,
+      -4
+    ]
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:27:233)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:28:1
+✖ Negative measured land heights remain negative for both new and retained fictional placements (4.974315ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      0,
+  -   -12.25,
+      0,
+  +   0
+    ]
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:28:190)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:29:1
+✖ A saved placement newly covered by a source building is replaced with an existing checked candidate (4.28055ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   0,
+  -   14,
+      10,
+      0
+    ]
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:29:235)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:30:1
+✖ A saved placement newly classified as source water cannot spawn the fictional site in that water (4.540365ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   0,
+  -   14,
+      10,
+      0
+    ]
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:30:247)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:31:1
+✖ Missing measured terrain cannot reuse a historical placement or mutate its saved evidence (4.26448ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + [
+  +   0,
+  +   10,
+  +   0
+  + ]
+  - null
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:31:154)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:32:1
+✖ Real NoData interpolation at every local candidate remains NoData, with no invented fallback altitude (4.134808ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + [
+  +   0,
+  +   10,
+  +   0
+  + ]
+  - null
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:32:177)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:33:1
+✖ A whole blocked search cannot publish a site or delete its previously recorded placement (4.417897ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   health: 73,
+  +   id: 'synthetic-source-placement',
+  +   loot: {
+  +     scrap: 1
+  +   },
+  +   pos: [
+  +     0,
+  +     10,
+  +     0
+  +   ]
+  + }
+  - null
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:33:163)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:34:1
+✖ No actor is spawned before any vector records have been validated for its world (3.815311ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + [
+  +   0,
+  +   10,
+  +   0
+  + ]
+  - null
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:34:162)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:35:1
+✖ Malformed legacy placement tuples cannot bypass current source checks or crash the selector (5.226716ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + 'old'
+  - [
+  -   0,
+  -   12,
+  -   0
+  - ]
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:35:200)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'old',
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:36:1
+✖ Published actors keep their identity, health and finite loot when a source bank later changes (3.937439ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      0,
+  +   10,
+  -   25,
+      0
+    ]
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:36:503)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/world_placements.cjs:37:1
+✖ A staging preview uses its own measured bank without changing placements owned by the published scene (4.149665ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      0,
+  +   10,
+  -   25,
+      0
+    ]
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/world_placements.cjs:37:270)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+

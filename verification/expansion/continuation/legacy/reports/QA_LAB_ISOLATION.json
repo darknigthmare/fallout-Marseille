@@ -1,0 +1,185 @@
+{
+  "version": "0.47.0",
+  "html_sha256": "ea8ba2e3d9ba9ed1925628672f4c596475ff2437de06bfa7979ee03f6f59f0bf",
+  "passed": 14,
+  "failed": 0,
+  "total": 14,
+  "checks": [
+    {
+      "name": "La campagne réelle de base est chargée",
+      "ok": true,
+      "detail": {
+        "geoPortals": null,
+        "interactions": [
+          "transit_depot:contact",
+          "transit_depot:clue",
+          "transit_depot:power",
+          "transit_depot:tape",
+          "transit_depot:station",
+          "transit_depot:exit",
+          "transit_depot:door",
+          "v022:tape",
+          "v022:beds",
+          "v022:kit",
+          "transit_depot:v22:cache",
+          "v022:salome:talk",
+          "v022:joris:talk",
+          "v022:ines:talk",
+          "v023:goat",
+          "v023:lise",
+          "v023:proof:manifest",
+          "v023:delivery",
+          "v026:transit_depot|free",
+          "v026:transit_depot|consignment",
+          "v026:transit_depot|workcase",
+          "v026:notice",
+          "v029:terminal:depot",
+          "v029:exit:depot",
+          "v029:contact",
+          "v029:adrien",
+          "v029:badge:d4",
+          "v029:tape",
+          "v030:servo"
+        ],
+        "draws": 1800,
+        "colliders": 103
+      }
+    },
+    {
+      "name": "Entrée de banc isolé 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Le banc refuse une sauvegarde campagne 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour de banc accepté 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "La vraie scène est restaurée 1",
+      "ok": true,
+      "detail": {
+        "geoPortals": null,
+        "interactions": [
+          "transit_depot:contact",
+          "transit_depot:clue",
+          "transit_depot:power",
+          "transit_depot:tape",
+          "transit_depot:station",
+          "transit_depot:exit",
+          "transit_depot:door",
+          "v022:tape",
+          "v022:beds",
+          "v022:kit",
+          "transit_depot:v22:cache",
+          "v022:salome:talk",
+          "v022:joris:talk",
+          "v022:ines:talk",
+          "v023:goat",
+          "v023:lise",
+          "v023:proof:manifest",
+          "v023:delivery",
+          "v026:transit_depot|free",
+          "v026:transit_depot|consignment",
+          "v026:transit_depot|workcase",
+          "v026:notice",
+          "v029:terminal:depot",
+          "v029:exit:depot",
+          "v029:contact",
+          "v029:adrien",
+          "v029:badge:d4",
+          "v029:tape",
+          "v030:servo"
+        ],
+        "draws": 1800,
+        "colliders": 103
+      }
+    },
+    {
+      "name": "Position, zone et portefeuille restaurés 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune grille synthétique ne reste dans la campagne 1",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Entrée de banc isolé 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Le banc refuse une sauvegarde campagne 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour de banc accepté 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "La vraie scène est restaurée 2",
+      "ok": true,
+      "detail": {
+        "geoPortals": null,
+        "interactions": [
+          "transit_depot:contact",
+          "transit_depot:clue",
+          "transit_depot:power",
+          "transit_depot:tape",
+          "transit_depot:station",
+          "transit_depot:exit",
+          "transit_depot:door",
+          "v022:tape",
+          "v022:beds",
+          "v022:kit",
+          "transit_depot:v22:cache",
+          "v022:salome:talk",
+          "v022:joris:talk",
+          "v022:ines:talk",
+          "v023:goat",
+          "v023:lise",
+          "v023:proof:manifest",
+          "v023:delivery",
+          "v026:transit_depot|free",
+          "v026:transit_depot|consignment",
+          "v026:transit_depot|workcase",
+          "v026:notice",
+          "v029:terminal:depot",
+          "v029:exit:depot",
+          "v029:contact",
+          "v029:adrien",
+          "v029:badge:d4",
+          "v029:tape",
+          "v030:servo"
+        ],
+        "draws": 1800,
+        "colliders": 103
+      }
+    },
+    {
+      "name": "Position, zone et portefeuille restaurés 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune grille synthétique ne reste dans la campagne 2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

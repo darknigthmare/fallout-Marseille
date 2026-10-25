@@ -36,7 +36,7 @@ def adapt(name, text):
     text = text.replace("local['version']=='0.49.0'", "local['version']=='0.50.0'")
     text = text.replace('0.49.0 · Le quartier se souvient', '0.50.0 · Les routes retrouvées')
     if name.endswith('distribution.cjs'):
-        text = text.replace('fallout-mistral-v049-1', 'fallout-mistral-v050-8').replace('/v0.49.html/', '/v0.50.html/')
+        text = text.replace('fallout-mistral-v049-1', 'fallout-mistral-v050-9').replace('/v0.49.html/', '/v0.50.html/')
     if name == 'v048_runtime.py':
         # The controlled pause must outlast Playwright's two stable animation
         # frames even when another software-rendered browser uses the CPU.

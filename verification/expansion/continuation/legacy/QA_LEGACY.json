@@ -1,0 +1,271 @@
+{
+  "version": "0.50.0",
+  "html_sha256": "ea8ba2e3d9ba9ed1925628672f4c596475ff2437de06bfa7979ee03f6f59f0bf",
+  "scope": "Contrats hérités exécutés sur le programme actuel. Bancs synthétiques et réseau contrôlé ; voir NATIVE_REAL_MAP.json pour les parcours HTTP réels.",
+  "passed": 434,
+  "failed": 0,
+  "total": 434,
+  "allHtmlMatch": true,
+  "javascriptErrors": [],
+  "suites": [
+    {
+      "test": "kernel.test.cjs",
+      "file": "QA_ENCOUNTER_KERNEL.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "test": "runtime.py",
+      "file": "QA_ENCOUNTERS.json",
+      "passed": 47,
+      "failed": 0,
+      "total": 47,
+      "sameHtml": true
+    },
+    {
+      "test": "saves.py",
+      "file": "QA_ENCOUNTER_SAVES.json",
+      "passed": 15,
+      "failed": 0,
+      "total": 15,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_kernel.test.cjs",
+      "file": "QA_BUDGET_PASSAGES.json",
+      "passed": 25,
+      "failed": 0,
+      "total": 25,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_runtime.py",
+      "file": "QA_PREPARATION_RETURNS.json",
+      "passed": 62,
+      "failed": 0,
+      "total": 62,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_kernel.test.cjs",
+      "file": "QA_KERNEL_NEW.json",
+      "passed": 33,
+      "failed": 0,
+      "total": 33,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_kernel.test.cjs",
+      "file": "QA_KERNEL_LEGACY.json",
+      "passed": 23,
+      "failed": 0,
+      "total": 23,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_distribution.cjs",
+      "file": "QA_DISTRIBUTION.json",
+      "passed": 9,
+      "failed": 0,
+      "total": 9,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_runtime.py",
+      "file": "QA_STREAMING_NEW.json",
+      "passed": 52,
+      "failed": 0,
+      "total": 52,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_server_io.py",
+      "file": "QA_SERVER_IO.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_lab_isolation.py",
+      "file": "QA_LAB_ISOLATION.json",
+      "passed": 14,
+      "failed": 0,
+      "total": 14,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_runtime.py",
+      "file": "QA_RUNTIME.json",
+      "passed": 49,
+      "failed": 0,
+      "total": 49,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_regression_campaign.py",
+      "file": "QA_CAMPAIGN.json",
+      "passed": 41,
+      "failed": 0,
+      "total": 41,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_regression_prologue.py",
+      "file": "QA_PROLOGUE.json",
+      "passed": 22,
+      "failed": 0,
+      "total": 22,
+      "sameHtml": true
+    },
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "file": "QA_PRODUCT.json",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "sameHtml": true
+    }
+  ],
+  "processes": [
+    {
+      "test": "kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "saves.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_distribution.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_server_io.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_lab_isolation.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_regression_campaign.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_regression_prologue.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "exitCode": 0
+    }
+  ],
+  "adaptations": [
+    {
+      "test": "kernel.test.cjs",
+      "sourceSha256": "7cf4df83ab2a17a64f17cdd6c54a3e655b400b04acfaad097e864d70079a7d8a",
+      "executedSha256": "040e0082adf17192416130e400590143c8e234c2f58e936a190ce5af5e5e37e2"
+    },
+    {
+      "test": "runtime.py",
+      "sourceSha256": "494cd3bd321687f76be484ebcc2f3946136af8cc6403227299d8e37ae333055a",
+      "executedSha256": "7bf02af52dd474320e34528b9a4bf8e77fb1cbd9aa33a1607fe62fc5faf343cd"
+    },
+    {
+      "test": "saves.py",
+      "sourceSha256": "8bbd65103be8f37762dfea9db95aa7f9e0e558c0bc7174e5f320ec55c17bbc66",
+      "executedSha256": "ce3c59fdc9fb65bf329e354f01c185e0623c8291055e3b7af4d85610f4ab6df1"
+    },
+    {
+      "test": "v048_kernel.test.cjs",
+      "sourceSha256": "0673864faa14ca62d4ffde3b320ca9d5ebbc4a2381ab3674aa1354624f59a0be",
+      "executedSha256": "64cbb61a4e31219f596e9feb9dd3f9a4513a7d29a34f418544b130015744f773"
+    },
+    {
+      "test": "v048_runtime.py",
+      "sourceSha256": "5107d8407043bc99fc4c7df7a02c4bd8a7fb517fc7c93bb86ed2ab95bab77074",
+      "executedSha256": "016f99f7700e847b8699a2d2876a0313a9e6c694ad03da53a9edbace23336fc6"
+    },
+    {
+      "test": "v048_inherited_kernel.test.cjs",
+      "sourceSha256": "ac3d62c67240e25c44baaba26a44996283655fe5d27df799a3f6f096596b18ef",
+      "executedSha256": "192335bd51d15532ba7426a85a83cb9bff5eaba930b14f86050f63ef83280693"
+    },
+    {
+      "test": "v048_inherited_legacy_kernel.test.cjs",
+      "sourceSha256": "f0e142fedec5db69183d7fb6aefc372c125c66b05c5095c13512b99ecc4da288",
+      "executedSha256": "c85bf84f2e4b7ddd2335833276deb631dabc5dc04c9df8e01b3901ac126fdfe6"
+    },
+    {
+      "test": "v048_inherited_legacy_distribution.cjs",
+      "sourceSha256": "5bbc218ecf136d5676b981ac702eb124d73b20220acd646bf3d18dbb1c9d8cda",
+      "executedSha256": "83cbcc9afb154dfbfe81ffded63070f3b58558c6aeeb4e4f5ce10a3d81dd57d9"
+    },
+    {
+      "test": "v048_inherited_runtime.py",
+      "sourceSha256": "531da8ada7b1fe27f6e83d5b0d39e4d911e6e7b9088a4177efc1c6276d0c1a3b",
+      "executedSha256": "5f13ff1306530d9d3775992524a2b03b912c93b8de3f03473c075ae18c833d91"
+    },
+    {
+      "test": "v048_inherited_server_io.py",
+      "sourceSha256": "0355f38e42e9668c59664130b4972d805a498833916e42c83c7b97e596c9f206",
+      "executedSha256": "7ae6506e3d97c29431d5c51db374dac580f14d79deff37fb509dcfc7f09919b4"
+    },
+    {
+      "test": "v048_inherited_lab_isolation.py",
+      "sourceSha256": "5f4e6a73adbd3e6ce68c608794f15afb43d80e2f73e65d84d8a9a9b3432799be",
+      "executedSha256": "7a4ba8b5976efa34fb393015d27933fdbccd05d0cf7f60f183734cfc3f2493a2"
+    },
+    {
+      "test": "v048_inherited_legacy_runtime.py",
+      "sourceSha256": "71ddfeb247d19671ab727013a8af39cf5f23a660c3e769042a9c10c5a8ec5182",
+      "executedSha256": "e0e1adc821028175f63a560c70b8e0625a4aa4c3b2c97c171a29e1312460dbba"
+    },
+    {
+      "test": "v048_inherited_legacy_regression_campaign.py",
+      "sourceSha256": "65a0f2dd5604b1c1e8063a8657b1c7d16b3f4f33fa4f9399cb2b70cd5c4a537a",
+      "executedSha256": "bf3eaa9667922bd5755ebc3d3e54d4d768ed0ba94d131573bd50d2719d39603f"
+    },
+    {
+      "test": "v048_inherited_legacy_regression_prologue.py",
+      "sourceSha256": "3da693ca150250f2be66301147b36d46e975b83e18636f5435a75be94d24ce4a",
+      "executedSha256": "bca0127799ae4de796bb846e58ae897d7f85546ce8c102d4de9aa15315d57c3f"
+    },
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "sourceSha256": "9189642a1d77ffadbb13810ac9ce945560feb78fb880bdc00e5e51490ef60092",
+      "executedSha256": "17ffab723a921b0e0bbe5e458bc030f2f2a47368201db1cff70b3025e0c6ed2e"
+    }
+  ]
+}

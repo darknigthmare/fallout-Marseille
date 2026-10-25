@@ -1,0 +1,51 @@
+{
+  "status": "frozen-code-comparison",
+  "moduleHashes": {
+    "baselineFacade": "4a54881ba8b8fe973048814d2f47d6a450df004a8e511e0e535ee34889f870b6",
+    "currentFacade": "855db991e5053752a7d1a366cac3610f6ea7b304461e448d99e45362a49eb432",
+    "currentInterior": "1f5c099bc4082baa6c64660fe6aacb22a52b839b2cbdaf0ce29cb55a4fbc83bf",
+    "integrity": "1e086efb92cfe9971001a1c4988623d95f362e00f795e3c16231edd53acdeed1",
+    "projection": "dbb39a1ef4fa26f5753e0ad16892111e66513b3bbc65a24ab1d22bac354bbdb8"
+  },
+  "summary": {
+    "targetedCurves": 192,
+    "baselineCompatibleCurves": 191,
+    "baselineCompatibleWithEntrances": 0,
+    "currentCompatibleWithEntrances": 191,
+    "currentCompatibleWithUsableInteriorCandidates": 191,
+    "currentCompatibleWithWindows": 187,
+    "currentCompatibleWithRenderedDoor": 191,
+    "currentCompatibleSpanFailures": 0,
+    "compatibleResiduals": [],
+    "sourcesUnchanged": true,
+    "allPaginationConsistent": true,
+    "sampledExcludedEdges": 72,
+    "sampledExcludedEdgesRecovered": 72,
+    "sampledRecoveredDoorsRendered": 72,
+    "sampledRecoveredDoorsWithUsableInsideClearance": 72,
+    "compatibleWindowOmissions": [
+      {
+        "sourceId": "batiment.9695780",
+        "reason": "technical-typology-without-window-register",
+        "typology": "technical-tower"
+      },
+      {
+        "sourceId": "batiment.9695781",
+        "reason": "technical-typology-without-window-register",
+        "typology": "technical-tower"
+      },
+      {
+        "sourceId": "batiment.9695783",
+        "reason": "technical-typology-without-window-register",
+        "typology": "technical-tower"
+      },
+      {
+        "sourceId": "batiment.8923767",
+        "reason": "candidate-clearance-height-or-door-overlap",
+        "typology": "stacked"
+      }
+    ]
+  },
+  "elapsedSeconds": 3.843224784,
+  "targetedBytesRead": 286846040
+}

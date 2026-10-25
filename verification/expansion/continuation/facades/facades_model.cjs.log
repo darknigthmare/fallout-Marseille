@@ -1,0 +1,93 @@
+COMMAND ["/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","-e","const fs=require('node:fs'),path=require('node:path'),Module=require('node:module');const original=process.argv[1],snapshot=process.argv[2],m=new Module(original,module);m.filename=original;m.paths=Module._nodeModulePaths(path.dirname(original));m._compile(fs.readFileSync(snapshot,'utf8'),original);","/workspace/fallout-Marseille/tests/expansion/facades_model.cjs","/workspace/.cloud-setup/fallout-marseille/parallel-continuation/facades/EXECUTED_facades_model.cjs"]
+OK Metric source rings and heights survive facade analysis unchanged
+OK Declared IGN floor count includes ground floor with no added level
+OK A guessed floor count never stretches or truncates the original envelope
+OK Negative absolute ground elevations remain negative
+OK Invalid polygons and non-finite metric data are rejected
+OK Components of the same multi-polygon source keep distinct building IDs
+OK A stable identity ignores ring winding and starting vertex
+OK Source identity remains separately readable
+OK IGN cleabs keeps a durable building identity across WFS feature renumbering
+OK Missing, blank and overlong durable keys fall back to the preserved source identifier
+OK Different components of one durable IGN object retain distinct visit identities
+OK Courtyard order does not affect stable identity
+OK Undocumented commercial and industrial buildings use coherent authored types
+OK Object creation dates are not treated as construction dates or measured facade style
+OK Invented entrance candidates lie on outer edges with valid inside/outside samples
+OK Only one invented doorway is displayed before an accessible candidate is selected
+OK The facade doorway follows the accessible edge selected by the interior binder
+OK An invented upper-street doorway renders at the selected 5m storey without changing the source envelope
+OK Invented windows align with the same bounded floor elevations used by the sloping-street interior
+OK Malformed or out-of-volume upper-street offsets never create a fake shifted entrance
+OK A selected floor cannot move or resize an explicitly documented doorway
+OK Low but physically inhabitable storeys retain a doorway instead of a proportion-based rejection
+OK Invented doorway height stays below its aligned storey ceiling
+OK A claimed selection cannot enlarge an invented door beyond its canonical metric height
+OK An explicitly unreachable building receives no invented access doorway
+OK Door placement survives source ring winding changes
+OK An uninhabitable sliver is not assigned a fake walkable entrance
+OK A low envelope is not given a door taller than its building
+OK Source courtyard edges point into the actual empty courtyard
+OK A documented doorway uses exact metres and public provenance
+OK Documented window dimensions and offsets are never clamped to a generic bay
+OK A facade document without attribution is never presented as documentation
+OK Unknown units and impossible documented dimensions cannot become metric openings
+OK A documented complete edge is not filled with invented windows
+OK A documented blind facade is not assigned an invented front entrance
+OK An invented doorway cannot replace a known window on a partially documented edge
+OK Inferred openings do not cover the source doorway or known windows
+OK Facade generation is deterministic and does not mutate source geometry
+OK Facade meshes retain tile ownership and authored provenance for streaming
+OK Every decorative triangle uses exact source edges and a declared small rendering offset
+OK Courtyard facade decoration leaves the courtyard unfilled
+OK Generated faces index valid finite metric vertices
+OK Geometry respects its triangle and quad budget without an empty-air collider
+OK Low detail contains fewer triangles while keeping the metric source envelope
+OK Complex 200-level polygons are bounded before any window-object expansion
+OK A doorway remains visible when a complex source perimeter exhausts the facade panel budget
+OK Sparse facade sampling reaches upper levels without constructing every lower bay
+OK Spatial selection excludes distant city buildings before mesh generation
+OK Spatial buckets deduplicate a building spanning multiple cells
+OK Large building bounds avoid unbounded spatial cell allocation
+OK Two components sharing one source ID both remain selectable
+OK Facade caches reuse exact geometry while unchanged
+OK A source height, footprint or documented-opening edit invalidates the cached mesh
+OK Choosing another accessible wall invalidates facade geometry without changing the source polygon
+OK An upper-street elevation invalidates the exact facade cache and preserves source XY
+OK LRU ownership stays below both count and estimated byte budgets
+OK A single oversized facade is not retained or allowed to evict valid entries endlessly
+OK Clearing facade ownership is idempotent
+OK Explicit IGN usage overrides its ambiguous industrial/agricultural/commercial nature
+OK A linked architecture use is a fallback after known source usages
+OK Unknown functional-volume levels are inferred from typology without adding apartment stacks
+OK A declared one-storey 143.9m volume keeps its exact source levels and height
+OK Nave clerestory and hall registers remain facade openings within one functional storey
+OK A technical tower does not receive an invented generic apartment-window grid
+OK Long facade inventory keeps metric bay spacing beyond the former 160-column ceiling
+OK Facade cursor pages include all supported documentary openings without changing measured data
+OK Invalid facade cursors and page sizes cannot expand an unbounded page
+OK A page advances its bounded scan even when known openings occupy the procedural slots
+OK All ordinary facade/storey glazing is rendered before any ornamental allocation
+OK Actual 84-segment IGN contour receives full-width curved doors and windows with source topology unchanged
+OK Each curved base face follows its original source segment rather than a straight chord
+OK Curved facade identities and physical bays survive source winding/start changes
+OK Curved entrance selected near another arc remains the exact physical interior08 doorway
+OK Documented raw edge indices remain exact inside a generated curved surface
+OK An attributed blind curved perimeter never gains an invented doorway or windows
+OK Fragment budgets render a whole curved door or explicitly defer it without drawing a partial base
+OK Nearest bounded entrance search includes a short accessible edge outside the 64 longest
+OK A short usable facade has one centred bay instead of losing all storeys below the normal bay spacing
+OK Actual curved, square and hexagonal IGN facades below 1.6m retain actor-clearance-checked complete doors
+OK A minimum-width doorway retains two real jambs and ordinary widths stay unchanged
+OK A selected documented door is recovered among more than 64 openings on the same source edge
+OK Production collection appends detail while leaving source draw and collider owners intact
+OK Production debug counters expose authored provenance and bounded draw budget
+OK Read-only production diagnostics expose actual rendered metric openings
+OK Read-only runtime pagination exposes the complete inventory beyond rendered diagnostic samples
+OK Runtime source-span diagnostics preserve each source edge and clone their returned intervals
+OK Explicit facade refresh re-reads architecture overlays applied to an existing static-draw array
+OK Production publication clears unloaded city geometry and cached details
+OK Historical indoor worlds never receive geographic facade decorations
+{"passed":89,"failed":0,"scope":"Production metric facade model and runtime hooks with four pinned actual IGN footprints and explicitly synthetic architectural fixtures"}
+
+STDERR

@@ -1,0 +1,27 @@
+const fs=require('fs'),path=require('path'),assert=require('assert');const R=path.resolve(__dirname,'../..'),E=require(R+'/src/v049/00_encounters.js');let tests=[];
+const meta={id:'e1',site:'site-1',scope:'outside',kind:'enemy'},npc={id:'n1',site:'site-1',scope:'outside',kind:'npc'},resolve=id=>id==='e1'?meta:id==='n1'?npc:null;
+const base={pos:[1,0,3],home:[0,0,0],health:40,maxHealth:80,yaw:.5,alive:true,limbs:{leg_l:.4},status:{burning:2},alerted:true};
+function ck(name,fn){try{fn();tests.push({name,ok:true});console.log('OK',name)}catch(e){tests.push({name,ok:false,error:String(e)});console.log('FAIL',name,e)}}
+ck('Santé et membres conservés',()=>{let a=E.clean(base,meta);assert.equal(a.health,40);assert.equal(a.limbs.leg_l,.4)});
+ck('Positions copiées sans référence partagée',()=>{let a=E.clean(base,meta);a.pos[0]=9;assert.equal(base.pos[0],1)});
+ck('Identité issue du catalogue, pas de la sauvegarde',()=>assert.equal(E.clean({...base,id:'wrong',site:'wrong'},meta).id,'e1'));
+ck('Les propriétés exécutables sont absentes',()=>assert(!('fn'in E.clean({...base,fn:()=>3},meta))));
+ck('Rejet de NaN dans les coordonnées',()=>assert.equal(E.clean({...base,pos:[NaN,0,0]},meta),null));
+ck('Rejet des coordonnées excessives',()=>assert.equal(E.clean({...base,pos:[1e20,0,0]},meta),null));
+ck('Rejet de santé non finie',()=>assert.equal(E.clean({...base,health:Infinity},meta),null));
+ck('Santé bornée au maximum',()=>assert.equal(E.clean({...base,health:1e9},meta).health,80));
+ck('Mort avec zéro PV',()=>{const a=E.clean({...base,alive:false,health:65},meta);assert.equal(a.alive,false);assert.equal(a.health,0)});
+ck('Zéro PV ne recrée pas un vivant',()=>assert.equal(E.clean({...base,health:0},meta).alive,false));
+ck('Compteurs de combat bornés',()=>{let a=E.clean({...base,attackCooldown:1e6,searchTimer:-4},meta);assert.equal(a.attackCooldown,120);assert.equal(a.searchTimer,0)});
+ck('Effets connus seulement',()=>assert.deepEqual(Object.keys(E.clean({...base,status:{burning:3,arbitrary:99}},meta).status),['burning']));
+ck('Dégâts de membre bornés',()=>assert.equal(E.clean({...base,limbs:{leg_l:6,unknown:1}},meta).limbs.leg_l,1));
+ck('Migration indépendante sans alias',()=>{const a=E.migrate({actors:{e1:base}},resolve);assert.equal(a.actors.e1.health,40);assert.notEqual(a.actors.e1.pos,base.pos)});
+ck('Rejet identifiants hors catalogue',()=>assert.equal(Object.keys(E.migrate({actors:{malicious:base}},resolve).actors).length,0));
+ck('Protection prototype',()=>{const a=E.migrate(JSON.parse('{"actors":{"__proto__":{"pos":[0,0,0],"home":[0,0,0],"health":10,"maxHealth":20}}}'),resolve);assert.equal(Object.keys(a.actors).length,0);assert.equal({}.health,undefined)});
+ck('PNJ conserve sa pose et sa progression de route',()=>{const a=E.clean({...base,anim:2,routeIndex:4,routePause:1.2},npc);assert.equal(a.routeIndex,4);assert(!('health'in a));assert.equal(a.anim,2)});
+ck('Fusion conserve le butin le plus consommé',()=>assert.deepEqual(E.remainder({caps:10,scrap:3},{caps:2,scrap:1}),{caps:2,scrap:1}));
+ck('Absence inventaire initial = épuisé',()=>assert.deepEqual(E.remainder({caps:10},{}),{}));
+ck('Fusion ne produit pas de valeurs négatives',()=>assert.deepEqual(E.remainder({caps:-5,scrap:0},{caps:10,scrap:9}),{}));
+ck('Limite stricte du nombre de fiches',()=>{let actors={};for(let i=0;i<2500;i++)actors['e'+i]=base;const a=E.migrate({actors},id=>({...meta,id}));assert.equal(Object.keys(a.actors).length,2048)});
+ck('Les 1176 identités maximales tiennent dans le journal',()=>{const sites=JSON.parse(fs.readFileSync(R+'/data/fallout_layer_v042.json')).sites;const entries={},known=new Map();for(const site of sites){for(let i=0;i<site.enemySlots;i++)for(const scope of (site.visitable?['inside','outside']:['outside'])){const id='v042:'+site.id+':'+scope+':'+i;known.set(id,{id,site:site.id,scope,kind:'enemy'});entries[id]={...base,pos:[999999.999999,999999.999999,999999.999999],home:[999999.999999,999999.999999,999999.999999],lastKnown:[999999.999999,999999.999999,999999.999999],limbs:Object.fromEntries(['head','body','arm_l','arm_r','leg_l','leg_r','tail'].map(k=>[k,.9999999999])),status:{slow:600,burning:600,bleeding:600,poison:600,stun:600}};}for(let i=0;i<site.npcSlots;i++){const id='v042-npc:'+site.id+':'+i;known.set(id,{id,site:site.id,scope:'outside',kind:'npc'});entries[id]=base;}}const j=E.migrate({actors:entries},id=>known.get(id));assert.equal(Object.keys(j.actors).length,1176);assert(Buffer.byteLength(JSON.stringify(j))<E.MAX_BYTES);});
+const out={version:'0.49.0',passed:tests.filter(t=>t.ok).length,failed:tests.filter(t=>!t.ok).length,total:tests.length,tests};fs.mkdirSync(R+'/verification/v049',{recursive:true});fs.writeFileSync(R+'/verification/v049/QA_ENCOUNTER_KERNEL.json',JSON.stringify(out,null,2));process.exitCode=out.failed?1:0;

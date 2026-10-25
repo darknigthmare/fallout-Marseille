@@ -1,0 +1,70 @@
+{
+  "scope": "Superseded QA setup/harness outcomes, not final validation and not automatically production defects. Original failed images and private ChatGPT data are not copied.",
+  "entries": [
+    {
+      "id": "private-helper",
+      "sourceReport": "preflight-native/CONTINUATION_NATIVE.json",
+      "sourceReportSha256": "5c35a2ce4d6794832492b0a2d401c88251df1ff42df08ea294d614f395efd26d",
+      "stage": "native_document_and_finite_purchase",
+      "reportedPassed": 11,
+      "reportedFailed": 0,
+      "reportedTotal": 11,
+      "failedProcesses": null,
+      "explanation": "Native helper called a private lexical function (groundHeightAt), unavailable from page.evaluate; test corrected to public diagnostics. No production regression inferred.",
+      "countedInFinalAssertions": false,
+      "originalReportAndImagesCopied": false
+    },
+    {
+      "id": "layout-expectation",
+      "sourceReport": "preflight-architecture-layout2-expectation/ARCHITECTURE_NATIVE.json",
+      "sourceReportSha256": "ac32f791f592f202c0b9bc58fa5ee4044207e4e09a8ef3d8edc553e95fc70f27",
+      "stage": "enclosed_rooms_and_furnishing",
+      "reportedPassed": 67,
+      "reportedFailed": 2,
+      "reportedTotal": 69,
+      "failedProcesses": null,
+      "explanation": "Pilot still expected layout version 2 after the version-3 room programme; corrected QA expectation, without production mutation.",
+      "countedInFinalAssertions": false,
+      "originalReportAndImagesCopied": false
+    },
+    {
+      "id": "missing-venv",
+      "sourceReport": "units-system-python-attempt/UNITS.json",
+      "sourceReportSha256": "a546697a47a95aa16193947d323b22df59dccc7b7d6d3fa6da4c38e3c2711859",
+      "stage": "failed",
+      "reportedPassed": null,
+      "reportedFailed": null,
+      "reportedTotal": 1080,
+      "failedProcesses": 1,
+      "explanation": "The system interpreter lacked rasterio: first source-tools attempt had 9 errors and 12 skips; the complete venv rerun passed all 154 source-tool tests without skips.",
+      "countedInFinalAssertions": false,
+      "originalReportAndImagesCopied": false
+    },
+    {
+      "id": "diagnostic-abort",
+      "sourceReport": "preflight-native-attempt2/CONTINUATION_NATIVE.json",
+      "sourceReportSha256": "8f7998a49d6fde47afebb8706a9c4ea2c7f1cba49107bebdf32b7ebff00d32a1",
+      "stage": "final_integrity",
+      "reportedPassed": 203,
+      "reportedFailed": 1,
+      "reportedTotal": 204,
+      "failedProcesses": null,
+      "explanation": "Only the exact local-data metadata diagnostic was cancelled (ERR_ABORTED); source-file requests were not the reported failure. Final pilot preserves that exact cancellation separately while requiring all production files to succeed.",
+      "countedInFinalAssertions": false,
+      "originalReportAndImagesCopied": false
+    },
+    {
+      "id": "bestiary-cleanup",
+      "sourceReport": "bestiary-native/first-run-cleanup-error/REGIONAL_BESTIARY_NATIVE.json",
+      "sourceReportSha256": "f40b6adf8d4120e6e06881b5b4d71e87588b416493e01595e80a15c2e462e015",
+      "stage": "complete",
+      "reportedPassed": 23,
+      "reportedFailed": 0,
+      "reportedTotal": 23,
+      "failedProcesses": null,
+      "explanation": "All 23 actor checks passed, but the initial Playwright cleanup helper raised after leaving the context manager and returned code 1. The corrected pilot reran on unchanged production and exited 0.",
+      "countedInFinalAssertions": false,
+      "originalReportAndImagesCopied": false
+    }
+  ]
+}

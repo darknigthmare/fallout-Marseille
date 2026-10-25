@@ -1,0 +1,112 @@
+{
+  "createdAt": "2026-10-25T06:40:44.711279+00:00",
+  "scope": "Production terrain/placement/collision/water modules and explicit synthetic source fixtures; no browser or acquired data changed.",
+  "baselineCommit": "48418ccbe7238df6d57d300a237d9d1a01386014",
+  "files": {
+    "src/v046/02_environment.js": "f0c4387584a81f2733143dfa2464d38f4366a57466aa7dce278d3f0701c8df92",
+    "src/v050/04a_city_sources.js": "c1c9f771b9e095b3334e946c72bffa1c3991976ff3376192319d346786d45702",
+    "src/v050/04aa_city_water.js": "2f5d0186f7bcc76acc7eee9e2546f5b955ea35a24c5d1b424962f2ef40454c9c",
+    "tests/expansion/world_placements.cjs": "4ed54ada8f5147613f68f57136a61bfc4d86de6e8443b501298545043c0579f5",
+    "tests/expansion/city_streaming.cjs": "2d2e07a38faa691b6fa44247f48440200777f961e510bd4f9591de577e5da34f",
+    "tests/expansion/city_water.cjs": "f68d42f0b427432d94fa708b1d0174f97fa6290f866eaf5f14cf91e9c4d26872"
+  },
+  "suites": [
+    {
+      "command": [
+        "node",
+        "tests/expansion/world_placements.cjs"
+      ],
+      "passed": 13,
+      "failed": 0,
+      "exitCode": 0,
+      "scriptSha256": "4ed54ada8f5147613f68f57136a61bfc4d86de6e8443b501298545043c0579f5",
+      "log": "placements.log",
+      "logSha256": "9fc9bd453d80c9cbfc7860989353412c392a32d1163c652f6cee91418526d32c"
+    },
+    {
+      "command": [
+        "node",
+        "tests/expansion/city_streaming.cjs"
+      ],
+      "passed": 19,
+      "failed": 0,
+      "exitCode": 0,
+      "scriptSha256": "2d2e07a38faa691b6fa44247f48440200777f961e510bd4f9591de577e5da34f",
+      "log": "stream.log",
+      "logSha256": "f2f9af1e264d8f1bad80397966ef4a924b8621419abf3b6e806c93aa386e822e"
+    },
+    {
+      "command": [
+        "node",
+        "tests/expansion/city_water.cjs"
+      ],
+      "passed": 23,
+      "failed": 0,
+      "exitCode": 0,
+      "scriptSha256": "f68d42f0b427432d94fa708b1d0174f97fa6290f866eaf5f14cf91e9c4d26872",
+      "log": "water.log",
+      "logSha256": "8244878b5a7eb6e131fa2409e7257154a39906fa28302157bcb94e1d83da0424"
+    },
+    {
+      "command": [
+        "node",
+        "tests/expansion/city_water_physics.cjs"
+      ],
+      "passed": 24,
+      "failed": 0,
+      "exitCode": 0,
+      "scriptSha256": "b84674ec59eb2d75aeafbd303101bf2697bc1744b80ca0e76332a5fb2532aee4",
+      "log": "water-physics.log",
+      "logSha256": "635b4f5a2a53781bd14c16599337c5e0e279aa624067f7f237033914b450316d"
+    },
+    {
+      "command": [
+        "node",
+        "tests/expansion/geography.test.cjs"
+      ],
+      "passed": 50,
+      "failed": 0,
+      "exitCode": 0,
+      "scriptSha256": "e501eb85c228a39e0407f2470c56028db89b3b76e9107909a654ca19bd5dc32a",
+      "log": "geography.log",
+      "logSha256": "b01650e2d2716cfdb171b6cfa395ce5bb4e6d70380ef1fffc7bee826b088d32d"
+    }
+  ],
+  "passed": 129,
+  "failed": 0,
+  "frozenSourceIndices": {
+    "index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927"
+  },
+  "baselineReplay": {
+    "method": "Current regression tests with fs reads of the three production source modules substituted by exact git baseline snapshots; no repository file mutation.",
+    "script": "replay_baseline.cjs",
+    "productionSnapshots": {
+      "baseline/src/v046/02_environment.js": "cb2db172dd5dec933904d9ba7b1aa45784f8befae6cb33aa684f07057cfb8909",
+      "baseline/src/v050/04a_city_sources.js": "45bbe45c0a8209644c6f371380af3a14bc72fef20d8ce5c6db7f9b464a81c96e",
+      "baseline/src/v050/04aa_city_water.js": "567038786b30df531de51f4477b1a6ca0c2d4ac70439537aec7df4b21fc6235f"
+    },
+    "expectedFailedSuites": [
+      "baseline-city_streaming.cjs.log",
+      "baseline-city_water.cjs.log",
+      "baseline-world_placements.cjs.log"
+    ]
+  },
+  "changes": [
+    "Old maritime index failures/missing responses cannot displace refreshed readiness or its replacement promise; current errors are reported in a bounded diagnostic.",
+    "Refresh invalidates pre-transaction navigations and stale boot diagnostics without touching the published terrain bank.",
+    "New fictional site spawns revalidate saved XY against current measured terrain, source water and solids; safe XY retained, height updated from measure without clamping negatives.",
+    "Active actors retain their owner/health/finite loot until unload; unpublished staging previews cannot alter saved placements."
+  ],
+  "limits": [
+    "Placement fixtures are synthetic and do not certify a surveyed actor location or native city playthrough.",
+    "Already active actors are intentionally not moved or respawned by a terrain update; revalidation applies at the next spawn.",
+    "Fictional site coordinates and original source geometries/indices/archives remain unchanged."
+  ],
+  "nativeChecklist": [
+    "In a real source sector, spawn or revisit an existing discovered safe catalogue site through normal proximity streaming.",
+    "Read v020State().v046.placements[siteId] and compare its Y to v046Height(...v046LL at that point); retain the real site ID and source coordinates.",
+    "Check existing NPC owners and finite inventories across unload/return; use only actual source data and declared diagnostic loading/camera assistance."
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "version": "0.48.0",
+  "html_sha256": "ea8ba2e3d9ba9ed1925628672f4c596475ff2437de06bfa7979ee03f6f59f0bf",
+  "passed": 62,
+  "failed": 0,
+  "total": 62,
+  "errors": [],
+  "tests": [
+    {
+      "name": "v0.48 exécutée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Banc synthétique chargé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Même géométrie que le constructeur v0.47",
+      "ok": true,
+      "detail": {
+        "before": "0664dfe4",
+        "after": "0664dfe4",
+        "same": true
+      }
+    },
+    {
+      "name": "La préparation a rendu la main",
+      "ok": true,
+      "detail": {
+        "id": 2,
+        "status": "prepared",
+        "phase": "publication",
+        "units": 16842,
+        "yields": 37,
+        "budgetMs": 6,
+        "maxSliceMs": 13.2,
+        "elapsedMs": 220.6
+      }
+    },
+    {
+      "name": "Étape interruptible batiments",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Étape réellement affichée batiments",
+      "ok": true,
+      "detail": "Routes et bâtiments · 0/34"
+    },
+    {
+      "name": "Annulation conserve la scène batiments",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation conserve position batiments",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Étape interruptible collisions",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Étape réellement affichée collisions",
+      "ok": true,
+      "detail": "Passages et collisions · 0/34"
+    },
+    {
+      "name": "Annulation conserve la scène collisions",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation conserve position collisions",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Étape interruptible relief",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Étape réellement affichée relief",
+      "ok": true,
+      "detail": "Maillages du terrain · 0/25"
+    },
+    {
+      "name": "Annulation conserve la scène relief",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation conserve position relief",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Étape interruptible nature",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Étape réellement affichée nature",
+      "ok": true,
+      "detail": "Forêts et mobilier · 0/729"
+    },
+    {
+      "name": "Annulation conserve la scène nature",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation conserve position nature",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Étape interruptible publication",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Étape réellement affichée publication",
+      "ok": true,
+      "detail": "Dernières vérifications · 0/1"
+    },
+    {
+      "name": "Annulation conserve la scène publication",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation conserve position publication",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai après cinq annulations",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai conserve routes et cours",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Entrée intérieure",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Une seule scène retenue",
+      "ok": true,
+      "detail": {
+        "site": "v042-marseille-shelter-01",
+        "bytes": 1319212,
+        "lab": true,
+        "createdAt": 1792913544906
+      }
+    },
+    {
+      "name": "Budget mémoire de retour respecté",
+      "ok": true,
+      "detail": {
+        "site": "v042-marseille-shelter-01",
+        "bytes": 1319212,
+        "lab": true,
+        "createdAt": 1792913544906
+      }
+    },
+    {
+      "name": "Porte x-12 z24 traversable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cloison voisine x-12 z18 solide",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Porte x12 z4 traversable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cloison voisine x12 z10 solide",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Porte x-12 z-16 traversable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cloison voisine x-12 z-10 solide",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Porte x12 z-38 traversable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Cloison voisine x12 z-30 solide",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Arrivée orientée vers intérieur",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "Récompense de quête acquise",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Le portefeuille a progressé",
+      "ok": true,
+      "detail": {
+        "before": 18,
+        "after": 73
+      }
+    },
+    {
+      "name": "Sortie fonctionne même sans réseau",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Même objet monde et banque de relief",
+      "ok": true,
+      "detail": {
+        "scene": true,
+        "bank": true
+      }
+    },
+    {
+      "name": "Aucun chargement de retour",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Même empreinte visible au retour",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Gains conservés au retour",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Position et regard de sortie conservés",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour validé annoncé prêt",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mémoire de retour libérée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Récompense non répétable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Autre destination invalide le retour",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "La scène étrangère est conservée",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Nouveau banc après déplacement étranger",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Budget zéro interdit la rétention",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Sortie en échec conserve le lieu intérieur",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Sortie en échec conserve la position intérieure",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai de sortie proposé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Annulation de sortie rend l’intérieur jouable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Retour incomplet ne perd pas la sauvegarde du lieu",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai de sortie rejoint un extérieur valide",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Réessai termine les métadonnées intérieures",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune transaction de porte restante",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "HTML final réellement exécuté; chargements du banc synthétique; collisions des véritables gabarits intérieurs et récompenses réelles du code de jeu. Aucun pack territorial intégral installé."
+}

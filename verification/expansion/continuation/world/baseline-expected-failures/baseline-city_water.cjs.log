@@ -1,0 +1,86 @@
+✔ Water polygons and island rings project without modifying any source coordinates (3.28406ms)
+✔ A water report is not inferred from altitude or administrative complement (0.521904ms)
+✔ An open water ring is rejected before import (0.604729ms)
+✔ A derived point beyond its declared tile boundary is rejected (1.134137ms)
+✔ Counts and provenance must match the byte-pinned source descriptor (0.529158ms)
+✔ Unsafe paths and altered content-addressed filenames are rejected (0.483933ms)
+✔ Repeated maritime tile identities cannot be loaded as separate surveys (0.376894ms)
+✔ A false municipality and excessive resource budget are rejected (0.403554ms)
+✔ Only ocean or sea classes replace an older ocean polygon; inland water remains (0.408703ms)
+✔ Production wrapper installs before debug initialization without a boot exception (2.064784ms)
+✔ Ready loads a real optional descriptor through the shared source reader (1.775955ms)
+✔ Maritime planning includes verified water-only tiles beyond the old pack (1.466538ms)
+✔ The verified high-water sea replaces the old coarse ocean and preserves inland lakes (2.506067ms)
+✔ A fully surveyed land tile removes an old ocean polygon without inventing water (1.110262ms)
+✔ Outside the atlas the original resource is untouched (1.13048ms)
+✔ Water-only coverage never masquerades as an officially empty base vector tile (1.304024ms)
+✔ A repeated unchanged water tile reuses bounded projected geometry (1.560253ms)
+✔ Synthetic laboratory worlds do not receive the real municipal water atlas (1.089343ms)
+✔ Refreshing the source atlas releases maritime ownership and cached geometry (1.477708ms)
+✔ An obsolete load settling after refresh cannot release a replacement shared load (5.91946ms)
+✖ A stale index failure cannot discard the replacement index shared by current callers (2.653223ms)
+✖ An optional missing-index response from before refresh cannot validate a current navigation (1.14653ms)
+✖ Current maritime index errors are reported and a subsequent retry can recover (1.724278ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 20
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 41.312774
+
+✖ failing tests:
+
+test at tests/expansion/city_water.cjs:36:1
+✖ A stale index failure cannot discard the replacement index shared by current callers (2.653223ms)
+  AssertionError [ERR_ASSERTION]: The old index failure started an unnecessary third maritime index request
+  
+  3 !== 2
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/city_water.cjs:43:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/expansion/city_water.cjs:46:1
+✖ An optional missing-index response from before refresh cannot validate a current navigation (1.14653ms)
+  AssertionError [ERR_ASSERTION]: A stale 404 must not let the earlier preparation proceed without the current sea atlas
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/city_water.cjs:51:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /périmé/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/expansion/city_water.cjs:54:1
+✖ Current maritime index errors are reported and a subsequent retry can recover (1.724278ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'Current maritime request fixture failed'
+  - ]
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/city_water.cjs:58:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+

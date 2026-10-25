@@ -629,7 +629,7 @@ def main():
             return_point = state['v050City']['returnPoint']
             report['interior'] = {'chosen': chosen, 'initial': initial, 'layout': layout, 'returnPoint': return_point}
             check('Entered plan preserves the source-derived local outline and honest invented provenance',
-                  layout['rings'] == building['rings'] and layout['layoutVersion'] == 2 and layout['provenance'] == 'invented'
+                  layout['rings'] == building['rings'] and layout['layoutVersion'] == building.get('layoutVersion') == 3 and layout['provenance'] == 'invented'
                   and initial['layoutProvenance'] == 'invented' and not initial['documentSource'] and not initial['documentedLevels'])
             coverage = [dict(roomId=r['id'], **room_wall_coverage(r, layout['walls'])) for r in layout['rooms']]
             report['interior']['roomWallCoverage'] = coverage

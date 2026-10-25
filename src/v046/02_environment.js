@@ -6,11 +6,26 @@ function v046Nature(w,plan){w.staticDraws=w.staticDraws.filter(d=>!d.v046Nature)
  for(const d of tmp.staticDraws){d.pos[1]+=Math.max(0,h.height);d.v046Nature=key;d.v046GeometryId=key+':'+out.length;out.push(d);}ids.push(key);}
  w.staticDraws.push(...out);w.v046NatureIds=ids;
 }
-/* Site visibility does not depend on the macro label. Placements are resolved
-   against validated source geometry once, recorded, and reused on return. */
+/* A stored fictional site position does not certify the next source edition.
+   Retain safe XY on return, but use the current measured bank for altitude and
+   recheck source water/solids before admitting a newly loaded site. */
+function v046MeasuredPlacement(w,x,z){
+ if(!Number.isFinite(x)||!Number.isFinite(z)||!w.v046Records?.size)return null;
+ const h=typeof v047Height==='function'&&typeof v047Bank==='function'?v047Height(v047Bank(w),x,z):v046HeightAt(x,z);
+ if(!Number.isFinite(h?.height)||v046SurfaceAt([x,0,z],w.v046Records).water||v046Blocked(w,x,z))return null;
+ return[x,h.height,z];
+}
 const v046WorldPointOld=v042WorldPoint;
-v042WorldPoint=function(w,site){if(!w?.v046)return v046WorldPointOld(w,site);const old=state.v046.placements[site.id];if(old)return old.slice();const p=v015GeoProject(w.id,site.lat,site.lon);const candidates=[[0,0]];for(let r=14;r<=98;r+=14)for(let i=0;i<12;i++)candidates.push([Math.cos(i/12*TAU)*r,Math.sin(i/12*TAU)*r]);for(const[dx,dz]of candidates){const x=p[0]+dx,z=p[2]+dz,h=v046HeightAt(x,z);if(h.height===null||v046SurfaceAt([x,0,z],w.v046Records).water||v046Blocked(w,x,z))continue;const pos=[x,Math.max(0,h.height),z];state.v046.placements[site.id]=pos;return pos.slice();}return null;};
-const v046SpawnOld=v042SpawnSite;v042SpawnSite=function(w,site){if(!w?.v046)return v046SpawnOld(w,site);if(!v042WorldPoint(w,site))return null;return v046SpawnOld(w,site);};
+v042WorldPoint=function(w,site){
+ if(!w?.v046)return v046WorldPointOld(w,site);
+ const old=state.v046.placements[site.id],persist=typeof world==='undefined'||w===world,remember=pos=>{if(persist)state.v046.placements[site.id]=pos;return pos.slice();};
+ if(Array.isArray(old)&&old.length===3&&old.every(Number.isFinite)){const pos=v046MeasuredPlacement(w,old[0],old[2]);if(pos)return remember(pos);}
+ const p=v015GeoProject(w.id,site.lat,site.lon),candidates=[[0,0]];for(let r=14;r<=98;r+=14)for(let i=0;i<12;i++)candidates.push([Math.cos(i/12*TAU)*r,Math.sin(i/12*TAU)*r]);
+ for(const[dx,dz]of candidates){const pos=v046MeasuredPlacement(w,p[0]+dx,p[2]+dz);if(pos)return remember(pos);}return null;
+};
+/* Active actors keep their existing owner, health and loot. Revalidation is
+   for a new spawn after unload, never a per-frame relocation or respawn. */
+const v046SpawnOld=v042SpawnSite;v042SpawnSite=function(w,site){if(!w?.v046||V042_RUNTIME.active.has(site.id))return v046SpawnOld(w,site);if(!v042WorldPoint(w,site))return null;return v046SpawnOld(w,site);};
 const v046LayerOld=v042UpdateLayer;v042UpdateLayer=function(dt){if(!world?.v046)return v046LayerOld(dt);if(V046.busy||!settings.geoFalloutLayer)return;V042_RUNTIME.clock+=dt;if(V042_RUNTIME.clock<.7)return;V042_RUNTIME.clock=0;V042_RUNTIME.worldId=world.id;
  const rows=V042_CATALOG.map(site=>{const p=v015GeoProject(world.id,site.lat,site.lon);return{site,p,d:Math.hypot(p[0]-state.player.pos[0],p[2]-state.player.pos[2])};}).sort((a,b)=>a.d-b.d||a.site.id.localeCompare(b.site.id));V042_RUNTIME.nearest=rows[0];const allowed=rows.filter(r=>r.d<Math.min(480,r.site.activationRadius));const keep=new Set(allowed.slice(0,settings.geoContentBudget).map(r=>r.site.id));for(const[id,rec]of V042_RUNTIME.active){if(rec.enemies.some(e=>e.alive&&e.alerted))keep.add(id);}
  for(const id of[...V042_RUNTIME.active.keys()])if(!keep.has(id))v042UnloadSite(id);for(const r of allowed){if(r.d<r.site.discoverRadius&&!V046.lab)v042Discover(r.site);if(keep.has(r.site.id)&&!V042_RUNTIME.active.has(r.site.id))v042SpawnSite(world,r.site);}for(const rec of V042_RUNTIME.active.values())v042CheckSite(rec);

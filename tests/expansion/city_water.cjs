@@ -33,3 +33,28 @@ test('A repeated unchanged water tile reuses bounded projected geometry',async()
 test('Synthetic laboratory worlds do not receive the real municipal water atlas',async()=>{const{c}=sandbox();await run(c,'v051CityReady()');run(c,'V046.lab=true;');assert.deepEqual(plain(run(c,'v046Plan().keys')),['cadastre:16:1:1']);const r=await run(c,"v046Resource('base:14:8433:5998')");assert.equal(r.v051WaterAtlas,undefined);});
 test('Refreshing the source atlas releases maritime ownership and cached geometry',async()=>{const{c}=sandbox();await run(c,'v051CityReady()');await run(c,"v046Resource('base:14:8433:5998')");run(c,'window.__MISTRAL_DEBUG={};v051WaterAfterInit();v051CityRefresh();');const info=run(c,'window.__MISTRAL_DEBUG.v051WaterInfo()');assert.equal(info.present,false);assert.equal(info.cache.bytes,0);});
 test('An obsolete load settling after refresh cannot release a replacement shared load',async()=>{const{c,f}=sandbox();await run(c,'v051CityReady()');const read=c.v050LocalSourceJSON,pending=[];c.v050LocalSourceJSON=(path,d)=>d?new Promise(resolve=>pending.push(()=>resolve(f.raw))):read(path,d);const tick=()=>new Promise(resolve=>setImmediate(resolve));const old=run(c,"v046Resource('base:14:8433:5998')").catch(e=>e);await tick();assert.equal(pending.length,1);run(c,'v051CityRefresh();');await run(c,'v051CityReady()');const replacement=run(c,"v046Resource('base:14:8433:5998')");await tick();assert.equal(pending.length,2);pending[0]();assert.match((await old).message,/périmée/);const joined=run(c,"v046Resource('base:14:8433:5998')");await tick();assert.equal(pending.length,2);pending[1]();const[a,b]=await Promise.all([replacement,joined]);assert.equal(a.layers.water.features.at(-1),b.layers.water.features.at(-1));});
+test('A stale index failure cannot discard the replacement index shared by current callers',async()=>{
+ const{c,f}=sandbox(),pending=[],read=c.v050LocalSourceJSON,tick=()=>new Promise(resolve=>setImmediate(resolve));
+ c.v050LocalSourceJSON=(path,d)=>path.endsWith('water-index.json')?new Promise((resolve,reject)=>pending.push({resolve,reject})):read(path,d);
+ const old=run(c,'v051CityReady()').catch(error=>error);await tick();run(c,'v051CityRefresh()');
+ const replacement=run(c,'v051CityReady()');await tick();assert.equal(pending.length,2);pending[0].reject(Error('Obsolete response fixture'));
+ assert.match((await old).message,/Obsolete/);const joined=run(c,'v051CityReady()');await tick();const requests=pending.length;
+ for(const job of pending.slice(1))job.resolve(f.index);await Promise.all([replacement,joined]);
+ assert.equal(requests,2,'The old index failure started an unnecessary third maritime index request');
+ run(c,'window.__MISTRAL_DEBUG={};v051WaterAfterInit()');assert.deepEqual(plain(run(c,'window.__MISTRAL_DEBUG.v051WaterInfo().errors')),[]);
+});
+test('An optional missing-index response from before refresh cannot validate a current navigation',async()=>{
+ const{c,f}=sandbox(),pending=[],read=c.v050LocalSourceJSON,tick=()=>new Promise(resolve=>setImmediate(resolve));
+ c.v050LocalSourceJSON=(path,d)=>path.endsWith('water-index.json')?new Promise(resolve=>pending.push(resolve)):read(path,d);
+ const old=run(c,'v051CityReady()').catch(error=>error);await tick();run(c,'v051CityRefresh()');const current=run(c,'v051CityReady()');await tick();
+ pending[0](null);const obsolete=await old;pending[1](f.index);await current;
+ assert.match(String(obsolete?.message||''),/périmé/,'A stale 404 must not let the earlier preparation proceed without the current sea atlas');
+ run(c,'window.__MISTRAL_DEBUG={};v051WaterAfterInit()');assert.equal(run(c,'window.__MISTRAL_DEBUG.v051WaterInfo().present'),true);
+});
+test('Current maritime index errors are reported and a subsequent retry can recover',async()=>{
+ const{c}=sandbox(),read=c.v050LocalSourceJSON;let failed=false;
+ c.v050LocalSourceJSON=async(path,d)=>{if(!failed&&path.endsWith('water-index.json')){failed=true;throw Error('Current maritime request fixture failed');}return read(path,d);};
+ await assert.rejects(run(c,'v051CityReady()'),/Current maritime/);run(c,'window.__MISTRAL_DEBUG={};v051WaterAfterInit()');
+ assert.deepEqual(plain(run(c,'window.__MISTRAL_DEBUG.v051WaterInfo().errors')),['Current maritime request fixture failed']);
+ await run(c,'v051CityReady()');assert.equal(run(c,'window.__MISTRAL_DEBUG.v051WaterInfo().present'),true);
+});

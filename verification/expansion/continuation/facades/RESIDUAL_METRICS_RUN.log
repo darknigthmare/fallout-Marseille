@@ -1,0 +1,33 @@
+{
+  "scope": "Read-only exported candidate metrics from the exact frozen modules and acquired source cases. Projected width, source-footprint inner/outer clearance and .38m actor radius are checked; no terrain or neighboring geometry is certified.",
+  "modules": {
+    "facade": "855db991e5053752a7d1a366cac3610f6ea7b304461e448d99e45362a49eb432",
+    "interior": "1f5c099bc4082baa6c64660fe6aacb22a52b839b2cbdaf0ce29cb55a4fbc83bf"
+  },
+  "records": [
+    {
+      "sourceId": "batiment.10611104",
+      "doors": 1,
+      "firstProjectedWidth": 1.1073936697847893,
+      "independentProjectedExtent": 1.1073936697847557,
+      "insideGap": 0.9472804288505434,
+      "outsideGap": 1.1464857881206232
+    },
+    {
+      "sourceId": "batiment.10626012",
+      "doors": 1,
+      "firstProjectedWidth": 1.054514508552884,
+      "independentProjectedExtent": 1.0545145085525292,
+      "insideGap": 0.9030983716565499,
+      "outsideGap": 1.1424190706736723
+    },
+    {
+      "sourceId": "batiment.9609229",
+      "doors": 4,
+      "firstProjectedWidth": 0.7800000000000895,
+      "independentProjectedExtent": 0.7799999999999727,
+      "insideGap": 0.9499999999999915,
+      "outsideGap": 1.1500000000000297
+    }
+  ]
+}
