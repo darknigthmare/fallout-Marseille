@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "serverPid": 156618,
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "-u",
+    "tools/serve_game.py",
+    "--port",
+    "32799",
+    "--no-browser"
+  ],
+  "serverExitCode": -15,
+  "intentionalShutdown": "Explicit SIGTERM to this preflight-owned server after readiness check",
+  "error": null,
+  "fetched": {
+    "status": 200,
+    "sha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "bytes": 2797822
+  },
+  "indexesBefore": {
+    "/workspace/fallout-Marseille/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/rebuild-game/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636"
+  },
+  "indexesAfter": {
+    "/workspace/fallout-Marseille/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/rebuild-game/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636"
+  },
+  "started_ns": 1792919465585081120,
+  "finished_ns": 1792919569008998174
+}

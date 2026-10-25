@@ -1,0 +1,16 @@
+{
+  "version": "0.47.0",
+  "html_sha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+  "passed": 0,
+  "failed": 1,
+  "total": 1,
+  "errors": [],
+  "tests": [
+    {
+      "name": "Scénario serveur et E/S",
+      "ok": false,
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/tests/v050-legacy-7r1v5pa8/v048_inherited_server_io.py\", line 20, in <module>\n    ck('Le serveur distribue le HTML final exact',hashlib.sha256(html.encode()).hexdigest()==hashlib.sha256((R/'index.html').read_bytes()).hexdigest())\n                                                                 ^^^^\nNameError: name 'html' is not defined. Did you forget to import 'html'\n"
+    }
+  ],
+  "scope": "Serveur HTTP loopback réel interrogé par Python ; logique navigateur exécutée par set_content avec réponses réseau contrôlées. Navigation du navigateur bloquée par politique administrateur : pas de validation IndexedDB natif."
+}

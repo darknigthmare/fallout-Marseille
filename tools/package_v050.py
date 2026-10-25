@@ -38,7 +38,7 @@ def playable_tool_names():
             'install_terrain_v039.py', 'mvt_audit_v036.py', 'benchmark_map_v041.py',
             'audit_real_map_v039.py', 'audit_real_map_v038.py', 'audit_terrain_v039.py',
             'audit_corridors_v040.py', 'world_source_bundle.py', 'world_sources.py',
-            'city_sources.py', 'city_water_sources.py', 'acquire_city_world.py',
+            'city_sources.py', 'city_water_sources.py', 'precise_terrain_sources.py', 'acquire_city_world.py',
             'acquire_public_world.py']
 
 
@@ -252,10 +252,12 @@ def main():
     toolnames = playable_tool_names()
     paths = {R / name for name in rootfiles} | {R / 'tools' / name for name in toolnames}
     for folder in ['icons', 'data', 'docs', 'verification/v050', 'verification/expansion', 'implementation/real-sources', 'implementation/city-sources']:
-        paths.update(p for p in (R / folder).rglob('*') if include(p) and not any(part in {'archives', 'enrichment_archives', 'city_archives'} for part in p.relative_to(R).parts))
+        paths.update(p for p in (R / folder).rglob('*') if include(p)
+                     and not any(part in {'archives', 'enrichment_archives', 'city_archives'} for part in p.relative_to(R).parts)
+                     and not p.is_relative_to(R / 'data/map_pack/precise'))
     game_files = sorted(paths)
     ck('Tous les composants de la distribution jouable présents', all(p.is_file() for p in game_files))
-    game_manifest = {'version': '0.50.0', 'scope': 'Jeu avec données géographiques déjà extraites, lanceurs, documents et preuves. Les 24 ZIP de reconstruction figurent dans le projet complet.', 'files': entries(game_files)}
+    game_manifest = {'version': '0.50.0', 'scope': 'Jeu avec données géographiques de base extraites, lanceurs, documents et preuves. Le relief LiDAR natif reste dans ses archives vérifiées et se prépare hors ligne au lancement, sans doubler son contenu dans le ZIP. Les 24 ZIP de reconstruction de base figurent dans le projet complet.', 'files': entries(game_files)}
     write_json(R / GAME_MANIFEST, game_manifest)
     full_files = sorted([p for p in R.rglob('*') if include(p)] + [R / GAME_MANIFEST])
     full_manifest = {'version': '0.50.0', 'scope': 'Projet complet : sources, tests, historique, données géographiques extraites et 24 ZIP d’origine. Seuls VCS, caches et fichiers temporaires sont exclus.', 'files': entries(full_files)}

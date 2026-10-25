@@ -1,0 +1,27 @@
+OK Pas de pause inutile avant budget
+OK Pause au budget temporel
+OK Pause au quota opérations
+OK Pause forcée de changement de phase
+OK Budget et compteurs mesurés
+OK Budget invalide refusé {"budgetMs":0}
+OK Budget invalide refusé {"budgetMs":null}
+OK Budget invalide refusé {"maxUnits":0}
+OK Budget invalide refusé {"maxUnits":0.5}
+OK Pause respecte signal préannulé
+OK Checkpoint respecte signal préannulé
+OK Annulation pendant attente traitée
+OK Le navigateur peut traiter des événements entre lots
+OK Retour position identique accepté
+OK Erreur de position minimale tolérée
+OK Autre position refusée
+OK Coordonnées NaN refusées
+OK Position incomplète refusée
+OK Mur inversé conserve les deux segments
+OK Mur normal et inversé identiques
+OK Porte hors du mur ne crée pas de débordement
+OK Porte plus large que mur laisse passage libre
+OK Mur sans longueur ignoré
+OK Mur sans porte restauré
+OK Bornes de cloisons invalides refusées
+{"passed":25,"failed":0,"total":25}
+

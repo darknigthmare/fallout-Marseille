@@ -1,0 +1,27 @@
+# Programmes intérieurs par usage
+
+Le programme **layout 4** s’applique aux nouvelles visites. Il construit des aménagements inventés dans les anneaux métriques du bâtiment source, sans déplacer les murs extérieurs, combler les cours ni transformer le nombre d’étages déclaré en nombre d’étages supplémentaires. Les sauvegardes **layout 1, 2 et 3** conservent leurs anciennes cloisons, meubles, accès et signatures, y compris pour les plans documentés.
+
+Les halles et serres dont l’usage explicite importé est `warehouse`, `greenhouse`, `farm` ou `workshop` gardent un seul volume lorsque leurs niveaux sont inconnus. Un nombre d’étages explicite reste prioritaire ; aucune hauteur ni aucun plancher existant d’une sauvegarde n’est modifié.
+
+Les catégories disponibles ne documentent pas les pièces réelles. Le pack IGN actuel distingue notamment « Commercial et services », « Industriel » et « Agricole » ; il ne donne pas de catégorie primaire « Enseignement », « Santé » ou « Bureau ». Le moteur n’en déduit aucune depuis le nom d’un bâtiment. Les programmes spécialisés correspondants exigent une valeur explicite importée (`usage_1`, `usage_2`, `building:use`, `building`, `amenity`, `shop`) ou une annotation `architectureUse`. Une catégorie source explicite reste prioritaire sur une annotation. Une nature générique « Industriel, agricole ou commercial » reste ambiguë : son interprétation et son aménagement sont inventés.
+
+`programmeUse` sur le descripteur sauvegardé et `programCoverage.useBasis` dans le plan indiquent le champ, sa valeur et son origine (`source-attribute`, `architecture-annotation`, `invented-fallback` ou `saved-use`). L’origine du programme d’aménagement reste `invented`. Une annotation ne devient donc pas un usage IGN ni un relevé mesuré.
+
+| Programme | Aménagement inventé selon l’espace praticable |
+| --- | --- |
+| Commerce | Comptoir, caisse, rayonnage public distinct du rayonnage en réserve, attente ; réserve, bureau du personnel et sanitaires si l’emprise le permet. |
+| Atelier | Établi, armoire à outils, caisses et palettes ; réserve, bureau du personnel et sanitaires selon la surface. Le programme ne prétend pas connaître l’activité industrielle ou agricole réelle. |
+| Bureau | Postes de travail, photocopieur, archives et attente ; bureaux fermés, archives et sanitaires selon la surface. |
+| Enseignement explicite | Tableau et tables scolaires ; classe fermée, bureau du personnel et sanitaires selon la surface. Une classe équipée demande quatre tables doubles, sans annoncer de capacité réglementaire. |
+| Santé explicite | Salle de soins avec lit, lavage, armoire et éventuellement paravent ; réserve médicale, accueil, attente et sanitaires selon la surface. Les répétitions dans l’espace public concernent les bancs, pas des lits supplémentaires. |
+
+Les fonctions principales passent avant les équipements de soutien. Une fraction de la surface reste disponible pour l’activité et la circulation ; une réserve ne remplace plus le rayonnage public d’un commerce. Les pièces proposées possèdent une ouverture de 1,20 m. Les contrôles conservent le rayon physique du personnage, les solides du mobilier et les anneaux sources. Les sondes proches du contour, auparavant réservées aux petites habitations du layout 3, sont aussi utilisées dans les nouveaux programmes pour repérer des recoins isolés.
+
+Ces contrôles restent bornés : 10 pièces, 32 meubles, 4 096 cellules, 180 vérifications de navigation et 256 sondes de bord au maximum. Une forme trop grande, une liaison source non prouvée ou un meuble sans accès produit une omission explicite ; le volume source reste présent. `roomOmissions`, `furnishingOmissions`, `equipmentQuantities` et les compteurs de navigation exposent ces limites. Un programme incomplet n’est pas présenté comme un inventaire exhaustif de la ville.
+
+Les plans documentés gardent leurs murs, anneaux de pièces, hauteurs et attribution. Pour les nouvelles visites, leurs libellés explicites de classe, soins, atelier ou vente orientent uniquement le mobilier inventé. Les visites documentées déjà sauvegardées en layout 1/2/3 gardent aussi leur ancien mobilier.
+
+Les [cas sources attribués](../tests/expansion/fixtures/interior_source_uses.json) contiennent trois géométries IGN originales avec leurs empreintes SHA-256 et leur projection de production : commerce `batiment.39112232`, atelier industriel `batiment.9618398` et volume agricole `batiment.9620088`. Les cloisons, portes et équipements ajoutés dans ces volumes restent inventés. Les cas scolaires et médicaux automatisés sont des fixtures explicites et ne constituent pas la reproduction mesurée d’une école ou d’un hôpital marseillais. Les tests contrôlés couvrent 184 cas de géométrie, programme et transactions, ainsi que 23 cas de persistance documentaire.
+
+Le pilote HTTP spécialisé a réussi **56 contrôles**, avec code de processus 0, six captures réelles et un seul contexte Chromium sur le HTML `120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636`. Le commerce `batiment.39112232` et l’atelier `batiment.9618398` ont été ouverts par la touche E ; caisse et armoire ont leurs parties rendues, solides et accès vérifiés, avec marche contrôlée, reprise froide par Continuer et retour au point extérieur. Les placements et pas de simulation assistés sont déclarés. Le cadrage de proximité sert au contrôle technique des équipements. Ces contrôles appartiennent au [bilan final](../verification/expansion/precision/PRECISION_INTEGRATION.json) et ne s’ajoutent pas une seconde fois à sa somme.

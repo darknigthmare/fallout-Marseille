@@ -1,0 +1,403 @@
+{
+  "checks": [
+    {
+      "name": "Coordinated HTML and chemistry are installed and composed",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v050/10_lore_continuity.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v050/11_power_armor.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v050/12_iconic_ecosystem.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v028/01_body.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v028/04_story.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v026/04_trade_runtime.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document matches frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing authored scene selected without grants: aubagne",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh ordinary inventory contains no free chems",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native selection physically reaches Baptiste",
+      "ok": true,
+      "detail": {
+        "position": [
+          12.0,
+          1.65,
+          20.7
+        ],
+        "target": [
+          12,
+          1.2,
+          19
+        ],
+        "actual_label": "Parler à Baptiste Arnaud",
+        "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+      }
+    },
+    {
+      "name": "Native E opens real merchant dialogue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real finite old-campaign supply has three Mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible purchases spend capsules and exhaust the same finite merchant stock",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub aid",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: inventory/aid",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: select mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: use mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: use mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: use mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Three real AIDE doses consume inventory and create bounded tolerance and dependency",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual simulation calls in the Pip-Boy preserve chem time",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab status",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub chemistry",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: status/chemistry",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Tab closes Pip-Boy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual active updates end the bonus and impose cognitive withdrawal",
+      "ok": false,
+      "detail": {
+        "schema": 1,
+        "state": {
+          "schema": 1,
+          "elapsed": 29.650000000000286,
+          "agents": {
+            "jet": {
+              "uses": 0,
+              "load": 0,
+              "washout": 0,
+              "active": 0,
+              "tier": 0,
+              "dependent": false,
+              "withdrawal": 0
+            },
+            "buffout": {
+              "uses": 0,
+              "load": 0,
+              "washout": 0,
+              "active": 0,
+              "tier": 0,
+              "dependent": false,
+              "withdrawal": 0
+            },
+            "mentats": {
+              "uses": 3,
+              "load": 3,
+              "washout": 150.34999999999326,
+              "active": 90.35000000000169,
+              "tier": 1,
+              "dependent": true,
+              "withdrawal": 0
+            },
+            "psycho": {
+              "uses": 0,
+              "load": 0,
+              "washout": 0,
+              "active": 0,
+              "tier": 0,
+              "dependent": false,
+              "withdrawal": 0
+            }
+          },
+          "stocked": {
+            "aubagne": true
+          },
+          "treatments": 0,
+          "recoveries": 0
+        },
+        "families": [
+          {
+            "id": "jet",
+            "name": "Jet",
+            "uses": 0,
+            "load": 0,
+            "washout": 0,
+            "active": 0,
+            "tier": 0,
+            "dependent": false,
+            "withdrawal": 0,
+            "phase": "clear",
+            "tolerance": 0,
+            "strength": 0
+          },
+          {
+            "id": "buffout",
+            "name": "Buffout",
+            "uses": 0,
+            "load": 0,
+            "washout": 0,
+            "active": 0,
+            "tier": 0,
+            "dependent": false,
+            "withdrawal": 0,
+            "phase": "clear",
+            "tolerance": 0,
+            "strength": 0
+          },
+          {
+            "id": "mentats",
+            "name": "Mentats",
+            "uses": 3,
+            "load": 3,
+            "washout": 150.34999999999326,
+            "active": 90.35000000000169,
+            "tier": 1,
+            "dependent": true,
+            "withdrawal": 0,
+            "phase": "active",
+            "tolerance": 1,
+            "strength": 80
+          },
+          {
+            "id": "psycho",
+            "name": "Psycho",
+            "uses": 0,
+            "load": 0,
+            "washout": 0,
+            "active": 0,
+            "tier": 0,
+            "dependent": false,
+            "withdrawal": 0,
+            "phase": "clear",
+            "tolerance": 0,
+            "strength": 0
+          }
+        ],
+        "modifiers": {
+          "hp": 0,
+          "ap": 0,
+          "carry": 0,
+          "skills": {
+            "science": 12,
+            "repair": 12,
+            "speech": 12
+          },
+          "damage": 1
+        },
+        "skills": {
+          "science": 37,
+          "repair": 37,
+          "speech": 37
+        },
+        "capacity": 50,
+        "doctor": {
+          "near": false,
+          "cost": 60,
+          "quote": null,
+          "npc": "relay_cold:npc"
+        },
+        "error": null,
+        "commits": 6,
+        "rollbacks": 0,
+        "provenance": "Fictional deterministic game mechanics; no real medical simulation"
+      }
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_real_finite_purchase.png",
+      "sha256": "b245ee4d71d55348e7b7a57d2844353a4ded78ee3b614d39096402589c3627a8"
+    },
+    {
+      "file": "02_tolerance_and_dependency.png",
+      "sha256": "e0045b14b423f696f323cb37db8b5631f2ad5a0d247f16e89e50633c38523aeb"
+    }
+  ],
+  "placements": [
+    {
+      "position": [
+        12.0,
+        1.65,
+        20.7
+      ],
+      "target": [
+        12,
+        1.2,
+        19
+      ],
+      "actual_label": "Parler à Baptiste Arnaud",
+      "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "local_http_errors": [],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "native_navigation": true,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "service_workers_disabled": true,
+  "maximum_contexts": 1,
+  "scope": "Bounded assisted native chem pilot, prepared without starting a browser.\n\nUses unchanged production HTML, GameHandler, visible controls and real browser\nstorage. Diagnostic navigation selects authored scenes; collision/LOS checks\nselect camera approaches. Payment capsules and simulation freeze are declared\nassistance. No chem, stock, addiction or quest state is granted or overwritten.\n",
+  "assistance": [
+    "v020Load selects authored Aubagne/Annexe scenes; these are fictional layouts, not IGN interiors.",
+    "v020Seed({caps:300}) supplies payment only. No item, stock, skill or addiction is seeded.",
+    "v046SetTime(12) opens the existing shop at daytime.",
+    "Existing render/simulation freeze and v018CaptureAt use collision/LOS-checked authored floor points.",
+    "A bounded loop calls real v020Tick(.05,true): up to 2,500 steps of actual active simulation.",
+    "Readonly exported diagnostics inspect state; native E, Tab and visible UI perform all purchases, doses, quotes and treatment."
+  ],
+  "elapsed_seconds": 15.951,
+  "passed": 27,
+  "failed": 1,
+  "pinned_inputs": {
+    "index.html": "5e6895ac4d718ce6547864f5d8fc553a457e04a784c51fd753c72591693425db",
+    "src/v050/15_chemistry.js": "b432076d9f0b3fa4a4c0eeab9b95e5044de8089fb2148b958c130efc417ccd4e",
+    "src/v050/10_lore_continuity.js": "85264d16726c054bacb9763fd87b1e5b011f37bd76f6662bfceebc2b34dccfe3",
+    "src/v050/11_power_armor.js": "77e03d9b83f7d35828de22dc13abd6e368879eaeeb5537f39576824a41386ebc",
+    "src/v050/12_iconic_ecosystem.js": "550ee004344e4879c0d87164ab97971978113c882e0ca5a2a2045a61b5725e23",
+    "src/v028/01_body.js": "4cff049afd3d62eae18612fd61d751cc5e3489295a9dfce898f4a89430b8c6b3",
+    "src/v028/04_story.js": "964dde3c94a2dbc127666a04a23bc2b2730167602530cd0faaf2c46a6849a30a",
+    "src/v026/04_trade_runtime.js": "0da9183a0103957b783627378f6ec2078206eb5856125ebc89786ce44e317745",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80"
+  },
+  "script_sha256": "e28337dda86f9cd19c5e9de91db33f5d29bbab7e0d7a7317b83d020656ce25ae",
+  "url": "http://127.0.0.1:42249/index.html?skipboot",
+  "browser_version": "154.0.8037.57",
+  "exception": "Actual active updates end the bonus and impose cognitive withdrawal",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/chems_native.py\", line 243, in main\n    check('Actual active updates end the bonus and impose cognitive withdrawal',\n  File \"/workspace/fallout-Marseille/tests/expansion/chems_native.py\", line 68, in check\n    raise AssertionError(name)\nAssertionError: Actual active updates end the bonus and impose cognitive withdrawal\n",
+  "stage": "failed"
+}

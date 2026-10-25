@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-25T09:00:09.904417+00:00",
+  "method": "attestation post-exécution depuis résultat outil",
+  "process": {
+    "tool": "write_stdin",
+    "sessionId": 67355,
+    "observedExitCode": 0,
+    "observation": "Le résultat outil de la session 67355 a indiqué exit_code 0 ; contexte et navigateur ont été fermés dans le finally du pilote."
+  },
+  "scope": "Ajout métadonnée après exécution ; ce fichier n’a pas été écrit automatiquement au lancement et aucun test ni navigateur n’a été relancé.",
+  "result": {
+    "stage": "complete",
+    "passed": 78,
+    "failed": 0,
+    "total": 78
+  },
+  "htmlSha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+  "linkedFiles": [
+    {
+      "file": "PRECISE_TERRAIN_NATIVE.json",
+      "bytes": 1576735,
+      "sha256": "cbdc1b916699e5a22d7fc29cb66b7fd6567fe2b532b8639a6cfc60e4305bb789"
+    },
+    {
+      "file": "EXECUTION.log",
+      "bytes": 5666,
+      "sha256": "8290433305fb7e1a544fef8ee34a0d3e3a19f6faa60b33761faf8306caa963d1"
+    },
+    {
+      "file": "EXECUTED_PRECISE_TERRAIN_NATIVE.py",
+      "bytes": 18436,
+      "sha256": "50ce1fb5edd79ce4a0c2582177c92e3f0b21945fd867dc90b4ae1ab01f15001f"
+    }
+  ],
+  "originalArtifactsModified": false
+}

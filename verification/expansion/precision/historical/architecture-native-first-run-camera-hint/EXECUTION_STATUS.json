@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/architecture-native",
+    "--expect-html-sha",
+    "5e6895ac4d718ce6547864f5d8fc553a457e04a784c51fd753c72591693425db",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "exitCode": 1,
+  "scriptSha256": "89636fb87b001f448806cda993fcb5bf2e5eeff8154a9a65331877719cec2b98",
+  "reportSha256": "a315f8f273e7794b8d0b8c0bd97a1f7421c0278c4d1f34f46415fdffff0c28ad",
+  "startedUnix": 1792916579.8180933,
+  "finishedUnix": 1792916759.3063157,
+  "stage": "native_authored_joinery",
+  "passed": 71,
+  "failed": 2,
+  "shots": 3,
+  "processFinished": true,
+  "cleanupErrors": [
+    "Event loop is closed! Is Playwright already stopped?",
+    "Event loop is closed! Is Playwright already stopped?"
+  ]
+}

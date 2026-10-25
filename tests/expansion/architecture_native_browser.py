@@ -26,6 +26,11 @@ ROOT = Path(__file__).resolve().parents[2]
 CURVED = {'sourceId': 'batiment.9375075', 'cleabs': 'BATIMENT0000000258034734',
           'chunkPath': 'data/map_pack/city/m13055-r01-c12-c869798b17b6560c.json'}
 CITY = 'geo_marseille_commune'
+JOINERY_INPUTS = {
+    'tests/expansion/fixtures/facades_joinery_cameras.json': 'eff0b37d195362aebdb644ae3dc5575789c4a9d2dd02e3cb9d8aee020f14281a',
+    'tests/expansion/fixtures/facades_joinery_ign.json': '841596785a7753c9860aace5d62e604de0c066f61822f9d63b8ef85f8ee2ae55',
+    'tests/expansion/facades_joinery.cjs': '46ff0e4b5f14ecc7c706817397c6ee06c82d8447c3cb5cd0466ea7d3f9f57eb3',
+}
 
 
 def sha(raw):
@@ -34,6 +39,17 @@ def sha(raw):
 
 def finite(value):
     return type(value) in (int, float) and math.isfinite(value)
+
+
+def inverse_lambert(x, y):
+    """Public Lambert-93 inverse, shared with the native bestiary pilot."""
+    e, n, c = .0818191910428158, .725607765053267, 11754255.426096
+    dx, dy = x - 700000, 12655612.049876 - y
+    value = -math.log(math.hypot(dx, dy) / c) / n
+    phi = 2 * math.atan(math.exp(value)) - math.pi / 2
+    for _ in range(12):
+        phi = 2 * math.atan(math.exp(value) * ((1 + e * math.sin(phi)) / (1 - e * math.sin(phi))) ** (e / 2)) - math.pi / 2
+    return [math.degrees(phi), 3 + math.degrees(math.atan2(dx, dy) / n)]
 
 
 def area(ring):
@@ -224,6 +240,7 @@ def main():
                   'Native KeyW plus existing v020Tick advances production movement/collisions in fixed 0.05 s steps under QA freeze; this is assisted movement, not recorded human walking.',
                   'Landing placement on a verified clear floor precedes real E-key and visible floor/exit buttons.',
                   'Read-only debug exports inspect actual runtime annotations, geometry and interior layout.',
+                  'Joinery captures use public high-quality/daytime controls, actual runtime openings, Lambert-93 inverse, measured terrain height and production camera collision/LOS checks; theoretical fixture cameras are hints only.',
               ],
               'page_errors': [], 'console_errors': [], 'javascript_console_errors': [], 'resource_console_diagnostics': [],
               'request_failures': [], 'local_geographic_request_failures': [], 'external_request_failures': [],
@@ -291,7 +308,7 @@ def main():
         check('Native HTTP document equals frozen production bytes', response is not None and response.status == 200
               and sha(response.body()) == args.expect_html_sha)
         page.wait_for_function("!document.getElementById('bootScreen').classList.contains('active')", timeout=120000)
-        page.wait_for_function("['v051CityReady','v052ArchitectureReady','v052ArchitectureTarget','v052CityInteriorLayout','v050FacadePage','v050FacadeOpeningSpans'].every(k=>typeof __MISTRAL_DEBUG[k]==='function')")
+        page.wait_for_function("['v051CityReady','v052ArchitectureReady','v052ArchitectureTarget','v052CityInteriorLayout','v050FacadePage','v050FacadeOpeningSpans','v050FacadeBuilding','v050FacadeInfo','v018Projection','v046Project','v020Collides','v020LOS','v035Diagnostic','setQuality','setTime'].every(k=>typeof __MISTRAL_DEBUG[k]==='function')")
         debug('setRenderPaused', True)
         debug('v047Control', {'auto': False})
 
@@ -391,6 +408,306 @@ def main():
             debug('v018CaptureAt', best['position'], best['yaw'], best['pitch'])
         return best
 
+    def opening_aim(facade, opening):
+        """Aim at the actual exported opening, just outside its unchanged solid."""
+        spans = debug('v050FacadeOpeningSpans', facade['id'], opening)
+        if not spans:
+            return None
+        span = spans[len(spans) // 2]
+        ring = facade['rings'][span['ringIndex']]
+        a, b = ring[span['edgeIndex']], ring[span['edgeIndex'] + 1]
+        length = math.dist(a, b)
+        tangent = [(b[0] - a[0]) / length, (b[1] - a[1]) / length]
+        signed = sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(ring, ring[1:]))
+        direction = (1 if signed > 0 else -1) * (1 if span['ringIndex'] == 0 else -1)
+        normal = [tangent[1] * direction, -tangent[0] * direction]
+        at = span['offset'] + span['width'] / 2
+        point = [a[0] + tangent[0] * at + normal[0] * .08,
+                 facade['baseY'] + opening['bottom'] + opening['height'] * .55,
+                 a[1] + tangent[1] * at + normal[1] * .08]
+        return {'target': point, 'normal': normal, 'tangent': tangent, 'sourceSpans': spans}
+
+    def joinery_camera(reference, aim):
+        """Search real free street cameras; retain every measured height and LOS."""
+        lat, lon = reference['geographicPoint'][1], reference['geographicPoint'][0]
+        projected = debug('v046Project', 'geo_huveaune', lat, lon)
+        absolute = debug('v018Projection', lat, lon)['xy']
+        frame = [absolute[0] - projected[0], absolute[1] + projected[2]]
+        target, normal, tangent = aim['target'], aim['normal'], aim['tangent']
+        requests = []
+        for distance in (1.3, 1.7, 2.2, 2.7, 3.2, 4.5, 5.5, 7, 9, 12):
+            for lateral in (0, -.8, .8, -1.6, 1.6, -2.4, 2.4):
+                x = target[0] + normal[0] * distance + tangent[0] * lateral
+                z = target[2] + normal[1] * distance + tangent[1] * lateral
+                requests.append({'requestedXZ': [x, z], 'distance': distance, 'lateral': lateral,
+                                 'll': inverse_lambert(x + frame[0], frame[1] - z)})
+        measured = page.evaluate("""([requests,target])=>{const d=__MISTRAL_DEBUG;return requests.map(q=>{
+          const h=d.v046Height(...q.ll),xz=d.v046Project('geo_huveaune',...q.ll),p=[xz[0],h.height+1.65,xz[2]],
+           measured=Number.isFinite(h.height)&&!h.missing,clear=measured&&!d.v020Collides(p),los=clear&&d.v020LOS(p,target);
+          return{...q,p,height:h,measured,clear,los};
+        });}""", [requests, target])
+        eligible = [p for p in measured if p['clear'] and p['los']]
+        eligible.sort(key=lambda p: (abs(p['lateral']) + abs(p['distance'] - 4.5) * .3,
+                                     abs(target[1] - p['p'][1])))
+        return {'frame': frame, 'target': target, 'candidates': measured,
+                'selected': eligible[0] if eligible else None,
+                'method': 'Actual v046Height + 1.65m, public v020Collides and v020LOS; no inferred source-ground Y or scene substitution.'}
+
+    def capture_joinery(reference, facade, opening, name, label):
+        aim = opening_aim(facade, opening)
+        check('Native joinery opening has complete intervals on original source segments: ' + name,
+              aim is not None and abs(sum(s['width'] for s in aim['sourceSpans']) - opening['width']) < 1e-6, aim)
+        view = joinery_camera(reference, aim)
+        check('Measured collision-free street camera has production LOS to the actual fitting: ' + name,
+              view['selected'] is not None, view)
+        point, target = view['selected']['p'], view['target']
+        yaw = math.atan2(target[0] - point[0], -(target[2] - point[2]))
+        pitch = math.atan2(target[1] - point[1], math.hypot(target[0] - point[0], target[2] - point[2]))
+        debug('v018CaptureAt', point, yaw, max(-1.3, min(1.3, pitch)))
+        debug('v050FacadeRefresh')
+        shot(name, label)
+        view['opening'] = opening
+        view['actualPlayer'] = debug('getState')['player']
+        return view
+
+    def scout_panelled_entry(case):
+        """Choose an actual nearby native portal, never manufacture a fixture door."""
+        reference = case['reference']
+        raw = pin(reference['sourcePath'])
+        features = {f['properties'].get('cleabs'): f for f in json.loads(raw)['features']
+                    if f['properties'].get('kind') == 'building'}
+        attempts, candidates = [], []
+        for portal in debug('v050CityInteriorInfo')['doors']:
+            target = debug('v052ArchitectureTarget', portal['building'])
+            source = features.get(target['cleabs']) if target else None
+            if not source or source['properties'].get('usage_1') != 'Résidentiel' or not 1 <= portal['levels'] <= 4:
+                continue
+            footprint = net_area(target['component']['rings'])
+            if 35 <= footprint <= 180 and target['cleabs'] != reference['stableSourceId']:
+                position = debug('getState')['player']['pos']
+                distance = math.hypot(portal['pos'][0] - position[0], portal['pos'][2] - position[2])
+                candidates.append((distance + abs(footprint - 80) * .1, portal, target, source))
+        selected = None
+        report['joinery']['panelledEntryScout'] = {'scope': 'At most twelve actually published residential portals from this same SHA-pinned IGN partition; no injected plan or source change.',
+                                                   'sourcePath': reference['sourcePath'], 'chunkSha256': sha(raw),
+                                                   'candidateCount': len(candidates), 'attempts': attempts}
+        for _score, portal, target, source in sorted(candidates, key=lambda c: (c[0], c[1]['id']))[:12]:
+            row = {'portal': portal, 'sourceId': source['properties']['sourceId'], 'cleabs': target['cleabs']}
+            attempts.append(row)
+            facade = debug('v050FacadeBuilding', portal['building'])
+            if not facade:
+                row['reason'] = 'outside-current-facade-selection'
+                continue
+            page_data = debug('v050FacadePage', portal['building'], 0, 16)
+            opening = next((o for o in page_data['openings'] if o['type'] == 'door'), None)
+            if opening is None:
+                row['reason'] = 'no-published-native-door-opening'
+                continue
+            local_ref = {'role': 'native-selected-residential-entry', 'sourceId': source['properties']['sourceId'],
+                         'stableSourceId': target['cleabs'], 'buildingId': target['component']['id'],
+                         'sourcePath': reference['sourcePath'], 'sourceChunkSha256': sha(raw),
+                         'geographicPoint': (source['geometry']['coordinates'][0][0][0] if source['geometry']['type'] == 'MultiPolygon'
+                                             else source['geometry']['coordinates'][0][0])}
+            aim = opening_aim(facade, opening)
+            view = joinery_camera(local_ref, aim) if aim else {'selected': None}
+            row['measuredCamera'] = view
+            if not view['selected']:
+                row['reason'] = 'no-measured-clear-production-LOS-camera'
+                continue
+            debug('v018CaptureAt', view['selected']['p'], 0, 0)
+            debug('v050CityInteriorBind')
+            debug('v050FacadeRefresh')
+            facade = debug('v050FacadeBuilding', portal['building'])
+            entry = next((j for j in (facade or {}).get('joinery', []) if j['kind'] == 'joinery'
+                          and j['variant'].startswith('panelled-entry') and j['rendered']), None)
+            if not entry:
+                row['reason'] = 'panelled-entry-not-rendered-after-native-binding'
+                continue
+            opening = facade['openings'][entry['openingIndex']]
+            native = next((d for d in debug('v050FacadeDoors') if d['buildingId'] == facade['id']
+                           and d['edgeIndex'] == opening['edgeIndex']), None)
+            if not native or not joinery_camera(local_ref, opening_aim(facade, opening))['selected']:
+                row['reason'] = 'rebound-entry-has-no-clear-production-view'
+                continue
+            shutter = shutter_view = None
+            for item in facade['joinery']:
+                if item['kind'] != 'shutters' or not item['rendered']:
+                    continue
+                bay = facade['openings'][item['openingIndex']]
+                view = joinery_camera(local_ref, opening_aim(facade, bay))
+                if view['selected']:
+                    shutter, shutter_view = item, view
+                    break
+            if shutter is None:
+                row['reason'] = 'no-exported-native-louvered-pair-with-clear-production-LOS'
+                continue
+            selected = {'reference': local_ref, 'actualSourceFeature': source, 'sourceBefore': target,
+                        'facade': facade, 'entry': entry, 'opening': opening, 'nativeDoorCandidate': native,
+                        'widthReferenceScope': 'Canonical candidate on the same source edge; actual selected offset is retained separately in opening.',
+                        'shutterFitting': shutter, 'measuredShutterView': shutter_view}
+            row['reason'] = None
+            break
+        check('Bounded scout finds a different actually published residential panelled entry', selected is not None,
+              report['joinery']['panelledEntryScout'])
+        ref, target, facade = selected['reference'], selected['sourceBefore'], selected['facade']
+        check('Selected residential entry is an unchanged attributed IGN object in the SHA-pinned partition',
+              target['rawGeometry'] == selected['actualSourceFeature']['geometry']
+              and target['component']['id'] == facade['id'] and facade['rings'] == target['component']['rings']
+              and sha(raw) == reference['sourceChunkSha256']
+              and selected['actualSourceFeature']['properties']['provenance']['license'] == 'Licence Ouverte 2.0')
+        opening, native, entry = selected['opening'], selected['nativeDoorCandidate'], selected['entry']
+        detail = facade['detailCoverage']
+        check('Selected native residential panels have invented provenance, whole fitting and unchanged passage',
+              facade['rendered'] and facade['provenance'] == entry['provenance'] == opening['provenance'] == 'invented'
+              and opening['clearWidthMeters'] >= .78 - 1e-7
+              and abs(opening['width'] - native['width']) < 1e-7
+              and abs(opening['clearWidthMeters'] - native['clearWidthMeters']) < 1e-7
+              and sum(m['vertexCount'] for m in entry['meshes']) == entry['requiredQuads'] * 4
+              and detail['openingQuads'] + detail['panelEdges'] + detail['decorationQuads'] <= 512, entry)
+        selected['view'] = capture_joinery(ref, facade, opening, '03c_selected_residential_native_panels',
+                                             'Actual nearby published residential entry, selected from native portals; exact acquired IGN object and partition SHA retained. Invented panels, measured clear street camera and production LOS.')
+        selected['shutterView'] = capture_joinery(ref, facade, facade['openings'][selected['shutterFitting']['openingIndex']],
+                                                   '03b_selected_residential_native_persiennes',
+                                                   'Actual rendered native louvered pair on the selected acquired residential object; fitting ranges, invented provenance, measured clear street camera and production LOS retained.')
+        selected['sourceAfter'] = debug('v052ArchitectureTarget', ref['sourceId'])
+        check('Scouted entry capture leaves its acquired source geometry and metric component unchanged',
+              selected['sourceAfter']['rawGeometry'] == target['rawGeometry']
+              and selected['sourceAfter']['component'] == target['component'])
+        report['joinery']['selectedPanelledEntry'] = selected
+        save()
+        return selected
+
+    def joinery_stage(cases):
+        stage('native_authored_joinery')
+        first_check = len(report['checks'])
+        previous_quality = debug('v035Diagnostic')['settings']['quality']
+        previous_time = debug('getState')['worldTime']
+        report['joinery'] = {'cases': [], 'scope': 'Actual acquired IGN buildings; invented fittings. Export truncation is retained, not mistaken for missing native geometry.',
+                             'previousQuality': previous_quality, 'previousTime': previous_time}
+        debug('setQuality', 'high')
+        debug('setTime', 12)
+        try:
+            for case in cases:
+                reference, source = case['reference'], case['source']
+                role, identity = reference['role'], reference['sourceId']
+                sector(*source_anchor(source['geometry']))
+                source_before = debug('v052ArchitectureTarget', identity)
+                debug('v050FacadeRefresh')
+                published = debug('v050FacadeBuilding', identity)
+                published_door = next((o for o in (published or {}).get('openings', []) if o['type'] == 'door'), None)
+                native_aim = opening_aim(published, published_door) if published_door else None
+                door_aim = native_aim
+                if native_aim is None and role == 'residential' and published:
+                    hint = reference['cameras']['window']['lookAt']
+                    windows = [(o, opening_aim(published, o)) for o in published['openings'] if o['type'] == 'window']
+                    windows = [w for w in windows if w[1] is not None]
+                    windows.sort(key=lambda w: math.hypot(w[1]['target'][0] - hint[0], w[1]['target'][2] - hint[2]) + abs(w[1]['target'][1] - hint[1]) * .05)
+                    native_aim = windows[0][1] if windows else None
+                scouting = {'role': role, 'source': source_before, 'publishedBeforePlacement': published,
+                            'actualDoorBeforePlacement': published_door, 'actualDoorAim': door_aim,
+                            'placementAim': native_aim, 'placementTargetKind': 'door' if door_aim else 'window'}
+                report['joinery'].setdefault('scouting', []).append(scouting)
+                save()
+                # The model's old default door may face a party wall. Only the
+                # actually published, terrain-bound opening is a valid target.
+                initial_view = joinery_camera(reference, native_aim) if native_aim else {'selected': None, 'reason': 'no-native-published-fitting'}
+                scouting['measuredView'] = initial_view
+                occluded_reference = (role == 'residential' and published and published['rendered']
+                                      and native_aim is not None and initial_view['selected'] is None
+                                      and bool(initial_view.get('candidates'))
+                                      and not any(p['los'] for p in initial_view['candidates']))
+                scouting['referenceViewOccluded'] = bool(occluded_reference)
+                check('Native joinery reference has a measured view or explicitly reported source occlusion: ' + role,
+                      initial_view['selected'] is not None or occluded_reference, initial_view)
+                if initial_view['selected'] is not None:
+                    p = initial_view['selected']['p']
+                    debug('v018CaptureAt', p, 0, 0)
+                    debug('v050CityInteriorBind')
+                    debug('v050FacadeRefresh')
+                facade = debug('v050FacadeBuilding', identity)
+                check('Joinery target retains the exact acquired source geometry and metric component: ' + role,
+                      source_before is not None and source_before['rawGeometry'] == source['geometry']
+                      and source_before['component']['id'] == reference['buildingId']
+                      and facade is not None and facade['rings'] == source_before['component']['rings']
+                      and abs(facade['height'] - reference['height']) < 1e-7
+                      and abs(facade['baseY'] - reference['ground']) < 1e-7)
+                check('Native authored facade is rendered with explicit invented provenance: ' + role,
+                      facade['rendered'] and facade['provenance'] == 'invented' and facade['styleBasis'] == 'usage_1'
+                      and not facade['ringsTruncated'] and not facade['openingsTruncated'], facade)
+                detail, records = facade['detailCoverage'], facade['joinery']
+                coverage = detail['joineryCoverage']
+                quads = detail['openingQuads'] + detail['panelEdges'] + detail['decorationQuads']
+                check('Actual native joinery respects the fixed 512-quad building budget: ' + role,
+                      coverage['enabled'] and quads <= 512 and debug('v035Diagnostic')['settings']['quality'] == 'high'
+                      and detail['unrenderedPlannedOpenings'] == len(facade['deferredOpenings']), {'quads': quads, 'coverage': coverage})
+                consistent = (coverage['provenance'] == 'invented'
+                              and coverage['requested'] == coverage['rendered'] + coverage['deferred']
+                              and sum(coverage['reasons'].values()) == coverage['deferred']
+                              and facade['joineryTruncated'] == (coverage['requested'] > len(records)))
+                for kind in coverage['byKind'].values():
+                    consistent = consistent and kind['requested'] == kind['rendered'] + kind['deferred']
+                for item in records:
+                    consistent = consistent and item['provenance'] == 'invented'
+                    consistent = consistent and (item['reason'] is None and item['partCount'] > 0
+                                                  and sum(m['vertexCount'] for m in item['meshes']) == item['requiredQuads'] * 4
+                                                  if item['rendered'] else bool(item['reason']) and not item['meshes'])
+                check('Exported native fittings reserve complete fragment sets and account for every omission: ' + role,
+                      consistent, {'exported': len(records), 'truncated': facade['joineryTruncated'], 'coverage': coverage})
+                prefix = 'panelled-entry' if role == 'residential' else 'glazed-entry'
+                entry = next((item for item in records if item['kind'] == 'joinery' and item['variant'].startswith(prefix) and item['rendered']), None)
+                opening = facade['openings'][entry['openingIndex']] if entry else None
+                native_candidate = next((d for d in debug('v050FacadeDoors') if opening is not None
+                                         and d['buildingId'] == facade['id'] and d['edgeIndex'] == opening['edgeIndex']), None)
+                entry_view = None
+                if opening is None and role == 'residential':
+                    check('Reference residential building honestly omits an unavailable native entrance',
+                          facade['openingInventory']['entranceCoverage']['reason'] == 'runtime-access-unavailable'
+                          and facade['openingInventory']['entranceCoverage']['selectedCount'] == 0
+                          and not any(o['type'] == 'door' for o in facade['openings']), facade['openingInventory']['entranceCoverage'])
+                else:
+                    check('Actual entry renders the expected authored panels or glazing without narrowing the passage: ' + role,
+                          opening is not None and opening['type'] == 'door' and opening['provenance'] == 'invented'
+                          and opening['clearWidthMeters'] >= .78 - 1e-7
+                          and native_candidate is not None and abs(opening['width'] - native_candidate['width']) < 1e-7
+                          and abs(opening['clearWidthMeters'] - native_candidate['clearWidthMeters']) < 1e-7
+                          and (role != 'commercial' or any(m['material'] == 'glass' for m in entry['meshes'])), entry)
+                    entry_view = capture_joinery(reference, facade, opening, '03a_' + role + '_native_entry',
+                                                  'Actual IGN ' + role + ' envelope and invented ' + prefix + '; measured clear street camera, production LOS and unchanged WebGL render.')
+                row = {'role': role, 'reference': reference, 'sourceBefore': source_before, 'initialMeasuredView': initial_view,
+                       'nativeDoorCandidate': native_candidate, 'widthReferenceScope': 'Same-source-edge width, not canonical offset identity.', 'facade': facade,
+                       'entryView': entry_view}
+                report['joinery']['cases'].append(row)
+                if role == 'residential':
+                    shutters = coverage['byKind'].get('shutters', {})
+                    check('Actual residential facade renders complete invented louvered pairs within its native budget',
+                          shutters.get('rendered', 0) > 0 and coverage['reasons'].get('quad-budget', 0) > 0, shutters)
+                    hint = reference['cameras']['window']['lookAt']
+                    candidates = [(i, o, opening_aim(facade, o)) for i, o in enumerate(facade['openings']) if o['type'] == 'window' and o['provenance'] == 'invented']
+                    candidates = [c for c in candidates if c[2] is not None]
+                    candidates.sort(key=lambda c: math.hypot(c[2]['target'][0] - hint[0], c[2]['target'][2] - hint[2]) + abs(c[2]['target'][1] - hint[1]) * .05)
+                    check('Pinned shutter-view hint resolves to an actual native residential bay',
+                          bool(candidates) and math.hypot(candidates[0][2]['target'][0] - hint[0], candidates[0][2]['target'][2] - hint[2]) < .2,
+                          {'hint': hint, 'actual': candidates[0] if candidates else None})
+                    if occluded_reference:
+                        row['shutterView'] = {'status': 'source-reference-view-occluded',
+                                              'claim': 'Actual native emitted pairs verified by coverage; no visible pair or accessible entry claimed for this reference.',
+                                              'measuredView': initial_view}
+                    else:
+                        row['shutterView'] = capture_joinery(reference, facade, candidates[0][1], '03b_residential_native_persiennes',
+                                                            'Actual residential window and invented persiennes; native coverage confirms rendered pairs. Per-fitting export is truncated as recorded; no unseen vertex ranges asserted.')
+                    if opening is None or occluded_reference:
+                        row['additionalPanelledEntry'] = scout_panelled_entry(case)['reference']
+                after = debug('v052ArchitectureTarget', identity)
+                check('Native joinery inspection and cameras leave source geometry and metric dimensions unchanged: ' + role,
+                      after['rawGeometry'] == source_before['rawGeometry'] and after['component'] == source_before['component'])
+                row['sourceAfter'] = after
+                save()
+        finally:
+            debug('setQuality', previous_quality)
+            debug('setTime', previous_time)
+            report['joinery']['assertionCount'] = len(report['checks']) - first_check
+            save()
+
     try:
         html = pin('index.html')
         check('Coordinated production HTML is installed', sha(html) == args.expect_html_sha, sha(html))
@@ -430,6 +747,32 @@ def main():
                                 'geometryCanonicalSha256': sha(json.dumps(source_feature['geometry'], ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode())}
         curved_raw = pin(CURVED['chunkPath'])
         curved_source = next(f for f in json.loads(curved_raw)['features'] if f['properties']['sourceId'] == CURVED['sourceId'])
+        joinery_raw = {}
+        for relative, digest in JOINERY_INPUTS.items():
+            raw = pin(relative)
+            check('Joinery QA reference matches its frozen SHA-256: ' + relative, sha(raw) == digest, sha(raw))
+            joinery_raw[relative] = raw
+        joinery_cameras = json.loads(joinery_raw['tests/expansion/fixtures/facades_joinery_cameras.json'])
+        joinery_fixtures = json.loads(joinery_raw['tests/expansion/fixtures/facades_joinery_ign.json'])
+        check('Camera references pin the shipped facade module, reference generator and exact attributed IGN fixtures',
+              joinery_cameras['schemaVersion'] == joinery_fixtures['schemaVersion'] == 1
+              and joinery_cameras['provenance'] == 'invented-fittings-on-actual-IGN-envelopes'
+              and joinery_cameras['facadeModuleSha256'] == frozen['src/v050/07_facades.js']
+              and joinery_cameras['generatorSha256'] == frozen['tests/expansion/facades_joinery.cjs']
+              and joinery_cameras['sourceFixtureSha256'] == frozen['tests/expansion/fixtures/facades_joinery_ign.json'])
+        joinery_cases = []
+        for role in ['residential', 'commercial']:
+            reference = next(r for r in joinery_cameras['cases'] if r['role'] == role)
+            fixture = next(r for r in joinery_fixtures['cases'] if r['role'] == role)
+            raw = pin(reference['sourcePath'])
+            source = next(f for f in json.loads(raw)['features'] if f['properties']['sourceId'] == reference['sourceId'])
+            check('Native joinery case is the unchanged acquired and attributed IGN object: ' + role,
+                  sha(raw) == reference['sourceChunkSha256'] == fixture['sourceChunkSha256']
+                  and source == fixture['feature'] and source['properties']['cleabs'] == reference['stableSourceId']
+                  and source['properties']['provenance']['license'] == 'Licence Ouverte 2.0'
+                  and fixture['sourcePath'] == reference['sourcePath'])
+            joinery_cases.append({'reference': reference, 'source': source})
+        report['joinery_reference_hashes'] = dict(JOINERY_INPUTS)
         report['source_snapshot'] = dict(frozen)
         report['html_sha256'] = sha(html)
         report['architecture_sha256'] = sha(atlas_raw)
@@ -461,299 +804,314 @@ def main():
         check('Actual local-pack audit is complete before native menu probes',
               local_cache_control == 'no-store' and local_audit['complete'] is True)
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(executable_path=chromium_path(), headless=True,
-                                         args=['--no-sandbox', '--disable-dev-shm-usage'])
-            report['browser_version'] = browser.version
-            context = browser.new_context(viewport={'width': 1440, 'height': 900}, service_workers='block')
-            report['contexts_created'] += 1
-            page = context.new_page()
-            page.set_default_timeout(30000)
-            page.on('pageerror', lambda error: report['page_errors'].append(str(error)))
-
-            def console_seen(message):
-                if message.type != 'error':
-                    return
-                report['console_errors'].append(message.text)
-                record = {'text': message.text, 'location': message.location}
-                # Chromium emits this diagnostic for failed HTTP/tunnel loads;
-                # it is not an uncaught JavaScript exception. Preserve it and
-                # every request failure, while checking source traffic below.
-                if message.text.startswith('Failed to load resource:'):
-                    report['resource_console_diagnostics'].append(record)
-                else:
-                    report['javascript_console_errors'].append(record)
-
-            page.on('console', console_seen)
-
-            def geographic(url):
-                parsed = urllib.parse.urlsplit(url)
-                return url.startswith(origin + '/') and (parsed.path.startswith('/data/map_pack/') or parsed.path.startswith('/__mistral/'))
-
-            def request_failed(request):
-                record = {'url': request.url, 'failure': request.failure}
-                report['request_failures'].append(record)
-                if geographic(request.url):
-                    report['local_geographic_request_failures'].append(record)
-                elif not request.url.startswith(origin + '/'):
-                    report['external_request_failures'].append(record)
-
-            def response_seen(response):
-                if response.url.startswith(origin + '/'):
-                    record = {'url': response.url, 'status': response.status, 'from_service_worker': response.from_service_worker}
-                    report['http_responses'].append(record)
-                    if geographic(response.url) and response.status >= 400:
-                        report['local_http_errors'].append(record)
-
-            page.on('requestfailed', request_failed)
-            page.on('response', response_seen)
-            page.on('dialog', lambda dialog: dialog.accept())
-            native_document(page.goto(report['url'], wait_until='load', timeout=60000))
-            report['native_navigation'] = True
-            debug('v051CityReady')
-            debug('v052ArchitectureReady')
-            architecture = debug('v052ArchitectureInfo')
-            check('Runtime reads only real context labels, with zero asserted architectural plans', architecture['loaded']
-                  and not architecture['missing'] and not architecture['error'] and architecture['records'] == architecture['siteLabels'] == 12
-                  and architecture['facadeDocuments'] == architecture['interiorDocuments'] == 0, architecture)
-            debug('v018LoadMacro', CITY)
-            ready()
-            check('Actual geographic world is outside the synthetic lab', debug('v046Info')['lab'] is False)
-
-            groups = {}
-            for row in expected.values():
-                groups.setdefault(row['siteName'], []).append(row)
-            for group_index, (site_name, rows) in enumerate(groups.items(), 1):
-                stage('real_site_labels_' + str(group_index))
-                lat, lon = source_anchor(rows[0]['geometry'])
-                camera = sector(lat, lon)
-                for expected_row in rows:
-                    actual = debug('v052ArchitectureTarget', expected_row['cleabs'])
-                    annotation = actual.get('annotation') if actual else None
-                    label = annotation.get('architectureSite') if annotation else None
-                    check('Runtime source geometry is intact: ' + expected_row['cleabs'], actual is not None
-                          and actual['rawGeometry'] == expected_row['geometry'])
-                    check('Actual scene carries the attributed site label: ' + expected_row['cleabs'],
-                          annotation is not None and annotation['name'] == expected_row['label'] and label is not None
-                          and label['text'] == expected_row['label'] and label['siteName'] == site_name
-                          and label['kind'] == 'site-context' and label['geometryFictive'] is False
-                          and label['source']['responseSha256'] == expected_row['source']['responseSha256']
-                          and annotation.get('appliedSource') is not None, annotation)
-                    report['labels'].append({'cleabs': expected_row['cleabs'], 'annotation': annotation,
-                                             'geometryCanonicalSha256': expected_row['geometryCanonicalSha256']})
-                report.setdefault('site_cameras', []).append({'site': site_name, 'camera': camera})
-                shot('0' + str(group_index) + '_real_site_context', 'Real site geometry; names are context, procedural facades remain inventions.')
-            architecture = debug('v052ArchitectureInfo')
-            check('All 12 official site contexts are applied without geometry rejection', architecture['appliedRecords'] == 12 and not architecture['rejected'], architecture)
-
-            stage('curved_source_facade')
-            camera = sector(*source_anchor(curved_source['geometry']))
-            target = debug('v052ArchitectureTarget', CURVED['sourceId'])
-            check('Curved source building retains its complete original geometry', target is not None and target['rawGeometry'] == curved_source['geometry'])
-            curved = debug('v050FacadeBuilding', CURVED['sourceId'])
-            check('Dense segmented real outline receives actual rendered facade details', curved is not None and curved['rendered']
-                  and not curved['ringsTruncated'] and curved['openingInventory']['curvedSurfaces'] >= 1
-                  and any(o.get('surfaceId') and o.get('span', {}).get('segments', 0) > 1 for o in curved['openings']), curved)
-            pages, openings, cursor = [], [], 0
-            for _page_index in range(64):
-                result = debug('v050FacadePage', CURVED['sourceId'], cursor, 128)
-                check('Curved facade inventory page advances or terminates', result is not None and (result['done'] or result['nextCursor'] > cursor))
-                pages.append({k: v for k, v in result.items() if k != 'openings'})
-                openings.extend(result['openings'])
-                cursor = result['nextCursor']
-                if result['done']:
-                    break
-            check('Curved facade complete inventory finishes within the bounded pilot', bool(pages) and pages[-1]['done'])
-            curved_doors = [d for d in debug('v050FacadeDoors') if d['buildingId'] == curved['id']]
-            report['curved'] = {'source': CURVED, 'camera': camera, 'renderedFacade': curved,
-                                'inventoryPages': pages, 'inventoryOpenings': openings, 'entranceCandidates': curved_doors}
-            check('Curved openings declare source-segment spans without changing metric bounds',
-                  bool(openings) and any(o.get('surfaceId') for o in openings)
-                  and all(o['width'] > 0 and o['height'] > 0 and o['bottom'] >= 0 and o['bottom'] + o['height'] <= curved['height'] + 1e-6
-                          and (not o.get('surfaceId') or o['span']['widthMeters'] == o['width'] and o['span']['segments'] >= 1)
-                          for o in openings))
-            fragments = []
-            for opening in openings:
-                spans = debug('v050FacadeOpeningSpans', CURVED['sourceId'], opening)
-                valid = bool(spans) and abs(sum(s['width'] for s in spans) - opening['width']) < 1e-6
-                for span in spans:
-                    ring = curved['rings'][span['ringIndex']]
-                    a, b = ring[span['edgeIndex']], ring[(span['edgeIndex'] + 1) % len(ring)]
-                    valid = valid and span['offset'] >= -1e-7 and span['width'] > 0 and span['offset'] + span['width'] <= math.dist(a, b) + 1e-6
-                fragments.append({'opening': opening, 'sourceSpans': spans, 'valid': bool(valid)})
-            report['curved']['sourceOpeningSpans'] = fragments
-            check('Every curved bay follows bounded intervals on the unchanged individual source edges',
-                  all(f['valid'] for f in fragments) and any(len(f['sourceSpans']) > 1 for f in fragments), fragments)
-            eligible_curved = [d for d in debug('v050CityInteriorInfo')['doors'] if d['building'] == curved['id']]
-            report['curved']['accessiblePortals'] = eligible_curved
-            if eligible_curved:
-                approach = physical_interaction(eligible_curved[0]['id'], 'Entrer')
-                check('Accessible curved source building enters through actual E-key portal', approach is not None and debug('v050CityInteriorInfo')['active'] is not None)
-                report['curved']['entry'] = {'approach': approach, 'active': debug('v050CityInteriorInfo')['active']}
-                shot('03_curved_source_interior', 'Real curved source footprint; invented arrangement, assisted E-key entrance.')
-                exit_to_street()
-            else:
-                report['curved']['entry'] = {'status': 'not_physically_eligible_in_this_sector',
-                                           'rejections': debug('v050CityInteriorInfo')['rejections'],
-                                           'claim': 'Rendered facade verified; no accessible entry claimed.'}
-                shot('03_curved_source_facade', 'Real curved source outline and rendered invented facade; access eligibility reported separately.')
-
-            stage('enclosed_rooms_and_furnishing')
-            sector(43.362, 5.312)
-            candidates = []
-            for door in debug('v050CityInteriorInfo')['doors']:
-                if 2 <= door['levels'] <= 8:
-                    target = debug('v052ArchitectureTarget', door['building'])
-                    if target:
-                        footprint_area = net_area(target['component']['rings'])
-                        if 45 <= footprint_area <= 350:
-                            candidates.append((abs(footprint_area - 110), door, target))
-            check('Real sector provides a suitably sized multi-storey source portal', bool(candidates))
-            chosen = initial = layout = None
-            for _score, door, target in sorted(candidates, key=lambda c: (c[0], c[1]['id']))[:8]:
-                approach = physical_interaction(door['id'], 'Entrer')
-                if not approach or not debug('v050CityInteriorInfo')['active']:
-                    report['interior_attempts'].append({'portal': door, 'entered': False})
-                    continue
-                info, candidate_layout = debug('v050CityInteriorInfo'), debug('v052CityInteriorLayout')
-                suitable = len(candidate_layout['rooms']) >= 1 and len(candidate_layout['furniture']) >= 2
-                report['interior_attempts'].append({'portal': door, 'entered': True, 'suitable': suitable,
-                                                    'rooms': len(candidate_layout['rooms']), 'furniture': len(candidate_layout['furniture']),
-                                                    'programCoverage': candidate_layout.get('programCoverage')})
-                if suitable:
-                    chosen, initial, layout = {'portal': door, 'sourceTarget': target, 'approach': approach}, info['active'], candidate_layout
-                    break
-                exit_to_street()
-            check('A real entered building contains enclosed invented rooms and furnished uses', chosen is not None)
-            state = debug('getState')
-            building = state['v050City']['active']['building']
-            return_point = state['v050City']['returnPoint']
-            report['interior'] = {'chosen': chosen, 'initial': initial, 'layout': layout, 'returnPoint': return_point}
-            check('Entered plan preserves the source-derived local outline and honest invented provenance',
-                  layout['rings'] == building['rings'] and layout['layoutVersion'] == building.get('layoutVersion') == 3 and layout['provenance'] == 'invented'
-                  and initial['layoutProvenance'] == 'invented' and not initial['documentSource'] and not initial['documentedLevels'])
-            coverage = [dict(roomId=r['id'], **room_wall_coverage(r, layout['walls'])) for r in layout['rooms']]
-            report['interior']['roomWallCoverage'] = coverage
-            check('Actual room partitions enclose every side except the stated 1.20 m door',
-                  all(r['coverage'] == 'enclosed-room' and r['provenance'] == 'invented' and abs(r['door']['width'] - 1.2) < 1e-7 for r in layout['rooms'])
-                  and all(abs(c['unwalled'] - c['expectedDoorWidth']) < 1e-4 for c in coverage), coverage)
-            furnishing = initial['furnishing']
-            check('Actual furniture has distinct rendered parts and one solid collider per object',
-                  furnishing['objects'] == len(layout['furniture']) == furnishing['colliderFurniture']
-                  and furnishing['renderFurniture'] > furnishing['objects'] and len(furnishing['byKind']) >= 2, furnishing)
-            probes = []
-            for furniture in layout['furniture']:
-                center = [furniture['pos'][0], layout['elevation'] + 1.65, furniture['pos'][1]]
-                approach = [furniture['approach'][0], layout['elevation'] + 1.65, furniture['approach'][1]]
-                probes.append({'id': furniture['id'], 'kind': furniture['kind'], 'solidAtCenter': debug('v020Collides', center),
-                               'approachClear': not debug('v020Collides', approach)})
-            report['interior']['furnitureCollisionProbes'] = probes
-            check('Production furniture colliders are solid while every reserved approach remains free', all(p['solidAtCenter'] and p['approachClear'] for p in probes), probes)
-            geom = debug('v018Geometry')
-            floor = next(g for g in geom if str(g.get('id', '')).startswith('city-floor:'))
-            triangles = [[floor['vertices'][i] for i in face] for face in floor['faces']]
-            triangle_area = sum(area([[p[0], p[2]] for p in tri]) for tri in triangles)
-            partition_draws = [g for g in geom if str(g.get('id', '')).startswith('city-partition:')]
-            check('Rendered floor and real partition prisms preserve metric source area',
-                  abs(triangle_area - net_area(layout['rings'])) < 1e-4 and len(partition_draws) == len(layout['walls']),
-                  {'sourceArea': net_area(layout['rings']), 'triangleArea': triangle_area, 'partitionPrisms': len(partition_draws)})
-            navigation = layout['programCoverage']['navigation']
-            check('Bounded circulation proof adds no unreachable source cells', navigation['newUnreachableCells'] == 0, navigation)
-
-            room = layout['rooms'][0]
-            door = room['door']
-            outside = [door['outside'][0], layout['elevation'] + 1.65, door['outside'][1]]
-            inside = [door['inside'][0], layout['elevation'] + 1.65, door['inside'][1]]
-            check('Both physical anchors of the enclosed-room doorway are clear', not debug('v020Collides', outside) and not debug('v020Collides', inside))
-            debug('v018CaptureAt', outside, math.atan2(inside[0] - outside[0], -(inside[2] - outside[2])), 0)
-            positions = []
-            page.keyboard.down('w')
             try:
-                for _step in range(24):
-                    debug('v020Tick', .05, True)
-                    current = debug('getState')['player']['pos']
-                    positions.append(current)
-                    if math.hypot(current[0] - inside[0], current[2] - inside[2]) <= .2:
+                browser = pw.chromium.launch(executable_path=chromium_path(), headless=True,
+                                             args=['--no-sandbox', '--disable-dev-shm-usage'])
+                report['browser_version'] = browser.version
+                context = browser.new_context(viewport={'width': 1440, 'height': 900}, service_workers='block')
+                report['contexts_created'] += 1
+                page = context.new_page()
+                page.set_default_timeout(30000)
+                page.on('pageerror', lambda error: report['page_errors'].append(str(error)))
+
+                def console_seen(message):
+                    if message.type != 'error':
+                        return
+                    report['console_errors'].append(message.text)
+                    record = {'text': message.text, 'location': message.location}
+                    # Chromium emits this diagnostic for failed HTTP/tunnel loads;
+                    # it is not an uncaught JavaScript exception. Preserve it and
+                    # every request failure, while checking source traffic below.
+                    if message.text.startswith('Failed to load resource:'):
+                        report['resource_console_diagnostics'].append(record)
+                    else:
+                        report['javascript_console_errors'].append(record)
+
+                page.on('console', console_seen)
+
+                def geographic(url):
+                    parsed = urllib.parse.urlsplit(url)
+                    return url.startswith(origin + '/') and (parsed.path.startswith('/data/map_pack/') or parsed.path.startswith('/__mistral/'))
+
+                def request_failed(request):
+                    record = {'url': request.url, 'failure': request.failure}
+                    report['request_failures'].append(record)
+                    if geographic(request.url):
+                        report['local_geographic_request_failures'].append(record)
+                    elif not request.url.startswith(origin + '/'):
+                        report['external_request_failures'].append(record)
+
+                def response_seen(response):
+                    if response.url.startswith(origin + '/'):
+                        record = {'url': response.url, 'status': response.status, 'from_service_worker': response.from_service_worker}
+                        report['http_responses'].append(record)
+                        if geographic(response.url) and response.status >= 400:
+                            report['local_http_errors'].append(record)
+
+                page.on('requestfailed', request_failed)
+                page.on('response', response_seen)
+                page.on('dialog', lambda dialog: dialog.accept())
+                native_document(page.goto(report['url'], wait_until='load', timeout=60000))
+                report['native_navigation'] = True
+                debug('v051CityReady')
+                debug('v052ArchitectureReady')
+                architecture = debug('v052ArchitectureInfo')
+                check('Runtime reads only real context labels, with zero asserted architectural plans', architecture['loaded']
+                      and not architecture['missing'] and not architecture['error'] and architecture['records'] == architecture['siteLabels'] == 12
+                      and architecture['facadeDocuments'] == architecture['interiorDocuments'] == 0, architecture)
+                debug('v018LoadMacro', CITY)
+                ready()
+                check('Actual geographic world is outside the synthetic lab', debug('v046Info')['lab'] is False)
+
+                joinery_stage(joinery_cases)
+
+                groups = {}
+                for row in expected.values():
+                    groups.setdefault(row['siteName'], []).append(row)
+                for group_index, (site_name, rows) in enumerate(groups.items(), 1):
+                    stage('real_site_labels_' + str(group_index))
+                    lat, lon = source_anchor(rows[0]['geometry'])
+                    camera = sector(lat, lon)
+                    for expected_row in rows:
+                        actual = debug('v052ArchitectureTarget', expected_row['cleabs'])
+                        annotation = actual.get('annotation') if actual else None
+                        label = annotation.get('architectureSite') if annotation else None
+                        check('Runtime source geometry is intact: ' + expected_row['cleabs'], actual is not None
+                              and actual['rawGeometry'] == expected_row['geometry'])
+                        check('Actual scene carries the attributed site label: ' + expected_row['cleabs'],
+                              annotation is not None and annotation['name'] == expected_row['label'] and label is not None
+                              and label['text'] == expected_row['label'] and label['siteName'] == site_name
+                              and label['kind'] == 'site-context' and label['geometryFictive'] is False
+                              and label['source']['responseSha256'] == expected_row['source']['responseSha256']
+                              and annotation.get('appliedSource') is not None, annotation)
+                        report['labels'].append({'cleabs': expected_row['cleabs'], 'annotation': annotation,
+                                                 'geometryCanonicalSha256': expected_row['geometryCanonicalSha256']})
+                    report.setdefault('site_cameras', []).append({'site': site_name, 'camera': camera})
+                    shot('0' + str(group_index) + '_real_site_context', 'Real site geometry; names are context, procedural facades remain inventions.')
+                architecture = debug('v052ArchitectureInfo')
+                check('All 12 official site contexts are applied without geometry rejection', architecture['appliedRecords'] == 12 and not architecture['rejected'], architecture)
+
+                stage('curved_source_facade')
+                camera = sector(*source_anchor(curved_source['geometry']))
+                target = debug('v052ArchitectureTarget', CURVED['sourceId'])
+                check('Curved source building retains its complete original geometry', target is not None and target['rawGeometry'] == curved_source['geometry'])
+                curved = debug('v050FacadeBuilding', CURVED['sourceId'])
+                check('Dense segmented real outline receives actual rendered facade details', curved is not None and curved['rendered']
+                      and not curved['ringsTruncated'] and curved['openingInventory']['curvedSurfaces'] >= 1
+                      and any(o.get('surfaceId') and o.get('span', {}).get('segments', 0) > 1 for o in curved['openings']), curved)
+                pages, openings, cursor = [], [], 0
+                for _page_index in range(64):
+                    result = debug('v050FacadePage', CURVED['sourceId'], cursor, 128)
+                    check('Curved facade inventory page advances or terminates', result is not None and (result['done'] or result['nextCursor'] > cursor))
+                    pages.append({k: v for k, v in result.items() if k != 'openings'})
+                    openings.extend(result['openings'])
+                    cursor = result['nextCursor']
+                    if result['done']:
                         break
+                check('Curved facade complete inventory finishes within the bounded pilot', bool(pages) and pages[-1]['done'])
+                curved_doors = [d for d in debug('v050FacadeDoors') if d['buildingId'] == curved['id']]
+                report['curved'] = {'source': CURVED, 'camera': camera, 'renderedFacade': curved,
+                                    'inventoryPages': pages, 'inventoryOpenings': openings, 'entranceCandidates': curved_doors}
+                check('Curved openings declare source-segment spans without changing metric bounds',
+                      bool(openings) and any(o.get('surfaceId') for o in openings)
+                      and all(o['width'] > 0 and o['height'] > 0 and o['bottom'] >= 0 and o['bottom'] + o['height'] <= curved['height'] + 1e-6
+                              and (not o.get('surfaceId') or o['span']['widthMeters'] == o['width'] and o['span']['segments'] >= 1)
+                              for o in openings))
+                fragments = []
+                for opening in openings:
+                    spans = debug('v050FacadeOpeningSpans', CURVED['sourceId'], opening)
+                    valid = bool(spans) and abs(sum(s['width'] for s in spans) - opening['width']) < 1e-6
+                    for span in spans:
+                        ring = curved['rings'][span['ringIndex']]
+                        a, b = ring[span['edgeIndex']], ring[(span['edgeIndex'] + 1) % len(ring)]
+                        valid = valid and span['offset'] >= -1e-7 and span['width'] > 0 and span['offset'] + span['width'] <= math.dist(a, b) + 1e-6
+                    fragments.append({'opening': opening, 'sourceSpans': spans, 'valid': bool(valid)})
+                report['curved']['sourceOpeningSpans'] = fragments
+                check('Every curved bay follows bounded intervals on the unchanged individual source edges',
+                      all(f['valid'] for f in fragments) and any(len(f['sourceSpans']) > 1 for f in fragments), fragments)
+                eligible_curved = [d for d in debug('v050CityInteriorInfo')['doors'] if d['building'] == curved['id']]
+                report['curved']['accessiblePortals'] = eligible_curved
+                if eligible_curved:
+                    approach = physical_interaction(eligible_curved[0]['id'], 'Entrer')
+                    check('Accessible curved source building enters through actual E-key portal', approach is not None and debug('v050CityInteriorInfo')['active'] is not None)
+                    report['curved']['entry'] = {'approach': approach, 'active': debug('v050CityInteriorInfo')['active']}
+                    shot('03_curved_source_interior', 'Real curved source footprint; invented arrangement, assisted E-key entrance.')
+                    exit_to_street()
+                else:
+                    report['curved']['entry'] = {'status': 'not_physically_eligible_in_this_sector',
+                                               'rejections': debug('v050CityInteriorInfo')['rejections'],
+                                               'claim': 'Rendered facade verified; no accessible entry claimed.'}
+                    shot('03_curved_source_facade', 'Real curved source outline and rendered invented facade; access eligibility reported separately.')
+
+                stage('enclosed_rooms_and_furnishing')
+                sector(43.362, 5.312)
+                candidates = []
+                for door in debug('v050CityInteriorInfo')['doors']:
+                    if 2 <= door['levels'] <= 8:
+                        target = debug('v052ArchitectureTarget', door['building'])
+                        if target:
+                            footprint_area = net_area(target['component']['rings'])
+                            if 45 <= footprint_area <= 350:
+                                candidates.append((abs(footprint_area - 110), door, target))
+                check('Real sector provides a suitably sized multi-storey source portal', bool(candidates))
+                chosen = initial = layout = None
+                for _score, door, target in sorted(candidates, key=lambda c: (c[0], c[1]['id']))[:8]:
+                    approach = physical_interaction(door['id'], 'Entrer')
+                    if not approach or not debug('v050CityInteriorInfo')['active']:
+                        report['interior_attempts'].append({'portal': door, 'entered': False})
+                        continue
+                    info, candidate_layout = debug('v050CityInteriorInfo'), debug('v052CityInteriorLayout')
+                    suitable = len(candidate_layout['rooms']) >= 1 and len(candidate_layout['furniture']) >= 2
+                    report['interior_attempts'].append({'portal': door, 'entered': True, 'suitable': suitable,
+                                                        'rooms': len(candidate_layout['rooms']), 'furniture': len(candidate_layout['furniture']),
+                                                        'programCoverage': candidate_layout.get('programCoverage')})
+                    if suitable:
+                        chosen, initial, layout = {'portal': door, 'sourceTarget': target, 'approach': approach}, info['active'], candidate_layout
+                        break
+                    exit_to_street()
+                check('A real entered building contains enclosed invented rooms and furnished uses', chosen is not None)
+                state = debug('getState')
+                building = state['v050City']['active']['building']
+                return_point = state['v050City']['returnPoint']
+                report['interior'] = {'chosen': chosen, 'initial': initial, 'layout': layout, 'returnPoint': return_point}
+                check('Entered plan preserves the source-derived local outline and honest invented provenance',
+                      layout['rings'] == building['rings'] and layout['layoutVersion'] == building.get('layoutVersion') == 4 and layout['provenance'] == 'invented'
+                      and initial['layoutProvenance'] == 'invented' and not initial['documentSource'] and not initial['documentedLevels'])
+                coverage = [dict(roomId=r['id'], **room_wall_coverage(r, layout['walls'])) for r in layout['rooms']]
+                report['interior']['roomWallCoverage'] = coverage
+                check('Actual room partitions enclose every side except the stated 1.20 m door',
+                      all(r['coverage'] == 'enclosed-room' and r['provenance'] == 'invented' and abs(r['door']['width'] - 1.2) < 1e-7 for r in layout['rooms'])
+                      and all(abs(c['unwalled'] - c['expectedDoorWidth']) < 1e-4 for c in coverage), coverage)
+                furnishing = initial['furnishing']
+                check('Actual furniture has distinct rendered parts and one solid collider per object',
+                      furnishing['objects'] == len(layout['furniture']) == furnishing['colliderFurniture']
+                      and furnishing['renderFurniture'] > furnishing['objects'] and len(furnishing['byKind']) >= 2, furnishing)
+                probes = []
+                for furniture in layout['furniture']:
+                    center = [furniture['pos'][0], layout['elevation'] + 1.65, furniture['pos'][1]]
+                    approach = [furniture['approach'][0], layout['elevation'] + 1.65, furniture['approach'][1]]
+                    probes.append({'id': furniture['id'], 'kind': furniture['kind'], 'solidAtCenter': debug('v020Collides', center),
+                                   'approachClear': not debug('v020Collides', approach)})
+                report['interior']['furnitureCollisionProbes'] = probes
+                check('Production furniture colliders are solid while every reserved approach remains free', all(p['solidAtCenter'] and p['approachClear'] for p in probes), probes)
+                geom = debug('v018Geometry')
+                floor = next(g for g in geom if str(g.get('id', '')).startswith('city-floor:'))
+                triangles = [[floor['vertices'][i] for i in face] for face in floor['faces']]
+                triangle_area = sum(area([[p[0], p[2]] for p in tri]) for tri in triangles)
+                partition_draws = [g for g in geom if str(g.get('id', '')).startswith('city-partition:')]
+                check('Rendered floor and real partition prisms preserve metric source area',
+                      abs(triangle_area - net_area(layout['rings'])) < 1e-4 and len(partition_draws) == len(layout['walls']),
+                      {'sourceArea': net_area(layout['rings']), 'triangleArea': triangle_area, 'partitionPrisms': len(partition_draws)})
+                navigation = layout['programCoverage']['navigation']
+                check('Bounded circulation proof adds no unreachable source cells', navigation['newUnreachableCells'] == 0, navigation)
+
+                room = layout['rooms'][0]
+                door = room['door']
+                outside = [door['outside'][0], layout['elevation'] + 1.65, door['outside'][1]]
+                inside = [door['inside'][0], layout['elevation'] + 1.65, door['inside'][1]]
+                check('Both physical anchors of the enclosed-room doorway are clear', not debug('v020Collides', outside) and not debug('v020Collides', inside))
+                debug('v018CaptureAt', outside, math.atan2(inside[0] - outside[0], -(inside[2] - outside[2])), 0)
+                positions = []
+                page.keyboard.down('w')
+                try:
+                    for _step in range(24):
+                        debug('v020Tick', .05, True)
+                        current = debug('getState')['player']['pos']
+                        positions.append(current)
+                        if math.hypot(current[0] - inside[0], current[2] - inside[2]) <= .2:
+                            break
+                finally:
+                    page.keyboard.up('w')
+                actual_position = debug('getState')['player']['pos']
+                report['interior']['assistedDoorCrossing'] = {'method': 'Native KeyW with manually stepped v020Tick(.05,true); production movement/collisions, not human walking',
+                                                              'from': outside, 'requested': inside, 'stepSeconds': .05,
+                                                              'positions': positions, 'actualPosition': actual_position}
+                check('Production movement crosses the actual 1.20 m room doorway into its enclosed volume',
+                      bool(positions) and math.hypot(actual_position[0] - outside[0], actual_position[2] - outside[2]) > .6
+                      and math.hypot(actual_position[0] - inside[0], actual_position[2] - inside[2]) <= .3
+                      and point_in_ring(room['ring'], [actual_position[0], actual_position[2]]), report['interior']['assistedDoorCrossing'])
+                debug('v018CaptureAt', actual_position, math.atan2(outside[0] - actual_position[0], -(outside[2] - actual_position[2])), -.22)
+                shot('04a_enclosed_room_doorway', 'Actual invented room doorway after collision-controlled crossing, looking back into the source-footprint common space.')
+                report['interior']['furnitureView'] = furniture_view(layout)
+                shot('04_enclosed_room_furniture', 'Actual clear doorway/landing camera towards multiple invented furnishings when visible; no scene or image modification.')
+
+                street_floor, entry_signature = initial['streetFloor'], initial['signature']
+                adjacent = street_floor + 1 if street_floor + 1 < initial['levels'] else street_floor - 1
+                go_floor(adjacent)
+                upper = debug('v050CityInteriorInfo')['active']
+                upper_layout = debug('v052CityInteriorLayout')
+                check('Visible landing UI loads another metric floor of the same source building', upper['id'] == initial['id']
+                      and upper['floor'] == adjacent and upper['signature'] != entry_signature
+                      and upper_layout['elevation'] != layout['elevation'])
+                before_reload = debug('getState')
+                key = debug('v018PersistentStatus')['key']
+                saved = page.evaluate('key=>JSON.parse(localStorage.getItem(key))', key)
+                check('Real browser localStorage retains the current floor and geographic return point', saved['v050City']['active']['floor'] == adjacent
+                      and saved['v050City']['active']['building']['id'] == initial['id'] and saved['v050City']['returnPoint'] == return_point)
+                report['interior']['adjacent'] = upper
+                shot('05_adjacent_floor', 'Actual adjacent floor loaded by the visible landing controls.')
+
+                stage('cold_document_continue')
+                native_document(page.reload(wait_until='load', timeout=60000))
+                page.locator('#btnContinue').click()
+                page.wait_for_function('id=>__MISTRAL_DEBUG.v050CityInteriorInfo().active?.id===id', arg=initial['id'], timeout=120000)
+                restored = debug('v050CityInteriorInfo')['active']
+                check('Native Continue restores building, floor and deterministic room/furniture signature', restored['id'] == initial['id']
+                      and restored['floor'] == adjacent and restored['streetFloor'] == street_floor and restored['signature'] == upper['signature'], restored)
+                check('Native Continue preserves inventory and exact exterior return point', debug('getState')['inventory'] == before_reload['inventory']
+                      and debug('getState')['v050City']['returnPoint'] == return_point)
+                report['interior']['restored'] = restored
+                shot('06_continue_same_floor', 'Same fresh-context native storage and a real document reload; no save injection.')
+                go_floor(street_floor)
+                check('Return to the street storey reconstructs the same full plan signature', debug('v050CityInteriorInfo')['active']['signature'] == entry_signature)
+                exit_to_street()
+                exterior = debug('getState')
+                check('Real exit UI restores the exact saved street position and inventory',
+                      math.dist(exterior['player']['pos'], return_point['pos']) < .2 and exterior['inventory'] == before_reload['inventory']
+                      and exterior['v050City']['returnPoint'] is None and exterior['v050City']['active'] is None)
+                report['interior']['returnedPosition'] = exterior['player']['pos']
+                shot('07_return_real_street', 'Actual geographic return after native Continue and floor controls.')
+                final_city, final_interiors = debug('v051CityInfo'), debug('v050CityInteriorInfo')
+                report['final_city'], report['final_interiors'] = final_city, final_interiors
+                check('Real source and interior transactions record no runtime exception', not final_city['errors'] and not final_interiors['errors'])
+                check('No synthetic documentary plan entered native storage', final_interiors['documentRegistry']['entries'] == 0)
+                report['network_scope'] = {
+                    'requiredSuccess': 'Installed /data/map_pack files and actual local /__mistral audit endpoints.',
+                    'externalServices': 'All external request failures and Chromium resource diagnostics are retained separately. This pilot does not certify reachability of remote services.',
+                }
+                check('All installed geographic-source and local-audit HTTP responses succeeded', not report['local_http_errors'], report['local_http_errors'])
+                check('No installed geographic-source or local-audit request failed or was aborted',
+                      not report['local_geographic_request_failures'], report['local_geographic_request_failures'])
+                check('No global JavaScript exception or application console error occurred', not report['page_errors'] and not report['javascript_console_errors'],
+                      {'pageErrors': report['page_errors'], 'applicationConsoleErrors': report['javascript_console_errors'],
+                       'retainedResourceDiagnostics': report['resource_console_diagnostics']})
+                check('Pilot used one browser context through a native document reload', report['contexts_created'] == 1)
+                context.close()
+                context = None
+                browser.close()
+                browser = None
+            except Exception:
+                if page is not None and not page.is_closed():
+                    try:
+                        shot('FAILURE', 'Actual UI at failed native check, captured before closing the real Playwright context.')
+                    except Exception:
+                        pass
+                raise
             finally:
-                page.keyboard.up('w')
-            actual_position = debug('getState')['player']['pos']
-            report['interior']['assistedDoorCrossing'] = {'method': 'Native KeyW with manually stepped v020Tick(.05,true); production movement/collisions, not human walking',
-                                                          'from': outside, 'requested': inside, 'stepSeconds': .05,
-                                                          'positions': positions, 'actualPosition': actual_position}
-            check('Production movement crosses the actual 1.20 m room doorway into its enclosed volume',
-                  bool(positions) and math.hypot(actual_position[0] - outside[0], actual_position[2] - outside[2]) > .6
-                  and math.hypot(actual_position[0] - inside[0], actual_position[2] - inside[2]) <= .3
-                  and point_in_ring(room['ring'], [actual_position[0], actual_position[2]]), report['interior']['assistedDoorCrossing'])
-            debug('v018CaptureAt', actual_position, math.atan2(outside[0] - actual_position[0], -(outside[2] - actual_position[2])), -.22)
-            shot('04a_enclosed_room_doorway', 'Actual invented room doorway after collision-controlled crossing, looking back into the source-footprint common space.')
-            report['interior']['furnitureView'] = furniture_view(layout)
-            shot('04_enclosed_room_furniture', 'Actual clear doorway/landing camera towards multiple invented furnishings when visible; no scene or image modification.')
-
-            street_floor, entry_signature = initial['streetFloor'], initial['signature']
-            adjacent = street_floor + 1 if street_floor + 1 < initial['levels'] else street_floor - 1
-            go_floor(adjacent)
-            upper = debug('v050CityInteriorInfo')['active']
-            upper_layout = debug('v052CityInteriorLayout')
-            check('Visible landing UI loads another metric floor of the same source building', upper['id'] == initial['id']
-                  and upper['floor'] == adjacent and upper['signature'] != entry_signature
-                  and upper_layout['elevation'] != layout['elevation'])
-            before_reload = debug('getState')
-            key = debug('v018PersistentStatus')['key']
-            saved = page.evaluate('key=>JSON.parse(localStorage.getItem(key))', key)
-            check('Real browser localStorage retains the current floor and geographic return point', saved['v050City']['active']['floor'] == adjacent
-                  and saved['v050City']['active']['building']['id'] == initial['id'] and saved['v050City']['returnPoint'] == return_point)
-            report['interior']['adjacent'] = upper
-            shot('05_adjacent_floor', 'Actual adjacent floor loaded by the visible landing controls.')
-
-            stage('cold_document_continue')
-            native_document(page.reload(wait_until='load', timeout=60000))
-            page.locator('#btnContinue').click()
-            page.wait_for_function('id=>__MISTRAL_DEBUG.v050CityInteriorInfo().active?.id===id', arg=initial['id'], timeout=120000)
-            restored = debug('v050CityInteriorInfo')['active']
-            check('Native Continue restores building, floor and deterministic room/furniture signature', restored['id'] == initial['id']
-                  and restored['floor'] == adjacent and restored['streetFloor'] == street_floor and restored['signature'] == upper['signature'], restored)
-            check('Native Continue preserves inventory and exact exterior return point', debug('getState')['inventory'] == before_reload['inventory']
-                  and debug('getState')['v050City']['returnPoint'] == return_point)
-            report['interior']['restored'] = restored
-            shot('06_continue_same_floor', 'Same fresh-context native storage and a real document reload; no save injection.')
-            go_floor(street_floor)
-            check('Return to the street storey reconstructs the same full plan signature', debug('v050CityInteriorInfo')['active']['signature'] == entry_signature)
-            exit_to_street()
-            exterior = debug('getState')
-            check('Real exit UI restores the exact saved street position and inventory',
-                  math.dist(exterior['player']['pos'], return_point['pos']) < .2 and exterior['inventory'] == before_reload['inventory']
-                  and exterior['v050City']['returnPoint'] is None and exterior['v050City']['active'] is None)
-            report['interior']['returnedPosition'] = exterior['player']['pos']
-            shot('07_return_real_street', 'Actual geographic return after native Continue and floor controls.')
-            final_city, final_interiors = debug('v051CityInfo'), debug('v050CityInteriorInfo')
-            report['final_city'], report['final_interiors'] = final_city, final_interiors
-            check('Real source and interior transactions record no runtime exception', not final_city['errors'] and not final_interiors['errors'])
-            check('No synthetic documentary plan entered native storage', final_interiors['documentRegistry']['entries'] == 0)
-            report['network_scope'] = {
-                'requiredSuccess': 'Installed /data/map_pack files and actual local /__mistral audit endpoints.',
-                'externalServices': 'All external request failures and Chromium resource diagnostics are retained separately. This pilot does not certify reachability of remote services.',
-            }
-            check('All installed geographic-source and local-audit HTTP responses succeeded', not report['local_http_errors'], report['local_http_errors'])
-            check('No installed geographic-source or local-audit request failed or was aborted',
-                  not report['local_geographic_request_failures'], report['local_geographic_request_failures'])
-            check('No global JavaScript exception or application console error occurred', not report['page_errors'] and not report['javascript_console_errors'],
-                  {'pageErrors': report['page_errors'], 'applicationConsoleErrors': report['javascript_console_errors'],
-                   'retainedResourceDiagnostics': report['resource_console_diagnostics']})
-            check('Pilot used one browser context through a native document reload', report['contexts_created'] == 1)
-            context.close()
-            context = None
-            browser.close()
-            browser = None
+                # Close while Playwright's event loop is still alive. Failure
+                # evidence is retained above; cleanup never starts a new scene.
+                for resource in [context, browser]:
+                    if resource is not None:
+                        try:
+                            resource.close()
+                        except Exception as error:
+                            report.setdefault('cleanup_errors', []).append(str(error))
+                context = browser = None
         stage('complete')
     except Exception:
         report['exception'] = traceback.format_exc()
         print(report['exception'], flush=True)
         check('Native architecture pilot completes', False, report['exception'], required=False)
-        if page is not None and not page.is_closed():
-            try:
-                shot('FAILURE', 'Actual UI at failure; no substituted fixture or synthetic image.')
-            except Exception:
-                pass
     finally:
         for resource in [context, browser]:
             if resource is not None:

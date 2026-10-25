@@ -1,0 +1,53 @@
+OK Coordinated production HTML is installed
+OK Coordinated interior source is frozen
+OK Coordinated architecture atlas is frozen
+OK Production HTML includes current src/v050/08_city_interiors.js
+OK Production HTML includes current src/v050/07_facades.js
+OK Production HTML includes current src/v050/06_architecture_sources.js
+OK Case fixture describes attributed real source geometries
+OK Actual source chunk matches the case acquisition SHA
+OK Pinned real feature exactly equals the attributed case geometry and properties
+OK Actual source chunk matches the case acquisition SHA
+OK Pinned real feature exactly equals the attributed case geometry and properties
+OK Actual source chunk matches the case acquisition SHA
+OK Pinned real feature exactly equals the attributed case geometry and properties
+STAGE actual_server_source_audit
+OK Real GameHandler audits the installed source pack
+OK Frozen HTML, modules, fixtures and selected real source chunks remain unchanged
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/interior_programs_native.py", line 411, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/fallout-Marseille/tests/expansion/interior_programs_native.py", line 224, in main
+    with urllib.request.urlopen(origin + '/__mistral/local-data', timeout=300) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 1373, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 1348, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 1478, in getresponse
+    response.begin()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 343, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 304, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

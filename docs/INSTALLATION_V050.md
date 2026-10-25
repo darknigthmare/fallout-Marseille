@@ -2,7 +2,9 @@
 
 La version v0.50 fournit les cartes locales nécessaires au parcours géographique : **5 884 coordonnées vectorielles**, dont 4 557 PBF non vides et 1 327 réponses officiellement vides, ainsi que **huit grilles de relief**. Le jeu se lance avec un serveur local Python et un navigateur compatible WebGL. Python 3.11 ou plus récent est recommandé ; Node.js et Playwright servent au développement et aux tests, pas au jeu compilé. [Audit des fichiers livrés](../verification/v050/LOCAL_DATA_STATE.json)
 
-L’extension communale actuelle est fournie dans le dépôt GitHub ; la distribution Drive décrite ci-dessous reste celle de la livraison initiale. Le serveur actuel restaure aussi les archives d’Aubagne et de Marseille, hors réseau, avant d’ouvrir le navigateur. Cette validation peut prendre plusieurs minutes. Voir [Marseille entière](MARSEILLE_ENTIERE.md).
+L’extension actuelle est fournie dans le dépôt GitHub ; la distribution Drive décrite ci-dessous reste celle de la livraison initiale. Le serveur restaure aussi les archives d’Aubagne, de Marseille et les **six ZIP de relief natif**, hors réseau, avant d’ouvrir le navigateur. Cette validation et l’extraction peuvent prendre plusieurs minutes. Voir [Marseille entière](MARSEILLE_ENTIERE.md).
+
+Le nouveau [relief précis](RELIEF_PRECIS.md) couvre **12 km² centraux**, douze dalles et 48 morceaux au pas natif de 0,50 m Lambert-93/NGF-IGN69. Il ajoute **157 896 379 octets d’archives (environ 150,58 Mio)** et **192 328 140 octets extraits (environ 183,42 Mio)** ; ces tailles s’ajoutent aux cartes précédentes, conservées ailleurs. Prévoir l’espace pour les archives et les données extraites. Il ne s’agit pas d’un LiDAR de 0,50 m sur toute la commune.
 
 ## 1. Choisir l’archive
 
@@ -57,6 +59,14 @@ python3 tools/serve_game.py --no-browser
 
 Le premier lancement depuis un clone GitHub peut extraire les cartes déjà fournies dans le projet. Le dépôt transporte **24 archives logiques : 23 ZIP et une archive <code>base_00060_100.zip.gz</code>**. L’installateur décompacte automatiquement cette enveloppe gzip avec une taille bornée, puis vérifie le SHA-256 du ZIP original avant d’en extraire les données. Aucune conversion manuelle n’est nécessaire.
 
+Les six ZIP natifs et leur manifeste se trouvent dans <code>data/map_pack/precision_archives/</code>. Le serveur les vérifie puis prépare les fichiers <code>data/map_pack/precise/</code>, sans télécharger de GeoTIFF. Pour relancer uniquement cette préparation locale :
+
+~~~bash
+python3 tools/precise_terrain_sources.py --prepare
+~~~
+
+Un fichier extrait altéré ou une empreinte incorrecte produit un diagnostic explicite ; ne pas remplacer les sources manquantes par des fichiers vides. Les anciennes cartes restent disponibles hors du support natif.
+
 Cette préparation utilise uniquement les archives locales ; le lancement ne déclenche pas d’installation réseau implicite. Le <code>PROJET_COMPLET</code> distribué sur Drive conserve les **24 ZIP originaux**, dont <code>base_00060_100.zip</code>. Dans l’archive <code>JEU_COMPLET</code>, les cartes sont déjà extraites. [Préparation locale](../tools/prepare_local_pack_v050.py)
 
 Utilisez le serveur local pour le parcours géographique et les sauvegardes vérifiés. L’ouverture du HTML seul avec une adresse <code>file://</code> n’est pas le parcours validé par la QA native.
@@ -68,6 +78,8 @@ Ouvrez **Cartes & territoire**. Pour le jeu complet livré, le statut attendu es
 - **5 884 / 5 884 coordonnées** ;
 - **8 / 8 grilles de relief** ;
 - **Cartes locales prêtes**.
+
+Ces compteurs décrivent le **socle historique**. L’installation actuelle ajoute les acquisitions communales et le lot natif précis ; leur provenance et leur périmètre sont distincts. L’audit natif précis est aussi disponible sur **http://127.0.0.1:8765/__mistral/precise-terrain**, avec le port réellement choisi si nécessaire.
 
 Le statut provient d’un audit du disque par le serveur actif. Les coordonnées officiellement vides sont accompagnées d’une preuve explicite ; un fichier vide arbitraire n’est pas accepté comme une donnée valide.
 
@@ -134,5 +146,7 @@ python3 tools/report_v050.py
 ~~~
 
 Pillow et les polices DejaVu Sans / Sans Mono sont requis pour le PNG. Si les polices ne sont pas trouvées automatiquement, ajoutez <code>--font-dir /chemin/vers/les/polices</code>. L’outil vérifie les totaux, les SHA du programme et les captures originales avant d’écrire le rapport. Il distingue l’empreinte du HTML canonique de celle du test de voyage instrumenté.
+
+Le [bilan courant](../verification/expansion/precision/PRECISION_INTEGRATION.json) valide le HTML `120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636` : **2 324 contrôles par méthodes distinctes, 42 captures réelles et 403 empreintes de production vérifiées**. Les méthodes peuvent se chevaucher ; ce ne sont pas 2 324 parcours équivalents. Les 288 comparaisons ponctuelles Float32 avec les GeoTIFF sources restent hors de ce total. Les tests DOM de manette simulent l’API Gamepad et ne certifient aucun modèle physique. Le [bilan de `833d687`](../verification/expansion/continuation/CONTINUATION_INTEGRATION.json), avec 1 847 contrôles, et les preuves v0.50 ci-dessus restent historiques et ne valident pas automatiquement ce programme.
 
 Consultez aussi les [limites connues](KNOWN_LIMITATIONS_V0.50.md), la [provenance](PROVENANCE_V050.md) et le [rapport visuel autonome](../RAPPORT_VISUEL_V0.50.html).

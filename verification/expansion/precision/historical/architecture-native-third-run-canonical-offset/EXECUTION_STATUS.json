@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/architecture-native",
+    "--expect-html-sha",
+    "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "exitCode": 1,
+  "scriptSha256": "5cfad110f9b9b9f50396defb16a22dd12cf076a61bd36891dfa8456d76ae73e4",
+  "reportSha256": "bd705a730e4d40f5eac3ceaa7dc43a1f13de67eb8b7cdf0373171b9accae1224",
+  "startedUnix": 1792918319.8395782,
+  "finishedUnix": 1792918448.266454,
+  "stage": "native_authored_joinery",
+  "passed": 41,
+  "failed": 2,
+  "shots": 1,
+  "processFinished": true,
+  "cleanupErrors": []
+}

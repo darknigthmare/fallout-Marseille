@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/architecture-native",
+    "--expect-html-sha",
+    "5e6895ac4d718ce6547864f5d8fc553a457e04a784c51fd753c72591693425db",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "scriptSha256": "89636fb87b001f448806cda993fcb5bf2e5eeff8154a9a65331877719cec2b98",
+  "startedUnix": 1792916579.8180933,
+  "expected": {
+    "index.html": "5e6895ac4d718ce6547864f5d8fc553a457e04a784c51fd753c72591693425db",
+    "src/v050/07_facades.js": "5a48c0b322495fc10cfde67b928c895557286ae93c6fed35e451a911c39b4d62",
+    "src/v050/08_city_interiors.js": "23ee3bab208cf62f5e814c4e52bf02dd6cc841d1b3d5af198e52fddf6005706b",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  }
+}

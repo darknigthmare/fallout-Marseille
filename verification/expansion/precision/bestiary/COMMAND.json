@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "python",
+    "tests/expansion/regional_bestiary_native.py",
+    "--run",
+    "--maximum-sectors",
+    "7",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/bestiary-native",
+    "--expect-html-sha",
+    "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "--expect-bestiary-sha",
+    "508243e145122232b99bc83ba3a944e0cea92aefa45b3161bd6563ee613b8b74",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "workingDirectory": "/workspace/fallout-Marseille",
+  "stdoutAndStderr": "execution.log",
+  "processExitCodeFile": "exit-code.txt",
+  "record": "Exact command executed in process session 29062; exit-code.txt was written automatically from the shell process status."
+}

@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 1,
+  "scope": "Actual IGN BD TOPO source geometries and use attributes; projected through production Lambert93. Door and all interior layouts, partitions and furniture are invented; portal IDs are indicative before terrain and neighboring collision filtering.",
+  "license": "Licence Ouverte 2.0",
+  "attribution": "IGN — Géoplateforme",
+  "cases": [
+    {
+      "sourceId": "batiment.39112232",
+      "sourcePath": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json",
+      "sourceChunkSha256": "deaaf0e382a632bdd20b4c0fa308c5fdc8b4cfa0679120cd4ab9e2693f8abd4f",
+      "sourceFeatureSha256": "85a92788608ec9cf28b44d69ddd06a77465e2b2a19be861979098e2baa21129e",
+      "rawFeature": {
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                [
+                  5.36341766,
+                  43.24327592,
+                  3.7
+                ],
+                [
+                  5.36348834,
+                  43.24325817,
+                  3.7
+                ],
+                [
+                  5.36340681,
+                  43.24307097,
+                  3.7
+                ],
+                [
+                  5.36333122,
+                  43.24308883,
+                  3.7
+                ],
+                [
+                  5.36336748,
+                  43.24316273,
+                  4.2
+                ],
+                [
+                  5.36334549,
+                  43.24316681,
+                  4.2
+                ],
+                [
+                  5.36336705,
+                  43.24321223,
+                  4.2
+                ],
+                [
+                  5.36338896,
+                  43.24320635,
+                  4.2
+                ],
+                [
+                  5.36341766,
+                  43.24327592,
+                  3.7
+                ]
+              ]
+            ]
+          ],
+          "type": "MultiPolygon"
+        },
+        "id": "batiment.39112232",
+        "properties": {
+          "altitude_maximale_sol": 1.4,
+          "altitude_maximale_toit": 4.7,
+          "altitude_minimale_sol": 0.4,
+          "altitude_minimale_toit": null,
+          "appariement_fichiers_fonciers": "C 0.4",
+          "cleabs": "BATIMENT0000000356609934",
+          "construction_legere": false,
+          "date_creation": "2016-02-18T11:14:33.614Z",
+          "date_d_apparition": null,
+          "date_de_confirmation": null,
+          "date_modification": "2019-04-08T06:50:57.569Z",
+          "etat_de_l_objet": "En service",
+          "hauteur": 3.8,
+          "identifiants_rnb": "DN5GDXCXEQM3",
+          "identifiants_sources": "",
+          "kind": "building",
+          "materiaux_de_la_toiture": "",
+          "materiaux_des_murs": "",
+          "methode_d_acquisition_altimetrique": "Photogrammétrie",
+          "methode_d_acquisition_planimetrique": "Photogrammétrie",
+          "nature": "Industriel, agricole ou commercial",
+          "nombre_d_etages": 1,
+          "nombre_de_logements": 0,
+          "origine_du_batiment": "Imagerie aérienne",
+          "precision_altimetrique": 1.5,
+          "precision_planimetrique": 2.5,
+          "provenance": {
+            "acquiredAt": "2026-10-23",
+            "attribution": "IGN — Géoplateforme",
+            "coverage": {
+              "bbox": [
+                43.23113830833333,
+                5.357278548461538,
+                43.24343971,
+                5.368962869230769
+              ],
+              "complete": true,
+              "crs": "EPSG:4326",
+              "layer": "BDTOPO_V3:batiment",
+              "returned": 2418
+            },
+            "inputCrs": "EPSG:4326",
+            "inputSha256": "555f613d12ede49bc87ee4c148608857027e25cfac9541d738dd62a0707737c0",
+            "license": "Licence Ouverte 2.0",
+            "resource": "ign-bdtopo",
+            "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+            "url": "https://data.geopf.fr/wfs/ows",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "sourceId": "batiment.39112232",
+          "sources": null,
+          "usage_1": "Commercial et services",
+          "usage_2": null
+        },
+        "type": "Feature"
+      },
+      "projection": {
+        "frame": "engine-lambert93-metre",
+        "originWgs84": {
+          "lat": 43.285,
+          "lon": 5.51
+        },
+        "implementation": "src/patches/01_geometry.js v018Lambert93",
+        "geometryCenterWgs84": {
+          "lat": 43.243173445,
+          "lon": 5.36340978
+        }
+      },
+      "metric": {
+        "rings": [
+          [
+            [
+              -11759.844488731236,
+              5003.594807517715
+            ],
+            [
+              -11754.043753172737,
+              5005.395276969299
+            ],
+            [
+              -11760.044040004956,
+              5026.395208606496
+            ],
+            [
+              -11766.24402283947,
+              5024.5944517645985
+            ],
+            [
+              -11763.544289991376,
+              5016.294506958686
+            ],
+            [
+              -11765.34422189463,
+              5015.89461987745
+            ],
+            [
+              -11763.743899596506,
+              5010.795120419934
+            ],
+            [
+              -11761.944479422295,
+              5011.395217316225
+            ],
+            [
+              -11759.844488731236,
+              5003.594807517715
+            ]
+          ]
+        ],
+        "baseY": 0.4,
+        "height": 4.3
+      },
+      "expected": {
+        "use": "Commercial et services",
+        "theme": "commercial",
+        "buildingId": "BATIMENT0000000356609934:451b8fb0a789000c",
+        "portalId": "BATIMENT0000000356609934:451b8fb0a789000c:entrance:0:1:5000",
+        "interactionId": "city-door:5495921fe0364295",
+        "outsideEnginePosition": [
+          -11755.93814831033,
+          0.4,
+          5016.211186999048
+        ],
+        "localEntry": [
+          2.186547187178803,
+          0.6392373339722326
+        ]
+      }
+    },
+    {
+      "sourceId": "batiment.9618398",
+      "sourcePath": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json",
+      "sourceChunkSha256": "deaaf0e382a632bdd20b4c0fa308c5fdc8b4cfa0679120cd4ab9e2693f8abd4f",
+      "sourceFeatureSha256": "e0667e055b49a7c5b91ce61bf42e4e4a3928c1df594d0dea78190fb92b743d0b",
+      "rawFeature": {
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                [
+                  5.35739915,
+                  43.23296567,
+                  22.4
+                ],
+                [
+                  5.35762003,
+                  43.23279886,
+                  22.4
+                ],
+                [
+                  5.35681475,
+                  43.23242858,
+                  22.4
+                ],
+                [
+                  5.35664897,
+                  43.23261848,
+                  22.4
+                ],
+                [
+                  5.35739915,
+                  43.23296567,
+                  22.4
+                ]
+              ]
+            ]
+          ],
+          "type": "MultiPolygon"
+        },
+        "id": "batiment.9618398",
+        "properties": {
+          "altitude_maximale_sol": 19.3,
+          "altitude_maximale_toit": 25.1,
+          "altitude_minimale_sol": 14.7,
+          "altitude_minimale_toit": 22.4,
+          "appariement_fichiers_fonciers": "C 0.2",
+          "cleabs": "BATIMENT0000000258361329",
+          "construction_legere": false,
+          "date_creation": "2011-05-18T12:09:31.009Z",
+          "date_d_apparition": "1957-01-01Z",
+          "date_de_confirmation": null,
+          "date_modification": "2019-04-08T06:50:57.569Z",
+          "etat_de_l_objet": "En service",
+          "hauteur": 7.7,
+          "identifiants_rnb": "WKE6FDNFAGQX",
+          "identifiants_sources": null,
+          "kind": "building",
+          "materiaux_de_la_toiture": null,
+          "materiaux_des_murs": null,
+          "methode_d_acquisition_altimetrique": "Corrélation",
+          "methode_d_acquisition_planimetrique": "BDParcellaire recalée",
+          "nature": "Industriel, agricole ou commercial",
+          "nombre_d_etages": 1,
+          "nombre_de_logements": 0,
+          "origine_du_batiment": "Cadastre",
+          "precision_altimetrique": 1,
+          "precision_planimetrique": 3,
+          "provenance": {
+            "acquiredAt": "2026-10-23",
+            "attribution": "IGN — Géoplateforme",
+            "coverage": {
+              "bbox": [
+                43.23113830833333,
+                5.357278548461538,
+                43.24343971,
+                5.368962869230769
+              ],
+              "complete": true,
+              "crs": "EPSG:4326",
+              "layer": "BDTOPO_V3:batiment",
+              "returned": 2418
+            },
+            "inputCrs": "EPSG:4326",
+            "inputSha256": "555f613d12ede49bc87ee4c148608857027e25cfac9541d738dd62a0707737c0",
+            "license": "Licence Ouverte 2.0",
+            "resource": "ign-bdtopo",
+            "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+            "url": "https://data.geopf.fr/wfs/ows",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "sourceId": "batiment.9618398",
+          "sources": null,
+          "usage_1": "Industriel",
+          "usage_2": null
+        },
+        "type": "Feature"
+      },
+      "projection": {
+        "frame": "engine-lambert93-metre",
+        "originWgs84": {
+          "lat": 43.285,
+          "lon": 5.51
+        },
+        "implementation": "src/patches/01_geometry.js v018Lambert93",
+        "geometryCenterWgs84": {
+          "lat": 43.232697125,
+          "lon": 5.3571345
+        }
+      },
+      "metric": {
+        "rings": [
+          [
+            [
+              -12214.543882946717,
+              6163.89472641889
+            ],
+            [
+              -12196.043872555718,
+              6181.8948511509225
+            ],
+            [
+              -12260.244264059118,
+              6224.994541812688
+            ],
+            [
+              -12274.34392371215,
+              6204.29478965234
+            ],
+            [
+              -12214.543882946717,
+              6163.89472641889
+            ]
+          ]
+        ],
+        "baseY": 14.7,
+        "height": 10.400000000000002
+      },
+      "expected": {
+        "use": "Industriel",
+        "theme": "industrial",
+        "buildingId": "BATIMENT0000000258361329:c4311cf5a6bd9651",
+        "portalId": "BATIMENT0000000258361329:c4311cf5a6bd9651:entrance:0:1:5000",
+        "interactionId": "city-door:ae6980139070653d",
+        "outsideEnginePosition": [
+          -12227.503083434878,
+          14.7,
+          6204.3994940484
+        ],
+        "localEntry": [
+          6.520320583982539,
+          8.211316550134143
+        ]
+      }
+    },
+    {
+      "sourceId": "batiment.9620088",
+      "sourcePath": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json",
+      "sourceChunkSha256": "deaaf0e382a632bdd20b4c0fa308c5fdc8b4cfa0679120cd4ab9e2693f8abd4f",
+      "sourceFeatureSha256": "f04ebc59fdb82694890dcd5ed0378a64633390c97cfa9c8b6ff064af6e73140b",
+      "rawFeature": {
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                [
+                  5.36708764,
+                  43.2361122,
+                  32.4
+                ],
+                [
+                  5.36705677,
+                  43.23613987,
+                  32.4
+                ],
+                [
+                  5.36736568,
+                  43.23634908,
+                  32.4
+                ],
+                [
+                  5.36737884,
+                  43.23633979,
+                  32.4
+                ],
+                [
+                  5.3674117,
+                  43.23636067,
+                  32.4
+                ],
+                [
+                  5.3674369,
+                  43.23634482,
+                  32.4
+                ],
+                [
+                  5.36746845,
+                  43.23636392,
+                  32.4
+                ],
+                [
+                  5.36750536,
+                  43.23633342,
+                  32.4
+                ],
+                [
+                  5.36750409,
+                  43.23633255,
+                  32.4
+                ],
+                [
+                  5.36761134,
+                  43.2362465,
+                  32.4
+                ],
+                [
+                  5.36761253,
+                  43.23624557,
+                  32.4
+                ],
+                [
+                  5.36763874,
+                  43.2362243,
+                  32.4
+                ],
+                [
+                  5.36720324,
+                  43.23592968,
+                  32.4
+                ],
+                [
+                  5.36702442,
+                  43.23607129,
+                  32.4
+                ],
+                [
+                  5.36708764,
+                  43.2361122,
+                  32.4
+                ]
+              ]
+            ]
+          ],
+          "type": "MultiPolygon"
+        },
+        "id": "batiment.9620088",
+        "properties": {
+          "altitude_maximale_sol": 27.2,
+          "altitude_maximale_toit": 35.9,
+          "altitude_minimale_sol": 26.3,
+          "altitude_minimale_toit": 32.4,
+          "appariement_fichiers_fonciers": null,
+          "cleabs": "BATIMENT0000000258363257",
+          "construction_legere": false,
+          "date_creation": "2011-05-18T12:11:08.364Z",
+          "date_d_apparition": null,
+          "date_de_confirmation": null,
+          "date_modification": "2019-03-15T18:18:06.773Z",
+          "etat_de_l_objet": "En service",
+          "hauteur": 6.1,
+          "identifiants_rnb": "PX64N234YV1Z",
+          "identifiants_sources": null,
+          "kind": "building",
+          "materiaux_de_la_toiture": null,
+          "materiaux_des_murs": null,
+          "methode_d_acquisition_altimetrique": "Interpolation bâti BDTopo",
+          "methode_d_acquisition_planimetrique": "BDParcellaire recalée",
+          "nature": "Industriel, agricole ou commercial",
+          "nombre_d_etages": null,
+          "nombre_de_logements": null,
+          "origine_du_batiment": "Cadastre",
+          "precision_altimetrique": 2.5,
+          "precision_planimetrique": 3,
+          "provenance": {
+            "acquiredAt": "2026-10-23",
+            "attribution": "IGN — Géoplateforme",
+            "coverage": {
+              "bbox": [
+                43.23113830833333,
+                5.357278548461538,
+                43.24343971,
+                5.368962869230769
+              ],
+              "complete": true,
+              "crs": "EPSG:4326",
+              "layer": "BDTOPO_V3:batiment",
+              "returned": 2418
+            },
+            "inputCrs": "EPSG:4326",
+            "inputSha256": "555f613d12ede49bc87ee4c148608857027e25cfac9541d738dd62a0707737c0",
+            "license": "Licence Ouverte 2.0",
+            "resource": "ign-bdtopo",
+            "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+            "url": "https://data.geopf.fr/wfs/ows",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "sourceId": "batiment.9620088",
+          "sources": null,
+          "usage_1": "Agricole",
+          "usage_2": null
+        },
+        "type": "Feature"
+      },
+      "projection": {
+        "frame": "engine-lambert93-metre",
+        "originWgs84": {
+          "lat": 43.285,
+          "lon": 5.51
+        },
+        "implementation": "src/patches/01_geometry.js v018Lambert93",
+        "geometryCenterWgs84": {
+          "lat": 43.2361468,
+          "lon": 5.36733158
+        }
+      },
+      "metric": {
+        "rings": [
+          [
+            [
+              -11437.844198739622,
+              5790.694441755302
+            ],
+            [
+              -11440.444424995221,
+              5787.694948879071
+            ],
+            [
+              -11416.044281748473,
+              5763.694856405258
+            ],
+            [
+              -11414.944145119167,
+              5764.695099193603
+            ],
+            [
+              -11412.34403392172,
+              5762.2948429705575
+            ],
+            [
+              -11410.243851397536,
+              5763.994697698392
+            ],
+            [
+              -11407.7442403842,
+              5761.7954256357625
+            ],
+            [
+              -11404.643859861651,
+              5765.094657681882
+            ],
+            [
+              -11404.74414097413,
+              5765.194426877424
+            ],
+            [
+              -11395.743875960121,
+              5774.494989138097
+            ],
+            [
+              -11395.644095303025,
+              5774.595431242138
+            ],
+            [
+              -11393.443783108843,
+              5776.895091409795
+            ],
+            [
+              -11427.844091217732,
+              5810.694485737011
+            ],
+            [
+              -11442.844185686903,
+              5795.394390751608
+            ],
+            [
+              -11437.844198739622,
+              5790.694441755302
+            ]
+          ]
+        ],
+        "baseY": 26.3,
+        "height": 9.599999999999998
+      },
+      "expected": {
+        "use": "Agricole",
+        "theme": "industrial",
+        "buildingId": "BATIMENT0000000258363257:e911297a10bfe3be",
+        "portalId": "BATIMENT0000000258363257:e911297a10bfe3be:entrance:0:11:5000",
+        "interactionId": "city-door:7fbe3404d91091f8",
+        "outsideEnginePosition": [
+          -11409.837960589935,
+          26.3,
+          5794.615094469522
+        ],
+        "localEntry": [
+          6.834240500076703,
+          6.872188885874493
+        ]
+      }
+    }
+  ]
+}

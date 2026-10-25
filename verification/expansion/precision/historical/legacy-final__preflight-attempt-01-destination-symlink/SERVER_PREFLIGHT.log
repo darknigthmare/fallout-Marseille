@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/tools/serve_game.py", line 163, in <module>
+    main()
+  File "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/tools/serve_game.py", line 148, in main
+    prepare_world_sources(ROOT)
+  File "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/tools/world_source_bundle.py", line 191, in prepare_if_bundled
+    result = install(receipt, root / 'data/map_pack/enrichment')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/tools/world_source_bundle.py", line 148, in install
+    raise SourceError('source destination symlink is not accepted')
+world_sources.SourceError: source destination symlink is not accepted

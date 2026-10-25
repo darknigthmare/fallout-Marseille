@@ -1,0 +1,1618 @@
+{
+  "scope": "Prepared native HTTP pilot for real LiDAR cells, rendering and atlas edges.\n\nNo browser without --run. Uses production HTML, local HTTP files, existing\ndiagnostic sector/camera/freeze APIs and original external GeoTIFF receipts.\nNo HTML, network or storage substitution; no synthetic NoData is installed.\n",
+  "stage": "vieux_port_native_source_and_render",
+  "checks": [
+    {
+      "name": "Coordinated production HTML is exact",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen precise module is the actual production inline source",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native atlas equals coordinated SHA",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "6d5016a93d4f150f80a2911c3fa51f8c0ec20b6c34a7c5ce1cbb49d43d960924"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "6364221b439d0c83f9463129401ddffbce11da86766f553d475ae4444d994441"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "71910a5db87f2901c50a23ca38bfc8231a40bdaa042d0e614c43b0ee21241581"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "eab322b652d9d9e1ccffaa8665a11c02e16a56b62b818884f2ce2d05c7b7c0ad"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "be7c597e71f1c2ec04ccc5549438d05144fcb171bac2ee893dda7fc1eb7bc5b4"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "e88e5d296fe8bb3954e64510a1ef9e60becea6874a3360b402b0570c2e281003"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "f49244e8967ada51001d1ad62707da0aa2f506a417203555c05c8a90d141fb7c"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "a631f70368f775bc2c29b1533e23794da24798c590fbe78b0db3029648e57dbd"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "7a5d026d190d2445779f168fc4c73925cae5bfc2f0727ed3608bf7612955c47a"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "f51a095a3f512894464fd306f7e80457f6c560a15a18671185df60e4f2d035cb"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "be733036ed567daa0ab75a9332a828fa4013005e64c3585451f4f5a49f8f2428"
+      }
+    },
+    {
+      "name": "Original external native GeoTIFF receipt SHA is exact",
+      "ok": true,
+      "detail": {
+        "file": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+        "sha256": "25572cd1b464786f7ada56b31f2bbe9efc5ff506dfd179bcec98afc059ae0190"
+      }
+    },
+    {
+      "name": "Source absence is reported honestly rather than installed as a fake hole",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual no-store local audit succeeds: /__mistral/city-sources",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "present": true,
+        "municipality": {
+          "code": "13055",
+          "name": "Marseille",
+          "bbox": [
+            43.1696313,
+            5.22875102,
+            43.39105653,
+            5.53254336
+          ]
+        },
+        "coverage": {
+          "administrativeEnvelopeBorderObjects": 4,
+          "complete": true,
+          "expandedBytes": 759922557,
+          "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+          "nonAcquiredZAnomalies": 1,
+          "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+          "partitionStepDegrees": 0.025,
+          "queryTileCount": 77,
+          "tileCount": 290,
+          "uniqueBuildings": 291001,
+          "uniqueRoads": 55449
+        },
+        "tileCount": 290,
+        "totalBuildings": 291001,
+        "totalRoads": 55449,
+        "terrain": {
+          "present": true,
+          "base": {
+            "allNoData": false,
+            "bbox": [
+              43.1696313,
+              5.22875102,
+              43.39105653,
+              5.53254336
+            ],
+            "bytes": 5613054,
+            "height": 985,
+            "macro": "geo_marseille_commune",
+            "missingPoints": 232492,
+            "outOfSupportedRangePoints": 11433,
+            "path": "data/map_pack/city/terrain-f9ea94a8973316e9.json",
+            "providerInvalidPoints": 11433,
+            "providerNoDataPoints": 221059,
+            "sha256": "f9ea94a8973316e9fbcc5e3e9fe48b4a6e78f0e6e0b6d7878cb27458d02211bc",
+            "sourceResource": "ign_rge_alti_wld",
+            "validPoints": 740688,
+            "width": 988
+          },
+          "tileCount": 24,
+          "noDataTileCount": 1,
+          "coverage": {
+            "complete": true,
+            "completedFinePartitions": 25,
+            "fineComplete": true,
+            "requestedFinePartitions": 25,
+            "scope": "commune bounding envelope, without fabrication in source NoData"
+          }
+        },
+        "water": {
+          "present": true,
+          "tileCount": 118,
+          "source": {
+            "acquiredAt": "2026-10-23",
+            "attribution": "IGN — Géoplateforme",
+            "license": "Licence Ouverte 2.0",
+            "resource": "ign-city-water",
+            "source": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+            "url": "https://data.geopf.fr/wfs/ows"
+          },
+          "derivation": {
+            "algorithm": "Exact GEOS intersection and planar polygonization; no coordinate snapping or simplification",
+            "artificialEdges": "Outer XYZ tile coverage rectangle, XYZ tile cuts, and exact polygon subdivision only",
+            "noSimplification": true,
+            "polygonizedFaces": 103,
+            "renderSeaLevelBasis": "Nominal game sea surface, not an instantaneous tidal measurement",
+            "renderSeaLevelMetres": 0,
+            "seaHoles": 97,
+            "seaSeedOverlapRatio": 0.9977208187799319,
+            "shorelineFeatures": 148,
+            "shorelineLevel": "Plus hautes eaux",
+            "sourceSeedId": "occupation_du_sol.97",
+            "unsupportedTinyFragments": []
+          }
+        },
+        "sources": [
+          {
+            "name": "IGN BD TOPO — commune",
+            "license": "Licence Ouverte 2.0",
+            "attribution": "IGN — Géoplateforme",
+            "acquiredAt": "2026-10-23",
+            "resource": "ign-bdtopo",
+            "url": "https://data.geopf.fr/wfs/ows"
+          },
+          {
+            "name": "IGN BD TOPO — BDTOPO_V3:batiment",
+            "license": "Licence Ouverte 2.0",
+            "attribution": "IGN — Géoplateforme",
+            "acquiredAt": "2026-10-23",
+            "resource": "ign-bdtopo",
+            "url": "https://data.geopf.fr/wfs/ows",
+            "verticalDatum": "NGF-IGN69"
+          },
+          {
+            "name": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+            "license": "Licence Ouverte 2.0",
+            "attribution": "IGN — Géoplateforme",
+            "acquiredAt": "2026-10-23",
+            "resource": "ign-bdtopo",
+            "url": "https://data.geopf.fr/wfs/ows",
+            "verticalDatum": "NGF-IGN69"
+          },
+          {
+            "name": "IGN — MNT RGE ALTI, API points",
+            "license": "Licence Ouverte 2.0",
+            "attribution": "IGN — RGE ALTI",
+            "acquiredAt": "2026-10-23",
+            "resource": "ign_rge_alti_wld",
+            "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+            "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+          },
+          {
+            "name": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+            "license": "Licence Ouverte 2.0",
+            "attribution": "IGN — Géoplateforme",
+            "acquiredAt": "2026-10-23",
+            "resource": "ign-city-water",
+            "url": "https://data.geopf.fr/wfs/ows"
+          }
+        ],
+        "indexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+        "inspectedAt": "2026-10-25T08:27:07Z",
+        "scope": "Partitions communales locales vérifiées ; détails documentés et inventions architecturales distingués dans le jeu."
+      }
+    },
+    {
+      "name": "Actual no-store local audit succeeds: /__mistral/local-data",
+      "ok": true,
+      "detail": {
+        "version": "0.50.0",
+        "vector": {
+          "expected": 5884,
+          "pbf": 4557,
+          "officialEmpty": 1327,
+          "missing": 0,
+          "invalid": 0,
+          "bytes": 86973739,
+          "examples": []
+        },
+        "terrain": {
+          "expected": 8,
+          "valid": 8,
+          "missing": 0,
+          "invalid": 0,
+          "samples": 174944,
+          "noData": 32424,
+          "examples": []
+        },
+        "complete": true,
+        "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+        "inspectedAt": "2026-10-25T08:27:33Z"
+      }
+    },
+    {
+      "name": "Actual no-store local audit succeeds: /__mistral/precise-terrain",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "present": true,
+        "indexSha256": "dc368ea13976fa72e2adaf358c8843a27f6a41524ffd55a984913d2549e0068d",
+        "chunks": 48,
+        "nativeSpacingMeters": 0.5,
+        "sourceTiles": 12,
+        "coverageSquareMeters": 12000000,
+        "validPoints": 48082035,
+        "noDataPoints": 0,
+        "runtimeBytes": 192328140,
+        "scope": "Native numeric LiDAR HD MNT cells, Lambert-93 / IGN69; limited central Marseille coverage."
+      }
+    },
+    {
+      "name": "Native HTTP document equals frozen production bytes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native terrain pilot is outside the synthetic laboratory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing API loads the actual requested source sector",
+      "ok": true,
+      "detail": [
+        892487.5,
+        6246771
+      ]
+    },
+    {
+      "name": "Camera uses actual finite terrain and production collision clearance",
+      "ok": false,
+      "detail": [
+        892487.5,
+        6246771
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "name": "actual_local_server_audits",
+      "elapsed_seconds": 0.497
+    },
+    {
+      "name": "native_document",
+      "elapsed_seconds": 83.189
+    },
+    {
+      "name": "vieux_port_native_source_and_render",
+      "elapsed_seconds": 95.308
+    }
+  ],
+  "shots": [],
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "synthetic_geography": false,
+  "contexts_created": 1,
+  "maximum_contexts": 1,
+  "service_workers_disabled": true,
+  "script_sha256": "caa61b39d576dc3ffe720fccc8e498a73a856fc684a6ca0b788f59199b236f67",
+  "page_errors": [],
+  "javascript_console_errors": [],
+  "resource_console_diagnostics": [
+    {
+      "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "location": {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "location": {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "location": {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "location": {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "location": {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "location": {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "location": {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "location": {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "location": {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+      "stage": "native_document",
+      "elapsed_seconds": 83.86
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+      "stage": "native_document",
+      "elapsed_seconds": 83.86
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+      "stage": "native_document",
+      "elapsed_seconds": 83.86
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+      "stage": "native_document",
+      "elapsed_seconds": 83.861
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+      "stage": "native_document",
+      "elapsed_seconds": 83.861
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+      "stage": "native_document",
+      "elapsed_seconds": 83.861
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+      "stage": "native_document",
+      "elapsed_seconds": 83.862
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+      "stage": "native_document",
+      "elapsed_seconds": 83.862
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+      "stage": "native_document",
+      "elapsed_seconds": 83.863
+    }
+  ],
+  "http_errors": [],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:38961/index.html?skipboot",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/local_pack_v041_status.json?t=1792916854793",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/benchmark_v041.json?t=1792916854795",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/index.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/terrain-index.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/architecture/index.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/precise/index.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/water-index.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/icons/mistral-192.png",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/__mistral/local-data",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/icons/mistral-192.png",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/terrain/geo_calanques.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/terrain/geo_garlaban.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/terrain/geo_huveaune.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/terrain/geo_marseille.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/enrichment/index.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/terrain-f9ea94a8973316e9.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/terrain-893dc13eba14fe2d.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8442/6001.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c11-0-6a40f1efec515ae4.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8442/6002.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8442/6003.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8443/6001.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c11-0-fde95b886c67fcf1.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c11-1-9a61d2fc418fa241.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r03-c11-b959e1d258966d74.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c12-0-3cb638d53d1747cb.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c11-1-1437425e1cfd67e2.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r03-c12-bf208d1bf62b2b81.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c12-1-eca634cc84900fee.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c11-2-1cf58495f7823684.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c11-2-b1a0a87fd11715f7.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c12-0-47108f0c1ce23ed1.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c11-3-31aeb04e43296380.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c12-2-4b62cbd0b89bc3e4.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8443/6002.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c11-3-505d26514fa0068a.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c12-1-39cd85831e67f147.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c12-3-c050d784b232b218.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8443/6003.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33768/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c12-2-4a5cd5771c94fe9f.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33768/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c11-0-6a40f1efec515ae4.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c12-3-3637ed1309581c10.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c11-1-9a61d2fc418fa241.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c12-1-eca634cc84900fee.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33768/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33768/24010.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33768/24011.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33768/24012.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33769/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33769/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c11-0-fde95b886c67fcf1.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33769/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33769/24010.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c11-1-1437425e1cfd67e2.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33769/24011.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33769/24012.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33770/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33770/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33770/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33770/24010.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33770/24011.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33770/24012.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33771/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33771/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c12-0-47108f0c1ce23ed1.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33771/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33771/24010.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33771/24011.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33771/24012.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33772/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33772/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33772/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33772/24010.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33772/24011.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33772/24012.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33773/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33773/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c12-1-39cd85831e67f147.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33773/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33773/24010.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33773/24011.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33773/24012.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/terrain-e4279ed87f484a3c.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/terrain-9b25698cf8b3a6ee.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/precise/native-r03000-c01000-a4164bb7667862cf.f32",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/precise/native-r03000-c00000-fff5ec7bc5dfd833.f32",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/precise/native-r04000-c00000-7d41be38306d3a8c.f32",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/precise/native-r04000-c01000-07cf906f280969e9.f32",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/precise/native-r05000-c01000-5a33c40221c432bd.f32",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8435/6001.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8435/6002.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8436/6001.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/france-vector/14/8436/6002.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-3-2-027bcb2f780b3c32.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c04-d75ed9e35803049b.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-0-d81e35d06a6fc1bc.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-3-3-4102f23d2e945699.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-3-0-11c85a8af7a12b76.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-2-0-523696d8dbae736d.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/water-814515bd0c924d6b.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-0-0-f6d76e70429bf102.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-2-1-3787213b289bd6f1.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33743/24005.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-3-1-dffc7a88193a5b67.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-0-1-bc93c7f7ec8b18f4.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33743/24006.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33743/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-0-2-76dc685b64bfee26.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-2-2-1beae95719948856.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-0-2-75ad391514851309.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33743/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-2-3-573be7fb8a82e5a9.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-0-3-03d19464727a1e06.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-0-3-57dfcda7eb15cf68.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/water-0966dfdc2f565e1e.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33743/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-1-2-335d5e9efcb0fa4b.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33744/24005.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33744/24006.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-1-0-909ee2abc0428170.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33744/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33744/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33744/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-1-2-dbfa824052cbaf70.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-2-1-8af9bdabf69c0987.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33745/24005.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c05-3-1-dffc7a88193a5b67.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-2-0-836d471012d6ae8c.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-2-2-5db9264364edc76e.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-2-1-b0e357371ff41cde.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33745/24006.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33745/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-2-3-5ab5bc4abf8d98e3.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-3-0-d4cd17bac2ccb7c2.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-0-0-f6d76e70429bf102.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-3-0-43fe0181f41274bc.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/water-a09830e3e1277a22.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33745/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33745/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33746/24005.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33746/24006.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-3-2-482a95d2e35aa9fe.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-0-3-57dfcda7eb15cf68.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-0-1-bc93c7f7ec8b18f4.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33746/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-2-0-836d471012d6ae8c.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-1-0-909ee2abc0428170.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33746/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33746/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-2-1-b0e357371ff41cde.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-2-3-5ab5bc4abf8d98e3.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-2-1-8af9bdabf69c0987.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33747/24005.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/water-ee6f96b74b3888aa.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33747/24006.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-1-2-dbfa824052cbaf70.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33747/24007.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33747/24008.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/cadastre/16/33747/24009.pbf",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-3-2-482a95d2e35aa9fe.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r05-c06-3-0-d4cd17bac2ccb7c2.json",
+      "status": 200,
+      "from_service_worker": false
+    },
+    {
+      "url": "http://127.0.0.1:38961/data/map_pack/city/m13055-r04-c06-3-0-43fe0181f41274bc.json",
+      "status": 200,
+      "from_service_worker": false
+    }
+  ],
+  "source_comparisons": [],
+  "mesh_comparisons": [],
+  "assistance": [
+    "Existing macro and sector loading APIs; actual installed geographic sources, outside the lab.",
+    "Existing render/simulation freeze and measured collision-free diagnostic camera placement.",
+    "Native inverse coordinate conversion from original TIFF pixel centres; no height supplied to the game.",
+    "One declared load/cancel sequence through existing v046Load/v046Cancel; expected HTTP aborts remain recorded."
+  ],
+  "html_sha256": "5e6895ac4d718ce6547864f5d8fc553a457e04a784c51fd753c72591693425db",
+  "elapsed_seconds": 114.757,
+  "passed": 22,
+  "failed": 1,
+  "total": 23,
+  "pinned_inputs": {
+    "index.html": "5e6895ac4d718ce6547864f5d8fc553a457e04a784c51fd753c72591693425db",
+    "src/v050/14_precise_terrain.js": "ab2498fa93bb4f0512f5c25aeea4ce548c69711ea3df145b82cfe191b72dc9c1",
+    "data/map_pack/precise/index.json": "dc368ea13976fa72e2adaf358c8843a27f6a41524ffd55a984913d2549e0068d",
+    "data/map_pack/precise/ACQUISITION.json": "6d3947a998857f92c6957fab0b63db2a58a9e45c7c42b06862728f17a8e937fc",
+    "data/map_pack/precise/native-r00000-c00000-4039180ecb827392.f32": "4039180ecb8273922a0d96e9aa09da0f1627240cae506911cf08a856c9e5c649",
+    "data/map_pack/precise/native-r00000-c01000-7978163f3c35dda6.f32": "7978163f3c35dda6da9f650c4f67647775a50055fe051d97fcc9d13cf25fbbd1",
+    "data/map_pack/precise/native-r00000-c02000-c65c4424f967b5a8.f32": "c65c4424f967b5a83d75799ee08c153918de5f053a941bc135188fcd3728add0",
+    "data/map_pack/precise/native-r00000-c03000-45f5a488fbaba1ed.f32": "45f5a488fbaba1ed05de88a7e7741782650b68b350bb447ff81bbed3117e3ebc",
+    "data/map_pack/precise/native-r00000-c04000-4bb08c847cbc7cde.f32": "4bb08c847cbc7cdef39d78e357a7c6d5163fb331d3fde96781e3576935f4fc1a",
+    "data/map_pack/precise/native-r00000-c05000-f132ebf65e487286.f32": "f132ebf65e487286cb9ed073d5c4e456dbe3fe7144a10e65f1032bf99819929a",
+    "data/map_pack/precise/native-r01000-c00000-d6d931c74b619cea.f32": "d6d931c74b619ceaa70d139a55d913c3903418c9014bf9cc77a0c5eb9bc342e8",
+    "data/map_pack/precise/native-r01000-c01000-fbc673a53dd59634.f32": "fbc673a53dd596346a414f8d4949b760519e84e3439a89871601497302da6027",
+    "data/map_pack/precise/native-r01000-c02000-a7f85475d47f2f7c.f32": "a7f85475d47f2f7c14a15add405716b00083b72a91da89cf0ad2a786aecc58ab",
+    "data/map_pack/precise/native-r01000-c03000-65c2db9f720cf2db.f32": "65c2db9f720cf2db1cd39d9d6886f92a225893ec75b1f4f75354fe8efeb21171",
+    "data/map_pack/precise/native-r01000-c04000-2a8f2edef2c14b1a.f32": "2a8f2edef2c14b1a57fdf5cc277ee10c6a9b7d50d48279938a568cf6df294b49",
+    "data/map_pack/precise/native-r01000-c05000-ecbd39ddb0b7a007.f32": "ecbd39ddb0b7a00732b9f32de1fa80054b9c20383380b6eb42fc2ed1a160e16e",
+    "data/map_pack/precise/native-r02000-c00000-a9d79e88d1cf18e1.f32": "a9d79e88d1cf18e1389b7a2d49e06505ec3f8c51e78866ed449c71efd596a662",
+    "data/map_pack/precise/native-r02000-c01000-962ed51066c87f31.f32": "962ed51066c87f310dc3c767f97f0e434e2a1ab48159e91ecb1527ed01d02425",
+    "data/map_pack/precise/native-r02000-c02000-87bbc2c9703ab03a.f32": "87bbc2c9703ab03ae30253ee567218e5be723f94233e18c0ec0656c8f4bae371",
+    "data/map_pack/precise/native-r02000-c03000-0447c52783f27766.f32": "0447c52783f27766fc14b2527ab830a3cd2e7a20168c59d69626bbdc41cc0baa",
+    "data/map_pack/precise/native-r02000-c04000-6db82341e3ce1b74.f32": "6db82341e3ce1b74207d1b6b5ce4ac0837db4e1331c24b32566ec23da52209fa",
+    "data/map_pack/precise/native-r02000-c05000-ec64c5cb32203aaf.f32": "ec64c5cb32203aaf0c322d1438f12c05e23f498718f79ca1d9d407a8de1f83ee",
+    "data/map_pack/precise/native-r03000-c00000-fff5ec7bc5dfd833.f32": "fff5ec7bc5dfd833d08f5b317a8b9e1e58c361dc27263ed9db8c8b66cb5d2cb7",
+    "data/map_pack/precise/native-r03000-c01000-a4164bb7667862cf.f32": "a4164bb7667862cf3c3c67b3f6897c1c886b110a0093df688ba1cd02be5da2b8",
+    "data/map_pack/precise/native-r03000-c02000-19a0fdef664c08ac.f32": "19a0fdef664c08ac8ad7333704a26892d82dd1a0e49b0229560eb8e44bbd5d2a",
+    "data/map_pack/precise/native-r03000-c03000-067e0b71c838eb36.f32": "067e0b71c838eb361142c46e8007be4133f7843959e0206cce7997980e014a6e",
+    "data/map_pack/precise/native-r03000-c04000-a2e8a3ef2f727065.f32": "a2e8a3ef2f727065678de3619f6e420cd37f69c1cea84d592d0bb94f5b16166d",
+    "data/map_pack/precise/native-r03000-c05000-dc4861922091bd8b.f32": "dc4861922091bd8b7e20c9a12887a61680a7e9df9fdfe024b4bbb2715a99e946",
+    "data/map_pack/precise/native-r04000-c00000-7d41be38306d3a8c.f32": "7d41be38306d3a8c7480579192aafc207f9e6866bfc6d5262a40e879cbaa1797",
+    "data/map_pack/precise/native-r04000-c01000-07cf906f280969e9.f32": "07cf906f280969e9b9d69caf8a7fa761711971ba31766e08c82d9470ad455ed4",
+    "data/map_pack/precise/native-r04000-c02000-84f403d780f6496d.f32": "84f403d780f6496d344909141688d1e730d45a27ba1c62393002c49e58869c8c",
+    "data/map_pack/precise/native-r04000-c03000-860f011c630a93c2.f32": "860f011c630a93c2dd5a1e8fca4cfce74bdd7e26dd90c3281e1fa97c69274133",
+    "data/map_pack/precise/native-r04000-c04000-98e6d61810123763.f32": "98e6d61810123763d7737a8431009fdc67a936a3412cdb40277a6408f0274b0c",
+    "data/map_pack/precise/native-r04000-c05000-b4555982ddfb90b3.f32": "b4555982ddfb90b37cd65a28ceb2e23697cf8c63adc059a8bd9a2c425dc283c3",
+    "data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32": "9e33110ea15d8c9506ce98ebc0f7dbabbc1c3cb72edacdb64c5f0df670bcc25e",
+    "data/map_pack/precise/native-r05000-c01000-5a33c40221c432bd.f32": "5a33c40221c432bd44476b0ad11c45bbed686ba52b48c549325270df6edee0f9",
+    "data/map_pack/precise/native-r05000-c02000-28f408e126b23fad.f32": "28f408e126b23fad0c0760cebdafc2b9a394ac918898388d06c8bda17fb5b7f2",
+    "data/map_pack/precise/native-r05000-c03000-5903e7a90485452c.f32": "5903e7a90485452c47bed136bf0dc8bde5143b078bf24af2652aac9b10f888c5",
+    "data/map_pack/precise/native-r05000-c04000-1f349fee1c639dfd.f32": "1f349fee1c639dfd205e3b2a48ff5b639985f2a189317bf850a231594318be9c",
+    "data/map_pack/precise/native-r05000-c05000-d49fdcb0f07cb42c.f32": "d49fdcb0f07cb42c9d7628f1964509216b8390efc5b718d893102292405b4eb4",
+    "data/map_pack/precise/native-r06000-c00000-86104260af32f723.f32": "86104260af32f7233801edd1ddc48339a72679a2a573c5a50ba35b952cd97ab1",
+    "data/map_pack/precise/native-r06000-c01000-2e58c028cb9fe96d.f32": "2e58c028cb9fe96d4dee37bcc63505c4cea20657b50f3752ba44fdfdcb6f70d7",
+    "data/map_pack/precise/native-r06000-c02000-52cb78874884eac2.f32": "52cb78874884eac2f7a2ac5db9a5dc892c1a62bea8a1bc403c8ad173dacb627f",
+    "data/map_pack/precise/native-r06000-c03000-d9de84d1dc7bf473.f32": "d9de84d1dc7bf473b90c0045efc4edfc9725af5275e8540f093a4cddc6f52d99",
+    "data/map_pack/precise/native-r06000-c04000-e9d0ce317270deb5.f32": "e9d0ce317270deb531e2e7185b7be4b44fbf5aa0c707a46b219e812cecd0ae08",
+    "data/map_pack/precise/native-r06000-c05000-e0d34c10f75f0f12.f32": "e0d34c10f75f0f128553c4c35eaaad800d30ae8b04f88edd9904e2021a80da98",
+    "data/map_pack/precise/native-r07000-c00000-f74e4cdf65f3b944.f32": "f74e4cdf65f3b944e5675535163f9ed0bc32060d3c8c1c0adc9c7ae766ac0545",
+    "data/map_pack/precise/native-r07000-c01000-41738760e3ef511f.f32": "41738760e3ef511f5a12d5273b9391131d2059248ce640af8c3315f3be9d53f0",
+    "data/map_pack/precise/native-r07000-c02000-abd46931e32066dc.f32": "abd46931e32066dc6fc8fa8358344f2f1d65c324b4e558d23a2a78350d4bd1ab",
+    "data/map_pack/precise/native-r07000-c03000-fb5bf95c45c3000d.f32": "fb5bf95c45c3000d29a889311edfd384a9ab1ccbdf0c5c8716e2e2a98da0d313",
+    "data/map_pack/precise/native-r07000-c04000-29d794f830007640.f32": "29d794f8300076401ba91472b7f0f35077548beb8069c8c2c06944dfe229031c",
+    "data/map_pack/precise/native-r07000-c05000-b0edb08a4710746c.f32": "b0edb08a4710746ca52de3c9b1e8b426c948981bc3569f5f38fa6def3435d591",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80",
+    "tools/precise_terrain_sources.py": "345b6ceae9d95a988caa030b2d75af000be5fdaff11d0d5c055b7cda0c49428b",
+    "data/map_pack/precision_archives/manifest.json": "b5746709f7ea05ba694c653a0893986089978b5d917e0f6db4b1eaf3db956109",
+    "data/map_pack/city/index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "data/map_pack/city/terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "data/map_pack/city/water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927"
+  },
+  "nodata_scope": "These twelve real source tiles have zero NoData cells. Sentinel propagation and missing triangles are tested by explicit synthetic model fixtures only; no synthetic NoData enters this native run.",
+  "server_city_audit": {
+    "ok": true,
+    "present": true,
+    "municipality": {
+      "code": "13055",
+      "name": "Marseille",
+      "bbox": [
+        43.1696313,
+        5.22875102,
+        43.39105653,
+        5.53254336
+      ]
+    },
+    "coverage": {
+      "administrativeEnvelopeBorderObjects": 4,
+      "complete": true,
+      "expandedBytes": 759922557,
+      "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+      "nonAcquiredZAnomalies": 1,
+      "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+      "partitionStepDegrees": 0.025,
+      "queryTileCount": 77,
+      "tileCount": 290,
+      "uniqueBuildings": 291001,
+      "uniqueRoads": 55449
+    },
+    "tileCount": 290,
+    "totalBuildings": 291001,
+    "totalRoads": 55449,
+    "terrain": {
+      "present": true,
+      "base": {
+        "allNoData": false,
+        "bbox": [
+          43.1696313,
+          5.22875102,
+          43.39105653,
+          5.53254336
+        ],
+        "bytes": 5613054,
+        "height": 985,
+        "macro": "geo_marseille_commune",
+        "missingPoints": 232492,
+        "outOfSupportedRangePoints": 11433,
+        "path": "data/map_pack/city/terrain-f9ea94a8973316e9.json",
+        "providerInvalidPoints": 11433,
+        "providerNoDataPoints": 221059,
+        "sha256": "f9ea94a8973316e9fbcc5e3e9fe48b4a6e78f0e6e0b6d7878cb27458d02211bc",
+        "sourceResource": "ign_rge_alti_wld",
+        "validPoints": 740688,
+        "width": 988
+      },
+      "tileCount": 24,
+      "noDataTileCount": 1,
+      "coverage": {
+        "complete": true,
+        "completedFinePartitions": 25,
+        "fineComplete": true,
+        "requestedFinePartitions": 25,
+        "scope": "commune bounding envelope, without fabrication in source NoData"
+      }
+    },
+    "water": {
+      "present": true,
+      "tileCount": 118,
+      "source": {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme",
+        "license": "Licence Ouverte 2.0",
+        "resource": "ign-city-water",
+        "source": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+        "url": "https://data.geopf.fr/wfs/ows"
+      },
+      "derivation": {
+        "algorithm": "Exact GEOS intersection and planar polygonization; no coordinate snapping or simplification",
+        "artificialEdges": "Outer XYZ tile coverage rectangle, XYZ tile cuts, and exact polygon subdivision only",
+        "noSimplification": true,
+        "polygonizedFaces": 103,
+        "renderSeaLevelBasis": "Nominal game sea surface, not an instantaneous tidal measurement",
+        "renderSeaLevelMetres": 0,
+        "seaHoles": 97,
+        "seaSeedOverlapRatio": 0.9977208187799319,
+        "shorelineFeatures": 148,
+        "shorelineLevel": "Plus hautes eaux",
+        "sourceSeedId": "occupation_du_sol.97",
+        "unsupportedTinyFragments": []
+      }
+    },
+    "sources": [
+      {
+        "name": "IGN BD TOPO — commune",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows"
+      },
+      {
+        "name": "IGN BD TOPO — BDTOPO_V3:batiment",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "name": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "name": "IGN — MNT RGE ALTI, API points",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — RGE ALTI",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign_rge_alti_wld",
+        "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+        "verticalDatum": "NGF-IGN69 — RGE ALTI, France continentale"
+      },
+      {
+        "name": "IGN BD TOPO high-water shoreline / BD CARTO open water",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — Géoplateforme",
+        "acquiredAt": "2026-10-23",
+        "resource": "ign-city-water",
+        "url": "https://data.geopf.fr/wfs/ows"
+      }
+    ],
+    "indexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "inspectedAt": "2026-10-25T08:27:07Z",
+    "scope": "Partitions communales locales vérifiées ; détails documentés et inventions architecturales distingués dans le jeu."
+  },
+  "server_local_audit": {
+    "version": "0.50.0",
+    "vector": {
+      "expected": 5884,
+      "pbf": 4557,
+      "officialEmpty": 1327,
+      "missing": 0,
+      "invalid": 0,
+      "bytes": 86973739,
+      "examples": []
+    },
+    "terrain": {
+      "expected": 8,
+      "valid": 8,
+      "missing": 0,
+      "invalid": 0,
+      "samples": 174944,
+      "noData": 32424,
+      "examples": []
+    },
+    "complete": true,
+    "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+    "inspectedAt": "2026-10-25T08:27:33Z"
+  },
+  "server_precise_audit": {
+    "ok": true,
+    "present": true,
+    "indexSha256": "dc368ea13976fa72e2adaf358c8843a27f6a41524ffd55a984913d2549e0068d",
+    "chunks": 48,
+    "nativeSpacingMeters": 0.5,
+    "sourceTiles": 12,
+    "coverageSquareMeters": 12000000,
+    "validPoints": 48082035,
+    "noDataPoints": 0,
+    "runtimeBytes": 192328140,
+    "scope": "Native numeric LiDAR HD MNT cells, Lambert-93 / IGN69; limited central Marseille coverage."
+  },
+  "exception": {
+    "message": "Camera uses actual finite terrain and production collision clearance",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/precise_terrain_native.py\", line 180, in main\n    sector(892487.5,6246771)\n  File \"/workspace/fallout-Marseille/tests/expansion/precise_terrain_native.py\", line 108, in sector\n    check('Existing API loads the actual requested source sector',debug('v046Load',*ll(e,n)) is True,[e,n]);ready();camera_near(e,n)\n                                                                                                                    ^^^^^^^^^^^^^^^^\n  File \"/workspace/fallout-Marseille/tests/expansion/precise_terrain_native.py\", line 103, in camera_near\n    check('Camera uses actual finite terrain and production collision clearance',bool(clear),[e,n])\n  File \"/workspace/fallout-Marseille/tests/expansion/precise_terrain_native.py\", line 67, in check\n    if not ok:raise AssertionError(name)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Camera uses actual finite terrain and production collision clearance\n"
+  },
+  "failure_capture_error": "Event loop is closed! Is Playwright already stopped?"
+}

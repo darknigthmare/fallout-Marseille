@@ -1,0 +1,18 @@
+OK Served HTML is the exact frozen build
+OK Production controller initialization is exposed
+OK Existing stored preferences survive and gain the two documented defaults
+OK Held confirm on nonzero-slot connection does not enter a menu
+OK Gamepad navigation focuses an actual visible menu button
+OK Focused menu confirmation runs a real UI action
+OK Physical keyboard state is present before gamepad input
+OK Last keyboard use prevents disconnect pause and preserves its held key
+OK Reconnect with tilted sticks cannot move or turn before each stick is centred
+OK Right stick changes the actual player view with finite pitch
+OK D-pad up toggles the existing lamp once while held
+OK D-pad down opens the real field plan and its canvas
+OK D-pad right equips the next actual owned favourite
+OK D-pad left cycles back without creating inventory or weapons
+OK Only-current duplicate favourites do not re-equip or write another save
+FAIL RT fires the actual equipped weapon once on its edge
+FAIL RT fires the actual equipped weapon once on its edge: {'before': 10, 'after': 10}
+{"passed": 15, "failed": 2, "total": 17, "errors": []}

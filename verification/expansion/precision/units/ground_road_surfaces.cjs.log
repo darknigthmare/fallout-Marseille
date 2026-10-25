@@ -1,0 +1,15 @@
+✔ The real Vieux-Port road follows the real MNT subset while its source XYZ, width and receipts stay unchanged (8.475771ms)
+✔ Ground contact never replaces absent MNT with a false zero-altitude face (2.938575ms)
+✔ Bridges, tunnels, absolute elevations and explicit clearances retain their exact source heights (7.850012ms)
+✔ Unspecified ordinal levels, non-IGN surveys and waterways preserve their previous XYZ policy (5.619659ms)
+✔ A supplied carriageway width keeps measurement precedence in the derived ground representation (1.765445ms)
+✔ The pure source-geometry mesh API still honors XYZ at grade unless the runtime explicitly derives ground contact (0.527305ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35.802545
+

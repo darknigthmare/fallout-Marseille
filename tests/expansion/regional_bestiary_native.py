@@ -71,7 +71,8 @@ def main():
                              'Public v018CaptureAt freezes simulation and places a measured collision-free camera with production LOS.',
                              'Public v047Control auto=false bounds background streaming; v046SetTime fixes daytime.',
                              'Public v042Update and v020Tick(.05,true) step actual production streaming/physics/AI.',
-                             'Read-only public exports inspect actual actors, rigs and saves. No spawn/defeat/resource/quest debug API is used.']}
+                             'Read-only public exports inspect actual actors, rigs and saves. No spawn/defeat/resource/quest debug API is used.',
+                             'Native KeyW under v020Tick performs a prevalidated real physical escape from a Gabian target; view turning uses the public camera diagnostic.']}
     frozen = {}
     page = server = browser = context = None
     origin = None
@@ -81,7 +82,7 @@ def main():
                       passed=sum(c['ok'] for c in report['checks']),
                       failed=sum(not c['ok'] for c in report['checks']),
                       total=len(report['checks']), pinned_inputs=frozen)
-        (args.output / 'REGIONAL_BESTIARY_NATIVE.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+        (args.output / 'BESTIARY_NATIVE.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
 
     def check(name, ok, detail=None, required=True):
         report['checks'].append({'name': name, 'ok': bool(ok), 'detail': detail})
@@ -145,6 +146,155 @@ def main():
         report['shots'].append({'file': target.name, 'sha256': sha(target.read_bytes()), 'label': label,
                                 'method': 'Unmodified native production canvas and HUD after declared measured camera/freeze.'})
         save()
+
+    def flight_slot_probe(row):
+        projection = debug('v046Project', 'geo_huveaune', row['lat'], row['lon'])
+        absolute = debug('v018Projection', row['lat'], row['lon'])['xy']
+        frame = [absolute[0] - projection[0], absolute[1] + projection[2]]
+        actors = [a for a in debug('v042World')['enemies'] if a['type'] == 'bloatfly' and a['site'] == row['site']]
+        probes = []
+        for actor in actors:
+            samples = []
+            for dx, dz in ((0, 0), (.96, 0), (-.96, 0), (0, .96), (0, -.96)):
+                ll = inverse_lambert(actor['pos'][0] + dx + frame[0], frame[1] - actor['pos'][2] - dz)
+                h = debug('v046Height', *ll)
+                samples.append({'offset': [dx, dz], 'll': ll, 'height': h,
+                                'actorYDelta': actor['pos'][1] - h['height'] if h['height'] is not None else None})
+            probes.append({'actor': actor, 'sourceSamples': samples,
+                           'cachedSitePlacement': debug('getState')['v046']['placements'].get(row['site'])})
+        return {'world': debug('v042World'), 'actors': probes}
+
+    def flight_native():
+        stage('true_gabian_geographic_flight')
+        current = debug('v053BestiaryInfo')
+        flight_actor = next((a for a in current['visible'] if a['alive'] and a['species'] == 'gabianBombardier'), None)
+        candidates = [r for r in current['eligibleSites'] if r['species'] == 'gabianBombardier']
+        # Public catalog fallback includes an already assigned unloaded slot;
+        # loading its sector cannot manufacture or reassign an encounter.
+        catalog_rows = debug('v042Catalog')
+        allowed = debug('v053BestiaryCatalog')['gabianBombardier']['macros']
+        known = {r['site'] for r in candidates}
+        for site in catalog_rows:
+            if site['id'] not in known and site['macro'] in allowed and 'bloatfly' in site['enemyTypes'] and site['kind'] in ('nest', 'elite', 'boss'):
+                candidates.append({'site': site['id'], 'lat': site['lat'], 'lon': site['lon']})
+        candidates.sort(key=lambda r: (r['site'] != 'v042-marseille-nest-05', r['site']))
+        for row in candidates[:args.maximum_sectors]:
+            if flight_actor:
+                break
+            check('Gabian sector request uses the actual installed pack', debug('v046Load', row['lat'], row['lon']) is True)
+            ready()
+            coordinates = [[row['lat'] + dz / 111320,
+                            row['lon'] + dx / (111320 * math.cos(math.radians(row['lat'])))]
+                           for radius in (0, 14, 28, 42, 56, 70, 84, 98, 112) for angle in [i * math.tau / 12 for i in range(12)] for dx, dz in [(math.sin(angle) * radius, math.cos(angle) * radius)]]
+            clear = measured_points(coordinates)
+            if not clear:
+                report['attempts'].append({'site': row['site'], 'result': 'no measured clear Gabian inspection arrival'})
+                continue
+            place(clear[0], reason='real Gabian sector arrival ' + row['site'])
+            debug('v042Update', .71)
+            debug('v020Tick', .05, True)
+            info = debug('v053BestiaryInfo')
+            report['attempts'].append({'site': row['site'], 'purpose': 'true flight', 'bestiary': info, 'map': debug('v047Info'), 'slotProbe': flight_slot_probe(row)})
+            flight_actor = next((a for a in info['visible'] if a['alive'] and a['species'] == 'gabianBombardier'), None)
+        check('A real existing territorial slot admits a Gabian', flight_actor is not None, debug('v053BestiaryInfo'))
+        actor_id = flight_actor['id']
+        actor = debug('v053BestiaryActor', actor_id)
+        site = debug('v042Site', actor['site'])
+        projection = debug('v046Project', 'geo_huveaune', site['lat'], site['lon'])
+        absolute = debug('v018Projection', site['lat'], site['lon'])['xy']
+        frame = [absolute[0] - projection[0], absolute[1] + projection[2]]
+
+        def ll(point):
+            return inverse_lambert(point[0] + frame[0], frame[1] - point[2])
+
+        center = [sum(p['center'][i] for p in actor['rig']['parts']) / len(actor['rig']['parts']) for i in range(3)]
+        cameras = measured_points([ll([actor['pos'][0] + math.sin(n * math.tau / 32) * radius, 0,
+                                        actor['pos'][2] + math.cos(n * math.tau / 32) * radius])
+                                   for radius in (2.1, 2.3, 3) for n in range(32)], center)
+        check('Real Gabian has a measured clear close observation point', len(cameras) > 0)
+        place(cameras[0], center, 'close physical Gabian observation without actor mutation')
+        before = debug('v053BestiaryActor', actor_id)
+        frames = []
+        for _ in range(100):
+            debug('v020Tick', .05, True)
+            actor = debug('v053BestiaryActor', actor_id)
+            if actor is None or not actor['alive'] or debug('getState')['player']['hp'] <= 0:
+                check('Actual Gabian and player remain alive during the bounded approach', False)
+            frames.append({'position': actor['pos'], 'flight': actor['flight']})
+            if actor['flight']['windup'] and actor['flight']['relativeHeight'] >= 1.1:
+                break
+        report['flight_frames'] = frames
+        check('Production AI takes off above measured terrain with a clear complete wing volume',
+              actor['flight']['relativeHeight'] >= 1.1 and actor['flight']['volumeClear']
+              and all(f['flight']['volumeClear'] for f in frames), actor['flight'])
+        check('True aerial stepping preserves the same ID, original bloatfly type and PV',
+              all(actor[k] == before[k] for k in ('id', 'species', 'baseType', 'health', 'maxHealth')) and actor['baseType'] == 'bloatfly')
+        measured = debug('v046Height', *ll(actor['pos']))
+        minimum_y = min(d['pos'][1] - d['scale'][1] / 2 for d in actor['rig']['draws'])
+        check('Actually rendered wing/body vertices stand above actual source ground', measured['height'] is not None and minimum_y > measured['height'] + .05,
+              {'height': measured, 'lowestMeshY': minimum_y, 'flight': actor['flight']})
+        player = debug('getState')['player']
+        center = [sum(p['center'][i] for p in actor['rig']['parts']) / len(actor['rig']['parts']) for i in range(3)]
+        place({'p': player['pos'], 'h': debug('v046Height', *ll(player['pos']))}, center,
+              'camera turn at the same player position; no displacement of the locked target')
+        shot('02_true_gabian_flight', 'Actual Gabian above measured source ground with its real windup, rig and swept wing volume.')
+        windup = actor['flight']['windup']
+        check('Real airborne AI creates a locked, timed corrosive drop', windup is not None and windup['duration'] == 1.35)
+        origin = debug('getState')['player']['pos']
+        escape = None
+        for index in range(16):
+            angle = index * math.tau / 16
+            points = [ll([origin[0] + math.sin(angle) * distance, 0, origin[2] - math.cos(angle) * distance])
+                      for distance in (.4, .8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4, 4.4, 4.8, 5.2)]
+            clear = measured_points(points)
+            if len(clear) == len(points) and all(abs(p['h']['height'] - (origin[1] - 1.65)) < .4 for p in clear):
+                escape = {'yaw': angle, 'points': clear}
+                break
+        check('The locked attack has a measured collision-free physical escape corridor', escape is not None)
+        report['escape_corridor'] = escape
+        debug('v046SetView', escape['yaw'], 0)
+        before_hp = debug('getState')['player']['hp']
+        page.keyboard.down('w')
+        try:
+            for _ in range(18):
+                debug('v020Tick', .05, True)
+        finally:
+            page.keyboard.up('w')
+        escaped = debug('getState')['player']
+        displacement = math.hypot(escaped['pos'][0] - origin[0], escaped['pos'][2] - origin[2])
+        check('Native KeyW and real production collision physics leave the locked impact radius', displacement > 1.2,
+              {'start': origin, 'after': escaped['pos'], 'displacement': displacement})
+        record, saw_projectile = None, False
+        for _ in range(80):
+            debug('v020Tick', .05, True)
+            info = debug('v053BestiaryInfo')
+            active = next((b for b in info['bombs'] if b['id'] == actor_id), None)
+            if active and not saw_projectile:
+                current_player = debug('getState')['player']
+                target = active['pos']
+                yaw = math.atan2(target[0] - current_player['pos'][0], -(target[2] - current_player['pos'][2]))
+                pitch = math.atan2(target[1] - current_player['pos'][1], math.hypot(target[0] - current_player['pos'][0], target[2] - current_player['pos'][2]))
+                debug('v046SetView', yaw, max(-1.3, min(1.3, pitch)))
+                shot('03_real_corrosive_drop', 'Actual falling corrosive projectile after a real native walking escape; no HTML or actor injection.')
+                saw_projectile = True
+            record = next((i for i in info['lastImpacts'] if i['id'] == actor_id), None)
+            if record:
+                break
+        check('A real rendered corrosive projectile descends from the airborne actor', saw_projectile)
+        check('The locked Gabian projectile impacts and its escaped player is not hit', record is not None and record['hit'] is False, record)
+        report['flight_attack'] = {'actorId': actor_id, 'windup': windup, 'nativeKey': 'KeyW', 'physicsSteps': 18,
+                                   'before': origin, 'after': escaped['pos'], 'displacement': displacement,
+                                   'impact': record, 'playerHpBefore': before_hp, 'playerHpAfter': debug('getState')['player']['hp'],
+                                   'scope': 'HP changes from other real enemies are recorded separately; the selected actual Gabian impact reports its own hit result.'}
+        debug('save')
+        saved = debug('getState')
+        actual = debug('v053BestiaryActor', actor_id)
+        report['airborne_saved_actor'] = saved['v049']['actors'].get(actor_id)
+        check('Native save retains the airborne position in its original v049 encounter',
+              report['airborne_saved_actor'] is not None and report['airborne_saved_actor']['pos'] == actual['pos']
+              and report['airborne_saved_actor']['health'] == actual['health']
+              and saved['v053Bestiary']['assignments'][actor_id] == {'species': 'gabianBombardier', 'baseType': 'bloatfly'})
+        report['flight_actor'] = actual
 
     try:
         raw_html = pin('index.html')
@@ -222,11 +372,12 @@ def main():
             stage('real_geographic_publication')
             debug('v018LoadMacro', 'geo_huveaune')
             ready()
+            debug('v020Tick', .05, True)
             initial = debug('v053BestiaryInfo')
             report['initial_bestiary'] = initial
             priority = ['v042-huveaune-nest-01', 'v042-marseille-nest-02', 'v042-marseille-nest-05']
-            rows = sorted(initial['eligibleSites'], key=lambda r: (priority.index(r['site']) if r['site'] in priority else 3, r['site']))
-            chosen = next((a for a in initial['visible'] if a['alive']), None)
+            rows = sorted([r for r in initial['eligibleSites'] if r['species'] in ('ratCrowned', 'mistralCicada')], key=lambda r: (priority.index(r['site']) if r['site'] in priority else 3, r['site']))
+            chosen = next((a for a in initial['visible'] if a['alive'] and a['species'] in ('ratCrowned', 'mistralCicada')), None)
             for row in rows[:args.maximum_sectors]:
                 if chosen:
                     break
@@ -236,7 +387,7 @@ def main():
                 ready()
                 coordinates = [[row['lat'] + dz / 111320,
                                 row['lon'] + dx / (111320 * math.cos(math.radians(row['lat'])))]
-                               for radius in (0, 10, 20, 40, 70) for dx, dz in ((radius, 0), (-radius, 0), (0, radius), (0, -radius))]
+                               for radius in (0, 14, 28, 42, 56, 70, 84, 98, 112) for angle in [i * math.tau / 12 for i in range(12)] for dx, dz in [(math.sin(angle) * radius, math.cos(angle) * radius)]]
                 clear = measured_points(coordinates)
                 if not clear:
                     report['attempts'].append({'site': row['site'], 'result': 'no measured clear inspection arrival'})
@@ -248,9 +399,9 @@ def main():
                 current = debug('v053BestiaryInfo')
                 report['attempts'].append({'site': row['site'], 'before': pre, 'after': debug('v042World'),
                                            'bestiary': current, 'map': debug('v047Info')})
-                chosen = next((a for a in current['visible'] if a['alive']), None)
+                chosen = next((a for a in current['visible'] if a['alive'] and a['species'] in ('ratCrowned', 'mistralCicada')), None)
                 save()
-            check('Actual published geography admits at least one real regional actor', chosen is not None, debug('v053BestiaryInfo'))
+            check('Actual published geography admits a newly materialized Rat-couronné or Cigale', chosen is not None, debug('v053BestiaryInfo'))
             check('Native actor is outside the laboratory on actual geographic world', debug('v046Info')['lab'] is False and debug('v042World')['geo'] is True)
             report['selected_actor'] = chosen
 
@@ -280,7 +431,7 @@ def main():
             cameras = measured_points(ll, center)
             check('A measured collision-free camera sees the real regional silhouette', len(cameras) > 0)
             place(cameras[0], center, 'regional actor native visual capture ' + actor['id'])
-            shot('01_real_regional_actor', 'Actual source-world ' + actor['name'] + ' on its existing territorial encounter; diagnostic camera and simulation freeze.')
+            shot('01_new_regional_actor', 'Actual source-world ' + actor['name'] + ' on its existing territorial encounter; diagnostic camera and simulation freeze.')
             before = debug('v053BestiaryActor', actor['id'])
             debug('v020Tick', .05, True)
             after = debug('v053BestiaryActor', actor['id'])
@@ -300,6 +451,8 @@ def main():
             report['final_bestiary'] = debug('v053BestiaryInfo')
             report['actual_actor_rig'] = after['rig']
 
+            flight_native()
+
             stage('final_integrity')
             for relative in tuple(frozen):
                 pin(relative)
@@ -312,7 +465,7 @@ def main():
                   not report['local_request_failures'] and not report['local_http_errors']
                   and not any(r['from_service_worker'] for r in report['http_responses']),
                   {'failures': report['local_request_failures'], 'errors': report['local_http_errors']})
-            report['limitations'] = ['One actual regional silhouette is required and captured; this does not certify all 21 potential slots or all three species natively.',
+            report['limitations'] = ['One Rat-couronné or Cigale and one genuinely airborne Gabian are required and captured; this does not certify all 41 potential slots or all five species natively.',
                                      'Wound/old-campaign/body/loot roundtrip and the other species are covered by separate production-wrapper VM regressions.',
                                      'No native enemy kill, resource grant, quest outcome or fabricated historical storage import is performed.',
                                      'Camera navigation, time and freeze are declared diagnostic assistance; no human or citywide 1:1 claim.']

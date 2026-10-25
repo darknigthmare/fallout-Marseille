@@ -1,0 +1,3498 @@
+{
+  "checks": [
+    {
+      "name": "Coordinated HTML and chemistry are installed and composed",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v050/10_lore_continuity.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v050/11_power_armor.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v050/12_iconic_ecosystem.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v028/01_body.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v028/04_story.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen dependency is in actual production bundle: src/v026/04_trade_runtime.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document matches frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing authored scene selected without grants: aubagne",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh ordinary inventory contains no free chems",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native selection physically reaches Baptiste",
+      "ok": true,
+      "detail": {
+        "position": [
+          12.0,
+          1.65,
+          20.7
+        ],
+        "target": [
+          12,
+          1.2,
+          19
+        ],
+        "actual_label": "Parler à Baptiste Arnaud",
+        "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+      }
+    },
+    {
+      "name": "Native E opens real merchant dialogue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real finite old-campaign supply has three Mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible purchases spend capsules and exhaust the same finite merchant stock",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub aid",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: inventory/aid",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: select mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: use mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: use mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: use mentats",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Three real AIDE doses consume inventory and create bounded tolerance and dependency",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual simulation calls in the Pip-Boy preserve chem time",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab status",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub chemistry",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: status/chemistry",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Tab closes Pip-Boy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing authored scene selected without grants: relay_cold",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Authored clinic waiting point is collision-free and sees Sofia",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 0",
+      "ok": true,
+      "detail": {
+        "batch": 0,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 115.00000000000028
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 1",
+      "ok": true,
+      "detail": {
+        "batch": 1,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 110.00000000000057
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 2",
+      "ok": true,
+      "detail": {
+        "batch": 2,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 105.00000000000085
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 3",
+      "ok": true,
+      "detail": {
+        "batch": 3,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 100.00000000000114
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 4",
+      "ok": true,
+      "detail": {
+        "batch": 4,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 95.00000000000142
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 5",
+      "ok": true,
+      "detail": {
+        "batch": 5,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 90.0000000000017
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 6",
+      "ok": true,
+      "detail": {
+        "batch": 6,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 85.00000000000199
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 7",
+      "ok": true,
+      "detail": {
+        "batch": 7,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 80.00000000000227
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 8",
+      "ok": true,
+      "detail": {
+        "batch": 8,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 75.00000000000256
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 9",
+      "ok": true,
+      "detail": {
+        "batch": 9,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 70.00000000000284
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 10",
+      "ok": true,
+      "detail": {
+        "batch": 10,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 65.00000000000313
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 11",
+      "ok": true,
+      "detail": {
+        "batch": 11,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 60.00000000000341
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 12",
+      "ok": true,
+      "detail": {
+        "batch": 12,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 55.000000000003695
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 13",
+      "ok": true,
+      "detail": {
+        "batch": 13,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 50.00000000000398
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 14",
+      "ok": true,
+      "detail": {
+        "batch": 14,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 45.00000000000426
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 15",
+      "ok": true,
+      "detail": {
+        "batch": 15,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 40.00000000000455
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 16",
+      "ok": true,
+      "detail": {
+        "batch": 16,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 35.00000000000483
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 17",
+      "ok": true,
+      "detail": {
+        "batch": 17,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 30.000000000004974
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 18",
+      "ok": true,
+      "detail": {
+        "batch": 18,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 25.000000000004903
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 19",
+      "ok": true,
+      "detail": {
+        "batch": 19,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 20.00000000000483
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 20",
+      "ok": true,
+      "detail": {
+        "batch": 20,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 15.00000000000476
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 21",
+      "ok": true,
+      "detail": {
+        "batch": 21,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 10.00000000000469
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 22",
+      "ok": true,
+      "detail": {
+        "batch": 22,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 5.000000000004672
+      }
+    },
+    {
+      "name": "Active simulation remains in live ordinary play, batch 23",
+      "ok": true,
+      "detail": {
+        "batch": 23,
+        "mode": "PLAYING",
+        "hp": 115,
+        "active": 0
+      }
+    },
+    {
+      "name": "Actual active updates end the bonus and impose cognitive withdrawal",
+      "ok": true,
+      "detail": {
+        "schema": 1,
+        "state": {
+          "schema": 1,
+          "elapsed": 119.99999999999532,
+          "agents": {
+            "jet": {
+              "uses": 0,
+              "load": 0,
+              "washout": 0,
+              "active": 0,
+              "tier": 0,
+              "dependent": false,
+              "withdrawal": 0
+            },
+            "buffout": {
+              "uses": 0,
+              "load": 0,
+              "washout": 0,
+              "active": 0,
+              "tier": 0,
+              "dependent": false,
+              "withdrawal": 0
+            },
+            "mentats": {
+              "uses": 3,
+              "load": 3,
+              "washout": 59.999999999992056,
+              "active": 0,
+              "tier": 0,
+              "dependent": true,
+              "withdrawal": 300
+            },
+            "psycho": {
+              "uses": 0,
+              "load": 0,
+              "washout": 0,
+              "active": 0,
+              "tier": 0,
+              "dependent": false,
+              "withdrawal": 0
+            }
+          },
+          "stocked": {
+            "aubagne": true
+          },
+          "treatments": 0,
+          "recoveries": 0
+        },
+        "families": [
+          {
+            "id": "jet",
+            "name": "Jet",
+            "uses": 0,
+            "load": 0,
+            "washout": 0,
+            "active": 0,
+            "tier": 0,
+            "dependent": false,
+            "withdrawal": 0,
+            "phase": "clear",
+            "tolerance": 0,
+            "strength": 0
+          },
+          {
+            "id": "buffout",
+            "name": "Buffout",
+            "uses": 0,
+            "load": 0,
+            "washout": 0,
+            "active": 0,
+            "tier": 0,
+            "dependent": false,
+            "withdrawal": 0,
+            "phase": "clear",
+            "tolerance": 0,
+            "strength": 0
+          },
+          {
+            "id": "mentats",
+            "name": "Mentats",
+            "uses": 3,
+            "load": 3,
+            "washout": 59.999999999992056,
+            "active": 0,
+            "tier": 0,
+            "dependent": true,
+            "withdrawal": 300,
+            "phase": "withdrawal",
+            "tolerance": 1,
+            "strength": 0
+          },
+          {
+            "id": "psycho",
+            "name": "Psycho",
+            "uses": 0,
+            "load": 0,
+            "washout": 0,
+            "active": 0,
+            "tier": 0,
+            "dependent": false,
+            "withdrawal": 0,
+            "phase": "clear",
+            "tolerance": 0,
+            "strength": 0
+          }
+        ],
+        "modifiers": {
+          "hp": 0,
+          "ap": 0,
+          "carry": 0,
+          "skills": {
+            "science": -10,
+            "repair": -10,
+            "speech": -10
+          },
+          "damage": 1
+        },
+        "skills": {
+          "science": 15,
+          "repair": 15,
+          "speech": 15
+        },
+        "capacity": 50,
+        "doctor": {
+          "near": false,
+          "cost": 60,
+          "quote": null,
+          "npc": "relay_cold:npc"
+        },
+        "error": null,
+        "commits": 6,
+        "rollbacks": 0,
+        "provenance": "Fictional deterministic game mechanics; no real medical simulation"
+      }
+    },
+    {
+      "name": "Native selection physically reaches Sofia",
+      "ok": true,
+      "detail": {
+        "position": [
+          -3.0,
+          1.65,
+          10.7
+        ],
+        "target": [
+          -3,
+          1,
+          9
+        ],
+        "actual_label": "Sofia · traumatismes et veille des soins",
+        "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+      }
+    },
+    {
+      "name": "Actual Sofia dialogue preserves old service and new chem route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real nearby doctor route opens dependency page",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: c54:quote ",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Sofia provides a local sixty-capsule quote",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: c54:confirm ",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible confirmation pays once, clears withdrawal and preserves wounds/radiation/inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab data",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub system",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: data/system",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: save ",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Tab closes Pip-Boy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production save exists in native browser storage",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document matches frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Continue is available",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Continue retains uses, treatment and exhausted finite stock without redose or reseed",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab status",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub chemistry",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: status/chemistry",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No page exceptions or local failed HTTP resources",
+      "ok": true,
+      "detail": {
+        "page_errors": [],
+        "local_http_errors": []
+      }
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_real_finite_purchase.png",
+      "sha256": "c9b6fb4047fa695192b18a7f551cdb94728715885771751ea59461f7062d7396"
+    },
+    {
+      "file": "02_tolerance_and_dependency.png",
+      "sha256": "25f3ba298f3dfea9d4664e7e96b2a32d2b237abbae96b9d21e4be477e2b72a49"
+    },
+    {
+      "file": "03_local_sofia_treatment.png",
+      "sha256": "e684c23e5ab0d396c2e4d797223c78a2911750c03f23507ef610a342b5192b5d"
+    },
+    {
+      "file": "04_native_continue.png",
+      "sha256": "4321db3e077db2354d639916f692e4dacad156ff9e4ddf29533bca31ef6c1dc0"
+    }
+  ],
+  "placements": [
+    {
+      "position": [
+        12.0,
+        1.65,
+        20.7
+      ],
+      "target": [
+        12,
+        1.2,
+        19
+      ],
+      "actual_label": "Parler à Baptiste Arnaud",
+      "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+    },
+    {
+      "position": [
+        -3,
+        1.65,
+        10.7
+      ],
+      "source": "Authored clinic reception; actual collision/LOS checked.",
+      "purpose": "Wait for ordinary active withdrawal without standing by town encounters."
+    },
+    {
+      "position": [
+        -3.0,
+        1.65,
+        10.7
+      ],
+      "target": [
+        -3,
+        1,
+        9
+      ],
+      "actual_label": "Sofia · traumatismes et veille des soins",
+      "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "local_http_errors": [],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:36025/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "native_navigation": true,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "service_workers_disabled": true,
+  "maximum_contexts": 1,
+  "scope": "Bounded assisted native chem pilot, prepared without starting a browser.\n\nUses unchanged production HTML, GameHandler, visible controls and real browser\nstorage. Diagnostic navigation selects authored scenes; collision/LOS checks\nselect camera approaches. Payment capsules and simulation freeze are declared\nassistance. No chem, stock, addiction or quest state is granted or overwritten.\n",
+  "assistance": [
+    "v020Load selects authored Aubagne/Annexe scenes; these are fictional layouts, not IGN interiors.",
+    "v020Seed({caps:300}) supplies payment only. No item, stock, skill or addiction is seeded.",
+    "v046SetTime(12) opens the existing shop at daytime.",
+    "Existing render/simulation freeze and v018CaptureAt use collision/LOS-checked authored floor points.",
+    "A bounded loop calls real v020Tick(.05,true): up to 2,500 steps of actual active simulation.",
+    "Readonly exported diagnostics inspect state; native E, Tab and visible UI perform all purchases, doses, quotes and treatment."
+  ],
+  "elapsed_seconds": 36.718,
+  "passed": 74,
+  "failed": 0,
+  "pinned_inputs": {
+    "index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "src/v050/15_chemistry.js": "b432076d9f0b3fa4a4c0eeab9b95e5044de8089fb2148b958c130efc417ccd4e",
+    "src/v050/10_lore_continuity.js": "85264d16726c054bacb9763fd87b1e5b011f37bd76f6662bfceebc2b34dccfe3",
+    "src/v050/11_power_armor.js": "77e03d9b83f7d35828de22dc13abd6e368879eaeeb5537f39576824a41386ebc",
+    "src/v050/12_iconic_ecosystem.js": "550ee004344e4879c0d87164ab97971978113c882e0ca5a2a2045a61b5725e23",
+    "src/v028/01_body.js": "4cff049afd3d62eae18612fd61d751cc5e3489295a9dfce898f4a89430b8c6b3",
+    "src/v028/04_story.js": "964dde3c94a2dbc127666a04a23bc2b2730167602530cd0faaf2c46a6849a30a",
+    "src/v026/04_trade_runtime.js": "0da9183a0103957b783627378f6ec2078206eb5856125ebc89786ce44e317745",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80"
+  },
+  "script_sha256": "8fee1de8b35a7e6eabb09488eb9ccbc287932b072cc162e11328fbcd32e11298",
+  "url": "http://127.0.0.1:36025/index.html?skipboot",
+  "browser_version": "154.0.8037.57",
+  "active_batches": [
+    {
+      "batch": 0,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 115.00000000000028
+    },
+    {
+      "batch": 1,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 110.00000000000057
+    },
+    {
+      "batch": 2,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 105.00000000000085
+    },
+    {
+      "batch": 3,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 100.00000000000114
+    },
+    {
+      "batch": 4,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 95.00000000000142
+    },
+    {
+      "batch": 5,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 90.0000000000017
+    },
+    {
+      "batch": 6,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 85.00000000000199
+    },
+    {
+      "batch": 7,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 80.00000000000227
+    },
+    {
+      "batch": 8,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 75.00000000000256
+    },
+    {
+      "batch": 9,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 70.00000000000284
+    },
+    {
+      "batch": 10,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 65.00000000000313
+    },
+    {
+      "batch": 11,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 60.00000000000341
+    },
+    {
+      "batch": 12,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 55.000000000003695
+    },
+    {
+      "batch": 13,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 50.00000000000398
+    },
+    {
+      "batch": 14,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 45.00000000000426
+    },
+    {
+      "batch": 15,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 40.00000000000455
+    },
+    {
+      "batch": 16,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 35.00000000000483
+    },
+    {
+      "batch": 17,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 30.000000000004974
+    },
+    {
+      "batch": 18,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 25.000000000004903
+    },
+    {
+      "batch": 19,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 20.00000000000483
+    },
+    {
+      "batch": 20,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 15.00000000000476
+    },
+    {
+      "batch": 21,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 10.00000000000469
+    },
+    {
+      "batch": 22,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 5.000000000004672
+    },
+    {
+      "batch": 23,
+      "mode": "PLAYING",
+      "hp": 115,
+      "active": 0
+    }
+  ],
+  "before_continue": {
+    "version": "0.50.0",
+    "mode": "story",
+    "character": {
+      "name": "Camille",
+      "pronoun": "neutre",
+      "trait": "mistral",
+      "special": {
+        "S": 3,
+        "P": 3,
+        "E": 3,
+        "C": 3,
+        "I": 3,
+        "A": 3,
+        "L": 3
+      }
+    },
+    "player": {
+      "zone": "relay_cold",
+      "pos": [
+        -3,
+        1.65,
+        10.7
+      ],
+      "yaw": 0,
+      "pitch": -0.36520144978817315,
+      "hp": 115,
+      "maxHp": 115,
+      "ap": 105,
+      "maxAp": 105,
+      "rad": 0,
+      "ammoClip": 10,
+      "ammoReserve": 42,
+      "clipSize": 10,
+      "weapon": "Pistolet 10 mm",
+      "caps": 147,
+      "crouched": false,
+      "cameraMode": "first",
+      "discovered": [
+        "vault",
+        "aubagne",
+        "relay_cold"
+      ],
+      "level": 1,
+      "xp": 36,
+      "perkPoints": 0,
+      "activeCompanion": null,
+      "weaponId": "pistol10",
+      "armorId": "vaultSuit",
+      "critCharge": 0,
+      "damageResistance": 0.05,
+      "radResistance": 0.08
+    },
+    "quest": {
+      "main": 0,
+      "relayOutcome": null,
+      "clinicOutcome": null,
+      "finalOutcome": null,
+      "mainComplete": false,
+      "trainOutcome": null,
+      "gardenOutcome": null,
+      "paludsOutcome": null,
+      "aqueductOutcome": null,
+      "belvedereOutcome": null,
+      "beaconOutcome": null,
+      "routesOutcome": null,
+      "routesComplete": false,
+      "waterOutcome": null,
+      "treilleOutcome": null,
+      "fontOutcome": null,
+      "marketOutcome": null,
+      "longchampOutcome": null,
+      "waterComplete": false,
+      "unionOutcome": null,
+      "drydockOutcome": null,
+      "cadenceOutcome": null,
+      "emileOutcome": null,
+      "islandOutcome": null,
+      "industryOutcome": null,
+      "industryComplete": false,
+      "cinemaOutcome": null,
+      "stationOutcome": null,
+      "guichetierOutcome": null,
+      "naimaHighOutcome": null,
+      "signalOutcome": null,
+      "marseilleOutcome": null,
+      "marseilleComplete": false,
+      "cadastreOutcome": null,
+      "aubagneStationOutcome": null,
+      "ceramicOutcome": null,
+      "culvertOutcome": null,
+      "mireilleTruthOutcome": null,
+      "rouxRescueOutcome": null,
+      "firewatchOutcome": null,
+      "aubagneOutcome": null,
+      "aubagneComplete": false
+    },
+    "side": {
+      "roux": 0,
+      "filters": 0,
+      "train": 0,
+      "eden": 0,
+      "garden": 0,
+      "paluds": 0,
+      "aqueduct": 0,
+      "refugees": 0,
+      "beacon": 0,
+      "mireille": 0,
+      "naima": 0,
+      "fontdemai": 0,
+      "noailleMarket": 0,
+      "waterEvidence": 0,
+      "dockSalvage": 0,
+      "seaRescue": 0,
+      "hullCaches": 0,
+      "cinema": 0,
+      "saintCharles": 0,
+      "ghoulRegistry": 0,
+      "gardeClinic": 0,
+      "aubagneHigh": 0,
+      "aubagneStation": 0,
+      "ceramics": 0,
+      "culvert": 0,
+      "firewatch": 0,
+      "regionalEvents": 0,
+      "environment": 0,
+      "shelters": 0
+    },
+    "flags": {
+      "rationDenied": false,
+      "metMireille": false,
+      "mireilleRecruited": false,
+      "naimaRecruited": false,
+      "emileRecruited": false,
+      "relayPowered": false,
+      "archiveMemo": false,
+      "fuseTaken": false,
+      "rouxFreed": false,
+      "clinicResolved": false,
+      "marseilleArchiveRead": false,
+      "shipBypassed": false,
+      "bossDefeated": false,
+      "routeChapterStarted": false,
+      "trainRestored": false,
+      "gardenResolved": false,
+      "paludsResolved": false,
+      "aqueductResolved": false,
+      "belvedereResolved": false,
+      "beaconLit": false,
+      "crabBossDefeated": false,
+      "waterChapterStarted": false,
+      "treilleResolved": false,
+      "fontPumpRestored": false,
+      "rouxRecruited": false,
+      "naimaQuestResolved": false,
+      "marketResolved": false,
+      "longchampArchiveRead": false,
+      "longchampValveOpen": false,
+      "waterCouncilReady": false,
+      "industryChapterStarted": false,
+      "unionArchiveRead": false,
+      "unionCouncilResolved": false,
+      "drydockRestored": false,
+      "cadenceBypassed": false,
+      "cadenceResolved": false,
+      "emileQuestResolved": false,
+      "skiffRepaired": false,
+      "skiffUnlocked": false,
+      "islandResolved": false,
+      "seaRouteCleared": false,
+      "coastCouncilReady": false,
+      "rescueCompleted": false,
+      "marseilleChapterStarted": false,
+      "projectorRestored": false,
+      "cinemaResolved": false,
+      "stationArchiveRead": false,
+      "stationResolved": false,
+      "guichetierBypassed": false,
+      "guichetierResolved": false,
+      "naimaHighResolved": false,
+      "gardeSignalActive": false,
+      "marseilleCouncilReady": false,
+      "projectionCalibrated": false,
+      "aubagneChapterStarted": false,
+      "cadastreRead": false,
+      "aubagneStationResolved": false,
+      "kilnRestored": false,
+      "culvertCleared": false,
+      "mireilleTruthResolved": false,
+      "rouxRescueResolved": false,
+      "firewatchActive": false,
+      "fireFrontContained": false,
+      "aubagneCouncilReady": false,
+      "enemyDead": {},
+      "looted": {},
+      "notes": {},
+      "doors": {},
+      "worldChanges": {},
+      "shelterResolved": {},
+      "shelterOutcomes": {},
+      "enemySeen": {
+        "tarente": true,
+        "raider": true,
+        "molerat": true,
+        "gecko": true,
+        "giantAnt": true,
+        "ledgerHound": true,
+        "feralReaver": true,
+        "mirelurkHatchling": true,
+        "feral": true
+      },
+      "lucienRecruited": false,
+      "bastienRecruited": false,
+      "mariusRecruited": false
+    },
+    "inventory": {
+      "stimpak": 3,
+      "radaway": 1,
+      "water": 2,
+      "ration": 1,
+      "ammo10": 0,
+      "fuse": 0,
+      "ceramicFilter": 0,
+      "concordeSeal": 0,
+      "shipKey": 0,
+      "scrap": 5,
+      "circuitry": 1,
+      "chemicals": 1,
+      "cloth": 1,
+      "food": 2,
+      "seeds": 0,
+      "leather": 0,
+      "weaponParts": 0,
+      "waterChip": 0,
+      "antibiotics": 0,
+      "fuelCell": 0,
+      "sealant": 0,
+      "steelPlate": 0,
+      "flare": 0,
+      "unionLedger": 0,
+      "clay": 0,
+      "fireGel": 0,
+      "rescueBeacon": 0,
+      "bobbyPin": 5,
+      "soapCatalyst": 0,
+      "lyeFilter": 0,
+      "cleaningLedger": 0,
+      "mentats": 0
+    },
+    "ammo": {
+      "ammo10": 42,
+      "shells": 0,
+      "cells": 0,
+      "rivets": 0,
+      "harpoons": 0,
+      "ammo38": 0,
+      "ammo44": 0,
+      "ammo45": 0,
+      "ammo308": 0,
+      "ammo556": 0,
+      "ammo5mm": 0,
+      "ammo4570": 0,
+      "spikes": 0,
+      "ammo2mm": 0,
+      "plasma": 0,
+      "gamma": 0,
+      "alienCell": 0,
+      "fuel": 0,
+      "missiles": 0,
+      "miniNukes": 0,
+      "cryo": 0,
+      "fusionCore": 0,
+      "ceramicSlug": 0,
+      "bb": 0,
+      "grenade40": 0,
+      "nails": 0,
+      "syringes": 0,
+      "junkAmmo": 0,
+      "ammo9": 0,
+      "ammo127": 0,
+      "ammo357": 0,
+      "ammo50": 0,
+      "microfusion": 0,
+      "electronCharge": 0,
+      "rockets": 0,
+      "protonCell": 0,
+      "ammo22": 0,
+      "ammo14": 0,
+      "ammo223": 0,
+      "ammo762": 0,
+      "ammo20g": 0,
+      "ammo25": 0,
+      "sonicCell": 0,
+      "acidCanister": 0,
+      "coilSlug": 0,
+      "saltCartridge": 0,
+      "windCell": 0,
+      "quarryBolt": 0,
+      "archiveCell": 0,
+      "brineCharge": 0,
+      "kilnBolt": 0,
+      "signalCapsule": 0,
+      "quarryShell": 0,
+      "memoryTape": 0,
+      "mistralDart": 0,
+      "heavyFusionCell": 0,
+      "soapCapsule": 0,
+      "memoryCell": 0
+    },
+    "perks": {
+      "gunslinger": 0,
+      "medic": 0,
+      "scavenger": 0,
+      "localHero": 0,
+      "mariner": 0,
+      "technician": 0,
+      "armorer": 0,
+      "hydrologist": 0,
+      "pathfinder": 0,
+      "shipwright": 0,
+      "unionVoice": 0,
+      "dockRat": 0,
+      "urbanExplorer": 0,
+      "archivist": 0,
+      "civicVoice": 0,
+      "firewarden": 0,
+      "ceramist": 0,
+      "tracker": 0
+    },
+    "settlements": {
+      "aubagne": 0,
+      "marseille": 0,
+      "laciotat": 0,
+      "huveaune": 0,
+      "garlaban": 0,
+      "gemenos": 0,
+      "ceyreste": 0,
+      "cassis": 0,
+      "calanques": 0,
+      "latreille": 0,
+      "fontdemai": 0,
+      "panier": 0,
+      "longchamp": 0,
+      "ciotatport": 0,
+      "syndicat": 0,
+      "drydock": 0,
+      "hull27": 0,
+      "mugel": 0,
+      "ileverte": 0,
+      "canebiere": 0,
+      "cinema": 0,
+      "saintcharles": 0,
+      "tunnels": 0,
+      "lagarde": 0,
+      "aubagnehaute": 0,
+      "aubagnegare": 0,
+      "ceramiques": 0,
+      "huveaunesouterraine": 0,
+      "garlabanpass": 0,
+      "shelter_m17": 0,
+      "shelter_a11": 0,
+      "shelter_h04": 0,
+      "shelter_g06": 0,
+      "shelter_c08": 0,
+      "shelter_lc12": 0,
+      "shelter_iv02": 0,
+      "shelter_p13": 0,
+      "shelter_m04": 0,
+      "shelter_a19": 0,
+      "shelter_h12": 0,
+      "shelter_g22": 0,
+      "shelter_c14": 0,
+      "shelter_lc03": 0,
+      "shelter_iv07": 0,
+      "shelter_p08": 0,
+      "shelter_r18": 0,
+      "shelter_t05": 0,
+      "saintloup": 0,
+      "lapenne": 0,
+      "accates": 0,
+      "luminy": 0,
+      "roquefort": 0,
+      "carnoux": 0,
+      "portmiou": 0,
+      "capcanaille": 0,
+      "shelter_r09": 0,
+      "shelter_m22": 0,
+      "shelter_m31": 0,
+      "shelter_a07": 0,
+      "shelter_a27": 0,
+      "shelter_h21": 0,
+      "shelter_g31": 0,
+      "shelter_c21": 0,
+      "shelter_c31": 0,
+      "shelter_lc21": 0,
+      "shelter_lc29": 0,
+      "shelter_i11": 0,
+      "shelter_m42": 0,
+      "shelter_a32": 0,
+      "shelter_h33": 0,
+      "shelter_g40": 0,
+      "shelter_c40": 0,
+      "shelter_lc44": 0,
+      "shelter_i23": 0,
+      "shelter_p27": 0,
+      "shelter_r32": 0,
+      "shelter_t18": 0,
+      "shelter_s06": 0,
+      "shelter_v14": 0,
+      "savonnerie": 0,
+      "frioulport": 0,
+      "ratonneau": 0,
+      "pomegues": 0,
+      "chateauif": 0
+    },
+    "economy": {
+      "travelCount": 0,
+      "lastProduction": 0,
+      "merchants": {
+        "aubagne": {
+          "caps": 313,
+          "stock": {
+            "stimpak": 4,
+            "water": 5,
+            "ammo10": 50,
+            "scrap": 8,
+            "weaponParts": 3,
+            "pipeCarbine": 1,
+            "workshopJacket": 1,
+            "ammo38": 80,
+            "ammo44": 18,
+            "ammo556": 40,
+            "pipePistol": 1,
+            "pipeRifle": 1,
+            "provenceRevolver": 1,
+            "mistralCarbine": 1,
+            "combatKnife": 1,
+            "machete": 1,
+            "bb": 100,
+            "nails": 80,
+            "pistol32": 1,
+            "bbGun": 1,
+            "nailGun": 1,
+            "tireIron": 1,
+            "crowbar": 1,
+            "leatherArmor": 1,
+            "ammo9": 80,
+            "ammo357": 30,
+            "pistol9": 1,
+            "revolver357": 1,
+            "varmintRifle": 1,
+            "cowboyRepeater": 1,
+            "handmadeRifle": 1,
+            "mistralScoutMantle": 1,
+            "mentats": 0,
+            "buffout": 2
+          }
+        }
+      },
+      "contracts": {
+        "salvage": 0,
+        "rescue": 0,
+        "escort": 0,
+        "broadcast": 0,
+        "firewatch": 0
+      }
+    },
+    "events": {
+      "active": null,
+      "history": [],
+      "nextTravel": 2,
+      "resolved": 0
+    },
+    "weather": {
+      "type": "clear",
+      "timer": 89.99999999998353
+    },
+    "rep": {
+      "ligue": 0,
+      "rade": 0,
+      "arsenal": 0,
+      "continuite": 0,
+      "veilleurs": 0,
+      "francs": 0,
+      "rails": 0,
+      "collines": 0,
+      "marches": 0,
+      "eaux": 0,
+      "artisans": 0,
+      "secours": 0
+    },
+    "equipment": {
+      "ownedWeapons": [
+        "pistol10"
+      ],
+      "ownedArmors": [
+        "vaultSuit"
+      ],
+      "weaponCondition": {
+        "pistol10": 100
+      },
+      "armorCondition": {
+        "vaultSuit": 100
+      },
+      "loadedAmmo": {
+        "pistol10": 10
+      },
+      "weaponMods": {}
+    },
+    "companions": {
+      "loyalty": {
+        "mireille": 25,
+        "naima": 20,
+        "emile": 15,
+        "roux": 0,
+        "lucien": 0,
+        "bastien": 0,
+        "marius": 0
+      }
+    },
+    "crime": {
+      "aubagne": 0,
+      "marseille": 0,
+      "laciotat": 0,
+      "collines": 0
+    },
+    "status": {
+      "bleeding": 0,
+      "infection": 0,
+      "fortified": 0,
+      "burning": 0,
+      "smoke": 0
+    },
+    "vehicle": {
+      "skiffUnlocked": false,
+      "hull": 100,
+      "maxHull": 100,
+      "fuel": 0,
+      "maxFuel": 100,
+      "speed": 0,
+      "seaRuns": 0,
+      "lastDock": "mugel",
+      "collisionCooldown": 0
+    },
+    "achievements": [],
+    "worldTime": 12.960000000002026,
+    "playTime": 119.99999999999532,
+    "lastSave": "2026-10-25T08:59:01.398Z",
+    "lore": {
+      "terminals": {},
+      "terminalActions": {},
+      "notes": {},
+      "holotapes": {},
+      "holotapePlays": {},
+      "localQuests": {},
+      "localQuestOutcomes": {}
+    },
+    "companionQuests": {
+      "lucien": {
+        "stage": 0,
+        "outcome": null
+      },
+      "bastien": {
+        "stage": 0,
+        "outcome": null
+      },
+      "marius": {
+        "stage": 0,
+        "outcome": null
+      }
+    },
+    "foundation": {
+      "q09": {
+        "stage": 0,
+        "outcome": null,
+        "parts": {}
+      },
+      "q12": {
+        "played": 0,
+        "best": null,
+        "wins": 0,
+        "outcome": null
+      },
+      "powerArmor": {
+        "stage": 0,
+        "outcome": null
+      }
+    },
+    "reconstruction": {
+      "sites": {
+        "aubagne": {},
+        "huveaune": {},
+        "marseille": {},
+        "cassis": {},
+        "drydock": {},
+        "frioulport": {}
+      }
+    },
+    "collectibles": {
+      "magazines": {},
+      "plans": {},
+      "lockedCaches": {}
+    },
+    "needs": {
+      "hunger": 0,
+      "thirst": 0,
+      "fatigue": 0,
+      "lastTick": 0
+    },
+    "v018": {
+      "coordinates": "EPSG:2154-local",
+      "travelMode": "story",
+      "trackedQuest": null,
+      "tapeBookmarks": {},
+      "tapeSpeed": 1
+    },
+    "v020": {
+      "schema": 1,
+      "operations": {
+        "relay_cold": {
+          "accepted": false,
+          "diagnosed": false,
+          "component": false,
+          "isolated": false,
+          "resolution": null
+        }
+      },
+      "visits": {},
+      "returnPoint": null,
+      "companionOrders": {},
+      "favorites": [
+        "pistol10",
+        null,
+        null,
+        null
+      ],
+      "stash": {},
+      "craftCount": {},
+      "discoveredStations": {},
+      "restHours": 0,
+      "notes": {},
+      "looted": {},
+      "openedDoors": {},
+      "accessibility": {
+        "localPlan": true
+      },
+      "lastVersion": "0.20.0",
+      "tracked": "relay_cold"
+    },
+    "v021": {
+      "schema": 1,
+      "accepted": false,
+      "clues": {},
+      "switches": {},
+      "witness": false,
+      "visited": {},
+      "ending": null,
+      "rewarded": false,
+      "returnPoints": [],
+      "journalPage": 0,
+      "tracked": false
+    },
+    "v022": {
+      "schema": 1,
+      "actors": {},
+      "encounters": {
+        "aubagne|roux-hunter": {
+          "zone": "aubagne",
+          "type": "tarente",
+          "health": 70,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-0": {
+          "zone": "aubagne",
+          "type": "raider",
+          "health": 72,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-1": {
+          "zone": "aubagne",
+          "type": "molerat",
+          "health": 44,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-2": {
+          "zone": "aubagne",
+          "type": "gecko",
+          "health": 62,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-3": {
+          "zone": "aubagne",
+          "type": "giantAnt",
+          "health": 73,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-4": {
+          "zone": "aubagne",
+          "type": "ledgerHound",
+          "health": 122,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-5": {
+          "zone": "aubagne",
+          "type": "feralReaver",
+          "health": 150,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-6": {
+          "zone": "aubagne",
+          "type": "mirelurkHatchling",
+          "health": 46,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-7": {
+          "zone": "aubagne",
+          "type": "raider",
+          "health": 72,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-8": {
+          "zone": "aubagne",
+          "type": "molerat",
+          "health": 44,
+          "leg": 0,
+          "arm": 0
+        },
+        "relay_cold|relay_cold:security": {
+          "zone": "relay_cold",
+          "type": "feral",
+          "health": 65,
+          "leg": 0,
+          "arm": 0
+        }
+      },
+      "caches": {},
+      "task": {
+        "accepted": false,
+        "kit": false,
+        "beds": false,
+        "consent": null,
+        "relay": false,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "observed": {}
+    },
+    "v023": {
+      "schema": 1,
+      "goat": {
+        "answers": [],
+        "tags": [],
+        "completed": false,
+        "method": null
+      },
+      "critical": 0,
+      "history": [
+        {
+          "speaker": "Baptiste Arnaud",
+          "text": "J’ai de l’eau, des munitions, des pièces d’arme et parfois de quoi mieux s’équiper. Les prix changent avec les routes, votre réputation et le contenu de votre dossier.",
+          "choice": false,
+          "role": "MARCHAND DE PIÈCES",
+          "zone": "aubagne"
+        },
+        {
+          "speaker": "Camille",
+          "text": "Ouvrir le comptoir.",
+          "choice": true,
+          "role": "",
+          "zone": "aubagne"
+        },
+        {
+          "speaker": "Sofia Neri",
+          "text": "Un Stimpak peut refermer une plaie alors qu’un bras reste inutilisable. Regardez les six régions dans votre Pip-Boy. Je peux traiter les traumatismes ici, mais je ne vais pas prétendre qu’un bandage retire les radiations.",
+          "choice": false,
+          "role": "INFIRMIÈRE DES QUAIS",
+          "zone": "relay_cold"
+        },
+        {
+          "speaker": "Camille",
+          "text": "Parler des consommables, de la tolérance et du sevrage.",
+          "choice": true,
+          "role": "",
+          "zone": "relay_cold"
+        }
+      ],
+      "seen": {
+        "c54-sofia": true
+      },
+      "checks": {},
+      "quest": {
+        "accepted": false,
+        "evidence": {
+          "manifest": false,
+          "register": false,
+          "protocol": false
+        },
+        "witness": {
+          "diane": false,
+          "rayan": false
+        },
+        "trust": 0,
+        "ending": null,
+        "rewarded": false,
+        "deliveries": {
+          "transit_depot": false,
+          "traverse_archives": false,
+          "mooring_station": false
+        },
+        "tracked": false
+      },
+      "consequences": []
+    },
+    "v025": {
+      "schema": 1,
+      "limbs": {}
+    },
+    "v026": {
+      "schema": 1,
+      "containers": {
+        "relay_cold|salvage": {
+          "zone": "relay_cold",
+          "id": "salvage",
+          "title": "Bac de récupération de l’atelier",
+          "pos": [
+            -6,
+            0,
+            10
+          ],
+          "kind": "chest",
+          "items": {
+            "emptyInjector": 4,
+            "instrumentTray": 1
+          },
+          "initial": {
+            "emptyInjector": 4,
+            "instrumentTray": 1
+          },
+          "gear": {},
+          "owned": false,
+          "permission": false,
+          "reported": false,
+          "lock": 0,
+          "unlocked": true,
+          "visited": false,
+          "pinWear": 0,
+          "actor": null
+        }
+      },
+      "vendorGear": {},
+      "marked": {},
+      "carry": false,
+      "transactions": [
+        {
+          "kind": "acheter",
+          "text": "Mentats — 31 capsules",
+          "zone": "aubagne"
+        },
+        {
+          "kind": "acheter",
+          "text": "Mentats — 31 capsules",
+          "zone": "aubagne"
+        },
+        {
+          "kind": "acheter",
+          "text": "Mentats — 31 capsules",
+          "zone": "aubagne"
+        }
+      ],
+      "quest": {
+        "accepted": false,
+        "informed": false,
+        "inspected": {
+          "transit_depot": false,
+          "traverse_archives": false,
+          "mooring_station": false
+        },
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      }
+    },
+    "v027": {
+      "schema": 1,
+      "theme": "green",
+      "scanlines": true,
+      "backgroundTape": false,
+      "tagged": [],
+      "read": {},
+      "documents": {},
+      "pin": null,
+      "last": {
+        "tab": "data",
+        "sub": "system"
+      }
+    },
+    "v028": {
+      "schema": 1,
+      "limbs": {
+        "head": 100,
+        "torso": 100,
+        "leftArm": 100,
+        "rightArm": 100,
+        "leftLeg": 100,
+        "rightLeg": 100
+      },
+      "hits": 0,
+      "lamp": false,
+      "history": [
+        {
+          "kind": "soin",
+          "text": "Sofia : effets actifs, tolérance et dépendances traités · 60 capsules. PV, radiations et blessures non soignés."
+        }
+      ],
+      "quest": {
+        "accepted": false,
+        "plan": false,
+        "isolated": false,
+        "rewarded": false,
+        "ending": null,
+        "tracked": false
+      },
+      "game": {
+        "unlocked": false,
+        "levels": {}
+      }
+    },
+    "v029": {
+      "schema": 1,
+      "elapsed": 119.99999999999532,
+      "terminals": {},
+      "credentials": {
+        "d4": false,
+        "a2": false,
+        "q8": false
+      },
+      "quest": {
+        "accepted": false,
+        "proof": {
+          "route": false,
+          "filter": false,
+          "clause": false
+        },
+        "contact": false,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "noiseCount": 0
+    },
+    "v030": {
+      "schema": 1,
+      "active": false,
+      "core": null,
+      "spares": [],
+      "rigs": {},
+      "vendorRigs": {},
+      "hitIndex": 0,
+      "travelDistance": 0,
+      "spent": 0,
+      "quest": {
+        "accepted": false,
+        "servo": false,
+        "plan": false,
+        "isolated": false,
+        "restored": false,
+        "coreTaken": false,
+        "trial": null,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "history": []
+    },
+    "v035": {
+      "schema": 1,
+      "activeSlot": 0,
+      "career": {
+        "ngPlus": 0,
+        "creditsSeen": false,
+        "chaptersViewed": {},
+        "operationFirsts": {},
+        "operationRecords": {}
+      },
+      "operations": {
+        "active": null,
+        "totalCompleted": 0
+      },
+      "hub": {
+        "returns": 0,
+        "lastRest": null,
+        "visited": false
+      },
+      "prologue": {
+        "started": false,
+        "titleSeen": false,
+        "stage": 0,
+        "locker": false,
+        "clinic": false,
+        "filter": false,
+        "breakfast": false,
+        "records": false,
+        "briefed": false,
+        "loadout": null,
+        "complete": false
+      },
+      "session": {
+        "startedAt": 0,
+        "lastRecap": null
+      }
+    },
+    "v036": {
+      "schema": 1,
+      "preferRelay": true,
+      "autoMacroTransfer": true,
+      "lastMacro": null,
+      "lastLatLon": null,
+      "onlineTilesLoaded": 0,
+      "localTilesLoaded": 0,
+      "cacheTilesLoaded": 0
+    },
+    "v037": {
+      "schema": 1,
+      "preferCloudCache": true,
+      "autoPrefetch": true,
+      "prefetchAhead": 2,
+      "cacheBudgetMB": 256,
+      "cloudTilesLoaded": 0,
+      "directTilesLoaded": 0,
+      "packTilesLoaded": 0,
+      "localCacheHits": 0,
+      "lastCloudCheck": null
+    },
+    "v038": {
+      "schema": 1,
+      "lastCoverage": null,
+      "fullVectorCacheConfirmed": false,
+      "emptyTilesLoaded": 0,
+      "dataTilesLoaded": 0,
+      "verifiedAt": null
+    },
+    "v039": {
+      "schema": 1,
+      "terrainCloudConfirmed": false,
+      "lastTerrainCheck": null,
+      "terrainLoads": 0,
+      "terrainPackHits": 0,
+      "terrainCacheHits": 0,
+      "terrainCloudHits": 0,
+      "terrainErrors": 0,
+      "lastTerrainMacro": null,
+      "lastTerrainSource": null
+    },
+    "v040": {
+      "schema": 1,
+      "activeCorridor": null,
+      "corridorProgress": 0,
+      "corridorPhase": "idle",
+      "corridorBreaks": 0,
+      "corridorCompleted": {},
+      "corridorStartedAt": null,
+      "corridorLastLatLon": null,
+      "lastCorridorCheck": null,
+      "terrainSeamChecks": 0,
+      "stitchedBuildings": 0
+    },
+    "v041": {
+      "schema": 1,
+      "lastPackCheck": null,
+      "localPackComplete": true,
+      "localCoordinates": 5884,
+      "localTerrain": 0,
+      "lastBenchmark": "2026-10-25T08:58:37.224Z"
+    },
+    "v042": {
+      "schema": 1,
+      "discovered": {},
+      "cleared": {},
+      "visited": {},
+      "tracked": null,
+      "activeContract": null,
+      "contracts": {},
+      "siteKills": {},
+      "eliteKills": {},
+      "bossKills": {},
+      "regional": {},
+      "activeInterior": null,
+      "returnPoint": null,
+      "discoveries": 0,
+      "clears": 0,
+      "filter": "all",
+      "lastSite": null,
+      "lastUpdate": null
+    },
+    "geo": {
+      "return": null,
+      "pendingTarget": null,
+      "lastMacro": "geo_huveaune",
+      "visitedMacros": {},
+      "surfaceVisited": {},
+      "surfaceActions": {},
+      "lastSurface": null,
+      "discoveryCount": 0,
+      "mapVersion": "0.50.0",
+      "strict": true,
+      "tileCoverage": {}
+    },
+    "v046": {
+      "schema": 1,
+      "frame": "lambert93-central",
+      "placements": {},
+      "lore": {
+        "done": {},
+        "side": null,
+        "petanque": {
+          "played": 0,
+          "wins": 0
+        }
+      },
+      "lastLocation": null
+    },
+    "v049": {
+      "schema": 1,
+      "actors": {}
+    },
+    "v050Campaign": {
+      "schema": 1,
+      "route": null,
+      "gateway": null,
+      "returnPoint": null,
+      "workshopVisits": 0
+    },
+    "v050Wasteland": {
+      "schema": 1,
+      "kitOwned": false,
+      "camp": null,
+      "restHours": 0,
+      "crafts": 0,
+      "aid": {}
+    },
+    "v050City": {
+      "schema": 2,
+      "active": null,
+      "returnPoint": null,
+      "visits": {},
+      "documents": [],
+      "documentOmissions": 0,
+      "documentWarnings": []
+    },
+    "v053Lore": {
+      "schema": 1,
+      "quests": {
+        "cendres": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "formulaire": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "signaux": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "lazaret": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        }
+      },
+      "journal": []
+    },
+    "v053Iconic": {
+      "schema": 1,
+      "found": {},
+      "read": {},
+      "effects": {},
+      "drinks": 0
+    },
+    "v053Bestiary": {
+      "schema": 1,
+      "assignments": {}
+    },
+    "v054Chems": {
+      "schema": 1,
+      "elapsed": 119.99999999999532,
+      "agents": {
+        "jet": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "buffout": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "mentats": {
+          "uses": 3,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "psycho": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        }
+      },
+      "stocked": {
+        "aubagne": true
+      },
+      "treatments": 1,
+      "recoveries": 0
+    }
+  },
+  "after_continue": {
+    "version": "0.50.0",
+    "mode": "story",
+    "character": {
+      "name": "Camille",
+      "pronoun": "neutre",
+      "trait": "mistral",
+      "special": {
+        "S": 3,
+        "P": 3,
+        "E": 3,
+        "C": 3,
+        "I": 3,
+        "A": 3,
+        "L": 3
+      }
+    },
+    "player": {
+      "zone": "relay_cold",
+      "pos": [
+        -3,
+        1.65,
+        10.7
+      ],
+      "yaw": 0,
+      "pitch": 0,
+      "hp": 115,
+      "maxHp": 115,
+      "ap": 105,
+      "maxAp": 105,
+      "rad": 0,
+      "ammoClip": 10,
+      "ammoReserve": 42,
+      "clipSize": 10,
+      "weapon": "Pistolet 10 mm",
+      "caps": 147,
+      "crouched": false,
+      "cameraMode": "first",
+      "discovered": [
+        "vault",
+        "aubagne",
+        "relay_cold"
+      ],
+      "level": 1,
+      "xp": 36,
+      "perkPoints": 0,
+      "activeCompanion": null,
+      "weaponId": "pistol10",
+      "armorId": "vaultSuit",
+      "critCharge": 0,
+      "damageResistance": 0.05,
+      "radResistance": 0.08
+    },
+    "quest": {
+      "main": 0,
+      "relayOutcome": null,
+      "clinicOutcome": null,
+      "finalOutcome": null,
+      "mainComplete": false,
+      "trainOutcome": null,
+      "gardenOutcome": null,
+      "paludsOutcome": null,
+      "aqueductOutcome": null,
+      "belvedereOutcome": null,
+      "beaconOutcome": null,
+      "routesOutcome": null,
+      "routesComplete": false,
+      "waterOutcome": null,
+      "treilleOutcome": null,
+      "fontOutcome": null,
+      "marketOutcome": null,
+      "longchampOutcome": null,
+      "waterComplete": false,
+      "unionOutcome": null,
+      "drydockOutcome": null,
+      "cadenceOutcome": null,
+      "emileOutcome": null,
+      "islandOutcome": null,
+      "industryOutcome": null,
+      "industryComplete": false,
+      "cinemaOutcome": null,
+      "stationOutcome": null,
+      "guichetierOutcome": null,
+      "naimaHighOutcome": null,
+      "signalOutcome": null,
+      "marseilleOutcome": null,
+      "marseilleComplete": false,
+      "cadastreOutcome": null,
+      "aubagneStationOutcome": null,
+      "ceramicOutcome": null,
+      "culvertOutcome": null,
+      "mireilleTruthOutcome": null,
+      "rouxRescueOutcome": null,
+      "firewatchOutcome": null,
+      "aubagneOutcome": null,
+      "aubagneComplete": false
+    },
+    "side": {
+      "roux": 0,
+      "filters": 0,
+      "train": 0,
+      "eden": 0,
+      "garden": 0,
+      "paluds": 0,
+      "aqueduct": 0,
+      "refugees": 0,
+      "beacon": 0,
+      "mireille": 0,
+      "naima": 0,
+      "fontdemai": 0,
+      "noailleMarket": 0,
+      "waterEvidence": 0,
+      "dockSalvage": 0,
+      "seaRescue": 0,
+      "hullCaches": 0,
+      "cinema": 0,
+      "saintCharles": 0,
+      "ghoulRegistry": 0,
+      "gardeClinic": 0,
+      "aubagneHigh": 0,
+      "aubagneStation": 0,
+      "ceramics": 0,
+      "culvert": 0,
+      "firewatch": 0,
+      "regionalEvents": 0,
+      "environment": 0,
+      "shelters": 0
+    },
+    "flags": {
+      "rationDenied": false,
+      "metMireille": false,
+      "mireilleRecruited": false,
+      "naimaRecruited": false,
+      "emileRecruited": false,
+      "relayPowered": false,
+      "archiveMemo": false,
+      "fuseTaken": false,
+      "rouxFreed": false,
+      "clinicResolved": false,
+      "marseilleArchiveRead": false,
+      "shipBypassed": false,
+      "bossDefeated": false,
+      "routeChapterStarted": false,
+      "trainRestored": false,
+      "gardenResolved": false,
+      "paludsResolved": false,
+      "aqueductResolved": false,
+      "belvedereResolved": false,
+      "beaconLit": false,
+      "crabBossDefeated": false,
+      "waterChapterStarted": false,
+      "treilleResolved": false,
+      "fontPumpRestored": false,
+      "rouxRecruited": false,
+      "naimaQuestResolved": false,
+      "marketResolved": false,
+      "longchampArchiveRead": false,
+      "longchampValveOpen": false,
+      "waterCouncilReady": false,
+      "industryChapterStarted": false,
+      "unionArchiveRead": false,
+      "unionCouncilResolved": false,
+      "drydockRestored": false,
+      "cadenceBypassed": false,
+      "cadenceResolved": false,
+      "emileQuestResolved": false,
+      "skiffRepaired": false,
+      "skiffUnlocked": false,
+      "islandResolved": false,
+      "seaRouteCleared": false,
+      "coastCouncilReady": false,
+      "rescueCompleted": false,
+      "marseilleChapterStarted": false,
+      "projectorRestored": false,
+      "cinemaResolved": false,
+      "stationArchiveRead": false,
+      "stationResolved": false,
+      "guichetierBypassed": false,
+      "guichetierResolved": false,
+      "naimaHighResolved": false,
+      "gardeSignalActive": false,
+      "marseilleCouncilReady": false,
+      "projectionCalibrated": false,
+      "aubagneChapterStarted": false,
+      "cadastreRead": false,
+      "aubagneStationResolved": false,
+      "kilnRestored": false,
+      "culvertCleared": false,
+      "mireilleTruthResolved": false,
+      "rouxRescueResolved": false,
+      "firewatchActive": false,
+      "fireFrontContained": false,
+      "aubagneCouncilReady": false,
+      "enemyDead": {},
+      "looted": {},
+      "notes": {},
+      "doors": {},
+      "worldChanges": {},
+      "shelterResolved": {},
+      "shelterOutcomes": {},
+      "enemySeen": {
+        "tarente": true,
+        "raider": true,
+        "molerat": true,
+        "gecko": true,
+        "giantAnt": true,
+        "ledgerHound": true,
+        "feralReaver": true,
+        "mirelurkHatchling": true,
+        "feral": true
+      },
+      "lucienRecruited": false,
+      "bastienRecruited": false,
+      "mariusRecruited": false
+    },
+    "inventory": {
+      "stimpak": 3,
+      "radaway": 1,
+      "water": 2,
+      "ration": 1,
+      "ammo10": 0,
+      "fuse": 0,
+      "ceramicFilter": 0,
+      "concordeSeal": 0,
+      "shipKey": 0,
+      "scrap": 5,
+      "circuitry": 1,
+      "chemicals": 1,
+      "cloth": 1,
+      "food": 2,
+      "seeds": 0,
+      "leather": 0,
+      "weaponParts": 0,
+      "waterChip": 0,
+      "antibiotics": 0,
+      "fuelCell": 0,
+      "sealant": 0,
+      "steelPlate": 0,
+      "flare": 0,
+      "unionLedger": 0,
+      "clay": 0,
+      "fireGel": 0,
+      "rescueBeacon": 0,
+      "bobbyPin": 5,
+      "soapCatalyst": 0,
+      "lyeFilter": 0,
+      "cleaningLedger": 0,
+      "mentats": 0
+    },
+    "ammo": {
+      "ammo10": 42,
+      "shells": 0,
+      "cells": 0,
+      "rivets": 0,
+      "harpoons": 0,
+      "ammo38": 0,
+      "ammo44": 0,
+      "ammo45": 0,
+      "ammo308": 0,
+      "ammo556": 0,
+      "ammo5mm": 0,
+      "ammo4570": 0,
+      "spikes": 0,
+      "ammo2mm": 0,
+      "plasma": 0,
+      "gamma": 0,
+      "alienCell": 0,
+      "fuel": 0,
+      "missiles": 0,
+      "miniNukes": 0,
+      "cryo": 0,
+      "fusionCore": 0,
+      "ceramicSlug": 0,
+      "bb": 0,
+      "grenade40": 0,
+      "nails": 0,
+      "syringes": 0,
+      "junkAmmo": 0,
+      "ammo9": 0,
+      "ammo127": 0,
+      "ammo357": 0,
+      "ammo50": 0,
+      "microfusion": 0,
+      "electronCharge": 0,
+      "rockets": 0,
+      "protonCell": 0,
+      "ammo22": 0,
+      "ammo14": 0,
+      "ammo223": 0,
+      "ammo762": 0,
+      "ammo20g": 0,
+      "ammo25": 0,
+      "sonicCell": 0,
+      "acidCanister": 0,
+      "coilSlug": 0,
+      "saltCartridge": 0,
+      "windCell": 0,
+      "quarryBolt": 0,
+      "archiveCell": 0,
+      "brineCharge": 0,
+      "kilnBolt": 0,
+      "signalCapsule": 0,
+      "quarryShell": 0,
+      "memoryTape": 0,
+      "mistralDart": 0,
+      "heavyFusionCell": 0,
+      "soapCapsule": 0,
+      "memoryCell": 0
+    },
+    "perks": {
+      "gunslinger": 0,
+      "medic": 0,
+      "scavenger": 0,
+      "localHero": 0,
+      "mariner": 0,
+      "technician": 0,
+      "armorer": 0,
+      "hydrologist": 0,
+      "pathfinder": 0,
+      "shipwright": 0,
+      "unionVoice": 0,
+      "dockRat": 0,
+      "urbanExplorer": 0,
+      "archivist": 0,
+      "civicVoice": 0,
+      "firewarden": 0,
+      "ceramist": 0,
+      "tracker": 0
+    },
+    "settlements": {
+      "aubagne": 0,
+      "marseille": 0,
+      "laciotat": 0,
+      "huveaune": 0,
+      "garlaban": 0,
+      "gemenos": 0,
+      "ceyreste": 0,
+      "cassis": 0,
+      "calanques": 0,
+      "latreille": 0,
+      "fontdemai": 0,
+      "panier": 0,
+      "longchamp": 0,
+      "ciotatport": 0,
+      "syndicat": 0,
+      "drydock": 0,
+      "hull27": 0,
+      "mugel": 0,
+      "ileverte": 0,
+      "canebiere": 0,
+      "cinema": 0,
+      "saintcharles": 0,
+      "tunnels": 0,
+      "lagarde": 0,
+      "aubagnehaute": 0,
+      "aubagnegare": 0,
+      "ceramiques": 0,
+      "huveaunesouterraine": 0,
+      "garlabanpass": 0,
+      "shelter_m17": 0,
+      "shelter_a11": 0,
+      "shelter_h04": 0,
+      "shelter_g06": 0,
+      "shelter_c08": 0,
+      "shelter_lc12": 0,
+      "shelter_iv02": 0,
+      "shelter_p13": 0,
+      "shelter_m04": 0,
+      "shelter_a19": 0,
+      "shelter_h12": 0,
+      "shelter_g22": 0,
+      "shelter_c14": 0,
+      "shelter_lc03": 0,
+      "shelter_iv07": 0,
+      "shelter_p08": 0,
+      "shelter_r18": 0,
+      "shelter_t05": 0,
+      "saintloup": 0,
+      "lapenne": 0,
+      "accates": 0,
+      "luminy": 0,
+      "roquefort": 0,
+      "carnoux": 0,
+      "portmiou": 0,
+      "capcanaille": 0,
+      "shelter_r09": 0,
+      "shelter_m22": 0,
+      "shelter_m31": 0,
+      "shelter_a07": 0,
+      "shelter_a27": 0,
+      "shelter_h21": 0,
+      "shelter_g31": 0,
+      "shelter_c21": 0,
+      "shelter_c31": 0,
+      "shelter_lc21": 0,
+      "shelter_lc29": 0,
+      "shelter_i11": 0,
+      "shelter_m42": 0,
+      "shelter_a32": 0,
+      "shelter_h33": 0,
+      "shelter_g40": 0,
+      "shelter_c40": 0,
+      "shelter_lc44": 0,
+      "shelter_i23": 0,
+      "shelter_p27": 0,
+      "shelter_r32": 0,
+      "shelter_t18": 0,
+      "shelter_s06": 0,
+      "shelter_v14": 0,
+      "savonnerie": 0,
+      "frioulport": 0,
+      "ratonneau": 0,
+      "pomegues": 0,
+      "chateauif": 0
+    },
+    "economy": {
+      "travelCount": 0,
+      "lastProduction": 0,
+      "merchants": {
+        "aubagne": {
+          "caps": 313,
+          "stock": {
+            "stimpak": 4,
+            "water": 5,
+            "ammo10": 50,
+            "scrap": 8,
+            "weaponParts": 3,
+            "pipeCarbine": 1,
+            "workshopJacket": 1,
+            "ammo38": 80,
+            "ammo44": 18,
+            "ammo556": 40,
+            "pipePistol": 1,
+            "pipeRifle": 1,
+            "provenceRevolver": 1,
+            "mistralCarbine": 1,
+            "combatKnife": 1,
+            "machete": 1,
+            "bb": 100,
+            "nails": 80,
+            "pistol32": 1,
+            "bbGun": 1,
+            "nailGun": 1,
+            "tireIron": 1,
+            "crowbar": 1,
+            "leatherArmor": 1,
+            "ammo9": 80,
+            "ammo357": 30,
+            "pistol9": 1,
+            "revolver357": 1,
+            "varmintRifle": 1,
+            "cowboyRepeater": 1,
+            "handmadeRifle": 1,
+            "mistralScoutMantle": 1,
+            "mentats": 0,
+            "buffout": 2
+          }
+        }
+      },
+      "contracts": {
+        "salvage": 0,
+        "rescue": 0,
+        "escort": 0,
+        "broadcast": 0,
+        "firewatch": 0
+      }
+    },
+    "events": {
+      "active": null,
+      "history": [],
+      "nextTravel": 2,
+      "resolved": 0
+    },
+    "weather": {
+      "type": "clear",
+      "timer": 89.99999999998353
+    },
+    "rep": {
+      "ligue": 0,
+      "rade": 0,
+      "arsenal": 0,
+      "continuite": 0,
+      "veilleurs": 0,
+      "francs": 0,
+      "rails": 0,
+      "collines": 0,
+      "marches": 0,
+      "eaux": 0,
+      "artisans": 0,
+      "secours": 0
+    },
+    "equipment": {
+      "ownedWeapons": [
+        "pistol10"
+      ],
+      "ownedArmors": [
+        "vaultSuit"
+      ],
+      "weaponCondition": {
+        "pistol10": 100
+      },
+      "armorCondition": {
+        "vaultSuit": 100
+      },
+      "loadedAmmo": {
+        "pistol10": 10
+      },
+      "weaponMods": {}
+    },
+    "companions": {
+      "loyalty": {
+        "mireille": 25,
+        "naima": 20,
+        "emile": 15,
+        "roux": 0,
+        "lucien": 0,
+        "bastien": 0,
+        "marius": 0
+      }
+    },
+    "crime": {
+      "aubagne": 0,
+      "marseille": 0,
+      "laciotat": 0,
+      "collines": 0
+    },
+    "status": {
+      "bleeding": 0,
+      "infection": 0,
+      "fortified": 0,
+      "burning": 0,
+      "smoke": 0
+    },
+    "vehicle": {
+      "skiffUnlocked": false,
+      "hull": 100,
+      "maxHull": 100,
+      "fuel": 0,
+      "maxFuel": 100,
+      "speed": 0,
+      "seaRuns": 0,
+      "lastDock": "mugel",
+      "collisionCooldown": 0
+    },
+    "achievements": [],
+    "worldTime": 12.960000000002026,
+    "playTime": 119.99999999999532,
+    "lastSave": "2026-10-25T08:59:09.883Z",
+    "lore": {
+      "terminals": {},
+      "terminalActions": {},
+      "notes": {},
+      "holotapes": {},
+      "holotapePlays": {},
+      "localQuests": {},
+      "localQuestOutcomes": {}
+    },
+    "companionQuests": {
+      "lucien": {
+        "stage": 0,
+        "outcome": null
+      },
+      "bastien": {
+        "stage": 0,
+        "outcome": null
+      },
+      "marius": {
+        "stage": 0,
+        "outcome": null
+      }
+    },
+    "foundation": {
+      "q09": {
+        "stage": 0,
+        "outcome": null,
+        "parts": {}
+      },
+      "q12": {
+        "played": 0,
+        "best": null,
+        "wins": 0,
+        "outcome": null
+      },
+      "powerArmor": {
+        "stage": 0,
+        "outcome": null
+      }
+    },
+    "reconstruction": {
+      "sites": {
+        "aubagne": {},
+        "huveaune": {},
+        "marseille": {},
+        "cassis": {},
+        "drydock": {},
+        "frioulport": {}
+      }
+    },
+    "collectibles": {
+      "magazines": {},
+      "plans": {},
+      "lockedCaches": {}
+    },
+    "needs": {
+      "hunger": 0,
+      "thirst": 0,
+      "fatigue": 0,
+      "lastTick": 0
+    },
+    "v018": {
+      "coordinates": "EPSG:2154-local",
+      "travelMode": "story",
+      "trackedQuest": null,
+      "tapeBookmarks": {},
+      "tapeSpeed": 1
+    },
+    "v020": {
+      "schema": 1,
+      "operations": {
+        "relay_cold": {
+          "accepted": false,
+          "diagnosed": false,
+          "component": false,
+          "isolated": false,
+          "resolution": null
+        }
+      },
+      "visits": {},
+      "returnPoint": null,
+      "companionOrders": {},
+      "favorites": [
+        "pistol10",
+        null,
+        null,
+        null
+      ],
+      "stash": {},
+      "craftCount": {},
+      "discoveredStations": {},
+      "restHours": 0,
+      "notes": {},
+      "looted": {},
+      "openedDoors": {},
+      "accessibility": {
+        "localPlan": true
+      },
+      "lastVersion": "0.20.0",
+      "tracked": "relay_cold"
+    },
+    "v021": {
+      "schema": 1,
+      "accepted": false,
+      "clues": {},
+      "switches": {},
+      "witness": false,
+      "visited": {},
+      "ending": null,
+      "rewarded": false,
+      "returnPoints": [],
+      "journalPage": 0,
+      "tracked": false
+    },
+    "v022": {
+      "schema": 1,
+      "actors": {},
+      "encounters": {
+        "aubagne|roux-hunter": {
+          "zone": "aubagne",
+          "type": "tarente",
+          "health": 70,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-0": {
+          "zone": "aubagne",
+          "type": "raider",
+          "health": 72,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-1": {
+          "zone": "aubagne",
+          "type": "molerat",
+          "health": 44,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-2": {
+          "zone": "aubagne",
+          "type": "gecko",
+          "health": 62,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-3": {
+          "zone": "aubagne",
+          "type": "giantAnt",
+          "health": 73,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-4": {
+          "zone": "aubagne",
+          "type": "ledgerHound",
+          "health": 122,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-5": {
+          "zone": "aubagne",
+          "type": "feralReaver",
+          "health": 150,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-6": {
+          "zone": "aubagne",
+          "type": "mirelurkHatchling",
+          "health": 46,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-7": {
+          "zone": "aubagne",
+          "type": "raider",
+          "health": 72,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-8": {
+          "zone": "aubagne",
+          "type": "molerat",
+          "health": 44,
+          "leg": 0,
+          "arm": 0
+        },
+        "relay_cold|relay_cold:security": {
+          "zone": "relay_cold",
+          "type": "feral",
+          "health": 65,
+          "leg": 0,
+          "arm": 0
+        }
+      },
+      "caches": {},
+      "task": {
+        "accepted": false,
+        "kit": false,
+        "beds": false,
+        "consent": null,
+        "relay": false,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "observed": {}
+    },
+    "v023": {
+      "schema": 1,
+      "goat": {
+        "answers": [],
+        "tags": [],
+        "completed": false,
+        "method": null
+      },
+      "critical": 0,
+      "history": [
+        {
+          "speaker": "Baptiste Arnaud",
+          "text": "J’ai de l’eau, des munitions, des pièces d’arme et parfois de quoi mieux s’équiper. Les prix changent avec les routes, votre réputation et le contenu de votre dossier.",
+          "role": "MARCHAND DE PIÈCES",
+          "zone": "aubagne",
+          "choice": false
+        },
+        {
+          "speaker": "Camille",
+          "text": "Ouvrir le comptoir.",
+          "role": "",
+          "zone": "aubagne",
+          "choice": true
+        },
+        {
+          "speaker": "Sofia Neri",
+          "text": "Un Stimpak peut refermer une plaie alors qu’un bras reste inutilisable. Regardez les six régions dans votre Pip-Boy. Je peux traiter les traumatismes ici, mais je ne vais pas prétendre qu’un bandage retire les radiations.",
+          "role": "INFIRMIÈRE DES QUAIS",
+          "zone": "relay_cold",
+          "choice": false
+        },
+        {
+          "speaker": "Camille",
+          "text": "Parler des consommables, de la tolérance et du sevrage.",
+          "role": "",
+          "zone": "relay_cold",
+          "choice": true
+        }
+      ],
+      "seen": {
+        "c54-sofia": true
+      },
+      "checks": {},
+      "quest": {
+        "accepted": false,
+        "evidence": {
+          "manifest": false,
+          "register": false,
+          "protocol": false
+        },
+        "witness": {
+          "diane": false,
+          "rayan": false
+        },
+        "trust": 0,
+        "ending": null,
+        "rewarded": false,
+        "deliveries": {
+          "transit_depot": false,
+          "traverse_archives": false,
+          "mooring_station": false
+        },
+        "tracked": false
+      },
+      "consequences": []
+    },
+    "v025": {
+      "schema": 1,
+      "limbs": {}
+    },
+    "v026": {
+      "schema": 1,
+      "containers": {
+        "relay_cold|salvage": {
+          "zone": "relay_cold",
+          "id": "salvage",
+          "kind": "chest",
+          "title": "Bac de récupération de l’atelier",
+          "pos": [
+            -6,
+            0,
+            10
+          ],
+          "items": {
+            "emptyInjector": 4,
+            "instrumentTray": 1
+          },
+          "initial": {
+            "emptyInjector": 4,
+            "instrumentTray": 1
+          },
+          "gear": {},
+          "owned": false,
+          "permission": false,
+          "reported": false,
+          "unlocked": true,
+          "visited": false,
+          "pinWear": 0,
+          "lock": 0,
+          "actor": null
+        }
+      },
+      "vendorGear": {},
+      "marked": {},
+      "carry": false,
+      "transactions": [
+        {
+          "text": "Mentats — 31 capsules",
+          "zone": "aubagne",
+          "kind": "acheter"
+        },
+        {
+          "text": "Mentats — 31 capsules",
+          "zone": "aubagne",
+          "kind": "acheter"
+        },
+        {
+          "text": "Mentats — 31 capsules",
+          "zone": "aubagne",
+          "kind": "acheter"
+        }
+      ],
+      "quest": {
+        "accepted": false,
+        "informed": false,
+        "inspected": {
+          "transit_depot": false,
+          "traverse_archives": false,
+          "mooring_station": false
+        },
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      }
+    },
+    "v027": {
+      "schema": 1,
+      "theme": "green",
+      "scanlines": true,
+      "backgroundTape": false,
+      "tagged": [],
+      "read": {},
+      "documents": {},
+      "pin": null,
+      "last": {
+        "tab": "data",
+        "sub": "system"
+      }
+    },
+    "v028": {
+      "schema": 1,
+      "limbs": {
+        "head": 100,
+        "torso": 100,
+        "leftArm": 100,
+        "rightArm": 100,
+        "leftLeg": 100,
+        "rightLeg": 100
+      },
+      "hits": 0,
+      "lamp": false,
+      "history": [
+        {
+          "text": "Sofia : effets actifs, tolérance et dépendances traités · 60 capsules. PV, radiations et blessures non soignés.",
+          "kind": "soin"
+        }
+      ],
+      "quest": {
+        "accepted": false,
+        "plan": false,
+        "isolated": false,
+        "rewarded": false,
+        "ending": null,
+        "tracked": false
+      },
+      "game": {
+        "unlocked": false,
+        "levels": {}
+      }
+    },
+    "v029": {
+      "schema": 1,
+      "elapsed": 119.99999999999532,
+      "terminals": {},
+      "credentials": {
+        "d4": false,
+        "a2": false,
+        "q8": false
+      },
+      "quest": {
+        "accepted": false,
+        "proof": {
+          "route": false,
+          "filter": false,
+          "clause": false
+        },
+        "contact": false,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "noiseCount": 0
+    },
+    "v030": {
+      "schema": 1,
+      "active": false,
+      "core": null,
+      "spares": [],
+      "rigs": {},
+      "vendorRigs": {},
+      "hitIndex": 0,
+      "travelDistance": 0,
+      "spent": 0,
+      "quest": {
+        "accepted": false,
+        "servo": false,
+        "plan": false,
+        "isolated": false,
+        "restored": false,
+        "coreTaken": false,
+        "trial": null,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "history": []
+    },
+    "v035": {
+      "schema": 1,
+      "activeSlot": 0,
+      "career": {
+        "ngPlus": 0,
+        "creditsSeen": false,
+        "chaptersViewed": {},
+        "operationFirsts": {},
+        "operationRecords": {}
+      },
+      "operations": {
+        "active": null,
+        "totalCompleted": 0
+      },
+      "hub": {
+        "returns": 0,
+        "lastRest": null,
+        "visited": false
+      },
+      "prologue": {
+        "started": false,
+        "titleSeen": false,
+        "stage": 0,
+        "locker": false,
+        "clinic": false,
+        "filter": false,
+        "breakfast": false,
+        "records": false,
+        "briefed": false,
+        "loadout": null,
+        "complete": false
+      },
+      "session": {
+        "startedAt": 1792918749872,
+        "lastRecap": null
+      }
+    },
+    "v036": {
+      "schema": 1,
+      "preferRelay": true,
+      "autoMacroTransfer": true,
+      "lastMacro": null,
+      "lastLatLon": null,
+      "onlineTilesLoaded": 0,
+      "localTilesLoaded": 0,
+      "cacheTilesLoaded": 0
+    },
+    "v037": {
+      "schema": 1,
+      "preferCloudCache": true,
+      "autoPrefetch": true,
+      "prefetchAhead": 2,
+      "cacheBudgetMB": 256,
+      "cloudTilesLoaded": 0,
+      "directTilesLoaded": 0,
+      "packTilesLoaded": 0,
+      "localCacheHits": 0,
+      "lastCloudCheck": null
+    },
+    "v038": {
+      "schema": 1,
+      "lastCoverage": null,
+      "fullVectorCacheConfirmed": false,
+      "emptyTilesLoaded": 0,
+      "dataTilesLoaded": 0,
+      "verifiedAt": null
+    },
+    "v039": {
+      "schema": 1,
+      "terrainCloudConfirmed": false,
+      "lastTerrainCheck": null,
+      "terrainLoads": 0,
+      "terrainPackHits": 0,
+      "terrainCacheHits": 0,
+      "terrainCloudHits": 0,
+      "terrainErrors": 0,
+      "lastTerrainMacro": null,
+      "lastTerrainSource": null
+    },
+    "v040": {
+      "schema": 1,
+      "activeCorridor": null,
+      "corridorProgress": 0,
+      "corridorPhase": "idle",
+      "corridorBreaks": 0,
+      "corridorCompleted": {},
+      "corridorStartedAt": null,
+      "corridorLastLatLon": null,
+      "lastCorridorCheck": null,
+      "terrainSeamChecks": 0,
+      "stitchedBuildings": 0
+    },
+    "v041": {
+      "schema": 1,
+      "lastPackCheck": null,
+      "localPackComplete": true,
+      "localCoordinates": 5884,
+      "localTerrain": 0,
+      "lastBenchmark": "2026-10-25T08:58:37.224Z"
+    },
+    "v042": {
+      "schema": 1,
+      "discovered": {},
+      "cleared": {},
+      "visited": {},
+      "tracked": null,
+      "activeContract": null,
+      "contracts": {},
+      "siteKills": {},
+      "eliteKills": {},
+      "bossKills": {},
+      "regional": {},
+      "activeInterior": null,
+      "returnPoint": null,
+      "discoveries": 0,
+      "clears": 0,
+      "filter": "all",
+      "lastSite": null,
+      "lastUpdate": null
+    },
+    "geo": {
+      "return": null,
+      "pendingTarget": null,
+      "lastMacro": "geo_huveaune",
+      "visitedMacros": {},
+      "surfaceVisited": {},
+      "surfaceActions": {},
+      "lastSurface": null,
+      "discoveryCount": 0,
+      "mapVersion": "0.50.0",
+      "strict": true,
+      "tileCoverage": {}
+    },
+    "v046": {
+      "schema": 1,
+      "frame": "lambert93-central",
+      "placements": {},
+      "lore": {
+        "done": {},
+        "side": null,
+        "petanque": {
+          "played": 0,
+          "wins": 0
+        }
+      },
+      "lastLocation": null
+    },
+    "v049": {
+      "schema": 1,
+      "actors": {}
+    },
+    "v050Campaign": {
+      "schema": 1,
+      "route": null,
+      "gateway": null,
+      "returnPoint": null,
+      "workshopVisits": 0
+    },
+    "v050Wasteland": {
+      "schema": 1,
+      "kitOwned": false,
+      "camp": null,
+      "restHours": 0,
+      "crafts": 0,
+      "aid": {}
+    },
+    "v050City": {
+      "schema": 2,
+      "active": null,
+      "returnPoint": null,
+      "visits": {},
+      "documents": [],
+      "documentOmissions": 0,
+      "documentWarnings": []
+    },
+    "v053Lore": {
+      "schema": 1,
+      "quests": {
+        "cendres": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "formulaire": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "signaux": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "lazaret": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        }
+      },
+      "journal": []
+    },
+    "v053Iconic": {
+      "schema": 1,
+      "found": {},
+      "read": {},
+      "effects": {},
+      "drinks": 0
+    },
+    "v053Bestiary": {
+      "schema": 1,
+      "assignments": {}
+    },
+    "v054Chems": {
+      "schema": 1,
+      "elapsed": 119.99999999999532,
+      "agents": {
+        "jet": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "buffout": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "mentats": {
+          "uses": 3,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "psycho": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        }
+      },
+      "stocked": {
+        "aubagne": true
+      },
+      "treatments": 1,
+      "recoveries": 0
+    }
+  },
+  "stage": "complete",
+  "browser_closed": true
+}

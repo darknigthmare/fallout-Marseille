@@ -1,0 +1,59 @@
+OK Coordinated production HTML is installed
+OK Coordinated architectural atlas is installed
+OK Production HTML includes the current source: src/v050/06_architecture_sources.js
+OK Production HTML includes the current source: src/v050/07_facades.js
+OK Production HTML includes the current source: src/v050/08_city_interiors.js
+OK Official site atlas has exactly 12 distinct attributed targets
+OK Source building partition matches its acquisition SHA
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400964
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400278
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400965
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400280
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400987
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400988
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400282
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400986
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400985
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400287
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400288
+OK Source building partition matches its acquisition SHA
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000356609909
+OK Joinery QA reference matches its frozen SHA-256: tests/expansion/fixtures/facades_joinery_cameras.json
+OK Joinery QA reference matches its frozen SHA-256: tests/expansion/fixtures/facades_joinery_ign.json
+OK Joinery QA reference matches its frozen SHA-256: tests/expansion/facades_joinery.cjs
+OK Camera references pin the shipped facade module, reference generator and exact attributed IGN fixtures
+OK Native joinery case is the unchanged acquired and attributed IGN object: residential
+OK Native joinery case is the unchanged acquired and attributed IGN object: commercial
+STAGE actual_server_audit
+OK Actual GameHandler audits the installed municipal sources
+OK Actual local-pack audit is complete before native menu probes
+OK Native HTTP document equals frozen production bytes
+OK Runtime reads only real context labels, with zero asserted architectural plans
+LOAD {"phase": "loading", "done": 0, "total": 48, "tiles": 0}
+OK Actual geographic world is outside the synthetic lab
+STAGE native_authored_joinery
+OK Requested real sector loads successfully
+OK Native joinery reference has a measured view or explicitly reported source occlusion: residential
+OK Joinery target retains the exact acquired source geometry and metric component: residential
+OK Native authored facade is rendered with explicit invented provenance: residential
+OK Actual native joinery respects the fixed 512-quad building budget: residential
+OK Exported native fittings reserve complete fragment sets and account for every omission: residential
+OK Reference residential building honestly omits an unavailable native entrance
+OK Actual residential facade renders complete invented louvered pairs within its native budget
+OK Pinned shutter-view hint resolves to an actual native residential bay
+FAIL Bounded scout finds a different actually published residential panelled entry
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py", line 866, in main
+    joinery_stage(joinery_cases)
+  File "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py", line 699, in joinery_stage
+    row['additionalPanelledEntry'] = scout_panelled_entry(case)['reference']
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py", line 549, in scout_panelled_entry
+    check('Bounded scout finds a different actually published residential panelled entry', selected is not None,
+  File "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py", line 264, in check
+    raise AssertionError(name)
+AssertionError: Bounded scout finds a different actually published residential panelled entry
+
+FAIL Native architecture pilot completes
+OK Frozen HTML, sources, atlas, selected geographic chunks and city indices remain unchanged
+{"passed": 41, "failed": 2, "total": 43, "stage": "native_authored_joinery"}

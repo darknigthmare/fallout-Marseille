@@ -1,0 +1,7 @@
+{
+  "status": "failed-at-final-harness-dependency-check",
+  "reason": "The concurrently maintained architecture pilot main changed while this pilot ran. All53 programme/runtime checks passed, but the entire imported helper module was pinned too broadly; the real return code remains1. Preserve this attempt and rerun with specific helper definition pins.",
+  "productionInputsUnchanged": true,
+  "browserClosed": true,
+  "processExitCode": 1
+}

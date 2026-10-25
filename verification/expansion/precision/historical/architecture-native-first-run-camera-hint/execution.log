@@ -1,0 +1,90 @@
+OK Coordinated production HTML is installed
+OK Coordinated architectural atlas is installed
+OK Production HTML includes the current source: src/v050/06_architecture_sources.js
+OK Production HTML includes the current source: src/v050/07_facades.js
+OK Production HTML includes the current source: src/v050/08_city_interiors.js
+OK Official site atlas has exactly 12 distinct attributed targets
+OK Source building partition matches its acquisition SHA
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400964
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400278
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400965
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400280
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400987
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400988
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400282
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400986
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400985
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400287
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000273400288
+OK Source building partition matches its acquisition SHA
+OK Installed context retains the exact immutable footprint and attributed prudent label: BATIMENT0000000356609909
+OK Joinery QA reference matches its frozen SHA-256: tests/expansion/fixtures/facades_joinery_cameras.json
+OK Joinery QA reference matches its frozen SHA-256: tests/expansion/fixtures/facades_joinery_ign.json
+OK Joinery QA reference matches its frozen SHA-256: tests/expansion/facades_joinery.cjs
+OK Camera references pin the shipped facade module, reference generator and exact attributed IGN fixtures
+OK Native joinery case is the unchanged acquired and attributed IGN object: residential
+OK Native joinery case is the unchanged acquired and attributed IGN object: commercial
+STAGE actual_server_audit
+OK Actual GameHandler audits the installed municipal sources
+OK Actual local-pack audit is complete before native menu probes
+OK Native HTTP document equals frozen production bytes
+OK Runtime reads only real context labels, with zero asserted architectural plans
+LOAD {"phase": "loading", "done": 0, "total": 48, "tiles": 0}
+OK Actual geographic world is outside the synthetic lab
+STAGE real_site_labels_1
+OK Requested real sector loads successfully
+OK Runtime source geometry is intact: BATIMENT0000000273400964
+OK Actual scene carries the attributed site label: BATIMENT0000000273400964
+OK Runtime source geometry is intact: BATIMENT0000000273400278
+OK Actual scene carries the attributed site label: BATIMENT0000000273400278
+OK Runtime source geometry is intact: BATIMENT0000000273400965
+OK Actual scene carries the attributed site label: BATIMENT0000000273400965
+OK Runtime source geometry is intact: BATIMENT0000000273400280
+OK Actual scene carries the attributed site label: BATIMENT0000000273400280
+OK Runtime source geometry is intact: BATIMENT0000000273400987
+OK Actual scene carries the attributed site label: BATIMENT0000000273400987
+OK Runtime source geometry is intact: BATIMENT0000000273400988
+OK Actual scene carries the attributed site label: BATIMENT0000000273400988
+OK Runtime source geometry is intact: BATIMENT0000000273400282
+OK Actual scene carries the attributed site label: BATIMENT0000000273400282
+OK Runtime source geometry is intact: BATIMENT0000000273400986
+OK Actual scene carries the attributed site label: BATIMENT0000000273400986
+OK Runtime source geometry is intact: BATIMENT0000000273400985
+OK Actual scene carries the attributed site label: BATIMENT0000000273400985
+OK Runtime source geometry is intact: BATIMENT0000000273400287
+OK Actual scene carries the attributed site label: BATIMENT0000000273400287
+OK Runtime source geometry is intact: BATIMENT0000000273400288
+OK Actual scene carries the attributed site label: BATIMENT0000000273400288
+STAGE real_site_labels_2
+OK Requested real sector loads successfully
+OK Runtime source geometry is intact: BATIMENT0000000356609909
+OK Actual scene carries the attributed site label: BATIMENT0000000356609909
+OK All 12 official site contexts are applied without geometry rejection
+STAGE curved_source_facade
+OK Requested real sector loads successfully
+OK Curved source building retains its complete original geometry
+OK Dense segmented real outline receives actual rendered facade details
+OK Curved facade inventory page advances or terminates
+OK Curved facade complete inventory finishes within the bounded pilot
+OK Curved openings declare source-segment spans without changing metric bounds
+OK Every curved bay follows bounded intervals on the unchanged individual source edges
+OK Accessible curved source building enters through actual E-key portal
+OK Actual interior exposes a landing interaction
+OK Diagnostic landing placement is clear of production colliders
+OK Visible interaction identifies the actual landing
+LOAD {"phase": "preparing", "done": 34, "total": 34, "tiles": 0}
+STAGE native_authored_joinery
+OK Requested real sector loads successfully
+FAIL Measured near-source street placement makes the joinery target eligible for close render detail: residential
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py", line 800, in main
+    joinery_stage(joinery_cases)
+  File "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py", line 492, in joinery_stage
+    check('Measured near-source street placement makes the joinery target eligible for close render detail: ' + role,
+  File "/workspace/fallout-Marseille/tests/expansion/architecture_native_browser.py", line 264, in check
+    raise AssertionError(name)
+AssertionError: Measured near-source street placement makes the joinery target eligible for close render detail: residential
+
+FAIL Native architecture pilot completes
+OK Frozen HTML, sources, atlas, selected geographic chunks and city indices remain unchanged
+{"passed": 71, "failed": 2, "total": 73, "stage": "native_authored_joinery"}

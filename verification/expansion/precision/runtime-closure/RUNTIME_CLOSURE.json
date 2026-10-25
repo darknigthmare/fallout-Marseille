@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "name": "Packaged HTTP handler serves the exact production HTML",
+      "ok": true
+    },
+    {
+      "name": "Optional terrain route works with packaged stdlib helpers and no installed source atlas",
+      "ok": true
+    },
+    {
+      "name": "Native terrain helper is imported from the isolated distribution toolset",
+      "ok": true
+    }
+  ],
+  "passed": 3,
+  "failed": 0,
+  "total": 3,
+  "scope": "Real HTTP in a fresh stdlib-only distribution of the playable Python helpers. Empty optional atlas is explicit; full terrain restoration is proved separately.",
+  "sourceHashes": {
+    "tools/package_v050.py": "5c9e969079471b6b820da92ae012baa8b4339fce8d23d985105e0dfb13938603",
+    "index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80",
+    "tools/prepare_local_pack_v050.py": "99b0ea54ceb875ca3f840ba48789bcbf678d13af1545b71d0ac8007323d9a5b7",
+    "tools/validate_real_map_v046.py": "b758b002e26b194afa590075076acd718de638b6cf1f776f612f8e7d01a3105a",
+    "tools/install_local_pack_v041.py": "13131719c53f4d72441139808a13df8be221f4f317110efb72be6bec53f070d6",
+    "tools/install_real_map_v038.py": "fb5f5b3fe6194ba0722c28f7fe8728184e2def9dada711e40b5a88d584280242",
+    "tools/install_real_map_v039.py": "937bed91d6f13d9f07971c54fe2c221bfff5158788641770487a3b5a2c6d61cf",
+    "tools/install_terrain_v039.py": "c31632b5c6934a6deb9aeb57cf2317bad20f51afa7115c5bca07ea9fdba2eb5c",
+    "tools/mvt_audit_v036.py": "4e04441678c230b907d27f960d9c81cf36862e31d324664dd03b6468e1bb8979",
+    "tools/benchmark_map_v041.py": "e39c70c94bcd1f830283731bbc6a6dd7c6416141a23f57d9903cf10d86f86770",
+    "tools/audit_real_map_v039.py": "9f539600a1e2f11339ba3078d2e263f2ac1cad2dbe001ff2dd5bce0cefa431fa",
+    "tools/audit_real_map_v038.py": "e1b4d839eceedf8ab528eaba189ad556561f8d1d5aec53547921eba46c8fb77a",
+    "tools/audit_terrain_v039.py": "7d57d8586221d71e91527ad958a5caf0ef1af910a86df08c8188f232a1451361",
+    "tools/audit_corridors_v040.py": "6a0077f5147e71468a60f66b4b694ea8b20cfd048bffab40e3127f69918ba834",
+    "tools/world_source_bundle.py": "96f64c2f8e0eba1588ab69c276fd965df722d4896738ec73b2c5e017d83fe44f",
+    "tools/world_sources.py": "eb2a24b5c7f86ea4f4b76c90dc1a817256b30904a72094524ad2eabfefdfa3e2",
+    "tools/city_sources.py": "aab465f8dd47f71710e86689e61a06f0b85e02d03a8e2aebcc0b39b44c50cf3d",
+    "tools/city_water_sources.py": "95964d2f5cc6012688652b994f43472a5dda5938976ae7e3592938f8e63795d6",
+    "tools/precise_terrain_sources.py": "345b6ceae9d95a988caa030b2d75af000be5fdaff11d0d5c055b7cda0c49428b",
+    "tools/acquire_city_world.py": "f4316428e86ce411c38c189ff39184c03ad64ddfda8259569f32e360c2d6d354",
+    "tools/acquire_public_world.py": "5d7c3428f0eec382020fb22f9ab51c2db26b60673fe1b201bb630f317c3fcfea"
+  },
+  "html_sha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+  "runnerSha256": "ab780a4cfcba19d0784a88fd06aa7e01f58de837bad9e00d06b60018a4569721",
+  "exitCode": 0,
+  "stage": "complete"
+}

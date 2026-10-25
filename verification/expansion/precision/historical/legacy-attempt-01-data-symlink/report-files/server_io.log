@@ -1,0 +1,11 @@
+Sources géographiques fournies : preserved
+Vérification des sources de Marseille fournies…
+Sources de Marseille fournies : preserved
+Traceback (most recent call last):
+  File "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/tools/serve_game.py", line 163, in <module>
+    main()
+  File "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/tools/serve_game.py", line 150, in main
+    prepare_precise_sources(ROOT)
+  File "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/tools/precise_terrain_sources.py", line 73, in prepare_if_bundled
+    raise ValueError('Native terrain target escapes the selected installation root')
+ValueError: Native terrain target escapes the selected installation root

@@ -246,11 +246,46 @@ const MistralFacades=(()=>{
   for(let n=0;n<attempts&&openings.length<maxOpenings;n++){const slot=n%sampleCount,phase=Math.floor(n/sampleCount),index=Math.min(p.potentialOpenings-1,Math.floor(slot*p.potentialOpenings/sampleCount)+phase);if(visited.has(index))continue;visited.add(index);attempted++;const o=candidateAt(p,index);if(o)openings.push(o);}
   return{...p,openings,openingInventory:inventory(p),detailCoverage:{budgeted:attempted<p.potentialOpenings||p.fixed.length>maxOpenings,potentialOpenings:p.potentialOpenings,attempted,maxOpenings,retainedOpenings:openings.length,completeInventorySlots:p.totalSlots,documentedCoverage:{...p.documentedCoverage}}};
  }
+ // These are authored fittings inside the metric opening, never a survey of
+ // its joinery. IGN usage chooses a plausible family; roof/material codes and
+ // database creation dates cannot establish an architectural period or detail.
+ function authoredJoinery(d,o,e){
+  if(o.provenance==='documented')return{variant:'documentary-envelope-only',parts:[],reason:'documentary-joinery-not-supplied'};
+  const parts=[],w=o.width,h=o.height,reverse=!e.surfaceId&&(e.a[0]>e.b[0]||e.a[0]===e.b[0]&&e.a[1]>e.b[1]),put=(x0,y0,x1,y1,material,offset=.049)=>{if(x1>x0&&y1>y0)parts.push({x0:o.offset+(reverse?w-x1:x0),y0:o.bottom+y0,x1:o.offset+(reverse?w-x0:x1),y1:o.bottom+y1,material,offset});};
+  let variant;
+  if(o.type==='door'){
+   const leaves=w>=1.65?2:1,glazed=d.style==='commercial'||d.style==='civic',service=d.style==='industrial'||d.typology==='annexe'&&d.styleBasis==='invented-fallback',leaf=w/leaves;
+   variant=(glazed?'glazed-entry':service?'service-entry':'panelled-entry')+(leaves===2?'-double':'-single');
+   for(let i=0;i<leaves;i++){
+    const x=i*leaf,inset=Math.min(.10,leaf*.12),lo=x+inset,hi=x+leaf-inset;
+    put(x+.025,.045,x+leaf-.025,h-.045,'paint',.036);
+    put(lo,.16,hi,h*.42,'recess',.043);
+    put(lo,h*.53,hi,h-.16,glazed?'glass':'recess',.043);
+    put(lo,.16,hi,.19,'paint',.052);put(lo,h*.53,hi,h*.53+.03,'paint',.052);
+    const handle=i===0?x+leaf-Math.min(.12,leaf*.17):x+Math.min(.12,leaf*.17),handleY=Math.min(1.02,h*.48);
+    put(handle-.025,handleY-.10,handle+.025,handleY+.10,'iron',.057);
+    put(handle-.012,handleY-.055,handle+.012,handleY+.055,'trim',.068);
+    if(service)for(let rail=1;rail<=3;rail++){const y=h*(.55+rail*.10);put(lo,y,hi,y+.025,'paint',.054);}
+   }
+   if(leaves===2)put(w/2-.025,.045,w/2+.025,h-.045,'iron',.058);
+  }else if(o.type==='shopfront'){
+   variant='shopfront-transom';put(w/2-.025,0,w/2+.025,h,'iron');
+   if(h>=1.2)put(0,h*.78,w,h*.78+.04,'iron',.052);
+   put(0,0,w,Math.min(.13,h*.12),'paint',.045);
+  }else{
+   variant=d.style==='industrial'?'workshop-grid':d.style==='religious'?'nave-glazing':'casement-window';
+   const bars=d.style==='industrial'&&w>=1.8?2:1;
+   for(let i=1;i<=bars;i++){const x=w*i/(bars+1);put(x-.018,0,x+.018,h,'trim');}
+   if(h>=1.1)put(0,h*.48,w,h*.48+.032,'trim',.052);
+   if(d.style==='religious'&&h>=2.2)put(0,h*.72,w,h*.72+.032,'trim',.052);
+  }
+  return{variant,parts,reason:null};
+ }
  function geometry(draw,options={}){
   const maxQuads=budget(options.maxQuads,512,8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads*(detail?.60:.85))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
   const groups=new Map(),palette=PALETTES[plan.style],shade=((plan.seed%21)-10)/550;
-  const material=name=>name==='wall'?palette.wall.map(v=>limit(v+shade,0,1)):palette[name]||palette.trim;
-  let quads=0,openingCount=0;const renderedOpenings=[],deferredOpenings=[],byEdge=new Map(plan.edges.map(e=>[edgeKey(e),e])),bySurface=new Map(plan.curves.map(e=>[e.surfaceId,e]));
+  const material=name=>name==='wall'?palette.wall.map(v=>limit(v+shade,0,1)):name==='paint'?palette.shutter.map(v=>limit(v*1.14,0,1)):name==='louver'?palette.shutter.map(v=>v*.68):name==='recess'?palette.shutter.map(v=>v*.48):palette[name]||palette.trim;
+  let quads=0,openingCount=0;const renderedOpenings=[],deferredOpenings=[],joineryDetails=[],byEdge=new Map(plan.edges.map(e=>[edgeKey(e),e])),bySurface=new Map(plan.curves.map(e=>[e.surfaceId,e]));
   function fragment(e,x0,y0,x1,y1,name,offset){if(quads>=maxQuads||x1<=x0||y1<=y0)return false;let g=groups.get(name);if(!g){g={vertices:[],faces:[]};groups.set(name,g);}const at=(x,y)=>[e.a[0]+e.tangent[0]*x+e.normal[0]*offset,plan.baseY+y,e.a[1]+e.tangent[1]*x+e.normal[1]*offset],k=g.vertices.length;g.vertices.push(at(x0,y0),at(x1,y0),at(x1,y1),at(x0,y1));g.faces.push([k,k+1,k+2],[k,k+2,k+3]);quads++;return true;}
   function quad(e,x0,y0,x1,y1,name,offset=.018){
    if(!e||x1<=x0||y1<=y0)return false;if(!e.pieces)return fragment(e,x0,y0,x1,y1,name,offset);
@@ -266,21 +301,41 @@ const MistralFacades=(()=>{
   // Glazing/door faces on every retained facade and storey precede decoration.
   for(const {o,e}of retained)if(quad(e,o.offset,o.bottom,o.offset+o.width,o.bottom+o.height,o.type==='door'?'iron':'glass',.027)){openingCount++;renderedOpenings.push({...o});}
   const baseQuads=quads;
+  // A fitting is indivisible even where its rectangles cross hundreds of
+  // original micro-segments. Failed reservations emit no fragment at all.
+  function fitting(o,index,kind,variant,parts,reason=null,allocation=maxQuads){
+   const e=openingSurface(o,byEdge,bySurface),cost=parts.reduce((n,p)=>n+surfaceCount(e,p.x0,p.x1),0),record={openingIndex:index,kind,variant,provenance:'invented',basis:'source-usage-and-metric-opening',styleBasis:plan.styleBasis,partCount:parts.length,requiredQuads:cost,allocationLimit:allocation,rendered:false,reason,meshes:[]};
+   if(!reason&&cost&&quads+cost<=allocation){const starts=new Map([...groups].map(([name,g])=>[name,g.vertices.length]));for(const p of parts)quad(e,p.x0,p.y0,p.x1,p.y1,p.material,p.offset);for(const[name,g]of groups){const firstVertex=starts.get(name)||0;if(g.vertices.length>firstVertex)record.meshes.push({material:name,firstVertex,vertexCount:g.vertices.length-firstVertex});}record.rendered=true;record.reason=null;}
+   else if(!reason)record.reason=cost?quads+cost<=maxQuads?'shutter-budget-reservation':'quad-budget':'unsupported-source-surface';
+   joineryDetails.push(record);return record.rendered;
+  }
   if(detail){
-   for(const e of plan.edges){if(quads>=maxQuads)break;if(plan.height>3)quad(e,0,Math.max(.1,plan.height-.20),e.length,plan.height-.05,'trim',.024);}
-   for(const o of renderedOpenings){const e=openingSurface(o,byEdge,bySurface),x=o.offset,y=o.bottom,w=o.width,h=o.height,trim=Math.min(.09,w*.075,h*.06),lo=Math.max(0,x-trim),hi=Math.min(e.length,x+w+trim),bottom=Math.max(0,y-trim),top=Math.min(plan.height,y+h+trim);if(quads>=maxQuads)break;
-    quad(e,lo,bottom,x,top,'trim',.042);quad(e,x+w,bottom,hi,top,'trim',.042);quad(e,x,y+h,x+w,top,'trim',.042);if(y>0)quad(e,x,bottom,x+w,y,'trim',.042);
-    if(o.type==='window'&&plan.style==='residential'&&o.provenance!=='documented'){const sw=Math.min(.30,w*.28);if(x-sw>.08)quad(e,x-sw,y,x-.03,y+h,'shutter',.038);if(x+w+sw<e.length-.08)quad(e,x+w+.03,y,x+w+sw,y+h,'shutter',.038);}
-    if(o.type==='window'&&y>.4)quad(e,lo,Math.max(0,y-.13),hi,y-.06,'trim',.075);
-    if(o.type==='shopfront'&&o.provenance==='invented'){quad(e,x+w/2-.025,y,x+w/2+.025,y+h,'iron',.045);if(top+.18<plan.height)quad(e,lo,top+.04,hi,top+.18,'shutter',.033);}
+   for(let i=0;i<renderedOpenings.length;i++){const o=renderedOpenings[i],kit=authoredJoinery(plan,o,openingSurface(o,byEdge,bySurface));fitting(o,i,'joinery',kit.variant,kit.parts,kit.reason);}
+   const shutterEligible=o=>o.type==='window'&&plan.style==='residential'&&(plan.typology==='stacked'||plan.typology==='annexe'&&plan.styleBasis!=='invented-fallback')&&o.provenance==='invented',surroundLimit=maxQuads-(renderedOpenings.some(shutterEligible)?Math.min(128,Math.ceil((maxQuads-quads)*.4)):0);
+   for(let i=0;i<renderedOpenings.length;i++){const o=renderedOpenings[i],e=openingSurface(o,byEdge,bySurface),x=o.offset,y=o.bottom,w=o.width,h=o.height,trim=Math.min(.09,w*.075,h*.06),lo=Math.max(0,x-trim),hi=Math.min(e.length,x+w+trim),bottom=Math.max(0,y-trim),top=Math.min(plan.height,y+h+trim),parts=[],add=(x0,y0,x1,y1,offset=.042)=>{if(x1>x0&&y1>y0)parts.push({x0,y0,x1,y1,material:'trim',offset});};
+    add(lo,bottom,x,top);add(x+w,bottom,hi,top);add(x,y+h,x+w,top);if(y>0)add(x,bottom,x+w,y);if(o.type==='window'&&y>.4)add(lo,Math.max(0,y-.13),hi,y-.06,.075);
+    fitting(o,i,'surround','metric-opening-surround',parts,null,o.type==='door'?maxQuads:surroundLimit);
    }
+   // Open persiennes occupy the wall beside a bay, never its passage/glazing.
+   // Check the actual segmented source intervals against all retained and all
+   // documented openings, including known bays absent from this render LOD.
+   const occupied=new Map();for(const o of [...renderedOpenings,...plan.fixed.filter(o=>o.provenance==='documented')]){const e=openingSurface(o,byEdge,bySurface);if(!e)continue;for(const s of sourceSpans(e,o.offset,o.width)){const key=edgeKey(s);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({opening:o,offset:s.offset,end:s.offset+s.width,bottom:o.bottom,top:o.bottom+o.height});}}
+   const free=(o,e,x0,x1)=>sourceSpans(e,x0,x1-x0).every(s=>(occupied.get(edgeKey(s))||[]).every(other=>other.opening===o||other.top<=o.bottom+EPS||other.bottom>=o.bottom+o.height-EPS||other.end<=s.offset+EPS||other.offset>=s.offset+s.width-EPS));
+   const shutterOrder=renderedOpenings.map((o,i)=>({o,i})).filter(({o})=>shutterEligible(o)).sort((a,b)=>a.o.bottom-b.o.bottom||a.i-b.i);
+   for(const{o,i}of shutterOrder){const e=openingSurface(o,byEdge,bySurface),x=o.offset,y=o.bottom,w=o.width,h=o.height,sw=Math.min(.55,w*.47),ranges=[[x-sw-.035,x-.035],[x+w+.035,x+w+sw+.035]],parts=[];let reason=null;
+    if(ranges.some(([a,b])=>a<.08||b>e.length-.08))reason='insufficient-source-wall-beside-bay';else if(ranges.some(([a,b])=>!free(o,e,a,b)))reason='adjacent-opening-or-shutter-conflict';
+    if(!reason)for(const[a,b]of ranges){parts.push({x0:a,y0:y,x1:b,y1:y+h,material:'shutter',offset:.038});const slats=h>=1.1?6:4;for(let n=1;n<=slats;n++){const at=y+h*n/(slats+1),thickness=Math.min(.055,h/(slats+1)*.3);parts.push({x0:a+.025,y0:at-thickness/2,x1:b-.025,y1:at+thickness/2,material:'louver',offset:.054});}}
+    if(fitting(o,i,'shutters','open-louvered-pair',parts,reason))for(const[a,b]of ranges)for(const s of sourceSpans(e,a,b-a)){const key=edgeKey(s);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({opening:o,offset:s.offset,end:s.offset+s.width,bottom:y,top:y+h});}
+   }
+   for(const e of plan.edges){if(quads>=maxQuads)break;if(plan.height>3)quad(e,0,Math.max(.1,plan.height-.20),e.length,plan.height-.05,'trim',.024);}
    // The same floor schedule as interior08 aligns a sloping street entrance.
    for(let floor=1;floor<plan.levelElevations.length&&quads<maxQuads;floor++){const y=plan.levelElevations[floor];for(const e of plan.edges){if(quads>=maxQuads)break;quad(e,0,Math.max(0,y-.075),e.length,Math.min(plan.height,y-.025),'trim',.022);}}
   }
   const tile=draw.v046Tile||draw.geoTile||'facade:'+plan.id,center=[(plan.bounds.minX+plan.bounds.maxX)/2,plan.baseY+plan.height/2,(plan.bounds.minZ+plan.bounds.maxZ)/2];
-  const draws=[...groups].map(([name,g])=>({mesh:'geoSurface',vertices:g.vertices,faces:g.faces,pos:center.slice(),scale:[1,1,1],color:material(name),alpha:1,revision:0,v046Tile:tile,v046GeometryId:'facade:'+plan.id+':'+name,id:'facade:'+plan.id+':'+name,v050Facade:true,geoLayer:'facade',facadeBuildingId:plan.id,facadeProvenance:plan.provenance,sourceProvenance:plan.facadeDocument?{source:plan.facadeDocument.source,license:plan.facadeDocument.license,attribution:plan.facadeDocument.attribution,acquiredAt:plan.facadeDocument.acquiredAt}:null,renderOffsetMeters:.075}));
-  const bytes=draws.reduce((n,g)=>n+g.vertices.length*96+g.faces.length*96,0),detailCoverage={...plan.detailCoverage,renderedOpenings:openingCount,unrenderedPlannedOpenings:plan.openings.length-openingCount,deferredOpenings:deferredOpenings.length,openingQuads,panelEdges,totalFacadeEdges:plan.edges.length,decorationQuads:quads-baseQuads};
-  return{draws,quads,openings:openingCount,renderedOpenings,deferredOpenings,bytes:bytes+(renderedOpenings.length+deferredOpenings.length)*512,description:{id:plan.id,sourceId:plan.sourceId,stableSourceId:plan.stableSourceId,style:plan.style,styleBasis:plan.styleBasis,typology:plan.typology,levelInferenceBasis:plan.levelInferenceBasis,baseY:plan.baseY,height:plan.height,levels:plan.levels,levelHeight:plan.levelHeight,levelElevations:plan.levelElevations.slice(),provenance:plan.provenance,openingInventory:plan.openingInventory,detailCoverage}};
+  const draws=[...groups].map(([name,g])=>({mesh:'geoSurface',vertices:g.vertices,faces:g.faces,pos:center.slice(),scale:[1,1,1],color:material(name),alpha:1,revision:0,v046Tile:tile,v046GeometryId:'facade:'+plan.id+':'+name,id:'facade:'+plan.id+':'+name,v050Facade:true,geoLayer:'facade',facadeBuildingId:plan.id,facadeProvenance:plan.provenance,facadeDetailProvenance:'invented',sourceProvenance:plan.facadeDocument?{source:plan.facadeDocument.source,license:plan.facadeDocument.license,attribution:plan.facadeDocument.attribution,acquiredAt:plan.facadeDocument.acquiredAt}:null,renderOffsetMeters:.075}));
+  const joineryCoverage={provenance:'invented',enabled:detail,limit:detail?'quad-budget':'low-detail',requested:joineryDetails.length,rendered:joineryDetails.filter(d=>d.rendered).length,deferred:joineryDetails.filter(d=>!d.rendered).length,byKind:{},reasons:{}};for(const d of joineryDetails){const item=joineryCoverage.byKind[d.kind]||(joineryCoverage.byKind[d.kind]={requested:0,rendered:0,deferred:0});item.requested++;item[d.rendered?'rendered':'deferred']++;if(d.reason)joineryCoverage.reasons[d.reason]=(joineryCoverage.reasons[d.reason]||0)+1;}
+  const bytes=draws.reduce((n,g)=>n+g.vertices.length*96+g.faces.length*96,0),detailCoverage={...plan.detailCoverage,renderedOpenings:openingCount,unrenderedPlannedOpenings:plan.openings.length-openingCount,deferredOpenings:deferredOpenings.length,openingQuads,panelEdges,totalFacadeEdges:plan.edges.length,decorationQuads:quads-baseQuads,joineryCoverage};
+  return{draws,quads,openings:openingCount,renderedOpenings,deferredOpenings,joineryDetails,bytes:bytes+(renderedOpenings.length+deferredOpenings.length+joineryDetails.length)*512+joineryDetails.reduce((n,d)=>n+d.meshes.length*128,0),description:{id:plan.id,sourceId:plan.sourceId,stableSourceId:plan.stableSourceId,style:plan.style,styleBasis:plan.styleBasis,typology:plan.typology,levelInferenceBasis:plan.levelInferenceBasis,baseY:plan.baseY,height:plan.height,levels:plan.levels,levelHeight:plan.levelHeight,levelElevations:plan.levelElevations.slice(),provenance:plan.provenance,openingInventory:plan.openingInventory,detailCoverage}};
  }
  function distance(bounds,x,z){return Math.hypot(Math.max(bounds.minX-x,0,x-bounds.maxX),Math.max(bounds.minZ-z,0,z-bounds.maxZ));}
  class Index{
@@ -324,6 +379,6 @@ function v050FacadesAfterInit(){
   v050FacadeDoors:()=>runtime.selection.flatMap(item=>MistralFacades.entrances(item.description)),
   v050FacadePage:(id,cursor=0,limit=128)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);return item?MistralFacades.facadePage(item.draw,{cursor,limit}):null;},
   v050FacadeOpeningSpans:(id,opening)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);return item?MistralFacades.openingSpans(item.draw,opening):[];},
-  v050FacadeBuilding:(id)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);if(!item)return null;const d=item.description,result=runtime.live.get(d.id);return{id:d.id,sourceId:d.sourceId,stableSourceId:d.stableSourceId,baseY:d.baseY,height:d.height,levels:d.levels,levelHeight:d.levelHeight,levelsBasis:d.levelsBasis,levelInferenceBasis:d.levelInferenceBasis,style:d.style,styleBasis:d.styleBasis,typology:d.typology,provenance:d.provenance,rings:d.rings.slice(0,32).map(r=>r.slice(0,2048).map(p=>p.slice())),ringsTruncated:d.rings.length>32||d.rings.some(r=>r.length>2048),rendered:!!result,openings:result?.renderedOpenings.slice(0,128)||[],openingsTruncated:(result?.renderedOpenings.length||0)>128,openingInventory:result?.description.openingInventory||MistralFacades.facadePage(item.draw,{limit:1})?.inventory||null,deferredOpenings:result?.deferredOpenings.slice(0,128)||[],deferredOpeningsTruncated:(result?.deferredOpenings.length||0)>128,detailCoverage:result?.description.detailCoverage||null};}
+  v050FacadeBuilding:(id)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);if(!item)return null;const d=item.description,result=runtime.live.get(d.id);return{id:d.id,sourceId:d.sourceId,stableSourceId:d.stableSourceId,baseY:d.baseY,height:d.height,levels:d.levels,levelHeight:d.levelHeight,levelsBasis:d.levelsBasis,levelInferenceBasis:d.levelInferenceBasis,style:d.style,styleBasis:d.styleBasis,typology:d.typology,provenance:d.provenance,rings:d.rings.slice(0,32).map(r=>r.slice(0,2048).map(p=>p.slice())),ringsTruncated:d.rings.length>32||d.rings.some(r=>r.length>2048),rendered:!!result,openings:result?.renderedOpenings.slice(0,128)||[],openingsTruncated:(result?.renderedOpenings.length||0)>128,openingInventory:result?.description.openingInventory||MistralFacades.facadePage(item.draw,{limit:1})?.inventory||null,deferredOpenings:result?.deferredOpenings.slice(0,128)||[],deferredOpeningsTruncated:(result?.deferredOpenings.length||0)>128,joinery:result?.joineryDetails.slice(0,128)||[],joineryTruncated:(result?.joineryDetails.length||0)>128,detailCoverage:result?.description.detailCoverage||null};}
  });
 }

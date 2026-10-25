@@ -1,0 +1,43 @@
+OK Coordinated production HTML is exact
+OK Frozen precise module is the actual production inline source
+OK Native atlas equals coordinated SHA
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Original external native GeoTIFF receipt SHA is exact
+OK Source absence is reported honestly rather than installed as a fake hole
+STAGE actual_local_server_audits
+OK Actual no-store local audit succeeds: /__mistral/city-sources
+OK Actual no-store local audit succeeds: /__mistral/local-data
+OK Actual no-store local audit succeeds: /__mistral/precise-terrain
+STAGE native_document
+OK Native HTTP document equals frozen production bytes
+LOAD {"phase": "loading", "done": 0, "total": 48, "tiles": 0}
+OK Native terrain pilot is outside the synthetic laboratory
+STAGE vieux_port_native_source_and_render
+OK Existing API loads the actual requested source sector
+FAIL Camera uses actual finite terrain and production collision clearance
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/precise_terrain_native.py", line 180, in main
+    sector(892487.5,6246771)
+  File "/workspace/fallout-Marseille/tests/expansion/precise_terrain_native.py", line 108, in sector
+    check('Existing API loads the actual requested source sector',debug('v046Load',*ll(e,n)) is True,[e,n]);ready();camera_near(e,n)
+                                                                                                                    ^^^^^^^^^^^^^^^^
+  File "/workspace/fallout-Marseille/tests/expansion/precise_terrain_native.py", line 103, in camera_near
+    check('Camera uses actual finite terrain and production collision clearance',bool(clear),[e,n])
+  File "/workspace/fallout-Marseille/tests/expansion/precise_terrain_native.py", line 67, in check
+    if not ok:raise AssertionError(name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Camera uses actual finite terrain and production collision clearance
+
+
+Executed script SHA256: caa61b39d576dc3ffe720fccc8e498a73a856fc684a6ca0b788f59199b236f67
+Process exit code: 1 (bounded camera helper, production unchanged)

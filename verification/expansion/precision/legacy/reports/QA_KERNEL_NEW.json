@@ -1,0 +1,140 @@
+{
+  "version": "0.47.0",
+  "passed": 33,
+  "failed": 0,
+  "total": 33,
+  "tests": [
+    {
+      "name": "Mémoire : ArrayBuffer mesuré",
+      "ok": true
+    },
+    {
+      "name": "Mémoire : les vues partagées ne sont pas comptées deux fois",
+      "ok": true
+    },
+    {
+      "name": "Mémoire : références cycliques supportées",
+      "ok": true
+    },
+    {
+      "name": "Cache LRU : limite en entrées",
+      "ok": true
+    },
+    {
+      "name": "Cache LRU : une lecture rend la ressource récente",
+      "ok": true
+    },
+    {
+      "name": "Cache LRU : limite en octets",
+      "ok": true
+    },
+    {
+      "name": "Cache LRU : conservation des ressources actives",
+      "ok": true
+    },
+    {
+      "name": "Dépassement requis affiché et non caché",
+      "ok": true
+    },
+    {
+      "name": "Déverrouillage permet de libérer le cache",
+      "ok": true
+    },
+    {
+      "name": "Remplacement ne double pas les octets",
+      "ok": true
+    },
+    {
+      "name": "Effacement libère les références et épingles",
+      "ok": true
+    },
+    {
+      "name": "Grille spatiale : élément chevauchant une frontière",
+      "ok": true
+    },
+    {
+      "name": "Grille spatiale : coordonnées négatives",
+      "ok": true
+    },
+    {
+      "name": "Grille spatiale : pas de duplicata de requête",
+      "ok": true
+    },
+    {
+      "name": "Grille spatiale : grandes surfaces restent bornées",
+      "ok": true
+    },
+    {
+      "name": "Grille invalide refusée",
+      "ok": true
+    },
+    {
+      "name": "Marqueur vide explicite accepté",
+      "ok": true
+    },
+    {
+      "name": "Marqueur autre tuile refusé",
+      "ok": true
+    },
+    {
+      "name": "Marqueur non officiel refusé",
+      "ok": true
+    },
+    {
+      "name": "Empreinte de vide incohérente refusée",
+      "ok": true
+    },
+    {
+      "name": "Reprise de position tolérance métrique",
+      "ok": true
+    },
+    {
+      "name": "Une position invalide n’est pas une reprise",
+      "ok": true
+    },
+    {
+      "name": "Terrain cloné sans modifier la banque publiée",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 0 octets",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 1 octets",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 3 octets",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 55 octets",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 56 octets",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 63 octets",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 64 octets",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 65 octets",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 1000 octets",
+      "ok": true
+    },
+    {
+      "name": "SHA-256 sans WebCrypto : 65536 octets",
+      "ok": true
+    }
+  ]
+}

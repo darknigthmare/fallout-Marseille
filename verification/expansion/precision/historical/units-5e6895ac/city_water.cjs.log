@@ -1,0 +1,32 @@
+✔ Water polygons and island rings project without modifying any source coordinates (3.117598ms)
+✔ A water report is not inferred from altitude or administrative complement (0.475307ms)
+✔ An open water ring is rejected before import (0.572348ms)
+✔ A derived point beyond its declared tile boundary is rejected (1.143775ms)
+✔ Counts and provenance must match the byte-pinned source descriptor (0.479465ms)
+✔ Unsafe paths and altered content-addressed filenames are rejected (0.448527ms)
+✔ Repeated maritime tile identities cannot be loaded as separate surveys (0.322903ms)
+✔ A false municipality and excessive resource budget are rejected (0.352979ms)
+✔ Only ocean or sea classes replace an older ocean polygon; inland water remains (0.318584ms)
+✔ Production wrapper installs before debug initialization without a boot exception (2.156044ms)
+✔ Ready loads a real optional descriptor through the shared source reader (1.742622ms)
+✔ Maritime planning includes verified water-only tiles beyond the old pack (1.391076ms)
+✔ The verified high-water sea replaces the old coarse ocean and preserves inland lakes (2.218561ms)
+✔ A fully surveyed land tile removes an old ocean polygon without inventing water (1.254701ms)
+✔ Outside the atlas the original resource is untouched (1.009955ms)
+✔ Water-only coverage never masquerades as an officially empty base vector tile (1.30205ms)
+✔ A repeated unchanged water tile reuses bounded projected geometry (1.419129ms)
+✔ Synthetic laboratory worlds do not receive the real municipal water atlas (1.042155ms)
+✔ Refreshing the source atlas releases maritime ownership and cached geometry (1.392128ms)
+✔ An obsolete load settling after refresh cannot release a replacement shared load (4.967011ms)
+✔ A stale index failure cannot discard the replacement index shared by current callers (2.877691ms)
+✔ An optional missing-index response from before refresh cannot validate a current navigation (1.257557ms)
+✔ Current maritime index errors are reported and a subsequent retry can recover (1.223694ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39.141717
+

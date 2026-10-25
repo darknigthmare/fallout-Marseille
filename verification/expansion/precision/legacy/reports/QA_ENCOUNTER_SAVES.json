@@ -1,0 +1,199 @@
+{
+  "version": "0.49.0",
+  "html_sha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+  "passed": 15,
+  "failed": 0,
+  "total": 15,
+  "errors": [],
+  "tests": [
+    {
+      "name": "Sauvegarde manuelle interdite dans le banc",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucun emplacement modifié par le banc",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Sauvegarde automatique interdite dans le banc",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reprise JSON vers intérieur sans données réseau",
+      "ok": true,
+      "detail": {
+        "id": "v042:v042-marseille-shelter-01:inside:0",
+        "kind": "enemy",
+        "site": "v042-marseille-shelter-01",
+        "pos": [
+          -19,
+          0,
+          24
+        ],
+        "home": [
+          4.265481228073664,
+          0,
+          0.2196765152024609
+        ],
+        "alive": true,
+        "hp": 72.05,
+        "max": 85,
+        "limbs": {
+          "head": 0,
+          "body": 0,
+          "arm_l": 0.3174019607843138,
+          "arm_r": 0,
+          "leg_l": 0,
+          "leg_r": 0
+        },
+        "yaw": 0.45,
+        "status": {},
+        "alerted": true
+      }
+    },
+    {
+      "name": "Emplacement manuel créé en campagne",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pose courante capturée avant enveloppe de sauvegarde",
+      "ok": true,
+      "detail": {
+        "id": "v042:v042-marseille-shelter-01:inside:0",
+        "site": "v042-marseille-shelter-01",
+        "scope": "inside",
+        "kind": "enemy",
+        "pos": [
+          -20,
+          0,
+          25
+        ],
+        "home": [
+          4.265481228073664,
+          0,
+          0.2196765152024609
+        ],
+        "yaw": 0.6,
+        "phase": 4.105885584420943,
+        "alive": true,
+        "at": 0.05,
+        "maxHealth": 85,
+        "health": 72.05,
+        "armDamage": 0.35,
+        "legDamage": 0,
+        "limbs": {
+          "head": 0,
+          "body": 0,
+          "arm_l": 0.3174019607843138,
+          "arm_r": 0,
+          "leg_l": 0,
+          "leg_r": 0
+        },
+        "status": {},
+        "morale": 97.151,
+        "maxMorale": 100,
+        "alerted": true,
+        "state": "chase",
+        "lastKnown": [
+          0,
+          1.65,
+          46
+        ],
+        "searchTimer": 10,
+        "attackCooldown": 0,
+        "suppressed": 0.8,
+        "speed": 2.3,
+        "damage": 11,
+        "armor": 0.07500000000000001
+      }
+    },
+    {
+      "name": "Rechargement de l’emplacement accepté",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Emplacement restaure santé, position et orientation",
+      "ok": true,
+      "detail": {
+        "id": "v042:v042-marseille-shelter-01:inside:0",
+        "kind": "enemy",
+        "site": "v042-marseille-shelter-01",
+        "pos": [
+          -20,
+          0,
+          25
+        ],
+        "home": [
+          4.265481228073664,
+          0,
+          0.2196765152024609
+        ],
+        "alive": true,
+        "hp": 72.05,
+        "max": 85,
+        "limbs": {
+          "head": 0,
+          "body": 0,
+          "arm_l": 0.3174019607843138,
+          "arm_r": 0,
+          "leg_l": 0,
+          "leg_r": 0
+        },
+        "yaw": 0.6,
+        "status": {},
+        "alerted": true
+      }
+    },
+    {
+      "name": "Membres blessés présents après chargement du slot",
+      "ok": true,
+      "detail": {
+        "head": 0,
+        "body": 0,
+        "arm_l": 0.3174019607843138,
+        "arm_r": 0,
+        "leg_l": 0,
+        "leg_r": 0
+      }
+    },
+    {
+      "name": "Import global refuse la clé de prototype",
+      "ok": true,
+      "detail": {
+        "rejected": true,
+        "message": "Clé interdite."
+      }
+    },
+    {
+      "name": "Import refuse les identifiants injectés",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Import retire les effets inconnus",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Import conserve la rencontre valide",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune pollution de prototype",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "HTML livré. Sauvegardes et imports du jeu testés avec stockage mémoire compatible, pas localStorage/IndexedDB natifs."
+}

@@ -1,0 +1,29 @@
+{
+  "exitCode": 0,
+  "capturedAfterExecution": true,
+  "method": "Gamepad API simulated; actual Chromium DOM, keyboard, game callbacks and localStorage; one explicit synthetic touch PointerEvent; no physical controller validation",
+  "htmlSha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+  "scriptSha256": "b183a8085f63292b49d81c63f781f2567c31938520b8554cf5c713bc3fe7ab84",
+  "reportSha256": "a2f49f36fc60c140ca736b6ba554cd518d123f940aac1c7fe72525355e5297f6",
+  "logSha256": "974eb09efe11f6be4b01c9fb28d24b0e369497809d2386020a7c541d34017c61",
+  "started_ns": 1792918907560253753,
+  "finished_ns": 1792918917547568781,
+  "durationSeconds": 9.987315028,
+  "checks": {
+    "exitZero": true,
+    "reportFresh": true,
+    "htmlMatches": true,
+    "assertionsPassed": true,
+    "noJavascriptErrors": true,
+    "sourcesStable": true,
+    "executedScriptMatchesArchive": true
+  },
+  "sourcesAfter": {
+    "/workspace/fallout-Marseille/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/rebuild-game/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/fallout-Marseille/src/v050/06_controller.js": "00e95d7c63876b10eef2436791e801fb78cd8a55e4b61d95b4c4e8fb60d359d5",
+    "/workspace/fallout-Marseille/tests/expansion/controller_browser.py": "b183a8085f63292b49d81c63f781f2567c31938520b8554cf5c713bc3fe7ab84"
+  },
+  "passed": true
+}

@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/interior_programs_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/interiors-native",
+    "--expect-html-sha",
+    "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "--expect-interior-sha",
+    "23ee3bab208cf62f5e814c4e52bf02dd6cc841d1b3d5af198e52fddf6005706b",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "executedScriptSha256": "916505d14d311c33bdea54f715e99439e91f21384e27903d15c9ab8bfea6f4dc"
+}

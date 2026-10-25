@@ -1,0 +1,69 @@
+OK The five species are established repository canon, with a bounded existing-slot schedule
+OK ratCable has an original animated silhouette and actual rotated part bounds
+OK gabianBombardier has an original animated silhouette and actual rotated part bounds
+OK cerfa77 has an original animated silhouette and actual rotated part bounds
+OK ratCrowned has an original animated silhouette and actual rotated part bounds
+OK mistralCicada has an original animated silhouette and actual rotated part bounds
+OK A fresh ratCable survives the real v049 ownership/spawn wrappers without changing its AI stats
+OK A fresh gabianBombardier survives the real v049 ownership/spawn wrappers without changing its AI stats
+OK A fresh cerfa77 survives the real v049 ownership/spawn wrappers without changing its AI stats
+OK A fresh ratCrowned survives the real v049 ownership/spawn wrappers without changing its AI stats
+OK A fresh mistralCicada survives the real v049 ownership/spawn wrappers without changing its AI stats
+OK Existing active slots are retained without retagging or replacing actors
+OK Preexisting wounded encounter never receives a new variant
+OK Preexisting old022 encounter never receives a new variant
+OK Preexisting dead encounter never receives a new variant
+OK Preexisting corpse encounter never receives a new variant
+OK Wounds, limbs, type, identity and assignment survive real damage/checkpoint/unload/JSON migration
+OK Actual kill and physical salvage retain one finite body ledger across returns and duplicate kill calls
+OK Unvalidated missing ground keeps the base encounter and writes no assignment
+OK Unvalidated water ground keeps the base encounter and writes no assignment
+OK Unvalidated solid ground keeps the base encounter and writes no assignment
+OK Unvalidated slope ground keeps the base encounter and writes no assignment
+OK Variant registration refuses V046.lab=true
+OK Variant registration refuses V046.busy=true
+OK Variant registration refuses V047.pending={}
+OK Variant registration refuses zoneTransitioning=true
+OK Variant registration refuses world.geoMacro=false
+OK Cancelled and replaced preview scenes never mutate the saved variant ledger
+OK Normal prepared world publication admits its fresh slot after v049 checkpoints it
+OK Normal busy active world publication admits its fresh slot after v049 checkpoints it
+OK Preview candidates cannot cross campaign state ownership or restore a cancelled scene into a new save
+OK Actual anatomy renderer, VATS volumes and frozen VATS poses use the same regional geometry
+OK Regional body footprint blocks movement through unavailable source ground, including inherited idle displacement
+OK Telegraphs are species-specific while damage, original attack types and loot stay unchanged
+OK ratCable runs the actual core AI and v021 telegraph, with an avoidable finite strike
+OK cerfa77 runs the actual core AI and v021 telegraph, with an avoidable finite strike
+OK ratCrowned runs the actual core AI and v021 telegraph, with an avoidable finite strike
+OK mistralCicada runs the actual core AI and v021 telegraph, with an avoidable finite strike
+OK Save metadata migration is bounded and rejects changed archetypes or unresolved identities
+OK Read-only diagnostics clone actor geometry and cannot grant or replace encounters
+OK The original twenty-one variant identities still resolve exactly after two canon additions
+OK The real Gabian actor takes off and patrols at measured altitude without changing type, PV, speed or loot
+OK Actual flapping wings and body remain below a low ceiling, rather than passing through its underside
+OK Measured flight can pass above a roof while retaining the full swept wing volume
+OK A thin wall blocks a fast move and every local avoidance route across its real wing footprint
+OK Airborne missing coverage never becomes an invented floor or a damaging drop
+OK Airborne water coverage never becomes an invented floor or a damaging drop
+OK Airborne missingTile coverage never becomes an invented floor or a damaging drop
+OK A steep source step cannot be crossed by dragging the bird model through the relief
+OK Airborne wounds, exact altitude and assignment survive v049 save/unload/migration/restore
+OK The Gabian releases a visible falling projectile, not immediate remote telegraph damage
+OK Moving out of a locked drop leaves one finite impact and no player damage
+OK A falling projectile collides with a thin intervening facade instead of passing through it
+OK A two-centimetre roof intercepts the whole falling drop and protects a real clear capsule below
+OK Missing coverage during projectile descent discards it without trusting a zero floor
+OK Changing the world or campaign cannot carry an old projectile or grant damage in the replacement
+OK A dead airborne Gabian retains the existing finite body ledger on its measured roof support
+OK Already visited unassigned bloatflies remain old ground actors when the flight extension is installed
+OK Bounded flight sweeps reject untrusted vectors, excessive displacement and thin blocked intervals
+OK ratCrowned keeps its real original wounds, limbs and finite loot through the full stream/save cycle
+OK mistralCicada keeps its real original wounds, limbs and finite loot through the full stream/save cycle
+OK Old visited ratCrowned base slot is never reassigned by the new additions
+OK Old visited mistralCicada base slot is never reassigned by the new additions
+OK Opening a menu pauses actual flight/projectiles and keeps the scene combat state
+OK Actual isolated flight sets combat state, and missing source clears its attack without fabricating support
+OK A player leaving the declared flight leash clears pursuit rather than pinning combat forever
+OK Native measured offset-slope data admits a new airborne Gabian without moving any coordinate
+{"passed":67,"failed":0,"total":67,"scope":"Five regional assemblies; actual v042/addEnemy, core/v021 AI, v025, v026 and v049 production wrappers; controlled terrain/UI/storage seams"}
+

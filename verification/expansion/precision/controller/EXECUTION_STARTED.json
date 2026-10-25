@@ -1,0 +1,22 @@
+{
+  "started_ns": 1792918907560253753,
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/controller_browser.py",
+    "--url",
+    "http://127.0.0.1:8765/index.html?skipboot=1",
+    "--expected-html-sha256",
+    "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/controller/browser"
+  ],
+  "sourceSha256": "b183a8085f63292b49d81c63f781f2567c31938520b8554cf5c713bc3fe7ab84",
+  "sourcesBefore": {
+    "/workspace/fallout-Marseille/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/rebuild-game/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/.cloud-setup/fallout-marseille/precision-expansion/legacy-game/index.html": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+    "/workspace/fallout-Marseille/src/v050/06_controller.js": "00e95d7c63876b10eef2436791e801fb78cd8a55e4b61d95b4c4e8fb60d359d5",
+    "/workspace/fallout-Marseille/tests/expansion/controller_browser.py": "b183a8085f63292b49d81c63f781f2567c31938520b8554cf5c713bc3fe7ab84"
+  },
+  "method": "Gamepad API simulated; actual Chromium DOM, keyboard, game callbacks and localStorage; one explicit synthetic touch PointerEvent; no physical controller validation"
+}

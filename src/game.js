@@ -11291,24 +11291,34 @@ if(typeof v046Import==='function'&&typeof window!=='undefined'){
 const MistralController=(()=>{
   const finite=(n,f=0)=>typeof n==='number'&&Number.isFinite(n)?n:f;
   const limit=(n,a,b)=>Math.max(a,Math.min(b,n));
-  function options(raw={}){if(!raw||typeof raw!=='object')raw={};return{enabled:raw.enabled!==false,deadZone:limit(finite(raw.deadZone,.18),.08,.4),look:limit(finite(raw.look,1),.25,3),invertY:raw.invertY===true};}
+  function options(raw={}){if(!raw||typeof raw!=='object')raw={};return{enabled:raw.enabled!==false,deadZone:limit(finite(raw.deadZone,.18),.08,.4),look:limit(finite(raw.look,1),.25,3),invertY:raw.invertY===true,leftHanded:raw.leftHanded===true,pauseOnDisconnect:raw.pauseOnDisconnect!==false};}
   function stick(x,y,deadZone=.18){x=limit(finite(x),-1,1);y=limit(finite(y),-1,1);const length=Math.hypot(x,y);if(length<=deadZone)return[0,0];const strength=Math.pow(limit((length-deadZone)/(1-deadZone),0,1),1.25);return[x/length*strength,y/length*strength];}
   function button(raw,previous=false){const value=limit(finite(raw?.value,raw?.pressed?1:0),0,1);return raw?.pressed===true||value>=(previous?.35:.55);}
   function choose(pads,index=null){const all=Array.from(pads||[]).filter(p=>p&&p.connected!==false&&p.mapping==='standard');return all.find(p=>p.index===index)||all[0]||null;}
+  function lost(pads,selected){return !!selected&&!Array.from(pads||[]).some(p=>p&&p.connected!==false&&p.mapping==='standard'&&p.index===selected.index&&p.id===selected.id);}
+  function favoriteSlot(favorites,owned,current,step,known){
+    const slots=Array.isArray(favorites)?favorites.slice(0,4):[],start=slots.indexOf(current),direction=step<0?-1:1;
+    for(let offset=1;offset<=slots.length;offset++){const index=start<0?(direction>0?offset-1:slots.length-offset):(start+offset*direction+slots.length)%slots.length,id=slots[index];if(id&&id!==current&&Array.isArray(owned)&&owned.includes(id)&&known(id))return index;}
+    return null;
+  }
+  function disconnectPause(settings,{lost=false,lastDevice=null,playing=false,hidden=false}={}){return options(settings).enabled&&options(settings).pauseOnDisconnect&&lost&&lastDevice==='controller'&&playing&&!hidden;}
   const empty=()=>({connected:false,index:null,id:'',move:[0,0],look:[0,0],held:Array(17).fill(false),pressed:[],navigation:null,dt:0});
   class Tracker{
     constructor(){this.reset();}
-    reset(){this.index=null;this.id=null;this.context=null;this.previous=Array(17).fill(false);this.blocked=new Set();this.direction=null;this.repeatAt=0;this.navigationBlocked=false;this.lastTime=null;}
+    reset(){this.index=null;this.id=null;this.context=null;this.layout=null;this.previous=Array(17).fill(false);this.blocked=new Set();this.sticksBlocked=[false,false];this.direction=null;this.repeatAt=0;this.navigationBlocked=false;this.lastTime=null;}
     sample(pads,context,now,settings={}){
       const o=options(settings),g=o.enabled?choose(pads,this.index):null;
       if(!g){this.reset();return empty();}
       now=finite(now);const dt=this.lastTime===null?0:limit((now-this.lastTime)/1000,0,.05);this.lastTime=now;
-      const changed=this.index!==g.index||this.id!==g.id||this.context!==context;
+      const changed=this.index!==g.index||this.id!==g.id||this.context!==context||this.layout!==o.leftHanded;
       const down=Array.from({length:17},(_,i)=>button(g.buttons?.[i],this.previous[i]));
-      const move=stick(g.axes?.[0],g.axes?.[1],o.deadZone),look=stick(g.axes?.[2],g.axes?.[3],o.deadZone);
-      let dx=down[14]?-1:down[15]?1:Math.abs(move[0])>.5?Math.sign(move[0]):0;
-      let dy=down[12]?-1:down[13]?1:Math.abs(move[1])>.5?Math.sign(move[1]):0;
-      if(dx&&dy){if(Math.abs(move[0])>Math.abs(move[1]))dy=0;else dx=0;}
+      const sticks=[stick(g.axes?.[0],g.axes?.[1],o.deadZone),stick(g.axes?.[2],g.axes?.[3],o.deadZone)];
+      if(changed)this.sticksBlocked=sticks.map(v=>v.some(n=>n!==0));
+      for(let i=0;i<2;i++){if(sticks[i].every(n=>n===0))this.sticksBlocked[i]=false;if(this.sticksBlocked[i])sticks[i]=[0,0];}
+      const left=sticks[0],right=sticks[1],swap=context==='PLAYING'&&o.leftHanded,move=swap?right:left,look=swap?left:right;
+      let dx=down[14]?-1:down[15]?1:Math.abs(left[0])>.5?Math.sign(left[0]):0;
+      let dy=down[12]?-1:down[13]?1:Math.abs(left[1])>.5?Math.sign(left[1]):0;
+      if(dx&&dy){if(Math.abs(left[0])>Math.abs(left[1]))dy=0;else dx=0;}
       const direction=dx?(dx<0?'left':'right'):dy?(dy<0?'up':'down'):null;
       if(changed){this.blocked=new Set(down.flatMap((v,i)=>v?[i]:[]));this.direction=null;this.repeatAt=0;this.navigationBlocked=!!direction;}
       for(const i of this.blocked)if(!down[i])this.blocked.delete(i);
@@ -11317,11 +11327,11 @@ const MistralController=(()=>{
       if(!direction)this.navigationBlocked=false;
       let navigation=null;
       if(!this.navigationBlocked&&direction){if(this.direction!==direction){navigation=direction;this.repeatAt=now+360;}else if(now>=this.repeatAt){navigation=direction;this.repeatAt=now+130;}}
-      this.direction=direction;this.index=g.index;this.id=g.id;this.context=context;this.previous=down;
+      this.direction=direction;this.index=g.index;this.id=g.id;this.context=context;this.layout=o.leftHanded;this.previous=down;
       return{connected:true,index:g.index,id:String(g.id||'Manette standard').slice(0,120),move,look,held,pressed,navigation,dt};
     }
   }
-  return{options,stick,button,choose,Tracker,empty};
+  return{options,stick,button,choose,lost,favoriteSlot,disconnectPause,Tracker,empty};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralController;
 
@@ -11330,16 +11340,21 @@ function v050ControllerAfterInit(){
   window.__mistralControllerInstalled=true;
   const preferenceKey='mistral_controller_v1';let preferences=MistralController.options();
   try{preferences=MistralController.options(JSON.parse(localStorage.getItem(preferenceKey)||'{}'));}catch{}
-  const runtime={tracker:new MistralController.Tracker(),input:MistralController.empty(),lastMode:null,lastId:null,installed:true};
+  const runtime={tracker:new MistralController.Tracker(),input:MistralController.empty(),lastMode:null,lastId:null,lastDevice:null,disconnectPaused:false,installed:true};
   const neutral=()=>{runtime.tracker.reset();runtime.input=MistralController.empty();runtime.lastMode=null;};
-  const active=()=>preferences.enabled&&!document.hidden&&mode==='PLAYING'&&runtime.tracker.context==='PLAYING'&&gameStarted&&!zoneTransitioning&&state.player.hp>0;
+  const playing=()=>mode==='PLAYING'&&gameStarted&&!!world&&!zoneTransitioning&&state.player.hp>0&&!(typeof V046!=='undefined'&&V046.busy)&&!(typeof V047!=='undefined'&&V047.pending?.blocking);
+  const active=()=>preferences.enabled&&!document.hidden&&playing()&&runtime.input.connected&&runtime.tracker.context==='PLAYING';
+  const used=device=>{runtime.lastDevice=device;document.body.classList.toggle('v050-controller-input',device==='controller');};
+  const selected=()=>runtime.tracker.index===null?null:{index:runtime.tracker.index,id:runtime.tracker.id};
+  function disconnect(){const pause=MistralController.disconnectPause(preferences,{lost:true,lastDevice:runtime.lastDevice,playing:playing(),hidden:document.hidden});neutral();if(pause){togglePause();runtime.disconnectPaused=mode==='PAUSE';}}
+  function favorite(direction){const slot=MistralController.favoriteSlot(state.v020?.favorites,state.equipment?.ownedWeapons,state.player.weaponId,direction,id=>!!WEAPONS[id]);if(slot===null)return false;const id=state.v020.favorites[slot];v020UseFavorite(slot);return state.player.weaponId===id;}
   function storePreferences(){try{localStorage.setItem(preferenceKey,JSON.stringify(preferences));return true;}catch{return false;}}
-  function controlMarkup(){return '<h3>MANETTE STANDARD</h3><p>Stick gauche : marcher · L3 : courir · stick droit : regarder · LT : visée fine · RT : tirer.</p><p>A : sauter · B : s’accroupir · X : interagir · Y : recharger · LB : V.A.T.S. · RB : soin · R3 : caméra · Affichage/Select : Pip-Boy · Menu/Start : pause.</p><p>Menus : croix ou stick gauche pour déplacer le focus, A pour valider, B pour revenir. Gauche/droite règlent les curseurs et listes. Pip-Boy : LB/RB changent de mode, LT/RT de rubrique. V.A.T.S. : croix pour cible/membre, A réserve, X retire, Y réserve un critique, RT exécute, B annule.</p><p>La saisie d’un nom et les confirmations du navigateur utilisent les commandes du navigateur. Un bouton maintenu à la connexion ou au changement d’écran doit être relâché avant de déclencher une action.</p>';}
+  function controlMarkup(){return '<h3>MANETTE STANDARD</h3><p>Stick gauche : marcher · L3 : courir · stick droit : regarder · LT : visée fine · RT : tirer. L’option gaucher échange les deux sticks pendant le jeu.</p><p>A : sauter · B : s’accroupir · X : interagir · Y : recharger · LB : V.A.T.S. · RB : soin · R3 : caméra · Affichage/Select : Pip-Boy · Menu/Start : pause.</p><p>Croix en jeu : haut pour la lampe, bas pour le plan de terrain, gauche/droite pour l’arme favorite précédente/suivante. Seules les armes possédées et affectées aux favoris sont proposées.</p><p>Menus : croix ou stick gauche pour déplacer le focus, A pour valider, B pour revenir, y compris en mode gaucher. Gauche/droite règlent les curseurs et listes. Pip-Boy : LB/RB changent de mode, LT/RT de rubrique. V.A.T.S. : croix pour cible/membre, A réserve, X retire, Y réserve un critique, RT exécute, B annule.</p><p>La saisie d’un nom et les confirmations du navigateur utilisent les commandes du navigateur. À la connexion, au changement de manette, d’écran ou de disposition, relâchez les boutons et ramenez chaque stick au centre avant de l’utiliser. La pause sur déconnexion attend une reprise explicite ; elle s’applique à la manette utilisée en jeu, sans interrompre une session au clavier ou au tactile.</p>';}
   const style=document.createElement('style');style.textContent='.v050-controller{border:1px solid #779566;padding:14px;margin:18px 0;color:inherit}.v050-controller p{font-size:12px;line-height:1.6}.v050-controller label{display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap}.v050-controller input[type=range]{max-width:230px}body.v050-controller-input :focus-visible,body.v050-controller-input .v050-pad-focus{outline:3px solid #f4d98b!important;outline-offset:3px!important}.v050-pad-status{font-size:12px}';document.head.appendChild(style);
   const optionsRoot=$('optionsScreen')?.querySelector('.options-card');
-  if(optionsRoot){const section=document.createElement('fieldset');section.className='v050-controller';section.innerHTML='<legend>Manette</legend><p class="v050-pad-status" data-pad-status aria-live="polite">Appuyez sur un bouton pour autoriser la détection de votre manette.</p><label><input id="v050PadEnabled" type="checkbox"> Activer la manette</label><label>Zone morte <input id="v050PadDeadZone" type="range" min="0.08" max="0.40" step="0.01"><output id="v050PadDeadZoneOut"></output></label><label>Sensibilité du regard <input id="v050PadLook" type="range" min="0.25" max="3" step="0.05"><output id="v050PadLookOut"></output></label><label><input id="v050PadInvert" type="checkbox"> Inverser le regard vertical</label><details><summary>Commandes et navigation</summary>'+controlMarkup()+'</details>';optionsRoot.insertBefore(section,optionsRoot.querySelector('footer'));
-    const sync=()=>{$('v050PadEnabled').checked=preferences.enabled;$('v050PadDeadZone').value=String(preferences.deadZone);$('v050PadLook').value=String(preferences.look);$('v050PadInvert').checked=preferences.invertY;$('v050PadDeadZoneOut').textContent=Math.round(preferences.deadZone*100)+' %';$('v050PadLookOut').textContent=preferences.look.toFixed(2)+'×';};
-    section.addEventListener('input',()=>{preferences=MistralController.options({enabled:$('v050PadEnabled').checked,deadZone:Number($('v050PadDeadZone').value),look:Number($('v050PadLook').value),invertY:$('v050PadInvert').checked});sync();if(!preferences.enabled)neutral();storePreferences();});
+  if(optionsRoot){const section=document.createElement('fieldset');section.className='v050-controller';section.innerHTML='<legend>Manette</legend><p class="v050-pad-status" data-pad-status aria-live="polite">Appuyez sur un bouton pour autoriser la détection de votre manette.</p><label><input id="v050PadEnabled" type="checkbox"> Activer la manette</label><label>Zone morte <input id="v050PadDeadZone" type="range" min="0.08" max="0.40" step="0.01"><output id="v050PadDeadZoneOut"></output></label><label>Sensibilité du regard <input id="v050PadLook" type="range" min="0.25" max="3" step="0.05"><output id="v050PadLookOut"></output></label><label><input id="v050PadInvert" type="checkbox"> Inverser le regard vertical</label><label><input id="v050PadLeftHanded" type="checkbox"> Gaucher : regarder au stick gauche, marcher au stick droit</label><label><input id="v050PadDisconnectPause" type="checkbox"> Mettre en pause si la manette utilisée se déconnecte</label><details><summary>Commandes et navigation</summary>'+controlMarkup()+'</details>';optionsRoot.insertBefore(section,optionsRoot.querySelector('footer'));
+    const sync=()=>{$('v050PadEnabled').checked=preferences.enabled;$('v050PadDeadZone').value=String(preferences.deadZone);$('v050PadLook').value=String(preferences.look);$('v050PadInvert').checked=preferences.invertY;$('v050PadLeftHanded').checked=preferences.leftHanded;$('v050PadDisconnectPause').checked=preferences.pauseOnDisconnect;$('v050PadDeadZoneOut').textContent=Math.round(preferences.deadZone*100)+' %';$('v050PadLookOut').textContent=preferences.look.toFixed(2)+'×';};
+    section.addEventListener('input',()=>{const oldLayout=preferences.leftHanded;preferences=MistralController.options({enabled:$('v050PadEnabled').checked,deadZone:Number($('v050PadDeadZone').value),look:Number($('v050PadLook').value),invertY:$('v050PadInvert').checked,leftHanded:$('v050PadLeftHanded').checked,pauseOnDisconnect:$('v050PadDisconnectPause').checked});sync();if(!preferences.enabled||preferences.leftHanded!==oldLayout)neutral();storePreferences();});
     $('btnOptionsReset')?.addEventListener('click',()=>{preferences=MistralController.options();neutral();sync();storePreferences();});sync();
   }
   const systemBase=v027System;v027System=function(container){systemBase(container);const section=document.createElement('section');section.className='v050-controller';section.innerHTML=controlMarkup();container.appendChild(section);};
@@ -11350,11 +11365,12 @@ function v050ControllerAfterInit(){
   function confirmFocus(){const list=focusables();let target=list.find(el=>el===document.activeElement);if(!target){focus(list[0]);return;}if(target.tagName==='INPUT'&&['range','number','text','search'].includes(target.type)||target.tagName==='SELECT'){target.focus();return;}target.click();}
   function back(){if(mode==='PLAYING')toggleCrouch();else if(mode==='PIP')closePipboy();else if(mode==='VATS')closeVATS();else if(mode==='PAUSE')resumeGame();else if(mode==='OPTIONS')closeOptions();else if(mode==='CREDITS')closeCredits();else if(mode==='DIALOGUE')closeDialogue();else if(mode==='TRADE')closeTrade();else if(mode==='HACK')closeHack();else if(mode==='PROJECTION')closeProjection();else if(mode==='CREATOR')$('btnCreatorBack')?.click();else if(mode==='STATUS')($('v047CloseStatus')||$('v046CloseStatus'))?.click();else if(mode==='FIELD')v020CloseField();else if(mode==='V035_SCREEN')v035CloseScreen();else if(mode==='TERMINAL')closeLoreTerminal();else if(mode==='HOLOTAPE')closeHolotape();else if(mode==='CONSTRUCTION')closeConstruction();else if(mode==='PETANQUE')closePetanque();else if(mode==='LOCKPICK')closeLockpick();else if(mode==='LOADING')v046Cancel();else if(mode==='DEAD')$('deathMenu')?.click();}
   function pipStep(button){const tabs=Object.keys(V027_TABS),subs=Object.keys(V027_SUBS[V027.tab]);if(button===4||button===5)v027Set(tabs[(tabs.indexOf(V027.tab)+(button===4?-1:1)+tabs.length)%tabs.length]);else v027Set(V027.tab,subs[(subs.indexOf(V027.sub)+(button===6?-1:1)+subs.length)%subs.length]);focus(null);}
-  function perform(button,origin){if(mode!==origin)return;if(button===9){if(['PLAYING','PAUSE'].includes(mode))togglePause();else back();return;}if(origin==='PLAYING'){if(!active())return;const actions={0:jump,1:toggleCrouch,2:doInteract,3:reload,4:toggleVATS,5:healPlayer,8:togglePipboy,11:toggleCamera};if(actions[button])actions[button]();else if(button===7)fireWeapon();return;}if(origin==='VATS'){if(button===0)vatsAddCurrent();else if(button===1||button===4)closeVATS();else if(button===7)executeVATS();else if(button===2)document.querySelector('#vats [data-v25="undo"]:not([disabled])')?.click();else if(button===3)document.querySelector('#vats [data-v23="vats-critical"]:not([disabled])')?.click();return;}if(origin==='PIP'&&[4,5,6,7].includes(button)){pipStep(button);return;}if(button===1||button===8&&origin==='PIP')back();else if(button===0)confirmFocus();}
-  function tick(now){let pads=[];try{pads=navigator.getGamepads?.()||[];}catch{}if(document.hidden){neutral();return;}const input=runtime.tracker.sample(pads,mode,now,preferences);runtime.input=input;
-    if(input.connected){if(runtime.lastId!==input.index){runtime.lastId=input.index;for(const node of document.querySelectorAll('[data-pad-status]'))node.textContent='Manette standard détectée · '+input.id;}if(input.pressed.length||input.navigation||input.look.some(x=>Math.abs(x)>.1))document.body.classList.add('v050-controller-input');}
-    else if(runtime.lastId!==null){runtime.lastId=null;for(const node of document.querySelectorAll('[data-pad-status]'))node.textContent='Manette déconnectée. Le clavier, la souris et le tactile restent disponibles.';}
+  function perform(button,origin){if(mode!==origin)return;if(button===9){if(mode==='PLAYING'&&!active())return;if(['PLAYING','PAUSE'].includes(mode))togglePause();else back();return;}if(origin==='PLAYING'){if(!active())return;const actions={0:jump,1:toggleCrouch,2:doInteract,3:reload,4:toggleVATS,5:healPlayer,8:togglePipboy,11:toggleCamera,12:v028LampToggle,13:()=>v020OpenField('plan'),14:()=>favorite(-1),15:()=>favorite(1)};if(actions[button])actions[button]();else if(button===7)fireWeapon();return;}if(origin==='VATS'){if(button===0)vatsAddCurrent();else if(button===1||button===4)closeVATS();else if(button===7)executeVATS();else if(button===2)document.querySelector('#vats [data-v25="undo"]:not([disabled])')?.click();else if(button===3)document.querySelector('#vats [data-v23="vats-critical"]:not([disabled])')?.click();return;}if(origin==='PIP'&&[4,5,6,7].includes(button)){pipStep(button);return;}if(button===1||button===8&&origin==='PIP')back();else if(button===0)confirmFocus();}
+  function tick(now){let pads=[];try{pads=navigator.getGamepads?.()||[];}catch{}if(document.hidden){neutral();return;}if(MistralController.lost(pads,selected()))disconnect();const input=runtime.tracker.sample(pads,mode,now,preferences);runtime.input=input;
+    if(input.connected){const identity=input.index+':'+input.id;if(runtime.lastId!==identity){runtime.lastId=identity;for(const node of document.querySelectorAll('[data-pad-status]'))node.textContent='Manette standard détectée · '+input.id;}if(input.pressed.length||input.navigation||input.move.some(x=>Math.abs(x)>.1)||input.look.some(x=>Math.abs(x)>.1))used('controller');}
+    else if(runtime.lastId!==null){runtime.lastId=null;for(const node of document.querySelectorAll('[data-pad-status]'))node.textContent=runtime.disconnectPaused?'Manette déconnectée : jeu en pause. Reprenez explicitement après avoir relâché les commandes.':'Manette déconnectée. Le clavier, la souris et le tactile restent disponibles.';}
     const origin=mode;
+    if(origin==='PLAYING')runtime.disconnectPaused=false;
     if(active()){const sensitivity=preferences.look,fine=input.held[6]?.42:1;state.player.yaw+=input.look[0]*input.dt*2.2*sensitivity*fine;state.player.pitch=clamp(state.player.pitch+input.look[1]*input.dt*1.7*sensitivity*fine*(preferences.invertY?1:-1),-1.3,1.3);}
     if(input.navigation&&origin!=='PLAYING'){if(origin==='VATS'){const d=input.navigation;vatsNavigate(d==='left'?-1:d==='right'?1:0,d==='up'?-1:d==='down'?1:0);}else navigate(input.navigation);}
     for(const button of input.pressed)perform(button,origin);
@@ -11363,8 +11379,8 @@ function v050ControllerAfterInit(){
   pollGamepad=function(){if(!active())return{x:0,y:0,lookX:0,lookY:0,sprint:false};return{x:runtime.input.move[0],y:runtime.input.move[1],lookX:runtime.input.look[0],lookY:runtime.input.look[1],sprint:!!runtime.input.held[10]};};
   const boatBase=updateBoat;updateBoat=function(...args){if(!active())return boatBase(...args);const original=keys;keys=new Set(original);if(runtime.input.move[1]<-.1)keys.add('KeyW');if(runtime.input.move[1]>.1)keys.add('KeyS');if(runtime.input.move[0]<-.1)keys.add('KeyA');if(runtime.input.move[0]>.1)keys.add('KeyD');try{return boatBase(...args);}finally{keys=original;}};
   const combatBase=v020TickCombat;v020TickCombat=function(...args){const mouse=V020.heldFire;V020.heldFire=mouse||active()&&runtime.input.held[7];try{return combatBase(...args);}finally{V020.heldFire=mouse;}};
-  window.addEventListener('gamepaddisconnected',neutral);window.addEventListener('blur',neutral);document.addEventListener('visibilitychange',()=>{if(document.hidden)neutral();});document.addEventListener('pointerdown',()=>document.body.classList.remove('v050-controller-input'),{passive:true});document.addEventListener('keydown',()=>document.body.classList.remove('v050-controller-input'));
-  Object.assign(window.__MISTRAL_DEBUG,{v050ControllerInfo:()=>({connected:runtime.input.connected,index:runtime.input.index,id:runtime.input.id,preferences:{...preferences},move:runtime.input.move.slice(),look:runtime.input.look.slice(),held:runtime.input.held.slice(),keyboardKeys:[...keys],mode}),v050ControllerStep:tick});
+  window.addEventListener('gamepaddisconnected',event=>{const chosen=selected();if(chosen&&event.gamepad?.index===chosen.index&&event.gamepad.id===chosen.id)disconnect();});window.addEventListener('blur',neutral);document.addEventListener('visibilitychange',()=>{if(document.hidden)neutral();});document.addEventListener('pointerdown',event=>used(event.pointerType==='touch'?'touch':'mouse'),{passive:true});document.addEventListener('pointermove',event=>{if(event.movementX||event.movementY)used(event.pointerType==='touch'?'touch':'mouse');},{passive:true});document.addEventListener('touchstart',()=>used('touch'),{passive:true});document.addEventListener('touchmove',()=>used('touch'),{passive:true});document.addEventListener('keydown',()=>used('keyboard'));
+  Object.assign(window.__MISTRAL_DEBUG,{v050ControllerInfo:()=>({connected:runtime.input.connected,index:runtime.input.index,id:runtime.input.id,preferences:{...preferences},move:runtime.input.move.slice(),look:runtime.input.look.slice(),held:runtime.input.held.slice(),sticksBlocked:runtime.tracker.sticksBlocked.slice(),lastDevice:runtime.lastDevice,disconnectPaused:runtime.disconnectPaused,keyboardKeys:[...keys],mode}),v050ControllerStep:tick});
 }
 
 /* Metric facade detail on the original building edges. Source footprints and
@@ -11615,11 +11631,46 @@ const MistralFacades=(()=>{
   for(let n=0;n<attempts&&openings.length<maxOpenings;n++){const slot=n%sampleCount,phase=Math.floor(n/sampleCount),index=Math.min(p.potentialOpenings-1,Math.floor(slot*p.potentialOpenings/sampleCount)+phase);if(visited.has(index))continue;visited.add(index);attempted++;const o=candidateAt(p,index);if(o)openings.push(o);}
   return{...p,openings,openingInventory:inventory(p),detailCoverage:{budgeted:attempted<p.potentialOpenings||p.fixed.length>maxOpenings,potentialOpenings:p.potentialOpenings,attempted,maxOpenings,retainedOpenings:openings.length,completeInventorySlots:p.totalSlots,documentedCoverage:{...p.documentedCoverage}}};
  }
+ // These are authored fittings inside the metric opening, never a survey of
+ // its joinery. IGN usage chooses a plausible family; roof/material codes and
+ // database creation dates cannot establish an architectural period or detail.
+ function authoredJoinery(d,o,e){
+  if(o.provenance==='documented')return{variant:'documentary-envelope-only',parts:[],reason:'documentary-joinery-not-supplied'};
+  const parts=[],w=o.width,h=o.height,reverse=!e.surfaceId&&(e.a[0]>e.b[0]||e.a[0]===e.b[0]&&e.a[1]>e.b[1]),put=(x0,y0,x1,y1,material,offset=.049)=>{if(x1>x0&&y1>y0)parts.push({x0:o.offset+(reverse?w-x1:x0),y0:o.bottom+y0,x1:o.offset+(reverse?w-x0:x1),y1:o.bottom+y1,material,offset});};
+  let variant;
+  if(o.type==='door'){
+   const leaves=w>=1.65?2:1,glazed=d.style==='commercial'||d.style==='civic',service=d.style==='industrial'||d.typology==='annexe'&&d.styleBasis==='invented-fallback',leaf=w/leaves;
+   variant=(glazed?'glazed-entry':service?'service-entry':'panelled-entry')+(leaves===2?'-double':'-single');
+   for(let i=0;i<leaves;i++){
+    const x=i*leaf,inset=Math.min(.10,leaf*.12),lo=x+inset,hi=x+leaf-inset;
+    put(x+.025,.045,x+leaf-.025,h-.045,'paint',.036);
+    put(lo,.16,hi,h*.42,'recess',.043);
+    put(lo,h*.53,hi,h-.16,glazed?'glass':'recess',.043);
+    put(lo,.16,hi,.19,'paint',.052);put(lo,h*.53,hi,h*.53+.03,'paint',.052);
+    const handle=i===0?x+leaf-Math.min(.12,leaf*.17):x+Math.min(.12,leaf*.17),handleY=Math.min(1.02,h*.48);
+    put(handle-.025,handleY-.10,handle+.025,handleY+.10,'iron',.057);
+    put(handle-.012,handleY-.055,handle+.012,handleY+.055,'trim',.068);
+    if(service)for(let rail=1;rail<=3;rail++){const y=h*(.55+rail*.10);put(lo,y,hi,y+.025,'paint',.054);}
+   }
+   if(leaves===2)put(w/2-.025,.045,w/2+.025,h-.045,'iron',.058);
+  }else if(o.type==='shopfront'){
+   variant='shopfront-transom';put(w/2-.025,0,w/2+.025,h,'iron');
+   if(h>=1.2)put(0,h*.78,w,h*.78+.04,'iron',.052);
+   put(0,0,w,Math.min(.13,h*.12),'paint',.045);
+  }else{
+   variant=d.style==='industrial'?'workshop-grid':d.style==='religious'?'nave-glazing':'casement-window';
+   const bars=d.style==='industrial'&&w>=1.8?2:1;
+   for(let i=1;i<=bars;i++){const x=w*i/(bars+1);put(x-.018,0,x+.018,h,'trim');}
+   if(h>=1.1)put(0,h*.48,w,h*.48+.032,'trim',.052);
+   if(d.style==='religious'&&h>=2.2)put(0,h*.72,w,h*.72+.032,'trim',.052);
+  }
+  return{variant,parts,reason:null};
+ }
  function geometry(draw,options={}){
   const maxQuads=budget(options.maxQuads,512,8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads*(detail?.60:.85))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
   const groups=new Map(),palette=PALETTES[plan.style],shade=((plan.seed%21)-10)/550;
-  const material=name=>name==='wall'?palette.wall.map(v=>limit(v+shade,0,1)):palette[name]||palette.trim;
-  let quads=0,openingCount=0;const renderedOpenings=[],deferredOpenings=[],byEdge=new Map(plan.edges.map(e=>[edgeKey(e),e])),bySurface=new Map(plan.curves.map(e=>[e.surfaceId,e]));
+  const material=name=>name==='wall'?palette.wall.map(v=>limit(v+shade,0,1)):name==='paint'?palette.shutter.map(v=>limit(v*1.14,0,1)):name==='louver'?palette.shutter.map(v=>v*.68):name==='recess'?palette.shutter.map(v=>v*.48):palette[name]||palette.trim;
+  let quads=0,openingCount=0;const renderedOpenings=[],deferredOpenings=[],joineryDetails=[],byEdge=new Map(plan.edges.map(e=>[edgeKey(e),e])),bySurface=new Map(plan.curves.map(e=>[e.surfaceId,e]));
   function fragment(e,x0,y0,x1,y1,name,offset){if(quads>=maxQuads||x1<=x0||y1<=y0)return false;let g=groups.get(name);if(!g){g={vertices:[],faces:[]};groups.set(name,g);}const at=(x,y)=>[e.a[0]+e.tangent[0]*x+e.normal[0]*offset,plan.baseY+y,e.a[1]+e.tangent[1]*x+e.normal[1]*offset],k=g.vertices.length;g.vertices.push(at(x0,y0),at(x1,y0),at(x1,y1),at(x0,y1));g.faces.push([k,k+1,k+2],[k,k+2,k+3]);quads++;return true;}
   function quad(e,x0,y0,x1,y1,name,offset=.018){
    if(!e||x1<=x0||y1<=y0)return false;if(!e.pieces)return fragment(e,x0,y0,x1,y1,name,offset);
@@ -11635,21 +11686,41 @@ const MistralFacades=(()=>{
   // Glazing/door faces on every retained facade and storey precede decoration.
   for(const {o,e}of retained)if(quad(e,o.offset,o.bottom,o.offset+o.width,o.bottom+o.height,o.type==='door'?'iron':'glass',.027)){openingCount++;renderedOpenings.push({...o});}
   const baseQuads=quads;
+  // A fitting is indivisible even where its rectangles cross hundreds of
+  // original micro-segments. Failed reservations emit no fragment at all.
+  function fitting(o,index,kind,variant,parts,reason=null,allocation=maxQuads){
+   const e=openingSurface(o,byEdge,bySurface),cost=parts.reduce((n,p)=>n+surfaceCount(e,p.x0,p.x1),0),record={openingIndex:index,kind,variant,provenance:'invented',basis:'source-usage-and-metric-opening',styleBasis:plan.styleBasis,partCount:parts.length,requiredQuads:cost,allocationLimit:allocation,rendered:false,reason,meshes:[]};
+   if(!reason&&cost&&quads+cost<=allocation){const starts=new Map([...groups].map(([name,g])=>[name,g.vertices.length]));for(const p of parts)quad(e,p.x0,p.y0,p.x1,p.y1,p.material,p.offset);for(const[name,g]of groups){const firstVertex=starts.get(name)||0;if(g.vertices.length>firstVertex)record.meshes.push({material:name,firstVertex,vertexCount:g.vertices.length-firstVertex});}record.rendered=true;record.reason=null;}
+   else if(!reason)record.reason=cost?quads+cost<=maxQuads?'shutter-budget-reservation':'quad-budget':'unsupported-source-surface';
+   joineryDetails.push(record);return record.rendered;
+  }
   if(detail){
-   for(const e of plan.edges){if(quads>=maxQuads)break;if(plan.height>3)quad(e,0,Math.max(.1,plan.height-.20),e.length,plan.height-.05,'trim',.024);}
-   for(const o of renderedOpenings){const e=openingSurface(o,byEdge,bySurface),x=o.offset,y=o.bottom,w=o.width,h=o.height,trim=Math.min(.09,w*.075,h*.06),lo=Math.max(0,x-trim),hi=Math.min(e.length,x+w+trim),bottom=Math.max(0,y-trim),top=Math.min(plan.height,y+h+trim);if(quads>=maxQuads)break;
-    quad(e,lo,bottom,x,top,'trim',.042);quad(e,x+w,bottom,hi,top,'trim',.042);quad(e,x,y+h,x+w,top,'trim',.042);if(y>0)quad(e,x,bottom,x+w,y,'trim',.042);
-    if(o.type==='window'&&plan.style==='residential'&&o.provenance!=='documented'){const sw=Math.min(.30,w*.28);if(x-sw>.08)quad(e,x-sw,y,x-.03,y+h,'shutter',.038);if(x+w+sw<e.length-.08)quad(e,x+w+.03,y,x+w+sw,y+h,'shutter',.038);}
-    if(o.type==='window'&&y>.4)quad(e,lo,Math.max(0,y-.13),hi,y-.06,'trim',.075);
-    if(o.type==='shopfront'&&o.provenance==='invented'){quad(e,x+w/2-.025,y,x+w/2+.025,y+h,'iron',.045);if(top+.18<plan.height)quad(e,lo,top+.04,hi,top+.18,'shutter',.033);}
+   for(let i=0;i<renderedOpenings.length;i++){const o=renderedOpenings[i],kit=authoredJoinery(plan,o,openingSurface(o,byEdge,bySurface));fitting(o,i,'joinery',kit.variant,kit.parts,kit.reason);}
+   const shutterEligible=o=>o.type==='window'&&plan.style==='residential'&&(plan.typology==='stacked'||plan.typology==='annexe'&&plan.styleBasis!=='invented-fallback')&&o.provenance==='invented',surroundLimit=maxQuads-(renderedOpenings.some(shutterEligible)?Math.min(128,Math.ceil((maxQuads-quads)*.4)):0);
+   for(let i=0;i<renderedOpenings.length;i++){const o=renderedOpenings[i],e=openingSurface(o,byEdge,bySurface),x=o.offset,y=o.bottom,w=o.width,h=o.height,trim=Math.min(.09,w*.075,h*.06),lo=Math.max(0,x-trim),hi=Math.min(e.length,x+w+trim),bottom=Math.max(0,y-trim),top=Math.min(plan.height,y+h+trim),parts=[],add=(x0,y0,x1,y1,offset=.042)=>{if(x1>x0&&y1>y0)parts.push({x0,y0,x1,y1,material:'trim',offset});};
+    add(lo,bottom,x,top);add(x+w,bottom,hi,top);add(x,y+h,x+w,top);if(y>0)add(x,bottom,x+w,y);if(o.type==='window'&&y>.4)add(lo,Math.max(0,y-.13),hi,y-.06,.075);
+    fitting(o,i,'surround','metric-opening-surround',parts,null,o.type==='door'?maxQuads:surroundLimit);
    }
+   // Open persiennes occupy the wall beside a bay, never its passage/glazing.
+   // Check the actual segmented source intervals against all retained and all
+   // documented openings, including known bays absent from this render LOD.
+   const occupied=new Map();for(const o of [...renderedOpenings,...plan.fixed.filter(o=>o.provenance==='documented')]){const e=openingSurface(o,byEdge,bySurface);if(!e)continue;for(const s of sourceSpans(e,o.offset,o.width)){const key=edgeKey(s);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({opening:o,offset:s.offset,end:s.offset+s.width,bottom:o.bottom,top:o.bottom+o.height});}}
+   const free=(o,e,x0,x1)=>sourceSpans(e,x0,x1-x0).every(s=>(occupied.get(edgeKey(s))||[]).every(other=>other.opening===o||other.top<=o.bottom+EPS||other.bottom>=o.bottom+o.height-EPS||other.end<=s.offset+EPS||other.offset>=s.offset+s.width-EPS));
+   const shutterOrder=renderedOpenings.map((o,i)=>({o,i})).filter(({o})=>shutterEligible(o)).sort((a,b)=>a.o.bottom-b.o.bottom||a.i-b.i);
+   for(const{o,i}of shutterOrder){const e=openingSurface(o,byEdge,bySurface),x=o.offset,y=o.bottom,w=o.width,h=o.height,sw=Math.min(.55,w*.47),ranges=[[x-sw-.035,x-.035],[x+w+.035,x+w+sw+.035]],parts=[];let reason=null;
+    if(ranges.some(([a,b])=>a<.08||b>e.length-.08))reason='insufficient-source-wall-beside-bay';else if(ranges.some(([a,b])=>!free(o,e,a,b)))reason='adjacent-opening-or-shutter-conflict';
+    if(!reason)for(const[a,b]of ranges){parts.push({x0:a,y0:y,x1:b,y1:y+h,material:'shutter',offset:.038});const slats=h>=1.1?6:4;for(let n=1;n<=slats;n++){const at=y+h*n/(slats+1),thickness=Math.min(.055,h/(slats+1)*.3);parts.push({x0:a+.025,y0:at-thickness/2,x1:b-.025,y1:at+thickness/2,material:'louver',offset:.054});}}
+    if(fitting(o,i,'shutters','open-louvered-pair',parts,reason))for(const[a,b]of ranges)for(const s of sourceSpans(e,a,b-a)){const key=edgeKey(s);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({opening:o,offset:s.offset,end:s.offset+s.width,bottom:y,top:y+h});}
+   }
+   for(const e of plan.edges){if(quads>=maxQuads)break;if(plan.height>3)quad(e,0,Math.max(.1,plan.height-.20),e.length,plan.height-.05,'trim',.024);}
    // The same floor schedule as interior08 aligns a sloping street entrance.
    for(let floor=1;floor<plan.levelElevations.length&&quads<maxQuads;floor++){const y=plan.levelElevations[floor];for(const e of plan.edges){if(quads>=maxQuads)break;quad(e,0,Math.max(0,y-.075),e.length,Math.min(plan.height,y-.025),'trim',.022);}}
   }
   const tile=draw.v046Tile||draw.geoTile||'facade:'+plan.id,center=[(plan.bounds.minX+plan.bounds.maxX)/2,plan.baseY+plan.height/2,(plan.bounds.minZ+plan.bounds.maxZ)/2];
-  const draws=[...groups].map(([name,g])=>({mesh:'geoSurface',vertices:g.vertices,faces:g.faces,pos:center.slice(),scale:[1,1,1],color:material(name),alpha:1,revision:0,v046Tile:tile,v046GeometryId:'facade:'+plan.id+':'+name,id:'facade:'+plan.id+':'+name,v050Facade:true,geoLayer:'facade',facadeBuildingId:plan.id,facadeProvenance:plan.provenance,sourceProvenance:plan.facadeDocument?{source:plan.facadeDocument.source,license:plan.facadeDocument.license,attribution:plan.facadeDocument.attribution,acquiredAt:plan.facadeDocument.acquiredAt}:null,renderOffsetMeters:.075}));
-  const bytes=draws.reduce((n,g)=>n+g.vertices.length*96+g.faces.length*96,0),detailCoverage={...plan.detailCoverage,renderedOpenings:openingCount,unrenderedPlannedOpenings:plan.openings.length-openingCount,deferredOpenings:deferredOpenings.length,openingQuads,panelEdges,totalFacadeEdges:plan.edges.length,decorationQuads:quads-baseQuads};
-  return{draws,quads,openings:openingCount,renderedOpenings,deferredOpenings,bytes:bytes+(renderedOpenings.length+deferredOpenings.length)*512,description:{id:plan.id,sourceId:plan.sourceId,stableSourceId:plan.stableSourceId,style:plan.style,styleBasis:plan.styleBasis,typology:plan.typology,levelInferenceBasis:plan.levelInferenceBasis,baseY:plan.baseY,height:plan.height,levels:plan.levels,levelHeight:plan.levelHeight,levelElevations:plan.levelElevations.slice(),provenance:plan.provenance,openingInventory:plan.openingInventory,detailCoverage}};
+  const draws=[...groups].map(([name,g])=>({mesh:'geoSurface',vertices:g.vertices,faces:g.faces,pos:center.slice(),scale:[1,1,1],color:material(name),alpha:1,revision:0,v046Tile:tile,v046GeometryId:'facade:'+plan.id+':'+name,id:'facade:'+plan.id+':'+name,v050Facade:true,geoLayer:'facade',facadeBuildingId:plan.id,facadeProvenance:plan.provenance,facadeDetailProvenance:'invented',sourceProvenance:plan.facadeDocument?{source:plan.facadeDocument.source,license:plan.facadeDocument.license,attribution:plan.facadeDocument.attribution,acquiredAt:plan.facadeDocument.acquiredAt}:null,renderOffsetMeters:.075}));
+  const joineryCoverage={provenance:'invented',enabled:detail,limit:detail?'quad-budget':'low-detail',requested:joineryDetails.length,rendered:joineryDetails.filter(d=>d.rendered).length,deferred:joineryDetails.filter(d=>!d.rendered).length,byKind:{},reasons:{}};for(const d of joineryDetails){const item=joineryCoverage.byKind[d.kind]||(joineryCoverage.byKind[d.kind]={requested:0,rendered:0,deferred:0});item.requested++;item[d.rendered?'rendered':'deferred']++;if(d.reason)joineryCoverage.reasons[d.reason]=(joineryCoverage.reasons[d.reason]||0)+1;}
+  const bytes=draws.reduce((n,g)=>n+g.vertices.length*96+g.faces.length*96,0),detailCoverage={...plan.detailCoverage,renderedOpenings:openingCount,unrenderedPlannedOpenings:plan.openings.length-openingCount,deferredOpenings:deferredOpenings.length,openingQuads,panelEdges,totalFacadeEdges:plan.edges.length,decorationQuads:quads-baseQuads,joineryCoverage};
+  return{draws,quads,openings:openingCount,renderedOpenings,deferredOpenings,joineryDetails,bytes:bytes+(renderedOpenings.length+deferredOpenings.length+joineryDetails.length)*512+joineryDetails.reduce((n,d)=>n+d.meshes.length*128,0),description:{id:plan.id,sourceId:plan.sourceId,stableSourceId:plan.stableSourceId,style:plan.style,styleBasis:plan.styleBasis,typology:plan.typology,levelInferenceBasis:plan.levelInferenceBasis,baseY:plan.baseY,height:plan.height,levels:plan.levels,levelHeight:plan.levelHeight,levelElevations:plan.levelElevations.slice(),provenance:plan.provenance,openingInventory:plan.openingInventory,detailCoverage}};
  }
  function distance(bounds,x,z){return Math.hypot(Math.max(bounds.minX-x,0,x-bounds.maxX),Math.max(bounds.minZ-z,0,z-bounds.maxZ));}
  class Index{
@@ -11693,7 +11764,7 @@ function v050FacadesAfterInit(){
   v050FacadeDoors:()=>runtime.selection.flatMap(item=>MistralFacades.entrances(item.description)),
   v050FacadePage:(id,cursor=0,limit=128)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);return item?MistralFacades.facadePage(item.draw,{cursor,limit}):null;},
   v050FacadeOpeningSpans:(id,opening)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);return item?MistralFacades.openingSpans(item.draw,opening):[];},
-  v050FacadeBuilding:(id)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);if(!item)return null;const d=item.description,result=runtime.live.get(d.id);return{id:d.id,sourceId:d.sourceId,stableSourceId:d.stableSourceId,baseY:d.baseY,height:d.height,levels:d.levels,levelHeight:d.levelHeight,levelsBasis:d.levelsBasis,levelInferenceBasis:d.levelInferenceBasis,style:d.style,styleBasis:d.styleBasis,typology:d.typology,provenance:d.provenance,rings:d.rings.slice(0,32).map(r=>r.slice(0,2048).map(p=>p.slice())),ringsTruncated:d.rings.length>32||d.rings.some(r=>r.length>2048),rendered:!!result,openings:result?.renderedOpenings.slice(0,128)||[],openingsTruncated:(result?.renderedOpenings.length||0)>128,openingInventory:result?.description.openingInventory||MistralFacades.facadePage(item.draw,{limit:1})?.inventory||null,deferredOpenings:result?.deferredOpenings.slice(0,128)||[],deferredOpeningsTruncated:(result?.deferredOpenings.length||0)>128,detailCoverage:result?.description.detailCoverage||null};}
+  v050FacadeBuilding:(id)=>{const item=runtime.selection.find(item=>item.description.id===id||item.description.sourceId===id||item.description.stableSourceId===id);if(!item)return null;const d=item.description,result=runtime.live.get(d.id);return{id:d.id,sourceId:d.sourceId,stableSourceId:d.stableSourceId,baseY:d.baseY,height:d.height,levels:d.levels,levelHeight:d.levelHeight,levelsBasis:d.levelsBasis,levelInferenceBasis:d.levelInferenceBasis,style:d.style,styleBasis:d.styleBasis,typology:d.typology,provenance:d.provenance,rings:d.rings.slice(0,32).map(r=>r.slice(0,2048).map(p=>p.slice())),ringsTruncated:d.rings.length>32||d.rings.some(r=>r.length>2048),rendered:!!result,openings:result?.renderedOpenings.slice(0,128)||[],openingsTruncated:(result?.renderedOpenings.length||0)>128,openingInventory:result?.description.openingInventory||MistralFacades.facadePage(item.draw,{limit:1})?.inventory||null,deferredOpenings:result?.deferredOpenings.slice(0,128)||[],deferredOpeningsTruncated:(result?.deferredOpenings.length||0)>128,joinery:result?.joineryDetails.slice(0,128)||[],joineryTruncated:(result?.joineryDetails.length||0)>128,detailCoverage:result?.description.detailCoverage||null};}
  });
 }
 
@@ -11718,16 +11789,16 @@ const MistralCityInteriors=(()=>{
  function building(raw){
   if(!raw||typeof raw.id!=='string'||!raw.id.trim()||raw.id.length>512||!finite(raw.baseY)||!finite(raw.height)||raw.height<=0||raw.height>2000)throw Error('Volume de bâtiment invalide');
   const source=cleanRings(raw.rings),b=bounds(source),origin=[b.cx,raw.baseY,b.cz],rings=source.map(r=>r.map(p=>[p[0]-b.cx,p[1]-b.cz]));
-  const properties=raw.properties||{},knownUse=v=>v&&!/^(?:indifferenciee?|inconnue?|unknown|yes|true|batiment|building|bati|non renseignee?)$/.test(normalText(v).trim()),sourceUse=[properties.usage_1,properties.usage_2,properties['building:use'],properties.building].find(knownUse),nature=knownUse(properties.nature)?properties.nature:'',genericNature=/industri.*agric.*commercial/.test(normalText(nature)),use=String(sourceUse||(!genericNature&&nature)||properties.architectureUse||nature||'').slice(0,160),name=String(properties.name||properties.nom||properties.nom_du_batiment||'Bâtiment').slice(0,160);
-  const kind=programTheme(use),single=['industrial','annex','sports'].includes(kind)||/relig|eglise|culte|chapelle|cathedr|basilique|abbat|synagog|mosquee|temple/.test(normalText(use)),levels=Number.isInteger(raw.levels)&&raw.levels>0?raw.levels:single?1:Math.max(1,Math.round(raw.height/3));if(levels>MAX_LEVELS)throw Error('Nombre de niveaux non pris en charge');if(raw.height/levels<1.95-EPS)throw Error('Le volume et les niveaux renseignés ne laissent pas la hauteur d’un personnage');
+  const properties=raw.properties||{},knownUse=v=>v&&!/^(?:indifferenciee?|inconnue?|unknown|yes|true|batiment|building|bati|non renseignee?)$/.test(normalText(v).trim()),sourceUse=[properties.usage_1,properties.usage_2,properties['building:use'],properties.building,properties.amenity,properties.shop].find(knownUse),nature=knownUse(properties.nature)?properties.nature:'',genericNature=/industri.*agric.*commercial/.test(normalText(nature)),use=String(sourceUse||(!genericNature&&nature)||properties.architectureUse||nature||'').slice(0,160),name=String(properties.name||properties.nom||properties.nom_du_batiment||'Bâtiment').slice(0,160);
+  const kind=programTheme4(use),single=['industrial','annex','sports'].includes(kind)||/relig|eglise|culte|chapelle|cathedr|basilique|abbat|synagog|mosquee|temple/.test(normalText(use)),levels=Number.isInteger(raw.levels)&&raw.levels>0?raw.levels:single?1:Math.max(1,Math.round(raw.height/3));if(levels>MAX_LEVELS)throw Error('Nombre de niveaux non pris en charge');if(raw.height/levels<1.95-EPS)throw Error('Le volume et les niveaux renseignés ne laissent pas la hauteur d’un personnage');
   const declared=['building:levels','levels','nombre_d_etages'].find(k=>{const n=Number(properties[k]);return Number.isInteger(n)&&n>=1&&n<=200&&n===levels;}),levelsBasis=declared==='nombre_d_etages'?'nombre_d_etages IGN, rez-de-chaussée compris':declared||'estimation du volume et de l’usage';
-  return{id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name,origin,rings,height:raw.height,levels,levelHeight:raw.height/levels,use,levelsBasis,outlineBasis:raw.provenance||'empreinte source',schema:1,layoutVersion:3};
+  return{id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name,origin,rings,height:raw.height,levels,levelHeight:raw.height/levels,use,levelsBasis,outlineBasis:raw.provenance||'empreinte source',schema:1,layoutVersion:4,programmeUse:programmeUse(properties,use)};
  }
  function validateBuilding(raw){
   if(!raw||raw.schema!==1||typeof raw.id!=='string'||raw.id.length>512||!raw.id||!Array.isArray(raw.origin)||raw.origin.length!==3||!raw.origin.every(finite)||!finite(raw.height)||raw.height<=0||raw.height>2000||!Number.isInteger(raw.levels)||raw.levels<1||raw.levels>MAX_LEVELS)throw Error('Bâtiment sauvegardé invalide');
   const rings=cleanRings(raw.rings),b=bounds(rings);if(Math.max(b.maxX-b.minX,b.maxZ-b.minZ)>10000)throw Error('Emprise intérieure hors budget');if(raw.height/raw.levels<1.95-EPS)throw Error('Niveaux sauvegardés incompatibles avec leur volume');
   let levelElevations=null;if(raw.levelElevations!=null){if(!Array.isArray(raw.levelElevations)||raw.levelElevations.length!==raw.levels||raw.levelElevations.some(n=>!finite(n))||Math.abs(raw.levelElevations[0])>EPS)throw Error('Altitudes de planchers invalides');levelElevations=raw.levelElevations.slice();for(let i=0;i<raw.levels;i++)if((levelElevations[i+1]??raw.height)-levelElevations[i]<1.95-EPS)throw Error('Planchers inventés non praticables');}
-  return{schema:1,id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name:String(raw.name||'Bâtiment').slice(0,160),origin:raw.origin.slice(),rings,height:raw.height,levels:raw.levels,levelHeight:raw.height/raw.levels,use:String(raw.use||'').slice(0,160),levelsBasis:String(raw.levelsBasis||'estimation').slice(0,160),outlineBasis:typeof raw.outlineBasis==='string'?raw.outlineBasis.slice(0,240):'empreinte source',layoutVersion:raw.layoutVersion===3?3:raw.layoutVersion===2?2:1,...(levelElevations?{levelElevations}:{} )};
+  return{schema:1,id:raw.id,sourceId:String(raw.sourceId||raw.id).slice(0,512),name:String(raw.name||'Bâtiment').slice(0,160),origin:raw.origin.slice(),rings,height:raw.height,levels:raw.levels,levelHeight:raw.height/raw.levels,use:String(raw.use||'').slice(0,160),levelsBasis:String(raw.levelsBasis||'estimation').slice(0,160),outlineBasis:typeof raw.outlineBasis==='string'?raw.outlineBasis.slice(0,240):'empreinte source',layoutVersion:raw.layoutVersion===4?4:raw.layoutVersion===3?3:raw.layoutVersion===2?2:1,...(raw.layoutVersion===4?{programmeUse:validateProgrammeUse(raw.programmeUse,raw.use)}:{}),...(levelElevations?{levelElevations}:{} )};
  }
  function point(rings,preferred=null,radius=.43){
   if(preferred&&clearance(rings,...preferred)>=radius)return preferred.slice();
@@ -11805,7 +11876,13 @@ const MistralCityInteriors=(()=>{
   washbasin:{size:[.7,.55],height:1.15,label:'Poste de lavage',zone:'Hygiène'},
   bench:{size:[1.75,.6],height:1,label:'Banc',zone:'Attente'},
   lectern:{size:[.7,.6],height:1.2,label:'Pupitre',zone:'Salle commune'},
-  archive:{size:[1.2,.55],height:1.75,label:'Étagères et registres',zone:'Archives'}
+  archive:{size:[1.2,.55],height:1.75,label:'Étagères et registres',zone:'Archives'},
+  checkout:{size:[1.6,.7],height:1.25,label:'Comptoir et caisse',zone:'Encaissement'},
+  school_desk:{size:[1.2,1.2],height:.95,label:'Table scolaire et deux chaises',zone:'Enseignement'},
+  teaching_board:{size:[1.8,.45],height:1.8,label:'Tableau sur pieds',zone:'Enseignement'},
+  printer:{size:[.8,.65],height:1.1,label:'Photocopieur et rangement',zone:'Reprographie'},
+  tool_cabinet:{size:[1.1,.6],height:1.75,label:'Armoire à outils',zone:'Outillage'},
+  medical_screen:{size:[1.4,.45],height:1.65,label:'Paravent de soins',zone:'Confidentialité des soins'}
  };
  // New compact dwellings use a real single bed and a separate WC, not a
  // scaled actor or a smaller source volume. Saved version-two layouts keep
@@ -11874,7 +11951,17 @@ const MistralCityInteriors=(()=>{
    box([0,.78,-.2],[1.3,.12,.75],'wood');for(const x of[-.52,.52])box([x,.36,-.2],[.12,.72,.65],'metal');box([0,.96,-.35],[.54,.24,.24],'dark');box([0,1.21,-.4],[.56,.18,.12],'glass');box([0,.43,.42],[.5,.12,.3],'wood');box([0,.74,.53],[.5,.42,.09],'fabric');
   }else if(kind==='reception'){
    box([0,.5,0],[1.9,1,.7],'wood');box([0,1.07,0],[1.9,.1,.75],'porcelain');box([0,.66,.36],[1.5,.15,.025],'amber');box([.55,1.145,-.2],[.3,.05,.22],'dark');
-  }else if(['wardrobe','medical_cabinet'].includes(kind)){
+  }else if(kind==='checkout'){
+   box([0,.46,0],[1.6,.92,.65],'wood');box([0,.96,0],[1.6,.08,.7],'porcelain');box([.45,1.06,-.08],[.42,.12,.38],'dark');box([.45,1.205,-.18],[.3,.09,.12],'glass');
+  }else if(kind==='school_desk'){
+   box([0,.73,-.25],[1.2,.08,.6],'wood');for(const x of[-.49,.49])box([x,.35,-.25],[.09,.7,.5],'metal');for(const x of[-.31,.31]){box([x,.43,.39],[.48,.08,.32],'wood');box([x,.73,.55],[.48,.44,.1],'wood');}
+  }else if(kind==='teaching_board'){
+   box([0,1.25,0],[1.8,1.1,.12],'wood');box([0,1.25,.067],[1.66,.96,.012],'dark');for(const x of[-.65,.65]){box([x,.6,0],[.08,1.2,.08],'metal');box([x,.04,0],[.35,.08,.45],'metal');}
+  }else if(kind==='printer'){
+   box([0,.4,0],[.8,.8,.65],'metal');box([0,.95,-.03],[.74,.3,.56],'paper');box([0,.96,.255],[.56,.08,.08],'dark');box([.24,1.05,.25],[.2,.08,.12],'glass');
+  }else if(kind==='medical_screen'){
+   box([0,.95,0],[1.4,1.4,.1],'medical');for(const x of[-.54,.54]){box([x,.8,0],[.07,1.6,.07],'metal');box([x,.04,0],[.3,.08,.45],'metal');}
+  }else if(['wardrobe','medical_cabinet','tool_cabinet'].includes(kind)){
    const[sx,sz]=d.size;box([0,d.height/2,0],[sx,d.height,sz],'metal');for(const x of[-sx*.245,sx*.245]){box([x,d.height*.52,sz/2-.035],[sx*.46,d.height*.92,.05],kind==='medical_cabinet'?'medical':'wood');box([x+(x<0?.12:-.12),d.height*.52,sz/2-.008],[.025,.2,.015],'dark');}if(kind==='medical_cabinet'){box([0,d.height*.69,sz/2-.004],[.34,.09,.008],'paper');box([0,d.height*.69,sz/2-.004],[.09,.34,.008],'paper');}
   }else if(['shelf','archive','pallet'].includes(kind)){
    const[sx,sz]=d.size;for(const x of[-sx/2+.04,sx/2-.04])box([x,d.height/2,0],[.08,d.height,sz],'metal');for(const y of[.12,.62,1.12,1.62])box([0,y,0],[sx,.08,sz],'wood');for(const y of[.36,.87,1.37])box([0,y,0],[sx*.7,.38,sz*.75],kind==='archive'?'paper':kind==='pallet'?'wood':'fabric');
@@ -11899,6 +11986,18 @@ const MistralCityInteriors=(()=>{
  const normalText=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  function programTheme(use){const t=normalText(use);return /hopital|medical|sante|clinique/.test(t)?'medical':/sport|tribune|gymnas|stade|piscin/.test(t)?'sports':/annexe|garage|dependance|abri|remise/.test(t)?'annex':/bureau|office|administr/.test(t)?'office':/industri|entrepot|agric|hangar|silo|reservoir|serre|halle|usine|atelier|cuve|chateau.*eau/.test(t)?'industrial':/commercial|commerce|magasin|boutique|service/.test(t)?'commercial':/eglise|relig|culte|chapelle|cathedr|basilique|abbat|synagog|mosquee|temple|civic|mairie|ecole|musee/.test(t)?'civic':'residential';}
  function rotate(p,angle){const c=Math.cos(angle),s=Math.sin(angle);return[c*p[0]-s*p[1],s*p[0]+c*p[1]];}
+ // Version four keeps the source category separate from the invented fit-out.
+ // An institution name never supplies a school/health programme by itself.
+ function programTheme4(use){const t=normalText(use);return /enseignement|ecole|scolaire|school|college|lycee|universit|kindergarten/.test(t)?'education':/hospital|doctor|dentist|clinic|health/.test(t)?'medical':/warehouse|industrial|workshop|farm|greenhouse/.test(t)?'industrial':/retail|supermarket|convenience|bakery|butcher|pharmacy|shop/.test(t)?'commercial':programTheme(use);}
+ function programmeUse(properties,use){
+  const field=['usage_1','usage_2','building:use','building','amenity','shop','nature','architectureUse'].find(k=>properties[k]&&String(properties[k]).slice(0,160)===use),basis=field==='architectureUse'?'architecture-annotation':field?'source-attribute':'invented-fallback';
+  return{kind:field==='shop'?'commercial':programTheme4(use),basis,field:field||null,value:use};
+ }
+ function validateProgrammeUse(raw,use){
+  if(!raw)return{kind:programTheme4(use),basis:'saved-use',field:null,value:String(use||'').slice(0,160)};
+  if(!['residential','medical','sports','annex','office','industrial','commercial','civic','education'].includes(raw.kind)||!['source-attribute','architecture-annotation','invented-fallback','saved-use'].includes(raw.basis)||raw.field!==null&&!['usage_1','usage_2','building:use','building','amenity','shop','nature','architectureUse'].includes(raw.field)||typeof raw.value!=='string'||raw.value.length>160||(raw.field==='shop'?'commercial':programTheme4(raw.value))!==raw.kind||raw.value!==String(use||'').slice(0,160))throw Error('Usage du programme intérieur invalide');
+  return{kind:raw.kind,basis:raw.basis,field:raw.field,value:raw.value};
+ }
  function planAngle(rings){let longest=0,angle=0;for(let i=0;i<rings[0].length;i++){const a=rings[0][i],b=rings[0][(i+1)%rings[0].length],n=Math.hypot(b[0]-a[0],b[1]-a[1]);if(n>longest+EPS){longest=n;angle=Math.atan2(b[1]-a[1],b[0]-a[0]);}}return((angle+Math.PI/4)% (Math.PI/2)+Math.PI/2)%(Math.PI/2)-Math.PI/4;}
  const rectangle=(x,z,w,d)=>[[x,z],[x+w,z],[x+w,z+d],[x,z+d],[x,z]];
  function segmentsCross(a,b,c,d){const cross=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);return cross(a,b,c)*cross(a,b,d)<-EPS&&cross(c,d,a)*cross(c,d,b)<-EPS;}
@@ -11966,6 +12065,27 @@ const MistralCityInteriors=(()=>{
   const openRequired=kind==='residential'?['bed','kitchen','sofa','dining','wardrobe']:kind==='medical'?['reception','bench','washbasin']:kind==='industrial'?['workbench','crate','pallet']:kind==='commercial'?['reception','shelf','bench']:kind==='office'?['desk','archive','bench']:kind==='sports'?['bench','wardrobe','washbasin']:kind==='annex'?['crate','shelf','workbench']:['bench','lectern','archive'];
   return{roomTypes,openRequired};
  }
+ // These are invented programmes, not claims about a building's real rooms.
+ // Keep a main working/teaching/public space before adding support rooms.
+ const ROOM_TYPES4={
+  ...ROOM_TYPES,
+  classroom:{use:'Salle de classe',size:[6,5],required:['teaching_board','school_desk'],optional:['desk','shelf'],repeat:{school_desk:4}},
+  consultation:{use:'Salle de soins',size:[3.8,4.3],required:['medical_bed','washbasin','medical_cabinet'],optional:['medical_screen']},
+  medical_store:{use:'Réserve de soins',size:[3,3],required:['medical_cabinet'],optional:[]},
+  staff_office:{use:'Bureau du personnel',size:[3.4,3.3],required:['desk'],optional:['archive','printer']},
+  work_store:{use:'Réserve de l’atelier',size:[3.4,3.2],required:['tool_cabinet','crate'],optional:['pallet']}
+ };
+ function floorProgram4(kind,area){
+  if(!['education','medical','industrial','commercial','office'].includes(kind))return floorProgram(kind,area);
+  const roomTypes=kind==='education'?[...(area>=65?['classroom']:[]),...(area>=180?['staff_office']:[]),...(area>=35?['sanitary']:[])]:kind==='medical'?[...(area>=45?['consultation']:[]),...(area>=200?['medical_store']:[]),...(area>=35?['sanitary']:[])]:kind==='industrial'?[...(area>=220?['work_store']:[]),...(area>=180?['staff_office']:[]),...(area>=45?['sanitary']:[])]:kind==='commercial'?[...(area>=65?['stock']:[]),...(area>=180?['staff_office']:[]),...(area>=35?['sanitary']:[])]:[...(area>=65?['office']:[]),...(area>=180?['archive']:[]),...(area>=35?['sanitary']:[])];
+  const openRequired=kind==='education'?['teaching_board','school_desk','desk','bench','archive']:kind==='medical'?['medical_bed','washbasin','medical_cabinet','reception','bench']:kind==='industrial'?['workbench','tool_cabinet','crate','pallet']:kind==='commercial'?['reception','checkout','shelf','bench']:['desk','printer','archive','bench'];
+  const openOnly=kind==='commercial'?['reception','checkout','shelf','bench']:kind==='office'?['desk','printer','bench']:[];
+  const openRepeat=kind==='education'?[]:kind==='medical'?['bench']:kind==='commercial'?['shelf']:kind==='office'?['desk','archive']:['workbench','crate','pallet'];
+  return{roomTypes,openRequired,openOnly,openRepeat,priority:openRequired.concat('sanitary'),openReserveFraction:kind==='industrial'?.6:kind==='commercial'?.45:kind==='medical'?.4:.35};
+ }
+ function documentaryRoomProgram4(room,base,level){
+  const use=normalText(room?.use);if(/classe|enseignement|scolaire|school|classroom/.test(use))return['teaching_board','school_desk','desk'];if(/soins|consultation|examen|treatment|medical/.test(use))return['medical_bed','washbasin','medical_cabinet'];if(/atelier|workshop/.test(use))return['workbench','tool_cabinet','crate'];if(/vente|commerce|boutique|shop/.test(use))return['checkout','shelf','reception'];return roomProgram(room,base,level);
+ }
  function candidatePoints(bb,size){const[w,d]=size,xs=[bb.minX+.22,bb.maxX-w-.22],zs=[bb.minZ+.22,bb.maxZ-d-.22],step=Math.max(.8,Math.sqrt((bb.maxX-bb.minX)*(bb.maxZ-bb.minZ)/144));for(let x=bb.minX+.22;x+w<bb.maxX-.2;x+=step)xs.push(x);for(let z=bb.minZ+.22;z+d<bb.maxZ-.2;z+=step)zs.push(z);const points=[];for(const z of [...new Set(zs)])for(const x of [...new Set(xs)])points.push([x,z]);return points.slice(0,PLAN_BUDGET.candidates);}
  function rectFits(l,ring,rooms){
   const bb=bounds([ring]);if(bb.maxX-bb.minX<1.9||bb.maxZ-bb.minZ<1.9)return false;
@@ -11984,11 +12104,12 @@ const MistralCityInteriors=(()=>{
  function generatedRooms(l,b,grid,baseline,program,checks){
   const rooms=[],omissions=[],bb=bounds(l.rings),unproven=baseline.freeCount>baseline.reached,limited=unproven||grid.step>.65||l.rings.reduce((n,r)=>n+r.length,0)>512;
   for(const type of program.roomTypes){
-   if(limited||rooms.length>=PLAN_BUDGET.rooms){omissions.push({type,reason:unproven?'source-circulation-unproven':'room-proof-budget'});continue;}const original=ROOM_TYPES[type],spec=l.compactResidential&&type==='sanitary'?{...original,size:[2,2.15]}:original;let found=null;
+   if(limited||rooms.length>=PLAN_BUDGET.rooms){omissions.push({type,reason:unproven?'source-circulation-unproven':'room-proof-budget'});continue;}const original=(l.programVersion===4?ROOM_TYPES4:ROOM_TYPES)[type],spec=l.compactResidential&&type==='sanitary'?{...original,size:[2,2.15]}:original;let found=null;
+   if(program.openReserveFraction&&rooms.reduce((sum,r)=>sum+Math.abs(area(r.ring)),0)+spec.size[0]*spec.size[1]>(1-program.openReserveFraction)*l.sourceArea){omissions.push({type,reason:'programme-open-space-reserve'});continue;}
    for(const size of[spec.size,spec.size.slice().reverse()]){for(const p of candidatePoints(bb,size)){
     const ring=rectangle(...p,...size);if(!rectFits(l,ring,rooms))continue;
     for(const side of[0,1,2,3]){const shape=roomWalls(ring,side);shape.door.height=Math.min(2.12,l.height-.1);if(clearance(l.rings,...shape.door.outside)<.48||checks.count>=PLAN_BUDGET.navigationChecks)continue;checks.count++;const test={...l,walls:l.walls.concat(shape.walls),roomDoors:l.roomDoors.concat(shape.door)},nav=navigation(test,grid,[],baseline.seen);if(nav.disconnected||!nav.reaches(shape.door.inside)||!nav.reaches(shape.door.outside)||(l.boundaryAccessProbes||[]).some(p=>walkable(test,...p,.38)&&!nav.reachesAt(p,.38)))continue;
-     found={id:'room:'+hash([b.id,l.level,type,rooms.length]),type,use:spec.use,ring,bounds:bounds([ring]),door:shape.door,required:spec.required.slice(),optional:spec.optional.slice(),provenance:'invented',coverage:'enclosed-room'};l.walls.push(...shape.walls);l.roomDoors.push({...shape.door,roomId:found.id});break;
+     found={id:'room:'+hash([b.id,l.level,type,rooms.length]),type,use:spec.use,ring,bounds:bounds([ring]),door:shape.door,required:spec.required.slice(),optional:spec.optional.slice(),...(spec.repeat?{repeat:{...spec.repeat}}:{}),provenance:'invented',coverage:'enclosed-room'};l.walls.push(...shape.walls);l.roomDoors.push({...shape.door,roomId:found.id});break;
     }if(found)break;
    }if(found)break;}
    if(found)rooms.push(found);else omissions.push({type,reason:checks.count>=PLAN_BUDGET.navigationChecks?'navigation-budget':'no-contained-connected-room'});
@@ -12004,17 +12125,18 @@ const MistralCityInteriors=(()=>{
   return true;
  }
  function furnishNew(l,b,grid,baseline,program,checks,recorded){
-  const furniture=[],zones=[],omissions=[],requirements=[],rooms=l.rooms;
-  for(const room of rooms){const kinds=room.required||roomProgram(room,b.use,l.level);for(const kind of kinds)requirements.push({kind,room,required:true});}
-  const inRooms=new Set(requirements.map(r=>r.kind));for(const kind of program.openRequired)if(!inRooms.has(kind))requirements.push({kind,room:null,required:true});
+  const furniture=[],zones=[],omissions=[],requirements=[],equipmentQuantities=[],rooms=l.rooms;
+  for(const room of rooms){const kinds=room.required||(l.programVersion===4?documentaryRoomProgram4(room,b.use,l.level):roomProgram(room,b.use,l.level));for(const kind of kinds)requirements.push({kind,room,required:true});}
+  const inRooms=new Set(requirements.map(r=>r.kind));for(const kind of program.openRequired)if(!inRooms.has(kind)||program.openOnly?.includes(kind))requirements.push({kind,room:null,required:true});
   if(!rooms.some(r=>r.required?.includes('sanitary'))&&!requirements.some(r=>r.kind==='sanitary')&&!['annex','industrial','sports'].includes(l.theme))requirements.push({kind:'sanitary',room:null,required:true});
+  if(l.programVersion===4&&program.priority)requirements.sort((a,b)=>{const rank=k=>{const n=program.priority.indexOf(k);return n<0?program.priority.length:n;};return rank(a.kind)-rank(b.kind);});
   if(!recorded&&baseline.freeCount>baseline.reached)return{furniture,zones,omissions:requirements.map(r=>({kind:r.kind,roomId:r.room?.id||null,reason:'source-circulation-unproven'})),requirements:requirements.map(r=>({kind:r.kind,roomId:r.room?.id||null})),program:[...new Set(requirements.map(r=>r.kind))]};
   const positions=(region,size)=>{
    const bb=region?bounds([region.ring]):bounds(l.rings),hx=size[0]/2+.14,hz=size[1]/2+.14,xs=[bb.minX+hx,bb.maxX-hx],zs=[bb.minZ+hz,bb.maxZ-hz],step=Math.max(.6,Math.sqrt((bb.maxX-bb.minX)*(bb.maxZ-bb.minZ)/196));for(let x=bb.minX+hx;x<bb.maxX-hx;x+=step)xs.push(x);for(let z=bb.minZ+hz;z<bb.maxZ-hz;z+=step)zs.push(z);const points=[];for(const z of [...new Set(zs)])for(const x of [...new Set(xs)])points.push([x,z]);return points.slice(0,PLAN_BUDGET.candidates);
   };
   const approachValid=(f,p)=>{const room=f.roomId?rooms.find(r=>r.id===f.roomId):null;return(!room||clearance([room.ring],...p)>=.4-EPS)&&canTravel(l,f.pos,p,.04);};
   const approaches=f=>{const[p,q]=f.pos,[w,d]=f.size;return[[p,q+d/2+.64],[p,q-d/2-.64],[p+w/2+.64,q],[p-w/2-.64,q]].filter(a=>approachValid(f,a));};
-  const probesClear=(nav,all,newFurniture)=>{if((l.boundaryAccessProbes||[]).some(p=>walkable(l,...p,.38)&&!all.some(f=>furnitureBlocked(f,...p,.38))&&!nav.reachesAt(p,.38)))return false;for(const f of all){if(Math.hypot(f.pos[0]-newFurniture.pos[0],f.pos[1]-newFurniture.pos[1])>5)continue;const room=rooms.find(r=>r.id===f.roomId),bb=room?bounds([room.ring]):bounds(l.rings),[x,z]=f.pos,[w,d]=f.size,xs=[x,(x-w/2+bb.minX)/2,(x+w/2+bb.maxX)/2,x-w/2-.42,x+w/2+.42],zs=[z,(z-d/2+bb.minZ)/2,(z+d/2+bb.maxZ)/2,z-d/2-.42,z+d/2+.42];for(const a of xs)for(const b of zs){const p=[a,b];if(walkable(l,...p,.38)&&!all.some(v=>furnitureBlocked(v,...p,.38))&&(l.compactResidential?baseline.reachesAt(p,.38):baseline.reaches(p))&&!(l.compactResidential?nav.reachesAt(p,.38):nav.reaches(p)))return false;}}return true;};
+  const probesClear=(nav,all,newFurniture)=>{if((l.boundaryAccessProbes||[]).some(p=>walkable(l,...p,.38)&&!all.some(f=>furnitureBlocked(f,...p,.38))&&!nav.reachesAt(p,.38)))return false;for(const f of all){if(Math.hypot(f.pos[0]-newFurniture.pos[0],f.pos[1]-newFurniture.pos[1])>5)continue;const room=rooms.find(r=>r.id===f.roomId),bb=room?bounds([room.ring]):bounds(l.rings),[x,z]=f.pos,[w,d]=f.size,xs=[x,(x-w/2+bb.minX)/2,(x+w/2+bb.maxX)/2,x-w/2-.42,x+w/2+.42],zs=[z,(z-d/2+bb.minZ)/2,(z+d/2+bb.maxZ)/2,z-d/2-.42,z+d/2+.42];for(const a of xs)for(const b of zs){const p=[a,b];if(walkable(l,...p,.38)&&!all.some(v=>furnitureBlocked(v,...p,.38))&&(l.strictAccessProbes?baseline.reachesAt(p,.38):baseline.reaches(p))&&!(l.strictAccessProbes?nav.reachesAt(p,.38):nav.reaches(p)))return false;}}return true;};
   const place=(kind,room)=>{
    const variant=l.compactResidential&&COMPACT_FURNITURE[kind]?'compact':null,def=variant?COMPACT_FURNITURE[kind]:FURNITURE[kind];if(!def||def.height>l.height-.1||furniture.length>=PLAN_BUDGET.furniture)return false;
    for(const turn of[0,Math.PI/2]){const size=turn?def.size.slice().reverse():def.size;
@@ -12027,23 +12149,24 @@ const MistralCityInteriors=(()=>{
    }return false;
   };
   for(const r of requirements)if(!place(r.kind,r.room))omissions.push({kind:r.kind,roomId:r.room?.id||null,reason:checks.count>=PLAN_BUDGET.navigationChecks?'navigation-budget':furniture.length>=PLAN_BUDGET.furniture?'furniture-budget':'metric-fit-or-access'});
+  if(l.programVersion===4)for(const room of rooms)for(const[kind,requested]of Object.entries(room.repeat||{})){let placed=furniture.filter(f=>f.roomId===room.id&&f.kind===kind).length;while(placed<requested&&furniture.length<PLAN_BUDGET.furniture&&checks.count<PLAN_BUDGET.navigationChecks){if(!place(kind,room))break;placed++;}equipmentQuantities.push({roomId:room.id,kind,requested,placed,complete:placed===requested,...(placed<requested?{reason:checks.count>=PLAN_BUDGET.navigationChecks?'navigation-budget':furniture.length>=PLAN_BUDGET.furniture?'furniture-budget':'metric-fit-or-access'}:{})});}
   for(const room of rooms)for(const kind of room.optional||[])if(furniture.length<PLAN_BUDGET.furniture&&checks.count<PLAN_BUDGET.navigationChecks)place(kind,room);
   // Large halls may repeat their useful equipment, while small dwellings keep
   // the complete distinct programme ahead of decoration and repeated storage.
-  const target=omissions.length||Math.abs(area(l.rings[0]))<180?furniture.length:Math.min(PLAN_BUDGET.furniture,Math.floor(Math.abs(area(l.rings[0]))/40));for(let repeat=0;furniture.length<target&&repeat<3;repeat++)for(const kind of program.openRequired){if(furniture.length>=target||checks.count>=PLAN_BUDGET.navigationChecks)break;place(kind,null);}
-  return{furniture,zones,omissions,requirements:requirements.map(r=>({kind:r.kind,roomId:r.room?.id||null})),program:[...new Set(requirements.map(r=>r.kind))]};
+  const target=omissions.length||(l.programVersion===4?l.sourceArea:Math.abs(area(l.rings[0])))<180?furniture.length:Math.min(PLAN_BUDGET.furniture,Math.floor((l.programVersion===4?l.sourceArea:Math.abs(area(l.rings[0])))/40));for(let repeat=0;furniture.length<target&&repeat<3;repeat++)for(const kind of program.openRepeat||program.openRequired){if(furniture.length>=target||checks.count>=PLAN_BUDGET.navigationChecks)break;place(kind,null);}
+  return{furniture,zones,omissions,equipmentQuantities,requirements:requirements.map(r=>({kind:r.kind,roomId:r.room?.id||null})),program:[...new Set(requirements.map(r=>r.kind))]};
  }
  function layoutNew(b,level,start,gridLevels,recorded,doc){
-  const angle=planAngle(b.rings),toLocal=p=>rotate(p,-angle),toWorld=p=>rotate(p,angle),sourceArea=Math.max(0,Math.abs(area(b.rings[0]))-b.rings.slice(1).reduce((s,r)=>s+Math.abs(area(r)),0)),kind=programTheme(b.use),l={buildingId:b.id,level,rings:b.rings.map(r=>r.map(toLocal)),height:(gridLevels[level+1]??b.height)-gridLevels[level],elevation:gridLevels[level],entry:toLocal(start),walls:recorded?recorded.walls.map(w=>({...w,a:toLocal(w.a),b:toLocal(w.b)})):[],rooms:recorded?recorded.rooms.map(r=>({...r,ring:r.ring.map(toLocal)})):[],roomDoors:[],theme:kind,compactResidential:b.layoutVersion===3&&!recorded&&kind==='residential'&&sourceArea<55};
+  const angle=planAngle(b.rings),toLocal=p=>rotate(p,-angle),toWorld=p=>rotate(p,angle),sourceArea=Math.max(0,Math.abs(area(b.rings[0]))-b.rings.slice(1).reduce((s,r)=>s+Math.abs(area(r)),0)),kind=b.layoutVersion===4?b.programmeUse.kind:programTheme(b.use),l={buildingId:b.id,level,rings:b.rings.map(r=>r.map(toLocal)),height:(gridLevels[level+1]??b.height)-gridLevels[level],elevation:gridLevels[level],entry:toLocal(start),walls:recorded?recorded.walls.map(w=>({...w,a:toLocal(w.a),b:toLocal(w.b)})):[],rooms:recorded?recorded.rooms.map(r=>({...r,ring:r.ring.map(toLocal)})):[],roomDoors:[],theme:kind,compactResidential:b.layoutVersion>=3&&!recorded&&kind==='residential'&&sourceArea<55,strictAccessProbes:b.layoutVersion===4||b.layoutVersion===3&&!recorded&&kind==='residential'&&sourceArea<55,programVersion:b.layoutVersion,sourceArea};
   if(!walkable(l,...l.entry,.4)){const fallback=point(l.rings,null,.7);if(!fallback||!walkable(l,...fallback,.4))throw Error('Le plan documentaire bloque son entrée');l.entry=fallback;start=toWorld(fallback);}
-  const grid=navigationGrid(l.rings),baseline=navigation({...l,walls:l.walls.slice()},grid),checks={count:0},program=floorProgram(kind,sourceArea);
-  if(l.compactResidential)l.boundaryAccessProbes=boundaryProbes(l.rings).filter(p=>baseline.reachesAt(p,.38));
+  const grid=navigationGrid(l.rings),baseline=navigation({...l,walls:l.walls.slice()},grid),checks={count:0},program=b.layoutVersion===4?floorProgram4(kind,sourceArea):floorProgram(kind,sourceArea);
+  if(l.compactResidential||b.layoutVersion===4)l.boundaryAccessProbes=boundaryProbes(l.rings).filter(p=>baseline.reachesAt(p,.38));
   const generated=recorded?{rooms:l.rooms,omissions:[],limited:false}:generatedRooms(l,b,grid,baseline,program,checks);l.rooms=generated.rooms;const contents=furnishNew(l,b,grid,baseline,program,checks,!!recorded),nav=navigation(l,grid,contents.furniture,baseline.seen);
   const walls=recorded?copy(recorded.walls):l.walls.map(w=>({...w,a:toWorld(w.a),b:toWorld(w.b)})),rooms=recorded?copy(recorded.rooms):l.rooms.map(r=>({...r,ring:r.ring.map(toWorld),bounds:bounds([r.ring.map(toWorld)]),door:{...r.door,center:toWorld(r.door.center),inside:toWorld(r.door.inside),outside:toWorld(r.door.outside)}})),furniture=contents.furniture.map(f=>{const ring=furnitureRing(f).map(toWorld),bb=bounds([ring]);return{...f,pos:toWorld(f.pos),approach:toWorld(f.approach),ring,localSize:f.localSize.slice(),size:[bb.maxX-bb.minX,bb.maxZ-bb.minZ],rotation:angle+f.rotation};}),roomArea=recorded?null:l.rooms.reduce((s,r)=>s+Math.abs(area(r.ring)),0);
   const result={buildingId:b.id,level,rings:copy(b.rings),height:l.height,elevation:l.elevation,walls,entry:start.slice(),stair:start.slice(),theme:kind,rooms,roomDoors:l.roomDoors.map(d=>({...d,center:toWorld(d.center),inside:toWorld(d.inside),outside:toWorld(d.outside)})),provenance:recorded?'documented':'invented',source:recorded?doc.source:null,levels:b.levels,furniture,functionalZones:contents.zones.map(z=>({...z,ring:z.ring.map(toWorld),anchor:toWorld(z.anchor)})),furnishingProgram:contents.program,roomsBasis:recorded?'documented':'invented-enclosed-rooms',roomCoverage:recorded?'documented-record':'rooms-and-open-source-space',layoutVersion:b.layoutVersion,
    openSpace:recorded?null:{id:'open:'+hash([b.id,level]),use:kind==='residential'?'Pièce de vie et circulation ouverte':kind==='industrial'?'Halle de travail et circulation':kind==='commercial'?'Espace de vente et circulation':'Espace commun et circulation',rings:copy(b.rings),excludedRooms:l.rooms.map(r=>r.id),provenance:'invented',area:Math.max(0,sourceArea-roomArea)},
-   programCoverage:{provenance:'invented',frame:'building-local-metre',...(b.layoutVersion===3?{programVersion:3,equipmentScale:l.compactResidential?'single-bed-and-separate-wc':'standard',boundaryAccessSamples:l.boundaryAccessProbes?.length||0}:{}),orientationRadians:angle,footprintArea:sourceArea,enclosedRoomArea:roomArea,openSourceArea:recorded?null:Math.max(0,sourceArea-roomArea),enclosedRooms:rooms.length,requestedRoomTypes:program.roomTypes,roomOmissions:generated.omissions,furnishingRequirements:contents.requirements,furnishingOmissions:contents.omissions,allRequestedFunctionsPlaced:!contents.omissions.length,allRequestedRoomsPlaced:!generated.omissions.length,completeInventedProgram:!recorded&&!contents.omissions.length&&!generated.omissions.length&&baseline.freeCount===baseline.reached,roomsLimited:generated.limited,navigation:{sampledCells:nav.cells,stepMeters:nav.step,sourceUnreachableCells:baseline.freeCount-baseline.reached,newUnreachableCells:nav.disconnected,reachableCells:nav.reached,freeCells:nav.freeCount},budgets:{...PLAN_BUDGET,...(b.layoutVersion===3?{boundaryAccessProbes:BOUNDARY_PROBE_LIMIT}:{})},navigationChecks:checks.count}};
-  result.signature=hash([b.layoutVersion===3?3:2,b.id,b.rings,level,result.elevation,result.height,walls,rooms,furniture]);return result;
+   programCoverage:{provenance:'invented',frame:'building-local-metre',...(b.layoutVersion>=3?{programVersion:b.layoutVersion,...(b.layoutVersion===4?{useBasis:copy(b.programmeUse),mainSpaceReserveFraction:program.openReserveFraction||0,equipmentQuantities:contents.equipmentQuantities||[],allRequestedEquipmentPlaced:!contents.omissions.length&&!contents.equipmentQuantities?.some(q=>!q.complete)}:{}),equipmentScale:l.compactResidential?'single-bed-and-separate-wc':'standard',boundaryAccessSamples:l.boundaryAccessProbes?.length||0}:{}),orientationRadians:angle,footprintArea:sourceArea,enclosedRoomArea:roomArea,openSourceArea:recorded?null:Math.max(0,sourceArea-roomArea),enclosedRooms:rooms.length,requestedRoomTypes:program.roomTypes,roomOmissions:generated.omissions,furnishingRequirements:contents.requirements,furnishingOmissions:contents.omissions,allRequestedFunctionsPlaced:!contents.omissions.length,allRequestedRoomsPlaced:!generated.omissions.length,completeInventedProgram:!recorded&&!contents.omissions.length&&!generated.omissions.length&&!(b.layoutVersion===4&&contents.equipmentQuantities?.some(q=>!q.complete))&&baseline.freeCount===baseline.reached,roomsLimited:generated.limited,navigation:{sampledCells:nav.cells,stepMeters:nav.step,sourceUnreachableCells:baseline.freeCount-baseline.reached,newUnreachableCells:nav.disconnected,reachableCells:nav.reached,freeCells:nav.freeCount},budgets:{...PLAN_BUDGET,...(b.layoutVersion>=3?{boundaryAccessProbes:BOUNDARY_PROBE_LIMIT}:{})},navigationChecks:checks.count}};
+  result.signature=hash([b.layoutVersion>=3?b.layoutVersion:2,b.id,b.rings,level,result.elevation,result.height,walls,rooms,furniture]);return result;
  }
  function walkable(layout,x,z,radius=.38){if(clearance(layout.rings,x,z)<radius)return false;return !layout.walls.some(w=>segmentDistance([x,z],w.a,w.b)<radius+w.thickness/2-EPS);}
  function canTravel(layout,from,to,radius=.38){const distance=Math.hypot(to[0]-from[0],to[1]-from[1]);if(distance>400)return false;const n=Math.max(1,Math.ceil(distance/.15));for(let i=0;i<=n;i++)if(!walkable(layout,from[0]+(to[0]-from[0])*i/n,from[1]+(to[1]-from[1])*i/n,radius))return false;return true;}
@@ -12051,13 +12174,13 @@ const MistralCityInteriors=(()=>{
   b=validateBuilding(b);if(!Number.isInteger(level)||level<0||level>=b.levels)throw Error('Étage intérieur invalide');
   const checked=doc?document(doc,b):null,recorded=checked?.levels.find(l=>l.level===level),grid=floorLevels(b,checked),start=point(b.rings,recorded?.entry||entry,.43);
   if(!start)throw Error('L’emprise ne contient pas d’espace praticable pour un personnage');
-  if(b.layoutVersion===2||b.layoutVersion===3){const key=hash([b,level,start,checked]),cached=layoutCache.get(key);if(cached){layoutCache.delete(key);layoutCache.set(key,cached);return JSON.parse(cached);}return cacheLayout(key,layoutNew(b,level,start,grid,recorded,checked));}
+  if(b.layoutVersion===2||b.layoutVersion===3||b.layoutVersion===4){const key=hash([b,level,start,checked]),cached=layoutCache.get(key);if(cached){layoutCache.delete(key);layoutCache.set(key,cached);return JSON.parse(cached);}return cacheLayout(key,layoutNew(b,level,start,grid,recorded,checked));}
   const walls=recorded?recorded.walls:inventedWalls(b,start),result={buildingId:b.id,level,rings:copy(b.rings),height:(grid[level+1]??b.height)-grid[level],elevation:grid[level],walls,entry:start,theme:theme(b.use),rooms:recorded?.rooms||[],provenance:recorded?'documented':'invented',source:recorded?doc.source:null,levels:b.levels};
   if(!walkable(result,...start,.4)){const p=point(b.rings,null,.7);if(!p||!walkable(result,...p,.4))throw Error('Le plan documentaire bloque son entrée');result.entry=p;}
   result.stair=result.entry.slice();const contents=furnish(result,b,!!recorded);result.furniture=contents.furniture;result.functionalZones=contents.zones;result.furnishingProgram=contents.program;result.roomsBasis=recorded?'documented':'invented-functional-zones';result.roomCoverage=recorded?'documented-record':'partial';if(!recorded)result.rooms=copy(contents.zones);
   result.signature=hash([b.id,b.rings,level,result.elevation,result.height,walls,result.furniture]);return result;
  }
- return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,programTheme,PLAN_BUDGET,FURNITURE,COMPACT_FURNITURE,furnitureDefinition,program,roomProgram,furnishingFits,furnitureModel,furnitureRing,furnitureBlocked,walkable,canTravel,layout};
+ return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,programTheme,programTheme4,PLAN_BUDGET,FURNITURE,COMPACT_FURNITURE,furnitureDefinition,program,roomProgram,furnishingFits,furnitureModel,furnitureRing,furnitureBlocked,walkable,canTravel,layout};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralCityInteriors;
 
@@ -12116,7 +12239,7 @@ if(typeof baseState==='function'){
   r.push(r[0].slice());V017_PRISM_BASE(w,[r],y,h,color,{id});v017AddPolyCollider(w,r,y,y+h,{id,rings:[r]});
  }
  function build(){
-  const a=state.v050City.active;if(!a)throw Error('Aucun intérieur de bâtiment sélectionné');const b=a.building,l=MistralCityInteriors.layout(b,a.floor,a.entry,a.document),palette={residential:{floor:[.34,.29,.22],wall:[.62,.56,.44]},medical:{floor:[.37,.43,.39],wall:[.58,.65,.59]},industrial:{floor:[.29,.29,.27],wall:[.42,.43,.40]},annex:{floor:[.29,.29,.27],wall:[.42,.43,.40]},sports:{floor:[.35,.37,.30],wall:[.61,.61,.49]},office:{floor:[.35,.34,.28],wall:[.60,.59,.50]},commercial:{floor:[.34,.33,.29],wall:[.58,.57,.49]},civic:{floor:[.42,.38,.31],wall:[.64,.60,.50]}}[l.theme];
+  const a=state.v050City.active;if(!a)throw Error('Aucun intérieur de bâtiment sélectionné');const b=a.building,l=MistralCityInteriors.layout(b,a.floor,a.entry,a.document),palette={residential:{floor:[.34,.29,.22],wall:[.62,.56,.44]},medical:{floor:[.37,.43,.39],wall:[.58,.65,.59]},industrial:{floor:[.29,.29,.27],wall:[.42,.43,.40]},annex:{floor:[.29,.29,.27],wall:[.42,.43,.40]},sports:{floor:[.35,.37,.30],wall:[.61,.61,.49]},office:{floor:[.35,.34,.28],wall:[.60,.59,.50]},education:{floor:[.38,.34,.25],wall:[.66,.64,.51]},commercial:{floor:[.34,.33,.29],wall:[.58,.57,.49]},civic:{floor:[.42,.38,.31],wall:[.64,.60,.50]}}[l.theme];
   const w=createWorld(V050_CITY_ZONE,b.name,`MARSEILLE · ${a.floor?'NIVEAU '+a.floor:'REZ-DE-CHAUSSÉE'}`,{indoor:true,daylight:.32,fog:[.21,.24,.20],wind:0});w.v050CityInterior=l;w.v050CityBuilding=b;const bb=MistralCityInteriors.bounds(l.rings);w.bounds=[bb.minX-.1,bb.maxX+.1,bb.minZ-.1,bb.maxZ+.1];w.spawn=[l.entry[0],l.elevation+playerEyeHeight(),l.entry[1]];const facing=a.facing||[-l.entry[0],-l.entry[1]];w.spawnYaw=Math.atan2(facing[0],-facing[1]);
   surface(w,l.rings,l.elevation,palette.floor,'city-floor:'+l.signature);surface(w,l.rings,l.elevation+l.height-.08,cMix(palette.wall,COLORS.black,.25),'city-ceiling:'+l.signature);
   for(let r=0;r<l.rings.length;r++)for(let i=0;i<l.rings[r].length;i++)wall(w,l.rings[r][i],l.rings[r][(i+1)%l.rings[r].length],l.elevation,l.height,palette.wall,`city-boundary:${r}:${i}`,.2);
@@ -12127,7 +12250,7 @@ if(typeof baseState==='function'){
   const[x,z]=l.entry,y=l.elevation;
   addBox(w,[x,y+.06,z],[.65,.12,.65],[.57,.52,.28]);
   const inspect=()=>{
-   const source=l.source,uses=[...new Set(l.functionalZones.map(z=>z.use))].join(', '),coverage=l.programCoverage,description=coverage?`${l.rooms.length} pièce(s) close(s), portes de 1,20 m et espace restant conservé comme volume ouvert et circulation. ${coverage.roomOmissions.length} pièce(s) et ${coverage.furnishingOmissions.length} fonction(s) du programme non placées faute de place, de passage ou de budget.`:'Zones fonctionnelles partielles ; aucun relevé des pièces.',text=`${b.name}\nEmpreinte extérieure conservée à l’échelle métrique, cours exclues.\n${l.levels} niveau(x) : ${b.levelsBasis}.\nNiveau courant : ${l.provenance==='documented'?'plan documenté':'plan inventé, cohérent avec le volume et l’usage disponibles'}.\nLe mobilier et les réserves sont fictifs.\nProgramme inventé : ${uses||'pas de mobilier ajouté lorsque le passage manque'}. ${l.provenance==='documented'?'Les contours et murs documentés sont conservés ; leurs équipements sont inventés.':description}\n${source?source.title+'\n'+source.url+'\n'+source.license+' · '+source.attribution:'Aucun relevé public des pièces n’est attaché à ce bâtiment.'}`;
+   const use=b.programmeUse,useLabel=b.layoutVersion===4?(use.basis==='source-attribute'?`Usage source (${use.field}) : ${use.value}.`:use.basis==='architecture-annotation'?`Usage d’annotation d’architecture : ${use.value}.`:'Usage du programme choisi ou repris sans catégorie source précise.'):'',source=l.source,uses=[...new Set(l.functionalZones.map(z=>z.use))].join(', '),coverage=l.programCoverage,description=coverage?`${l.rooms.length} pièce(s) close(s), portes de 1,20 m et espace restant conservé comme volume ouvert et circulation. ${coverage.roomOmissions.length} pièce(s) et ${coverage.furnishingOmissions.length} fonction(s) du programme non placées faute de place, de passage ou de budget.`:'Zones fonctionnelles partielles ; aucun relevé des pièces.',text=`${b.name}\nEmpreinte extérieure conservée à l’échelle métrique, cours exclues.\n${l.levels} niveau(x) : ${b.levelsBasis}.\nNiveau courant : ${l.provenance==='documented'?'plan documenté':'plan inventé, cohérent avec le volume et l’usage disponibles'}.\nLe mobilier et les réserves sont fictifs.${useLabel?'\n'+useLabel:''}\nProgramme inventé : ${uses||'pas de mobilier ajouté lorsque le passage manque'}. ${l.provenance==='documented'?'Les contours et murs documentés sont conservés ; leurs équipements sont inventés.':description}\n${source?source.title+'\n'+source.url+'\n'+source.license+' · '+source.attribution:'Aucun relevé public des pièces n’est attaché à ce bâtiment.'}`;
    openNote('city-plan:'+MistralCityInteriors.hash(b.id),b.name,text);
   };
   addInteract(w,'city-interior-landing',[x,y+1.1,z],'Palier · niveau '+a.floor+' · accès et provenance',()=>{
@@ -12737,20 +12860,24 @@ if(typeof window!=='undefined'&&typeof baseState==='function'){
  globalThis.v053IconicAfterInit=function(){V027_SUBS.data.iconic='COLLECTION';Object.assign(window.__MISTRAL_DEBUG,{v053IconicInfo:()=>({schema:1,found:clone(state.v053Iconic.found),effects:clone(state.v053Iconic.effects),read:clone(state.v053Iconic.read),drinks:state.v053Iconic.drinks,physical:runtime.entries.map(e=>({id:e.object.id,kind:e.object.kind,name:e.object.name,siteId:e.object.siteId,scene:e.object.scene,pos:e.pos.slice(),interaction:e.interaction.slice()})),draws:runtime.draws.length,error:runtime.error,provenance:'Authored game objects and procedural models; not surveyed architecture or recovered studio assets'}),v053IconicBind:()=>bind(true),v053IconicPickup:pickup,v053IconicUse:use,v053IconicCatalog:()=>clone(runtime.targets)});bind(true);};
 }
 
-/* Three original regional assemblies. Encounter IDs, AI archetypes, wounds,
+/* Regional assemblies. Encounter IDs, AI archetypes, wounds,
    rewards and finite corpse inventories retain their existing owners. */
 const MistralRegionalBestiary=(()=>{
  const MAX_ASSIGNMENTS=256,MAX_BYTES=96*1024,copy=v=>JSON.parse(JSON.stringify(v)),finite=Number.isFinite;
  const SPECS={
   ratCable:{name:'Rat-câble',baseTypes:['molerat'],macros:['geo_huveaune','geo_marseille'],radius:.9,family:'regional-rat',attack:{melee:true,duration:.68,reach:1.85,radius:.92,label:'MORSURE DU RAT-CÂBLE'}},
-  gabianBombardier:{name:'Gabian bombardier',baseTypes:['bloatfly'],macros:['geo_marseille','geo_calanques','geo_frioul','geo_laciotat'],radius:.96,family:'regional-bird',attack:{melee:false,duration:1.35,reach:14,radius:.85,label:'LÂCHER CORROSIF DU GABIAN'}},
-  cerfa77:{name:'CERFA-77',baseTypes:['protectron','concordeDrone'],macros:['geo_marseille','geo_huveaune','geo_laciotat'],radius:.9,family:'regional-automaton',attack:{melee:false,duration:1.65,reach:22,radius:.72,label:'INJONCTION ARMÉE CERFA-77'}}
+  gabianBombardier:{name:'Gabian bombardier',baseTypes:['bloatfly'],macros:['geo_marseille','geo_calanques','geo_frioul','geo_laciotat'],radius:.96,family:'regional-bird',flight:{bottom:.1,top:1.35,clearance:2.2,ceiling:8,verticalSpeed:1.4,gravity:9.8},attack:{melee:false,duration:1.35,reach:14,radius:.85,label:'LÂCHER CORROSIF DU GABIAN'}},
+  cerfa77:{name:'CERFA-77',baseTypes:['protectron','concordeDrone'],macros:['geo_marseille','geo_huveaune','geo_laciotat'],radius:.9,family:'regional-automaton',attack:{melee:false,duration:1.65,reach:22,radius:.72,label:'INJONCTION ARMÉE CERFA-77'}},
+  ratCrowned:{name:'Rat-couronné',baseTypes:['giantRat'],macros:['geo_huveaune'],radius:.98,family:'regional-crowned-rat',attack:{melee:true,duration:.82,reach:1.85,radius:.9,label:'RUÉE DU RAT-COURONNÉ'}},
+  mistralCicada:{name:'Cigale du Mistral',baseTypes:['mistralCicada'],macros:['geo_garlaban','geo_etoile'],radius:1,family:'regional-cicada',attack:{melee:false,duration:1.2,reach:18,radius:.8,label:'PROJECTION DU TYMBAL'}}
  };
  function species(site,baseType){return Object.keys(SPECS).find(id=>SPECS[id].baseTypes.includes(baseType)&&SPECS[id].macros.includes(site?.macro))||null;}
  function candidate(site,index,baseType){
   if(!site||!['nest','elite','boss'].includes(site.kind)||!Array.isArray(site.enemyTypes)||!Number.isInteger(index)||index<0||index>=site.enemySlots||!species(site,baseType))return null;
-  // One regular slot per hostile site; elites and bosses retain their identity.
-  for(let i=0;i<Math.min(16,site.enemySlots);i++){if(i===0&&['elite','boss'].includes(site.kind))continue;const type=site.enemyTypes[i%site.enemyTypes.length];if(species(site,type))return i===index&&type===baseType?species(site,type):null;}return null;
+  // The original 21 identities retain priority. An extension can use one other
+  // existing regular slot; adding a species never invalidates an old variant.
+  const pick=(ids,skip=-1)=>{for(let i=0;i<Math.min(16,site.enemySlots);i++){if(i===skip||i===0&&['elite','boss'].includes(site.kind))continue;const type=site.enemyTypes[i%site.enemyTypes.length],id=species(site,type);if(ids.includes(id))return{index:i,type,id};}return null;},old=pick(['ratCable','gabianBombardier','cerfa77']),extra=pick(['ratCrowned','mistralCicada'],old?.index);
+  const chosen=[old,extra].find(p=>p?.index===index&&p.type===baseType);return chosen?.id||null;
  }
  function fresh(){return{schema:1,assignments:{}};}
  function migrate(raw,resolve){const out=fresh();let bytes=0;for(const[id,value]of Object.entries(raw?.assignments||{}).slice(0,MAX_ASSIGNMENTS*4)){if(Object.keys(out.assignments).length>=MAX_ASSIGNMENTS)break;const expected=resolve(id);if(!expected||value?.species!==expected.species||value?.baseType!==expected.baseType)continue;const entry={species:expected.species,baseType:expected.baseType},size=JSON.stringify([id,entry]).length*2;if(bytes+size>MAX_BYTES)continue;bytes+=size;out.assignments[id]=entry;}return out;}
@@ -12771,6 +12898,17 @@ const MistralRegionalBestiary=(()=>{
    for(const side of[-1,1]){const wing=side<0?'arm_l':'arm_r';p('sphere',[side*.27,.82+bob+flap,.025],[.38,.12,.37],feather,wing,side*.18);p('cube',[side*.5,.82+bob+flap*1.6,.08],[.28,.065,.44],dark,wing,side*.26);for(let k=0;k<3;k++)p('cube',[side*(.5+k*.045),.81+bob+flap*1.6,.2+k*.035],[.09,.05,.24],feather,wing,side*.3);p('sphere',[side*.075,1.01+bob,-.383],[.035,.037,.035],[.12,.14,.11],'head');p('cylinder',[side*.09,.37+bob,0],[.045,.34,.045],beak,side<0?'leg_l':'leg_r');p('cube',[side*.09,.2+bob,-.05],[.1,.035,.18],beak,side<0?'leg_l':'leg_r');}
    for(const side of[-1,0,1])p('cube',[side*.07,.77+bob,.38],[.12,.055,.28],dark,'tail',side*.15);
    if(wind>.25)p('sphere',[0,.47+bob-wind*.15,-.08],[.11,.12,.12],sac,'body',0,.15);
+  }else if(id==='ratCrowned'){
+   const fur=[.27,.22,.17],skin=[.54,.35,.29],brass=[.65,.48,.17],lift=wind*.12;
+   p('sphere',[0,.42,.03],[.52,.48,.73],fur);p('sphere',[0,.53+lift,-.42],[.37,.35,.4],fur,'head');p('sphere',[0,.43+lift,-.66],[.23,.17,.2],skin,'head');p('cube',[0,.39+lift,-.77],[.11,.13,.045],[.81,.73,.52],'head');
+   p('cylinder',[0,.73+lift,-.4],[.32,.07,.31],brass,'head');for(let n=0;n<5;n++){const a=n/5*Math.PI*2;p('cone',[Math.sin(a)*.13,.83+lift,-.4+Math.cos(a)*.13],[.075,.21,.075],brass,'head');}
+   for(const side of[-1,1]){p('sphere',[side*.16,.69+lift,-.3],[.16,.2,.1],skin,'head');p('sphere',[side*.145,.57+lift,-.565],[.045,.045,.035],[.72,.18,.08],'head',0,.2);for(const z of[-.22,.29]){const step=walk*side*(z<0?1:-1)*.055,group=(z<0?'fore_':'back_')+(side<0?'l':'r');p('cylinder',[side*.22,.19+Math.max(0,step),z],[.1,.31,.12],fur,group);p('cube',[side*.23,.065+Math.max(0,step),z-.055],[.14,.08,.22],skin,group);}}
+   for(let n=0;n<8;n++){const a=n*.34;p('sphere',[Math.sin(a)*.26,.26+n*.018,.42+Math.sin(a*.7)*.32],[.08,.075,.15],skin,'tail',a+(options.reduceMotion?0:Math.sin(pose*3+n)*.12));}
+  }else if(id==='mistralCicada'){
+   const shell=[.38,.4,.23],dark=[.18,.23,.17],wing=[.57,.63,.43],vibrate=options.reduceMotion?0:Math.sin(pose*(wind?35:7))*.025;
+   p('sphere',[0,.43,0],[.42,.38,.68],shell);p('sphere',[0,.48,-.4],[.35,.27,.29],dark,'head');for(let n=0;n<3;n++)p('sphere',[0,.43,.15+n*.14],[.35-n*.07,.3-n*.035,.27],shell);
+   for(const side of[-1,1]){const arm=side<0?'arm_l':'arm_r';p('cube',[side*.3,.63+vibrate,.1],[.36,.045,.76],wing,arm,side*.19);for(let n=0;n<3;n++)p('cube',[side*(.24+n*.055),.659+vibrate,.08],[.012,.014,.62],dark,arm,side*.19);p('sphere',[side*.19,.52,-.43],[.12,.13,.13],[.65,.32,.12],'head');p('cylinder',[side*.13,.69,-.43],[.025,.22,.025],dark,'head');p('sphere',[side*.22,.43,-.08],[.13+wind*.07,.22,.23],[.62,.48,.22]);
+    for(let n=0;n<3;n++){const z=-.23+n*.25,step=walk*side*(n%2?-1:1)*.045,group=(n===0?'fore_':n===1?'leg_':'back_')+(side<0?'l':'r');p('cylinder',[side*(.3+n*.025),.2+Math.max(0,step),z],[.055,.31,.055],dark,group);p('cube',[side*(.39+n*.025),.065+Math.max(0,step),z-.05],[.23,.045,.09],dark,group,side*.3);}}
   }else{
    const shell=[.45,.48,.4],dark=[.18,.23,.23],paper=[.76,.73,.56],brass=[.55,.44,.23],stamp=wind*.23,scan=options.reduceMotion?0:Math.sin(pose*1.4)*.045;
    p('cube',[0,.86,0],[.58,.72,.43],shell);p('cube',[0,1.32,0],[.48,.29,.39],dark,'head');p('cube',[scan,1.34,-.217],[.31,.09,.035],wind?[.88,.29,.13]:[.29,.74,.56],'head',0,.5);p('cube',[0,.96,-.24],[.39,.25,.045],paper);for(let i=0;i<3;i++)p('cube',[0,.9+i*.055,-.267],[.26,.014,.012],dark);
@@ -12785,28 +12923,65 @@ const MistralRegionalBestiary=(()=>{
   if(!Array.isArray(actor?.pos)||actor.pos.length!==3||!actor.pos.every(finite))throw Error('Position d’acteur invalide');const yaw=finite(actor.yaw)?actor.yaw:0,local=model(id,time,options),groups=new Map(),draws=[];
   const world=p=>rotate(p,yaw).map((v,i)=>v+actor.pos[i]),groupOf=g=>/^(arm_[lr])$/.test(g)?'arms':/^(leg_[lr]|fore_[lr]|back_[lr])$/.test(g)?'legs':g==='tail'?'body':g;
   for(const part of local){const draw={mesh:part.mesh,pos:world(part.pos),scale:part.size.slice(),color:part.color.slice(),rotY:yaw+part.yaw,emissive:part.emissive,alpha:1,v025Part:part.group,v025Enemy:actor.id,v053RegionalPart:id};draws.push(draw);let group=groups.get(part.group);if(!group){group={id:part.group,min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity],draws:[]};groups.set(part.group,group);}group.draws.push(draw);for(const x of[-.5,.5])for(const y of[-.5,.5])for(const z of[-.5,.5]){const corner=rotate([part.size[0]*x,part.size[1]*y,part.size[2]*z],part.yaw).map((v,i)=>v+part.pos[i]);for(let i=0;i<3;i++){group.min[i]=Math.min(group.min[i],corner[i]);group.max[i]=Math.max(group.max[i],corner[i]);}}}
-  const labels=id==='gabianBombardier'?{head:'TÊTE',body:'CORPS',arm_l:'AILE GAUCHE',arm_r:'AILE DROITE',leg_l:'PATTE GAUCHE',leg_r:'PATTE DROITE',tail:'QUEUE'}:id==='ratCable'?{head:'TÊTE',body:'CORPS CÂBLÉ',fore_l:'PATTE AV. GAUCHE',fore_r:'PATTE AV. DROITE',back_l:'PATTE AR. GAUCHE',back_r:'PATTE AR. DROITE',tail:'CÂBLE CAUDAL'}:{head:'LECTEUR OPTIQUE',body:'DOSSIER BLINDÉ',arm_l:'TAMPON',arm_r:'PINCE DE SAISIE',leg_l:'ROUE GAUCHE',leg_r:'ROUE DROITE'};
+  const labels=id==='gabianBombardier'?{head:'TÊTE',body:'CORPS',arm_l:'AILE GAUCHE',arm_r:'AILE DROITE',leg_l:'PATTE GAUCHE',leg_r:'PATTE DROITE',tail:'QUEUE'}:['ratCable','ratCrowned'].includes(id)?{head:id==='ratCrowned'?'TÊTE COURONNÉE':'TÊTE',body:id==='ratCable'?'CORPS CÂBLÉ':'FLANC',fore_l:'PATTE AV. GAUCHE',fore_r:'PATTE AV. DROITE',back_l:'PATTE AR. GAUCHE',back_r:'PATTE AR. DROITE',tail:id==='ratCable'?'CÂBLE CAUDAL':'QUEUE'}:id==='mistralCicada'?{head:'YEUX COMPOSÉS',body:'TYMBAL',arm_l:'AILE GAUCHE',arm_r:'AILE DROITE',fore_l:'PATTE AV. GAUCHE',fore_r:'PATTE AV. DROITE',leg_l:'PATTE MÉD. GAUCHE',leg_r:'PATTE MÉD. DROITE',back_l:'PATTE AR. GAUCHE',back_r:'PATTE AR. DROITE'}:{head:'LECTEUR OPTIQUE',body:'DOSSIER BLINDÉ',arm_l:'TAMPON',arm_r:'PINCE DE SAISIE',leg_l:'ROUE GAUCHE',leg_r:'ROUE DROITE'};
   const parts=[...groups.values()].map(b=>{const group=groupOf(b.id),center=b.min.map((v,i)=>(v+b.max[i])/2),size=b.min.map((v,i)=>b.max[i]-v),corners=[];for(const x of[0,1])for(const y of[0,1])for(const z of[0,1])corners.push(world([x?b.max[0]:b.min[0],y?b.max[1]:b.min[1],z?b.max[2]:b.min[2]]));return{id:b.id,group,label:labels[b.id]||b.id,center:world(center),radius:Math.max(.06,Math.min(.72,Math.max(...size)*.43)),mult:group==='head'?1.7:group==='arms'?.72:group==='legs'?.78:1,cost:group==='head'?35:group==='body'?25:22,bounds:b,corners};});
   const bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};for(const b of groups.values())for(let i=0;i<3;i++){bounds.min[i]=Math.min(bounds.min[i],b.min[i]);bounds.max[i]=Math.max(bounds.max[i],b.max[i]);}return{draws,parts,bounds,family:SPECS[id].family};
  }
- return{MAX_ASSIGNMENTS,MAX_BYTES,catalog:()=>copy(SPECS),species,candidate,fresh,migrate,model,rig};
+ function sweep(from,to,visit,step=.18){if(!Array.isArray(from)||!Array.isArray(to)||from.length!==3||to.length!==3||![...from,...to].every(finite)||!finite(step)||step<=0)return false;const n=Math.max(1,Math.ceil(Math.hypot(...to.map((v,i)=>v-from[i]))/step));if(n>96)return false;for(let k=0;k<=n;k++)if(!visit(from.map((v,i)=>v+(to[i]-v)*k/n)))return false;return true;}
+ return{MAX_ASSIGNMENTS,MAX_BYTES,catalog:()=>copy(SPECS),species,candidate,fresh,migrate,model,rig,sweep};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralRegionalBestiary;
 
 if(typeof v042SpawnEnemies==='function'&&typeof v049Identify==='function'){
- const specs=MistralRegionalBestiary.catalog(),stats={newVariants:0,restoredVariants:0,oldSlotsKept:0,unmeasuredSkipped:0,budgetSkipped:0,movementBlocked:0},rigCache=new WeakMap(),pendingWorlds=new WeakMap();let stageCache=null;
+ const specs=MistralRegionalBestiary.catalog(),stats={newVariants:0,restoredVariants:0,oldSlotsKept:0,unmeasuredSkipped:0,budgetSkipped:0,movementBlocked:0,flightSteps:0,flightBlocked:0,bombsReleased:0,bombsImpacted:0,bombHits:0,bombsDiscarded:0},rigCache=new WeakMap(),pendingWorlds=new WeakMap();let stageCache=null,bombWorld=null,bombOwner=null,bombs=[],splashes=[],lastImpacts=[];
  function expected(id){const meta=v049Identify(id);if(meta?.kind!=='enemy'||meta.scope!=='outside')return null;const site=v042Site(meta.site),index=Number(id.split(':').at(-1)),baseType=site?.enemyTypes?.[index%site.enemyTypes.length],species=MistralRegionalBestiary.candidate(site,index,baseType);return species?{species,baseType}:null;}
  const base=baseState;baseState=function(){const s=base();s.v053Bestiary=MistralRegionalBestiary.fresh();return s;};
  const migration=migrateState;migrateState=function(input={}){const s=migration(input);s.v053Bestiary=MistralRegionalBestiary.migrate(input.v053Bestiary,expected);return s;};state=migrateState(state);if(world)v049Own(world);
  function stage(w){const bank=v047Bank(w);if(!stageCache||stageCache.world!==w||stageCache.bank!==bank||stageCache.records!==w.v046Records||stageCache.colliders!==w.colliders||stageCache.length!==w.colliders.length)stageCache={world:w,records:w.v046Records,bank,geoColliders:w.colliders.filter(c=>c.v046Tile),colliders:w.colliders,length:w.colliders.length};return stageCache;}
  function ground(w,x,z,radius){if(w!==world||!w?.v046||!w.geoMacro||!w.v046Records?.size||typeof v050TravelGround!=='function')return null;return v050TravelGround(stage(w),w,x,z,radius);}
  function valid(w,pos,radius,neighbours=false){const h=ground(w,pos[0],pos[2],radius);if(!Number.isFinite(h)||Math.abs(h-pos[1])>.35)return false;if(neighbours)for(const[dx,dz]of[[radius,0],[-radius,0],[0,radius],[0,-radius]]){const other=ground(w,pos[0]+dx,pos[2]+dz,radius*.25);if(!Number.isFinite(other)||Math.abs(other-h)>.5)return false;}return true;}
+ // Flight reads the measured column separately from a walking arrival: a roof
+ // can be passed above or below, but never certifies unknown ground beneath it.
+ function column(w,x,z){if(w!==world||!w?.v046||!w.geoMacro||!w.v046Records?.size||typeof v015GeoUnproject!=='function'||typeof v047Height!=='function')return null;
+  const[lat,lon]=v015GeoUnproject(w.id,x,z);if(!v046Region(lat,lon))return null;for(const[source,zoom]of[['base',14],['cadastre',16]]){const t=v017LonLatToTile(lat,lon,zoom);if(!w.v046Records.has(v046TileKey(source,zoom,Math.floor(t.x),Math.floor(t.y))))return null;}
+  const h=v047Height(v047Bank(w),x,z)?.height;if(!Number.isFinite(h)||v046SurfaceAt([x,0,z],w.v046Records).water)return null;return Math.max(0,h);
+ }
+ function solids(w,x,z){const s=stage(w),indexed=w.v046Records?.v047Index?.solids.at(x,z);return[...(indexed||s.geoColliders),...(s.v050GameplayColliders||(s.v050GameplayColliders=w.colliders.filter(c=>!c.v046Tile)))];}
+ function airClear(w,pos,id='gabianBombardier'){const spec=specs[id],f=spec?.flight,r=spec?.radius;if(!f||!pos?.every(Number.isFinite))return false;const b=w.bounds;if(b&&(pos[0]-r<b[0]||pos[0]+r>b[1]||pos[2]-r<b[2]||pos[2]+r>b[3]))return false;
+  for(const[dx,dz]of[[0,0],[r,0],[-r,0],[0,r],[0,-r]]){const h=column(w,pos[0]+dx,pos[2]+dz);if(!Number.isFinite(h)||pos[1]+f.bottom<h+.065||pos[1]-h>f.ceiling)return false;}
+  for(const c of solids(w,pos[0],pos[2])){if(c.disabled||pos[1]+f.top<(c.minY??-Infinity)||pos[1]+f.bottom>(c.maxY??Infinity))continue;if(v017ColliderHit(c,pos[0],pos[2],r))return false;}return true;
+ }
+ function airMove(e,desired,dt){const f=specs.gabianBombardier.flight,old=e.pos.slice(),distance=Math.hypot(desired[0]-old[0],desired[2]-old[2]),step=Math.min(distance,Math.max(0,e.speed)*(1-(e.legDamage||0))*(1-(e.armDamage||0)*.6)*(e.suppressed>0?.72:1)*(e.status?.slow>0?.55:1)*dt),next=[old[0]+(desired[0]-old[0])*(distance?step/distance:0),old[1]+Math.max(-f.verticalSpeed*dt,Math.min(f.verticalSpeed*dt,desired[1]-old[1])),old[2]+(desired[2]-old[2])*(distance?step/distance:0)];
+  if(MistralRegionalBestiary.sweep(old,next,p=>airClear(world,p))){e.pos=next;stats.flightSteps++;return true;}stats.flightBlocked++;
+  const level=[next[0],old[1],next[2]];if(MistralRegionalBestiary.sweep(old,level,p=>airClear(world,p))){e.pos=level;return true;}
+  // Bounded local avoidance, with the same swept wing volume. A blocked bird
+  // holds rather than clipping through a wall or inventing an altitude.
+  for(const side of[-1,1]){const tangent=[old[0]+(desired[2]-old[2])/(distance||1)*step*side,next[1],old[2]-(desired[0]-old[0])/(distance||1)*step*side];if(MistralRegionalBestiary.sweep(old,tangent,p=>airClear(world,p))){e.pos=tangent;return true;}}
+  const rise=[old[0],old[1]+f.verticalSpeed*dt,old[2]];if(MistralRegionalBestiary.sweep(old,rise,p=>airClear(world,p))){e.pos=rise;return true;}return false;
+ }
+ function syncBombs(){if(bombWorld!==world||bombOwner!==state){bombWorld=world;bombOwner=state;bombs=[];splashes=[];lastImpacts=[];}}
+ function release(e,w){syncBombs();const origin=[e.pos[0],e.pos[1]+.5,e.pos[2]],target=w.target,h=column(world,target[0],target[2]);if(!Number.isFinite(h)||origin[1]<=h+.15||bombs.length>=32){stats.bombsDiscarded++;return;}const fall=Math.sqrt(2*(origin[1]-h)/specs.gabianBombardier.flight.gravity);bombs.push({id:e.id,name:e.name,pos:origin,velocity:[(target[0]-origin[0])/fall,0,(target[2]-origin[2])/fall],age:0,damage:e.damage*(1-(e.armDamage||0)),status:e.statusOnHit});stats.bombsReleased++;}
+ function impact(b,pos){stats.bombsImpacted++;splashes.push({pos:pos.slice(),life:.38});if(splashes.length>16)splashes.shift();const p=state.player.pos,feet=p[1]-(typeof playerEyeHeight==='function'?playerEyeHeight():1.65),r=specs.gabianBombardier.attack.radius,hit=state.player.hp>0&&Math.hypot(p[0]-pos[0],p[2]-pos[2])<=r&&feet<pos[1]+1.55&&p[1]>pos[1]-.2&&lineOfSight([pos[0],pos[1]+.12,pos[2]],[p[0],feet+.7,p[2]]);lastImpacts.push({id:b.id,pos:pos.slice(),hit:!!hit});if(lastImpacts.length>8)lastImpacts.shift();if(hit){stats.bombHits++;hurtPlayer(b.damage,b.name);if(b.status)applyStatus(b.status,3);}}
+ function updateBombs(dt){syncBombs();splashes=splashes.filter(s=>(s.life-=dt)>0);const active=[];for(const b of bombs){let remaining=dt,done=false;while(remaining>1e-8&&!done){const step=Math.min(.02,remaining),next=[b.pos[0]+b.velocity[0]*step,b.pos[1]+b.velocity[1]*step-.5*9.8*step*step,b.pos[2]+b.velocity[2]*step];remaining-=step;b.velocity[1]-=9.8*step;b.age+=step;
+    MistralRegionalBestiary.sweep(b.pos,next,p=>{const h=column(world,p[0],p[2]);if(!Number.isFinite(h)||b.age>3){stats.bombsDiscarded++;done=true;return false;}const solid=solids(world,p[0],p[2]).find(c=>!c.disabled&&p[1]+.07>=(c.minY??-Infinity)&&p[1]-.07<=(c.maxY??Infinity)&&v017ColliderHit(c,p[0],p[2],.07));if(solid||p[1]<=h+.045){if(solid&&b.pos[1]>solid.maxY)p[1]=solid.maxY+.035;else if(!solid)p[1]=h+.035;impact(b,p);done=true;return false;}return true;},.05);if(!done)b.pos=next;}
+   if(!done)active.push(b);
+  }bombs=active;
+ }
+ function updateBird(e,dt){if(!airClear(world,e.pos)){stats.flightBlocked++;e.v021Windup=null;e.alerted=false;e.state='idle';return;}const f=e.v054Flight||(e.v054Flight={elapsed:0,mode:'takeoff'});f.elapsed+=dt;e.attackCooldown=Math.max(0,(e.attackCooldown||0)-dt);e.suppressed=Math.max(0,(e.suppressed||0)-dt);e.searchTimer=Math.max(0,(e.searchTimer||0)-dt);
+  if(e.status){if(e.status.burning>0){e.status.burning=Math.max(0,e.status.burning-dt);e.health-=dt*1.5;if(e.health<=0){killEnemy(e);return;}}if(e.status.slow>0)e.status.slow=Math.max(0,e.status.slow-dt);}
+  const p=state.player.pos,origin=[e.pos[0],e.pos[1]+.9,e.pos[2]],d=Math.hypot(p[0]-e.pos[0],p[2]-e.pos[2]),sight=lineOfSight(origin,p),seen=typeof v029Observe==='function'?v029Observe(e,dt,d,sight,e.detect):sight&&d<e.detect;
+  if(seen){e.alerted=true;e.lastKnown=p.slice();e.searchTimer=9;}if(e.alerted&&(!sight&&e.searchTimer<=0||Math.hypot(p[0]-e.home[0],p[2]-e.home[2])>80)){e.alerted=false;e.lastKnown=null;e.searchTimer=0;e.v021Windup=null;}
+  const target=e.alerted?(sight?p:e.lastKnown||e.home):e.home,a=e.phase+f.elapsed*.45,r=e.alerted&&sight?4:2.4,goal=d>7&&e.alerted?[target[0],0,target[2]]:[target[0]+Math.sin(a)*r,0,target[2]+Math.cos(a)*r],h=column(world,goal[0],goal[2]);
+  if(e.v021Windup){const w=e.v021Windup;f.mode='release';e.state='windup';w.elapsed+=dt;if(w.scene!==world.id){e.v021Windup=null;}else if(w.elapsed>=w.duration){release(e,w);e.v021Windup=null;e.attackCooldown=1.7;f.mode='recover';}}
+  else{f.mode=e.alerted?(d>7?'approach':'orbit'):'patrol';e.state=e.alerted?(sight?'chase':'search'):'patrol';if(Number.isFinite(h)){goal[1]=h+specs.gabianBombardier.flight.clearance;if(Math.hypot(goal[0]-e.home[0],goal[2]-e.home[2])<=80)airMove(e,goal,dt);}const floor=column(world,e.pos[0],e.pos[2]);if(Number.isFinite(floor)&&e.pos[1]-floor>=1.2&&e.alerted&&sight&&e.attackCooldown<=0&&d<=specs.gabianBombardier.attack.reach&&(e.suppressed||0)<1.2){e.v021Windup={target:p.slice(),duration:specs.gabianBombardier.attack.duration,elapsed:0,yaw:e.yaw,scene:world.id,label:specs.gabianBombardier.attack.label};}}
+  e.yaw=Math.atan2(target[0]-e.pos[0],-(target[2]-e.pos[2]));
+ }
  function prior(id){return !!state.v049?.actors?.[id]||!!state.flags?.enemyDead?.[id]||Object.keys(state.v022?.encounters||{}).some(key=>key.endsWith('|'+id))||Object.values(state.v026?.containers||{}).some(c=>c.id==='remains:'+id);}
  function speciesOf(e){const entry=state.v053Bestiary?.assignments?.[e?.id];return e?.v053RegionalSpecies&&entry?.species===e.v053RegionalSpecies&&entry.baseType===e.type?entry.species:null;}
  // Prepare can build a temporary world or publish while busy. Remember only
  // actor-local eligibility here; no campaign entry exists until publication.
  function publish(w=world){const pending=w&&pendingWorlds.get(w);if(!pending)return;if(pending.owner!==state){pendingWorlds.delete(w);return;}if(w!==world||!gameStarted||V046.lab||V046.busy||V047.pending||zoneTransitioning||!v049Allowed(w))return;
-  pendingWorlds.delete(w);for(const[e,proposal]of pending.actors){if(!w.enemies.includes(e)||e.alive===false||e.boss||proposal.baseType!==e.type)continue;const resolved=expected(e.id);if(!resolved||resolved.species!==proposal.species||resolved.baseType!==proposal.baseType)continue;let entry=state.v053Bestiary.assignments[e.id];if(!valid(w,e.pos,specs[proposal.species].radius,true)){stats.unmeasuredSkipped++;continue;}
+  pendingWorlds.delete(w);for(const[e,proposal]of pending.actors){if(!w.enemies.includes(e)||e.alive===false||e.boss||proposal.baseType!==e.type)continue;const resolved=expected(e.id);if(!resolved||resolved.species!==proposal.species||resolved.baseType!==proposal.baseType)continue;let entry=state.v053Bestiary.assignments[e.id];if(!(specs[proposal.species].flight?airClear(w,e.pos):valid(w,e.pos,specs[proposal.species].radius,true))){stats.unmeasuredSkipped++;continue;}
    if(!entry){const ledger=state.v053Bestiary.assignments,bytes=JSON.stringify(ledger).length*2;if(Object.keys(ledger).length>=MistralRegionalBestiary.MAX_ASSIGNMENTS||bytes+JSON.stringify([e.id,proposal]).length*2>MistralRegionalBestiary.MAX_BYTES){stats.budgetSkipped++;continue;}entry=ledger[e.id]={...proposal};stats.newVariants++;}else stats.restoredVariants++;
    e.v053RegionalSpecies=entry.species;e.name=specs[entry.species].name;
   }
@@ -12820,11 +12995,264 @@ if(typeof v042SpawnEnemies==='function'&&typeof v049Identify==='function'){
  };
  const originalRig=v025Rig;v025Rig=function(e,t=gameClock){const id=speciesOf(e);if(!id)return originalRig(...arguments);const time=V025.active?V025.poseTime:t,key=JSON.stringify([id,time,e.pos,e.yaw,e.state,e.v021Windup?.elapsed,e.v021Windup?.duration,settings.reduceMotion]),cached=rigCache.get(e);if(cached?.key===key)return cached.rig;const rig=MistralRegionalBestiary.rig(e,id,time,{reduceMotion:settings.reduceMotion,moving:['chase','advance','retreat','search','patrol'].includes(e.state),windup:e.v021Windup?e.v021Windup.elapsed/e.v021Windup.duration:0});rig.key=key;rigCache.set(e,{key,rig});return rig;};
  const attack=v021AttackSpec;v021AttackSpec=function(e){const id=speciesOf(e);return id?{...specs[id].attack,reach:Math.min(specs[id].attack.reach,Math.max(specs[id].attack.melee?1.8:10,e.range||specs[id].attack.reach))}:attack(...arguments);};
- const move=tryEnemyMove;tryEnemyMove=function(e,dx,dz){const id=speciesOf(e);if(!id)return move(...arguments);const radius=specs[id].radius,h=ground(world,e.pos[0]+dx,e.pos[2],radius),h2=ground(world,e.pos[0]+dx,e.pos[2]+dz,radius);if(!Number.isFinite(h)||!Number.isFinite(h2)||Math.abs(h-e.pos[1])>.55||Math.abs(h2-h)>.55){stats.movementBlocked++;return;}return move(...arguments);};
- const update=updateEnemies;updateEnemies=function(dt){publish();const owner=world,poses=new Map((world?.enemies||[]).filter(e=>e.alive&&speciesOf(e)).map(e=>[e,e.pos.slice()])),out=update(...arguments);if(world===owner)for(const[e,p]of poses){const id=speciesOf(e);if(e.alive&&id&&!valid(owner,e.pos,specs[id].radius)){e.pos=p;stats.movementBlocked++;}}return out;};
+ const move=tryEnemyMove;tryEnemyMove=function(e,dx,dz){const id=speciesOf(e);if(!id)return move(...arguments);if(specs[id].flight)return airMove(e,[e.pos[0]+dx,e.pos[1],e.pos[2]+dz],Math.hypot(dx,dz)/Math.max(.1,e.speed));const radius=specs[id].radius,h=ground(world,e.pos[0]+dx,e.pos[2],radius),h2=ground(world,e.pos[0]+dx,e.pos[2]+dz,radius);if(!Number.isFinite(h)||!Number.isFinite(h2)||Math.abs(h-e.pos[1])>.55||Math.abs(h2-h)>.55){stats.movementBlocked++;return;}return move(...arguments);};
+ const update=updateEnemies;updateEnemies=function(dt){publish();const owner=world,all=owner?.enemies||[],birds=all.filter(e=>e.alive&&speciesOf(e)==='gabianBombardier'),poses=new Map(all.filter(e=>e.alive&&speciesOf(e)&&speciesOf(e)!=='gabianBombardier').map(e=>[e,e.pos.slice()])),combatBefore=typeof inCombat!=='undefined'?inCombat:false,active=mode==='PLAYING'&&gameStarted&&!zoneTransitioning&&!V046.lab&&!V046.busy&&!V047.pending&&Number.isFinite(dt)&&dt>0;let out;
+  // The inherited ground pass cannot declare the whole scene clear simply
+  // because its flying actors are stepped separately.
+  if(active&&typeof inCombat!=='undefined'&&birds.some(e=>e.alerted)&&!all.some(e=>e.alive&&e.alerted&&!birds.includes(e)))inCombat=false;
+  if(owner&&birds.length)owner.enemies=all.filter(e=>!birds.includes(e));try{out=update(...arguments);}finally{if(owner)owner.enemies=all;}
+  if(world===owner){for(const[e,p]of poses){const id=speciesOf(e);if(e.alive&&id&&!valid(owner,e.pos,specs[id].radius)){e.pos=p;stats.movementBlocked++;}}
+   if(active){let remaining=Math.min(.2,dt);while(remaining>1e-8){const step=Math.min(.05,remaining);for(const e of birds)if(e.alive)updateBird(e,step);updateBombs(step);remaining-=step;}if(birds.length&&typeof v029RefreshStealth==='function')v029RefreshStealth();if(typeof inCombat!=='undefined'&&birds.length){if(birds.some(e=>e.alive&&e.alerted)){if(!inCombat&&!combatBefore)toast('MENACE DÉTECTÉE','bad');inCombat=true;}else if(combatBefore&&!inCombat)toast('Zone sécurisée.','good');}}
+  }return out;
+ };
+ const originalKill=killEnemy;killEnemy=function(e){if(e?.alive&&speciesOf(e)==='gabianBombardier'&&!state.flags.enemyDead[e.id]){const h=column(world,e.pos[0],e.pos[2]);if(Number.isFinite(h)){let landing=h;for(const c of solids(world,e.pos[0],e.pos[2]))if(!c.disabled&&Number.isFinite(c.maxY)&&c.maxY>=landing&&c.maxY<=e.pos[1]+.1&&v017ColliderHit(c,e.pos[0],e.pos[2],.05))landing=c.maxY;e.pos=[e.pos[0],landing,e.pos[2]];}e.v021Windup=null;}return originalKill(...arguments);};
+ const originalDraws=collectDraws;collectDraws=function(t){const out=originalDraws(...arguments);if(bombWorld!==world||bombOwner!==state)return out;for(const b of bombs)out.push({mesh:'sphere',pos:b.pos.slice(),scale:[.13,.16,.13],color:[.48,.66,.18],rotY:0,emissive:.25,v054GabianBomb:b.id});for(const s of splashes)out.push({mesh:'sphere',pos:[s.pos[0],s.pos[1]+.035,s.pos[2]],scale:[.5*(1-s.life/.4)+.1,.035,.5*(1-s.life/.4)+.1],color:[.41,.57,.18],rotY:0,alpha:s.life/.4,emissive:.1,v054GabianSplash:true});return out;};
  const remains=v026RemainsDraws;v026RemainsDraws=function(out,c){const id=typeof c?.id==='string'&&c.id.startsWith('remains:')?state.v053Bestiary?.assignments?.[c.id.slice(8)]?.species:null;if(!id||!specs[id])return remains(...arguments);const actor={id:c.id,pos:c.pos,yaw:c.actor?.yaw||0},rig=MistralRegionalBestiary.rig({id:c.id,pos:[0,0,0],yaw:0},id,0,{reduceMotion:true,moving:false}),yaw=actor.yaw,co=Math.cos(yaw),si=Math.sin(yaw),draws=rig.draws.map(d=>{const x=d.pos[0],z=d.pos[1]-.5;return{...d,pos:[actor.pos[0]+co*x+si*z,actor.pos[1]+.12+Math.abs(d.pos[2])*.16,actor.pos[2]-si*x+co*z],scale:[d.scale[0],Math.min(.16,d.scale[2]),d.scale[1]],rotY:yaw+d.rotY,color:d.color.map(v=>v*.72),v053RegionalCorpse:id,v026Corpse:c.id};});out.push(...draws);};
- function info(){const assignments=state.v053Bestiary.assignments,visible=(world?.enemies||[]).filter(e=>speciesOf(e)).map(e=>({id:e.id,species:speciesOf(e),name:e.name,baseType:e.type,site:e.v042Site,alive:e.alive,health:e.health,maxHealth:e.maxHealth,pos:e.pos.slice(),parts:v025Rig(e).parts.length,meshes:v025Rig(e).draws.length})),eligible=[];for(const site of V042_CATALOG)for(let i=0;i<Math.min(16,site.enemySlots);i++){const type=site.enemyTypes?.[i%site.enemyTypes.length],id=v042EnemyId(site,i,false),species=MistralRegionalBestiary.candidate(site,i,type);if(species&&!prior(id))eligible.push({id,site:site.id,species,baseType:type,lat:site.lat,lon:site.lon,macro:site.macro});}return{schema:1,...stats,assignments:Object.keys(assignments).length,maxAssignments:MistralRegionalBestiary.MAX_ASSIGNMENTS,maxBytes:MistralRegionalBestiary.MAX_BYTES,visible,eligibleSites:eligible.slice(0,32),eligibleSitesTruncated:eligible.length>32,scope:'Three original regional silhouettes on new validated encounters; existing AI types, identities, health and finite loot are retained. Ground-following inherited AI, no full aerial navigation.'};}
+ function info(){const assignments=state.v053Bestiary.assignments,visible=(world?.enemies||[]).filter(e=>speciesOf(e)).map(e=>{const id=speciesOf(e),h=specs[id].flight?column(world,e.pos[0],e.pos[2]):null;return{id:e.id,species:id,name:e.name,baseType:e.type,site:e.v042Site,alive:e.alive,health:e.health,maxHealth:e.maxHealth,pos:e.pos.slice(),parts:v025Rig(e).parts.length,meshes:v025Rig(e).draws.length,...(specs[id].flight?{flight:{mode:e.v054Flight?.mode||'waiting',groundHeight:h,relativeHeight:Number.isFinite(h)?e.pos[1]-h:null,volumeClear:airClear(world,e.pos),radius:specs[id].radius,bottom:specs[id].flight.bottom,top:specs[id].flight.top,windup:e.v021Windup?{elapsed:e.v021Windup.elapsed,duration:e.v021Windup.duration,target:e.v021Windup.target.slice()}:null}}:{})};}),eligible=[];for(const site of V042_CATALOG)for(let i=0;i<Math.min(16,site.enemySlots);i++){const type=site.enemyTypes?.[i%site.enemyTypes.length],id=v042EnemyId(site,i,false),species=MistralRegionalBestiary.candidate(site,i,type);if(species&&!prior(id))eligible.push({id,site:site.id,species,baseType:type,lat:site.lat,lon:site.lon,macro:site.macro});}return{schema:1,...stats,assignments:Object.keys(assignments).length,maxAssignments:MistralRegionalBestiary.MAX_ASSIGNMENTS,maxBytes:MistralRegionalBestiary.MAX_BYTES,visible,eligibleSites:eligible.slice(0,48),eligibleSitesTruncated:eligible.length>48,bombs:bombWorld===world&&bombOwner===state?bombs.map(b=>({id:b.id,pos:b.pos.slice(),age:b.age})):[],lastImpacts:bombWorld===world&&bombOwner===state?lastImpacts.map(i=>({...i,pos:i.pos.slice()})):[],scope:'Five original regional silhouettes on existing validated slots. Gabian measured low-altitude flight, swept wing volume and avoidable ballistic drops; original identities, health, AI archetypes and finite loot remain authoritative.'};}
  globalThis.v053BestiaryAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v053BestiaryInfo:info,v053BestiaryCatalog:()=>MistralRegionalBestiary.catalog(),v053BestiaryActor:id=>{const e=world?.enemies?.find(e=>e.id===id);return e&&speciesOf(e)?{...info().visible.find(a=>a.id===id),rig:JSON.parse(JSON.stringify(v025Rig(e)))}:null;}});};
+}
+
+/* Native LiDAR cell values stay in their published Lambert-93 lattice.
+   This optional twelve-square-kilometre atlas neither replaces old archives
+   nor labels a reprojection or a denser output grid as a new measurement. */
+const MistralPreciseTerrain=(()=>{
+ const finite=Number.isFinite,resource='ign_lidar_hd_mnt',maximum=1048576;
+ function descriptor(d){
+  if(!d||!/^enrichment:geo_marseille_commune:[0-9a-f]{16}$/.test(d.id)||!/^data\/map_pack\/precise\/native-r[0-9]{5}-c[0-9]{5}-[0-9a-f]{16}\.f32$/.test(d.path)||!/^[0-9a-f]{64}$/.test(d.sha256)||!d.path.endsWith('-'+d.sha256.slice(0,16)+'.f32')||!Number.isInteger(d.width)||!Number.isInteger(d.height)||d.width<2||d.height<2||d.width*d.height>maximum||d.bytes!==d.width*d.height*4||d.crs!=='EPSG:2154'||d.verticalDatum!=='NGF-IGN69'||d.dataType!=='Float32LE'||d.rowOrder!=='north-to-south'||d.nodata!==-9999)throw Error('Dalle LiDAR native incompatible');
+  if(!Array.isArray(d.origin)||d.origin.length!==2||!d.origin.every(finite)||!Array.isArray(d.step)||d.step.length!==2||d.step[0]!==.5||d.step[1]!==-.5||!Array.isArray(d.bbox)||d.bbox.length!==4||!d.bbox.every(finite)||d.bbox[0]>=d.bbox[2]||d.bbox[1]>=d.bbox[3]||!Array.isArray(d.nativeBounds)||d.nativeBounds.length!==4||d.nativeBounds.some((v,i)=>!finite(v)||Math.abs(v-[d.origin[0],d.origin[1]-(d.height-1)*.5,d.origin[0]+(d.width-1)*.5,d.origin[1]][i])>1e-7)||!Number.isInteger(d.validPoints)||!Number.isInteger(d.noDataPoints)||d.validPoints<0||d.noDataPoints<0||d.validPoints+d.noDataPoints!==d.width*d.height)throw Error('Géoréférencement LiDAR natif incohérent');
+  return d;
+ }
+ function index(value){
+  if(!value||value.schemaVersion!==1||value.kind!=='native-lidar-f32'||value.crs!=='EPSG:2154'||value.verticalDatum!=='NGF-IGN69'||value.nativeSpacingMeters!==.5||value.sourceResource!==resource||value.sourceTiles!==12||value.coverageSquareMeters!==12000000||!Array.isArray(value.nativeExtent)||JSON.stringify(value.nativeExtent)!=='[892000,6245000,895000,6249000]'||!Array.isArray(value.tiles)||value.tiles.length!==48||!value.provenance||!['source','license','attribution','acquiredAt'].every(k=>typeof value.provenance[k]==='string'&&value.provenance[k].trim())||value.provenance.resampled!==false)throw Error('Atlas LiDAR natif incompatible');
+  const ids=new Set(),paths=new Set(),windows=new Set();let bytes=0;
+  for(const d of value.tiles){descriptor(d);const match=d.path.match(/native-r([0-9]{5})-c([0-9]{5})-/),row=+match[1],column=+match[2],window=row+':'+column;if(row%1000||column%1000||row>7000||column>5000||d.width!==Math.min(1001,6000-column)||d.height!==Math.min(1001,8000-row)||d.origin[0]!==892000+column*.5||d.origin[1]!==6249000-row*.5||!Array.isArray(d.sourceIds)||!d.sourceIds.length||d.sourceIds.length>4||d.sourceIds.some(id=>!/^metadata\.[0-9]+$/.test(id)))throw Error('Fenêtre native différente du treillis source');if(ids.has(d.id)||paths.has(d.path)||windows.has(window))throw Error('Dalle LiDAR dupliquée');ids.add(d.id);paths.add(d.path);windows.add(window);bytes+=d.bytes;}
+  if(bytes>256*1024*1024||value.validPoints!==value.tiles.reduce((n,d)=>n+d.validPoints,0)||value.noDataPoints!==value.tiles.reduce((n,d)=>n+d.noDataPoints,0))throw Error('Atlas LiDAR hors budget');return value;
+ }
+ function decode(buffer,d,provenance){
+  descriptor(d);if(!(buffer instanceof ArrayBuffer)||buffer.byteLength!==d.bytes)throw Error('Binaire LiDAR tronqué');
+  const view=new DataView(buffer),data=new Float32Array(d.width*d.height);let valid=0,missing=0;
+  for(let i=0;i<data.length;i++){const z=view.getFloat32(i*4,true);if(!finite(z)||z===d.nodata){data[i]=NaN;missing++;}else{if(z<=-100||z>=9000)throw Error('Altitude LiDAR invalide, non remplacée');data[i]=z;valid++;}}
+  if(valid!==d.validPoints||missing!==d.noDataPoints)throw Error('Masque NoData LiDAR différent du reçu');
+  return{id:d.id,width:d.width,height:d.height,bbox:d.bbox.slice(),data,v054Native:true,origin:d.origin.slice(),step:d.step.slice(),nativeBounds:d.nativeBounds.slice(),resolutionMeters:[.5,.5],enrichment:true,sourceResource:resource,verticalDatum:d.verticalDatum,provenance:{...provenance},v047Digest:d.sha256+':'+JSON.stringify([d.origin,d.step,d.width,d.height,d.nodata,d.crs]),noDataPoints:missing};
+ }
+ function sample(grid,easting,northing){
+  let x=(easting-grid.origin[0])/.5,y=(grid.origin[1]-northing)/.5;
+  if(!finite(x)||!finite(y)||x< -1e-6||y< -1e-6||x>grid.width-1+1e-6||y>grid.height-1+1e-6)return{inside:false,height:null};
+  x=Math.max(0,Math.min(grid.width-1,x));y=Math.max(0,Math.min(grid.height-1,y));
+  const a=Math.floor(x),b=Math.floor(y),c=Math.min(a+1,grid.width-1),d=Math.min(b+1,grid.height-1),u=x-a,v=y-b;let z=0,weight=0;
+  for(const[ix,iy,w]of[[a,b,(1-u)*(1-v)],[c,b,u*(1-v)],[a,d,(1-u)*v],[c,d,u*v]]){if(w<=1e-12)continue;const h=grid.data[iy*grid.width+ix];if(!finite(h))return{inside:true,height:null};z+=h*w;weight+=w;}
+  return{inside:true,height:weight?z/weight:null,pixel:[x,y]};
+ }
+ function read(bank,lat,lon,project,sampleLegacy){
+  const candidates=[],sources=[],noData=[],nativeMissing=[];let projected=null;
+  for(const id of Object.keys(bank.bounds).sort()){
+   const b=bank.bounds[id];if(lat<b[0]||lat>b[2]||lon<b[1]||lon>b[3])continue;
+   const g=bank.grids.get(id);if(!g)return{height:null,missing:id,sources};
+   let height;
+   if(g.v054Native){projected||=project(lat,lon);const out=sample(g,...projected);if(!out.inside)continue;height=out.height;if(height===null)nativeMissing.push(id);}
+   else height=sampleLegacy(g,lat,lon);
+   if(height===null){noData.push(id);continue;}candidates.push({id,g,height,resolution:g.resolutionMeters[0]*g.resolutionMeters[1]});
+  }
+  /* Fine NoData stays missing inside its true native support. It is never
+     filled with a coarser sample and presented as a fine surveyed altitude. */
+  if(nativeMissing.length&&!candidates.some(c=>c.g.v054Native))return{height:null,missing:null,sources:[],noData,resolutionMeters:[.5,.5],sourceResource:resource,interpolation:'LiDAR natif absent : aucun comblement',verticalDatum:'NGF-IGN69'};
+  candidates.sort((a,b)=>a.resolution-b.resolution||Number(b.g.v054Native)-Number(a.g.v054Native)||Number(b.g.enrichment)-Number(a.g.enrichment)||a.id.localeCompare(b.id));
+  const chosen=candidates[0];if(chosen)sources.push(chosen.id);
+  return{height:chosen?.height??null,missing:null,sources,noData,resolutionMeters:chosen?.g.resolutionMeters.slice()||null,sourceResource:chosen?.g.sourceResource||null,interpolation:chosen?.g.v054Native?'bilinéaire sur centres natifs Lambert-93, voisins valides requis':'bilinéaire, quatre échantillons valides requis',verticalDatum:chosen?.g.verticalDatum||null};
+ }
+ function selected(atlas,p,origin,radius=384){
+  const x=p[0]+origin[0],y=origin[1]-p[2];return(atlas?.tiles||[]).filter(d=>d.nativeBounds[0]<=x+radius&&d.nativeBounds[2]>=x-radius&&d.nativeBounds[1]<=y+radius&&d.nativeBounds[3]>=y-radius);
+ }
+ function meshCenter(p,origin,extent=[892000,6245000,895000,6249000]){
+  const half=127.5,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+  return[clamp(Math.round((p[0]+origin[0])*2)/2,extent[0]+half,extent[2]-.5-half)-origin[0],origin[1]-clamp(Math.round((origin[1]-p[2])*2)/2,extent[1]+.5+half,extent[3]-half)];
+ }
+ return{descriptor,index,decode,sample,read,selected,meshCenter,resource};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralPreciseTerrain;
+
+if(typeof window!=='undefined'&&typeof v046Ensure==='function'){
+ const M=MistralPreciseTerrain,R={index:null,promise:null,epoch:0,known:false,loads:new Map(),cache:new MistralStream.BudgetCache(48*1024*1024,12),meshes:new MistralStream.BudgetCache(48*1024*1024,1),errors:[],requests:0};
+ const error=e=>{R.errors.push(String(e?.message||e));R.errors=R.errors.slice(-10);};
+ async function ready(){
+  if(V046.lab)return null;if(R.promise)return R.promise;const epoch=R.epoch;
+  const promise=(async()=>{const raw=await v050LocalSourceJSON('data/map_pack/precise/index.json',null,true);if(epoch!==R.epoch)throw Error('Atlas LiDAR périmé');if(!raw){if(R.known)throw Error('Atlas LiDAR précédemment chargé absent');return null;}const atlas=M.index(raw);for(const d of atlas.tiles)for(const[e,n]of[[d.nativeBounds[0],d.nativeBounds[1]],[d.nativeBounds[2],d.nativeBounds[1]],[d.nativeBounds[0],d.nativeBounds[3]],[d.nativeBounds[2],d.nativeBounds[3]]]){const ll=v018InverseLambert(e,n);if(ll[0]<d.bbox[0]-1e-7||ll[0]>d.bbox[2]+1e-7||ll[1]<d.bbox[1]-1e-7||ll[1]>d.bbox[3]+1e-7||d.bbox[2]-d.bbox[0]>.006||d.bbox[3]-d.bbox[1]>.008)throw Error('Emprise WGS84 différente du repère natif');}R.index=atlas;R.known=true;return R.index;})();
+  R.promise=promise;promise.catch(e=>{if(epoch===R.epoch&&R.promise===promise)R.promise=null;});return promise;
+ }
+ const add=MistralIntegrity.TerrainBank.prototype.add;
+ MistralIntegrity.TerrainBank.prototype.add=function(raw,id){
+  if(!raw?.v054Native)return add.call(this,raw,id);
+  if(raw.id!==id||!(raw.data instanceof Float32Array)||raw.data.length!==raw.width*raw.height)throw Error('Ressource LiDAR native incohérente');
+  this.bounds[id]=raw.bbox.slice();this.grids.set(id,raw);return raw;
+ };
+ const read=MistralIntegrity.TerrainBank.prototype.read;
+ MistralIntegrity.TerrainBank.prototype.read=function(lat,lon){return[...this.grids.values()].some(g=>g.v054Native)?M.read(this,lat,lon,v018Lambert93,MistralIntegrity.sample):read.call(this,lat,lon);};
+ const plan=v046Plan;v046Plan=function(lat,lon){const out=plan(lat,lon);if(!V046.lab&&R.index){const selected=M.selected(R.index,out.p,V046_ORIGIN);if(selected.length>9||selected.reduce((n,d)=>n+d.bytes,0)>37*1024*1024)throw Error('Secteur LiDAR hors budget');for(const d of selected)out.dem.push('precisedem:'+d.id.split(':').at(-1));}return out;};
+ async function binary(d,signal){
+  v051CityAbort(signal);const cached=R.cache.get(d.path);if(cached)return cached;const epoch=R.epoch;
+  if(!R.loads.has(d.path)){
+   const promise=(async()=>{
+    R.requests++;const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+    try{const response=await fetch(d.path,{signal:controller.signal,cache:'no-store'});if(!response.ok)throw Error('Binaire LiDAR indisponible : HTTP '+response.status);
+     const declared=response.headers.get('Content-Length');if(declared!==null&&Number(declared)!==d.bytes)throw Error('Taille LiDAR annoncée incorrecte');
+     const buffer=await v047ReadBody(response,controller.signal,d.bytes);if(buffer.byteLength!==d.bytes||MistralStream.sha256(buffer)!==d.sha256)throw Error('Empreinte binaire LiDAR incorrecte');
+     const grid=M.decode(buffer,d,R.index.provenance);if(epoch!==R.epoch)throw Error('Binaire LiDAR périmé');const result={raw:grid,id:grid.id,source:'IGN — MNT LiDAR HD natif 0,5 m',origin:'IGN — MNT LiDAR HD natif 0,5 m'};R.cache.set(d.path,result);return result;
+    }finally{clearTimeout(timer);}
+   })();R.loads.set(d.path,promise);promise.then(()=>{if(R.loads.get(d.path)===promise)R.loads.delete(d.path);},()=>{if(R.loads.get(d.path)===promise)R.loads.delete(d.path);});
+  }
+  return v051CityWait(R.loads.get(d.path),signal);
+ }
+ const resource=v046Resource;v046Resource=async function(key,signal){
+  if(V046.lab||!key.startsWith('precisedem:'))return resource(key,signal);
+  const d=R.index?.tiles.find(t=>t.id.endsWith(':'+key.slice(11)));if(!d)throw Error('Dalle LiDAR inconnue');return binary(d,signal);
+ };
+ const ensure=v046Ensure;v046Ensure=async function(...args){
+  if(!V046.lab){const serial=V051_CITY.navigationSerial;try{await ready();}catch(e){if(serial!==V051_CITY.navigationSerial)return false;error(e);V046.last={lat:args[0],lon:args[1],w:args[2]||world,initial:!!args[3],opts:args[4]||{}};V046.error=[{key:'precise-index',message:String(e.message||e)}];if(!args[4]?.v047Warm){V046.busy=true;zoneTransitioning=true;mode='LOADING';v046Loading({phase:'failed',done:0,total:1,errors:V046.error});}return false;}if(serial!==V051_CITY.navigationSerial)return false;}
+  return ensure(...args);
+ };
+ const refresh=v051CityRefresh;v051CityRefresh=function(){if(!refresh())return false;R.epoch++;R.index=null;R.promise=null;R.loads.clear();R.cache.clear();R.meshes.clear();R.errors=[];return true;};
+ function nativeAt(grids,x,z){const e=x+V046_ORIGIN[0],n=V046_ORIGIN[1]-z;let inside=false;for(const g of grids){const r=M.sample(g,e,n);if(r.inside){inside=true;if(r.height!==null)return r.height;}}return null;}
+ const refine=v050RefineTerrainMeshes;
+ v050RefineTerrainMeshes=async function(coarse,plan,bank,stamp,job){
+  const grids=[...bank.grids.values()].filter(g=>g.v054Native);
+  const p=plan.p,center=grids.find(g=>M.sample(g,p[0]+V046_ORIGIN[0],V046_ORIGIN[1]-p[2]).inside);
+  if(!center){if(!grids.length)return refine(coarse,plan,bank,stamp,job);const view=Object.create(bank);view.grids=new Map([...bank.grids].filter(([,g])=>!g.v054Native));view.bounds=Object.fromEntries(Object.entries(bank.bounds).filter(([id])=>view.grids.has(id)||!id.startsWith('enrichment:')));return refine(coarse,plan,view,stamp,job);}
+  /* Recenter the mesh window at the atlas edges, never its source cells or
+     the player. Cutting a square beyond native support would erase valid
+     coarse terrain without supplying fine faces on that outside portion. */
+  const[x,z]=M.meshCenter(p,V046_ORIGIN,R.index?.nativeExtent);
+  const half=127.5,width=511,key='native-lidar:'+x+':'+z+':'+stamp;let patch=R.meshes.get(key);
+  if(!patch){
+   const vertices=[],valid=[],faces=[],x0=x-half,z0=z-half;
+   for(let j=0;j<width;j++){for(let i=0;i<width;i++){const xx=x0+i*.5,zz=z0+j*.5,h=nativeAt(grids,xx,zz);vertices.push([xx,h===null?0:h-.06,zz]);valid.push(h!==null);}await job.work.checkpoint(width);}
+   for(let j=0;j<width-1;j++){for(let i=0;i<width-1;i++){const a=j*width+i,b=a+1,c=a+width,d=c+1;if(valid[a]&&valid[b]&&valid[c])faces.push([a,c,b]);if(valid[b]&&valid[c]&&valid[d])faces.push([b,c,d]);}await job.work.checkpoint(width);}
+   const border=[];for(let i=0;i<width;i++)border.push(vertices[i]);for(let j=1;j<width;j++)border.push(vertices[j*width+width-1]);for(let i=width-2;i>=0;i--)border.push(vertices[(width-1)*width+i]);for(let j=width-2;j>0;j--)border.push(vertices[j*width]);
+   const inner=border.map(v=>[v[0],v[2]]);inner.push(inner[0].slice());
+   const box={minX:Math.floor(x0/32)*32-32,maxX:Math.ceil((x0+255)/32)*32+32,minZ:Math.floor(z0/32)*32-32,maxZ:Math.ceil((z0+255)/32)*32+32},outer=[];
+   for(let xx=box.minX;xx<box.maxX;xx+=32)outer.push([xx,box.minZ]);for(let zz=box.minZ;zz<box.maxZ;zz+=32)outer.push([box.maxX,zz]);for(let xx=box.maxX;xx>box.minX;xx-=32)outer.push([xx,box.maxZ]);for(let zz=box.maxZ;zz>box.minZ;zz-=32)outer.push([box.minX,zz]);outer.push(outer[0].slice());
+   const seamVertices=[],seamFaces=[];
+   for(const triangle of v018Triangulate([outer,inner])){const points=triangle.map(a=>{const h=v047Height(bank,a[0],a[1]).height;return h===null?null:[a[0],h-.06,a[1]];});if(points.every(Boolean)){const n=seamVertices.length;seamVertices.push(...points);seamFaces.push([n,n+2,n+1]);}if(seamFaces.length%128===0)await job.work.checkpoint(128);}
+   const common={mesh:'terrain',pos:[x,0,z],scale:[1,1,1],color:[.30,.33,.25],v046Terrain:true,v046Bounds:box,revision:0,sourceResource:M.resource,sourceSpacingMeters:[.5,.5],sourceScope:'Vrais centres natifs LiDAR HD 0,5 m dans un carré local de 255 m ; LOD et raccord au-delà, sans triangles sur NoData',v050LandMask:box,v050LandMaskId:key,v054NativeTerrain:true};
+   patch={box,draws:[{...common,vertices,faces,v050FineTerrain:true,v047GeometryId:key},{...common,vertices:seamVertices,faces:seamFaces,v050TerrainSeam:true,v047GeometryId:key+':seam'}]};R.meshes.set(key,patch);
+  }
+  const out=[];for(const draw of coarse){const faces=draw.faces.filter(f=>{const a=f.map(i=>draw.vertices[i]),xx=(a[0][0]+a[1][0]+a[2][0])/3,zz=(a[0][2]+a[1][2]+a[2][2])/3;return xx<=patch.box.minX||xx>=patch.box.maxX||zz<=patch.box.minZ||zz>=patch.box.maxZ;});if(faces.length===draw.faces.length)out.push(draw);else if(faces.length)out.push({...draw,faces,revision:(draw.revision||0)+1,v047GeometryId:draw.v047GeometryId+':cut:'+key});await job.work.checkpoint(draw.faces.length);}out.push(...patch.draws);return out;
+ };
+ function info(){const active=[...(V046.terrain?.grids?.values()||[])].filter(g=>g.v054Native),draws=(world?.staticDraws||[]).filter(d=>d.v054NativeTerrain);return{present:!!R.index,sourceTiles:R.index?.sourceTiles||0,availableChunks:R.index?.tiles.length||0,coverageSquareMeters:R.index?.coverageSquareMeters||0,nativeSpacingMeters:.5,resampled:false,activeChunks:active.map(g=>({id:g.id,origin:g.origin.slice(),width:g.width,height:g.height,bytes:g.data.byteLength,noDataPoints:g.noDataPoints})),activeBytes:active.reduce((n,g)=>n+g.data.byteLength,0),rendered:draws.map(d=>({id:d.v047GeometryId,vertices:d.vertices.length,faces:d.faces.length,native:!!d.v050FineTerrain,seam:!!d.v050TerrainSeam,spacing:d.sourceSpacingMeters})),cache:R.cache.stats(),meshCache:R.meshes.stats(),inflight:R.loads.size,requests:R.requests,errors:R.errors.slice(),scope:'Douze km² centraux, pas toute Marseille ; précision du levé distincte du pas natif et du LOD.'};}
+ function meshSamples(){const draws=(world?.staticDraws||[]).filter(d=>d.v054NativeTerrain&&d.v050FineTerrain),g=draws[0];if(!g)return null;const v=g.vertices,w=511,indices=[0,1,w,w+1,Math.floor(v.length/2),v.length-2,v.length-1,v.length-w-1],unique=new Set(draws.map(d=>d.vertices));return{uniqueVertices:[...unique].reduce((n,v)=>n+v.length,0),faces:draws.reduce((n,d)=>n+d.faces.length,0),nativeSpacingMeters:.5,displayOffsetMeters:-.06,samples:indices.map(i=>({index:i,position:v[i].slice(),easting:v[i][0]+V046_ORIGIN[0],northing:V046_ORIGIN[1]-v[i][2]})),bounds:{minE:v[0][0]+V046_ORIGIN[0],maxE:v[w-1][0]+V046_ORIGIN[0],maxN:V046_ORIGIN[1]-v[0][2],minN:V046_ORIGIN[1]-v[v.length-1][2]}};}
+ function renderedAt(easting,northing){const x=easting-V046_ORIGIN[0],z=V046_ORIGIN[1]-northing,out=[];for(const d of world?.staticDraws||[]){if(!d.v046Terrain||!d.vertices||!d.faces)continue;const b=d.v046Bounds;if(b&&(x<b.minX||x>b.maxX||z<b.minZ||z>b.maxZ))continue;for(const face of d.faces){const t=face.map(i=>d.vertices[i]);if(x<Math.min(...t.map(p=>p[0]))||x>Math.max(...t.map(p=>p[0]))||z<Math.min(...t.map(p=>p[2]))||z>Math.max(...t.map(p=>p[2])))continue;const cross=(a,b)=>(b[0]-a[0])*(z-a[2])-(b[2]-a[2])*(x-a[0]),signs=[cross(t[0],t[1]),cross(t[1],t[2]),cross(t[2],t[0])];if(signs.every(n=>n>=-1e-8)||signs.every(n=>n<=1e-8)){out.push({id:d.v047GeometryId,native:!!d.v054NativeTerrain,seam:!!d.v050TerrainSeam,triangle:t.map(p=>p.slice()),sourceResource:d.sourceResource||null});break;}}if(out.length>=8)break;}return out;}
+ const panel=v047Panel;v047Panel=function(c){panel(c);const s=info(),section=document.createElement('section');section.className='v047-box';section.innerHTML='<h3>MNT LIDAR HD NATIF</h3><p>'+ (s.present?'12 km² centraux disponibles au pas natif de 0,5 m ; '+s.activeChunks.length+' morceaux réellement chargés.':'Atlas précis local absent ou en cours de vérification ; les autres reliefs restent distincts.')+'</p><p>Valeurs Float32 dans le repère Lambert-93 / IGN69, sans rééchantillonnage des altitudes. Le rendu emploie les vrais centres de pixels dans un carré local de 255 m, puis un raccord et un niveau de détail plus large. Une absence LiDAR ne devient pas une mesure inventée.</p><p>Cette couverture partielle ne certifie ni précision absolue de 50 cm, ni relief complet de la commune.</p>';c.querySelector('.v047-integrity')?.appendChild(section);};
+ globalThis.v054PreciseTerrainAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v054PreciseTerrainInfo:info,v054PreciseTerrainReady:ready,v054PreciseTerrainSample:(lat,lon)=>V046.terrain.read(lat,lon),v054PreciseTerrainMeshSamples:meshSamples,v054PreciseTerrainRenderedAt:renderedAt});if(['http:','https:'].includes(location.protocol))ready().catch(error);};
+}
+
+/* Fictional chem effects, tolerance and withdrawal: bounded simulation rules.
+   All quantities and durations below are game mechanics, not medical claims. */
+const MistralChems=(()=>{
+ const EPS=1e-7,DURATION=120,WASHOUT=180,WITHDRAWAL=300,MAX_LOAD=6,MAX_USES=1000000;
+ const copy=v=>JSON.parse(JSON.stringify(v)),finite=n=>typeof n==='number'&&Number.isFinite(n),clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ const DEFINITIONS={
+  jet:{name:'Jet',value:24,mass:.1,description:'Consommable de jeu : réserve maximale de PA +20 et recharge correspondante pendant 120 s actives. Tolérance et dépendance possibles.'},
+  buffout:{name:'Buffout',value:28,mass:.1,description:'Consommable de jeu : PV maximaux +20, charge +15 kg et réserve de PV correspondante pendant 120 s actives. Tolérance et dépendance possibles.'},
+  mentats:{name:'Mentats',value:26,mass:.1,description:'Consommable de jeu : Science, Réparation et Éloquence +15 pendant 120 s actives. Tolérance et dépendance possibles.'},
+  psycho:{name:'Psycho',value:30,mass:.1,description:'Consommable de jeu : dégâts de vos armes et attaques V.A.T.S. +25 % pendant 120 s actives. Tolérance et dépendance possibles.'}
+ };
+ const IDS=Object.keys(DEFINITIONS),STOCKS={aubagne:{mentats:3,buffout:2},noailles:{jet:3,mentats:2},ciotatPort:{psycho:3,buffout:2}};
+ const known=id=>typeof id==='string'&&Object.hasOwn(DEFINITIONS,id),integer=(n,max=MAX_USES)=>Number.isInteger(n)&&n>=0?Math.min(n,max):0;
+ function row(){return{uses:0,load:0,washout:0,active:0,tier:0,dependent:false,withdrawal:0};}
+ function fresh(){return{schema:1,elapsed:0,agents:Object.fromEntries(IDS.map(id=>[id,row()])),stocked:{},treatments:0,recoveries:0};}
+ function migrate(raw){
+  const out=fresh(),p=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};out.elapsed=finite(p.elapsed)&&p.elapsed>=0?Math.min(p.elapsed,1e9):0;
+  out.treatments=integer(p.treatments);out.recoveries=integer(p.recoveries);
+  for(const id of Object.keys(STOCKS))if(Object.hasOwn(p.stocked||{},id)&&p.stocked[id]===true)out.stocked[id]=true;
+  for(const id of IDS){const old=Object.hasOwn(p.agents||{},id)&&p.agents[id]&&typeof p.agents[id]==='object'?p.agents[id]:{},r=out.agents[id];r.uses=integer(old.uses);r.load=integer(old.load,MAX_LOAD);r.tier=integer(old.tier,3);r.active=finite(old.active)&&old.active>EPS?Math.min(old.active,DURATION):0;r.dependent=old.dependent===true||r.load>=3;
+   r.washout=r.load?(finite(old.washout)&&old.washout>EPS?Math.min(old.washout,WASHOUT):WASHOUT):0;
+   r.withdrawal=r.active?0:r.dependent?(finite(old.withdrawal)&&old.withdrawal>EPS?Math.min(old.withdrawal,WITHDRAWAL):WITHDRAWAL):0;
+  }return out;
+ }
+ function tolerance(r){return Math.min(3,Math.floor(r.load/2));}
+ function phase(r){return r.active>EPS?'active':r.dependent&&r.withdrawal>EPS?'withdrawal':r.load>0?'washout':'clear';}
+ function modifiers(raw){
+  const s=migrate(raw),m={hp:0,ap:0,carry:0,skills:{science:0,repair:0,speech:0},damage:1};
+  for(const id of IDS){const r=s.agents[id],active=r.active>EPS,power=active?1-.2*r.tier:0,withdraw=!active&&r.dependent;
+   if(id==='jet')m.ap=active?Math.round(20*power):withdraw?-15:0;
+   if(id==='buffout'){m.hp=active?Math.round(20*power):withdraw?-10:0;m.carry=active?Math.round(15*power):withdraw?-10:0;}
+   if(id==='mentats')for(const key of Object.keys(m.skills))m.skills[key]=active?Math.round(15*power):withdraw?-10:0;
+   if(id==='psycho')m.damage=active?1+.25*power:withdraw?.85:1;
+  }return m;
+ }
+ function dose(raw,id){if(!known(id))throw Error('Consommable chimique inconnu.');const s=migrate(raw),r=s.agents[id];r.uses=Math.min(MAX_USES,r.uses+1);r.load=Math.min(MAX_LOAD,r.load+1);r.washout=WASHOUT;r.tier=tolerance(r);r.active=DURATION;r.dependent=r.dependent||r.load>=3;r.withdrawal=0;return s;}
+ function advance(raw,dt,active=true){
+  const out=migrate(raw);if(!active||!finite(dt)||dt<=0)return out;out.elapsed=Math.min(1e9,out.elapsed+dt);
+  for(const id of IDS){const r=out.agents[id];let remaining=dt,events=0;
+   while(remaining>EPS&&events++<20){const wasActive=r.active>EPS,wasWithdrawal=!wasActive&&r.dependent&&r.withdrawal>EPS,hasLoad=r.load>0;
+    const step=Math.min(remaining,wasActive?r.active:wasWithdrawal?r.withdrawal:Infinity,hasLoad?r.washout:Infinity);if(!Number.isFinite(step)||step<0)break;
+    if(wasActive)r.active=Math.max(0,r.active-step);else if(wasWithdrawal)r.withdrawal=Math.max(0,r.withdrawal-step);if(hasLoad)r.washout=Math.max(0,r.washout-step);remaining-=step;
+    if(wasActive&&r.active<=EPS){r.active=0;r.tier=0;if(r.dependent)r.withdrawal=WITHDRAWAL;}
+    if(wasWithdrawal&&r.withdrawal<=EPS){r.withdrawal=0;r.dependent=false;r.load=0;r.washout=0;r.tier=0;out.recoveries=Math.min(MAX_USES,out.recoveries+1);}
+    if(r.load>0&&r.washout<=EPS){r.load--;r.washout=r.load?WASHOUT:0;}
+    if(step<=EPS&&!wasActive&&!wasWithdrawal&&!hasLoad)break;
+   }
+  }return out;
+ }
+ function summary(raw){const s=migrate(raw);return IDS.map(id=>{const r=s.agents[id];return{id,name:DEFINITIONS[id].name,...r,phase:phase(r),tolerance:tolerance(r),strength:r.active>0?Math.round((1-.2*r.tier)*100):0};});}
+ function cost(raw){const count=summary(raw).filter(r=>r.load>0||r.dependent||r.active>0).length;return count?40+20*count:0;}
+ function signature(raw){return JSON.stringify(migrate(raw));}
+ function treat(raw){const s=migrate(raw);if(!cost(s))throw Error('Aucun effet ou état de dépendance à traiter.');for(const id of IDS){const uses=s.agents[id].uses;s.agents[id]=row();s.agents[id].uses=uses;}s.treatments=Math.min(MAX_USES,s.treatments+1);return s;}
+ function loot(id,items,options={},existing=false){const out=copy(items||{});if(existing||!String(id).startsWith('city:')||options.owned===true||options.kind&&options.kind!=='chest')return out;let hash=2166136261;for(const c of 'chems:'+id)hash=Math.imul(hash^c.charCodeAt(0),16777619);const seed=hash>>>0;if(seed%13===0){const item=IDS[(seed>>>8)%IDS.length];out[item]=Math.min(MAX_USES,(out[item]||0)+1);}return out;}
+ return{EPS,DURATION,WASHOUT,WITHDRAWAL,MAX_LOAD,MAX_USES,IDS,DEFINITIONS,STOCKS,known,row,fresh,migrate,tolerance,phase,modifiers,dose,advance,summary,cost,signature,treat,loot};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralChems;
+
+if(typeof window!=='undefined'&&typeof baseState==='function'){
+ const M=MistralChems,clone=v=>JSON.parse(JSON.stringify(v)),runtime={quote:null,error:null,depth:0,commits:0,rollbacks:0};
+ V027_SUBS.status.chemistry='DÉPENDANCES';
+ for(const[id,d]of Object.entries(M.DEFINITIONS)){ITEM_VALUES[id]=d.value;V027_AID_DESC[id]=d.description+' Trois prises rapprochées rendent dépendant ; le retrait devient actif après le bonus.';}
+ const freshBase=baseState;baseState=function(...a){const s=freshBase(...a);s.v054Chems=M.fresh();return s;};
+ const migration=migrateState;migrateState=function(input={}){const s=migration(input);s.v054Chems=M.migrate(input.v054Chems);return s;};state=migrateState(state);if(world&&typeof v049Own==='function')v049Own(world);
+ const labels=itemLabel;itemLabel=function(id){return M.known(id)?M.DEFINITIONS[id].name:labels(id);};
+ const category=v026Category;v026Category=function(id){return M.known(id)?'aid':category(id);};
+ const mass=v026Mass;v026Mass=function(id){return M.known(id)?M.DEFINITIONS[id].mass:mass(id);};
+ const description=v026Description;v026Description=function(id){return M.known(id)?V027_AID_DESC[id]:description(id);};
+ const skill=v023Skill;v023Skill=function(key){const n=skill(key),bonus=M.modifiers(state.v054Chems).skills[key]||0;return Math.max(0,Math.min(100,n+bonus));};
+ const capacity=v026Capacity;v026Capacity=function(){return Math.max(1,capacity()+M.modifiers(state.v054Chems).carry);};
+ const damage=v020Damage;v020Damage=function(...a){return damage(...a)*M.modifiers(state.v054Chems).damage;};
+ const derive=computeDerived;computeDerived=function(...a){const hp=state.player.hp,ap=state.player.ap,r=derive(...a),m=M.modifiers(state.v054Chems);state.player.maxHp=Math.max(1,state.player.maxHp+m.hp);state.player.maxAp=Math.max(1,state.player.maxAp+m.ap);state.player.hp=hp<=0?0:Math.max(0,Math.min(state.player.maxHp,hp));state.player.ap=Math.max(0,Math.min(state.player.maxAp,ap));return r;};
+ const merchant=merchantState;merchantState=function(id){const ms=merchant(id),s=state.v054Chems,stock=Object.hasOwn(M.STOCKS,id)?M.STOCKS[id]:null;if(s&&stock&&!s.stocked[id]&&!V046.lab){for(const[item,count]of Object.entries(stock))if(!Object.hasOwn(ms.stock,item))ms.stock[item]=count;s.stocked[id]=true;}return ms;};
+ const container=v026NewContainer;v026NewContainer=function(w,id,title,pos,items,options={}){const exists=!!state.v026?.containers?.[v026Key(w.id,id)];return container(w,id,title,pos,M.loot(id,items,options,exists),options);};
+ function available(modes=['PLAYING','PIP','SALVAGE','FIELD']){return gameStarted&&world&&state.player.hp>0&&!zoneTransitioning&&!V046.lab&&!V046.busy&&!V047.pending&&modes.includes(mode);}
+ function restore(owner,before){for(const key of Object.keys(owner))delete owner[key];Object.assign(owner,before);}
+ function refresh(){if(mode==='TRADE'){try{renderTrade();}catch{}}else if(mode==='PIP')renderPipboy();else if(mode==='SALVAGE')v026Render();updateHUD();}
+ function atomic(action,modes=['PLAYING','PIP','SALVAGE','FIELD']){
+  if(!available(modes)||runtime.depth)return false;const owner=state,scene=world,before=clone(state),save=saveGame;let requested=false,args=[false];runtime.depth++;saveGame=function(...a){requested=true;args=a;return true;};
+  try{const result=action();if(result?.then)throw Error('Cette opération doit se terminer sans attente.');if(state!==owner||world!==scene)throw Error('Le contexte a changé.');saveGame=save;if(result===false){restore(owner,before);return false;}if(!requested)throw Error('Aucune écriture complète demandée.');if(save(...args)===false)throw Error('Écriture de sauvegarde refusée.');runtime.commits++;runtime.error=null;return result;}
+  catch(error){if(state===owner)restore(owner,before);runtime.rollbacks++;runtime.error=String(error.message||error);V027.message='Opération annulée : '+runtime.error+' Objets, soins et capsules conservés.';refresh();return false;}
+  finally{saveGame=save;runtime.depth--;}
+ }
+ function use(id){if(!M.known(id)||!available()||v026Qty(id)<1)return false;const result=atomic(()=>{if(!v026Remove(id,1))return false;state.v054Chems=M.dose(state.v054Chems,id);runtime.quote=null;computeDerived();const m=M.modifiers(state.v054Chems);if(id==='jet')state.player.ap=Math.min(state.player.maxAp,state.player.ap+Math.max(0,m.ap));if(id==='buffout')state.player.hp=Math.min(state.player.maxHp,state.player.hp+Math.max(0,m.hp));saveGame(false);return true;});if(result){const row=M.summary(state.v054Chems).find(r=>r.id===id);V027.message=row.name+' · effet 120 s · puissance '+row.strength+' %'+(row.dependent?' · dépendance acquise':'');refresh();}return result;}
+ const inventoryUse=useInventoryItem;useInventoryItem=function(id){return M.known(id)?use(id):inventoryUse(id);};
+ const pipUse=v027ItemAction;v027ItemAction=function(kind,id){return kind==='use'&&M.known(id)?v027CanAct()&&use(id):pipUse(kind,id);};
+ const bagUse=v026Use;v026Use=function(id){return M.known(id)?V026.open&&mode==='SALVAGE'&&use(id):bagUse(id);};
+ const price=tradePrice;tradePrice=function(id,buy=true,vendor=tradeState?.id){const n=price(id,buy,vendor);return !M.known(id)||buy?n:Math.min(n,Math.max(1,price(id,true,vendor)-1));};
+ const buying=buyTradeItem;buyTradeItem=function(id){return M.known(id)?atomic(()=>buying(id),['TRADE']):buying(id);};
+ const selling=sellTradeItem;sellTradeItem=function(id){return M.known(id)?atomic(()=>selling(id),['TRADE']):selling(id);};
+ const renderBarter=renderTrade;renderTrade=function(...a){const r=renderBarter(...a);if(!tradeState||typeof document==='undefined')return r;const list=$('tradeSellList');if(!list)return r;for(const[id,d]of Object.entries(M.DEFINITIONS)){if(v026Qty(id)<1||list.querySelector('[data-sell="'+id+'"]'))continue;const p=tradePrice(id,false),row=document.createElement('article');row.className='trade-row';row.innerHTML='<div><b>'+escapeHtml(d.name)+'</b><small>Disponible : '+v026Qty(id)+'</small></div><strong>'+p+' caps</strong><button data-sell="'+id+'"'+(merchantState(tradeState.id).caps<p?' disabled':'')+'>VENDRE</button>';row.querySelector('button').onclick=()=>sellTradeItem(id);list.appendChild(row);}return r;};
+ const update=updateStatus;
+ updateStatus=function(dt){const active=mode==='PLAYING'&&gameStarted&&!zoneTransitioning&&!V046.lab&&!V046.busy&&!V047.pending&&!V018.qaFreeze,before=M.modifiers(state.v054Chems),r=update(dt);if(active){state.v054Chems=M.advance(state.v054Chems,dt,true);const after=M.modifiers(state.v054Chems);if(before.hp!==after.hp||before.ap!==after.ap)computeDerived();}return r;};
+ function nearDoctor(){if(!available(['PIP'])||!v027CanAct()||!v028NearMedic())return false;const npc=world.npcs.find(n=>n.id==='relay_cold:npc'&&n.alive!==false);return!!npc&&Math.hypot(npc.pos[0]-state.player.pos[0],npc.pos[2]-state.player.pos[2])<=4&&Math.abs(npc.pos[1]+playerEyeHeight()-state.player.pos[1])<=1&&!collidesAt(state.player.pos[0],state.player.pos[2],.38,state.player.pos[1])&&lineOfSight(state.player.pos,[npc.pos[0],npc.pos[1]+1.2,npc.pos[2]]);}
+ function doctor(confirm=false){
+  if(!nearDoctor()){runtime.quote=null;return v027Notify('Rejoignez Sofia, à l’Annexe des Veilleurs, hors danger et avec un accès libre.');}const cost=M.cost(state.v054Chems),signature=M.signature(state.v054Chems);if(!cost){runtime.quote=null;return v027Notify('Aucun état à traiter : consultation non facturée.');}
+  if(!confirm){runtime.quote={owner:state,world,scene:V020.scene,signature,cost};renderPipboy();return true;}const q=runtime.quote;runtime.quote=null;if(!q||q.owner!==state||q.world!==world||q.scene!==V020.scene||q.signature!==signature||q.cost!==cost)return v027Notify('Le bilan a changé : demandez un nouveau devis.');if(state.player.caps<cost)return v027Notify('Capsules insuffisantes : aucun prélèvement partiel.');
+  const result=atomic(()=>{if(!nearDoctor()||M.signature(state.v054Chems)!==signature||state.player.caps<cost)return false;state.player.caps-=cost;state.v054Chems=M.treat(state.v054Chems);computeDerived();v028Log('soin','Sofia : effets actifs, tolérance et dépendances traités · '+cost+' capsules. PV, radiations et blessures non soignés.');saveGame(false);return true;},['PIP']);if(result){V027.message='Dépendances et tolérance traitées. Les bonus chimiques actifs sont arrêtés ; les autres soins restent distincts.';refresh();}return result;
+ }
+ function panel(c){const rows=M.summary(state.v054Chems),m=M.modifiers(state.v054Chems),cost=M.cost(state.v054Chems),near=nearDoctor(),quote=runtime.quote&&runtime.quote.owner===state?runtime.quote:null;
+  c.innerHTML='<div class="p27-long"><p class="p27-kicker">EFFETS ET DÉPENDANCES</p><h2>Chimie du Wasteland</h2><p>Quatre consommables de jeu : bonus 120 secondes actives. Les reprises rapprochées augmentent la tolérance et réduisent la puissance. La troisième prise rapprochée rend dépendant ; reprendre une dose masque le retrait sans guérir la dépendance.</p>'+rows.map(row=>'<section><h3>'+escapeHtml(row.name)+'</h3><p>'+({clear:'Aucun effet',active:'BONUS ACTIF',washout:'TOLÉRANCE EN RÉCUPÉRATION',withdrawal:'SEVRAGE ACTIF'})[row.phase]+' · '+row.uses+' prise(s) · tolérance '+row.tolerance+'/3'+(row.active?' · '+Math.ceil(row.active)+' s · puissance '+row.strength+' %':'')+(row.withdrawal?' · '+Math.ceil(row.withdrawal)+' s de retrait restantes':'')+(row.dependent?' · dépendance acquise':'')+'</p></section>').join('')+'<p>Modifications actuelles : PVmax '+m.hp+' · PAmax '+m.ap+' · charge '+m.carry+' kg · aptitudes cognitives '+m.skills.science+' · dégâts ×'+m.damage.toFixed(2)+'.</p><p>Sans reprise, le retrait dure 300 secondes actives, puis la famille récupère. Les menus, chargements et le temps hors partie ne font pas avancer ces compteurs.</p><div class="p27-actions">'+v027Button('Ouvrir les consommables','jump','inventory:aid')+'</div><h2>Poste de Sofia</h2><p>'+ (near?'Sofia est présente, proche et accessible.':'Rejoignez physiquement Sofia à l’Annexe des Veilleurs.')+'</p><p>Le traitement arrête tous les bonus chimiques et remet tolérance/dépendance à zéro. Il ne soigne ni PV, radiations, infection ou traumatismes.</p>'+v027Button(cost?'Demander un devis · '+cost+' capsules':'Aucun traitement nécessaire','c54:quote','',!near||!cost)+(quote?'<section><b>'+quote.cost+' capsules · bilan local</b><p>Les bonus actifs seront arrêtés. Paiement unique, uniquement tant que Sofia et le bilan restent accessibles.</p>'+v027Button('Confirmer le traitement','c54:confirm','',!near)+v027Button('Annuler','c54:cancel')+'</section>':'')+'</div>';
+ }
+ const status=v027Status;v027Status=function(c){if(V027.sub==='chemistry')return panel(c);const r=status(c);if(V027.sub==='health'){const rows=M.summary(state.v054Chems).filter(row=>row.phase!=='clear');c.innerHTML+='<section class="p27-long"><h3>Consommables et dépendances</h3>'+rows.map(row=>'<p>'+escapeHtml(row.name)+' · '+({active:'bonus actif',withdrawal:'sevrage actif',washout:'tolérance résiduelle'})[row.phase]+(row.dependent?' · dépendance':'')+'</p>').join('')+v027Button('Bilan des dépendances','jump','status:chemistry')+'</section>';}return r;};
+ const dispatch=v027Dispatch;v027Dispatch=function(action,arg=''){if(!action.startsWith('c54:'))return dispatch(action,arg);if(!v027CanAct())return false;if(action==='c54:quote')return doctor(false);if(action==='c54:confirm')return doctor(true);if(action==='c54:cancel'){runtime.quote=null;renderPipboy();return true;}return false;};
+ const sofia=v028Sofia;v028Sofia=function(...a){const result=sofia(...a),d=dialogueState;if(result&&d){openDialogue(d.speaker,d.line,[...d.choices,{id:'c54-sofia',text:'Parler des consommables, de la tolérance et du sevrage.',onChoose:()=>{debugDismissDialogue();v027Open('status','chemistry');}}]);}return result;};
+ const close=closePipboy;closePipboy=function(...a){runtime.quote=null;return close(...a);};
+ const load=loadZone;loadZone=function(...a){runtime.quote=null;return load(...a);};
+ function info(){return{schema:1,state:clone(state.v054Chems),families:M.summary(state.v054Chems),modifiers:M.modifiers(state.v054Chems),skills:Object.fromEntries(['science','repair','speech'].map(k=>[k,v023Skill(k)])),capacity:v026Capacity(),doctor:{near:nearDoctor(),cost:M.cost(state.v054Chems),quote:runtime.quote?{cost:runtime.quote.cost,scene:runtime.quote.scene}:null,npc:'relay_cold:npc'},error:runtime.error,commits:runtime.commits,rollbacks:runtime.rollbacks,provenance:'Fictional deterministic game mechanics; no real medical simulation'};}
+ globalThis.v054ChemsAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v054ChemsInfo:info,v054ChemsCatalog:()=>clone({definitions:M.DEFINITIONS,stocks:M.STOCKS,duration:M.DURATION,withdrawal:M.WITHDRAWAL}),v054ChemsUse:use,v054ChemsDoctor:doctor});};
 }
 
 init();
@@ -12868,4 +13296,6 @@ if(typeof v053LoreAfterInit==='function')v053LoreAfterInit();
 if(typeof v053PowerArmorAfterInit==='function')v053PowerArmorAfterInit();
 if(typeof v053IconicAfterInit==='function')v053IconicAfterInit();
 if(typeof v053BestiaryAfterInit==='function')v053BestiaryAfterInit();
+if(typeof v054PreciseTerrainAfterInit==='function')v054PreciseTerrainAfterInit();
+if(typeof v054ChemsAfterInit==='function')v054ChemsAfterInit();
 })();

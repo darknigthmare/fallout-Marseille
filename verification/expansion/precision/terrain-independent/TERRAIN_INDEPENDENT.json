@@ -1,0 +1,6552 @@
+{
+  "scope": "Independent read-only rasterio checks against received IGN GeoTIFFs, no runtime sampling implementation reused; GPU splitting verified by cited production source, no GPU/hardware claim",
+  "indexSha256": "dc368ea13976fa72e2adaf358c8843a27f6a41524ffd55a984913d2549e0068d",
+  "acquisitionSha256": "6d3947a998857f92c6957fab0b63db2a58a9e45c7c42b06862728f17a8e937fc",
+  "sources": [
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "6d5016a93d4f150f80a2911c3fa51f8c0ec20b6c34a7c5ce1cbb49d43d960924",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        891999.75,
+        0.0,
+        -0.5,
+        6246000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        892000.0,
+        6246000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "6364221b439d0c83f9463129401ddffbce11da86766f553d475ae4444d994441",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        891999.75,
+        0.0,
+        -0.5,
+        6247000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        892000.0,
+        6247000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "71910a5db87f2901c50a23ca38bfc8231a40bdaa042d0e614c43b0ee21241581",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        891999.75,
+        0.0,
+        -0.5,
+        6248000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        892000.0,
+        6248000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "eab322b652d9d9e1ccffaa8665a11c02e16a56b62b818884f2ce2d05c7b7c0ad",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        891999.75,
+        0.0,
+        -0.5,
+        6249000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        892000.0,
+        6249000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "be7c597e71f1c2ec04ccc5549438d05144fcb171bac2ee893dda7fc1eb7bc5b4",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        892999.75,
+        0.0,
+        -0.5,
+        6246000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        893000.0,
+        6246000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "e88e5d296fe8bb3954e64510a1ef9e60becea6874a3360b402b0570c2e281003",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        892999.75,
+        0.0,
+        -0.5,
+        6247000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        893000.0,
+        6247000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "f49244e8967ada51001d1ad62707da0aa2f506a417203555c05c8a90d141fb7c",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        892999.75,
+        0.0,
+        -0.5,
+        6248000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        893000.0,
+        6248000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "a631f70368f775bc2c29b1533e23794da24798c590fbe78b0db3029648e57dbd",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        892999.75,
+        0.0,
+        -0.5,
+        6249000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        893000.0,
+        6249000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "7a5d026d190d2445779f168fc4c73925cae5bfc2f0727ed3608bf7612955c47a",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        893999.75,
+        0.0,
+        -0.5,
+        6246000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        894000.0,
+        6246000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "f51a095a3f512894464fd306f7e80457f6c560a15a18671185df60e4f2d035cb",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        893999.75,
+        0.0,
+        -0.5,
+        6247000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        894000.0,
+        6247000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "be733036ed567daa0ab75a9332a828fa4013005e64c3585451f4f5a49f8f2428",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        893999.75,
+        0.0,
+        -0.5,
+        6248000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        894000.0,
+        6248000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    },
+    {
+      "file": "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition/25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sha256": "25572cd1b464786f7ada56b31f2bbe9efc5ff506dfd179bcec98afc059ae0190",
+      "bytes": 16000513,
+      "transform": [
+        0.5,
+        0.0,
+        893999.75,
+        0.0,
+        -0.5,
+        6249000.25,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "firstCentre": [
+        894000.0,
+        6249000.0
+      ],
+      "crs": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nodata": -9999.0,
+      "shape": [
+        2000,
+        2000
+      ]
+    }
+  ],
+  "chunks": [
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r00000-c00000-4039180ecb827392.f32",
+      "sha256": "4039180ecb8273922a0d96e9aa09da0f1627240cae506911cf08a856c9e5c649",
+      "bytes": 4008004,
+      "origin": [
+        892000.0,
+        6249000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r00000-c01000-7978163f3c35dda6.f32",
+      "sha256": "7978163f3c35dda6da9f650c4f67647775a50055fe051d97fcc9d13cf25fbbd1",
+      "bytes": 4008004,
+      "origin": [
+        892500.0,
+        6249000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r00000-c02000-c65c4424f967b5a8.f32",
+      "sha256": "c65c4424f967b5a83d75799ee08c153918de5f053a941bc135188fcd3728add0",
+      "bytes": 4008004,
+      "origin": [
+        893000.0,
+        6249000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r00000-c03000-45f5a488fbaba1ed.f32",
+      "sha256": "45f5a488fbaba1ed05de88a7e7741782650b68b350bb447ff81bbed3117e3ebc",
+      "bytes": 4008004,
+      "origin": [
+        893500.0,
+        6249000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r00000-c04000-4bb08c847cbc7cde.f32",
+      "sha256": "4bb08c847cbc7cdef39d78e357a7c6d5163fb331d3fde96781e3576935f4fc1a",
+      "bytes": 4008004,
+      "origin": [
+        894000.0,
+        6249000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r00000-c05000-f132ebf65e487286.f32",
+      "sha256": "f132ebf65e487286cb9ed073d5c4e456dbe3fe7144a10e65f1032bf99819929a",
+      "bytes": 4004000,
+      "origin": [
+        894500.0,
+        6249000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1000,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r01000-c00000-d6d931c74b619cea.f32",
+      "sha256": "d6d931c74b619ceaa70d139a55d913c3903418c9014bf9cc77a0c5eb9bc342e8",
+      "bytes": 4008004,
+      "origin": [
+        892000.0,
+        6248500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r01000-c01000-fbc673a53dd59634.f32",
+      "sha256": "fbc673a53dd596346a414f8d4949b760519e84e3439a89871601497302da6027",
+      "bytes": 4008004,
+      "origin": [
+        892500.0,
+        6248500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r01000-c02000-a7f85475d47f2f7c.f32",
+      "sha256": "a7f85475d47f2f7c14a15add405716b00083b72a91da89cf0ad2a786aecc58ab",
+      "bytes": 4008004,
+      "origin": [
+        893000.0,
+        6248500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r01000-c03000-65c2db9f720cf2db.f32",
+      "sha256": "65c2db9f720cf2db1cd39d9d6886f92a225893ec75b1f4f75354fe8efeb21171",
+      "bytes": 4008004,
+      "origin": [
+        893500.0,
+        6248500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r01000-c04000-2a8f2edef2c14b1a.f32",
+      "sha256": "2a8f2edef2c14b1a57fdf5cc277ee10c6a9b7d50d48279938a568cf6df294b49",
+      "bytes": 4008004,
+      "origin": [
+        894000.0,
+        6248500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r01000-c05000-ecbd39ddb0b7a007.f32",
+      "sha256": "ecbd39ddb0b7a00732b9f32de1fa80054b9c20383380b6eb42fc2ed1a160e16e",
+      "bytes": 4004000,
+      "origin": [
+        894500.0,
+        6248500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1000,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r02000-c00000-a9d79e88d1cf18e1.f32",
+      "sha256": "a9d79e88d1cf18e1389b7a2d49e06505ec3f8c51e78866ed449c71efd596a662",
+      "bytes": 4008004,
+      "origin": [
+        892000.0,
+        6248000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r02000-c01000-962ed51066c87f31.f32",
+      "sha256": "962ed51066c87f310dc3c767f97f0e434e2a1ab48159e91ecb1527ed01d02425",
+      "bytes": 4008004,
+      "origin": [
+        892500.0,
+        6248000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r02000-c02000-87bbc2c9703ab03a.f32",
+      "sha256": "87bbc2c9703ab03ae30253ee567218e5be723f94233e18c0ec0656c8f4bae371",
+      "bytes": 4008004,
+      "origin": [
+        893000.0,
+        6248000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r02000-c03000-0447c52783f27766.f32",
+      "sha256": "0447c52783f27766fc14b2527ab830a3cd2e7a20168c59d69626bbdc41cc0baa",
+      "bytes": 4008004,
+      "origin": [
+        893500.0,
+        6248000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r02000-c04000-6db82341e3ce1b74.f32",
+      "sha256": "6db82341e3ce1b74207d1b6b5ce4ac0837db4e1331c24b32566ec23da52209fa",
+      "bytes": 4008004,
+      "origin": [
+        894000.0,
+        6248000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r02000-c05000-ec64c5cb32203aaf.f32",
+      "sha256": "ec64c5cb32203aaf0c322d1438f12c05e23f498718f79ca1d9d407a8de1f83ee",
+      "bytes": 4004000,
+      "origin": [
+        894500.0,
+        6248000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1000,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r03000-c00000-fff5ec7bc5dfd833.f32",
+      "sha256": "fff5ec7bc5dfd833d08f5b317a8b9e1e58c361dc27263ed9db8c8b66cb5d2cb7",
+      "bytes": 4008004,
+      "origin": [
+        892000.0,
+        6247500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r03000-c01000-a4164bb7667862cf.f32",
+      "sha256": "a4164bb7667862cf3c3c67b3f6897c1c886b110a0093df688ba1cd02be5da2b8",
+      "bytes": 4008004,
+      "origin": [
+        892500.0,
+        6247500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r03000-c02000-19a0fdef664c08ac.f32",
+      "sha256": "19a0fdef664c08ac8ad7333704a26892d82dd1a0e49b0229560eb8e44bbd5d2a",
+      "bytes": 4008004,
+      "origin": [
+        893000.0,
+        6247500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r03000-c03000-067e0b71c838eb36.f32",
+      "sha256": "067e0b71c838eb361142c46e8007be4133f7843959e0206cce7997980e014a6e",
+      "bytes": 4008004,
+      "origin": [
+        893500.0,
+        6247500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r03000-c04000-a2e8a3ef2f727065.f32",
+      "sha256": "a2e8a3ef2f727065678de3619f6e420cd37f69c1cea84d592d0bb94f5b16166d",
+      "bytes": 4008004,
+      "origin": [
+        894000.0,
+        6247500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r03000-c05000-dc4861922091bd8b.f32",
+      "sha256": "dc4861922091bd8b7e20c9a12887a61680a7e9df9fdfe024b4bbb2715a99e946",
+      "bytes": 4004000,
+      "origin": [
+        894500.0,
+        6247500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1000,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r04000-c00000-7d41be38306d3a8c.f32",
+      "sha256": "7d41be38306d3a8c7480579192aafc207f9e6866bfc6d5262a40e879cbaa1797",
+      "bytes": 4008004,
+      "origin": [
+        892000.0,
+        6247000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r04000-c01000-07cf906f280969e9.f32",
+      "sha256": "07cf906f280969e9b9d69caf8a7fa761711971ba31766e08c82d9470ad455ed4",
+      "bytes": 4008004,
+      "origin": [
+        892500.0,
+        6247000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r04000-c02000-84f403d780f6496d.f32",
+      "sha256": "84f403d780f6496d344909141688d1e730d45a27ba1c62393002c49e58869c8c",
+      "bytes": 4008004,
+      "origin": [
+        893000.0,
+        6247000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r04000-c03000-860f011c630a93c2.f32",
+      "sha256": "860f011c630a93c2dd5a1e8fca4cfce74bdd7e26dd90c3281e1fa97c69274133",
+      "bytes": 4008004,
+      "origin": [
+        893500.0,
+        6247000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r04000-c04000-98e6d61810123763.f32",
+      "sha256": "98e6d61810123763d7737a8431009fdc67a936a3412cdb40277a6408f0274b0c",
+      "bytes": 4008004,
+      "origin": [
+        894000.0,
+        6247000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r04000-c05000-b4555982ddfb90b3.f32",
+      "sha256": "b4555982ddfb90b37cd65a28ceb2e23697cf8c63adc059a8bd9a2c425dc283c3",
+      "bytes": 4004000,
+      "origin": [
+        894500.0,
+        6247000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1000,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32",
+      "sha256": "9e33110ea15d8c9506ce98ebc0f7dbabbc1c3cb72edacdb64c5f0df670bcc25e",
+      "bytes": 4008004,
+      "origin": [
+        892000.0,
+        6246500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r05000-c01000-5a33c40221c432bd.f32",
+      "sha256": "5a33c40221c432bd44476b0ad11c45bbed686ba52b48c549325270df6edee0f9",
+      "bytes": 4008004,
+      "origin": [
+        892500.0,
+        6246500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r05000-c02000-28f408e126b23fad.f32",
+      "sha256": "28f408e126b23fad0c0760cebdafc2b9a394ac918898388d06c8bda17fb5b7f2",
+      "bytes": 4008004,
+      "origin": [
+        893000.0,
+        6246500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r05000-c03000-5903e7a90485452c.f32",
+      "sha256": "5903e7a90485452c47bed136bf0dc8bde5143b078bf24af2652aac9b10f888c5",
+      "bytes": 4008004,
+      "origin": [
+        893500.0,
+        6246500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r05000-c04000-1f349fee1c639dfd.f32",
+      "sha256": "1f349fee1c639dfd205e3b2a48ff5b639985f2a189317bf850a231594318be9c",
+      "bytes": 4008004,
+      "origin": [
+        894000.0,
+        6246500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r05000-c05000-d49fdcb0f07cb42c.f32",
+      "sha256": "d49fdcb0f07cb42c9d7628f1964509216b8390efc5b718d893102292405b4eb4",
+      "bytes": 4004000,
+      "origin": [
+        894500.0,
+        6246500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1000,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r06000-c00000-86104260af32f723.f32",
+      "sha256": "86104260af32f7233801edd1ddc48339a72679a2a573c5a50ba35b952cd97ab1",
+      "bytes": 4008004,
+      "origin": [
+        892000.0,
+        6246000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r06000-c01000-2e58c028cb9fe96d.f32",
+      "sha256": "2e58c028cb9fe96d4dee37bcc63505c4cea20657b50f3752ba44fdfdcb6f70d7",
+      "bytes": 4008004,
+      "origin": [
+        892500.0,
+        6246000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r06000-c02000-52cb78874884eac2.f32",
+      "sha256": "52cb78874884eac2f7a2ac5db9a5dc892c1a62bea8a1bc403c8ad173dacb627f",
+      "bytes": 4008004,
+      "origin": [
+        893000.0,
+        6246000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r06000-c03000-d9de84d1dc7bf473.f32",
+      "sha256": "d9de84d1dc7bf473b90c0045efc4edfc9725af5275e8540f093a4cddc6f52d99",
+      "bytes": 4008004,
+      "origin": [
+        893500.0,
+        6246000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r06000-c04000-e9d0ce317270deb5.f32",
+      "sha256": "e9d0ce317270deb531e2e7185b7be4b44fbf5aa0c707a46b219e812cecd0ae08",
+      "bytes": 4008004,
+      "origin": [
+        894000.0,
+        6246000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r06000-c05000-e0d34c10f75f0f12.f32",
+      "sha256": "e0d34c10f75f0f128553c4c35eaaad800d30ae8b04f88edd9904e2021a80da98",
+      "bytes": 4004000,
+      "origin": [
+        894500.0,
+        6246000.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1000,
+      "height": 1001
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r07000-c00000-f74e4cdf65f3b944.f32",
+      "sha256": "f74e4cdf65f3b944e5675535163f9ed0bc32060d3c8c1c0adc9c7ae766ac0545",
+      "bytes": 4004000,
+      "origin": [
+        892000.0,
+        6245500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1000
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r07000-c01000-41738760e3ef511f.f32",
+      "sha256": "41738760e3ef511f5a12d5273b9391131d2059248ce640af8c3315f3be9d53f0",
+      "bytes": 4004000,
+      "origin": [
+        892500.0,
+        6245500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1000
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r07000-c02000-abd46931e32066dc.f32",
+      "sha256": "abd46931e32066dc6fc8fa8358344f2f1d65c324b4e558d23a2a78350d4bd1ab",
+      "bytes": 4004000,
+      "origin": [
+        893000.0,
+        6245500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1000
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r07000-c03000-fb5bf95c45c3000d.f32",
+      "sha256": "fb5bf95c45c3000d29a889311edfd384a9ab1ccbdf0c5c8716e2e2a98da0d313",
+      "bytes": 4004000,
+      "origin": [
+        893500.0,
+        6245500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1000
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r07000-c04000-29d794f830007640.f32",
+      "sha256": "29d794f8300076401ba91472b7f0f35077548beb8069c8c2c06944dfe229031c",
+      "bytes": 4004000,
+      "origin": [
+        894000.0,
+        6245500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1001,
+      "height": 1000
+    },
+    {
+      "file": "/workspace/fallout-Marseille/data/map_pack/precise/native-r07000-c05000-b0edb08a4710746c.f32",
+      "sha256": "b0edb08a4710746ca52de3c9b1e8b426c948981bc3569f5f38fa6def3435d591",
+      "bytes": 4000000,
+      "origin": [
+        894500.0,
+        6245500.0
+      ],
+      "step": [
+        0.5,
+        -0.5
+      ],
+      "width": 1000,
+      "height": 1000
+    }
+  ],
+  "points": [
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c00000-4039180ecb827392.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892000.0,
+        6249000.0
+      ],
+      "runtimeValue": 2.4652414321899414,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892000.0,
+        6249000.0
+      ],
+      "sourceValue": 2.4652414321899414,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c00000-4039180ecb827392.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6249000.0
+      ],
+      "runtimeValue": 13.873213768005371,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6249000.0
+      ],
+      "sourceValue": 13.873213768005371,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c00000-4039180ecb827392.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892000.0,
+        6248500.0
+      ],
+      "runtimeValue": 3.3999407291412354,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892000.0,
+        6248500.0
+      ],
+      "sourceValue": 3.3999407291412354,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c00000-4039180ecb827392.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6248500.0
+      ],
+      "runtimeValue": 11.318350791931152,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6248500.0
+      ],
+      "sourceValue": 11.318350791931152,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c00000-4039180ecb827392.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892250.0,
+        6248750.0
+      ],
+      "runtimeValue": 5.826779842376709,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        892250.0,
+        6248750.0
+      ],
+      "sourceValue": 5.826779842376709,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c00000-4039180ecb827392.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892061.5,
+        6248772.0
+      ],
+      "runtimeValue": 2.6282901763916016,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        892061.5,
+        6248772.0
+      ],
+      "sourceValue": 2.6282901763916016,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c01000-7978163f3c35dda6.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6249000.0
+      ],
+      "runtimeValue": 13.873213768005371,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6249000.0
+      ],
+      "sourceValue": 13.873213768005371,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c01000-7978163f3c35dda6.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6249000.0
+      ],
+      "runtimeValue": 21.939533233642578,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6249000.0
+      ],
+      "sourceValue": 21.939533233642578,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c01000-7978163f3c35dda6.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6248500.0
+      ],
+      "runtimeValue": 11.318350791931152,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6248500.0
+      ],
+      "sourceValue": 11.318350791931152,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c01000-7978163f3c35dda6.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6248500.0
+      ],
+      "runtimeValue": 19.28927993774414,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6248500.0
+      ],
+      "sourceValue": 19.28927993774414,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c01000-7978163f3c35dda6.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892750.0,
+        6248750.0
+      ],
+      "runtimeValue": 24.98447036743164,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        892750.0,
+        6248750.0
+      ],
+      "sourceValue": 24.98447036743164,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c01000-7978163f3c35dda6.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892561.5,
+        6248772.0
+      ],
+      "runtimeValue": 13.30985164642334,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        892561.5,
+        6248772.0
+      ],
+      "sourceValue": 13.30985164642334,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c02000-c65c4424f967b5a8.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6249000.0
+      ],
+      "runtimeValue": 21.939533233642578,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6249000.0
+      ],
+      "sourceValue": 21.939533233642578,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c02000-c65c4424f967b5a8.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6249000.0
+      ],
+      "runtimeValue": 21.822431564331055,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6249000.0
+      ],
+      "sourceValue": 21.822431564331055,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c02000-c65c4424f967b5a8.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6248500.0
+      ],
+      "runtimeValue": 19.28927993774414,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6248500.0
+      ],
+      "sourceValue": 19.28927993774414,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c02000-c65c4424f967b5a8.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6248500.0
+      ],
+      "runtimeValue": 39.960792541503906,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6248500.0
+      ],
+      "sourceValue": 39.960792541503906,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c02000-c65c4424f967b5a8.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893250.0,
+        6248750.0
+      ],
+      "runtimeValue": 16.53496551513672,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        893250.0,
+        6248750.0
+      ],
+      "sourceValue": 16.53496551513672,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c02000-c65c4424f967b5a8.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893061.5,
+        6248772.0
+      ],
+      "runtimeValue": 11.428486824035645,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        893061.5,
+        6248772.0
+      ],
+      "sourceValue": 11.428486824035645,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c03000-45f5a488fbaba1ed.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6249000.0
+      ],
+      "runtimeValue": 21.822431564331055,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6249000.0
+      ],
+      "sourceValue": 21.822431564331055,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c03000-45f5a488fbaba1ed.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6249000.0
+      ],
+      "runtimeValue": 53.57871627807617,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6249000.0
+      ],
+      "sourceValue": 53.57871627807617,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c03000-45f5a488fbaba1ed.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6248500.0
+      ],
+      "runtimeValue": 39.960792541503906,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6248500.0
+      ],
+      "sourceValue": 39.960792541503906,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c03000-45f5a488fbaba1ed.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6248500.0
+      ],
+      "runtimeValue": 41.570892333984375,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6248500.0
+      ],
+      "sourceValue": 41.570892333984375,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c03000-45f5a488fbaba1ed.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893750.0,
+        6248750.0
+      ],
+      "runtimeValue": 30.36594581604004,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        893750.0,
+        6248750.0
+      ],
+      "sourceValue": 30.36594581604004,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c03000-45f5a488fbaba1ed.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893561.5,
+        6248772.0
+      ],
+      "runtimeValue": 23.29694175720215,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        893561.5,
+        6248772.0
+      ],
+      "sourceValue": 23.29694175720215,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c04000-4bb08c847cbc7cde.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6249000.0
+      ],
+      "runtimeValue": 53.57871627807617,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6249000.0
+      ],
+      "sourceValue": 53.57871627807617,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c04000-4bb08c847cbc7cde.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6249000.0
+      ],
+      "runtimeValue": 70.49996185302734,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6249000.0
+      ],
+      "sourceValue": 70.49996185302734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c04000-4bb08c847cbc7cde.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6248500.0
+      ],
+      "runtimeValue": 41.570892333984375,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6248500.0
+      ],
+      "sourceValue": 41.570892333984375,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c04000-4bb08c847cbc7cde.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6248500.0
+      ],
+      "runtimeValue": 72.30609893798828,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6248500.0
+      ],
+      "sourceValue": 72.30609893798828,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c04000-4bb08c847cbc7cde.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894250.0,
+        6248750.0
+      ],
+      "runtimeValue": 54.86587142944336,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        894250.0,
+        6248750.0
+      ],
+      "sourceValue": 54.86587142944336,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c04000-4bb08c847cbc7cde.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894061.5,
+        6248772.0
+      ],
+      "runtimeValue": 44.10171127319336,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        894061.5,
+        6248772.0
+      ],
+      "sourceValue": 44.10171127319336,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c05000-f132ebf65e487286.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6249000.0
+      ],
+      "runtimeValue": 70.49996185302734,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6249000.0
+      ],
+      "sourceValue": 70.49996185302734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c05000-f132ebf65e487286.f32",
+      "column": 999,
+      "row": 0,
+      "runtimeCentre": [
+        894999.5,
+        6249000.0
+      ],
+      "runtimeValue": 56.59716033935547,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894999.5,
+        6249000.0
+      ],
+      "sourceValue": 56.59716033935547,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c05000-f132ebf65e487286.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6248500.0
+      ],
+      "runtimeValue": 72.30609893798828,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6248500.0
+      ],
+      "sourceValue": 72.30609893798828,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c05000-f132ebf65e487286.f32",
+      "column": 999,
+      "row": 1000,
+      "runtimeCentre": [
+        894999.5,
+        6248500.0
+      ],
+      "runtimeValue": 47.11079788208008,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894999.5,
+        6248500.0
+      ],
+      "sourceValue": 47.11079788208008,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c05000-f132ebf65e487286.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894750.0,
+        6248750.0
+      ],
+      "runtimeValue": 70.04330444335938,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        894750.0,
+        6248750.0
+      ],
+      "sourceValue": 70.04330444335938,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r00000-c05000-f132ebf65e487286.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894561.5,
+        6248772.0
+      ],
+      "runtimeValue": 84.99960327148438,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        894561.5,
+        6248772.0
+      ],
+      "sourceValue": 84.99960327148438,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c00000-d6d931c74b619cea.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892000.0,
+        6248500.0
+      ],
+      "runtimeValue": 3.3999407291412354,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892000.0,
+        6248500.0
+      ],
+      "sourceValue": 3.3999407291412354,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c00000-d6d931c74b619cea.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6248500.0
+      ],
+      "runtimeValue": 11.318350791931152,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6248500.0
+      ],
+      "sourceValue": 11.318350791931152,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c00000-d6d931c74b619cea.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892000.0,
+        6248000.0
+      ],
+      "runtimeValue": 2.306074857711792,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892000.0,
+        6248000.0
+      ],
+      "sourceValue": 2.306074857711792,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c00000-d6d931c74b619cea.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6248000.0
+      ],
+      "runtimeValue": 29.340259552001953,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6248000.0
+      ],
+      "sourceValue": 29.340259552001953,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c00000-d6d931c74b619cea.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892250.0,
+        6248250.0
+      ],
+      "runtimeValue": 9.966650009155273,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        892250.0,
+        6248250.0
+      ],
+      "sourceValue": 9.966650009155273,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c00000-d6d931c74b619cea.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892061.5,
+        6248272.0
+      ],
+      "runtimeValue": 2.875491142272949,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        892061.5,
+        6248272.0
+      ],
+      "sourceValue": 2.875491142272949,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c01000-fbc673a53dd59634.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6248500.0
+      ],
+      "runtimeValue": 11.318350791931152,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6248500.0
+      ],
+      "sourceValue": 11.318350791931152,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c01000-fbc673a53dd59634.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6248500.0
+      ],
+      "runtimeValue": 19.28927993774414,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6248500.0
+      ],
+      "sourceValue": 19.28927993774414,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c01000-fbc673a53dd59634.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6248000.0
+      ],
+      "runtimeValue": 29.340259552001953,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6248000.0
+      ],
+      "sourceValue": 29.340259552001953,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c01000-fbc673a53dd59634.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6248000.0
+      ],
+      "runtimeValue": 41.102760314941406,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6248000.0
+      ],
+      "sourceValue": 41.102760314941406,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c01000-fbc673a53dd59634.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892750.0,
+        6248250.0
+      ],
+      "runtimeValue": 22.50431251525879,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        892750.0,
+        6248250.0
+      ],
+      "sourceValue": 22.50431251525879,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c01000-fbc673a53dd59634.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892561.5,
+        6248272.0
+      ],
+      "runtimeValue": 19.852102279663086,
+      "source": "eab322b652d9d9e1-LHD_FXX_0892_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        892561.5,
+        6248272.0
+      ],
+      "sourceValue": 19.852102279663086,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c02000-a7f85475d47f2f7c.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6248500.0
+      ],
+      "runtimeValue": 19.28927993774414,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6248500.0
+      ],
+      "sourceValue": 19.28927993774414,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c02000-a7f85475d47f2f7c.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6248500.0
+      ],
+      "runtimeValue": 39.960792541503906,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6248500.0
+      ],
+      "sourceValue": 39.960792541503906,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c02000-a7f85475d47f2f7c.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6248000.0
+      ],
+      "runtimeValue": 41.102760314941406,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6248000.0
+      ],
+      "sourceValue": 41.102760314941406,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c02000-a7f85475d47f2f7c.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6248000.0
+      ],
+      "runtimeValue": 48.861324310302734,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6248000.0
+      ],
+      "sourceValue": 48.861324310302734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c02000-a7f85475d47f2f7c.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893250.0,
+        6248250.0
+      ],
+      "runtimeValue": 34.01484680175781,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        893250.0,
+        6248250.0
+      ],
+      "sourceValue": 34.01484680175781,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c02000-a7f85475d47f2f7c.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893061.5,
+        6248272.0
+      ],
+      "runtimeValue": 29.95128631591797,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        893061.5,
+        6248272.0
+      ],
+      "sourceValue": 29.95128631591797,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c03000-65c2db9f720cf2db.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6248500.0
+      ],
+      "runtimeValue": 39.960792541503906,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6248500.0
+      ],
+      "sourceValue": 39.960792541503906,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c03000-65c2db9f720cf2db.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6248500.0
+      ],
+      "runtimeValue": 41.570892333984375,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6248500.0
+      ],
+      "sourceValue": 41.570892333984375,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c03000-65c2db9f720cf2db.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6248000.0
+      ],
+      "runtimeValue": 48.861324310302734,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6248000.0
+      ],
+      "sourceValue": 48.861324310302734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c03000-65c2db9f720cf2db.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6248000.0
+      ],
+      "runtimeValue": 54.8550910949707,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6248000.0
+      ],
+      "sourceValue": 54.8550910949707,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c03000-65c2db9f720cf2db.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893750.0,
+        6248250.0
+      ],
+      "runtimeValue": 47.593326568603516,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        893750.0,
+        6248250.0
+      ],
+      "sourceValue": 47.593326568603516,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c03000-65c2db9f720cf2db.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893561.5,
+        6248272.0
+      ],
+      "runtimeValue": 43.1441650390625,
+      "source": "a631f70368f775bc-LHD_FXX_0893_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        893561.5,
+        6248272.0
+      ],
+      "sourceValue": 43.1441650390625,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c04000-2a8f2edef2c14b1a.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6248500.0
+      ],
+      "runtimeValue": 41.570892333984375,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6248500.0
+      ],
+      "sourceValue": 41.570892333984375,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c04000-2a8f2edef2c14b1a.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6248500.0
+      ],
+      "runtimeValue": 72.30609893798828,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6248500.0
+      ],
+      "sourceValue": 72.30609893798828,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c04000-2a8f2edef2c14b1a.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6248000.0
+      ],
+      "runtimeValue": 54.8550910949707,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6248000.0
+      ],
+      "sourceValue": 54.8550910949707,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c04000-2a8f2edef2c14b1a.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6248000.0
+      ],
+      "runtimeValue": 72.8416976928711,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6248000.0
+      ],
+      "sourceValue": 72.8416976928711,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c04000-2a8f2edef2c14b1a.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894250.0,
+        6248250.0
+      ],
+      "runtimeValue": 52.775508880615234,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        894250.0,
+        6248250.0
+      ],
+      "sourceValue": 52.775508880615234,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c04000-2a8f2edef2c14b1a.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894061.5,
+        6248272.0
+      ],
+      "runtimeValue": 47.11898422241211,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        894061.5,
+        6248272.0
+      ],
+      "sourceValue": 47.11898422241211,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c05000-ecbd39ddb0b7a007.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6248500.0
+      ],
+      "runtimeValue": 72.30609893798828,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6248500.0
+      ],
+      "sourceValue": 72.30609893798828,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c05000-ecbd39ddb0b7a007.f32",
+      "column": 999,
+      "row": 0,
+      "runtimeCentre": [
+        894999.5,
+        6248500.0
+      ],
+      "runtimeValue": 47.11079788208008,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894999.5,
+        6248500.0
+      ],
+      "sourceValue": 47.11079788208008,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c05000-ecbd39ddb0b7a007.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6248000.0
+      ],
+      "runtimeValue": 72.8416976928711,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6248000.0
+      ],
+      "sourceValue": 72.8416976928711,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c05000-ecbd39ddb0b7a007.f32",
+      "column": 999,
+      "row": 1000,
+      "runtimeCentre": [
+        894999.5,
+        6248000.0
+      ],
+      "runtimeValue": 45.157997131347656,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894999.5,
+        6248000.0
+      ],
+      "sourceValue": 45.157997131347656,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c05000-ecbd39ddb0b7a007.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894750.0,
+        6248250.0
+      ],
+      "runtimeValue": 53.32118606567383,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        894750.0,
+        6248250.0
+      ],
+      "sourceValue": 53.32118606567383,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r01000-c05000-ecbd39ddb0b7a007.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894561.5,
+        6248272.0
+      ],
+      "runtimeValue": 65.40773010253906,
+      "source": "25572cd1b464786f-LHD_FXX_0894_6249_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        894561.5,
+        6248272.0
+      ],
+      "sourceValue": 65.40773010253906,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c00000-a9d79e88d1cf18e1.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892000.0,
+        6248000.0
+      ],
+      "runtimeValue": 2.306074857711792,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892000.0,
+        6248000.0
+      ],
+      "sourceValue": 2.306074857711792,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c00000-a9d79e88d1cf18e1.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6248000.0
+      ],
+      "runtimeValue": 29.340259552001953,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6248000.0
+      ],
+      "sourceValue": 29.340259552001953,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c00000-a9d79e88d1cf18e1.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892000.0,
+        6247500.0
+      ],
+      "runtimeValue": 4.251805305480957,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892000.0,
+        6247500.0
+      ],
+      "sourceValue": 4.251805305480957,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c00000-a9d79e88d1cf18e1.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6247500.0
+      ],
+      "runtimeValue": 12.854859352111816,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6247500.0
+      ],
+      "sourceValue": 12.854859352111816,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c00000-a9d79e88d1cf18e1.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892250.0,
+        6247750.0
+      ],
+      "runtimeValue": 8.482733726501465,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        892250.0,
+        6247750.0
+      ],
+      "sourceValue": 8.482733726501465,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c00000-a9d79e88d1cf18e1.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892061.5,
+        6247772.0
+      ],
+      "runtimeValue": 4.0425848960876465,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        892061.5,
+        6247772.0
+      ],
+      "sourceValue": 4.0425848960876465,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c01000-962ed51066c87f31.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6248000.0
+      ],
+      "runtimeValue": 29.340259552001953,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6248000.0
+      ],
+      "sourceValue": 29.340259552001953,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c01000-962ed51066c87f31.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6248000.0
+      ],
+      "runtimeValue": 41.102760314941406,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6248000.0
+      ],
+      "sourceValue": 41.102760314941406,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c01000-962ed51066c87f31.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6247500.0
+      ],
+      "runtimeValue": 12.854859352111816,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6247500.0
+      ],
+      "sourceValue": 12.854859352111816,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c01000-962ed51066c87f31.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6247500.0
+      ],
+      "runtimeValue": 18.256826400756836,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6247500.0
+      ],
+      "sourceValue": 18.256826400756836,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c01000-962ed51066c87f31.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892750.0,
+        6247750.0
+      ],
+      "runtimeValue": 26.49982452392578,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        892750.0,
+        6247750.0
+      ],
+      "sourceValue": 26.49982452392578,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c01000-962ed51066c87f31.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892561.5,
+        6247772.0
+      ],
+      "runtimeValue": 19.445213317871094,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        892561.5,
+        6247772.0
+      ],
+      "sourceValue": 19.445213317871094,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c02000-87bbc2c9703ab03a.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6248000.0
+      ],
+      "runtimeValue": 41.102760314941406,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6248000.0
+      ],
+      "sourceValue": 41.102760314941406,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c02000-87bbc2c9703ab03a.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6248000.0
+      ],
+      "runtimeValue": 48.861324310302734,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6248000.0
+      ],
+      "sourceValue": 48.861324310302734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c02000-87bbc2c9703ab03a.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6247500.0
+      ],
+      "runtimeValue": 18.256826400756836,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6247500.0
+      ],
+      "sourceValue": 18.256826400756836,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c02000-87bbc2c9703ab03a.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6247500.0
+      ],
+      "runtimeValue": 29.100509643554688,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6247500.0
+      ],
+      "sourceValue": 29.100509643554688,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c02000-87bbc2c9703ab03a.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893250.0,
+        6247750.0
+      ],
+      "runtimeValue": 48.598411560058594,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        893250.0,
+        6247750.0
+      ],
+      "sourceValue": 48.598411560058594,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c02000-87bbc2c9703ab03a.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893061.5,
+        6247772.0
+      ],
+      "runtimeValue": 42.60066223144531,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        893061.5,
+        6247772.0
+      ],
+      "sourceValue": 42.60066223144531,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c03000-0447c52783f27766.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6248000.0
+      ],
+      "runtimeValue": 48.861324310302734,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6248000.0
+      ],
+      "sourceValue": 48.861324310302734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c03000-0447c52783f27766.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6248000.0
+      ],
+      "runtimeValue": 54.8550910949707,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6248000.0
+      ],
+      "sourceValue": 54.8550910949707,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c03000-0447c52783f27766.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6247500.0
+      ],
+      "runtimeValue": 29.100509643554688,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6247500.0
+      ],
+      "sourceValue": 29.100509643554688,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c03000-0447c52783f27766.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6247500.0
+      ],
+      "runtimeValue": 48.58008575439453,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6247500.0
+      ],
+      "sourceValue": 48.58008575439453,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c03000-0447c52783f27766.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893750.0,
+        6247750.0
+      ],
+      "runtimeValue": 37.9124641418457,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        893750.0,
+        6247750.0
+      ],
+      "sourceValue": 37.9124641418457,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c03000-0447c52783f27766.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893561.5,
+        6247772.0
+      ],
+      "runtimeValue": 45.60210418701172,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        893561.5,
+        6247772.0
+      ],
+      "sourceValue": 45.60210418701172,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c04000-6db82341e3ce1b74.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6248000.0
+      ],
+      "runtimeValue": 54.8550910949707,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6248000.0
+      ],
+      "sourceValue": 54.8550910949707,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c04000-6db82341e3ce1b74.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6248000.0
+      ],
+      "runtimeValue": 72.8416976928711,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6248000.0
+      ],
+      "sourceValue": 72.8416976928711,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c04000-6db82341e3ce1b74.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6247500.0
+      ],
+      "runtimeValue": 48.58008575439453,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6247500.0
+      ],
+      "sourceValue": 48.58008575439453,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c04000-6db82341e3ce1b74.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6247500.0
+      ],
+      "runtimeValue": 48.43400192260742,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6247500.0
+      ],
+      "sourceValue": 48.43400192260742,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c04000-6db82341e3ce1b74.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894250.0,
+        6247750.0
+      ],
+      "runtimeValue": 38.315269470214844,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        894250.0,
+        6247750.0
+      ],
+      "sourceValue": 38.315269470214844,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c04000-6db82341e3ce1b74.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894061.5,
+        6247772.0
+      ],
+      "runtimeValue": 37.84560775756836,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        894061.5,
+        6247772.0
+      ],
+      "sourceValue": 37.84560775756836,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c05000-ec64c5cb32203aaf.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6248000.0
+      ],
+      "runtimeValue": 72.8416976928711,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6248000.0
+      ],
+      "sourceValue": 72.8416976928711,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c05000-ec64c5cb32203aaf.f32",
+      "column": 999,
+      "row": 0,
+      "runtimeCentre": [
+        894999.5,
+        6248000.0
+      ],
+      "runtimeValue": 45.157997131347656,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894999.5,
+        6248000.0
+      ],
+      "sourceValue": 45.157997131347656,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c05000-ec64c5cb32203aaf.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6247500.0
+      ],
+      "runtimeValue": 48.43400192260742,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6247500.0
+      ],
+      "sourceValue": 48.43400192260742,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c05000-ec64c5cb32203aaf.f32",
+      "column": 999,
+      "row": 1000,
+      "runtimeCentre": [
+        894999.5,
+        6247500.0
+      ],
+      "runtimeValue": 38.22148132324219,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894999.5,
+        6247500.0
+      ],
+      "sourceValue": 38.22148132324219,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c05000-ec64c5cb32203aaf.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894750.0,
+        6247750.0
+      ],
+      "runtimeValue": 40.392818450927734,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        894750.0,
+        6247750.0
+      ],
+      "sourceValue": 40.392818450927734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r02000-c05000-ec64c5cb32203aaf.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894561.5,
+        6247772.0
+      ],
+      "runtimeValue": 44.611419677734375,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        894561.5,
+        6247772.0
+      ],
+      "sourceValue": 44.611419677734375,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c00000-fff5ec7bc5dfd833.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892000.0,
+        6247500.0
+      ],
+      "runtimeValue": 4.251805305480957,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892000.0,
+        6247500.0
+      ],
+      "sourceValue": 4.251805305480957,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c00000-fff5ec7bc5dfd833.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6247500.0
+      ],
+      "runtimeValue": 12.854859352111816,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6247500.0
+      ],
+      "sourceValue": 12.854859352111816,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c00000-fff5ec7bc5dfd833.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892000.0,
+        6247000.0
+      ],
+      "runtimeValue": 5.488819599151611,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892000.0,
+        6247000.0
+      ],
+      "sourceValue": 5.488819599151611,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c00000-fff5ec7bc5dfd833.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6247000.0
+      ],
+      "runtimeValue": 1.447879672050476,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6247000.0
+      ],
+      "sourceValue": 1.447879672050476,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c00000-fff5ec7bc5dfd833.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892250.0,
+        6247250.0
+      ],
+      "runtimeValue": 40.04154968261719,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        892250.0,
+        6247250.0
+      ],
+      "sourceValue": 40.04154968261719,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c00000-fff5ec7bc5dfd833.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892061.5,
+        6247272.0
+      ],
+      "runtimeValue": 14.089726448059082,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        892061.5,
+        6247272.0
+      ],
+      "sourceValue": 14.089726448059082,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c01000-a4164bb7667862cf.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6247500.0
+      ],
+      "runtimeValue": 12.854859352111816,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6247500.0
+      ],
+      "sourceValue": 12.854859352111816,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c01000-a4164bb7667862cf.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6247500.0
+      ],
+      "runtimeValue": 18.256826400756836,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6247500.0
+      ],
+      "sourceValue": 18.256826400756836,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c01000-a4164bb7667862cf.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6247000.0
+      ],
+      "runtimeValue": 1.447879672050476,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6247000.0
+      ],
+      "sourceValue": 1.447879672050476,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c01000-a4164bb7667862cf.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6247000.0
+      ],
+      "runtimeValue": 4.87566614151001,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6247000.0
+      ],
+      "sourceValue": 4.87566614151001,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c01000-a4164bb7667862cf.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892750.0,
+        6247250.0
+      ],
+      "runtimeValue": 8.989343643188477,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        892750.0,
+        6247250.0
+      ],
+      "sourceValue": 8.989343643188477,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c01000-a4164bb7667862cf.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892561.5,
+        6247272.0
+      ],
+      "runtimeValue": 10.643915176391602,
+      "source": "71910a5db87f2901-LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        892561.5,
+        6247272.0
+      ],
+      "sourceValue": 10.643915176391602,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c02000-19a0fdef664c08ac.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6247500.0
+      ],
+      "runtimeValue": 18.256826400756836,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6247500.0
+      ],
+      "sourceValue": 18.256826400756836,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c02000-19a0fdef664c08ac.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6247500.0
+      ],
+      "runtimeValue": 29.100509643554688,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6247500.0
+      ],
+      "sourceValue": 29.100509643554688,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c02000-19a0fdef664c08ac.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6247000.0
+      ],
+      "runtimeValue": 4.87566614151001,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6247000.0
+      ],
+      "sourceValue": 4.87566614151001,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c02000-19a0fdef664c08ac.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6247000.0
+      ],
+      "runtimeValue": 33.867103576660156,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6247000.0
+      ],
+      "sourceValue": 33.867103576660156,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c02000-19a0fdef664c08ac.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893250.0,
+        6247250.0
+      ],
+      "runtimeValue": 11.974508285522461,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        893250.0,
+        6247250.0
+      ],
+      "sourceValue": 11.974508285522461,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c02000-19a0fdef664c08ac.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893061.5,
+        6247272.0
+      ],
+      "runtimeValue": 8.559514999389648,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        893061.5,
+        6247272.0
+      ],
+      "sourceValue": 8.559514999389648,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c03000-067e0b71c838eb36.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6247500.0
+      ],
+      "runtimeValue": 29.100509643554688,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6247500.0
+      ],
+      "sourceValue": 29.100509643554688,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c03000-067e0b71c838eb36.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6247500.0
+      ],
+      "runtimeValue": 48.58008575439453,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6247500.0
+      ],
+      "sourceValue": 48.58008575439453,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c03000-067e0b71c838eb36.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6247000.0
+      ],
+      "runtimeValue": 33.867103576660156,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6247000.0
+      ],
+      "sourceValue": 33.867103576660156,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c03000-067e0b71c838eb36.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6247000.0
+      ],
+      "runtimeValue": 35.16475296020508,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6247000.0
+      ],
+      "sourceValue": 35.16475296020508,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c03000-067e0b71c838eb36.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893750.0,
+        6247250.0
+      ],
+      "runtimeValue": 41.42739486694336,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        893750.0,
+        6247250.0
+      ],
+      "sourceValue": 41.42739486694336,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c03000-067e0b71c838eb36.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893561.5,
+        6247272.0
+      ],
+      "runtimeValue": 21.884998321533203,
+      "source": "f49244e8967ada51-LHD_FXX_0893_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        893561.5,
+        6247272.0
+      ],
+      "sourceValue": 21.884998321533203,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c04000-a2e8a3ef2f727065.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6247500.0
+      ],
+      "runtimeValue": 48.58008575439453,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6247500.0
+      ],
+      "sourceValue": 48.58008575439453,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c04000-a2e8a3ef2f727065.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6247500.0
+      ],
+      "runtimeValue": 48.43400192260742,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6247500.0
+      ],
+      "sourceValue": 48.43400192260742,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c04000-a2e8a3ef2f727065.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6247000.0
+      ],
+      "runtimeValue": 35.16475296020508,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6247000.0
+      ],
+      "sourceValue": 35.16475296020508,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c04000-a2e8a3ef2f727065.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6247000.0
+      ],
+      "runtimeValue": 32.47347640991211,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6247000.0
+      ],
+      "sourceValue": 32.47347640991211,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c04000-a2e8a3ef2f727065.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894250.0,
+        6247250.0
+      ],
+      "runtimeValue": 36.037696838378906,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        894250.0,
+        6247250.0
+      ],
+      "sourceValue": 36.037696838378906,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c04000-a2e8a3ef2f727065.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894061.5,
+        6247272.0
+      ],
+      "runtimeValue": 44.85374450683594,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        894061.5,
+        6247272.0
+      ],
+      "sourceValue": 44.85374450683594,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c05000-dc4861922091bd8b.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6247500.0
+      ],
+      "runtimeValue": 48.43400192260742,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6247500.0
+      ],
+      "sourceValue": 48.43400192260742,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c05000-dc4861922091bd8b.f32",
+      "column": 999,
+      "row": 0,
+      "runtimeCentre": [
+        894999.5,
+        6247500.0
+      ],
+      "runtimeValue": 38.22148132324219,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894999.5,
+        6247500.0
+      ],
+      "sourceValue": 38.22148132324219,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c05000-dc4861922091bd8b.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6247000.0
+      ],
+      "runtimeValue": 32.47347640991211,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6247000.0
+      ],
+      "sourceValue": 32.47347640991211,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c05000-dc4861922091bd8b.f32",
+      "column": 999,
+      "row": 1000,
+      "runtimeCentre": [
+        894999.5,
+        6247000.0
+      ],
+      "runtimeValue": 33.923526763916016,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894999.5,
+        6247000.0
+      ],
+      "sourceValue": 33.923526763916016,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c05000-dc4861922091bd8b.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894750.0,
+        6247250.0
+      ],
+      "runtimeValue": 36.98392868041992,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        894750.0,
+        6247250.0
+      ],
+      "sourceValue": 36.98392868041992,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r03000-c05000-dc4861922091bd8b.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894561.5,
+        6247272.0
+      ],
+      "runtimeValue": 37.01156997680664,
+      "source": "be733036ed567daa-LHD_FXX_0894_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        894561.5,
+        6247272.0
+      ],
+      "sourceValue": 37.01156997680664,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c00000-7d41be38306d3a8c.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892000.0,
+        6247000.0
+      ],
+      "runtimeValue": 5.488819599151611,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892000.0,
+        6247000.0
+      ],
+      "sourceValue": 5.488819599151611,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c00000-7d41be38306d3a8c.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6247000.0
+      ],
+      "runtimeValue": 1.447879672050476,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6247000.0
+      ],
+      "sourceValue": 1.447879672050476,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c00000-7d41be38306d3a8c.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892000.0,
+        6246500.0
+      ],
+      "runtimeValue": 0.6896927356719971,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892000.0,
+        6246500.0
+      ],
+      "sourceValue": 0.6896927356719971,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c00000-7d41be38306d3a8c.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6246500.0
+      ],
+      "runtimeValue": 13.027887344360352,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6246500.0
+      ],
+      "sourceValue": 13.027887344360352,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c00000-7d41be38306d3a8c.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892250.0,
+        6246750.0
+      ],
+      "runtimeValue": 1.660536527633667,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        892250.0,
+        6246750.0
+      ],
+      "sourceValue": 1.660536527633667,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c00000-7d41be38306d3a8c.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892061.5,
+        6246772.0
+      ],
+      "runtimeValue": 0.9931196570396423,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        892061.5,
+        6246772.0
+      ],
+      "sourceValue": 0.9931196570396423,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c01000-07cf906f280969e9.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6247000.0
+      ],
+      "runtimeValue": 1.447879672050476,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6247000.0
+      ],
+      "sourceValue": 1.447879672050476,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c01000-07cf906f280969e9.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6247000.0
+      ],
+      "runtimeValue": 4.87566614151001,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6247000.0
+      ],
+      "sourceValue": 4.87566614151001,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c01000-07cf906f280969e9.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6246500.0
+      ],
+      "runtimeValue": 13.027887344360352,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6246500.0
+      ],
+      "sourceValue": 13.027887344360352,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c01000-07cf906f280969e9.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6246500.0
+      ],
+      "runtimeValue": 8.511969566345215,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6246500.0
+      ],
+      "sourceValue": 8.511969566345215,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c01000-07cf906f280969e9.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892750.0,
+        6246750.0
+      ],
+      "runtimeValue": 1.6921757459640503,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        892750.0,
+        6246750.0
+      ],
+      "sourceValue": 1.6921757459640503,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c01000-07cf906f280969e9.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892561.5,
+        6246772.0
+      ],
+      "runtimeValue": 0.6300713419914246,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        892561.5,
+        6246772.0
+      ],
+      "sourceValue": 0.6300713419914246,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c02000-84f403d780f6496d.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6247000.0
+      ],
+      "runtimeValue": 4.87566614151001,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6247000.0
+      ],
+      "sourceValue": 4.87566614151001,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c02000-84f403d780f6496d.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6247000.0
+      ],
+      "runtimeValue": 33.867103576660156,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6247000.0
+      ],
+      "sourceValue": 33.867103576660156,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c02000-84f403d780f6496d.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6246500.0
+      ],
+      "runtimeValue": 8.511969566345215,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6246500.0
+      ],
+      "sourceValue": 8.511969566345215,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c02000-84f403d780f6496d.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6246500.0
+      ],
+      "runtimeValue": 31.932296752929688,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6246500.0
+      ],
+      "sourceValue": 31.932296752929688,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c02000-84f403d780f6496d.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893250.0,
+        6246750.0
+      ],
+      "runtimeValue": 13.72888469696045,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        893250.0,
+        6246750.0
+      ],
+      "sourceValue": 13.72888469696045,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c02000-84f403d780f6496d.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893061.5,
+        6246772.0
+      ],
+      "runtimeValue": 5.840514659881592,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        893061.5,
+        6246772.0
+      ],
+      "sourceValue": 5.840514659881592,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c03000-860f011c630a93c2.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6247000.0
+      ],
+      "runtimeValue": 33.867103576660156,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6247000.0
+      ],
+      "sourceValue": 33.867103576660156,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c03000-860f011c630a93c2.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6247000.0
+      ],
+      "runtimeValue": 35.16475296020508,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6247000.0
+      ],
+      "sourceValue": 35.16475296020508,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c03000-860f011c630a93c2.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6246500.0
+      ],
+      "runtimeValue": 31.932296752929688,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6246500.0
+      ],
+      "sourceValue": 31.932296752929688,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c03000-860f011c630a93c2.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6246500.0
+      ],
+      "runtimeValue": 35.462188720703125,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6246500.0
+      ],
+      "sourceValue": 35.462188720703125,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c03000-860f011c630a93c2.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893750.0,
+        6246750.0
+      ],
+      "runtimeValue": 45.11904525756836,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        893750.0,
+        6246750.0
+      ],
+      "sourceValue": 45.11904525756836,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c03000-860f011c630a93c2.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893561.5,
+        6246772.0
+      ],
+      "runtimeValue": 43.497337341308594,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        893561.5,
+        6246772.0
+      ],
+      "sourceValue": 43.497337341308594,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c04000-98e6d61810123763.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6247000.0
+      ],
+      "runtimeValue": 35.16475296020508,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6247000.0
+      ],
+      "sourceValue": 35.16475296020508,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c04000-98e6d61810123763.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6247000.0
+      ],
+      "runtimeValue": 32.47347640991211,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6247000.0
+      ],
+      "sourceValue": 32.47347640991211,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c04000-98e6d61810123763.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6246500.0
+      ],
+      "runtimeValue": 35.462188720703125,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6246500.0
+      ],
+      "sourceValue": 35.462188720703125,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c04000-98e6d61810123763.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6246500.0
+      ],
+      "runtimeValue": 31.106483459472656,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6246500.0
+      ],
+      "sourceValue": 31.106483459472656,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c04000-98e6d61810123763.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894250.0,
+        6246750.0
+      ],
+      "runtimeValue": 31.385732650756836,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        894250.0,
+        6246750.0
+      ],
+      "sourceValue": 31.385732650756836,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c04000-98e6d61810123763.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894061.5,
+        6246772.0
+      ],
+      "runtimeValue": 35.01625061035156,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        894061.5,
+        6246772.0
+      ],
+      "sourceValue": 35.01625061035156,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c05000-b4555982ddfb90b3.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6247000.0
+      ],
+      "runtimeValue": 32.47347640991211,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6247000.0
+      ],
+      "sourceValue": 32.47347640991211,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c05000-b4555982ddfb90b3.f32",
+      "column": 999,
+      "row": 0,
+      "runtimeCentre": [
+        894999.5,
+        6247000.0
+      ],
+      "runtimeValue": 33.923526763916016,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894999.5,
+        6247000.0
+      ],
+      "sourceValue": 33.923526763916016,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c05000-b4555982ddfb90b3.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6246500.0
+      ],
+      "runtimeValue": 31.106483459472656,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6246500.0
+      ],
+      "sourceValue": 31.106483459472656,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c05000-b4555982ddfb90b3.f32",
+      "column": 999,
+      "row": 1000,
+      "runtimeCentre": [
+        894999.5,
+        6246500.0
+      ],
+      "runtimeValue": 30.8347110748291,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894999.5,
+        6246500.0
+      ],
+      "sourceValue": 30.8347110748291,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c05000-b4555982ddfb90b3.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894750.0,
+        6246750.0
+      ],
+      "runtimeValue": 31.387521743774414,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        894750.0,
+        6246750.0
+      ],
+      "sourceValue": 31.387521743774414,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r04000-c05000-b4555982ddfb90b3.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894561.5,
+        6246772.0
+      ],
+      "runtimeValue": 31.602659225463867,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        894561.5,
+        6246772.0
+      ],
+      "sourceValue": 31.602659225463867,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892000.0,
+        6246500.0
+      ],
+      "runtimeValue": 0.6896927356719971,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892000.0,
+        6246500.0
+      ],
+      "sourceValue": 0.6896927356719971,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6246500.0
+      ],
+      "runtimeValue": 13.027887344360352,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6246500.0
+      ],
+      "sourceValue": 13.027887344360352,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892000.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.360023498535156,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892000.0,
+        6246000.0
+      ],
+      "sourceValue": 33.360023498535156,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6246000.0
+      ],
+      "runtimeValue": 72.97164154052734,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6246000.0
+      ],
+      "sourceValue": 72.97164154052734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892250.0,
+        6246250.0
+      ],
+      "runtimeValue": 39.46743392944336,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        892250.0,
+        6246250.0
+      ],
+      "sourceValue": 39.46743392944336,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892061.5,
+        6246272.0
+      ],
+      "runtimeValue": 27.33675765991211,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        892061.5,
+        6246272.0
+      ],
+      "sourceValue": 27.33675765991211,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c01000-5a33c40221c432bd.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6246500.0
+      ],
+      "runtimeValue": 13.027887344360352,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6246500.0
+      ],
+      "sourceValue": 13.027887344360352,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c01000-5a33c40221c432bd.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6246500.0
+      ],
+      "runtimeValue": 8.511969566345215,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6246500.0
+      ],
+      "sourceValue": 8.511969566345215,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c01000-5a33c40221c432bd.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6246000.0
+      ],
+      "runtimeValue": 72.97164154052734,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6246000.0
+      ],
+      "sourceValue": 72.97164154052734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c01000-5a33c40221c432bd.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6246000.0
+      ],
+      "runtimeValue": 30.865785598754883,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6246000.0
+      ],
+      "sourceValue": 30.865785598754883,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c01000-5a33c40221c432bd.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892750.0,
+        6246250.0
+      ],
+      "runtimeValue": 20.725252151489258,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        892750.0,
+        6246250.0
+      ],
+      "sourceValue": 20.725252151489258,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c01000-5a33c40221c432bd.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892561.5,
+        6246272.0
+      ],
+      "runtimeValue": 32.77769470214844,
+      "source": "6364221b439d0c83-LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        892561.5,
+        6246272.0
+      ],
+      "sourceValue": 32.77769470214844,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c02000-28f408e126b23fad.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6246500.0
+      ],
+      "runtimeValue": 8.511969566345215,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6246500.0
+      ],
+      "sourceValue": 8.511969566345215,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c02000-28f408e126b23fad.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6246500.0
+      ],
+      "runtimeValue": 31.932296752929688,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6246500.0
+      ],
+      "sourceValue": 31.932296752929688,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c02000-28f408e126b23fad.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6246000.0
+      ],
+      "runtimeValue": 30.865785598754883,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6246000.0
+      ],
+      "sourceValue": 30.865785598754883,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c02000-28f408e126b23fad.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6246000.0
+      ],
+      "runtimeValue": 20.489999771118164,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6246000.0
+      ],
+      "sourceValue": 20.489999771118164,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c02000-28f408e126b23fad.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893250.0,
+        6246250.0
+      ],
+      "runtimeValue": 15.27291488647461,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        893250.0,
+        6246250.0
+      ],
+      "sourceValue": 15.27291488647461,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c02000-28f408e126b23fad.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893061.5,
+        6246272.0
+      ],
+      "runtimeValue": 13.52580738067627,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        893061.5,
+        6246272.0
+      ],
+      "sourceValue": 13.52580738067627,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c03000-5903e7a90485452c.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6246500.0
+      ],
+      "runtimeValue": 31.932296752929688,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6246500.0
+      ],
+      "sourceValue": 31.932296752929688,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c03000-5903e7a90485452c.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6246500.0
+      ],
+      "runtimeValue": 35.462188720703125,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6246500.0
+      ],
+      "sourceValue": 35.462188720703125,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c03000-5903e7a90485452c.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6246000.0
+      ],
+      "runtimeValue": 20.489999771118164,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6246000.0
+      ],
+      "sourceValue": 20.489999771118164,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c03000-5903e7a90485452c.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.15050506591797,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6246000.0
+      ],
+      "sourceValue": 33.15050506591797,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c03000-5903e7a90485452c.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893750.0,
+        6246250.0
+      ],
+      "runtimeValue": 36.30305099487305,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        893750.0,
+        6246250.0
+      ],
+      "sourceValue": 36.30305099487305,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c03000-5903e7a90485452c.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893561.5,
+        6246272.0
+      ],
+      "runtimeValue": 26.44751739501953,
+      "source": "e88e5d296fe8bb39-LHD_FXX_0893_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        893561.5,
+        6246272.0
+      ],
+      "sourceValue": 26.44751739501953,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c04000-1f349fee1c639dfd.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6246500.0
+      ],
+      "runtimeValue": 35.462188720703125,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6246500.0
+      ],
+      "sourceValue": 35.462188720703125,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c04000-1f349fee1c639dfd.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6246500.0
+      ],
+      "runtimeValue": 31.106483459472656,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6246500.0
+      ],
+      "sourceValue": 31.106483459472656,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c04000-1f349fee1c639dfd.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.15050506591797,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6246000.0
+      ],
+      "sourceValue": 33.15050506591797,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c04000-1f349fee1c639dfd.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.68829345703125,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6246000.0
+      ],
+      "sourceValue": 33.68829345703125,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c04000-1f349fee1c639dfd.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894250.0,
+        6246250.0
+      ],
+      "runtimeValue": 28.16803741455078,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        894250.0,
+        6246250.0
+      ],
+      "sourceValue": 28.16803741455078,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c04000-1f349fee1c639dfd.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894061.5,
+        6246272.0
+      ],
+      "runtimeValue": 30.276277542114258,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        894061.5,
+        6246272.0
+      ],
+      "sourceValue": 30.276277542114258,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c05000-d49fdcb0f07cb42c.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6246500.0
+      ],
+      "runtimeValue": 31.106483459472656,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6246500.0
+      ],
+      "sourceValue": 31.106483459472656,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c05000-d49fdcb0f07cb42c.f32",
+      "column": 999,
+      "row": 0,
+      "runtimeCentre": [
+        894999.5,
+        6246500.0
+      ],
+      "runtimeValue": 30.8347110748291,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894999.5,
+        6246500.0
+      ],
+      "sourceValue": 30.8347110748291,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c05000-d49fdcb0f07cb42c.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.68829345703125,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6246000.0
+      ],
+      "sourceValue": 33.68829345703125,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c05000-d49fdcb0f07cb42c.f32",
+      "column": 999,
+      "row": 1000,
+      "runtimeCentre": [
+        894999.5,
+        6246000.0
+      ],
+      "runtimeValue": 27.77467918395996,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894999.5,
+        6246000.0
+      ],
+      "sourceValue": 27.77467918395996,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c05000-d49fdcb0f07cb42c.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894750.0,
+        6246250.0
+      ],
+      "runtimeValue": 25.614320755004883,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        894750.0,
+        6246250.0
+      ],
+      "sourceValue": 25.614320755004883,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r05000-c05000-d49fdcb0f07cb42c.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894561.5,
+        6246272.0
+      ],
+      "runtimeValue": 28.272672653198242,
+      "source": "f51a095a3f512894-LHD_FXX_0894_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        894561.5,
+        6246272.0
+      ],
+      "sourceValue": 28.272672653198242,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c00000-86104260af32f723.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892000.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.360023498535156,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892000.0,
+        6246000.0
+      ],
+      "sourceValue": 33.360023498535156,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c00000-86104260af32f723.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6246000.0
+      ],
+      "runtimeValue": 72.97164154052734,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6246000.0
+      ],
+      "sourceValue": 72.97164154052734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c00000-86104260af32f723.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892000.0,
+        6245500.0
+      ],
+      "runtimeValue": 76.67601013183594,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892000.0,
+        6245500.0
+      ],
+      "sourceValue": 76.67601013183594,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c00000-86104260af32f723.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6245500.0
+      ],
+      "runtimeValue": 85.79016876220703,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6245500.0
+      ],
+      "sourceValue": 85.79016876220703,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c00000-86104260af32f723.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892250.0,
+        6245750.0
+      ],
+      "runtimeValue": 66.1767349243164,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        892250.0,
+        6245750.0
+      ],
+      "sourceValue": 66.1767349243164,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c00000-86104260af32f723.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892061.5,
+        6245772.0
+      ],
+      "runtimeValue": 70.32633972167969,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        892061.5,
+        6245772.0
+      ],
+      "sourceValue": 70.32633972167969,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c01000-2e58c028cb9fe96d.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6246000.0
+      ],
+      "runtimeValue": 72.97164154052734,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        892500.0,
+        6246000.0
+      ],
+      "sourceValue": 72.97164154052734,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c01000-2e58c028cb9fe96d.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6246000.0
+      ],
+      "runtimeValue": 30.865785598754883,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6246000.0
+      ],
+      "sourceValue": 30.865785598754883,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c01000-2e58c028cb9fe96d.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        892500.0,
+        6245500.0
+      ],
+      "runtimeValue": 85.79016876220703,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6245500.0
+      ],
+      "sourceValue": 85.79016876220703,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c01000-2e58c028cb9fe96d.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6245500.0
+      ],
+      "runtimeValue": 87.9038314819336,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6245500.0
+      ],
+      "sourceValue": 87.9038314819336,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c01000-2e58c028cb9fe96d.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892750.0,
+        6245750.0
+      ],
+      "runtimeValue": 55.05384826660156,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        892750.0,
+        6245750.0
+      ],
+      "sourceValue": 55.05384826660156,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c01000-2e58c028cb9fe96d.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892561.5,
+        6245772.0
+      ],
+      "runtimeValue": 116.908203125,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        892561.5,
+        6245772.0
+      ],
+      "sourceValue": 116.908203125,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c02000-52cb78874884eac2.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6246000.0
+      ],
+      "runtimeValue": 30.865785598754883,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893000.0,
+        6246000.0
+      ],
+      "sourceValue": 30.865785598754883,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c02000-52cb78874884eac2.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6246000.0
+      ],
+      "runtimeValue": 20.489999771118164,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6246000.0
+      ],
+      "sourceValue": 20.489999771118164,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c02000-52cb78874884eac2.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893000.0,
+        6245500.0
+      ],
+      "runtimeValue": 87.9038314819336,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6245500.0
+      ],
+      "sourceValue": 87.9038314819336,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c02000-52cb78874884eac2.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6245500.0
+      ],
+      "runtimeValue": 30.183414459228516,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6245500.0
+      ],
+      "sourceValue": 30.183414459228516,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c02000-52cb78874884eac2.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893250.0,
+        6245750.0
+      ],
+      "runtimeValue": 37.84831619262695,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        893250.0,
+        6245750.0
+      ],
+      "sourceValue": 37.84831619262695,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c02000-52cb78874884eac2.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893061.5,
+        6245772.0
+      ],
+      "runtimeValue": 56.593055725097656,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        893061.5,
+        6245772.0
+      ],
+      "sourceValue": 56.593055725097656,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c03000-d9de84d1dc7bf473.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6246000.0
+      ],
+      "runtimeValue": 20.489999771118164,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        893500.0,
+        6246000.0
+      ],
+      "sourceValue": 20.489999771118164,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c03000-d9de84d1dc7bf473.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.15050506591797,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6246000.0
+      ],
+      "sourceValue": 33.15050506591797,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c03000-d9de84d1dc7bf473.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        893500.0,
+        6245500.0
+      ],
+      "runtimeValue": 30.183414459228516,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6245500.0
+      ],
+      "sourceValue": 30.183414459228516,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c03000-d9de84d1dc7bf473.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6245500.0
+      ],
+      "runtimeValue": 16.017242431640625,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6245500.0
+      ],
+      "sourceValue": 16.017242431640625,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c03000-d9de84d1dc7bf473.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893750.0,
+        6245750.0
+      ],
+      "runtimeValue": 18.082250595092773,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        893750.0,
+        6245750.0
+      ],
+      "sourceValue": 18.082250595092773,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c03000-d9de84d1dc7bf473.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893561.5,
+        6245772.0
+      ],
+      "runtimeValue": 21.152734756469727,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        893561.5,
+        6245772.0
+      ],
+      "sourceValue": 21.152734756469727,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c04000-e9d0ce317270deb5.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.15050506591797,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894000.0,
+        6246000.0
+      ],
+      "sourceValue": 33.15050506591797,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c04000-e9d0ce317270deb5.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.68829345703125,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6246000.0
+      ],
+      "sourceValue": 33.68829345703125,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c04000-e9d0ce317270deb5.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894000.0,
+        6245500.0
+      ],
+      "runtimeValue": 16.017242431640625,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6245500.0
+      ],
+      "sourceValue": 16.017242431640625,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c04000-e9d0ce317270deb5.f32",
+      "column": 1000,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6245500.0
+      ],
+      "runtimeValue": 25.653505325317383,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6245500.0
+      ],
+      "sourceValue": 25.653505325317383,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c04000-e9d0ce317270deb5.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894250.0,
+        6245750.0
+      ],
+      "runtimeValue": 34.95016098022461,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        894250.0,
+        6245750.0
+      ],
+      "sourceValue": 34.95016098022461,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c04000-e9d0ce317270deb5.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894061.5,
+        6245772.0
+      ],
+      "runtimeValue": 30.834922790527344,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        894061.5,
+        6245772.0
+      ],
+      "sourceValue": 30.834922790527344,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c05000-e0d34c10f75f0f12.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6246000.0
+      ],
+      "runtimeValue": 33.68829345703125,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894500.0,
+        6246000.0
+      ],
+      "sourceValue": 33.68829345703125,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c05000-e0d34c10f75f0f12.f32",
+      "column": 999,
+      "row": 0,
+      "runtimeCentre": [
+        894999.5,
+        6246000.0
+      ],
+      "runtimeValue": 27.77467918395996,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 0,
+      "sourceCentre": [
+        894999.5,
+        6246000.0
+      ],
+      "sourceValue": 27.77467918395996,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c05000-e0d34c10f75f0f12.f32",
+      "column": 0,
+      "row": 1000,
+      "runtimeCentre": [
+        894500.0,
+        6245500.0
+      ],
+      "runtimeValue": 25.653505325317383,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6245500.0
+      ],
+      "sourceValue": 25.653505325317383,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c05000-e0d34c10f75f0f12.f32",
+      "column": 999,
+      "row": 1000,
+      "runtimeCentre": [
+        894999.5,
+        6245500.0
+      ],
+      "runtimeValue": 22.581912994384766,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894999.5,
+        6245500.0
+      ],
+      "sourceValue": 22.581912994384766,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c05000-e0d34c10f75f0f12.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894750.0,
+        6245750.0
+      ],
+      "runtimeValue": 23.59391212463379,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 500,
+      "sourceCentre": [
+        894750.0,
+        6245750.0
+      ],
+      "sourceValue": 23.59391212463379,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r06000-c05000-e0d34c10f75f0f12.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894561.5,
+        6245772.0
+      ],
+      "runtimeValue": 29.10022735595703,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 456,
+      "sourceCentre": [
+        894561.5,
+        6245772.0
+      ],
+      "sourceValue": 29.10022735595703,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c00000-f74e4cdf65f3b944.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892000.0,
+        6245500.0
+      ],
+      "runtimeValue": 76.67601013183594,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892000.0,
+        6245500.0
+      ],
+      "sourceValue": 76.67601013183594,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c00000-f74e4cdf65f3b944.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6245500.0
+      ],
+      "runtimeValue": 85.79016876220703,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6245500.0
+      ],
+      "sourceValue": 85.79016876220703,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c00000-f74e4cdf65f3b944.f32",
+      "column": 0,
+      "row": 999,
+      "runtimeCentre": [
+        892000.0,
+        6245000.5
+      ],
+      "runtimeValue": 47.087215423583984,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        892000.0,
+        6245000.5
+      ],
+      "sourceValue": 47.087215423583984,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c00000-f74e4cdf65f3b944.f32",
+      "column": 1000,
+      "row": 999,
+      "runtimeCentre": [
+        892500.0,
+        6245000.5
+      ],
+      "runtimeValue": 91.46092987060547,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        892500.0,
+        6245000.5
+      ],
+      "sourceValue": 91.46092987060547,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c00000-f74e4cdf65f3b944.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892250.0,
+        6245250.0
+      ],
+      "runtimeValue": 72.20692443847656,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        892250.0,
+        6245250.0
+      ],
+      "sourceValue": 72.20692443847656,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c00000-f74e4cdf65f3b944.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892061.5,
+        6245272.0
+      ],
+      "runtimeValue": 63.294071197509766,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        892061.5,
+        6245272.0
+      ],
+      "sourceValue": 63.294071197509766,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c01000-41738760e3ef511f.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        892500.0,
+        6245500.0
+      ],
+      "runtimeValue": 85.79016876220703,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        892500.0,
+        6245500.0
+      ],
+      "sourceValue": 85.79016876220703,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c01000-41738760e3ef511f.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6245500.0
+      ],
+      "runtimeValue": 87.9038314819336,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6245500.0
+      ],
+      "sourceValue": 87.9038314819336,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c01000-41738760e3ef511f.f32",
+      "column": 0,
+      "row": 999,
+      "runtimeCentre": [
+        892500.0,
+        6245000.5
+      ],
+      "runtimeValue": 91.46092987060547,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        892500.0,
+        6245000.5
+      ],
+      "sourceValue": 91.46092987060547,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c01000-41738760e3ef511f.f32",
+      "column": 1000,
+      "row": 999,
+      "runtimeCentre": [
+        893000.0,
+        6245000.5
+      ],
+      "runtimeValue": 83.67231750488281,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        893000.0,
+        6245000.5
+      ],
+      "sourceValue": 83.67231750488281,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c01000-41738760e3ef511f.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        892750.0,
+        6245250.0
+      ],
+      "runtimeValue": 93.51541900634766,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        892750.0,
+        6245250.0
+      ],
+      "sourceValue": 93.51541900634766,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c01000-41738760e3ef511f.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        892561.5,
+        6245272.0
+      ],
+      "runtimeValue": 81.26709747314453,
+      "source": "6d5016a93d4f150f-LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        892561.5,
+        6245272.0
+      ],
+      "sourceValue": 81.26709747314453,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c02000-abd46931e32066dc.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893000.0,
+        6245500.0
+      ],
+      "runtimeValue": 87.9038314819336,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893000.0,
+        6245500.0
+      ],
+      "sourceValue": 87.9038314819336,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c02000-abd46931e32066dc.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6245500.0
+      ],
+      "runtimeValue": 30.183414459228516,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6245500.0
+      ],
+      "sourceValue": 30.183414459228516,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c02000-abd46931e32066dc.f32",
+      "column": 0,
+      "row": 999,
+      "runtimeCentre": [
+        893000.0,
+        6245000.5
+      ],
+      "runtimeValue": 83.67231750488281,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        893000.0,
+        6245000.5
+      ],
+      "sourceValue": 83.67231750488281,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c02000-abd46931e32066dc.f32",
+      "column": 1000,
+      "row": 999,
+      "runtimeCentre": [
+        893500.0,
+        6245000.5
+      ],
+      "runtimeValue": 36.29907989501953,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        893500.0,
+        6245000.5
+      ],
+      "sourceValue": 36.29907989501953,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c02000-abd46931e32066dc.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893250.0,
+        6245250.0
+      ],
+      "runtimeValue": 63.2870979309082,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        893250.0,
+        6245250.0
+      ],
+      "sourceValue": 63.2870979309082,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c02000-abd46931e32066dc.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893061.5,
+        6245272.0
+      ],
+      "runtimeValue": 64.4958267211914,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        893061.5,
+        6245272.0
+      ],
+      "sourceValue": 64.4958267211914,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c03000-fb5bf95c45c3000d.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        893500.0,
+        6245500.0
+      ],
+      "runtimeValue": 30.183414459228516,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        893500.0,
+        6245500.0
+      ],
+      "sourceValue": 30.183414459228516,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c03000-fb5bf95c45c3000d.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6245500.0
+      ],
+      "runtimeValue": 16.017242431640625,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6245500.0
+      ],
+      "sourceValue": 16.017242431640625,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c03000-fb5bf95c45c3000d.f32",
+      "column": 0,
+      "row": 999,
+      "runtimeCentre": [
+        893500.0,
+        6245000.5
+      ],
+      "runtimeValue": 36.29907989501953,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        893500.0,
+        6245000.5
+      ],
+      "sourceValue": 36.29907989501953,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c03000-fb5bf95c45c3000d.f32",
+      "column": 1000,
+      "row": 999,
+      "runtimeCentre": [
+        894000.0,
+        6245000.5
+      ],
+      "runtimeValue": 13.874740600585938,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        894000.0,
+        6245000.5
+      ],
+      "sourceValue": 13.874740600585938,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c03000-fb5bf95c45c3000d.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        893750.0,
+        6245250.0
+      ],
+      "runtimeValue": 18.1119384765625,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        893750.0,
+        6245250.0
+      ],
+      "sourceValue": 18.1119384765625,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c03000-fb5bf95c45c3000d.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        893561.5,
+        6245272.0
+      ],
+      "runtimeValue": 29.410175323486328,
+      "source": "be7c597e71f1c2ec-LHD_FXX_0893_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        893561.5,
+        6245272.0
+      ],
+      "sourceValue": 29.410175323486328,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c04000-29d794f830007640.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894000.0,
+        6245500.0
+      ],
+      "runtimeValue": 16.017242431640625,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894000.0,
+        6245500.0
+      ],
+      "sourceValue": 16.017242431640625,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c04000-29d794f830007640.f32",
+      "column": 1000,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6245500.0
+      ],
+      "runtimeValue": 25.653505325317383,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6245500.0
+      ],
+      "sourceValue": 25.653505325317383,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c04000-29d794f830007640.f32",
+      "column": 0,
+      "row": 999,
+      "runtimeCentre": [
+        894000.0,
+        6245000.5
+      ],
+      "runtimeValue": 13.874740600585938,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 0,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        894000.0,
+        6245000.5
+      ],
+      "sourceValue": 13.874740600585938,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c04000-29d794f830007640.f32",
+      "column": 1000,
+      "row": 999,
+      "runtimeCentre": [
+        894500.0,
+        6245000.5
+      ],
+      "runtimeValue": 19.477130889892578,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        894500.0,
+        6245000.5
+      ],
+      "sourceValue": 19.477130889892578,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c04000-29d794f830007640.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894250.0,
+        6245250.0
+      ],
+      "runtimeValue": 16.264354705810547,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        894250.0,
+        6245250.0
+      ],
+      "sourceValue": 16.264354705810547,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c04000-29d794f830007640.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894061.5,
+        6245272.0
+      ],
+      "runtimeValue": 13.857168197631836,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        894061.5,
+        6245272.0
+      ],
+      "sourceValue": 13.857168197631836,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c05000-b0edb08a4710746c.f32",
+      "column": 0,
+      "row": 0,
+      "runtimeCentre": [
+        894500.0,
+        6245500.0
+      ],
+      "runtimeValue": 25.653505325317383,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894500.0,
+        6245500.0
+      ],
+      "sourceValue": 25.653505325317383,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c05000-b0edb08a4710746c.f32",
+      "column": 999,
+      "row": 0,
+      "runtimeCentre": [
+        894999.5,
+        6245500.0
+      ],
+      "runtimeValue": 22.581912994384766,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 1000,
+      "sourceCentre": [
+        894999.5,
+        6245500.0
+      ],
+      "sourceValue": 22.581912994384766,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c05000-b0edb08a4710746c.f32",
+      "column": 0,
+      "row": 999,
+      "runtimeCentre": [
+        894500.0,
+        6245000.5
+      ],
+      "runtimeValue": 19.477130889892578,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1000,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        894500.0,
+        6245000.5
+      ],
+      "sourceValue": 19.477130889892578,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c05000-b0edb08a4710746c.f32",
+      "column": 999,
+      "row": 999,
+      "runtimeCentre": [
+        894999.5,
+        6245000.5
+      ],
+      "runtimeValue": 15.641986846923828,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1999,
+      "sourceRow": 1999,
+      "sourceCentre": [
+        894999.5,
+        6245000.5
+      ],
+      "sourceValue": 15.641986846923828,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c05000-b0edb08a4710746c.f32",
+      "column": 500,
+      "row": 500,
+      "runtimeCentre": [
+        894750.0,
+        6245250.0
+      ],
+      "runtimeValue": 19.722633361816406,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1500,
+      "sourceRow": 1500,
+      "sourceCentre": [
+        894750.0,
+        6245250.0
+      ],
+      "sourceValue": 19.722633361816406,
+      "equal": true
+    },
+    {
+      "chunk": "data/map_pack/precise/native-r07000-c05000-b0edb08a4710746c.f32",
+      "column": 123,
+      "row": 456,
+      "runtimeCentre": [
+        894561.5,
+        6245272.0
+      ],
+      "runtimeValue": 23.209537506103516,
+      "source": "7a5d026d190d2445-LHD_FXX_0894_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+      "sourceColumn": 1123,
+      "sourceRow": 1456,
+      "sourceCentre": [
+        894561.5,
+        6245272.0
+      ],
+      "sourceValue": 23.209537506103516,
+      "equal": true
+    }
+  ],
+  "passed": 288,
+  "failed": 0,
+  "expectedPoints": 288,
+  "sourceCount": 12,
+  "chunkCount": 48,
+  "noDataPointsInAtlas": 0,
+  "failures": [],
+  "rendererSourceReview": [
+    {
+      "file": "src/patches/01_geometry.js",
+      "lines": [
+        49,
+        64,
+        95
+      ],
+      "claim": "v018MeshData expands faces and chunks 18000 triangles per flatMesh; 54000 vertices <65536 before UNSIGNED_SHORT drawing",
+      "sha256": "dbb39a1ef4fa26f5753e0ad16892111e66513b3bbc65a24ab1d22bac354bbdb8"
+    },
+    {
+      "file": "src/core-v017.js",
+      "lines": [
+        1006,
+        1078
+      ],
+      "claim": "GLStaticGeometryBatches.pack also flushes at54000 vertices before createMesh converts indices to Uint16Array",
+      "sha256": "7e07ba0d1723e589b3d7fa3ca76ac8e287c6b0d22f4dc9c1434919b9db366ea3"
+    },
+    {
+      "file": "src/v050/14_precise_terrain.js",
+      "lines": [
+        114
+      ],
+      "claim": "The native patch removes coarse faces by centroid inside its expanded seam box before appending native and seam draws",
+      "sha256": "260c2850b45bd6ceef4d8b6c2ef143dbd1f5c5cef2402d604e4dd93d50e42af5"
+    }
+  ],
+  "durationSeconds": 0.4805264472961426
+}

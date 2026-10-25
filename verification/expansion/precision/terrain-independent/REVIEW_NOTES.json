@@ -1,0 +1,13 @@
+{
+  "independentComparison": {
+    "passed": 288,
+    "failed": 0,
+    "sourceGeoTIFFs": 12,
+    "runtimeChunks": 48,
+    "scope": "288 points across all chunks; no claim of exhaustive equality of every cell"
+  },
+  "renderer": "Actual source v018MeshData:18000 triangles per chunk→54000 vertices; GLStaticGeometryBatches.pack flushes54000; Uint16 indices remain valid",
+  "geographyIssueFound": "A255m square centred10m inside the western coverage boundary extended117.5m outside the native domain. Fine faces outside support were absent while coarse faces were removed across the fullbox. Owner confirmed and is adding clamped-square correction plus four-edge/corner regressions.",
+  "otherReview": "No additional demonstrated defect: cell centres/N-S/Float32 matched; bounded errors and epoch checks; coarse cut grid aligned32m and seam uses same h-.06 offset.",
+  "artifactsContain": "Script, report, journal and notes only; GeoTIFFs remain in external acquisition cache."
+}

@@ -8,6 +8,7 @@ from validate_real_map_v046 import audit
 from prepare_local_pack_v050 import prepare_if_bundled
 from world_source_bundle import prepare_if_bundled as prepare_world_sources, audit_details as source_audit
 from city_sources import prepare_if_bundled as prepare_city_sources, audit_details as city_audit
+from precise_terrain_sources import prepare_if_bundled as prepare_precise_sources, audit_details as precise_audit
 ROOT = Path(__file__).resolve().parents[1]
 class GameHandler(SimpleHTTPRequestHandler):
     _audit_lock = Lock()
@@ -22,6 +23,12 @@ class GameHandler(SimpleHTTPRequestHandler):
         super().__init__(*args, directory=str(ROOT), **kwargs)
     def do_GET(self):
         route = self.path.split('?', 1)[0]
+        if route == '/__mistral/precise-terrain':
+            try:
+                self.send_json(200, precise_audit(ROOT))
+            except (OSError, ValueError, KeyError):
+                self.send_json(503, {'ok': False, 'error': 'Le relief LiDAR précis ne passe pas la vérification.'})
+            return
         if route == '/__mistral/city-sources':
             try:
                 with type(self)._city_audit_lock:
@@ -140,6 +147,7 @@ def main():
         prepare_if_bundled(ROOT)
         prepare_world_sources(ROOT)
         prepare_city_sources(ROOT)
+        prepare_precise_sources(ROOT)
     url = f'http://127.0.0.1:{args.port}/index.html'
     print('Application locale v0.50 :', url, flush=True)
     try:

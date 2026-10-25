@@ -1,0 +1,27 @@
+{
+  "scope": "Independent source-only build in a fresh folder, no installed data/browser.",
+  "files": [
+    {
+      "path": "index.html",
+      "sourceSha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+      "rebuiltSha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+      "same": true
+    },
+    {
+      "path": "JOUER_FALLOUT_MISTRAL_v0.50.html",
+      "sourceSha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+      "rebuiltSha256": "120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636",
+      "same": true
+    },
+    {
+      "path": "src/game.js",
+      "sourceSha256": "db5015e64049a61e594435a994ddf7667b0cec54848942008ca69816e2b7c8c6",
+      "rebuiltSha256": "db5015e64049a61e594435a994ddf7667b0cec54848942008ca69816e2b7c8c6",
+      "same": true
+    }
+  ],
+  "ok": true,
+  "exitCode": 0,
+  "stdout": "/workspace/.cloud-setup/fallout-marseille/precision-expansion/rebuild-game/JOUER_FALLOUT_MISTRAL_v0.50.html 2797822\n",
+  "stderr": ""
+}
