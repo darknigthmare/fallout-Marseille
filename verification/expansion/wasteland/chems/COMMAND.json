@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/chems_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/chems-native",
+    "--expect-html-sha",
+    "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+    "--expect-chems-sha",
+    "b432076d9f0b3fa4a4c0eeab9b95e5044de8089fb2148b958c130efc417ccd4e"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "executedScriptSha256": "8fee1de8b35a7e6eabb09488eb9ccbc287932b072cc162e11328fbcd32e11298",
+  "htmlSha256": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670"
+}

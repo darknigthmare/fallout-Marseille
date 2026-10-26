@@ -1,0 +1,55 @@
+{
+  "status": "complete",
+  "observation": "Post-execution record of actual functions tools.write_stdin result; not an automatic child-process wrapper.",
+  "observedToolSession": 63079,
+  "observedProcessExitCode": 0,
+  "command": "venv/bin/python tests/expansion/interior_doors_native.py --run --output interiors/native --expect-html-sha c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf --expect-interior-sha c0f76bfd4b21b70c72c4e9a512372b7c901cb956d1f34aaec13afdba5083a65b --expect-architecture-sha c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+  "reportSha256": "7c374abcab53960c63558bd8c31f529bb7c6635aceb83b2d7dfe1b3f9f8de91d",
+  "logSha256": "4ad4e03a207eb3920c9d4f72d1f572a5044853a7d1a8dea268bdcd979152c83c",
+  "entrypointSha256": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b",
+  "programmePilotSha256": "09c8db285c1ec1215d4336078eaaa4b4aed1d733ec337171cddba7b0240751a2",
+  "htmlSha256": "c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf",
+  "interiorSha256": "c0f76bfd4b21b70c72c4e9a512372b7c901cb956d1f34aaec13afdba5083a65b",
+  "passed": 70,
+  "failed": 0,
+  "captures": 8,
+  "contextsCreated": 1,
+  "contextClosed": true,
+  "browserClosed": true,
+  "playwrightStopped": true,
+  "serverPortClosed": true,
+  "doorScope": {
+    "physically_exercised": [
+      "commerce"
+    ],
+    "open_programmes_without_eligible_room_doors": [
+      "atelier"
+    ]
+  },
+  "exitCode": 0,
+  "processFinished": true,
+  "method": "Post-execution observation of actual functions tools.write_stdin exit code 0 for session63079; not an automatic subprocess wrapper.",
+  "scope": "Full real source interior programme pilot plus one physical commerce room-door cycle; zero-room industrial hall remains open.",
+  "linkedFiles": [
+    {
+      "file": "INTERIOR_PROGRAMS_NATIVE.json",
+      "sha256": "7c374abcab53960c63558bd8c31f529bb7c6635aceb83b2d7dfe1b3f9f8de91d",
+      "bytes": 207526
+    },
+    {
+      "file": "run.log",
+      "sha256": "4ad4e03a207eb3920c9d4f72d1f572a5044853a7d1a8dea268bdcd979152c83c",
+      "bytes": 5340
+    },
+    {
+      "file": "EXECUTED_INTERIOR_PROGRAMS.py",
+      "sha256": "09c8db285c1ec1215d4336078eaaa4b4aed1d733ec337171cddba7b0240751a2",
+      "bytes": 29931
+    },
+    {
+      "file": "interior_doors_native.py",
+      "sha256": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b",
+      "bytes": 8170
+    }
+  ]
+}

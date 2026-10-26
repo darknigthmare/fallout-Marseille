@@ -1,0 +1,70 @@
+{
+  "status": "complete",
+  "exitCode": 0,
+  "processFinished": true,
+  "observation": "Post-execution observation of actual functions tools.write_stdin exit code 0 for session99714; not an automatic subprocess wrapper.",
+  "method": "Post-execution observation of actual functions tools.write_stdin exit code 0 for session99714; not an automatic subprocess wrapper.",
+  "scope": "56 historical real source interior assertions and14 room-door assertions; one physical commerce door cycle, zero-room industrial hall kept open. Already pending same-origin metadata requests are awaited before reload without mocks or error filtering.",
+  "observedToolSession": 99714,
+  "observedProcessExitCode": 0,
+  "reportSha256": "8d1ed1fa1862f596cf65955685cc0a5ffe695b1734300e4b030d783b23703045",
+  "logSha256": "5b8751c62ebc234ccc6504714ee85c86ad7ced772e46a82b9553a68ad87ad064",
+  "entrypointSha256": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b",
+  "programmePilotSha256": "44c7afa145ca815ad6464b4ccff1af6d6a2f5a831a34ad418da2b8fabe596ec9",
+  "htmlSha256": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+  "interiorSha256": "c0f76bfd4b21b70c72c4e9a512372b7c901cb956d1f34aaec13afdba5083a65b",
+  "passed": 70,
+  "failed": 0,
+  "captures": 8,
+  "contextsCreated": 1,
+  "contextClosed": true,
+  "browserClosed": true,
+  "playwrightStopped": true,
+  "doorScope": {
+    "physically_exercised": [
+      "commerce"
+    ],
+    "open_programmes_without_eligible_room_doors": [
+      "atelier"
+    ]
+  },
+  "linkedFiles": [
+    {
+      "file": "INTERIOR_PROGRAMS_NATIVE.json",
+      "sha256": "8d1ed1fa1862f596cf65955685cc0a5ffe695b1734300e4b030d783b23703045",
+      "bytes": 209375
+    },
+    {
+      "file": "run.log",
+      "sha256": "5b8751c62ebc234ccc6504714ee85c86ad7ced772e46a82b9553a68ad87ad064",
+      "bytes": 5340
+    },
+    {
+      "file": "EXECUTED_INTERIOR_PROGRAMS.py",
+      "sha256": "44c7afa145ca815ad6464b4ccff1af6d6a2f5a831a34ad418da2b8fabe596ec9",
+      "bytes": 32676
+    },
+    {
+      "file": "interior_doors_native.py",
+      "sha256": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b",
+      "bytes": 8170
+    }
+  ],
+  "serverPortClosed": true,
+  "displayCommand": "venv/bin/python tests/expansion/interior_doors_native.py --run --output interiors/native --expect-html-sha ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670 --expect-interior-sha c0f76bfd4b21b70c72c4e9a512372b7c901cb956d1f34aaec13afdba5083a65b --expect-architecture-sha c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/interior_doors_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/interiors/native",
+    "--expect-html-sha",
+    "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+    "--expect-interior-sha",
+    "c0f76bfd4b21b70c72c4e9a512372b7c901cb956d1f34aaec13afdba5083a65b",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "argvProvenance": "Post-execution transcription of the exact Python child command and working directory supplied to tools.exec_command for session99714; not an automatic subprocess argv capture. The shorter displayCommand is retained only for display."
+}

@@ -1,0 +1,39 @@
+{
+  "scope": "Controlled existing flat-terrain fixture, actual production v050TravelGround, collider, tryEnemyMove, v042/v049 publication and save migration. No geographic dataset is modified or claimed acquired.",
+  "walking": {
+    "pos": [
+      -2.587643148249301,
+      0,
+      5.31779382445571
+    ],
+    "wallDistance": 1.4,
+    "bodyFits": true,
+    "outerMarginHits": true,
+    "species": "mirelurk"
+  },
+  "restored": {
+    "pos": [
+      -2.587643148249301,
+      0,
+      5.31779382445571
+    ],
+    "species": null,
+    "id": "v042:v042-calanques-nest-01:outside:1",
+    "health": 174,
+    "assignment": {
+      "species": "mirelurk",
+      "baseType": "mirelurk"
+    },
+    "skipped": 1
+  },
+  "noData": {
+    "species": null,
+    "assignment": {
+      "species": "mirelurk",
+      "baseType": "mirelurk"
+    },
+    "skipped": 1
+  },
+  "bugDemonstrated": true,
+  "noDataStillRefused": true
+}

@@ -1,0 +1,20 @@
+{
+  "status": "failed-local-metadata-cancellation",
+  "observedToolSession": 3677,
+  "observedProcessExitCode": 1,
+  "exitCode": 1,
+  "processFinished": true,
+  "method": "Post-execution observation of actual functions tools.write_stdin exit code 1; not an automatic subprocess wrapper.",
+  "explanation": "All gameplay/door/cold Continue assertions passed. The unchanged final zero-local-failure assertion rejected one genuine same-origin /__mistral/local-data net::ERR_ABORTED. No source error was erased or reclassified. The raw report, log and genuine FAILURE capture are retained.",
+  "htmlSha256": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+  "contextClosed": true,
+  "browserClosed": true,
+  "playwrightStopped": true,
+  "localRequestFailures": [
+    {
+      "url": "http://127.0.0.1:36765/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "serverPortClosed": true
+}

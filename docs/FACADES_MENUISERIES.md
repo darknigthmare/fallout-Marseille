@@ -41,10 +41,34 @@ réservation pour les persiennes, conflit voisin et manque de mur. Le niveau bas
 conserve les faces d’ouverture et indique explicitement l’absence de menuiserie.
 Les plafonds de scène, de bâtiment et de cache restent ceux du moteur.
 
+Les entourages rapprochés possèdent maintenant une profondeur géométrique :
+les tableaux chanfreinés relient un bord extérieur à 1,2 cm du mur à une arête
+intérieure à 7,1 cm. Les appuis de fenêtre comportent une face inclinée et un
+dessus horizontal réellement triangulé, orienté vers le haut. Les lames des
+persiennes sont inclinées entre 4,1 et 7,3 cm, devant leur panneau à 3,8 cm ;
+elles ne sont plus de simples bandes coplanaires. La projection maximale reste
+7,5 cm et ces ajouts restent entièrement dans la hauteur existante du volume.
+Ces profils sont inventés, sans attribution de matériau ou de période mesurée.
+
+Les profils suivent les mêmes segments source, avec interpolation de leurs
+profondeurs lorsque leur largeur traverse une courbe quantifiée. Une inversion
+d'anneau conserve leur position physique et l'orientation supérieure des
+appuis. Aucun obstacle ni collision de seuil n'est ajouté aux portes. Les baies documentées
+gardent leur enveloppe ; seul leur entourage extérieur, déclaré inventé, peut
+recevoir un profil. La réservation des persiennes tient aussi compte du coût
+d'une paire entière sur les contours courbes, dans le plafond existant de
+128 quads réservés.
+
 `v050FacadeBuilding(id)` expose les ensembles rendus, leurs plages de sommets,
 leur provenance et les raisons des reports dans `joinery` et
 `detailCoverage.joineryCoverage`. Les listes de diagnostic restent limitées et
 signalent leur troncature.
+
+`v055FacadeProfileGeometry(id, openingIndex)` renvoie des copies des véritables
+plages de sommets et de triangles déjà publiées pour une seule baie. L'export
+reste borné par le budget natif du bâtiment, au plus 2 048 sommets au niveau
+rapproché actuel ; il ne régénère pas un modèle à la place de la géométrie du
+jeu. Les compteurs distinguent les profils réellement rendus des reports.
 
 Les codes bruts de matériaux IGN ne sont pas transformés en matériaux supposés.
 Les dates de création de la base ne sont pas traitées comme des dates de
@@ -73,8 +97,23 @@ d’anneaux, cours et budgets de cache. Commandes :
 node tests/expansion/facades_model.cjs
 node tests/expansion/facades_coverage.cjs
 node tests/expansion/facades_joinery.cjs
+node tests/expansion/facades_relief.cjs
 node tests/expansion/facades_joinery.cjs --camera-points
 ```
+
+Les quatorze contrôles de relief vérifient les profondeurs, normales des
+appuis, lames inclinées, réservations courbes, copies du diagnostic, cours,
+enveloppes documentaires et budgets sur les cinq mêmes objets IGN.
+
+Le parcours natif architectural du 26 octobre conserve ses 135 contrôles
+antérieurs et ajoute seize contrôles de profils, soit **151/151**, avec treize
+captures brutes, dans un contexte de navigateur unique. Les vraies plages de
+sommets publiées confirment les chanfreins, les dessus d'appui et douze lames
+inclinées sur une paire résidentielle. La vue commerciale rapprochée et la vue
+résidentielle d'entrée montrent les détails ; un zoom de baie basse mal cadré,
+sous le relief voisin plus grossier, reste conservé et n'est pas présenté comme
+une preuve visuelle des persiennes. Ce parcours assisté ne certifie pas une
+visite exhaustive ni un relevé documentaire de toutes les façades.
 
 Les [points de contrôle épinglés](../tests/expansion/fixtures/facades_joinery_cameras.json)
 conservent les SHA-256 du module, du générateur et des fixtures IGN.

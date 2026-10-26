@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provenance": "invented-fittings-on-actual-IGN-envelopes",
-  "facadeModuleSha256": "5a48c0b322495fc10cfde67b928c895557286ae93c6fed35e451a911c39b4d62",
+  "facadeModuleSha256": "63f1b830a489e46ca932f5b7f33482bee03df36a727949ff78965a51a9002d02",
   "generatorSha256": "46ff0e4b5f14ecc7c706817397c6ee06c82d8447c3cb5cd0466ea7d3f9f57eb3",
   "sourceFixtureSha256": "841596785a7753c9860aace5d62e604de0c066f61822f9d63b8ef85f8ee2ae55",
   "cases": [
@@ -73,11 +73,14 @@
         "quads": 512,
         "coverage": {
           "provenance": "invented",
+          "profiledFittings": 39,
+          "profiledParts": 279,
+          "maximumProjectionMeters": 0.075,
           "enabled": true,
           "limit": "quad-budget",
           "requested": 194,
-          "rendered": 110,
-          "deferred": 84,
+          "rendered": 104,
+          "deferred": 90,
           "byKind": {
             "joinery": {
               "requested": 65,
@@ -86,8 +89,8 @@
             },
             "surround": {
               "requested": 65,
-              "rendered": 37,
-              "deferred": 28
+              "rendered": 31,
+              "deferred": 34
             },
             "shutters": {
               "requested": 64,
@@ -96,7 +99,7 @@
             }
           },
           "reasons": {
-            "shutter-budget-reservation": 28,
+            "shutter-budget-reservation": 34,
             "quad-budget": 54,
             "adjacent-opening-or-shutter-conflict": 2
           }
@@ -158,9 +161,12 @@
       },
       "runtimeBudget": {
         "maxQuads": 512,
-        "quads": 219,
+        "quads": 235,
         "coverage": {
           "provenance": "invented",
+          "profiledFittings": 25,
+          "profiledParts": 131,
+          "maximumProjectionMeters": 0.075,
           "enabled": true,
           "limit": "quad-budget",
           "requested": 50,
@@ -237,9 +243,12 @@
       },
       "runtimeBudget": {
         "maxQuads": 512,
-        "quads": 384,
+        "quads": 423,
         "coverage": {
           "provenance": "invented",
+          "profiledFittings": 40,
+          "profiledParts": 237,
+          "maximumProjectionMeters": 0.075,
           "enabled": true,
           "limit": "quad-budget",
           "requested": 80,
@@ -315,9 +324,12 @@
       },
       "runtimeBudget": {
         "maxQuads": 512,
-        "quads": 137,
+        "quads": 148,
         "coverage": {
           "provenance": "invented",
+          "profiledFittings": 11,
+          "profiledParts": 63,
+          "maximumProjectionMeters": 0.075,
           "enabled": true,
           "limit": "quad-budget",
           "requested": 22,
@@ -391,18 +403,18 @@
         },
         "window": {
           "position": [
-            -11960.113212267417,
+            -11964.296555602461,
             16.91525,
-            1566.9947039963372
+            1554.8691131431917
           ],
           "lookAt": [
-            -11960.094226487447,
+            -11960.39429928636,
             16.91525,
-            1561.4947367655113
+            1558.7449866761453
           ],
           "normal": [
-            -0.003451959994539987,
-            0.999994041968349
+            -0.7095011483820005,
+            -0.7047042787188275
           ],
           "reference": "Model camera; reselect runtime entrance after terrain binding before native capture"
         }
@@ -412,11 +424,14 @@
         "quads": 512,
         "coverage": {
           "provenance": "invented",
+          "profiledFittings": 2,
+          "profiledParts": 15,
+          "maximumProjectionMeters": 0.075,
           "enabled": true,
           "limit": "quad-budget",
           "requested": 35,
-          "rendered": 15,
-          "deferred": 20,
+          "rendered": 14,
+          "deferred": 21,
           "byKind": {
             "joinery": {
               "requested": 12,
@@ -425,8 +440,8 @@
             },
             "surround": {
               "requested": 12,
-              "rendered": 2,
-              "deferred": 10
+              "rendered": 1,
+              "deferred": 11
             },
             "shutters": {
               "requested": 11,
@@ -435,7 +450,7 @@
             }
           },
           "reasons": {
-            "shutter-budget-reservation": 10,
+            "shutter-budget-reservation": 11,
             "quad-budget": 10
           }
         }

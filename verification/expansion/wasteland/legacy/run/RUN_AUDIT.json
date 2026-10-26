@@ -1,0 +1,354 @@
+{
+  "started_ns": 1793009303452736251,
+  "finished_ns": 1793009569938361385,
+  "duration_seconds": 266.485625134,
+  "checker_exit_code": 0,
+  "checks": {
+    "checker_exit_zero": true,
+    "actual_15_processes_exit_zero": true,
+    "exact_434_assertions": true,
+    "final_html_matches": true,
+    "no_javascript_errors": true,
+    "all_reports_and_logs_fresh": true,
+    "all_input_sources_stable": true,
+    "three_indexes_stable": true,
+    "15_adaptations_audited": true
+  },
+  "passed": true,
+  "sources_after": {
+    "/workspace/fallout-Marseille/index.html": {
+      "sha256": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+      "bytes": 2844845,
+      "mtime_ns": 1793008710205180253
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/rebuild-final/index.html": {
+      "sha256": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+      "bytes": 2844845,
+      "mtime_ns": 1793008779393250148
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/index.html": {
+      "sha256": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+      "bytes": 2844845,
+      "mtime_ns": 1793008710815657987
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/JOUER_FALLOUT_MISTRAL_v0.50.html": {
+      "sha256": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+      "bytes": 2844845,
+      "mtime_ns": 1793008710821743921
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/src/game.js": {
+      "sha256": "1163a06c8426c50878d3df16906f7ddad1d41d92c06fec016dab537a1fb0b9e1",
+      "bytes": 2667424,
+      "mtime_ns": 1793008710132049642
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/sw.js": {
+      "sha256": "dc03236962b494aa3d7b5b1babc6398648e2af9ef1ad2856f7be30b0fcc01aed",
+      "bytes": 1183,
+      "mtime_ns": 1793008710822318690
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tools/check_v050.py": {
+      "sha256": "8b4da67f8aaa5c404be40c6fec3fd0f62f12e9c229aaaa8471f27c11d9e75dd7",
+      "bytes": 10366,
+      "mtime_ns": 1793004057356620966
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tools/check_v049.py": {
+      "sha256": "a8779307a214e5afaa271569026d860f4e5405301ff3335aa033c452d97f1562",
+      "bytes": 3004,
+      "mtime_ns": 1792716892974642974
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/kernel.test.cjs": {
+      "sha256": "7cf4df83ab2a17a64f17cdd6c54a3e655b400b04acfaad097e864d70079a7d8a",
+      "bytes": 4835,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/runtime.py": {
+      "sha256": "494cd3bd321687f76be484ebcc2f3946136af8cc6403227299d8e37ae333055a",
+      "bytes": 10529,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/saves.py": {
+      "sha256": "8bbd65103be8f37762dfea9db95aa7f9e0e558c0bc7174e5f320ec55c17bbc66",
+      "bytes": 5014,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_kernel.test.cjs": {
+      "sha256": "0673864faa14ca62d4ffde3b320ca9d5ebbc4a2381ab3674aa1354624f59a0be",
+      "bytes": 3148,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_runtime.py": {
+      "sha256": "5107d8407043bc99fc4c7df7a02c4bd8a7fb517fc7c93bb86ed2ab95bab77074",
+      "bytes": 8246,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_kernel.test.cjs": {
+      "sha256": "ac3d62c67240e25c44baaba26a44996283655fe5d27df799a3f6f096596b18ef",
+      "bytes": 4798,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_legacy_kernel.test.cjs": {
+      "sha256": "f0e142fedec5db69183d7fb6aefc372c125c66b05c5095c13512b99ecc4da288",
+      "bytes": 5496,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_legacy_distribution.cjs": {
+      "sha256": "5bbc218ecf136d5676b981ac702eb124d73b20220acd646bf3d18dbb1c9d8cda",
+      "bytes": 2871,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_runtime.py": {
+      "sha256": "531da8ada7b1fe27f6e83d5b0d39e4d911e6e7b9088a4177efc1c6276d0c1a3b",
+      "bytes": 8027,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_server_io.py": {
+      "sha256": "0355f38e42e9668c59664130b4972d805a498833916e42c83c7b97e596c9f206",
+      "bytes": 4429,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_lab_isolation.py": {
+      "sha256": "5f4e6a73adbd3e6ce68c608794f15afb43d80e2f73e65d84d8a9a9b3432799be",
+      "bytes": 2712,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_legacy_runtime.py": {
+      "sha256": "71ddfeb247d19671ab727013a8af39cf5f23a660c3e769042a9c10c5a8ec5182",
+      "bytes": 10071,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_legacy_regression_campaign.py": {
+      "sha256": "65a0f2dd5604b1c1e8063a8657b1c7d16b3f4f33fa4f9399cb2b70cd5c4a537a",
+      "bytes": 6280,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_legacy_regression_prologue.py": {
+      "sha256": "3da693ca150250f2be66301147b36d46e975b83e18636f5435a75be94d24ce4a",
+      "bytes": 3731,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/tests/v049/v048_inherited_legacy_regression_product.py": {
+      "sha256": "9189642a1d77ffadbb13810ac9ce945560feb78fb880bdc00e5e51490ef60092",
+      "bytes": 2804,
+      "mtime_ns": 1792716892972932832
+    }
+  },
+  "outputs": {
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/QA_LEGACY.json": {
+      "sha256": "578a2a7bc72a57fe0832cc77a10d645512a9da5357d8c7ff3dc9e44963702203",
+      "bytes": 7886,
+      "mtime_ns": 1793009569928751432
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_ENCOUNTER_KERNEL.json": {
+      "sha256": "dfc8a37813ca488fa99ba5d3e9bb7fe74309ba001cd66031a81c69b200d74465",
+      "bytes": 1898,
+      "mtime_ns": 1793009303695013216
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_ENCOUNTERS.json": {
+      "sha256": "2dfff282419b5cf769063f066fc6c8d2b27f2769652aa7fafa3bedae20c9ad67",
+      "bytes": 13017,
+      "mtime_ns": 1793009312645123746
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_ENCOUNTER_SAVES.json": {
+      "sha256": "a0aca272113ee65bf4efdd1f0dfde4a5c75e5ebee50d6c2cded7aa894d95eb2c",
+      "bytes": 4476,
+      "mtime_ns": 1793009321245248315
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_BUDGET_PASSAGES.json": {
+      "sha256": "c35157bb6632a37b4f3c8ebe51db0502468bed78d9e2f9a661a5f4ab7448050b",
+      "bytes": 2402,
+      "mtime_ns": 1793009321327048400
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_PREPARATION_RETURNS.json": {
+      "sha256": "f937548b8e90faa952f047b2a5776dda5014358da6c8ede3e770d99bb0d39312",
+      "bytes": 7622,
+      "mtime_ns": 1793009332775069516
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_KERNEL_NEW.json": {
+      "sha256": "8f07e18ac10f1c69e99f4581fa5486bd9f10bb01f89400c5c03014e79cbeee38",
+      "bytes": 2952,
+      "mtime_ns": 1793009332903069747
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_KERNEL_LEGACY.json": {
+      "sha256": "a74a5fb0363579ea49b452142b496510a5a28c48e49c0110545098369665c08a",
+      "bytes": 2125,
+      "mtime_ns": 1793009332991069906
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_DISTRIBUTION.json": {
+      "sha256": "9061175c8e272da3c05c488849d3cd6f6648c2ac9c6fb541d4c1c58d10d79473",
+      "bytes": 1010,
+      "mtime_ns": 1793009333107070117
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_STREAMING_NEW.json": {
+      "sha256": "6e6f09de6b3635370c824aa5e214d75d873cd97832e1012bf8ab01adc8e8a630",
+      "bytes": 16588,
+      "mtime_ns": 1793009345086925508
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_SERVER_IO.json": {
+      "sha256": "613b48b4e98a67f03f5e0b6eeb33784633774a1e452a5bed44bf798db8a59e17",
+      "bytes": 3532,
+      "mtime_ns": 1793009507057375303
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_LAB_ISOLATION.json": {
+      "sha256": "5fa67cf05312b4ddba918b3903d17c26708b05ab5b5e99f5787ca4f495c2d978",
+      "bytes": 4612,
+      "mtime_ns": 1793009515731583719
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_RUNTIME.json": {
+      "sha256": "d7d1c513034535b7dd22d9f8cf11f6bc4555d821bbb4e11a794e3edd183fee74",
+      "bytes": 6947,
+      "mtime_ns": 1793009530825657927
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_CAMPAIGN.json": {
+      "sha256": "cb02419c0730b7b69ebbe19c32901e951baac78c6e88681e26e0d2556d4e9d55",
+      "bytes": 6371,
+      "mtime_ns": 1793009546321393980
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_PROLOGUE.json": {
+      "sha256": "44c088b3dbf93aed187b5adf0ad6d7c3a372a664924cc882223d273599595789",
+      "bytes": 3226,
+      "mtime_ns": 1793009558034962543
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/QA_PRODUCT.json": {
+      "sha256": "dc9c3c66d4e26b90ca34abe04000406022cadc3c89520638608b7ba7ca49b684",
+      "bytes": 3795,
+      "mtime_ns": 1793009569884600545
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/kernel.test.cjs.log": {
+      "sha256": "02164b378ef253630e9e2f7795fa4079a21d294d8378fb7573ee85b2729c2258",
+      "bytes": 843,
+      "mtime_ns": 1793009303702236100
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/runtime.py.log": {
+      "sha256": "424b0c15d30a6b58b37a697c3fc1c9bdaeeed2ff365413b3826b9b59e39930c5",
+      "bytes": 1966,
+      "mtime_ns": 1793009312671038087
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/saves.py.log": {
+      "sha256": "e343a931e6939b0d706d3091063266b8d26d47c62e10e42e60542aa041c8fd34",
+      "bytes": 730,
+      "mtime_ns": 1793009321277193071
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_kernel.test.cjs.log": {
+      "sha256": "4ebe42dab38aeb651b5fb9d9345d0f79f0d12117295690b9deba74824f114009",
+      "bytes": 1000,
+      "mtime_ns": 1793009321335777321
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_runtime.py.log": {
+      "sha256": "cda071b84927bb4bf158a94a78ba63e47718159545e0d59c5127e2769d27b2ab",
+      "bytes": 2398,
+      "mtime_ns": 1793009332822497090
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_kernel.test.cjs.log": {
+      "sha256": "b857eab57e499c19f408cc16dd0f52b16bd617084dde7db530faecab6241a98e",
+      "bytes": 1413,
+      "mtime_ns": 1793009332918235935
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_legacy_kernel.test.cjs.log": {
+      "sha256": "5abde2cf0ebedaf151406943099cf5f93ed7b50bd95e6cfac0ff677217bddbd8",
+      "bytes": 928,
+      "mtime_ns": 1793009332998576174
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_legacy_distribution.cjs.log": {
+      "sha256": "756d98066dc7cf9e52d1fe6a9d2d3d5440b2913cd28e795257dcd2ec248f3a1b",
+      "bytes": 754,
+      "mtime_ns": 1793009333119329606
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_runtime.py.log": {
+      "sha256": "86283ff86d964ccb47b877ad85c94d87b665b6b92e1f62d9477c05e233f0ceb6",
+      "bytes": 2070,
+      "mtime_ns": 1793009345143093100
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_server_io.py.log": {
+      "sha256": "c99012972cc41d4efd91dde0e1aca5f4e321218d437b6020c162c9948a60203b",
+      "bytes": 489,
+      "mtime_ns": 1793009507113638532
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_lab_isolation.py.log": {
+      "sha256": "0fcae94ff58613056ad38714b3b4473a73614f39d25564a2ad4c0bdbef94ab3b",
+      "bytes": 615,
+      "mtime_ns": 1793009515808317847
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_legacy_runtime.py.log": {
+      "sha256": "3efdaee16b39bc5115f4b7bc1f984fafda5fb82fc3abe7536769ba52b7296ff7",
+      "bytes": 2144,
+      "mtime_ns": 1793009530861613418
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_legacy_regression_campaign.py.log": {
+      "sha256": "43f5cf91df94b1a3b6bd0ba36866653b36d685731e2719b33527e64ed76e13fb",
+      "bytes": 2477,
+      "mtime_ns": 1793009546444389078
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_legacy_regression_prologue.py.log": {
+      "sha256": "e5fa77dcb3b38ae8c89115a876212fd4d4e8ee7aaa6f62c291b3fd4197b80651",
+      "bytes": 576,
+      "mtime_ns": 1793009558059213262
+    },
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/legacy-game/verification/v050/legacy/v048_inherited_legacy_regression_product.py.log": {
+      "sha256": "7433d96894834341d11d2703675093f8afc02cb469d89987d29d39e68a893847",
+      "bytes": 364,
+      "mtime_ns": 1793009569922821859
+    }
+  },
+  "processes": [
+    {
+      "test": "kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "saves.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_kernel.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_distribution.cjs",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_server_io.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_lab_isolation.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_runtime.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_regression_campaign.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_regression_prologue.py",
+      "exitCode": 0
+    },
+    {
+      "test": "v048_inherited_legacy_regression_product.py",
+      "exitCode": 0
+    }
+  ]
+}

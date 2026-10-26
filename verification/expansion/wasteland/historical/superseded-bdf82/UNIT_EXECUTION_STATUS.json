@@ -1,0 +1,23 @@
+{
+  "method": "Coordinator receipt written after the actual tools.write_stdin result returned exit_code=0 for session61908. This is explicitly a post-execution receipt, not an automatic process wrapper.",
+  "exitCode": 0,
+  "processFinished": true,
+  "htmlSha256": "bdf82bd1af603d5f85ebfa984d0b402d17006d26bf8d060209234685ee308aea",
+  "linkedFiles": [
+    {
+      "file": "UNITS_EXECUTION.log",
+      "sha256": "a603130b2361d4d6c6cc03889d2220971dde5d3b6e4a24b9fd838084da712118",
+      "bytes": 1144
+    },
+    {
+      "file": "units/UNITS.json",
+      "sha256": "dbf6f97525988169e1769181d0932533c51e34e59f7e8d69489fcabaaf05ebb8",
+      "bytes": 50628
+    },
+    {
+      "file": "/workspace/fallout-Marseille/tools/check_expansion.py",
+      "sha256": "fd9811cf5866f4f0286aa74b41e1876fa9a61b8595984de654b65ce611f2a6ad",
+      "bytes": 5478
+    }
+  ]
+}

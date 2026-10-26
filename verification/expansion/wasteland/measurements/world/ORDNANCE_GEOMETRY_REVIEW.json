@@ -1,0 +1,42 @@
+{
+  "scope": "Independent read-only controlled integration review. The exact production probe/support/plane/visibility functions and existing roof harness execute without a browser. Checks complement native evidence; these are explicitly synthetic/source-declared fixtures, not another native visit.",
+  "source_sha256": "5fe34a0b98496085ab6fe3d25aee98f40044f7c262b255d6e60dff5d875b4bae",
+  "script_sha256": "943c70b745d4117051df53c52487e4567c49118a6859e3f354bb007709f11808",
+  "checks": {
+    "original_air_above_pitched_roof_clear": true,
+    "original_ceiling_is_physical": true,
+    "roof_rebound_uses_local_height": true,
+    "measured_deck_underface_is_physical": true,
+    "measured_deck_blocks_blast": true,
+    "ceiling_allows_departure_after_bounce": true,
+    "deck_allows_departure_after_bounce": true
+  },
+  "details": {
+    "descendingRoof": {
+      "normal": [
+        -0.3,
+        1,
+        0
+      ],
+      "position": [
+        1,
+        9.417,
+        10
+      ]
+    },
+    "deckUnderface": {
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "position": [
+        0,
+        3.995,
+        0
+      ]
+    },
+    "deckOcclusion": false
+  },
+  "all_passed": true
+}

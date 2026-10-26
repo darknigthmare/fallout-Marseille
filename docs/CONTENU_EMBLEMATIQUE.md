@@ -49,3 +49,7 @@ En extérieur géographique, le jeu exige un relais sûr actif, un terrain sourc
 Collecte, lecture, consommation et troc contrôlent leur contexte actif. Une écriture de sauvegarde refusée ou une exception annule le changement de fiche, d’objet et de capsules. Pour un achat ou une vente, les deux bourses, le stock et le journal sont également restaurés ; une seule écriture conserve l’opération complète. Changer d’étage, de scène ou de session ne permet pas de doubler une figurine ou de renouveler une réserve vidée.
 
 Le budget global reste borné à treize exemplaires fixes, avec des modèles de cinq à douze primitives chacun ; seuls les exemplaires du lieu courant sont ajoutés. Cette extension ne constitue pas une collection complète des objets, systèmes de dépendance, animations ou assets finaux de la franchise.
+
+## Grenades et créatures récurrentes
+
+Les [grenades à main](GRENADES_A_MAIN.md) possèdent une trajectoire, une fusée sauvegardée, des rebonds et des dégâts occultés, avec achat fini et fabrication réelle. N ou le bouton Grenade effectue le lancer depuis la position du personnage. Les [Radscorpions et Fangeux](BESTIAIRE_REGIONAL.md) reçoivent des modèles originaux, des membres VATS et des préparations d’attaque sur les créatures déjà présentes ; leurs identités, PV et butins restent ceux de la sauvegarde.

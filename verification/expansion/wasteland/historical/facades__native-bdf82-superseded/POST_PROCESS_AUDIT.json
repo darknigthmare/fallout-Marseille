@@ -1,0 +1,14 @@
+{
+  "method": "Post-process observation; this record is not an extra native assertion and does not modify the executed report.",
+  "observed_at": "2026-10-26T08:56:07.192528+00:00",
+  "report_sha256": "85e8f223738c305c80de6f6759a66af55ec66877f56542c1cabf08b72936b23c",
+  "executed_script_sha256": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5",
+  "real_process_exit_code": 0,
+  "original_report_has_no_exception": true,
+  "original_report_has_no_cleanup_errors": true,
+  "normal_path": "Executed script explicitly closes context and browser before stage complete, then finally shuts down/closes GameHandler and joins worker. Native report stage complete and real exit0 retained.",
+  "post_process_server_url": "http://127.0.0.1:44489/index.html?skipboot",
+  "server_socket_connect_ex": 111,
+  "server_accepting_connections": false,
+  "all_screenshot_hashes_verified": true
+}

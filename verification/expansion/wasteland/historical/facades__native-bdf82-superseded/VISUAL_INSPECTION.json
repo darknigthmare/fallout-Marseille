@@ -1,0 +1,37 @@
+{
+  "method": "Human-style visual inspection with view_image of three untouched native PNGs; no screenshot editing or pixel replacement. This note is not added to native assertion totals.",
+  "native_report_sha256": "85e8f223738c305c80de6f6759a66af55ec66877f56542c1cabf08b72936b23c",
+  "images": [
+    {
+      "file": "03d_commercial_native_profile_closeup.png",
+      "sha256": "c197fece39c20a25f495c9d4d68e3b6fa94dbd2cf9d847f4e1663198e8257da5",
+      "observation": "Useful visible chamfered window reveals and cross muntins on the real IGN commercial envelope. Horizontal sill top is independently verified in exact published mesh vertices; image alone is not treated as a millimetric measurement."
+    },
+    {
+      "file": "03c_selected_residential_native_panels.png",
+      "sha256": "92ffcb201651ffc0c55007b6da19c0bb854e06a2fc90b37737c33f8a11453af9",
+      "observation": "Useful visible panelled door and a louvered pair at left on the real selected residential building; outer relief and inclined blade shading are visible."
+    },
+    {
+      "file": "03e_selected_residential_native_profile_closeup.png",
+      "sha256": "f1ed7566998210c8a57510ecbfb7aa4d81eb73130a6f2d5832617cbde4384a9c",
+      "observation": "Poorly framed view of wall and cropped higher window. Targeted low bay lies below coarse surrounding terrain; this raw image is preserved but is not claimed to show the selected louver pair. Native published-buffer geometry checks remain valid and separate."
+    }
+  ],
+  "misframed_view_context": {
+    "target_height": 27.6025,
+    "camera_height": 32.38411045353432,
+    "measured_neighbor_terrain_height": 30.73411045353432,
+    "source_building_base_height": 25.8,
+    "source_height_preserved": true,
+    "terrain_resolution_metres": [
+      9.984031490488738,
+      10.01994170878003
+    ]
+  },
+  "limits": [
+    "Authored metric profiles are not measured facade surveys.",
+    "The frozen source building is not repositioned to make a camera or a coarse terrain mismatch look better.",
+    "A rendered vertex-range proof does not establish visibility of a buried bay."
+  ]
+}

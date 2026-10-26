@@ -1,0 +1,51 @@
+OK Empty migration grants no grenade and normalizes only finite counters/receipts
+OK A persisted airborne grenade retains exact position, velocity and remaining fuse
+OK Malformed armed state is refused: pos {"pos":[null,1,0]}
+OK Malformed armed state is refused: velocity {"velocity":[0,null,0]}
+OK Malformed armed state is refused: velocity {"velocity":[31,0,0]}
+OK Malformed armed state is refused: fuse {"fuse":4}
+OK Malformed armed state is refused: fuse {"fuse":-1}
+OK Malformed armed state is refused: zone {"zone":"../bad"}
+OK Malformed armed state is refused: pos {"pos":[1,2]}
+OK Launch follows a normalized aim without mutating caller coordinates
+OK A real arc rises, descends, bounces and expires after exactly three active seconds
+OK Swept sphere cannot pass through a two-centimetre wall between frames
+OK Swept sphere bounces off a thin overhead slab and never tunnels through it
+OK Unknown source support loses the projectile without inventing a height
+OK Huge or invalid dt stays bounded and never advances three seconds in one frame
+OK Blast falloff is bounded, continuous and zero outside six metres
+OK Integration migrates an empty ledger and classifies grenades as explosives in the one real bag
+OK Throw deducts exactly one item and commits the armed physical projectile once
+OK A fail throw preserves all inventory, armour, lore and active chems
+OK A throwSave throw preserves all inventory, armour, lore and active chems
+OK Throw guards refuse mode="PIP" without consumption
+OK Throw guards refuse mode="TRADE" without consumption
+OK Throw guards refuse mode="MENU" without consumption
+OK Throw guards refuse zoneTransitioning=true without consumption
+OK Throw guards refuse V046.busy=true without consumption
+OK Throw guards refuse V046.lab=true without consumption
+OK Throw guards refuse V047.pending={} without consumption
+OK Throw guards refuse state.player.hp=0 without consumption
+OK A near thin wall blocks the whole hand-to-muzzle path, even with an endpoint beyond it
+OK Menus, source preparation and QA freeze suspend the armed fuse
+OK Cold migration preserves an actually stepped fuse and never refunds the spent inventory item
+OK Crossing into another scene spends the old grenade without a remote blast or refund
+OK A real blast damages a visible enemy once with distance falloff and ordinary armour
+OK A two-centimetre cover wall blocks enemy blast while the open-side target is hit
+OK A thin overhead slab blocks blast between floors
+OK Self blast uses the real hurt-player route and can be avoided by moving beyond six metres
+OK A fail blast rolls back deaths, XP, corpse inventory, interactions and health
+OK A throwSave blast rolls back deaths, XP, corpse inventory, interactions and health
+OK Baptiste stocks three ordinary grenades once and exhausted stock survives migration
+OK Buying and reselling use one wallet, one inventory and one final save each
+OK fail rolls back buyTradeItem("fragGrenade")
+OK fail rolls back sellTradeItem("fragGrenade")
+OK fail rolls back v020Craft("fragGrenade")
+OK throwSave rolls back buyTradeItem("fragGrenade")
+OK throwSave rolls back sellTradeItem("fragGrenade")
+OK throwSave rolls back v020Craft("fragGrenade")
+OK Actual workshop recipe pays finite components and refuses a remote station
+OK Native key handler ignores held N, editable fields and modifier shortcuts
+OK Explosives panel exposes aiming without silently throwing inside the Pip-Boy
+{"passed":49,"failed":0,"total":49,"scope":"Pure swept grenade physics and real inventory/trade/crafting/ordnance composition with armour/lore/iconic/chemistry; controlled flat ground, actors, storage and UI seams"}
+

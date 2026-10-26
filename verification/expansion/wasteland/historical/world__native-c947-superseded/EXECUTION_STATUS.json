@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/precise_terrain_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/world/native",
+    "--expect-html-sha",
+    "c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf",
+    "--expect-precise-sha",
+    "3fffa47978093dee72cadd5edc189a1794d02573627f3749fa7adbaf8738f5c1",
+    "--expect-index-sha",
+    "dc368ea13976fa72e2adaf358c8843a27f6a41524ffd55a984913d2549e0068d",
+    "--native-cache",
+    "/workspace/.cloud-setup/fallout-marseille/precision-terrain/acquisition"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 203.776,
+  "log_sha256": "8938acae372fb06ac8d464207bc8b2012423ede559309a763944bb5e4535302d"
+}

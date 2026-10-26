@@ -1,0 +1,131 @@
+{
+  "version": "0.47.0",
+  "html_sha256": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+  "passed": 10,
+  "failed": 0,
+  "total": 10,
+  "errors": [],
+  "tests": [
+    {
+      "name": "Le serveur distribue le HTML final exact",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Audit local réellement exécuté",
+      "ok": true,
+      "detail": {
+        "version": "0.50.0",
+        "vector": {
+          "expected": 5884,
+          "pbf": 4557,
+          "officialEmpty": 1327,
+          "missing": 0,
+          "invalid": 0,
+          "bytes": 86973739,
+          "examples": []
+        },
+        "terrain": {
+          "expected": 8,
+          "valid": 8,
+          "missing": 0,
+          "invalid": 0,
+          "samples": 174944,
+          "noData": 32424,
+          "examples": []
+        },
+        "complete": true,
+        "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+        "inspectedAt": "2026-10-26T10:03:09Z"
+      }
+    },
+    {
+      "name": "Pack complet confirmé par le disque",
+      "ok": true,
+      "detail": {
+        "version": "0.50.0",
+        "vector": {
+          "expected": 5884,
+          "pbf": 4557,
+          "officialEmpty": 1327,
+          "missing": 0,
+          "invalid": 0,
+          "bytes": 86973739,
+          "examples": []
+        },
+        "terrain": {
+          "expected": 8,
+          "valid": 8,
+          "missing": 0,
+          "invalid": 0,
+          "samples": 174944,
+          "noData": 32424,
+          "examples": []
+        },
+        "complete": true,
+        "scope": "Fichiers effectivement présents sur le disque du serveur local. Aucun téléchargement.",
+        "inspectedAt": "2026-10-26T10:03:09Z"
+      }
+    },
+    {
+      "name": "Audit interdit en cache périmé",
+      "ok": true,
+      "detail": {
+        "Server": "SimpleHTTP/0.6 Python/3.12.14",
+        "Date": "Mon, 26 Oct 2026 10:03:09 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-store",
+        "Content-Length": "428",
+        "X-Content-Type-Options": "nosniff"
+      }
+    },
+    {
+      "name": "PBF réel de fixture validé via réponses HTTP contrôlées",
+      "ok": true,
+      "detail": {
+        "origin": "cache distant",
+        "bytes": 494,
+        "empty": false,
+        "layers": [
+          "transportation",
+          "park",
+          "water",
+          "landuse",
+          "building"
+        ]
+      }
+    },
+    {
+      "name": "Empreinte corrompue refusée, même sans WebCrypto",
+      "ok": true,
+      "detail": {
+        "ok": false,
+        "error": "base:14:8437:6001 : Empreinte de tuile différente du contenu reçu"
+      }
+    },
+    {
+      "name": "Une page HTML ne devient pas une tuile",
+      "ok": true,
+      "detail": {
+        "ok": false,
+        "error": "base:14:8437:6001 : Page HTML reçue à la place de la donnée"
+      }
+    },
+    {
+      "name": "Coordonnées hors manifeste refusées",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Diagnostics sont rendus par le programme",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aucune exception JavaScript",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "scope": "Serveur HTTP loopback réel interrogé par Python ; logique navigateur exécutée par set_content avec réponses réseau contrôlées. Navigation du navigateur bloquée par politique administrateur : pas de validation IndexedDB natif."
+}

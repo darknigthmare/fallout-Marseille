@@ -1,0 +1,12 @@
+{
+  "method": "Post-execution record tied to the real exec/write_stdin result, not an automatically captured exit code",
+  "actual_process_exit_code": 1,
+  "exec_session_id": 95683,
+  "script_sha256": "756258fbe7f1c3a23595351c0e12b27fb90a79cbdc39d877dffd7a1ee4e5496a",
+  "html_sha256": "c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf",
+  "report": "ORDNANCE_NATIVE.json",
+  "log": "console.log",
+  "browser_closed": true,
+  "server_closed": true,
+  "reason": "47 checks passed; one authored hostile hit assertion failed because the grenade landed on an existing raised floor short of the enemy. Production source was not modified for this failure."
+}

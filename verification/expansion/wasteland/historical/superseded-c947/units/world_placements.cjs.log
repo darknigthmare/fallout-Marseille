@@ -1,0 +1,22 @@
+✔ An unchanged measured saved placement retains exact XY, the current sampled height and an independent tuple (8.233685ms)
+✔ A finer measured terrain replaces only stale placement height when the saved XY remains clear (4.968793ms)
+✔ Negative measured land heights remain negative for both new and retained fictional placements (8.426625ms)
+✔ A saved placement newly covered by a source building is replaced with an existing checked candidate (4.428033ms)
+✔ A saved placement newly classified as source water cannot spawn the fictional site in that water (4.102015ms)
+✔ Missing measured terrain cannot reuse a historical placement or mutate its saved evidence (4.814124ms)
+✔ Real NoData interpolation at every local candidate remains NoData, with no invented fallback altitude (5.252783ms)
+✔ A whole blocked search cannot publish a site or delete its previously recorded placement (9.40458ms)
+✔ No actor is spawned before any vector records have been validated for its world (4.787494ms)
+✔ Malformed legacy placement tuples cannot bypass current source checks or crash the selector (14.680235ms)
+✔ Published actors keep their identity, health and finite loot when a source bank later changes (4.289855ms)
+✔ A staging preview uses its own measured bank without changing placements owned by the published scene (3.519247ms)
+✔ Historical scene placement remains on the historical path without source or save changes (3.781467ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.818253
+

@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "site": "v042-laciotat-caravan-01",
+      "sourceWaterAtCenter": false,
+      "sourceWaterSamples": 0,
+      "samples": 85,
+      "scope": "Independent even-odd source water geometry sampling; approximate geodetic offsets only, no terrain, road/building, or runtime actor admission is implied."
+    },
+    {
+      "site": "v042-laciotat-caravan-02",
+      "sourceWaterAtCenter": true,
+      "sourceWaterSamples": 85,
+      "samples": 85,
+      "scope": "Independent even-odd source water geometry sampling; approximate geodetic offsets only, no terrain, road/building, or runtime actor admission is implied."
+    },
+    {
+      "site": "v042-laciotat-landmark-01",
+      "sourceWaterAtCenter": false,
+      "sourceWaterSamples": 0,
+      "samples": 85,
+      "scope": "Independent even-odd source water geometry sampling; approximate geodetic offsets only, no terrain, road/building, or runtime actor admission is implied."
+    },
+    {
+      "site": "v042-laciotat-landmark-02",
+      "sourceWaterAtCenter": true,
+      "sourceWaterSamples": 48,
+      "samples": 85,
+      "scope": "Independent even-odd source water geometry sampling; approximate geodetic offsets only, no terrain, road/building, or runtime actor admission is implied."
+    },
+    {
+      "site": "v042-laciotat-landmark-03",
+      "sourceWaterAtCenter": true,
+      "sourceWaterSamples": 79,
+      "samples": 85,
+      "scope": "Independent even-odd source water geometry sampling; approximate geodetic offsets only, no terrain, road/building, or runtime actor admission is implied."
+    }
+  ],
+  "source_sha256": {
+    "data/map_pack/france-vector/14/8446/6009.pbf": "c4130d1517e057052ef0668085c94d140a267b7f9bb29652349a6c0125e0006f",
+    "data/map_pack/france-vector/14/8447/6009.pbf": "7f461e8f5b362ea05be468a7830350ba1d19912bbaef09070ae0b18b5673b65e",
+    "data/map_pack/france-vector/14/8448/6007.pbf": "ade4d7f4d1644207326cc3994485655528ad2e7ff278a2ed5e870d976d55729c",
+    "data/map_pack/france-vector/14/8448/6008.pbf": "f783692a3f7016f4c26f35cea65ab588757c939ffcee64315132e86fdd718540",
+    "data/map_pack/france-vector/14/8447/6010.pbf": "13fdf0ae1bbb016ab95f35c3401f8e01cda838eab99cb912a2f34dd0fd133740"
+  }
+}

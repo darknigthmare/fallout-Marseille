@@ -1,0 +1,100 @@
+{
+  "scope": "Fonctions réellement exécutées en Node, aucune donnée géographique simulée présentée comme acquise",
+  "passed": 23,
+  "failed": 0,
+  "total": 23,
+  "tests": [
+    {
+      "name": "Polygone : ordre cyclique identique",
+      "ok": true
+    },
+    {
+      "name": "Polygone : orientation identique",
+      "ok": true
+    },
+    {
+      "name": "Cour centrale reste vide",
+      "ok": true
+    },
+    {
+      "name": "Murs entourant la cour restent solides",
+      "ok": true
+    },
+    {
+      "name": "Extérieur reste libre",
+      "ok": true
+    },
+    {
+      "name": "Un trou différent change l’identité",
+      "ok": true
+    },
+    {
+      "name": "Terrain : axe nord-sud correct",
+      "ok": true
+    },
+    {
+      "name": "Terrain hors grille non extrapolé",
+      "ok": true
+    },
+    {
+      "name": "NoData ne devient pas zéro",
+      "ok": true
+    },
+    {
+      "name": "Sentinelle sous -100 rejetée",
+      "ok": true
+    },
+    {
+      "name": "Emprise fausse rejetée",
+      "ok": true
+    },
+    {
+      "name": "Longueur de grille incohérente rejetée",
+      "ok": true
+    },
+    {
+      "name": "Origine du terrain obligatoire",
+      "ok": true
+    },
+    {
+      "name": "Ordre des lignes invalide rejeté",
+      "ok": true
+    },
+    {
+      "name": "Zone superposée attend ses deux sources",
+      "ok": true
+    },
+    {
+      "name": "Terrain indépendant de l’ordre de réception",
+      "ok": true
+    },
+    {
+      "name": "Transaction publie une seule fois après tous les fichiers",
+      "ok": true
+    },
+    {
+      "name": "Une tuile manquante interdit la publication",
+      "ok": true
+    },
+    {
+      "name": "Échec géométrique préserve la scène",
+      "ok": true
+    },
+    {
+      "name": "Annulation avant réponse ne publie rien",
+      "ok": true
+    },
+    {
+      "name": "Réponse périmée ne remplace pas une requête récente",
+      "ok": true
+    },
+    {
+      "name": "Réessai réutilise les fichiers déjà validés",
+      "ok": true
+    },
+    {
+      "name": "Concurrence réseau bornée",
+      "ok": true
+    }
+  ]
+}

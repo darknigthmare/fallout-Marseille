@@ -1,0 +1,12 @@
+OK Three composed migrations preserve the original armour/lore and add separate empty ledgers without equipment grants
+OK A failed plate repair preserves completed lore, active magazine time and the existing weapon ammo cache
+OK A throwing lore reward cannot lose a charged armour, configuration, magazine or persistAmmoCache metadata
+OK A failed Nuka consumption preserves completed lore, finite core supply and all attempted ammo writes
+OK Real magazine aptitude lookup changes the original M-45 material quote and the restored plate persists with both ledgers
+OK Powered and iconic trades each commit once; rejected AID writes preserve every stock, wallet and participating ledger
+OK A once-only lore reward after a drink keeps the same capsule wallet and cannot reward either outcome twice
+OK Loading, laboratory and menu guards reject all three active operations without changing any ledger
+OK Physical permanent collection and cold migration keep every existing ledger without reapplying a reward
+OK Composed Pip-Boy dispatch and page wrappers retain each feature and their legacy fallback
+{"passed":10,"failed":0,"total":10,"scope":"Actual v030/v046 and all three continuation modules in production order, actual source catalogue and ammo/derived/trade helpers; controlled storage, actors, flat ground and UI seams"}
+

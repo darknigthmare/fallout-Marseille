@@ -1,7 +1,8 @@
-# Commandes v0.30
+# Commandes v0.50
 
 - ZQSD / WASD : déplacement ; souris : regarder ; clic gauche : tirer.
-- E : interagir ; Maj : courir ; Espace : sauter ; Ctrl : s’accroupir.
+- N : lancer une grenade à fragmentation possédée ; le bouton Grenade du HUD reste utilisable au tactile.
+- E : interagir, ouvrir ou fermer une porte intérieure compatible ; Maj : courir ; Espace : sauter ; Ctrl : s’accroupir.
 - R : recharger ; H : soin général ; C dans le monde : première/troisième personne.
 - Tab : ouvrir/ranger le Pip-Boy. U : ouvrir directement STAT → ARMURE.
 - L : lampe. I : sac. T : panneau de terrain. M : plan local.

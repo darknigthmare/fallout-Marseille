@@ -1,0 +1,39 @@
+{
+  "method": "Visual inspection with view_image of three untouched native PNGs recaptured on finalc947; no screenshot editing or pixel replacement. This note is not added to native assertion totals.",
+  "observed_at": "2026-10-26T09:28:08.806652+00:00",
+  "native_report_sha256": "ca49cc7df8b41e05fa3289bee8672ef51209af01ddadde395550e0eb1f1f7a0e",
+  "html_sha256": "c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf",
+  "images": [
+    {
+      "file": "03d_commercial_native_profile_closeup.png",
+      "sha256": "be41745e8a5d51fbf4c122e7019811f7cdc078bd0e858c52f95924099800e2e3",
+      "observation": "Useful visible chamfered window reveals and cross muntins on the real IGN commercial envelope. Horizontal sill top is independently verified in exact published mesh vertices; image alone is not treated as a millimetric measurement."
+    },
+    {
+      "file": "03c_selected_residential_native_panels.png",
+      "sha256": "821eed5699020ba591ff0da3efa99a89770a17fb28f068555dec0baa10c18fb6",
+      "observation": "Useful visible panelled door and a louvered pair at left on the real selected residential building; outer relief and inclined blade shading are visible."
+    },
+    {
+      "file": "03e_selected_residential_native_profile_closeup.png",
+      "sha256": "f5998c4ffb715a25352e30bfdbfb10c0de0c4b4822b8f772719f01fc5b04e866",
+      "observation": "Poorly framed view of wall and cropped higher window. Targeted low bay lies below coarse surrounding terrain; this raw image is preserved but is not claimed to show the selected louver pair. Native published-buffer geometry checks remain valid and separate."
+    }
+  ],
+  "misframed_view_context": {
+    "target_height": 27.6025,
+    "camera_height": 32.38411045353432,
+    "measured_neighbor_terrain_height": 30.73411045353432,
+    "source_building_base_height": 25.8,
+    "source_height_preserved": true,
+    "terrain_resolution_metres": [
+      9.984031490488738,
+      10.01994170878003
+    ]
+  },
+  "limits": [
+    "Authored metric profiles are not measured facade surveys.",
+    "The frozen source building is not repositioned to make a camera or a coarse terrain mismatch look better.",
+    "A rendered vertex-range proof does not establish visibility of a buried bay."
+  ]
+}

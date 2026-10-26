@@ -1,0 +1,81 @@
+OK Frozen production HTML matches coordination
+OK Frozen bestiary source is present unchanged in the production bundle
+OK Frozen real architecture atlas matches coordination
+STAGE actual_pack_audit_before_chromium
+OK Actual GameHandler verifies complete installed source pack
+STAGE native_http_document
+OK Native HTTP document equals exact production bytes
+STAGE real_geographic_publication
+LOAD {"phase": "loading", "done": 0, "total": 48, "tiles": 0}
+OK Candidate belongs to existing hostile territorial catalog
+OK Public sector load requests actual installed geography
+OK Measured diagnostic camera is outside actual colliders
+OK Actual published geography admits a newly materialized Rat-couronné or Cigale
+OK Native actor is outside the laboratory on actual geographic world
+STAGE actual_rig_identity_and_native_capture
+OK Regional metadata retains the actual original slot/type/health
+OK Read-only regional view matches real world actor identity and PV
+OK Actual actor rig contains original regional geometry and matching VATS groups
+OK A measured collision-free camera sees the real regional silhouette
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Actual production player/AI update preserves regional identity, base type and PV
+OK Native save records one variant with the existing encounter ledger
+OK Production save reaches native browser storage
+STAGE true_gabian_geographic_flight
+OK Gabian sector request uses the actual installed pack
+OK Measured diagnostic camera is outside actual colliders
+OK A real existing territorial slot admits a Gabian
+OK Real Gabian has a measured clear close observation point
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Production AI takes off above measured terrain with a clear complete wing volume
+OK True aerial stepping preserves the same ID, original bloatfly type and PV
+OK Actually rendered wing/body vertices stand above actual source ground
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Real airborne AI creates a locked, timed corrosive drop
+OK The locked attack has a measured collision-free physical escape corridor
+OK Native KeyW and real production collision physics leave the locked impact radius
+OK A real rendered corrosive projectile descends from the airborne actor
+OK The locked Gabian projectile impacts and its escaped player is not hit
+OK Native save retains the airborne position in its original v049 encounter
+STAGE actual_iconic_radscorpion
+OK Iconic candidate is an unchanged territorial encounter: v042-calanques-nest-03
+OK Actual installed sector request for radscorpion
+OK Measured diagnostic camera is outside actual colliders
+OK Iconic candidate is an unchanged territorial encounter: v042-calanques-elite-02
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/regional_bestiary_native.py", line 671, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/fallout-Marseille/tests/expansion/regional_bestiary_native.py", line 615, in main
+    iconic_native()
+  File "/workspace/fallout-Marseille/tests/expansion/regional_bestiary_native.py", line 315, in iconic_native
+    check('Actual installed sector request for ' + species, debug('v046Load', row['lat'], row['lon']) is True)
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/fallout-Marseille/tests/expansion/regional_bestiary_native.py", line 109, in debug
+    return page.evaluate('([name,values])=>__MISTRAL_DEBUG[name](...values)', [name, list(values)])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 9385, in evaluate
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 113, in _sync
+    self._dispatcher_fiber.switch()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 56, in greenlet_main
+    self._loop.run_until_complete(self._connection.run_as_sync())
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 1961, in _run_once
+    event_list = self._selector.select(timeout)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/selectors.py", line 468, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+Task was destroyed but it is pending!
+task: <Task cancelling name='Task-275' coro=<Page.evaluate() running at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_page.py:472> wait_for=<Future finished result=None> cb=[SyncBase._sync.<locals>.<lambda>() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py:111]>

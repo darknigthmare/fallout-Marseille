@@ -1,0 +1,4089 @@
+{
+  "checks": [
+    {
+      "name": "Frozen HTML contains the exact production ordnance module",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v050/10_lore_continuity.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v050/11_power_armor.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v050/12_iconic_ecosystem.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v050/15_chemistry.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v026/04_trade_runtime.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v020/04_field.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document matches frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing authored scene selected without grants: aubagne",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh migration grants no grenade or armed projectile",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native selection physically reaches Baptiste",
+      "ok": true,
+      "detail": {
+        "position": [
+          12.0,
+          1.65,
+          20.7
+        ],
+        "target": [
+          12,
+          1.2,
+          19
+        ],
+        "actual_label": "Parler à Baptiste Arnaud",
+        "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+      }
+    },
+    {
+      "name": "Actual E reaches Baptiste dialogue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Baptiste exposes three finite grenades through real stock",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native purchases debit caps and exhaust the one ordinary stock",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub ordnance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: inventory/ordnance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual explosives page explains aiming, fuse and self blast",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: o55:aim ",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible aim action closes menu without spending a grenade",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Safe authored launch point is collision-free",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Clickable grenade HUD control is visible and enabled",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Desktop grenade HUD button is fully inside the real viewport",
+      "ok": true,
+      "detail": {
+        "left": 969,
+        "top": 837,
+        "right": 1067,
+        "bottom": 880,
+        "width": 98,
+        "height": 43,
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "buttons": [
+          {
+            "text": "I · Sac",
+            "left": 370,
+            "top": 837,
+            "right": 430,
+            "bottom": 880,
+            "width": 60,
+            "height": 43
+          },
+          {
+            "text": "T · Relais",
+            "left": 435,
+            "top": 837,
+            "right": 511,
+            "bottom": 880,
+            "width": 76,
+            "height": 43
+          },
+          {
+            "text": "M · Plan",
+            "left": 516,
+            "top": 837,
+            "right": 592,
+            "bottom": 880,
+            "width": 76,
+            "height": 43
+          },
+          {
+            "text": "1 · Pistolet 10 mm",
+            "left": 597,
+            "top": 837,
+            "right": 685,
+            "bottom": 880,
+            "width": 88,
+            "height": 43
+          },
+          {
+            "text": "2 · Vide",
+            "left": 690,
+            "top": 837,
+            "right": 778,
+            "bottom": 880,
+            "width": 88,
+            "height": 43
+          },
+          {
+            "text": "3 · Vide",
+            "left": 783,
+            "top": 837,
+            "right": 871,
+            "bottom": 880,
+            "width": 88,
+            "height": 43
+          },
+          {
+            "text": "4 · Vide",
+            "left": 876,
+            "top": 837,
+            "right": 964,
+            "bottom": 880,
+            "width": 88,
+            "height": 43
+          },
+          {
+            "text": "N · Grenade 3",
+            "left": 969,
+            "top": 837,
+            "right": 1067,
+            "bottom": 880,
+            "width": 98,
+            "height": 43
+          }
+        ],
+        "overlaps": false,
+        "visible": true
+      }
+    },
+    {
+      "name": "Narrow viewport keeps the fourth visible terrain action fully onscreen",
+      "ok": true,
+      "detail": {
+        "left": 283.75,
+        "top": 707,
+        "right": 365,
+        "bottom": 750,
+        "width": 81.25,
+        "height": 43,
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "buttons": [
+          {
+            "text": "I · Sac",
+            "left": 25,
+            "top": 707,
+            "right": 106.25,
+            "bottom": 750,
+            "width": 81.25,
+            "height": 43
+          },
+          {
+            "text": "T · Relais",
+            "left": 111.25,
+            "top": 707,
+            "right": 192.5,
+            "bottom": 750,
+            "width": 81.25,
+            "height": 43
+          },
+          {
+            "text": "M · Plan",
+            "left": 197.5,
+            "top": 707,
+            "right": 278.75,
+            "bottom": 750,
+            "width": 81.25,
+            "height": 43
+          },
+          {
+            "text": "N · Grenade 3",
+            "left": 283.75,
+            "top": 707,
+            "right": 365,
+            "bottom": 750,
+            "width": 81.25,
+            "height": 43
+          }
+        ],
+        "overlaps": false,
+        "visible": true
+      }
+    },
+    {
+      "name": "Native N consumes one grenade and publishes two real draw meshes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal active updates move a real airborne projectile",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub ordnance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: inventory/ordnance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual Pip-Boy simulation calls preserve the armed fuse and position",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab data",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub system",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: data/system",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: save ",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Tab closes Pip-Boy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production save stores one spent item and actual airborne state",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document matches frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Continue is enabled",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Continue restores exact remaining fuse, ballistics and finite stock without refund",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub ordnance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: inventory/ordnance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Tab closes Pip-Boy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Resumed active projectile detonates exactly once away from the player",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Unmodified authored Roux-hunter is alive at its ordinary source position",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real combat approach has flat authored support, free collision and actual LOS",
+      "ok": true,
+      "detail": {
+        "position": [
+          63.40106057783527,
+          1.65,
+          -24.333927414186192
+        ],
+        "target": [
+          63.40106057783527,
+          0,
+          -45.33392741418619
+        ]
+      }
+    },
+    {
+      "name": "Visible HUD grenade control performs the same real launch",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real authored enemy receives ordinary blast damage from the physical grenade",
+      "ok": true,
+      "detail": {
+        "before": {
+          "id": "roux-hunter",
+          "hp": 70,
+          "alive": true,
+          "pos": [
+            63.40106057783527,
+            0,
+            -45.33392741418619
+          ],
+          "alerted": false
+        },
+        "after": {
+          "id": "roux-hunter",
+          "hp": 12.714383987942938,
+          "alive": true,
+          "pos": [
+            63.10315130589193,
+            0,
+            -45.32983810404148
+          ],
+          "alerted": true
+        },
+        "blast": {
+          "pos": [
+            63.40106057783527,
+            0.09,
+            -43.18755401861988
+          ],
+          "hits": [
+            {
+              "id": "roux-hunter",
+              "before": 70,
+              "after": 12.714383987942938
+            }
+          ],
+          "player": false
+        }
+      }
+    },
+    {
+      "name": "Player survived the real encounter without any health overwrite",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing authored scene selected without grants: relay_cold",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A real existing clinic station is available for workshop validation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing station approach succeeds with collision/LOS checked export",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real workshop exposes enabled grenade recipe at the actual station",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native workshop consumes actual materials and adds one grenade without XP farming",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab data",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub system",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: data/system",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: save ",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Tab closes Pip-Boy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document matches frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Final native Continue retains both detonations, recipe count, bag and finite stock",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No page exceptions or local failed HTTP resources",
+      "ok": true,
+      "detail": {
+        "page_errors": [],
+        "local_http_errors": []
+      }
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_finite_baptiste_purchase.png",
+      "sha256": "3d01580ea6052e4e464e2ae32a82f27018a45cf37d17b9e1d7e930ee724ce115"
+    },
+    {
+      "file": "02_native_airborne_grenade.png",
+      "sha256": "6f48a893e86bb7eaa2743435ba924a7b0b9b5b2e34d88b9bd591e97b1183daac"
+    },
+    {
+      "file": "03_native_armed_continue.png",
+      "sha256": "422a784d73d993ae3892fdb4eec5df6641b1dba4e20569b36361e784d7dc921e"
+    },
+    {
+      "file": "04_real_authored_blast_result.png",
+      "sha256": "ea7f18bfd345e7485e901d45892e5e9799d32b3d4b68d58e9840dd1b73748930"
+    },
+    {
+      "file": "05_real_station_recipe.png",
+      "sha256": "5b3ed188bde194cf962685ae7c7d89176f6db1db4a7d56c6f229ce4be0b56e45"
+    }
+  ],
+  "placements": [
+    {
+      "position": [
+        12.0,
+        1.65,
+        20.7
+      ],
+      "target": [
+        12,
+        1.2,
+        19
+      ],
+      "actual_label": "Parler à Baptiste Arnaud",
+      "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+    },
+    {
+      "position": [
+        0,
+        1.65,
+        85
+      ],
+      "yaw": 0,
+      "pitch": -0.08,
+      "purpose": "Launch, pause and native Continue; authored clear road."
+    },
+    {
+      "position": [
+        63.40106057783527,
+        1.65,
+        -24.333927414186192
+      ],
+      "yaw": 0.0,
+      "pitch": 0,
+      "purpose": "Actual pre-existing hostile actor; readonly floor/collision/LOS scout, no actor or health overwrite."
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "local_http_errors": [],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:35855/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "native_navigation": true,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "service_workers_disabled": true,
+  "maximum_contexts": 1,
+  "scope": "Bounded native hand-grenade pilot, prepared without starting a browser.\n\nUses unchanged production HTML, GameHandler, visible controls and real browser\nstorage. Diagnostic navigation selects authored scenes; collision/LOS checks\nselect camera approaches. Payment capsules and simulation freeze are declared\nassistance. No grenade, merchant stock, enemy, health or quest state is granted or overwritten.\n",
+  "assistance": [
+    "v020Load selects actual authored Aubagne, not a surveyed IGN scene.",
+    "v020Seed({caps:300,scrap:3,chemicals:3,weaponParts:1}) supplies payment and workshop inputs only; no grenade or merchant stock is granted.",
+    "v046SetTime(12) opens the historical shop at daytime.",
+    "v018CaptureAt and the inherited freeze place cameras/player at collision/LOS-checked existing floor points.",
+    "Bounded v020Tick(.05,true) calls step normal updatePlayer, enemy AI, collisions and updateStatus; no private IIFE variables or projectile setters are used.",
+    "An existing Roux-hunter actor is approached from outside its normal detection distance using readonly worldGeometry floors, collision and LOS; no enemy state is overwritten."
+  ],
+  "elapsed_seconds": 68.149,
+  "passed": 62,
+  "failed": 0,
+  "pinned_inputs": {
+    "index.html": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+    "src/v050/16_iconic_ordnance.js": "5fe34a0b98496085ab6fe3d25aee98f40044f7c262b255d6e60dff5d875b4bae",
+    "src/v050/10_lore_continuity.js": "06cd527ab951d2e6e64954dd4b47dfa147c5e15cb7f04d5939cc201b08b446d0",
+    "src/v050/11_power_armor.js": "77e03d9b83f7d35828de22dc13abd6e368879eaeeb5537f39576824a41386ebc",
+    "src/v050/12_iconic_ecosystem.js": "550ee004344e4879c0d87164ab97971978113c882e0ca5a2a2045a61b5725e23",
+    "src/v050/15_chemistry.js": "b432076d9f0b3fa4a4c0eeab9b95e5044de8089fb2148b958c130efc417ccd4e",
+    "src/v026/04_trade_runtime.js": "0da9183a0103957b783627378f6ec2078206eb5856125ebc89786ce44e317745",
+    "src/v020/04_field.js": "e70bcfe8c8981191a09049d4034db6893f4140a8e1c13e29cd1e7d22a351c013",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80"
+  },
+  "script_sha256": "8b1e059a60157f762d148bc35e1e35e31eb0cf690d4c6ec4d65db631280ff2eb",
+  "url": "http://127.0.0.1:35855/index.html?skipboot",
+  "browser_version": "154.0.8037.57",
+  "before_airborne_continue": {
+    "version": "0.50.0",
+    "mode": "story",
+    "character": {
+      "name": "Camille",
+      "pronoun": "neutre",
+      "trait": "mistral",
+      "special": {
+        "S": 3,
+        "P": 3,
+        "E": 3,
+        "C": 3,
+        "I": 3,
+        "A": 3,
+        "L": 3
+      }
+    },
+    "player": {
+      "zone": "aubagne",
+      "pos": [
+        0,
+        1.65,
+        85
+      ],
+      "yaw": 0,
+      "pitch": -0.08,
+      "hp": 115,
+      "maxHp": 115,
+      "ap": 104,
+      "maxAp": 105,
+      "rad": 0,
+      "ammoClip": 10,
+      "ammoReserve": 42,
+      "clipSize": 10,
+      "weapon": "Pistolet 10 mm",
+      "caps": 156,
+      "crouched": false,
+      "cameraMode": "first",
+      "discovered": [
+        "vault",
+        "aubagne"
+      ],
+      "level": 1,
+      "xp": 18,
+      "perkPoints": 0,
+      "activeCompanion": null,
+      "weaponId": "pistol10",
+      "armorId": "vaultSuit",
+      "critCharge": 0,
+      "damageResistance": 0.05,
+      "radResistance": 0.08
+    },
+    "quest": {
+      "main": 0,
+      "relayOutcome": null,
+      "clinicOutcome": null,
+      "finalOutcome": null,
+      "mainComplete": false,
+      "trainOutcome": null,
+      "gardenOutcome": null,
+      "paludsOutcome": null,
+      "aqueductOutcome": null,
+      "belvedereOutcome": null,
+      "beaconOutcome": null,
+      "routesOutcome": null,
+      "routesComplete": false,
+      "waterOutcome": null,
+      "treilleOutcome": null,
+      "fontOutcome": null,
+      "marketOutcome": null,
+      "longchampOutcome": null,
+      "waterComplete": false,
+      "unionOutcome": null,
+      "drydockOutcome": null,
+      "cadenceOutcome": null,
+      "emileOutcome": null,
+      "islandOutcome": null,
+      "industryOutcome": null,
+      "industryComplete": false,
+      "cinemaOutcome": null,
+      "stationOutcome": null,
+      "guichetierOutcome": null,
+      "naimaHighOutcome": null,
+      "signalOutcome": null,
+      "marseilleOutcome": null,
+      "marseilleComplete": false,
+      "cadastreOutcome": null,
+      "aubagneStationOutcome": null,
+      "ceramicOutcome": null,
+      "culvertOutcome": null,
+      "mireilleTruthOutcome": null,
+      "rouxRescueOutcome": null,
+      "firewatchOutcome": null,
+      "aubagneOutcome": null,
+      "aubagneComplete": false
+    },
+    "side": {
+      "roux": 0,
+      "filters": 0,
+      "train": 0,
+      "eden": 0,
+      "garden": 0,
+      "paluds": 0,
+      "aqueduct": 0,
+      "refugees": 0,
+      "beacon": 0,
+      "mireille": 0,
+      "naima": 0,
+      "fontdemai": 0,
+      "noailleMarket": 0,
+      "waterEvidence": 0,
+      "dockSalvage": 0,
+      "seaRescue": 0,
+      "hullCaches": 0,
+      "cinema": 0,
+      "saintCharles": 0,
+      "ghoulRegistry": 0,
+      "gardeClinic": 0,
+      "aubagneHigh": 0,
+      "aubagneStation": 0,
+      "ceramics": 0,
+      "culvert": 0,
+      "firewatch": 0,
+      "regionalEvents": 0,
+      "environment": 0,
+      "shelters": 0
+    },
+    "flags": {
+      "rationDenied": false,
+      "metMireille": false,
+      "mireilleRecruited": false,
+      "naimaRecruited": false,
+      "emileRecruited": false,
+      "relayPowered": false,
+      "archiveMemo": false,
+      "fuseTaken": false,
+      "rouxFreed": false,
+      "clinicResolved": false,
+      "marseilleArchiveRead": false,
+      "shipBypassed": false,
+      "bossDefeated": false,
+      "routeChapterStarted": false,
+      "trainRestored": false,
+      "gardenResolved": false,
+      "paludsResolved": false,
+      "aqueductResolved": false,
+      "belvedereResolved": false,
+      "beaconLit": false,
+      "crabBossDefeated": false,
+      "waterChapterStarted": false,
+      "treilleResolved": false,
+      "fontPumpRestored": false,
+      "rouxRecruited": false,
+      "naimaQuestResolved": false,
+      "marketResolved": false,
+      "longchampArchiveRead": false,
+      "longchampValveOpen": false,
+      "waterCouncilReady": false,
+      "industryChapterStarted": false,
+      "unionArchiveRead": false,
+      "unionCouncilResolved": false,
+      "drydockRestored": false,
+      "cadenceBypassed": false,
+      "cadenceResolved": false,
+      "emileQuestResolved": false,
+      "skiffRepaired": false,
+      "skiffUnlocked": false,
+      "islandResolved": false,
+      "seaRouteCleared": false,
+      "coastCouncilReady": false,
+      "rescueCompleted": false,
+      "marseilleChapterStarted": false,
+      "projectorRestored": false,
+      "cinemaResolved": false,
+      "stationArchiveRead": false,
+      "stationResolved": false,
+      "guichetierBypassed": false,
+      "guichetierResolved": false,
+      "naimaHighResolved": false,
+      "gardeSignalActive": false,
+      "marseilleCouncilReady": false,
+      "projectionCalibrated": false,
+      "aubagneChapterStarted": false,
+      "cadastreRead": false,
+      "aubagneStationResolved": false,
+      "kilnRestored": false,
+      "culvertCleared": false,
+      "mireilleTruthResolved": false,
+      "rouxRescueResolved": false,
+      "firewatchActive": false,
+      "fireFrontContained": false,
+      "aubagneCouncilReady": false,
+      "enemyDead": {},
+      "looted": {},
+      "notes": {},
+      "doors": {},
+      "worldChanges": {},
+      "shelterResolved": {},
+      "shelterOutcomes": {},
+      "enemySeen": {
+        "tarente": true,
+        "raider": true,
+        "molerat": true,
+        "gecko": true,
+        "giantAnt": true,
+        "ledgerHound": true,
+        "feralReaver": true,
+        "mirelurkHatchling": true
+      },
+      "lucienRecruited": false,
+      "bastienRecruited": false,
+      "mariusRecruited": false
+    },
+    "inventory": {
+      "stimpak": 3,
+      "radaway": 1,
+      "water": 2,
+      "ration": 1,
+      "ammo10": 0,
+      "fuse": 0,
+      "ceramicFilter": 0,
+      "concordeSeal": 0,
+      "shipKey": 0,
+      "scrap": 3,
+      "circuitry": 1,
+      "chemicals": 3,
+      "cloth": 1,
+      "food": 2,
+      "seeds": 0,
+      "leather": 0,
+      "weaponParts": 1,
+      "waterChip": 0,
+      "antibiotics": 0,
+      "fuelCell": 0,
+      "sealant": 0,
+      "steelPlate": 0,
+      "flare": 0,
+      "unionLedger": 0,
+      "clay": 0,
+      "fireGel": 0,
+      "rescueBeacon": 0,
+      "bobbyPin": 5,
+      "soapCatalyst": 0,
+      "lyeFilter": 0,
+      "cleaningLedger": 0,
+      "fragGrenade": 2
+    },
+    "ammo": {
+      "ammo10": 42,
+      "shells": 0,
+      "cells": 0,
+      "rivets": 0,
+      "harpoons": 0,
+      "ammo38": 0,
+      "ammo44": 0,
+      "ammo45": 0,
+      "ammo308": 0,
+      "ammo556": 0,
+      "ammo5mm": 0,
+      "ammo4570": 0,
+      "spikes": 0,
+      "ammo2mm": 0,
+      "plasma": 0,
+      "gamma": 0,
+      "alienCell": 0,
+      "fuel": 0,
+      "missiles": 0,
+      "miniNukes": 0,
+      "cryo": 0,
+      "fusionCore": 0,
+      "ceramicSlug": 0,
+      "bb": 0,
+      "grenade40": 0,
+      "nails": 0,
+      "syringes": 0,
+      "junkAmmo": 0,
+      "ammo9": 0,
+      "ammo127": 0,
+      "ammo357": 0,
+      "ammo50": 0,
+      "microfusion": 0,
+      "electronCharge": 0,
+      "rockets": 0,
+      "protonCell": 0,
+      "ammo22": 0,
+      "ammo14": 0,
+      "ammo223": 0,
+      "ammo762": 0,
+      "ammo20g": 0,
+      "ammo25": 0,
+      "sonicCell": 0,
+      "acidCanister": 0,
+      "coilSlug": 0,
+      "saltCartridge": 0,
+      "windCell": 0,
+      "quarryBolt": 0,
+      "archiveCell": 0,
+      "brineCharge": 0,
+      "kilnBolt": 0,
+      "signalCapsule": 0,
+      "quarryShell": 0,
+      "memoryTape": 0,
+      "mistralDart": 0,
+      "heavyFusionCell": 0,
+      "soapCapsule": 0,
+      "memoryCell": 0
+    },
+    "perks": {
+      "gunslinger": 0,
+      "medic": 0,
+      "scavenger": 0,
+      "localHero": 0,
+      "mariner": 0,
+      "technician": 0,
+      "armorer": 0,
+      "hydrologist": 0,
+      "pathfinder": 0,
+      "shipwright": 0,
+      "unionVoice": 0,
+      "dockRat": 0,
+      "urbanExplorer": 0,
+      "archivist": 0,
+      "civicVoice": 0,
+      "firewarden": 0,
+      "ceramist": 0,
+      "tracker": 0
+    },
+    "settlements": {
+      "aubagne": 0,
+      "marseille": 0,
+      "laciotat": 0,
+      "huveaune": 0,
+      "garlaban": 0,
+      "gemenos": 0,
+      "ceyreste": 0,
+      "cassis": 0,
+      "calanques": 0,
+      "latreille": 0,
+      "fontdemai": 0,
+      "panier": 0,
+      "longchamp": 0,
+      "ciotatport": 0,
+      "syndicat": 0,
+      "drydock": 0,
+      "hull27": 0,
+      "mugel": 0,
+      "ileverte": 0,
+      "canebiere": 0,
+      "cinema": 0,
+      "saintcharles": 0,
+      "tunnels": 0,
+      "lagarde": 0,
+      "aubagnehaute": 0,
+      "aubagnegare": 0,
+      "ceramiques": 0,
+      "huveaunesouterraine": 0,
+      "garlabanpass": 0,
+      "shelter_m17": 0,
+      "shelter_a11": 0,
+      "shelter_h04": 0,
+      "shelter_g06": 0,
+      "shelter_c08": 0,
+      "shelter_lc12": 0,
+      "shelter_iv02": 0,
+      "shelter_p13": 0,
+      "shelter_m04": 0,
+      "shelter_a19": 0,
+      "shelter_h12": 0,
+      "shelter_g22": 0,
+      "shelter_c14": 0,
+      "shelter_lc03": 0,
+      "shelter_iv07": 0,
+      "shelter_p08": 0,
+      "shelter_r18": 0,
+      "shelter_t05": 0,
+      "saintloup": 0,
+      "lapenne": 0,
+      "accates": 0,
+      "luminy": 0,
+      "roquefort": 0,
+      "carnoux": 0,
+      "portmiou": 0,
+      "capcanaille": 0,
+      "shelter_r09": 0,
+      "shelter_m22": 0,
+      "shelter_m31": 0,
+      "shelter_a07": 0,
+      "shelter_a27": 0,
+      "shelter_h21": 0,
+      "shelter_g31": 0,
+      "shelter_c21": 0,
+      "shelter_c31": 0,
+      "shelter_lc21": 0,
+      "shelter_lc29": 0,
+      "shelter_i11": 0,
+      "shelter_m42": 0,
+      "shelter_a32": 0,
+      "shelter_h33": 0,
+      "shelter_g40": 0,
+      "shelter_c40": 0,
+      "shelter_lc44": 0,
+      "shelter_i23": 0,
+      "shelter_p27": 0,
+      "shelter_r32": 0,
+      "shelter_t18": 0,
+      "shelter_s06": 0,
+      "shelter_v14": 0,
+      "savonnerie": 0,
+      "frioulport": 0,
+      "ratonneau": 0,
+      "pomegues": 0,
+      "chateauif": 0
+    },
+    "economy": {
+      "travelCount": 0,
+      "lastProduction": 0,
+      "merchants": {
+        "aubagne": {
+          "caps": 364,
+          "stock": {
+            "stimpak": 4,
+            "water": 5,
+            "ammo10": 50,
+            "scrap": 8,
+            "weaponParts": 3,
+            "pipeCarbine": 1,
+            "workshopJacket": 1,
+            "ammo38": 80,
+            "ammo44": 18,
+            "ammo556": 40,
+            "pipePistol": 1,
+            "pipeRifle": 1,
+            "provenceRevolver": 1,
+            "mistralCarbine": 1,
+            "combatKnife": 1,
+            "machete": 1,
+            "bb": 100,
+            "nails": 80,
+            "pistol32": 1,
+            "bbGun": 1,
+            "nailGun": 1,
+            "tireIron": 1,
+            "crowbar": 1,
+            "leatherArmor": 1,
+            "ammo9": 80,
+            "ammo357": 30,
+            "pistol9": 1,
+            "revolver357": 1,
+            "varmintRifle": 1,
+            "cowboyRepeater": 1,
+            "handmadeRifle": 1,
+            "mistralScoutMantle": 1,
+            "mentats": 3,
+            "buffout": 2,
+            "fragGrenade": 0
+          }
+        }
+      },
+      "contracts": {
+        "salvage": 0,
+        "rescue": 0,
+        "escort": 0,
+        "broadcast": 0,
+        "firewatch": 0
+      }
+    },
+    "events": {
+      "active": null,
+      "history": [],
+      "nextTravel": 2,
+      "resolved": 0
+    },
+    "weather": {
+      "type": "clear",
+      "timer": 209.5999999999999
+    },
+    "rep": {
+      "ligue": 0,
+      "rade": 0,
+      "arsenal": 0,
+      "continuite": 0,
+      "veilleurs": 0,
+      "francs": 0,
+      "rails": 0,
+      "collines": 0,
+      "marches": 0,
+      "eaux": 0,
+      "artisans": 0,
+      "secours": 0
+    },
+    "equipment": {
+      "ownedWeapons": [
+        "pistol10"
+      ],
+      "ownedArmors": [
+        "vaultSuit"
+      ],
+      "weaponCondition": {
+        "pistol10": 100
+      },
+      "armorCondition": {
+        "vaultSuit": 100
+      },
+      "loadedAmmo": {
+        "pistol10": 10
+      },
+      "weaponMods": {}
+    },
+    "companions": {
+      "loyalty": {
+        "mireille": 25,
+        "naima": 20,
+        "emile": 15,
+        "roux": 0,
+        "lucien": 0,
+        "bastien": 0,
+        "marius": 0
+      }
+    },
+    "crime": {
+      "aubagne": 0,
+      "marseille": 0,
+      "laciotat": 0,
+      "collines": 0
+    },
+    "status": {
+      "bleeding": 0,
+      "infection": 0,
+      "fortified": 0,
+      "burning": 0,
+      "smoke": 0
+    },
+    "vehicle": {
+      "skiffUnlocked": false,
+      "hull": 100,
+      "maxHull": 100,
+      "fuel": 0,
+      "maxFuel": 100,
+      "speed": 0,
+      "seaRuns": 0,
+      "lastDock": "mugel",
+      "collisionCooldown": 0
+    },
+    "achievements": [],
+    "worldTime": 12.003200000000007,
+    "playTime": 0.39999999999999997,
+    "lastSave": "2026-10-26T10:27:34.362Z",
+    "lore": {
+      "terminals": {},
+      "terminalActions": {},
+      "notes": {},
+      "holotapes": {},
+      "holotapePlays": {},
+      "localQuests": {},
+      "localQuestOutcomes": {}
+    },
+    "companionQuests": {
+      "lucien": {
+        "stage": 0,
+        "outcome": null
+      },
+      "bastien": {
+        "stage": 0,
+        "outcome": null
+      },
+      "marius": {
+        "stage": 0,
+        "outcome": null
+      }
+    },
+    "foundation": {
+      "q09": {
+        "stage": 0,
+        "outcome": null,
+        "parts": {}
+      },
+      "q12": {
+        "played": 0,
+        "best": null,
+        "wins": 0,
+        "outcome": null
+      },
+      "powerArmor": {
+        "stage": 0,
+        "outcome": null
+      }
+    },
+    "reconstruction": {
+      "sites": {
+        "aubagne": {},
+        "huveaune": {},
+        "marseille": {},
+        "cassis": {},
+        "drydock": {},
+        "frioulport": {}
+      }
+    },
+    "collectibles": {
+      "magazines": {},
+      "plans": {},
+      "lockedCaches": {}
+    },
+    "needs": {
+      "hunger": 0,
+      "thirst": 0,
+      "fatigue": 0,
+      "lastTick": 0
+    },
+    "v018": {
+      "coordinates": "EPSG:2154-local",
+      "travelMode": "story",
+      "trackedQuest": null,
+      "tapeBookmarks": {},
+      "tapeSpeed": 1
+    },
+    "v020": {
+      "schema": 1,
+      "operations": {},
+      "visits": {},
+      "returnPoint": null,
+      "companionOrders": {},
+      "favorites": [
+        "pistol10",
+        null,
+        null,
+        null
+      ],
+      "stash": {},
+      "craftCount": {},
+      "discoveredStations": {},
+      "restHours": 0,
+      "notes": {},
+      "looted": {},
+      "openedDoors": {},
+      "accessibility": {
+        "localPlan": true
+      },
+      "lastVersion": "0.20.0"
+    },
+    "v021": {
+      "schema": 1,
+      "accepted": false,
+      "clues": {},
+      "switches": {},
+      "witness": false,
+      "visited": {},
+      "ending": null,
+      "rewarded": false,
+      "returnPoints": [],
+      "journalPage": 0,
+      "tracked": false
+    },
+    "v022": {
+      "schema": 1,
+      "actors": {},
+      "encounters": {
+        "aubagne|roux-hunter": {
+          "zone": "aubagne",
+          "type": "tarente",
+          "health": 70,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-0": {
+          "zone": "aubagne",
+          "type": "raider",
+          "health": 72,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-1": {
+          "zone": "aubagne",
+          "type": "molerat",
+          "health": 44,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-2": {
+          "zone": "aubagne",
+          "type": "gecko",
+          "health": 62,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-3": {
+          "zone": "aubagne",
+          "type": "giantAnt",
+          "health": 73,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-4": {
+          "zone": "aubagne",
+          "type": "ledgerHound",
+          "health": 122,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-5": {
+          "zone": "aubagne",
+          "type": "feralReaver",
+          "health": 150,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-6": {
+          "zone": "aubagne",
+          "type": "mirelurkHatchling",
+          "health": 46,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-7": {
+          "zone": "aubagne",
+          "type": "raider",
+          "health": 72,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-8": {
+          "zone": "aubagne",
+          "type": "molerat",
+          "health": 44,
+          "leg": 0,
+          "arm": 0
+        }
+      },
+      "caches": {},
+      "task": {
+        "accepted": false,
+        "kit": false,
+        "beds": false,
+        "consent": null,
+        "relay": false,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "observed": {}
+    },
+    "v023": {
+      "schema": 1,
+      "goat": {
+        "answers": [],
+        "tags": [],
+        "completed": false,
+        "method": null
+      },
+      "critical": 0,
+      "history": [
+        {
+          "speaker": "Baptiste Arnaud",
+          "text": "J’ai de l’eau, des munitions, des pièces d’arme et parfois de quoi mieux s’équiper. Les prix changent avec les routes, votre réputation et le contenu de votre dossier.",
+          "choice": false,
+          "role": "MARCHAND DE PIÈCES",
+          "zone": "aubagne"
+        },
+        {
+          "speaker": "Camille",
+          "text": "Ouvrir le comptoir.",
+          "choice": true,
+          "role": "",
+          "zone": "aubagne"
+        }
+      ],
+      "seen": {},
+      "checks": {},
+      "quest": {
+        "accepted": false,
+        "evidence": {
+          "manifest": false,
+          "register": false,
+          "protocol": false
+        },
+        "witness": {
+          "diane": false,
+          "rayan": false
+        },
+        "trust": 0,
+        "ending": null,
+        "rewarded": false,
+        "deliveries": {
+          "transit_depot": false,
+          "traverse_archives": false,
+          "mooring_station": false
+        },
+        "tracked": false
+      },
+      "consequences": []
+    },
+    "v025": {
+      "schema": 1,
+      "limbs": {}
+    },
+    "v026": {
+      "schema": 1,
+      "containers": {},
+      "vendorGear": {},
+      "marked": {},
+      "carry": false,
+      "transactions": [
+        {
+          "kind": "acheter",
+          "text": "Grenade à fragmentation — 48 capsules",
+          "zone": "aubagne"
+        },
+        {
+          "kind": "acheter",
+          "text": "Grenade à fragmentation — 48 capsules",
+          "zone": "aubagne"
+        },
+        {
+          "kind": "acheter",
+          "text": "Grenade à fragmentation — 48 capsules",
+          "zone": "aubagne"
+        }
+      ],
+      "quest": {
+        "accepted": false,
+        "informed": false,
+        "inspected": {
+          "transit_depot": false,
+          "traverse_archives": false,
+          "mooring_station": false
+        },
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      }
+    },
+    "v027": {
+      "schema": 1,
+      "theme": "green",
+      "scanlines": true,
+      "backgroundTape": false,
+      "tagged": [],
+      "read": {},
+      "documents": {},
+      "pin": null,
+      "last": {
+        "tab": "data",
+        "sub": "system"
+      }
+    },
+    "v028": {
+      "schema": 1,
+      "limbs": {
+        "head": 100,
+        "torso": 100,
+        "leftArm": 100,
+        "rightArm": 100,
+        "leftLeg": 100,
+        "rightLeg": 100
+      },
+      "hits": 0,
+      "lamp": false,
+      "history": [],
+      "quest": {
+        "accepted": false,
+        "plan": false,
+        "isolated": false,
+        "rewarded": false,
+        "ending": null,
+        "tracked": false
+      },
+      "game": {
+        "unlocked": false,
+        "levels": {}
+      }
+    },
+    "v029": {
+      "schema": 1,
+      "elapsed": 0.39999999999999997,
+      "terminals": {},
+      "credentials": {
+        "d4": false,
+        "a2": false,
+        "q8": false
+      },
+      "quest": {
+        "accepted": false,
+        "proof": {
+          "route": false,
+          "filter": false,
+          "clause": false
+        },
+        "contact": false,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "noiseCount": 0
+    },
+    "v030": {
+      "schema": 1,
+      "active": false,
+      "core": null,
+      "spares": [],
+      "rigs": {},
+      "vendorRigs": {},
+      "hitIndex": 0,
+      "travelDistance": 0,
+      "spent": 0,
+      "quest": {
+        "accepted": false,
+        "servo": false,
+        "plan": false,
+        "isolated": false,
+        "restored": false,
+        "coreTaken": false,
+        "trial": null,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "history": []
+    },
+    "v035": {
+      "schema": 1,
+      "activeSlot": 0,
+      "career": {
+        "ngPlus": 0,
+        "creditsSeen": false,
+        "chaptersViewed": {},
+        "operationFirsts": {},
+        "operationRecords": {}
+      },
+      "operations": {
+        "active": null,
+        "totalCompleted": 0
+      },
+      "hub": {
+        "returns": 0,
+        "lastRest": null,
+        "visited": false
+      },
+      "prologue": {
+        "started": false,
+        "titleSeen": false,
+        "stage": 0,
+        "locker": false,
+        "clinic": false,
+        "filter": false,
+        "breakfast": false,
+        "records": false,
+        "briefed": false,
+        "loadout": null,
+        "complete": false
+      },
+      "session": {
+        "startedAt": 0,
+        "lastRecap": null
+      }
+    },
+    "v036": {
+      "schema": 1,
+      "preferRelay": true,
+      "autoMacroTransfer": true,
+      "lastMacro": null,
+      "lastLatLon": null,
+      "onlineTilesLoaded": 0,
+      "localTilesLoaded": 0,
+      "cacheTilesLoaded": 0
+    },
+    "v037": {
+      "schema": 1,
+      "preferCloudCache": true,
+      "autoPrefetch": true,
+      "prefetchAhead": 2,
+      "cacheBudgetMB": 256,
+      "cloudTilesLoaded": 0,
+      "directTilesLoaded": 0,
+      "packTilesLoaded": 0,
+      "localCacheHits": 0,
+      "lastCloudCheck": null
+    },
+    "v038": {
+      "schema": 1,
+      "lastCoverage": null,
+      "fullVectorCacheConfirmed": false,
+      "emptyTilesLoaded": 0,
+      "dataTilesLoaded": 0,
+      "verifiedAt": null
+    },
+    "v039": {
+      "schema": 1,
+      "terrainCloudConfirmed": false,
+      "lastTerrainCheck": null,
+      "terrainLoads": 0,
+      "terrainPackHits": 0,
+      "terrainCacheHits": 0,
+      "terrainCloudHits": 0,
+      "terrainErrors": 0,
+      "lastTerrainMacro": null,
+      "lastTerrainSource": null
+    },
+    "v040": {
+      "schema": 1,
+      "activeCorridor": null,
+      "corridorProgress": 0,
+      "corridorPhase": "idle",
+      "corridorBreaks": 0,
+      "corridorCompleted": {},
+      "corridorStartedAt": null,
+      "corridorLastLatLon": null,
+      "lastCorridorCheck": null,
+      "terrainSeamChecks": 0,
+      "stitchedBuildings": 0
+    },
+    "v041": {
+      "schema": 1,
+      "lastPackCheck": null,
+      "localPackComplete": true,
+      "localCoordinates": 5884,
+      "localTerrain": 0,
+      "lastBenchmark": "2026-10-26T10:27:01.504Z"
+    },
+    "v042": {
+      "schema": 1,
+      "discovered": {},
+      "cleared": {},
+      "visited": {},
+      "tracked": null,
+      "activeContract": null,
+      "contracts": {},
+      "siteKills": {},
+      "eliteKills": {},
+      "bossKills": {},
+      "regional": {},
+      "activeInterior": null,
+      "returnPoint": null,
+      "discoveries": 0,
+      "clears": 0,
+      "filter": "all",
+      "lastSite": null,
+      "lastUpdate": null
+    },
+    "geo": {
+      "return": null,
+      "pendingTarget": null,
+      "lastMacro": "geo_huveaune",
+      "visitedMacros": {},
+      "surfaceVisited": {},
+      "surfaceActions": {},
+      "lastSurface": null,
+      "discoveryCount": 0,
+      "mapVersion": "0.50.0",
+      "strict": true,
+      "tileCoverage": {}
+    },
+    "v046": {
+      "schema": 1,
+      "frame": "lambert93-central",
+      "placements": {},
+      "lore": {
+        "done": {},
+        "side": null,
+        "petanque": {
+          "played": 0,
+          "wins": 0
+        }
+      },
+      "lastLocation": null
+    },
+    "v049": {
+      "schema": 1,
+      "actors": {}
+    },
+    "v050Campaign": {
+      "schema": 1,
+      "route": null,
+      "gateway": null,
+      "returnPoint": null,
+      "workshopVisits": 0
+    },
+    "v050Wasteland": {
+      "schema": 1,
+      "kitOwned": false,
+      "camp": null,
+      "restHours": 0,
+      "crafts": 0,
+      "aid": {}
+    },
+    "v050City": {
+      "schema": 2,
+      "active": null,
+      "returnPoint": null,
+      "visits": {},
+      "documents": [],
+      "documentOmissions": 0,
+      "documentWarnings": [],
+      "roomDoorStates": {}
+    },
+    "v053Lore": {
+      "schema": 1,
+      "quests": {
+        "cendres": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "formulaire": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "signaux": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "lazaret": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "cadences": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "attente": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        }
+      },
+      "journal": []
+    },
+    "v053Iconic": {
+      "schema": 1,
+      "found": {},
+      "read": {},
+      "effects": {},
+      "drinks": 0
+    },
+    "v053Bestiary": {
+      "schema": 1,
+      "assignments": {}
+    },
+    "v054Chems": {
+      "schema": 1,
+      "elapsed": 0.39999999999999997,
+      "agents": {
+        "jet": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "buffout": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "mentats": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "psycho": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        }
+      },
+      "stocked": {
+        "aubagne": true
+      },
+      "treatments": 0,
+      "recoveries": 0
+    },
+    "v055Ordnance": {
+      "schema": 1,
+      "launched": 1,
+      "detonated": 0,
+      "lost": 0,
+      "stocked": {
+        "aubagne": true
+      },
+      "armed": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.7800760076520084,
+          79.43784647883072
+        ],
+        "velocity": [
+          0,
+          -1.558891021599243,
+          -12.958422181934052
+        ],
+        "fuse": 2.59999999999998,
+        "bounces": 0,
+        "scene": "aubagne"
+      }
+    }
+  },
+  "after_airborne_continue": {
+    "version": "0.50.0",
+    "mode": "story",
+    "character": {
+      "name": "Camille",
+      "pronoun": "neutre",
+      "trait": "mistral",
+      "special": {
+        "S": 3,
+        "P": 3,
+        "E": 3,
+        "C": 3,
+        "I": 3,
+        "A": 3,
+        "L": 3
+      }
+    },
+    "player": {
+      "zone": "aubagne",
+      "pos": [
+        0,
+        1.65,
+        85
+      ],
+      "yaw": 0,
+      "pitch": 0,
+      "hp": 115,
+      "maxHp": 115,
+      "ap": 104,
+      "maxAp": 105,
+      "rad": 0,
+      "ammoClip": 10,
+      "ammoReserve": 42,
+      "clipSize": 10,
+      "weapon": "Pistolet 10 mm",
+      "caps": 156,
+      "crouched": false,
+      "cameraMode": "first",
+      "discovered": [
+        "vault",
+        "aubagne"
+      ],
+      "level": 1,
+      "xp": 18,
+      "perkPoints": 0,
+      "activeCompanion": null,
+      "weaponId": "pistol10",
+      "armorId": "vaultSuit",
+      "critCharge": 0,
+      "damageResistance": 0.05,
+      "radResistance": 0.08
+    },
+    "quest": {
+      "main": 0,
+      "relayOutcome": null,
+      "clinicOutcome": null,
+      "finalOutcome": null,
+      "mainComplete": false,
+      "trainOutcome": null,
+      "gardenOutcome": null,
+      "paludsOutcome": null,
+      "aqueductOutcome": null,
+      "belvedereOutcome": null,
+      "beaconOutcome": null,
+      "routesOutcome": null,
+      "routesComplete": false,
+      "waterOutcome": null,
+      "treilleOutcome": null,
+      "fontOutcome": null,
+      "marketOutcome": null,
+      "longchampOutcome": null,
+      "waterComplete": false,
+      "unionOutcome": null,
+      "drydockOutcome": null,
+      "cadenceOutcome": null,
+      "emileOutcome": null,
+      "islandOutcome": null,
+      "industryOutcome": null,
+      "industryComplete": false,
+      "cinemaOutcome": null,
+      "stationOutcome": null,
+      "guichetierOutcome": null,
+      "naimaHighOutcome": null,
+      "signalOutcome": null,
+      "marseilleOutcome": null,
+      "marseilleComplete": false,
+      "cadastreOutcome": null,
+      "aubagneStationOutcome": null,
+      "ceramicOutcome": null,
+      "culvertOutcome": null,
+      "mireilleTruthOutcome": null,
+      "rouxRescueOutcome": null,
+      "firewatchOutcome": null,
+      "aubagneOutcome": null,
+      "aubagneComplete": false
+    },
+    "side": {
+      "roux": 0,
+      "filters": 0,
+      "train": 0,
+      "eden": 0,
+      "garden": 0,
+      "paluds": 0,
+      "aqueduct": 0,
+      "refugees": 0,
+      "beacon": 0,
+      "mireille": 0,
+      "naima": 0,
+      "fontdemai": 0,
+      "noailleMarket": 0,
+      "waterEvidence": 0,
+      "dockSalvage": 0,
+      "seaRescue": 0,
+      "hullCaches": 0,
+      "cinema": 0,
+      "saintCharles": 0,
+      "ghoulRegistry": 0,
+      "gardeClinic": 0,
+      "aubagneHigh": 0,
+      "aubagneStation": 0,
+      "ceramics": 0,
+      "culvert": 0,
+      "firewatch": 0,
+      "regionalEvents": 0,
+      "environment": 0,
+      "shelters": 0
+    },
+    "flags": {
+      "rationDenied": false,
+      "metMireille": false,
+      "mireilleRecruited": false,
+      "naimaRecruited": false,
+      "emileRecruited": false,
+      "relayPowered": false,
+      "archiveMemo": false,
+      "fuseTaken": false,
+      "rouxFreed": false,
+      "clinicResolved": false,
+      "marseilleArchiveRead": false,
+      "shipBypassed": false,
+      "bossDefeated": false,
+      "routeChapterStarted": false,
+      "trainRestored": false,
+      "gardenResolved": false,
+      "paludsResolved": false,
+      "aqueductResolved": false,
+      "belvedereResolved": false,
+      "beaconLit": false,
+      "crabBossDefeated": false,
+      "waterChapterStarted": false,
+      "treilleResolved": false,
+      "fontPumpRestored": false,
+      "rouxRecruited": false,
+      "naimaQuestResolved": false,
+      "marketResolved": false,
+      "longchampArchiveRead": false,
+      "longchampValveOpen": false,
+      "waterCouncilReady": false,
+      "industryChapterStarted": false,
+      "unionArchiveRead": false,
+      "unionCouncilResolved": false,
+      "drydockRestored": false,
+      "cadenceBypassed": false,
+      "cadenceResolved": false,
+      "emileQuestResolved": false,
+      "skiffRepaired": false,
+      "skiffUnlocked": false,
+      "islandResolved": false,
+      "seaRouteCleared": false,
+      "coastCouncilReady": false,
+      "rescueCompleted": false,
+      "marseilleChapterStarted": false,
+      "projectorRestored": false,
+      "cinemaResolved": false,
+      "stationArchiveRead": false,
+      "stationResolved": false,
+      "guichetierBypassed": false,
+      "guichetierResolved": false,
+      "naimaHighResolved": false,
+      "gardeSignalActive": false,
+      "marseilleCouncilReady": false,
+      "projectionCalibrated": false,
+      "aubagneChapterStarted": false,
+      "cadastreRead": false,
+      "aubagneStationResolved": false,
+      "kilnRestored": false,
+      "culvertCleared": false,
+      "mireilleTruthResolved": false,
+      "rouxRescueResolved": false,
+      "firewatchActive": false,
+      "fireFrontContained": false,
+      "aubagneCouncilReady": false,
+      "enemyDead": {},
+      "looted": {},
+      "notes": {},
+      "doors": {},
+      "worldChanges": {},
+      "shelterResolved": {},
+      "shelterOutcomes": {},
+      "enemySeen": {
+        "tarente": true,
+        "raider": true,
+        "molerat": true,
+        "gecko": true,
+        "giantAnt": true,
+        "ledgerHound": true,
+        "feralReaver": true,
+        "mirelurkHatchling": true
+      },
+      "lucienRecruited": false,
+      "bastienRecruited": false,
+      "mariusRecruited": false
+    },
+    "inventory": {
+      "stimpak": 3,
+      "radaway": 1,
+      "water": 2,
+      "ration": 1,
+      "ammo10": 0,
+      "fuse": 0,
+      "ceramicFilter": 0,
+      "concordeSeal": 0,
+      "shipKey": 0,
+      "scrap": 3,
+      "circuitry": 1,
+      "chemicals": 3,
+      "cloth": 1,
+      "food": 2,
+      "seeds": 0,
+      "leather": 0,
+      "weaponParts": 1,
+      "waterChip": 0,
+      "antibiotics": 0,
+      "fuelCell": 0,
+      "sealant": 0,
+      "steelPlate": 0,
+      "flare": 0,
+      "unionLedger": 0,
+      "clay": 0,
+      "fireGel": 0,
+      "rescueBeacon": 0,
+      "bobbyPin": 5,
+      "soapCatalyst": 0,
+      "lyeFilter": 0,
+      "cleaningLedger": 0,
+      "fragGrenade": 2
+    },
+    "ammo": {
+      "ammo10": 42,
+      "shells": 0,
+      "cells": 0,
+      "rivets": 0,
+      "harpoons": 0,
+      "ammo38": 0,
+      "ammo44": 0,
+      "ammo45": 0,
+      "ammo308": 0,
+      "ammo556": 0,
+      "ammo5mm": 0,
+      "ammo4570": 0,
+      "spikes": 0,
+      "ammo2mm": 0,
+      "plasma": 0,
+      "gamma": 0,
+      "alienCell": 0,
+      "fuel": 0,
+      "missiles": 0,
+      "miniNukes": 0,
+      "cryo": 0,
+      "fusionCore": 0,
+      "ceramicSlug": 0,
+      "bb": 0,
+      "grenade40": 0,
+      "nails": 0,
+      "syringes": 0,
+      "junkAmmo": 0,
+      "ammo9": 0,
+      "ammo127": 0,
+      "ammo357": 0,
+      "ammo50": 0,
+      "microfusion": 0,
+      "electronCharge": 0,
+      "rockets": 0,
+      "protonCell": 0,
+      "ammo22": 0,
+      "ammo14": 0,
+      "ammo223": 0,
+      "ammo762": 0,
+      "ammo20g": 0,
+      "ammo25": 0,
+      "sonicCell": 0,
+      "acidCanister": 0,
+      "coilSlug": 0,
+      "saltCartridge": 0,
+      "windCell": 0,
+      "quarryBolt": 0,
+      "archiveCell": 0,
+      "brineCharge": 0,
+      "kilnBolt": 0,
+      "signalCapsule": 0,
+      "quarryShell": 0,
+      "memoryTape": 0,
+      "mistralDart": 0,
+      "heavyFusionCell": 0,
+      "soapCapsule": 0,
+      "memoryCell": 0
+    },
+    "perks": {
+      "gunslinger": 0,
+      "medic": 0,
+      "scavenger": 0,
+      "localHero": 0,
+      "mariner": 0,
+      "technician": 0,
+      "armorer": 0,
+      "hydrologist": 0,
+      "pathfinder": 0,
+      "shipwright": 0,
+      "unionVoice": 0,
+      "dockRat": 0,
+      "urbanExplorer": 0,
+      "archivist": 0,
+      "civicVoice": 0,
+      "firewarden": 0,
+      "ceramist": 0,
+      "tracker": 0
+    },
+    "settlements": {
+      "aubagne": 0,
+      "marseille": 0,
+      "laciotat": 0,
+      "huveaune": 0,
+      "garlaban": 0,
+      "gemenos": 0,
+      "ceyreste": 0,
+      "cassis": 0,
+      "calanques": 0,
+      "latreille": 0,
+      "fontdemai": 0,
+      "panier": 0,
+      "longchamp": 0,
+      "ciotatport": 0,
+      "syndicat": 0,
+      "drydock": 0,
+      "hull27": 0,
+      "mugel": 0,
+      "ileverte": 0,
+      "canebiere": 0,
+      "cinema": 0,
+      "saintcharles": 0,
+      "tunnels": 0,
+      "lagarde": 0,
+      "aubagnehaute": 0,
+      "aubagnegare": 0,
+      "ceramiques": 0,
+      "huveaunesouterraine": 0,
+      "garlabanpass": 0,
+      "shelter_m17": 0,
+      "shelter_a11": 0,
+      "shelter_h04": 0,
+      "shelter_g06": 0,
+      "shelter_c08": 0,
+      "shelter_lc12": 0,
+      "shelter_iv02": 0,
+      "shelter_p13": 0,
+      "shelter_m04": 0,
+      "shelter_a19": 0,
+      "shelter_h12": 0,
+      "shelter_g22": 0,
+      "shelter_c14": 0,
+      "shelter_lc03": 0,
+      "shelter_iv07": 0,
+      "shelter_p08": 0,
+      "shelter_r18": 0,
+      "shelter_t05": 0,
+      "saintloup": 0,
+      "lapenne": 0,
+      "accates": 0,
+      "luminy": 0,
+      "roquefort": 0,
+      "carnoux": 0,
+      "portmiou": 0,
+      "capcanaille": 0,
+      "shelter_r09": 0,
+      "shelter_m22": 0,
+      "shelter_m31": 0,
+      "shelter_a07": 0,
+      "shelter_a27": 0,
+      "shelter_h21": 0,
+      "shelter_g31": 0,
+      "shelter_c21": 0,
+      "shelter_c31": 0,
+      "shelter_lc21": 0,
+      "shelter_lc29": 0,
+      "shelter_i11": 0,
+      "shelter_m42": 0,
+      "shelter_a32": 0,
+      "shelter_h33": 0,
+      "shelter_g40": 0,
+      "shelter_c40": 0,
+      "shelter_lc44": 0,
+      "shelter_i23": 0,
+      "shelter_p27": 0,
+      "shelter_r32": 0,
+      "shelter_t18": 0,
+      "shelter_s06": 0,
+      "shelter_v14": 0,
+      "savonnerie": 0,
+      "frioulport": 0,
+      "ratonneau": 0,
+      "pomegues": 0,
+      "chateauif": 0
+    },
+    "economy": {
+      "travelCount": 0,
+      "lastProduction": 0,
+      "merchants": {
+        "aubagne": {
+          "caps": 364,
+          "stock": {
+            "stimpak": 4,
+            "water": 5,
+            "ammo10": 50,
+            "scrap": 8,
+            "weaponParts": 3,
+            "pipeCarbine": 1,
+            "workshopJacket": 1,
+            "ammo38": 80,
+            "ammo44": 18,
+            "ammo556": 40,
+            "pipePistol": 1,
+            "pipeRifle": 1,
+            "provenceRevolver": 1,
+            "mistralCarbine": 1,
+            "combatKnife": 1,
+            "machete": 1,
+            "bb": 100,
+            "nails": 80,
+            "pistol32": 1,
+            "bbGun": 1,
+            "nailGun": 1,
+            "tireIron": 1,
+            "crowbar": 1,
+            "leatherArmor": 1,
+            "ammo9": 80,
+            "ammo357": 30,
+            "pistol9": 1,
+            "revolver357": 1,
+            "varmintRifle": 1,
+            "cowboyRepeater": 1,
+            "handmadeRifle": 1,
+            "mistralScoutMantle": 1,
+            "mentats": 3,
+            "buffout": 2,
+            "fragGrenade": 0
+          }
+        }
+      },
+      "contracts": {
+        "salvage": 0,
+        "rescue": 0,
+        "escort": 0,
+        "broadcast": 0,
+        "firewatch": 0
+      }
+    },
+    "events": {
+      "active": null,
+      "history": [],
+      "nextTravel": 2,
+      "resolved": 0
+    },
+    "weather": {
+      "type": "clear",
+      "timer": 209.5999999999999
+    },
+    "rep": {
+      "ligue": 0,
+      "rade": 0,
+      "arsenal": 0,
+      "continuite": 0,
+      "veilleurs": 0,
+      "francs": 0,
+      "rails": 0,
+      "collines": 0,
+      "marches": 0,
+      "eaux": 0,
+      "artisans": 0,
+      "secours": 0
+    },
+    "equipment": {
+      "ownedWeapons": [
+        "pistol10"
+      ],
+      "ownedArmors": [
+        "vaultSuit"
+      ],
+      "weaponCondition": {
+        "pistol10": 100
+      },
+      "armorCondition": {
+        "vaultSuit": 100
+      },
+      "loadedAmmo": {
+        "pistol10": 10
+      },
+      "weaponMods": {}
+    },
+    "companions": {
+      "loyalty": {
+        "mireille": 25,
+        "naima": 20,
+        "emile": 15,
+        "roux": 0,
+        "lucien": 0,
+        "bastien": 0,
+        "marius": 0
+      }
+    },
+    "crime": {
+      "aubagne": 0,
+      "marseille": 0,
+      "laciotat": 0,
+      "collines": 0
+    },
+    "status": {
+      "bleeding": 0,
+      "infection": 0,
+      "fortified": 0,
+      "burning": 0,
+      "smoke": 0
+    },
+    "vehicle": {
+      "skiffUnlocked": false,
+      "hull": 100,
+      "maxHull": 100,
+      "fuel": 0,
+      "maxFuel": 100,
+      "speed": 0,
+      "seaRuns": 0,
+      "lastDock": "mugel",
+      "collisionCooldown": 0
+    },
+    "achievements": [],
+    "worldTime": 12.003200000000007,
+    "playTime": 0.39999999999999997,
+    "lastSave": "2026-10-26T10:27:50.960Z",
+    "lore": {
+      "terminals": {},
+      "terminalActions": {},
+      "notes": {},
+      "holotapes": {},
+      "holotapePlays": {},
+      "localQuests": {},
+      "localQuestOutcomes": {}
+    },
+    "companionQuests": {
+      "lucien": {
+        "stage": 0,
+        "outcome": null
+      },
+      "bastien": {
+        "stage": 0,
+        "outcome": null
+      },
+      "marius": {
+        "stage": 0,
+        "outcome": null
+      }
+    },
+    "foundation": {
+      "q09": {
+        "stage": 0,
+        "outcome": null,
+        "parts": {}
+      },
+      "q12": {
+        "played": 0,
+        "best": null,
+        "wins": 0,
+        "outcome": null
+      },
+      "powerArmor": {
+        "stage": 0,
+        "outcome": null
+      }
+    },
+    "reconstruction": {
+      "sites": {
+        "aubagne": {},
+        "huveaune": {},
+        "marseille": {},
+        "cassis": {},
+        "drydock": {},
+        "frioulport": {}
+      }
+    },
+    "collectibles": {
+      "magazines": {},
+      "plans": {},
+      "lockedCaches": {}
+    },
+    "needs": {
+      "hunger": 0,
+      "thirst": 0,
+      "fatigue": 0,
+      "lastTick": 0
+    },
+    "v018": {
+      "coordinates": "EPSG:2154-local",
+      "travelMode": "story",
+      "trackedQuest": null,
+      "tapeBookmarks": {},
+      "tapeSpeed": 1
+    },
+    "v020": {
+      "schema": 1,
+      "operations": {},
+      "visits": {},
+      "returnPoint": null,
+      "companionOrders": {},
+      "favorites": [
+        "pistol10",
+        null,
+        null,
+        null
+      ],
+      "stash": {},
+      "craftCount": {},
+      "discoveredStations": {},
+      "restHours": 0,
+      "notes": {},
+      "looted": {},
+      "openedDoors": {},
+      "accessibility": {
+        "localPlan": true
+      },
+      "lastVersion": "0.20.0"
+    },
+    "v021": {
+      "schema": 1,
+      "accepted": false,
+      "clues": {},
+      "switches": {},
+      "witness": false,
+      "visited": {},
+      "ending": null,
+      "rewarded": false,
+      "returnPoints": [],
+      "journalPage": 0,
+      "tracked": false
+    },
+    "v022": {
+      "schema": 1,
+      "actors": {},
+      "encounters": {
+        "aubagne|roux-hunter": {
+          "zone": "aubagne",
+          "type": "tarente",
+          "health": 70,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-0": {
+          "zone": "aubagne",
+          "type": "raider",
+          "health": 72,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-1": {
+          "zone": "aubagne",
+          "type": "molerat",
+          "health": 44,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-2": {
+          "zone": "aubagne",
+          "type": "gecko",
+          "health": 62,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-3": {
+          "zone": "aubagne",
+          "type": "giantAnt",
+          "health": 73,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-4": {
+          "zone": "aubagne",
+          "type": "ledgerHound",
+          "health": 122,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-5": {
+          "zone": "aubagne",
+          "type": "feralReaver",
+          "health": 150,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-6": {
+          "zone": "aubagne",
+          "type": "mirelurkHatchling",
+          "health": 46,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-7": {
+          "zone": "aubagne",
+          "type": "raider",
+          "health": 72,
+          "leg": 0,
+          "arm": 0
+        },
+        "aubagne|eco-v012-aubagne-8": {
+          "zone": "aubagne",
+          "type": "molerat",
+          "health": 44,
+          "leg": 0,
+          "arm": 0
+        }
+      },
+      "caches": {},
+      "task": {
+        "accepted": false,
+        "kit": false,
+        "beds": false,
+        "consent": null,
+        "relay": false,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "observed": {}
+    },
+    "v023": {
+      "schema": 1,
+      "goat": {
+        "answers": [],
+        "tags": [],
+        "completed": false,
+        "method": null
+      },
+      "critical": 0,
+      "history": [
+        {
+          "speaker": "Baptiste Arnaud",
+          "text": "J’ai de l’eau, des munitions, des pièces d’arme et parfois de quoi mieux s’équiper. Les prix changent avec les routes, votre réputation et le contenu de votre dossier.",
+          "role": "MARCHAND DE PIÈCES",
+          "zone": "aubagne",
+          "choice": false
+        },
+        {
+          "speaker": "Camille",
+          "text": "Ouvrir le comptoir.",
+          "role": "",
+          "zone": "aubagne",
+          "choice": true
+        }
+      ],
+      "seen": {},
+      "checks": {},
+      "quest": {
+        "accepted": false,
+        "evidence": {
+          "manifest": false,
+          "register": false,
+          "protocol": false
+        },
+        "witness": {
+          "diane": false,
+          "rayan": false
+        },
+        "trust": 0,
+        "ending": null,
+        "rewarded": false,
+        "deliveries": {
+          "transit_depot": false,
+          "traverse_archives": false,
+          "mooring_station": false
+        },
+        "tracked": false
+      },
+      "consequences": []
+    },
+    "v025": {
+      "schema": 1,
+      "limbs": {}
+    },
+    "v026": {
+      "schema": 1,
+      "containers": {},
+      "vendorGear": {},
+      "marked": {},
+      "carry": false,
+      "transactions": [
+        {
+          "text": "Grenade à fragmentation — 48 capsules",
+          "zone": "aubagne",
+          "kind": "acheter"
+        },
+        {
+          "text": "Grenade à fragmentation — 48 capsules",
+          "zone": "aubagne",
+          "kind": "acheter"
+        },
+        {
+          "text": "Grenade à fragmentation — 48 capsules",
+          "zone": "aubagne",
+          "kind": "acheter"
+        }
+      ],
+      "quest": {
+        "accepted": false,
+        "informed": false,
+        "inspected": {
+          "transit_depot": false,
+          "traverse_archives": false,
+          "mooring_station": false
+        },
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      }
+    },
+    "v027": {
+      "schema": 1,
+      "theme": "green",
+      "scanlines": true,
+      "backgroundTape": false,
+      "tagged": [],
+      "read": {},
+      "documents": {},
+      "pin": null,
+      "last": {
+        "tab": "data",
+        "sub": "system"
+      }
+    },
+    "v028": {
+      "schema": 1,
+      "limbs": {
+        "head": 100,
+        "torso": 100,
+        "leftArm": 100,
+        "rightArm": 100,
+        "leftLeg": 100,
+        "rightLeg": 100
+      },
+      "hits": 0,
+      "lamp": false,
+      "history": [],
+      "quest": {
+        "accepted": false,
+        "plan": false,
+        "isolated": false,
+        "rewarded": false,
+        "ending": null,
+        "tracked": false
+      },
+      "game": {
+        "unlocked": false,
+        "levels": {}
+      }
+    },
+    "v029": {
+      "schema": 1,
+      "elapsed": 0.39999999999999997,
+      "terminals": {},
+      "credentials": {
+        "d4": false,
+        "a2": false,
+        "q8": false
+      },
+      "quest": {
+        "accepted": false,
+        "proof": {
+          "route": false,
+          "filter": false,
+          "clause": false
+        },
+        "contact": false,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "noiseCount": 0
+    },
+    "v030": {
+      "schema": 1,
+      "active": false,
+      "core": null,
+      "spares": [],
+      "rigs": {},
+      "vendorRigs": {},
+      "hitIndex": 0,
+      "travelDistance": 0,
+      "spent": 0,
+      "quest": {
+        "accepted": false,
+        "servo": false,
+        "plan": false,
+        "isolated": false,
+        "restored": false,
+        "coreTaken": false,
+        "trial": null,
+        "ending": null,
+        "rewarded": false,
+        "tracked": false
+      },
+      "history": []
+    },
+    "v035": {
+      "schema": 1,
+      "activeSlot": 0,
+      "career": {
+        "ngPlus": 0,
+        "creditsSeen": false,
+        "chaptersViewed": {},
+        "operationFirsts": {},
+        "operationRecords": {}
+      },
+      "operations": {
+        "active": null,
+        "totalCompleted": 0
+      },
+      "hub": {
+        "returns": 0,
+        "lastRest": null,
+        "visited": false
+      },
+      "prologue": {
+        "started": false,
+        "titleSeen": false,
+        "stage": 0,
+        "locker": false,
+        "clinic": false,
+        "filter": false,
+        "breakfast": false,
+        "records": false,
+        "briefed": false,
+        "loadout": null,
+        "complete": false
+      },
+      "session": {
+        "startedAt": 1793010470900,
+        "lastRecap": null
+      }
+    },
+    "v036": {
+      "schema": 1,
+      "preferRelay": true,
+      "autoMacroTransfer": true,
+      "lastMacro": null,
+      "lastLatLon": null,
+      "onlineTilesLoaded": 0,
+      "localTilesLoaded": 0,
+      "cacheTilesLoaded": 0
+    },
+    "v037": {
+      "schema": 1,
+      "preferCloudCache": true,
+      "autoPrefetch": true,
+      "prefetchAhead": 2,
+      "cacheBudgetMB": 256,
+      "cloudTilesLoaded": 0,
+      "directTilesLoaded": 0,
+      "packTilesLoaded": 0,
+      "localCacheHits": 0,
+      "lastCloudCheck": null
+    },
+    "v038": {
+      "schema": 1,
+      "lastCoverage": null,
+      "fullVectorCacheConfirmed": false,
+      "emptyTilesLoaded": 0,
+      "dataTilesLoaded": 0,
+      "verifiedAt": null
+    },
+    "v039": {
+      "schema": 1,
+      "terrainCloudConfirmed": false,
+      "lastTerrainCheck": null,
+      "terrainLoads": 0,
+      "terrainPackHits": 0,
+      "terrainCacheHits": 0,
+      "terrainCloudHits": 0,
+      "terrainErrors": 0,
+      "lastTerrainMacro": null,
+      "lastTerrainSource": null
+    },
+    "v040": {
+      "schema": 1,
+      "activeCorridor": null,
+      "corridorProgress": 0,
+      "corridorPhase": "idle",
+      "corridorBreaks": 0,
+      "corridorCompleted": {},
+      "corridorStartedAt": null,
+      "corridorLastLatLon": null,
+      "lastCorridorCheck": null,
+      "terrainSeamChecks": 0,
+      "stitchedBuildings": 0
+    },
+    "v041": {
+      "schema": 1,
+      "lastPackCheck": null,
+      "localPackComplete": true,
+      "localCoordinates": 5884,
+      "localTerrain": 0,
+      "lastBenchmark": "2026-10-26T10:27:01.504Z"
+    },
+    "v042": {
+      "schema": 1,
+      "discovered": {},
+      "cleared": {},
+      "visited": {},
+      "tracked": null,
+      "activeContract": null,
+      "contracts": {},
+      "siteKills": {},
+      "eliteKills": {},
+      "bossKills": {},
+      "regional": {},
+      "activeInterior": null,
+      "returnPoint": null,
+      "discoveries": 0,
+      "clears": 0,
+      "filter": "all",
+      "lastSite": null,
+      "lastUpdate": null
+    },
+    "geo": {
+      "return": null,
+      "pendingTarget": null,
+      "lastMacro": "geo_huveaune",
+      "visitedMacros": {},
+      "surfaceVisited": {},
+      "surfaceActions": {},
+      "lastSurface": null,
+      "discoveryCount": 0,
+      "mapVersion": "0.50.0",
+      "strict": true,
+      "tileCoverage": {}
+    },
+    "v046": {
+      "schema": 1,
+      "frame": "lambert93-central",
+      "placements": {},
+      "lore": {
+        "done": {},
+        "side": null,
+        "petanque": {
+          "played": 0,
+          "wins": 0
+        }
+      },
+      "lastLocation": null
+    },
+    "v049": {
+      "schema": 1,
+      "actors": {}
+    },
+    "v050Campaign": {
+      "schema": 1,
+      "route": null,
+      "gateway": null,
+      "returnPoint": null,
+      "workshopVisits": 0
+    },
+    "v050Wasteland": {
+      "schema": 1,
+      "kitOwned": false,
+      "camp": null,
+      "restHours": 0,
+      "crafts": 0,
+      "aid": {}
+    },
+    "v050City": {
+      "schema": 2,
+      "active": null,
+      "returnPoint": null,
+      "visits": {},
+      "documents": [],
+      "documentOmissions": 0,
+      "documentWarnings": [],
+      "roomDoorStates": {}
+    },
+    "v053Lore": {
+      "schema": 1,
+      "quests": {
+        "cendres": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "formulaire": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "signaux": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "lazaret": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "cadences": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        },
+        "attente": {
+          "accepted": false,
+          "witnesses": [],
+          "observations": [],
+          "audit": false,
+          "outcome": null
+        }
+      },
+      "journal": []
+    },
+    "v053Iconic": {
+      "schema": 1,
+      "found": {},
+      "read": {},
+      "effects": {},
+      "drinks": 0
+    },
+    "v053Bestiary": {
+      "schema": 1,
+      "assignments": {}
+    },
+    "v054Chems": {
+      "schema": 1,
+      "elapsed": 0.39999999999999997,
+      "agents": {
+        "jet": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "buffout": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "mentats": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        },
+        "psycho": {
+          "uses": 0,
+          "load": 0,
+          "washout": 0,
+          "active": 0,
+          "tier": 0,
+          "dependent": false,
+          "withdrawal": 0
+        }
+      },
+      "stocked": {
+        "aubagne": true
+      },
+      "treatments": 0,
+      "recoveries": 0
+    },
+    "v055Ordnance": {
+      "schema": 1,
+      "launched": 1,
+      "detonated": 0,
+      "lost": 0,
+      "stocked": {
+        "aubagne": true
+      },
+      "armed": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.7800760076520084,
+          79.43784647883072
+        ],
+        "velocity": [
+          0,
+          -1.558891021599243,
+          -12.958422181934052
+        ],
+        "fuse": 2.59999999999998,
+        "bounces": 0,
+        "scene": "aubagne"
+      }
+    }
+  },
+  "combat_authored_geometry": {
+    "id": "aubagne",
+    "floorZones": [
+      {
+        "type": "flat",
+        "minX": 62.23120924248832,
+        "maxX": 78.23120924248832,
+        "minZ": -71.16373689178019,
+        "maxZ": -59.16373689178019,
+        "height": 0,
+        "priority": 2,
+        "id": "cohesion-room-aubagne-0"
+      },
+      {
+        "type": "flat",
+        "minX": -102.04294246544121,
+        "maxX": -86.04294246544121,
+        "minZ": -7.462927260489913,
+        "maxZ": 4.537072739510087,
+        "height": 0,
+        "priority": 2,
+        "id": "cohesion-room-aubagne-1"
+      },
+      {
+        "type": "flat",
+        "minX": -2.8785022000486347,
+        "maxX": 11.121497799951365,
+        "minZ": -12.363896039791582,
+        "maxZ": -2.363896039791582,
+        "height": 3.4,
+        "priority": 2,
+        "id": "cohesion-deck-aubagne"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -13.863896039791582,
+        "maxZ": -12.78056270645825,
+        "height": 0.2833333333333333,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-0"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -12.780562706458248,
+        "maxZ": -11.697229373124916,
+        "height": 0.5666666666666667,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-1"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -11.697229373124914,
+        "maxZ": -10.613896039791582,
+        "height": 0.85,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-2"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -10.613896039791582,
+        "maxZ": -9.53056270645825,
+        "height": 1.1333333333333333,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-3"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -9.530562706458248,
+        "maxZ": -8.447229373124916,
+        "height": 1.4166666666666667,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-4"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -8.447229373124916,
+        "maxZ": -7.363896039791582,
+        "height": 1.7,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-5"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -7.363896039791583,
+        "maxZ": -6.280562706458249,
+        "height": 1.9833333333333334,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-6"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -6.280562706458249,
+        "maxZ": -5.197229373124915,
+        "height": 2.2666666666666666,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-7"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -5.197229373124917,
+        "maxZ": -4.113896039791583,
+        "height": 2.55,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-8"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -4.113896039791583,
+        "maxZ": -3.0305627064582494,
+        "height": 2.8333333333333335,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-9"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -3.0305627064582485,
+        "maxZ": -1.9472293731249155,
+        "height": 3.1166666666666663,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-10"
+      },
+      {
+        "type": "flat",
+        "minX": -5.378502200048635,
+        "maxX": -2.3785022000486347,
+        "minZ": -1.9472293731249164,
+        "maxZ": -0.8638960397915832,
+        "height": 3.4,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-11"
+      },
+      {
+        "type": "flat",
+        "minX": -62.94806121004375,
+        "maxX": -46.94806121004375,
+        "minZ": 50.07118768910089,
+        "maxZ": 62.07118768910089,
+        "height": 0,
+        "priority": 2,
+        "id": "cohesion-room-aubagne-2"
+      },
+      {
+        "type": "flat",
+        "minX": 42.53209440387197,
+        "maxX": 58.53209440387197,
+        "minZ": -51.45342960397295,
+        "maxZ": -39.45342960397295,
+        "height": 0,
+        "priority": 2,
+        "id": "cohesion-room-aubagne-3"
+      },
+      {
+        "type": "flat",
+        "minX": 57.4151475902802,
+        "maxX": 71.4151475902802,
+        "minZ": -56.87377493918354,
+        "maxZ": -46.87377493918354,
+        "height": 3.4,
+        "priority": 2,
+        "id": "cohesion-deck-aubagne"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -58.37377493918354,
+        "maxZ": -57.29044160585021,
+        "height": 0.2833333333333333,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-0"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -57.290441605850205,
+        "maxZ": -56.20710827251688,
+        "height": 0.5666666666666667,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-1"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -56.20710827251687,
+        "maxZ": -55.12377493918354,
+        "height": 0.85,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-2"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -55.12377493918354,
+        "maxZ": -54.04044160585021,
+        "height": 1.1333333333333333,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-3"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -54.040441605850205,
+        "maxZ": -52.95710827251688,
+        "height": 1.4166666666666667,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-4"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -52.95710827251687,
+        "maxZ": -51.87377493918354,
+        "height": 1.7,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-5"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -51.87377493918354,
+        "maxZ": -50.79044160585021,
+        "height": 1.9833333333333334,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-6"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -50.790441605850205,
+        "maxZ": -49.70710827251688,
+        "height": 2.2666666666666666,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-7"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -49.70710827251687,
+        "maxZ": -48.62377493918354,
+        "height": 2.55,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-8"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -48.62377493918354,
+        "maxZ": -47.54044160585021,
+        "height": 2.8333333333333335,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-9"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -47.540441605850205,
+        "maxZ": -46.45710827251688,
+        "height": 3.1166666666666663,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-10"
+      },
+      {
+        "type": "flat",
+        "minX": 54.9151475902802,
+        "maxX": 57.9151475902802,
+        "minZ": -46.45710827251687,
+        "maxZ": -45.37377493918354,
+        "height": 3.4,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-11"
+      },
+      {
+        "type": "flat",
+        "minX": -83.9471555844915,
+        "maxX": -67.9471555844915,
+        "minZ": -31.70979216764284,
+        "maxZ": -19.70979216764284,
+        "height": 0,
+        "priority": 2,
+        "id": "cohesion-room-aubagne-4"
+      },
+      {
+        "type": "flat",
+        "minX": 45.82474095752359,
+        "maxX": 61.82474095752359,
+        "minZ": 5.178784364886017,
+        "maxZ": 17.178784364886017,
+        "height": 0,
+        "priority": 2,
+        "id": "cohesion-room-aubagne-5"
+      },
+      {
+        "type": "flat",
+        "minX": -74.40003450465188,
+        "maxX": -60.400034504651885,
+        "minZ": -15.690247525858208,
+        "maxZ": -5.690247525858208,
+        "height": 3.4,
+        "priority": 2,
+        "id": "cohesion-deck-aubagne"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -17.190247525858208,
+        "maxZ": -16.106914192524872,
+        "height": 0.2833333333333333,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-0"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -16.106914192524876,
+        "maxZ": -15.023580859191542,
+        "height": 0.5666666666666667,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-1"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -15.023580859191542,
+        "maxZ": -13.94024752585821,
+        "height": 0.85,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-2"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -13.940247525858208,
+        "maxZ": -12.856914192524876,
+        "height": 1.1333333333333333,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-3"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -12.856914192524874,
+        "maxZ": -11.773580859191542,
+        "height": 1.4166666666666667,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-4"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -11.773580859191542,
+        "maxZ": -10.69024752585821,
+        "height": 1.7,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-5"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -10.690247525858208,
+        "maxZ": -9.606914192524876,
+        "height": 1.9833333333333334,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-6"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -9.606914192524874,
+        "maxZ": -8.523580859191542,
+        "height": 2.2666666666666666,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-7"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -8.523580859191542,
+        "maxZ": -7.440247525858209,
+        "height": 2.55,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-8"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -7.440247525858209,
+        "maxZ": -6.356914192524875,
+        "height": 2.8333333333333335,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-9"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -6.356914192524875,
+        "maxZ": -5.273580859191541,
+        "height": 3.1166666666666663,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-10"
+      },
+      {
+        "type": "flat",
+        "minX": -76.90003450465188,
+        "maxX": -73.90003450465188,
+        "minZ": -5.273580859191543,
+        "maxZ": -4.190247525858209,
+        "height": 3.4,
+        "priority": 3,
+        "id": "cohesion-stairs-aubagne-11"
+      }
+    ],
+    "colliders": [
+      {
+        "minX": -56.65,
+        "maxX": -29.35,
+        "minZ": 14.85,
+        "maxZ": 33.15,
+        "minY": 0,
+        "maxY": 6.4,
+        "id": "aub-b1",
+        "disabled": false
+      },
+      {
+        "minX": 29.35,
+        "maxX": 54.65,
+        "minZ": 15.85,
+        "maxZ": 34.15,
+        "minY": 0,
+        "maxY": 5.9,
+        "id": "aub-b2",
+        "disabled": false
+      },
+      {
+        "minX": -51.15,
+        "maxX": -26.85,
+        "minZ": -14.65,
+        "maxZ": 0.6500000000000004,
+        "minY": 0,
+        "maxY": 5.4,
+        "id": "workshop",
+        "disabled": false
+      },
+      {
+        "minX": 29.35,
+        "maxX": 52.65,
+        "minZ": -18.15,
+        "maxZ": -1.8499999999999996,
+        "minY": 0,
+        "maxY": 6.4,
+        "id": "aub-b3",
+        "disabled": false
+      },
+      {
+        "minX": -66.15,
+        "maxX": -43.85,
+        "minZ": 55.85,
+        "maxZ": 72.15,
+        "minY": 0,
+        "maxY": 4.9,
+        "id": "aub-gate-house",
+        "disabled": false
+      },
+      {
+        "minX": 43.85,
+        "maxX": 64.15,
+        "minZ": 59.35,
+        "maxZ": 74.65,
+        "minY": 0,
+        "maxY": 4.6000000000000005,
+        "id": "aub-inn",
+        "disabled": false
+      },
+      {
+        "minX": 45.85,
+        "maxX": 62.15,
+        "minZ": -54.65,
+        "maxZ": -41.35,
+        "minY": 0,
+        "maxY": 4.4,
+        "id": "shed",
+        "disabled": false
+      },
+      {
+        "minX": -1.2,
+        "maxX": 1.2,
+        "minZ": 92.5,
+        "maxZ": 93.5,
+        "minY": -1,
+        "maxY": 0.96,
+        "id": null,
+        "disabled": false
+      },
+      {
+        "minX": -2.54,
+        "maxX": -1.86,
+        "minZ": 89.7,
+        "maxZ": 90.3,
+        "minY": 0,
+        "maxY": 0.715,
+        "id": "iconic-stand:figurine-s",
+        "disabled": false,
+        "v053Iconic": "figurine-s",
+        "v053IconicTop": 0.72
+      },
+      {
+        "minX": -2.0853773486407174,
+        "maxX": -1.4053773486407173,
+        "minZ": 91.03927514381918,
+        "maxZ": 91.63927514381918,
+        "minY": 0,
+        "maxY": 0.715,
+        "id": "iconic-stand:bouteille-classique",
+        "disabled": false,
+        "v053Iconic": "bouteille-classique",
+        "v053IconicTop": 0.72
+      }
+    ],
+    "coverPoints": [
+      {
+        "id": "cover-0",
+        "pos": [
+          -9.303497084305382,
+          0.8,
+          -63.06988339165278
+        ],
+        "quality": 1.1,
+        "occupied": null
+      },
+      {
+        "id": "cover-1",
+        "pos": [
+          10.696502915694618,
+          0.8,
+          -62.93011660834722
+        ],
+        "quality": 1.1,
+        "occupied": null
+      },
+      {
+        "id": "cover-2",
+        "pos": [
+          -20.9,
+          0.7,
+          2
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "cover-3",
+        "pos": [
+          -18.9,
+          0.7,
+          3.2
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-0-a",
+        "pos": [
+          -79.67378654486535,
+          0.8,
+          -66.84027749416396
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-0-b",
+        "pos": [
+          -80.80621345513467,
+          0.8,
+          -74.75972250583604
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-1-a",
+        "pos": [
+          68.45211956713618,
+          0.8,
+          -67.57927822387438
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-1-b",
+        "pos": [
+          63.70788043286384,
+          0.8,
+          -74.02072177612561
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-2-a",
+        "pos": [
+          -67.61047790216666,
+          0.8,
+          46.27038626690821
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-2-b",
+        "pos": [
+          -59.829522097833326,
+          0.8,
+          48.129613733091766
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-3-a",
+        "pos": [
+          64.89973910642519,
+          0.8,
+          50.05714008619963
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-3-b",
+        "pos": [
+          57.82026089357483,
+          0.8,
+          53.782859913800344
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-4-a",
+        "pos": [
+          -0.8492022629762379,
+          0.8,
+          -1.0162869714563616
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-4-b",
+        "pos": [
+          -3.8707977370237607,
+          0.8,
+          -8.423713028543636
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-5-a",
+        "pos": [
+          -81.01089458024293,
+          0.8,
+          0.6360553306477882
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-5-b",
+        "pos": [
+          -88.90910541975705,
+          0.8,
+          -0.6360553306477882
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-6-a",
+        "pos": [
+          85.70301239765399,
+          0.8,
+          -0.4284502430692577
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "ld-cover-aubagne-6-b",
+        "pos": [
+          93.65698760234602,
+          0.8,
+          0.4284502430692577
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "v012-cover-aubagne-7-a",
+        "pos": [
+          -56.357916214050434,
+          0.8,
+          48.80673252249154
+        ],
+        "quality": 1,
+        "occupied": null
+      },
+      {
+        "id": "v012-cover-aubagne-7-b",
+        "pos": [
+          -57.88208378594956,
+          0.8,
+          40.953267477508454
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "v012-cover-aubagne-8-a",
+        "pos": [
+          68.1164428223906,
+          0.8,
+          -44.7113442341256
+        ],
+        "quality": 1,
+        "occupied": null
+      },
+      {
+        "id": "v012-cover-aubagne-8-b",
+        "pos": [
+          60.123557177609406,
+          0.8,
+          -45.04865576587439
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "v012-cover-aubagne-9-a",
+        "pos": [
+          -66.45700141379531,
+          0.8,
+          -18.6971625740868
+        ],
+        "quality": 1,
+        "occupied": null
+      },
+      {
+        "id": "v012-cover-aubagne-9-b",
+        "pos": [
+          -60.022998586204686,
+          0.8,
+          -13.942837425913215
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "v012-cover-aubagne-10-a",
+        "pos": [
+          65.33227978721699,
+          0.8,
+          29.929159030025343
+        ],
+        "quality": 1,
+        "occupied": null
+      },
+      {
+        "id": "v012-cover-aubagne-10-b",
+        "pos": [
+          61.14772021278303,
+          0.8,
+          23.110840969974678
+        ],
+        "quality": 0.9,
+        "occupied": null
+      },
+      {
+        "id": "cover-26",
+        "pos": [
+          49.1,
+          0.7,
+          6
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "cover-27",
+        "pos": [
+          21.1,
+          0.7,
+          34
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "cover-28",
+        "pos": [
+          -20.9,
+          0.7,
+          69
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "cover-29",
+        "pos": [
+          21.1,
+          0.7,
+          -50
+        ],
+        "quality": 0.8,
+        "occupied": null
+      },
+      {
+        "id": "cover-30",
+        "pos": [
+          2.7192490685147495,
+          0.7,
+          -4.313088645127092
+        ],
+        "quality": 0.8,
+        "occupied": null
+      }
+    ]
+  },
+  "actual_combat_blast": {
+    "pos": [
+      63.40106057783527,
+      0.09,
+      -43.18755401861988
+    ],
+    "hits": [
+      {
+        "id": "roux-hunter",
+        "before": 70,
+        "after": 12.714383987942938
+      }
+    ],
+    "player": false
+  },
+  "stage": "complete",
+  "browser_closed": true,
+  "server_closed": true
+}

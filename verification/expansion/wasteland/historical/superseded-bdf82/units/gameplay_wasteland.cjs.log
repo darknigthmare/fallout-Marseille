@@ -1,0 +1,47 @@
+OK Old saves receive no free kit or materials
+OK Kit spends its complete construction cost once
+OK Visible camp and physical interaction are created
+OK Already deployed kit cannot be duplicated
+OK Packing retains exactly one reusable kit and removes its scene props
+OK Distant kit cannot be recalled or used for free rest
+OK Placement refuses no measured altitude without payment
+OK Placement refuses steep footprint without payment
+OK Placement refuses road or solid footprint without payment
+OK Placement refuses insufficient complete kit resources without payment
+OK Placement refuses combat without payment
+OK Placement refuses nearby unalerted enemy without payment
+OK Placement refuses loading without payment
+OK Placement refuses narrative interior without payment
+OK Placement refuses lab isolation without payment
+OK Placement refuses closed Pip-Boy without payment
+OK Placement refuses dead player without payment
+OK Placement refuses airborne player without payment
+OK Placement refuses player over an unmeasured hole without payment
+OK Placement refuses floating camera without payment
+OK Failed persistent write rolls construction back
+OK Storage exception also rolls construction back
+OK Camp migration validates source coordinate bounds and kit ownership
+OK Camp, exact resources and ledger survive JSON save migration
+OK Rest uses finite supplies, advances time once, preserves rads and wounds
+OK Invalid rest durations cannot alter time or supplies
+OK Active infection prevents outdoor sleeping
+OK Incomplete rest supplies cause no partial cost
+OK Failed save rolls elapsed time, health, fatigue and ingredients back
+OK Field cooking uses actual recipe costs and quantities
+OK Portable camp cannot manufacture workshop ammunition
+OK Camp services recheck road/solid conflicts after terrain publication
+OK Camp services require an unobstructed physical access
+OK Purification failure cannot consume only its first ingredient
+OK Aid requires an alive, discovered and visible recipient nearby
+OK Aid consumes finite supplies and rewards the associated faction
+OK An aid delivery cannot be rewarded twice, including after reload
+OK Aid categories are distinct finite needs, never an infinite contract
+OK Hostile and fabricated relay IDs cannot grant aid rewards
+OK Unknown aid types cannot spend arbitrary inventory
+OK Insufficient medicine causes neither partial payment nor faction gains
+OK Aid persistence failure rolls ledger, resources, caps and reputation back
+OK Migration keeps only known safe sites and exact boolean receipts
+OK Pip-Boy pages expose production actions and existing tabs are preserved
+OK Panel dispatch uses the same guarded functions as physical gameplay
+{"passed":45,"failed":0,"total":45,"scope":"Production field-life module with controlled geometry, session and persistence seams"}
+

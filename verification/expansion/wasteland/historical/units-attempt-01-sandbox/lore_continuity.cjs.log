@@ -1,0 +1,50 @@
+✔ Six faction dossiers bind only existing sites without moving the catalogue (6.406656ms)
+✔ An absent compatible host remains unavailable instead of inventing a new placement (1.620885ms)
+✔ Catalogues and outcomes returned to callers cannot edit private narrative definitions (0.332711ms)
+✔ Remote acceptance and a blocked contact cannot create an accepted dossier (0.325768ms)
+✔ Testimonies require two different eligible physical relays and reward only once (0.618945ms)
+✔ A technical audit pays one circuit after an Intelligence check; testimonies are an alternative (0.489373ms)
+✔ Three unique source landmarks must be physically examined before the Vigies decision (0.357477ms)
+✔ Lazaret decisions have distinct real supplies and no partial payment (0.512116ms)
+✔ Migration bounds and revalidates proofs, unknown quests and duplicated decisions (0.459007ms)
+✔ Bulletins reflect only conserved outcomes and preserve legacy COCHONNET victories (0.682714ms)
+✔ Runtime adds a separate ledger and leaves all eight historical dossiers, nine factions and 25 testimony names intact (7.955847ms)
+✔ A distance contact cannot open or pay a new dossier (3.920857ms)
+✔ A line of sight contact cannot open or pay a new dossier (2.814513ms)
+✔ A dead NPC contact cannot open or pay a new dossier (3.433828ms)
+✔ A undiscovered contact cannot open or pay a new dossier (2.533417ms)
+✔ A loading contact cannot open or pay a new dossier (2.587629ms)
+✔ A combat contact cannot open or pay a new dossier (2.581668ms)
+✔ A airborne contact cannot open or pay a new dossier (2.608878ms)
+✔ A lab contact cannot open or pay a new dossier (2.758057ms)
+✔ A dead player contact cannot open or pay a new dossier (2.692925ms)
+✔ A scene contact cannot open or pay a new dossier (2.669271ms)
+✔ A delivery is paid and rewarded exactly once, survives migration and affects existing reputation keys (4.057569ms)
+✔ A false-returning persistence failure restores supplies, XP, both reputation ledgers and the prior decision (4.951831ms)
+✔ A throwing persistence failure restores supplies, XP, both reputation ledgers and the prior decision (2.826996ms)
+✔ The dialogue callback rechecks position at the time of payment and keeps legacy conversation reachable (4.233491ms)
+✔ Testimony records distinct active source relays and the dossier appears in the actual quest journal (3.399243ms)
+✔ A remote note read cannot fabricate an observation, while three real proximity/LOS inspections persist (3.956894ms)
+✔ Observation after a base reader changes scene or save owner is not applied to the replacement (5.130614ms)
+✔ Tracking chooses the next unrecorded site without validating a proof or granting a reward (3.725652ms)
+✔ New game and another save do not inherit proofs, decisions or faction broadcasts (3.908103ms)
+✔ The Pip-Boy continuity panel reports evidence and disables remote payment while preserving legacy France content (3.408861ms)
+✔ Appending the new France link preserves historical quest and COCHONNET button listeners (4.344617ms)
+✔ Syndicat binds the existing memorial and wreck, not a replacement when a named observation is absent (0.506114ms)
+✔ Syndicat requires both on-site observations before either exclusive allocation (0.425444ms)
+✔ Sans-Dossier waits for distinct relay commitments, preserves privacy, and pays an actual optional welcome (0.335546ms)
+✔ Migration extends a stored four-dossier campaign without changing any existing evidence, decision or journal (0.323975ms)
+✔ The physical reader routes new Syndicat evidence without filling the Vigies dossier (3.588677ms)
+✔ The new material allocation rolls back on false persistence failure (3.791876ms)
+✔ The new material allocation rolls back on throwing persistence failure (2.973469ms)
+✔ Sans-Dossier payment, native journal and returned contact dialogue preserve a single shared reward (3.661332ms)
+✔ New dossiers do not inherit another campaign or allow a stale physical observation to write replacement state (2.633655ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 41
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 120.830122
+

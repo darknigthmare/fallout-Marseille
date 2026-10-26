@@ -1,0 +1,122 @@
+OK Frozen HTML contains the exact production ordnance module
+OK Frozen real dependency appears in bundle: src/v050/10_lore_continuity.js
+OK Frozen real dependency appears in bundle: src/v050/11_power_armor.js
+OK Frozen real dependency appears in bundle: src/v050/12_iconic_ecosystem.js
+OK Frozen real dependency appears in bundle: src/v050/15_chemistry.js
+OK Frozen real dependency appears in bundle: src/v026/04_trade_runtime.js
+OK Frozen real dependency appears in bundle: src/v020/04_field.js
+OK Native HTTP document matches frozen production HTML
+OK Existing authored scene selected without grants: aubagne
+OK Fresh migration grants no grenade or armed projectile
+OK Native selection physically reaches Baptiste
+OK Actual E reaches Baptiste dialogue
+OK Baptiste exposes three finite grenades through real stock
+OK Native purchases debit caps and exhaust the one ordinary stock
+OK Visible enabled production control: tab inventory
+OK Visible enabled production control: sub ordnance
+OK Native Pip-Boy navigation: inventory/ordnance
+OK Actual explosives page explains aiming, fuse and self blast
+OK Visible enabled production control: o55:aim 
+OK Visible aim action closes menu without spending a grenade
+OK Safe authored launch point is collision-free
+OK Clickable grenade HUD control is visible and enabled
+OK Desktop grenade HUD button is fully inside the real viewport
+OK Narrow viewport keeps the fourth visible terrain action fully onscreen
+OK Native N consumes one grenade and publishes two real draw meshes
+OK Normal active updates move a real airborne projectile
+OK Visible enabled production control: tab inventory
+OK Visible enabled production control: sub ordnance
+OK Native Pip-Boy navigation: inventory/ordnance
+OK Actual Pip-Boy simulation calls preserve the armed fuse and position
+OK Visible enabled production control: tab data
+OK Visible enabled production control: sub system
+OK Native Pip-Boy navigation: data/system
+OK Visible enabled production control: save 
+OK Native Tab closes Pip-Boy
+OK Production save stores one spent item and actual airborne state
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 52098)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/workspace/fallout-Marseille/tools/serve_game.py", line 23, in __init__
+    super().__init__(*args, directory=str(ROOT), **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/workspace/fallout-Marseille/tools/serve_game.py", line 62, in do_GET
+    return super().do_GET()
+           ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+OK Native HTTP document matches frozen production HTML
+OK Native Continue is enabled
+OK Native Continue restores exact remaining fuse, ballistics and finite stock without refund
+OK Visible enabled production control: tab inventory
+OK Visible enabled production control: sub ordnance
+OK Native Pip-Boy navigation: inventory/ordnance
+OK Native Tab closes Pip-Boy
+OK Resumed active projectile detonates exactly once away from the player
+OK Unmodified authored Roux-hunter is alive at its ordinary source position
+OK Real combat approach has flat authored support, free collision and actual LOS
+OK Visible HUD grenade control performs the same real launch
+OK Real authored enemy receives ordinary blast damage from the physical grenade
+OK Player survived the real encounter without any health overwrite
+OK Existing authored scene selected without grants: relay_cold
+OK A real existing clinic station is available for workshop validation
+OK Existing station approach succeeds with collision/LOS checked export
+OK Real workshop exposes enabled grenade recipe at the actual station
+OK Native workshop consumes actual materials and adds one grenade without XP farming
+OK Visible enabled production control: tab data
+OK Visible enabled production control: sub system
+OK Native Pip-Boy navigation: data/system
+OK Visible enabled production control: save 
+OK Native Tab closes Pip-Boy
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 36216)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/workspace/fallout-Marseille/tools/serve_game.py", line 23, in __init__
+    super().__init__(*args, directory=str(ROOT), **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/workspace/fallout-Marseille/tools/serve_game.py", line 62, in do_GET
+    return super().do_GET()
+           ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+OK Native HTTP document matches frozen production HTML
+OK Final native Continue retains both detonations, recipe count, bag and finite stock
+OK No page exceptions or local failed HTTP resources

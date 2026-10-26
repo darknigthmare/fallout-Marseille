@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/faction_dossiers_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/lore/native",
+    "--expect-html-sha",
+    "c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf",
+    "--expect-lore-sha",
+    "78cf0404cce1d1e01477ec50585ca8ec1dd40cb6cd1b2a474e3a9752201621e7",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "log": "EXECUTION.log",
+  "script_sha256": "86478fc8da6d5342e09d1b770e824cf111b631301a9dc4d7dac385486228fd27",
+  "tool_session": 62235,
+  "scope": "Actual exec_command launch, awaiting observed completion; no inferred exit code."
+}

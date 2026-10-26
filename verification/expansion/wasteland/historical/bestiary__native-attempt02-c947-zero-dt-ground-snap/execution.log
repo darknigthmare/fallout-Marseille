@@ -1,0 +1,134 @@
+OK Frozen production HTML matches coordination
+OK Frozen bestiary source is present unchanged in the production bundle
+OK Frozen real architecture atlas matches coordination
+STAGE actual_pack_audit_before_chromium
+OK Actual GameHandler verifies complete installed source pack
+STAGE native_http_document
+OK Native HTTP document equals exact production bytes
+STAGE real_geographic_publication
+LOAD {"phase": "loading", "done": 0, "total": 48, "tiles": 0}
+OK Candidate belongs to existing hostile territorial catalog
+OK Public sector load requests actual installed geography
+OK Measured diagnostic camera is outside actual colliders
+OK Actual published geography admits a newly materialized Rat-couronné or Cigale
+OK Native actor is outside the laboratory on actual geographic world
+STAGE actual_rig_identity_and_native_capture
+OK Regional metadata retains the actual original slot/type/health
+OK Read-only regional view matches real world actor identity and PV
+OK Actual actor rig contains original regional geometry and matching VATS groups
+OK A measured collision-free camera sees the real regional silhouette
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Actual production player/AI update preserves regional identity, base type and PV
+OK Native save records one variant with the existing encounter ledger
+OK Production save reaches native browser storage
+STAGE true_gabian_geographic_flight
+OK Gabian sector request uses the actual installed pack
+OK Measured diagnostic camera is outside actual colliders
+OK A real existing territorial slot admits a Gabian
+OK Real Gabian has a measured clear close observation point
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Production AI takes off above measured terrain with a clear complete wing volume
+OK True aerial stepping preserves the same ID, original bloatfly type and PV
+OK Actually rendered wing/body vertices stand above actual source ground
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Real airborne AI creates a locked, timed corrosive drop
+OK The locked attack has a measured collision-free physical escape corridor
+OK Native KeyW and real production collision physics leave the locked impact radius
+OK A real rendered corrosive projectile descends from the airborne actor
+OK The locked Gabian projectile impacts and its escaped player is not hit
+OK Native save retains the airborne position in its original v049 encounter
+STAGE actual_iconic_radscorpion
+OK Iconic candidate is an unchanged territorial encounter: v042-calanques-elite-03
+OK Actual installed sector request for radscorpion
+OK Measured diagnostic camera is outside actual colliders
+OK Source-world admission produces an actual radscorpion
+OK Existing original identity/type/PV are authoritative for radscorpion
+OK Actual radscorpion mesh and VATS bounds share the same articulated rig
+OK Real measured collision-free camera sees radscorpion
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Real VATS acquires the source-world radscorpion
+OK Native VATS actually selects the rendered left claw of radscorpion
+OK Cancelling real radscorpion VATS spends no ammunition, AP or inventory
+OK A real measured close approach can trigger the radscorpion telegraph
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Real radscorpion remains alive for attack observation
+OK Actual AI starts the specific finite radscorpion attack
+OK Actual preparation changes the rendered radscorpion articulation
+OK Native save retains one existing radscorpion encounter and its original finite loot owner
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+STAGE actual_iconic_mirelurk
+OK Iconic candidate is an unchanged territorial encounter: v042-laciotat-nest-04
+OK Actual installed sector request for mirelurk
+OK Measured diagnostic camera is outside actual colliders
+OK Iconic candidate is an unchanged territorial encounter: v042-laciotat-elite-02
+OK Actual installed sector request for mirelurk
+OK Measured diagnostic camera is outside actual colliders
+OK Iconic candidate is an unchanged territorial encounter: v042-laciotat-elite-03
+OK Actual installed sector request for mirelurk
+OK Measured diagnostic camera is outside actual colliders
+OK Source-world admission produces an actual mirelurk
+OK Existing original identity/type/PV are authoritative for mirelurk
+OK Actual mirelurk mesh and VATS bounds share the same articulated rig
+OK Real measured collision-free camera sees mirelurk
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Real VATS acquires the source-world mirelurk
+OK Native VATS actually selects the rendered left claw of mirelurk
+OK Cancelling real mirelurk VATS spends no ammunition, AP or inventory
+OK A real measured close approach can trigger the mirelurk telegraph
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Real mirelurk remains alive for attack observation
+OK Actual AI starts the specific finite mirelurk attack
+OK Actual preparation changes the rendered mirelurk articulation
+OK Native save retains one existing mirelurk encounter and its original finite loot owner
+OK Measured diagnostic camera is outside actual colliders
+OK Actual source-world camera ray reaches the regional actor
+STAGE iconic_native_continue
+OK Continue reload serves the unchanged native HTML
+OK Normal native Continue is available from the actual browser save
+LOAD {"phase": "loading", "done": 0, "total": 36, "tiles": 0}
+OK Continue preserves both iconic assignments and the finite original encounter records
+OK Native Continue grants no new inventory or ammunition for the iconic bestiary
+OK Return after Continue requests real radscorpion geography
+OK Actual measured arrival still exists for restored radscorpion
+OK Measured diagnostic camera is outside actual colliders
+FAIL Real streamed radscorpion restores its original ID/type/PV/position after Continue
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/regional_bestiary_native.py", line 629, in main
+    iconic_native()
+  File "/workspace/fallout-Marseille/tests/expansion/regional_bestiary_native.py", line 465, in iconic_native
+    check('Real streamed ' + species + ' restores its original ID/type/PV/position after Continue',
+  File "/workspace/fallout-Marseille/tests/expansion/regional_bestiary_native.py", line 95, in check
+    raise AssertionError(name)
+AssertionError: Real streamed radscorpion restores its original ID/type/PV/position after Continue
+

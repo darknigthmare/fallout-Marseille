@@ -1,0 +1,44 @@
+✔ Entire saved layout 1 Résidentiel equals the shipped pre-door JSON (28.340188ms)
+✔ Entire saved layout 1 Commercial equals the shipped pre-door JSON (11.892688ms)
+✔ Entire saved layout 1 Industriel equals the shipped pre-door JSON (9.38635ms)
+✔ Entire saved layout 1 Enseignement equals the shipped pre-door JSON (22.224433ms)
+✔ Entire saved layout 2 Résidentiel equals the shipped pre-door JSON (748.425983ms)
+✔ Entire saved layout 2 Commercial equals the shipped pre-door JSON (210.654127ms)
+✔ Entire saved layout 2 Industriel equals the shipped pre-door JSON (181.916552ms)
+✔ Entire saved layout 2 Enseignement equals the shipped pre-door JSON (622.234938ms)
+✔ Entire saved layout 3 Résidentiel equals the shipped pre-door JSON (563.215385ms)
+✔ Entire saved layout 3 Commercial equals the shipped pre-door JSON (101.024549ms)
+✔ Entire saved layout 3 Industriel equals the shipped pre-door JSON (172.951605ms)
+✔ Entire saved layout 3 Enseignement equals the shipped pre-door JSON (536.006549ms)
+✔ Entire saved layout 4 Résidentiel equals the shipped pre-door JSON (732.749771ms)
+✔ Entire saved layout 4 Commercial equals the shipped pre-door JSON (179.738223ms)
+✔ Entire saved layout 4 Industriel equals the shipped pre-door JSON (192.420488ms)
+✔ Entire saved layout 4 Enseignement equals the shipped pre-door JSON (381.467438ms)
+✔ New physical room doors have two leaves, bounded metal handles and metric source openings (2618.226978ms)
+✔ Short pocket walls remain open and report an explicit geometric omission (0.871998ms)
+✔ Documented walls and all historic visits never gain an invented physical leaf (2883.282529ms)
+✔ Door starts open, closes with physical solid and handles, and opens without changing geometry or loot (3038.201111ms)
+✔ Opening works from both sides and never needs an absent key or resource (2904.15209ms)
+✔ A player standing inside the doorway cannot be enclosed by its leaf (2948.735107ms)
+✔ A false storage failure restores the state, exact scene, collision, leaf and label (3400.906883ms)
+✔ A exception storage failure restores the state, exact scene, collision, leaf and label (3016.712547ms)
+✔ Room door guards reject distance without a save or resource change (2969.406982ms)
+✔ Room door guards reject LOS without a save or resource change (3020.768995ms)
+✔ Room door guards reject pause without a save or resource change (2817.926218ms)
+✔ Room door guards reject dead player without a save or resource change (3065.388497ms)
+✔ Room door guards reject pending source without a save or resource change (2843.338381ms)
+✔ Room door guards reject other floor height without a save or resource change (2638.313892ms)
+✔ Native interaction callback cannot modify another loaded save or scene (2562.121296ms)
+✔ A cold saved interior restores the exact closed door, collision and layout signature (2934.82255ms)
+✔ Door history is bounded, admits only hashed closed states, and cannot pollute object prototypes (10.250313ms)
+✔ A full history rejects another closure while every already stored door can still be opened (3106.633773ms)
+✔ A new floor uses independent stable door identities and returning restores its earlier closure (5645.049714ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57139.578861
+

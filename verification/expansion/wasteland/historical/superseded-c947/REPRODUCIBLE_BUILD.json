@@ -1,0 +1,27 @@
+{
+  "scope": "Independent source-only build in a separate final directory. Three exact byte comparisons on frozen current production.",
+  "exitCode": 0,
+  "stdout": "/workspace/.cloud-setup/fallout-marseille/next-expansion/rebuild-final/JOUER_FALLOUT_MISTRAL_v0.50.html 2844326\n",
+  "stderr": "",
+  "files": [
+    {
+      "path": "index.html",
+      "same": true,
+      "sourceSha256": "c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf",
+      "rebuiltSha256": "c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf"
+    },
+    {
+      "path": "JOUER_FALLOUT_MISTRAL_v0.50.html",
+      "same": true,
+      "sourceSha256": "c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf",
+      "rebuiltSha256": "c947e444f16d439cf0f13dd9cb09c3c1fe39b08d893ed818260b3670ca462ecf"
+    },
+    {
+      "path": "src/game.js",
+      "same": true,
+      "sourceSha256": "307b9e74a35e92918550b38056313e9e1662bf9cbe893298f89cd818c1c309b2",
+      "rebuiltSha256": "307b9e74a35e92918550b38056313e9e1662bf9cbe893298f89cd818c1c309b2"
+    }
+  ],
+  "ok": true
+}

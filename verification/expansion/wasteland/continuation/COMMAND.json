@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/continuation_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/continuation-native",
+    "--expect-html-sha",
+    "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "--expect-lore-sha",
+    "06cd527ab951d2e6e64954dd4b47dfa147c5e15cb7f04d5939cc201b08b446d0",
+    "--expect-power-sha",
+    "77e03d9b83f7d35828de22dc13abd6e368879eaeeb5537f39576824a41386ebc",
+    "--expect-iconic-sha",
+    "550ee004344e4879c0d87164ab97971978113c882e0ca5a2a2045a61b5725e23"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "executedScriptSha256": "8112190fd60790f9a619406c0638e820aaed75f2b0e59cb04c80d6d23673c690",
+  "htmlSha256": "ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670"
+}

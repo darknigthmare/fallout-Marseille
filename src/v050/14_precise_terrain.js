@@ -53,13 +53,59 @@ const MistralPreciseTerrain=(()=>{
   const half=127.5,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
   return[clamp(Math.round((p[0]+origin[0])*2)/2,extent[0]+half,extent[2]-.5-half)-origin[0],origin[1]-clamp(Math.round((origin[1]-p[2])*2)/2,extent[1]+.5+half,extent[3]-half)];
  }
- return{descriptor,index,decode,sample,read,selected,meshCenter,resource};
+ /* Refine the existing XY triangles, never the source road axis or width.
+    Mid-edge and centroid probes catch ground relief hidden by a sparse stroke.
+    These are bounded rendering probes, not a new survey or an error guarantee
+    between probes. Coarse-only triangles keep their original representation. */
+ function roadSurface(vertices,faces,read,options={}){
+  const tolerance=options.tolerance??.04,minEdge=options.minEdge??1,maxEdge=options.maxEdge??8,maxSplits=options.maxSplits??2048,lift=.085;
+  if(![tolerance,minEdge,maxEdge].every(n=>finite(n)&&n>0)||maxEdge<minEdge||!Number.isInteger(maxSplits)||maxSplits<0||maxSplits>8192)throw Error('Budget du ruban LiDAR invalide');
+  const probes=new Map(),indices=new Map(),out=[],triangles=[],leaves=[],splitEdges=new Map(),sources=new Map(),stats={inputFaces:faces.length,outputFaces:0,splits:0,conformitySplits:0,samples:0,nativeSamples:0,noDataSamples:0,omittedNoDataFaces:0,budgetLimitedFaces:0,resolutionLimitedFaces:0,maxInputProbeErrorMeters:0,maxAdaptiveLeafProbeErrorMeters:0,toleranceMeters:tolerance,minimumEdgeMeters:minEdge,maximumEdgeMeters:maxEdge,maximumSplits:maxSplits,visualOffsetMeters:lift};
+  function probe(x,z){const key=x+':'+z;if(probes.has(key))return probes.get(key);const r=read(x,z)||{},height=finite(r.height)?r.height:null,native=r.sourceResource===resource;
+   const p={x,z,height,native};probes.set(key,p);stats.samples++;if(native)stats.nativeSamples++;if(height===null)stats.noDataSamples++;
+   for(const id of r.sources||[])if(!sources.has(id))sources.set(id,{id,sourceResource:r.sourceResource||null,verticalDatum:r.verticalDatum||null,resolutionMeters:r.resolutionMeters?.slice()||null,interpolation:r.interpolation||null});return p;
+  }
+  function emit(points,original=false){const face=[];for(const p of points){const position=original?p:[p.x,p.height+lift,p.z],key=position.join(':');if(!indices.has(key)){indices.set(key,out.length);out.push(position.slice());}face.push(indices.get(key));}triangles.push(face);}
+  const edgeKey=(a,b)=>{const first=a[0]+':'+a[2],second=b[0]+':'+b[2];return first<second?first+'|'+second:second+'|'+first;};
+  function visit(raw,depth=0){
+   const p=raw.map(v=>probe(v[0],v[2])),mid=p.map((a,i)=>{const b=p[(i+1)%3];return probe((a.x+b.x)/2,(a.z+b.z)/2);}),center=probe((p[0].x+p[1].x+p[2].x)/3,(p[0].z+p[1].z+p[2].z)/3),all=[...p,...mid,center];
+   if(!all.some(v=>v.native)){leaves.push({raw,original:true});return;}
+   const missing=all.some(v=>v.height===null),lengths=p.map((a,i)=>Math.hypot(a.x-p[(i+1)%3].x,a.z-p[(i+1)%3].z)),edge=lengths.indexOf(Math.max(...lengths)),longest=lengths[edge];
+   const error=missing?Infinity:Math.max(...mid.map((m,i)=>Math.abs(m.height-(p[i].height+p[(i+1)%3].height)/2)),Math.abs(center.height-(p[0].height+p[1].height+p[2].height)/3)),needs=missing||longest>maxEdge||error>tolerance;
+   if(depth===0&&finite(error))stats.maxInputProbeErrorMeters=Math.max(stats.maxInputProbeErrorMeters,error);
+   if(needs&&longest>minEdge&&depth<24&&stats.splits<maxSplits){stats.splits++;const a=edge,b=(edge+1)%3,c=(edge+2)%3,m=[mid[edge].x,0,mid[edge].z];splitEdges.set(edgeKey(raw[a],raw[b]),m);visit([raw[a],m,raw[c]],depth+1);visit([m,raw[b],raw[c]],depth+1);return;}
+   if(missing){stats.omittedNoDataFaces++;return;}
+   if(needs){if(stats.splits>=maxSplits)stats.budgetLimitedFaces++;else stats.resolutionLimitedFaces++;}
+   stats.maxAdaptiveLeafProbeErrorMeters=Math.max(stats.maxAdaptiveLeafProbeErrorMeters,error);leaves.push({raw,original:false});
+  }
+  for(const face of faces){if(!Array.isArray(face)||face.length!==3||face.some(i=>!Number.isInteger(i)||!Array.isArray(vertices[i])||vertices[i].length<3||!vertices[i].slice(0,3).every(finite)))throw Error('Triangle de chaussée invalide');visit(face.map(i=>vertices[i]));}
+  /* Carry every existing edge split into its neighbouring leaf. Otherwise an
+     independently refined triangle could leave a vertical crack at a T join.
+     This only propagates the finite adaptive split tree; it cannot start an
+     additional error-driven refinement or exceed its source-edge partitions. */
+  function conform(raw,original){for(let a=0;a<3;a++){const b=(a+1)%3,c=(a+2)%3,m=splitEdges.get(edgeKey(raw[a],raw[b]));if(m){stats.conformitySplits++;conform([raw[a],m,raw[c]],false);conform([m,raw[b],raw[c]],false);return;}}
+   const p=raw.map(v=>probe(v[0],v[2]));if(p.some(v=>v.height===null)){stats.omittedNoDataFaces++;return;}emit(original?raw:p,original);
+  }
+  for(const leaf of leaves)conform(leaf.raw,leaf.original);
+  stats.outputFaces=triangles.length;return{vertices:out,faces:triangles,stats,sources:[...sources.values()]};
+ }
+ return{descriptor,index,decode,sample,read,selected,meshCenter,roadSurface,resource};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralPreciseTerrain;
 
 if(typeof window!=='undefined'&&typeof v046Ensure==='function'){
  const M=MistralPreciseTerrain,R={index:null,promise:null,epoch:0,known:false,loads:new Map(),cache:new MistralStream.BudgetCache(48*1024*1024,12),meshes:new MistralStream.BudgetCache(48*1024*1024,1),errors:[],requests:0};
  const error=e=>{R.errors.push(String(e?.message||e));R.errors=R.errors.slice(-10);};
+ const sourceRoad=typeof v046SourceRoad==='function'?v046SourceRoad:null;
+ if(sourceRoad)v046SourceRoad=function(w,path,props,color,key,layerName){
+  const d=sourceRoad(w,path,props,color,key,layerName),bank=w.v047TerrainBank||V046.terrain;
+  if(!d?.sourceProfile?.surfaceDerived||![...bank.grids.values()].some(g=>g.v054Native))return d;
+  const refined=M.roadSurface(d.vertices,d.faces,(x,z)=>bank.read(...v015GeoUnproject(w.id,x,z)));
+  if(!refined.stats.nativeSamples)return d;
+  d.vertices=refined.vertices;d.faces=refined.faces;d.revision=(d.revision||0)+1;d.sourceProfile.surfaceNativeRefinement={...refined.stats,scope:'Sondages natifs aux sommets, milieux et centres des triangles ; seuils et budgets de rendu, pas une nouvelle mesure ni une borne continue de précision'};
+  d.sourceProfile.surfaceTerrainSources=refined.sources;
+  if(!d.faces.length){const at=w.staticDraws.indexOf(d);if(at>=0)w.staticDraws.splice(at,1);return null;}return d;
+ };
  async function ready(){
   if(V046.lab)return null;if(R.promise)return R.promise;const epoch=R.epoch;
   const promise=(async()=>{const raw=await v050LocalSourceJSON('data/map_pack/precise/index.json',null,true);if(epoch!==R.epoch)throw Error('Atlas LiDAR périmé');if(!raw){if(R.known)throw Error('Atlas LiDAR précédemment chargé absent');return null;}const atlas=M.index(raw);for(const d of atlas.tiles)for(const[e,n]of[[d.nativeBounds[0],d.nativeBounds[1]],[d.nativeBounds[2],d.nativeBounds[1]],[d.nativeBounds[0],d.nativeBounds[3]],[d.nativeBounds[2],d.nativeBounds[3]]]){const ll=v018InverseLambert(e,n);if(ll[0]<d.bbox[0]-1e-7||ll[0]>d.bbox[2]+1e-7||ll[1]<d.bbox[1]-1e-7||ll[1]>d.bbox[3]+1e-7||d.bbox[2]-d.bbox[0]>.006||d.bbox[3]-d.bbox[1]>.008)throw Error('Emprise WGS84 différente du repère natif');}R.index=atlas;R.known=true;return R.index;})();
@@ -125,7 +171,16 @@ if(typeof window!=='undefined'&&typeof v046Ensure==='function'){
  };
  function info(){const active=[...(V046.terrain?.grids?.values()||[])].filter(g=>g.v054Native),draws=(world?.staticDraws||[]).filter(d=>d.v054NativeTerrain);return{present:!!R.index,sourceTiles:R.index?.sourceTiles||0,availableChunks:R.index?.tiles.length||0,coverageSquareMeters:R.index?.coverageSquareMeters||0,nativeSpacingMeters:.5,resampled:false,activeChunks:active.map(g=>({id:g.id,origin:g.origin.slice(),width:g.width,height:g.height,bytes:g.data.byteLength,noDataPoints:g.noDataPoints})),activeBytes:active.reduce((n,g)=>n+g.data.byteLength,0),rendered:draws.map(d=>({id:d.v047GeometryId,vertices:d.vertices.length,faces:d.faces.length,native:!!d.v050FineTerrain,seam:!!d.v050TerrainSeam,spacing:d.sourceSpacingMeters})),cache:R.cache.stats(),meshCache:R.meshes.stats(),inflight:R.loads.size,requests:R.requests,errors:R.errors.slice(),scope:'Douze km² centraux, pas toute Marseille ; précision du levé distincte du pas natif et du LOD.'};}
  function meshSamples(){const draws=(world?.staticDraws||[]).filter(d=>d.v054NativeTerrain&&d.v050FineTerrain),g=draws[0];if(!g)return null;const v=g.vertices,w=511,indices=[0,1,w,w+1,Math.floor(v.length/2),v.length-2,v.length-1,v.length-w-1],unique=new Set(draws.map(d=>d.vertices));return{uniqueVertices:[...unique].reduce((n,v)=>n+v.length,0),faces:draws.reduce((n,d)=>n+d.faces.length,0),nativeSpacingMeters:.5,displayOffsetMeters:-.06,samples:indices.map(i=>({index:i,position:v[i].slice(),easting:v[i][0]+V046_ORIGIN[0],northing:V046_ORIGIN[1]-v[i][2]})),bounds:{minE:v[0][0]+V046_ORIGIN[0],maxE:v[w-1][0]+V046_ORIGIN[0],maxN:V046_ORIGIN[1]-v[0][2],minN:V046_ORIGIN[1]-v[v.length-1][2]}};}
+ function roadInfo(id=null){
+  const roads=(world?.staticDraws||[]).filter(d=>d.sourceProfile?.surfaceNativeRefinement),selected=id?roads.find(d=>d.geoFeatureId===id||d.id===id||d.geoFeatureId?.endsWith(':'+id)):null;
+  const summary=d=>({id:d.geoFeatureId||d.id||null,geometry:d.v046GeometryId,vertices:d.vertices.length,faces:d.faces.length,revision:d.revision,refinement:{...d.sourceProfile.surfaceNativeRefinement}});
+  const result={roads:roads.length,inputFaces:roads.reduce((n,d)=>n+d.sourceProfile.surfaceNativeRefinement.inputFaces,0),outputFaces:roads.reduce((n,d)=>n+d.faces.length,0),budgetLimitedFaces:roads.reduce((n,d)=>n+d.sourceProfile.surfaceNativeRefinement.budgetLimitedFaces,0),resolutionLimitedFaces:roads.reduce((n,d)=>n+d.sourceProfile.surfaceNativeRefinement.resolutionLimitedFaces,0),summaries:roads.slice(0,12).map(summary),selected:null};
+  if(selected){const bank=world.v047TerrainBank||V046.terrain,read=(x,z)=>bank.read(...v015GeoUnproject(world.id,x,z)),old=MistralIntegrity.roadMesh(selected.roadPath.map(p=>p.slice(0,2)),selected.roadProperties,(x,z)=>read(x,z).height);
+   const evaluate=mesh=>{let maximum=0,missing=0;for(const face of mesh.faces){const p=face.map(i=>mesh.vertices[i]),x=(p[0][0]+p[1][0]+p[2][0])/3,z=(p[0][2]+p[1][2]+p[2][2])/3,r=read(x,z);if(r.height===null){missing++;continue;}maximum=Math.max(maximum,Math.abs(r.height+.085-(p[0][1]+p[1][1]+p[2][1])/3));}return{faces:mesh.faces.length,maxCentroidErrorMeters:maximum,missingCentroids:missing};};
+   result.selected={...summary(selected),roadPath:selected.roadPath.map(p=>p.slice()),sourceGeometry:selected.sourceGeometry,sourceProvenance:selected.sourceProvenance,sourceProfile:{...selected.sourceProfile},before:evaluate(old),after:evaluate(selected),samples:Array.from({length:Math.min(24,selected.vertices.length)},(_,i)=>{const index=Math.floor(i*(selected.vertices.length-1)/Math.max(1,Math.min(24,selected.vertices.length)-1)),position=selected.vertices[index].slice();return{index,position,terrain:read(position[0],position[2]),easting:position[0]+V046_ORIGIN[0],northing:V046_ORIGIN[1]-position[2]};})};
+  }return result;
+ }
  function renderedAt(easting,northing){const x=easting-V046_ORIGIN[0],z=V046_ORIGIN[1]-northing,out=[];for(const d of world?.staticDraws||[]){if(!d.v046Terrain||!d.vertices||!d.faces)continue;const b=d.v046Bounds;if(b&&(x<b.minX||x>b.maxX||z<b.minZ||z>b.maxZ))continue;for(const face of d.faces){const t=face.map(i=>d.vertices[i]);if(x<Math.min(...t.map(p=>p[0]))||x>Math.max(...t.map(p=>p[0]))||z<Math.min(...t.map(p=>p[2]))||z>Math.max(...t.map(p=>p[2])))continue;const cross=(a,b)=>(b[0]-a[0])*(z-a[2])-(b[2]-a[2])*(x-a[0]),signs=[cross(t[0],t[1]),cross(t[1],t[2]),cross(t[2],t[0])];if(signs.every(n=>n>=-1e-8)||signs.every(n=>n<=1e-8)){out.push({id:d.v047GeometryId,native:!!d.v054NativeTerrain,seam:!!d.v050TerrainSeam,triangle:t.map(p=>p.slice()),sourceResource:d.sourceResource||null});break;}}if(out.length>=8)break;}return out;}
  const panel=v047Panel;v047Panel=function(c){panel(c);const s=info(),section=document.createElement('section');section.className='v047-box';section.innerHTML='<h3>MNT LIDAR HD NATIF</h3><p>'+ (s.present?'12 km² centraux disponibles au pas natif de 0,5 m ; '+s.activeChunks.length+' morceaux réellement chargés.':'Atlas précis local absent ou en cours de vérification ; les autres reliefs restent distincts.')+'</p><p>Valeurs Float32 dans le repère Lambert-93 / IGN69, sans rééchantillonnage des altitudes. Le rendu emploie les vrais centres de pixels dans un carré local de 255 m, puis un raccord et un niveau de détail plus large. Une absence LiDAR ne devient pas une mesure inventée.</p><p>Cette couverture partielle ne certifie ni précision absolue de 50 cm, ni relief complet de la commune.</p>';c.querySelector('.v047-integrity')?.appendChild(section);};
- globalThis.v054PreciseTerrainAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v054PreciseTerrainInfo:info,v054PreciseTerrainReady:ready,v054PreciseTerrainSample:(lat,lon)=>V046.terrain.read(lat,lon),v054PreciseTerrainMeshSamples:meshSamples,v054PreciseTerrainRenderedAt:renderedAt});if(['http:','https:'].includes(location.protocol))ready().catch(error);};
+ globalThis.v054PreciseTerrainAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v054PreciseTerrainInfo:info,v054PreciseTerrainReady:ready,v054PreciseTerrainSample:(lat,lon)=>V046.terrain.read(lat,lon),v054PreciseTerrainMeshSamples:meshSamples,v054PreciseTerrainRenderedAt:renderedAt,v055NativeRoadInfo:roadInfo});if(['http:','https:'].includes(location.protocol))ready().catch(error);};
 }

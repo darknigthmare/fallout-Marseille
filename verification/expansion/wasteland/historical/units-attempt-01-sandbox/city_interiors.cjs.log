@@ -1,0 +1,186 @@
+OK Metric origin retains the absolute exterior base and exact outline offsets
+OK IGN total number of levels already includes the ground floor
+OK Stored building validation does not trust a forged level height
+OK Courtyard shape and coordinates remain excluded at all levels
+OK Concave L shaped volume never creates a rectangular missing wing
+OK A segment crossing a courtyard cannot tunnel through to the other side
+OK A segment crossing the absent wing cannot tunnel through a concave footprint
+OK Actor radius is respected at the exterior wall and courtyard wall
+OK Half open edge intersections clip partition lines around courtyard holes
+OK A layout, its furniture and signature are deterministic after JSON reload
+OK Cached metric layouts return independent copies and never carry player or inventory state
+OK Building identities change deterministic furnishing without moving boundaries
+OK Generated walls do not cross courtyard empty space
+OK All decorative furniture stays within the playable source outline with clearance
+OK A roomy Résidentiel floor receives distinct coherent functions instead of repeated tables
+OK A roomy Hôpital floor receives distinct coherent functions instead of repeated tables
+OK A roomy Industriel floor receives distinct coherent functions instead of repeated tables
+OK A roomy Commercial floor receives distinct coherent functions instead of repeated tables
+OK A roomy Église floor receives distinct coherent functions instead of repeated tables
+OK Upstairs residential furnishing starts with bedrooms and storage while preserving the floor heights
+OK Every bed model fits its physical metric footprint, height and ten box budget
+OK Every sofa model fits its physical metric footprint, height and ten box budget
+OK Every kitchen model fits its physical metric footprint, height and ten box budget
+OK Every sanitary model fits its physical metric footprint, height and ten box budget
+OK Every wardrobe model fits its physical metric footprint, height and ten box budget
+OK Every dining model fits its physical metric footprint, height and ten box budget
+OK Every desk model fits its physical metric footprint, height and ten box budget
+OK Every reception model fits its physical metric footprint, height and ten box budget
+OK Every shelf model fits its physical metric footprint, height and ten box budget
+OK Every workbench model fits its physical metric footprint, height and ten box budget
+OK Every crate model fits its physical metric footprint, height and ten box budget
+OK Every pallet model fits its physical metric footprint, height and ten box budget
+OK Every medical_bed model fits its physical metric footprint, height and ten box budget
+OK Every medical_cabinet model fits its physical metric footprint, height and ten box budget
+OK Every washbasin model fits its physical metric footprint, height and ten box budget
+OK Every bench model fits its physical metric footprint, height and ten box budget
+OK Every lectern model fits its physical metric footprint, height and ten box budget
+OK Every archive model fits its physical metric footprint, height and ten box budget
+OK Every checkout model fits its physical metric footprint, height and ten box budget
+OK Every school_desk model fits its physical metric footprint, height and ten box budget
+OK Every teaching_board model fits its physical metric footprint, height and ten box budget
+OK Every printer model fits its physical metric footprint, height and ten box budget
+OK Every tool_cabinet model fits its physical metric footprint, height and ten box budget
+OK Every medical_screen model fits its physical metric footprint, height and ten box budget
+OK Thematic geometry is deterministic and never substitutes one cube for every furnishing
+OK Unrecorded layouts and all furniture remain explicitly invented
+OK Use semantics distinguish medical, storage, commerce and religious spaces
+OK Long narrow volumes are searched with a bounded aspect aware grid
+OK Slivers smaller than the actor diameter do not acquire invented free space
+OK Unknown levels are estimated from the original height without stretching the building
+OK Invalid source descriptor rejected: NaN coordinate
+OK Invalid source descriptor rejected: missing polygon
+OK Invalid source descriptor rejected: too many levels
+OK Invalid source descriptor rejected: negative height
+OK Invalid source descriptor rejected: unbounded height
+OK Invalid source descriptor rejected: empty identity
+OK An attributed documentary floor keeps its exact walls, elevation and provenance
+OK A documentary gap remains passable and its solid wall blocks travel
+OK Fictional furnishing leaves documented room outlines, uses, partitions and source intact
+OK Documentation for one level does not turn other levels into measurements
+OK An upper street entrance fits invented floor heights without changing the measured volume
+OK The original level grid is reused when the street already meets an upstairs floor
+OK A street above the roof cannot create a fictitious extra storey
+OK A documented floor cannot be silently moved to suit a sloped street
+OK Missing documentary levels are fitted between known planes instead of overlapping them
+OK Forged saved floor planes that overlap or leave no head room are rejected
+OK Documentary validation rejects different building
+OK Documentary validation rejects missing attribution
+OK Documentary validation rejects credential URL
+OK Documentary validation rejects local source URL
+OK Documentary validation rejects invented date shape
+OK Documentary validation rejects unsupported frame
+OK Documentary validation rejects wall outside volume
+OK Documentary validation rejects room outside volume
+OK Documentary validation rejects duplicate level
+OK Documentary validation rejects room height above roof
+OK A documentary wall crossing an open courtyard is rejected
+OK A large building stays bounded while all its levels remain addressable
+OK Actor navigation reaches all generated rooms around square including solid furniture
+OK Actor navigation reaches all generated rooms around courtyard including solid furniture
+OK Actor navigation reaches all generated rooms around concave wing including solid furniture
+OK Actor navigation reaches all generated rooms around two narrow linking wings including solid furniture
+OK Full actor navigation remains connected with the Résidentiel furnishing program and its actual solids
+OK Full actor navigation remains connected with the Hôpital furnishing program and its actual solids
+OK Full actor navigation remains connected with the Industriel furnishing program and its actual solids
+OK Full actor navigation remains connected with the Commercial furnishing program and its actual solids
+OK Full actor navigation remains connected with the Église furnishing program and its actual solids
+OK New source descriptors use the enclosed programme while legacy saves retain their previous deterministic layout
+OK Version-two saved square keeps its exact previous walls, furniture, access and signature
+OK Version-two saved courtyard keeps its exact previous walls, furniture, access and signature
+OK Version-two saved small keeps its exact previous walls, furniture, access and signature
+OK Version-two saved office keeps its exact previous walls, furniture, access and signature
+OK Version-1 residential preserves its entire previous JSON layout
+OK Version-1 courtyard preserves its entire previous JSON layout
+OK Version-1 small preserves its entire previous JSON layout
+OK Version-1 office preserves its entire previous JSON layout
+OK Version-1 documented-office preserves its entire previous JSON layout
+OK Version-1 commercial preserves its entire previous JSON layout
+OK Version-3 residential preserves its entire previous JSON layout
+OK Version-3 courtyard preserves its entire previous JSON layout
+OK Version-3 small preserves its entire previous JSON layout
+OK Version-3 office preserves its entire previous JSON layout
+OK Version-3 documented-office preserves its entire previous JSON layout
+OK Version-3 commercial preserves its entire previous JSON layout
+OK A decimal source storey exactly at the actor headroom threshold is not rejected by floating point roundoff
+OK Zero and empty source level fields remain labelled as estimates
+OK Tall halls and naves preserve a single unknown functional volume and explicit source storeys take precedence
+OK Architecture annotations fill unknown uses while explicit primary and secondary source uses retain priority
+OK The Sportif programme keeps its source function instead of inventing bedrooms
+OK The Annexe programme keeps its source function instead of inventing bedrooms
+OK The Bureau programme keeps its source function instead of inventing bedrooms
+OK A 24 square metre dwelling receives privacy, distinct essential functions and honest omissions
+OK A 40 square metre dwelling receives privacy, distinct essential functions and honest omissions
+OK A 54 square metre dwelling receives privacy, distinct essential functions and honest omissions
+OK Every invented room is enclosed by full partitions apart from its one metric doorway
+OK Furniture access remains on the same side of every partition and within its assigned room
+OK A rotated footprint keeps its metric rooms and oriented furniture solids inside the true outline
+OK A tiny source courtyard is excluded from rooms and furniture even between sample points
+OK A documented high nave is accepted at its measured height without inventing intermediate levels
+OK Large and complex programmes publish their bounded proof and omissions instead of claiming an exhaustive survey
+OK An unproven narrow source connection keeps its whole original volume open instead of being partitioned shut
+OK Furniture assigned to a concave documentary room cannot bridge its narrow internal notch
+OK The real29m² curved volume gains essential equipment and keeps free boundary pockets connected
+OK Compact furniture renders within its declared physical dimensions instead of shrinking the actor
+OK Compact variants never replace documentary room geometry or equipment programmes
+OK Explicit imported school and health attributes select their own programmes with source provenance
+OK New explicit warehouse and greenhouse imports preserve a single unknown hall while declared levels prevail
+OK A name cannot turn unknown or commercial IGN use into a supposedly measured school or hospital
+OK Saved programme metadata rejects a conflicting kind, value or unsupported source field
+OK A small shop prioritises actual sales equipment before adding support rooms
+OK A programme with omitted essential equipment cannot claim all equipment was placed
+OK Stock room shelving does not replace the accessible public sales display
+OK An explicit school programme closes an accessible classroom and equips several pupil workstations
+OK An explicit health programme separates treatment, hygiene, stores and waiting without open ward beds
+OK Office and workshop programmes put their principal equipment ahead of optional archives
+OK Version-four documentary classrooms retain every recorded wall, room, elevation and source
+OK Actual IGN batiment.39112232 keeps source geometry and honest Commercial et services programme provenance
+OK Actual IGN batiment.9618398 keeps source geometry and honest Industriel programme provenance
+OK Actual IGN batiment.9620088 keeps source geometry and honest Agricole programme provenance
+OK The production runtime can enter and render the Bureau programme
+OK The production runtime can enter and render the Gymnase programme
+OK The production runtime can enter and render the Garage programme
+OK The production runtime can enter and render the Enseignement programme
+OK The production runtime can enter and render the Hôpital programme
+OK The production runtime can enter and render the Commercial programme
+OK The production runtime can enter and render the Industriel programme
+OK Production room lintels preserve the recorded doorway width and usable actor headroom
+OK Every eligible loaded building receives a real production doorway interaction
+OK Entering preserves the exterior point, inventory and metric interior height
+OK Arrival camera faces into the building rather than a constant compass direction
+OK A five metre hillside street opens on the correct upper floor and preserves its exit level
+OK A saved hillside interior retains the same invented physical floor planes
+OK A cold L’Estaque interior save survives before the asynchronous city extent is registered
+OK Cold interior migration rejects a point outside its declared municipality bounds
+OK A position in another macro cannot validate an interior return outside the saved macro bounds
+OK Facade windows receive the same hillside floor planes as the interior
+OK An invented hillside doorway is shortened to fit its current storey rather than crossing a floor
+OK Jumping cannot pass through the current storey ceiling
+OK Fictional furniture has physical solids in addition to visible geometry
+OK Production furnishing colliders match each model footprint and top and remain explicitly fictional
+OK Fictional supply interaction stays outside the visible furniture solid
+OK The landing exposes all available actions through one usable dialogue
+OK Choosing a new floor closes the old landing dialogue before publishing its replacement
+OK An upstairs level is loaded at its actual metric elevation and remains accessible after migration
+OK A floor change cannot escape the top or bottom recorded level
+OK The landing does not change floors from across the building
+OK Failed entry save rolls back complete state and the old exterior scene
+OK A storage exception during entry also restores the old scene and resources
+OK A failed floor save keeps its prior level and existing loot ledger
+OK Finite container contents survive returning to the same level
+OK Doorway guard refuses distant doorway
+OK Doorway guard refuses obstructed sight
+OK Doorway guard refuses nearby threat
+OK Doorway guard refuses in progress load
+OK Doorway guard refuses dead player
+OK Doorway guard refuses paused game
+OK Bindings are replaced without accumulating duplicate interactables
+OK Party wall entrances are skipped in favour of another free source edge
+OK Nonexistent documentary plans are never reported as documented
+OK cold L’Estaque return still waits for the ordinary exterior validation gate
+OK validated return preserves location and acquired inventory with one final save
+OK pending exit holds autosave and cancellation keeps a saveable interior
+OK failed geographic return retains the active interior and original return point
+OK failure to persist a successful exterior publication restores the interior
+{"passed":184,"failed":0,"total":184,"scope":"Production interior geometry and transaction module; controlled source outline, scene-loader and storage fixtures"}
+

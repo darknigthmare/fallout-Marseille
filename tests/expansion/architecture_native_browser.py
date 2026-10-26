@@ -27,7 +27,7 @@ CURVED = {'sourceId': 'batiment.9375075', 'cleabs': 'BATIMENT0000000258034734',
           'chunkPath': 'data/map_pack/city/m13055-r01-c12-c869798b17b6560c.json'}
 CITY = 'geo_marseille_commune'
 JOINERY_INPUTS = {
-    'tests/expansion/fixtures/facades_joinery_cameras.json': 'eff0b37d195362aebdb644ae3dc5575789c4a9d2dd02e3cb9d8aee020f14281a',
+    'tests/expansion/fixtures/facades_joinery_cameras.json': 'e6e3728d495216dd48202d1529e8c210e68aaa4f4e50a6af5bc84473b17dafe3',
     'tests/expansion/fixtures/facades_joinery_ign.json': '841596785a7753c9860aace5d62e604de0c066f61822f9d63b8ef85f8ee2ae55',
     'tests/expansion/facades_joinery.cjs': '46ff0e4b5f14ecc7c706817397c6ee06c82d8447c3cb5cd0466ea7d3f9f57eb3',
 }
@@ -427,7 +427,7 @@ def main():
                  a[1] + tangent[1] * at + normal[1] * .08]
         return {'target': point, 'normal': normal, 'tangent': tangent, 'sourceSpans': spans}
 
-    def joinery_camera(reference, aim):
+    def joinery_camera(reference, aim, preferred_distance=4.5):
         """Search real free street cameras; retain every measured height and LOS."""
         lat, lon = reference['geographicPoint'][1], reference['geographicPoint'][0]
         projected = debug('v046Project', 'geo_huveaune', lat, lon)
@@ -447,17 +447,17 @@ def main():
           return{...q,p,height:h,measured,clear,los};
         });}""", [requests, target])
         eligible = [p for p in measured if p['clear'] and p['los']]
-        eligible.sort(key=lambda p: (abs(p['lateral']) + abs(p['distance'] - 4.5) * .3,
+        eligible.sort(key=lambda p: (abs(p['lateral']) + abs(p['distance'] - preferred_distance) * .3,
                                      abs(target[1] - p['p'][1])))
         return {'frame': frame, 'target': target, 'candidates': measured,
                 'selected': eligible[0] if eligible else None,
                 'method': 'Actual v046Height + 1.65m, public v020Collides and v020LOS; no inferred source-ground Y or scene substitution.'}
 
-    def capture_joinery(reference, facade, opening, name, label):
+    def capture_joinery(reference, facade, opening, name, label, preferred_distance=4.5):
         aim = opening_aim(facade, opening)
         check('Native joinery opening has complete intervals on original source segments: ' + name,
               aim is not None and abs(sum(s['width'] for s in aim['sourceSpans']) - opening['width']) < 1e-6, aim)
-        view = joinery_camera(reference, aim)
+        view = joinery_camera(reference, aim, preferred_distance)
         check('Measured collision-free street camera has production LOS to the actual fitting: ' + name,
               view['selected'] is not None, view)
         point, target = view['selected']['p'], view['target']
@@ -469,6 +469,79 @@ def main():
         view['opening'] = opening
         view['actualPlayer'] = debug('getState')['player']
         return view
+
+    def native_relief(facade, opening_index, label, require_cap=False, require_louvers=False):
+        """Inspect copies of existing published vertex buffers, never regenerate profiles."""
+        geometry = debug('v055FacadeProfileGeometry', facade['id'], opening_index)
+        fittings = [j for j in (geometry or {}).get('fittings', []) if j['rendered']]
+        vertices = sum(len(m['vertices']) for j in fittings for m in j['meshes'])
+        record = {'label': label, 'actualPublishedGeometry': geometry, 'summaries': []}
+        report['joinery'].setdefault('nativeRelief', []).append(record)
+        check('Native profile inspection returns bounded actual published ranges: ' + label,
+              bool(fittings) and geometry['buildingId'] == facade['id']
+              and geometry['opening'] == facade['openings'][opening_index]
+              and geometry['provenance'] == 'invented' and geometry['maximumBuildingQuads'] == 512
+              and vertices <= 2048
+              and all(len(m['vertices']) == m['vertexCount'] and len(m['faces']) == m['vertexCount'] // 2
+                      and all(len(f) == 3 and all(isinstance(i, int) and 0 <= i < len(m['vertices']) for i in f) for f in m['faces'])
+                      for j in fittings for m in j['meshes']))
+        source_edges = []
+        for ring_index, ring in enumerate(facade['rings']):
+            signed = sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(ring, ring[1:]))
+            direction = (1 if signed > 0 else -1) * (1 if ring_index == 0 else -1)
+            for edge_index, (a, b) in enumerate(zip(ring, ring[1:])):
+                length = math.dist(a, b)
+                if length > 1e-8:
+                    tangent = [(b[0] - a[0]) / length, (b[1] - a[1]) / length]
+                    source_edges.append({'a': a, 'length': length, 'tangent': tangent,
+                                         'normal': [tangent[1] * direction, -tangent[0] * direction],
+                                         'ringIndex': ring_index, 'edgeIndex': edge_index})
+        supported, profiled, caps, tilted_louvers = True, 0, [], 0
+        for fitting in fittings:
+            count = 0
+            for mesh in fitting['meshes']:
+                for offset in range(0, len(mesh['vertices']), 4):
+                    patch = mesh['vertices'][offset:offset + 4]
+                    def coordinates(edge, point):
+                        dx, dz = point[0] - edge['a'][0], point[2] - edge['a'][1]
+                        return (dx * edge['tangent'][0] + dz * edge['tangent'][1],
+                                dx * edge['normal'][0] + dz * edge['normal'][1])
+                    edge = next((e for e in source_edges if all(len(p) == 3 and all(finite(v) for v in p)
+                                and -1e-6 <= coordinates(e, p)[0] <= e['length'] + 1e-6
+                                and -1e-6 <= coordinates(e, p)[1] <= .075001
+                                and facade['baseY'] - 1e-6 <= p[1] <= facade['baseY'] + facade['height'] + 1e-6
+                                for p in patch)), None)
+                    supported = supported and edge is not None
+                    if edge is None:
+                        continue
+                    depths = [coordinates(edge, p)[1] for p in patch]
+                    spread = max(depths) - min(depths)
+                    profiled += int(spread > .01)
+                    count += 1
+                    if spread > .01 and max(p[1] for p in patch) - min(p[1] for p in patch) < 1e-7:
+                        first_face = mesh['faces'][offset // 2]
+                        a, b, c = [mesh['vertices'][i] for i in first_face]
+                        u, v = [[p[i] - a[i] for i in range(3)] for p in (b, c)]
+                        normal_y = u[2] * v[0] - u[0] * v[2]
+                        caps.append({'kind': fitting['kind'], 'depthRange': [min(depths), max(depths)],
+                                     'normalY': normal_y, 'sourceRing': edge['ringIndex'], 'sourceEdge': edge['edgeIndex']})
+                    if mesh['material'] == 'louver':
+                        tilted_louvers += int(abs(min(depths) - .041) < 1e-6 and abs(max(depths) - .073) < 1e-6
+                                             and max(p[1] for p in patch) > min(p[1] for p in patch))
+            record['summaries'].append({'kind': fitting['kind'], 'variant': fitting['variant'], 'actualQuads': count,
+                                        'reservedQuads': fitting['requiredQuads'], 'profiledParts': fitting['profiledParts']})
+        record.update(profiledFragments=profiled, horizontalCaps=caps, tiltedLouverFragments=tilted_louvers)
+        check('Native relief fragments stay on source segments within the metric height and 7.5 cm: ' + label,
+              supported and all(j['actualQuads'] == j['reservedQuads'] for j in record['summaries']), record['summaries'])
+        check('Native rendered relief has measurable changing depth: ' + label, profiled > 0, profiled)
+        if require_cap:
+            check('Actual native window sill contains an upward horizontal top: ' + label,
+                  bool(caps) and all(c['normalY'] > 0 for c in caps), caps)
+        if require_louvers:
+            check('Actual native persienne blades are inclined ahead of the backing: ' + label,
+                  tilted_louvers > 0 and any(j['kind'] == 'shutters' for j in fittings), tilted_louvers)
+        save()
+        return record
 
     def scout_panelled_entry(case):
         """Choose an actual nearby native portal, never manufacture a fixture door."""
@@ -569,6 +642,12 @@ def main():
         selected['shutterView'] = capture_joinery(ref, facade, facade['openings'][selected['shutterFitting']['openingIndex']],
                                                    '03b_selected_residential_native_persiennes',
                                                    'Actual rendered native louvered pair on the selected acquired residential object; fitting ranges, invented provenance, measured clear street camera and production LOS retained.')
+        native_relief(facade, entry['openingIndex'], 'selected-residential-entry')
+        native_relief(facade, selected['shutterFitting']['openingIndex'], 'selected-residential-persiennes', require_louvers=True)
+        selected['profileCloseup'] = capture_joinery(ref, facade, facade['openings'][selected['shutterFitting']['openingIndex']],
+                                                    '03e_selected_residential_native_profile_closeup',
+                                                    'Native unedited close view of authored inclined persienne blades and profiled reveal on the actual acquired IGN building. Vertex ranges and real camera collision/LOS retained.',
+                                                    preferred_distance=1.3)
         selected['sourceAfter'] = debug('v052ArchitectureTarget', ref['sourceId'])
         check('Scouted entry capture leaves its acquired source geometry and metric component unchanged',
               selected['sourceAfter']['rawGeometry'] == target['rawGeometry']
@@ -677,6 +756,15 @@ def main():
                        'nativeDoorCandidate': native_candidate, 'widthReferenceScope': 'Same-source-edge width, not canonical offset identity.', 'facade': facade,
                        'entryView': entry_view}
                 report['joinery']['cases'].append(row)
+                if role == 'commercial':
+                    sill = next((j for j in records if j['kind'] == 'surround' and j['rendered']
+                                 and facade['openings'][j['openingIndex']]['type'] == 'window'), None)
+                    check('Actual commercial native facade provides a rendered window sill profile', sill is not None)
+                    native_relief(facade, sill['openingIndex'], 'commercial-window-sill', require_cap=True)
+                    row['profileCloseup'] = capture_joinery(reference, facade, facade['openings'][sill['openingIndex']],
+                                                           '03d_commercial_native_profile_closeup',
+                                                           'Native unedited close view of authored bevelled reveal and actual horizontal sill top on the acquired commercial IGN object. No measured architectural detail claimed.',
+                                                           preferred_distance=1.3)
                 if role == 'residential':
                     shutters = coverage['byKind'].get('shutters', {})
                     check('Actual residential facade renders complete invented louvered pairs within its native budget',
@@ -975,7 +1063,7 @@ def main():
                 return_point = state['v050City']['returnPoint']
                 report['interior'] = {'chosen': chosen, 'initial': initial, 'layout': layout, 'returnPoint': return_point}
                 check('Entered plan preserves the source-derived local outline and honest invented provenance',
-                      layout['rings'] == building['rings'] and layout['layoutVersion'] == building.get('layoutVersion') == 4 and layout['provenance'] == 'invented'
+                      layout['rings'] == building['rings'] and layout['layoutVersion'] == building.get('layoutVersion') == 5 and layout['provenance'] == 'invented'
                       and initial['layoutProvenance'] == 'invented' and not initial['documentSource'] and not initial['documentedLevels'])
                 coverage = [dict(roomId=r['id'], **room_wall_coverage(r, layout['walls'])) for r in layout['rooms']]
                 report['interior']['roomWallCoverage'] = coverage

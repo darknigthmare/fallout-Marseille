@@ -1,54 +1,43 @@
-# Chantiers du 25 octobre 2026
+# Chantiers du 26 octobre 2026
 
-Cette livraison prolonge `833d687`. Les sources géographiques acquises restent distinguées des aménagements, objets et règles inventés. Le HTML courant est `120e04972fb08a6f59b929d8a0952010712cf3849b8e512c383ff3a8ae87d636` ; **la validation intégrée finale est réussie sur le périmètre livré**. Le [nouveau bilan](../verification/expansion/precision/PRECISION_INTEGRATION.json) conserve les résultats de ce programme, distincts des preuves historiques.
+Cette livraison poursuit `3d94e4c`.
 
-| Chantier | Périmètre de la nouvelle livraison | État de vérification |
+Les six chantiers livrés sont les suivants.
+
+| Chantier | Comportement livré | Limite conservée |
 | --- | --- | --- |
-| Relief précis | 12 km² centraux, douze dalles LiDAR HD officielles, 48 morceaux natifs de 0,50 m Lambert-93/NGF-IGN69 ; anciennes données conservées ailleurs. | Sources et régressions validées ; parcours natif 78/78. Les 288 comparaisons ponctuelles Float32 sont des mesures source séparées. |
-| Façades | Portes à panneaux, vitrage, vantaux, menuiseries et persiennes inventés, avec réservations et omissions de budget ; passage et segments source conservés. | Régressions et parcours architectural/menuiseries 135/135 validés, dans les budgets déclarés. |
-| Intérieurs | Layout 4 par usages explicites, six équipements nouveaux, priorité aux fonctions principales, circulation et quantités déclarées ; dispositions sauvegardées 1/2/3 conservées. | Régressions et sauvegardes validées ; commerce et atelier IGN visités par E, collisions, Continuer et sorties vérifiés : 56/56. |
-| Bestiaire régional | Cinq silhouettes du canon conservé ; vol borné et projectile réel du Gabian, Rat-couronné et Cigale sur des slots existants admissibles. | Cinq variantes éprouvées sur modèle ; parcours natif borné du bestiaire 40/40. Toutes les espèces ne sont pas annoncées comme capturées. |
-| Consommables et soins | Jet, Buffout, Mentats et Psycho, effets temporaires, tolérance, retrait, stocks finis et soin local de Sofia avec transaction atomique. | Contrats des quatre familles validés ; boucle native Mentats/Sofia et reprise 74/74. |
-| Manette | Favoris, lampe et plan, gaucher, neutralisation des commandes maintenues et pause à la déconnexion de la manette utilisée. | Modèle et pilote DOM/HTTP 54/54 validés avec API Gamepad simulée ; aucun matériel physique certifié. |
-| Monde et chargement | Relief natif local prioritaire, banques publiées séparées des préparations, caches bornés, sources anciennes et contrôles terrain/eau/solides conservés. | Régressions et parcours finaux validés sur le HTML courant, avec préparations et aides déclarées. |
-| Lore des factions | Quatre dossiers complémentaires de la livraison précédente conservés, avec preuves, décisions persistantes, réactions et radio textuelle. | Parcours intégré de continuité validé ; aucune conversation privée récupérée. |
-| Armures assistées | Plaques, cœurs, configurations, quête et entretien des systèmes existants préservés. | Contrats de conservation et parcours intégré validés sur le programme courant. |
-| Collections | Figurines SPECIAL, magazines et Nuka-Cola conservés, effets et acquisitions finies composés avec les nouveaux consommables. | Régressions de composition et parcours intégré validés, acquisitions finies conservées. |
-| Diagnostics et installation | Restauration locale des six ZIP supplémentaires, vérification de taille/SHA, audit HTTP, reprise et conservation des imports valides. | Installations, serveurs réels, trois contrôles HTTP isolés et trois sorties identiques de reconstruction validés. |
+| Terrain et routes | Raffinement adaptatif des rubans dérivés du MNT natif, sommets rattachés au relief, raccords conformes ; source XYZ et largeurs conservées. | Sondages bornés, arête minimale de 1 m et budgets exposés ; aucune garantie continue de 4 cm. |
+| Façades | Tableaux chanfreinés, dessus d’appuis et lames inclinées sur les segments source, dans la projection maximale de 7,5 cm. | Créations métriques, enveloppes documentaires et omissions de budget conservées ; pas de nouveau relevé de façade. |
+| Intérieurs | Layout 5, portes coulissantes physiques avec E des deux côtés, refus sur le joueur, fermeture sauvegardée. | Anciens layouts 1–4 et plans documentés conservés ; pas de porte ajoutée à une halle sans pièce. |
+| Lore | Deux engagements supplémentaires du Syndicat et des Sans-Dossier, preuves sur place, décisions, fournitures, réputations, radio et réactions. | Canon du dépôt conservé ; aucune conversation privée supplémentaire récupérée. |
+| Bestiaire | Radscorpion et Fangeux avec formes originales, VATS et attaques ; restauration près d’obstacles sans marge de création supplémentaire. | Identités, PV, butin et 41 anciennes associations conservés ; données absentes et volumes non admissibles restent refusés. |
+| Grenades | Stock fini, recette à l’établi, lancer N/tactile, fusée active, rebonds et souffle occulté, sauvegarde en vol et Continuer. | Pas de mines ni de variantes plasma dans ce lot ; PNJ/compagnons conservent leur invulnérabilité historique et la mort reprend la dernière sauvegarde vivante. |
 
-## Périmètre de données
+La campagne, les armures assistées, collections, dépendances et soins, bivouac, entraide, mer et commandes de manette existants sont conservés et couverts par les régressions. Les données géographiques n’ont pas été réacquises dans cette poursuite.
 
-Le nouveau lot de relief ajoute **157 896 379 octets d’archives**, environ **150,58 Mio**, dans six ZIP. Les binaires extraits représentent **192 328 140 octets**, environ **183,42 Mio**. Il ne remplace pas les anciennes grilles hors de son support. Les 12 km² centraux ne constituent pas un LiDAR de 0,50 m sur toute la commune. [Relief précis](RELIEF_PRECIS.md).
+Le [bilan courant](../verification/expansion/wasteland/WASTELAND_INTEGRATION.json) identifie le HTML `ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670`, **2 887 contrôles**, **62 captures réelles** et **405 empreintes de production**. Les modèles, contrats contrôlés, comparaisons d’octets/HTTP, parcours assistés et entrées simulées restent distingués. Cette somme ne dénombre pas des parties équivalentes. Les tentatives interrompues, échouées et visant un ancien programme sont conservées séparément, sans être comptées comme réussites du programme courant.
 
-Les détails de [façade](FACADES_MENUISERIES.md) et les [programmes intérieurs](INTERIEURS_USAGES.md) sont des créations métriques. Aucun relevé mesuré supplémentaire de baie, façade ou pièce n’a été acquis. Les documents déjà liés gardent leur géométrie et leur attribution ; un nom d’établissement ne devient pas une catégorie d’usage IGN.
-
-## Validation livrée et preuves historiques
-
-Le [bilan courant](../verification/expansion/precision/PRECISION_INTEGRATION.json) distingue les méthodes suivantes.
-
-| Méthode sur le HTML courant | Contrôles réussis |
+| Méthode | Contrôles réussis |
 | --- | ---: |
-| Unités et outils : 30 suites, aucun test ignoré | 1 241 |
-| Contrats hérités : quinze processus de code 0 | 434 |
+| Modèles et outils | 1 401 |
 | Sorties identiques de reconstruction | 3 |
-| Contrôles HTTP isolés du runtime | 3 |
-| Parcours natif du relief précis | 78 |
-| Parcours natif architectural et menuiseries | 135 |
-| Parcours natif des usages intérieurs | 56 |
-| Parcours natif du bestiaire régional | 40 |
-| Parcours natif des consommables et du soin | 74 |
-| Pilote DOM/HTTP de manette, API Gamepad simulée | 54 |
-| Parcours natif de continuité : lore, armure, collections et Continuer | 206 |
-| **Somme des contrôles par ces méthodes** | **2 324** |
+| HTTP isolé de distribution | 3 |
+| Contrats hérités contrôlés | 434 |
+| Terrain et routes natifs | 91 |
+| Architecture et menuiseries natives | 151 |
+| Intérieurs et portes natifs | 70 |
+| Bestiaire natif | 125 |
+| Dossiers natifs des factions | 213 |
+| Grenades natives | 62 |
+| Continuité lore, armure et collections | 206 |
+| Consommables et soin natifs | 74 |
+| DOM avec API Gamepad simulée | 54 |
+| **Somme descriptive** | **2 887** |
 
-Les méthodes peuvent couvrir les mêmes mécanismes : ces 2 324 contrôles ne sont pas 2 324 parcours équivalents. Les mesures sur fichiers source, les modèles et fixtures, les trajets assistés dans le vrai navigateur et le matériel simulé restent distingués. Les **288 comparaisons ponctuelles Float32 avec les GeoTIFF sources sont hors de cette somme**. Les **42 captures réelles** et **403 empreintes de production vérifiées** sont conservées avec leurs limites et leurs aides de placement ou de simulation. L’API Gamepad est simulée dans le pilote DOM ; aucun modèle de manette physique n’est certifié. Les tentatives interrompues, échouées ou visant un autre HTML restent séparées.
+La commune conserve ses 290 partitions, 291 001 identifiants d’objets bâtiment, 55 449 tronçons routiers et 118 partitions d’eau. Le relief natif de 0,50 m reste limité aux 12 km² centraux ; les autres grilles et les relevés précédents restent disponibles ailleurs. Les douze associations documentaires à deux sites ne constituent pas des relevés de façades ou de pièces.
 
-La livraison `833d687` conserve son [bilan historique](../verification/expansion/continuation/CONTINUATION_INTEGRATION.json), avec **1 847 contrôles et 23 captures natives** sur le HTML `ea8ba2e3d9ba9ed1925628672f4c596475ff2437de06bfa7979ee03f6f59f0bf`. Son pilote de bestiaire capturait une espèce, tandis que trois variantes étaient contrôlées sur banc. Ses comparaisons de façades — 191/191 portes ciblées, 187/191 cas avec fenêtres, 72/72 approches et jusqu’à 12 624 ouvertures paginées — étaient hors de ce total et ne dénombraient pas les portes de toute Marseille. Les [1 492 contrôles du 24 octobre](../verification/expansion/architecture/ARCHITECTURE_INTEGRATION.json) restent également historiques.
+La reproduction intégrale 1:1 de chaque façade et intérieur de Marseille, l’art final, les voix, l’équilibrage complet, les performances sur matériels variés et une visite humaine exhaustive restent ouverts. Le matériel de manette physique n’est pas certifié par une API simulée. Les programmes inventés et leurs omissions restent inspectables.
 
-## Origine du lore
+Le projet ChatGPT correspondant a été retrouvé et consulté ; les éléments accessibles ne contiennent pas de lore supplémentaire exploitable. Les archives ne sont pas accessibles depuis cet environnement cloud. Les neuf factions, huit dossiers historiques et vingt-cinq noms déjà conservés dans le dépôt restent la source du canon ; les nouvelles histoires sont des prolongements écrits du jeu.
 
-Les neuf factions, huit dossiers et vingt-cinq noms conservés dans la v0.46 constituent le canon disponible. Le projet ChatGPT correspondant a été retrouvé, mais la lecture de son historique reste limitée par le service. Aucun contenu de conversation non lu n’est présenté comme récupéré. Les dossiers complémentaires, formes de créatures et règles de jeu sont des prolongements écrits dans le dépôt ; les anciens fichiers v0.44 non accessibles ne sont pas déclarés restaurés.
-
-## Travaux de plus longue durée
-
-La couverture des requêtes IGN sur la commune et l’échelle métrique ne certifient pas chaque construction ni une fidélité documentaire et visuelle intégrale 1:1. Les relevés absents, limites de circulation, programmes partiels et budgets de rendu restent déclarés. Art final, voix enregistrées, équilibrage complet, performances sur matériels variés et visite humaine exhaustive restent des chantiers distincts.
+Les [2 324 contrôles de la livraison précédente](../verification/expansion/precision/PRECISION_INTEGRATION.json) et ses 288 comparaisons de cellules restent historiques, hors de la somme courante. [Installation](INSTALLATION_V050.md) · [Grenades](GRENADES_A_MAIN.md) · [Lore](LORE_CONTINUITE.md) · [Bestiaire](BESTIAIRE_REGIONAL.md).

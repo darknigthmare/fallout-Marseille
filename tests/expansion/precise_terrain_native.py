@@ -182,6 +182,19 @@ def main():
         sector(892487.5,6246771)
         for e,n in ((892487.5,6246771),(892488,6246771),(892487.5,6246770.5),(892487.75,6246770.75)):compare(e,n)
         mesh();shot('01_vieux_port_native_half_metre','Actual central Marseille scene with native 0.5 m source nodes in the local rendered LOD.')
+        stage('actual_native_ground_road')
+        roads=debug('v055NativeRoadInfo','troncon_de_route.6003809');report['native_road']=roads
+        road=roads['selected']
+        check('Actual published Vieux-Port source route has an adaptive native ground ribbon',road is not None and road['refinement']['splits']>0 and road['revision']>=1,roads)
+        fixture=json.loads(pin('tests/expansion/fixtures/vieux_port_road_ground.json'))
+        check('Native ground-road refinement retains the exact attributed source XYZ geometry',road['sourceGeometry']==fixture['feature']['geometry'] and road['sourceProfile']['sourceXYZPreserved'] is True,road['sourceGeometry'])
+        check('Actual ground-road centroid error improves while remaining an explicit rendering probe',road['before']['maxCentroidErrorMeters']>.15 and road['after']['maxCentroidErrorMeters']<.07 and road['after']['maxCentroidErrorMeters']<road['before']['maxCentroidErrorMeters']/3,{'before':road['before'],'after':road['after']})
+        check('Adaptive road source reads and split budgets remain explicit and bounded',road['refinement']['splits']<=2048 and road['refinement']['budgetLimitedFaces']==0 and road['refinement']['noDataSamples']==0 and road['refinement']['resolutionLimitedFaces']>0,road['refinement'])
+        check('Native road ribbon uses more real triangles without an invented support deck',road['after']['faces']>road['before']['faces'] and road['sourceProfile']['surfaceDerived'] is True and not road['sourceProfile']['bridge'] and not road['sourceProfile']['tunnel'],road['sourceProfile'])
+        for point in road['samples'][::3]:
+            source=original(point['easting'],point['northing']);actual=point['position'][1]-.085
+            check('Published native road vertex agrees with original GeoTIFF and declared asphalt offset',source is not None and source['z'] is not None and abs(source['z']-actual)<1e-4 and point['terrain']['sourceResource']=='ign_lidar_hd_mnt',{'vertex':point,'source':source})
+        report['native_road_scope']='A retained actual Vieux-Port route; source XYZ and width are unchanged. Adaptive probes have bounded budgets, one-metre minimum edges and unresolved detail. Centroid comparisons do not establish a continuous four-centimetre error bound or a new survey. Native NoData handling uses separate declared synthetic model fixtures because the received real rectangle contains zero NoData.'
         stage('cancel_source_load')
         before={'stamp':debug('v047TerrainIdentity'),'terrain':debug('v054PreciseTerrainInfo')['activeChunks']}
         page.evaluate('ll=>{void __MISTRAL_DEBUG.v046Load(...ll);return true;}',ll(894709.5,6248228.5))

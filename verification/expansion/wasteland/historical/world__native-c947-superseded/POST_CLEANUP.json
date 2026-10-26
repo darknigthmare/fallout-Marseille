@@ -1,0 +1,8 @@
+{
+  "scope": "Independent check after actual pilot process returned code0. The executed pilot finally block calls context.close, browser.close and server.shutdown/server_close before exit. This is a post-process socket observation, not an invented browser lifecycle flag.",
+  "pilot_returncode": 0,
+  "server_host": "127.0.0.1",
+  "server_port": 36225,
+  "socket_connect_ex": 111,
+  "server_port_closed": true
+}

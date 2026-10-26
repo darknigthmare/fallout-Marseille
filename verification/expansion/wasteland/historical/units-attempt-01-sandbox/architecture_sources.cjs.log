@@ -1,0 +1,110 @@
+✔ Actual facade and interior validators accept the attributed metric fixture without changing it (114.528616ms)
+✔ Applying an overlay preserves exact source properties, geometry, rings and collider ownership (1.46836ms)
+✔ Registry records and independently applied draws do not alias caller annotations (1.231458ms)
+✔ A site label without plans does not claim documentary facade or room geometry (0.55765ms)
+✔ A context changing inferred storeys cannot attach a plan bound to the former floor count (1.176065ms)
+✔ A plan bound to the final contextual volume remains valid and idempotent (1.797815ms)
+✔ Generic feminine nature and building=yes allow context, while a specific IGN nature retains priority (0.698634ms)
+✔ A missing identity or source geometry leaves a draw untouched (0.701339ms)
+✔ The exact acquired geographic geometry must match, including coordinate order and elevation (2.444201ms)
+✔ The same stable building ID cannot relocate documented edges after metric ring rotation or reversal (1.542218ms)
+✔ A changed source height rejects all parts of its bound annotation atomically (1.156788ms)
+✔ A changed source absolute base rejects all parts of its bound annotation atomically (0.722488ms)
+✔ A changed source floor count rejects all parts of its bound annotation atomically (0.533756ms)
+✔ A changed source metric footprint rejects all parts of its bound annotation atomically (0.654401ms)
+✔ An established source name and use win over a contextual site label (0.858722ms)
+✔ Existing source nom remains the displayed name (0.596623ms)
+✔ Existing source nom_du_batiment remains the displayed name (0.564493ms)
+✔ Unknown source usage can consume attributed context without overwriting IGN fields (0.599139ms)
+✔ An explicit secondary source use also wins over site context (0.673417ms)
+✔ Existing documentary parts retain priority while missing parts may be filled (0.577979ms)
+✔ Invalid HTTP source rejects the whole atlas without changing input or an existing registry (1.138886ms)
+✔ Invalid credential source rejects the whole atlas without changing input or an existing registry (0.861538ms)
+✔ Invalid missing attribution rejects the whole atlas without changing input or an existing registry (0.826883ms)
+✔ Invalid response digest rejects the whole atlas without changing input or an existing registry (0.72896ms)
+✔ Invalid fictive site geometry rejects the whole atlas without changing input or an existing registry (0.760409ms)
+✔ Invalid inadequate site overlap rejects the whole atlas without changing input or an existing registry (0.896973ms)
+✔ Invalid site centroid outside rejects the whole atlas without changing input or an existing registry (0.768965ms)
+✔ Invalid site precision rejects the whole atlas without changing input or an existing registry (0.996028ms)
+✔ Invalid open geographic ring rejects the whole atlas without changing input or an existing registry (0.817786ms)
+✔ Invalid invalid longitude rejects the whole atlas without changing input or an existing registry (0.828006ms)
+✔ Invalid non-finite metric point rejects the whole atlas without changing input or an existing registry (0.93767ms)
+✔ Invalid open metric ring rejects the whole atlas without changing input or an existing registry (0.703082ms)
+✔ Invalid facade private URL rejects the whole atlas without changing input or an existing registry (0.794073ms)
+✔ Invalid facade invalid acquisition date rejects the whole atlas without changing input or an existing registry (0.886945ms)
+✔ Invalid facade width outside edge rejects the whole atlas without changing input or an existing registry (0.757874ms)
+✔ Invalid facade above roof rejects the whole atlas without changing input or an existing registry (0.670802ms)
+✔ Invalid unknown facade edge rejects the whole atlas without changing input or an existing registry (0.713321ms)
+✔ Invalid foreign interior identity rejects the whole atlas without changing input or an existing registry (0.899599ms)
+✔ Invalid missing interior source rejects the whole atlas without changing input or an existing registry (1.423937ms)
+✔ Invalid interior wall outside rejects the whole atlas without changing input or an existing registry (0.976331ms)
+✔ Invalid plan without metric binding rejects the whole atlas without changing input or an existing registry (0.721917ms)
+✔ Duplicate record identities or component targets cannot create order-dependent overlays (1.237238ms)
+✔ Atlas budgets reject large unbounded collections before application (10.124463ms)
+✔ Delivered IGN site labels retain acquired building geometry, source hashes and honest site-only claims (34.092181ms)
+✖ CLI help documents local validation and installation without writing a destination (40.241416ms)
+✖ CLI validates locally without producing or altering an installed atlas (49.447927ms)
+✖ CLI installs a fully revalidable atlas with one atomic replacement and no temporary residue (53.209964ms)
+✔ CLI failed atomic rename preserves the destination and removes its temporary file (43.959444ms)
+✔ CLI rejects an invalid late record before replacing an existing atlas or creating directories (91.901593ms)
+✔ CLI malformed JSON, excess bytes and ambiguous arguments fail without output changes (117.71883ms)
+ℹ tests 50
+ℹ suites 0
+ℹ pass 47
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 607.032975
+
+✖ failing tests:
+
+test at tests/expansion/architecture_sources.cjs:290:1
+✖ CLI help documents local validation and installation without writing a destination (40.241416ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /validate/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/architecture_sources.cjs:293:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /validate/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/expansion/architecture_sources.cjs:299:1
+✖ CLI validates locally without producing or altering an installed atlas (49.447927ms)
+  SyntaxError: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at /workspace/fallout-Marseille/tests/expansion/architecture_sources.cjs:305:21
+      at temporary (/workspace/fallout-Marseille/tests/expansion/architecture_sources.cjs:288:122)
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/architecture_sources.cjs:299:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/expansion/architecture_sources.cjs:308:1
+✖ CLI installs a fully revalidable atlas with one atomic replacement and no temporary residue (53.209964ms)
+  SyntaxError: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at /workspace/fallout-Marseille/tests/expansion/architecture_sources.cjs:323:21
+      at temporary (/workspace/fallout-Marseille/tests/expansion/architecture_sources.cjs:288:122)
+      at TestContext.<anonymous> (/workspace/fallout-Marseille/tests/expansion/architecture_sources.cjs:308:107)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+

@@ -705,7 +705,7 @@ def main():
                   and after_revisit['v053Lore']['journal'] == before_revisit['v053Lore']['journal'])
             report['dossier_counters'] = debug('v053LoreInfo')
             report['limitations'] = [
-                'One of four new faction dossiers is completed natively. Other dossier counters are exported, not claimed complete.',
+                'One of six continuation faction dossiers is completed natively. Other dossier counters are exported, not claimed complete.',
                 'One of seven figurines, one of four magazines and one of two bottle types are collected and used as appropriate.',
                 'One paid armor acquisition and one paid real-relay plate repair; failure rollback/concurrency are covered by separate VM regressions.',
                 'Reload/Continue exercises current native save migration. No fabricated historical storage import is installed.',

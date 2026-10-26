@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/regional_bestiary_native.py",
+    "--run",
+    "--require-iconic",
+    "--maximum-sectors",
+    "7",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/next-expansion/bestiary/native",
+    "--expect-html-sha",
+    "bdf82bd1af603d5f85ebfa984d0b402d17006d26bf8d060209234685ee308aea",
+    "--expect-bestiary-sha",
+    "3c3a202dc12c9de1fad19f33c6c757aac2efcd707efabb79000a5d23d4e84caa",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "started_utc": "2026-10-26T08:54:58.628458+00:00",
+  "stdout_stderr": "execution.log",
+  "process_exit_code_file": "exit-code.txt",
+  "returncode": -2,
+  "elapsed_seconds": 58.27031797700329,
+  "ended_utc": "2026-10-26T08:55:56.899041+00:00"
+}

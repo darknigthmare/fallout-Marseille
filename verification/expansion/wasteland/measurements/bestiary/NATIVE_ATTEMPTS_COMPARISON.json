@@ -1,0 +1,97 @@
+{
+  "scope": "Read-only comparison of retained failed and successful actual browser executions; no new assertion count or production change.",
+  "same_html": true,
+  "same_source13": true,
+  "same_site": true,
+  "same_id": true,
+  "previous_failed_saved_actor": {
+    "id": "v042:v042-laciotat-elite-03:outside:1",
+    "site": "v042-laciotat-elite-03",
+    "scope": "outside",
+    "kind": "enemy",
+    "pos": [
+      9893.857161378275,
+      37.77877421699968,
+      8930.014112641024
+    ],
+    "home": [
+      9893.991237948245,
+      37.78588800712207,
+      8930.097549461967
+    ],
+    "yaw": 3.0614364344164025,
+    "phase": 3.380888650394286,
+    "alive": true,
+    "at": 5.14999999999999,
+    "maxHealth": 197,
+    "health": 197,
+    "armDamage": 0,
+    "legDamage": 0,
+    "limbs": {},
+    "status": {},
+    "morale": 100,
+    "maxMorale": 100,
+    "alerted": true,
+    "state": "idle",
+    "lastKnown": [
+      9893.975124154007,
+      39.345598095926825,
+      8931.482620399445
+    ],
+    "searchTimer": 9,
+    "attackCooldown": 0,
+    "suppressed": 0,
+    "speed": 2,
+    "damage": 22,
+    "armor": 0.455
+  },
+  "successful_saved_actor": {
+    "id": "v042:v042-laciotat-elite-03:outside:1",
+    "site": "v042-laciotat-elite-03",
+    "scope": "outside",
+    "kind": "enemy",
+    "pos": [
+      9894.169683199896,
+      37.78588800712207,
+      8930.205068200441
+    ],
+    "home": [
+      9893.991237948245,
+      37.78588800712207,
+      8930.097549461967
+    ],
+    "yaw": -3.0025790954357676,
+    "phase": 3.380888650394286,
+    "alive": true,
+    "at": 5.14999999999999,
+    "maxHealth": 197,
+    "health": 197,
+    "armDamage": 0,
+    "legDamage": 0,
+    "limbs": {},
+    "status": {},
+    "morale": 100,
+    "maxMorale": 100,
+    "alerted": true,
+    "state": "idle",
+    "lastKnown": [
+      9893.990165967843,
+      39.34424166605767,
+      8931.488103938289
+    ],
+    "searchTimer": 9,
+    "attackCooldown": 0,
+    "suppressed": 0,
+    "speed": 2,
+    "damage": 22,
+    "armor": 0.455
+  },
+  "saved_position_horizontal_difference_meters": 0.36624297216702917,
+  "previous_failed_result": "Existing finite encounter/type/PV and assignment survived, but regional mesh admission failed (unmeasuredSkipped); exact admission-time source/geometry cause was not captured and remains unclassified.",
+  "successful_result": "Strict native save/Continue and exact position before further AI pass for both types. Post-AI actual source support and unchanged identity/PV pass. Five-point terrain/collider probes are retained.",
+  "limitations": [
+    "Successful run certifies its actual recorded actor positions and sources. It does not resolve or retag the earlier119/1 attempt.",
+    "The four-neighbour slope threshold hypothesis is not demonstrated by the successful measurements; no speculative source13 patch was applied.",
+    "Geographic admission is bounded and conditional; this does not certify every potential encounter position."
+  ]
+}
