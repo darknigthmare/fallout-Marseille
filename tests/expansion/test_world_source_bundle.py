@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 import zipfile
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tools'))
 import world_source_bundle as archive
@@ -47,6 +48,105 @@ class SourceArchiveTests(unittest.TestCase):
         result = archive.install(self.receipt, self.output)
         self.assertEqual(result['status'], 'preserved')
         self.assertEqual((self.output / 'index.json').read_bytes(), original)
+
+    def add_supplied_region(self, region='geo_garlaban'):
+        descriptor = json.loads((self.active / 'index.json').read_text())['regions']['geo_huveaune']
+        bundle = json.loads((self.active / Path(descriptor['path']).name).read_text())
+        sources.publish_bundle(self.active, region, self.source, features=bundle['features'])
+        self.packed = archive.package(self.active, self.receipt.parent / 'requested.zip', self.receipt, replace=True)
+
+    def test_update_adds_missing_region_without_rewriting_existing_member_or_descriptor(self):
+        archive.install(self.receipt, self.output)
+        before, _ = archive.validate_directory(self.output)
+        prior = json.loads(before['index.json'])['regions']['geo_huveaune']
+        self.add_supplied_region()
+        result = archive.install(self.receipt, self.output)
+        self.assertEqual(result['status'], 'extended')
+        self.assertEqual(result['addedRegions'], ['geo_garlaban'])
+        self.assertEqual(result['preservedRegions'], ['geo_huveaune'])
+        after, _ = archive.validate_directory(self.output)
+        self.assertEqual(json.loads(after['index.json'])['regions']['geo_huveaune'], prior)
+        self.assertEqual(after[Path(prior['path']).name], before[Path(prior['path']).name])
+        self.assertEqual(len(json.loads(after['index.json'])['regions']), 2)
+
+    def test_new_region_does_not_replace_a_different_valid_user_version(self):
+        archive.install(self.receipt, self.output)
+        descriptor = json.loads((self.output / 'index.json').read_text())['regions']['geo_huveaune']
+        bundle = json.loads((self.output / Path(descriptor['path']).name).read_text())
+        bundle['features'][0]['properties']['height'] = 19
+        sources.publish_bundle(self.output, 'geo_huveaune', self.source, features=bundle['features'], replace=True)
+        before, _ = archive.validate_directory(self.output)
+        prior = json.loads(before['index.json'])['regions']['geo_huveaune']
+        self.add_supplied_region()
+        archive.install(self.receipt, self.output)
+        after, _ = archive.validate_directory(self.output)
+        self.assertEqual(json.loads(after['index.json'])['regions']['geo_huveaune'], prior)
+        self.assertEqual(after[Path(prior['path']).name], before[Path(prior['path']).name])
+        preserved = json.loads(after[Path(prior['path']).name])
+        self.assertEqual(preserved['features'][0]['properties']['height'], 19)
+
+    def test_extended_installation_is_idempotent_and_keeps_index_bytes(self):
+        archive.install(self.receipt, self.output)
+        self.add_supplied_region()
+        archive.install(self.receipt, self.output)
+        before, _ = archive.validate_directory(self.output)
+        self.assertEqual(archive.install(self.receipt, self.output)['status'], 'preserved')
+        self.assertEqual(archive.validate_directory(self.output)[0], before)
+
+    def test_all_new_member_conflicts_are_checked_before_writing_any_member(self):
+        archive.install(self.receipt, self.output)
+        old_index = (self.output / 'index.json').read_bytes()
+        self.add_supplied_region('geo_garlaban')
+        self.add_supplied_region('geo_saintebaume')
+        supplied = json.loads((self.active / 'index.json').read_text())['regions']
+        first = self.output / Path(supplied['geo_garlaban']['path']).name
+        last = self.output / Path(supplied['geo_saintebaume']['path']).name
+        last.write_bytes(b'user orphan: never replace')
+        with self.assertRaisesRegex(sources.SourceError, 'conflicts'):
+            archive.install(self.receipt, self.output)
+        self.assertFalse(first.exists())
+        self.assertEqual(last.read_bytes(), b'user orphan: never replace')
+        self.assertEqual((self.output / 'index.json').read_bytes(), old_index)
+
+    def test_new_regions_do_not_silently_repair_corrupt_existing_sources(self):
+        archive.install(self.receipt, self.output)
+        self.add_supplied_region()
+        descriptor = json.loads((self.output / 'index.json').read_text())['regions']['geo_huveaune']
+        damaged = self.output / Path(descriptor['path']).name
+        damaged.write_bytes(b'damaged user source')
+        old_index = (self.output / 'index.json').read_bytes()
+        with self.assertRaises(sources.SourceError):
+            archive.install(self.receipt, self.output)
+        self.assertEqual(damaged.read_bytes(), b'damaged user source')
+        self.assertEqual((self.output / 'index.json').read_bytes(), old_index)
+
+    def test_failed_index_publication_keeps_old_region_readable_and_retry_can_complete(self):
+        archive.install(self.receipt, self.output)
+        before, _ = archive.validate_directory(self.output)
+        self.add_supplied_region()
+        original_write = archive.atomic_write
+        def fail_index(target, raw):
+            if target == self.output / 'index.json':
+                raise OSError('synthetic interrupted index publication')
+            return original_write(target, raw)
+        with patch.object(archive, 'atomic_write', side_effect=fail_index):
+            with self.assertRaisesRegex(OSError, 'synthetic interrupted'):
+                archive.install(self.receipt, self.output)
+        self.assertEqual(archive.validate_directory(self.output)[0], before)
+        self.assertEqual(archive.install(self.receipt, self.output)['status'], 'extended')
+        self.assertEqual(len(archive.audit_details(self.output)['regions']), 2)
+
+    def test_combined_region_count_is_bounded_before_adding_files(self):
+        archive.install(self.receipt, self.output)
+        descriptor = json.loads((self.output / 'index.json').read_text())['regions']['geo_huveaune']
+        bundle = json.loads((self.output / Path(descriptor['path']).name).read_text())
+        for number in range(30):
+            sources.publish_bundle(self.output, 'geo_fixture_' + str(number), self.source, features=bundle['features'])
+        before, _ = archive.validate_directory(self.output)
+        self.add_supplied_region()
+        with self.assertRaisesRegex(sources.SourceError, 'bounded set of regions'):
+            archive.install(self.receipt, self.output)
+        self.assertEqual(archive.validate_directory(self.output)[0], before)
 
     def test_damaged_existing_user_data_is_never_overwritten(self):
         archive.install(self.receipt, self.output)

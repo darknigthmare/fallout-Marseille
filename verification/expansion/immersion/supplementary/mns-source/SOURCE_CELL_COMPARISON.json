@@ -1,0 +1,120 @@
+{
+  "scope": "Independent full payload vertex comparison against original received Float32 MNS GeoTIFF cells. Counts are source observations outside the final gameplay/assertion sum.",
+  "payloadSha256": "e50ea945c27e47a3f706c8ea381975032cd6b37857baa913f4f9430fcab3c6f6",
+  "scriptSha256": "bceb2b335e7a88066881b755137b70f3a986e402defa3220e5f9197ba264ba79",
+  "nativeSourceHashes": [
+    "90a4dc5cce5e6942063820c1c9ef1d606fdb9e973f3e28f2f67e751eba4f23cb",
+    "a4d7f88153e7ee25a8f3043005c6db9619aa4d41d0bc0eb4abb939af3b459b96",
+    "f30b5b346671318a1f4de002ef1174be9163ae71c9e0637b21a354c343c30ccb"
+  ],
+  "nativeCentreVerticesCompared": 36341,
+  "clippedPlaneVerticesCompared": 9711,
+  "totalCompared": 46052,
+  "maximumNativeDifferenceMetres": 0,
+  "maximumClippedDifferenceMetres": 1.6211004094657255e-08,
+  "rows": [
+    {
+      "cleabs": "BATIMENT0000000258930468",
+      "nativeCentreVerticesCompared": 3261,
+      "clippedPlaneVerticesCompared": 740,
+      "maximumClippedDifferenceMetres": 3.9781760108326125e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000258930469",
+      "nativeCentreVerticesCompared": 2884,
+      "clippedPlaneVerticesCompared": 831,
+      "maximumClippedDifferenceMetres": 4.019256039100583e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000258930470",
+      "nativeCentreVerticesCompared": 12381,
+      "clippedPlaneVerticesCompared": 1972,
+      "maximumClippedDifferenceMetres": 1.0752309265171789e-08
+    },
+    {
+      "cleabs": "BATIMENT0000000258938064",
+      "nativeCentreVerticesCompared": 1192,
+      "clippedPlaneVerticesCompared": 346,
+      "maximumClippedDifferenceMetres": 4.265281461357517e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000258938065",
+      "nativeCentreVerticesCompared": 1728,
+      "clippedPlaneVerticesCompared": 339,
+      "maximumClippedDifferenceMetres": 4.697895406025054e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400278",
+      "nativeCentreVerticesCompared": 2926,
+      "clippedPlaneVerticesCompared": 894,
+      "maximumClippedDifferenceMetres": 7.979679139680229e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400280",
+      "nativeCentreVerticesCompared": 2293,
+      "clippedPlaneVerticesCompared": 889,
+      "maximumClippedDifferenceMetres": 6.253713991100085e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400282",
+      "nativeCentreVerticesCompared": 688,
+      "clippedPlaneVerticesCompared": 232,
+      "maximumClippedDifferenceMetres": 2.110141394950915e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400286",
+      "nativeCentreVerticesCompared": 60,
+      "clippedPlaneVerticesCompared": 96,
+      "maximumClippedDifferenceMetres": 1.000785232463386e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400287",
+      "nativeCentreVerticesCompared": 144,
+      "clippedPlaneVerticesCompared": 102,
+      "maximumClippedDifferenceMetres": 3.1851072890276555e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400288",
+      "nativeCentreVerticesCompared": 67,
+      "clippedPlaneVerticesCompared": 90,
+      "maximumClippedDifferenceMetres": 1.2015561878797598e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400964",
+      "nativeCentreVerticesCompared": 3058,
+      "clippedPlaneVerticesCompared": 1119,
+      "maximumClippedDifferenceMetres": 1.6211004094657255e-08
+    },
+    {
+      "cleabs": "BATIMENT0000000273400965",
+      "nativeCentreVerticesCompared": 2604,
+      "clippedPlaneVerticesCompared": 970,
+      "maximumClippedDifferenceMetres": 6.723411161146942e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400985",
+      "nativeCentreVerticesCompared": 260,
+      "clippedPlaneVerticesCompared": 211,
+      "maximumClippedDifferenceMetres": 1.6211004094657255e-08
+    },
+    {
+      "cleabs": "BATIMENT0000000273400986",
+      "nativeCentreVerticesCompared": 567,
+      "clippedPlaneVerticesCompared": 209,
+      "maximumClippedDifferenceMetres": 3.970825446231174e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400987",
+      "nativeCentreVerticesCompared": 1413,
+      "clippedPlaneVerticesCompared": 395,
+      "maximumClippedDifferenceMetres": 6.824109277658863e-09
+    },
+    {
+      "cleabs": "BATIMENT0000000273400988",
+      "nativeCentreVerticesCompared": 815,
+      "clippedPlaneVerticesCompared": 276,
+      "maximumClippedDifferenceMetres": 8.077449820120819e-09
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,74 @@
+{
+  "scope": "Manual visual inspection of all ten actual native PNGs using view_image after the successful final run. No image regenerated, cropped or retouched.",
+  "html_sha256": "df6bca201fef9d2c7e4ab4779aefedf0b5259f59e534d19dca1b83694b574790",
+  "report_sha256": "e31a619064b64d1f2e26d4906fe7f4be4c24eaa6acf06d35411dbfafe902ee8e",
+  "production_sha256": "2351e0b53388dd33ad3297414ed60676594c6421a3aea8d4a45d640b00d481d8",
+  "images": [
+    {
+      "file": "01_native_pistol_hip.png",
+      "sha256": "94cf09c594631644e5b7ea65713e4ce687c32172e8885b2076d1dd02e797dc72",
+      "reviewed": true,
+      "observations": "Actual authored outdoor scene, pistol and connected lower hands. Centre aperture stays clear; normal foreground occupies lower right."
+    },
+    {
+      "file": "02_matrix_rifle.png",
+      "sha256": "af81002d04fee7a61481bf8ed753e4398c01fbbcbaf2185419e364a1f5d4ed3d",
+      "reviewed": true,
+      "observations": "Original carbine receiver, fore-end, attached supporting forearm and health wrist terminal are visible."
+    },
+    {
+      "file": "02_matrix_energy.png",
+      "sha256": "75734bfffc3ebcbdde972dfb61ca7a02c7bcd0fb2df4473e298c07f9c1a89c8d",
+      "reviewed": true,
+      "observations": "Distinct energy receiver/shroud and light cells; no copied franchise mesh."
+    },
+    {
+      "file": "02_matrix_blade.png",
+      "sha256": "f11c52ef0699d7a037687f733c46dc5d9bdd1d642957133613a70c0dbb1b3ebe",
+      "reviewed": true,
+      "observations": "The corrected short combat knife is visible at the right hand. Left guard hand remains below the central aperture; no longer the earlier long-blade presentation."
+    },
+    {
+      "file": "02b_native_wall_lowering.png",
+      "sha256": "09d73702ffb921823bba0ca37b1211c67c11bc33803e8fc7786fb1170e7be472",
+      "reviewed": true,
+      "observations": "Actual existing authored wall fills the scene. Carbine presentation is lowered and partly clipped below the viewport as intended; image does not measure the exact surface distance."
+    },
+    {
+      "file": "03_native_rifle_aim.png",
+      "sha256": "e76dcd9f517df435c978135b70887ff150f620b7e8eaf6419547fac22c369a98",
+      "reviewed": true,
+      "observations": "Aligned open sight at centre, two connected forearms and original wrist terminal. This is presentation alignment with unchanged world camera, not an accuracy bonus."
+    },
+    {
+      "file": "04_native_shot_recoil.png",
+      "sha256": "f2e50d4686119f6e05e88ae12b02c702ce7a2de6893dfa5971136436b7855aff",
+      "reviewed": true,
+      "observations": "Actual emitted pistol shot shows displaced viewmodel and muzzle flash while HUD displays one spent round."
+    },
+    {
+      "file": "05_native_reload_hands.png",
+      "sha256": "a807d8014973677e187b4db1bc7be29fd48b0183f73cff95623af96bbc4f2818",
+      "reviewed": true,
+      "observations": "Active ordinary reload timer and tilted lowered pistol are visible. Most supporting hand and held magazine are below the viewport at this sampled phase, so this PNG alone does not certify their whole geometry."
+    },
+    {
+      "file": "06_native_portrait_hands.png",
+      "sha256": "45750cc7dfeb3499b82df9bb330fe935bae5c2ab1839c1e111d42944d905b76b",
+      "reviewed": true,
+      "observations": "Real 390 by 844 canvas and game scene, with held pistol in the lower right. HUD overlaps some receiver/grip and viewport crops part of the hands; no claim of full hand visibility or physical touch hardware."
+    },
+    {
+      "file": "07_native_portrait_reduced_motion.png",
+      "sha256": "71862671c730cd3e5afe458f748700e00d284804a0a20fe2a41f9dedc02eb2df",
+      "reviewed": true,
+      "observations": "Same portrait foreground after actual reduced motion setting; still image alone cannot establish motion suppression, which the state checks cover."
+    }
+  ],
+  "limits": [
+    "Stylised original view-space models per family, not a unique mesh for every catalogue weapon.",
+    "Authored Aubagne background is not a surveyed Marseille reproduction.",
+    "No hardware FPS, physical controller, physical touch device or entire gameplay completion is certified.",
+    "The PNGs show selected phases; state/model assertions cover the bounded animation and lifecycle checks."
+  ]
+}

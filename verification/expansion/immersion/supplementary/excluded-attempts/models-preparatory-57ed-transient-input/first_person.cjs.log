@@ -1,0 +1,29 @@
+OK pistol is a finite original mesh with attached sleeves, cuffs, palms, fingers and thumbs
+OK rifle is a finite original mesh with attached sleeves, cuffs, palms, fingers and thumbs
+OK shotgun is a finite original mesh with attached sleeves, cuffs, palms, fingers and thumbs
+OK energy is a finite original mesh with attached sleeves, cuffs, palms, fingers and thumbs
+OK heavy is a finite original mesh with attached sleeves, cuffs, palms, fingers and thumbs
+OK industrial is a finite original mesh with attached sleeves, cuffs, palms, fingers and thumbs
+OK blade is a finite original mesh with attached sleeves, cuffs, palms, fingers and thumbs
+OK melee is a finite original mesh with attached sleeves, cuffs, palms, fingers and thumbs
+OK fist is a finite original mesh with attached sleeves, cuffs, palms, fingers and thumbs
+OK Powered armour adds connected metal gauntlet and forearm plates without changing the sight axis
+OK The aimed sight bead lies on the unchanged centre screen axis in portrait and landscape
+OK Portrait framing brings the hip muzzle into the viewport without moving an aimed sight off axis
+OK Hip geometry leaves the central aiming aperture unobstructed for every firearm family
+OK Reduced motion removes gait, sway and recoil from the presentation pose
+OK Actual wall proximity lowers and retracts the model but never returns a gameplay camera
+OK Reload phase moves the supporting hand and shows one removable magazine at the correct stage
+OK Wrist health uses the supplied real ratio and adds no fake bar at zero health
+OK Invalid geometry projections are refused rather than creating infinite canvas coordinates
+OK Pose inputs are bounded, finite and do not mutate the input object
+OK Family classification recognises melee forms, industrial, pellet and energy weapons
+OK Painter keeps finite projected coordinates, bounds face count and honours reduced flashes
+OK Runtime drawing and aiming leave world camera, save and inventory untouched
+OK First person is hidden in menus, third person, boat, death and transition, clearing held aim
+OK Scene, owner, weapon, reload, wall, keyboard keyup and window blur each release aim
+OK Aim inputs compose independently so a pointer release cannot cancel a held keyboard aim
+OK Typing X into editable fields and modified shortcuts stays with the original handler
+OK An inherited family SVG replacement cannot detach the new foreground canvas
+{"passed":27}
+

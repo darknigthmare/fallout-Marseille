@@ -1,0 +1,1975 @@
+{
+  "checks": [
+    {
+      "name": "Frozen native bundle includes the exact MNS module",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual source dependency is in bundle src/v050/04c_roof_collisions.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual source dependency is in bundle src/v050/06_architecture_sources.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual source dependency is in bundle src/v050/07_facades.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native surface payload matches its exact source descriptor",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Original BD TOPO chunk remains exact data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Original BD TOPO chunk remains exact data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document equals frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual attributed MNS atlas loads without error",
+      "ok": true,
+      "detail": {
+        "loaded": true,
+        "missing": false,
+        "error": null,
+        "records": 17,
+        "applied": [],
+        "rejected": [],
+        "nativeSpacingMeters": 0.5,
+        "facadeTrianglesOmitted": 0,
+        "scope": "Surface supérieure observée MNS, découpée dans les emprises IGN inchangées ; aucun relevé de façade ou de pièce."
+      }
+    },
+    {
+      "name": "Actual municipal metric world is initialized before sector navigation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production geographic sector loads major",
+      "ok": true,
+      "detail": {
+        "result": true,
+        "map": {
+          "version": "0.46.0",
+          "sourceBase": "0.42.0",
+          "phase": "ready",
+          "busy": false,
+          "errors": null,
+          "commits": 2,
+          "regionChanges": 0,
+          "scene": null,
+          "region": "geo_marseille_commune",
+          "tiles": 29,
+          "buildingCount": 7588,
+          "nature": 104,
+          "cache": 31,
+          "lab": false,
+          "pos": [
+            0,
+            76.02355803479796,
+            0
+          ],
+          "yaw": 0,
+          "pitch": 0,
+          "lore": {
+            "done": {},
+            "side": null,
+            "petanque": {
+              "played": 0,
+              "wins": 0
+            },
+            "accepted": {},
+            "reputation": {}
+          }
+        },
+        "city": {
+          "indexPresent": true,
+          "municipality": {
+            "code": "13055",
+            "name": "Marseille",
+            "bbox": [
+              43.1696313,
+              5.22875102,
+              43.39105653,
+              5.53254336
+            ]
+          },
+          "coverage": {
+            "administrativeEnvelopeBorderObjects": 4,
+            "complete": true,
+            "expandedBytes": 759922557,
+            "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+            "nonAcquiredZAnomalies": 1,
+            "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+            "partitionStepDegrees": 0.025,
+            "queryTileCount": 77,
+            "tileCount": 290,
+            "uniqueBuildings": 291001,
+            "uniqueRoads": 55449
+          },
+          "registered": true,
+          "tilesAvailable": 290,
+          "sourceBuildings": 291001,
+          "sourceRoads": 55449,
+          "loadedPartitions": 13,
+          "loadedBuildings": 16906,
+          "loadedRoads": 2726,
+          "loadedWireBytes": 40315857,
+          "sharedProvenanceRecords": 88,
+          "cache": {
+            "entries": 13,
+            "bytes": 66487352,
+            "budgetBytes": 67108864,
+            "pinned": 0,
+            "overBudgetBytes": 0,
+            "hits": 131,
+            "misses": 83,
+            "evictions": 50
+          },
+          "terrainCache": {
+            "entries": 4,
+            "bytes": 11827816,
+            "budgetBytes": 50331648,
+            "pinned": 0,
+            "overBudgetBytes": 0,
+            "hits": 0,
+            "misses": 4,
+            "evictions": 0
+          },
+          "terrainIndexPresent": true,
+          "terrainTilesAvailable": 24,
+          "inflight": 0,
+          "requests": 67,
+          "errors": []
+        },
+        "mns": {
+          "loaded": true,
+          "missing": false,
+          "error": null,
+          "records": 17,
+          "applied": [
+            {
+              "cleabs": "BATIMENT0000000258930468",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 4001,
+              "roofTriangles": 7260,
+              "wallTriangles": 1480,
+              "minimumElevation": 12.141359253836697,
+              "maximumElevation": 39.89564895629883
+            },
+            {
+              "cleabs": "BATIMENT0000000258930469",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 3715,
+              "roofTriangles": 6599,
+              "wallTriangles": 1662,
+              "minimumElevation": 11.687935829162598,
+              "maximumElevation": 45.42578716996384
+            },
+            {
+              "cleabs": "BATIMENT0000000258930470",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 14353,
+              "roofTriangles": 26734,
+              "wallTriangles": 3944,
+              "minimumElevation": 11.263802046425928,
+              "maximumElevation": 68.27495574951172
+            },
+            {
+              "cleabs": "BATIMENT0000000258938064",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 1538,
+              "roofTriangles": 2728,
+              "wallTriangles": 692,
+              "minimumElevation": 19.498660407164895,
+              "maximumElevation": 41.795666367295325
+            },
+            {
+              "cleabs": "BATIMENT0000000258938065",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 2067,
+              "roofTriangles": 3793,
+              "wallTriangles": 678,
+              "minimumElevation": 36.13412094116211,
+              "maximumElevation": 79.85255432128906
+            }
+          ],
+          "rejected": [],
+          "nativeSpacingMeters": 0.5,
+          "facadeTrianglesOmitted": 0,
+          "scope": "Surface supérieure observée MNS, découpée dans les emprises IGN inchangées ; aucun relevé de façade ou de pièce."
+        }
+      }
+    },
+    {
+      "name": "Actual imported landmark surfaces are attached major",
+      "ok": true,
+      "detail": [
+        {
+          "cleabs": "BATIMENT0000000258930468",
+          "siteContext": "Cathédrale de la Major",
+          "vertices": 4001,
+          "roofTriangles": 7260,
+          "wallTriangles": 1480,
+          "minimumElevation": 12.141359253836697,
+          "maximumElevation": 39.89564895629883
+        },
+        {
+          "cleabs": "BATIMENT0000000258930469",
+          "siteContext": "Cathédrale de la Major",
+          "vertices": 3715,
+          "roofTriangles": 6599,
+          "wallTriangles": 1662,
+          "minimumElevation": 11.687935829162598,
+          "maximumElevation": 45.42578716996384
+        },
+        {
+          "cleabs": "BATIMENT0000000258930470",
+          "siteContext": "Cathédrale de la Major",
+          "vertices": 14353,
+          "roofTriangles": 26734,
+          "wallTriangles": 3944,
+          "minimumElevation": 11.263802046425928,
+          "maximumElevation": 68.27495574951172
+        },
+        {
+          "cleabs": "BATIMENT0000000258938064",
+          "siteContext": "Cathédrale de la Major",
+          "vertices": 1538,
+          "roofTriangles": 2728,
+          "wallTriangles": 692,
+          "minimumElevation": 19.498660407164895,
+          "maximumElevation": 41.795666367295325
+        },
+        {
+          "cleabs": "BATIMENT0000000258938065",
+          "siteContext": "Cathédrale de la Major",
+          "vertices": 2067,
+          "roofTriangles": 3793,
+          "wallTriangles": 678,
+          "minimumElevation": 36.13412094116211,
+          "maximumElevation": 79.85255432128906
+        }
+      ]
+    },
+    {
+      "name": "Native cap uses exact source geometry major",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native roof triangle count equals acquired clipped source major",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual highest vertex retains measured elevation major",
+      "ok": true,
+      "detail": {
+        "source": [
+          891979.5,
+          6247396.5,
+          79.85255432128906
+        ],
+        "native": 79.85255432496945
+      }
+    },
+    {
+      "name": "Measured silhouette adds the source summit above the former envelope major",
+      "ok": true,
+      "detail": {
+        "sourceMaximum": 79.85255432128906,
+        "oldFlatTop": 49.6
+      }
+    },
+    {
+      "name": "Production line of sight hits the real upper cap major",
+      "ok": true,
+      "detail": {
+        "from": [
+          -11829.644117276184,
+          82.85255432128906,
+          -1287.3050982449204
+        ],
+        "to": [
+          -11829.644117276184,
+          79.35255432128906,
+          -1287.3050982449204
+        ]
+      }
+    },
+    {
+      "name": "Air above the measured summit stays clear major",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A measured collision-free MNT viewing point exists major",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production geographic sector loads garde",
+      "ok": true,
+      "detail": {
+        "result": true,
+        "map": {
+          "version": "0.46.0",
+          "sourceBase": "0.42.0",
+          "phase": "ready",
+          "busy": false,
+          "errors": null,
+          "commits": 3,
+          "regionChanges": 0,
+          "scene": null,
+          "region": "geo_marseille_commune",
+          "tiles": 29,
+          "buildingCount": 23370,
+          "nature": 213,
+          "cache": 32,
+          "lab": false,
+          "pos": [
+            -11837.983116718475,
+            13.034426025247704,
+            -1356.563539803028
+          ],
+          "yaw": 3.0217653956076695,
+          "pitch": 0.6388900545005387,
+          "lore": {
+            "done": {},
+            "side": null,
+            "petanque": {
+              "played": 0,
+              "wins": 0
+            },
+            "accepted": {},
+            "reputation": {}
+          }
+        },
+        "city": {
+          "indexPresent": true,
+          "municipality": {
+            "code": "13055",
+            "name": "Marseille",
+            "bbox": [
+              43.1696313,
+              5.22875102,
+              43.39105653,
+              5.53254336
+            ]
+          },
+          "coverage": {
+            "administrativeEnvelopeBorderObjects": 4,
+            "complete": true,
+            "expandedBytes": 759922557,
+            "method": "Every rectangle intersecting the official municipality polygon queried completely for both advertised layers",
+            "nonAcquiredZAnomalies": 1,
+            "objectScope": "Whole source objects returned by completed WFS rectangle queries, including conservative spatial-index border results outside Marseille",
+            "partitionStepDegrees": 0.025,
+            "queryTileCount": 77,
+            "tileCount": 290,
+            "uniqueBuildings": 291001,
+            "uniqueRoads": 55449
+          },
+          "registered": true,
+          "tilesAvailable": 290,
+          "sourceBuildings": 291001,
+          "sourceRoads": 55449,
+          "loadedPartitions": 14,
+          "loadedBuildings": 17798,
+          "loadedRoads": 1734,
+          "loadedWireBytes": 38446483,
+          "sharedProvenanceRecords": 77,
+          "cache": {
+            "entries": 14,
+            "bytes": 63623898,
+            "budgetBytes": 67108864,
+            "pinned": 0,
+            "overBudgetBytes": 0,
+            "hits": 172,
+            "misses": 123,
+            "evictions": 75
+          },
+          "terrainCache": {
+            "entries": 4,
+            "bytes": 11827816,
+            "budgetBytes": 50331648,
+            "pinned": 0,
+            "overBudgetBytes": 0,
+            "hits": 1,
+            "misses": 4,
+            "evictions": 0
+          },
+          "terrainIndexPresent": true,
+          "terrainTilesAvailable": 24,
+          "inflight": 0,
+          "requests": 93,
+          "errors": []
+        },
+        "mns": {
+          "loaded": true,
+          "missing": false,
+          "error": null,
+          "records": 17,
+          "applied": [
+            {
+              "cleabs": "BATIMENT0000000258930468",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 4001,
+              "roofTriangles": 7260,
+              "wallTriangles": 1480,
+              "minimumElevation": 12.141359253836697,
+              "maximumElevation": 39.89564895629883
+            },
+            {
+              "cleabs": "BATIMENT0000000258930469",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 3715,
+              "roofTriangles": 6599,
+              "wallTriangles": 1662,
+              "minimumElevation": 11.687935829162598,
+              "maximumElevation": 45.42578716996384
+            },
+            {
+              "cleabs": "BATIMENT0000000258930470",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 14353,
+              "roofTriangles": 26734,
+              "wallTriangles": 3944,
+              "minimumElevation": 11.263802046425928,
+              "maximumElevation": 68.27495574951172
+            },
+            {
+              "cleabs": "BATIMENT0000000258938064",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 1538,
+              "roofTriangles": 2728,
+              "wallTriangles": 692,
+              "minimumElevation": 19.498660407164895,
+              "maximumElevation": 41.795666367295325
+            },
+            {
+              "cleabs": "BATIMENT0000000258938065",
+              "siteContext": "Cathédrale de la Major",
+              "vertices": 2067,
+              "roofTriangles": 3793,
+              "wallTriangles": 678,
+              "minimumElevation": 36.13412094116211,
+              "maximumElevation": 79.85255432128906
+            },
+            {
+              "cleabs": "BATIMENT0000000273400278",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 3820,
+              "roofTriangles": 6744,
+              "wallTriangles": 1788,
+              "minimumElevation": 141.86703598251353,
+              "maximumElevation": 159.0074005126953
+            },
+            {
+              "cleabs": "BATIMENT0000000273400280",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 3182,
+              "roofTriangles": 5473,
+              "wallTriangles": 1778,
+              "minimumElevation": 141.23434186250702,
+              "maximumElevation": 159.42494201660156
+            },
+            {
+              "cleabs": "BATIMENT0000000273400282",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 920,
+              "roofTriangles": 1606,
+              "wallTriangles": 464,
+              "minimumElevation": 157.11328064459187,
+              "maximumElevation": 160.95285034179688
+            },
+            {
+              "cleabs": "BATIMENT0000000273400286",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 156,
+              "roofTriangles": 214,
+              "wallTriangles": 192,
+              "minimumElevation": 151.98982110688664,
+              "maximumElevation": 155.26030345302462
+            },
+            {
+              "cleabs": "BATIMENT0000000273400287",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 246,
+              "roofTriangles": 388,
+              "wallTriangles": 204,
+              "minimumElevation": 153.03913345272858,
+              "maximumElevation": 155.96775817871094
+            },
+            {
+              "cleabs": "BATIMENT0000000273400288",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 157,
+              "roofTriangles": 222,
+              "wallTriangles": 180,
+              "minimumElevation": 152.09280395507812,
+              "maximumElevation": 155.87167358398438
+            },
+            {
+              "cleabs": "BATIMENT0000000273400964",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 4177,
+              "roofTriangles": 7233,
+              "wallTriangles": 2238,
+              "minimumElevation": 148.13362823075184,
+              "maximumElevation": 192.30810075024263
+            },
+            {
+              "cleabs": "BATIMENT0000000273400965",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 3574,
+              "roofTriangles": 6176,
+              "wallTriangles": 1940,
+              "minimumElevation": 143.80252075195312,
+              "maximumElevation": 192.3848225683393
+            },
+            {
+              "cleabs": "BATIMENT0000000273400985",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 471,
+              "roofTriangles": 729,
+              "wallTriangles": 422,
+              "minimumElevation": 179.6098263257132,
+              "maximumElevation": 210.16793823242188
+            },
+            {
+              "cleabs": "BATIMENT0000000273400987",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 1808,
+              "roofTriangles": 3219,
+              "wallTriangles": 790,
+              "minimumElevation": 163.13209965870374,
+              "maximumElevation": 192.4150848388672
+            },
+            {
+              "cleabs": "BATIMENT0000000273400988",
+              "siteContext": "Notre-Dame de la Garde",
+              "vertices": 1091,
+              "roofTriangles": 1904,
+              "wallTriangles": 552,
+              "minimumElevation": 167.83773163489474,
+              "maximumElevation": 189.85227966308594
+            }
+          ],
+          "rejected": [
+            {
+              "cleabs": "BATIMENT0000000273400986",
+              "reason": "Surfaces MNS : liaison ou base incompatible"
+            }
+          ],
+          "nativeSpacingMeters": 0.5,
+          "facadeTrianglesOmitted": 2637,
+          "scope": "Surface supérieure observée MNS, découpée dans les emprises IGN inchangées ; aucun relevé de façade ou de pièce."
+        }
+      }
+    },
+    {
+      "name": "Actual imported landmark surfaces are attached garde",
+      "ok": true,
+      "detail": [
+        {
+          "cleabs": "BATIMENT0000000273400278",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 3820,
+          "roofTriangles": 6744,
+          "wallTriangles": 1788,
+          "minimumElevation": 141.86703598251353,
+          "maximumElevation": 159.0074005126953
+        },
+        {
+          "cleabs": "BATIMENT0000000273400280",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 3182,
+          "roofTriangles": 5473,
+          "wallTriangles": 1778,
+          "minimumElevation": 141.23434186250702,
+          "maximumElevation": 159.42494201660156
+        },
+        {
+          "cleabs": "BATIMENT0000000273400282",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 920,
+          "roofTriangles": 1606,
+          "wallTriangles": 464,
+          "minimumElevation": 157.11328064459187,
+          "maximumElevation": 160.95285034179688
+        },
+        {
+          "cleabs": "BATIMENT0000000273400286",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 156,
+          "roofTriangles": 214,
+          "wallTriangles": 192,
+          "minimumElevation": 151.98982110688664,
+          "maximumElevation": 155.26030345302462
+        },
+        {
+          "cleabs": "BATIMENT0000000273400287",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 246,
+          "roofTriangles": 388,
+          "wallTriangles": 204,
+          "minimumElevation": 153.03913345272858,
+          "maximumElevation": 155.96775817871094
+        },
+        {
+          "cleabs": "BATIMENT0000000273400288",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 157,
+          "roofTriangles": 222,
+          "wallTriangles": 180,
+          "minimumElevation": 152.09280395507812,
+          "maximumElevation": 155.87167358398438
+        },
+        {
+          "cleabs": "BATIMENT0000000273400964",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 4177,
+          "roofTriangles": 7233,
+          "wallTriangles": 2238,
+          "minimumElevation": 148.13362823075184,
+          "maximumElevation": 192.30810075024263
+        },
+        {
+          "cleabs": "BATIMENT0000000273400965",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 3574,
+          "roofTriangles": 6176,
+          "wallTriangles": 1940,
+          "minimumElevation": 143.80252075195312,
+          "maximumElevation": 192.3848225683393
+        },
+        {
+          "cleabs": "BATIMENT0000000273400985",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 471,
+          "roofTriangles": 729,
+          "wallTriangles": 422,
+          "minimumElevation": 179.6098263257132,
+          "maximumElevation": 210.16793823242188
+        },
+        {
+          "cleabs": "BATIMENT0000000273400987",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 1808,
+          "roofTriangles": 3219,
+          "wallTriangles": 790,
+          "minimumElevation": 163.13209965870374,
+          "maximumElevation": 192.4150848388672
+        },
+        {
+          "cleabs": "BATIMENT0000000273400988",
+          "siteContext": "Notre-Dame de la Garde",
+          "vertices": 1091,
+          "roofTriangles": 1904,
+          "wallTriangles": 552,
+          "minimumElevation": 167.83773163489474,
+          "maximumElevation": 189.85227966308594
+        }
+      ]
+    },
+    {
+      "name": "Native cap uses exact source geometry garde",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native roof triangle count equals acquired clipped source garde",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual highest vertex retains measured elevation garde",
+      "ok": true,
+      "detail": {
+        "source": [
+          892531.5,
+          6245658.5,
+          210.16793823242188
+        ],
+        "native": 210.16793823242188
+      }
+    },
+    {
+      "name": "Measured silhouette adds the source summit above the former envelope garde",
+      "ok": true,
+      "detail": {
+        "sourceMaximum": 210.16793823242188,
+        "oldFlatTop": 171.4
+      }
+    },
+    {
+      "name": "Production line of sight hits the real upper cap garde",
+      "ok": true,
+      "detail": {
+        "from": [
+          -11277.644117276184,
+          213.16793823242188,
+          450.69490175601095
+        ],
+        "to": [
+          -11277.644117276184,
+          209.66793823242188,
+          450.69490175601095
+        ]
+      }
+    },
+    {
+      "name": "Air above the measured summit stays clear garde",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A measured collision-free MNT viewing point exists garde",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "MNS below the unchanged IGN base is explicitly refused",
+      "ok": true,
+      "detail": [
+        {
+          "cleabs": "BATIMENT0000000273400986",
+          "reason": "Surfaces MNS : liaison ou base incompatible"
+        }
+      ]
+    },
+    {
+      "name": "Original architecture contextual labels remain a separate atlas",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document equals frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual attributed MNS atlas loads without error",
+      "ok": true,
+      "detail": {
+        "loaded": true,
+        "missing": false,
+        "error": null,
+        "records": 17,
+        "applied": [],
+        "rejected": [],
+        "nativeSpacingMeters": 0.5,
+        "facadeTrianglesOmitted": 0,
+        "scope": "Surface supérieure observée MNS, découpée dans les emprises IGN inchangées ; aucun relevé de façade ou de pièce."
+      }
+    },
+    {
+      "name": "Real Continue preserves the selected position and yaw",
+      "ok": true,
+      "detail": {
+        "before": {
+          "zone": "geo_marseille_commune",
+          "pos": [
+            -11265.52607146767,
+            136.30176284495647,
+            394.58781359530985
+          ],
+          "yaw": -2.9288793529636825,
+          "pitch": 0.798000994739475,
+          "hp": 115,
+          "maxHp": 115,
+          "ap": 100,
+          "maxAp": 100,
+          "rad": 0,
+          "ammoClip": 10,
+          "ammoReserve": 42,
+          "clipSize": 10,
+          "weapon": "Pistolet 10 mm",
+          "caps": 18,
+          "crouched": false,
+          "cameraMode": "first",
+          "discovered": [
+            "vault",
+            "aubagne",
+            "geo_marseille_commune"
+          ],
+          "level": 1,
+          "xp": 36,
+          "perkPoints": 0,
+          "activeCompanion": null,
+          "weaponId": "pistol10",
+          "armorId": "vaultSuit",
+          "critCharge": 0
+        },
+        "after": {
+          "zone": "geo_marseille_commune",
+          "pos": [
+            -11265.52607146767,
+            136.30176284495647,
+            394.58781359530985
+          ],
+          "yaw": -2.9288793529636825,
+          "pitch": 0,
+          "hp": 115,
+          "maxHp": 115,
+          "ap": 101,
+          "maxAp": 105,
+          "rad": 0,
+          "ammoClip": 10,
+          "ammoReserve": 42,
+          "clipSize": 10,
+          "weapon": "Pistolet 10 mm",
+          "caps": 18,
+          "crouched": false,
+          "cameraMode": "first",
+          "discovered": [
+            "vault",
+            "aubagne",
+            "geo_marseille_commune"
+          ],
+          "level": 1,
+          "xp": 36,
+          "perkPoints": 0,
+          "activeCompanion": null,
+          "weaponId": "pistol10",
+          "armorId": "vaultSuit",
+          "critCharge": 0,
+          "damageResistance": 0.05,
+          "radResistance": 0.08
+        }
+      }
+    },
+    {
+      "name": "Real Continue reapplies source MNS without saving a copied mesh",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No JavaScript page exception in the native inspection",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "No missing local source resource or HTTP failure",
+      "ok": false,
+      "detail": [
+        {
+          "url": "http://127.0.0.1:40987/verification/v050/LOCAL_DATA_STATE.json",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:40987/verification/v050/LOCAL_DATA_STATE.json",
+          "status": 404
+        }
+      ]
+    }
+  ],
+  "shots": [
+    {
+      "file": "major_ground.png",
+      "sha256": "4147dc87ee0b7628cdde0a0c20f8ba3313f6d70519771c08689aa5708fb8148d",
+      "label": "Vue à hauteur des yeux depuis un sol MNT réel, placement assisté.",
+      "method": "Actual unchanged production WebGL frame; declared frozen diagnostic camera, no image editing."
+    },
+    {
+      "file": "major_elevated.png",
+      "sha256": "ea2fcd77d8eb2fe73da9ffd4f5383e7ef08fa69727d7fce3050854752500a9b0",
+      "label": "Inspection élevée du MNS découpé ; position de diagnostic hors parcours piéton.",
+      "method": "Actual unchanged production WebGL frame; declared frozen diagnostic camera, no image editing."
+    },
+    {
+      "file": "garde_ground.png",
+      "sha256": "7ec4e0e9ce57a85afa02f791fe7998b87bb0b09ea640881d215fcfaaaa87e5e7",
+      "label": "Vue à hauteur des yeux depuis un sol MNT réel, placement assisté.",
+      "method": "Actual unchanged production WebGL frame; declared frozen diagnostic camera, no image editing."
+    },
+    {
+      "file": "garde_elevated.png",
+      "sha256": "bec1cb1cc4682701b49b520aab9f9bef211d6ec20c4d555656e19f7cbaf73742",
+      "label": "Inspection élevée du MNS découpé ; position de diagnostic hors parcours piéton.",
+      "method": "Actual unchanged production WebGL frame; declared frozen diagnostic camera, no image editing."
+    },
+    {
+      "file": "garde_continue.png",
+      "sha256": "5d2bc7691634290afcef04361f08e0931f02e3480b52f87f1654fcc916dd1315",
+      "label": "Même source MNS après rechargement et bouton Continuer natif.",
+      "method": "Actual unchanged production WebGL frame; declared frozen diagnostic camera, no image editing."
+    }
+  ],
+  "placements": [
+    {
+      "site": "major",
+      "kind": "measured-ground-view",
+      "position": [
+        -11837.983116718475,
+        13.034426025247704,
+        -1356.563539803028
+      ],
+      "yaw": 3.0217653956076695,
+      "pitch": 0.6388900545005387,
+      "MNT": {
+        "ll": [
+          43.30048390226374,
+          5.3648
+        ],
+        "p": [
+          -11837.983116718475,
+          0,
+          -1356.563539803028
+        ],
+        "height": 11.384426025247704,
+        "sources": [
+          "enrichment:geo_marseille_commune:63a214b4ef147ed4"
+        ],
+        "clear": true
+      }
+    },
+    {
+      "site": "major",
+      "kind": "elevated-source-inspection",
+      "position": [
+        -11924.644117276184,
+        134.85255432128906,
+        -1192.3050982449204
+      ],
+      "yaw": 0.7853981633974483,
+      "pitch": -0.5091491612089386
+    },
+    {
+      "site": "garde",
+      "kind": "measured-ground-view",
+      "position": [
+        -11265.52607146767,
+        136.30176284495647,
+        394.58781359530985
+      ],
+      "yaw": -2.9288793529636825,
+      "pitch": 0.798000994739475,
+      "MNT": {
+        "ll": [
+          43.28458390226374,
+          5.3712
+        ],
+        "p": [
+          -11265.52607146767,
+          0,
+          394.58781359530985
+        ],
+        "height": 134.65176284495647,
+        "sources": [
+          "enrichment:geo_marseille_commune:51f543d797a9b532"
+        ],
+        "clear": true
+      }
+    },
+    {
+      "site": "garde",
+      "kind": "elevated-source-inspection",
+      "position": [
+        -11372.644117276184,
+        265.1679382324219,
+        545.694901756011
+      ],
+      "yaw": 0.7853981633974483,
+      "pitch": -0.5091491612089386
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: the server responded with a status of 404 (File not found)",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "local_http_errors": [
+    {
+      "url": "http://127.0.0.1:40987/verification/v050/LOCAL_DATA_STATE.json",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:40987/verification/v050/LOCAL_DATA_STATE.json",
+      "status": 404
+    }
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:40987/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:40987/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "stages": [
+    {
+      "name": "major",
+      "elapsed_seconds": 17.364994055998977
+    },
+    {
+      "name": "garde",
+      "elapsed_seconds": 34.89917782900011
+    }
+  ],
+  "pinned_inputs": {
+    "index.html": "07adc7080ac2c0e0b4d499a604bacd27277c662d202c407322122bc63a1c6dbd",
+    "src/v050/06a_landmark_surfaces.js": "d03311e5880b4627f9fa3908dd5a7b42a3ce8c052875b6840b502736ef48004a",
+    "src/v050/04c_roof_collisions.js": "e67887b2a274cf570fa22075ce45e516b462d2090114a1d34cd785a53e33d824",
+    "src/v050/06_architecture_sources.js": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+    "src/v050/07_facades.js": "63f1b830a489e46ca932f5b7f33482bee03df36a727949ff78965a51a9002d02",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80",
+    "tools/build_landmark_surfaces.py": "a319d7084d7c7cba24bd0e1e0e935f7151c259f14b1b8fb678c6e834af0e15c5",
+    "data/map_pack/landmark_surfaces/index.json": "0718f2cccb2ca4a45353804b7ecf31d93199db46905bd0ed56b296ce0be03f8e",
+    "data/map_pack/landmark_surfaces/marseille-mns-e50ea945c27e47a3.json": "e50ea945c27e47a3f706c8ea381975032cd6b37857baa913f4f9430fcab3c6f6",
+    "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+    "data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63"
+  },
+  "html_sha256": "07adc7080ac2c0e0b4d499a604bacd27277c662d202c407322122bc63a1c6dbd",
+  "scope": "Native HTTP inspection of real IGN MNS landmark surfaces, never a fixture.\n\nOne real browser context visits the Major and Notre-Dame de la Garde through\ndiagnostic geographic navigation. Source loading, mesh publication, collision,\nLOS and save/Continue are production functions; cameras/freeze/time selection\nare declared assistance. Elevated captures are labelled inspections and are\nnot evidence of unassisted walking or a complete architectural survey.\n",
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "service_workers_disabled": true,
+  "assistance": [
+    "Existing v020Load initializes the historical playing state without item or quest grants; v018LoadMacro then creates the real municipal metric world before sector ensure calls.",
+    "Existing v046Load selects real source sectors; automatic prefetch is paused for bounded observations.",
+    "v018CaptureAt freezes simulation and places real cameras at collision-checked MNT floor points, or explicitly elevated inspection positions.",
+    "Source maximum vertices are selected from the actual acquired payload to compare native mesh heights and production collision/LOS."
+  ],
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true,
+    "server_thread_joined": true
+  },
+  "passed": 35,
+  "failed": 1,
+  "total": 36,
+  "elapsed_seconds": 107.835,
+  "script_sha256": "5720a5d0ea79f14a9a6468c81a9be534803a5c4099bd56ba1e947a8e65696393",
+  "url": "http://127.0.0.1:40987/index.html?skipboot",
+  "browser_version": "154.0.8037.57",
+  "stage": "failed",
+  "major_surface": {
+    "cleabs": "BATIMENT0000000258938065",
+    "sourceTileSha256": [
+      "90a4dc5cce5e6942063820c1c9ef1d606fdb9e973f3e28f2f67e751eba4f23cb",
+      "a4d7f88153e7ee25a8f3043005c6db9619aa4d41d0bc0eb4abb939af3b459b96"
+    ],
+    "minimumElevation": 36.13412094116211,
+    "maximumElevation": 79.85255432128906,
+    "roofVertices": 2067,
+    "roofTriangles": 3793,
+    "wallTriangles": 678,
+    "height": 79.85255432496945,
+    "sourceProperties": {
+      "altitude_minimale_sol": 9.5,
+      "altitude_maximale_sol": null,
+      "altitude_minimale_toit": 49.6,
+      "altitude_maximale_toit": null,
+      "hauteur": 40.1,
+      "nombre_d_etages": null
+    },
+    "rawGeometry": {
+      "coordinates": [
+        [
+          [
+            [
+              5.36473749,
+              43.29984937,
+              49.6
+            ],
+            [
+              5.36473745,
+              43.29984847,
+              49.6
+            ],
+            [
+              5.36479442,
+              43.29976532,
+              49.6
+            ],
+            [
+              5.36490929,
+              43.29974211,
+              49.6
+            ],
+            [
+              5.36499634,
+              43.2997915,
+              49.6
+            ],
+            [
+              5.36503678,
+              43.29987612,
+              49.6
+            ],
+            [
+              5.3649831,
+              43.29994929,
+              49.6
+            ],
+            [
+              5.36488889,
+              43.29996575,
+              49.6
+            ],
+            [
+              5.36477423,
+              43.29993406,
+              49.6
+            ],
+            [
+              5.36473749,
+              43.29984937,
+              49.6
+            ]
+          ]
+        ]
+      ],
+      "type": "MultiPolygon"
+    },
+    "sampleVertices": [
+      [
+        -11830.01324815012,
+        38.1678941858134,
+        -1298.805098243989
+      ],
+      [
+        -11829.644117276184,
+        39.368324279785156,
+        -1298.805098243989
+      ],
+      [
+        -11829.644117276184,
+        40.68731899993317,
+        -1298.957569169812
+      ],
+      [
+        -11829.384347409476,
+        42.01639854153733,
+        -1299.064868110232
+      ],
+      [
+        -11829.144117276184,
+        39.703277587890625,
+        -1298.805098243989
+      ],
+      [
+        -11829.144117276184,
+        43.12237929626957,
+        -1299.1640960900113
+      ],
+      [
+        -11829.04446643719,
+        43.55633495513949,
+        -1299.2052572518587
+      ],
+      [
+        -11828.795653480687,
+        43.16869675308466,
+        -1299.153562039137
+      ],
+      [
+        -11828.644117276184,
+        39.24896240234375,
+        -1298.805098243989
+      ],
+      [
+        -11828.644117276184,
+        42.68929245358361,
+        -1299.122077761218
+      ],
+      [
+        -11828.381666471018,
+        42.23661697000707,
+        -1299.067549048923
+      ],
+      [
+        -11828.144117276184,
+        41.2759895324707,
+        -1298.805098243989
+      ]
+    ],
+    "measurements": {
+      "footprintAreaSquareMetres": 432.2915667224921,
+      "roofProjectedAreaSquareMetres": 432.2915667219226,
+      "boundaryLengthMetres": 75.94838324820579,
+      "sourceBoundaryLengthMetres": 75.9483832482058,
+      "minimumElevation": 36.13412094116211,
+      "maximumElevation": 79.85255432128906,
+      "nativeVertices": 1728,
+      "clippedVertices": 339,
+      "nativeChecks": [
+        {
+          "vertex": 1,
+          "elevation": 39.368324279785156
+        },
+        {
+          "vertex": 4,
+          "elevation": 39.703277587890625
+        },
+        {
+          "vertex": 8,
+          "elevation": 39.24896240234375
+        },
+        {
+          "vertex": 11,
+          "elevation": 41.2759895324707
+        },
+        {
+          "vertex": 14,
+          "elevation": 42.22759246826172
+        },
+        {
+          "vertex": 17,
+          "elevation": 43.72245407104492
+        },
+        {
+          "vertex": 22,
+          "elevation": 48.045814514160156
+        },
+        {
+          "vertex": 25,
+          "elevation": 45.59844970703125
+        },
+        {
+          "vertex": 28,
+          "elevation": 46.49785614013672
+        },
+        {
+          "vertex": 30,
+          "elevation": 45.34528350830078
+        },
+        {
+          "vertex": 31,
+          "elevation": 40.524330139160156
+        },
+        {
+          "vertex": 32,
+          "elevation": 38.886348724365234
+        },
+        {
+          "vertex": 33,
+          "elevation": 38.4611701965332
+        },
+        {
+          "vertex": 34,
+          "elevation": 39.539306640625
+        },
+        {
+          "vertex": 35,
+          "elevation": 40.321014404296875
+        },
+        {
+          "vertex": 37,
+          "elevation": 38.630218505859375
+        },
+        {
+          "vertex": 40,
+          "elevation": 41.804718017578125
+        },
+        {
+          "vertex": 43,
+          "elevation": 43.10259246826172
+        },
+        {
+          "vertex": 46,
+          "elevation": 41.20604705810547
+        },
+        {
+          "vertex": 51,
+          "elevation": 54.403114318847656
+        },
+        {
+          "vertex": 54,
+          "elevation": 54.866329193115234
+        },
+        {
+          "vertex": 56,
+          "elevation": 54.50225067138672
+        },
+        {
+          "vertex": 57,
+          "elevation": 54.52927780151367
+        },
+        {
+          "vertex": 58,
+          "elevation": 54.937686920166016
+        },
+        {
+          "vertex": 59,
+          "elevation": 55.084014892578125
+        },
+        {
+          "vertex": 60,
+          "elevation": 45.874000549316406
+        },
+        {
+          "vertex": 61,
+          "elevation": 48.950531005859375
+        },
+        {
+          "vertex": 62,
+          "elevation": 44.76793670654297
+        },
+        {
+          "vertex": 63,
+          "elevation": 47.16994857788086
+        },
+        {
+          "vertex": 64,
+          "elevation": 44.597896575927734
+        },
+        {
+          "vertex": 65,
+          "elevation": 44.361656188964844
+        },
+        {
+          "vertex": 66,
+          "elevation": 38.52885818481445
+        },
+        {
+          "vertex": 107,
+          "elevation": 43.8358154296875
+        },
+        {
+          "vertex": 214,
+          "elevation": 60.14475631713867
+        },
+        {
+          "vertex": 321,
+          "elevation": 50.80954360961914
+        },
+        {
+          "vertex": 428,
+          "elevation": 64.60396575927734
+        },
+        {
+          "vertex": 535,
+          "elevation": 65.70095825195312
+        },
+        {
+          "vertex": 642,
+          "elevation": 55.02540588378906
+        },
+        {
+          "vertex": 856,
+          "elevation": 60.67202377319336
+        },
+        {
+          "vertex": 963,
+          "elevation": 65.51166534423828
+        },
+        {
+          "vertex": 1070,
+          "elevation": 71.47019958496094
+        },
+        {
+          "vertex": 1177,
+          "elevation": 76.29656219482422
+        },
+        {
+          "vertex": 1284,
+          "elevation": 67.08423614501953
+        },
+        {
+          "vertex": 1391,
+          "elevation": 60.59278106689453
+        },
+        {
+          "vertex": 1498,
+          "elevation": 56.057918548583984
+        },
+        {
+          "vertex": 1605,
+          "elevation": 65.46761322021484
+        },
+        {
+          "vertex": 1712,
+          "elevation": 36.70115661621094
+        },
+        {
+          "vertex": 1819,
+          "elevation": 56.1031379699707
+        },
+        {
+          "vertex": 2033,
+          "elevation": 38.04915237426758
+        }
+      ]
+    }
+  },
+  "garde_surface": {
+    "cleabs": "BATIMENT0000000273400985",
+    "sourceTileSha256": [
+      "f30b5b346671318a1f4de002ef1174be9163ae71c9e0637b21a354c343c30ccb"
+    ],
+    "minimumElevation": 179.6098263257132,
+    "maximumElevation": 210.16793823242188,
+    "roofVertices": 471,
+    "roofTriangles": 729,
+    "wallTriangles": 422,
+    "height": 210.16793823242188,
+    "sourceProperties": {
+      "altitude_minimale_sol": 155.5,
+      "altitude_maximale_sol": null,
+      "altitude_minimale_toit": 171.4,
+      "altitude_maximale_toit": null,
+      "hauteur": 15.9,
+      "nombre_d_etages": null
+    },
+    "rawGeometry": {
+      "coordinates": [
+        [
+          [
+            [
+              5.37110056,
+              43.28408834,
+              171.4
+            ],
+            [
+              5.37108859,
+              43.2840967,
+              171.4
+            ],
+            [
+              5.37108478,
+              43.28409409,
+              171.4
+            ],
+            [
+              5.37108117,
+              43.28409597,
+              171.4
+            ],
+            [
+              5.37107863,
+              43.28409422,
+              171.4
+            ],
+            [
+              5.37103782,
+              43.28412032,
+              171.4
+            ],
+            [
+              5.37104039,
+              43.28412296,
+              171.4
+            ],
+            [
+              5.37103681,
+              43.28412574,
+              171.4
+            ],
+            [
+              5.37103935,
+              43.28412748,
+              171.4
+            ],
+            [
+              5.37102737,
+              43.28413585,
+              171.4
+            ],
+            [
+              5.37102357,
+              43.28413323,
+              171.4
+            ],
+            [
+              5.37102118,
+              43.28413508,
+              171.4
+            ],
+            [
+              5.37101861,
+              43.28413244,
+              171.4
+            ],
+            [
+              5.37101503,
+              43.28413522,
+              171.4
+            ],
+            [
+              5.37101115,
+              43.2841308,
+              171.4
+            ],
+            [
+              5.37101354,
+              43.28412895,
+              171.4
+            ],
+            [
+              5.371011,
+              43.28412721,
+              171.4
+            ],
+            [
+              5.37101458,
+              43.28412443,
+              171.4
+            ],
+            [
+              5.3709827,
+              43.28409813,
+              171.4
+            ],
+            [
+              5.37096865,
+              43.28408584,
+              171.4
+            ],
+            [
+              5.37096507,
+              43.28408862,
+              171.4
+            ],
+            [
+              5.37096126,
+              43.284086,
+              171.4
+            ],
+            [
+              5.37095888,
+              43.28408785,
+              171.4
+            ],
+            [
+              5.37095381,
+              43.28408436,
+              171.4
+            ],
+            [
+              5.37095616,
+              43.28408161,
+              171.4
+            ],
+            [
+              5.37095481,
+              43.28407894,
+              171.4
+            ],
+            [
+              5.3709572,
+              43.28407709,
+              171.4
+            ],
+            [
+              5.37095463,
+              43.28407445,
+              171.4
+            ],
+            [
+              5.3709666,
+              43.28406608,
+              171.4
+            ],
+            [
+              5.37097044,
+              43.2840696,
+              171.4
+            ],
+            [
+              5.37097403,
+              43.28406682,
+              171.4
+            ],
+            [
+              5.37097783,
+              43.28406944,
+              171.4
+            ],
+            [
+              5.37101741,
+              43.28404337,
+              171.4
+            ],
+            [
+              5.37101357,
+              43.28403985,
+              171.4
+            ],
+            [
+              5.37101719,
+              43.28403797,
+              171.4
+            ],
+            [
+              5.37101465,
+              43.28403623,
+              171.4
+            ],
+            [
+              5.37102663,
+              43.28402787,
+              171.4
+            ],
+            [
+              5.37110056,
+              43.28408834,
+              171.4
+            ]
+          ]
+        ]
+      ],
+      "type": "MultiPolygon"
+    },
+    "sampleVertices": [
+      [
+        -11279.144117276184,
+        187.8076659675796,
+        445.061822315678
+      ],
+      [
+        -11279.223927694373,
+        184.06507523698292,
+        445.19490175601095
+      ],
+      [
+        -11279.144117276184,
+        187.8412322998047,
+        445.19490175601095
+      ],
+      [
+        -11279.043816590565,
+        188.0309475482353,
+        444.89457649271935
+      ],
+      [
+        -11278.943851130316,
+        188.32076362106898,
+        444.9946356099099
+      ],
+      [
+        -11278.743924159557,
+        189.58598968383245,
+        445.19474989175797
+      ],
+      [
+        -11278.644117276184,
+        189.72696794305602,
+        445.04509400669485
+      ],
+      [
+        -11278.644117276184,
+        190.02149963378906,
+        445.19490175601095
+      ],
+      [
+        -11278.544109892566,
+        190.09907226142514,
+        444.89513748139143
+      ],
+      [
+        -11278.4441188887,
+        190.9620377055518,
+        444.9949033688754
+      ],
+      [
+        -11278.144117276184,
+        192.40280151367188,
+        445.19490175601095
+      ],
+      [
+        -11278.343922126805,
+        191.4452210031181,
+        445.09487455058843
+      ]
+    ],
+    "measurements": {
+      "footprintAreaSquareMetres": 65.02561409934982,
+      "roofProjectedAreaSquareMetres": 65.02561409974396,
+      "boundaryLengthMetres": 39.52429582811283,
+      "sourceBoundaryLengthMetres": 39.52429582811283,
+      "minimumElevation": 179.6098263257132,
+      "maximumElevation": 210.16793823242188,
+      "nativeVertices": 260,
+      "clippedVertices": 211,
+      "nativeChecks": [
+        {
+          "vertex": 2,
+          "elevation": 187.8412322998047
+        },
+        {
+          "vertex": 7,
+          "elevation": 190.02149963378906
+        },
+        {
+          "vertex": 10,
+          "elevation": 192.40280151367188
+        },
+        {
+          "vertex": 15,
+          "elevation": 192.09478759765625
+        },
+        {
+          "vertex": 23,
+          "elevation": 188.30508422851562
+        },
+        {
+          "vertex": 26,
+          "elevation": 190.95065307617188
+        },
+        {
+          "vertex": 27,
+          "elevation": 192.3753662109375
+        },
+        {
+          "vertex": 28,
+          "elevation": 192.3027801513672
+        },
+        {
+          "vertex": 30,
+          "elevation": 190.05543518066406
+        },
+        {
+          "vertex": 40,
+          "elevation": 188.5886993408203
+        },
+        {
+          "vertex": 41,
+          "elevation": 189.04888916015625
+        },
+        {
+          "vertex": 42,
+          "elevation": 189.9320526123047
+        },
+        {
+          "vertex": 43,
+          "elevation": 190.1096954345703
+        },
+        {
+          "vertex": 52,
+          "elevation": 188.38185119628906
+        },
+        {
+          "vertex": 53,
+          "elevation": 188.26943969726562
+        },
+        {
+          "vertex": 54,
+          "elevation": 188.26524353027344
+        },
+        {
+          "vertex": 55,
+          "elevation": 188.25755310058594
+        },
+        {
+          "vertex": 56,
+          "elevation": 188.2421875
+        },
+        {
+          "vertex": 63,
+          "elevation": 188.36134338378906
+        },
+        {
+          "vertex": 64,
+          "elevation": 188.25360107421875
+        },
+        {
+          "vertex": 65,
+          "elevation": 188.26712036132812
+        },
+        {
+          "vertex": 66,
+          "elevation": 188.2830352783203
+        },
+        {
+          "vertex": 67,
+          "elevation": 188.27401733398438
+        },
+        {
+          "vertex": 68,
+          "elevation": 188.25611877441406
+        },
+        {
+          "vertex": 70,
+          "elevation": 188.24729919433594
+        },
+        {
+          "vertex": 76,
+          "elevation": 188.9099578857422
+        },
+        {
+          "vertex": 77,
+          "elevation": 188.24362182617188
+        },
+        {
+          "vertex": 78,
+          "elevation": 188.2513885498047
+        },
+        {
+          "vertex": 79,
+          "elevation": 189.84315490722656
+        },
+        {
+          "vertex": 80,
+          "elevation": 188.95921325683594
+        },
+        {
+          "vertex": 81,
+          "elevation": 188.83787536621094
+        },
+        {
+          "vertex": 82,
+          "elevation": 189.0235137939453
+        },
+        {
+          "vertex": 321,
+          "elevation": 188.25802612304688
+        },
+        {
+          "vertex": 428,
+          "elevation": 188.25067138671875
+        }
+      ]
+    }
+  },
+  "saved_player": {
+    "zone": "geo_marseille_commune",
+    "pos": [
+      -11265.52607146767,
+      136.30176284495647,
+      394.58781359530985
+    ],
+    "yaw": -2.9288793529636825,
+    "pitch": 0.798000994739475,
+    "hp": 115,
+    "maxHp": 115,
+    "ap": 100,
+    "maxAp": 100,
+    "rad": 0,
+    "ammoClip": 10,
+    "ammoReserve": 42,
+    "clipSize": 10,
+    "weapon": "Pistolet 10 mm",
+    "caps": 18,
+    "crouched": false,
+    "cameraMode": "first",
+    "discovered": [
+      "vault",
+      "aubagne",
+      "geo_marseille_commune"
+    ],
+    "level": 1,
+    "xp": 36,
+    "perkPoints": 0,
+    "activeCompanion": null,
+    "weaponId": "pistol10",
+    "armorId": "vaultSuit",
+    "critCharge": 0
+  },
+  "error": "No missing local source resource or HTTP failure",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/expansion/landmark_surfaces_native.py\", line 151, in main\n    check('No missing local source resource or HTTP failure',not report['local_http_errors'],report['local_http_errors'])\n  File \"/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/expansion/landmark_surfaces_native.py\", line 67, in check\n    if not ok:raise AssertionError(name)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: No missing local source resource or HTTP failure\n"
+}

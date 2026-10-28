@@ -1,0 +1,51 @@
+✔ A furniture service planner preserves complete geometry/signature and uses only actual placed equipment (2308.971716ms)
+✔ Missing approach omits service explicitly and never fabricates an extra room or bed (0.359501ms)
+✔ A furniture-blocked approach cannot get a service despite its clear walls (2278.589154ms)
+✔ Bed opening is a real interaction with exact costs and no early mutation (2199.871331ms)
+✔ Bed dialogue visibly locks unaffordable or untreated rest while leaving the actual action guard independent (2275.21904ms)
+✔ Workshop dialogue visibly locks unaffordable recipes without mutating the supplies on opening (639.915881ms)
+✔ Four-hour rest spends ordinary supplies, advances midnight, restores bounded HP/AP and leaves injuries/radiation (2197.853443ms)
+✔ Rest refuses untreated infection without supplies or time change (2206.050956ms)
+✔ Rest refuses untreated bleeding without supplies or time change (2339.267279ms)
+✔ Rest refuses untreated burning without supplies or time change (2223.549159ms)
+✔ Missing ration refuses the entire four-hour payment before water is spent (2214.714513ms)
+✔ Repeated rest always costs supplies and HP never exceeds the existing maximum (2233.777249ms)
+✔ Kitchen creates only two rations with the exact ordinary ingredients and no XP (2406.216686ms)
+✔ Kitchen filtration consumes chemical and an existing ceramic filter instead of inventing running water (2280.360213ms)
+✔ Kitchen rejects armament recipes and a bed cannot act as a kitchen (4760.469584ms)
+✔ Actual workshop fixture creates existing weapon parts in the original inventory (722.000581ms)
+✔ Ammunition goes through the ordinary ammunition helper and never creates an inventory shadow (766.193934ms)
+✔ rest with failSave restores complete state, scene identity and service readiness (2489.461279ms)
+✔ craft with failSave restores complete state, scene identity and service readiness (620.602768ms)
+✔ rest with throwSave restores complete state, scene identity and service readiness (2260.887253ms)
+✔ craft with throwSave restores complete state, scene identity and service readiness (688.901244ms)
+✔ Physical service guard rejects distance without any payment or save (2285.850903ms)
+✔ Physical service guard rejects height without any payment or save (2419.571655ms)
+✔ Physical service guard rejects LOS without any payment or save (2545.881851ms)
+✔ Physical service guard rejects menu without any payment or save (2286.957039ms)
+✔ Physical service guard rejects death without any payment or save (2272.320687ms)
+✔ Physical service guard rejects pending sources without any payment or save (2188.669706ms)
+✔ Physical service guard rejects airborne without any payment or save (2560.119583ms)
+✔ Physical service guard rejects live grenade without any payment or save (2288.06052ms)
+✔ Physical service guard rejects live hostile without any payment or save (2260.535429ms)
+✔ An already open dialogue revalidates LOS and resources when its actual choice is selected (2234.11638ms)
+✔ Stale service callbacks cannot act on a replacement scene or another save (2202.728769ms)
+✔ Cold restore keeps exact finite payment, ledger, floor, geometry and stable service identities (2239.280854ms)
+✔ Service diagnostics deep-copy approach, target and ledger instead of mutating live guards (2251.95247ms)
+✔ Service migration drops malformed and prototype keys, clamps counters and bounds per-instance history (7.596659ms)
+✔ Full usage telemetry stays bounded without denying a useful bed or dropping old entries (2216.308273ms)
+✔ Complete existing layout-five Résidentiel equals the delivered pre-service geometry JSON (539.092332ms)
+✔ Complete existing layout-five Commercial equals the delivered pre-service geometry JSON (120.403813ms)
+✔ Complete existing layout-five Industriel equals the delivered pre-service geometry JSON (120.962727ms)
+✔ Complete existing layout-five Enseignement equals the delivered pre-service geometry JSON (224.156069ms)
+✔ Complete existing layout-five Hôpital equals the delivered pre-service geometry JSON (128.413965ms)
+✔ Complete existing layout-five Bureau equals the delivered pre-service geometry JSON (147.079181ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 73681.385153
+

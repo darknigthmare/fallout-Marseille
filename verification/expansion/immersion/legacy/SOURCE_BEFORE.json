@@ -1,0 +1,128 @@
+{
+  "expected_html": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tools/check_v050.py",
+    "--workers",
+    "1"
+  ],
+  "cwd": "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game",
+  "sources": {
+    "/workspace/fallout-Marseille/index.html": {
+      "sha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+      "bytes": 2935256,
+      "mtime_ns": 1793178931358100618
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/rebuild-final/index.html": {
+      "sha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+      "bytes": 2935256,
+      "mtime_ns": 1793179314379257982
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/index.html": {
+      "sha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+      "bytes": 2935256,
+      "mtime_ns": 1793178931358100618
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/JOUER_FALLOUT_MISTRAL_v0.50.html": {
+      "sha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+      "bytes": 2935256,
+      "mtime_ns": 1793178931357052444
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/src/game.js": {
+      "sha256": "f180f8f4316147c3a02505d353f1c4f094c1fd632d7f4555398e4b31ff72522a",
+      "bytes": 2757835,
+      "mtime_ns": 1793178931338100585
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/sw.js": {
+      "sha256": "7bf652cefb4e74c96af419a9ec0bd010f20bae04c31502afee8827cf7528cb56",
+      "bytes": 1183,
+      "mtime_ns": 1793174662345401791
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tools/check_v050.py": {
+      "sha256": "a25ead12a804402fc9b0a12aea9428ab224d11c18721cc98617aa1d5ee11206e",
+      "bytes": 12065,
+      "mtime_ns": 1793180647050211410
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tools/check_v049.py": {
+      "sha256": "a8779307a214e5afaa271569026d860f4e5405301ff3335aa033c452d97f1562",
+      "bytes": 3004,
+      "mtime_ns": 1792716892974642974
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/kernel.test.cjs": {
+      "sha256": "7cf4df83ab2a17a64f17cdd6c54a3e655b400b04acfaad097e864d70079a7d8a",
+      "bytes": 4835,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/runtime.py": {
+      "sha256": "494cd3bd321687f76be484ebcc2f3946136af8cc6403227299d8e37ae333055a",
+      "bytes": 10529,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/saves.py": {
+      "sha256": "8bbd65103be8f37762dfea9db95aa7f9e0e558c0bc7174e5f320ec55c17bbc66",
+      "bytes": 5014,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_kernel.test.cjs": {
+      "sha256": "0673864faa14ca62d4ffde3b320ca9d5ebbc4a2381ab3674aa1354624f59a0be",
+      "bytes": 3148,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_runtime.py": {
+      "sha256": "5107d8407043bc99fc4c7df7a02c4bd8a7fb517fc7c93bb86ed2ab95bab77074",
+      "bytes": 8246,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_kernel.test.cjs": {
+      "sha256": "ac3d62c67240e25c44baaba26a44996283655fe5d27df799a3f6f096596b18ef",
+      "bytes": 4798,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_legacy_kernel.test.cjs": {
+      "sha256": "f0e142fedec5db69183d7fb6aefc372c125c66b05c5095c13512b99ecc4da288",
+      "bytes": 5496,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_legacy_distribution.cjs": {
+      "sha256": "5bbc218ecf136d5676b981ac702eb124d73b20220acd646bf3d18dbb1c9d8cda",
+      "bytes": 2871,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_runtime.py": {
+      "sha256": "531da8ada7b1fe27f6e83d5b0d39e4d911e6e7b9088a4177efc1c6276d0c1a3b",
+      "bytes": 8027,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_server_io.py": {
+      "sha256": "0355f38e42e9668c59664130b4972d805a498833916e42c83c7b97e596c9f206",
+      "bytes": 4429,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_lab_isolation.py": {
+      "sha256": "5f4e6a73adbd3e6ce68c608794f15afb43d80e2f73e65d84d8a9a9b3432799be",
+      "bytes": 2712,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_legacy_runtime.py": {
+      "sha256": "71ddfeb247d19671ab727013a8af39cf5f23a660c3e769042a9c10c5a8ec5182",
+      "bytes": 10071,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_legacy_regression_campaign.py": {
+      "sha256": "65a0f2dd5604b1c1e8063a8657b1c7d16b3f4f33fa4f9399cb2b70cd5c4a537a",
+      "bytes": 6280,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_legacy_regression_prologue.py": {
+      "sha256": "3da693ca150250f2be66301147b36d46e975b83e18636f5435a75be94d24ce4a",
+      "bytes": 3731,
+      "mtime_ns": 1792716892972932832
+    },
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/v049/v048_inherited_legacy_regression_product.py": {
+      "sha256": "9189642a1d77ffadbb13810ac9ce945560feb78fb880bdc00e5e51490ef60092",
+      "bytes": 2804,
+      "mtime_ns": 1792716892972932832
+    }
+  },
+  "old_reports": {}
+}

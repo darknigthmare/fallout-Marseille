@@ -1,0 +1,41 @@
+{
+  "scope": "Final root844 native physical interior services, actual HTTP/data/storage, strict no-local-failure assertion retained",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/interior_services_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/interiors/native-root-final-844",
+    "--expect-html-sha",
+    "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+    "--expect-interior-sha",
+    "13e32ca7e6e93ecc9b99097712b2169f1e53d462cc90ad016ba43cf83983c0c3",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "exitCode": 0,
+  "elapsedSeconds": 416.1115421959985,
+  "inputHashes": {
+    "index.html": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+    "src/v050/08_city_interiors.js": "13e32ca7e6e93ecc9b99097712b2169f1e53d462cc90ad016ba43cf83983c0c3",
+    "src/v050/06a_landmark_surfaces.js": "a7ecec46cf10997015ca91f87eb97669a5d3ef4c059fb1aa403ea0d6b7483afc",
+    "src/v050/19_fps_hud.js": "2158da4685838d1e6b1614159439c7b3752c22c03abcce23cd63944ebf671a7d",
+    "tests/expansion/interior_services_native.py": "6f0bb4d0da40afac054fd382c14d02280493efd8f11b5f1dfb0a949539683387",
+    "tests/expansion/interior_programs_native.py": "20f711ec9f6901a305879559ae6b22ec0c187cd381478ebf549644f32e02ec11",
+    "tests/expansion/interior_doors_native.py": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b",
+    "verification/v050/LOCAL_DATA_STATE.json": "026199c1d6abb8f9980f16991660e020159968d9cbd4364cada19eb0318ca6ff",
+    "verification/v047/LOCAL_DATA_STATE.json": "e84345e5fa2dfe6653abc3fd4875f86d3a16dbb174467994a3b8f5dfe4f791d3",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  },
+  "changedInputs": [],
+  "stdoutSha256": "4bbd6d1cf39ee04c70348dc934d644962c39d0e05134f2ff402613f5e0fdf4f8",
+  "archivedGeometryHelpersSha256": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5",
+  "reportSha256": "13fcdd967fc06924062059993925af3e93c4e39a0ad9c59b3c2453a30d4d91b6",
+  "passed": 94,
+  "failed": 0,
+  "total": 94,
+  "stage": "complete",
+  "serverPortClosed": true,
+  "serverPort": 44421
+}

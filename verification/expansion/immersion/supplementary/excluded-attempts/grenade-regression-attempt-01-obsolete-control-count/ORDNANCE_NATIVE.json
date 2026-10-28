@@ -1,0 +1,346 @@
+{
+  "checks": [
+    {
+      "name": "Frozen HTML contains the exact production ordnance module",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v050/10_lore_continuity.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v050/11_power_armor.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v050/12_iconic_ecosystem.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v050/15_chemistry.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v026/04_trade_runtime.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen real dependency appears in bundle: src/v020/04_field.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document matches frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing authored scene selected without grants: aubagne",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh migration grants no grenade or armed projectile",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native selection physically reaches Baptiste",
+      "ok": true,
+      "detail": {
+        "position": [
+          12.0,
+          1.65,
+          20.7
+        ],
+        "target": [
+          12,
+          1.2,
+          19
+        ],
+        "actual_label": "Parler à Baptiste Arnaud",
+        "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+      }
+    },
+    {
+      "name": "Actual E reaches Baptiste dialogue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Baptiste exposes three finite grenades through real stock",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native purchases debit caps and exhaust the one ordinary stock",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: tab inventory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: sub ordnance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native Pip-Boy navigation: inventory/ordnance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual explosives page explains aiming, fuse and self blast",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible enabled production control: o55:aim ",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Visible aim action closes menu without spending a grenade",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Safe authored launch point is collision-free",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Clickable grenade HUD control is visible and enabled",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Desktop grenade HUD button is fully inside the real viewport",
+      "ok": false,
+      "detail": {
+        "left": 959.21875,
+        "top": 830,
+        "right": 1050.109375,
+        "bottom": 874,
+        "width": 90.890625,
+        "height": 44,
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "buttons": [
+          {
+            "text": "I · Sac",
+            "left": 295,
+            "top": 830,
+            "right": 385.875,
+            "bottom": 874,
+            "width": 90.875,
+            "height": 44
+          },
+          {
+            "text": "T · Relais",
+            "left": 389.875,
+            "top": 830,
+            "right": 480.765625,
+            "bottom": 874,
+            "width": 90.890625,
+            "height": 44
+          },
+          {
+            "text": "M · Plan",
+            "left": 484.765625,
+            "top": 830,
+            "right": 575.65625,
+            "bottom": 874,
+            "width": 90.890625,
+            "height": 44
+          },
+          {
+            "text": "1 · Pistolet 10 mm",
+            "left": 579.65625,
+            "top": 830,
+            "right": 670.546875,
+            "bottom": 874,
+            "width": 90.890625,
+            "height": 44
+          },
+          {
+            "text": "2 · Vide",
+            "left": 674.546875,
+            "top": 830,
+            "right": 765.4375,
+            "bottom": 874,
+            "width": 90.890625,
+            "height": 44
+          },
+          {
+            "text": "3 · Vide",
+            "left": 769.4375,
+            "top": 830,
+            "right": 860.328125,
+            "bottom": 874,
+            "width": 90.890625,
+            "height": 44
+          },
+          {
+            "text": "4 · Vide",
+            "left": 864.328125,
+            "top": 830,
+            "right": 955.21875,
+            "bottom": 874,
+            "width": 90.890625,
+            "height": 44
+          },
+          {
+            "text": "N · Grenade 3",
+            "left": 959.21875,
+            "top": 830,
+            "right": 1050.109375,
+            "bottom": 874,
+            "width": 90.890625,
+            "height": 44
+          },
+          {
+            "text": "X · Visée",
+            "left": 1054.109375,
+            "top": 830,
+            "right": 1144.984375,
+            "bottom": 874,
+            "width": 90.875,
+            "height": 44
+          }
+        ],
+        "overlaps": false,
+        "visible": true
+      }
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_finite_baptiste_purchase.png",
+      "sha256": "72ca28f35c73c469df6512ac0a86f992fcb97aee7a455e1e90ca0a102485e1ff"
+    }
+  ],
+  "placements": [
+    {
+      "position": [
+        12.0,
+        1.65,
+        20.7
+      ],
+      "target": [
+        12,
+        1.2,
+        19
+      ],
+      "actual_label": "Parler à Baptiste Arnaud",
+      "source": "Authored narrative coordinates, collision and LOS checked by production exports."
+    },
+    {
+      "position": [
+        0,
+        1.65,
+        85
+      ],
+      "yaw": 0,
+      "pitch": -0.08,
+      "purpose": "Launch, pause and native Continue; authored clear road."
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "local_http_errors": [],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "native_navigation": true,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "service_workers_disabled": true,
+  "maximum_contexts": 1,
+  "scope": "Bounded native hand-grenade pilot, prepared without starting a browser.\n\nUses unchanged production HTML, GameHandler, visible controls and real browser\nstorage. Diagnostic navigation selects authored scenes; collision/LOS checks\nselect camera approaches. Payment capsules and simulation freeze are declared\nassistance. No grenade, merchant stock, enemy, health or quest state is granted or overwritten.\n",
+  "assistance": [
+    "v020Load selects actual authored Aubagne, not a surveyed IGN scene.",
+    "v020Seed({caps:300,scrap:3,chemicals:3,weaponParts:1}) supplies payment and workshop inputs only; no grenade or merchant stock is granted.",
+    "v046SetTime(12) opens the historical shop at daytime.",
+    "v018CaptureAt and the inherited freeze place cameras/player at collision/LOS-checked existing floor points.",
+    "Bounded v020Tick(.05,true) calls step normal updatePlayer, enemy AI, collisions and updateStatus; no private IIFE variables or projectile setters are used.",
+    "An existing Roux-hunter actor is approached from outside its normal detection distance using readonly worldGeometry floors, collision and LOS; no enemy state is overwritten."
+  ],
+  "elapsed_seconds": 12.798,
+  "passed": 22,
+  "failed": 1,
+  "pinned_inputs": {
+    "index.html": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+    "src/v050/16_iconic_ordnance.js": "c5b6fa302bdd29106a4e886d6f4e01382bde5e94ff059b5b1b5a0529a7067362",
+    "src/v050/10_lore_continuity.js": "88cbec503e27470d24282d303f9185da6804c5202c0887f3dc24c18a0b169f14",
+    "src/v050/11_power_armor.js": "77e03d9b83f7d35828de22dc13abd6e368879eaeeb5537f39576824a41386ebc",
+    "src/v050/12_iconic_ecosystem.js": "550ee004344e4879c0d87164ab97971978113c882e0ca5a2a2045a61b5725e23",
+    "src/v050/15_chemistry.js": "b432076d9f0b3fa4a4c0eeab9b95e5044de8089fb2148b958c130efc417ccd4e",
+    "src/v026/04_trade_runtime.js": "0da9183a0103957b783627378f6ec2078206eb5856125ebc89786ce44e317745",
+    "src/v020/04_field.js": "e70bcfe8c8981191a09049d4034db6893f4140a8e1c13e29cd1e7d22a351c013",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80"
+  },
+  "script_sha256": "8b1e059a60157f762d148bc35e1e35e31eb0cf690d4c6ec4d65db631280ff2eb",
+  "url": "http://127.0.0.1:41601/index.html?skipboot",
+  "browser_version": "154.0.8037.57",
+  "exception": "Desktop grenade HUD button is fully inside the real viewport",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/ordnance_native.py\", line 233, in main\n    check('Desktop grenade HUD button is fully inside the real viewport',desktop['visible'] and len(desktop['buttons'])==8,desktop)\n  File \"/workspace/fallout-Marseille/tests/expansion/ordnance_native.py\", line 69, in check\n    raise AssertionError(name)\nAssertionError: Desktop grenade HUD button is fully inside the real viewport\n",
+  "stage": "failed",
+  "browser_closed": true,
+  "server_closed": true
+}

@@ -1,0 +1,701 @@
+{
+  "scope": "Native foreground presentation pilot on unchanged production HTML.\n\nDiagnostic navigation selects authored Aubagne (not a surveyed Marseille view),\nplaces the camera at an existing collision-free road point, grants nine ordinary\nweapons for a presentation matrix and ammunition for the reload check. Active\nsimulation is stepped with the inherited diagnostic v020Tick; UI inputs, Canvas,\nWebGL scene, collisions, firing, reload and browser storage remain production.\nNo network, renderer, input handler or localStorage is replaced.\n",
+  "checks": [
+    {
+      "name": "HTTP loads the exact frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Menu hides the foreground and refuses held aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chosen authored road point is free under actual production collision",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native WebGL scene and projected foreground are both active",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Foreground really paints nontransparent pixels and leaves the central hip aperture clear",
+      "ok": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "solid": 6136,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: pistol10",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: pistol10",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family pistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family rifle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family shotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family energy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family heavy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family industrial",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: combatKnife",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: combatKnife",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family blade",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: sledgehammer",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: sledgehammer",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family melee",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: powerFist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: powerFist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family fist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "An existing authored wall has a collision-free close approach",
+      "ok": false,
+      "detail": null
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_native_pistol_hip.png",
+      "sha256": "193c142688dac69081d06b0d90561ff77ae470178cd2c5e5434808bf3c3ca962"
+    },
+    {
+      "file": "02_matrix_rifle.png",
+      "sha256": "8e77c453e315fa05704996fd9627334f4409516f0186f06edf3a90704975b1ac"
+    },
+    {
+      "file": "02_matrix_energy.png",
+      "sha256": "0ecb525ab4eedcfcfbbeb72d1fda44c5a6d738f0025bd7ea5c0226133c58a939"
+    },
+    {
+      "file": "02_matrix_blade.png",
+      "sha256": "bfea299b58ccdfae93dfcbbe1938f50212146dabd51343d619537bf5db0f1c06"
+    },
+    {
+      "file": "failure.png",
+      "sha256": "f1896070cf56bc488b7489445abfd79597f1191ab680e26d6c0d1a7802f6db59"
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "local_http_errors": [],
+  "native_navigation": true,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "input_hardware_claim": "Native Chromium mouse and keyboard; portrait pointer events are simulated by Playwright, not physical touch hardware.",
+  "assistance": [
+    "Existing authored Aubagne selected through v020Load.",
+    "Camera diagnostic at [0,1.65,85], actual production collision/LOS checked.",
+    "v020GrantWeapon equips nine ordinary weapons for presentation inspection; not acquisition or balancing evidence.",
+    "v020Seed ammo10=60 supplies reload inputs.",
+    "v020Tick(.05,true) steps active production simulation while frame progression is frozen for reproducible screenshots.",
+    "v028Settings controls existing reduceMotion/reducedFlashes settings for their visible checks."
+  ],
+  "url": "http://127.0.0.1:34585/index.html?skipboot",
+  "browser_version": "154.0.8037.57",
+  "passed": 32,
+  "failed": 1,
+  "elapsed_seconds": 17.354,
+  "pinned_inputs": {
+    "index.html": "57ed730285505bf7e93f696a7b92a751eddd5b6b7967663ebfd134320f50c9cf",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "57ed730285505bf7e93f696a7b92a751eddd5b6b7967663ebfd134320f50c9cf",
+    "src/v050/17_first_person.js": "993ad49be17da25402c47086276bc78103fa3eea617ecdfdf4452568d972bdd4",
+    "src/v050/19_fps_hud.js": "bae316cfc4aedb42eb175393391f9d2cdc246abe95fb2547549d3396dc27f2b9",
+    "tests/expansion/first_person_native.py": "6777e414d7fbd9652bc6d873bda7a17a27615cefbbfccad5f6de3fa2aead8129"
+  },
+  "weapon_matrix": [
+    {
+      "weapon": "pistol10",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "pistol",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 476,
+          "visibleFaces": 231
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 6136,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "pipeCarbine",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "rifle",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 492,
+          "visibleFaces": 241
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9426,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "dockShotgun",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "shotgun",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 492,
+          "visibleFaces": 241
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9571,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "laserPistol",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "energy",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 522,
+          "visibleFaces": 256
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 10102,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "missileLauncher",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "heavy",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 460,
+          "visibleFaces": 224
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 11302,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "rivetGun",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "industrial",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 514,
+          "visibleFaces": 252
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9603,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "combatKnife",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "blade",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": true
+        },
+        "stats": {
+          "faces": 404,
+          "visibleFaces": 188
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 8697,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "sledgehammer",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "melee",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": true
+        },
+        "stats": {
+          "faces": 398,
+          "visibleFaces": 186
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 16815,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "powerFist",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "fist",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": true
+        },
+        "stats": {
+          "faces": 348,
+          "visibleFaces": 162
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 8117,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    }
+  ],
+  "exception": "AssertionError('An existing authored wall has a collision-free close approach')",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/first_person_native.py\", line 59, in main\n    wall=page.evaluate('''()=>{const D=__MISTRAL_DEBUG;for(const c of D.v018World().colliders){if(![c.minX,c.maxX,c.minZ,c.maxZ].every(Number.isFinite)||c.disabled||Number.isFinite(c.maxY)&&c.maxY<2||Number.isFinite(c.minY)&&c.minY>1)continue;const x=(c.minX+c.maxX)/2,z=(c.minZ+c.maxZ)/2;for(const[p,t]of[[[c.minX-.5,1.65,z],[c.minX+.1,1.65,z]],[[c.maxX+.5,1.65,z],[c.maxX-.1,1.65,z]],[[x,1.65,c.minZ-.5],[x,1.65,c.minZ+.1]],[[x,1.65,c.maxZ+.5],[x,1.65,c.maxZ-.1]]])if(!D.v020Collides(p)&&!D.v020LOS(p,t))return{position:p,yaw:Math.atan2(t[0]-p[0],-(t[2]-p[2])),collider:c.id||null};}return null}''');check('An existing authored wall has a collision-free close approach',wall is not None,wall);debug('v018CaptureAt',wall['position'],wall['yaw'],0);check('Actual wall occlusion lowers the viewmodel and refuses aim',info()['proximity']==1 and not page.evaluate('v056FirstPersonAim(true)'));r['wall_approach']=wall;shot('02b_native_wall_lowering');debug('v018CaptureAt',safe,0,0)\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/fallout-Marseille/tests/expansion/first_person_native.py\", line 30, in check\n    if not ok:raise AssertionError(name)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: An existing authored wall has a collision-free close approach\n",
+  "cleanup": {
+    "context": true,
+    "browser": true,
+    "playwright": true,
+    "server": true
+  },
+  "process_exit_code": 1,
+  "stage": "failed"
+}

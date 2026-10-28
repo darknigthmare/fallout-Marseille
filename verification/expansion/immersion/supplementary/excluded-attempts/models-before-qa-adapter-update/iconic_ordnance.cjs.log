@@ -1,0 +1,66 @@
+OK Empty migration grants no grenade and normalizes only finite counters/receipts
+OK A persisted airborne grenade retains exact position, velocity and remaining fuse
+OK Malformed armed state is refused: pos {"pos":[null,1,0]}
+OK Malformed armed state is refused: velocity {"velocity":[0,null,0]}
+OK Malformed armed state is refused: velocity {"velocity":[31,0,0]}
+OK Malformed armed state is refused: fuse {"fuse":4}
+OK Malformed armed state is refused: fuse {"fuse":-1}
+OK Malformed armed state is refused: zone {"zone":"../bad"}
+OK Malformed armed state is refused: pos {"pos":[1,2]}
+OK Launch follows a normalized aim without mutating caller coordinates
+OK A real arc rises, descends, bounces and expires after exactly three active seconds
+OK Swept sphere cannot pass through a two-centimetre wall between frames
+OK Swept sphere bounces off a thin overhead slab and never tunnels through it
+OK Unknown source support loses the projectile without inventing a height
+OK Huge or invalid dt stays bounded and never advances three seconds in one frame
+OK Blast falloff is bounded, continuous and zero outside six metres
+OK Integration migrates an empty ledger and classifies grenades as explosives in the one real bag
+OK Menu without any world or armed grenade exposes safe empty draw and diagnostic state
+OK Throw deducts exactly one item and commits the armed physical projectile once
+OK A fail throw preserves all inventory, armour, lore and active chems
+OK A throwSave throw preserves all inventory, armour, lore and active chems
+OK Throw guards refuse mode="PIP" without consumption
+OK Throw guards refuse mode="TRADE" without consumption
+OK Throw guards refuse mode="MENU" without consumption
+OK Throw guards refuse zoneTransitioning=true without consumption
+OK Throw guards refuse V046.busy=true without consumption
+OK Throw guards refuse V046.lab=true without consumption
+OK Throw guards refuse V047.pending={} without consumption
+OK Throw guards refuse state.player.hp=0 without consumption
+OK A near thin wall blocks the whole hand-to-muzzle path, even with an endpoint beyond it
+OK Menus, source preparation and QA freeze suspend the armed fuse
+OK Cold migration preserves an actually stepped fuse and never refunds the spent inventory item
+OK Crossing into another scene spends the old grenade without a remote blast or refund
+OK Reused city-interior zone identities cannot transfer an armed grenade to another floor or building
+OK Reused expedition scenes bind the actual site and cold migration retains the original context
+OK An ordinary same-floor room-door save does not clear or restart the persisted fuse
+OK A real blast damages a visible enemy once with distance falloff and ordinary armour
+OK A two-centimetre cover wall blocks enemy blast while the open-side target is hit
+OK A thin overhead slab blocks blast between floors
+OK Self blast uses the real hurt-player route and can be avoided by moving beyond six metres
+OK A fail blast rolls back deaths, XP, corpse inventory, interactions and health
+OK A throwSave blast rolls back deaths, XP, corpse inventory, interactions and health
+OK Baptiste stocks three ordinary grenades once and exhausted stock survives migration
+OK Buying and reselling use one wallet, one inventory and one final save each
+OK fail rolls back buyTradeItem("fragGrenade")
+OK fail rolls back sellTradeItem("fragGrenade")
+OK fail rolls back v020Craft("fragGrenade")
+OK throwSave rolls back buyTradeItem("fragGrenade")
+OK throwSave rolls back sellTradeItem("fragGrenade")
+OK throwSave rolls back v020Craft("fragGrenade")
+OK Actual workshop recipe pays finite components and refuses a remote station
+OK Native key handler ignores held N, editable fields and modifier shortcuts
+OK Explosives panel exposes aiming without silently throwing inside the Pip-Boy
+OK Real explicit roof narrow phase admits empty air above the pitch rather than the max-height envelope
+OK A descending grenade bounces on the true local roof disk and never teleports to maximum roof height
+OK Source roof bodies and courtyard holes keep their actual solid/void distinction
+OK Rendered city-interior ceiling triangles stop an upward sphere even without a gameplay collider
+OK Actual rendered ceiling mesh blocks blast rays but leaves space outside its triangles open
+OK Historical roof strips collide at their real thickness and retain the actual skylight gaps
+OK A measured XYZ bridge deck catches the grenade at the exact published triangle height above the DEM
+OK A measured bridge underside blocks upward travel and blast without inventing road thickness
+OK Bridge labels without measured vertical coordinates never create a fake support plane
+OK A small sloped triangle yields a unit collision normal and a true ray intersection
+OK A grenade separates freely from the actual ceiling and measured deck after a rebound
+{"passed":64,"failed":0,"total":64,"scope":"Pure swept grenade physics and real inventory/trade/crafting/ordnance composition with armour/lore/iconic/chemistry; controlled flat ground, actors, storage and UI seams"}
+

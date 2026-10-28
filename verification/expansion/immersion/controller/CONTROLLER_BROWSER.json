@@ -1,0 +1,472 @@
+{
+  "scope": "Actual game + Chromium DOM, keyboard and localStorage; Gamepad API simulated and one explicit synthetic touch PointerEvent, no physical device validation",
+  "html_sha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "passed": 54,
+  "failed": 0,
+  "total": 54,
+  "errors": [],
+  "checks": [
+    {
+      "name": "Served HTML is the exact frozen build",
+      "ok": true,
+      "detail": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34"
+    },
+    {
+      "name": "Production controller initialization is exposed",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing stored preferences survive and gain the two documented defaults",
+      "ok": true,
+      "detail": {
+        "enabled": true,
+        "deadZone": 0.21,
+        "look": 1.3,
+        "invertY": false,
+        "leftHanded": false,
+        "pauseOnDisconnect": true
+      }
+    },
+    {
+      "name": "Held confirm on nonzero-slot connection does not enter a menu",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Gamepad navigation focuses an actual visible menu button",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Focused menu confirmation runs a real UI action",
+      "ok": true,
+      "detail": "CREATOR"
+    },
+    {
+      "name": "Physical keyboard state is present before gamepad input",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Last keyboard use prevents disconnect pause and preserves its held key",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reconnect with tilted sticks cannot move or turn before each stick is centred",
+      "ok": true,
+      "detail": {
+        "connected": true,
+        "index": 3,
+        "id": "Simulated standard controller",
+        "preferences": {
+          "enabled": true,
+          "deadZone": 0.21,
+          "look": 1.3,
+          "invertY": false,
+          "leftHanded": false,
+          "pauseOnDisconnect": true
+        },
+        "move": [
+          0,
+          0
+        ],
+        "look": [
+          0,
+          0
+        ],
+        "held": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "sticksBlocked": [
+          true,
+          true
+        ],
+        "lastDevice": "keyboard",
+        "disconnectPaused": false,
+        "keyboardKeys": [],
+        "mode": "PLAYING"
+      }
+    },
+    {
+      "name": "Right stick changes the actual player view with finite pitch",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "D-pad up toggles the existing lamp once while held",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "D-pad down opens the real field plan and its canvas",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "D-pad right equips the next actual owned favourite",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "D-pad left cycles back without creating inventory or weapons",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Only-current duplicate favourites do not re-equip or write another save",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "RT fires the actual equipped weapon once on its edge",
+      "ok": true,
+      "detail": {
+        "before": 10,
+        "after": 9
+      }
+    },
+    {
+      "name": "Select opens the real Pip-Boy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pip-Boy shoulder navigation changes its real tab",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pip-Boy trigger navigation changes its real subtab without firing",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Held trigger across closing a menu does not fire into the world",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Disconnecting an unused second controller does not pause or reset the selected device",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Selected-controller loss pauses even when another controller remains",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reconnection with held controls never resumes automatically",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Explicit resume keeps held sticks and trigger neutral until release",
+      "ok": true,
+      "detail": {
+        "connected": true,
+        "index": 3,
+        "id": "Simulated standard controller",
+        "preferences": {
+          "enabled": true,
+          "deadZone": 0.21,
+          "look": 1.3,
+          "invertY": false,
+          "leftHanded": false,
+          "pauseOnDisconnect": true
+        },
+        "move": [
+          0,
+          0
+        ],
+        "look": [
+          0,
+          0
+        ],
+        "held": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "sticksBlocked": [
+          true,
+          true
+        ],
+        "lastDevice": "mouse",
+        "disconnectPaused": false,
+        "keyboardKeys": [],
+        "mode": "PLAYING"
+      }
+    },
+    {
+      "name": "Last touch PointerEvent prevents disconnect pause",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Disconnect in a real Pip-Boy screen keeps that screen open",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Start opens actual pause and release does not resume it",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Gamepad adjusts real range control and persists preferences",
+      "ok": true,
+      "detail": {
+        "enabled": true,
+        "deadZone": 0.21,
+        "look": 1.35,
+        "invertY": false,
+        "leftHanded": false,
+        "pauseOnDisconnect": true
+      }
+    },
+    {
+      "name": "Gamepad toggles a real checkbox and updates settings",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Left-handed option persists without losing previous preference values",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Left-handed menus ignore the physical right stick",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Left-handed menus still navigate with the physical left stick",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "B closes options through the real options callback",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "B resumes through the real pause callback",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Left-handed right stick supplies movement and no view input",
+      "ok": true,
+      "detail": {
+        "connected": true,
+        "index": 3,
+        "id": "Simulated standard controller",
+        "preferences": {
+          "enabled": true,
+          "deadZone": 0.21,
+          "look": 1.35,
+          "invertY": true,
+          "leftHanded": true,
+          "pauseOnDisconnect": false
+        },
+        "move": [
+          0.8443597046488888,
+          0
+        ],
+        "look": [
+          0,
+          0
+        ],
+        "held": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "sticksBlocked": [
+          false,
+          false
+        ],
+        "lastDevice": "controller",
+        "disconnectPaused": false,
+        "keyboardKeys": [],
+        "mode": "PLAYING"
+      }
+    },
+    {
+      "name": "Left-handed left stick changes the actual player view",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Disabling disconnect pause leaves active play running and clears controller input",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "V.A.T.S. A reserves a real target/limb shot",
+      "ok": true,
+      "detail": [
+        {
+          "id": "head",
+          "enemy": "transit_depot:unit",
+          "cost": 35,
+          "rounds": 2,
+          "critical": false
+        }
+      ]
+    },
+    {
+      "name": "V.A.T.S. directional selection changes the queued limb",
+      "ok": true,
+      "detail": [
+        {
+          "id": "head",
+          "enemy": "transit_depot:unit",
+          "cost": 35,
+          "rounds": 2,
+          "critical": false
+        },
+        {
+          "id": "body",
+          "enemy": "transit_depot:unit",
+          "cost": 25,
+          "rounds": 2,
+          "critical": false
+        }
+      ]
+    },
+    {
+      "name": "V.A.T.S. X removes the final reserved shot",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "V.A.T.S. RT executes the actual reserved shot",
+      "ok": true,
+      "detail": {
+        "before": 24,
+        "after": 22,
+        "reserved": 2
+      }
+    },
+    {
+      "name": "Field services receive real controller focus",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "B closes field services with their own callback",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Career panel receives real controller focus",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "B closes career to the recorded previous mode",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Controller adjusts actual lockpick angle input",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "B exits the real lockpicking activity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Controller adjusts the actual pétanque angle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "B exits the real pétanque activity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Terminal controls receive real controller focus",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "B exits the terminal with its own callback",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "B exits the actual holotape player",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "All controller preferences survive a cold DOM initialization",
+      "ok": true,
+      "detail": {
+        "enabled": true,
+        "deadZone": 0.21,
+        "look": 1.35,
+        "invertY": true,
+        "leftHanded": true,
+        "pauseOnDisconnect": true
+      }
+    },
+    {
+      "name": "No JavaScript exceptions during controller integration",
+      "ok": true,
+      "detail": []
+    }
+  ]
+}

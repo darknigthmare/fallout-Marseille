@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/controller_browser.py",
+    "--url",
+    "http://127.0.0.1:46163/index.html?skipboot=1",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/controller",
+    "--expected-html-sha256",
+    "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "executedScriptSha256": "b183a8085f63292b49d81c63f781f2567c31938520b8554cf5c713bc3fe7ab84",
+  "htmlSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34"
+}

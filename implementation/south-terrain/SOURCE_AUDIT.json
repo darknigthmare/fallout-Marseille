@@ -1,0 +1,320 @@
+{
+  "ok": true,
+  "present": true,
+  "regions": [
+    {
+      "id": "geo_huveaune",
+      "sha256": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61",
+      "source": {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme · IGN — LiDAR HD — mission 21LHD7PQ, édition 2025-03-14",
+        "license": "Voir les licences de chaque source et objet",
+        "name": "Sources multiples documentées",
+        "resource": "mixed-sources"
+      },
+      "buildings": 1404,
+      "roads": 472,
+      "coverage": [
+        {
+          "bbox": [
+            43.293,
+            5.565,
+            43.3,
+            5.576
+          ],
+          "complete": true,
+          "crs": "EPSG:4326",
+          "layer": "BDTOPO_V3:batiment",
+          "returned": 1404,
+          "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+          "acquiredAt": "2026-10-23"
+        },
+        {
+          "bbox": [
+            43.293,
+            5.565,
+            43.3,
+            5.576
+          ],
+          "complete": true,
+          "crs": "EPSG:4326",
+          "layer": "BDTOPO_V3:troncon_de_route",
+          "returned": 472,
+          "source": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+          "acquiredAt": "2026-10-23"
+        }
+      ],
+      "terrain": [
+        {
+          "id": "enrichment:geo_huveaune:1d7033dfbf2433a1",
+          "width": 447,
+          "height": 391,
+          "bbox": [
+            43.293,
+            5.565,
+            43.3,
+            5.576
+          ],
+          "validSamples": 174777,
+          "noDataSamples": 0,
+          "sourceResource": "ign_rge_alti_wld",
+          "source": "IGN RGE ALTI — points échantillonnés",
+          "verticalDatum": "NGF-IGN69 — altitude normale, France continentale",
+          "acquiredAt": "2026-10-23",
+          "resolutionMeters": [
+            1.9982591836363173,
+            1.9980512820506815
+          ],
+          "conversion": null,
+          "attribution": "IGN — Géoplateforme"
+        },
+        {
+          "id": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+          "width": 326,
+          "height": 446,
+          "bbox": [
+            43.2956,
+            5.5698,
+            43.2976,
+            5.5718
+          ],
+          "validSamples": 145396,
+          "noDataSamples": 0,
+          "sourceResource": "ign_lidar_hd_mnt",
+          "source": "IGN LiDAR HD MNT — mission 21LHD7PQ",
+          "verticalDatum": "NGF-IGN69",
+          "acquiredAt": "2021-06-26",
+          "resolutionMeters": [
+            0.4985858071445592,
+            0.5003146067421845
+          ],
+          "conversion": {
+            "actualSpacingMeters": [
+              0.4993702257409165,
+              0.4993191781914614
+            ],
+            "crs": "EPSG:2154",
+            "format": "GeoTIFF",
+            "inputSha256": "51f2638620a03f04891910f5e07e3e897e37c97e158d7320d631f97d0323435c",
+            "nativePixelSize": [
+              0.5,
+              0.5
+            ],
+            "nativeTransform": [
+              0.5,
+              0.0,
+              907999.75,
+              0.0,
+              -0.5,
+              6248000.25
+            ],
+            "nodataPreserved": true,
+            "requestedSpacingMeters": 0.5,
+            "resampled": true,
+            "resampling": "nearest",
+            "sampleConvention": "WGS84 regular nodes",
+            "sourceSize": [
+              2000,
+              2000
+            ],
+            "verticalDatum": "NGF-IGN69"
+          },
+          "attribution": "IGN — LiDAR HD — mission 21LHD7PQ, édition 2025-03-14"
+        }
+      ],
+      "estimatedBuildingHeights": 13,
+      "unknownGeometryZ": 62
+    },
+    {
+      "id": "geo_marseille",
+      "sha256": "4495922b8fb9f9d9e5807adef7c5279ff61e2a15fe68284f112226f3a94691cf",
+      "source": {
+        "acquiredAt": "2026-10-28",
+        "attribution": "IGN — LiDAR HD",
+        "license": "Voir les licences de chaque source et objet",
+        "name": "Sources multiples documentées",
+        "resource": "mixed-sources"
+      },
+      "buildings": 0,
+      "roads": 0,
+      "coverage": [],
+      "terrain": [
+        {
+          "id": "enrichment:geo_marseille:601a0cd52a820b7d",
+          "width": 448,
+          "height": 446,
+          "bbox": [
+            43.2553,
+            5.378,
+            43.2593,
+            5.3835
+          ],
+          "validSamples": 199808,
+          "noDataSamples": 0,
+          "sourceResource": "ign_lidar_hd_mnt",
+          "source": "IGN — MNT LiDAR HD — borely — mission 21LHD7PQ, édition 2025-03-14",
+          "verticalDatum": "NGF-IGN69",
+          "acquiredAt": "2026-10-28",
+          "resolutionMeters": [
+            0.9975368165967509,
+            1.000629213484369
+          ],
+          "conversion": {
+            "actualSpacingMeters": [
+              0.9991039314482155,
+              0.99863146889768
+            ],
+            "crs": "EPSG:2154",
+            "format": "GeoTIFF",
+            "inputSha256": "0c663a56fada3a0345c15e54af91257ebc8e09a8ef5692bdd12a93d1bc66e891",
+            "nativePixelSize": [
+              0.5,
+              0.5
+            ],
+            "nativeTransform": [
+              0.5,
+              0.0,
+              892999.75,
+              0.0,
+              -0.5,
+              6243000.25
+            ],
+            "nodataPreserved": true,
+            "requestedSpacingMeters": 1.0,
+            "resampled": true,
+            "resampling": "nearest",
+            "sampleConvention": "WGS84 regular nodes",
+            "sourceSize": [
+              2000,
+              2000
+            ],
+            "verticalDatum": "NGF-IGN69"
+          },
+          "attribution": "IGN — LiDAR HD"
+        },
+        {
+          "id": "enrichment:geo_marseille:bc37c85ee5584f36",
+          "width": 448,
+          "height": 413,
+          "bbox": [
+            43.2688,
+            5.393,
+            43.2725,
+            5.3985
+          ],
+          "validSamples": 185024,
+          "noDataSamples": 0,
+          "sourceResource": "ign_lidar_hd_mnt",
+          "source": "IGN — MNT LiDAR HD — velodrome — mission 21LHD7PQ, édition 2025-03-14",
+          "verticalDatum": "NGF-IGN69",
+          "acquiredAt": "2026-10-28",
+          "resolutionMeters": [
+            0.9973180877077396,
+            0.9997184466024915
+          ],
+          "conversion": {
+            "actualSpacingMeters": [
+              0.9988856389931735,
+              0.9977248577909936
+            ],
+            "crs": "EPSG:2154",
+            "format": "GeoTIFF",
+            "inputSha256": "b30aed406bc4b5e6d483dc0274fb7b2775a57a9e113ab3321b2456398c4f24c1",
+            "nativePixelSize": [
+              0.5,
+              0.5
+            ],
+            "nativeTransform": [
+              0.5,
+              0.0,
+              893999.75,
+              0.0,
+              -0.5,
+              6245000.25
+            ],
+            "nodataPreserved": true,
+            "requestedSpacingMeters": 1.0,
+            "resampled": true,
+            "resampling": "nearest",
+            "sampleConvention": "WGS84 regular nodes",
+            "sourceSize": [
+              2000,
+              2000
+            ],
+            "verticalDatum": "NGF-IGN69"
+          },
+          "attribution": "IGN — LiDAR HD"
+        }
+      ],
+      "estimatedBuildingHeights": 0,
+      "unknownGeometryZ": 0
+    }
+  ],
+  "sources": [
+    {
+      "acquiredAt": "2021-06-26",
+      "attribution": "IGN — LiDAR HD — mission 21LHD7PQ, édition 2025-03-14",
+      "license": "Licence Ouverte 2.0",
+      "name": "IGN LiDAR HD MNT — mission 21LHD7PQ",
+      "resource": "ign_lidar_hd_mnt",
+      "url": "https://data.geopf.fr/wms-r",
+      "verticalDatum": "NGF-IGN69"
+    },
+    {
+      "acquiredAt": "2026-10-23",
+      "attribution": "IGN — Géoplateforme",
+      "license": "Licence Ouverte 2.0",
+      "name": "IGN BD TOPO — BDTOPO_V3:batiment",
+      "resource": "ign-bdtopo",
+      "url": "https://data.geopf.fr/wfs/ows",
+      "verticalDatum": "NGF-IGN69"
+    },
+    {
+      "acquiredAt": "2026-10-23",
+      "attribution": "IGN — Géoplateforme",
+      "license": "Licence Ouverte 2.0",
+      "name": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+      "resource": "ign-bdtopo",
+      "url": "https://data.geopf.fr/wfs/ows",
+      "verticalDatum": "NGF-IGN69"
+    },
+    {
+      "acquiredAt": "2026-10-23",
+      "attribution": "IGN — Géoplateforme",
+      "license": "Licence Ouverte 2.0",
+      "name": "IGN RGE ALTI — API officielle, grille échantillonnée à 1 m",
+      "resource": "ign_rge_alti_wld",
+      "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+      "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+    },
+    {
+      "acquiredAt": "2026-10-23",
+      "attribution": "IGN — Géoplateforme",
+      "license": "Licence Ouverte 2.0",
+      "name": "IGN RGE ALTI — points échantillonnés",
+      "resource": "ign_rge_alti_wld",
+      "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+      "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+    },
+    {
+      "acquiredAt": "2026-10-28",
+      "attribution": "IGN — LiDAR HD",
+      "license": "Licence Ouverte 2.0",
+      "name": "IGN — MNT LiDAR HD — borely — mission 21LHD7PQ, édition 2025-03-14",
+      "resource": "ign_lidar_hd_mnt",
+      "url": "https://data.geopf.fr/wms-r",
+      "verticalDatum": "NGF-IGN69"
+    },
+    {
+      "acquiredAt": "2026-10-28",
+      "attribution": "IGN — LiDAR HD",
+      "license": "Licence Ouverte 2.0",
+      "name": "IGN — MNT LiDAR HD — velodrome — mission 21LHD7PQ, édition 2025-03-14",
+      "resource": "ign_lidar_hd_mnt",
+      "url": "https://data.geopf.fr/wms-r",
+      "verticalDatum": "NGF-IGN69"
+    }
+  ],
+  "totalBuildings": 1404,
+  "totalRoads": 472
+}

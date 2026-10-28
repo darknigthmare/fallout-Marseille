@@ -1,0 +1,37 @@
+{
+  "htmlSha256": "07adc7080ac2c0e0b4d499a604bacd27277c662d202c407322122bc63a1c6dbd",
+  "scope": "Human/model visual inspection of five original PNGs from the successful isolated preview, not final-root validation. No crops, paint-over or image transformation.",
+  "shots": [
+    {
+      "file": "major_ground.png",
+      "sha256": "f0e1aafb7b85bc95f0dadb1972f9a9990e453e6775389da1b1542a91ba38feb3",
+      "observed": "Eye-height, MNT-ground placement: visible measured domes; nearby authored facade and pistol partially obscure the lower view."
+    },
+    {
+      "file": "major_elevated.png",
+      "sha256": "09b37d1d1ea3b37f4d537a8dd3efb5d45adff01b9157adfda8eea3d64d2bdc34",
+      "observed": "Explicit elevated inspection: Major main dome and smaller domes visible in their existing source footprint. MNS faceting/vertical boundary ridges are visible; no textured facade survey claimed."
+    },
+    {
+      "file": "garde_ground.png",
+      "sha256": "6322213df8d0d82aa9755566748f678540255693ea47b3983f7a62f8c2e50625",
+      "observed": "Eye-height MNT-ground placement: upper summit visible, with authored window pillars/roof in foreground; no exact statue interpretation claimed."
+    },
+    {
+      "file": "garde_elevated.png",
+      "sha256": "d1d15635b3dae66114bf6053fc8bfc039b22ae2d361cf2c24c8f4205a46e1343",
+      "observed": "Explicit elevated inspection: measured tower/summit and domed volume of Garde site visible against actual hillside source."
+    },
+    {
+      "file": "garde_continue.png",
+      "sha256": "cedaa3cbcf1a9d4e8cccc3f9899024ecb864c664f5b18e45c8bf7414bff09049",
+      "observed": "After native reload and Continue: same tower/summit visible from restored camera. HUD/source-tile counter may differ after a fresh geographic load; no bit-identical scene/PNG claim."
+    }
+  ],
+  "limitations": [
+    "MNS upper surfaces are rough 0.50 m observations, not photogrammetric facades or semantic structural roof/room models.",
+    "Vertical closures, colors, openings and the FPS foreground are authored representations.",
+    "Elevated cameras are diagnostic inspection positions, not evidence of player traversal.",
+    "Legacy geographic diagnostic banner is large in these frames; reported to root HUD owner."
+  ]
+}

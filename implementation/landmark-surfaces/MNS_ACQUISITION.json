@@ -1,0 +1,4172 @@
+{
+  "schemaVersion": 1,
+  "scope": "Acquired native IGN MNS upper surfaces clipped against unchanged source XY, not a facade/interior survey.",
+  "sourceMetadata": {
+    "path": "Previously acquired complete IGN metadata response, held in external cache",
+    "sha256": "d03791c589e23082add2d016a2db97ebe097a03a9f03c21f7c10930158ba0471",
+    "numberMatched": 45,
+    "numberReturned": 45
+  },
+  "sourceTiles": [
+    {
+      "feature": {
+        "type": "Feature",
+        "id": "metadata.382818",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  5.35303989,
+                  43.30554857
+                ],
+                [
+                  5.36535212,
+                  43.30527985
+                ],
+                [
+                  5.36498325,
+                  43.29628821
+                ],
+                [
+                  5.35267294,
+                  43.2965569
+                ],
+                [
+                  5.35303989,
+                  43.30554857
+                ]
+              ]
+            ]
+          ]
+        },
+        "geometry_name": "geom",
+        "properties": {
+          "capteur": "[\"Leica TerrainMapper:90560\"]",
+          "url_mnh": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNH_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6247000.25,891999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6248_MNH_O_0M50_LAMB93_IGN69.tif",
+          "url_mns": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6247000.25,891999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6248_MNS_O_0M50_LAMB93_IGN69.tif",
+          "url_mnt": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6247000.25,891999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+          "url_npl": "https://data.geopf.fr/telechargement/download/LiDARHD-NUALID/NUALHD_1-0__LAZ_LAMB93_PQ_2025-03-14/LHD_FXX_0891_6248_PTS_LAMB93_IGN69.copc.laz",
+          "code_mission": "21LHD7PQ",
+          "date_edition": "2025-03-14Z",
+          "nombre_points": 6712268,
+          "coordonnees_nw": "0891-6248",
+          "moa_acquisition": "IGN",
+          "moe_acquisition": "APEI",
+          "procede_classement": "IGN_AUTO_V5",
+          "date_fin_acquisition": "2021-06-26Z",
+          "systeme_altimetrique": "IGN69",
+          "moe_classement_manuel": "NR",
+          "systeme_planimetrique": "LAMB93",
+          "date_debut_acquisition": "2021-06-26Z",
+          "moe_classement_automatique": "IGN"
+        }
+      },
+      "sha256": "90a4dc5cce5e6942063820c1c9ef1d606fdb9e973f3e28f2f67e751eba4f23cb",
+      "bytes": 16000513,
+      "filename": "0891-6248-mns.tif",
+      "header": {
+        "crsWkt": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+        "bounds": [
+          890999.75,
+          6247000.25,
+          891999.75,
+          6248000.25
+        ],
+        "size": [
+          2000,
+          2000
+        ],
+        "resolutionMeters": [
+          0.5,
+          0.5
+        ],
+        "nodata": -9999
+      },
+      "checksumScope": "Received verified-HTTPS bytes; no independent upstream checksum published."
+    },
+    {
+      "feature": {
+        "type": "Feature",
+        "id": "metadata.382861",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  5.36535212,
+                  43.30527985
+                ],
+                [
+                  5.37766424,
+                  43.30500971
+                ],
+                [
+                  5.37729345,
+                  43.29601813
+                ],
+                [
+                  5.36498325,
+                  43.29628821
+                ],
+                [
+                  5.36535212,
+                  43.30527985
+                ]
+              ]
+            ]
+          ]
+        },
+        "geometry_name": "geom",
+        "properties": {
+          "capteur": "[\"Leica TerrainMapper:90560\"]",
+          "url_mnh": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNH_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6247000.25,892999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6248_MNH_O_0M50_LAMB93_IGN69.tif",
+          "url_mns": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6247000.25,892999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6248_MNS_O_0M50_LAMB93_IGN69.tif",
+          "url_mnt": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6247000.25,892999.75,6248000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6248_MNT_O_0M50_LAMB93_IGN69.tif",
+          "url_npl": "https://data.geopf.fr/telechargement/download/LiDARHD-NUALID/NUALHD_1-0__LAZ_LAMB93_PQ_2025-03-14/LHD_FXX_0892_6248_PTS_LAMB93_IGN69.copc.laz",
+          "code_mission": "21LHD7PQ",
+          "date_edition": "2025-03-14Z",
+          "nombre_points": 32096020,
+          "coordonnees_nw": "0892-6248",
+          "moa_acquisition": "IGN",
+          "moe_acquisition": "APEI",
+          "procede_classement": "IGN_AUTO_V5",
+          "date_fin_acquisition": "2021-10-17Z",
+          "systeme_altimetrique": "IGN69",
+          "moe_classement_manuel": "NR",
+          "systeme_planimetrique": "LAMB93",
+          "date_debut_acquisition": "2021-06-26Z",
+          "moe_classement_automatique": "IGN"
+        }
+      },
+      "sha256": "a4d7f88153e7ee25a8f3043005c6db9619aa4d41d0bc0eb4abb939af3b459b96",
+      "bytes": 16000513,
+      "filename": "0892-6248-mns.tif",
+      "header": {
+        "crsWkt": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+        "bounds": [
+          891999.75,
+          6247000.25,
+          892999.75,
+          6248000.25
+        ],
+        "size": [
+          2000,
+          2000
+        ],
+        "resolutionMeters": [
+          0.5,
+          0.5
+        ],
+        "nodata": -9999
+      },
+      "checksumScope": "Received verified-HTTPS bytes; no independent upstream checksum published."
+    },
+    {
+      "feature": {
+        "type": "Feature",
+        "id": "metadata.382504",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  5.3646145,
+                  43.28729664
+                ],
+                [
+                  5.37692278,
+                  43.2870266
+                ],
+                [
+                  5.37655222,
+                  43.27803513
+                ],
+                [
+                  5.36424586,
+                  43.27830513
+                ],
+                [
+                  5.3646145,
+                  43.28729664
+                ]
+              ]
+            ]
+          ]
+        },
+        "geometry_name": "geom",
+        "properties": {
+          "capteur": "[\"Leica TerrainMapper:90560\"]",
+          "url_mnh": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNH_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6245000.25,892999.75,6246000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6246_MNH_O_0M50_LAMB93_IGN69.tif",
+          "url_mns": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6245000.25,892999.75,6246000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6246_MNS_O_0M50_LAMB93_IGN69.tif",
+          "url_mnt": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6245000.25,892999.75,6246000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6246_MNT_O_0M50_LAMB93_IGN69.tif",
+          "url_npl": "https://data.geopf.fr/telechargement/download/LiDARHD-NUALID/NUALHD_1-0__LAZ_LAMB93_PQ_2025-03-14/LHD_FXX_0892_6246_PTS_LAMB93_IGN69.copc.laz",
+          "code_mission": "21LHD7PQ",
+          "date_edition": "2025-03-14Z",
+          "nombre_points": 30969536,
+          "coordonnees_nw": "0892-6246",
+          "moa_acquisition": "IGN",
+          "moe_acquisition": "APEI",
+          "procede_classement": "IGN_AUTO_V5",
+          "date_fin_acquisition": "2021-10-17Z",
+          "systeme_altimetrique": "IGN69",
+          "moe_classement_manuel": "NR",
+          "systeme_planimetrique": "LAMB93",
+          "date_debut_acquisition": "2021-06-26Z",
+          "moe_classement_automatique": "IGN"
+        }
+      },
+      "sha256": "f30b5b346671318a1f4de002ef1174be9163ae71c9e0637b21a354c343c30ccb",
+      "bytes": 16000513,
+      "filename": "0892-6246-mns.tif",
+      "header": {
+        "crsWkt": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+        "bounds": [
+          891999.75,
+          6245000.25,
+          892999.75,
+          6246000.25
+        ],
+        "size": [
+          2000,
+          2000
+        ],
+        "resolutionMeters": [
+          0.5,
+          0.5
+        ],
+        "nodata": -9999
+      },
+      "checksumScope": "Received verified-HTTPS bytes; no independent upstream checksum published."
+    }
+  ],
+  "inputHashes": {
+    "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+    "data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63"
+  },
+  "runtimeDescriptor": {
+    "schemaVersion": 1,
+    "surface": {
+      "path": "data/map_pack/landmark_surfaces/marseille-mns-e50ea945c27e47a3.json",
+      "sha256": "e50ea945c27e47a3f706c8ea381975032cd6b37857baa913f4f9430fcab3c6f6",
+      "bytes": 3468895
+    },
+    "recordCount": 17,
+    "siteContexts": [
+      "Cathédrale de la Major",
+      "Notre-Dame de la Garde"
+    ],
+    "scope": "Measured upper visible surface within unchanged BD TOPO XY; not semantic roof planes, facades, rooms or a full monument survey."
+  },
+  "totals": {
+    "candidateBuildingComponents": 17,
+    "vertices": 46052,
+    "surfaceTriangles": 82363,
+    "boundarySegments": 9711,
+    "nativeRasterBytes": 48001539
+  },
+  "interpolation": "Native pixel centres preserved; new clipped vertices use their original raster triangle plane.",
+  "sourceFilePolicy": "Native GeoTIFFs remain in external acquisition cache; the runtime ships attributed clipped vertices and original metadata, no source TIFF copy.",
+  "checksumLimit": "SHA256 pins received verified-HTTPS bytes; no separate upstream checksum was provided.",
+  "candidateResults": [
+    {
+      "cleabs": "BATIMENT0000000258930468",
+      "siteContext": "Cathédrale de la Major",
+      "vertices": 4001,
+      "surfaceTriangles": 7260,
+      "measurements": {
+        "footprintAreaSquareMetres": 815.6635648360755,
+        "roofProjectedAreaSquareMetres": 815.6635648364118,
+        "boundaryLengthMetres": 154.86660312177887,
+        "sourceBoundaryLengthMetres": 154.86660312177884,
+        "minimumElevation": 12.141359253836697,
+        "maximumElevation": 39.89564895629883,
+        "nativeVertices": 3261,
+        "clippedVertices": 740,
+        "nativeChecks": [
+          {
+            "vertex": 4,
+            "elevation": 25.86385726928711
+          },
+          {
+            "vertex": 8,
+            "elevation": 26.003843307495117
+          },
+          {
+            "vertex": 11,
+            "elevation": 26.074188232421875
+          },
+          {
+            "vertex": 14,
+            "elevation": 26.110727310180664
+          },
+          {
+            "vertex": 17,
+            "elevation": 26.112302780151367
+          },
+          {
+            "vertex": 20,
+            "elevation": 26.063905715942383
+          },
+          {
+            "vertex": 23,
+            "elevation": 25.962316513061523
+          },
+          {
+            "vertex": 27,
+            "elevation": 25.84082794189453
+          },
+          {
+            "vertex": 32,
+            "elevation": 25.852293014526367
+          },
+          {
+            "vertex": 34,
+            "elevation": 26.081125259399414
+          },
+          {
+            "vertex": 35,
+            "elevation": 26.203733444213867
+          },
+          {
+            "vertex": 36,
+            "elevation": 26.305091857910156
+          },
+          {
+            "vertex": 37,
+            "elevation": 26.358705520629883
+          },
+          {
+            "vertex": 38,
+            "elevation": 26.364229202270508
+          },
+          {
+            "vertex": 39,
+            "elevation": 26.297626495361328
+          },
+          {
+            "vertex": 40,
+            "elevation": 26.19513511657715
+          },
+          {
+            "vertex": 41,
+            "elevation": 26.04165267944336
+          },
+          {
+            "vertex": 43,
+            "elevation": 25.861064910888672
+          },
+          {
+            "vertex": 48,
+            "elevation": 25.79666519165039
+          },
+          {
+            "vertex": 50,
+            "elevation": 26.018781661987305
+          },
+          {
+            "vertex": 51,
+            "elevation": 26.421886444091797
+          },
+          {
+            "vertex": 52,
+            "elevation": 26.402923583984375
+          },
+          {
+            "vertex": 53,
+            "elevation": 26.533771514892578
+          },
+          {
+            "vertex": 54,
+            "elevation": 26.624385833740234
+          },
+          {
+            "vertex": 55,
+            "elevation": 26.599260330200195
+          },
+          {
+            "vertex": 56,
+            "elevation": 26.51679801940918
+          },
+          {
+            "vertex": 57,
+            "elevation": 26.402116775512695
+          },
+          {
+            "vertex": 58,
+            "elevation": 26.215484619140625
+          },
+          {
+            "vertex": 59,
+            "elevation": 26.004472732543945
+          },
+          {
+            "vertex": 61,
+            "elevation": 25.792327880859375
+          },
+          {
+            "vertex": 67,
+            "elevation": 27.230056762695312
+          },
+          {
+            "vertex": 69,
+            "elevation": 26.724428176879883
+          },
+          {
+            "vertex": 214,
+            "elevation": 31.976163864135742
+          },
+          {
+            "vertex": 321,
+            "elevation": 34.69660949707031
+          },
+          {
+            "vertex": 428,
+            "elevation": 32.9927864074707
+          },
+          {
+            "vertex": 642,
+            "elevation": 34.27522659301758
+          },
+          {
+            "vertex": 749,
+            "elevation": 26.81093978881836
+          },
+          {
+            "vertex": 856,
+            "elevation": 28.158477783203125
+          },
+          {
+            "vertex": 963,
+            "elevation": 23.083698272705078
+          },
+          {
+            "vertex": 1070,
+            "elevation": 23.713525772094727
+          },
+          {
+            "vertex": 1177,
+            "elevation": 23.166187286376953
+          },
+          {
+            "vertex": 1284,
+            "elevation": 24.069231033325195
+          },
+          {
+            "vertex": 1391,
+            "elevation": 23.45747947692871
+          },
+          {
+            "vertex": 1498,
+            "elevation": 23.31661605834961
+          },
+          {
+            "vertex": 1712,
+            "elevation": 23.06108283996582
+          },
+          {
+            "vertex": 1819,
+            "elevation": 35.4478759765625
+          },
+          {
+            "vertex": 1926,
+            "elevation": 23.49630355834961
+          },
+          {
+            "vertex": 2033,
+            "elevation": 35.50227355957031
+          },
+          {
+            "vertex": 2140,
+            "elevation": 24.181447982788086
+          },
+          {
+            "vertex": 2247,
+            "elevation": 27.073726654052734
+          },
+          {
+            "vertex": 2354,
+            "elevation": 27.228504180908203
+          },
+          {
+            "vertex": 2461,
+            "elevation": 25.897478103637695
+          },
+          {
+            "vertex": 2568,
+            "elevation": 36.35032653808594
+          },
+          {
+            "vertex": 2675,
+            "elevation": 25.60531234741211
+          },
+          {
+            "vertex": 2782,
+            "elevation": 37.9732551574707
+          },
+          {
+            "vertex": 2996,
+            "elevation": 36.594478607177734
+          },
+          {
+            "vertex": 3103,
+            "elevation": 26.686037063598633
+          },
+          {
+            "vertex": 3210,
+            "elevation": 37.447086334228516
+          },
+          {
+            "vertex": 3317,
+            "elevation": 24.965490341186523
+          },
+          {
+            "vertex": 3424,
+            "elevation": 37.88559341430664
+          },
+          {
+            "vertex": 3531,
+            "elevation": 23.147369384765625
+          },
+          {
+            "vertex": 3638,
+            "elevation": 38.5374755859375
+          },
+          {
+            "vertex": 3745,
+            "elevation": 23.886760711669922
+          },
+          {
+            "vertex": 3852,
+            "elevation": 25.834999084472656
+          }
+        ]
+      },
+      "originalGround": 9.5,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000258930469",
+      "siteContext": "Cathédrale de la Major",
+      "vertices": 3715,
+      "surfaceTriangles": 6599,
+      "measurements": {
+        "footprintAreaSquareMetres": 721.1039131486033,
+        "roofProjectedAreaSquareMetres": 721.1039131474053,
+        "boundaryLengthMetres": 186.9370799190212,
+        "sourceBoundaryLengthMetres": 186.93707991902116,
+        "minimumElevation": 11.687935829162598,
+        "maximumElevation": 45.42578716996384,
+        "nativeVertices": 2884,
+        "clippedVertices": 831,
+        "nativeChecks": [
+          {
+            "vertex": 4,
+            "elevation": 25.622196197509766
+          },
+          {
+            "vertex": 8,
+            "elevation": 25.753681182861328
+          },
+          {
+            "vertex": 11,
+            "elevation": 25.813961029052734
+          },
+          {
+            "vertex": 14,
+            "elevation": 25.849782943725586
+          },
+          {
+            "vertex": 17,
+            "elevation": 25.83298683166504
+          },
+          {
+            "vertex": 20,
+            "elevation": 25.788421630859375
+          },
+          {
+            "vertex": 23,
+            "elevation": 25.697551727294922
+          },
+          {
+            "vertex": 27,
+            "elevation": 25.573795318603516
+          },
+          {
+            "vertex": 32,
+            "elevation": 25.7451171875
+          },
+          {
+            "vertex": 34,
+            "elevation": 25.874950408935547
+          },
+          {
+            "vertex": 35,
+            "elevation": 26.031354904174805
+          },
+          {
+            "vertex": 36,
+            "elevation": 26.108102798461914
+          },
+          {
+            "vertex": 37,
+            "elevation": 26.127967834472656
+          },
+          {
+            "vertex": 38,
+            "elevation": 26.114850997924805
+          },
+          {
+            "vertex": 39,
+            "elevation": 26.071012496948242
+          },
+          {
+            "vertex": 40,
+            "elevation": 25.957115173339844
+          },
+          {
+            "vertex": 41,
+            "elevation": 25.796730041503906
+          },
+          {
+            "vertex": 43,
+            "elevation": 25.621204376220703
+          },
+          {
+            "vertex": 48,
+            "elevation": 25.765361785888672
+          },
+          {
+            "vertex": 50,
+            "elevation": 25.9267520904541
+          },
+          {
+            "vertex": 51,
+            "elevation": 26.106689453125
+          },
+          {
+            "vertex": 52,
+            "elevation": 26.23774528503418
+          },
+          {
+            "vertex": 53,
+            "elevation": 26.363210678100586
+          },
+          {
+            "vertex": 54,
+            "elevation": 26.411706924438477
+          },
+          {
+            "vertex": 55,
+            "elevation": 26.405778884887695
+          },
+          {
+            "vertex": 56,
+            "elevation": 26.32546043395996
+          },
+          {
+            "vertex": 57,
+            "elevation": 26.200986862182617
+          },
+          {
+            "vertex": 58,
+            "elevation": 26.02880096435547
+          },
+          {
+            "vertex": 59,
+            "elevation": 25.829416275024414
+          },
+          {
+            "vertex": 61,
+            "elevation": 25.60187339782715
+          },
+          {
+            "vertex": 68,
+            "elevation": 25.766618728637695
+          },
+          {
+            "vertex": 70,
+            "elevation": 26.12913703918457
+          },
+          {
+            "vertex": 214,
+            "elevation": 26.784425735473633
+          },
+          {
+            "vertex": 321,
+            "elevation": 27.12272834777832
+          },
+          {
+            "vertex": 428,
+            "elevation": 19.995378494262695
+          },
+          {
+            "vertex": 535,
+            "elevation": 26.829103469848633
+          },
+          {
+            "vertex": 642,
+            "elevation": 18.664630889892578
+          },
+          {
+            "vertex": 749,
+            "elevation": 27.8653507232666
+          },
+          {
+            "vertex": 856,
+            "elevation": 19.748727798461914
+          },
+          {
+            "vertex": 1070,
+            "elevation": 27.43437385559082
+          },
+          {
+            "vertex": 1177,
+            "elevation": 20.897857666015625
+          },
+          {
+            "vertex": 1391,
+            "elevation": 26.912500381469727
+          },
+          {
+            "vertex": 1498,
+            "elevation": 28.549020767211914
+          },
+          {
+            "vertex": 1605,
+            "elevation": 27.43010711669922
+          },
+          {
+            "vertex": 1712,
+            "elevation": 26.26462173461914
+          },
+          {
+            "vertex": 1819,
+            "elevation": 18.377243041992188
+          },
+          {
+            "vertex": 1926,
+            "elevation": 18.935976028442383
+          },
+          {
+            "vertex": 2033,
+            "elevation": 19.633211135864258
+          },
+          {
+            "vertex": 2140,
+            "elevation": 20.345834732055664
+          },
+          {
+            "vertex": 2247,
+            "elevation": 20.09135627746582
+          },
+          {
+            "vertex": 2354,
+            "elevation": 18.714069366455078
+          },
+          {
+            "vertex": 2461,
+            "elevation": 29.338945388793945
+          },
+          {
+            "vertex": 2568,
+            "elevation": 19.571645736694336
+          },
+          {
+            "vertex": 2675,
+            "elevation": 34.50948715209961
+          },
+          {
+            "vertex": 2889,
+            "elevation": 20.500896453857422
+          },
+          {
+            "vertex": 3103,
+            "elevation": 19.899206161499023
+          },
+          {
+            "vertex": 3317,
+            "elevation": 20.929462432861328
+          },
+          {
+            "vertex": 3424,
+            "elevation": 21.411252975463867
+          },
+          {
+            "vertex": 3531,
+            "elevation": 19.39898681640625
+          },
+          {
+            "vertex": 3638,
+            "elevation": 19.062480926513672
+          }
+        ]
+      },
+      "originalGround": 9.5,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000258930470",
+      "siteContext": "Cathédrale de la Major",
+      "vertices": 14353,
+      "surfaceTriangles": 26734,
+      "measurements": {
+        "footprintAreaSquareMetres": 3094.394734798609,
+        "roofProjectedAreaSquareMetres": 3094.3947308843135,
+        "boundaryLengthMetres": 434.53039181425635,
+        "sourceBoundaryLengthMetres": 434.5304226555234,
+        "minimumElevation": 11.263802046425928,
+        "maximumElevation": 68.27495574951172,
+        "nativeVertices": 12381,
+        "clippedVertices": 1972,
+        "nativeChecks": [
+          {
+            "vertex": 4,
+            "elevation": 36.76668167114258
+          },
+          {
+            "vertex": 8,
+            "elevation": 37.38553237915039
+          },
+          {
+            "vertex": 11,
+            "elevation": 37.372962951660156
+          },
+          {
+            "vertex": 14,
+            "elevation": 37.2501335144043
+          },
+          {
+            "vertex": 17,
+            "elevation": 37.105587005615234
+          },
+          {
+            "vertex": 23,
+            "elevation": 36.963478088378906
+          },
+          {
+            "vertex": 24,
+            "elevation": 37.71066665649414
+          },
+          {
+            "vertex": 25,
+            "elevation": 38.0380859375
+          },
+          {
+            "vertex": 26,
+            "elevation": 37.96939468383789
+          },
+          {
+            "vertex": 27,
+            "elevation": 37.870452880859375
+          },
+          {
+            "vertex": 29,
+            "elevation": 37.71179962158203
+          },
+          {
+            "vertex": 32,
+            "elevation": 37.58598709106445
+          },
+          {
+            "vertex": 35,
+            "elevation": 37.432334899902344
+          },
+          {
+            "vertex": 38,
+            "elevation": 37.31540298461914
+          },
+          {
+            "vertex": 41,
+            "elevation": 37.171424865722656
+          },
+          {
+            "vertex": 47,
+            "elevation": 37.114501953125
+          },
+          {
+            "vertex": 48,
+            "elevation": 37.89389419555664
+          },
+          {
+            "vertex": 49,
+            "elevation": 38.572208404541016
+          },
+          {
+            "vertex": 50,
+            "elevation": 38.65791320800781
+          },
+          {
+            "vertex": 51,
+            "elevation": 38.63265609741211
+          },
+          {
+            "vertex": 52,
+            "elevation": 38.45523452758789
+          },
+          {
+            "vertex": 53,
+            "elevation": 38.355072021484375
+          },
+          {
+            "vertex": 54,
+            "elevation": 38.20730209350586
+          },
+          {
+            "vertex": 55,
+            "elevation": 38.05976867675781
+          },
+          {
+            "vertex": 56,
+            "elevation": 37.909786224365234
+          },
+          {
+            "vertex": 58,
+            "elevation": 37.67151641845703
+          },
+          {
+            "vertex": 61,
+            "elevation": 37.29939270019531
+          },
+          {
+            "vertex": 64,
+            "elevation": 36.815731048583984
+          },
+          {
+            "vertex": 67,
+            "elevation": 36.43921661376953
+          },
+          {
+            "vertex": 70,
+            "elevation": 36.304752349853516
+          },
+          {
+            "vertex": 73,
+            "elevation": 36.549903869628906
+          },
+          {
+            "vertex": 79,
+            "elevation": 37.27555465698242
+          },
+          {
+            "vertex": 214,
+            "elevation": 38.48006820678711
+          },
+          {
+            "vertex": 321,
+            "elevation": 39.67369842529297
+          },
+          {
+            "vertex": 428,
+            "elevation": 37.727684020996094
+          },
+          {
+            "vertex": 535,
+            "elevation": 37.451419830322266
+          },
+          {
+            "vertex": 642,
+            "elevation": 36.25502014160156
+          },
+          {
+            "vertex": 749,
+            "elevation": 40.543495178222656
+          },
+          {
+            "vertex": 856,
+            "elevation": 43.2951545715332
+          },
+          {
+            "vertex": 963,
+            "elevation": 50.65306091308594
+          },
+          {
+            "vertex": 1070,
+            "elevation": 28.462379455566406
+          },
+          {
+            "vertex": 1177,
+            "elevation": 36.3983268737793
+          },
+          {
+            "vertex": 1284,
+            "elevation": 45.13724899291992
+          },
+          {
+            "vertex": 1391,
+            "elevation": 53.228981018066406
+          },
+          {
+            "vertex": 1498,
+            "elevation": 44.61854553222656
+          },
+          {
+            "vertex": 1712,
+            "elevation": 36.20781326293945
+          },
+          {
+            "vertex": 1819,
+            "elevation": 52.17910385131836
+          },
+          {
+            "vertex": 1926,
+            "elevation": 44.62618637084961
+          },
+          {
+            "vertex": 2033,
+            "elevation": 38.77399444580078
+          },
+          {
+            "vertex": 2140,
+            "elevation": 28.0351619720459
+          },
+          {
+            "vertex": 2247,
+            "elevation": 36.37968063354492
+          },
+          {
+            "vertex": 2354,
+            "elevation": 36.059814453125
+          },
+          {
+            "vertex": 2461,
+            "elevation": 34.34085464477539
+          },
+          {
+            "vertex": 2568,
+            "elevation": 34.75126647949219
+          },
+          {
+            "vertex": 2675,
+            "elevation": 40.45370864868164
+          },
+          {
+            "vertex": 2782,
+            "elevation": 45.76622772216797
+          },
+          {
+            "vertex": 2889,
+            "elevation": 37.19094467163086
+          },
+          {
+            "vertex": 2996,
+            "elevation": 46.616512298583984
+          },
+          {
+            "vertex": 3103,
+            "elevation": 40.94087219238281
+          },
+          {
+            "vertex": 3317,
+            "elevation": 47.63796615600586
+          },
+          {
+            "vertex": 3424,
+            "elevation": 40.1803092956543
+          },
+          {
+            "vertex": 3531,
+            "elevation": 45.6208381652832
+          },
+          {
+            "vertex": 3638,
+            "elevation": 44.73959732055664
+          },
+          {
+            "vertex": 3745,
+            "elevation": 52.845359802246094
+          },
+          {
+            "vertex": 3852,
+            "elevation": 37.15117645263672
+          },
+          {
+            "vertex": 3959,
+            "elevation": 48.76409912109375
+          },
+          {
+            "vertex": 4066,
+            "elevation": 50.24684143066406
+          },
+          {
+            "vertex": 4173,
+            "elevation": 44.5386848449707
+          },
+          {
+            "vertex": 4387,
+            "elevation": 49.70136260986328
+          },
+          {
+            "vertex": 4494,
+            "elevation": 52.75159454345703
+          },
+          {
+            "vertex": 4601,
+            "elevation": 15.793434143066406
+          },
+          {
+            "vertex": 4708,
+            "elevation": 44.728946685791016
+          },
+          {
+            "vertex": 4815,
+            "elevation": 51.00580978393555
+          },
+          {
+            "vertex": 4922,
+            "elevation": 41.47356033325195
+          },
+          {
+            "vertex": 5136,
+            "elevation": 38.39522933959961
+          },
+          {
+            "vertex": 5243,
+            "elevation": 44.954307556152344
+          },
+          {
+            "vertex": 5350,
+            "elevation": 51.247352600097656
+          },
+          {
+            "vertex": 5671,
+            "elevation": 36.55052947998047
+          },
+          {
+            "vertex": 5778,
+            "elevation": 36.20160675048828
+          },
+          {
+            "vertex": 5885,
+            "elevation": 37.96146774291992
+          },
+          {
+            "vertex": 5992,
+            "elevation": 41.55543518066406
+          },
+          {
+            "vertex": 6099,
+            "elevation": 41.16472625732422
+          },
+          {
+            "vertex": 6313,
+            "elevation": 39.436363220214844
+          },
+          {
+            "vertex": 6420,
+            "elevation": 18.724090576171875
+          },
+          {
+            "vertex": 6527,
+            "elevation": 36.30291748046875
+          },
+          {
+            "vertex": 6634,
+            "elevation": 43.0359001159668
+          },
+          {
+            "vertex": 6741,
+            "elevation": 37.73268508911133
+          },
+          {
+            "vertex": 6848,
+            "elevation": 35.32282257080078
+          },
+          {
+            "vertex": 6955,
+            "elevation": 45.304866790771484
+          },
+          {
+            "vertex": 7062,
+            "elevation": 37.65872573852539
+          },
+          {
+            "vertex": 7169,
+            "elevation": 36.69661331176758
+          },
+          {
+            "vertex": 7276,
+            "elevation": 44.89897918701172
+          },
+          {
+            "vertex": 7383,
+            "elevation": 41.11800765991211
+          },
+          {
+            "vertex": 7490,
+            "elevation": 37.72238540649414
+          },
+          {
+            "vertex": 7597,
+            "elevation": 43.22418212890625
+          },
+          {
+            "vertex": 7704,
+            "elevation": 41.45173645019531
+          },
+          {
+            "vertex": 7811,
+            "elevation": 37.09851837158203
+          },
+          {
+            "vertex": 7918,
+            "elevation": 43.4814567565918
+          },
+          {
+            "vertex": 8025,
+            "elevation": 41.594627380371094
+          },
+          {
+            "vertex": 8132,
+            "elevation": 35.912174224853516
+          },
+          {
+            "vertex": 8239,
+            "elevation": 42.76066970825195
+          },
+          {
+            "vertex": 8346,
+            "elevation": 43.24840545654297
+          },
+          {
+            "vertex": 8560,
+            "elevation": 41.55326461791992
+          },
+          {
+            "vertex": 8667,
+            "elevation": 43.97712707519531
+          },
+          {
+            "vertex": 8881,
+            "elevation": 41.59760665893555
+          },
+          {
+            "vertex": 8988,
+            "elevation": 44.70054626464844
+          },
+          {
+            "vertex": 9095,
+            "elevation": 36.09770965576172
+          },
+          {
+            "vertex": 9202,
+            "elevation": 37.85251235961914
+          },
+          {
+            "vertex": 9309,
+            "elevation": 44.913272857666016
+          },
+          {
+            "vertex": 9416,
+            "elevation": 35.623680114746094
+          },
+          {
+            "vertex": 9523,
+            "elevation": 36.57701110839844
+          },
+          {
+            "vertex": 9630,
+            "elevation": 44.695213317871094
+          },
+          {
+            "vertex": 9737,
+            "elevation": 41.25746536254883
+          },
+          {
+            "vertex": 9844,
+            "elevation": 35.60695266723633
+          },
+          {
+            "vertex": 9951,
+            "elevation": 43.011199951171875
+          },
+          {
+            "vertex": 10058,
+            "elevation": 41.8730583190918
+          },
+          {
+            "vertex": 10165,
+            "elevation": 35.16065979003906
+          },
+          {
+            "vertex": 10272,
+            "elevation": 42.77614974975586
+          },
+          {
+            "vertex": 10379,
+            "elevation": 42.79750442504883
+          },
+          {
+            "vertex": 10486,
+            "elevation": 36.39835739135742
+          },
+          {
+            "vertex": 10593,
+            "elevation": 42.5473747253418
+          },
+          {
+            "vertex": 10700,
+            "elevation": 43.740055084228516
+          },
+          {
+            "vertex": 10807,
+            "elevation": 35.67066192626953
+          },
+          {
+            "vertex": 10914,
+            "elevation": 37.456661224365234
+          },
+          {
+            "vertex": 11021,
+            "elevation": 44.72637939453125
+          },
+          {
+            "vertex": 11128,
+            "elevation": 37.25611114501953
+          },
+          {
+            "vertex": 11235,
+            "elevation": 41.88578796386719
+          },
+          {
+            "vertex": 11342,
+            "elevation": 41.58537673950195
+          },
+          {
+            "vertex": 11449,
+            "elevation": 39.11793899536133
+          },
+          {
+            "vertex": 11556,
+            "elevation": 43.89860534667969
+          },
+          {
+            "vertex": 11663,
+            "elevation": 25.61712074279785
+          },
+          {
+            "vertex": 11770,
+            "elevation": 40.71923065185547
+          },
+          {
+            "vertex": 11877,
+            "elevation": 36.687957763671875
+          },
+          {
+            "vertex": 11984,
+            "elevation": 37.384925842285156
+          },
+          {
+            "vertex": 12091,
+            "elevation": 37.471920013427734
+          },
+          {
+            "vertex": 12198,
+            "elevation": 38.35251998901367
+          },
+          {
+            "vertex": 12305,
+            "elevation": 58.23952865600586
+          },
+          {
+            "vertex": 12412,
+            "elevation": 40.959869384765625
+          },
+          {
+            "vertex": 12519,
+            "elevation": 37.04656219482422
+          },
+          {
+            "vertex": 12626,
+            "elevation": 63.49297332763672
+          },
+          {
+            "vertex": 12733,
+            "elevation": 42.43223571777344
+          },
+          {
+            "vertex": 12840,
+            "elevation": 25.40627670288086
+          },
+          {
+            "vertex": 12947,
+            "elevation": 42.37063217163086
+          },
+          {
+            "vertex": 13054,
+            "elevation": 60.121036529541016
+          },
+          {
+            "vertex": 13161,
+            "elevation": 64.87631225585938
+          },
+          {
+            "vertex": 13268,
+            "elevation": 42.3399658203125
+          },
+          {
+            "vertex": 13482,
+            "elevation": 42.4932746887207
+          },
+          {
+            "vertex": 13696,
+            "elevation": 42.609867095947266
+          },
+          {
+            "vertex": 13803,
+            "elevation": 11.7232027053833
+          },
+          {
+            "vertex": 13910,
+            "elevation": 36.89826583862305
+          },
+          {
+            "vertex": 14124,
+            "elevation": 62.68433380126953
+          },
+          {
+            "vertex": 14231,
+            "elevation": 56.612674713134766
+          }
+        ]
+      },
+      "originalGround": 9.5,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000258938064",
+      "siteContext": "Cathédrale de la Major",
+      "vertices": 1538,
+      "surfaceTriangles": 2728,
+      "measurements": {
+        "footprintAreaSquareMetres": 298.322792307253,
+        "roofProjectedAreaSquareMetres": 298.32279230709935,
+        "boundaryLengthMetres": 76.42859636919799,
+        "sourceBoundaryLengthMetres": 76.42859636919799,
+        "minimumElevation": 19.498660407164895,
+        "maximumElevation": 41.795666367295325,
+        "nativeVertices": 1192,
+        "clippedVertices": 346,
+        "nativeChecks": [
+          {
+            "vertex": 1,
+            "elevation": 25.705493927001953
+          },
+          {
+            "vertex": 4,
+            "elevation": 25.80069923400879
+          },
+          {
+            "vertex": 7,
+            "elevation": 25.851680755615234
+          },
+          {
+            "vertex": 11,
+            "elevation": 25.877756118774414
+          },
+          {
+            "vertex": 14,
+            "elevation": 25.835201263427734
+          },
+          {
+            "vertex": 17,
+            "elevation": 25.7571964263916
+          },
+          {
+            "vertex": 20,
+            "elevation": 25.645431518554688
+          },
+          {
+            "vertex": 26,
+            "elevation": 25.818384170532227
+          },
+          {
+            "vertex": 29,
+            "elevation": 25.97417640686035
+          },
+          {
+            "vertex": 30,
+            "elevation": 26.0786075592041
+          },
+          {
+            "vertex": 31,
+            "elevation": 26.13454246520996
+          },
+          {
+            "vertex": 32,
+            "elevation": 26.14883804321289
+          },
+          {
+            "vertex": 33,
+            "elevation": 26.108407974243164
+          },
+          {
+            "vertex": 34,
+            "elevation": 26.004833221435547
+          },
+          {
+            "vertex": 35,
+            "elevation": 25.866741180419922
+          },
+          {
+            "vertex": 37,
+            "elevation": 25.711618423461914
+          },
+          {
+            "vertex": 42,
+            "elevation": 25.7094783782959
+          },
+          {
+            "vertex": 45,
+            "elevation": 25.841829299926758
+          },
+          {
+            "vertex": 47,
+            "elevation": 26.028955459594727
+          },
+          {
+            "vertex": 48,
+            "elevation": 26.215999603271484
+          },
+          {
+            "vertex": 49,
+            "elevation": 26.33833122253418
+          },
+          {
+            "vertex": 50,
+            "elevation": 26.416467666625977
+          },
+          {
+            "vertex": 51,
+            "elevation": 26.434850692749023
+          },
+          {
+            "vertex": 52,
+            "elevation": 26.362648010253906
+          },
+          {
+            "vertex": 53,
+            "elevation": 26.257213592529297
+          },
+          {
+            "vertex": 54,
+            "elevation": 26.105384826660156
+          },
+          {
+            "vertex": 55,
+            "elevation": 25.92270278930664
+          },
+          {
+            "vertex": 57,
+            "elevation": 25.70960235595703
+          },
+          {
+            "vertex": 60,
+            "elevation": 25.48636245727539
+          },
+          {
+            "vertex": 67,
+            "elevation": 26.166648864746094
+          },
+          {
+            "vertex": 68,
+            "elevation": 26.505718231201172
+          },
+          {
+            "vertex": 69,
+            "elevation": 26.392061233520508
+          },
+          {
+            "vertex": 214,
+            "elevation": 26.377674102783203
+          },
+          {
+            "vertex": 321,
+            "elevation": 26.56853675842285
+          },
+          {
+            "vertex": 428,
+            "elevation": 27.918460845947266
+          },
+          {
+            "vertex": 535,
+            "elevation": 26.170948028564453
+          },
+          {
+            "vertex": 749,
+            "elevation": 27.129013061523438
+          },
+          {
+            "vertex": 856,
+            "elevation": 28.633424758911133
+          },
+          {
+            "vertex": 963,
+            "elevation": 26.570314407348633
+          },
+          {
+            "vertex": 1177,
+            "elevation": 28.34395408630371
+          },
+          {
+            "vertex": 1391,
+            "elevation": 27.5377254486084
+          }
+        ]
+      },
+      "originalGround": 9.5,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000258938065",
+      "siteContext": "Cathédrale de la Major",
+      "vertices": 2067,
+      "surfaceTriangles": 3793,
+      "measurements": {
+        "footprintAreaSquareMetres": 432.2915667224921,
+        "roofProjectedAreaSquareMetres": 432.2915667219226,
+        "boundaryLengthMetres": 75.94838324820579,
+        "sourceBoundaryLengthMetres": 75.9483832482058,
+        "minimumElevation": 36.13412094116211,
+        "maximumElevation": 79.85255432128906,
+        "nativeVertices": 1728,
+        "clippedVertices": 339,
+        "nativeChecks": [
+          {
+            "vertex": 1,
+            "elevation": 39.368324279785156
+          },
+          {
+            "vertex": 4,
+            "elevation": 39.703277587890625
+          },
+          {
+            "vertex": 8,
+            "elevation": 39.24896240234375
+          },
+          {
+            "vertex": 11,
+            "elevation": 41.2759895324707
+          },
+          {
+            "vertex": 14,
+            "elevation": 42.22759246826172
+          },
+          {
+            "vertex": 17,
+            "elevation": 43.72245407104492
+          },
+          {
+            "vertex": 22,
+            "elevation": 48.045814514160156
+          },
+          {
+            "vertex": 25,
+            "elevation": 45.59844970703125
+          },
+          {
+            "vertex": 28,
+            "elevation": 46.49785614013672
+          },
+          {
+            "vertex": 30,
+            "elevation": 45.34528350830078
+          },
+          {
+            "vertex": 31,
+            "elevation": 40.524330139160156
+          },
+          {
+            "vertex": 32,
+            "elevation": 38.886348724365234
+          },
+          {
+            "vertex": 33,
+            "elevation": 38.4611701965332
+          },
+          {
+            "vertex": 34,
+            "elevation": 39.539306640625
+          },
+          {
+            "vertex": 35,
+            "elevation": 40.321014404296875
+          },
+          {
+            "vertex": 37,
+            "elevation": 38.630218505859375
+          },
+          {
+            "vertex": 40,
+            "elevation": 41.804718017578125
+          },
+          {
+            "vertex": 43,
+            "elevation": 43.10259246826172
+          },
+          {
+            "vertex": 46,
+            "elevation": 41.20604705810547
+          },
+          {
+            "vertex": 51,
+            "elevation": 54.403114318847656
+          },
+          {
+            "vertex": 54,
+            "elevation": 54.866329193115234
+          },
+          {
+            "vertex": 56,
+            "elevation": 54.50225067138672
+          },
+          {
+            "vertex": 57,
+            "elevation": 54.52927780151367
+          },
+          {
+            "vertex": 58,
+            "elevation": 54.937686920166016
+          },
+          {
+            "vertex": 59,
+            "elevation": 55.084014892578125
+          },
+          {
+            "vertex": 60,
+            "elevation": 45.874000549316406
+          },
+          {
+            "vertex": 61,
+            "elevation": 48.950531005859375
+          },
+          {
+            "vertex": 62,
+            "elevation": 44.76793670654297
+          },
+          {
+            "vertex": 63,
+            "elevation": 47.16994857788086
+          },
+          {
+            "vertex": 64,
+            "elevation": 44.597896575927734
+          },
+          {
+            "vertex": 65,
+            "elevation": 44.361656188964844
+          },
+          {
+            "vertex": 66,
+            "elevation": 38.52885818481445
+          },
+          {
+            "vertex": 107,
+            "elevation": 43.8358154296875
+          },
+          {
+            "vertex": 214,
+            "elevation": 60.14475631713867
+          },
+          {
+            "vertex": 321,
+            "elevation": 50.80954360961914
+          },
+          {
+            "vertex": 428,
+            "elevation": 64.60396575927734
+          },
+          {
+            "vertex": 535,
+            "elevation": 65.70095825195312
+          },
+          {
+            "vertex": 642,
+            "elevation": 55.02540588378906
+          },
+          {
+            "vertex": 856,
+            "elevation": 60.67202377319336
+          },
+          {
+            "vertex": 963,
+            "elevation": 65.51166534423828
+          },
+          {
+            "vertex": 1070,
+            "elevation": 71.47019958496094
+          },
+          {
+            "vertex": 1177,
+            "elevation": 76.29656219482422
+          },
+          {
+            "vertex": 1284,
+            "elevation": 67.08423614501953
+          },
+          {
+            "vertex": 1391,
+            "elevation": 60.59278106689453
+          },
+          {
+            "vertex": 1498,
+            "elevation": 56.057918548583984
+          },
+          {
+            "vertex": 1605,
+            "elevation": 65.46761322021484
+          },
+          {
+            "vertex": 1712,
+            "elevation": 36.70115661621094
+          },
+          {
+            "vertex": 1819,
+            "elevation": 56.1031379699707
+          },
+          {
+            "vertex": 2033,
+            "elevation": 38.04915237426758
+          }
+        ]
+      },
+      "originalGround": 9.5,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400278",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 3820,
+      "surfaceTriangles": 6744,
+      "measurements": {
+        "footprintAreaSquareMetres": 731.7202052583614,
+        "roofProjectedAreaSquareMetres": 731.7202052579912,
+        "boundaryLengthMetres": 184.54663340988157,
+        "sourceBoundaryLengthMetres": 184.54663340988154,
+        "minimumElevation": 141.86703598251353,
+        "maximumElevation": 159.0074005126953,
+        "nativeVertices": 2926,
+        "clippedVertices": 894,
+        "nativeChecks": [
+          {
+            "vertex": 5,
+            "elevation": 155.99778747558594
+          },
+          {
+            "vertex": 7,
+            "elevation": 156.1597137451172
+          },
+          {
+            "vertex": 13,
+            "elevation": 155.81724548339844
+          },
+          {
+            "vertex": 14,
+            "elevation": 155.31121826171875
+          },
+          {
+            "vertex": 15,
+            "elevation": 156.0786590576172
+          },
+          {
+            "vertex": 17,
+            "elevation": 156.0233917236328
+          },
+          {
+            "vertex": 23,
+            "elevation": 155.80758666992188
+          },
+          {
+            "vertex": 24,
+            "elevation": 155.47669982910156
+          },
+          {
+            "vertex": 25,
+            "elevation": 155.27044677734375
+          },
+          {
+            "vertex": 26,
+            "elevation": 155.64895629882812
+          },
+          {
+            "vertex": 27,
+            "elevation": 155.50967407226562
+          },
+          {
+            "vertex": 29,
+            "elevation": 155.65142822265625
+          },
+          {
+            "vertex": 35,
+            "elevation": 155.4369659423828
+          },
+          {
+            "vertex": 37,
+            "elevation": 155.58181762695312
+          },
+          {
+            "vertex": 38,
+            "elevation": 155.33998107910156
+          },
+          {
+            "vertex": 39,
+            "elevation": 155.45260620117188
+          },
+          {
+            "vertex": 40,
+            "elevation": 155.29931640625
+          },
+          {
+            "vertex": 41,
+            "elevation": 155.25245666503906
+          },
+          {
+            "vertex": 42,
+            "elevation": 155.3433380126953
+          },
+          {
+            "vertex": 44,
+            "elevation": 155.6151885986328
+          },
+          {
+            "vertex": 47,
+            "elevation": 155.8823699951172
+          },
+          {
+            "vertex": 53,
+            "elevation": 155.28482055664062
+          },
+          {
+            "vertex": 54,
+            "elevation": 155.35235595703125
+          },
+          {
+            "vertex": 55,
+            "elevation": 155.575927734375
+          },
+          {
+            "vertex": 56,
+            "elevation": 155.77793884277344
+          },
+          {
+            "vertex": 57,
+            "elevation": 155.81336975097656
+          },
+          {
+            "vertex": 58,
+            "elevation": 155.34326171875
+          },
+          {
+            "vertex": 59,
+            "elevation": 155.27401733398438
+          },
+          {
+            "vertex": 60,
+            "elevation": 155.27684020996094
+          },
+          {
+            "vertex": 61,
+            "elevation": 155.5719757080078
+          },
+          {
+            "vertex": 63,
+            "elevation": 155.84848022460938
+          },
+          {
+            "vertex": 69,
+            "elevation": 155.2053985595703
+          },
+          {
+            "vertex": 107,
+            "elevation": 155.75990295410156
+          },
+          {
+            "vertex": 321,
+            "elevation": 152.59539794921875
+          },
+          {
+            "vertex": 428,
+            "elevation": 152.53623962402344
+          },
+          {
+            "vertex": 642,
+            "elevation": 158.07862854003906
+          },
+          {
+            "vertex": 749,
+            "elevation": 153.56884765625
+          },
+          {
+            "vertex": 856,
+            "elevation": 153.52000427246094
+          },
+          {
+            "vertex": 963,
+            "elevation": 152.66189575195312
+          },
+          {
+            "vertex": 1070,
+            "elevation": 155.7629852294922
+          },
+          {
+            "vertex": 1284,
+            "elevation": 154.06982421875
+          },
+          {
+            "vertex": 1391,
+            "elevation": 153.52999877929688
+          },
+          {
+            "vertex": 1498,
+            "elevation": 153.53924560546875
+          },
+          {
+            "vertex": 1605,
+            "elevation": 158.0476531982422
+          },
+          {
+            "vertex": 1712,
+            "elevation": 155.10000610351562
+          },
+          {
+            "vertex": 1819,
+            "elevation": 153.52236938476562
+          },
+          {
+            "vertex": 1926,
+            "elevation": 158.0465087890625
+          },
+          {
+            "vertex": 2247,
+            "elevation": 152.67922973632812
+          },
+          {
+            "vertex": 2354,
+            "elevation": 152.6545867919922
+          },
+          {
+            "vertex": 2461,
+            "elevation": 153.52691650390625
+          },
+          {
+            "vertex": 2675,
+            "elevation": 152.59739685058594
+          },
+          {
+            "vertex": 2782,
+            "elevation": 152.60000610351562
+          },
+          {
+            "vertex": 2996,
+            "elevation": 152.5906219482422
+          },
+          {
+            "vertex": 3103,
+            "elevation": 148.9764404296875
+          },
+          {
+            "vertex": 3210,
+            "elevation": 145.10931396484375
+          },
+          {
+            "vertex": 3317,
+            "elevation": 147.40406799316406
+          },
+          {
+            "vertex": 3424,
+            "elevation": 145.1265411376953
+          },
+          {
+            "vertex": 3531,
+            "elevation": 145.11709594726562
+          },
+          {
+            "vertex": 3638,
+            "elevation": 145.15345764160156
+          },
+          {
+            "vertex": 3745,
+            "elevation": 145.22799682617188
+          }
+        ]
+      },
+      "originalGround": 136,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400280",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 3182,
+      "surfaceTriangles": 5473,
+      "measurements": {
+        "footprintAreaSquareMetres": 573.9623953501576,
+        "roofProjectedAreaSquareMetres": 573.9623953520423,
+        "boundaryLengthMetres": 181.6545128576511,
+        "sourceBoundaryLengthMetres": 181.65451285765113,
+        "minimumElevation": 141.23434186250702,
+        "maximumElevation": 159.42494201660156,
+        "nativeVertices": 2293,
+        "clippedVertices": 889,
+        "nativeChecks": [
+          {
+            "vertex": 3,
+            "elevation": 146.87429809570312
+          },
+          {
+            "vertex": 8,
+            "elevation": 150.21939086914062
+          },
+          {
+            "vertex": 9,
+            "elevation": 152.19515991210938
+          },
+          {
+            "vertex": 11,
+            "elevation": 152.08213806152344
+          },
+          {
+            "vertex": 17,
+            "elevation": 152.04347229003906
+          },
+          {
+            "vertex": 18,
+            "elevation": 152.84490966796875
+          },
+          {
+            "vertex": 19,
+            "elevation": 152.47357177734375
+          },
+          {
+            "vertex": 21,
+            "elevation": 152.19261169433594
+          },
+          {
+            "vertex": 27,
+            "elevation": 152.1482696533203
+          },
+          {
+            "vertex": 28,
+            "elevation": 152.8256072998047
+          },
+          {
+            "vertex": 29,
+            "elevation": 154.40921020507812
+          },
+          {
+            "vertex": 30,
+            "elevation": 153.7804412841797
+          },
+          {
+            "vertex": 31,
+            "elevation": 153.02162170410156
+          },
+          {
+            "vertex": 33,
+            "elevation": 152.53268432617188
+          },
+          {
+            "vertex": 36,
+            "elevation": 149.9503173828125
+          },
+          {
+            "vertex": 42,
+            "elevation": 147.67124938964844
+          },
+          {
+            "vertex": 43,
+            "elevation": 152.73487854003906
+          },
+          {
+            "vertex": 44,
+            "elevation": 153.97914123535156
+          },
+          {
+            "vertex": 45,
+            "elevation": 155.70394897460938
+          },
+          {
+            "vertex": 46,
+            "elevation": 155.76333618164062
+          },
+          {
+            "vertex": 47,
+            "elevation": 155.4557342529297
+          },
+          {
+            "vertex": 48,
+            "elevation": 153.76710510253906
+          },
+          {
+            "vertex": 49,
+            "elevation": 152.28907775878906
+          },
+          {
+            "vertex": 51,
+            "elevation": 149.1967315673828
+          },
+          {
+            "vertex": 57,
+            "elevation": 147.59471130371094
+          },
+          {
+            "vertex": 58,
+            "elevation": 152.43984985351562
+          },
+          {
+            "vertex": 59,
+            "elevation": 153.9117889404297
+          },
+          {
+            "vertex": 60,
+            "elevation": 155.68299865722656
+          },
+          {
+            "vertex": 61,
+            "elevation": 155.77659606933594
+          },
+          {
+            "vertex": 62,
+            "elevation": 155.507568359375
+          },
+          {
+            "vertex": 63,
+            "elevation": 155.82032775878906
+          },
+          {
+            "vertex": 64,
+            "elevation": 155.68701171875
+          },
+          {
+            "vertex": 214,
+            "elevation": 155.0533905029297
+          },
+          {
+            "vertex": 535,
+            "elevation": 152.89639282226562
+          },
+          {
+            "vertex": 642,
+            "elevation": 155.14242553710938
+          },
+          {
+            "vertex": 749,
+            "elevation": 152.6903076171875
+          },
+          {
+            "vertex": 856,
+            "elevation": 152.12770080566406
+          },
+          {
+            "vertex": 963,
+            "elevation": 148.00621032714844
+          },
+          {
+            "vertex": 1177,
+            "elevation": 152.4272003173828
+          },
+          {
+            "vertex": 1284,
+            "elevation": 152.18040466308594
+          },
+          {
+            "vertex": 1391,
+            "elevation": 152.3102264404297
+          },
+          {
+            "vertex": 1498,
+            "elevation": 152.3205108642578
+          },
+          {
+            "vertex": 1605,
+            "elevation": 152.61801147460938
+          },
+          {
+            "vertex": 1712,
+            "elevation": 152.05227661132812
+          },
+          {
+            "vertex": 1819,
+            "elevation": 152.30364990234375
+          },
+          {
+            "vertex": 1926,
+            "elevation": 152.10655212402344
+          },
+          {
+            "vertex": 2033,
+            "elevation": 143.16961669921875
+          },
+          {
+            "vertex": 2140,
+            "elevation": 152.1327362060547
+          },
+          {
+            "vertex": 2354,
+            "elevation": 152.08102416992188
+          },
+          {
+            "vertex": 2461,
+            "elevation": 143.74594116210938
+          },
+          {
+            "vertex": 2568,
+            "elevation": 152.0850067138672
+          },
+          {
+            "vertex": 2782,
+            "elevation": 152.14337158203125
+          },
+          {
+            "vertex": 2889,
+            "elevation": 152.091552734375
+          },
+          {
+            "vertex": 2996,
+            "elevation": 152.12767028808594
+          }
+        ]
+      },
+      "originalGround": 138.8,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400282",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 920,
+      "surfaceTriangles": 1606,
+      "measurements": {
+        "footprintAreaSquareMetres": 170.9713970202778,
+        "roofProjectedAreaSquareMetres": 170.9713970193231,
+        "boundaryLengthMetres": 52.15949544682879,
+        "sourceBoundaryLengthMetres": 52.159495446828785,
+        "minimumElevation": 157.11328064459187,
+        "maximumElevation": 160.95285034179688,
+        "nativeVertices": 688,
+        "clippedVertices": 232,
+        "nativeChecks": [
+          {
+            "vertex": 2,
+            "elevation": 158.60792541503906
+          },
+          {
+            "vertex": 8,
+            "elevation": 158.75148010253906
+          },
+          {
+            "vertex": 9,
+            "elevation": 158.65789794921875
+          },
+          {
+            "vertex": 11,
+            "elevation": 158.69845581054688
+          },
+          {
+            "vertex": 17,
+            "elevation": 158.6294403076172
+          },
+          {
+            "vertex": 18,
+            "elevation": 158.67002868652344
+          },
+          {
+            "vertex": 19,
+            "elevation": 158.5692138671875
+          },
+          {
+            "vertex": 20,
+            "elevation": 158.72311401367188
+          },
+          {
+            "vertex": 22,
+            "elevation": 158.65646362304688
+          },
+          {
+            "vertex": 25,
+            "elevation": 158.6026153564453
+          },
+          {
+            "vertex": 31,
+            "elevation": 158.5984344482422
+          },
+          {
+            "vertex": 32,
+            "elevation": 158.55833435058594
+          },
+          {
+            "vertex": 33,
+            "elevation": 158.56126403808594
+          },
+          {
+            "vertex": 34,
+            "elevation": 158.58287048339844
+          },
+          {
+            "vertex": 35,
+            "elevation": 158.60598754882812
+          },
+          {
+            "vertex": 36,
+            "elevation": 158.57891845703125
+          },
+          {
+            "vertex": 38,
+            "elevation": 158.67279052734375
+          },
+          {
+            "vertex": 44,
+            "elevation": 158.64859008789062
+          },
+          {
+            "vertex": 45,
+            "elevation": 158.52447509765625
+          },
+          {
+            "vertex": 46,
+            "elevation": 158.52182006835938
+          },
+          {
+            "vertex": 47,
+            "elevation": 158.56671142578125
+          },
+          {
+            "vertex": 48,
+            "elevation": 158.56910705566406
+          },
+          {
+            "vertex": 49,
+            "elevation": 158.54238891601562
+          },
+          {
+            "vertex": 50,
+            "elevation": 158.5182647705078
+          },
+          {
+            "vertex": 51,
+            "elevation": 158.60311889648438
+          },
+          {
+            "vertex": 53,
+            "elevation": 158.7041778564453
+          },
+          {
+            "vertex": 59,
+            "elevation": 158.6067352294922
+          },
+          {
+            "vertex": 60,
+            "elevation": 158.6359100341797
+          },
+          {
+            "vertex": 61,
+            "elevation": 158.52346801757812
+          },
+          {
+            "vertex": 62,
+            "elevation": 158.51235961914062
+          },
+          {
+            "vertex": 63,
+            "elevation": 158.5321502685547
+          },
+          {
+            "vertex": 64,
+            "elevation": 158.5418701171875
+          },
+          {
+            "vertex": 107,
+            "elevation": 158.8990936279297
+          },
+          {
+            "vertex": 214,
+            "elevation": 159.77749633789062
+          },
+          {
+            "vertex": 321,
+            "elevation": 158.57260131835938
+          },
+          {
+            "vertex": 428,
+            "elevation": 160.38414001464844
+          },
+          {
+            "vertex": 535,
+            "elevation": 160.16949462890625
+          },
+          {
+            "vertex": 642,
+            "elevation": 160.26968383789062
+          },
+          {
+            "vertex": 749,
+            "elevation": 158.4774169921875
+          },
+          {
+            "vertex": 856,
+            "elevation": 158.50247192382812
+          }
+        ]
+      },
+      "originalGround": 138,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400286",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 156,
+      "surfaceTriangles": 214,
+      "measurements": {
+        "footprintAreaSquareMetres": 15.262667643469285,
+        "roofProjectedAreaSquareMetres": 15.262667643605395,
+        "boundaryLengthMetres": 17.475316283168866,
+        "sourceBoundaryLengthMetres": 17.475316283168866,
+        "minimumElevation": 151.98982110688664,
+        "maximumElevation": 155.26030345302462,
+        "nativeVertices": 60,
+        "clippedVertices": 96,
+        "nativeChecks": [
+          {
+            "vertex": 5,
+            "elevation": 155.1040802001953
+          },
+          {
+            "vertex": 7,
+            "elevation": 155.09832763671875
+          },
+          {
+            "vertex": 13,
+            "elevation": 153.47372436523438
+          },
+          {
+            "vertex": 14,
+            "elevation": 153.1780548095703
+          },
+          {
+            "vertex": 15,
+            "elevation": 152.7547149658203
+          },
+          {
+            "vertex": 17,
+            "elevation": 152.57115173339844
+          },
+          {
+            "vertex": 23,
+            "elevation": 153.24781799316406
+          },
+          {
+            "vertex": 24,
+            "elevation": 152.59417724609375
+          },
+          {
+            "vertex": 25,
+            "elevation": 152.12501525878906
+          },
+          {
+            "vertex": 26,
+            "elevation": 152.1199951171875
+          },
+          {
+            "vertex": 27,
+            "elevation": 152.1199951171875
+          },
+          {
+            "vertex": 29,
+            "elevation": 152.3854217529297
+          },
+          {
+            "vertex": 35,
+            "elevation": 152.87628173828125
+          },
+          {
+            "vertex": 37,
+            "elevation": 152.40155029296875
+          },
+          {
+            "vertex": 38,
+            "elevation": 152.19749450683594
+          },
+          {
+            "vertex": 39,
+            "elevation": 152.1244354248047
+          },
+          {
+            "vertex": 40,
+            "elevation": 152.1171112060547
+          },
+          {
+            "vertex": 41,
+            "elevation": 152.11724853515625
+          },
+          {
+            "vertex": 42,
+            "elevation": 152.1199951171875
+          },
+          {
+            "vertex": 44,
+            "elevation": 152.1153106689453
+          },
+          {
+            "vertex": 47,
+            "elevation": 153.12350463867188
+          },
+          {
+            "vertex": 56,
+            "elevation": 152.01535034179688
+          },
+          {
+            "vertex": 57,
+            "elevation": 152.09207153320312
+          },
+          {
+            "vertex": 58,
+            "elevation": 152.1165313720703
+          },
+          {
+            "vertex": 59,
+            "elevation": 152.11940002441406
+          },
+          {
+            "vertex": 60,
+            "elevation": 152.11949157714844
+          },
+          {
+            "vertex": 61,
+            "elevation": 152.126708984375
+          },
+          {
+            "vertex": 62,
+            "elevation": 152.121337890625
+          },
+          {
+            "vertex": 63,
+            "elevation": 152.11795043945312
+          },
+          {
+            "vertex": 65,
+            "elevation": 153.59483337402344
+          },
+          {
+            "vertex": 75,
+            "elevation": 152.8945770263672
+          },
+          {
+            "vertex": 76,
+            "elevation": 152.22776794433594
+          }
+        ]
+      },
+      "originalGround": 138.3,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400287",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 246,
+      "surfaceTriangles": 388,
+      "measurements": {
+        "footprintAreaSquareMetres": 35.97492010820724,
+        "roofProjectedAreaSquareMetres": 35.9749201091145,
+        "boundaryLengthMetres": 25.320894762086365,
+        "sourceBoundaryLengthMetres": 25.32089476208637,
+        "minimumElevation": 153.03913345272858,
+        "maximumElevation": 155.96775817871094,
+        "nativeVertices": 144,
+        "clippedVertices": 102,
+        "nativeChecks": [
+          {
+            "vertex": 2,
+            "elevation": 154.99874877929688
+          },
+          {
+            "vertex": 8,
+            "elevation": 155.86659240722656
+          },
+          {
+            "vertex": 9,
+            "elevation": 155.0
+          },
+          {
+            "vertex": 11,
+            "elevation": 155.0
+          },
+          {
+            "vertex": 17,
+            "elevation": 155.30731201171875
+          },
+          {
+            "vertex": 18,
+            "elevation": 155.32052612304688
+          },
+          {
+            "vertex": 19,
+            "elevation": 155.00396728515625
+          },
+          {
+            "vertex": 20,
+            "elevation": 154.99539184570312
+          },
+          {
+            "vertex": 22,
+            "elevation": 154.9910888671875
+          },
+          {
+            "vertex": 28,
+            "elevation": 155.00973510742188
+          },
+          {
+            "vertex": 29,
+            "elevation": 154.99269104003906
+          },
+          {
+            "vertex": 30,
+            "elevation": 154.98794555664062
+          },
+          {
+            "vertex": 31,
+            "elevation": 154.9858856201172
+          },
+          {
+            "vertex": 32,
+            "elevation": 154.9812774658203
+          },
+          {
+            "vertex": 34,
+            "elevation": 154.97776794433594
+          },
+          {
+            "vertex": 40,
+            "elevation": 155.01687622070312
+          },
+          {
+            "vertex": 41,
+            "elevation": 155.00999450683594
+          },
+          {
+            "vertex": 42,
+            "elevation": 154.9915313720703
+          },
+          {
+            "vertex": 43,
+            "elevation": 154.98069763183594
+          },
+          {
+            "vertex": 44,
+            "elevation": 154.96966552734375
+          },
+          {
+            "vertex": 45,
+            "elevation": 154.9656524658203
+          },
+          {
+            "vertex": 46,
+            "elevation": 154.97000122070312
+          },
+          {
+            "vertex": 48,
+            "elevation": 154.98260498046875
+          },
+          {
+            "vertex": 51,
+            "elevation": 154.9577178955078
+          },
+          {
+            "vertex": 57,
+            "elevation": 155.01934814453125
+          },
+          {
+            "vertex": 58,
+            "elevation": 155.00999450683594
+          },
+          {
+            "vertex": 59,
+            "elevation": 155.00924682617188
+          },
+          {
+            "vertex": 60,
+            "elevation": 154.99221801757812
+          },
+          {
+            "vertex": 61,
+            "elevation": 154.98106384277344
+          },
+          {
+            "vertex": 62,
+            "elevation": 154.9659423828125
+          },
+          {
+            "vertex": 63,
+            "elevation": 154.96865844726562
+          },
+          {
+            "vertex": 64,
+            "elevation": 154.96376037597656
+          },
+          {
+            "vertex": 107,
+            "elevation": 155.02395629882812
+          }
+        ]
+      },
+      "originalGround": 138,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400288",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 157,
+      "surfaceTriangles": 222,
+      "measurements": {
+        "footprintAreaSquareMetres": 16.786383090626536,
+        "roofProjectedAreaSquareMetres": 16.78638309075868,
+        "boundaryLengthMetres": 17.611935048629128,
+        "sourceBoundaryLengthMetres": 17.611935048629125,
+        "minimumElevation": 152.09280395507812,
+        "maximumElevation": 155.87167358398438,
+        "nativeVertices": 67,
+        "clippedVertices": 90,
+        "nativeChecks": [
+          {
+            "vertex": 3,
+            "elevation": 152.34793090820312
+          },
+          {
+            "vertex": 9,
+            "elevation": 153.73873901367188
+          },
+          {
+            "vertex": 10,
+            "elevation": 152.95074462890625
+          },
+          {
+            "vertex": 12,
+            "elevation": 152.59796142578125
+          },
+          {
+            "vertex": 18,
+            "elevation": 154.99655151367188
+          },
+          {
+            "vertex": 19,
+            "elevation": 153.9079132080078
+          },
+          {
+            "vertex": 20,
+            "elevation": 153.02755737304688
+          },
+          {
+            "vertex": 21,
+            "elevation": 152.1260528564453
+          },
+          {
+            "vertex": 23,
+            "elevation": 152.58407592773438
+          },
+          {
+            "vertex": 26,
+            "elevation": 153.44615173339844
+          },
+          {
+            "vertex": 32,
+            "elevation": 155.2311248779297
+          },
+          {
+            "vertex": 33,
+            "elevation": 155.06301879882812
+          },
+          {
+            "vertex": 34,
+            "elevation": 152.84950256347656
+          },
+          {
+            "vertex": 35,
+            "elevation": 152.12474060058594
+          },
+          {
+            "vertex": 36,
+            "elevation": 152.1199951171875
+          },
+          {
+            "vertex": 37,
+            "elevation": 152.12232971191406
+          },
+          {
+            "vertex": 38,
+            "elevation": 153.37722778320312
+          },
+          {
+            "vertex": 40,
+            "elevation": 153.12091064453125
+          },
+          {
+            "vertex": 47,
+            "elevation": 155.19825744628906
+          },
+          {
+            "vertex": 49,
+            "elevation": 155.0591278076172
+          },
+          {
+            "vertex": 50,
+            "elevation": 153.76339721679688
+          },
+          {
+            "vertex": 51,
+            "elevation": 152.1245880126953
+          },
+          {
+            "vertex": 52,
+            "elevation": 152.1216278076172
+          },
+          {
+            "vertex": 53,
+            "elevation": 152.1206512451172
+          },
+          {
+            "vertex": 54,
+            "elevation": 152.4669189453125
+          },
+          {
+            "vertex": 55,
+            "elevation": 152.36727905273438
+          },
+          {
+            "vertex": 57,
+            "elevation": 152.5663604736328
+          },
+          {
+            "vertex": 67,
+            "elevation": 155.11582946777344
+          },
+          {
+            "vertex": 68,
+            "elevation": 154.12986755371094
+          },
+          {
+            "vertex": 69,
+            "elevation": 152.3993377685547
+          },
+          {
+            "vertex": 70,
+            "elevation": 152.13299560546875
+          },
+          {
+            "vertex": 71,
+            "elevation": 152.12168884277344
+          },
+          {
+            "vertex": 107,
+            "elevation": 152.10000610351562
+          }
+        ]
+      },
+      "originalGround": 139.1,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400964",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 4177,
+      "surfaceTriangles": 7233,
+      "measurements": {
+        "footprintAreaSquareMetres": 764.8794289066246,
+        "roofProjectedAreaSquareMetres": 764.8794289065881,
+        "boundaryLengthMetres": 228.47916418319147,
+        "sourceBoundaryLengthMetres": 228.47916418319144,
+        "minimumElevation": 148.13362823075184,
+        "maximumElevation": 192.30810075024263,
+        "nativeVertices": 3058,
+        "clippedVertices": 1119,
+        "nativeChecks": [
+          {
+            "vertex": 3,
+            "elevation": 149.2180938720703
+          },
+          {
+            "vertex": 8,
+            "elevation": 152.6212158203125
+          },
+          {
+            "vertex": 9,
+            "elevation": 149.7950439453125
+          },
+          {
+            "vertex": 11,
+            "elevation": 149.0439453125
+          },
+          {
+            "vertex": 17,
+            "elevation": 151.90670776367188
+          },
+          {
+            "vertex": 18,
+            "elevation": 150.98666381835938
+          },
+          {
+            "vertex": 19,
+            "elevation": 149.06640625
+          },
+          {
+            "vertex": 20,
+            "elevation": 149.0454864501953
+          },
+          {
+            "vertex": 22,
+            "elevation": 150.6133270263672
+          },
+          {
+            "vertex": 28,
+            "elevation": 151.24851989746094
+          },
+          {
+            "vertex": 29,
+            "elevation": 149.24932861328125
+          },
+          {
+            "vertex": 30,
+            "elevation": 149.05686950683594
+          },
+          {
+            "vertex": 31,
+            "elevation": 149.04490661621094
+          },
+          {
+            "vertex": 32,
+            "elevation": 149.04087829589844
+          },
+          {
+            "vertex": 33,
+            "elevation": 152.4984130859375
+          },
+          {
+            "vertex": 35,
+            "elevation": 155.85719299316406
+          },
+          {
+            "vertex": 41,
+            "elevation": 150.57928466796875
+          },
+          {
+            "vertex": 42,
+            "elevation": 149.68649291992188
+          },
+          {
+            "vertex": 43,
+            "elevation": 149.06590270996094
+          },
+          {
+            "vertex": 44,
+            "elevation": 149.0421142578125
+          },
+          {
+            "vertex": 45,
+            "elevation": 149.0399932861328
+          },
+          {
+            "vertex": 46,
+            "elevation": 149.71485900878906
+          },
+          {
+            "vertex": 47,
+            "elevation": 154.72006225585938
+          },
+          {
+            "vertex": 48,
+            "elevation": 155.6934814453125
+          },
+          {
+            "vertex": 50,
+            "elevation": 155.46890258789062
+          },
+          {
+            "vertex": 56,
+            "elevation": 149.34275817871094
+          },
+          {
+            "vertex": 57,
+            "elevation": 149.21133422851562
+          },
+          {
+            "vertex": 58,
+            "elevation": 149.126708984375
+          },
+          {
+            "vertex": 59,
+            "elevation": 149.0708465576172
+          },
+          {
+            "vertex": 60,
+            "elevation": 150.78091430664062
+          },
+          {
+            "vertex": 61,
+            "elevation": 150.79457092285156
+          },
+          {
+            "vertex": 62,
+            "elevation": 155.84646606445312
+          },
+          {
+            "vertex": 107,
+            "elevation": 154.85052490234375
+          },
+          {
+            "vertex": 214,
+            "elevation": 152.18653869628906
+          },
+          {
+            "vertex": 321,
+            "elevation": 152.96620178222656
+          },
+          {
+            "vertex": 856,
+            "elevation": 154.95220947265625
+          },
+          {
+            "vertex": 963,
+            "elevation": 154.9815216064453
+          },
+          {
+            "vertex": 1070,
+            "elevation": 155.69000244140625
+          },
+          {
+            "vertex": 1177,
+            "elevation": 163.39939880371094
+          },
+          {
+            "vertex": 1284,
+            "elevation": 154.94276428222656
+          },
+          {
+            "vertex": 1391,
+            "elevation": 158.06484985351562
+          },
+          {
+            "vertex": 1498,
+            "elevation": 155.05276489257812
+          },
+          {
+            "vertex": 1605,
+            "elevation": 155.02999877929688
+          },
+          {
+            "vertex": 1819,
+            "elevation": 154.99388122558594
+          },
+          {
+            "vertex": 1926,
+            "elevation": 155.00599670410156
+          },
+          {
+            "vertex": 2033,
+            "elevation": 154.98365783691406
+          },
+          {
+            "vertex": 2140,
+            "elevation": 155.0399932861328
+          },
+          {
+            "vertex": 2247,
+            "elevation": 154.98681640625
+          },
+          {
+            "vertex": 2354,
+            "elevation": 155.5209197998047
+          },
+          {
+            "vertex": 2461,
+            "elevation": 155.0135955810547
+          },
+          {
+            "vertex": 2568,
+            "elevation": 154.98362731933594
+          },
+          {
+            "vertex": 2675,
+            "elevation": 154.95355224609375
+          },
+          {
+            "vertex": 2996,
+            "elevation": 167.36007690429688
+          },
+          {
+            "vertex": 3103,
+            "elevation": 155.0425567626953
+          },
+          {
+            "vertex": 3210,
+            "elevation": 155.1300048828125
+          },
+          {
+            "vertex": 3424,
+            "elevation": 154.99000549316406
+          },
+          {
+            "vertex": 3531,
+            "elevation": 154.9947509765625
+          },
+          {
+            "vertex": 3638,
+            "elevation": 154.98675537109375
+          },
+          {
+            "vertex": 3745,
+            "elevation": 155.0538330078125
+          },
+          {
+            "vertex": 3852,
+            "elevation": 154.7644805908203
+          },
+          {
+            "vertex": 3959,
+            "elevation": 155.032470703125
+          },
+          {
+            "vertex": 4066,
+            "elevation": 155.02679443359375
+          }
+        ]
+      },
+      "originalGround": 138,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400965",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 3574,
+      "surfaceTriangles": 6176,
+      "measurements": {
+        "footprintAreaSquareMetres": 651.5516136582337,
+        "roofProjectedAreaSquareMetres": 651.5516136575928,
+        "boundaryLengthMetres": 184.69464876878652,
+        "sourceBoundaryLengthMetres": 184.69464876878646,
+        "minimumElevation": 143.80252075195312,
+        "maximumElevation": 192.3848225683393,
+        "nativeVertices": 2604,
+        "clippedVertices": 970,
+        "nativeChecks": [
+          {
+            "vertex": 2,
+            "elevation": 155.01524353027344
+          },
+          {
+            "vertex": 8,
+            "elevation": 154.91908264160156
+          },
+          {
+            "vertex": 9,
+            "elevation": 154.9209442138672
+          },
+          {
+            "vertex": 11,
+            "elevation": 156.6228485107422
+          },
+          {
+            "vertex": 14,
+            "elevation": 158.5674591064453
+          },
+          {
+            "vertex": 21,
+            "elevation": 155.4476776123047
+          },
+          {
+            "vertex": 22,
+            "elevation": 154.9055633544922
+          },
+          {
+            "vertex": 23,
+            "elevation": 154.91355895996094
+          },
+          {
+            "vertex": 24,
+            "elevation": 156.3737335205078
+          },
+          {
+            "vertex": 25,
+            "elevation": 158.05239868164062
+          },
+          {
+            "vertex": 27,
+            "elevation": 158.68067932128906
+          },
+          {
+            "vertex": 33,
+            "elevation": 155.77645874023438
+          },
+          {
+            "vertex": 34,
+            "elevation": 155.00123596191406
+          },
+          {
+            "vertex": 35,
+            "elevation": 154.91510009765625
+          },
+          {
+            "vertex": 36,
+            "elevation": 155.59027099609375
+          },
+          {
+            "vertex": 37,
+            "elevation": 156.8165740966797
+          },
+          {
+            "vertex": 38,
+            "elevation": 158.1783905029297
+          },
+          {
+            "vertex": 40,
+            "elevation": 158.74913024902344
+          },
+          {
+            "vertex": 46,
+            "elevation": 155.7742919921875
+          },
+          {
+            "vertex": 47,
+            "elevation": 155.14785766601562
+          },
+          {
+            "vertex": 48,
+            "elevation": 154.9161834716797
+          },
+          {
+            "vertex": 49,
+            "elevation": 155.46514892578125
+          },
+          {
+            "vertex": 50,
+            "elevation": 155.54055786132812
+          },
+          {
+            "vertex": 51,
+            "elevation": 154.9088592529297
+          },
+          {
+            "vertex": 52,
+            "elevation": 154.89259338378906
+          },
+          {
+            "vertex": 53,
+            "elevation": 158.9363555908203
+          },
+          {
+            "vertex": 55,
+            "elevation": 160.26063537597656
+          },
+          {
+            "vertex": 61,
+            "elevation": 155.81829833984375
+          },
+          {
+            "vertex": 63,
+            "elevation": 156.06610107421875
+          },
+          {
+            "vertex": 64,
+            "elevation": 155.25291442871094
+          },
+          {
+            "vertex": 65,
+            "elevation": 155.7501983642578
+          },
+          {
+            "vertex": 66,
+            "elevation": 156.0745849609375
+          },
+          {
+            "vertex": 107,
+            "elevation": 152.20013427734375
+          },
+          {
+            "vertex": 428,
+            "elevation": 154.8800048828125
+          },
+          {
+            "vertex": 749,
+            "elevation": 155.40196228027344
+          },
+          {
+            "vertex": 856,
+            "elevation": 154.86257934570312
+          },
+          {
+            "vertex": 1070,
+            "elevation": 154.8637237548828
+          },
+          {
+            "vertex": 1177,
+            "elevation": 188.68104553222656
+          },
+          {
+            "vertex": 1284,
+            "elevation": 154.84376525878906
+          },
+          {
+            "vertex": 1391,
+            "elevation": 175.5355682373047
+          },
+          {
+            "vertex": 1712,
+            "elevation": 155.6308135986328
+          },
+          {
+            "vertex": 1819,
+            "elevation": 154.87020874023438
+          },
+          {
+            "vertex": 1926,
+            "elevation": 163.78076171875
+          },
+          {
+            "vertex": 2140,
+            "elevation": 154.8531951904297
+          },
+          {
+            "vertex": 2247,
+            "elevation": 154.8787841796875
+          },
+          {
+            "vertex": 2354,
+            "elevation": 158.3744659423828
+          },
+          {
+            "vertex": 2568,
+            "elevation": 154.84617614746094
+          },
+          {
+            "vertex": 2675,
+            "elevation": 154.91339111328125
+          },
+          {
+            "vertex": 2782,
+            "elevation": 168.42544555664062
+          },
+          {
+            "vertex": 2996,
+            "elevation": 155.0199737548828
+          },
+          {
+            "vertex": 3424,
+            "elevation": 155.68370056152344
+          },
+          {
+            "vertex": 3531,
+            "elevation": 155.12603759765625
+          }
+        ]
+      },
+      "originalGround": 138,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400985",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 471,
+      "surfaceTriangles": 729,
+      "measurements": {
+        "footprintAreaSquareMetres": 65.02561409934982,
+        "roofProjectedAreaSquareMetres": 65.02561409974396,
+        "boundaryLengthMetres": 39.52429582811283,
+        "sourceBoundaryLengthMetres": 39.52429582811283,
+        "minimumElevation": 179.6098263257132,
+        "maximumElevation": 210.16793823242188,
+        "nativeVertices": 260,
+        "clippedVertices": 211,
+        "nativeChecks": [
+          {
+            "vertex": 2,
+            "elevation": 187.8412322998047
+          },
+          {
+            "vertex": 7,
+            "elevation": 190.02149963378906
+          },
+          {
+            "vertex": 10,
+            "elevation": 192.40280151367188
+          },
+          {
+            "vertex": 15,
+            "elevation": 192.09478759765625
+          },
+          {
+            "vertex": 23,
+            "elevation": 188.30508422851562
+          },
+          {
+            "vertex": 26,
+            "elevation": 190.95065307617188
+          },
+          {
+            "vertex": 27,
+            "elevation": 192.3753662109375
+          },
+          {
+            "vertex": 28,
+            "elevation": 192.3027801513672
+          },
+          {
+            "vertex": 30,
+            "elevation": 190.05543518066406
+          },
+          {
+            "vertex": 40,
+            "elevation": 188.5886993408203
+          },
+          {
+            "vertex": 41,
+            "elevation": 189.04888916015625
+          },
+          {
+            "vertex": 42,
+            "elevation": 189.9320526123047
+          },
+          {
+            "vertex": 43,
+            "elevation": 190.1096954345703
+          },
+          {
+            "vertex": 52,
+            "elevation": 188.38185119628906
+          },
+          {
+            "vertex": 53,
+            "elevation": 188.26943969726562
+          },
+          {
+            "vertex": 54,
+            "elevation": 188.26524353027344
+          },
+          {
+            "vertex": 55,
+            "elevation": 188.25755310058594
+          },
+          {
+            "vertex": 56,
+            "elevation": 188.2421875
+          },
+          {
+            "vertex": 63,
+            "elevation": 188.36134338378906
+          },
+          {
+            "vertex": 64,
+            "elevation": 188.25360107421875
+          },
+          {
+            "vertex": 65,
+            "elevation": 188.26712036132812
+          },
+          {
+            "vertex": 66,
+            "elevation": 188.2830352783203
+          },
+          {
+            "vertex": 67,
+            "elevation": 188.27401733398438
+          },
+          {
+            "vertex": 68,
+            "elevation": 188.25611877441406
+          },
+          {
+            "vertex": 70,
+            "elevation": 188.24729919433594
+          },
+          {
+            "vertex": 76,
+            "elevation": 188.9099578857422
+          },
+          {
+            "vertex": 77,
+            "elevation": 188.24362182617188
+          },
+          {
+            "vertex": 78,
+            "elevation": 188.2513885498047
+          },
+          {
+            "vertex": 79,
+            "elevation": 189.84315490722656
+          },
+          {
+            "vertex": 80,
+            "elevation": 188.95921325683594
+          },
+          {
+            "vertex": 81,
+            "elevation": 188.83787536621094
+          },
+          {
+            "vertex": 82,
+            "elevation": 189.0235137939453
+          },
+          {
+            "vertex": 321,
+            "elevation": 188.25802612304688
+          },
+          {
+            "vertex": 428,
+            "elevation": 188.25067138671875
+          }
+        ]
+      },
+      "originalGround": 155.5,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400986",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 776,
+      "surfaceTriangles": 1341,
+      "measurements": {
+        "footprintAreaSquareMetres": 142.0027938976247,
+        "roofProjectedAreaSquareMetres": 142.0027938981448,
+        "boundaryLengthMetres": 49.96819162869861,
+        "sourceBoundaryLengthMetres": 49.96819162869862,
+        "minimumElevation": 155.18710496535164,
+        "maximumElevation": 174.74498651419077,
+        "nativeVertices": 567,
+        "clippedVertices": 209,
+        "nativeChecks": [
+          {
+            "vertex": 3,
+            "elevation": 172.02073669433594
+          },
+          {
+            "vertex": 8,
+            "elevation": 171.99069213867188
+          },
+          {
+            "vertex": 9,
+            "elevation": 165.66697692871094
+          },
+          {
+            "vertex": 11,
+            "elevation": 157.7520294189453
+          },
+          {
+            "vertex": 17,
+            "elevation": 172.02490234375
+          },
+          {
+            "vertex": 18,
+            "elevation": 168.96035766601562
+          },
+          {
+            "vertex": 19,
+            "elevation": 163.2852325439453
+          },
+          {
+            "vertex": 20,
+            "elevation": 160.31460571289062
+          },
+          {
+            "vertex": 22,
+            "elevation": 156.93960571289062
+          },
+          {
+            "vertex": 28,
+            "elevation": 169.1348876953125
+          },
+          {
+            "vertex": 29,
+            "elevation": 164.50881958007812
+          },
+          {
+            "vertex": 30,
+            "elevation": 161.17691040039062
+          },
+          {
+            "vertex": 31,
+            "elevation": 160.4193878173828
+          },
+          {
+            "vertex": 32,
+            "elevation": 160.33538818359375
+          },
+          {
+            "vertex": 34,
+            "elevation": 157.8350830078125
+          },
+          {
+            "vertex": 40,
+            "elevation": 169.9184112548828
+          },
+          {
+            "vertex": 41,
+            "elevation": 163.41384887695312
+          },
+          {
+            "vertex": 42,
+            "elevation": 162.84805297851562
+          },
+          {
+            "vertex": 43,
+            "elevation": 160.66671752929688
+          },
+          {
+            "vertex": 44,
+            "elevation": 160.5814971923828
+          },
+          {
+            "vertex": 45,
+            "elevation": 160.45675659179688
+          },
+          {
+            "vertex": 46,
+            "elevation": 160.3479461669922
+          },
+          {
+            "vertex": 48,
+            "elevation": 158.08306884765625
+          },
+          {
+            "vertex": 54,
+            "elevation": 169.8038330078125
+          },
+          {
+            "vertex": 55,
+            "elevation": 164.5345916748047
+          },
+          {
+            "vertex": 56,
+            "elevation": 160.9520263671875
+          },
+          {
+            "vertex": 57,
+            "elevation": 160.85113525390625
+          },
+          {
+            "vertex": 58,
+            "elevation": 160.76124572753906
+          },
+          {
+            "vertex": 59,
+            "elevation": 160.67318725585938
+          },
+          {
+            "vertex": 60,
+            "elevation": 160.58876037597656
+          },
+          {
+            "vertex": 61,
+            "elevation": 160.47727966308594
+          },
+          {
+            "vertex": 62,
+            "elevation": 160.37896728515625
+          },
+          {
+            "vertex": 107,
+            "elevation": 155.62828063964844
+          },
+          {
+            "vertex": 214,
+            "elevation": 172.49624633789062
+          },
+          {
+            "vertex": 321,
+            "elevation": 168.943603515625
+          },
+          {
+            "vertex": 428,
+            "elevation": 168.82266235351562
+          },
+          {
+            "vertex": 642,
+            "elevation": 162.32135009765625
+          }
+        ]
+      },
+      "originalGround": 155.5,
+      "admissibleAgainstSourceBase": false
+    },
+    {
+      "cleabs": "BATIMENT0000000273400987",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 1808,
+      "surfaceTriangles": 3219,
+      "measurements": {
+        "footprintAreaSquareMetres": 352.82960573155776,
+        "roofProjectedAreaSquareMetres": 352.82960573185005,
+        "boundaryLengthMetres": 80.6457494969606,
+        "sourceBoundaryLengthMetres": 80.6457494969606,
+        "minimumElevation": 163.13209965870374,
+        "maximumElevation": 192.4150848388672,
+        "nativeVertices": 1413,
+        "clippedVertices": 395,
+        "nativeChecks": [
+          {
+            "vertex": 2,
+            "elevation": 168.45750427246094
+          },
+          {
+            "vertex": 5,
+            "elevation": 169.46107482910156
+          },
+          {
+            "vertex": 13,
+            "elevation": 169.67848205566406
+          },
+          {
+            "vertex": 14,
+            "elevation": 170.08644104003906
+          },
+          {
+            "vertex": 15,
+            "elevation": 169.51031494140625
+          },
+          {
+            "vertex": 17,
+            "elevation": 169.49624633789062
+          },
+          {
+            "vertex": 24,
+            "elevation": 170.9813995361328
+          },
+          {
+            "vertex": 25,
+            "elevation": 170.96217346191406
+          },
+          {
+            "vertex": 26,
+            "elevation": 170.2982177734375
+          },
+          {
+            "vertex": 27,
+            "elevation": 169.7369384765625
+          },
+          {
+            "vertex": 29,
+            "elevation": 169.4827880859375
+          },
+          {
+            "vertex": 35,
+            "elevation": 171.28634643554688
+          },
+          {
+            "vertex": 36,
+            "elevation": 171.17236328125
+          },
+          {
+            "vertex": 37,
+            "elevation": 171.02828979492188
+          },
+          {
+            "vertex": 38,
+            "elevation": 171.0081787109375
+          },
+          {
+            "vertex": 39,
+            "elevation": 170.7729034423828
+          },
+          {
+            "vertex": 40,
+            "elevation": 169.79832458496094
+          },
+          {
+            "vertex": 44,
+            "elevation": 169.43768310546875
+          },
+          {
+            "vertex": 50,
+            "elevation": 181.47555541992188
+          },
+          {
+            "vertex": 51,
+            "elevation": 172.54190063476562
+          },
+          {
+            "vertex": 52,
+            "elevation": 172.5280303955078
+          },
+          {
+            "vertex": 53,
+            "elevation": 171.04991149902344
+          },
+          {
+            "vertex": 54,
+            "elevation": 171.01467895507812
+          },
+          {
+            "vertex": 55,
+            "elevation": 170.99374389648438
+          },
+          {
+            "vertex": 56,
+            "elevation": 170.01573181152344
+          },
+          {
+            "vertex": 57,
+            "elevation": 169.0201873779297
+          },
+          {
+            "vertex": 68,
+            "elevation": 189.37840270996094
+          },
+          {
+            "vertex": 69,
+            "elevation": 184.2720489501953
+          },
+          {
+            "vertex": 70,
+            "elevation": 172.549072265625
+          },
+          {
+            "vertex": 71,
+            "elevation": 172.54129028320312
+          },
+          {
+            "vertex": 72,
+            "elevation": 172.5004425048828
+          },
+          {
+            "vertex": 73,
+            "elevation": 171.27987670898438
+          },
+          {
+            "vertex": 107,
+            "elevation": 172.5207061767578
+          },
+          {
+            "vertex": 214,
+            "elevation": 168.48394775390625
+          },
+          {
+            "vertex": 321,
+            "elevation": 168.43296813964844
+          },
+          {
+            "vertex": 428,
+            "elevation": 170.89059448242188
+          },
+          {
+            "vertex": 642,
+            "elevation": 172.5594024658203
+          },
+          {
+            "vertex": 749,
+            "elevation": 172.1353302001953
+          },
+          {
+            "vertex": 856,
+            "elevation": 169.4100341796875
+          },
+          {
+            "vertex": 963,
+            "elevation": 168.47897338867188
+          },
+          {
+            "vertex": 1070,
+            "elevation": 173.333740234375
+          },
+          {
+            "vertex": 1177,
+            "elevation": 173.24635314941406
+          },
+          {
+            "vertex": 1284,
+            "elevation": 173.86927795410156
+          },
+          {
+            "vertex": 1391,
+            "elevation": 168.77816772460938
+          },
+          {
+            "vertex": 1498,
+            "elevation": 174.490478515625
+          },
+          {
+            "vertex": 1605,
+            "elevation": 169.4199676513672
+          },
+          {
+            "vertex": 1712,
+            "elevation": 169.24266052246094
+          }
+        ]
+      },
+      "originalGround": 155.5,
+      "admissibleAgainstSourceBase": true
+    },
+    {
+      "cleabs": "BATIMENT0000000273400988",
+      "siteContext": "Notre-Dame de la Garde",
+      "vertices": 1091,
+      "surfaceTriangles": 1904,
+      "measurements": {
+        "footprintAreaSquareMetres": 203.6304433865953,
+        "roofProjectedAreaSquareMetres": 203.63044338593886,
+        "boundaryLengthMetres": 60.51708682857776,
+        "sourceBoundaryLengthMetres": 60.51708682857777,
+        "minimumElevation": 167.83773163489474,
+        "maximumElevation": 189.85227966308594,
+        "nativeVertices": 815,
+        "clippedVertices": 276,
+        "nativeChecks": [
+          {
+            "vertex": 2,
+            "elevation": 171.28204345703125
+          },
+          {
+            "vertex": 12,
+            "elevation": 171.19293212890625
+          },
+          {
+            "vertex": 13,
+            "elevation": 172.05340576171875
+          },
+          {
+            "vertex": 15,
+            "elevation": 172.00575256347656
+          },
+          {
+            "vertex": 19,
+            "elevation": 172.03810119628906
+          },
+          {
+            "vertex": 25,
+            "elevation": 171.43353271484375
+          },
+          {
+            "vertex": 26,
+            "elevation": 172.03485107421875
+          },
+          {
+            "vertex": 27,
+            "elevation": 171.9915771484375
+          },
+          {
+            "vertex": 28,
+            "elevation": 172.01193237304688
+          },
+          {
+            "vertex": 29,
+            "elevation": 172.07400512695312
+          },
+          {
+            "vertex": 31,
+            "elevation": 172.2872772216797
+          },
+          {
+            "vertex": 37,
+            "elevation": 170.76966857910156
+          },
+          {
+            "vertex": 38,
+            "elevation": 171.9951629638672
+          },
+          {
+            "vertex": 39,
+            "elevation": 171.98464965820312
+          },
+          {
+            "vertex": 40,
+            "elevation": 171.97412109375
+          },
+          {
+            "vertex": 41,
+            "elevation": 172.00059509277344
+          },
+          {
+            "vertex": 42,
+            "elevation": 172.19622802734375
+          },
+          {
+            "vertex": 43,
+            "elevation": 172.4579315185547
+          },
+          {
+            "vertex": 45,
+            "elevation": 172.67311096191406
+          },
+          {
+            "vertex": 52,
+            "elevation": 171.774169921875
+          },
+          {
+            "vertex": 53,
+            "elevation": 171.98504638671875
+          },
+          {
+            "vertex": 54,
+            "elevation": 171.96958923339844
+          },
+          {
+            "vertex": 55,
+            "elevation": 172.0054473876953
+          },
+          {
+            "vertex": 56,
+            "elevation": 172.1396026611328
+          },
+          {
+            "vertex": 57,
+            "elevation": 172.29904174804688
+          },
+          {
+            "vertex": 58,
+            "elevation": 172.5386199951172
+          },
+          {
+            "vertex": 59,
+            "elevation": 172.8234405517578
+          },
+          {
+            "vertex": 64,
+            "elevation": 173.0294952392578
+          },
+          {
+            "vertex": 70,
+            "elevation": 170.96351623535156
+          },
+          {
+            "vertex": 71,
+            "elevation": 171.99623107910156
+          },
+          {
+            "vertex": 72,
+            "elevation": 171.96673583984375
+          },
+          {
+            "vertex": 73,
+            "elevation": 171.99258422851562
+          },
+          {
+            "vertex": 107,
+            "elevation": 172.26837158203125
+          },
+          {
+            "vertex": 214,
+            "elevation": 182.0102996826172
+          },
+          {
+            "vertex": 321,
+            "elevation": 185.20687866210938
+          },
+          {
+            "vertex": 428,
+            "elevation": 181.708984375
+          },
+          {
+            "vertex": 535,
+            "elevation": 174.95962524414062
+          },
+          {
+            "vertex": 642,
+            "elevation": 172.47850036621094
+          },
+          {
+            "vertex": 1070,
+            "elevation": 171.96714782714844
+          }
+        ]
+      },
+      "originalGround": 155.5,
+      "admissibleAgainstSourceBase": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/south_terrain_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/zones/native-final-8443",
+    "--expect-html-sha",
+    "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+    "--expect-index-sha",
+    "ee6ef3cd74a50f584423f87e64793b1f08fefeacd1119a8b6730a0f02de0db38"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "scriptSha256": "57df624b68d69ff4ad57844687a2282bd99ed5a3df4a05a66cec74398698f024",
+  "htmlSha256Before": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "startedAtUtc": "2026-10-28T09:32:40Z",
+  "stage": "complete",
+  "exitCode": 0,
+  "elapsedSeconds": 54.752,
+  "log": "stdout.log",
+  "logSha256": "681b097c0c1fa93ac5f4981284a87ca7a8057f51be86a6eb5406e07d667d8876",
+  "htmlSha256After": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "scriptSha256After": "57df624b68d69ff4ad57844687a2282bd99ed5a3df4a05a66cec74398698f024",
+  "report": "SOUTH_TERRAIN_NATIVE.json",
+  "reportSha256": "c2c2b295f8b7baadccc22eb045ca21d732ff89d2c7bf58954d044d3caf7e4389"
+}

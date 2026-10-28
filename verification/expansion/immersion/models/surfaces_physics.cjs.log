@@ -1,0 +1,40 @@
+OK A measured XYZ bridge is admitted
+OK An absolute source deck altitude is admitted without route Z
+OK An explicitly measured bridge clearance is admitted
+OK A guessed bridge layer never becomes a walking platform
+OK An ordinary draped road does not change ground physics
+OK Tunnel geometry is excluded
+OK Rail and non-built routes are excluded
+OK Invalid widths are excluded
+OK A partially measured XYZ route cannot promote guessed segments
+OK Invalid source Z cannot become measured elevation
+OK Barycentric support follows the actual sloped source triangles
+OK The exact mesh edge supports a foot; outside the stroke does not
+OK Shared triangle seams have stable support height
+OK Degenerate and invalid faces cannot introduce a platform
+OK Non-finite vertices cannot introduce a platform
+OK Source slopes beyond the walking limit are excluded
+OK Negative source elevations remain negative
+OK Source geometry and NoData samples remain untouched
+OK Stacked decks select the highest reachable floor, not an overhead deck
+OK Grounded reach is limited to the existing .72m step
+OK An airborne reference cannot step onto a floor above its feet
+OK Invalid references have no support
+OK Duplicate tile representations do not duplicate physical decks
+OK The upward head crossing query returns only the first measured plane
+OK Walking beneath an overhead bridge preserves the baseline ground
+OK A reachable measured approach lifts the player by the true ramp height
+OK Stepping along a source slope follows its barycentric deck
+OK Leaving the deck edge initiates the original fall without vertical teleportation
+OK The production integrator lands a falling body on the measured deck
+OK Rising from below cannot snap a foot up to the overhead bridge
+OK A jump from beneath stops its head at the source plane and never arrives above it
+OK Jumping from an existing deck retains airborne motion until landing
+OK A retired deck falls to the original lower terrain instead of snapping down
+OK Publishing a replacement deck invalidates the physical index
+OK Measured support over DEM NoData does not fill the underlying bank
+OK An unmeasured bridge preserves the exact ordinary-ground integrator
+OK Non-geographic worlds preserve baseline ground physics
+OK Paused simulation does not move a supported player
+{"suite":"surfaces_physics","passed":38,"failed":0}
+

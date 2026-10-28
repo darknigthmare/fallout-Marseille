@@ -1,0 +1,32 @@
+✔ Water polygons and island rings project without modifying any source coordinates (3.567709ms)
+✔ A water report is not inferred from altitude or administrative complement (0.48801ms)
+✔ An open water ring is rejected before import (0.731395ms)
+✔ A derived point beyond its declared tile boundary is rejected (0.292235ms)
+✔ Counts and provenance must match the byte-pinned source descriptor (1.668364ms)
+✔ Unsafe paths and altered content-addressed filenames are rejected (0.401419ms)
+✔ Repeated maritime tile identities cannot be loaded as separate surveys (0.327651ms)
+✔ A false municipality and excessive resource budget are rejected (0.319106ms)
+✔ Only ocean or sea classes replace an older ocean polygon; inland water remains (0.416407ms)
+✔ Production wrapper installs before debug initialization without a boot exception (2.613097ms)
+✔ Ready loads a real optional descriptor through the shared source reader (1.9016ms)
+✔ Maritime planning includes verified water-only tiles beyond the old pack (2.01422ms)
+✔ The verified high-water sea replaces the old coarse ocean and preserves inland lakes (2.58737ms)
+✔ A fully surveyed land tile removes an old ocean polygon without inventing water (1.098641ms)
+✔ Outside the atlas the original resource is untouched (1.057223ms)
+✔ Water-only coverage never masquerades as an officially empty base vector tile (2.048293ms)
+✔ A repeated unchanged water tile reuses bounded projected geometry (1.689083ms)
+✔ Synthetic laboratory worlds do not receive the real municipal water atlas (1.320765ms)
+✔ Refreshing the source atlas releases maritime ownership and cached geometry (1.44675ms)
+✔ An obsolete load settling after refresh cannot release a replacement shared load (4.928609ms)
+✔ A stale index failure cannot discard the replacement index shared by current callers (2.959884ms)
+✔ An optional missing-index response from before refresh cannot validate a current navigation (1.929892ms)
+✔ Current maritime index errors are reported and a subsequent retry can recover (1.181676ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44.455726
+

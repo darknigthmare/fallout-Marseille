@@ -1,0 +1,165 @@
+{
+  "checks": [
+    {
+      "name": "Frozen native bundle includes the exact MNS module",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual source dependency is in bundle src/v050/04c_roof_collisions.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual source dependency is in bundle src/v050/06_architecture_sources.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual source dependency is in bundle src/v050/07_facades.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native surface payload matches its exact source descriptor",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Original BD TOPO chunk remains exact data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Original BD TOPO chunk remains exact data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native HTTP document equals frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual attributed MNS atlas loads without error",
+      "ok": true,
+      "detail": {
+        "loaded": true,
+        "missing": false,
+        "error": null,
+        "records": 17,
+        "applied": [],
+        "rejected": [],
+        "nativeSpacingMeters": 0.5,
+        "facadeTrianglesOmitted": 0,
+        "scope": "Surface supérieure observée MNS, découpée dans les emprises IGN inchangées ; aucun relevé de façade ou de pièce."
+      }
+    },
+    {
+      "name": "Production geographic sector loads major",
+      "ok": false,
+      "detail": null
+    }
+  ],
+  "shots": [],
+  "placements": [],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "local_http_errors": [],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "stages": [
+    {
+      "name": "major",
+      "elapsed_seconds": 8.906611689002602
+    }
+  ],
+  "pinned_inputs": {
+    "index.html": "df6bca201fef9d2c7e4ab4779aefedf0b5259f59e534d19dca1b83694b574790",
+    "src/v050/06a_landmark_surfaces.js": "876c34e008e55bd45de1b0a692282b8896497bc0dcf8cfdae5832d4512f64592",
+    "src/v050/04c_roof_collisions.js": "e67887b2a274cf570fa22075ce45e516b462d2090114a1d34cd785a53e33d824",
+    "src/v050/06_architecture_sources.js": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+    "src/v050/07_facades.js": "63f1b830a489e46ca932f5b7f33482bee03df36a727949ff78965a51a9002d02",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80",
+    "tools/build_landmark_surfaces.py": "a319d7084d7c7cba24bd0e1e0e935f7151c259f14b1b8fb678c6e834af0e15c5",
+    "data/map_pack/landmark_surfaces/index.json": "0718f2cccb2ca4a45353804b7ecf31d93199db46905bd0ed56b296ce0be03f8e",
+    "data/map_pack/landmark_surfaces/marseille-mns-e50ea945c27e47a3.json": "e50ea945c27e47a3f706c8ea381975032cd6b37857baa913f4f9430fcab3c6f6",
+    "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+    "data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63"
+  },
+  "html_sha256": "df6bca201fef9d2c7e4ab4779aefedf0b5259f59e534d19dca1b83694b574790",
+  "scope": "Native HTTP inspection of real IGN MNS landmark surfaces, never a fixture.\n\nOne real browser context visits the Major and Notre-Dame de la Garde through\ndiagnostic geographic navigation. Source loading, mesh publication, collision,\nLOS and save/Continue are production functions; cameras/freeze/time selection\nare declared assistance. Elevated captures are labelled inspections and are\nnot evidence of unassisted walking or a complete architectural survey.\n",
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "service_workers_disabled": true,
+  "assistance": [
+    "Existing v020Load initializes the historical playing state without item or quest grants.",
+    "Existing v046Load selects real source sectors; automatic prefetch is paused for bounded observations.",
+    "v018CaptureAt freezes simulation and places real cameras at collision-checked MNT floor points, or explicitly elevated inspection positions.",
+    "Source maximum vertices are selected from the actual acquired payload to compare native mesh heights and production collision/LOS."
+  ],
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true,
+    "server_thread_joined": true
+  },
+  "passed": 9,
+  "failed": 1,
+  "total": 10,
+  "elapsed_seconds": 16.399,
+  "script_sha256": "2ba58858ddc4edc9c5b357901c662df6778915eea3e815c3b2783165e75c68d0",
+  "url": "http://127.0.0.1:33245/index.html?skipboot",
+  "browser_version": "154.0.8037.57",
+  "stage": "failed",
+  "error": "Production geographic sector loads major",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/landmark_surfaces_native.py\", line 117, in main\n    check('Production geographic sector loads '+name,debug('v046Load',lat,lon)is True);ready()\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/fallout-Marseille/tests/expansion/landmark_surfaces_native.py\", line 67, in check\n    if not ok:raise AssertionError(name)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Production geographic sector loads major\n"
+}

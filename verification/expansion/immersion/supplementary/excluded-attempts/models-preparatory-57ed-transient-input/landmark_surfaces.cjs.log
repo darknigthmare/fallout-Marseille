@@ -1,0 +1,33 @@
+✔ The shipped three-tile MNS payload is hash-addressed and has seventeen unchanged building identities (152.69321ms)
+✔ Validation clones metric mesh arrays and the raw geographic binding (1.586351ms)
+✔ Rejects frame before a surface is attached (0.497679ms)
+✔ Rejects product before a surface is attached (0.226242ms)
+✔ Rejects spacing before a surface is attached (0.234387ms)
+✔ Rejects HTTP source before a surface is attached (0.209271ms)
+✔ Rejects duplicate identity before a surface is attached (0.326059ms)
+✔ Rejects NaN vertex before a surface is attached (0.220411ms)
+✔ Rejects NoData before a surface is attached (0.328123ms)
+✔ Rejects bad face before a surface is attached (0.448036ms)
+✔ Rejects degenerate face before a surface is attached (0.371773ms)
+✔ Rejects unbound tile before a surface is attached (0.251399ms)
+✔ Rejects area gap before a surface is attached (0.252241ms)
+✔ Rejects boundary crack before a surface is attached (0.198561ms)
+✔ Rejects wrong upper bound before a surface is attached (0.20368ms)
+✔ A geographic reorder, altered source altitude or another ID cannot reuse a measured cap (0.467162ms)
+✔ A measured cap replaces only render walls/top while metric envelope and source remain exact (0.413302ms)
+✔ A source upper surface below the historical ground is refused without clamping its measured cells (0.234728ms)
+✔ Indexed triangle interpolation and padding follow the actual sloping source plane (0.701179ms)
+✔ The optional native cap loads before import and keeps the original draw identity and collider ownership (4.832119ms)
+✔ An existing geographic scene receives one cap without aliasing its original geometry (1.856004ms)
+✔ Missing or corrupt optional sources preserve the original geographic scene (2.69499ms)
+✔ Cancel while optional MNS is pending does not resume superseded navigation (1.129047ms)
+✔ The controlled synthetic geographic laboratory does not wait for or receive MNS geometry (1.170174ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 180.811924
+

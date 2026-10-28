@@ -1,0 +1,32 @@
+{
+  "scope": "Native HUD layouts and controls on exact production HTML.\n\nAuthored Aubagne is selected by the existing diagnostic navigation API. Camera\nplacement/freeze and render pause are declared assistance. Input uses real DOM\ncontrols, keyboard and Playwright pointer events; coarse pointer is emulated,\nnot a physical touchscreen certification. No HTML/storage/network mocking.\n",
+  "checks": [
+    {
+      "name": "On-disk HTML has expected identity",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [],
+  "rectangles": [],
+  "page_errors": [],
+  "request_failures": [],
+  "http_errors": [],
+  "html_sha256": "e75a2ba30107adb02472106081db4b6d5d869e4cf7719819f28fcffe242661c1",
+  "script_sha256": "95da03434f2b6b41dccea1be1cfc6f8b1f4ce6df9ecd65152fae31bda47446fe",
+  "network_mocked": false,
+  "storage_mocked": false,
+  "html_injected": false,
+  "stage": "failed",
+  "passed": 1,
+  "failed": 0,
+  "elapsed_seconds": 0.004,
+  "error": "[Errno 1] Operation not permitted",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/fps_hud_native.py\", line 104, in main\n    server = ThreadingHTTPServer(('127.0.0.1',0), Handler)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py\", line 453, in __init__\n    self.socket = socket.socket(self.address_family,\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py\", line 233, in __init__\n    _socket.socket.__init__(self, family, type, proto, fileno)\nPermissionError: [Errno 1] Operation not permitted\n",
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true
+  }
+}

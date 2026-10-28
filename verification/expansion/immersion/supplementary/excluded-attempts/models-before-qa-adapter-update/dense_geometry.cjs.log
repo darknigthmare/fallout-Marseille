@@ -1,0 +1,10 @@
+OK Dense terrain scans every vertex without a call-stack overflow
+OK Dense offscreen terrain is still culled instead of kept unconditionally
+OK Large polygon rings and their holes contribute their full extents
+OK Dense roads use planar second coordinates, not vertex height
+OK Bounds are cached on the immutable draw record for later frames
+OK The existing distance boundary remains strict
+OK Ordinary props retain their existing ten-metre extent fallback
+OK Non-geographic actors and scenes keep the existing collection path
+{"passed":8,"failed":0,"total":8,"scope":"Actual geographic draw collector with 300,001-vertex meshes and large 2D source paths"}
+

@@ -1,0 +1,15 @@
+{
+  "scope": "Successful preparatory df6b HTML replay, superseded by a pending architecture fix; outside final current-programme count.",
+  "htmlSha256": "df6bca201fef9d2c7e4ab4779aefedf0b5259f59e534d19dca1b83694b574790",
+  "passed": 325,
+  "failed": 0,
+  "total": 325,
+  "scriptSha256": "e1903c8f89945b225bd39e5e5619cc4a422b7ad161e82254e5b32027f7a5a6e6",
+  "reportSha256": "e21cc3d114201129b55ccfab08916f432985d846b05d328cb50f84134bd54e3c",
+  "visualInspection": {
+    "01_communes_paid_reserve.png": "Actual completed card is visible once, without duplicated outcome.",
+    "03_gilets_paid_cantine.png": "Actual completed Gilets card is visible.",
+    "05_two_decisions_after_continue.png": "The panel top shows untouched original dossiers; new outcomes are verified by exact state assertions, not visibly by this image. Final pilot framing updated to capture each completed card separately after Continue."
+  },
+  "finalPilotSha256": "574d085b4d6abacaef9a2053a0acde7017042e3b295a8a114b7bf0e8d0cf8385"
+}

@@ -1,0 +1,35 @@
+OK Different building colors share one GPU upload
+OK Batch retains both source features
+OK Every source triangle, normal and exact RGB is retained in order
+OK Source rings and source material arrays remain unchanged
+OK A source courtyard remains open after batching
+OK An unchanged scene reuses buffers without uploading
+OK A height revision refreshes the GPU batch
+OK Replacing geometry references invalidates without stale triangles
+OK In-place source edits are honored when revision advances
+OK In-place color changes refresh per-vertex materials
+OK Transparent geometry breaks batches and retains its render position
+OK Tile ownership remains separate for streaming invalidation
+OK One source is left on the existing individual renderer path
+OK Provenance metadata cannot be mistaken for a generated batch run
+OK No hidden source creates a batch upload
+OK Removing a scene releases every owned GPU upload
+OK Cache clear is idempotent
+OK WebGL 1 chunk bounds retain all triangles without index wrapping
+OK An invalid index cannot upload corrupt geometry
+OK Incomplete triangles fail before GPU upload
+OK A failed upload disposes newly allocated chunks and retains the old entry
+OK One hundred exact building materials render in one draw call
+OK Color attributes are reset before rendering a normal primitive
+OK Transparent draw ordering and alpha uniforms are unchanged
+OK Wrist-light pieces remain individual; far pieces remain batchable
+OK Historical geometry retains its individual renderer path
+OK Batch buffers, including vertex colors, are released after leaving a scene
+OK Renderer reuses unchanged uploads across frames
+OK Fine terrain color groups share vertices and one exact batch
+OK Splitting terrain materials neither changes source coordinates nor duplicates faces
+OK A NoData sample never enters the batched vertex stream
+OK The exact terrain hole area survives color partitioning and packing
+OK Production fine-terrain flags batch differently colored groups in one draw
+{"suite":"renderer_batches","passed":33,"failed":0}
+

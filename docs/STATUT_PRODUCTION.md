@@ -1,43 +1,49 @@
-# Statut de production — 26 octobre 2026
+# Statut de production — 28 octobre 2026
 
-Cette livraison poursuit `3d94e4c`.
+La livraison poursuit `f4a7337` avec une vue FPS enrichie et des progrès parallèles sur les lieux, le relief, les intérieurs, le lore et les mines. Le programme courant est le HTML `844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34`. Le [bilan d’intégration](../verification/expansion/immersion/IMMERSION_INTEGRATION.json) distingue les preuves de chaque chantier.
 
-Les six chantiers livrés sont les suivants.
-
-| Chantier | Comportement livré | Limite conservée |
+| Chantier | Comportement livré | Portée et limite |
 | --- | --- | --- |
-| Terrain et routes | Raffinement adaptatif des rubans dérivés du MNT natif, sommets rattachés au relief, raccords conformes ; source XYZ et largeurs conservées. | Sondages bornés, arête minimale de 1 m et budgets exposés ; aucune garantie continue de 4 cm. |
-| Façades | Tableaux chanfreinés, dessus d’appuis et lames inclinées sur les segments source, dans la projection maximale de 7,5 cm. | Créations métriques, enveloppes documentaires et omissions de budget conservées ; pas de nouveau relevé de façade. |
-| Intérieurs | Layout 5, portes coulissantes physiques avec E des deux côtés, refus sur le joueur, fermeture sauvegardée. | Anciens layouts 1–4 et plans documentés conservés ; pas de porte ajoutée à une halle sans pièce. |
-| Lore | Deux engagements supplémentaires du Syndicat et des Sans-Dossier, preuves sur place, décisions, fournitures, réputations, radio et réactions. | Canon du dépôt conservé ; aucune conversation privée supplémentaire récupérée. |
-| Bestiaire | Radscorpion et Fangeux avec formes originales, VATS et attaques ; restauration près d’obstacles sans marge de création supplémentaire. | Identités, PV, butin et 41 anciennes associations conservés ; données absentes et volumes non admissibles restent refusés. |
-| Grenades | Stock fini, recette à l’établi, lancer N/tactile, fusée active, rebonds et souffle occulté, sauvegarde en vol et Continuer. | Pas de mines ni de variantes plasma dans ce lot ; PNJ/compagnons conservent leur invulnérabilité historique et la mort reprend la dernière sauvegarde vivante. |
+| Vue FPS et HUD | Mains articulées, avant-bras et neuf familles d’armes ; prise, visée maintenue, rechargement, recul et abaissement près d’un mur. Jauges, boussole, objectifs et commandes réorganisés, HUD compact et préférences conservées. | Modèles stylisés par famille ; pas un modèle unique pour chaque arme. Les contrôles et la direction de tir du monde gardent leurs règles. Les formats émulés ne certifient pas un appareil physique. |
+| Lieux connus | Surfaces supérieures MNS IGN de 0,50 m à la Major et Notre-Dame de la Garde, avec rendu et collision concordants : seize composantes admissibles sur dix-sept. | Une composante est refusée sous sa base historique. Le MNS décrit le sursol acquis, sans relevé de façade ni plan de pièces. |
+| Zones du sud | Deux fenêtres autour du Vélodrome et de Borély : 384 832 nœuds MNT importés au pas demandé de 1 m, au plus proche de GeoTIFFs natifs de 0,50 m. | Deux rectangles locaux ; le treillis central natif de 12 km² et les anciennes grilles restent distincts. Les rasters de sol ne reproduisent pas le stade ou le château. |
+| Intérieurs | E utilise les lits, cuisines et établis admissibles déjà placés, avec approches physiques, fournitures ordinaires, effets et compteurs sauvegardés. | Les dispositions et signatures des layouts 1–5 sont conservées. Le mobilier et les usages sans relevé sont inventés ; le parcours natif vérifie l’établi et sa réserve, les autres services ont des contrats contrôlés. |
+| Lore | Huit dossiers de continuité, dont les nouveaux engagements des Communes et des Gilets : deux relais nommés, décisions exclusives, coûts finis, réputations, radio, dialogues et Continuer. | Les six dossiers précédents et le canon du dépôt restent conservés. Les nouvelles histoires sont des prolongements originaux, sans nouvelle conversation privée récupérée. |
+| Contenu emblématique | Mines à fragmentation posées avec P, récupérables par E, stock et recette finis, armement, avertissement, souffle occulté et persistance par scène/étage. | Vingt-quatre mines posées au maximum ; pas de réaction en chaîne. Les protections historiques des PNJ et la dernière sauvegarde vivante restent les règles du jeu. |
 
-La campagne, les armures assistées, collections, dépendances et soins, bivouac, entraide, mer et commandes de manette existants sont conservés et couverts par les régressions. Les données géographiques n’ont pas été réacquises dans cette poursuite.
+## Vérification du programme courant
 
-Le [bilan courant](../verification/expansion/wasteland/WASTELAND_INTEGRATION.json) identifie le HTML `ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670`, **2 887 contrôles**, **62 captures réelles** et **405 empreintes de production**. Les modèles, contrats contrôlés, comparaisons d’octets/HTTP, parcours assistés et entrées simulées restent distingués. Cette somme ne dénombre pas des parties équivalentes. Les tentatives interrompues, échouées et visant un ancien programme sont conservées séparément, sans être comptées comme réussites du programme courant.
+Le bilan retient **2 892 contrôles descriptifs sur treize méthodes et 55 événements de capture native**, avec 350 empreintes de sources et de construction. Les méthodes se chevauchent et ne représentent pas autant de parties.
 
-| Méthode | Contrôles réussis |
+| Méthode sur le programme courant | Résultat confirmé |
 | --- | ---: |
-| Modèles et outils | 1 401 |
-| Sorties identiques de reconstruction | 3 |
-| HTTP isolé de distribution | 3 |
+| Modèles et outils, 39 suites | 1 605 |
+| Reconstruction indépendante, sorties identiques | 3 |
+| Distribution HTTP isolée | 3 |
+| Vue FPS native | 67 |
+| HUD natif, interfaces et formats | 90 |
+| Surfaces MNS natives, Major et Garde | 44 |
+| Intérieurs, portes et services natifs | 94 |
+| Dossiers natifs des Communes et des Gilets | 327 |
+| Mines natives | 70 |
+| Relief sud natif | 39 |
 | Contrats hérités contrôlés | 434 |
-| Terrain et routes natifs | 91 |
-| Architecture et menuiseries natives | 151 |
-| Intérieurs et portes natifs | 70 |
-| Bestiaire natif | 125 |
-| Dossiers natifs des factions | 213 |
-| Grenades natives | 62 |
-| Continuité lore, armure et collections | 206 |
-| Consommables et soin natifs | 74 |
 | DOM avec API Gamepad simulée | 54 |
-| **Somme descriptive** | **2 887** |
+| Grenades natives | 62 |
+| **Somme descriptive** | **2 892** |
 
-La commune conserve ses 290 partitions, 291 001 identifiants d’objets bâtiment, 55 449 tronçons routiers et 118 partitions d’eau. Le relief natif de 0,50 m reste limité aux 12 km² centraux ; les autres grilles et les relevés précédents restent disponibles ailleurs. Les douze associations documentaires à deux sites ne constituent pas des relevés de façades ou de pièces.
+Le gel de production identifie 350 entrées. Les preuves contrôlées, comparaisons d’octets/HTTP et parcours Chromium assistés sont des méthodes différentes, avec des périmètres qui se chevauchent. Les aides de positionnement, de préparation et les entrées simulées sont déclarées. Les essais échoués, interrompus ou visant un autre HTML restent séparés du résultat courant.
 
-La reproduction intégrale 1:1 de chaque façade et intérieur de Marseille, l’art final, les voix, l’équilibrage complet, les performances sur matériels variés et une visite humaine exhaustive restent ouverts. Le matériel de manette physique n’est pas certifié par une API simulée. Les programmes inventés et leurs omissions restent inspectables.
+## Portée conservée
 
-Le projet ChatGPT correspondant a été retrouvé et consulté ; les éléments accessibles ne contiennent pas de lore supplémentaire exploitable. Les archives ne sont pas accessibles depuis cet environnement cloud. Les neuf factions, huit dossiers historiques et vingt-cinq noms déjà conservés dans le dépôt restent la source du canon ; les nouvelles histoires sont des prolongements écrits du jeu.
+La campagne, les armures assistées, collections, dépendances et soins, bestiaire, bivouac, entraide, mer, portes et grenades des livraisons précédentes restent présents. Les ajouts de données géographiques de cette livraison sont les surfaces MNS des deux sites et les deux fenêtres MNT du sud.
 
-Les [2 324 contrôles de la livraison précédente](../verification/expansion/precision/PRECISION_INTEGRATION.json) et ses 288 comparaisons de cellules restent historiques, hors de la somme courante. [Installation](INSTALLATION_V050.md) · [Grenades](GRENADES_A_MAIN.md) · [Lore](LORE_CONTINUITE.md) · [Bestiaire](BESTIAIRE_REGIONAL.md).
+La commune conserve ses 290 partitions, 291 001 identifiants d’objets bâtiment, 55 449 tronçons routiers et 118 partitions d’eau. Le relief central de 0,50 m couvre 12 km² ; les deux fenêtres méridionales de 1 m et les autres grilles ont leur propre provenance. Les associations documentaires, le MNS supérieur et les programmes inventés restent distingués.
+
+La reproduction intégrale 1:1 de toutes les façades et de tous les intérieurs de Marseille reste non certifiée. L’art final, les voix, l’équilibrage complet, les performances sur matériels variés et la visite humaine exhaustive restent ouverts. Les modèles d’armes sont stylisés par famille et les aménagements non relevés sont des créations du jeu. Les API Gamepad et contextes tactiles émulés ne certifient pas de périphérique physique.
+
+Le projet ChatGPT correspondant a été consulté ; les éléments accessibles n’ajoutent pas de lore exploitable et ses archives ne sont pas accessibles depuis cet environnement. Les neuf factions, huit dossiers historiques et vingt-cinq noms déjà conservés dans le dépôt demeurent le canon.
+
+Les [2 887 contrôles et 62 captures de `f4a7337`](../verification/expansion/wasteland/WASTELAND_INTEGRATION.json), sur le HTML `ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670`, restent historiques. Le [bilan de précision antérieur](../verification/expansion/precision/PRECISION_INTEGRATION.json) conserve ses 2 324 contrôles, 42 captures et ses propres sources ; ses 288 comparaisons de cellules ne sont pas recomptées. Aucun de ces bilans ne valide automatiquement le programme courant.
+
+[Vue FPS](VUE_FPS.md) · [HUD](HUD_FPS.md) · [MNS des monuments](SILHOUETTES_MNS.md) · [Relief sud](RELIEF_SUD_MARSEILLE.md) · [Intérieurs](INTERIEURS_USAGES.md) · [Lore](LORE_CONTINUITE.md) · [Mines](MINES_A_FRAGMENTATION.md) · [Installation](INSTALLATION_V050.md).

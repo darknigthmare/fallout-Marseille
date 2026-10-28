@@ -1,0 +1,32 @@
+✔ Registration is saved immediately with a bounded attributed metric record (32.874806ms)
+✔ Documented walls, floors and attribution survive cold interior load, exit and reentry (594.866964ms)
+✔ An exterior save restores its registered plan in a completely new runtime (293.196645ms)
+✔ Old active-only documentary saves recover a durable registry before leaving (517.919094ms)
+✔ Registering a revision indoors preserves the active snapshot across cold load (692.035727ms)
+✔ Installed attributed properties are read without mutation or registry copying (337.005467ms)
+✔ Installed plans with missing attribution are rejected with visible diagnostics (2483.899488ms)
+✔ Failed false storage during registration restores the prior plan and save (40.705477ms)
+✔ Failed exception storage during registration restores the prior plan and save (38.705485ms)
+✔ Invalid explicit documents leave save, registry and active geometry unchanged (298.82572ms)
+✔ A quota failure indoors preserves the exact scene, active plan and loot ledger (300.416441ms)
+✔ A loaded save cannot inherit another save’s registered plan or diagnostics (2348.294574ms)
+✔ New game resets documentary data even in the same JavaScript runtime (2234.752173ms)
+✔ A changed source height never receives a registered plan for the former volume (16.068618ms)
+✔ A changed source levels never receives a registered plan for the former volume (16.831812ms)
+✔ A changed source absolute elevation never receives a registered plan for the former volume (15.723005ms)
+✔ A forged saved local footprint cannot retarget the registered plan (29.618896ms)
+✔ Cyclic vertex order and reversed winding preserve the same metric plan identity (17.290458ms)
+✔ A source name or use update does not move or discard a metric documentary plan (254.313058ms)
+✔ A registration over the byte budget is rejected before persistence with explicit diagnostics (13.875726ms)
+✔ Migration caps registry size and reports omitted, duplicate and invalid records (80.518099ms)
+✔ Migration rejects oversized records and a malformed registry without hiding omissions (38.978696ms)
+✔ The building-count budget rejects an additional registration atomically (80.672868ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10789.158204
+

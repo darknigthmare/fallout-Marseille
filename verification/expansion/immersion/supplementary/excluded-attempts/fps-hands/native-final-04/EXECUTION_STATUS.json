@@ -1,0 +1,38 @@
+{
+  "scope": "Observed exec completion linked to exact subprocess command, raw log, executed script and native report. Prepared scene and equipment assistance remain explicit in the report.",
+  "toolSession": 73159,
+  "observedToolExitCode": 0,
+  "processExitCode": 0,
+  "cwd": "/workspace/fallout-Marseille",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/first_person_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/fps-hands/native-final-04",
+    "--expect-html-sha",
+    "df6bca201fef9d2c7e4ab4779aefedf0b5259f59e534d19dca1b83694b574790",
+    "--expect-fps-sha",
+    "2351e0b53388dd33ad3297414ed60676594c6421a3aea8d4a45d640b00d481d8"
+  ],
+  "report": {
+    "path": "FIRST_PERSON_NATIVE.json",
+    "sha256": "e31a619064b64d1f2e26d4906fe7f4be4c24eaa6acf06d35411dbfafe902ee8e"
+  },
+  "log": {
+    "path": "../native-final-04.log",
+    "sha256": "eb5c6f607a5b800b446818baa4d598e4814500bd60d201191ed6c49dfb43dfe1"
+  },
+  "script": {
+    "path": "EXECUTED_first_person_native.py",
+    "sha256": "5509cf60498d76a3fe3de6db0ff8f8787c6173a6c712ffe32e8f2c1b748cc987"
+  },
+  "cleanup": {
+    "context": true,
+    "browser": true,
+    "playwright": true,
+    "server": true
+  },
+  "post_exit_port": 36809,
+  "post_exit_port_closed": true
+}

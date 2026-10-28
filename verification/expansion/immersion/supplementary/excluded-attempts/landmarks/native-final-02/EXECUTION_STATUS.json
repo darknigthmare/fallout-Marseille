@@ -1,0 +1,25 @@
+{
+  "stage": "failed",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/landmark_surfaces_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/landmarks/native-final-02",
+    "--expect-html-sha",
+    "df6bca201fef9d2c7e4ab4779aefedf0b5259f59e534d19dca1b83694b574790"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "inputHashes": {
+    "index.html": "df6bca201fef9d2c7e4ab4779aefedf0b5259f59e534d19dca1b83694b574790",
+    "src/v050/06a_landmark_surfaces.js": "876c34e008e55bd45de1b0a692282b8896497bc0dcf8cfdae5832d4512f64592",
+    "tests/expansion/landmark_surfaces_native.py": "5720a5d0ea79f14a9a6468c81a9be534803a5c4099bd56ba1e947a8e65696393"
+  },
+  "startedUtc": "2026-10-28T08:25:08Z",
+  "scope": "Actual subprocess exit receipt; no mocked browser/network/storage.",
+  "exitCode": 1,
+  "elapsedSeconds": 49.99729923099949,
+  "logSha256": "f66e8d987101d2c0c82984f12ece7eb731c2e7ffef858bbbf860cb94e89c45ad",
+  "changedInputs": [],
+  "reportSha256": "d6e7c55df87e2125d5103ab8e3e03e1a13eef2b140cfa268be8e0853d4c08c3c"
+}

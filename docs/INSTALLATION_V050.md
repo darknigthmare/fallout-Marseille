@@ -1,10 +1,12 @@
-# Installer FALLOUT : MISTRAL v0.50
+# Installer FALLOUT : MISTRAL v0.50 — livraison du 28 octobre 2026
 
 La version v0.50 fournit les cartes locales nécessaires au parcours géographique : **5 884 coordonnées vectorielles**, dont 4 557 PBF non vides et 1 327 réponses officiellement vides, ainsi que **huit grilles de relief**. Le jeu se lance avec un serveur local Python et un navigateur compatible WebGL. Python 3.11 ou plus récent est recommandé ; Node.js et Playwright servent au développement et aux tests, pas au jeu compilé. [Audit des fichiers livrés](../verification/v050/LOCAL_DATA_STATE.json)
 
-L’extension actuelle est fournie dans le dépôt GitHub ; la distribution Drive décrite ci-dessous reste celle de la livraison initiale. Le serveur restaure aussi les archives d’Aubagne, de Marseille et les **six ZIP de relief natif**, hors réseau, avant d’ouvrir le navigateur. Cette validation et l’extraction peuvent prendre plusieurs minutes. Voir [Marseille entière](MARSEILLE_ENTIERE.md).
+L’extension actuelle est fournie dans le dépôt GitHub ; la distribution Drive décrite ci-dessous reste celle de la livraison initiale. Le serveur restaure aussi l’enrichissement d’Aubagne et du sud de Marseille, l’archive communale et les **six ZIP de relief natif**, hors réseau, avant d’ouvrir le navigateur. Cette validation et l’extraction peuvent prendre plusieurs minutes. Voir [Marseille entière](MARSEILLE_ENTIERE.md).
 
 Le nouveau [relief précis](RELIEF_PRECIS.md) couvre **12 km² centraux**, douze dalles et 48 morceaux au pas natif de 0,50 m Lambert-93/NGF-IGN69. Il ajoute **157 896 379 octets d’archives (environ 150,58 Mio)** et **192 328 140 octets extraits (environ 183,42 Mio)** ; ces tailles s’ajoutent aux cartes précédentes, conservées ailleurs. Prévoir l’espace pour les archives et les données extraites. Il ne s’agit pas d’un LiDAR de 0,50 m sur toute la commune.
+
+Deux fenêtres supplémentaires autour du Vélodrome et de Borély totalisent **384 832 nœuds MNT**, reprojetés au plus proche sur un pas demandé de **1 m**. Elles sont intégrées à l’archive d’enrichissement active, avec le lot Aubagne antérieur conservé. Les surfaces MNS de la Major et de Notre-Dame de la Garde sont fournies en maillage attribué dans `data/map_pack/landmark_surfaces/` ; trois TIFF sources restent dans le cache d’acquisition externe. Le jeu n’a besoin ni de ces TIFF originaux ni de bibliothèques géographiques supplémentaires pour jouer. [Relief sud](RELIEF_SUD_MARSEILLE.md) · [Surfaces des monuments](SILHOUETTES_MNS.md).
 
 ## 1. Choisir l’archive
 
@@ -65,7 +67,13 @@ Les six ZIP natifs et leur manifeste se trouvent dans <code>data/map_pack/precis
 python3 tools/precise_terrain_sources.py --prepare
 ~~~
 
-Un fichier extrait altéré ou une empreinte incorrecte produit un diagnostic explicite ; ne pas remplacer les sources manquantes par des fichiers vides. Les anciennes cartes restent disponibles hors du support natif.
+Un fichier extrait altéré ou une empreinte incorrecte produit un diagnostic explicite ; ne pas remplacer les sources manquantes par des fichiers vides. Les anciennes cartes restent disponibles hors du support natif. Pour relancer la restauration des enrichissements fournis :
+
+~~~bash
+python3 tools/world_source_bundle.py install
+~~~
+
+Cette commande ajoute les régions fournies absentes d’une installation valide et conserve les imports utilisateur déjà présents. Un import utilisateur associé à `geo_marseille` garde sa priorité et n’est pas remplacé automatiquement par les fenêtres du sud. Le panneau des sources décrit les données effectivement actives.
 
 Cette préparation utilise uniquement les archives locales ; le lancement ne déclenche pas d’installation réseau implicite. Le <code>PROJET_COMPLET</code> distribué sur Drive conserve les **24 ZIP originaux**, dont <code>base_00060_100.zip</code>. Dans l’archive <code>JEU_COMPLET</code>, les cartes sont déjà extraites. [Préparation locale](../tools/prepare_local_pack_v050.py)
 
@@ -79,7 +87,7 @@ Ouvrez **Cartes & territoire**. Pour le jeu complet livré, le statut attendu es
 - **8 / 8 grilles de relief** ;
 - **Cartes locales prêtes**.
 
-Ces compteurs décrivent le **socle historique**. L’installation actuelle ajoute les acquisitions communales et le lot natif précis ; leur provenance et leur périmètre sont distincts. L’audit natif précis est aussi disponible sur **http://127.0.0.1:8765/__mistral/precise-terrain**, avec le port réellement choisi si nécessaire.
+Ces compteurs décrivent le **socle historique**. L’installation actuelle ajoute les acquisitions communales et le lot natif précis ; leur provenance et leur périmètre sont distincts. L’audit natif central est aussi disponible sur **http://127.0.0.1:8765/__mistral/precise-terrain**. L’enrichissement du sud apparaît dans **http://127.0.0.1:8765/__mistral/world-sources** ; utilisez le port réellement choisi.
 
 Le statut provient d’un audit du disque par le serveur actif. Les coordonnées officiellement vides sont accompagnées d’une preuve explicite ; un fichier vide arbitraire n’est pas accepté comme une donnée valide.
 
@@ -115,6 +123,8 @@ Le choix **Rejoindre directement les ateliers — scène narrative** permet éga
 
 Pour un voyage rapide, ouvrez le Pip-Boy puis **MAP → LIEUX ET VOYAGES**. Sélectionnez un lieu découvert, préparez le voyage et confirmez la durée annoncée. Le départ exige un extérieur praticable et l’absence de danger proche ; la destination est validée avant le déplacement. Le temps annoncé est ajouté lorsque le voyage aboutit. [Contrats ciblés du voyage](../verification/v050/QA_POI_TRAVEL.json) · [Deux voyages natifs](../verification/v050/NATIVE_REAL_MAP.json)
 
+La vue FPS affiche les mains et une présentation stylisée de la famille d’arme équipée. Maintenez X, le clic droit capturé ou Visée pour la présenter dans l’axe ; les options de réduction des mouvements et flashes restent disponibles. Le HUD compact et le suivi se règlent dans Options. Dans les intérieurs admissibles, E utilise le mobilier. Les dossiers supplémentaires sont dans DATA → RELAIS ET DOSSIERS ; les mines se consultent dans INV → MINES puis se posent avec P en jeu. [Commandes](CONTROLES.md).
+
 ## 5. Retrouver une sauvegarde
 
 **Continuer** sélectionne la sauvegarde valide la plus récente parmi le courant, les emplacements, l’autosauvegarde et les versions compatibles. Un rechargement réel de la page après deux voyages a retrouvé la position géographique, la progression et les lieux découverts. [Contrats de sélection](../verification/v050/QA_CONTINUE_SAVE.json) · [Parcours natif](../verification/v050/NATIVE_REAL_MAP.json)
@@ -139,14 +149,16 @@ python3 tests/v050/native_real_map.py
 
 Les pilotes Chromium acceptent <code>CHROMIUM_PATH</code>. Le pilote natif ouvre le serveur local et utilise les fichiers installés ; son mode de diagnostic <code>--allow-debug-entry</code> ne doit pas être utilisé pour une validation finale du raccord de campagne.
 
-Pour reconstruire les rapports à partir des **preuves finales existantes**, sans relancer de navigateur :
+L’outil du rapport visuel initial v0.50 travaille à partir de ses **preuves historiques identifiées**, sans relancer de navigateur :
 
 ~~~bash
 python3 tools/report_v050.py
 ~~~
 
-Pillow et les polices DejaVu Sans / Sans Mono sont requis pour le PNG. Si les polices ne sont pas trouvées automatiquement, ajoutez <code>--font-dir /chemin/vers/les/polices</code>. L’outil vérifie les totaux, les SHA du programme et les captures originales avant d’écrire le rapport. Il distingue l’empreinte du HTML canonique de celle du test de voyage instrumenté.
+Pillow et les polices DejaVu Sans / Sans Mono sont requis pour le PNG. Si les polices ne sont pas trouvées automatiquement, ajoutez <code>--font-dir /chemin/vers/les/polices</code>. L’outil vérifie les totaux, les SHA du programme et les captures originales avant d’écrire le rapport. Il distingue l’empreinte du HTML canonique de celle du test de voyage instrumenté. Ce rapport initial ne remplace pas le bilan d’intégration des extensions actuelles.
 
-Le [bilan courant](../verification/expansion/wasteland/WASTELAND_INTEGRATION.json) identifie le HTML `ed6e4103b23a45c413fef182862a93accb72ec25c6e1d8b101251822bfd5c670`, **2 887 contrôles**, **62 captures réelles** et **405 empreintes de production**. Les modèles, contrats contrôlés, comparaisons d’octets/HTTP, parcours assistés et entrées simulées restent distingués. Cette somme ne dénombre pas des parties équivalentes. Les tentatives interrompues, échouées et visant un ancien programme sont conservées séparément, sans être comptées comme réussites du programme courant.
+Le [bilan courant](../verification/expansion/immersion/IMMERSION_INTEGRATION.json) identifie le HTML `844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34`. Les 1 605 contrôles de modèles et outils, 39 suites, les parcours natifs FPS/HUD, MNS, services, lore, mines et relief sud déjà confirmés, ainsi que les reconstructions et la distribution HTTP isolée sont détaillés séparément. Les 434 contrats hérités, les 54 contrôles DOM avec API Gamepad simulée et les 62 contrôles natifs des grenades ont aussi réussi. Le bilan retient 2 892 contrôles descriptifs et 55 captures natives. Les méthodes et aides se chevauchent et ne constituent pas autant de parties humaines. Les essais sur anciens HTML restent historiques.
+
+Le [bilan `f4a7337`](../verification/expansion/wasteland/WASTELAND_INTEGRATION.json), **2 887 contrôles et 62 captures** sur `ed6e4103…`, et le [bilan de précision](../verification/expansion/precision/PRECISION_INTEGRATION.json), **2 324 contrôles**, conservent leurs propres versions. Le rapport visuel initial v0.50 et les archives Drive restent antérieurs aux extensions actuelles. Les sources métriques, l’art stylisé et les intérieurs inventés ne certifient pas Marseille intégralement en 1:1 ; les API simulées ne certifient pas du matériel physique.
 
 Consultez aussi les [limites connues](KNOWN_LIMITATIONS_V0.50.md), la [provenance](PROVENANCE_V050.md) et le [rapport visuel autonome](../RAPPORT_VISUEL_V0.50.html).

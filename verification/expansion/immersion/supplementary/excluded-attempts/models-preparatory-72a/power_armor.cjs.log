@@ -1,0 +1,67 @@
+OK Actual existing schema migrates without free cores or a second armour ledger
+OK Insertion, expenditure and re-insertion conserve the actual existing core supply
+OK Only actual movement spends fusion charge and a menu does not consume it
+OK An exhausted core disables assistance while preserving passive plates and a removable suit
+OK Failed fail during insert restores exact resources and charge
+OK Failed throwSave during insert restores exact resources and charge
+OK Failed fail during eject restores exact resources and charge
+OK Failed throwSave during eject restores exact resources and charge
+OK Failed fail during activation restores exact resources and charge
+OK Failed throwSave during activation restores exact resources and charge
+OK Failed fail during deactivation restores exact resources and charge
+OK Failed throwSave during deactivation restores exact resources and charge
+OK Failed fail during equipment change restores exact resources and charge
+OK Failed throwSave during equipment change restores exact resources and charge
+OK All direct armour actions refuse laboratory without costs
+OK All direct armour actions refuse streaming without costs
+OK All direct armour actions refuse pending map without costs
+OK All direct armour actions refuse transition without costs
+OK All direct armour actions refuse menu without costs
+OK All direct armour actions refuse dead player without costs
+OK Existing discovered safe technicians provide physical geographic maintenance
+OK Geographic service refuses absent technician
+OK Geographic service refuses dead technician
+OK Geographic service refuses hidden technician
+OK Geographic service refuses unskilled technician
+OK Geographic service refuses undiscovered technician
+OK Geographic service refuses hostile technician
+OK Geographic service refuses far technician
+OK Geographic service refuses wrong elevation technician
+OK Geographic service refuses wall technician
+OK Geographic service refuses danger technician
+OK Geographic service refuses narrative scene technician
+OK A quoted repair rechecks departure before spending anything
+OK A quoted repair rechecks death before spending anything
+OK A quoted repair rechecks hidden line of sight before spending anything
+OK A quoted repair rechecks another mechanic before spending anything
+OK A quoted repair rechecks source state before spending anything
+OK A quoted repair rechecks streaming before spending anything
+OK Failed fail repair rolls all plate and ingredient changes back
+OK Failed throwSave repair rolls all plate and ingredient changes back
+OK Plate configuration still uses real source costs without changing body wounds
+OK Old physical workshops keep working without a geographic technician
+OK Core and plate state survive the existing JSON migration without charge multiplication
+OK Finite existing merchant stock and six-plate metadata commit in one write
+OK Failed fail powered suit purchase preserves wallet, stock and vendor metadata
+OK Failed throwSave powered suit purchase preserves wallet, stock and vendor metadata
+OK Selling then rebuying retains six pieces and never refills a core
+OK Existing core acquisition is finite and saving failure cannot consume the merchant supply
+OK Failed original M-45 restoration returns materials, ownership and parked-frame collision
+OK The existing finite quest battery is stored at65 percent and cannot be taken twice
+OK A failed battery receipt restores the physical battery and its finite claim
+OK A failed assisted trial restores energy and closes its original collider gate
+OK Manual original trial remains available without fusion energy
+OK Failed final quest reward restores XP, supplies, ending flag and added world props
+OK The original reward still commits once through its real quest prerequisites
+OK Armour page exposes physical service, known relays and real acquisition stocks without writes
+OK Visible relay tracking follows the existing discovered-site mechanism and preserves other actions
+OK Failed relay tracking restores the previous selected marker
+OK Standalone role and source-site checks reject forged nontechnical contacts
+OK Closed historical drydock shop moves only its existing merchant and trade point to a physically accessible frontage
+OK Drydock counter is visible, collision supported and leaves a clear actual eye ray to trade and merchant
+OK Drydock frontage searches around existing crates and never moves the original obstruction
+OK A fully obstructed drydock frontage keeps the existing actor and reports an explicit placement refusal
+OK Clear historical shops, other scenes and geographic worlds never receive the drydock correction
+OK Reusing the same drydock scene leaves a single counter and exposes readonly placement diagnostics
+{"passed":65,"failed":0,"total":65,"scope":"Actual existing v0.30 armour/trade/workshop/quest functions plus production conservation extension; controlled actors, storage, rendering and UI seams"}
+

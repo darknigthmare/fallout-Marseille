@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-final/run_legacy_audit.py"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "observedToolSession": 39291,
+  "observedToolExitCode": 0,
+  "report": "legacy-final/QA_LEGACY_RUN.json",
+  "reportSha256": "831bf1f0fe241ffc48480fb642702136071bb96f72455b6f98bf1f8bbe22355c",
+  "stdoutFile": "LEGACY_FINAL_EXECUTION.log",
+  "stdoutSha256": "783edf1a81749df0307449de9656774355bfadaad340f2fecc058f374fa46a91",
+  "scope": "Actual command completion observed through exec/write_stdin; individual subprocess exit codes and exact logs are also recorded in the linked report."
+}

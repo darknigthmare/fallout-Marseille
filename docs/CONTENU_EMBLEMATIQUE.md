@@ -1,6 +1,6 @@
-# Objets emblématiques du Wasteland
+# Objets et gestes emblématiques du Wasteland — 28 octobre 2026
 
-Les systèmes S.P.E.C.I.A.L., V.A.T.S., avantages, radiations, Stimpaks/RadAway, crochetage, terminaux, compagnons, Pip-Boy, radio et plusieurs créatures de Fallout étaient déjà présents. Cette extension ajoute trois boucles concrètes : collection de figurines, lectures temporaires et bouteilles de Nuka-Cola. Les modèles et placements sont des créations du jeu ; ce ne sont ni des relevés IGN ni des assets récupérés d’un jeu commercial.
+Les systèmes S.P.E.C.I.A.L., V.A.T.S., avantages, radiations, Stimpaks/RadAway, crochetage, terminaux, compagnons, Pip-Boy, radio et plusieurs créatures de Fallout étaient déjà présents. Les collections de figurines, lectures temporaires et bouteilles de Nuka-Cola sont conservées. La livraison actuelle ajoute la pose de mines et une présentation FPS enrichie des armes et armures, avec usages physiques du mobilier et nouveaux engagements de factions. Les modèles et placements sont des créations du jeu ; ce ne sont ni des relevés IGN ni des assets récupérés d’un jeu commercial.
 
 ## Figurines S.P.E.C.I.A.L.
 
@@ -48,8 +48,23 @@ En extérieur géographique, le jeu exige un relais sûr actif, un terrain sourc
 
 Collecte, lecture, consommation et troc contrôlent leur contexte actif. Une écriture de sauvegarde refusée ou une exception annule le changement de fiche, d’objet et de capsules. Pour un achat ou une vente, les deux bourses, le stock et le journal sont également restaurés ; une seule écriture conserve l’opération complète. Changer d’étage, de scène ou de session ne permet pas de doubler une figurine ou de renouveler une réserve vidée.
 
-Le budget global reste borné à treize exemplaires fixes, avec des modèles de cinq à douze primitives chacun ; seuls les exemplaires du lieu courant sont ajoutés. Cette extension ne constitue pas une collection complète des objets, systèmes de dépendance, animations ou assets finaux de la franchise.
+Le budget global reste borné à treize exemplaires fixes, avec des modèles de cinq à douze primitives chacun ; seuls les exemplaires du lieu courant sont ajoutés. Les [consommables et dépendances](CONSOMMABLES_ET_DEPENDANCES.md) gardent leurs effets, tolérance, retrait et traitement sauvegardés. La collection, les animations et les assets finaux de toute la franchise restent un chantier ouvert.
 
 ## Grenades et créatures récurrentes
 
 Les [grenades à main](GRENADES_A_MAIN.md) possèdent une trajectoire, une fusée sauvegardée, des rebonds et des dégâts occultés, avec achat fini et fabrication réelle. N ou le bouton Grenade effectue le lancer depuis la position du personnage. Les [Radscorpions et Fangeux](BESTIAIRE_REGIONAL.md) reçoivent des modèles originaux, des membres VATS et des préparations d’attaque sur les créatures déjà présentes ; leurs identités, PV et butins restent ceux de la sauvegarde.
+
+
+## Mines et préparation d’un passage
+
+Les [mines à fragmentation](MINES_A_FRAGMENTATION.md) se posent par **P**, sur un sol libre, chargé et presque horizontal. Elles s’arment après 2,5 secondes actives ; un ennemi proche au même niveau et visible déclenche un avertissement de 0,65 seconde. **E** permet de désamorcer et reprendre l’exemplaire à portée. Le joueur et les civils ne les déclenchent pas, mais le souffle peut blesser le joueur.
+
+Le stock est fini : deux mines chez Baptiste et deux à Noailles. Un établi permet d’en fabriquer avec quatre ferrailles, trois composants chimiques et un circuit. Le sac, le poids, la bourse et les recettes restent ceux du jeu. Les positions, scènes, étages, phases et délais sont sauvegardés, avec au plus 24 mines posées. Les menus, supports absents et scènes non chargées suspendent les délais ; voyager ne déplace pas une mine. La réaction en chaîne n’est pas implémentée.
+
+## Mains, armures et mobilier
+
+La [vue FPS](VUE_FPS.md) présente mains articulées, manches, avant-bras, terminal de poignet et gantelets des armures reconnues. Neuf familles d’armes ont des formes stylisées distinctes, avec pose de soutien, rechargement, recul, sprint et abaissement près des murs. Chaque arme du catalogue n’a pas un modèle unique. X, le clic droit capturé et Visée maintiennent la présentation dans l’axe ; les règles de direction et de dégâts du monde restent conservées. Le [HUD](HUD_FPS.md) réunit jauges, munitions, boussole et suivi, avec préférences et réduction des mouvements.
+
+Les lits, cuisines et établis admissibles des [intérieurs](INTERIEURS_USAGES.md) proposent leurs usages par E, avec coûts ordinaires et réserve finie. Les huit [dossiers de continuité](LORE_CONTINUITE.md), dont les Communes du Mistral et les Gilets de Cendre, relient rencontres, décisions, fournitures, réputations et radios textuelles. Les programmes intérieurs non relevés et les nouveaux récits sont des créations du jeu.
+
+Le [bilan courant](../verification/expansion/immersion/IMMERSION_INTEGRATION.json) identifie le HTML `844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34`. Les méthodes de modèle et les parcours natifs assistés sont distincts ; les 2 892 contrôles descriptifs et 55 captures gardent leur méthode et leurs limites. Les anciens résultats de [Wasteland](../verification/expansion/wasteland/WASTELAND_INTEGRATION.json), 2 887 contrôles et 62 captures sur `ed6e4103…`, et de [précision](../verification/expansion/precision/PRECISION_INTEGRATION.json), 2 324 contrôles, restent historiques. Les créations stylisées, les contextes émulés et les mesures géographiques partielles ne certifient ni Marseille intégralement en 1:1 ni du matériel physique.

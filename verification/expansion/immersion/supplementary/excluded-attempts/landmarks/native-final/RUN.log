@@ -1,0 +1,19 @@
+OK Frozen native bundle includes the exact MNS module
+OK Actual source dependency is in bundle src/v050/04c_roof_collisions.js
+OK Actual source dependency is in bundle src/v050/06_architecture_sources.js
+OK Actual source dependency is in bundle src/v050/07_facades.js
+OK Native surface payload matches its exact source descriptor
+OK Original BD TOPO chunk remains exact data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json
+OK Original BD TOPO chunk remains exact data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json
+OK Native HTTP document equals frozen production HTML
+OK Actual attributed MNS atlas loads without error
+FAIL Production geographic sector loads major
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/landmark_surfaces_native.py", line 117, in main
+    check('Production geographic sector loads '+name,debug('v046Load',lat,lon)is True);ready()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/fallout-Marseille/tests/expansion/landmark_surfaces_native.py", line 67, in check
+    if not ok:raise AssertionError(name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Production geographic sector loads major
+

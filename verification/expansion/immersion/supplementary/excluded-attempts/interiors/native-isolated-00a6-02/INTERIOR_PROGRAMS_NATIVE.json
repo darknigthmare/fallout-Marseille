@@ -1,0 +1,183 @@
+{
+  "scope": "Assisted native HTTP pilot for two actual source-based interior programmes.\n\nNo browser starts without --run and coordinated frozen SHA values. Source usage\nand footprints come from real installed IGN chunks; partitions, portals and all\nfurniture remain explicitly invented. Sector selection, measured collision-free\ncamera placement, render/simulation freeze, v020Approach and stepped production\nphysics use the same public diagnostic APIs as architecture_native_browser.py.\nE-key entries, visible exit controls and cold Continue are native browser actions.\nNo synthetic terrain, actor, plan, save, HTML or HTTP response is injected.\n",
+  "stage": "actual_server_source_audit",
+  "checks": [
+    {
+      "name": "Archived geometry helper definitions equal the imported helper definitions",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Coordinated production HTML is installed",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Coordinated interior source is frozen",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Coordinated architecture atlas is frozen",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production HTML includes current src/v050/08_city_interiors.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production HTML includes current src/v050/07_facades.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Production HTML includes current src/v050/06_architecture_sources.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Case fixture describes attributed real source geometries",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual source chunk matches the case acquisition SHA",
+      "ok": true,
+      "detail": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json"
+    },
+    {
+      "name": "Pinned real feature exactly equals the attributed case geometry and properties",
+      "ok": true,
+      "detail": "batiment.39112232"
+    },
+    {
+      "name": "Actual source chunk matches the case acquisition SHA",
+      "ok": true,
+      "detail": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json"
+    },
+    {
+      "name": "Pinned real feature exactly equals the attributed case geometry and properties",
+      "ok": true,
+      "detail": "batiment.9618398"
+    },
+    {
+      "name": "Actual source chunk matches the case acquisition SHA",
+      "ok": true,
+      "detail": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json"
+    },
+    {
+      "name": "Pinned real feature exactly equals the attributed case geometry and properties",
+      "ok": true,
+      "detail": "batiment.9620088"
+    },
+    {
+      "name": "Frozen HTML, modules, fixtures and selected real source chunks remain unchanged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "The four imported read-only architecture helpers remain unchanged",
+      "ok": true,
+      "detail": {
+        "sourcePath": "tests/expansion/architecture_native_browser.py",
+        "definitionsSha256": {
+          "sha": "5d2f17cf600e426b5b233fbac6acbf635ebc09f06bca0fad37d5385c1d852ed6",
+          "finite": "d20bdfdae3e7ff09301907adb329ae7498e5777f171e05d39f0a36d239e276b3",
+          "source_anchor": "326f14b92c67d6575b2175ca62db66a965b8a051694d8b281676935b934eab6a",
+          "point_in_ring": "ff63cecade1cc9f73082ce26af28ad8b866e4793d6d18cdd328547df71c3418e"
+        },
+        "moduleSha256AtPreflight": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5",
+        "scope": "Only these four pure geometry/hash helpers are imported; the concurrently maintained pilot main is not executed."
+      }
+    }
+  ],
+  "shots": [],
+  "attempts": [],
+  "programmes": [],
+  "native_navigation": false,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "synthetic_geography": false,
+  "synthetic_documents": false,
+  "contexts_created": 0,
+  "maximum_contexts": 1,
+  "service_workers_disabled": true,
+  "page_errors": [],
+  "javascript_console_errors": [],
+  "resource_console_diagnostics": [],
+  "local_request_failures": [],
+  "external_request_failures": [],
+  "local_http_errors": [],
+  "http_responses": [],
+  "script_sha256": "20f711ec9f6901a305879559ae6b22ec0c187cd381478ebf549644f32e02ec11",
+  "local_metadata_events": [],
+  "local_metadata_waits": [],
+  "local_metadata_inspections": [],
+  "assistance": [
+    "Public native macro/sector selection loads real installed sources.",
+    "Public v046Height/v046Collide choose measured clear camera positions.",
+    "Public v018CaptureAt freezes simulation/render and frames actual geometry.",
+    "Public v020Approach chooses production collision/LOS checked placement before a real E key.",
+    "Native KeyW plus v020Tick(.05,true) manually steps actual production movement/collisions.",
+    "Read-only public exports inspect source identity, programme, furniture, storage and collisions.",
+    "Before each real reload, the pilot waits for pending metadata and performs a real no-store disk audit through /__mistral/local-data; after bootstrap it waits for the native metadata request. This keeps long disk inspections outside the browser request deadline without mocking, cancelling or changing the application timeout."
+  ],
+  "room_door_pilot": {
+    "script": "tests/expansion/interior_doors_native.py",
+    "sha256": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b"
+  },
+  "imported_geometry_helpers": {
+    "sourcePath": "tests/expansion/architecture_native_browser.py",
+    "definitionsSha256": {
+      "sha": "5d2f17cf600e426b5b233fbac6acbf635ebc09f06bca0fad37d5385c1d852ed6",
+      "finite": "d20bdfdae3e7ff09301907adb329ae7498e5777f171e05d39f0a36d239e276b3",
+      "source_anchor": "326f14b92c67d6575b2175ca62db66a965b8a051694d8b281676935b934eab6a",
+      "point_in_ring": "ff63cecade1cc9f73082ce26af28ad8b866e4793d6d18cdd328547df71c3418e"
+    },
+    "moduleSha256AtPreflight": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5",
+    "scope": "Only these four pure geometry/hash helpers are imported; the concurrently maintained pilot main is not executed."
+  },
+  "elapsed_seconds": 12.78,
+  "passed": 16,
+  "failed": 0,
+  "total": 16,
+  "pinned_inputs": {
+    "tests/expansion/interior_programs_native.py": "20f711ec9f6901a305879559ae6b22ec0c187cd381478ebf549644f32e02ec11",
+    "tests/expansion/interior_doors_native.py": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b",
+    "index.html": "00a6e4286f878971d60fdaf6061833be2b991682f2208c782a45029d20f6f2de",
+    "src/v050/08_city_interiors.js": "13e32ca7e6e93ecc9b99097712b2169f1e53d462cc90ad016ba43cf83983c0c3",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "src/v050/07_facades.js": "63f1b830a489e46ca932f5b7f33482bee03df36a727949ff78965a51a9002d02",
+    "src/v050/06_architecture_sources.js": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+    "tests/expansion/fixtures/interior_source_uses.json": "e9e7b19ae0826ce6d185f754be9ea92bc1ea2807ef79d54e9086658f9689018b",
+    "tests/expansion/interior_services_native.py": "6f0bb4d0da40afac054fd382c14d02280493efd8f11b5f1dfb0a949539683387",
+    "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json": "deaaf0e382a632bdd20b4c0fa308c5fdc8b4cfa0679120cd4ab9e2693f8abd4f",
+    "data/map_pack/city/index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "data/map_pack/city/terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "data/map_pack/city/water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927",
+    "data/map_pack/city/boundary-c15532675daf55dc.json": "c15532675daf55dc629c3f92f876e032715bf49ed2ade423f520dca36b792138"
+  },
+  "html_sha256": "00a6e4286f878971d60fdaf6061833be2b991682f2208c782a45029d20f6f2de",
+  "interior_sha256": "13e32ca7e6e93ecc9b99097712b2169f1e53d462cc90ad016ba43cf83983c0c3",
+  "architecture_sha256": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+  "source_snapshot": {
+    "tests/expansion/interior_programs_native.py": "20f711ec9f6901a305879559ae6b22ec0c187cd381478ebf549644f32e02ec11",
+    "tests/expansion/interior_doors_native.py": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b",
+    "index.html": "00a6e4286f878971d60fdaf6061833be2b991682f2208c782a45029d20f6f2de",
+    "src/v050/08_city_interiors.js": "13e32ca7e6e93ecc9b99097712b2169f1e53d462cc90ad016ba43cf83983c0c3",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "src/v050/07_facades.js": "63f1b830a489e46ca932f5b7f33482bee03df36a727949ff78965a51a9002d02",
+    "src/v050/06_architecture_sources.js": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+    "tests/expansion/fixtures/interior_source_uses.json": "e9e7b19ae0826ce6d185f754be9ea92bc1ea2807ef79d54e9086658f9689018b",
+    "tests/expansion/interior_services_native.py": "6f0bb4d0da40afac054fd382c14d02280493efd8f11b5f1dfb0a949539683387",
+    "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json": "deaaf0e382a632bdd20b4c0fa308c5fdc8b4cfa0679120cd4ab9e2693f8abd4f",
+    "data/map_pack/city/index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "data/map_pack/city/terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "data/map_pack/city/water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927",
+    "data/map_pack/city/boundary-c15532675daf55dc.json": "c15532675daf55dc629c3f92f876e032715bf49ed2ade423f520dca36b792138"
+  },
+  "url": "http://127.0.0.1:36859/index.html?skipboot"
+}

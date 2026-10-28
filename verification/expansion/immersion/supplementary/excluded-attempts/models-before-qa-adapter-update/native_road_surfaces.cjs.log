@@ -1,0 +1,24 @@
+✔ Native road refinement preserves the original XY footprint, winding and immutable inputs (9.223854ms)
+✔ Each published native road vertex uses the current terrain source plus its declared visual offset (3.882185ms)
+✔ Ground bumps absent from sparse edge elevations cause actual additional geometry (6.69277ms)
+✔ Coarse-only representation is not relabeled as a native road surface (0.285413ms)
+✔ Adaptive shared-edge partitions are propagated without T joins or vertical cracks (16.125716ms)
+✔ Native NoData inside an initially valid sparse triangle is omitted after bounded subdivision (3.912662ms)
+✔ The entire road is absent when native support is unavailable instead of using zero altitude (4.588925ms)
+✔ A strict adaptive split budget is explicit and retains valid unresolved geometry (0.416678ms)
+✔ The minimum edge limit honestly reports residual detail instead of claiming the tolerance was met (7.348114ms)
+✔ Malformed faces, vertices or budgets fail before publishing geometry (0.656836ms)
+✔ Production wrapper excludes measured decks, tunnels and ordinary unrefined source roads (3.847981ms)
+✔ Production staging wrapper publishes a refined draw and preserves the exact source axis and receipt (4.994181ms)
+✔ A staged road with entirely missing native terrain is removed without touching the live scene (9.227692ms)
+✔ The actual static GPU packer splits refined road geometry below the WebGL Uint16 limit (807.117636ms)
+✔ The actual retained Vieux-Port source route follows the real installed native LiDAR without changing its geometry (45.660527ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 947.516102
+

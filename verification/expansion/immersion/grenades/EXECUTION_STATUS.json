@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/ordnance_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/grenade-regression",
+    "--expect-html-sha",
+    "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+    "--expect-ordnance-sha",
+    "c5b6fa302bdd29106a4e886d6f4e01382bde5e94ff059b5b1b5a0529a7067362"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "exitCode": 0,
+  "elapsedSeconds": 55.814,
+  "scriptSha256": "06b64b10cbeba18c75a147ad036c47663b96a4e4a5528ec4c4bc96746e0bdb62",
+  "scriptUnchanged": true,
+  "reportSha256": "12a0711515f9311203768e1053e3c21fe62ece3e6579f9dff201ce6199e083bd",
+  "logSha256": "01af257a44ff8ae6d6b18fc36c6069e55563cc5f719c27ee857bf1c563aedf20",
+  "changedProductionInputs": [],
+  "wrapperSha256": "b0fc29926eeeae0d4c3b9f3427b7ca3c5c30e58f106196ce89d7973794f0aab4"
+}

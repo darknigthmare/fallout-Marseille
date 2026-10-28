@@ -1,0 +1,37 @@
+{
+  "htmlSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "nativeReportSha256": "6b0c8b5219b18cbb3fdede00bd561a09600e00ce2cf1e229c2614883c447429d",
+  "scope": "All five original successful final-root PNGs inspected via view_image, no image editing or invented reference geometry.",
+  "shots": [
+    {
+      "file": "major_ground.png",
+      "sha256": "d73118fd0609afe193cedffe4d30a2b0723849d87a9e98ba6774961d3acb8300",
+      "observed": "Measured ground camera: visible domes above authored facade and original first-person foreground; no central geographic debug cartouche."
+    },
+    {
+      "file": "major_elevated.png",
+      "sha256": "aaed01685ed7d207a60b1578e49381e1f245c29d54f5c6513e456b79e3401b05",
+      "observed": "Explicit elevated inspection: central/smaller measured domes and unchanged surroundings clearly visible. Proximity card is separated from critical/level; attribution compact below quickbar. Natural game discovery toasts are retained."
+    },
+    {
+      "file": "garde_ground.png",
+      "sha256": "097f74afb6e87f085930493146e3bf2dd2c2359157db841d81fe441f2bcc024d",
+      "observed": "Measured ground camera: source upper tower summit visible; nearby authored pillars/roof partly obscure the lower architecture."
+    },
+    {
+      "file": "garde_elevated.png",
+      "sha256": "3340769a659f5f8004e06599aee9285937322ed185d4e0a66cdd27b45fb34f2b",
+      "observed": "Explicit elevated inspection: measured upper tower and domed body on actual source hillside; MNS faceting/vertical boundary ridges visible."
+    },
+    {
+      "file": "garde_continue.png",
+      "sha256": "3ab37dbd291c4324ade0f35d93a5a044b0f39a04e223e2ec83fe765ace8a1247",
+      "observed": "After actual reload and Continue: source tower remains visible at restored eye-height camera, source attribution remains below quickbar. Fresh-scene proximity/actor HUD can differ; no identical-scene-pixel claim."
+    }
+  ],
+  "limitations": [
+    "MNS is a rough native0.50m upper visible surface, not measured facades, structural roof semantics, room plans or complete monument survey.",
+    "Vertical closures/colors/bays and the FPS foreground remain authored game representation.",
+    "Two elevated captures are explicitly assisted inspections, not player traversal proof."
+  ]
+}

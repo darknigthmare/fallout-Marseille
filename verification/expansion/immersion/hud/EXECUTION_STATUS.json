@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/fps_hud_native.py",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/hud-native-844",
+    "--expect-html-sha",
+    "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "exitCode": 0,
+  "exitEvidence": "exec_command session32392 completed through write_stdin with exit_code0",
+  "scriptSha256": "36515889880c836aa1b3c56915318df5aaee13037998a4b94e598f752ac766f5",
+  "report": "FPS_HUD_NATIVE.json",
+  "reportSha256": "175c1dcf539bf7399255bc8ac3d3e5ac11f5306c9e1ab2eb20a6e9c848df51dd",
+  "stdoutFile": "../HUD_844_EXECUTION.log",
+  "stdoutSha256": "7b0497bcb54dbe7ffac9647f098073f10fb501a7acdd185db5dd882620df25ad",
+  "reportedElapsedSeconds": 21.977
+}

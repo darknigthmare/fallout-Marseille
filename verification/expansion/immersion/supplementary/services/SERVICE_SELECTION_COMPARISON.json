@@ -1,0 +1,130 @@
+{
+  "scope": "Controlled square source footprint, real production core selection/LOS, actual v026Attach, declared scene/storage/DOM seams; no native geography claim.",
+  "rows": [
+    {
+      "name": "before",
+      "wood": {
+        "id": "city-interior-landing",
+        "pos": [
+          0,
+          1.1,
+          -9.05
+        ],
+        "label": "Palier · niveau 0 · accès et provenance",
+        "radius": 3,
+        "condition": null,
+        "marker": false,
+        "kind": "door",
+        "priority": 8
+      },
+      "reserve": {
+        "id": "v026:v050_city_interior|city:1d7fe124331b3cca:0",
+        "pos": [
+          2.468571428571429,
+          1.05,
+          -8.42
+        ],
+        "label": "Fouiller · Réserve fictive · Bâtiment",
+        "radius": 3.3,
+        "condition": null,
+        "marker": false,
+        "kind": "loot",
+        "priority": 5
+      },
+      "mesh": [
+        2.468571428571429,
+        0.82,
+        -9.46
+      ],
+      "service": {
+        "id": "556a5a490c40bc0f",
+        "kind": "workshop",
+        "furnitureId": "furnishing:443aae8da8016973",
+        "furnitureKind": "workbench",
+        "label": "Fabriquer · établi de récupération",
+        "approach": [
+          2.468571428571429,
+          -8.42
+        ],
+        "target": [
+          2.468571428571429,
+          1.05,
+          -8.64
+        ],
+        "provenance": "invented",
+        "interactionId": "city-service:556a5a490c40bc0f"
+      },
+      "sourceSha256": "0aac970c8f4739187f48a92751183995b16d5995972c2e677a48c075564f8332"
+    },
+    {
+      "name": "candidate",
+      "wood": {
+        "id": "city-service:556a5a490c40bc0f",
+        "pos": [
+          2.468571428571429,
+          0.82,
+          -9.025
+        ],
+        "label": "Fabriquer · établi de récupération",
+        "radius": 2.4,
+        "marker": false,
+        "kind": "bench",
+        "priority": 10,
+        "v056InteriorService": "556a5a490c40bc0f"
+      },
+      "reserve": {
+        "id": "v026:v050_city_interior|city:1d7fe124331b3cca:0",
+        "pos": [
+          2.468571428571429,
+          1.05,
+          -8.42
+        ],
+        "label": "Fouiller · Réserve fictive · Bâtiment",
+        "radius": 3.3,
+        "condition": null,
+        "marker": false,
+        "kind": "loot",
+        "priority": 5
+      },
+      "mesh": [
+        2.468571428571429,
+        0.82,
+        -9.46
+      ],
+      "service": {
+        "id": "556a5a490c40bc0f",
+        "kind": "workshop",
+        "furnitureId": "furnishing:443aae8da8016973",
+        "furnitureKind": "workbench",
+        "label": "Fabriquer · établi de récupération",
+        "approach": [
+          2.468571428571429,
+          -8.42
+        ],
+        "target": [
+          2.468571428571429,
+          0.82,
+          -9.025
+        ],
+        "meshAnchor": [
+          2.468571428571429,
+          0.82,
+          -9.06
+        ],
+        "meshCenter": [
+          2.468571428571429,
+          0.82,
+          -9.46
+        ],
+        "meshPart": {
+          "index": 0,
+          "material": "wood",
+          "offsetMeters": 0.03500000000000014
+        },
+        "provenance": "invented",
+        "interactionId": "city-service:556a5a490c40bc0f"
+      },
+      "sourceSha256": "13e32ca7e6e93ecc9b99097712b2169f1e53d462cc90ad016ba43cf83983c0c3"
+    }
+  ]
+}

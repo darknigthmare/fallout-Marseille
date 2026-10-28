@@ -1,0 +1,21 @@
+{
+  "method": "Both unmodified native PNG files opened with view_image and visually inspected after process completion.",
+  "htmlSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "reportSha256": "c2c2b295f8b7baadccc22eb045ca21d732ff89d2c7bf58954d044d3caf7e4389",
+  "observations": [
+    {
+      "file": "01_velodrome_real_terrain.png",
+      "sha256": "bbe7f7a7da42698f75ceca8c28a1da8bff7b2ecfa50c92d7cb2912d3a49aebdd",
+      "visible": "Actual measured eye-level terrain facing a nearby large source building wall; HUD and weapon visible.",
+      "limitation": "Close wall prevents a panorama of the Vélodrome and obscures an assessment of detailed relief. This capture does not prove a reconstructed stadium or facade."
+    },
+    {
+      "file": "02_borely_real_terrain.png",
+      "sha256": "ef94b369d377d58e84c96543715b408288ac7dff37386ad58683388f89a51088",
+      "visible": "Actual open ground and low surrounding source geometry, sky, FPS weapon and HUD.",
+      "limitation": "Not a recognisable photographic reproduction of château Borély. Fine source cell identity is proven by runtime reads and actual triangle vertices, not by this image alone."
+    }
+  ],
+  "imageEdited": false,
+  "visualPassScope": "Actual rendered scene and visible controls only; not art quality, full geographic fidelity or 1:1 monument certification."
+}

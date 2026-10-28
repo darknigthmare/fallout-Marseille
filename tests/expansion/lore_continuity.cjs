@@ -9,8 +9,8 @@ const quest=id=>bindings.find(q=>q.id===id),giver=(id,extra={})=>({atGiver:true,
 function opened(id){return step(G.fresh(),'accept',id,giver(id)).ledger;}
 function witnesses(s,id){for(const siteId of quest(id).witnessSites.slice(0,2))s=step(s,'witness',id,giver(id,{siteId})).ledger;return s;}
 
-test('Six faction dossiers bind only existing sites without moving the catalogue',()=>{
- const before=clone(catalog),out=G.bind(catalog);assert.deepEqual(catalog,before);assert.deepEqual(out.map(q=>q.faction),['convention','concorde','vigies','insulaires','syndicat','sansdossier']);assert.equal(new Set(out.map(q=>q.id)).size,6);assert.ok(out.every(q=>q.available));
+test('Eight faction dossiers bind only existing sites without moving the catalogue',()=>{
+ const before=clone(catalog),out=G.bind(catalog);assert.deepEqual(catalog,before);assert.deepEqual(out.map(q=>q.faction),['convention','concorde','vigies','insulaires','syndicat','sansdossier','communes','gilets']);assert.equal(new Set(out.map(q=>q.id)).size,8);assert.ok(out.every(q=>q.available));
  for(const q of out){const site=catalog.find(s=>s.id===q.contactSite);assert.ok(site.safe&&site.npcSlots>0&&site.macro===q.macro);for(const id of q.observationSites)assert.equal(catalog.find(s=>s.id===id).kind,'landmark');assert.ok(q.choices.length===2);}
  assert.equal(quest('signaux').observationSites.length,3);
 });
@@ -20,7 +20,7 @@ test('An absent compatible host remains unavailable instead of inventing a new p
 });
 
 test('Catalogues and outcomes returned to callers cannot edit private narrative definitions',()=>{
- const first=G.catalog();first[0].choices[0].rep.ligue=100;first[0].name='changed';assert.equal(G.catalog()[0].name,'Le droit d’être compté');assert.equal(G.catalog()[0].choices[0].rep.ligue,2);bindings[0].description=bindings[0].description;assert.equal(G.IDS.length,6);
+ const first=G.catalog();first[0].choices[0].rep.ligue=100;first[0].name='changed';assert.equal(G.catalog()[0].name,'Le droit d’être compté');assert.equal(G.catalog()[0].choices[0].rep.ligue,2);bindings[0].description=bindings[0].description;assert.equal(G.IDS.length,8);
 });
 
 test('Remote acceptance and a blocked contact cannot create an accepted dossier',()=>{
@@ -80,7 +80,7 @@ function runtime(){
 }
 
 test('Runtime adds a separate ledger and leaves all eight historical dossiers, nine factions and 25 testimony names intact',()=>{
- const f=runtime();assert.equal(f.run('V046_LORE.quests.length'),8);assert.equal(f.run('V046_LORE.factions.length'),9);assert.equal(f.run('V046_LORE.bestiary.length'),25);assert.equal(f.run('d.v053LoreInfo().quests.length'),6);assert.equal(f.run('V027_SUBS.data.continuity'),'RELAIS ET DOSSIERS');assert.equal(f.run('V027_STATIONS.legacy.name'),'Unchanged station');assert.equal(f.run('v027Dispatch("other","x")'),'legacy-dispatch');assert.equal(f.run('v027Track("legacy-quest")'),'legacy-track');
+ const f=runtime();assert.equal(f.run('V046_LORE.quests.length'),8);assert.equal(f.run('V046_LORE.factions.length'),9);assert.equal(f.run('V046_LORE.bestiary.length'),25);assert.equal(f.run('d.v053LoreInfo().quests.length'),8);assert.equal(f.run('V027_SUBS.data.continuity'),'RELAIS ET DOSSIERS');assert.equal(f.run('V027_STATIONS.legacy.name'),'Unchanged station');assert.equal(f.run('v027Dispatch("other","x")'),'legacy-dispatch');assert.equal(f.run('v027Track("legacy-quest")'),'legacy-track');
 });
 
 for(const failure of['distance','line of sight','dead NPC','undiscovered','loading','combat','airborne','lab','dead player','scene'])test('A '+failure+' contact cannot open or pay a new dossier',()=>{
@@ -168,4 +168,46 @@ test('Syndicat explicit host never falls back to another relay when the proved e
 
 test('All four original complete definitions and actual bindings remain byte-identical to shipped 3d94e4c',()=>{
  const digest=require('node:crypto').createHash('sha256').update(JSON.stringify(bindings.slice(0,4))).digest('hex');assert.equal(digest,'733229adf7d470758e673d10e3cff1ed854c609375889d8d0cab51b25eb8a7f9');
+});
+
+
+test('All six shipped f4a7337 definitions and bindings remain exact when two factions gain dossiers',()=>{
+ const digest=v=>require('node:crypto').createHash('sha256').update(JSON.stringify(v)).digest('hex');
+ assert.equal(digest(G.catalog().slice(0,6)),'f3c1d6ad816998c6befe9833a84f56de1ce1b25e897764185a1d9f633148c863');
+ assert.equal(digest(bindings.slice(0,6)),'1d64924d02041aa1f9910d5b354342fefcc335e08c2ce3e5381cc474c661e701');
+});
+
+for(const id of['partage','passage_libre'])test(id+' requires both named source relays, no substitute relay, and no remote commitment',()=>{
+ const q=quest(id);assert.equal(q.kind,'testimony');assert.equal(q.witnessSites.length,2);let s=opened(id);
+ const other=catalog.find(x=>x.safe&&x.npcSlots>0&&x.macro===q.macro&&!q.witnessSites.includes(x.id));
+ assert.ok(other);assert.equal(step(s,'witness',id,giver(id,{siteId:other.id})).ok,false);
+ for(const siteId of q.witnessSites){assert.equal(step(s,'witness',id,giver(id,{siteId,contact:false})).ok,false);assert.equal(step(s,'resolve',id,giver(id),q.choices[0].id).ok,false);s=step(s,'witness',id,giver(id,{siteId})).ledger;assert.equal(step(s,'witness',id,giver(id,{siteId})).ok,false);}
+ assert.ok(G.progress(q,s.quests[id]).ready);assert.equal(step(s,'resolve',id,giver(id,{atGiver:false}),q.choices[0].id).ok,false);
+});
+
+for(const id of['partage','passage_libre'])test(id+' becomes unavailable if either explicitly named contact or witness is absent',()=>{
+ const q=quest(id);for(const missing of new Set([q.contactSite,...q.witnessSites])){const out=G.bind(catalog.filter(s=>s.id!==missing)),next=out.find(q=>q.id===id);assert.equal(next.available,false);assert.equal(G.reduce(G.fresh(),out,{type:'accept',quest:id},giver(id)).ok,false);for(const old of bindings.slice(0,6))if(![old.contactSite,...old.witnessSites,...old.observationSites].includes(missing))assert.deepEqual(out.find(q=>q.id===old.id),old);}
+});
+
+for(const id of['partage','passage_libre'])test(id+' has exclusive finite supply allocations and no partial debit',()=>{
+ const q=quest(id),s=witnesses(opened(id),id);const results=q.choices.map(ch=>step(s,'resolve',id,giver(id),ch.id));
+ assert.ok(results.every(r=>r.ok));assert.notDeepEqual(results[0].cost,results[1].cost);assert.notDeepEqual(results[0].reward.rep,results[1].reward.rep);
+ for(let i=0;i<q.choices.length;i++){const ch=q.choices[i],r=results[i];assert.deepEqual(r.cost,ch.cost);assert.equal(r.reward.xp,id==='partage'?90:95);assert.equal(r.reward.faction,q.faction);assert.equal(r.ledger.journal.length,1);assert.equal(step(r.ledger,'resolve',id,giver(id),q.choices[1-i].id).ok,false);const short=clone(giver(id).inventory),key=Object.keys(ch.cost)[0];short[key]=ch.cost[key]-1;assert.equal(step(s,'resolve',id,giver(id,{inventory:short}),ch.id).ok,false);assert.equal(s.quests[id].outcome,null);}
+});
+
+test('A stored six-dossier campaign migrates its exact proofs and journal, adding only two empty records',()=>{
+ let old=step(witnesses(opened('attente'),'attente'),'resolve','attente',giver('attente'),'accueil').ledger;delete old.quests.partage;delete old.quests.passage_libre;const before=clone(old),out=G.migrate(old,bindings);for(const id of G.IDS.slice(0,6))assert.deepEqual(out.quests[id],before.quests[id]);assert.deepEqual(out.journal,before.journal);for(const id of['partage','passage_libre'])assert.deepEqual(out.quests[id],G.fresh().quests[id]);assert.deepEqual(old,before);
+});
+
+for(const id of['partage','passage_libre'])test(id+' visible runtime allocation shares wallet, source commitments, journal and return dialogue',()=>{
+ const f=runtime(),q=quest(id);f.run('placeGiver('+JSON.stringify(id)+');d.v053LoreAccept('+JSON.stringify(id)+')');for(const siteId of q.witnessSites){f.run('placeSite('+JSON.stringify(siteId)+')');assert.equal(f.run('d.v053LoreWitness('+JSON.stringify(id)+','+JSON.stringify(siteId)+')'),true);}f.run('placeGiver('+JSON.stringify(id)+')');const before=f.json('state'),ch=q.choices[0];assert.equal(f.run('d.v053LoreResolve('+JSON.stringify(id)+','+JSON.stringify(ch.id)+')'),true);const after=f.json('state');for(const[item,n]of Object.entries(ch.cost))assert.equal(after.inventory[item],before.inventory[item]-n);assert.equal(after.player.caps,before.player.caps+ch.caps);assert.equal(after.player.xp,before.player.xp+ch.xp);assert.equal(after.v046.lore.reputation[q.faction],ch.loreRep);assert.equal(f.json('v027QuestRows()').find(q=>q.id==='l53:'+id).stage,'done');assert.ok(f.run('V027_STATIONS.canal13.text()').includes(ch.text));f.run('v042TalkNPC(placeGiver('+JSON.stringify(id)+'))');assert.ok(f.run('test.dialogue.text').includes(ch.text));f.run('state=migrateState(JSON.parse(test.saved));placeGiver('+JSON.stringify(id)+')');const checkpoint=f.json('state');assert.equal(f.run('d.v053LoreResolve('+JSON.stringify(id)+','+JSON.stringify(q.choices[1].id)+')'),false);assert.deepEqual(f.json('state'),checkpoint);
+});
+
+for(const id of['partage','passage_libre'])for(const throwing of[false,true])test(id+' rolls back every resource and decision on '+(throwing?'throwing':'false-returning')+' storage',()=>{
+ const f=runtime(),q=quest(id);f.run('placeGiver('+JSON.stringify(id)+');d.v053LoreAccept('+JSON.stringify(id)+')');for(const siteId of q.witnessSites)f.run('placeSite('+JSON.stringify(siteId)+');d.v053LoreWitness('+JSON.stringify(id)+','+JSON.stringify(siteId)+')');f.run('placeGiver('+JSON.stringify(id)+')');const before=f.json('state'),saved=f.run('test.saved');f.run(throwing?'test.throwSave=true':'test.fail=true');assert.equal(f.run('d.v053LoreResolve('+JSON.stringify(id)+','+JSON.stringify(q.choices[0].id)+')'),false);assert.deepEqual(f.json('state'),before);assert.equal(f.run('test.saved'),saved);assert.ok(!f.run('V027_STATIONS.canal13.text()').includes(q.choices[0].text));
+});
+
+
+test('Completed continuity cards show their saved outcome once while active cards keep progress',()=>{
+ for(const q of bindings){const f=runtime(),id=JSON.stringify(q.id);f.run('placeGiver('+id+');d.v053LoreAccept('+id+')');if(q.kind==='observation')for(const siteId of q.observationSites)f.run('mode="PLAYING";observeSite('+JSON.stringify(siteId)+')');else if(q.kind!=='delivery')for(const siteId of q.witnessSites.slice(0,q.required))f.run('placeSite('+JSON.stringify(siteId)+');d.v053LoreWitness('+id+','+JSON.stringify(siteId)+')');f.run('mode="PIP";placeGiver('+id+')');const ch=q.choices[0];assert.equal(f.run('d.v053LoreResolve('+id+','+JSON.stringify(ch.id)+')'),true);const html=f.run('V027.sub="continuity";const completedPanel={innerHTML:""};v027Data(completedPanel);completedPanel.innerHTML');assert.equal(html.split(ch.text).length-1,1,q.id+' duplicated its saved outcome');assert.match(html,/Rencontrer le contact pour ouvrir le dossier/);}
 });

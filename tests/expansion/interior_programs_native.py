@@ -46,6 +46,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run', action='store_true')
     parser.add_argument('--room-doors', action='store_true', help='Also exercise the real version-five room door lifecycle with native E and KeyW.')
+    parser.add_argument('--furniture-services', action='store_true', help='After the unchanged programmes, exercise actual workshop furniture, finite ingredients and cold Continue.')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--expect-html-sha', required=True)
     parser.add_argument('--expect-interior-sha', required=True)
@@ -71,14 +72,14 @@ def main():
               'resource_console_diagnostics': [], 'local_request_failures': [],
               'external_request_failures': [], 'local_http_errors': [], 'http_responses': [],
               'script_sha256': sha(Path(__file__).read_bytes()),
-              'local_metadata_events': [], 'local_metadata_waits': [],
+              'local_metadata_events': [], 'local_metadata_waits': [], 'local_metadata_inspections': [],
               'assistance': ['Public native macro/sector selection loads real installed sources.',
                              'Public v046Height/v046Collide choose measured clear camera positions.',
                              'Public v018CaptureAt freezes simulation/render and frames actual geometry.',
                              'Public v020Approach chooses production collision/LOS checked placement before a real E key.',
                              'Native KeyW plus v020Tick(.05,true) manually steps actual production movement/collisions.',
                              'Read-only public exports inspect source identity, programme, furniture, storage and collisions.',
-                             'Before each real reload, the pilot waits for already pending same-origin /__mistral/local-data metadata requests to finish, with a 120-second deadline; requests are neither mocked nor cancelled.']}
+                             'Before each real reload, the pilot waits for pending metadata and performs a real no-store disk audit through /__mistral/local-data; after bootstrap it waits for the native metadata request. This keeps long disk inspections outside the browser request deadline without mocking, cancelling or changing the application timeout.']}
     frozen, originals, imported_helpers = {}, {}, {}
     page = server = browser = context = worker = pw = None
     origin = None
@@ -134,7 +135,7 @@ def main():
             pending_metadata.discard(request)
             metadata_event('requestfinished', request)
 
-    def wait_local_metadata_before_reload():
+    def wait_local_metadata_before_reload(warm_next=True):
         # A cold Continue really replaces the document. Finish its old
         # asynchronous metadata body before navigation can abort that fetch.
         # Geography and every other request keep their original failure rules.
@@ -151,6 +152,18 @@ def main():
             page.wait_for_timeout(100)
         entry['finished_elapsed_seconds'] = round(time.monotonic() - started, 3)
         entry['pending_at_finish'] = len(pending_metadata)
+        if warm_next:
+            inspected = time.monotonic()
+            with urllib.request.urlopen(origin + '/__mistral/local-data', timeout=300) as response:
+                raw = response.read()
+                no_store = response.headers.get('Cache-Control') == 'no-store'
+                data = json.loads(raw)
+                if response.status != 200 or not no_store or data.get('complete') is not True:
+                    raise AssertionError('Actual pre-reload disk audit is not complete and no-store')
+            report['local_metadata_inspections'].append({'stage': report['stage'], 'url': origin + '/__mistral/local-data',
+                                                         'elapsed_seconds': round(time.monotonic() - inspected, 3),
+                                                         'body_sha256': sha(raw), 'complete': data['complete'], 'no_store': no_store,
+                                                         'method': 'Actual HTTP disk inspection before native document replacement; no response substitution.'})
         save()
 
     def ready():
@@ -174,6 +187,7 @@ def main():
         page.wait_for_function("['v051CityReady','v052ArchitectureReady','v052ArchitectureTarget','v052CityInteriorLayout','v050CityInteriorBind'].every(k=>typeof __MISTRAL_DEBUG[k]==='function')")
         debug('setRenderPaused', True)
         debug('v047Control', {'auto': False})
+        wait_local_metadata_before_reload(warm_next=False)
 
     def shot(name, label):
         player = debug('getState')['player']
@@ -256,6 +270,8 @@ def main():
         for relative in [MODULE, 'src/v050/07_facades.js', 'src/v050/06_architecture_sources.js']:
             check('Production HTML includes current ' + relative, pin(relative).decode() in html.decode())
         fixture = json.loads(pin(FIXTURE))
+        if args.furniture_services:
+            pin('tests/expansion/interior_services_native.py')
         check('Case fixture describes attributed real source geometries', fixture['license'] == 'Licence Ouverte 2.0'
               and fixture['attribution'] == 'IGN — Géoplateforme' and len(fixture['cases']) == 3)
         for case in fixture['cases']:
@@ -455,6 +471,11 @@ def main():
             report['room_door_scope'] = {'physically_exercised': [r['group'] for r in report['programmes'] if r['roomDoor']['door'] is not None],
                                          'open_programmes_without_eligible_room_doors': [r['group'] for r in report['programmes'] if r['roomDoor']['door'] is None]}
             check('At least one actual source programme completes the full native physical room-door cycle', bool(report['room_door_scope']['physically_exercised']))
+        if args.furniture_services:
+            from interior_services_native import probe_furniture_services
+            stage('actual_furniture_services')
+            report['furniture_services'] = probe_furniture_services(page, debug, check, shot, report, physical_entry,
+                                                                  exit_to_street, wait_local_metadata_before_reload, native_document)
         check('Both native programmes are distinct and retain source use provenance',
               len(report['programmes']) == 2 and {r['chosen']['layout']['theme'] for r in report['programmes']} == {'commercial', 'industrial'})
         check('No synthetic documentary record entered native storage', debug('v050CityInteriorInfo')['documentRegistry']['entries'] == 0)

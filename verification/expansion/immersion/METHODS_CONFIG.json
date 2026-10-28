@@ -1,0 +1,147 @@
+{
+  "html_sha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "native_methods": [
+    {
+      "id": "fps",
+      "label": "Vue FPS native, équipement préparé",
+      "report": "fps-hands/native-final-05/FIRST_PERSON_NATIVE.json",
+      "receipt": "fps-hands/native-final-05/EXECUTION_STATUS.json",
+      "log": "fps-hands/native-final-05.log",
+      "exit_key": "processExitCode",
+      "receipt_report_hash_key": "report.sha256",
+      "receipt_script_hash_key": "script.sha256",
+      "receipt_log_hash_key": "log.sha256"
+    },
+    {
+      "id": "hud",
+      "label": "HUD natif, clavier et tactile émulé",
+      "report": "hud-native-844/FPS_HUD_NATIVE.json",
+      "receipt": "hud-native-844/EXECUTION_STATUS.json",
+      "log": "HUD_844_EXECUTION.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "stdoutSha256"
+    },
+    {
+      "id": "landmarks",
+      "label": "Monuments MNS natifs et reprise",
+      "report": "landmarks/native-844-final/LANDMARK_SURFACES_NATIVE.json",
+      "receipt": "landmarks/native-844-final/EXECUTION_STATUS.json",
+      "log": "landmarks/native-844-final/RUN.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "interiors",
+      "label": "Intérieurs, portes et services natifs",
+      "report": "interiors/native-root-final-844/INTERIOR_PROGRAMS_NATIVE.json",
+      "receipt": "interiors/native-root-final-844/EXECUTION_STATUS.json",
+      "log": "interiors/native-root-final-844/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": [
+        "inputHashes",
+        "tests/expansion/interior_services_native.py"
+      ],
+      "receipt_log_hash_key": "stdoutSha256"
+    },
+    {
+      "id": "lore",
+      "label": "Dossiers des Communes et Gilets natifs",
+      "report": "lore/native-844/COMMUNITY_DOSSIERS_NATIVE.json",
+      "receipt": "lore/native-844/EXECUTION_STATUS.json",
+      "log": "lore/native-844/process.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "mines",
+      "label": "Mines natives, stock fini et dégâts",
+      "report": "iconic/native-final-844/MINES_NATIVE.json",
+      "receipt": "iconic/native-final-844/EXECUTION_STATUS.json",
+      "log": "iconic/native-final-844/native.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "MINES_NATIVE.jsonSha256",
+      "receipt_script_hash_key": "EXECUTED_MINES_NATIVE.pySha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "south",
+      "label": "Relief sud natif et rendu mesuré",
+      "report": "zones/native-final-8443/SOUTH_TERRAIN_NATIVE.json",
+      "receipt": "zones/native-final-8443/EXECUTION_STATUS.json",
+      "log": "zones/native-final-8443/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "controller",
+      "label": "DOM avec API Gamepad simulée",
+      "report": "controller/CONTROLLER_BROWSER.json",
+      "receipt": "controller/EXECUTION_IDENTITY.json",
+      "log": "controller/EXECUTION.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "category": "simulated_gamepad",
+      "command_file": "controller/COMMAND.json"
+    },
+    {
+      "id": "grenades",
+      "label": "Grenades natives en régression",
+      "report": "grenade-regression/ORDNANCE_NATIVE.json",
+      "receipt": "grenade-regression/EXECUTION_STATUS.json",
+      "log": "grenade-regression/PROCESS.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    }
+  ],
+  "supplements": [
+    {
+      "source": "mines-peer-review",
+      "destination": "mines-peer-review"
+    },
+    {
+      "source": "landmarks/SOURCE_CELL_COMPARISON.json",
+      "destination": "mns-source/SOURCE_CELL_COMPARISON.json"
+    },
+    {
+      "source": "landmarks/audit_native_vertices.py",
+      "destination": "mns-source/audit_native_vertices.py"
+    },
+    {
+      "source": "landmarks/race-review",
+      "destination": "mns-race-review"
+    },
+    {
+      "source": "interiors/SERVICE_SELECTION_COMPARISON.json",
+      "destination": "services/SERVICE_SELECTION_COMPARISON.json"
+    },
+    {
+      "source": "interiors/service_selection_comparison.cjs",
+      "destination": "services/service_selection_comparison.cjs"
+    },
+    {
+      "source": "QA_ONLY_ADAPTATIONS.json",
+      "destination": "QA_ONLY_ADAPTATIONS.json"
+    },
+    {
+      "source": "excluded-attempts",
+      "destination": "excluded-attempts"
+    },
+    {
+      "source": "RUNTIME_VALIDATION_INPUTS.json",
+      "destination": "RUNTIME_VALIDATION_INPUTS.json"
+    }
+  ]
+}

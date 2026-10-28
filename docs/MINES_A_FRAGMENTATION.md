@@ -1,0 +1,21 @@
+# Mines à fragmentation
+
+Les mines complètent les grenades à main avec une préparation de passage. Le modèle et ses pièces sont des créations géométriques originales du jeu. Les dimensions, délais, portées et dégâts sont des règles de jeu.
+
+`P` pose une mine à 1,45 m devant le personnage, dans la direction horizontale de son regard. Le sol doit être chargé, libre et presque horizontal : cinq sondages couvrent le centre et le disque de 23 cm de rayon, avec au plus 12 cm de variation ; le dénivelé par rapport aux pieds du joueur reste limité à 65 cm. Les collisions et la ligne de vue de production sont requises. Une visée verticale, un mur, un sol absent, l'eau sans support admis, une pose à moins de 80 cm d'une autre mine ou un placement hors des limites sont refusés sans consommation.
+
+Le menu du Pip-Boy, `INV > MINES`, explique les règles et permet de revenir en jeu pour poser. Aucun objet n'est posé par la consultation du menu. Le raccourci `G` conserve le dossier G.O.A.T. et `M` conserve le plan local.
+
+L'armement prend **2,5 secondes actives**. Un ennemi vivant à **2,4 m**, avec au plus 1,5 m de différence d'altitude et une ligne de vue libre, déclenche un avertissement de **0,65 seconde**. Le joueur, les compagnons et les civils ne déclenchent pas les mines du joueur. La mine émet un son au déclenchement et son témoin devient rouge. L'avertissement ne dépend pas du seul son.
+
+`E`, à moins de 1,8 m avec une ligne de vue libre et sur le même niveau, désamorce et remet exactement un exemplaire dans le sac. L'action reste possible pendant l'avertissement. Les gardes sont aussi réappliquées par l'action de production ; appeler un ancien identifiant après récupération ne fournit aucun objet supplémentaire.
+
+Le souffle partage les véritables obstacles des grenades : murs, toits source, planchers intérieurs rendus et tabliers mesurés. Sa portée maximale est de **6 m**, avec **120 dégâts de base** au point d'explosion et une décroissance linéaire. La difficulté, l'armure et les effets de protection existants restent appliqués. Le joueur peut être blessé ou tué par son propre souffle. Les PNJ et compagnons conservent leur protection historique. Les tirs et explosions ne déclenchent pas de réaction en chaîne des mines dans cette version.
+
+Le sac, le poids de **0,70 kg**, le troc et l'établi sont ceux du jeu existant. Baptiste à Aubagne et le marché de Noailles possèdent chacun **deux exemplaires finis**, sans réapprovisionnement par rechargement. La recette demande **4 ferrailles, 3 composants chimiques et 1 circuit**, à proximité d'un véritable établi. Elle ne donne pas d'expérience. L'achat, la vente, la pose, la récupération, les changements de phase et l'explosion utilisent la transaction complète existante : un refus d'écriture restaure les ressources, les registres et les conséquences sur les acteurs.
+
+Le registre `v056Mines`, borné à **24 mines posées dans toutes les scènes**, conserve l'identifiant, la scène précise, le bâtiment et l'étage le cas échéant, la position, la phase et le délai restant. Voyager ne rembourse pas une mine et ne la transfère pas à un autre étage. Une mine hors de la scène chargée reste enregistrée, sans rendu ni délai consommé. Les menus et le gel de diagnostic suspendent les délais. Si le support réel d'une mine n'est plus disponible ou n'est plus admissible, elle reste suspendue sans sol inventé et reprend seulement lorsque ce support revient.
+
+La sauvegarde conserve le délai courant en mémoire lors d'une écriture ordinaire ; les changements de phase sont écrits immédiatement. La mort conserve la règle historique de **dernière sauvegarde vivante**. Il ne s'agit pas d'une validation de sauvegarde après décès.
+
+Les tests ciblés sont dans [iconic_mines.cjs](../tests/expansion/iconic_mines.cjs). Ils composent les vrais modèles de grenade, mines, sac, troc, fabrication et dégâts avec des supports plats, acteurs, stockage et coutures DOM contrôlés. Les tests géométriques des grenades restent dans [iconic_ordnance.cjs](../tests/expansion/iconic_ordnance.cjs). Le pilote [mines_native.py](../tests/expansion/mines_native.py) prépare une validation Chromium distincte ; son existence seule ne constitue pas la preuve d'une exécution réussie.

@@ -1,0 +1,964 @@
+{
+  "scope": "Native foreground presentation pilot on unchanged production HTML.\n\nDiagnostic navigation selects authored Aubagne (not a surveyed Marseille view),\nplaces the camera at an existing collision-free road point, grants nine ordinary\nweapons for a presentation matrix and ammunition for the reload check. Active\nsimulation is stepped with the inherited diagnostic v020Tick; UI inputs, Canvas,\nWebGL scene, collisions, firing, reload and browser storage remain production.\nNo network, renderer, input handler or localStorage is replaced.\n",
+  "checks": [
+    {
+      "name": "HTTP loads the exact frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Menu hides the foreground and refuses held aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chosen authored road point is free under actual production collision",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native WebGL scene and projected foreground are both active",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Foreground really paints nontransparent pixels and leaves the central hip aperture clear",
+      "ok": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "solid": 6136,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "name": "Actual forward movement drives bounded foreground gait",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual sprint movement lowers the foreground stance",
+      "ok": true,
+      "detail": {
+        "origin": [
+          0.22215581804827772,
+          -0.3134318257493849,
+          0.67
+        ],
+        "yaw": 0.07999999999999999,
+        "pitch": 0.14,
+        "roll": 0.007768884299839863,
+        "aim": 0,
+        "proximity": 0,
+        "loading": false,
+        "reloadProgress": 0,
+        "reloadLift": 0,
+        "sprint": 1,
+        "melee": false
+      }
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: pistol10",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: pistol10",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: pistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family pistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: rifle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family rifle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: shotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family shotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: energy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family energy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: heavy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family heavy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: industrial",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family industrial",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: combatKnife",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: combatKnife",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is disabled for a melee weapon: combatKnife",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family blade",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: sledgehammer",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: sledgehammer",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is disabled for a melee weapon: sledgehammer",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family melee",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: powerFist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: powerFist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is disabled for a melee weapon: powerFist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family fist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "An existing authored wall has a collision-free close approach",
+      "ok": true,
+      "detail": {
+        "position": [
+          -57.05,
+          1.65,
+          24
+        ],
+        "yaw": 1.5707963267948966,
+        "collider": "aub-b1"
+      }
+    },
+    {
+      "name": "Actual wall occlusion lowers the viewmodel and refuses aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native held X aligns the sight presentation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aiming leaves the actual world direction and FOV unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aiming consumes no ammunition, inventory or capsules",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native X release returns the grip to the hip",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Opening actual Pip-Boy clears held aim and hides hands",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Closing actual Pip-Boy restores the foreground without stuck aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual C hides the foreground in third person",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual C restores first person presentation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real pointer-locked left click emits exactly one ordinary pistol shot",
+      "ok": true,
+      "detail": {
+        "before": {
+          "mode": "PLAYING",
+          "cooldown": 0,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 0,
+          "queue": null,
+          "execution": null,
+          "ammo": 10,
+          "ap": 105,
+          "log": []
+        },
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.3,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 1,
+          "queue": null,
+          "execution": null,
+          "ammo": 9,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.87,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Actual emitted shot drives foreground recoil",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual R starts the ordinary reload and releases aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Active simulation exposes the reload hand pose",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary reload finishes with the original clip capacity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Portrait reuses one connected canvas at the actual viewport dimensions",
+      "ok": true,
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "solid": 4257,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "name": "Visible production hold-to-aim HUD action exists",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD pointerdown holds actual presentation aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD pointerup releases aim without a stuck weapon",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing reduced motion setting applies the aim pose immediately",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reduced motion release immediately restores the static hip pose",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native pilot records no JavaScript exception",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "Native local production resources have no HTTP failure",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "All production and pilot inputs retain their frozen hashes",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_native_pistol_hip.png",
+      "sha256": "7df202aaeb5243a7153112a4377eb1bb92df72b9aa9d6b9dc9119d06c12b1c92"
+    },
+    {
+      "file": "02_matrix_rifle.png",
+      "sha256": "f0b6b326554e474310169444b9d9011f920ded994aebb37736bcb0e0cfd7a5aa"
+    },
+    {
+      "file": "02_matrix_energy.png",
+      "sha256": "a1a330b5df485369c2226dd1b1a23499f7204820da07d208863f964ae36090d3"
+    },
+    {
+      "file": "02_matrix_blade.png",
+      "sha256": "8f745e71926bef1e760b0087697f73da24fc7e7fb2c1e78adb94b83fc86b0215"
+    },
+    {
+      "file": "02b_native_wall_lowering.png",
+      "sha256": "bbbd935424d63df75e5f9e2d89caeae13996f66ccd6805603f82c0e7ea95d110"
+    },
+    {
+      "file": "03_native_rifle_aim.png",
+      "sha256": "d32a9f2f7a0dda5e48ba3bedd5329fb71d7673d7427b42a201b8e4e90589430e"
+    },
+    {
+      "file": "04_native_shot_recoil.png",
+      "sha256": "d41bcb87ffa404f61d211e2033c11f4136f16b5e83710ed9c1091ec623d61277"
+    },
+    {
+      "file": "05_native_reload_hands.png",
+      "sha256": "597b0244afba64fb7ab97fbe6212773dd9e904cb58610a08cd34165758a13fa9"
+    },
+    {
+      "file": "06_native_portrait_hands.png",
+      "sha256": "15952f465dbddb3f4afb07d8c9cc2a827dcfc30cd472e917269d6535245d9ef7"
+    },
+    {
+      "file": "07_native_portrait_reduced_motion.png",
+      "sha256": "1de7bd273f1c089745d5fd4df5bb23efd81062987976d2cd833440bab36fc2ec"
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:45653/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "local_http_errors": [],
+  "native_navigation": true,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "input_hardware_claim": "Native Chromium mouse and keyboard; portrait pointer events are simulated by Playwright, not physical touch hardware.",
+  "assistance": [
+    "Existing authored Aubagne selected through v020Load.",
+    "Camera diagnostic at [0,1.65,85], actual production collision/LOS checked.",
+    "v020GrantWeapon equips nine ordinary weapons for presentation inspection; not acquisition or balancing evidence.",
+    "v020Seed ammo10=60 supplies reload inputs.",
+    "v020Tick(.05,true) steps active production simulation while frame progression is frozen for reproducible screenshots.",
+    "v028Settings controls existing reduceMotion/reducedFlashes settings for their visible checks."
+  ],
+  "url": "http://127.0.0.1:45653/index.html?skipboot",
+  "browser_version": "154.0.8037.57",
+  "passed": 67,
+  "failed": 0,
+  "elapsed_seconds": 26.94,
+  "pinned_inputs": {
+    "index.html": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+    "src/v050/17_first_person.js": "2351e0b53388dd33ad3297414ed60676594c6421a3aea8d4a45d640b00d481d8",
+    "src/v050/19_fps_hud.js": "2158da4685838d1e6b1614159439c7b3752c22c03abcce23cd63944ebf671a7d",
+    "tests/expansion/first_person_native.py": "5509cf60498d76a3fe3de6db0ff8f8787c6173a6c712ffe32e8f2c1b748cc987"
+  },
+  "weapon_matrix": [
+    {
+      "weapon": "pistol10",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "pistol",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 476,
+          "visibleFaces": 231
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 6136,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "pipeCarbine",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "rifle",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 492,
+          "visibleFaces": 241
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9426,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "dockShotgun",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "shotgun",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 492,
+          "visibleFaces": 241
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9571,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "laserPistol",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "energy",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 522,
+          "visibleFaces": 256
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 10102,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "missileLauncher",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "heavy",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 460,
+          "visibleFaces": 224
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 11302,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "rivetGun",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "industrial",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 514,
+          "visibleFaces": 252
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9603,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "combatKnife",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "blade",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": true
+        },
+        "stats": {
+          "faces": 404,
+          "visibleFaces": 190
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 5453,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "sledgehammer",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "melee",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": true
+        },
+        "stats": {
+          "faces": 398,
+          "visibleFaces": 186
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 16815,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "powerFist",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "fist",
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": true
+        },
+        "stats": {
+          "faces": 348,
+          "visibleFaces": 162
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 8117,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    }
+  ],
+  "wall_approach": {
+    "position": [
+      -57.05,
+      1.65,
+      24
+    ],
+    "yaw": 1.5707963267948966,
+    "collider": "aub-b1"
+  },
+  "cleanup": {
+    "context": true,
+    "browser": true,
+    "playwright": true,
+    "server": true
+  },
+  "process_exit_code": 0,
+  "stage": "complete"
+}

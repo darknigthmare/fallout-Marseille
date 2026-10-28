@@ -1,0 +1,96 @@
+{
+  "version": "0.49.0",
+  "passed": 22,
+  "failed": 0,
+  "total": 22,
+  "tests": [
+    {
+      "name": "Santé et membres conservés",
+      "ok": true
+    },
+    {
+      "name": "Positions copiées sans référence partagée",
+      "ok": true
+    },
+    {
+      "name": "Identité issue du catalogue, pas de la sauvegarde",
+      "ok": true
+    },
+    {
+      "name": "Les propriétés exécutables sont absentes",
+      "ok": true
+    },
+    {
+      "name": "Rejet de NaN dans les coordonnées",
+      "ok": true
+    },
+    {
+      "name": "Rejet des coordonnées excessives",
+      "ok": true
+    },
+    {
+      "name": "Rejet de santé non finie",
+      "ok": true
+    },
+    {
+      "name": "Santé bornée au maximum",
+      "ok": true
+    },
+    {
+      "name": "Mort avec zéro PV",
+      "ok": true
+    },
+    {
+      "name": "Zéro PV ne recrée pas un vivant",
+      "ok": true
+    },
+    {
+      "name": "Compteurs de combat bornés",
+      "ok": true
+    },
+    {
+      "name": "Effets connus seulement",
+      "ok": true
+    },
+    {
+      "name": "Dégâts de membre bornés",
+      "ok": true
+    },
+    {
+      "name": "Migration indépendante sans alias",
+      "ok": true
+    },
+    {
+      "name": "Rejet identifiants hors catalogue",
+      "ok": true
+    },
+    {
+      "name": "Protection prototype",
+      "ok": true
+    },
+    {
+      "name": "PNJ conserve sa pose et sa progression de route",
+      "ok": true
+    },
+    {
+      "name": "Fusion conserve le butin le plus consommé",
+      "ok": true
+    },
+    {
+      "name": "Absence inventaire initial = épuisé",
+      "ok": true
+    },
+    {
+      "name": "Fusion ne produit pas de valeurs négatives",
+      "ok": true
+    },
+    {
+      "name": "Limite stricte du nombre de fiches",
+      "ok": true
+    },
+    {
+      "name": "Les 1176 identités maximales tiennent dans le journal",
+      "ok": true
+    }
+  ]
+}

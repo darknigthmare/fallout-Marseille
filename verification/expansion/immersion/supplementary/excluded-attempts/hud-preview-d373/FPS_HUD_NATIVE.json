@@ -1,0 +1,393 @@
+{
+  "scope": "Native HUD layouts and controls on exact production HTML.\n\nAuthored Aubagne is selected by the existing diagnostic navigation API. Camera\nplacement/freeze and render pause are declared assistance. Input uses real DOM\ncontrols, keyboard and Playwright pointer events; coarse pointer is emulated,\nnot a physical touchscreen certification. No HTML/storage/network mocking.\nTemporary document observers count bubbling activation keys without intercepting\nthem or altering production handlers or state.\nThe existing v030Set diagnostic prepares an equipped powered suit to exercise\nits real HUD and gauntlets; this is not an in-game acquisition proof.\n",
+  "checks": [
+    {
+      "name": "On-disk HTML has expected identity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP document equals frozen production bytes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native E opens the actual merchant dialogue",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Dialogue: native hidden quickbar has no visible pointer targets",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native farewell click remains reachable and returns to play",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pip-Boy: native hidden quickbar has no visible pointer targets",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1440x900: vital, ammunition, navigation and quickbar stay in viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1440x900: every visible quickbar control has 40px target and stays inside viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1440x900: primary HUD groups do not overlap",
+      "ok": true,
+      "detail": [
+        [
+          "statusBars",
+          "weaponHud"
+        ],
+        [
+          "statusBars",
+          "v020Quickbar"
+        ],
+        [
+          "weaponHud",
+          "v020Quickbar"
+        ],
+        [
+          "locationCard",
+          "compass"
+        ]
+      ]
+    },
+    {
+      "name": "desktop pointer 1440x900: weapon and armour condition gauges stay inside ammunition panel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1440x900: actual powered-suit control stays visible and in viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1440x900: suit control does not overlap objective, lamp, ammunition or quickbar",
+      "ok": false,
+      "detail": [
+        "weaponHud",
+        "p28LampHud",
+        "questCard",
+        "v020QuestHint",
+        "fps56ObjectiveToggle",
+        "v020Quickbar"
+      ]
+    }
+  ],
+  "shots": [
+    {
+      "file": "failure.png",
+      "sha256": "3979d1e6c64e700e60c02a145bb3f6dc758293429372b5bef614372ee902fd42"
+    }
+  ],
+  "rectangles": [
+    {
+      "label": "desktop pointer 1440x900",
+      "statusBars": {
+        "x": 24,
+        "y": 730,
+        "w": 235,
+        "h": 80,
+        "right": 259,
+        "bottom": 810,
+        "visible": true
+      },
+      "weaponHud": {
+        "x": 1176,
+        "y": 700.5,
+        "w": 240,
+        "h": 109.5,
+        "right": 1416,
+        "bottom": 810,
+        "visible": true
+      },
+      "compass": {
+        "x": 590,
+        "y": 18,
+        "w": 260,
+        "h": 69,
+        "right": 850,
+        "bottom": 87,
+        "visible": true
+      },
+      "locationCard": {
+        "x": 24,
+        "y": 22,
+        "w": 326.90625,
+        "h": 35.1875,
+        "right": 350.90625,
+        "bottom": 57.1875,
+        "visible": true
+      },
+      "v020Quickbar": {
+        "x": 295,
+        "y": 830,
+        "w": 850,
+        "h": 44,
+        "right": 1145,
+        "bottom": 874,
+        "visible": true
+      },
+      "fps56ObjectiveToggle": {
+        "x": 1310.234375,
+        "y": 174,
+        "w": 105.765625,
+        "h": 32,
+        "right": 1416,
+        "bottom": 206,
+        "visible": true
+      },
+      "interactPrompt": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "right": 0,
+        "bottom": 0,
+        "visible": false
+      },
+      "p30Hud": {
+        "x": 1206,
+        "y": 12,
+        "w": 210,
+        "h": 67,
+        "right": 1416,
+        "bottom": 79,
+        "visible": true
+      },
+      "p28LampHud": {
+        "x": 1314.78125,
+        "y": 644,
+        "w": 101.21875,
+        "h": 36,
+        "right": 1416,
+        "bottom": 680,
+        "visible": true
+      },
+      "questCard": {
+        "x": 1101,
+        "y": 22,
+        "w": 315,
+        "h": 81.0625,
+        "right": 1416,
+        "bottom": 103.0625,
+        "visible": true
+      },
+      "v020QuestHint": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "right": 0,
+        "bottom": 0,
+        "visible": false
+      },
+      "buttons": [
+        {
+          "text": "I · Sac",
+          "x": 295,
+          "y": 830,
+          "w": 90.875,
+          "h": 44,
+          "right": 385.875,
+          "bottom": 874,
+          "visible": true
+        },
+        {
+          "text": "T · Relais",
+          "x": 389.875,
+          "y": 830,
+          "w": 90.890625,
+          "h": 44,
+          "right": 480.765625,
+          "bottom": 874,
+          "visible": true
+        },
+        {
+          "text": "M · Plan",
+          "x": 484.765625,
+          "y": 830,
+          "w": 90.890625,
+          "h": 44,
+          "right": 575.65625,
+          "bottom": 874,
+          "visible": true
+        },
+        {
+          "text": "1 · Pistolet 10 mm",
+          "x": 579.65625,
+          "y": 830,
+          "w": 90.890625,
+          "h": 44,
+          "right": 670.546875,
+          "bottom": 874,
+          "visible": true
+        },
+        {
+          "text": "2 · Vide",
+          "x": 674.546875,
+          "y": 830,
+          "w": 90.890625,
+          "h": 44,
+          "right": 765.4375,
+          "bottom": 874,
+          "visible": true
+        },
+        {
+          "text": "3 · Vide",
+          "x": 769.4375,
+          "y": 830,
+          "w": 90.890625,
+          "h": 44,
+          "right": 860.328125,
+          "bottom": 874,
+          "visible": true
+        },
+        {
+          "text": "4 · Vide",
+          "x": 864.328125,
+          "y": 830,
+          "w": 90.890625,
+          "h": 44,
+          "right": 955.21875,
+          "bottom": 874,
+          "visible": true
+        },
+        {
+          "text": "N · Grenade 0",
+          "x": 959.21875,
+          "y": 830,
+          "w": 90.890625,
+          "h": 44,
+          "right": 1050.109375,
+          "bottom": 874,
+          "visible": true
+        },
+        {
+          "text": "X · Visée",
+          "x": 1054.109375,
+          "y": 830,
+          "w": 90.875,
+          "h": 44,
+          "right": 1144.984375,
+          "bottom": 874,
+          "visible": true
+        }
+      ],
+      "condition": [
+        {
+          "x": 1189,
+          "y": 791,
+          "w": 19.203125,
+          "h": 9,
+          "right": 1208.203125,
+          "bottom": 800,
+          "visible": true
+        },
+        {
+          "x": 1212.203125,
+          "y": 793.5,
+          "w": 75.984375,
+          "h": 4,
+          "right": 1288.1875,
+          "bottom": 797.5,
+          "visible": true
+        },
+        {
+          "x": 1292.1875,
+          "y": 791,
+          "w": 28.8125,
+          "h": 9,
+          "right": 1321,
+          "bottom": 800,
+          "visible": true
+        },
+        {
+          "x": 1325,
+          "y": 793.5,
+          "w": 76,
+          "h": 4,
+          "right": 1401,
+          "bottom": 797.5,
+          "visible": true
+        }
+      ],
+      "touch": [],
+      "viewport": {
+        "w": 1440,
+        "h": 900
+      }
+    }
+  ],
+  "page_errors": [],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "http_errors": [],
+  "html_sha256": "d37334fa03e52951836e16a639baaf169fd09884d2d51df801c53d54c50c5b4d",
+  "script_sha256": "e1b8a4b359e31eea7fd0630d85aa9050c121b107f85b4295c17acb1724a60414",
+  "network_mocked": false,
+  "storage_mocked": false,
+  "html_injected": false,
+  "stage": "failed",
+  "passed": 11,
+  "failed": 1,
+  "elapsed_seconds": 6.095,
+  "origin": "http://127.0.0.1:32891",
+  "browser_version": "154.0.8037.57",
+  "error": "desktop pointer 1440x900: suit control does not overlap objective, lamp, ammunition or quickbar",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/fps_hud_native.py\", line 170, in main\n    rectangles(f'desktop pointer {width}x{height}')\n  File \"/workspace/fallout-Marseille/tests/expansion/fps_hud_native.py\", line 139, in rectangles\n    check(label+': suit control does not overlap objective, lamp, ammunition or quickbar',all(not overlap(power,result[k]) for k in neighbors if result[k]['visible']),neighbors)\n  File \"/workspace/fallout-Marseille/tests/expansion/fps_hud_native.py\", line 60, in check\n    raise AssertionError(name)\nAssertionError: desktop pointer 1440x900: suit control does not overlap objective, lamp, ammunition or quickbar\n",
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true
+  }
+}

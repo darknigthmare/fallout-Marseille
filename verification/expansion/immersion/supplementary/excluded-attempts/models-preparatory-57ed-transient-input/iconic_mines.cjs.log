@@ -1,0 +1,58 @@
+OK Migration grants no inventory and keeps an empty bounded mine registry
+OK Migration preserves an armed or partially warned mine independently of counters and caller arrays
+OK Malformed persisted record is refused id {"id":0}
+OK Malformed persisted record is refused id {"id":null}
+OK Malformed persisted record is refused zone {"zone":"../wrong"}
+OK Malformed persisted record is refused scene {"scene":""}
+OK Malformed persisted record is refused pos {"pos":[0,null,0]}
+OK Malformed persisted record is refused phase {"phase":"fired"}
+OK Malformed persisted record is refused timer {"timer":-1}
+OK Malformed persisted record is refused timer {"timer":3}
+OK Duplicate IDs, over-cap registries and a regressed sequence cannot duplicate a recovery
+OK A native P action places one finite mine at ground level and saves one debit
+OK Failed fail mine placement retains all bag, quests, armour and chems state
+OK Failed throwSave mine placement retains all bag, quests, armour and chems state
+OK Near thin walls, steep support, missing terrain and looking vertically forbid placement without a debit
+OK Placement and recovery reject mode="PIP"
+OK Placement and recovery reject mode="MENU"
+OK Placement and recovery reject zoneTransitioning=true
+OK Placement and recovery reject V046.lab=true
+OK Placement and recovery reject V046.busy=true
+OK Placement and recovery reject V047.pending={}
+OK Placement and recovery reject state.player.hp=0
+OK Placement and recovery reject function isBoatZone(){return true;}
+OK The placement limit is global and spacing forbids overlapping devices
+OK A mine arms after 2.5 active seconds and its owner never triggers it
+OK Menus and QA freeze pause both arming and already triggered warning time
+OK Actual existing live enemy proximity starts a finite persisted warning before the real blast
+OK Dead actors, other floors, civilians and companions do not trigger own mine
+OK A thin wall blocks the proximity sensor and later the common grenade/mine blast rays
+OK E recovery during warning cancels the device and restores exactly one finite item
+OK Failed fail recovery preserves the armed record and grants no extra item
+OK Failed throwSave recovery preserves the armed record and grants no extra item
+OK Recovery is denied through a wall or from the wrong floor even through the diagnostic action
+OK Travel freezes unloaded mines and returning restores their actual interaction and delay
+OK Shared city IDs bind the building and floor, while loaded support loss suspends without an invented ground
+OK Cold migration retains exact partially warned timer and cannot retrigger or recharge its spent inventory
+OK Failed fail mine blast rolls back actor death, XP, corpses, mine counters and bag
+OK Failed throwSave mine blast rolls back actor death, XP, corpses, mine counters and bag
+OK Finite merchant receipts survive migration and use the same wallet and inventory
+OK fail rolls back actual buyTradeItem("fragMine")
+OK fail rolls back actual sellTradeItem("fragMine")
+OK fail rolls back actual v020Craft("fragMine")
+OK throwSave rolls back actual buyTradeItem("fragMine")
+OK throwSave rolls back actual sellTradeItem("fragMine")
+OK throwSave rolls back actual v020Craft("fragMine")
+OK The actual workshop consumes exact components once and cannot craft remotely
+OK P preserves existing G/M controls and ignores repeats, shortcuts and editable elements
+OK The real Pip-Boy page explains limits and closes without secretly placing a device
+OK The shared world interface is private, frozen and not attached to the browser debug API
+OK Failed fail arm/trigger transition retries without erasing the saved device
+OK Failed throwSave arm/trigger transition retries without erasing the saved device
+OK Own blast follows normal player protection and a remote owner remains unhurt
+OK Invalid elapsed time cannot consume mine timers or warnings
+OK Loaded mine is suspended while a source or dynamic collision denies the actual support
+OK Original mine casing is a closed outward mesh with a complete top rather than the legacy inward cylinder cap
+OK Actual mine casings retain stable geometry identities across frames and are cleaned after recovery
+{"passed":56,"failed":0,"total":56,"scope":"Production mine migration/placement/proximity/delay/LOS/recovery/save and real composed grenade inventory/trade/craft/blast helpers; controlled flat support, actors, UI and storage seams, not a native city visit"}
+

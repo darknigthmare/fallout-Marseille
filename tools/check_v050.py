@@ -36,7 +36,7 @@ def adapt(name, text):
     text = text.replace("local['version']=='0.49.0'", "local['version']=='0.50.0'")
     text = text.replace('0.49.0 · Le quartier se souvient', '0.50.0 · Les routes retrouvées')
     if name.endswith('distribution.cjs'):
-        text = text.replace('fallout-mistral-v049-1', 'fallout-mistral-v050-11').replace('/v0.49.html/', '/v0.50.html/')
+        text = text.replace('fallout-mistral-v049-1', 'fallout-mistral-v050-12').replace('/v0.49.html/', '/v0.50.html/')
     if name == 'v048_runtime.py':
         # The controlled pause must outlast Playwright's two stable animation
         # frames even when another software-rendered browser uses the CPU.
@@ -63,6 +63,18 @@ def adapt(name, text):
   ck('Continuer reprend le plus récent ou le courant à date égale, slot intact',chosen['kind'] in ['current','auto'] and (chosen['savedAt']>saved['savedAt'] or (chosen['savedAt']==saved['savedAt'] and chosen['kind']=='current')) and chosen_snapshot['player']['caps']==caps+999 and resumed['player']['caps']==caps+999 and resumed['player']['zone']==chosen_snapshot['player']['zone'] and resumed['quest']==chosen_snapshot['quest'] and manual_after==saved,{'selected':chosen,'manualSavedAt':saved['savedAt'],'manualCaps':saved['snapshot']['player']['caps'],'expectedCaps':caps+999,'selectedCaps':chosen_snapshot['player']['caps'],'resumedCaps':resumed['player']['caps'],'resumedZone':resumed['player']['zone'],'manualSlotUnchanged':manual_after==saved})"""
         if text.count(old) != 1:
             raise RuntimeError('Contrat de reprise historique introuvable ou ambigu')
+        text = text.replace(old, new, 1)
+    if name == 'v048_inherited_legacy_runtime.py':
+        # The current FPS HUD uses a 165px column with content height, replacing
+        # v046's fixed 210x104px box. Preserve the anti-jitter contract at 390px
+        # and test all 600 numeric readouts plus their real containment.
+        old = "p.set_viewport_size({'width':390,'height':844});c('v046Frame');a=p.locator('#weaponHud').bounding_box();ck('HUD étroit défini sans pompage',abs(a['width']-210)<.5 and abs(a['height']-104)<.5,a);p.set_viewport_size({'width':1440,'height':900})"
+        new = """p.set_viewport_size({'width':390,'height':844});c('v046Frame')
+  narrow=p.evaluate('''()=>{const hud=document.getElementById('weaponHud'),samples=[];let inside=true;for(let n=0;n<600;n++){document.getElementById('ammoClip').textContent=String(n%3?1:999);document.getElementById('ammoReserve').textContent=String(n%2?99999:0);const r=hud.getBoundingClientRect();samples.push([r.width,r.height]);inside=inside&&r.left>=0&&r.top>=0&&r.right<=innerWidth&&r.bottom<=innerHeight&&[...hud.querySelectorAll('#ammoClip,#ammoReserve,.condition-line i')].every(el=>{const q=el.getBoundingClientRect();return q.left>=r.left&&q.right<=r.right+.5;});}return{samples,inside};}''')
+  ck('HUD étroit stable, borné et sans débordement sur 600 valeurs',len(narrow['samples'])==600 and len({tuple(v) for v in narrow['samples']})==1 and abs(narrow['samples'][0][0]-165)<.5 and narrow['samples'][0][1]>0 and narrow['inside'],narrow)
+  p.set_viewport_size({'width':1440,'height':900})"""
+        if text.count(old) != 1:
+            raise RuntimeError('Contrat de dimensions HUD historique introuvable ou ambigu')
         text = text.replace(old, new, 1)
     if name.endswith('server_io.py'):
         text = text.replace("'Absence de pack signalée et non masquée',local['vector']['missing']==5884 and local['terrain']['missing']==8 and not local['complete']",

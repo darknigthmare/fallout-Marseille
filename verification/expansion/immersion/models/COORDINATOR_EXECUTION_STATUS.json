@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tools/check_expansion.py",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/models"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "observedToolSession": 31211,
+  "observedToolExitCode": 0,
+  "report": "models/UNITS.json",
+  "reportSha256": "891731859dfbbc97288208e9ab8a3392b57f0a5a9a08d86f0353ef149a11c2e2",
+  "stdoutFile": "MODELS_FINAL_EXECUTION.log",
+  "stdoutSha256": "38c83f90d83d193a953cd374b7654705d5aa2271cc4c60fb6420925f07a71d96",
+  "scope": "Actual command completion observed through exec/write_stdin; individual subprocess exit codes and exact logs are also recorded in the linked report."
+}

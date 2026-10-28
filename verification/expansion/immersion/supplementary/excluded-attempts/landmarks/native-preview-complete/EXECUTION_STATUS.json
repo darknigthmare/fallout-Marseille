@@ -1,0 +1,26 @@
+{
+  "stage": "complete",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game/tests/expansion/landmark_surfaces_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/landmarks/native-preview-complete",
+    "--expect-html-sha",
+    "07adc7080ac2c0e0b4d499a604bacd27277c662d202c407322122bc63a1c6dbd"
+  ],
+  "cwd": "/workspace/.cloud-setup/fallout-marseille/fps-expansion/legacy-game",
+  "inputHashes": {
+    "index.html": "07adc7080ac2c0e0b4d499a604bacd27277c662d202c407322122bc63a1c6dbd",
+    "src/v050/06a_landmark_surfaces.js": "d03311e5880b4627f9fa3908dd5a7b42a3ce8c052875b6840b502736ef48004a",
+    "tests/expansion/landmark_surfaces_native.py": "5720a5d0ea79f14a9a6468c81a9be534803a5c4099bd56ba1e947a8e65696393",
+    "verification/v050/LOCAL_DATA_STATE.json": "026199c1d6abb8f9980f16991660e020159968d9cbd4364cada19eb0318ca6ff"
+  },
+  "startedUtc": "2026-10-28T08:34:30Z",
+  "scope": "Preparatory isolated clone, byte-exact real static fallback audit copied from root; actual subprocess exit receipt.",
+  "exitCode": 0,
+  "elapsedSeconds": 133.1115304920022,
+  "logSha256": "443ea23069097a43bb1d5e954456746553dc4f09c9805ed2480c522efd4564d4",
+  "changedInputs": [],
+  "reportSha256": "ab777a530657eaf33f37c18f0ee866154b5fe25e08b539f131975122494da5e0"
+}

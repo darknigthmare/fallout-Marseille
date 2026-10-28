@@ -1,0 +1,12 @@
+FAIL Archived geometry helper definitions equal the imported helper definitions
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/interior_programs_native.py", line 250, in main
+    check('Archived geometry helper definitions equal the imported helper definitions', helper_archive.is_file()
+  File "/workspace/fallout-Marseille/tests/expansion/interior_programs_native.py", line 100, in check
+    raise AssertionError(name)
+AssertionError: Archived geometry helper definitions equal the imported helper definitions
+
+FAIL Native source programme pilot completes
+OK Frozen HTML, modules, fixtures and selected real source chunks remain unchanged
+OK The four imported read-only architecture helpers remain unchanged
+{"passed": 2, "failed": 2, "total": 4, "stage": "preflight"}

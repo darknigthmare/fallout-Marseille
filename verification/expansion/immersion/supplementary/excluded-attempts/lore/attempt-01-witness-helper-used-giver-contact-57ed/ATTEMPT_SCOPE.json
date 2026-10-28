@@ -1,0 +1,93 @@
+{
+  "scope": "Failed preparatory pilot, outside final successful validation. No production contact was found inaccessible. The helper wrongly required giver presence when approaching another named witness.",
+  "htmlSha256": "57ed730285505bf7e93f696a7b92a751eddd5b6b7967663ebfd134320f50c9cf",
+  "processExitCode": 1,
+  "reportSha256": "cd55879963200bd897376c7ea331f78288eb7a59ed51e577477eaea0517e2790",
+  "scriptSha256": "46fb6e0b9ac820acc0543d55a2f49987b9040526798a38b98b07dbdad17124ff",
+  "exception": {
+    "message": "No measured collision-free contact with the actual relay actor: Halte caravanière · Vallée de l’Huveaune",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/community_dossiers_native.py\", line 464, in main\n    contact(witness)\n  File \"/workspace/fallout-Marseille/tests/expansion/community_dossiers_native.py\", line 310, in contact\n    raise AssertionError('No measured collision-free contact with the actual relay actor: ' + site['name'])\nAssertionError: No measured collision-free contact with the actual relay actor: Halte caravanière · Vallée de l’Huveaune\n"
+  },
+  "checks": 477,
+  "closed": {
+    "context_closed": true,
+    "browser_closed": true,
+    "server_closed": true,
+    "server_worker_stopped": true
+  },
+  "giver02StrictNativeApproaches": [
+    {
+      "id": "v042-npc:v042-huveaune-caravan-02:0",
+      "label": "Basile Mistral",
+      "position": [
+        4998.574689613422,
+        129.7153340141351,
+        -1132.791270216927
+      ],
+      "actorPosition": [
+        4998.134697236708,
+        125.567034909169,
+        -1131.1491963117444
+      ],
+      "actualVerticalDistance": 2.748299104966094,
+      "measuredGround": {
+        "height": 125.567034909169,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_huveaune:1d7033dfbf2433a1"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          1.9982591836363173,
+          1.9980512820506815
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+      }
+    },
+    {
+      "id": "v042-npc:v042-huveaune-caravan-02:0",
+      "label": "Basile Mistral",
+      "position": [
+        4998.574689613422,
+        129.7153340141351,
+        -1132.791270216927
+      ],
+      "actorPosition": [
+        4998.134697236708,
+        125.567034909169,
+        -1131.1491963117444
+      ],
+      "actualVerticalDistance": 2.748299104966094,
+      "measuredGround": {
+        "height": 125.567034909169,
+        "missing": null,
+        "sources": [
+          "enrichment:geo_huveaune:1d7033dfbf2433a1"
+        ],
+        "noData": [],
+        "resolutionMeters": [
+          1.9982591836363173,
+          1.9980512820506815
+        ],
+        "sourceResource": "ign_rge_alti_wld",
+        "interpolation": "bilinéaire, quatre échantillons valides requis",
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+      }
+    }
+  ],
+  "giletsActualActionsPassed": [
+    "Story sector uses installed geography outside lab: passage_libre",
+    "Exact declared giver binds both named source relays: passage_libre",
+    "Native E opens live actual contact dialogue: passage_libre",
+    "Visible actual NPC offers the new story: passage_libre",
+    "Native NPC acceptance stores only the actual empty new ledger: passage_libre",
+    "Payment stays visibly disabled before exact commitments: passage_libre",
+    "Visible enabled production UI: l53:track passage_libre",
+    "Tracking selects a real pending witness without granting proofs or rewards: passage_libre",
+    "Visible enabled production UI: l53:witness passage_libre|v042-huveaune-caravan-02",
+    "Visible contact records only one exact named source relay: passage_libre/v042-huveaune-caravan-02",
+    "Repeated same-relay commitment is disabled: passage_libre/v042-huveaune-caravan-02"
+  ]
+}

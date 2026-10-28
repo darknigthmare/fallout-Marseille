@@ -1,0 +1,1579 @@
+{
+  "scope": "Native HUD layouts and controls on exact production HTML.\n\nAuthored Aubagne is selected by the existing diagnostic navigation API. Camera\nplacement/freeze and render pause are declared assistance. Input uses real DOM\ncontrols, keyboard and Playwright pointer events; coarse pointer is emulated,\nnot a physical touchscreen certification. No HTML/storage/network mocking.\nTemporary document observers count bubbling activation keys without intercepting\nthem or altering production handlers or state.\n",
+  "checks": [
+    {
+      "name": "On-disk HTML has expected identity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP document equals frozen production bytes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1440x900: vital, ammunition, navigation and quickbar stay in viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1440x900: every visible quickbar control has 40px target and stays inside viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1440x900: primary HUD groups do not overlap",
+      "ok": true,
+      "detail": [
+        [
+          "statusBars",
+          "weaponHud"
+        ],
+        [
+          "statusBars",
+          "v020Quickbar"
+        ],
+        [
+          "weaponHud",
+          "v020Quickbar"
+        ],
+        [
+          "locationCard",
+          "compass"
+        ]
+      ]
+    },
+    {
+      "name": "desktop pointer 1440x900: weapon and armour condition gauges stay inside ammunition panel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1024x768: vital, ammunition, navigation and quickbar stay in viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1024x768: every visible quickbar control has 40px target and stays inside viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 1024x768: primary HUD groups do not overlap",
+      "ok": true,
+      "detail": [
+        [
+          "statusBars",
+          "weaponHud"
+        ],
+        [
+          "statusBars",
+          "v020Quickbar"
+        ],
+        [
+          "weaponHud",
+          "v020Quickbar"
+        ],
+        [
+          "locationCard",
+          "compass"
+        ]
+      ]
+    },
+    {
+      "name": "desktop pointer 1024x768: weapon and armour condition gauges stay inside ammunition panel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 390x844: vital, ammunition, navigation and quickbar stay in viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 390x844: every visible quickbar control has 40px target and stays inside viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 390x844: primary HUD groups do not overlap",
+      "ok": true,
+      "detail": [
+        [
+          "statusBars",
+          "weaponHud"
+        ],
+        [
+          "statusBars",
+          "v020Quickbar"
+        ],
+        [
+          "weaponHud",
+          "v020Quickbar"
+        ],
+        [
+          "locationCard",
+          "compass"
+        ]
+      ]
+    },
+    {
+      "name": "desktop pointer 390x844: weapon and armour condition gauges stay inside ammunition panel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 844x390: vital, ammunition, navigation and quickbar stay in viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 844x390: every visible quickbar control has 40px target and stays inside viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "desktop pointer 844x390: primary HUD groups do not overlap",
+      "ok": true,
+      "detail": [
+        [
+          "statusBars",
+          "weaponHud"
+        ],
+        [
+          "statusBars",
+          "v020Quickbar"
+        ],
+        [
+          "weaponHud",
+          "v020Quickbar"
+        ],
+        [
+          "locationCard",
+          "compass"
+        ]
+      ]
+    },
+    {
+      "name": "desktop pointer 844x390: weapon and armour condition gauges stay inside ammunition panel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native objective toggle hides cards without changing game objective",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native objective toggle restores objective visibility",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual crouch presents actual stance",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual standing restores player posture",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD posture/quest controls preserve health, ammunition and inventory wallet",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Keyboard Space holds HUD aim without bubbling into gameplay",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Keyboard Space release clears aim without bubbling into gameplay",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Keyboard Enter holds HUD aim without bubbling into gameplay",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Keyboard Enter release clears aim without bubbling into gameplay",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Options control stores compact preference in native localStorage",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "compact 1440x900: vital, ammunition, navigation and quickbar stay in viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "compact 1440x900: every visible quickbar control has 40px target and stays inside viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "compact 1440x900: primary HUD groups do not overlap",
+      "ok": true,
+      "detail": [
+        [
+          "statusBars",
+          "weaponHud"
+        ],
+        [
+          "statusBars",
+          "v020Quickbar"
+        ],
+        [
+          "weaponHud",
+          "v020Quickbar"
+        ],
+        [
+          "locationCard",
+          "compass"
+        ]
+      ]
+    },
+    {
+      "name": "compact 1440x900: weapon and armour condition gauges stay inside ammunition panel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native reload still serves exact frozen HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native reload restores compact display preference",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP document equals frozen production bytes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Coarse pointer context activates production touch layout",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "emulated coarse pointer 390x844: vital, ammunition, navigation and quickbar stay in viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "emulated coarse pointer 390x844: every visible quickbar control has 40px target and stays inside viewport",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "emulated coarse pointer 390x844: primary HUD groups do not overlap",
+      "ok": true,
+      "detail": [
+        [
+          "statusBars",
+          "weaponHud"
+        ],
+        [
+          "statusBars",
+          "v020Quickbar"
+        ],
+        [
+          "weaponHud",
+          "v020Quickbar"
+        ],
+        [
+          "locationCard",
+          "compass"
+        ]
+      ]
+    },
+    {
+      "name": "emulated coarse pointer 390x844: weapon and armour condition gauges stay inside ammunition panel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real HUD pointer hold presents the weapon in aim mode",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pointer release clears HUD aim mode",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "No native JavaScript exception or same-origin HTTP error",
+      "ok": true,
+      "detail": {
+        "page_errors": [],
+        "http_errors": []
+      }
+    },
+    {
+      "name": "Production sources unchanged throughout native pilot",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "HTML unchanged throughout native pilot",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [
+    {
+      "file": "1440x900_hud.png",
+      "sha256": "ff774df54acb999081a08a5d7cb901e3d95821669c9f59a36f9a2599450702e0"
+    },
+    {
+      "file": "1024x768_hud.png",
+      "sha256": "60779a96c3802c92039c5e96c932009633e55f6f9d40b0d058795b56f2065d01"
+    },
+    {
+      "file": "390x844_hud.png",
+      "sha256": "29e8efe12d22a545086c57bbc8e952e433b7ebaf0fe382e6e12c12c1377c7720"
+    },
+    {
+      "file": "844x390_hud.png",
+      "sha256": "2cb2c410712e855db83403b426c75033eb117e9511890f2b4d6cddefc689d7cd"
+    },
+    {
+      "file": "compact_hud.png",
+      "sha256": "2ef7620b1f666f69b6a8a25ef5d64fff70d6d6bd47a6478380368e19c79f85e3"
+    },
+    {
+      "file": "touch_390x844_hud.png",
+      "sha256": "74d72a5acd31bd21c7550243274522c0292a90feb1c2538f87518c6859bc4035"
+    },
+    {
+      "file": "touch_aim_presentation.png",
+      "sha256": "172136e279b1c22333ab967b1578e23ca9f34bdc3af279de02e7850929e71c4b"
+    }
+  ],
+  "rectangles": [
+    {
+      "label": "desktop pointer 1440x900",
+      "statusBars": {
+        "x": 24,
+        "y": 730,
+        "w": 235,
+        "h": 80,
+        "right": 259,
+        "bottom": 810,
+        "visible": true
+      },
+      "weaponHud": {
+        "x": 1176,
+        "y": 700.5,
+        "w": 240,
+        "h": 109.5,
+        "right": 1416,
+        "bottom": 810,
+        "visible": true
+      },
+      "compass": {
+        "x": 590,
+        "y": 18,
+        "w": 260,
+        "h": 69,
+        "right": 850,
+        "bottom": 87,
+        "visible": true
+      },
+      "locationCard": {
+        "x": 24,
+        "y": 22,
+        "w": 326.90625,
+        "h": 35.1875,
+        "right": 350.90625,
+        "bottom": 57.1875,
+        "visible": true
+      },
+      "v020Quickbar": {
+        "x": 295,
+        "y": 836,
+        "w": 850,
+        "h": 44,
+        "right": 1145,
+        "bottom": 880,
+        "visible": true
+      },
+      "fps56ObjectiveToggle": {
+        "x": 1310.234375,
+        "y": 174,
+        "w": 105.765625,
+        "h": 32,
+        "right": 1416,
+        "bottom": 206,
+        "visible": true
+      },
+      "interactPrompt": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "right": 0,
+        "bottom": 0,
+        "visible": false
+      },
+      "buttons": [
+        {
+          "text": "I · Sac",
+          "x": 295,
+          "y": 836,
+          "w": 90.875,
+          "h": 44,
+          "right": 385.875,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "T · Relais",
+          "x": 389.875,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 480.765625,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "M · Plan",
+          "x": 484.765625,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 575.65625,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "1 · Pistolet 10 mm",
+          "x": 579.65625,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 670.546875,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "2 · Vide",
+          "x": 674.546875,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 765.4375,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "3 · Vide",
+          "x": 769.4375,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 860.328125,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "4 · Vide",
+          "x": 864.328125,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 955.21875,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "N · Grenade 0",
+          "x": 959.21875,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 1050.109375,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "X · Visée",
+          "x": 1054.109375,
+          "y": 836,
+          "w": 90.875,
+          "h": 44,
+          "right": 1144.984375,
+          "bottom": 880,
+          "visible": true
+        }
+      ],
+      "condition": [
+        {
+          "x": 1189,
+          "y": 791,
+          "w": 19.203125,
+          "h": 9,
+          "right": 1208.203125,
+          "bottom": 800,
+          "visible": true
+        },
+        {
+          "x": 1212.203125,
+          "y": 793.5,
+          "w": 75.984375,
+          "h": 4,
+          "right": 1288.1875,
+          "bottom": 797.5,
+          "visible": true
+        },
+        {
+          "x": 1292.1875,
+          "y": 791,
+          "w": 28.8125,
+          "h": 9,
+          "right": 1321,
+          "bottom": 800,
+          "visible": true
+        },
+        {
+          "x": 1325,
+          "y": 793.5,
+          "w": 76,
+          "h": 4,
+          "right": 1401,
+          "bottom": 797.5,
+          "visible": true
+        }
+      ],
+      "viewport": {
+        "w": 1440,
+        "h": 900
+      }
+    },
+    {
+      "label": "desktop pointer 1024x768",
+      "statusBars": {
+        "x": 16,
+        "y": 598,
+        "w": 235,
+        "h": 80,
+        "right": 251,
+        "bottom": 678,
+        "visible": true
+      },
+      "weaponHud": {
+        "x": 768,
+        "y": 568.5,
+        "w": 240,
+        "h": 109.5,
+        "right": 1008,
+        "bottom": 678,
+        "visible": true
+      },
+      "compass": {
+        "x": 382,
+        "y": 18,
+        "w": 260,
+        "h": 69,
+        "right": 642,
+        "bottom": 87,
+        "visible": true
+      },
+      "locationCard": {
+        "x": 16,
+        "y": 22,
+        "w": 276.46875,
+        "h": 53.78125,
+        "right": 292.46875,
+        "bottom": 75.78125,
+        "visible": true
+      },
+      "v020Quickbar": {
+        "x": 87,
+        "y": 704,
+        "w": 850,
+        "h": 44,
+        "right": 937,
+        "bottom": 748,
+        "visible": true
+      },
+      "fps56ObjectiveToggle": {
+        "x": 894.234375,
+        "y": 174,
+        "w": 105.765625,
+        "h": 32,
+        "right": 1000,
+        "bottom": 206,
+        "visible": true
+      },
+      "interactPrompt": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "right": 0,
+        "bottom": 0,
+        "visible": false
+      },
+      "buttons": [
+        {
+          "text": "I · Sac",
+          "x": 87,
+          "y": 704,
+          "w": 90.875,
+          "h": 44,
+          "right": 177.875,
+          "bottom": 748,
+          "visible": true
+        },
+        {
+          "text": "T · Relais",
+          "x": 181.875,
+          "y": 704,
+          "w": 90.890625,
+          "h": 44,
+          "right": 272.765625,
+          "bottom": 748,
+          "visible": true
+        },
+        {
+          "text": "M · Plan",
+          "x": 276.765625,
+          "y": 704,
+          "w": 90.890625,
+          "h": 44,
+          "right": 367.65625,
+          "bottom": 748,
+          "visible": true
+        },
+        {
+          "text": "1 · Pistolet 10 mm",
+          "x": 371.65625,
+          "y": 704,
+          "w": 90.890625,
+          "h": 44,
+          "right": 462.546875,
+          "bottom": 748,
+          "visible": true
+        },
+        {
+          "text": "2 · Vide",
+          "x": 466.546875,
+          "y": 704,
+          "w": 90.890625,
+          "h": 44,
+          "right": 557.4375,
+          "bottom": 748,
+          "visible": true
+        },
+        {
+          "text": "3 · Vide",
+          "x": 561.4375,
+          "y": 704,
+          "w": 90.890625,
+          "h": 44,
+          "right": 652.328125,
+          "bottom": 748,
+          "visible": true
+        },
+        {
+          "text": "4 · Vide",
+          "x": 656.328125,
+          "y": 704,
+          "w": 90.890625,
+          "h": 44,
+          "right": 747.21875,
+          "bottom": 748,
+          "visible": true
+        },
+        {
+          "text": "N · Grenade 0",
+          "x": 751.21875,
+          "y": 704,
+          "w": 90.890625,
+          "h": 44,
+          "right": 842.109375,
+          "bottom": 748,
+          "visible": true
+        },
+        {
+          "text": "X · Visée",
+          "x": 846.109375,
+          "y": 704,
+          "w": 90.875,
+          "h": 44,
+          "right": 936.984375,
+          "bottom": 748,
+          "visible": true
+        }
+      ],
+      "condition": [
+        {
+          "x": 781,
+          "y": 659,
+          "w": 19.203125,
+          "h": 9,
+          "right": 800.203125,
+          "bottom": 668,
+          "visible": true
+        },
+        {
+          "x": 804.203125,
+          "y": 661.5,
+          "w": 75.984375,
+          "h": 4,
+          "right": 880.1875,
+          "bottom": 665.5,
+          "visible": true
+        },
+        {
+          "x": 884.1875,
+          "y": 659,
+          "w": 28.8125,
+          "h": 9,
+          "right": 913,
+          "bottom": 668,
+          "visible": true
+        },
+        {
+          "x": 917,
+          "y": 661.5,
+          "w": 76,
+          "h": 4,
+          "right": 993,
+          "bottom": 665.5,
+          "visible": true
+        }
+      ],
+      "viewport": {
+        "w": 1024,
+        "h": 768
+      }
+    },
+    {
+      "label": "desktop pointer 390x844",
+      "statusBars": {
+        "x": 14,
+        "y": 653,
+        "w": 155,
+        "h": 65,
+        "right": 169,
+        "bottom": 718,
+        "visible": true
+      },
+      "weaponHud": {
+        "x": 211,
+        "y": 631.609375,
+        "w": 165,
+        "h": 86.390625,
+        "right": 376,
+        "bottom": 718,
+        "visible": true
+      },
+      "compass": {
+        "x": 241,
+        "y": 14,
+        "w": 135,
+        "h": 57,
+        "right": 376,
+        "bottom": 71,
+        "visible": true
+      },
+      "locationCard": {
+        "x": 14,
+        "y": 14,
+        "w": 202.796875,
+        "h": 47.03125,
+        "right": 216.796875,
+        "bottom": 61.03125,
+        "visible": true
+      },
+      "v020Quickbar": {
+        "x": 14,
+        "y": 788,
+        "w": 362,
+        "h": 44,
+        "right": 376,
+        "bottom": 832,
+        "visible": true
+      },
+      "fps56ObjectiveToggle": {
+        "x": 283.984375,
+        "y": 187,
+        "w": 92.015625,
+        "h": 28,
+        "right": 376,
+        "bottom": 215,
+        "visible": true
+      },
+      "interactPrompt": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "right": 0,
+        "bottom": 0,
+        "visible": false
+      },
+      "buttons": [
+        {
+          "text": "I · Sac",
+          "x": 14,
+          "y": 788,
+          "w": 69.1875,
+          "h": 44,
+          "right": 83.1875,
+          "bottom": 832,
+          "visible": true
+        },
+        {
+          "text": "T · Relais",
+          "x": 87.1875,
+          "y": 788,
+          "w": 69.203125,
+          "h": 44,
+          "right": 156.390625,
+          "bottom": 832,
+          "visible": true
+        },
+        {
+          "text": "M · Plan",
+          "x": 160.390625,
+          "y": 788,
+          "w": 69.203125,
+          "h": 44,
+          "right": 229.59375,
+          "bottom": 832,
+          "visible": true
+        },
+        {
+          "text": "N · Grenade 0",
+          "x": 233.59375,
+          "y": 788,
+          "w": 69.203125,
+          "h": 44,
+          "right": 302.796875,
+          "bottom": 832,
+          "visible": true
+        },
+        {
+          "text": "X · Visée",
+          "x": 306.796875,
+          "y": 788,
+          "w": 69.1875,
+          "h": 44,
+          "right": 375.984375,
+          "bottom": 832,
+          "visible": true
+        }
+      ],
+      "condition": [
+        {
+          "x": 220,
+          "y": 704,
+          "w": 16.8125,
+          "h": 8,
+          "right": 236.8125,
+          "bottom": 712,
+          "visible": true
+        },
+        {
+          "x": 240.8125,
+          "y": 706,
+          "w": 45.484375,
+          "h": 4,
+          "right": 286.296875,
+          "bottom": 710,
+          "visible": true
+        },
+        {
+          "x": 290.296875,
+          "y": 704,
+          "w": 25.21875,
+          "h": 8,
+          "right": 315.515625,
+          "bottom": 712,
+          "visible": true
+        },
+        {
+          "x": 319.515625,
+          "y": 706,
+          "w": 45.484375,
+          "h": 4,
+          "right": 365,
+          "bottom": 710,
+          "visible": true
+        }
+      ],
+      "viewport": {
+        "w": 390,
+        "h": 844
+      }
+    },
+    {
+      "label": "desktop pointer 844x390",
+      "statusBars": {
+        "x": 16,
+        "y": 242,
+        "w": 235,
+        "h": 80,
+        "right": 251,
+        "bottom": 322,
+        "visible": true
+      },
+      "weaponHud": {
+        "x": 588,
+        "y": 212.5,
+        "w": 240,
+        "h": 109.5,
+        "right": 828,
+        "bottom": 322,
+        "visible": true
+      },
+      "compass": {
+        "x": 292,
+        "y": 18,
+        "w": 260,
+        "h": 69,
+        "right": 552,
+        "bottom": 87,
+        "visible": true
+      },
+      "locationCard": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "right": 0,
+        "bottom": 0,
+        "visible": false
+      },
+      "v020Quickbar": {
+        "x": 24,
+        "y": 336,
+        "w": 796,
+        "h": 44,
+        "right": 820,
+        "bottom": 380,
+        "visible": true
+      },
+      "fps56ObjectiveToggle": {
+        "x": 714.234375,
+        "y": 120,
+        "w": 105.765625,
+        "h": 32,
+        "right": 820,
+        "bottom": 152,
+        "visible": true
+      },
+      "interactPrompt": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "right": 0,
+        "bottom": 0,
+        "visible": false
+      },
+      "buttons": [
+        {
+          "text": "I · Sac",
+          "x": 24,
+          "y": 336,
+          "w": 84.875,
+          "h": 44,
+          "right": 108.875,
+          "bottom": 380,
+          "visible": true
+        },
+        {
+          "text": "T · Relais",
+          "x": 112.875,
+          "y": 336,
+          "w": 84.890625,
+          "h": 44,
+          "right": 197.765625,
+          "bottom": 380,
+          "visible": true
+        },
+        {
+          "text": "M · Plan",
+          "x": 201.765625,
+          "y": 336,
+          "w": 84.890625,
+          "h": 44,
+          "right": 286.65625,
+          "bottom": 380,
+          "visible": true
+        },
+        {
+          "text": "1 · Pistolet 10 mm",
+          "x": 290.65625,
+          "y": 336,
+          "w": 84.890625,
+          "h": 44,
+          "right": 375.546875,
+          "bottom": 380,
+          "visible": true
+        },
+        {
+          "text": "2 · Vide",
+          "x": 379.546875,
+          "y": 336,
+          "w": 84.890625,
+          "h": 44,
+          "right": 464.4375,
+          "bottom": 380,
+          "visible": true
+        },
+        {
+          "text": "3 · Vide",
+          "x": 468.4375,
+          "y": 336,
+          "w": 84.890625,
+          "h": 44,
+          "right": 553.328125,
+          "bottom": 380,
+          "visible": true
+        },
+        {
+          "text": "4 · Vide",
+          "x": 557.328125,
+          "y": 336,
+          "w": 84.890625,
+          "h": 44,
+          "right": 642.21875,
+          "bottom": 380,
+          "visible": true
+        },
+        {
+          "text": "N · Grenade 0",
+          "x": 646.21875,
+          "y": 336,
+          "w": 84.890625,
+          "h": 44,
+          "right": 731.109375,
+          "bottom": 380,
+          "visible": true
+        },
+        {
+          "text": "X · Visée",
+          "x": 735.109375,
+          "y": 336,
+          "w": 84.875,
+          "h": 44,
+          "right": 819.984375,
+          "bottom": 380,
+          "visible": true
+        }
+      ],
+      "condition": [
+        {
+          "x": 601,
+          "y": 303,
+          "w": 19.203125,
+          "h": 9,
+          "right": 620.203125,
+          "bottom": 312,
+          "visible": true
+        },
+        {
+          "x": 624.203125,
+          "y": 305.5,
+          "w": 75.984375,
+          "h": 4,
+          "right": 700.1875,
+          "bottom": 309.5,
+          "visible": true
+        },
+        {
+          "x": 704.1875,
+          "y": 303,
+          "w": 28.8125,
+          "h": 9,
+          "right": 733,
+          "bottom": 312,
+          "visible": true
+        },
+        {
+          "x": 737,
+          "y": 305.5,
+          "w": 76,
+          "h": 4,
+          "right": 813,
+          "bottom": 309.5,
+          "visible": true
+        }
+      ],
+      "viewport": {
+        "w": 844,
+        "h": 390
+      }
+    },
+    {
+      "label": "compact 1440x900",
+      "statusBars": {
+        "x": 24,
+        "y": 742,
+        "w": 235,
+        "h": 68,
+        "right": 259,
+        "bottom": 810,
+        "visible": true
+      },
+      "weaponHud": {
+        "x": 1176,
+        "y": 723.5,
+        "w": 240,
+        "h": 86.5,
+        "right": 1416,
+        "bottom": 810,
+        "visible": true
+      },
+      "compass": {
+        "x": 590,
+        "y": 18,
+        "w": 260,
+        "h": 69,
+        "right": 850,
+        "bottom": 87,
+        "visible": true
+      },
+      "locationCard": {
+        "x": 24,
+        "y": 22,
+        "w": 326.90625,
+        "h": 18.59375,
+        "right": 350.90625,
+        "bottom": 40.59375,
+        "visible": true
+      },
+      "v020Quickbar": {
+        "x": 295,
+        "y": 836,
+        "w": 850,
+        "h": 44,
+        "right": 1145,
+        "bottom": 880,
+        "visible": true
+      },
+      "fps56ObjectiveToggle": {
+        "x": 1310.234375,
+        "y": 174,
+        "w": 105.765625,
+        "h": 32,
+        "right": 1416,
+        "bottom": 206,
+        "visible": true
+      },
+      "interactPrompt": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "right": 0,
+        "bottom": 0,
+        "visible": false
+      },
+      "buttons": [
+        {
+          "text": "I · Sac",
+          "x": 295,
+          "y": 836,
+          "w": 90.875,
+          "h": 44,
+          "right": 385.875,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "T · Relais",
+          "x": 389.875,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 480.765625,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "M · Plan",
+          "x": 484.765625,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 575.65625,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "1 · Pistolet 10 mm",
+          "x": 579.65625,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 670.546875,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "2 · Vide",
+          "x": 674.546875,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 765.4375,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "3 · Vide",
+          "x": 769.4375,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 860.328125,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "4 · Vide",
+          "x": 864.328125,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 955.21875,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "N · Grenade 0",
+          "x": 959.21875,
+          "y": 836,
+          "w": 90.890625,
+          "h": 44,
+          "right": 1050.109375,
+          "bottom": 880,
+          "visible": true
+        },
+        {
+          "text": "X · Visée",
+          "x": 1054.109375,
+          "y": 836,
+          "w": 90.875,
+          "h": 44,
+          "right": 1144.984375,
+          "bottom": 880,
+          "visible": true
+        }
+      ],
+      "condition": [],
+      "viewport": {
+        "w": 1440,
+        "h": 900
+      }
+    },
+    {
+      "label": "emulated coarse pointer 390x844",
+      "statusBars": {
+        "x": 14,
+        "y": 519,
+        "w": 155,
+        "h": 65,
+        "right": 169,
+        "bottom": 584,
+        "visible": true
+      },
+      "weaponHud": {
+        "x": 211,
+        "y": 497.609375,
+        "w": 165,
+        "h": 86.390625,
+        "right": 376,
+        "bottom": 584,
+        "visible": true
+      },
+      "compass": {
+        "x": 241,
+        "y": 14,
+        "w": 135,
+        "h": 57,
+        "right": 376,
+        "bottom": 71,
+        "visible": true
+      },
+      "locationCard": {
+        "x": 14,
+        "y": 14,
+        "w": 202.796875,
+        "h": 47.03125,
+        "right": 216.796875,
+        "bottom": 61.03125,
+        "visible": true
+      },
+      "v020Quickbar": {
+        "x": 14,
+        "y": 788,
+        "w": 362,
+        "h": 44,
+        "right": 376,
+        "bottom": 832,
+        "visible": true
+      },
+      "fps56ObjectiveToggle": {
+        "x": 283.984375,
+        "y": 187,
+        "w": 92.015625,
+        "h": 28,
+        "right": 376,
+        "bottom": 215,
+        "visible": true
+      },
+      "interactPrompt": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "right": 0,
+        "bottom": 0,
+        "visible": false
+      },
+      "buttons": [
+        {
+          "text": "I · Sac",
+          "x": 14,
+          "y": 788,
+          "w": 69.1875,
+          "h": 44,
+          "right": 83.1875,
+          "bottom": 832,
+          "visible": true
+        },
+        {
+          "text": "T · Relais",
+          "x": 87.1875,
+          "y": 788,
+          "w": 69.203125,
+          "h": 44,
+          "right": 156.390625,
+          "bottom": 832,
+          "visible": true
+        },
+        {
+          "text": "M · Plan",
+          "x": 160.390625,
+          "y": 788,
+          "w": 69.203125,
+          "h": 44,
+          "right": 229.59375,
+          "bottom": 832,
+          "visible": true
+        },
+        {
+          "text": "N · Grenade 0",
+          "x": 233.59375,
+          "y": 788,
+          "w": 69.203125,
+          "h": 44,
+          "right": 302.796875,
+          "bottom": 832,
+          "visible": true
+        },
+        {
+          "text": "X · Visée",
+          "x": 306.796875,
+          "y": 788,
+          "w": 69.1875,
+          "h": 44,
+          "right": 375.984375,
+          "bottom": 832,
+          "visible": true
+        }
+      ],
+      "condition": [
+        {
+          "x": 220,
+          "y": 570,
+          "w": 16.8125,
+          "h": 8,
+          "right": 236.8125,
+          "bottom": 578,
+          "visible": true
+        },
+        {
+          "x": 240.8125,
+          "y": 572,
+          "w": 45.484375,
+          "h": 4,
+          "right": 286.296875,
+          "bottom": 576,
+          "visible": true
+        },
+        {
+          "x": 290.296875,
+          "y": 570,
+          "w": 25.21875,
+          "h": 8,
+          "right": 315.515625,
+          "bottom": 578,
+          "visible": true
+        },
+        {
+          "x": 319.515625,
+          "y": 572,
+          "w": 45.484375,
+          "h": 4,
+          "right": 365,
+          "bottom": 576,
+          "visible": true
+        }
+      ],
+      "viewport": {
+        "w": 390,
+        "h": 844
+      }
+    }
+  ],
+  "page_errors": [],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "http_errors": [],
+  "html_sha256": "df6bca201fef9d2c7e4ab4779aefedf0b5259f59e534d19dca1b83694b574790",
+  "script_sha256": "394e75e1ea1781f21c4fd42e990860601d141a7e95276aa4a7eb30052d35c10f",
+  "network_mocked": false,
+  "storage_mocked": false,
+  "html_injected": false,
+  "stage": "complete",
+  "passed": 45,
+  "failed": 0,
+  "elapsed_seconds": 29.465,
+  "origin": "http://127.0.0.1:41295",
+  "browser_version": "154.0.8037.57",
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true
+  }
+}

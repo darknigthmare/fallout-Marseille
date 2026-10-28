@@ -1,0 +1,27 @@
+{
+  "scope": "Fresh source-only reconstruction, three exact byte comparisons.",
+  "exitCode": 0,
+  "stdout": "/workspace/.cloud-setup/fallout-marseille/fps-expansion/rebuild-final/JOUER_FALLOUT_MISTRAL_v0.50.html 2935256\n",
+  "stderr": "",
+  "html_sha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "files": [
+    {
+      "path": "index.html",
+      "same": true,
+      "sourceSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+      "rebuiltSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34"
+    },
+    {
+      "path": "JOUER_FALLOUT_MISTRAL_v0.50.html",
+      "same": true,
+      "sourceSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+      "rebuiltSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34"
+    },
+    {
+      "path": "src/game.js",
+      "same": true,
+      "sourceSha256": "f180f8f4316147c3a02505d353f1c4f094c1fd632d7f4555398e4b31ff72522a",
+      "rebuiltSha256": "f180f8f4316147c3a02505d353f1c4f094c1fd632d7f4555398e4b31ff72522a"
+    }
+  ]
+}

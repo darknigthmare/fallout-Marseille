@@ -1,0 +1,30 @@
+OK Frozen HTML contains the exact production ordnance module
+OK Frozen real dependency appears in bundle: src/v050/10_lore_continuity.js
+OK Frozen real dependency appears in bundle: src/v050/11_power_armor.js
+OK Frozen real dependency appears in bundle: src/v050/12_iconic_ecosystem.js
+OK Frozen real dependency appears in bundle: src/v050/15_chemistry.js
+OK Frozen real dependency appears in bundle: src/v026/04_trade_runtime.js
+OK Frozen real dependency appears in bundle: src/v020/04_field.js
+OK Native HTTP document matches frozen production HTML
+OK Existing authored scene selected without grants: aubagne
+OK Fresh migration grants no grenade or armed projectile
+OK Native selection physically reaches Baptiste
+OK Actual E reaches Baptiste dialogue
+OK Baptiste exposes three finite grenades through real stock
+OK Native purchases debit caps and exhaust the one ordinary stock
+OK Visible enabled production control: tab inventory
+OK Visible enabled production control: sub ordnance
+OK Native Pip-Boy navigation: inventory/ordnance
+OK Actual explosives page explains aiming, fuse and self blast
+OK Visible enabled production control: o55:aim 
+OK Visible aim action closes menu without spending a grenade
+OK Safe authored launch point is collision-free
+OK Clickable grenade HUD control is visible and enabled
+FAIL Desktop grenade HUD button is fully inside the real viewport
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/ordnance_native.py", line 233, in main
+    check('Desktop grenade HUD button is fully inside the real viewport',desktop['visible'] and len(desktop['buttons'])==8,desktop)
+  File "/workspace/fallout-Marseille/tests/expansion/ordnance_native.py", line 69, in check
+    raise AssertionError(name)
+AssertionError: Desktop grenade HUD button is fully inside the real viewport
+

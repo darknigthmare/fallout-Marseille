@@ -11383,6 +11383,82 @@ function v050ControllerAfterInit(){
   Object.assign(window.__MISTRAL_DEBUG,{v050ControllerInfo:()=>({connected:runtime.input.connected,index:runtime.input.index,id:runtime.input.id,preferences:{...preferences},move:runtime.input.move.slice(),look:runtime.input.look.slice(),held:runtime.input.held.slice(),sticksBlocked:runtime.tracker.sticksBlocked.slice(),lastDevice:runtime.lastDevice,disconnectPaused:runtime.disconnectPaused,keyboardKeys:[...keys],mode}),v050ControllerStep:tick});
 }
 
+/* Native IGN MNS surfaces refine two landmark silhouettes. A MNS is the upper
+   observed surface, not a facade survey or a semantic/structural roof model.
+   Source building identities, XY contours and interior envelopes stay intact. */
+const MistralLandmarkSurfaces=(()=>{
+ const MAX_BYTES=16*1024*1024,MAX_RECORDS=24,MAX_FACES=60000,MAX_VERTICES=40000,EPS=1e-7;
+ const finite=n=>typeof n==='number'&&Number.isFinite(n),copy=v=>JSON.parse(JSON.stringify(v));
+ function fail(s){throw Error('Surfaces MNS : '+s);}
+ function key(g){if(!g||!['Polygon','MultiPolygon'].includes(g.type)||!Array.isArray(g.coordinates))fail('empreinte absente');return JSON.stringify([g.type,g.coordinates]);}
+ function validate(raw){
+  if(!raw||raw.schemaVersion!==1||raw.kind!=='ign-native-mns-landmark-surfaces'||raw.frame!=='EPSG:2154-NGF-IGN69'||!Array.isArray(raw.records)||raw.records.length>MAX_RECORDS)fail('atlas incompatible');
+  const s=raw.source;if(s?.provider!=='IGN'||s.product!=='MNS LiDAR HD'||s.nativeSpacingMeters!==.5||s.license!=='Licence Ouverte 2.0'||typeof s.attribution!=='string'||!s.attribution||!Array.isArray(s.tiles)||!s.tiles.length||s.tiles.length>4)fail('provenance incompatible');
+  const tiles=new Set();for(const t of s.tiles){let u;try{u=new URL(t.feature?.properties?.url_mns);}catch{fail('URL officielle absente');}if(u.protocol!=='https:'||u.hostname!=='data.geopf.fr'||u.username||u.password||u.pathname!=='/wms-r'||!u.searchParams.get('LAYERS')?.startsWith('IGNF_LIDAR-HD_MNS_')||!/^[a-f0-9]{64}$/.test(t.sha256)||tiles.has(t.sha256)||t.header?.resolutionMeters?.some(n=>n!==.5)||t.header?.nodata!==-9999||t.feature.properties.systeme_altimetrique!=='IGN69'||t.feature.properties.systeme_planimetrique!=='LAMB93')fail('dalle non attribuée');tiles.add(t.sha256);}
+  const records=[],seen=new Set();let count=0;
+  for(const r of raw.records){
+   if(typeof r.cleabs!=='string'||!r.cleabs||r.cleabs.length>128||seen.has(r.cleabs)||!Array.isArray(r.vertices)||r.vertices.length<3||r.vertices.length>MAX_VERTICES||!Array.isArray(r.faces)||!r.faces.length||r.faces.length>MAX_FACES||!Array.isArray(r.boundary)||!r.boundary.length||!r.sourceProperties||!Array.isArray(r.sourceTileSha256)||!r.sourceTileSha256.length||r.sourceTileSha256.some(h=>!tiles.has(h)))fail('volume hors contrat');
+   seen.add(r.cleabs);count+=r.faces.length;if(count>220000)fail('budget global dépassé');
+   for(const p of r.vertices)if(!Array.isArray(p)||p.length!==3||!p.every(finite)||p[0]<0||p[0]>1300000||p[1]<6000000||p[1]>7200000||p[2]<-100||p[2]>1000)fail('sommet invalide');
+   for(const f of r.faces){if(!Array.isArray(f)||f.length!==3||new Set(f).size!==3||f.some(i=>!Number.isInteger(i)||i<0||i>=r.vertices.length))fail('triangle invalide');for(let i=0;i<3;i++){const a=r.vertices[f[i]],b=r.vertices[f[(i+1)%3]];if(Math.hypot(a[0]-b[0],a[1]-b[1])>Math.SQRT1_2+EPS)fail('triangle hors cellule native');}}
+   for(const edge of r.boundary)if(!Array.isArray(edge)||edge.length!==2||edge[0]===edge[1]||edge.some(i=>!Number.isInteger(i)||i<0||i>=r.vertices.length))fail('bord invalide');
+   const m=r.measurements;if(!m||![m.minimumElevation,m.maximumElevation,m.footprintAreaSquareMetres,m.roofProjectedAreaSquareMetres,m.boundaryLengthMetres,m.sourceBoundaryLengthMetres].every(finite)||m.minimumElevation>m.maximumElevation||Math.abs(m.footprintAreaSquareMetres-m.roofProjectedAreaSquareMetres)>Math.max(.0001,m.footprintAreaSquareMetres*1e-7)||Math.abs(m.boundaryLengthMetres-m.sourceBoundaryLengthMetres)>.002)fail('couverture métrique incomplète');
+   if(Math.abs(Math.min(...r.vertices.map(p=>p[2]))-m.minimumElevation)>EPS||Math.abs(Math.max(...r.vertices.map(p=>p[2]))-m.maximumElevation)>EPS)fail('bornes verticales incohérentes');
+   records.push({...copy(r),geometryKey:key(r.rawGeometry)});
+  }
+  return{source:copy(s),records};
+ }
+ function matches(record,draw){return draw?.mesh==='prism'&&draw.geoLayer==='building'&&draw.geoProperties?.cleabs===record.cleabs&&draw.sourceGeometry&&key(draw.sourceGeometry)===record.geometryKey&&Object.entries(record.sourceProperties).every(([k,v])=>(draw.geoProperties[k]??null)===v);}
+ function projected(r,origin){return r.vertices.map(p=>[p[0]-origin[0],p[2],origin[1]-p[1]]);}
+ function build(record,draw,origin){
+  if(!matches(record,draw)||!Array.isArray(origin)||origin.length!==2||!origin.every(finite)||!finite(draw.baseY)||record.measurements.minimumElevation<draw.baseY-.01)fail('liaison ou base incompatible');
+  const vertices=projected(record,origin),faces=record.faces.map(f=>{const a=vertices[f[0]],b=vertices[f[1]],c=vertices[f[2]];return(b[2]-a[2])*(c[0]-a[0])-(b[0]-a[0])*(c[2]-a[2])>=0?f.slice():[f[0],f[2],f[1]];}),wallVertices=[],wallFaces=[];
+  for(const[ai,bi]of record.boundary){const a=vertices[ai],b=vertices[bi],i=wallVertices.length;wallVertices.push([a[0],draw.baseY,a[2]],[b[0],draw.baseY,b[2]],b.slice(),a.slice());wallFaces.push([i,i+1,i+2],[i,i+2,i+3]);}
+  return{roof:{mesh:'geoSurface',vertices,faces},walls:{mesh:'geoSurface',vertices:wallVertices,faces:wallFaces},minimumElevation:record.measurements.minimumElevation,maximumElevation:record.measurements.maximumElevation};
+ }
+ // A small metric index prevents every facade vertex/support probe from
+ // scanning the thousands of measured triangles of the entire monument.
+ class SurfaceIndex{
+  constructor(vertices,faces,size=2){if(!finite(size)||size<.5||size>64)fail('index métrique hors budget');this.vertices=vertices;this.faces=faces;this.size=size;this.cells=new Map();for(let i=0;i<faces.length;i++){const ps=faces[i].map(n=>vertices[n]),a=Math.floor(Math.min(...ps.map(p=>p[0]))/size),b=Math.floor(Math.max(...ps.map(p=>p[0]))/size),c=Math.floor(Math.min(...ps.map(p=>p[2]))/size),d=Math.floor(Math.max(...ps.map(p=>p[2]))/size);if(![a,b,c,d].every(Number.isSafeInteger)||(b-a+1)*(d-c+1)>64)fail('triangle hors index borné');for(let x=a;x<=b;x++)for(let z=c;z<=d;z++){const k=x+':'+z;if(!this.cells.has(k))this.cells.set(k,[]);this.cells.get(k).push(i);}}}
+  candidates(x,z,r=0){if(![x,z,r].every(finite)||Math.abs(x)>2e7||Math.abs(z)>2e7||r<0||r>8)return[];const ids=new Set();for(let a=Math.floor((x-r)/this.size);a<=Math.floor((x+r)/this.size);a++)for(let b=Math.floor((z-r)/this.size);b<=Math.floor((z+r)/this.size);b++)for(const i of this.cells.get(a+':'+b)||[])ids.add(i);return[...ids];}
+  heightAt(x,z,padding=0){let height=null,best=Infinity;for(const i of this.candidates(x,z,padding)){const ps=this.faces[i].map(n=>this.vertices[n]),t=MistralRoofSolids.projected(ps);if(!t)continue;const y=MistralRoofSolids.plane(t,x,z);if(y!==null){if(best>EPS){height=y;best=0;}else height=Math.max(height,y);continue;}if(!padding||best===0)continue;for(let j=0;j<3;j++){const a=ps[j],b=ps[(j+1)%3],dx=b[0]-a[0],dz=b[2]-a[2],den=dx*dx+dz*dz;if(den<EPS)continue;const u=Math.max(0,Math.min(1,((x-a[0])*dx+(z-a[2])*dz)/den)),d=Math.hypot(x-a[0]-u*dx,z-a[2]-u*dz);if(d<=padding+EPS&&d<best){best=d;height=a[1]+u*(b[1]-a[1]);}}}return height;}
+ }
+ return{MAX_BYTES,MAX_RECORDS,MAX_FACES,MAX_VERTICES,EPS,key,validate,matches,projected,build,SurfaceIndex};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralLandmarkSurfaces;
+
+function v056LandmarksAfterInit(){
+ if(typeof window==='undefined'||window.__mistralLandmarkSurfaces)return;window.__mistralLandmarkSurfaces=true;
+ const runtime={promise:null,loaded:false,missing:false,error:null,records:new Map(),source:null,applied:new Map(),rejected:new Map(),serial:0,byCap:new WeakMap(),facadeCache:new WeakMap(),facadeTrianglesOmitted:0};
+ function info(){return{loaded:runtime.loaded,missing:runtime.missing,error:runtime.error,records:runtime.records.size,applied:[...runtime.applied].map(([id,a])=>({cleabs:id,siteContext:a.record.siteContext,vertices:a.roof.vertices.length,roofTriangles:a.roof.faces.length,wallTriangles:a.walls.faces.length,minimumElevation:a.minimumElevation,maximumElevation:a.maximumElevation})),rejected:[...runtime.rejected].map(([cleabs,reason])=>({cleabs,reason})),nativeSpacingMeters:.5,facadeTrianglesOmitted:runtime.facadeTrianglesOmitted,scope:'Surface supérieure observée MNS, découpée dans les emprises IGN inchangées ; aucun relevé de façade ou de pièce.'};}
+ function apply(w,draws,colliders){let applied=0;for(const d of draws.slice()){const r=runtime.records.get(d.geoProperties?.cleabs);if(!r||d.v056MeasuredSurface)continue;try{
+   if(!MistralLandmarkSurfaces.matches(r,d))throw Error('source-geometry-or-properties-changed');
+   if(draws.some(cap=>cap!==d&&cap.geoLayer==='roof'&&cap.geoFeatureId===d.geoFeatureId))throw Error('explicit-roof-already-present');
+   const collider=colliders.find(c=>c.id===d.id);if(!collider||collider.disabled)throw Error('source-collider-unavailable');
+   const origin=typeof V046_ORIGIN!=='undefined'?V046_ORIGIN:null;if(!origin)throw Error('metric-origin-unavailable');
+   const surface=MistralLandmarkSurfaces.build(r,d,origin),index=new MistralLandmarkSurfaces.SurfaceIndex(surface.roof.vertices,surface.roof.faces);
+   const cap={...surface.roof,pos:d.pos.slice(),scale:[1,1,1],color:[.63,.61,.55],alpha:1,revision:1,geoLayer:'roof',geoFeatureId:d.geoFeatureId,v046Tile:d.v046Tile||d.geoTile,geoTile:d.geoTile,id:d.id+':mns',v046GeometryId:d.v046GeometryId+':mns-v1',v056MeasuredRoof:true,roofBasis:'MNS LiDAR HD, centres natifs et intersections interpolées',sourceProvenance:{source:'IGN — MNS LiDAR HD',license:runtime.source.license,attribution:runtime.source.attribution,acquiredAt:runtime.source.tiles.map(t=>t.feature.properties.date_fin_acquisition).join(', '),verticalDatum:'NGF-IGN69'}};
+   // Construct the same narrow-phase class used by declared roof geometry.
+   // The original broad XY and source descriptor remain intact.
+   const bounds={...collider,maxY:surface.maximumElevation},solid=new MistralRoofSolids.Solid({...d,height:surface.maximumElevation-d.baseY},cap,bounds,()=>v018MeshData(surface.walls),MistralIntegrity.inside);
+   solid.heightAt=(x,z)=>index.heightAt(x,z);
+   for(const t of v018Triangulate(d.rings))solid.faces.push(t.map(p=>[p[0],d.baseY,p[1]]));
+   const tops=index.faces.map(f=>MistralRoofSolids.projected(f.map(i=>index.vertices[i])));solid.maxDisk=function(x,z,r=0,walkableOnly=false){if(![x,z,r].every(Number.isFinite)||r<0||x+r<this.bounds.minX||x-r>this.bounds.maxX||z+r<this.bounds.minZ||z-r>this.bounds.maxZ)return null;let result=null;for(const i of index.candidates(x,z,r)){const t=tops[i];if(!t||walkableOnly&&!t.walkable)continue;const y=MistralRoofSolids.diskHeight(t,x,z,r);if(y!==null&&(result===null||y>result))result=y;}return result;};
+   Object.assign(collider,{maxY:surface.maximumElevation,v050RoofSolid:solid});d.v056MeasuredSurface={...surface,index,record:r,roof:cap};d.revision=(d.revision||0)+1;draws.push(cap);runtime.byCap.set(cap,d.v056MeasuredSurface);runtime.applied.set(r.cleabs,d.v056MeasuredSurface);runtime.rejected.delete(r.cleabs);applied++;
+  }catch(error){runtime.rejected.set(r.cleabs,String(error.message||error));}}if(applied&&typeof V050_ROOFS!=='undefined')V050_ROOFS.cache.delete(w);return applied;}
+ async function ready(){if(!runtime.promise)runtime.promise=(async()=>{try{const descriptor=await v050LocalSourceJSON('data/map_pack/landmark_surfaces/index.json',null,true);if(!descriptor){runtime.missing=true;runtime.loaded=true;return info();}const d=descriptor.surface;if(descriptor.schemaVersion!==1||!d||!/^data\/map_pack\/landmark_surfaces\/marseille-mns-[a-f0-9]{16}\.json$/.test(d.path)||!Number.isInteger(d.bytes)||d.bytes<1||d.bytes>MistralLandmarkSurfaces.MAX_BYTES||!/^[a-f0-9]{64}$/.test(d.sha256)||!d.path.endsWith(d.sha256.slice(0,16)+'.json'))throw Error('Descripteur MNS invalide');const atlas=MistralLandmarkSurfaces.validate(await v050LocalSourceJSON(d.path,d));runtime.source=atlas.source;runtime.records=new Map(atlas.records.map(r=>[r.cleabs,r]));runtime.loaded=true;if(world?.v046&&!V046.lab){for(const record of world.v046Records?.values()||[])apply(world,record.draws,record.colliders);const caps=[];apply(world,world.staticDraws,world.colliders);for(const record of world.v046Records?.values()||[])for(const cap of record.draws)if(cap.v056MeasuredRoof&&!world.staticDraws.includes(cap))caps.push(cap);if(caps.length)world.staticDraws=world.staticDraws.concat(caps);window.__MISTRAL_DEBUG?.v050FacadeRefresh?.();}return info();}catch(error){runtime.error=String(error.message||error);return info();}})();return runtime.promise;}
+ const importing=v046Import;v046Import=function(...args){const result=importing(...args);if(runtime.loaded&&!runtime.error&&!V046.lab)apply(args[0],result.draws,result.colliders);return result;};
+ const ensure=v046Ensure;v046Ensure=async function(...args){const serial=++runtime.serial;if(!V046.lab)await ready();if(serial!==runtime.serial)return false;return ensure(...args);};
+ const cancel=v046Cancel;v046Cancel=function(...args){runtime.serial++;return cancel(...args);};
+ const mesh=v018MeshData;v018MeshData=function(draw){return mesh(draw.v056MeasuredSurface?.walls||draw);};
+ // Only complete generated facade triangles below the actual upper surface
+ // are kept. Invented bays never remain floating over a measured lower roof.
+ function clipFacade(draw,activeSurfaces){const surface=activeSurfaces.get(draw.facadeBuildingId?.split(':')[0]);if(!surface||!draw.vertices||!draw.faces)return draw;const hit=runtime.facadeCache.get(draw);if(hit?.surface===surface)return hit.draw;const faces=draw.faces.filter(f=>f.every(i=>{const p=draw.vertices[i],y=surface.index.heightAt(p[0],p[2],.10);return y!==null&&p[1]<=y+.015;})),result={...draw,faces,v046GeometryId:draw.v046GeometryId+':mns-clip-v1',revision:(draw.revision||0)+1,v056MeasuredRoofClipped:true};runtime.facadeTrianglesOmitted+=draw.faces.length-faces.length;runtime.facadeCache.set(draw,{surface,draw:result});return result;}
+ const collect=collectDraws;collectDraws=function(...args){const draws=collect(...args),activeSurfaces=new Map();for(const cap of draws)if(cap.v056MeasuredRoof){const surface=runtime.byCap.get(cap);if(surface)activeSurfaces.set(surface.record.cleabs,surface);}return draws.map(d=>d.geoLayer==='facade'?clipFacade(d,activeSurfaces):d);};
+ Object.assign(window.__MISTRAL_DEBUG,{v056LandmarkInfo:info,v056LandmarkReady:ready,v056LandmarkSurface:(id,x,z)=>{const s=runtime.applied.get(id);if(!s)return null;return{cleabs:id,sourceTileSha256:s.record.sourceTileSha256.slice(),minimumElevation:s.minimumElevation,maximumElevation:s.maximumElevation,roofVertices:s.roof.vertices.length,roofTriangles:s.roof.faces.length,wallTriangles:s.walls.faces.length,height:Number.isFinite(x)&&Number.isFinite(z)?s.index.heightAt(x,z):null,sourceProperties:JSON.parse(JSON.stringify(s.record.sourceProperties)),rawGeometry:JSON.parse(JSON.stringify(s.record.rawGeometry)),sampleVertices:s.roof.vertices.slice(0,12).map(p=>p.slice()),measurements:JSON.parse(JSON.stringify(s.record.measurements))};}});
+ ready();
+}
+
 /* Metric facade detail on the original building edges. Source footprints and
    collision solids are never replaced by boxes. Unless an attributed facade
    document supplies the opening, the architectural detail is authored fiction. */
@@ -12223,7 +12299,31 @@ const MistralCityInteriors=(()=>{
   return{parts,ring,minY:d.elevation,maxY:d.elevation+d.height,closed:!!closed};
  }
  function roomDoorOccupied(d,pos,radius=.38){if(!Array.isArray(pos)||pos.length!==3||!pos.every(finite))return true;const feet=pos[1]-1.65,head=pos[1]+.18;if(head<d.elevation||feet>d.elevation+d.height)return false;const dx=pos[0]-d.center[0],dz=pos[2]-d.center[1],along=Math.abs(dx*d.tangent[0]+dz*d.tangent[1]),across=Math.abs(dx*d.normal[0]+dz*d.normal[1]);return along<d.width/2+radius+.025&&across<radius+d.thickness/2+.025;}
- return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,program,roomProgram,programTheme,programTheme4,PLAN_BUDGET,FURNITURE,COMPACT_FURNITURE,furnitureDefinition,furnishingFits,furnitureModel,furnitureRing,furnitureBlocked,walkable,canTravel,layout,ROOM_DOOR_LIMIT,migrateRoomDoorStates,roomDoorPlan,roomDoorGeometry,roomDoorOccupied};
+ // Services attach only to an already placed, reachable piece of furniture.
+ // They add no partition, fixture, water connection or claimed real amenity.
+ const SERVICE_LIMIT=2048,SERVICE_KINDS={bed:'rest',medical_bed:'rest',kitchen:'kitchen',workbench:'workshop'},SERVICE_RECIPES={kitchen:['ration','purify'],workshop:['bandage','ceramic','parts','circuit','plate','10mm','shells','cells','rivets','harpoons','fragGrenade']};
+ function serviceEdge(ring,from,to){let first=Infinity;const d=[to[0]-from[0],to[1]-from[1]];for(let i=0;i<ring.length;i++){const a=ring[i],b=ring[(i+1)%ring.length],e=[b[0]-a[0],b[1]-a[1]],den=d[0]*e[1]-d[1]*e[0];if(Math.abs(den)<EPS)continue;const q=[a[0]-from[0],a[1]-from[1]],t=(q[0]*e[1]-q[1]*e[0])/den,u=(q[0]*d[1]-q[1]*d[0])/den;if(t>=-EPS&&t<=1+EPS&&u>=-EPS&&u<=1+EPS)first=Math.min(first,t);}return finite(first)?[from[0]+d[0]*first,from[1]+d[1]*first]:null;}
+ function servicePlan(l){
+  const services=[],omissions=[];for(const f of l.furniture||[]){const kind=SERVICE_KINDS[f.kind];if(!kind)continue;
+   const p=f.approach;if(!Array.isArray(p)||p.length!==2||!p.every(finite)||!walkable(l,...p,.38)||(l.furniture||[]).some(o=>furnitureBlocked(o,...p,.38))){omissions.push({furnitureId:f.id,reason:'no-proved-furniture-approach'});continue;}
+   const parts=furnitureModel(f),def=furnitureDefinition(f),part=parts.map((part,index)=>({...part,index})).filter(part=>part.size[0]*part.size[2]>=def.size[0]*def.size[1]*.5-EPS).sort((a,b)=>b.pos[1]-a.pos[1])[0],angle=f.rotation||0,place=q=>{const r=rotate(q,angle);return[r[0]+f.pos[0],r[1]+f.pos[1]];};
+   if(!part){omissions.push({furnitureId:f.id,reason:'no-visible-service-component'});continue;}const center=place([part.pos[0],part.pos[2]]),dx=center[0]-p[0],dz=center[1]-p[1],distance=Math.hypot(dx,dz);if(distance<.1){omissions.push({furnitureId:f.id,reason:'invalid-furniture-approach'});continue;}
+   const partRing=rectangle(part.pos[0]-part.size[0]/2,part.pos[2]-part.size[2]/2,part.size[0],part.size[2]).map(place),edge=serviceEdge(furnitureRing(f),p,center),mesh=serviceEdge(partRing,p,center);
+   if(!edge||!mesh){omissions.push({furnitureId:f.id,reason:'no-visible-service-edge'});continue;}const target=[edge[0]-dx/distance*.035,l.elevation+part.pos[1],edge[1]-dz/distance*.035],meshAnchor=[mesh[0],target[1],mesh[1]],meshCenter=[center[0],target[1],center[1]],meshOffset=Math.hypot(target[0]-mesh[0],target[2]-mesh[1]);
+   if(meshOffset>.16||!canTravel(l,p,[target[0],target[2]],.04)){omissions.push({furnitureId:f.id,reason:'obstructed-or-distant-service-edge'});continue;}
+   services.push({id:hash([l.buildingId,l.level,l.signature,f.id,kind,'furniture-service-v1']),kind,furnitureId:f.id,furnitureKind:f.kind,label:f.label,approach:p.slice(),target,meshAnchor,meshCenter,meshPart:{index:part.index,material:part.material,offsetMeters:meshOffset},provenance:'invented'});
+  }return{services,omissions};
+ }
+ // Interactions use the actual rendered boxes, in furniture-local space.
+ // Looking at the former reserve point or empty space does not select a bed
+ // or workbench merely because its service has a higher priority.
+ function serviceAim(l,s,origin,direction){
+  if(![origin,direction].every(v=>Array.isArray(v)&&v.length===3&&v.every(finite)))return null;const f=l.furniture?.find(f=>f.id===s.furnitureId),length=Math.hypot(...direction);if(!f||length<.5)return null;const p=rotate([origin[0]-f.pos[0],origin[2]-f.pos[1]],-(f.rotation||0)),d=rotate([direction[0]/length,direction[2]/length],-(f.rotation||0)),o=[p[0],origin[1]-l.elevation,p[1]],ray=[d[0],direction[1]/length,d[1]],parts=furnitureModel(f);let nearest=4.5,selected=null;
+  for(const[index,part]of parts.entries()){let lo=0,hi=4.5,valid=true;for(let axis=0;axis<3;axis++){const a=part.pos[axis]-part.size[axis]/2,b=part.pos[axis]+part.size[axis]/2;if(Math.abs(ray[axis])<EPS){if(o[axis]<a||o[axis]>b){valid=false;break;}}else{let x=(a-o[axis])/ray[axis],z=(b-o[axis])/ray[axis];if(x>z)[x,z]=[z,x];lo=Math.max(lo,x);hi=Math.min(hi,z);if(lo>hi){valid=false;break;}}}if(valid&&lo<nearest){nearest=lo;selected={partIndex:index,material:part.material,distanceMeters:lo,point:origin.map((v,i)=>v+direction[i]/length*lo)};}}
+  return selected;
+ }
+ function migrateServices(raw){const out={restHours:0,crafts:0,uses:{}};if(!raw||typeof raw!=='object'||Array.isArray(raw))return out;for(const k of['restHours','crafts'])if(Number.isInteger(raw[k])&&raw[k]>=0)out[k]=Math.min(1000000,raw[k]);if(raw.uses&&typeof raw.uses==='object'&&!Array.isArray(raw.uses))for(const[k,v]of Object.entries(raw.uses).slice(0,SERVICE_LIMIT))if(/^[a-f0-9]{16}$/.test(k)&&Number.isInteger(v)&&v>0)out.uses[k]=Math.min(1000000,v);return out;}
+ return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,program,roomProgram,programTheme,programTheme4,PLAN_BUDGET,FURNITURE,COMPACT_FURNITURE,furnitureDefinition,furnishingFits,furnitureModel,furnitureRing,furnitureBlocked,walkable,canTravel,layout,ROOM_DOOR_LIMIT,migrateRoomDoorStates,roomDoorPlan,roomDoorGeometry,roomDoorOccupied,SERVICE_LIMIT,SERVICE_KINDS,SERVICE_RECIPES,servicePlan,serviceAim,migrateServices};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralCityInteriors;
 
@@ -12236,7 +12336,7 @@ if(typeof baseState==='function'){
  const V050_DOCUMENT_LIMITS={buildings:32,bytes:512*1024};
  const V050_CITY={doors:new Map(),owner:null,tick:0,documentOwner:null,documentRejections:new Map(),holding:false,exitPending:null,entered:0,returned:0,errors:[],last:null,rejections:{}};
  if(!ALL_ZONE_IDS.includes(V050_CITY_ZONE))ALL_ZONE_IDS.push(V050_CITY_ZONE);
- function fresh(){return{schema:2,active:null,returnPoint:null,visits:{},documents:[],documentOmissions:0,documentWarnings:[],roomDoorStates:{}};}
+ function fresh(){return{schema:2,active:null,returnPoint:null,visits:{},documents:[],documentOmissions:0,documentWarnings:[],roomDoorStates:{},services:MistralCityInteriors.migrateServices(null)};}
  function documentBytes(records){return JSON.stringify(records).length*2;}
  // Guessed floor schedules and labels are not measurements. A documentary
  // schedule replaces those guesses, but never a changed footprint or volume.
@@ -12254,6 +12354,7 @@ if(typeof baseState==='function'){
  function migrate(raw){
   const f=fresh();if(!raw||typeof raw!=='object'||Array.isArray(raw))return f;
   f.roomDoorStates=MistralCityInteriors.migrateRoomDoorStates(raw.roomDoorStates);
+  f.services=MistralCityInteriors.migrateServices(raw.services);
   if(raw.documents!=null){if(!Array.isArray(raw.documents))documentWarning(f,'Registre documentaire sauvegardé invalide.');else{
    if(raw.documents.length>V050_DOCUMENT_LIMITS.buildings)documentWarning(f,'Plans supplémentaires hors budget du registre sauvegardé.',raw.documents.length-V050_DOCUMENT_LIMITS.buildings);
    const seen=new Set();for(const entry of raw.documents.slice(0,V050_DOCUMENT_LIMITS.buildings))try{if(documentBytes([entry])>V050_DOCUMENT_LIMITS.bytes)throw Error('Plan sauvegardé hors budget.');const record=documentRecord(entry?.building,entry?.document);if(seen.has(record.building.id))throw Error('Identifiant de plan sauvegardé dupliqué.');seen.add(record.building.id);f.documents=documentPut(f.documents,record);}catch(e){documentWarning(f,e.message||e);}
@@ -12303,6 +12404,41 @@ if(typeof baseState==='function'){
    const owner=state,interaction=addInteract(w,'city-room-door:'+door.id,[door.center[0],door.elevation+1.04,door.center[1]],'Porte coulissante',()=>toggleRoomDoor(door.id,w,owner),{kind:'door',radius:2.4,priority:9}),rec={owner,door,draws,collider,interaction,closed:false};interaction.v055RoomDoor=door.id;w.v055RoomDoors.set(door.id,rec);applyRoomDoor(rec,!!state.v050City.roomDoorStates[door.id]);
   }
  }
+ function serviceReady(id,expectedWorld=world,expectedState=state){
+  const rec=world?.v056InteriorServices?.get(id),l=world?.v050CityInterior,p=state.player.pos;
+  if(!rec||rec.owner!==state||state!==expectedState||world!==expectedWorld||!l||!state.v050City?.active||!['PLAYING','DIALOGUE'].includes(mode)||state.player.hp<=0||V046.busy||V047.pending||zoneTransitioning||V050_CITY.holding||V050_CITY.exitPending||!onGround)return false;
+  if(state.v055Ordnance?.armed?.zone===world.id)return false;
+  if(Math.hypot(p[0]-rec.service.approach[0],p[2]-rec.service.approach[1])>2.2||Math.abs(p[1]-l.elevation-playerEyeHeight())>.7||!MistralCityInteriors.canTravel(l,[p[0],p[2]],[rec.service.target[0],rec.service.target[2]],.04)||!lineOfSight(p,rec.service.target))return false;
+  if((world.enemies||[]).some(e=>e.alive&&Math.hypot(e.pos[0]-p[0],e.pos[2]-p[2])<25&&lineOfSight(p,[e.pos[0],e.pos[1]+1,e.pos[2]])))return false;
+  return rec;
+ }
+ function serviceRecipe(rec,id){return(MistralCityInteriors.SERVICE_RECIPES[rec.service.kind]||[]).includes(id)&&typeof V020_RECIPES!=='undefined'?V020_RECIPES.find(r=>r.id===id):null;}
+ function useService(id,action,expectedWorld=world,expectedState=state){
+  const rec=serviceReady(id,expectedWorld,expectedState);if(!rec)return false;const rest=rec.service.kind==='rest',hours=action==='rest:1'?1:action==='rest:4'?4:0,recipe=rest?null:serviceRecipe(rec,action),cost=rest?hours===1?{water:1}:{water:1,ration:1}:recipe?.cost;
+  if(rest&&(!hours||['infection','bleeding','burning'].some(k=>state.status?.[k]>0))||!rest&&!recipe||!cost||typeof hasCost!=='function'||!hasCost(cost))return false;
+  const s=snapshot(),ok=commit(s,()=>{
+   if(typeof v020Spend!=='function'||!v020Spend(cost))throw Error('Réserves devenues insuffisantes ; le service est annulé.');
+   const ledger=state.v050City.services;if(rest){
+    state.worldTime=((state.worldTime||0)+hours)%24;ledger.restHours=Math.min(1000000,ledger.restHours+hours);state.player.hp=Math.min(state.player.maxHp,state.player.hp+12*hours);state.player.ap=state.player.maxAp;
+    if(state.needs){state.needs.fatigue=Math.max(0,(state.needs.fatigue||0)-25*hours);state.needs.thirst=Math.max(0,(state.needs.thirst||0)-20);if(hours===4)state.needs.hunger=Math.max(0,(state.needs.hunger||0)-25);}if(state.v020)state.v020.restHours=(state.v020.restHours||0)+hours;
+   }else{
+    if(typeof AMMO_INFO!=='undefined'&&AMMO_INFO[recipe.item])addAmmo(recipe.item,recipe.count);else addItem(recipe.item,recipe.count);ledger.crafts=Math.min(1000000,ledger.crafts+1);if(state.v020?.craftCount)state.v020.craftCount[recipe.id]=(state.v020.craftCount[recipe.id]||0)+1;
+   }
+   if(ledger.uses[id]||Object.keys(ledger.uses).length<MistralCityInteriors.SERVICE_LIMIT)ledger.uses[id]=Math.min(1000000,(ledger.uses[id]||0)+1);
+  });
+  if(ok){closeDialogue();toast(rest?hours+' h de repos · blessures et radiations conservées.':recipe.name+' · préparation terminée.','good');updateHUD();}return ok;
+ }
+ function openService(id,expectedWorld=world,expectedState=state,page=0){
+  const rec=serviceReady(id,expectedWorld,expectedState);if(!rec)return false;const s=rec.service,choices=[];
+  if(s.kind==='rest')for(const hours of[1,4])choices.push({text:hours===1?'Se reposer 1 h · 1 eau':'Dormir 4 h · 1 eau et 1 ration',condition:()=>!!serviceReady(id,expectedWorld,expectedState)&&hasCost(hours===1?{water:1}:{water:1,ration:1})&&!['infection','bleeding','burning'].some(k=>state.status?.[k]>0),lockText:'Réserves insuffisantes ou blessure active : soignez infection, saignement et brûlure avant le repos.',onChoose:()=>useService(id,'rest:'+hours,expectedWorld,expectedState)});
+  else{const recipes=MistralCityInteriors.SERVICE_RECIPES[s.kind].map(id=>serviceRecipe(rec,id)).filter(Boolean),pages=Math.max(1,Math.ceil(recipes.length/5)),at=Math.max(0,Math.min(pages-1,Number.isInteger(page)?page:0));for(const r of recipes.slice(at*5,at*5+5))choices.push({text:r.name+' · '+costText(r.cost),condition:()=>!!serviceReady(id,expectedWorld,expectedState)&&hasCost(r.cost),lockText:'Ingrédients insuffisants ou mobilier devenu inaccessible ; aucun paiement effectué.',onChoose:()=>useService(id,r.id,expectedWorld,expectedState)});if(pages>1)choices.push({text:'Autres préparations · '+(at+1)+'/'+pages,onChoose:()=>openService(id,expectedWorld,expectedState,(at+1)%pages)});}
+  choices.push({text:'Continuer la visite',onChoose:closeDialogue});
+  openDialogue(speaker(s.label,s.kind==='rest'?'REPOS À COUVERT':s.kind==='kitchen'?'PRÉPARATION DES RÉSERVES':'ÉTABLI DE RÉCUPÉRATION','⚙'),s.kind==='rest'?'Ce couchage permet une halte à couvert. Une heure rend 12 PV, quatre heures 48 PV et restaurent les PA ; eau et ration viennent de votre sac. Soignez infection, saignement et brûlure avant le repos. Les radiations et blessures ne sont pas effacées.':'Installez vos outils et préparez vos réserves. Les ingrédients viennent de votre sac ; vérifiez vos fournitures avant de commencer.',choices);return true;
+ }
+ function installServices(w,l){
+  const plan=MistralCityInteriors.servicePlan(l);w.v056InteriorServices=new Map();w.v056InteriorServiceOmissions=plan.omissions;
+  for(const service of plan.services){const owner=state,label=service.kind==='rest'?'Se reposer · '+service.label:service.kind==='kitchen'?'Préparer des réserves · cuisine':'Fabriquer · établi de récupération',interaction=addInteract(w,'city-service:'+service.id,service.target.slice(),label,()=>openService(service.id,w,owner),{kind:service.kind==='rest'?'rest':'bench',radius:2.4,priority:10,condition:()=>!!serviceReady(service.id,w,owner)&&!!MistralCityInteriors.serviceAim(l,service,state.player.pos,cameraDir(state.player.yaw,state.player.pitch))});interaction.v056InteriorService=service.id;w.v056InteriorServices.set(service.id,{owner,service,interaction});}
+ }
  function build(){
   const a=state.v050City.active;if(!a)throw Error('Aucun intérieur de bâtiment sélectionné');const b=a.building,l=MistralCityInteriors.layout(b,a.floor,a.entry,a.document),palette={residential:{floor:[.34,.29,.22],wall:[.62,.56,.44]},medical:{floor:[.37,.43,.39],wall:[.58,.65,.59]},industrial:{floor:[.29,.29,.27],wall:[.42,.43,.40]},annex:{floor:[.29,.29,.27],wall:[.42,.43,.40]},sports:{floor:[.35,.37,.30],wall:[.61,.61,.49]},office:{floor:[.35,.34,.28],wall:[.60,.59,.50]},education:{floor:[.38,.34,.25],wall:[.66,.64,.51]},commercial:{floor:[.34,.33,.29],wall:[.58,.57,.49]},civic:{floor:[.42,.38,.31],wall:[.64,.60,.50]}}[l.theme];
   const w=createWorld(V050_CITY_ZONE,b.name,`MARSEILLE · ${a.floor?'NIVEAU '+a.floor:'REZ-DE-CHAUSSÉE'}`,{indoor:true,daylight:.32,fog:[.21,.24,.20],wind:0});w.v050CityInterior=l;w.v050CityBuilding=b;const bb=MistralCityInteriors.bounds(l.rings);w.bounds=[bb.minX-.1,bb.maxX+.1,bb.minZ-.1,bb.maxZ+.1];w.spawn=[l.entry[0],l.elevation+playerEyeHeight(),l.entry[1]];const facing=a.facing||[-l.entry[0],-l.entry[1]];w.spawnYaw=Math.atan2(facing[0],-facing[1]);
@@ -12313,6 +12449,7 @@ if(typeof baseState==='function'){
   const materials={wood:[.39,.30,.21],fabric:[.32,.39,.32],blanket:[.43,.45,.28],metal:[.29,.32,.29],dark:[.15,.18,.16],porcelain:[.69,.70,.61],medical:[.48,.62,.54],paper:[.72,.68,.53],glass:[.17,.31,.28],water:[.25,.37,.35],amber:[.64,.48,.22]};
   for(let i=0;i<l.furniture.length;i++){const f=l.furniture[i],[x,z]=f.pos,y=l.elevation,parts=MistralCityInteriors.furnitureModel(f),angle=f.rotation||0,c=Math.cos(angle),s=Math.sin(angle);for(let j=0;j<parts.length;j++){const part=parts[j],draw=addBox(w,[x+c*part.pos[0]-s*part.pos[2],y+part.pos[1],z+s*part.pos[0]+c*part.pos[2]],part.size,materials[part.material]||materials.wood,-angle,{id:`city-furniture:${i}:part:${j}`});draw.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}const collider=f.ring?v017AddPolyCollider(w,f.ring,y,y+f.height,{id:'city-furniture:'+i}):addCollider(w,x,z,f.size[0],f.size[1],{id:'city-furniture:'+i,minY:y,maxY:y+f.height});collider.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}
   installRoomDoors(w,l,materials);
+  installServices(w,l);
   const[x,z]=l.entry,y=l.elevation;
   addBox(w,[x,y+.06,z],[.65,.12,.65],[.57,.52,.28]);
   const inspect=()=>{
@@ -12408,9 +12545,9 @@ if(typeof baseState==='function'){
   const a=state.v050City.active,l=world?.v050CityInterior,records=state.v050City.documents||[];
   return{version:2,zone:world?.id,active:a?{id:a.building.id,name:a.building.name,layoutVersion:a.building.layoutVersion,floor:a.floor,streetFloor:a.streetFloor??0,levels:a.building.levels,origin:a.building.origin.slice(),signature:l?.signature,layoutProvenance:l?.provenance,documentOrigin:a.documentOrigin||null,documentedLevels:a.document?.levels.map(r=>r.level)||[],documentSource:a.document?{...a.document.source}:null,currentLevelSource:l?.source?{...l.source}:null,furnishing:l?{objects:l.furniture.length,renderFurniture:world.staticDraws.filter(d=>d.v050CityFurnishing).length,colliderFurniture:world.colliders.filter(c=>c.v050CityFurnishing).length,byKind:Object.fromEntries([...new Set(l.furniture.map(f=>f.kind))].map(kind=>[kind,l.furniture.filter(f=>f.kind===kind).length])),functionalUses:[...new Set(l.functionalZones.map(z=>z.use))],roomsBasis:l.roomsBasis,roomCoverage:l.roomCoverage,programCoverage:l.programCoverage||null,provenance:'invented'}:null}:null,
    doors:[...V050_CITY.doors].map(([id,r])=>({id,building:r.building.id,pos:r.interaction.pos.slice(),levels:r.building.levels,streetFloor:r.streetFloor,provenance:r.document?'documented or mixed':'invented',documentOrigin:r.documentOrigin||null,documentedLevels:r.document?.levels.map(l=>l.level)||[],documentSource:r.document?{...r.document.source}:null})),
-   roomDoors:{doors:[...(world?.v055RoomDoors?.values()||[])].map(r=>({...deepClone(r.door),closed:r.closed,colliderEnabled:!r.collider.disabled,renderedParts:r.draws.filter(d=>!d.hidden).length,interactionId:r.interaction.id,label:r.interaction.label})),omissions:world?.v055RoomDoorOmissions||[],savedClosed:Object.keys(state.v050City.roomDoorStates||{}).length,limit:MistralCityInteriors.ROOM_DOOR_LIMIT},documentRegistry:{entries:records.length,bytes:documentBytes(records),maxBuildings:V050_DOCUMENT_LIMITS.buildings,maxBytes:V050_DOCUMENT_LIMITS.bytes,omissions:state.v050City.documentOmissions||0,warnings:(state.v050City.documentWarnings||[]).slice(),rejections:[...V050_CITY.documentRejections.values()].map(r=>({...r}))},rejections:{...V050_CITY.rejections},interactionBudget:64,entered:V050_CITY.entered,returned:V050_CITY.returned,exitPending:!!V050_CITY.exitPending,last:V050_CITY.last,errors:V050_CITY.errors.slice()};
+   services:{stations:[...(world?.v056InteriorServices?.values()||[])].map(r=>({...deepClone(r.service),interactionId:r.interaction.id,label:r.interaction.label})),omissions:deepClone(world?.v056InteriorServiceOmissions||[]),ledger:deepClone(state.v050City.services),limit:MistralCityInteriors.SERVICE_LIMIT},roomDoors:{doors:[...(world?.v055RoomDoors?.values()||[])].map(r=>({...deepClone(r.door),closed:r.closed,colliderEnabled:!r.collider.disabled,renderedParts:r.draws.filter(d=>!d.hidden).length,interactionId:r.interaction.id,label:r.interaction.label})),omissions:world?.v055RoomDoorOmissions||[],savedClosed:Object.keys(state.v050City.roomDoorStates||{}).length,limit:MistralCityInteriors.ROOM_DOOR_LIMIT},documentRegistry:{entries:records.length,bytes:documentBytes(records),maxBuildings:V050_DOCUMENT_LIMITS.buildings,maxBytes:V050_DOCUMENT_LIMITS.bytes,omissions:state.v050City.documentOmissions||0,warnings:(state.v050City.documentWarnings||[]).slice(),rejections:[...V050_CITY.documentRejections.values()].map(r=>({...r}))},rejections:{...V050_CITY.rejections},interactionBudget:64,entered:V050_CITY.entered,returned:V050_CITY.returned,exitPending:!!V050_CITY.exitPending,last:V050_CITY.last,errors:V050_CITY.errors.slice()};
  }
- globalThis.v050CityInteriorAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v050CityInteriorInfo:info,v050CityInteriorEnter:enter,v050CityInteriorExit:exit,v050CityInteriorFloor:floor,v050CityInteriorBind:()=>bind(true),v050CityRegisterDocument:registerDocument,v055CityRoomDoor:toggleRoomDoor,v052CityInteriorLayout:()=>world?.v050CityInterior?deepClone(world.v050CityInterior):null});bind(true);};
+ globalThis.v050CityInteriorAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v050CityInteriorInfo:info,v050CityInteriorEnter:enter,v050CityInteriorExit:exit,v050CityInteriorFloor:floor,v050CityInteriorBind:()=>bind(true),v050CityRegisterDocument:registerDocument,v055CityRoomDoor:toggleRoomDoor,v056CityInteriorService:useService,v056CityInteriorServiceOpen:openService,v056CityInteriorAimInfo:()=>{const l=world?.v050CityInterior,p=state.player.pos,dir=cameraDir(state.player.yaw,state.player.pitch);return{selected:typeof selectedInteractable==='undefined'?null:selectedInteractable?.id||null,hits:l?[...(world?.v056InteriorServices?.values()||[])].map(r=>({id:r.service.id,hit:MistralCityInteriors.serviceAim(l,r.service,p,dir)})).filter(r=>r.hit):[]};},v052CityInteriorLayout:()=>world?.v050CityInterior?deepClone(world.v050CityInterior):null});bind(true);};
 }
 
 /* Installed municipal coverage and architectural interpretation are reported
@@ -12474,7 +12611,7 @@ function v051CityPanelAfterInit(){
  Object.assign(window.__MISTRAL_DEBUG,{v051ReadCityStatus:()=>load(true),v051CityPanel:()=>({pending:!!status.pending,error:status.error,data:status.data?JSON.parse(JSON.stringify(status.data)):null})});
 }
 
-/* Continuity of the French factions already preserved in v0.46. These six
+/* Continuity of the French factions already preserved in v0.46. These eight
    new dossiers extend that canon; they are not recovered v0.44 conversations. */
 const MistralLoreContinuity=(()=>{
  const copy=v=>JSON.parse(JSON.stringify(v)),own=(v,k)=>Object.prototype.hasOwnProperty.call(v||{},k);
@@ -12520,13 +12657,27 @@ const MistralLoreContinuity=(()=>{
    choices:[
     {id:'discrets',label:'Conserver les lieux d’attente auprès des relais sans publier les familles',cost:{},caps:45,xp:85,loreRep:3,rep:{ligue:2,veilleurs:1},text:'Les deux relais conservent leurs engagements d’attente. Le contact garde une copie des lieux, sans noms de familles ni registre de naissance. Aucun départ de train n’est annoncé.'},
     {id:'accueil',label:'Approvisionner les lieux d’attente · 2 vivres + 2 eaux',cost:{food:2,water:2},caps:55,xp:85,loreRep:3,rep:{ligue:1,secours:3},text:'L’eau et les vivres sont remis pour les deux lieux d’attente attestés. Les relais accueillent sans exiger de dossier de naissance ; le contact conserve le reçu, sans annoncer un trajet de train non rétabli.'}
+   ]},
+  {id:'partage',name:'L’eau à hauteur de table',faction:'communes',factionName:'Communes du Mistral',macro:'geo_marseille',kind:'testimony',required:2,contactId:'v042-marseille-caravan-01',witnessIds:['v042-marseille-caravan-01','v042-marseille-caravan-02'],
+   description:'Entre le Vieux-Port et Saint-Charles, les Communes demandent aux deux relais de s’engager sur une réserve d’eau accessible sans carte de naissance. Il faut décider si les fournitures vont à l’accueil immédiat ou aux équipes qui entretiennent les récipients. Aucun robinet remis en route n’est promis.',
+   pending:'Recueillir l’engagement du Vieux-Port et de Saint-Charles, puis revenir au Vieux-Port avec les fournitures de la décision choisie.',
+   choices:[
+    {id:'reserve',label:'Confier la réserve aux deux tables d’accueil · 3 eaux + 1 tissu',cost:{water:3,cloth:1},caps:40,xp:90,loreRep:3,rep:{ligue:2,secours:2},text:'Les deux relais ont attesté leur engagement. Trois eaux et un tissu sont remis aux tables d’accueil, sans carte de naissance exigée. Le reçu décrit une réserve finie ; il ne promet ni eau illimitée ni canalisation réparée.'},
+    {id:'entretien',label:'Outiller les équipes de récipients sous contrôle des habitants · 3 ferrailles + 1 circuit',cost:{scrap:3,circuitry:1},caps:45,xp:90,loreRep:3,rep:{ligue:3,secours:1},text:'Les deux relais ont attesté leur engagement. Ferraille et circuit sont confiés aux équipes de récipients ; les habitants gardent le reçu et choisissent les priorités. Aucun filtre installé, aucune pompe animée et aucune eau supplémentaire ne sont annoncés.'}
+   ]},
+  {id:'passage_libre',name:'Le passage ne se vend pas',faction:'gilets',factionName:'Gilets de Cendre',macro:'geo_huveaune',kind:'testimony',required:2,contactId:'v042-huveaune-caravan-02',witnessIds:['v042-huveaune-caravan-01','v042-huveaune-caravan-02'],
+   description:'De la halte de la vallée à Aubagne Haute, les Gilets de Cendre veulent deux engagements qui interdisent de transformer l’attente des convois en péage. La soupe et les signes de passage doivent rester sous le contrôle des relais, pas devenir une taxe.',
+   pending:'Recueillir l’engagement de la Halte caravanière · Vallée de l’Huveaune et du Relais marchand · Aubagne Haute, puis revenir à Aubagne Haute avec les fournitures choisies.',
+   choices:[
+    {id:'cantine',label:'Approvisionner la cantine des personnes en attente · 3 vivres + 2 eaux',cost:{food:3,water:2},caps:45,xp:95,loreRep:3,rep:{ligue:1,secours:3},text:'Les deux relais refusent le péage. Trois vivres et deux eaux sont remis à la cantine des personnes en attente, sans droit de passage vendu. Le reçu garde une quantité finie ; aucun convoi autonome ni barrage physiquement levé n’est annoncé.'},
+    {id:'balises',label:'Fournir des repères aux équipes de relais · 2 ferrailles + 2 tissus',cost:{scrap:2,cloth:2},caps:50,xp:95,loreRep:3,rep:{ligue:2,veilleurs:2},text:'Les deux relais refusent le péage. Ferraille et tissu sont remis aux équipes pour leurs repères de passage ; Canal 13 rappelle qu’un signe n’autorise aucune taxe. Cette livraison ne déplace pas de convoi et ne fabrique pas de balise sur la carte.'}
    ]}
  ];
  const IDS=SPECS.map(q=>q.id),FACTIONS=['convention','gilets','syndicat','concorde','communes','sansdossier','cochonnet','vigies','insulaires'];
  const safe=s=>s&&s.safe===true&&['settlement','outpost','caravan'].includes(s.kind)&&s.npcSlots>0;
  function bind(catalog){
   if(!Array.isArray(catalog)||catalog.length>4096)throw Error('Catalogue de relais incompatible');
-  return SPECS.map(spec=>{const contacts=catalog.filter(s=>s.macro===spec.macro&&safe(s)).sort((a,b)=>a.id.localeCompare(b.id)),landmarks=catalog.filter(s=>s.macro===spec.macro&&s.kind==='landmark').sort((a,b)=>a.id.localeCompare(b.id)),contact=spec.contactId?contacts.find(s=>s.id===spec.contactId):contacts[spec.contactIndex%Math.max(1,contacts.length)],observed=spec.observationIds?spec.observationIds.map(id=>landmarks.find(s=>s.id===id)).filter(Boolean):landmarks.slice(0,spec.required);return{...copy(spec),contactSite:contact?.id||null,witnessSites:contacts.map(s=>s.id),observationSites:observed.map(s=>s.id),available:!!contact&&(spec.kind!=='observation'||observed.length>=spec.required)};});
+  return SPECS.map(spec=>{const contacts=catalog.filter(s=>s.macro===spec.macro&&safe(s)).sort((a,b)=>a.id.localeCompare(b.id)),landmarks=catalog.filter(s=>s.macro===spec.macro&&s.kind==='landmark').sort((a,b)=>a.id.localeCompare(b.id)),contact=spec.contactId?contacts.find(s=>s.id===spec.contactId):contacts[spec.contactIndex%Math.max(1,contacts.length)],observed=spec.observationIds?spec.observationIds.map(id=>landmarks.find(s=>s.id===id)).filter(Boolean):landmarks.slice(0,spec.required),witnesses=spec.witnessIds?spec.witnessIds.map(id=>contacts.find(s=>s.id===id)).filter(Boolean):contacts;return{...copy(spec),contactSite:contact?.id||null,witnessSites:witnesses.map(s=>s.id),observationSites:observed.map(s=>s.id),available:!!contact&&(spec.kind!=='observation'||observed.length>=spec.required)&&(!spec.witnessIds||witnesses.length>=spec.required)};});
  }
  function fresh(){return{schema:1,quests:Object.fromEntries(IDS.map(id=>[id,{accepted:false,witnesses:[],observations:[],audit:false,outcome:null}])),journal:[]};}
  function migrate(raw,bindings){
@@ -12556,7 +12707,7 @@ const MistralLoreContinuity=(()=>{
   const completed=id=>{const q=bindings.find(q=>q.id===id),s=ledger.quests[id];return s?.outcome?q?.choices.find(c=>c.id===s.outcome)?.text:null;};
   if(channel==='centtreves'){const p=legacy.petanque||{};return`COCHONNET-3 tient le registre : ${Math.max(0,Number(p.played)||0)} mènes, ${Math.max(0,Number(p.wins)||0)} victoires. `+(legacy.done?.encore||legacy.done?.pointe?'Les abords homologués restent sous la trêve. Une victoire ne décide pas qui a le droit de manger.':'La trêve tient jusqu’à la fin de la mène. Les dossiers « On joue encore » et « Tu tires ou tu pointes ? » restent à conclure.');}
   if(channel==='lazaret')return completed('lazaret')||'Lazaret à l’écoute. Une place à bord n’est pas une promesse d’accueil. Le contact des Insulaires attend de l’eau et une décision pour la réserve de soin ou le passage accompagné.';
-  const lines=['Canal 13 — les Ronds-Points Libres transmettent les faits, pas les listes de suspects.'];for(const id of['cendres','formulaire','signaux','cadences','attente'])if(completed(id))lines.push(completed(id));if(lines.length===1)lines.push('Des habitants demandent des attestations, une copie CERFA-77 se contredit, les Vigies attendent les observations des crêtes, les équipes des chantiers discutent des priorités et les Sans-Dossier cherchent des lieux d’attente.');return lines.join(' ');
+  const lines=['Canal 13 — les Ronds-Points Libres transmettent les faits, pas les listes de suspects.'];for(const id of['cendres','formulaire','signaux','cadences','attente','partage','passage_libre'])if(completed(id))lines.push(completed(id));if(lines.length===1)lines.push('Des habitants demandent des attestations, une copie CERFA-77 se contredit, les Vigies attendent les observations des crêtes, les équipes des chantiers discutent des priorités, les Sans-Dossier cherchent des lieux d’attente, les Communes discutent des réserves d’eau et les Gilets refusent les péages.');return lines.join(' ');
  }
  return{catalog:()=>copy(SPECS),IDS:IDS.slice(),FACTIONS:FACTIONS.slice(),bind,fresh,migrate,progress,enough,reduce,nextSite,bulletin};
 })();
@@ -12600,8 +12751,8 @@ if(typeof baseState==='function'&&typeof V042_CATALOG!=='undefined'){
  }
  const oldRead=v042ReadSite;v042ReadSite=function(id){const it=world?.interactables?.find(i=>i.id==='v042-lore-'+id),p=state.player.pos,physical=!blocked()&&it&&dist2(p,it.pos)<=3.6&&Math.abs(p[1]-it.pos[1])<2.8&&lineOfSight(p,it.pos),owner=world,stateOwner=state,result=oldRead(...arguments);if(physical)observed(id,owner,stateOwner);return result;};
  function info(){return{schema:1,quests:bindings.map(q=>{const s=state.v053Lore.quests[q.id];return{id:q.id,name:q.name,faction:q.faction,contactSite:q.contactSite,observationSites:q.observationSites.slice(),witnessSites:q.witnessSites.slice(),available:q.available,accepted:s.accepted,outcome:s.outcome,witnesses:s.witnesses.slice(),observations:s.observations.slice(),audit:s.audit,progress:MistralLoreContinuity.progress(q,s),contact:!!contact(q.contactSite),nextSite:MistralLoreContinuity.nextSite(q,s)};}),journal:copy(state.v053Lore.journal),stations:['canal13','centtreves','lazaret'],origin:'New extensions of the established repository canon; original v0.44 conversation/source not recovered'};}
- function panel(c){const esc=v027Escape,deny=blocked();c.innerHTML='<div class="p27-long"><p class="p27-kicker">LES VOIX DES RELAIS</p><h2>Dossiers et engagements</h2><p>Les habitants peuvent attester une présence, contester un registre ou demander des fournitures. Chaque décision conserve ses preuves, ses coûts et ses conséquences.</p>'+(deny?'<p>'+esc(deny)+'</p>':'')+bindings.map(q=>{const s=state.v053Lore.quests[q.id],progress=MistralLoreContinuity.progress(q,s),giver=v042Site(q.contactSite),present=!!contact(q.contactSite),witness=q.witnessSites.find(id=>!!contact(id)),outcome=q.choices.find(x=>x.id===s.outcome);return'<section class="v046-notice"><h3>'+esc(q.name)+'</h3><p>'+esc(q.factionName)+' · '+esc(giver?.name||'Relais indisponible')+'</p><p>'+esc(q.description)+'</p><p>'+esc(outcome?.text||q.pending)+'</p><p>'+esc(progress.text)+'</p>'+(!q.available?'':!s.accepted?v027Button('Ouvrir le dossier au relais','l53:accept',q.id,!!deny||!present):s.outcome?'<p>Décision et récompense conservées. Ce dossier ne se renouvelle pas.</p>':v027Button('Suivre le prochain repère','l53:track',q.id,!!deny)+(['testimony','audit'].includes(q.kind)?v027Button('Recueillir le témoignage du relais présent','l53:witness',q.id+'|'+(witness||''),!!deny||!witness||s.witnesses.includes(witness)||s.witnesses.length>=q.required):'')+(q.kind==='audit'?v027Button('Analyser la copie · INT 5, 1 circuit','l53:audit',q.id,!!deny||!present||s.audit||Number(state.character.special.I||0)<5||!MistralLoreContinuity.enough(state.inventory,{circuitry:1})):'' )+q.choices.map(ch=>'<p>'+esc(ch.label)+' · '+ch.caps+' capsules, '+ch.xp+' XP.</p>'+v027Button('Conclure : '+ch.label,'l53:resolve',q.id+'|'+ch.id,!!deny||!present||!progress.ready||!MistralLoreContinuity.enough(state.inventory,ch.cost))).join(''))+'</section>';}).join('')+'<h3>Bulletins des relais</h3><p>Canal 13, la Ligue des Cent Trêves et le Lazaret rendent compte des engagements conservés. Les fréquences se consultent dans RADIO.</p>'+v027Button('Ouvrir les stations','jump','radio:stations')+'</div>';}
- const oldData=v027Data;v027Data=function(c){if(V027.sub==='continuity')return panel(c);const result=oldData(...arguments);if(V027.sub==='france')c.insertAdjacentHTML('beforeend','<section class="v046-notice"><h2>Les voix des relais</h2><p>La Convention, CONCORDE, les Vigies, les Insulaires, le Syndicat et les Sans-Dossier ont des engagements à proposer sur le territoire.</p>'+v027Button('Consulter les dossiers des relais','jump','data:continuity')+'</section>');return result;};
+ function panel(c){const esc=v027Escape,deny=blocked();c.innerHTML='<div class="p27-long"><p class="p27-kicker">LES VOIX DES RELAIS</p><h2>Dossiers et engagements</h2><p>Les habitants peuvent attester une présence, contester un registre ou demander des fournitures. Chaque décision conserve ses preuves, ses coûts et ses conséquences.</p>'+(deny?'<p>'+esc(deny)+'</p>':'')+bindings.map(q=>{const s=state.v053Lore.quests[q.id],progress=MistralLoreContinuity.progress(q,s),giver=v042Site(q.contactSite),present=!!contact(q.contactSite),witness=q.witnessSites.find(id=>!!contact(id)),outcome=q.choices.find(x=>x.id===s.outcome);return'<section class="v046-notice"><h3>'+esc(q.name)+'</h3><p>'+esc(q.factionName)+' · '+esc(giver?.name||'Relais indisponible')+'</p><p>'+esc(q.description)+'</p><p>'+esc(outcome?.text||q.pending)+'</p>'+(outcome?'':'<p>'+esc(progress.text)+'</p>')+(!q.available?'':!s.accepted?v027Button('Ouvrir le dossier au relais','l53:accept',q.id,!!deny||!present):s.outcome?'<p>Décision et récompense conservées. Ce dossier ne se renouvelle pas.</p>':v027Button('Suivre le prochain repère','l53:track',q.id,!!deny)+(['testimony','audit'].includes(q.kind)?v027Button('Recueillir le témoignage du relais présent','l53:witness',q.id+'|'+(witness||''),!!deny||!witness||s.witnesses.includes(witness)||s.witnesses.length>=q.required):'')+(q.kind==='audit'?v027Button('Analyser la copie · INT 5, 1 circuit','l53:audit',q.id,!!deny||!present||s.audit||Number(state.character.special.I||0)<5||!MistralLoreContinuity.enough(state.inventory,{circuitry:1})):'' )+q.choices.map(ch=>'<p>'+esc(ch.label)+' · '+ch.caps+' capsules, '+ch.xp+' XP.</p>'+v027Button('Conclure : '+ch.label,'l53:resolve',q.id+'|'+ch.id,!!deny||!present||!progress.ready||!MistralLoreContinuity.enough(state.inventory,ch.cost))).join(''))+'</section>';}).join('')+'<h3>Bulletins des relais</h3><p>Canal 13, la Ligue des Cent Trêves et le Lazaret rendent compte des engagements conservés. Les fréquences se consultent dans RADIO.</p>'+v027Button('Ouvrir les stations','jump','radio:stations')+'</div>';}
+ const oldData=v027Data;v027Data=function(c){if(V027.sub==='continuity')return panel(c);const result=oldData(...arguments);if(V027.sub==='france')c.insertAdjacentHTML('beforeend','<section class="v046-notice"><h2>Les voix des relais</h2><p>La Convention, CONCORDE, les Vigies, les Insulaires, le Syndicat, les Sans-Dossier, les Communes et les Gilets ont des engagements à proposer sur le territoire.</p>'+v027Button('Consulter les dossiers des relais','jump','data:continuity')+'</section>');return result;};
  const oldDispatch=v027Dispatch;v027Dispatch=function(action,arg=''){if(typeof action!=='string'||!action.startsWith('l53:'))return oldDispatch(...arguments);if(!v027CanAct())return false;const[a,b]=String(arg).split('|');if(action==='l53:track')return track(a);if(action==='l53:accept')return act('accept',a);if(action==='l53:audit')return act('audit',a);if(action==='l53:witness')return act('witness',a,null,b);if(action==='l53:resolve')return act('resolve',a,b);return false;};
  function conversation(id){
   const d=V042_RUNTIME.npcData.get(id),site=d&&v042Site(d.siteId);if(!d||!site||!contact(site.id))return false;const relevant=bindings.filter(q=>q.contactSite===site.id||q.witnessSites.includes(site.id)&&['testimony','audit'].includes(q.kind)&&state.v053Lore.quests[q.id].accepted),choices=[],lines=[];
@@ -13437,6 +13588,8 @@ const MistralOrdnance=(()=>{
  function damage(distance){return finite(distance)&&distance>=0&&distance<BLAST?DAMAGE*(1-distance/BLAST):0;}
  return{ID,RADIUS,FUSE,BLAST,DAMAGE,SPEED,STOCKS,RECIPE,fresh,migrate,launch,reflect,advance,triangleHit,plane,surfaceHit,surfaceRay,damage};
 })();
+// Private bridge shared by world explosives; never attached to the debug API.
+const MistralOrdnanceWorld={};
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralOrdnance;
 
 if(typeof window!=='undefined'&&typeof baseState==='function'){
@@ -13488,8 +13641,12 @@ if(typeof window!=='undefined'&&typeof baseState==='function'){
   const ok=atomic(()=>{if(!v026Remove(M.ID,1))return false;state.v055Ordnance.armed=candidate;state.v055Ordnance.launched=Math.min(1e6,state.v055Ordnance.launched+1);saveGame(false);return true;});if(ok){audio.ensure();audio.tone(280,.08,'triangle',.04,-90);toast('Grenade lancée · fusée 3 s · éloignez-vous.');updateHUD();}else if(runtime.error)toast('Grenade conservée : '+runtime.error,'bad');return ok;
  }
  function visible(origin,target){const distance=Math.hypot(...target.map((n,i)=>n-origin[i]));if(distance<.001)return true;const dir=target.map((n,i)=>(n-origin[i])/distance);const limit=Math.max(0,distance-.03);if(firstObstacle(origin,dir,limit)<limit)return false;for(const c of ceilingSurfaces().boxes)if(rayAABB(origin,dir,c,limit)<limit)return false;for(const points of planeSurfaces(origin[0],origin[2],M.BLAST))if(M.surfaceRay(points,origin,dir,limit)<limit)return false;return true;}
- function explode(b){const blast={pos:b.pos.slice(),hits:[],player:false};const ok=atomic(()=>{state.v055Ordnance.armed=null;state.v055Ordnance.detonated=Math.min(1e6,state.v055Ordnance.detonated+1);for(const e of world.enemies||[]){if(!e.alive)continue;const target=[e.pos[0],e.pos[1]+.8,e.pos[2]],n=M.damage(Math.hypot(...target.map((v,i)=>v-b.pos[i])));if(n>0&&visible(b.pos,target)){const hp=e.health;damageEnemy(e,n*difficultyInfo().outgoing,'body',false,0);blast.hits.push({id:e.id,before:hp,after:e.health});}}
-   const p=state.player.pos,target=[p[0],p[1]-playerEyeHeight()+.85,p[2]],n=M.damage(Math.hypot(...target.map((v,i)=>v-b.pos[i])));if(n>0&&visible(b.pos,target)){blast.player=true;hurtPlayer(n,'Votre grenade à fragmentation');}saveGame(false);return true;},['PLAYING'],true);if(ok){runtime.lastBlast=blast;runtime.flashes.push({pos:b.pos.slice(),life:.45});runtime.flashes=runtime.flashes.slice(-4);audio.noise(.24,.16,240);updateHUD();}return ok;}
+ function blast(pos,cause='Votre grenade à fragmentation',scale=1){const result={pos:pos.slice(),hits:[],player:false};for(const e of world.enemies||[]){if(!e.alive)continue;const target=[e.pos[0],e.pos[1]+.8,e.pos[2]],n=M.damage(Math.hypot(...target.map((v,i)=>v-pos[i])))*scale;if(n>0&&visible(pos,target)){const hp=e.health;damageEnemy(e,n*difficultyInfo().outgoing,'body',false,0);result.hits.push({id:e.id,before:hp,after:e.health});}}
+  const p=state.player.pos,target=[p[0],p[1]-playerEyeHeight()+.85,p[2]],n=M.damage(Math.hypot(...target.map((v,i)=>v-pos[i])))*scale;if(n>0&&visible(pos,target)){result.player=true;hurtPlayer(n,cause);}return result;
+ }
+ function clearVolume(x,z,r,feet,head){return!solids(x,z).some(c=>!c.disabled&&head>=(c.minY??-Infinity)&&feet<=(c.maxY??Infinity)&&solidHit(c,x,z,r,feet,head));}
+ function explode(b){let blastResult;const ok=atomic(()=>{state.v055Ordnance.armed=null;state.v055Ordnance.detonated=Math.min(1e6,state.v055Ordnance.detonated+1);blastResult=blast(b.pos);saveGame(false);return true;},['PLAYING'],true);if(ok){runtime.lastBlast=blastResult;runtime.flashes.push({pos:b.pos.slice(),life:.45});runtime.flashes=runtime.flashes.slice(-4);audio.noise(.24,.16,240);updateHUD();}return ok;}
+ Object.assign(MistralOrdnanceWorld,{sceneKey,support,probe,visible,clearVolume,atomic,blast});Object.freeze(MistralOrdnanceWorld);
  function tick(dt){syncScene();runtime.flashes=runtime.flashes.filter(f=>(f.life-=Math.max(0,Math.min(.2,dt||0)))>0);if(!available()||V018.qaFreeze||!Number.isFinite(dt)||dt<=0)return;const b=state.v055Ordnance.armed;if(!b)return;if(!sameScene(b)){atomic(()=>{state.v055Ordnance.armed=null;state.v055Ordnance.lost=Math.min(1e6,state.v055Ordnance.lost+1);saveGame(false);return true;});return;}
   const result=M.advance(b,dt,probe);state.v055Ordnance.armed=result.armed;if(result.event==='explode')explode(result.armed);else if(result.event==='lost')atomic(()=>{state.v055Ordnance.armed=null;state.v055Ordnance.lost=Math.min(1e6,state.v055Ordnance.lost+1);saveGame(false);return true;});
  }
@@ -13501,6 +13658,320 @@ if(typeof window!=='undefined'&&typeof baseState==='function'){
  const hud=updateHUD;updateHUD=function(...a){const r=hud(...a),bar=$('v020Quickbar');if(bar){let button=bar.querySelector('[data-o55-grenade]');if(!button){button=document.createElement('button');button.dataset.o55Grenade='true';button.onclick=throwGrenade;bar.appendChild(button);}button.textContent='N · Grenade '+v026Qty(M.ID);button.disabled=!available()||!!state.v055Ordnance.armed||v026Qty(M.ID)<1;button.title='Lancer une grenade à fragmentation dans la direction du viseur';}return r;};
  function info(){syncScene();return{schema:1,ledger:copy(state.v055Ordnance),quantity:v026Qty(M.ID),canThrow:available()&&!state.v055Ordnance.armed&&v026Qty(M.ID)>0,draws:sameScene(state.v055Ordnance.armed)?2:0,lastBlast:copy(runtime.lastBlast),commits:runtime.commits,rollbacks:runtime.rollbacks,error:runtime.error};}
  globalThis.v055OrdnanceAfterInit=function(){if(typeof document!=='undefined'&&!document.getElementById('ordnance55-controls')){const style=document.createElement('style');style.id='ordnance55-controls';style.textContent='#v020Quickbar{width:700px;height:auto;grid-template-columns:60px 76px 76px repeat(4,minmax(0,88px)) minmax(0,98px)}@media(max-width:760px){#v020Quickbar{width:340px;height:auto;grid-template-columns:repeat(4,minmax(0,1fr))}}';document.head.appendChild(style);}Object.assign(window.__MISTRAL_DEBUG,{v055OrdnanceInfo:info,v055OrdnanceThrow:throwGrenade,v055OrdnanceCatalog:()=>copy({id:M.ID,fuse:M.FUSE,radius:M.BLAST,damage:M.DAMAGE,stocks:M.STOCKS,recipe:M.RECIPE})});};
+}
+
+/* Original foreground meshes.  Coordinates below are view-space metres used only
+   for presentation: the world camera, collision capsule and combat ray stay owned
+   by the existing game. No copied franchise mesh or extra WebGL context. */
+const MistralFirstPerson=(()=>{
+ const limit=(n,a,b)=>Math.max(a,Math.min(b,Number.isFinite(n)?n:0)),mix=(a,b,t)=>a+(b-a)*t;
+ const add=(a,b)=>a.map((v,i)=>v+b[i]),sub=(a,b)=>a.map((v,i)=>v-b[i]),mul=(a,n)=>a.map(v=>v*n),dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],norm=a=>mul(a,1/(Math.hypot(...a)||1));
+ const COLORS={steel:[.34,.39,.38],edge:[.58,.62,.57],dark:[.10,.14,.14],wood:[.34,.24,.15],olive:[.33,.39,.23],brass:[.66,.52,.25],glove:[.28,.25,.19],leather:[.37,.31,.23],sleeve:[.19,.29,.27],cuff:[.14,.20,.19],seam:[.44,.48,.34],light:[.56,.92,.56]};
+ function family(w={}){const t=(w.name||'').toLowerCase();if(w.melee)return /couteau|machette|lame|scie|éventreur|shishkebab/.test(t)?'blade':/poing|gantelet|gant/.test(t)?'fist':'melee';if(/rivete|harpon|cérami|lance-brique|soude|chalumeau|clou/.test(t))return'industrial';if(/laser|plasma|tesla|gauss|gamma|énergie|émetteur/.test(t))return'energy';if(w.heavy||/minigun|gatling|fat man|mortier|missile|canon|mitrailleuse|lance-grenades|incinér/.test(t))return'heavy';if(w.pellets||/pompe|chevrotine|double canon|fusil de quai|shotgun|caravane/.test(t))return'shotgun';if(/pistolet|revolver|derringer|délivreur/.test(t))return'pistol';return'rifle';}
+ function pose(p={}){const aim=limit(p.aim,0,1),motion=p.reduceMotion?0:1,move=limit(p.speed/5.5,0,1),sprint=limit(p.sprint,0,1)*(1-aim),phase=Number.isFinite(p.phase)?p.phase:0,reload=limit(p.reload,0,1),reloadLift=Math.sin(reload*Math.PI),kick=limit(p.kick,0,1)*motion,near=limit(p.proximity,0,1),melee=['blade','melee','fist'].includes(p.family),strike=melee?Math.sin(kick*Math.PI*.8):0;
+  return{origin:[mix(.23*limit((p.aspect||16/9)/.9,.45,1),0,aim)+Math.sin(phase)*.009*move*motion+limit(p.swayX,-1,1)*.011*motion+strike*.12,mix(-.225,-.106,aim)-Math.abs(Math.cos(phase))*.007*move*motion-sprint*.085-reloadLift*.09*motion-kick*.018-near*.12,mix(.67,.80,aim)-kick*.065-near*.06],yaw:(-.10*(1-aim)+sprint*.18+strike*.65)*motion,pitch:(sprint*.14-reloadLift*.32-kick*.09)*motion,roll:(Math.sin(phase*.5)*.009*move+limit(p.swayX,-1,1)*.018-reloadLift*.12)*motion,aim,proximity:near,loading:reload>0,reloadProgress:reload,reloadLift:reloadLift*motion,sprint,melee};
+ }
+ function shortBlade(w={}){return!!w.melee&&/couteau|rasoir|cutter/.test((w.name||'').toLowerCase());}
+ function geometry(kind='rifle',p={}){const q=pose({...p,family:kind}),faces=[],anchors={},C=p.powered?{...COLORS,sleeve:[.27,.31,.29],cuff:[.19,.22,.20],glove:[.24,.27,.25],leather:[.39,.42,.38]}:COLORS;let serial=0;
+  function transform(v){const cz=Math.cos(q.roll),sz=Math.sin(q.roll),x=v[0]*cz-v[1]*sz,y=v[0]*sz+v[1]*cz,cp=Math.cos(q.pitch),sp=Math.sin(q.pitch),yy=y*cp-v[2]*sp,z=y*sp+v[2]*cp,cy=Math.cos(q.yaw),sy=Math.sin(q.yaw);return[q.origin[0]+x*cy+z*sy,q.origin[1]+yy,q.origin[2]-x*sy+z*cy];}
+  function poly(points,color,tag){faces.push({points:points.map(transform),color:color.slice(),tag,id:serial++});}
+  function box(c,size,color,tag,basis=null){const basis3=basis||[[1,0,0],[0,1,0],[0,0,1]],v=[];for(let k=0;k<8;k++)v.push(add(c,basis3.reduce((a,b,i)=>add(a,mul(b,(k&(1<<i)?1:-1)*size[i]*.5)),[0,0,0])));for(const f of[[0,4,6,2],[1,3,7,5],[0,1,5,4],[2,6,7,3],[0,2,3,1],[4,5,7,6]])poly(f.map(i=>v[i]),color,tag);}
+  function link(a,b,width,depth,color,tag){const y=norm(sub(b,a)),x=norm(cross(y,Math.abs(y[2])>.9?[0,1,0]:[0,0,1])),z=norm(cross(x,y)),rings=[a,b].map((c,j)=>Array.from({length:8},(_,i)=>{const angle=(i+.5)/8*Math.PI*2,k=j?.88:1;return add(c,add(mul(x,Math.cos(angle)*width*.5*k),mul(z,Math.sin(angle)*depth*.5*k)));}));poly(rings[0],color,tag);poly(rings[1].slice().reverse(),color,tag);for(let i=0;i<8;i++)poly([rings[0][i],rings[1][i],rings[1][(i+1)%8],rings[0][(i+1)%8]],color,tag);}
+  function tube(a,b,r,color,tag,sides=8){const axis=norm(sub(b,a)),x=norm(cross(axis,Math.abs(axis[1])>.9?[1,0,0]:[0,1,0])),y=norm(cross(axis,x)),rings=[a,b].map(c=>Array.from({length:sides},(_,i)=>add(c,add(mul(x,Math.cos(i/sides*Math.PI*2)*r),mul(y,Math.sin(i/sides*Math.PI*2)*r)))));poly(rings[0].slice().reverse(),color,tag);poly(rings[1],color,tag);for(let i=0;i<sides;i++)poly([rings[0][i],rings[0][(i+1)%sides],rings[1][(i+1)%sides],rings[1][i]],color,tag);}
+  function hand(side,wrist,palm,grip){const shoulder=[side*.32-q.origin[0],-.73-q.origin[1],.13-q.origin[2]],elbow=add(wrist,[side*.08,-.19,-.18]);link(shoulder,elbow,.13,.15,C.sleeve,'sleeve-'+side);link(elbow,wrist,.105,.12,C.sleeve,'forearm-'+side);const cuff=add(wrist,mul(norm(sub(palm,wrist)),-.018));link(cuff,add(cuff,mul(norm(sub(palm,wrist)),.06)),.112,.125,C.cuff,'cuff-'+side);link(wrist,palm,.083,.062,C.glove,'palm-'+side);box(add(palm,[0,.018,-.017]),[.075,.022,.053],C.leather,'knuckles-'+side);
+   for(let i=0;i<4;i++){const root=add(palm,[(i-1.5)*.018,.016,.019]),middle=add(root,[0,-.012,.037]),tip=add(middle,[0,-.030,.004]);link(root,middle,.015,.017,C.leather,'finger-'+side+'-'+i);link(middle,tip,.014,.016,C.glove,'finger-'+side+'-'+i);}
+   link(add(palm,[-side*.04,-.012,-.02]),add(palm,[-side*.05,.016,.02]),.025,.025,C.leather,'thumb-'+side);link(add(palm,[-side*.05,.016,.02]),add(palm,[-side*.023,.031,.034]),.021,.021,C.glove,'thumb-'+side);if(p.powered){box(add(palm,[0,.039,-.012]),[.095,.034,.079],COLORS.steel,'gauntlet-plate-'+side);link(add(elbow,[0,.035,0]),add(wrist,[0,.035,-.025]),.12,.043,COLORS.edge,'vambrace-'+side);for(let k=0;k<3;k++)box(add(palm,[(k-1)*.029,.059,.003]),[.020,.018,.045],COLORS.edge,'gauntlet-rib-'+side);}
+   anchors['wrist'+side]=transform(wrist);anchors['grip'+side]=transform(grip||palm);
+  }
+  const knife=kind==='blade'&&p.shortBlade===true,pistol=kind==='pistol',melee=['blade','melee','fist'].includes(kind),short=pistol||kind==='fist',support=short?[-.025,-.075,.025]:[-.045,-.038,.255];
+  let rightWrist=[.035,-.17,-.12],rightPalm=[.049,-.098,-.025],leftWrist=short?[-.062,-.17,-.09]:[-.11,-.17,.15],leftPalm=short?[-.025,-.09,.012]:support.slice();
+  if(q.loading){leftWrist=add(leftWrist,[-.04,-q.reloadLift*.14,-q.reloadLift*.1]);leftPalm=add(leftPalm,[-.025,-q.reloadLift*.19,-q.reloadLift*.1]);}
+  if(melee){leftWrist=[-.43,-.18,-.07];leftPalm=[-.37,-.06,.01];rightPalm=[.012,-.075,0];}
+  hand(1,rightWrist,rightPalm);hand(-1,leftWrist,leftPalm);
+  // A small original wrist terminal follows the supporting forearm. Its one bar
+  // reads the actual health ratio; it never invents a second gameplay statistic.
+  const wristScreen=add(leftWrist,[0,.050,-.041]);box(wristScreen,[.122,.041,.105],COLORS.olive,'wrist-terminal');box(add(wristScreen,[0,.023,0]),[.088,.008,.073],COLORS.dark,'wrist-screen');const hp=limit(Number.isFinite(p.hpRatio)?p.hpRatio:1,0,1);if(hp>0)box(add(wristScreen,[-.033+(hp*.066)*.5,.029,-.012]),[hp*.066,.004,.009],COLORS.light,'wrist-health');for(let k=0;k<3;k++)box(add(wristScreen,[-.025+k*.023,.029,.014]),[.013,.004,.006],COLORS.seam,'wrist-glyph');tube(add(wristScreen,[.071,0,.021]),add(wristScreen,[.071,.021,.021]),.013,COLORS.brass,'wrist-knob',6);
+  if(kind==='fist'){box([0,-.06,.015],[.13,.13,.16],COLORS.steel,'powered-fist');box([0,.005,.08],[.16,.07,.09],COLORS.brass,'fist-plate');}
+  else if(melee){tube([0,-.12,0],[0,knife?.02:.23,0],knife?.020:.027,COLORS.wood,'handle');for(let k=0;k<5;k++){const y=knife?-.105+k*.025:-.07+k*.045;tube([0,y,0],[0,knife?y+.012:-.052+k*.045,0],knife?.023:.030,COLORS.leather,'handle-wrap',6);}if(kind==='blade'&&knife){box([0,.027,0],[.08,.014,.04],COLORS.dark,'guard');poly([[-.020,.035,-.010],[.020,.035,-.010],[.016,.195,-.010],[0,.235,-.010],[-.016,.185,-.010]],COLORS.edge,'blade');poly([[.020,.035,.010],[-.020,.035,.010],[-.016,.185,.010],[0,.235,.010],[.016,.195,.010]],COLORS.steel,'blade');link([-.020,.035,-.010],[-.016,.185,-.010],.006,.020,COLORS.edge,'blade-spine');anchors.bladeBase=transform([0,.035,0]);anchors.bladeTip=transform([0,.235,0]);anchors.handleBase=transform([0,-.12,0]);anchors.handleEnd=transform([0,.02,0]);}else if(kind==='blade'){box([0,.20,0],[.17,.022,.06],COLORS.dark,'guard');poly([[-.035,.21,-.015],[.035,.21,-.015],[.026,.39,-.015],[0,.47,-.015],[-.026,.37,-.015]],COLORS.edge,'blade');poly([[.035,.21,.015],[-.035,.21,.015],[-.026,.37,.015],[0,.47,.015],[.026,.39,.015]],COLORS.steel,'blade');link([-.035,.21,-.015],[-.026,.37,-.015],.008,.03,COLORS.edge,'blade-spine');}else{box([0,.32,0],[.30,.15,.14],COLORS.steel,'hammer-head');box([-.155,.32,0],[.025,.16,.15],COLORS.edge,'hammer-cap');}}
+  else{
+   const long=kind!=='pistol',heavy=kind==='heavy',energy=kind==='energy',industrial=kind==='industrial',shotgun=kind==='shotgun',length=heavy?.62:long?.50:.29,body=heavy?.27:long?.24:.15,width=heavy?.16:.078,material=energy?COLORS.olive:industrial?COLORS.brass:COLORS.steel;
+   box([0,.016,body*.45],[width,.095,body],material,'receiver');box([0,.071,body*.45],[width*.9,.023,body*.93],COLORS.edge,'receiver-top');box([0,-.072,.018],[.058,.13,.075],COLORS.wood,'pistol-grip');
+   const muzzle=[0,.061,length];tube([0,.061,body*.85],muzzle,heavy?.040:shotgun?.028:.016,COLORS.dark,'barrel');tube([0,.061,length-.065],muzzle,heavy?.047:shotgun?.033:.021,COLORS.edge,'muzzle');tube([0,.061,length+.0001],[0,.061,length+.003],heavy?.032:shotgun?.023:.012,COLORS.dark,'bore');
+   if(heavy){for(const x of[-.047,.047])tube([x,.061,.28],[x,.061,length],.022,COLORS.steel,'heavy-barrels');box([0,-.08,.13],[.20,.17,.20],COLORS.olive,'heavy-magazine');}
+   else if(long){box([0,-.034,.29],[.086,.079,.20],shotgun?COLORS.wood:material,'fore-end');for(let k=0;k<5;k++)box([0,-.076,.22+k*.032],[.09,.009,.009],COLORS.dark,'fore-end-rib');if(!q.loading||q.reloadProgress<.18||q.reloadProgress>.86)box([0,-.105,.12],[.058,.15,.085],energy?COLORS.dark:COLORS.steel,'magazine');link([0,-.01,-.01],[0,-.14,-.18],.068,.085,COLORS.wood,'stock');box([0,-.145,-.19],[.071,.10,.035],COLORS.dark,'butt-plate');}
+   else{box([0,.048,.085],[.078,.070,.25],material,'slide');box([.040,.05,.11],[.003,.027,.045],COLORS.dark,'ejection');for(let k=0;k<5;k++)box([.041,.052,-.004+k*.008],[.005,.047,.003],COLORS.edge,'slide-rib');}
+   if(energy){for(let k=0;k<4;k++)box([.043,.02,.07+k*.034],[.005,.05,.019],COLORS.light,'energy-cell');box([0,.046,.34],[.13,.12,.12],COLORS.olive,'energy-shroud');}
+   if(industrial){tube([.065,-.015,.07],[.065,-.015,.20],.038,COLORS.dark,'pressure-canister');box([.06,.036,.09],[.075,.015,.068],COLORS.edge,'gauge');box([.064,.048,.09],[.005,.009,.04],COLORS.brass,'gauge-needle');}
+   // The visible open notch is aligned with the bore only in the aim pose.
+   for(const side of[-1,1])box([side*.023,.091,.018],[.014,.027,.021],COLORS.dark,'rear-sight');box([0,.091,length-.028],[.011,.030,.020],COLORS.dark,'front-sight');box([0,.106,length-.028],[.006,.003,.004],COLORS.brass,'sight-bead');
+   const trigger=[0,-.04,.078];tube([-.034,-.027,.041],[-.034,-.075,.097],.006,COLORS.dark,'trigger-guard');tube([.034,-.027,.041],[.034,-.075,.097],.006,COLORS.dark,'trigger-guard');box([0,-.049,.065],[.012,.035,.018],COLORS.dark,'trigger');
+   if(q.loading&&q.reloadProgress>=.18&&q.reloadProgress<=.86){box(add(leftPalm,[0,.035,.028]),[.055,.15,.075],energy?COLORS.olive:COLORS.steel,'held-magazine');}
+   anchors.muzzle=transform(muzzle);anchors.sight=transform([0,.106,length-.028]);
+  }
+  return{faces,anchors,pose:q,family:kind};
+ }
+ function project(v,width,height){if(!Array.isArray(v)||v.length!==3||v.some(n=>!Number.isFinite(n))||v[2]<=.055)return null;const focal=height/(2*Math.tan(58*Math.PI/360));return[width*.5+v[0]*focal/v[2],height*.5-v[1]*focal/v[2]];}
+ function paint(ctx,mesh,width,height,options={}){ctx.clearRect(0,0,width,height);const light=norm([-.5,.85,-.65]),polys=[];for(const face of mesh.faces){const points=face.points.map(v=>project(v,width,height));if(points.some(v=>!v))continue;const normal=norm(cross(sub(face.points[1],face.points[0]),sub(face.points[2],face.points[0]))),center=mul(face.points.reduce(add,[0,0,0]),1/face.points.length);if(dot(normal,center)>=0)continue;const shade=.43+Math.max(0,dot(normal,light))*.65;polys.push({points,depth:center[2],color:face.color.map(n=>Math.round(limit(n*shade,0,1)*255)),id:face.id});}polys.sort((a,b)=>b.depth-a.depth||a.id-b.id);for(const f of polys){ctx.beginPath();f.points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();ctx.fillStyle='rgb('+f.color.join(',')+')';ctx.fill();ctx.strokeStyle='rgba(10,18,16,.22)';ctx.lineWidth=.45;ctx.stroke();}
+  const muzzle=mesh.anchors.muzzle&&project(mesh.anchors.muzzle,width,height);if(muzzle&&options.flash&&!options.reducedFlashes){ctx.save();ctx.translate(...muzzle);const size=Math.min(height*.027,25);ctx.fillStyle=mesh.family==='energy'?'rgba(157,237,143,.85)':'rgba(255,223,149,.9)';ctx.beginPath();for(let i=0;i<12;i++){const a=i/12*Math.PI*2,r=i%2?size*.25:size;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r);}ctx.closePath();ctx.fill();ctx.restore();}return{faces:mesh.faces.length,visibleFaces:polys.length};
+ }
+ return{family,shortBlade,pose,geometry,project,paint};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralFirstPerson;
+if(typeof document!=='undefined')(()=>{
+ const runtime={canvas:null,ctx:null,scene:null,owner:null,weapon:null,aimSources:new Set(),aim:0,speed:0,sway:0,lastYaw:null,lastTime:null,reloadTotal:0,lastReload:0,stats:null,pose:null,meshKey:null,mesh:null,proximity:0,visible:false,reason:'initialisation'};
+ function eligible(){return!!(world&&gameStarted&&mode==='PLAYING'&&!zoneTransitioning&&state.player.hp>0&&state.player.cameraMode!=='third'&&world.vehicleMode!=='boat'&&!(world.id==='vault_prologue'&&state.v035?.prologue?.stage<7));}
+ function aiming(){return eligible()&&!currentWeapon().melee&&reloadTimer<=0&&runtime.proximity<.5;}
+ function setAim(value,source='interface'){if(value&&aiming())runtime.aimSources.add(source);else runtime.aimSources.delete(source);return runtime.aimSources.size>0;}
+ function clear(){runtime.aimSources.clear();runtime.aim=0;runtime.speed=0;runtime.sway=0;runtime.lastYaw=null;runtime.lastTime=null;runtime.reloadTotal=0;runtime.lastReload=0;runtime.mesh=null;runtime.meshKey=null;runtime.proximity=0;}
+ function sync(){if(runtime.scene!==world||runtime.owner!==state||runtime.weapon!==state.player.weaponId){clear();runtime.scene=world;runtime.owner=state;runtime.weapon=state.player.weaponId;}}
+ const previousUpdate=updatePlayer;updatePlayer=function(dt){const before=state.player.pos.slice();const result=previousUpdate(...arguments);sync();if(eligible()&&Number.isFinite(dt)&&dt>0){const distance=Math.hypot(state.player.pos[0]-before[0],state.player.pos[2]-before[2]);runtime.speed=distance/dt<14?distance/dt:0;}return result;};
+ function render(){const host=$('weaponModel');if(!host||!runtime.canvas)return;if(runtime.canvas.parentElement!==host)host.appendChild(runtime.canvas);sync();runtime.visible=eligible();runtime.reason=runtime.visible?'première personne':mode!=='PLAYING'?'interface ou pause':state.player.cameraMode==='third'?'troisième personne':world?.vehicleMode==='boat'?'navigation':'transition ou prologue';host.classList.add('v056-first-person');host.style.display=runtime.visible?'':'none';runtime.canvas.hidden=!runtime.visible;if(!runtime.visible){clear();runtime.ctx.clearRect(0,0,runtime.canvas.width,runtime.canvas.height);return;}
+  const forward=cameraDir(state.player.yaw,state.player.pitch),eye=state.player.pos;runtime.proximity=lineOfSight(eye,eye.map((v,i)=>v+forward[i]*.72))?0:1;if(!aiming())runtime.aimSources.clear();const clock=Number.isFinite(state.playTime)?state.playTime:0,dt=runtime.lastTime===null?0:Math.max(0,Math.min(.1,clock-runtime.lastTime));runtime.lastTime=clock;if(runtime.lastYaw!==null&&dt>0)runtime.sway=Math.max(-1,Math.min(1,(state.player.yaw-runtime.lastYaw)/dt*.22));else runtime.sway=0;runtime.lastYaw=state.player.yaw;const target=runtime.aimSources.size?1:0;runtime.aim=settings.reduceMotion?target:runtime.aim+(target-runtime.aim)*Math.min(1,dt*15);if(Math.abs(runtime.aim-target)<.002)runtime.aim=target;
+  if(reloadTimer>runtime.lastReload+.01)runtime.reloadTotal=reloadTimer;runtime.lastReload=reloadTimer;const progress=reloadTimer>0&&runtime.reloadTotal>0?1-reloadTimer/runtime.reloadTotal:0,w=currentWeapon(),kind=MistralFirstPerson.family(w),sprinting=runtime.speed>4.5&&state.player.ap>0&&!state.player.crouched;
+  const rect=host.getBoundingClientRect(),options={shortBlade:MistralFirstPerson.shortBlade(w),powered:typeof v030Powered==='function'&&v030Powered(state.player.armorId),proximity:runtime.proximity,aspect:rect.width/Math.max(1,rect.height),hpRatio:state.player.hp/Math.max(1,state.player.maxHp),aim:runtime.aim,reduceMotion:!!settings.reduceMotion,speed:runtime.speed,phase:bobPhase,kick:weaponKick,reload:reloadTimer>0?Math.max(.001,progress):0,sprint:sprinting?1:0,swayX:runtime.sway},meshKey=JSON.stringify([kind,options]);if(meshKey!==runtime.meshKey){runtime.mesh=MistralFirstPerson.geometry(kind,options);runtime.meshKey=meshKey;}const mesh=runtime.mesh;runtime.pose=mesh.pose;
+  const ratio=Math.min(1.5,window.devicePixelRatio||1),width=Math.max(1,Math.round(rect.width*ratio)),height=Math.max(1,Math.round(rect.height*ratio));if(runtime.canvas.width!==width||runtime.canvas.height!==height){runtime.canvas.width=width;runtime.canvas.height=height;}
+  runtime.stats=MistralFirstPerson.paint(runtime.ctx,mesh,width,height,{flash:weaponKick>.72&&!w.melee,reducedFlashes:!!settings.reducedFlashes});host.dataset.fpFamily=kind;host.dataset.fpAiming=runtime.aim>.8?'true':'false';
+ }
+ const hudBefore=updateHUD;updateHUD=function(){const result=hudBefore(...arguments);render();return result;};
+ const keyBefore=handleKeyDown;handleKeyDown=function(e){if(e.code==='KeyX'&&mode==='PLAYING'&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&!['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)&&!e.target?.isContentEditable){e.preventDefault();setAim(true,'keyboard');return;}return keyBefore(...arguments);};
+ globalThis.v056FirstPersonAim=(value,source='interface')=>setAim(!!value,String(source));
+ globalThis.v056FirstPersonIsAiming=()=>runtime.aimSources.size>0&&aiming();
+ globalThis.v056FirstPersonAfterInit=function(){const host=$('weaponModel');if(!host||runtime.canvas)return;const canvas=document.createElement('canvas');canvas.id='v056FirstPersonCanvas';canvas.setAttribute('aria-hidden','true');host.appendChild(canvas);runtime.canvas=canvas;runtime.ctx=canvas.getContext('2d',{alpha:true});if(!runtime.ctx){canvas.remove();runtime.canvas=null;return;}host.setAttribute('aria-hidden','true');
+  const style=document.createElement('style');style.id='v056-first-person-style';style.textContent='#weaponModel.v056-first-person{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;transform:none!important;animation:none!important;filter:none!important;opacity:1!important;pointer-events:none!important;overflow:hidden!important;z-index:0}#weaponModel.v056-first-person>svg,#weaponModel.v056-first-person>i{display:none!important}#v056FirstPersonCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}';document.head.appendChild(style);
+  document.addEventListener('keyup',e=>{if(e.code==='KeyX')setAim(false,'keyboard');});document.addEventListener('mousedown',e=>{if(e.button===2&&document.pointerLockElement===$('gameCanvas')&&eligible()){e.preventDefault();setAim(true,'mouse');}});document.addEventListener('mouseup',e=>{if(e.button===2)setAim(false,'mouse');});document.addEventListener('contextmenu',e=>{if(document.pointerLockElement===$('gameCanvas')&&eligible())e.preventDefault();});document.addEventListener('pointerlockchange',()=>{if(document.pointerLockElement!==$('gameCanvas'))setAim(false,'mouse');});window.addEventListener('blur',clear);document.addEventListener('visibilitychange',()=>{if(document.hidden)clear();});
+  Object.assign(window.__MISTRAL_DEBUG,{v056Aim:(value)=>setAim(!!value),v056FirstPersonInfo:()=>({visible:runtime.visible,reason:runtime.reason,family:MistralFirstPerson.family(currentWeapon()),aim:runtime.aim,aimHeld:runtime.aimSources.size>0,proximity:runtime.proximity,pose:runtime.pose?JSON.parse(JSON.stringify(runtime.pose)):null,stats:runtime.stats?{...runtime.stats}:null,rendering:'original view-space polygon meshes projected to transparent Canvas 2D',worldCameraUnmodified:true,canvas:runtime.canvas?{width:runtime.canvas.width,height:runtime.canvas.height}:null}),v056FirstPersonGeometry:(kind,options={})=>JSON.parse(JSON.stringify(MistralFirstPerson.geometry(kind,options))),v056FirstPersonRender:()=>{render();return window.__MISTRAL_DEBUG.v056FirstPersonInfo();}});render();
+ };
+})();
+
+/* Original proximity-mine gameplay. Dimensions, delays and blast are game rules,
+   never a survey or instructions for a physical explosive. */
+const MistralMines=(()=>{
+ const ID='fragMine',LIMIT=24,RADIUS=.23,ARM=2.5,WARNING=.65,TRIGGER=2.4;
+ const STOCKS={aubagne:2,noailles:2},RECIPE={id:ID,name:'Assembler une mine à fragmentation',category:'explosifs',cost:{scrap:4,chemicals:3,circuitry:1},item:ID,count:1};
+ const finite=n=>typeof n==='number'&&Number.isFinite(n),vec=v=>Array.isArray(v)&&v.length===3&&v.every(n=>finite(n)&&Math.abs(n)<1e7),copy=o=>JSON.parse(JSON.stringify(o));
+ function fresh(){return{schema:1,next:1,placed:0,recovered:0,detonated:0,stocked:{},mines:[]};}
+ function migrate(raw){const s=fresh(),r=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};for(const k of['placed','recovered','detonated'])if(Number.isInteger(r[k])&&r[k]>=0)s[k]=Math.min(1e6,r[k]);for(const k of Object.keys(STOCKS))if(Object.hasOwn(r.stocked||{},k)&&r.stocked[k]===true)s.stocked[k]=true;const seen=new Set();let largest=0;
+  for(const m of Array.isArray(r.mines)?r.mines.slice(0,LIMIT):[]){if(!m||!Number.isInteger(m.id)||m.id<1||m.id>1e9||seen.has(m.id)||typeof m.zone!=='string'||!/^[a-zA-Z0-9_:.-]{1,140}$/.test(m.zone)||typeof m.scene!=='string'||m.scene.length<1||m.scene.length>1200||!vec(m.pos)||!['arming','armed','triggered'].includes(m.phase)||!finite(m.timer)||m.timer<0||m.timer>(m.phase==='arming'?ARM:m.phase==='triggered'?WARNING:0))continue;seen.add(m.id);largest=Math.max(largest,m.id);s.mines.push({id:m.id,zone:m.zone,scene:m.scene,pos:m.pos.slice(),phase:m.phase,timer:m.timer});}
+  s.next=Math.max(largest+1,Number.isInteger(r.next)&&r.next>=1&&r.next<=1e9?r.next:1);return s;
+ }
+ function candidate(player,dir,height,scene,zone,id){if(!vec(player)||!vec(dir)||!finite(height)||Math.hypot(dir[0],dir[2])<.05)return null;const n=Math.hypot(dir[0],dir[2]);return{id,zone,scene,pos:[player[0]+dir[0]/n*1.45,height,player[2]+dir[2]/n*1.45],phase:'arming',timer:ARM};}
+ function casing(pos,r,height,lift=0){const vertices=[],faces=[],count=12;for(const y of[pos[1]+lift,pos[1]+lift+height])for(let i=0;i<count;i++){const a=i*Math.PI*2/count;vertices.push([pos[0]+Math.cos(a)*r,y,pos[2]+Math.sin(a)*r]);}const bottom=vertices.push([pos[0],pos[1]+lift,pos[2]])-1,top=vertices.push([pos[0],pos[1]+lift+height,pos[2]])-1;for(let i=0;i<count;i++){const j=(i+1)%count;faces.push([i,i+count,j+count],[i,j+count,j],[top,j+count,i+count],[bottom,i,j]);}return{mesh:'geoSurface',pos:[pos[0],pos[1]+lift+height/2,pos[2]],vertices,faces,revision:1,v056Mine:true};}
+ function close(m,pos){return vec(pos)&&Math.hypot(pos[0]-m.pos[0],pos[2]-m.pos[2])<=TRIGGER&&Math.abs(pos[1]-m.pos[1])<=1.5;}
+ return{ID,LIMIT,RADIUS,ARM,WARNING,TRIGGER,STOCKS,RECIPE,fresh,migrate,candidate,casing,close,copy};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralMines;
+
+if(typeof window!=='undefined'&&typeof baseState==='function'){
+ const M=MistralMines,W=MistralOrdnanceWorld,copy=M.copy,runtime={owner:null,world:null,signature:null,entries:[],meshes:new Map(),flashes:[],lastBlast:null,error:null};
+ ITEM_VALUES[M.ID]=55;V027_SUBS.inventory.mines='MINES';V020_RECIPES.push(copy(M.RECIPE));
+ const base=baseState;baseState=function(...a){const s=base(...a);s.v056Mines=M.fresh();return s;};
+ const migration=migrateState;migrateState=function(raw={}){const s=migration(raw);s.v056Mines=M.migrate(raw.v056Mines);return s;};state=migrateState(state);if(world&&typeof v049Own==='function')v049Own(world);
+ const label=itemLabel;itemLabel=function(id){return id===M.ID?'Mine à fragmentation':label(id);};
+ const category=v026Category;v026Category=function(id){return id===M.ID?'mines':category(id);};
+ const mass=v026Mass;v026Mass=function(id){return id===M.ID?.7:mass(id);};
+ const description=v026Description;v026Description=function(id){return id===M.ID?'P : poser au sol devant vous. Armement 2,5 s actives, détection des ennemis vivants à 2,4 m puis avertissement 0,65 s. E pour récupérer une mine à portée. Son souffle peut vous blesser.':description(id);};
+ const merchant=merchantState;merchantState=function(id){const ms=merchant(id),s=state.v056Mines;if(s&&Object.hasOwn(M.STOCKS,id)&&!s.stocked[id]&&!V046.lab){if(!Object.hasOwn(ms.stock,M.ID))ms.stock[M.ID]=M.STOCKS[id];s.stocked[id]=true;}return ms;};
+ const buy=buyTradeItem;buyTradeItem=function(id){return id===M.ID?W.atomic(()=>buy(id),['TRADE']):buy(id);};
+ const sell=sellTradeItem;sellTradeItem=function(id){return id===M.ID?W.atomic(()=>sell(id),['TRADE']):sell(id);};
+ const price=tradePrice;tradePrice=function(id,buying=true,vendor=tradeState?.id){const n=price(id,buying,vendor);return id!==M.ID||buying?n:Math.min(n,Math.max(1,price(id,true,vendor)-1));};
+ const craft=v020Craft;v020Craft=function(id){return id===M.ID?W.atomic(()=>craft(id),['FIELD']):craft(id);};
+ const barter=renderTrade;renderTrade=function(...a){const r=barter(...a),list=$('tradeSellList');if(tradeState&&list&&v026Qty(M.ID)>0&&!list.querySelector('[data-sell="'+M.ID+'"]')){const row=document.createElement('article'),p=tradePrice(M.ID,false);row.className='trade-row';row.innerHTML='<div><b>Mine à fragmentation</b><small>Disponible : '+v026Qty(M.ID)+'</small></div><strong>'+p+' caps</strong><button data-sell="'+M.ID+'"'+(merchantState(tradeState.id).caps<p?' disabled':'')+'>VENDRE</button>';row.querySelector('button').onclick=()=>sellTradeItem(M.ID);list.appendChild(row);}return r;};
+ function available(){return!!(gameStarted&&world&&state.player.hp>0&&mode==='PLAYING'&&!zoneTransitioning&&!V046.lab&&!V046.busy&&!V047.pending&&!(typeof isBoatZone==='function'&&isBoatZone()));}
+ function same(m){return!!(world&&m.zone===world.id&&m.scene===W.sceneKey());}
+ function sourceHeight(x,z,reference){if(world.v046&&world.geoMacro&&!Number.isFinite(W.support([x,reference+.09,z])))return null;const h=groundHeightAt(x,z,reference);return Number.isFinite(h)?h:null;}
+ function supported(m){if(!same(m))return false;const r=M.RADIUS,points=[[0,0],[-r,0],[r,0],[0,-r],[0,r]],b=world.bounds;for(const[dx,dz]of points){const x=m.pos[0]+dx,z=m.pos[2]+dz;if(b&&(x<b[0]||x>b[1]||z<b[2]||z>b[3]))return false;const h=sourceHeight(x,z,m.pos[1]);if(h===null||Math.abs(h-m.pos[1])>.12)return false;}
+  return W.clearVolume(m.pos[0],m.pos[2],r,m.pos[1]+.02,m.pos[1]+.14)&&!collidesAt(m.pos[0],m.pos[2],r,m.pos[1]+1.65);
+ }
+ function placement(){if(!available())return null;const p=state.player.pos,dir=getCamera(gameClock).dir,reference=p[1]-playerEyeHeight(),m=M.candidate(p,dir,reference,W.sceneKey(),world.id,state.v056Mines.next);if(!m)return null;const h=sourceHeight(m.pos[0],m.pos[2],reference);if(h===null||Math.abs(h-reference)>.65)return null;m.pos[1]=h;if(!supported(m)||collidesAt(m.pos[0],m.pos[2],M.RADIUS,h+playerEyeHeight()))return null;const center=[m.pos[0],m.pos[1]+.16,m.pos[2]];if(!W.visible(p,center))return null;if(state.v056Mines.mines.some(n=>same(n)&&Math.hypot(n.pos[0]-m.pos[0],n.pos[2]-m.pos[2])<.8))return null;return m;}
+ function place(){if(!available()||v026Qty(M.ID)<1||state.v056Mines.mines.length>=M.LIMIT||state.v056Mines.next>1e9)return false;const m=placement();if(!m){toast('Mine conservée : sol libre, chargé et presque horizontal requis devant vous.','bad');return false;}const ok=W.atomic(()=>{if(!v026Remove(M.ID,1))return false;state.v056Mines.mines.push(m);state.v056Mines.next++;state.v056Mines.placed=Math.min(1e6,state.v056Mines.placed+1);saveGame(false);return true;});if(ok){runtime.signature=null;sync();toast('Mine posée · armement dans 2,5 s · P pour poser, E pour récupérer.');audio.tone(310,.08,'triangle',.04,-90);updateHUD();}return ok;}
+ function canRecover(m){if(!available()||!same(m)||!supported(m))return false;const target=[m.pos[0],m.pos[1]+.16,m.pos[2]],p=state.player.pos;if(Math.hypot(p[0]-m.pos[0],p[2]-m.pos[2])>1.8||Math.abs(p[1]-playerEyeHeight()-m.pos[1])>1.2)return false;return W.visible(p,target);}
+ function recover(id){const m=state.v056Mines.mines.find(n=>n.id===id);if(!m||!canRecover(m))return false;const ok=W.atomic(()=>{const index=state.v056Mines.mines.findIndex(n=>n.id===id);if(index<0)return false;state.v056Mines.mines.splice(index,1);state.inventory[M.ID]=v026Qty(M.ID)+1;state.v056Mines.recovered=Math.min(1e6,state.v056Mines.recovered+1);saveGame(false);return true;});if(ok){runtime.signature=null;sync();toast('Mine désamorcée et récupérée.','good');updateHUD();}return ok;}
+ function sync(){if(runtime.owner!==state||runtime.world!==world){if(runtime.world&&runtime.world!==world)runtime.world.interactables=runtime.world.interactables.filter(it=>!it.v056Mine);runtime.owner=state;runtime.world=world;runtime.signature=null;runtime.meshes.clear();runtime.flashes=[];runtime.lastBlast=null;}if(!world){runtime.entries=[];return;}const entries=state.v056Mines.mines.filter(m=>same(m)&&supported(m)),signature=JSON.stringify(entries.map(m=>[m.id,m.phase,m.pos]));runtime.entries=entries;if(runtime.signature===signature)return;runtime.signature=signature;world.interactables=world.interactables.filter(it=>!it.v056Mine);for(const m of entries){const it=addInteract(world,'mine56:'+m.id,[m.pos[0],m.pos[1]+.12,m.pos[2]],m.phase==='triggered'?'Désamorcer la mine · alerte !':m.phase==='arming'?'Récupérer la mine · armement':'Désamorcer et récupérer la mine',()=>recover(m.id),{kind:'mine',radius:1.8,priority:.35,condition:()=>{const current=state.v056Mines.mines.find(n=>n.id===m.id);return!!current&&canRecover(current);}});it.v056Mine=true;}}
+ function trigger(m){return W.atomic(()=>{m.phase='triggered';m.timer=M.WARNING;saveGame(false);return true;});}
+ function explode(m){let result;const ok=W.atomic(()=>{const index=state.v056Mines.mines.findIndex(n=>n.id===m.id);if(index<0)return false;state.v056Mines.mines.splice(index,1);state.v056Mines.detonated=Math.min(1e6,state.v056Mines.detonated+1);result=W.blast([m.pos[0],m.pos[1]+.16,m.pos[2]],'Votre mine à fragmentation',120/95);saveGame(false);return true;},['PLAYING'],true);if(ok){runtime.lastBlast={id:m.id,...result};runtime.flashes.push({pos:result.pos.slice(),life:.45});runtime.flashes=runtime.flashes.slice(-4);runtime.signature=null;audio.noise(.24,.16,240);updateHUD();}return ok;}
+ function tick(dt){sync();const step=Number.isFinite(dt)&&dt>0?Math.min(.2,dt):0;if(!available()||V018.qaFreeze||!step)return;runtime.flashes=runtime.flashes.filter(f=>(f.life-=step)>0);for(const m of runtime.entries.slice()){if(!available())break;if(!state.v056Mines.mines.includes(m))continue;if(m.phase==='arming'){m.timer=Math.max(0,m.timer-step);if(m.timer<=1e-9)m.timer=0;if(m.timer===0)W.atomic(()=>{m.phase='armed';m.timer=0;saveGame(false);return true;});}else if(m.phase==='armed'){const source=[m.pos[0],m.pos[1]+.16,m.pos[2]],enemy=(world.enemies||[]).find(e=>e.alive&&M.close(m,e.pos)&&W.visible(source,[e.pos[0],e.pos[1]+.5,e.pos[2]]));if(enemy&&trigger(m))audio.tone(880,.08,'square',.035,0);}else{m.timer=Math.max(0,m.timer-step);if(m.timer<=1e-9)m.timer=0;if(m.timer===0)explode(m);}}sync();}
+ const status=updateStatus;updateStatus=function(dt){const r=status(...arguments);tick(dt);return r;};
+ function physicalDraws(m){const key=m.pos.join('/');let entry=runtime.meshes.get(m.id);if(!entry||entry.key!==key){entry={key,body:{...M.casing(m.pos,M.RADIUS,.11),color:[.26,.29,.18]},cap:{...M.casing(m.pos,.085,.035,.11),color:[.48,.44,.26]}};runtime.meshes.set(m.id,entry);}return[entry.body,entry.cap,{mesh:'cube',pos:[m.pos[0]+.11,m.pos[1]+.13,m.pos[2]],scale:[.035,.025,.035],color:m.phase==='triggered'?[.94,.15,.05]:m.phase==='armed'?[.63,.31,.04]:[.36,.47,.16],emissive:m.phase==='triggered'?.7:.15,rotY:0,v056Mine:true}];}
+ const draws=collectDraws;collectDraws=function(...a){const out=draws(...a);sync();const ids=new Set(runtime.entries.map(m=>m.id));for(const id of runtime.meshes.keys())if(!ids.has(id))runtime.meshes.delete(id);for(const m of runtime.entries)out.push(...physicalDraws(m));for(const f of runtime.flashes){const size=.3+(1-f.life/.45)*2.3;out.push({mesh:'sphere',pos:f.pos.slice(),scale:[size,size,size],color:[.94,.51,.16],alpha:f.life/.45,emissive:.7,rotY:0,v056Explosion:true});}return out;};
+ const keys=handleKeyDown;handleKeyDown=function(e){if(mode==='PLAYING'&&e.code==='KeyP'&&!e.repeat&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&!['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)&&!e.target?.isContentEditable){e.preventDefault();place();return;}return keys(e);};
+ const inventory=v027Inventory;v027Inventory=function(c){if(V027.sub!=='mines')return inventory(c);sync();const s=state.v056Mines;c.innerHTML='<div class="p27-long"><p class="p27-kicker">MINES À FRAGMENTATION</p><h2>Préparer un passage</h2><p>En sac : '+v026Qty(M.ID)+' · 0,70 kg chacune. Posées : '+s.mines.length+'/'+M.LIMIT+' ; '+runtime.entries.length+' sur un support valide dans cette scène.</p><p>P pose une mine à 1,45 m devant vous, sur un sol libre et presque horizontal. Armement : 2,5 secondes actives. Un ennemi vivant à 2,4 m, au même niveau et sans mur déclenche un avertissement de 0,65 seconde. E permet de désamorcer et de reprendre la mine à portée, même pendant cet avertissement.</p><p>Le joueur, les compagnons et les civils ne déclenchent pas vos mines ; le souffle vous atteint et peut vous tuer. Rayon maximal 6 m, dégâts de base 120 à distance nulle, murs et planchers respectés.</p><p>Les mines restent dans leur scène et à leur étage après un voyage ou Continuer. Les délais sont suspendus dans les menus et lorsque la scène ou le support réel ne sont pas chargés. Un support modifié suspend la mine ; aucun sol manquant n’est inventé. La mort conserve la règle de dernière sauvegarde vivante du jeu.</p><p>Deux exemplaires finis chez Baptiste et deux à Noailles. Établi : 4 ferrailles, 3 composants chimiques et 1 circuit. La limite de 24 mines posées couvre toutes les scènes.</p>'+v027Button('Fermer pour poser avec P','m56:aim')+'</div>';};
+ const dispatch=v027Dispatch;v027Dispatch=function(action,arg){if(action==='m56:aim'){if(!v027CanAct())return false;closePipboy();return true;}return dispatch(action,arg);};
+ function info(){sync();return{ledger:copy(state.v056Mines),quantity:v026Qty(M.ID),physical:runtime.entries.map(m=>copy(m)),suspended:state.v056Mines.mines.filter(m=>same(m)&&!runtime.entries.includes(m)).map(m=>m.id),canPlace:available()&&v026Qty(M.ID)>0&&state.v056Mines.mines.length<M.LIMIT&&!!placement(),lastBlast:copy(runtime.lastBlast)};}
+ globalThis.v056MinesAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v056MinesInfo:info,v056MinesPlace:place,v056MinesRecover:recover,v056MinesCatalog:()=>copy({id:M.ID,limit:M.LIMIT,arm:M.ARM,warning:M.WARNING,trigger:M.TRIGGER,stocks:M.STOCKS,recipe:M.RECIPE})});};
+}
+
+/* Presentation only: every value still comes from the normal game HUD. */
+const MistralFpsHud=(()=>{
+ const finite=(n,d=0)=>typeof n==='number'&&Number.isFinite(n)?n:d;
+ const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+ function options(raw={}){return{compact:raw?.compact===true,objectives:raw?.objectives!==false};}
+ function percent(value,maximum){return maximum>0?clamp(finite(value)/maximum*100,0,100):0;}
+ function angle(deg){return((finite(deg)%360)+360)%360;}
+ function delta(a,b){return((angle(a)-angle(b)+540)%360)-180;}
+ function ticks(yaw){const degrees=angle(finite(yaw)*180/Math.PI),labels=['N','NE','E','SE','S','SO','O','NO'],result=[];for(let d=Math.floor((degrees-65)/15)*15;d<=degrees+65;d+=15){const x=delta(d,degrees);if(Math.abs(x)>60)continue;result.push({degree:angle(d),x:(x+60)/120*100,label:d%45===0?labels[angle(d)/45]:'',major:d%45===0});}return result;}
+ function bearing(player,target,yaw){if(!Array.isArray(player)||!Array.isArray(target)||player.length<3||target.length<3||![player[0],player[2],target[0],target[2],yaw].every(Number.isFinite))return null;const dx=target[0]-player[0],dz=target[2]-player[2];if(Math.hypot(dx,dz)<.01)return null;const offset=delta(Math.atan2(dx,-dz)*180/Math.PI,yaw*180/Math.PI);return{offset,x:clamp((offset+60)/120*100,2,98),edge:Math.abs(offset)>60};}
+ function read(player={},weapon={},reload=0){const hp=percent(player.hp,player.maxHp),ammo=Math.max(0,Math.floor(finite(player.ammoClip)));return{hp,ap:percent(player.ap,player.maxAp),lowHp:hp<=25&&finite(player.hp)>0,empty:!weapon.melee&&ammo===0,reloading:finite(reload)>0,stance:player.cameraMode==='third'?'VUE EXTERIEURE':player.crouched?'ACCROUPI':'DEBOUT'};}
+ return Object.freeze({options,percent,angle,delta,ticks,bearing,read});
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralFpsHud;
+
+function v056HudAfterInit(){
+ if(typeof window==='undefined'||window.__mistralFpsHud)return;
+ window.__mistralFpsHud=true;
+ const M=MistralFpsHud,key='mistral_fps_hud_v1';let preferences=M.options();
+ try{preferences=M.options(JSON.parse(localStorage.getItem(key)||'{}'));}catch{}
+ const style=document.createElement('style');style.id='fps56-hud-style';style.textContent=`
+ body.fps56{--hud-base:90px}body.fps56 #hud{--hud-pad:24px;color:#e7ebc9;text-shadow:0 1px 3px #000,0 0 8px #101b12}
+ body.fps56 #locationCard{left:max(var(--hud-pad),env(safe-area-inset-left));top:max(22px,env(safe-area-inset-top));max-width:30vw;letter-spacing:.07em}
+ body.fps56 #locationName{font-size:.83rem;font-weight:700;line-height:1.4}
+ body.fps56 #hud .location-card small{font-size:.57rem;color:#c8b775}
+ body.fps56 #compass{top:max(18px,env(safe-area-inset-top));width:260px;letter-spacing:.12em}
+ body.fps56 #compassDir{font-size:.68rem;font-weight:bold}
+ body.fps56 #compass>i{display:none}
+ #fps56Compass{position:relative;height:29px;margin:6px 0 0;border-bottom:1px solid #d3dcb77a;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12% 88%,transparent)}
+ #fps56Compass span{position:absolute;bottom:0;transform:translateX(-50%);height:6px;border-left:1px solid #dae4b5a6;font:9px monospace;color:#e7ebc9}
+ #fps56Compass span.major{height:14px;border-color:#edf1d0}
+ #fps56Compass span b{position:absolute;left:0;bottom:15px;transform:translateX(-50%);font:10px monospace}
+ #fps56Compass:after{content:'';position:absolute;left:50%;bottom:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:5px solid #e7cf85;transform:translateX(-50%)}
+ #fps56Bearing{position:absolute;top:42px;color:#f1d686;font:15px monospace;transform:translateX(-50%)}
+ #fps56Bearing.edge{font-size:11px}
+ body.fps56 #questDistance{font-size:.61rem;margin-top:5px;color:#f0d78c;min-height:14px}
+ body.fps56 #questCard,body.fps56 #v020QuestHint{top:max(22px,env(safe-area-inset-top));right:max(24px,env(safe-area-inset-right));width:min(315px,28vw);background:linear-gradient(90deg,#101a1300,#101a13bd);border:0;border-right:2px solid #cfbd7c;padding:10px 12px;text-align:right;font-size:.72rem;line-height:1.55;box-shadow:none;max-height:150px;overflow:hidden}
+ body.fps56 #questCard small,body.fps56 #v020QuestHint b{font-size:.63rem;letter-spacing:.08em;color:#f0d78c}
+ body.fps56 #questCard p{font-size:.73rem;margin:7px 0 0;line-height:1.55}
+ body.fps56 #v020QuestHint small{font-size:.58rem}
+ body.fps56 .fps56-objective-hidden{display:none!important}
+ body.fps56 #statusBars{left:max(24px,env(safe-area-inset-left));bottom:var(--hud-base);width:235px;padding:10px 13px;background:linear-gradient(90deg,#0b1514d9,#0b151455);border-left:2px solid #b7c98e}
+ body.fps56 #statusBars>div{font-size:.68rem;grid-template-columns:1.6rem 1fr 2rem;margin:6px 0;gap:8px}
+ body.fps56 #statusBars i{height:5px;background:#d7dfac2b}
+ body.fps56 #statusBars i b{background:#c8dda4;transition:width .14s}
+ body.fps56 #statusBars .radline i b{background:#dbaa65}
+ body.fps56 #networkStatus{display:none}
+ body.fps56 #statusBars[data-critical=true]{border-color:#f0a481}
+ body.fps56 #statusBars[data-critical=true] #hpBar{background:#efa17b}
+ body.fps56 #weaponHud{right:max(24px,env(safe-area-inset-right));bottom:var(--hud-base);min-width:210px;max-width:260px;padding:10px 13px;border-right:2px solid #b7c98e;background:linear-gradient(270deg,#0b1514d9,#0b151455);gap:6px}
+ /* v046 fixed these dimensions with !important. Replace that specific contract
+    so the responsive HUD can use content height and a bounded column. */
+ body.fps56 #weaponHud{width:240px!important;min-width:0!important;max-width:260px!important;height:auto!important;min-height:0!important;max-height:none!important;grid-template-rows:auto!important}
+ body.fps56 #weaponHud strong{display:block;height:auto!important;line-height:1.1!important;grid-template-columns:none}
+ body.fps56 #weaponHud small{height:auto;white-space:normal;line-height:1.4}
+ body.fps56 #weaponHud>em{height:auto}
+ body.fps56 #weaponHud .condition-line{height:auto;max-width:100%;grid-template-columns:auto minmax(18px,1fr) auto minmax(18px,1fr);gap:4px;letter-spacing:0}
+ body.fps56 #weaponHud .v018-reload{top:auto;bottom:100%;width:100%}
+ body.fps56 #weaponName{font-size:.63rem;color:#d9ddb8;letter-spacing:.06em;line-height:1.35}
+ body.fps56 #weaponHud strong{font:600 34px/1.1 monospace;color:#edf0ce;letter-spacing:-.05em}
+ body.fps56 #ammoReserve{font-size:20px;color:#bbc5a5}
+ body.fps56 #reloadHint{font-size:.59rem;color:#e5d38c;min-height:11px;margin:0}
+ body.fps56 #weaponHud[data-empty=true] #ammoClip{color:#f0a481}
+ body.fps56 #weaponHud .condition-line{font-size:8px;opacity:.85}
+ body.fps56 #v020Quickbar{left:50%;bottom:max(20px,env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(9,minmax(0,1fr));width:min(850px,calc(100vw - 48px));max-width:none;height:auto;min-height:44px;gap:4px;z-index:23}
+ body.fps56 #v020Quickbar button{font:11px/1.3 monospace;letter-spacing:0;text-transform:none;padding:7px 5px!important;border-radius:2px;min-width:0;max-width:none;height:44px;min-height:44px;background:#101d18e8;border-color:#6b805b;color:#dce5bb;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ body.fps56 #v020Quickbar button.active{border-color:#e9d18b;color:#f5e7af;background:#3e4930}
+ body.fps56 #v020Quickbar button:disabled{opacity:.6;color:#abb49b}
+ body.fps56 #v020Quickbar[hidden]{display:none!important}
+ body.fps56 #quickHelp{display:none}
+ body.fps56 #hud:not(.touch) .touch-controls{display:none}
+ body.fps56 #p28LampHud{right:max(24px,env(safe-area-inset-right));bottom:calc(var(--hud-base) + 130px);min-height:36px;font-size:10px;border-color:#758764;background:#101d18dd;padding:8px 10px}
+ body.fps56 #v042LayerHud{top:84px;bottom:auto;left:24px;min-width:0;width:min(300px,30vw);max-width:30vw;padding:7px 10px;font-size:10px}
+ body.fps56 #p30Hud{top:220px!important;right:24px;width:210px;max-width:calc(100vw - 28px);padding:8px 10px;font-size:10px}
+ body.fps56 #p30Hud[hidden],body.fps56 #p28LampHud[hidden]{display:none!important}
+ body.fps56 #p30Hud b{font-size:10px}body.fps56 #p30Hud div{margin:6px 0}body.fps56 #p30Hud small{font-size:9px}
+ body.fps56 #stealth29{top:calc(50% - 38px);width:80px;padding:3px 4px;font:9px/12px monospace}
+ body.fps56 #stealth29 strong{font-size:9px;letter-spacing:0}
+ body.fps56 #stealth29 progress{height:3px;margin:3px 0}
+ body.fps56 #stealth29 small{display:none}
+ body.fps56 #levelHud{left:25px;bottom:calc(var(--hud-base) + 105px);width:180px;font-size:10px}
+ body.fps56 #v023CriticalHud{left:25px;bottom:calc(var(--hud-base) + 145px);max-width:260px;font-size:10px;background:#101d18ad;border:0;padding:5px 7px}
+ body.fps56 #needsHud{left:25px;bottom:calc(var(--hud-base) + 175px);font-size:9px;gap:5px}
+ body.fps56 #companionCard{left:25px;bottom:calc(var(--hud-base) + 212px);font-size:10px}
+ body.fps56 #effectHud{left:25px;bottom:calc(var(--hud-base) + 255px);right:auto;max-width:300px;display:flex;gap:4px;flex-wrap:wrap}
+ body.fps56 #toastStack{right:24px;bottom:calc(var(--hud-base) + 180px);width:290px;max-height:40vh;overflow:hidden}
+ body.fps56 #toastStack .toast{font-size:.67rem;background:#0c1717e8;line-height:1.5;padding:9px 11px}
+ body.fps56 #interactPrompt{bottom:32%;max-width:min(540px,85vw);font-size:.77rem;line-height:1.45;padding:9px 13px;background:#101b17ed;border-color:#b2bf8b;box-shadow:0 3px 20px #0005;text-align:center}
+ body.fps56 #crosshair{width:26px;height:26px;--spread:0px}
+ body.fps56 #crosshair i{background:#e9efd0}
+ body.fps56 #crosshair i:nth-child(1){left:calc(0px - var(--spread));top:12px;width:6px}
+ body.fps56 #crosshair i:nth-child(2){right:calc(0px - var(--spread));top:12px;width:6px}
+ body.fps56 #crosshair i:nth-child(3){left:12px;top:calc(0px - var(--spread));height:6px}
+ body.fps56 #crosshair i:nth-child(4){left:12px;bottom:calc(0px - var(--spread));height:6px}
+ body.fps56 #crosshair.interactive i{background:#f3d68c}
+ body.fps56 #fps56Stance{position:absolute;left:50%;top:calc(50% + 28px);transform:translateX(-50%);font:9px monospace;letter-spacing:.13em;color:#e4e9c5;opacity:.8}
+ body.fps56 #subtitle{bottom:calc(var(--hud-base) + 50px);font-size:1rem;max-width:65vw}
+ body.fps56 #fps56ObjectiveToggle{position:absolute;right:max(24px,env(safe-area-inset-right));top:174px;pointer-events:auto;padding:6px 9px;min-height:32px;font-size:9px;letter-spacing:.05em;border:0;border-bottom:1px solid #95a078;background:#101d18ad}
+ body.fps56 #hud.fps56-compact #locationCard small,body.fps56 #hud.fps56-compact #levelHud,body.fps56 #hud.fps56-compact #v023CriticalHud{display:none}
+ body.fps56 #hud.fps56-compact #statusBars{padding:4px 9px}
+ body.fps56 #hud.fps56-compact #weaponHud .condition-line{display:none}
+ body.fps56 #hud.fps56-compact #weaponHud{padding:6px 9px}
+ body.fps56:has(#hud.fps56-compact) #v023CriticalHud{display:none}
+ body.fps56 .geo-hud,body.fps56 #v036Attribution{display:none!important}
+ body.fps56 #geoAttribution{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 1px);transform:translateX(-50%);display:block;max-width:calc(100vw - 20px);padding:1px 5px;font:9px/12px monospace;letter-spacing:0;text-transform:none;white-space:nowrap;color:#cbd6b4;background:#0c1719bf;pointer-events:auto;cursor:pointer;border:0;text-align:center}
+ body.fps56 #geoAttribution[hidden]{display:none!important}
+ body.fps56 #geoAttribution:focus-visible{outline:2px solid #eadb95;outline-offset:1px}
+ .fps56-options{margin:18px 0;border:1px solid #758764;padding:14px}.fps56-options label{display:flex;gap:10px;align-items:center;margin:10px 0;font-size:13px}.fps56-options p{font:12px/1.6 monospace;color:#bbc5a5}
+ @media(max-width:1100px){body.fps56 #hud{--hud-pad:16px}body.fps56 #locationCard{max-width:27vw}body.fps56 #questCard,body.fps56 #v020QuestHint{width:26vw;font-size:.66rem}body.fps56 #statusBars{left:16px}body.fps56 #weaponHud{right:16px}body.fps56 #p28LampHud{right:16px}}
+ @media(max-width:760px){
+ body.fps56{--hud-base:126px}
+ body.fps56 #locationCard{left:14px;top:14px;max-width:52vw;letter-spacing:0}body.fps56 #locationName{font-size:.68rem}body.fps56 #locationCard small{font-size:.5rem}
+ body.fps56 #compass{right:14px;left:auto;transform:none;top:14px;width:135px}body.fps56 #compassDir{font-size:10px}body.fps56 #fps56Compass{height:23px;margin-top:2px}body.fps56 #fps56Compass span b{font-size:8px}body.fps56 #fps56Bearing{top:34px}body.fps56 #questDistance{font-size:8px;margin-top:3px}
+ body.fps56 #questCard,body.fps56 #v020QuestHint{top:82px;right:14px;max-height:100px;width:min(290px,76vw);font-size:11px;padding:7px 10px}body.fps56 #questCard p{font-size:11px;line-height:1.45}body.fps56 #questCard small,body.fps56 #v020QuestHint b{font-size:10px}
+ body.fps56 #fps56ObjectiveToggle{top:187px;right:14px;min-height:28px;font-size:8px;padding:4px 7px}
+ body.fps56 #v042LayerHud{top:220px;left:14px;width:min(240px,65vw);max-width:65vw;font-size:9px}
+ body.fps56 #p30Hud{top:270px!important;right:14px;width:165px;padding:6px 8px}
+ body.fps56 #v020Quickbar{bottom:max(12px,env(safe-area-inset-bottom));width:calc(100vw - 28px);grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}body.fps56 #v020Quickbar button{height:44px;font-size:10px}body.fps56 #v020Quickbar .quick-slot{display:none}
+ body.fps56 #statusBars{left:14px;width:min(155px,43vw);padding:6px 9px}body.fps56 #statusBars>div{font-size:10px;grid-template-columns:22px 1fr 26px;gap:4px;margin:5px 0}body.fps56 #statusBars i{height:4px}
+ body.fps56 #weaponHud{right:14px;min-width:0;width:min(165px,45vw)!important;padding:6px 9px;gap:4px}body.fps56 #weaponName{font-size:9px}body.fps56 #weaponHud strong{font-size:28px}body.fps56 #ammoReserve{font-size:16px}body.fps56 #reloadHint{font-size:8px}body.fps56 #weaponHud .condition-line{font-size:7px}
+ body.fps56 #p28LampHud{right:14px;bottom:calc(var(--hud-base) + 117px);min-height:32px;font-size:9px;padding:6px 9px}
+ body.fps56 #levelHud{left:14px;bottom:calc(var(--hud-base) + 100px);width:125px}body.fps56 #v023CriticalHud{left:14px;bottom:calc(var(--hud-base) + 140px);font-size:8px;max-width:52vw}body.fps56 #needsHud{left:14px;bottom:calc(var(--hud-base) + 166px);max-width:55vw;flex-wrap:wrap;font-size:8px}
+ body.fps56 #needsHud{max-width:140px}
+ body.fps56 #companionCard{left:14px;bottom:calc(var(--hud-base) + 202px);padding:4px 7px}body.fps56 #effectHud{left:14px;bottom:calc(var(--hud-base) + 250px);max-width:50vw}body.fps56 #toastStack{right:14px;bottom:calc(var(--hud-base) + 160px);width:45vw;max-height:180px}body.fps56 #toastStack .toast{font-size:9px;padding:6px 8px}
+ body.fps56 #subtitle{bottom:calc(var(--hud-base) + 40px);max-width:90vw;font-size:.8rem}body.fps56 #interactPrompt{bottom:43%;font-size:11px;max-width:85vw}
+ body.fps56:has(#hud.touch){--hud-base:260px}body.fps56 #hud.touch #v020Quickbar{bottom:12px}body.fps56 #hud.touch #touchMove{bottom:112px;width:100px;height:100px;left:16px}body.fps56 #hud.touch .touch-fire{right:18px;bottom:112px}body.fps56 #hud.touch .touch-action{right:88px;bottom:145px}body.fps56 #hud.touch .touch-vats{right:18px;bottom:184px}body.fps56 #hud.touch .touch-pip{right:88px;bottom:77px}
+ }
+ @media(max-height:540px) and (min-width:600px){
+ body.fps56{--hud-base:calc(max(12px,env(safe-area-inset-bottom)) + 60px)}body.fps56 #v020Quickbar{bottom:10px}body.fps56 #levelHud,body.fps56 #v023CriticalHud,body.fps56 #companionCard{display:none}body.fps56 #needsHud{bottom:185px}body.fps56 #effectHud{bottom:215px}body.fps56 #toastStack{bottom:205px;max-height:110px}body.fps56 #p28LampHud{bottom:190px}body.fps56 #questCard,body.fps56 #v020QuestHint{max-height:90px}body.fps56 #fps56ObjectiveToggle{top:120px}body.fps56:has(#hud.touch){--hud-base:calc(max(12px,env(safe-area-inset-bottom)) + 60px)}body.fps56 #hud.touch #statusBars{width:170px}body.fps56 #hud.touch #weaponHud{width:170px!important}body.fps56 #hud.touch #touchMove{bottom:70px;left:200px;width:80px;height:80px}body.fps56 #hud.touch .touch-fire{right:200px;bottom:70px}body.fps56 #hud.touch .touch-action{right:268px;bottom:70px}body.fps56 #hud.touch .touch-vats{right:200px;bottom:140px}body.fps56 #hud.touch .touch-pip{right:268px;bottom:140px}
+ body.fps56 #v042LayerHud{top:84px;left:16px;width:200px;max-width:25vw}body.fps56 #p30Hud{top:120px!important;right:16px;width:170px;height:40px;padding:4px 8px;overflow:hidden}body.fps56 #p30Hud b{display:none}body.fps56 #p30Hud div{height:18px;margin:0}body.fps56 #p30Hud small{font:8px/11px monospace}body.fps56:has(#p30Hud:not([hidden])) #fps56ObjectiveToggle{right:200px}
+ }
+ @media(prefers-reduced-motion:reduce){body.fps56 #crosshair,body.fps56 #statusBars i b{transition:none}}
+ /* Reserve a separate line for the map attribution, including safe areas. */
+ body.fps56 #v020Quickbar,body.fps56 #hud.touch #v020Quickbar{bottom:calc(max(12px,env(safe-area-inset-bottom)) + 14px)}
+ `;document.head.appendChild(style);document.body.classList.add('fps56');
+ const hud=$('hud');hud.setAttribute('aria-live','off');
+ const attribution=$('geoAttribution')||document.createElement('small');attribution.id='geoAttribution';
+ if(attribution){hud.appendChild(attribution);attribution.setAttribute('role','button');attribution.tabIndex=0;attribution.setAttribute('aria-label','Sources géographiques et licences');const openSources=()=>{if(mode==='PLAYING')v047OpenStatus();};attribution.addEventListener('click',openSources);attribution.addEventListener('keydown',e=>{if(['Enter','Space'].includes(e.code)){e.preventDefault();e.stopPropagation();if(!e.repeat)openSources();}});}
+ const strip=document.createElement('div');strip.id='fps56Compass';strip.setAttribute('aria-hidden','true');$('compass').insertBefore(strip,$('questDistance'));
+ const pip=document.createElement('span');pip.id='fps56Bearing';pip.hidden=true;pip.setAttribute('aria-hidden','true');$('compass').appendChild(pip);
+ const stance=document.createElement('span');stance.id='fps56Stance';hud.appendChild(stance);
+ const objectiveToggle=document.createElement('button');objectiveToggle.id='fps56ObjectiveToggle';objectiveToggle.type='button';objectiveToggle.title='Afficher ou masquer le suivi de quête';hud.appendChild(objectiveToggle);
+ const aim=document.createElement('button');aim.type='button';aim.dataset.fps56Aim='true';aim.textContent='X · Visée';aim.title='Maintenir pour présenter l’arme dans l’axe du viseur';aim.setAttribute('aria-label','Maintenir la visée');
+ let aimingPointer=null;
+ const setAim=held=>{if(typeof v056FirstPersonAim==='function')v056FirstPersonAim(held);else window.__MISTRAL_DEBUG?.v056Aim?.(held);};
+ aim.addEventListener('pointerdown',e=>{if(e.button!==0||mode!=='PLAYING'||aimingPointer!==null)return;e.preventDefault();aimingPointer=e.pointerId;aim.setPointerCapture?.(e.pointerId);setAim(true);});
+ const releaseAim=e=>{if(e&&e.pointerId!==aimingPointer)return;aimingPointer=null;setAim(false);};
+ aim.addEventListener('pointerup',releaseAim);aim.addEventListener('pointercancel',releaseAim);aim.addEventListener('lostpointercapture',releaseAim);window.addEventListener('blur',()=>releaseAim());document.addEventListener('visibilitychange',()=>{if(document.hidden)releaseAim();});
+ aim.addEventListener('keydown',e=>{if(['Space','Enter'].includes(e.code)){e.preventDefault();e.stopPropagation();if(!e.repeat)setAim(true);}});aim.addEventListener('keyup',e=>{if(['Space','Enter'].includes(e.code)){e.preventDefault();e.stopPropagation();setAim(false);}});aim.addEventListener('blur',()=>{if(aimingPointer===null)setAim(false);});
+ const fields=document.createElement('fieldset');fields.className='fps56-options';fields.innerHTML='<legend>Affichage en jeu</legend><label><input type="checkbox" data-fps56="compact"> HUD compact</label><label><input type="checkbox" data-fps56="objectives"> Afficher le suivi de quête</label><p>Les jauges, munitions et effets restent disponibles. Le bouton de suivi masque seulement l’objectif à l’écran ; le journal conserve les quêtes.</p>';
+ const optionsRoot=$('optionsScreen')?.querySelector('.options-card');if(optionsRoot)optionsRoot.insertBefore(fields,optionsRoot.querySelector('footer'));
+ function sync(){hud.classList.toggle('fps56-compact',preferences.compact);fields.querySelector('[data-fps56=compact]').checked=preferences.compact;fields.querySelector('[data-fps56=objectives]').checked=preferences.objectives;objectiveToggle.textContent=preferences.objectives?'Suivi · masquer':'Suivi · afficher';objectiveToggle.setAttribute('aria-pressed',String(preferences.objectives));}
+ function store(next){const before=preferences;preferences=M.options(next);try{localStorage.setItem(key,JSON.stringify(preferences));}catch{preferences=before;toast('Affichage non enregistré : stockage indisponible.','bad');}sync();}
+ fields.addEventListener('change',()=>store({compact:fields.querySelector('[data-fps56=compact]').checked,objectives:fields.querySelector('[data-fps56=objectives]').checked}));objectiveToggle.onclick=()=>store({...preferences,objectives:!preferences.objectives});$('btnOptionsReset')?.addEventListener('click',()=>store(M.options()));sync();
+ let compassStamp='',lastMode=null;
+ const base=updateHUD;updateHUD=function(...args){const result=base(...args);if(!gameStarted||!state?.player)return result;const playing=mode==='PLAYING';if(lastMode!==mode){lastMode=mode;if(!playing)releaseAim();}hud.classList.toggle('fps56-compact',preferences.compact);
+  const hint=$('v020QuestHint'),quest=$('questCard'),hasHint=!!hint&&!hint.hidden&&!!hint.textContent.trim();
+  hint?.classList.toggle('fps56-objective-hidden',!preferences.objectives||!hasHint);quest.classList.toggle('fps56-objective-hidden',!preferences.objectives||hasHint);
+  objectiveToggle.hidden=!playing;
+  const model=M.read(state.player,currentWeapon(),reloadTimer);$('statusBars').dataset.critical=String(model.lowHp);$('weaponHud').dataset.empty=String(model.empty);$('weaponHud').dataset.reloading=String(model.reloading);
+  $('reloadHint').textContent=currentWeapon().melee?'CORPS À CORPS':model.reloading?'RECHARGEMENT…':model.empty?'CHARGEUR VIDE · R':'R · RECHARGER';
+  stance.textContent=model.stance;stance.hidden=!playing||!state.player.crouched&&state.player.cameraMode!=='third';
+  const ticks=M.ticks(state.player.yaw),stamp=JSON.stringify(ticks.map(t=>[t.degree,Math.round(t.x*10)/10]));if(stamp!==compassStamp){compassStamp=stamp;strip.replaceChildren(...ticks.map(t=>{const el=document.createElement('span');el.style.left=t.x+'%';el.className=t.major?'major':'';if(t.label){const label=document.createElement('b');label.textContent=t.label;el.appendChild(label);}return el;}));}
+  const objective=getObjectiveMarker(),bearing=objective?.zone===world?.id?M.bearing(state.player.pos,objective.pos,state.player.yaw):null;pip.hidden=!playing||!preferences.objectives||!bearing;if(bearing){pip.style.left=bearing.x+'%';pip.textContent=bearing.edge?(bearing.offset<0?'◀':'▶'):'◇';pip.classList.toggle('edge',bearing.edge);}
+  const bar=$('v020Quickbar');if(bar&&!bar.contains(aim))bar.appendChild(aim);aim.disabled=!playing||state.player.cameraMode==='third'||!!world?.vehicleMode||!!currentWeapon().melee;aim.setAttribute('aria-pressed',String(typeof v056FirstPersonIsAiming==='function'&&v056FirstPersonIsAiming()));
+  if(settings.reduceMotion)hud.classList.add('fps56-reduced');else hud.classList.remove('fps56-reduced');
+  const stealth=$('stealth29');if(stealth)stealth.title=stealth.querySelector('small')?.textContent||'';
+  if(attribution){const geographic=!!world?.v046;attribution.hidden=!geographic;if(geographic){attribution.title=attribution.textContent;attribution.textContent=typeof V046!=='undefined'&&V046.lab?'Banc synthétique · données de test':'© contributeurs OpenStreetMap · Cadastre/DGFiP · IGN';}}
+  return result;
+ };
+ Object.assign(window.__MISTRAL_DEBUG,{v056HudInfo:()=>({preferences:{...preferences},model:M.read(state?.player,currentWeapon(),reloadTimer),mode,assistance:'Presentation only; no world position, health, ammo or quest writes.'})});
+ updateHUD();
 }
 
 init();
@@ -13537,6 +14008,7 @@ if(typeof v050ControllerAfterInit==='function')v050ControllerAfterInit();
 if(typeof v051CityAfterInit==='function')v051CityAfterInit();
 if(typeof v051WaterAfterInit==='function')v051WaterAfterInit();
 if(typeof v050FacadesAfterInit==='function')v050FacadesAfterInit();
+if(typeof v056LandmarksAfterInit==='function')v056LandmarksAfterInit();
 if(typeof v050CityInteriorAfterInit==='function')v050CityInteriorAfterInit();
 if(typeof v052ArchitectureAfterInit==='function')v052ArchitectureAfterInit();
 if(typeof v051CityPanelAfterInit==='function')v051CityPanelAfterInit();
@@ -13547,4 +14019,7 @@ if(typeof v053BestiaryAfterInit==='function')v053BestiaryAfterInit();
 if(typeof v054PreciseTerrainAfterInit==='function')v054PreciseTerrainAfterInit();
 if(typeof v054ChemsAfterInit==='function')v054ChemsAfterInit();
 if(typeof v055OrdnanceAfterInit==='function')v055OrdnanceAfterInit();
+if(typeof v056FirstPersonAfterInit==='function')v056FirstPersonAfterInit();
+if(typeof v056MinesAfterInit==='function')v056MinesAfterInit();
+if(typeof v056HudAfterInit==='function')v056HudAfterInit();
 })();

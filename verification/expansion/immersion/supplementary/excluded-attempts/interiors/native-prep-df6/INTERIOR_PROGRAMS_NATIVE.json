@@ -1,0 +1,91 @@
+{
+  "scope": "Assisted native HTTP pilot for two actual source-based interior programmes.\n\nNo browser starts without --run and coordinated frozen SHA values. Source usage\nand footprints come from real installed IGN chunks; partitions, portals and all\nfurniture remain explicitly invented. Sector selection, measured collision-free\ncamera placement, render/simulation freeze, v020Approach and stepped production\nphysics use the same public diagnostic APIs as architecture_native_browser.py.\nE-key entries, visible exit controls and cold Continue are native browser actions.\nNo synthetic terrain, actor, plan, save, HTML or HTTP response is injected.\n",
+  "stage": "preflight",
+  "checks": [
+    {
+      "name": "Archived geometry helper definitions equal the imported helper definitions",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "Native source programme pilot completes",
+      "ok": false,
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/interior_programs_native.py\", line 250, in main\n    check('Archived geometry helper definitions equal the imported helper definitions', helper_archive.is_file()\n  File \"/workspace/fallout-Marseille/tests/expansion/interior_programs_native.py\", line 100, in check\n    raise AssertionError(name)\nAssertionError: Archived geometry helper definitions equal the imported helper definitions\n"
+    },
+    {
+      "name": "Frozen HTML, modules, fixtures and selected real source chunks remain unchanged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "The four imported read-only architecture helpers remain unchanged",
+      "ok": true,
+      "detail": {
+        "sourcePath": "tests/expansion/architecture_native_browser.py",
+        "definitionsSha256": {
+          "sha": "5d2f17cf600e426b5b233fbac6acbf635ebc09f06bca0fad37d5385c1d852ed6",
+          "finite": "d20bdfdae3e7ff09301907adb329ae7498e5777f171e05d39f0a36d239e276b3",
+          "source_anchor": "326f14b92c67d6575b2175ca62db66a965b8a051694d8b281676935b934eab6a",
+          "point_in_ring": "ff63cecade1cc9f73082ce26af28ad8b866e4793d6d18cdd328547df71c3418e"
+        },
+        "moduleSha256AtPreflight": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5",
+        "scope": "Only these four pure geometry/hash helpers are imported; the concurrently maintained pilot main is not executed."
+      }
+    }
+  ],
+  "shots": [],
+  "attempts": [],
+  "programmes": [],
+  "native_navigation": false,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "synthetic_geography": false,
+  "synthetic_documents": false,
+  "contexts_created": 0,
+  "maximum_contexts": 1,
+  "service_workers_disabled": true,
+  "page_errors": [],
+  "javascript_console_errors": [],
+  "resource_console_diagnostics": [],
+  "local_request_failures": [],
+  "external_request_failures": [],
+  "local_http_errors": [],
+  "http_responses": [],
+  "script_sha256": "4ddc56a5c42aefeb1a2ceaa6ba52b75ff42549d7d953c8f37db7c1137a600201",
+  "local_metadata_events": [],
+  "local_metadata_waits": [],
+  "assistance": [
+    "Public native macro/sector selection loads real installed sources.",
+    "Public v046Height/v046Collide choose measured clear camera positions.",
+    "Public v018CaptureAt freezes simulation/render and frames actual geometry.",
+    "Public v020Approach chooses production collision/LOS checked placement before a real E key.",
+    "Native KeyW plus v020Tick(.05,true) manually steps actual production movement/collisions.",
+    "Read-only public exports inspect source identity, programme, furniture, storage and collisions.",
+    "Before each real reload, the pilot waits for already pending same-origin /__mistral/local-data metadata requests to finish, with a 120-second deadline; requests are neither mocked nor cancelled."
+  ],
+  "room_door_pilot": {
+    "script": "tests/expansion/interior_doors_native.py",
+    "sha256": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b"
+  },
+  "imported_geometry_helpers": {
+    "sourcePath": "tests/expansion/architecture_native_browser.py",
+    "definitionsSha256": {
+      "sha": "5d2f17cf600e426b5b233fbac6acbf635ebc09f06bca0fad37d5385c1d852ed6",
+      "finite": "d20bdfdae3e7ff09301907adb329ae7498e5777f171e05d39f0a36d239e276b3",
+      "source_anchor": "326f14b92c67d6575b2175ca62db66a965b8a051694d8b281676935b934eab6a",
+      "point_in_ring": "ff63cecade1cc9f73082ce26af28ad8b866e4793d6d18cdd328547df71c3418e"
+    },
+    "moduleSha256AtPreflight": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5",
+    "scope": "Only these four pure geometry/hash helpers are imported; the concurrently maintained pilot main is not executed."
+  },
+  "elapsed_seconds": 0.065,
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pinned_inputs": {
+    "tests/expansion/interior_programs_native.py": "4ddc56a5c42aefeb1a2ceaa6ba52b75ff42549d7d953c8f37db7c1137a600201",
+    "tests/expansion/interior_doors_native.py": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b"
+  },
+  "exception": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/interior_programs_native.py\", line 250, in main\n    check('Archived geometry helper definitions equal the imported helper definitions', helper_archive.is_file()\n  File \"/workspace/fallout-Marseille/tests/expansion/interior_programs_native.py\", line 100, in check\n    raise AssertionError(name)\nAssertionError: Archived geometry helper definitions equal the imported helper definitions\n"
+}

@@ -1,0 +1,36 @@
+{
+  "scope": "Observed completion; failed QA early-frame read retained separately.",
+  "toolSession": 56687,
+  "observedToolExitCode": 1,
+  "processExitCode": 1,
+  "cwd": "/workspace/fallout-Marseille",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/first_person_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/fps-hands/native-final-03",
+    "--expect-html-sha",
+    "57ed730285505bf7e93f696a7b92a751eddd5b6b7967663ebfd134320f50c9cf",
+    "--expect-fps-sha",
+    "993ad49be17da25402c47086276bc78103fa3eea617ecdfdf4452568d972bdd4"
+  ],
+  "report": {
+    "path": "FIRST_PERSON_NATIVE.json",
+    "sha256": "579d3c8c3059930eba5d917bbe69d47e1ea756d0353fdfc84bd6bc6ffafdac53"
+  },
+  "log": {
+    "path": "../native-final-03.log",
+    "sha256": "3d000c838888fed1ae1be88b315ffd673230994a35f81d9b372d2b11fe4661e3"
+  },
+  "script": {
+    "path": "EXECUTED_first_person_native.py",
+    "sha256": "66958a16fcf84e4c3b061f64543a9e0fc47ecd68e44e27dbdeadee8d9d00abd4"
+  },
+  "cleanup": {
+    "context": true,
+    "browser": true,
+    "playwright": true,
+    "server": true
+  }
+}

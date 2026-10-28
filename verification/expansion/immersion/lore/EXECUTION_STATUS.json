@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/community_dossiers_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/lore/native-844",
+    "--expect-html-sha",
+    "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "--expect-lore-sha",
+    "88cbec503e27470d24282d303f9185da6804c5202c0887f3dc24c18a0b169f14"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "startedAtUTC": "2026-10-28T09:20:58.005363+00:00",
+  "scriptSha256": "574d085b4d6abacaef9a2053a0acde7017042e3b295a8a114b7bf0e8d0cf8385",
+  "runnerSha256": "773e17b86f61b76b9b04d80560e3b8048070f2c2d95bf472c4310a0912945d44",
+  "exitCode": 0,
+  "elapsedSeconds": 575.113,
+  "log": "process.log",
+  "logSha256": "973076ddb400e0e2b2953f11f065772936b8fc1a3820872bb09f9451367a9f0f",
+  "report": "COMMUNITY_DOSSIERS_NATIVE.json",
+  "reportSha256": "14313c509abf63e606b955c25241ef359c78bec6f5669ef136111cddeb69d1d4",
+  "scriptUnchanged": true
+}

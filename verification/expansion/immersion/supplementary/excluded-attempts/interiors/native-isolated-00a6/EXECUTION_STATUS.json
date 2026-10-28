@@ -1,0 +1,34 @@
+{
+  "scope": "Isolated copied candidate00a6, real shared geographic data; do not retag if final HTML differs",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/interior_services_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/fps-expansion/interiors/native-isolated-00a6",
+    "--expect-html-sha",
+    "00a6e4286f878971d60fdaf6061833be2b991682f2208c782a45029d20f6f2de",
+    "--expect-interior-sha",
+    "13e32ca7e6e93ecc9b99097712b2169f1e53d462cc90ad016ba43cf83983c0c3",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "cwd": "/workspace/.cloud-setup/fallout-marseille/fps-expansion/interiors/candidate-mesh-services-01",
+  "exitCode": 1,
+  "elapsedSeconds": 159.1194472549978,
+  "scriptHashes": {
+    "tests/expansion/interior_services_native.py": "6f0bb4d0da40afac054fd382c14d02280493efd8f11b5f1dfb0a949539683387",
+    "tests/expansion/interior_programs_native.py": "4ddc56a5c42aefeb1a2ceaa6ba52b75ff42549d7d953c8f37db7c1137a600201",
+    "tests/expansion/interior_doors_native.py": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b"
+  },
+  "scriptsUnchanged": true,
+  "stdoutSha256": "cb868c6c3c22629ca77ae5825bf10b76982d90d45a897abc8019cf65ed349c29",
+  "buildReceiptSha256": "34a3361efd4328800fa3f026a337dfd6880e4a3c96f5fd00298828bcfb5a9cf3",
+  "reportSha256": "1ed261895b982f4378b3c526c31f60d4d0566cae815bc0202a447c31e990c70e",
+  "passed": 92,
+  "failed": 2,
+  "total": 94,
+  "stage": "actual_furniture_services",
+  "serverPortClosed": true,
+  "serverPort": 40157
+}

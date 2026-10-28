@@ -1,0 +1,39 @@
+OK Frozen production HTML is exact
+OK Frozen installed source index is exact
+OK Both real southern grids belong to the receipt-pinned regional bundle
+OK Actual inline dependency is pinned: src/v050/04_source_geometry.js
+OK Actual inline dependency is pinned: src/v050/04a_city_sources.js
+OK Actual inline dependency is pinned: src/v050/14_precise_terrain.js
+OK Actual source HTTP audit includes two southern grids
+OK Native document bytes equal production HTML
+OK Pilot uses actual territory outside the synthetic lab
+OK Actual requested sector loads: velodrome
+OK Southern source is really loaded without native-atlas relabeling
+OK Physics reads the actual imported southern node [0, 0]
+OK Physics reads the actual imported southern node [447, 0]
+OK Physics reads the actual imported southern node [0, 412]
+OK Physics reads the actual imported southern node [447, 412]
+OK Physics reads the actual imported southern node [224, 206]
+OK Published local terrain mesh uses the finer source nodes and bounded vertices
+OK Actual rendered triangle at southern centre belongs to imported fine LOD
+OK Actual rendered triangle vertex retains source height and visual offset
+OK Actual rendered triangle vertex retains source height and visual offset
+OK Actual rendered triangle vertex retains source height and visual offset
+OK Camera has actual measured terrain and production collision clearance
+OK Actual requested sector loads: borely
+OK Southern source is really loaded without native-atlas relabeling
+OK Physics reads the actual imported southern node [0, 0]
+OK Physics reads the actual imported southern node [447, 0]
+OK Physics reads the actual imported southern node [0, 445]
+OK Physics reads the actual imported southern node [447, 445]
+OK Physics reads the actual imported southern node [224, 223]
+OK Published local terrain mesh uses the finer source nodes and bounded vertices
+OK Actual rendered triangle at southern centre belongs to imported fine LOD
+OK Actual rendered triangle vertex retains source height and visual offset
+OK Actual rendered triangle vertex retains source height and visual offset
+OK Actual rendered triangle vertex retains source height and visual offset
+OK Camera has actual measured terrain and production collision clearance
+OK Frozen runtime and source inputs stay identical throughout native pilot
+OK No application JavaScript exception is observed
+OK Actual source HTTP succeeds; metadata cancellation remains explicit
+OK One native browser context and zero service worker replacements

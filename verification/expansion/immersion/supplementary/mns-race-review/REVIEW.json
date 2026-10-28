@@ -1,0 +1,39 @@
+{
+  "kind": "read-only-peer-race-review",
+  "scope": "Static production integration review only; no additional test assertions or native browser session claimed. No repository file edited.",
+  "initialReviewedLandmarkSha256": "d03311e5880b4627f9fa3908dd5a7b42a3ce8c052875b6840b502736ef48004a",
+  "finalLandmarkSha256": "a7ecec46cf10997015ca91f87eb97669a5d3ef4c059fb1aa403ea0d6b7483afc",
+  "sourceHashes": {
+    "src/v050/06a_landmark_surfaces.js": "a7ecec46cf10997015ca91f87eb97669a5d3ef4c059fb1aa403ea0d6b7483afc",
+    "src/v050/06_architecture_sources.js": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+    "src/v050/04c_roof_collisions.js": "e67887b2a274cf570fa22075ce45e516b462d2090114a1d34cd785a53e33d824",
+    "src/v048/01_preparation.js": "6407face4e421ed6ab0e6a94776c69f289bd8fd25fc3cf42d69d081fdca7b9aa",
+    "src/v047/02_streaming.js": "e7b548c9185d9dc19314c7375b4848abf335c0969b6898cc6519c9034a6b50b3",
+    "src/v047/04_lab_safety.js": "1659c92f81bdf8fdcd87ccd5fb5991f26ed07979e3954574f0850d6c4f5462fd",
+    "src/v048/02_returns.js": "ecc6ae9e940c0ef030186c18ed6bc77566fdcfa98994d41dde59e87e490064bc",
+    "src/v050/04a_city_sources.js": "c1c9f771b9e095b3334e946c72bffa1c3991976ff3376192319d346786d45702",
+    "src/v050/14_precise_terrain.js": "3fffa47978093dee72cadd5edc189a1794d02573627f3749fa7adbaf8738f5c1"
+  },
+  "reviewedPaths": [
+    "Optional atlas resolution before every ordinary geographic import",
+    "Latest navigation/cancel serials and City navigation epoch",
+    "Synthetic lab entry/leave and retained real-world restore",
+    "v048 eight-feature batch imports into temporary worlds",
+    "Prepared record cache reuse and atomic final publish",
+    "Late roof support cache invalidation and replacement record-map ownership",
+    "Geometry/properties binding refusal before collider or draw mutation",
+    "Active collected cap to WeakMap surface association after unpublished/cancelled staging",
+    "Read-only debug export copying and bounded source/index allocations"
+  ],
+  "knownBugAddressed": "Previously a staged but unpublished surface overwrote runtime.applied and removed facade filtering from the still-published cap. Final WeakMap byCap and collect-local activeSurfaces select the actual collected cap, avoiding that latest-staging dependency.",
+  "additionalConcreteGameplayBugsFound": [],
+  "actualAtlasScope": {
+    "records": 17,
+    "allMultiPolygonsHaveExactlyOneComponent": true,
+    "payloadSha256": "e50ea945c27e47a3f706c8ea381975032cd6b37857baa913f4f9430fcab3c6f6"
+  },
+  "limitations": [
+    "This read-only review is not a proof of all possible interleavings or browser/GPU behavior.",
+    "runtime.applied and its debug surface export remain a bounded history of most recently constructed matching surfaces, not a claim that all those caps are simultaneously published. Immutable atlas and shared global origin keep source heights identical across these preparations."
+  ]
+}

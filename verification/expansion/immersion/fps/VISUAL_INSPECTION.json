@@ -1,0 +1,74 @@
+{
+  "scope": "All ten original images of final execution 05 manually inspected with view_image after this execution; no reused PNG or retagged older report. No image edited.",
+  "html_sha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "report_sha256": "b9155fb5e1f297115bf66cb1d2a037ac51feec761b7a036ef0fac8ec7c4fdf0d",
+  "production_sha256": "2351e0b53388dd33ad3297414ed60676594c6421a3aea8d4a45d640b00d481d8",
+  "images": [
+    {
+      "file": "01_native_pistol_hip.png",
+      "sha256": "7df202aaeb5243a7153112a4377eb1bb92df72b9aa9d6b9dc9119d06c12b1c92",
+      "reviewed": true,
+      "observations": "Fresh native 1440 by 900 scene with pistol in lower right, attached glove and clear centre aiming aperture."
+    },
+    {
+      "file": "02_matrix_rifle.png",
+      "sha256": "f0b6b326554e474310169444b9d9011f920ded994aebb37736bcb0e0cfd7a5aa",
+      "reviewed": true,
+      "observations": "Carbine receiver, fore-end, supporting sleeve and health wrist terminal are visible in the fresh scene."
+    },
+    {
+      "file": "02_matrix_energy.png",
+      "sha256": "a1a330b5df485369c2226dd1b1a23499f7204820da07d208863f964ae36090d3",
+      "reviewed": true,
+      "observations": "Distinct olive energy receiver and fore-end with connected support arm; original stylised family geometry."
+    },
+    {
+      "file": "02_matrix_blade.png",
+      "sha256": "8f745e71926bef1e760b0087697f73da24fc7e7fb2c1e78adb94b83fc86b0215",
+      "reviewed": true,
+      "observations": "Corrected short combat knife is visibly shorter than the historical long blade; its held grip and left guarding hand are visible. Aim button is disabled."
+    },
+    {
+      "file": "02b_native_wall_lowering.png",
+      "sha256": "bbbd935424d63df75e5f9e2d89caeae13996f66ccd6805603f82c0e7ea95d110",
+      "reviewed": true,
+      "observations": "An existing authored wall fills the scene and the carbine is visibly lowered; the exact distance is provided by the recorded production placement, not measured from the PNG."
+    },
+    {
+      "file": "03_native_rifle_aim.png",
+      "sha256": "d32a9f2f7a0dda5e48ba3bedd5329fb71d7673d7427b42a201b8e4e90589430e",
+      "reviewed": true,
+      "observations": "Open sight is at screen centre; both sleeves, gloves and original wrist terminal are connected below it."
+    },
+    {
+      "file": "04_native_shot_recoil.png",
+      "sha256": "d41bcb87ffa404f61d211e2033c11f4136f16b5e83710ed9c1091ec623d61277",
+      "reviewed": true,
+      "observations": "Fresh actual shot frame shows displaced pistol, local muzzle flash and HUD count 9/60 after the ordinary shot."
+    },
+    {
+      "file": "05_native_reload_hands.png",
+      "sha256": "597b0244afba64fb7ab97fbe6212773dd9e904cb58610a08cd34165758a13fa9",
+      "reviewed": true,
+      "observations": "Active ordinary reload timer and tilted pistol are visible. Most supporting hand and held magazine are below the viewport at this sampled phase, so this image alone does not certify the entire reloading hand geometry."
+    },
+    {
+      "file": "06_native_portrait_hands.png",
+      "sha256": "15952f465dbddb3f4afb07d8c9cc2a827dcfc30cd472e917269d6535245d9ef7",
+      "reviewed": true,
+      "observations": "Fresh 390 by 844 canvas shows the pistol and bottom grip; HUD covers some receiver/grip and the viewport crops part of the hands. No physical touch hardware claim."
+    },
+    {
+      "file": "07_native_portrait_reduced_motion.png",
+      "sha256": "1de7bd273f1c089745d5fd4df5bb23efd81062987976d2cd833440bab36fc2ec",
+      "reviewed": true,
+      "observations": "Fresh portrait frame under the actual reduceMotion setting. Motion suppression is proved by the runtime checks rather than a still image."
+    }
+  ],
+  "limits": [
+    "Stylised original view-space family models, not a unique model for each weapon.",
+    "The authored Aubagne scene is not a surveyed Marseille reconstruction.",
+    "No GPU hardware FPS, physical controller, physical touch device or entire gameplay completion certification.",
+    "Frames are selected; declared state and controlled model tests cover animation and lifecycle details that these still images cannot establish."
+  ]
+}

@@ -1,0 +1,21 @@
+✔ HUD options default to readable full information and ignore foreign fields (2.226385ms)
+✔ health and AP ratios are bounded and never divide by zero (0.25211ms)
+✔ north wrap remains continuous across zero degrees (0.171821ms)
+✔ compass cardinal labels follow actual yaw (1.415371ms)
+✔ compass uses a bounded finite set at non-cardinal and huge wrapped yaw (0.277007ms)
+✔ quest directly ahead uses center and behind is indicated at edge (0.348731ms)
+✔ east objective changes from right edge to center after actual east turn (0.162453ms)
+✔ quest bearing rejects missing coordinate, malformed target and coincident point (0.159497ms)
+✔ critical health is real low living health, without low-AP false warning (0.410837ms)
+✔ empty firearm and melee have distinct truthful HUD labels (0.308646ms)
+✔ reload status follows active timer only (0.188942ms)
+✔ stance follows actual crouch and camera mode without writing player state (0.309007ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14.896012
+

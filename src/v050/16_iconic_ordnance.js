@@ -23,6 +23,8 @@ const MistralOrdnance=(()=>{
  function damage(distance){return finite(distance)&&distance>=0&&distance<BLAST?DAMAGE*(1-distance/BLAST):0;}
  return{ID,RADIUS,FUSE,BLAST,DAMAGE,SPEED,STOCKS,RECIPE,fresh,migrate,launch,reflect,advance,triangleHit,plane,surfaceHit,surfaceRay,damage};
 })();
+// Private bridge shared by world explosives; never attached to the debug API.
+const MistralOrdnanceWorld={};
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralOrdnance;
 
 if(typeof window!=='undefined'&&typeof baseState==='function'){
@@ -74,8 +76,12 @@ if(typeof window!=='undefined'&&typeof baseState==='function'){
   const ok=atomic(()=>{if(!v026Remove(M.ID,1))return false;state.v055Ordnance.armed=candidate;state.v055Ordnance.launched=Math.min(1e6,state.v055Ordnance.launched+1);saveGame(false);return true;});if(ok){audio.ensure();audio.tone(280,.08,'triangle',.04,-90);toast('Grenade lancée · fusée 3 s · éloignez-vous.');updateHUD();}else if(runtime.error)toast('Grenade conservée : '+runtime.error,'bad');return ok;
  }
  function visible(origin,target){const distance=Math.hypot(...target.map((n,i)=>n-origin[i]));if(distance<.001)return true;const dir=target.map((n,i)=>(n-origin[i])/distance);const limit=Math.max(0,distance-.03);if(firstObstacle(origin,dir,limit)<limit)return false;for(const c of ceilingSurfaces().boxes)if(rayAABB(origin,dir,c,limit)<limit)return false;for(const points of planeSurfaces(origin[0],origin[2],M.BLAST))if(M.surfaceRay(points,origin,dir,limit)<limit)return false;return true;}
- function explode(b){const blast={pos:b.pos.slice(),hits:[],player:false};const ok=atomic(()=>{state.v055Ordnance.armed=null;state.v055Ordnance.detonated=Math.min(1e6,state.v055Ordnance.detonated+1);for(const e of world.enemies||[]){if(!e.alive)continue;const target=[e.pos[0],e.pos[1]+.8,e.pos[2]],n=M.damage(Math.hypot(...target.map((v,i)=>v-b.pos[i])));if(n>0&&visible(b.pos,target)){const hp=e.health;damageEnemy(e,n*difficultyInfo().outgoing,'body',false,0);blast.hits.push({id:e.id,before:hp,after:e.health});}}
-   const p=state.player.pos,target=[p[0],p[1]-playerEyeHeight()+.85,p[2]],n=M.damage(Math.hypot(...target.map((v,i)=>v-b.pos[i])));if(n>0&&visible(b.pos,target)){blast.player=true;hurtPlayer(n,'Votre grenade à fragmentation');}saveGame(false);return true;},['PLAYING'],true);if(ok){runtime.lastBlast=blast;runtime.flashes.push({pos:b.pos.slice(),life:.45});runtime.flashes=runtime.flashes.slice(-4);audio.noise(.24,.16,240);updateHUD();}return ok;}
+ function blast(pos,cause='Votre grenade à fragmentation',scale=1){const result={pos:pos.slice(),hits:[],player:false};for(const e of world.enemies||[]){if(!e.alive)continue;const target=[e.pos[0],e.pos[1]+.8,e.pos[2]],n=M.damage(Math.hypot(...target.map((v,i)=>v-pos[i])))*scale;if(n>0&&visible(pos,target)){const hp=e.health;damageEnemy(e,n*difficultyInfo().outgoing,'body',false,0);result.hits.push({id:e.id,before:hp,after:e.health});}}
+  const p=state.player.pos,target=[p[0],p[1]-playerEyeHeight()+.85,p[2]],n=M.damage(Math.hypot(...target.map((v,i)=>v-pos[i])))*scale;if(n>0&&visible(pos,target)){result.player=true;hurtPlayer(n,cause);}return result;
+ }
+ function clearVolume(x,z,r,feet,head){return!solids(x,z).some(c=>!c.disabled&&head>=(c.minY??-Infinity)&&feet<=(c.maxY??Infinity)&&solidHit(c,x,z,r,feet,head));}
+ function explode(b){let blastResult;const ok=atomic(()=>{state.v055Ordnance.armed=null;state.v055Ordnance.detonated=Math.min(1e6,state.v055Ordnance.detonated+1);blastResult=blast(b.pos);saveGame(false);return true;},['PLAYING'],true);if(ok){runtime.lastBlast=blastResult;runtime.flashes.push({pos:b.pos.slice(),life:.45});runtime.flashes=runtime.flashes.slice(-4);audio.noise(.24,.16,240);updateHUD();}return ok;}
+ Object.assign(MistralOrdnanceWorld,{sceneKey,support,probe,visible,clearVolume,atomic,blast});Object.freeze(MistralOrdnanceWorld);
  function tick(dt){syncScene();runtime.flashes=runtime.flashes.filter(f=>(f.life-=Math.max(0,Math.min(.2,dt||0)))>0);if(!available()||V018.qaFreeze||!Number.isFinite(dt)||dt<=0)return;const b=state.v055Ordnance.armed;if(!b)return;if(!sameScene(b)){atomic(()=>{state.v055Ordnance.armed=null;state.v055Ordnance.lost=Math.min(1e6,state.v055Ordnance.lost+1);saveGame(false);return true;});return;}
   const result=M.advance(b,dt,probe);state.v055Ordnance.armed=result.armed;if(result.event==='explode')explode(result.armed);else if(result.event==='lost')atomic(()=>{state.v055Ordnance.armed=null;state.v055Ordnance.lost=Math.min(1e6,state.v055Ordnance.lost+1);saveGame(false);return true;});
  }

@@ -2,9 +2,10 @@
 """Package and restore validated local geographic sources, without network.
 
 The checked-in receipt pins the complete ZIP and each accepted runtime file.
-Existing, valid user imports are retained; invalid imports are never replaced
-silently. Install the content-addressed files before atomically publishing their
-index, just as the source importer does.
+Existing, valid user regions are retained; an updated distribution may only add
+regions absent from that index. Invalid imports are never replaced silently.
+Install the content-addressed files before atomically publishing their index,
+just as the source importer does.
 """
 from __future__ import annotations
 
@@ -166,10 +167,32 @@ def _install_locked(receipt, directory):
             raise SourceError('source archive has an unreferenced runtime file')
     if directory.is_symlink():
         raise SourceError('source destination symlink is not accepted')
+    existing = None
     if (directory / 'index.json').exists() or (directory / 'index.json').is_symlink():
-        validate_directory(directory)
-        return {'status': 'preserved', 'reason': 'Existing validated user sources retained', 'archive': obj['archive']}
+        existing_files, _ = validate_directory(directory)
+        existing = decode_json(existing_files['index.json'])
+        supplied = decode_json(files['index.json'])
+        missing = sorted(set(supplied['regions']) - set(existing['regions']))
+        if not missing:
+            return {'status': 'preserved', 'reason': 'Existing validated user regions retained', 'archive': obj['archive']}
+        added = {region: supplied['regions'][region] for region in missing}
+        merged_index = {**existing, 'regions': {**existing['regions'], **added}}
+        additions = {Path(row['path']).name: files[Path(row['path']).name] for row in added.values()}
+        merged_files = {**existing_files, **additions, 'index.json': canonical(merged_index)}
+        # Apply the exact same schema and aggregate bounds to the combined
+        # result before publishing even one new member. Existing descriptors
+        # and their content-addressed bytes are copied verbatim, not reimported.
+        with tempfile.TemporaryDirectory(prefix='world-source-merge-check-') as temporary:
+            stage = Path(temporary)
+            for name, raw in merged_files.items():
+                (stage / name).write_bytes(raw)
+            validated, _ = validate_directory(stage)
+            if set(validated) != set(merged_files):
+                raise SourceError('combined source index has an unreferenced runtime file')
+        files = {**additions, 'index.json': merged_files['index.json']}
     directory.mkdir(parents=True, exist_ok=True)
+    # Reject all collisions first. An interrupted installation can leave new
+    # immutable files, but the active index must remain the old valid version.
     for name, raw in files.items():
         if name == 'index.json':
             continue
@@ -177,9 +200,14 @@ def _install_locked(receipt, directory):
         if destination.exists() or destination.is_symlink():
             if destination.is_symlink() or not destination.is_file() or destination.read_bytes() != raw:
                 raise SourceError('existing source file conflicts with the verified archive')
-        else:
+    for name, raw in files.items():
+        if name != 'index.json' and not (directory / name).exists():
+            destination = directory / name
             atomic_write(destination, raw)
     atomic_write(directory / 'index.json', files['index.json'])
+    if existing is not None:
+        return {'status': 'extended', 'addedRegions': missing, 'addedFiles': len(files)-1,
+                'preservedRegions': sorted(existing['regions']), 'archive': obj['archive']}
     return {'status': 'installed', 'files': len(files), 'archive': obj['archive']}
 
 

@@ -1,0 +1,60 @@
+{
+  "index": "/tmp/tmpl2v5spv_/enrichment/index.json",
+  "bundle": "/tmp/tmpl2v5spv_/enrichment/geo_huveaune-ab4cc2ea9bbe454d.json",
+  "sha256": "ab4cc2ea9bbe454d59dcd186ef08119776b30f32b19bcaacf3ab6f61d8740668",
+  "features": 1,
+  "terrainSamples": 0,
+  "terrainTileCount": 0,
+  "source": {
+    "name": "IGN BD TOPO — BDTOPO_V3:batiment",
+    "license": "Licence Ouverte 2.0",
+    "attribution": "IGN — Géoplateforme",
+    "acquiredAt": "2026-10-28",
+    "resource": "ign-bdtopo",
+    "url": "https://data.geopf.fr/wfs/ows",
+    "verticalDatum": "NGF-IGN69"
+  },
+  "region": "geo_huveaune"
+}
+{
+  "index": "/tmp/tmpl2v5spv_/enrichment/index.json",
+  "bundle": "/tmp/tmpl2v5spv_/enrichment/geo_huveaune-2c4466df0a45ad5c.json",
+  "sha256": "2c4466df0a45ad5ccf24ba53495505aa0ac100695acc559d3385047e4706344d",
+  "features": 2,
+  "terrainSamples": 0,
+  "terrainTileCount": 0,
+  "source": {
+    "name": "Sources multiples documentées",
+    "resource": "mixed-sources",
+    "license": "Voir les licences de chaque source et objet",
+    "attribution": "IGN — Géoplateforme",
+    "acquiredAt": "2026-10-28"
+  },
+  "region": "geo_huveaune"
+}
+{
+  "index": "/tmp/tmpoexne79_/enrichment/index.json",
+  "bundle": "/tmp/tmpoexne79_/enrichment/geo_huveaune-80fa7e6317c44db1.json",
+  "sha256": "80fa7e6317c44db17e2f8d6c5c4d22fdfc28d0b6b2be37e5a3a4c1a12b1cf2cc",
+  "features": 0,
+  "terrainSamples": 4,
+  "terrainTileCount": 1,
+  "source": {
+    "name": "IGN RGE ALTI — points échantillonnés",
+    "license": "Licence Ouverte 2.0",
+    "attribution": "IGN — Géoplateforme",
+    "acquiredAt": "2026-10-28",
+    "resource": "ign_rge_alti_wld",
+    "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+    "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+  },
+  "region": "geo_huveaune"
+}
+{"municipality": "13055", "bbox": [43.29, 5.36, 43.3, 5.37], "plannedTiles": 1, "workers": 1}
+{"tile": "fixture", "nodes": 6, "valid": 4, "bytes": 1663}
+
+................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 176 tests in 11.244s
+
+OK

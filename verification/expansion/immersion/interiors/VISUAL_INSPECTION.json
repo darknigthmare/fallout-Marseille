@@ -1,0 +1,79 @@
+{
+  "scope": "Manual visual inspection of all 12 actual final844 PNG captures; images are unmodified. Native storage/geometry assertions remain separate from visual framing.",
+  "htmlSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "reportSha256": "13fcdd967fc06924062059993925af3e93c4e39a0ad9c59b3c2453a30d4d91b6",
+  "captures": [
+    {
+      "file": "commerce_equipment.png",
+      "sha256": "c69cfb3924cbcfa7aa0b66979b92da1772b916b55e50eefc4751de0dee2571ee",
+      "inspected": true,
+      "observation": "Readable actual checkout model and source shop aisle; technical close framing."
+    },
+    {
+      "file": "commerce_room_door_closed.png",
+      "sha256": "fa3692132f3ad58a5c29f8cedda830a80c76cb612c6b85ac34a086ac22c1c3ce",
+      "inspected": true,
+      "observation": "Actual closed twin pocket leaves and visible opening prompt, handles and physical passage close-up."
+    },
+    {
+      "file": "commerce_room_door_inside.png",
+      "sha256": "cc71c9cebce925fa43105fcb000a8e0d600f73246e275eca8cbcc0ac2564d77a",
+      "inspected": true,
+      "observation": "Opposite face of the same closed door after actual walking/E; close technical framing."
+    },
+    {
+      "file": "commerce_continue.png",
+      "sha256": "fc0c42b595f0b3394846644664252cfe18c14a89bb821633d2cf181ac5a13bfe",
+      "inspected": true,
+      "observation": "Same closed leaf after cold Continue; actual continuation image, no panoramic room claim."
+    },
+    {
+      "file": "commerce_street_return.png",
+      "sha256": "dd0982cbd7956ee8db1baf191125456fe59892ee553249156ea109e653146b05",
+      "inspected": true,
+      "observation": "Actual source street portal and invented joinery after original return point restoration."
+    },
+    {
+      "file": "atelier_equipment.png",
+      "sha256": "99f7ed18eb74ebf27bf308ad0d1eccb3777f601a609d72a0457e9688d320bd43",
+      "inspected": true,
+      "observation": "Legacy camera is too close to an equipment face; broad dark panel occupies the image. Do not claim useful proof of whole tool cabinet appearance."
+    },
+    {
+      "file": "atelier_continue.png",
+      "sha256": "9c7858a51c2710b523d50d145c6468b0b9cfa689684c8d5a3b111679418ae404",
+      "inspected": true,
+      "observation": "Legacy Continue camera faces a plain interior wall/landing. State/signature assertions support continuity; image does not show full furnishing."
+    },
+    {
+      "file": "atelier_street_return.png",
+      "sha256": "bf6c5f55b2ab7e8001c26c54a0cc2bbe526383bbfe396696730ce05488c957a4",
+      "inspected": true,
+      "observation": "Actual industrial source portal and source facade after exit, invented fittings visible."
+    },
+    {
+      "file": "industry_reserve_access.png",
+      "sha256": "a3296d5033074fb2bc3f73ce491fa583bad491c5db3cfa9b0fe839ce0977e6aa",
+      "inspected": true,
+      "observation": "Readable real native reserve panel with original two scrap, no transfer; closing and exact inventory assertions verified."
+    },
+    {
+      "file": "industry_workshop_service.png",
+      "sha256": "302a1f0a94e9aed5826a127cdf220870516a9fd6b5b5195366c5aa6a76af9c91",
+      "inspected": true,
+      "observation": "Readable service dialogue, actual tabletop behind it; locked ingredient choices and pagination visible."
+    },
+    {
+      "file": "industry_workshop_crafted.png",
+      "sha256": "7b6c6b78a60a975a683dac6425e9b9d3e8c1bb50c8dfb2746c4b753d82a6b0a6",
+      "inspected": true,
+      "observation": "Actual rendered bench, vise/tool boxes, physical first-person camera naturally aimed at the tabletop, correct E service prompt."
+    },
+    {
+      "file": "industry_workshop_service_continue.png",
+      "sha256": "61eb6f43a74e08000b32ef72961e29962d5c6f11648f06201a889458238d4344",
+      "inspected": true,
+      "observation": "Real Continue leaves pitch at its historical reset; table is only partly visible at bottom and reserve prompt is selected. Exact geometry/ledger are proven by state assertions, not by a claim of a newly opened service dialogue in this frame."
+    }
+  ]
+}

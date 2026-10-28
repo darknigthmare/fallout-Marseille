@@ -1,0 +1,155 @@
+{
+  "version": "0.46.0",
+  "html_sha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "passed": 10,
+  "failed": 0,
+  "total": 10,
+  "errors": [],
+  "checks": [
+    {
+      "name": "Sauvegarde manuelle produite",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Emplacement manuel détecté",
+      "ok": true,
+      "detail": [
+        [
+          "slot",
+          1
+        ],
+        [
+          "auto",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "Continuer réactivé",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Continuer reprend le plus récent ou le courant à date égale, slot intact",
+      "ok": true,
+      "detail": {
+        "selected": {
+          "kind": "current",
+          "key": "fallout_mistral_save_v050",
+          "slot": 0,
+          "savedAt": 1793180973612,
+          "zone": "canebiere",
+          "version": "0.50.0"
+        },
+        "manualSavedAt": 1793180973611,
+        "manualCaps": 2600,
+        "expectedCaps": 3599,
+        "selectedCaps": 3599,
+        "resumedCaps": 3599,
+        "resumedZone": "canebiere",
+        "manualSlotUnchanged": true
+      }
+    },
+    {
+      "name": "Mode sûr activable",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Diagnostic contient build, carrière et slots",
+      "ok": true,
+      "detail": {
+        "version": "0.50.0",
+        "at": "2026-10-28T09:49:34.419Z",
+        "zone": "canebiere",
+        "mode": "PLAYING",
+        "gameStarted": true,
+        "renderer": {
+          "backend": "WebGL",
+          "customMeshes": 0,
+          "triangles": 97414,
+          "bufferGroups": 0,
+          "drawCalls": 3858,
+          "batchedMeshes": 0,
+          "batchGroups": 0,
+          "batchBuilds": 0
+        },
+        "settings": {
+          "quality": "low",
+          "reduceMotion": true,
+          "reducedFlashes": true,
+          "geoStreaming": false
+        },
+        "career": {
+          "percent": 71,
+          "rank": "BÂTISSEUR",
+          "story": 100,
+          "zones": 100,
+          "side": 0,
+          "ach": 0,
+          "endings": 6,
+          "operations": 0
+        },
+        "slots": [
+          {
+            "kind": "auto",
+            "slot": 0,
+            "savedAt": 1793180973989,
+            "meta": {
+              "name": "Camille",
+              "level": 26,
+              "zone": "canebiere",
+              "zoneName": "Canebière–Belsunce",
+              "stage": 59,
+              "chapter": "VI · La Terre et le Feu",
+              "percent": 71,
+              "playTime": 0.4665000000000001,
+              "caps": 3599,
+              "ending": "federation"
+            }
+          },
+          {
+            "kind": "slot",
+            "slot": 1,
+            "savedAt": 1793180973611,
+            "meta": {
+              "name": "Camille",
+              "level": 26,
+              "zone": "canebiere",
+              "zoneName": "Canebière–Belsunce",
+              "stage": 59,
+              "chapter": "VI · La Terre et le Feu",
+              "percent": 71,
+              "playTime": 0.28329999999999933,
+              "caps": 2600,
+              "ending": "federation"
+            }
+          }
+        ],
+        "crash": null,
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "name": "PWA manifeste présent",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Service worker présent",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Index installable identique",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Crédits v0.46 à jour",
+      "ok": true,
+      "detail": null
+    }
+  ]
+}

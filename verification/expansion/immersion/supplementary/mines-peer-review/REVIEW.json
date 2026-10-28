@@ -1,0 +1,48 @@
+{
+  "scope": "Independent read-only review and extra controlled probes, supplementary to the 56 model cases, not a native gameplay visit or new summed method.",
+  "sourceHashes": {
+    "src/v050/16_iconic_ordnance.js": "c5b6fa302bdd29106a4e886d6f4e01382bde5e94ff059b5b1b5a0529a7067362",
+    "src/v050/18_iconic_mines.js": "00ba80a6ed04f55eb0ef9491259a7fbba400742ead55fbd028d6d0ed7ad3c787",
+    "tests/expansion/iconic_mines.cjs": "564f9a62b0d8c741f38b4e52fa15b39b02c2a38055b670486f70824b806b1e3e",
+    "tests/expansion/iconic_ordnance.cjs": "22f05b4656475a5e97ae91bf07ff52b7136d07e2d57605022c1c7affa6bf6676"
+  },
+  "checks": [
+    {
+      "name": "A genuinely triggered warning pauses in every inactive mode, loading guard and diagnostic freeze",
+      "ok": true,
+      "detail": {
+        "cases": [
+          "mode=\"PIP\"",
+          "mode=\"PAUSE\"",
+          "mode=\"MENU\"",
+          "mode=\"OPTIONS\"",
+          "V046.busy=true",
+          "V047.pending={}",
+          "V018.qaFreeze=true"
+        ]
+      }
+    },
+    {
+      "name": "A retained recovery callback is physically revalidated after travelling and cannot refund a remote device",
+      "ok": true
+    },
+    {
+      "name": "City floor and building changes invalidate retained interactable callbacks before any registry refresh",
+      "ok": true
+    },
+    {
+      "name": "A blast does not create the undocumented chain reaction in a separate armed mine",
+      "ok": true
+    },
+    {
+      "name": "A failure while arming one of two devices preserves both identities and both retry on restored current objects",
+      "ok": true
+    },
+    {
+      "name": "Null world menus clear old physical actions and keep the persistent registry untouched",
+      "ok": true
+    }
+  ],
+  "passed": 6,
+  "failed": 0
+}

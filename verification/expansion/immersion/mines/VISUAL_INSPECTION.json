@@ -1,0 +1,49 @@
+{
+  "htmlSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "reviewer": "iconic_missing",
+  "method": "All six original PNG files opened with view_image after actual process exit0; no screenshot altered.",
+  "captures": [
+    {
+      "file": "01_finite_mine_purchase.png",
+      "sha256Matches": true,
+      "png": true
+    },
+    {
+      "file": "02_real_placed_mine.png",
+      "sha256Matches": true,
+      "png": true
+    },
+    {
+      "file": "03_native_armed_recovery_prompt.png",
+      "sha256Matches": true,
+      "png": true
+    },
+    {
+      "file": "04_actual_mine_workshop.png",
+      "sha256Matches": true,
+      "png": true
+    },
+    {
+      "file": "05_actual_hostile_mine_result.png",
+      "sha256Matches": true,
+      "png": true
+    },
+    {
+      "file": "06_mine_inventory_summary.png",
+      "sha256Matches": true,
+      "png": true
+    }
+  ],
+  "observations": {
+    "01_finite_mine_purchase": "Real Baptiste trade wallet visible. The mine rows have scrolled outside the visible cropped list after exhaustion; purchase/stock proof is the native state assertions, not this image alone.",
+    "02_real_placed_mine": "Closed original casing top and side, visible green arming light and actual E recovery prompt; on authored flat road, not a surveyed Marseille location.",
+    "03_native_armed_recovery_prompt": "Whole casing, amber armed light and E désamorcer/récupérer prompt visible after actual Continue/travel/resumed arm timer.",
+    "04_actual_mine_workshop": "Actual mine recipe, exact4/3/1 inputs and Réalisées1 visible. Disabled button after components consumed is expected.",
+    "05_actual_hostile_mine_result": "Post-blast authored scene and HUD only; no explosion or corpse visible. Actual Roux-hunter damage70→0 is proved by captured production blast/actor state assertions.",
+    "06_mine_inventory_summary": "MINES Pip-Boy tab, bag2 and placed0/24, readable P/E/fuse/self-blast/persistence rules; lower content scrolls naturally."
+  },
+  "limits": [
+    "Assisted diagnostic authored scene navigation, camera placements, payment/material inputs and bounded production stepping declared in native report. No mine/enemy/health state granted or overwritten.",
+    "No 1:1 geographic source claim, no human playthrough or physical-controller certification."
+  ]
+}

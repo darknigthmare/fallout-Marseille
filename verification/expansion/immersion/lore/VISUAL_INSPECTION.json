@@ -1,0 +1,68 @@
+{
+  "scope": "Manual visual inspection of the six actual final screenshots using view_image; no edited or synthetic image. Supplemental to native assertions, outside assertion count.",
+  "htmlSha256": "844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34",
+  "reportSha256": "14313c509abf63e606b955c25241ef359c78bec6f5669ef136111cddeb69d1d4",
+  "shots": [
+    {
+      "file": "01_communes_paid_reserve.png",
+      "sha256": "3bb1f8bb84c6d68a35a8a7933d8c1d9d5111c3ab8beccac741f8cce6824c9a20",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Completed Communes card, finite reserve decision and final status visible once; no overlapping quickbar."
+    },
+    {
+      "file": "02_communes_radio.png",
+      "sha256": "958069e203107e092f0eb63c9df501a020efadbc2b833e09745dd5a277fcb12c",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Canal 13 frequency and actual completed Communes bulletin are readable."
+    },
+    {
+      "file": "03_gilets_paid_cantine.png",
+      "sha256": "7b5b5f09f53a2b9c4b457c42332fd3ba12e5a135a3dcc15ccefa806c7a699e7e",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Completed Gilets card, actual finite cantine supplies and final status are visible."
+    },
+    {
+      "file": "04_both_factions_radio.png",
+      "sha256": "3f20f26da7ced5b6740ec0502013a2257d85b5536cebe2282f422a40f478d769",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Both conserved outcome paragraphs are readable in the actual Canal 13 reader."
+    },
+    {
+      "file": "05_communes_after_continue.png",
+      "sha256": "ac91bab3a177d219903af3aea4447181fc0de6aab98ca9157736372a437803db",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "The complete Communes card is visible after native Continue; neighboring cards may be partial."
+    },
+    {
+      "file": "06_gilets_after_continue.png",
+      "sha256": "a3e4fbfbb3505502aa7d78fb8addcbf21a7e73be97c35912ce3c271f76946db6",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "The complete Gilets card is visible after native Continue; the end of the Communes outcome is also visible above."
+    }
+  ],
+  "nativeAssertions": 327,
+  "nativeLogMatchesReportSequence": true,
+  "limitations": [
+    "Assisted desktop Chromium visit at1440x900; not unassisted human playthrough or physical controller/mobile certification.",
+    "One metadata local-data request is cancelled during native Continue and18legacy external probes fail; raw events are retained.",
+    "Fictional catalog contacts are on installed real geography; these narratives do not certify surveyed building interiors or autonomous convoys/pumps."
+  ]
+}

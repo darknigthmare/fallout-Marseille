@@ -1,0 +1,28 @@
+✔ Missing optional city atlas leaves the base map and old bounds unchanged (15.83259ms)
+✔ A complete city registers its extent without mutating the active terrain bank (13.308882ms)
+✔ A partial atlas never registers a city extent or starts a source-only scene (6.798578ms)
+✔ City resources outside the old tile pack come only from verified source partitions (15.046101ms)
+✔ Corrupt partition bytes reject before any feature is published or cached (2.669192ms)
+✔ An explicit empty road query removes old road strokes only within its receipt (4.157218ms)
+✔ Concurrent map workers share one immutable chunk request and release settled promises (14.631668ms)
+✔ An aborted waiter cannot publish while another map worker can reuse the completed chunk (2.586777ms)
+✔ Byte budget eviction releases cached partitions and does not retain hidden resolved promises (7.986625ms)
+✔ Refreshing while a chunk is in flight refuses its late response (4.418617ms)
+✔ Synthetic laboratory ignores city resources and restores the exact prior real extent (4.08786ms)
+✔ The verified coarse city DEM stages with its own datum and never mutates the live bank (8.104345ms)
+✔ A city base DEM requires explicit provenance and a compatible normal-height datum (0.338231ms)
+✔ A vector-only city installation leaves old source enrichment usable until terrain is present (10.721801ms)
+✔ A cancelled navigation never starts later when its optional index finishes loading (1.676639ms)
+✔ Refreshing during index readiness invalidates the earlier navigation without overwriting its successful replacement (13.865467ms)
+✔ A background boot index superseded by refresh cannot append a stale error to the healthy replacement (1.96118ms)
+✔ Rendered partition bounds exclude distant whole-road tails while keeping the raw descriptor intact (13.839038ms)
+✔ Twenty streamed city terrain windows never accumulate in a staged bank or alter the published bank before commit (30.65849ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 185.243491
+

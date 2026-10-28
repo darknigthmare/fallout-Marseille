@@ -28,6 +28,7 @@ def main():
              'city_water.cjs', 'city_water_physics.cjs', 'road_classification.cjs',
              'ground_road_surfaces.cjs', 'interior_document_persistence.cjs',
              'architecture_sources.cjs', 'architecture_runtime.cjs',
+             'landmark_surfaces.cjs', 'first_person.cjs', 'fps_hud.cjs', 'iconic_mines.cjs', 'interior_services.cjs',
              'world_placements.cjs', 'lore_continuity.cjs', 'power_armor.cjs',
              'iconic_ecosystem.cjs', 'parallel_systems.cjs', 'regional_bestiary.cjs', 'precise_terrain.cjs', 'facades_joinery.cjs', 'chems_ecosystem.cjs', 'iconic_ordnance.cjs', 'interior_room_doors.cjs', 'native_road_surfaces.cjs', 'facades_relief.cjs']
     commands = [('source_tools', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests/expansion', '-p', 'test_*.py']),

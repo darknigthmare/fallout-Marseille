@@ -230,11 +230,11 @@ def main():
         def grenade_in_view():
             return page.locator('[data-o55-grenade]').evaluate('(button)=>{const r=button.getBoundingClientRect(),all=[...button.parentElement.querySelectorAll("button")].map(b=>{const q=b.getBoundingClientRect();return {text:b.textContent,left:q.left,top:q.top,right:q.right,bottom:q.bottom,width:q.width,height:q.height};}).filter(q=>q.width>0&&q.height>0),overlaps=all.some((a,i)=>all.some((b,j)=>i<j&&a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top)),inside=all.every(q=>q.left>=0&&q.top>=0&&q.right<=innerWidth&&q.bottom<=innerHeight&&q.width>=40&&q.height>=40);return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height,innerWidth,innerHeight,buttons:all,overlaps,visible:inside&&!overlaps};}')
         desktop = grenade_in_view()
-        check('Desktop grenade HUD button is fully inside the real viewport',desktop['visible'] and len(desktop['buttons'])==8,desktop)
+        check('Desktop grenade HUD button and all nine terrain controls fit the real viewport',desktop['visible'] and len(desktop['buttons'])==9,desktop)
         page.set_viewport_size({'width':390,'height':844})
         freeze()
         narrow = grenade_in_view()
-        check('Narrow viewport keeps the fourth visible terrain action fully onscreen',narrow['visible'] and len(narrow['buttons'])==4,narrow)
+        check('Narrow viewport keeps all five visible terrain actions fully onscreen',narrow['visible'] and len(narrow['buttons'])==5,narrow)
         page.set_viewport_size({'width':1440,'height':900})
         freeze()
         page.keyboard.press('n')

@@ -436,8 +436,8 @@ def main():
         debug('v020Seed', resources)
         debug('v046SetTime', 12)
         initial = snapshot()
-        check('Six actual dossier definitions retain the four historical IDs and add two empty records',
-              list(initial['v053Lore']['quests']) == ['cendres', 'formulaire', 'signaux', 'lazaret', 'cadences', 'attente']
+        check('Eight actual dossier definitions retain six shipped IDs and two new empty records',
+              list(initial['v053Lore']['quests']) == ['cendres', 'formulaire', 'signaux', 'lazaret', 'cadences', 'attente', 'partage', 'passage_libre']
               and all(not q['accepted'] and not q['outcome'] for q in initial['v053Lore']['quests'].values()))
 
         stage('sans_dossier_real_relay_commitments')
@@ -550,9 +550,9 @@ def main():
         close_pip()
         saved = snapshot()
         report['before_continue'] = saved
-        check('Other four dossiers retain their exact initial untouched state',
+        check('Other six dossiers retain their exact initial untouched state',
               all(saved['v053Lore']['quests'][q] == initial['v053Lore']['quests'][q]
-                  for q in ('cendres', 'formulaire', 'signaux', 'lazaret')))
+                  for q in ('cendres', 'formulaire', 'signaux', 'lazaret', 'partage', 'passage_libre')))
         native_document(page.reload(wait_until='load', timeout=60000))
         check('Normal Continue uses actual native browser storage', page.locator('#btnContinue').is_enabled())
         page.locator('#btnContinue').click()

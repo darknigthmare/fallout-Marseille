@@ -1,0 +1,31 @@
+✔ Native sample centres use explicit origin, no half-pixel displacement (1.927912ms)
+✔ North-to-south row order and four-weight interpolation are preserved (0.370793ms)
+✔ Native NoData remains missing and never contaminates a known zero-weight centre (0.282297ms)
+✔ Native samples never clamp or extrapolate beyond actual centres (0.209712ms)
+✔ Fine NoData cannot silently become a coarse valid measurement (2.02328ms)
+✔ Native finite terrain wins against the coarser source without mutating its cells (0.515002ms)
+✔ Original missing mandatory source gate remains mandatory (0.244887ms)
+✔ Full real atlas has forty-eight aligned windows from twelve native source tiles (0.886466ms)
+✔ Index rejects shifted source lattice, wrong dimensions and duplicated identities (1.881465ms)
+✔ Descriptors reject byte count, row order, NoData count and path changes (0.521924ms)
+✔ Actual received Float32 bytes retain attributed native probe heights (55.051722ms)
+✔ Binary decoder rejects truncation and out-of-range non-NoData source values (7.136783ms)
+✔ Every possible quarter-kilometre plan sample stays within nine chunks / 37 MiB (13.03873ms)
+✔ Production wrappers wait for real index, order fine resources last, and deduplicate native bytes (226.047122ms)
+✔ Cancelling an index-stage navigation does not call the old prepare/publish path (6.270875ms)
+✔ Index replacement rejects stale completion without clearing current replacement promise (6.749801ms)
+✔ Synthetic laboratory never reads or plans the installed precise atlas (1.553623ms)
+✔ Corrupt binary stays rejected, leaves published bank intact and allows a later real retry (147.781567ms)
+✔ Rendered native patch uses actual centres and values with bounded topology (2114.606363ms)
+✔ Fine mesh window stays entirely inside actual native support at every edge and corner (0.313305ms)
+✔ Actual edge refinement preserves the coarse triangle west of native coverage (1389.656002ms)
+✔ A declared synthetic native NoData pixel has no rendered incident triangles (1586.317298ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5574.814491
+
