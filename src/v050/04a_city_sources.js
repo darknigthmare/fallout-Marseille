@@ -114,7 +114,7 @@ async function v051CityEnrich(resource,signal){
  /* Sequential inside each tile keeps the existing four-worker map gate as the
     sole concurrency bound. Shared partition promises deduplicate those workers. */
  for(const d of descriptors){const bundle=await v051CityChunk(d,signal);v051CityAbort(signal);const radius=Math.max(bounds.maxX-bounds.minX,bounds.maxZ-bounds.minZ)/2+1;
-  for(const feature of bundle.spatial.around(bounds.cx,bounds.cz,radius))if(v050BoxesTouch(bounds,feature.v050Bounds)){const identity=feature.props.kind+':'+feature.sourceId+':'+MistralIntegrity.hash(feature.v050Geometry);if(!seen.has(identity)){seen.add(identity);features.push(feature);}}
+  for(const feature of bundle.spatial.around(bounds.cx,bounds.cz,radius))if(v050BoxesTouch(bounds,feature.v050Bounds)){const identity=JSON.stringify([feature.props.kind,feature.sourceId,feature.v050Geometry]);if(!seen.has(identity)){seen.add(identity);features.push(feature);}}
   coverages.push(...bundle.coverages);
  }
  return v050ApplySourceOverlays(resource,features,coverages);
