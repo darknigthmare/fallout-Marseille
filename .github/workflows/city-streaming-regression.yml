@@ -4,6 +4,7 @@ on:
     paths:
       - 'src/v050/04a_city_sources.js'
       - 'tests/expansion/city_wait_cancel.test.cjs'
+      - 'tests/expansion/city_partition_seams.test.cjs'
       - '.github/workflows/city-streaming-regression.yml'
   push:
     branches:
@@ -11,6 +12,7 @@ on:
     paths:
       - 'src/v050/04a_city_sources.js'
       - 'tests/expansion/city_wait_cancel.test.cjs'
+      - 'tests/expansion/city_partition_seams.test.cjs'
       - '.github/workflows/city-streaming-regression.yml'
 permissions:
   contents: read
@@ -27,5 +29,8 @@ jobs:
         run: |
           node --check src/v050/04a_city_sources.js
           node --check tests/expansion/city_wait_cancel.test.cjs
+          node --check tests/expansion/city_partition_seams.test.cjs
       - name: Run streaming cancellation regression
-        run: node tests/expansion/city_wait_cancel.test.cjs
+        run: |
+          node tests/expansion/city_wait_cancel.test.cjs
+          node tests/expansion/city_partition_seams.test.cjs
