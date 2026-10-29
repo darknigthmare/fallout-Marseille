@@ -5,6 +5,7 @@ on:
       - 'src/v050/04a_city_sources.js'
       - 'tests/expansion/city_wait_cancel.test.cjs'
       - 'tests/expansion/city_partition_seams.test.cjs'
+      - 'tests/expansion/city_geometry_identity.test.cjs'
       - '.github/workflows/city-streaming-regression.yml'
   push:
     branches:
@@ -13,6 +14,7 @@ on:
       - 'src/v050/04a_city_sources.js'
       - 'tests/expansion/city_wait_cancel.test.cjs'
       - 'tests/expansion/city_partition_seams.test.cjs'
+      - 'tests/expansion/city_geometry_identity.test.cjs'
       - '.github/workflows/city-streaming-regression.yml'
 permissions:
   contents: read
@@ -30,7 +32,9 @@ jobs:
           node --check src/v050/04a_city_sources.js
           node --check tests/expansion/city_wait_cancel.test.cjs
           node --check tests/expansion/city_partition_seams.test.cjs
+          node --check tests/expansion/city_geometry_identity.test.cjs
       - name: Run streaming cancellation regression
         run: |
           node tests/expansion/city_wait_cancel.test.cjs
           node tests/expansion/city_partition_seams.test.cjs
+          node tests/expansion/city_geometry_identity.test.cjs
