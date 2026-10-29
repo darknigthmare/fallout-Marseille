@@ -1,0 +1,31 @@
+name: Marseille streaming regression
+on:
+  pull_request:
+    paths:
+      - 'src/v050/04a_city_sources.js'
+      - 'tests/expansion/city_wait_cancel.test.cjs'
+      - '.github/workflows/city-streaming-regression.yml'
+  push:
+    branches:
+      - 'feature/gamedev-skills-integration'
+    paths:
+      - 'src/v050/04a_city_sources.js'
+      - 'tests/expansion/city_wait_cancel.test.cjs'
+      - '.github/workflows/city-streaming-regression.yml'
+permissions:
+  contents: read
+jobs:
+  city-wait-cancellation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check syntax
+        run: |
+          node --check src/v050/04a_city_sources.js
+          node --check tests/expansion/city_wait_cancel.test.cjs
+      - name: Run streaming cancellation regression
+        run: node tests/expansion/city_wait_cancel.test.cjs
