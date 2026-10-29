@@ -1,6 +1,12 @@
 """Build the audited legacy core + ordered v0.18 modules into the offline game."""
 from pathlib import Path
+import argparse
+import hashlib
 import re
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--check", action="store_true", help="Fail without writing when the shipped game or worker cache is stale")
+args = parser.parse_args()
 root=Path(__file__).resolve().parents[1]
 src=root/'src'
 js=(src/'core-v017.js').read_text(encoding='utf-8')
@@ -55,7 +61,6 @@ js=js.replace("\nif(typeof v050ControllerAfterInit==='function')v050ControllerAf
 js=js.replace("\nif(typeof v050CityInteriorAfterInit==='function')", "\nif(typeof v056LandmarksAfterInit==='function')v056LandmarksAfterInit();\nif(typeof v050CityInteriorAfterInit==='function')")
 js=js.replace("\nif(typeof v055OrdnanceAfterInit==='function')v055OrdnanceAfterInit();", "\nif(typeof v055OrdnanceAfterInit==='function')v055OrdnanceAfterInit();\nif(typeof v056FirstPersonAfterInit==='function')v056FirstPersonAfterInit();\nif(typeof v056MinesAfterInit==='function')v056MinesAfterInit();\nif(typeof v056HudAfterInit==='function')v056HudAfterInit();")
 js=js.replace('const far=world?.geoMacro?8000:400','const far=world?.geoMacro?850:400').replace('world?.geoMacro?1200:65','world?.geoMacro?430:65').replace('world?.geoMacro?6500:280','world?.geoMacro?720:280')
-(src/'game.js').write_text(js,encoding='utf-8')
 html=(src/'index.html').read_text(encoding='utf-8')
 html=html.replace('v0.20','v0.21').replace('LES RELAIS DU QUOTIDIEN','LES ABSENTS DE LA RELÈVE')
 html=html.replace('v0.17','v0.20').replace('v0.18','v0.20').replace('LE TERRITOIRE CADASTRAL','LES RELAIS DU QUOTIDIEN').replace('LES FONDATIONS VÉRIFIABLES','LES RELAIS DU QUOTIDIEN').replace(',maximum-scale=1,user-scalable=no','')
@@ -99,4 +104,27 @@ html=html.replace('v0.41','v0.42').replace('TERRITOIRE LOCAL','COUCHE FALLOUT')
 html=re.sub(r'\s*<link rel="stylesheet" href="styles\.css"\s*/?>',lambda m:'\n<style>\n'+css+'\n</style>',html)
 html=html.replace('<script src="game.js"></script>','<script>\n'+js.replace('</script>','<\\/script>')+'\n</script>')
 html=re.sub(r'<title>.*?</title>', '<title>Fallout : Mistral — v0.50 · Les routes retrouvées</title>', html)
-out=root/'JOUER_FALLOUT_MISTRAL_v0.50.html';out.write_text(html,encoding='utf-8');(root/'index.html').write_text(html,encoding='utf-8');print(out,out.stat().st_size)
+# The playable files and offline cache must describe the same source revision.
+# A content-derived cache name also updates already-installed cache-first shells.
+worker_path = root / 'sw.js'
+worker = worker_path.read_text(encoding='utf-8')
+build_id = hashlib.sha256(html.encode('utf-8')).hexdigest()[:16]
+worker, replaced = re.subn(r"(?m)^const CACHE='fallout-mistral-[^']+';$",
+                           "const CACHE='fallout-mistral-v050-" + build_id + "';", worker, count=1)
+if replaced != 1:
+    raise RuntimeError('Service worker cache declaration missing or ambiguous')
+out = root / 'JOUER_FALLOUT_MISTRAL_v0.50.html'
+artifacts = [(src / 'game.js', js), (out, html), (root / 'index.html', html), (worker_path, worker)]
+if args.check:
+    stale = [str(path.relative_to(root)) for path, content in artifacts
+             if not path.is_file() or path.read_bytes() != content.encode('utf-8')]
+    if stale:
+        print('Stale build artifacts: ' + ', '.join(stale))
+        print('Run python3 tools/build_single.py and commit the regenerated files.')
+        raise SystemExit(1)
+    print('Build artifacts and service worker cache match the current sources.')
+else:
+    for path, content in artifacts:
+        path.write_bytes(content.encode('utf-8'))
+    print(out, out.stat().st_size, 'cache=' + build_id)
+

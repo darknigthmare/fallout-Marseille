@@ -2,7 +2,12 @@ name: Marseille streaming regression
 on:
   pull_request:
     paths:
-      - 'src/v050/04a_city_sources.js'
+      - 'src/**'
+      - 'tools/build_single.py'
+      - 'index.html'
+      - 'JOUER_FALLOUT_MISTRAL_v0.50.html'
+      - 'sw.js'
+      - 'tests/expansion/city_streaming.cjs'
       - 'tests/expansion/city_wait_cancel.test.cjs'
       - 'tests/expansion/city_partition_seams.test.cjs'
       - 'tests/expansion/city_geometry_identity.test.cjs'
@@ -11,7 +16,12 @@ on:
     branches:
       - 'feature/gamedev-skills-integration'
     paths:
-      - 'src/v050/04a_city_sources.js'
+      - 'src/**'
+      - 'tools/build_single.py'
+      - 'index.html'
+      - 'JOUER_FALLOUT_MISTRAL_v0.50.html'
+      - 'sw.js'
+      - 'tests/expansion/city_streaming.cjs'
       - 'tests/expansion/city_wait_cancel.test.cjs'
       - 'tests/expansion/city_partition_seams.test.cjs'
       - 'tests/expansion/city_geometry_identity.test.cjs'
@@ -19,7 +29,7 @@ on:
 permissions:
   contents: read
 jobs:
-  city-wait-cancellation:
+  city-streaming:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -27,14 +37,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify shipped build and offline cache
+        run: python3 tools/build_single.py --check
       - name: Check syntax
         run: |
+          node --check src/game.js
           node --check src/v050/04a_city_sources.js
+          node --check tests/expansion/city_streaming.cjs
           node --check tests/expansion/city_wait_cancel.test.cjs
           node --check tests/expansion/city_partition_seams.test.cjs
           node --check tests/expansion/city_geometry_identity.test.cjs
-      - name: Run streaming cancellation regression
+      - name: Run full city streaming and seam regressions
         run: |
+          node tests/expansion/city_streaming.cjs
           node tests/expansion/city_wait_cancel.test.cjs
           node tests/expansion/city_partition_seams.test.cjs
           node tests/expansion/city_geometry_identity.test.cjs

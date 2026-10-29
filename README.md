@@ -1,5 +1,8 @@
 # FALLOUT Marseille — MISTRAL
 
+
+[Raccords routiers et livraison synchronisée — 29 octobre 2026](docs/QA_STREAMING_2026-10-29.md) : correction des fragments complémentaires, HTML reconstruits, contrôle du cache hors ligne et captures réellement exécutées.
+
 ## v0.50 · Les routes retrouvées
 
 La livraison du **28 octobre 2026** enrichit la **vue FPS** : mains et avant-bras articulés, neuf familles d’armes, prises adaptées, rechargement, recul et visée maintenue. Le HUD réorganise jauges, munitions, boussole, objectifs et commandes, avec un mode compact et des préférences sauvegardées. [Vue FPS](docs/VUE_FPS.md) · [HUD](docs/HUD_FPS.md).

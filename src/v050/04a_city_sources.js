@@ -60,10 +60,10 @@ async function v051CityReady(){
  return index;
 }
 function v051CityDescriptors(box){
- // A partition is relevant if either its source footprint or its explicitly
- // declared rendered footprint intersects the requested tile. Never let a
- // narrow renderBbox hide authoritative geometry crossing a tile boundary.
- return(V051_CITY.index?.tiles||[]).filter(d=>MistralIntegrity.intersects(box,d.bbox)||(d.renderBbox&&MistralIntegrity.intersects(box,d.renderBbox))).sort((a,b)=>a.path.localeCompare(b.path));
+ // The verified rendered extent includes whole buildings and each road query.
+ // Raw road tails outside that query remain in the source receipt, but are not
+ // rendered; old indices without this bound fall back to their source extent.
+ return(V051_CITY.index?.tiles||[]).filter(d=>MistralIntegrity.intersects(box,d.renderBbox||d.bbox)).sort((a,b)=>a.path.localeCompare(b.path));
 }
 /* Only the new plan's verified citydem resources may add fine city grids.
    Leaving the commune therefore drops old fine tiles too. Base grids and the
@@ -114,7 +114,9 @@ async function v051CityEnrich(resource,signal){
  /* Sequential inside each tile keeps the existing four-worker map gate as the
     sole concurrency bound. Shared partition promises deduplicate those workers. */
  for(const d of descriptors){const bundle=await v051CityChunk(d,signal);v051CityAbort(signal);const radius=Math.max(bounds.maxX-bounds.minX,bounds.maxZ-bounds.minZ)/2+1;
-  for(const feature of bundle.spatial.around(bounds.cx,bounds.cz,radius))if(v050BoxesTouch(bounds,feature.v050Bounds)){const identity=JSON.stringify([feature.props.kind,feature.sourceId,feature.v050Geometry]);if(!seen.has(identity)){seen.add(identity);features.push(feature);}}
+  // Equal source roads can yield complementary paths in adjoining query receipts.
+  // Deduplicate exact rendered copies while preserving those surveyed fragments.
+  for(const feature of bundle.spatial.around(bounds.cx,bounds.cz,radius))if(v050BoxesTouch(bounds,feature.v050Bounds)){const identity=JSON.stringify([feature.props.kind,feature.sourceId,feature.v050Geometry,feature.v050Paths]);if(!seen.has(identity)){seen.add(identity);features.push(feature);}}
   coverages.push(...bundle.coverages);
  }
  // Keep different surveyed fragments, but expose conflicting representations
@@ -198,3 +200,4 @@ function v051CityAfterInit(){
  Object.assign(window.__MISTRAL_DEBUG,{v051CityInfo,v051CityRefresh,v051CityReady});
  if(typeof location==='undefined'||['http:','https:'].includes(location.protocol)){const epoch=V051_CITY.epoch;v051CityReady().catch(error=>{if(epoch===V051_CITY.epoch)v051CityError(error);});}
 }
+
