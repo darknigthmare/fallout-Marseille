@@ -5,7 +5,7 @@ const source=fs.readFileSync('src/v050/04a_city_sources.js','utf8');
 const start=source.indexOf('async function v051CityEnrich(');
 const end=source.indexOf('const v051CityPlanBase=',start);
 assert(start>=0&&end>start);
-const geometryHash=geometry=>JSON.stringify(geometry);
+// Force a 32-bit hash collision: identity must not rely on a short hash.
 const records=[
  {props:{kind:'building'},sourceId:'B-1',v050Geometry:{type:'Polygon',coordinates:[[[0,0],[1,0],[1,1],[0,0]]]},v050Bounds:{minX:0,maxX:1,minZ:0,maxZ:1}},
  {props:{kind:'building'},sourceId:'B-1',v050Geometry:{type:'Polygon',coordinates:[[[1,0],[2,0],[2,1],[1,0]]]},v050Bounds:{minX:1,maxX:2,minZ:0,maxZ:1}}
@@ -21,7 +21,7 @@ const ctx=vm.createContext({
  v051CityAbort:()=>{},
  v050BoxesTouch:()=>true,
  v050ApplySourceOverlays:(_resource,features)=>features,
- MistralIntegrity:{hash:geometryHash}
+ MistralIntegrity:{hash:()=> '00000000'}
 });
 vm.runInContext(source.slice(start,end),ctx);
 (async()=>{
@@ -31,5 +31,5 @@ vm.runInContext(source.slice(start,end),ctx);
  ctx.v051CityChunk=async()=>({spatial:{around:()=>[same]},coverages:[]});
  const dedup=await ctx.v051CityEnrich({source:'cadastre',z:16,x:0,y:0});
  assert.equal(dedup.length,1,'Identical source geometry must deduplicate');
- console.log('City geometry identity: 2 checks passed');
+ console.log('City geometry identity: distinct shapes survive even under hash collisions; exact copies deduplicate');
 })().catch(e=>{console.error(e);process.exitCode=1});
