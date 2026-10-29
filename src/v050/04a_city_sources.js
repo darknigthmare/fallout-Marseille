@@ -12,7 +12,16 @@ function v051CityError(error){V051_CITY.errors.push(String(error?.message||error
 function v051CityAbort(signal){if(signal?.aborted){const error=new Error('Chargement de Marseille annulé');error.name='AbortError';throw error;}}
 function v051CityWait(promise,signal){
  v051CityAbort(signal);if(!signal)return promise;
- return new Promise((resolve,reject)=>{const abort=()=>{const error=new Error('Chargement de Marseille annulé');error.name='AbortError';reject(error);};signal.addEventListener('abort',abort,{once:true});promise.then(resolve,reject).finally(()=>signal.removeEventListener('abort',abort));});
+ return new Promise((resolve,reject)=>{
+  let settled=false;
+  const cleanup=()=>signal.removeEventListener('abort',abort);
+  const abort=()=>{if(settled)return;settled=true;cleanup();const error=new Error('Chargement de Marseille annulé');error.name='AbortError';reject(error);};
+  signal.addEventListener('abort',abort,{once:true});
+  // A cancellation settles only this waiter; the shared partition request stays alive.
+  // Attach both handlers directly: a discarded .finally() chain would reject unobserved.
+  promise.then(value=>{if(settled)return;settled=true;cleanup();resolve(value);},error=>{if(settled)return;settled=true;cleanup();reject(error);});
+  if(signal.aborted)abort();
+ });
 }
 function v051CityDescriptor(d,terrain=false){
  if(!d||typeof d.path!=='string'||!/^data\/map_pack\/city\/[a-zA-Z0-9_.-]+-[0-9a-f]{16}\.json$/.test(d.path)||!Number.isInteger(d.bytes)||d.bytes<1||d.bytes>64*1024*1024||!/^[0-9a-f]{64}$/.test(d.sha256)||!d.path.endsWith('-'+d.sha256.slice(0,16)+'.json')||!v050SourceBox(d.bbox))throw Error('Descripteur de partition de Marseille invalide');
