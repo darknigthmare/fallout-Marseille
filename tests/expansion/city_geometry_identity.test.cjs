@@ -27,9 +27,11 @@ vm.runInContext(source.slice(start,end),ctx);
 (async()=>{
  const result=await ctx.v051CityEnrich({source:'cadastre',z:16,x:0,y:0});
  assert.equal(result.length,2,'Different geometry with same source ID must survive partition aggregation');
+ assert.equal(ctx.V051_CITY.geometryConflicts,1,'Conflicting variants must be reported');
  const same=records[0];
  ctx.v051CityChunk=async()=>({spatial:{around:()=>[same]},coverages:[]});
  const dedup=await ctx.v051CityEnrich({source:'cadastre',z:16,x:0,y:0});
  assert.equal(dedup.length,1,'Identical source geometry must deduplicate');
+ assert.equal(ctx.V051_CITY.geometryConflicts,0,'Identical copies are not conflicts');
  console.log('City geometry identity: distinct shapes survive even under hash collisions; exact copies deduplicate');
 })().catch(e=>{console.error(e);process.exitCode=1});
