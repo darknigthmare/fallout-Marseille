@@ -1,7 +1,7 @@
 /* Marseille's authoritative atlas is streamed by query partition. The atlas
    never replaces a missing survey with a fixture or a guessed empty tile. */
 const V051_CITY_ID='geo_marseille_commune',V051_CITY_BOUNDS=[43.1696313,5.22875102,43.39105653,5.53254336];
-const V051_CITY={index:null,indexPromise:null,terrainIndex:null,terrainPromise:null,epoch:0,navigationSerial:0,loads:new Map(),cache:new MistralStream.BudgetCache(64*1024*1024,24),terrainCache:new MistralStream.BudgetCache(48*1024*1024,8),errors:[],registered:false,requests:0};
+const V051_CITY={index:null,indexPromise:null,terrainIndex:null,terrainPromise:null,epoch:0,navigationSerial:0,loads:new Map(),cache:new MistralStream.BudgetCache(64*1024*1024,24),terrainCache:new MistralStream.BudgetCache(48*1024*1024,8),errors:[],registered:false,requests:0,geometryConflicts:0};
 /* The identity must exist before a saved exterior is resumed. Terrain bounds
    are installed only after both local indices validate, without touching the
    live bank; the next prepared bank receives the new measured base grid. */
@@ -117,6 +117,16 @@ async function v051CityEnrich(resource,signal){
   for(const feature of bundle.spatial.around(bounds.cx,bounds.cz,radius))if(v050BoxesTouch(bounds,feature.v050Bounds)){const identity=JSON.stringify([feature.props.kind,feature.sourceId,feature.v050Geometry]);if(!seen.has(identity)){seen.add(identity);features.push(feature);}}
   coverages.push(...bundle.coverages);
  }
+ // Keep different surveyed fragments, but expose conflicting representations
+ // of one source ID for review instead of silently picking one or inventing a merge.
+ const variants=new Map();
+ for(const feature of features){
+  const id=feature.props.kind+':'+feature.sourceId;
+  const geometry=JSON.stringify(feature.v050Geometry);
+  if(!variants.has(id))variants.set(id,new Set());
+  variants.get(id).add(geometry);
+ }
+ V051_CITY.geometryConflicts=[...variants.values()].filter(shapes=>shapes.size>1).length;
  return v050ApplySourceOverlays(resource,features,coverages);
 }
 const v051CityPlanBase=v046Plan;
@@ -164,11 +174,11 @@ v046StartLab=async function(){
 const v051CityLeaveLabBase=v047LeaveLab;
 v047LeaveLab=function(){const result=v051CityLeaveLabBase();if(!V046.lab&&V051_CITY.labBounds){V046_BOUNDS[V051_CITY_ID]=V051_CITY.labBounds;V051_CITY.labBounds=null;}return result;};
 function v051CityRefresh(){
- if(V046.busy||V047.pending)return false;V051_CITY.navigationSerial++;V051_CITY.epoch++;V051_CITY.index=null;V051_CITY.indexPromise=null;V051_CITY.terrainIndex=null;V051_CITY.terrainPromise=null;V051_CITY.loads.clear();V051_CITY.cache.clear();V051_CITY.terrainCache.clear();V051_CITY.errors=[];V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();return true;
+ if(V046.busy||V047.pending)return false;V051_CITY.navigationSerial++;V051_CITY.epoch++;V051_CITY.index=null;V051_CITY.indexPromise=null;V051_CITY.terrainIndex=null;V051_CITY.terrainPromise=null;V051_CITY.loads.clear();V051_CITY.cache.clear();V051_CITY.terrainCache.clear();V051_CITY.errors=[];V051_CITY.geometryConflicts=0;V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();return true;
 }
 function v051CityInfo(){
  const index=V051_CITY.index,tiles=index?.tiles||[],resident=[...V051_CITY.cache.values()];
- return{indexPresent:!!index,municipality:index?.municipality?{code:index.municipality.code,name:index.municipality.name,bbox:index.municipality.bbox.slice()}:null,coverage:index?.coverage||null,registered:V051_CITY.registered,tilesAvailable:tiles.length,sourceBuildings:index?.coverage?.uniqueBuildings??tiles.reduce((n,d)=>n+d.counts.buildings,0),sourceRoads:index?.coverage?.uniqueRoads??tiles.reduce((n,d)=>n+d.counts.roads,0),loadedPartitions:resident.length,loadedBuildings:resident.reduce((n,b)=>n+b.counts.buildings,0),loadedRoads:resident.reduce((n,b)=>n+b.counts.roads,0),loadedWireBytes:resident.reduce((n,b)=>n+b.wireBytes,0),sharedProvenanceRecords:resident.reduce((n,b)=>n+b.provenanceRecords,0),cache:V051_CITY.cache.stats(),terrainCache:V051_CITY.terrainCache.stats(),terrainIndexPresent:!!V051_CITY.terrainIndex,terrainTilesAvailable:V051_CITY.terrainIndex?.tiles.length||0,inflight:V051_CITY.loads.size,requests:V051_CITY.requests,errors:V051_CITY.errors.slice()};
+ return{indexPresent:!!index,municipality:index?.municipality?{code:index.municipality.code,name:index.municipality.name,bbox:index.municipality.bbox.slice()}:null,coverage:index?.coverage||null,registered:V051_CITY.registered,tilesAvailable:tiles.length,sourceBuildings:index?.coverage?.uniqueBuildings??tiles.reduce((n,d)=>n+d.counts.buildings,0),sourceRoads:index?.coverage?.uniqueRoads??tiles.reduce((n,d)=>n+d.counts.roads,0),loadedPartitions:resident.length,loadedBuildings:resident.reduce((n,b)=>n+b.counts.buildings,0),loadedRoads:resident.reduce((n,b)=>n+b.counts.roads,0),loadedWireBytes:resident.reduce((n,b)=>n+b.wireBytes,0),sharedProvenanceRecords:resident.reduce((n,b)=>n+b.provenanceRecords,0),cache:V051_CITY.cache.stats(),terrainCache:V051_CITY.terrainCache.stats(),terrainIndexPresent:!!V051_CITY.terrainIndex,terrainTilesAvailable:V051_CITY.terrainIndex?.tiles.length||0,inflight:V051_CITY.loads.size,requests:V051_CITY.requests,geometryConflicts:V051_CITY.geometryConflicts,errors:V051_CITY.errors.slice()};
 }
 function v051CityAfterInit(){
  Object.assign(window.__MISTRAL_DEBUG,{v051CityInfo,v051CityRefresh,v051CityReady});
