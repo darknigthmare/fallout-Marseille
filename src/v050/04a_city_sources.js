@@ -109,8 +109,8 @@ async function v051CityTerrain(descriptor,signal,base=false){
 }
 async function v051CityEnrich(resource,signal){
  if(!V051_CITY.registered||!V051_CITY.index||!resource||!['base','cadastre'].includes(resource.source))return resource;
- const tile=v017TileBounds(resource.z,resource.x,resource.y),box=[tile.south,tile.west,tile.north,tile.east],descriptors=v051CityDescriptors(box);if(!descriptors.length)return resource;
- const corners=[[tile.south,tile.west],[tile.north,tile.east]].map(p=>v015GeoProject(V051_CITY_ID,...p)),bounds=v017PolyBounds([corners.map(p=>[p[0],p[2]])]),features=[],coverages=[],seen=new Set();
+ const tile=v017TileBounds(resource.z,resource.x,resource.y),box=[tile.south,tile.west,tile.north,tile.east],descriptors=v051CityDescriptors(box);
+ const corners=descriptors.length?[[tile.south,tile.west],[tile.north,tile.east]].map(p=>v015GeoProject(V051_CITY_ID,...p)):[],bounds=descriptors.length?v017PolyBounds([corners.map(p=>[p[0],p[2]])]):null,features=[],coverages=[],seen=new Set();
  /* Sequential inside each tile keeps the existing four-worker map gate as the
     sole concurrency bound. Shared partition promises deduplicate those workers. */
  for(const d of descriptors){const bundle=await v051CityChunk(d,signal);v051CityAbort(signal);const radius=Math.max(bounds.maxX-bounds.minX,bounds.maxZ-bounds.minZ)/2+1;
@@ -130,6 +130,10 @@ async function v051CityEnrich(resource,signal){
  // Keep diagnostics from other resident tiles; a clean tile must not erase
  // a conflict observed in its neighbour. Revisit replaces that tile's report.
  const tileKey=[resource.source,resource.z,resource.x,resource.y].join(':');
+ // Only publish diagnostics after geometry overlay succeeds; an exception must
+ // leave the last known-good diagnostic state untouched.
+ const enriched=descriptors.length?v050ApplySourceOverlays(resource,features,coverages):resource;
+ v051CityAbort(signal);
  V051_CITY.conflictsByTile.delete(tileKey);
  V051_CITY.conflictsByTile.set(tileKey,conflicts);
  while(V051_CITY.conflictsByTile.size>256)V051_CITY.conflictsByTile.delete(V051_CITY.conflictsByTile.keys().next().value);
@@ -137,7 +141,7 @@ async function v051CityEnrich(resource,signal){
  for(const ids of V051_CITY.conflictsByTile.values())for(const id of ids)all.add(id);
  V051_CITY.geometryConflicts=all.size;
  V051_CITY.geometryConflictIds=[...all].sort().slice(0,50);
- return v050ApplySourceOverlays(resource,features,coverages);
+ return enriched;
 }
 const v051CityPlanBase=v046Plan;
 v046Plan=function(lat,lon){
