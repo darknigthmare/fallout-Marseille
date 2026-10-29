@@ -20,4 +20,7 @@ const ids=box=>Array.from(context.v051CityDescriptors(box),d=>d.id);
 assert.deepEqual(ids([1.5,1.5,2.5,2.5]),['render-crosses','source-crosses','source-only']);
 assert.deepEqual(ids([5,5,6,6]),['far-away']);
 assert.deepEqual(ids([6,6,7,7]),[]);
-console.log('City source/render seam partition selection: 3 checks passed');
+// Ordering must not depend on the order in which the atlas index was received.
+context.V051_CITY.index.tiles.reverse();
+assert.deepEqual(ids([1.5,1.5,2.5,2.5]),['render-crosses','source-crosses','source-only']);
+console.log('City source/render seam partition selection: 4 checks passed');
