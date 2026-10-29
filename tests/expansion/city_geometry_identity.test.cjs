@@ -41,5 +41,18 @@ vm.runInContext(source.slice(start,end),ctx);
  assert.equal(dedup.length,1,'Identical source geometry must deduplicate');
  assert.equal(ctx.V051_CITY.geometryConflicts,0,'Identical copies are not conflicts');
  assert.deepEqual(Array.from(ctx.V051_CITY.geometryConflictIds),[]);
+ // Failed overlay must not overwrite a previously committed diagnostic.
+ ctx.v051CityChunk=async d=>({spatial:{around:()=>[records[d.path==='a'?0:1]]},coverages:[]});
+ await ctx.v051CityEnrich({source:'cadastre',z:16,x:0,y:0});
+ assert.equal(ctx.V051_CITY.geometryConflicts,1);
+ ctx.v050ApplySourceOverlays=()=>{throw Error('overlay failed');};
+ await assert.rejects(ctx.v051CityEnrich({source:'cadastre',z:16,x:0,y:0}),/overlay failed/);
+ assert.equal(ctx.V051_CITY.geometryConflicts,1,'Failed overlay cannot clear the previous report');
+ ctx.v050ApplySourceOverlays=(_resource,features)=>features;
+ // A successful empty re-survey of the same tile must clear its stale conflict.
+ ctx.v051CityDescriptors=()=>[];
+ await ctx.v051CityEnrich({source:'cadastre',z:16,x:0,y:0});
+ assert.equal(ctx.V051_CITY.geometryConflicts,0,'Empty tile must clear its prior report');
+ assert.deepEqual(Array.from(ctx.V051_CITY.geometryConflictIds),[]);
  console.log('City geometry identity: distinct shapes survive even under hash collisions; exact copies deduplicate');
 })().catch(e=>{console.error(e);process.exitCode=1});
