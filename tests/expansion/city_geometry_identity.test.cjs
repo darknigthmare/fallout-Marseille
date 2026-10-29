@@ -11,7 +11,7 @@ const records=[
  {props:{kind:'building'},sourceId:'B-1',v050Geometry:{type:'Polygon',coordinates:[[[1,0],[2,0],[2,1],[1,0]]]},v050Bounds:{minX:1,maxX:2,minZ:0,maxZ:1}}
 ];
 const ctx=vm.createContext({
- V051_CITY:{registered:true,index:{}},
+ V051_CITY:{registered:true,index:{},conflictsByTile:new Map()},
  v017TileBounds:()=>({south:0,west:0,north:2,east:2}),
  v015GeoProject:(_id,x,y)=>[x,0,y],
  V051_CITY_ID:'geo_marseille_commune',
@@ -29,7 +29,13 @@ vm.runInContext(source.slice(start,end),ctx);
  assert.equal(result.length,2,'Different geometry with same source ID must survive partition aggregation');
  assert.equal(ctx.V051_CITY.geometryConflicts,1,'Conflicting variants must be reported');
  assert.deepEqual(Array.from(ctx.V051_CITY.geometryConflictIds),['building:B-1']);
+ // A clean neighbouring tile must not erase the first tile's conflict.
  const same=records[0];
+ ctx.v017TileBounds=()=>({south:0,west:0,north:2,east:2});
+ ctx.v051CityChunk=async()=>({spatial:{around:()=>[same]},coverages:[]});
+ await ctx.v051CityEnrich({source:'cadastre',z:16,x:1,y:0});
+ assert.equal(ctx.V051_CITY.geometryConflicts,1,'Clean neighbour must not erase a conflict');
+
  ctx.v051CityChunk=async()=>({spatial:{around:()=>[same]},coverages:[]});
  const dedup=await ctx.v051CityEnrich({source:'cadastre',z:16,x:0,y:0});
  assert.equal(dedup.length,1,'Identical source geometry must deduplicate');
