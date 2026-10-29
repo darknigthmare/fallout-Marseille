@@ -63,7 +63,7 @@ function v051CityDescriptors(box){
  // A partition is relevant if either its source footprint or its explicitly
  // declared rendered footprint intersects the requested tile. Never let a
  // narrow renderBbox hide authoritative geometry crossing a tile boundary.
- return(V051_CITY.index?.tiles||[]).filter(d=>MistralIntegrity.intersects(box,d.bbox)||(d.renderBbox&&MistralIntegrity.intersects(box,d.renderBbox)));
+ return(V051_CITY.index?.tiles||[]).filter(d=>MistralIntegrity.intersects(box,d.bbox)||(d.renderBbox&&MistralIntegrity.intersects(box,d.renderBbox))).sort((a,b)=>a.path.localeCompare(b.path));
 }
 /* Only the new plan's verified citydem resources may add fine city grids.
    Leaving the commune therefore drops old fine tiles too. Base grids and the
