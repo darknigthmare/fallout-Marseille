@@ -59,7 +59,12 @@ async function v051CityReady(){
  if(index&&terrain&&!V046.lab&&!V051_CITY.registered){V046_BOUNDS[V051_CITY_ID]=index.municipality.bbox.slice();V015_GEO_MACROS[V051_CITY_ID].bbox=index.municipality.bbox.slice();V051_CITY.registered=true;}
  return index;
 }
-function v051CityDescriptors(box){return(V051_CITY.index?.tiles||[]).filter(d=>MistralIntegrity.intersects(box,d.renderBbox||d.bbox));}
+function v051CityDescriptors(box){
+ // A partition is relevant if either its source footprint or its explicitly
+ // declared rendered footprint intersects the requested tile. Never let a
+ // narrow renderBbox hide authoritative geometry crossing a tile boundary.
+ return(V051_CITY.index?.tiles||[]).filter(d=>MistralIntegrity.intersects(box,d.bbox)||(d.renderBbox&&MistralIntegrity.intersects(box,d.renderBbox)));
+}
 /* Only the new plan's verified citydem resources may add fine city grids.
    Leaving the commune therefore drops old fine tiles too. Base grids and the
    independently acquired Aubagne sources remain exactly as the caller held
