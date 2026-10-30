@@ -1,0 +1,82 @@
+{
+  "base_commit": "5cfe4fcdc82bfbc5370024f7a4ca324f34d722af",
+  "node": "v24.22.1",
+  "python": "Python 3.12.14",
+  "commands": [
+    {
+      "command": "python3 tools/build_single.py --check",
+      "exitCode": 0,
+      "stdout": "Build artifacts and service worker cache match the current sources.\n",
+      "stderr": ""
+    },
+    {
+      "command": "node --check src/game.js",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "node --check tests/expansion/city_delivery_browser.cjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "node --check tests/expansion/service_worker_delivery.cjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "node --check tests/expansion/city_road_visual.cjs",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "node tests/expansion/city_streaming.cjs",
+      "exitCode": 0,
+      "stdout": "✔ Missing optional city atlas leaves the base map and old bounds unchanged (8.877463ms)\n✔ A complete city registers its extent without mutating the active terrain bank (3.822783ms)\n✔ A partial atlas never registers a city extent or starts a source-only scene (2.846181ms)\n✔ City resources outside the old tile pack come only from verified source partitions (9.465701ms)\n✔ Corrupt partition bytes reject before any feature is published or cached (3.822703ms)\n✔ An explicit empty road query removes old road strokes only within its receipt (3.181367ms)\n✔ Concurrent map workers share one immutable chunk request and release settled promises (13.097274ms)\n✔ An aborted waiter cannot publish while another map worker can reuse the completed chunk (2.372667ms)\n✔ Byte budget eviction releases cached partitions and does not retain hidden resolved promises (2.218605ms)\n✔ Refreshing while a chunk is in flight refuses its late response (2.860262ms)\n✔ Synthetic laboratory ignores city resources and restores the exact prior real extent (1.283015ms)\n✔ The verified coarse city DEM stages with its own datum and never mutates the live bank (3.024851ms)\n✔ A city base DEM requires explicit provenance and a compatible normal-height datum (0.330669ms)\n✔ A vector-only city installation leaves old source enrichment usable until terrain is present (1.666813ms)\n✔ A cancelled navigation never starts later when its optional index finishes loading (1.608005ms)\n✔ Refreshing during index readiness invalidates the earlier navigation without overwriting its successful replacement (1.901707ms)\n✔ A background boot index superseded by refresh cannot append a stale error to the healthy replacement (3.085261ms)\n✔ Rendered partition bounds exclude distant whole-road tails while keeping the raw descriptor intact (1.813955ms)\n✔ Twenty streamed city terrain windows never accumulate in a staged bank or alter the published bank before commit (2.499539ms)\n✔ same full road survives both adjoining source coverages (13.369064ms)\nℹ tests 20\nℹ suites 0\nℹ pass 20\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 92.241612\n",
+      "stderr": ""
+    },
+    {
+      "command": "node tests/expansion/city_wait_cancel.test.cjs",
+      "exitCode": 0,
+      "stdout": "City streaming wait cancellation: 5 checks passed\n",
+      "stderr": ""
+    },
+    {
+      "command": "node tests/expansion/city_partition_seams.test.cjs",
+      "exitCode": 0,
+      "stdout": "Validated city partition extents: whole buildings, clipped roads, legacy fallback and stable order\n",
+      "stderr": ""
+    },
+    {
+      "command": "node tests/expansion/city_geometry_identity.test.cjs",
+      "exitCode": 0,
+      "stdout": "City geometry identity: distinct shapes survive even under hash collisions; exact copies deduplicate\n",
+      "stderr": ""
+    },
+    {
+      "command": "node tests/expansion/geography.test.cjs",
+      "exitCode": 0,
+      "stdout": "✔ Metres reject prefix garbage and convert explicit centimetres / feet (1.6651ms)\n✔ Building lower floor is subtracted from total height, never added above it (0.390469ms)\n✔ IGN absolute building elevations retain the measured ground datum (3.510959ms)\n✔ Live GeoPF building schema preserves roof/ground envelope separately from reported hauteur (0.341035ms)\n✔ Live Pas de Z building fields never turn unknown roof or precision into measurements (0.24547ms)\n✔ Level-derived building dimensions stay explicitly estimated (0.170997ms)\n✔ Road widths accept source units and IGN width attributes (0.684472ms)\n✔ A bridge with measured deck altitude does not acquire a made-up layer offset (0.627526ms)\n✔ Source route Z values interpolate the actual deck independently of terrain (1.670258ms)\n✔ Live GeoPF road schema retains measured width and absolute source Z at grade (0.41764ms)\n✔ Partially missing route Z is explicitly mixed with terrain, never a fully measured deck (0.222335ms)\n✔ IGN ordinal position is not converted into metres and unknown elevated height stays absent (0.281895ms)\n✔ A draped route does not construct a face across absent terrain (0.191279ms)\n✔ NoData with positive interpolation weight remains missing (0.465602ms)\n✔ Incompatible or missing vertical references require explicit transformation before layering (0.750192ms)\n✔ Highest-resolution covering source is used without blending away its measurements (0.506944ms)\n✔ Measured local terrain overlays keep their own extent and do not mutate macro bounds (0.472362ms)\n✔ Imported polygon rings and courtyard topology survive projected source conversion (4.05952ms)\n✔ Optional index absence preserves the original map resource (1.673203ms)\n✔ Non-HTTP diagnostic documents do not resolve optional relative source URLs (1.039638ms)\n✔ Source content length is refused before allocating an oversized body (1.178497ms)\n✔ Streaming source reads stop at the expected byte budget (1.195883ms)\n✔ Verified enrichment is consumed by the runtime without mutating vector resources (10.090221ms)\n✔ Coverage clipping interpolates source XY and Z on the original segments exactly (1.587844ms)\n✔ Clipping keeps parallel outside paths and removes no unqueried source segment (1.092517ms)\n✔ Complete WFS query replaces base road strokes only inside its certified query extent (2.594091ms)\n✔ A complete-query corner with no source road geometry stays empty instead of retaining old roads (1.719742ms)\n✔ An incomplete or unrelated query receipt never authorises coverage deletion (1.273379ms)\n✔ Absolute building attributes and route XYZ cannot silently mix ellipsoidal and NGF heights (1.290796ms)\n✔ Corrupted local source checksum blocks enrichment instead of publishing altered geometry (2.38778ms)\n✔ Surveyed courtyard removes an old solid footprint while a touching neighbour survives (1.847084ms)\n✔ Changing georeferencing invalidates the terrain geometry cache identity (1.183615ms)\n✔ Different measured absolute building elevations never deduplicate (0.244468ms)\n✔ Source gabled roof reaches its measured ridge and preserves a real courtyard (2.0629ms)\n✔ Roof projection bounds handle a large degenerate source without spread stack overflow (73.335379ms)\n✔ Terrain source bundle attaches to the same staged bank as base elevations (1.647364ms)\n✔ Several source grids coexist and select the finest covering tile without fake DEM fetches (2.221269ms)\n✔ Source refresh removes stale overlay grids only in the new staged bank (1.149392ms)\n✔ Synthetic lab terrain does not inherit installed real source tiles (0.985956ms)\n✔ Refreshing a failed source snapshot rejects late responses without erasing the next index (1.307001ms)\n✔ Fine terrain renders actual imported nodes, cuts coarse overlaps, and joins both boundaries (3.829283ms)\n✔ A coarse land triangle spanning a real DEM bump and pit is cut only over actual fine faces (2.739099ms)\n✔ Fine NoData holes remove old covering land planes while the outside coarse geometry stays unchanged (1.85067ms)\n✔ Exact support clipping preserves slope at boundary crossings and handles coincident edges (1.298247ms)\n✔ Land colours use an indexed centroid sample with holes while preserving every DEM face and altitude (4.526874ms)\n✔ A projected grid uses the exact outer stitch box while its curved DEM nodes remain unchanged (3.582571ms)\n✔ The outer stitch mask removes land over boundary NoData and colours the unchanged seam faces too (1.582106ms)\n✔ A native-size fine patch survives the separate bounded cache even when the 12 MiB coarse cache evicts it (662.283218ms)\n✔ Small source grids reuse the complete patch across anchors and invalidate by source stamp, datum and NoData (15.56197ms)\n✔ A physically wider source retains a bounded moving window instead of caching the complete grid (65.626609ms)\nℹ tests 50\nℹ suites 0\nℹ pass 50\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 905.586423\n",
+      "stderr": ""
+    },
+    {
+      "command": "node tests/expansion/ground_road_surfaces.cjs",
+      "exitCode": 0,
+      "stdout": "✔ The real Vieux-Port road follows the real MNT subset while its source XYZ, width and receipts stay unchanged (8.916082ms)\n✔ Ground contact never replaces absent MNT with a false zero-altitude face (3.297841ms)\n✔ Bridges, tunnels, absolute elevations and explicit clearances retain their exact source heights (7.531505ms)\n✔ Unspecified ordinal levels, non-IGN surveys and waterways preserve their previous XYZ policy (2.524896ms)\n✔ A supplied carriageway width keeps measurement precedence in the derived ground representation (1.191406ms)\n✔ The pure source-geometry mesh API still honors XYZ at grade unless the runtime explicitly derives ground contact (0.201213ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 31.475201\n",
+      "stderr": ""
+    },
+    {
+      "command": "node tests/expansion/dense_geometry.cjs",
+      "exitCode": 0,
+      "stdout": "OK Dense terrain scans every vertex without a call-stack overflow\nOK Dense offscreen terrain is still culled instead of kept unconditionally\nOK Large polygon rings and their holes contribute their full extents\nOK Dense roads use planar second coordinates, not vertex height\nOK Bounds are cached on the immutable draw record for later frames\nOK The existing distance boundary remains strict\nOK Ordinary props retain their existing ten-metre extent fallback\nOK Non-geographic actors and scenes keep the existing collection path\n{\"passed\":8,\"failed\":0,\"total\":8,\"scope\":\"Actual geographic draw collector with 300,001-vertex meshes and large 2D source paths\"}\n",
+      "stderr": ""
+    }
+  ],
+  "passedCommands": 12,
+  "failedCommands": 0,
+  "city_source_sha256": "ab2b81746145db13c6a8fbbabe566e9a93a23892ce0189c75a98e7b41a9f6e16"
+}

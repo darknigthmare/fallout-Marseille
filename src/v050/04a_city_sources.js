@@ -1,7 +1,7 @@
 /* Marseille's authoritative atlas is streamed by query partition. The atlas
    never replaces a missing survey with a fixture or a guessed empty tile. */
 const V051_CITY_ID='geo_marseille_commune',V051_CITY_BOUNDS=[43.1696313,5.22875102,43.39105653,5.53254336];
-const V051_CITY={index:null,indexPromise:null,terrainIndex:null,terrainPromise:null,epoch:0,navigationSerial:0,loads:new Map(),cache:new MistralStream.BudgetCache(64*1024*1024,24),terrainCache:new MistralStream.BudgetCache(48*1024*1024,8),errors:[],registered:false,requests:0};
+const V051_CITY={index:null,indexPromise:null,terrainIndex:null,terrainPromise:null,epoch:0,navigationSerial:0,loads:new Map(),cache:new MistralStream.BudgetCache(64*1024*1024,24),terrainCache:new MistralStream.BudgetCache(48*1024*1024,8),errors:[],registered:false,requests:0,geometryConflicts:0,geometryConflictIds:[],conflictsByTile:new Map()};
 /* The identity must exist before a saved exterior is resumed. Terrain bounds
    are installed only after both local indices validate, without touching the
    live bank; the next prepared bank receives the new measured base grid. */
@@ -12,7 +12,16 @@ function v051CityError(error){V051_CITY.errors.push(String(error?.message||error
 function v051CityAbort(signal){if(signal?.aborted){const error=new Error('Chargement de Marseille annulé');error.name='AbortError';throw error;}}
 function v051CityWait(promise,signal){
  v051CityAbort(signal);if(!signal)return promise;
- return new Promise((resolve,reject)=>{const abort=()=>{const error=new Error('Chargement de Marseille annulé');error.name='AbortError';reject(error);};signal.addEventListener('abort',abort,{once:true});promise.then(resolve,reject).finally(()=>signal.removeEventListener('abort',abort));});
+ return new Promise((resolve,reject)=>{
+  let settled=false;
+  const cleanup=()=>signal.removeEventListener('abort',abort);
+  const abort=()=>{if(settled)return;settled=true;cleanup();const error=new Error('Chargement de Marseille annulé');error.name='AbortError';reject(error);};
+  signal.addEventListener('abort',abort,{once:true});
+  // A cancellation settles only this waiter; the shared partition request stays alive.
+  // Attach both handlers directly: a discarded .finally() chain would reject unobserved.
+  promise.then(value=>{if(settled)return;settled=true;cleanup();resolve(value);},error=>{if(settled)return;settled=true;cleanup();reject(error);});
+  if(signal.aborted)abort();
+ });
 }
 function v051CityDescriptor(d,terrain=false){
  if(!d||typeof d.path!=='string'||!/^data\/map_pack\/city\/[a-zA-Z0-9_.-]+-[0-9a-f]{16}\.json$/.test(d.path)||!Number.isInteger(d.bytes)||d.bytes<1||d.bytes>64*1024*1024||!/^[0-9a-f]{64}$/.test(d.sha256)||!d.path.endsWith('-'+d.sha256.slice(0,16)+'.json')||!v050SourceBox(d.bbox))throw Error('Descripteur de partition de Marseille invalide');
@@ -50,7 +59,12 @@ async function v051CityReady(){
  if(index&&terrain&&!V046.lab&&!V051_CITY.registered){V046_BOUNDS[V051_CITY_ID]=index.municipality.bbox.slice();V015_GEO_MACROS[V051_CITY_ID].bbox=index.municipality.bbox.slice();V051_CITY.registered=true;}
  return index;
 }
-function v051CityDescriptors(box){return(V051_CITY.index?.tiles||[]).filter(d=>MistralIntegrity.intersects(box,d.renderBbox||d.bbox));}
+function v051CityDescriptors(box){
+ // The verified rendered extent includes whole buildings and each road query.
+ // Raw road tails outside that query remain in the source receipt, but are not
+ // rendered; old indices without this bound fall back to their source extent.
+ return(V051_CITY.index?.tiles||[]).filter(d=>MistralIntegrity.intersects(box,d.renderBbox||d.bbox)).sort((a,b)=>a.path.localeCompare(b.path));
+}
 /* Only the new plan's verified citydem resources may add fine city grids.
    Leaving the commune therefore drops old fine tiles too. Base grids and the
    independently acquired Aubagne sources remain exactly as the caller held
@@ -95,15 +109,41 @@ async function v051CityTerrain(descriptor,signal,base=false){
 }
 async function v051CityEnrich(resource,signal){
  if(!V051_CITY.registered||!V051_CITY.index||!resource||!['base','cadastre'].includes(resource.source))return resource;
- const tile=v017TileBounds(resource.z,resource.x,resource.y),box=[tile.south,tile.west,tile.north,tile.east],descriptors=v051CityDescriptors(box);if(!descriptors.length)return resource;
- const corners=[[tile.south,tile.west],[tile.north,tile.east]].map(p=>v015GeoProject(V051_CITY_ID,...p)),bounds=v017PolyBounds([corners.map(p=>[p[0],p[2]])]),features=[],coverages=[],seen=new Set();
+ const tile=v017TileBounds(resource.z,resource.x,resource.y),box=[tile.south,tile.west,tile.north,tile.east],descriptors=v051CityDescriptors(box);
+ const corners=descriptors.length?[[tile.south,tile.west],[tile.north,tile.east]].map(p=>v015GeoProject(V051_CITY_ID,...p)):[],bounds=descriptors.length?v017PolyBounds([corners.map(p=>[p[0],p[2]])]):null,features=[],coverages=[],seen=new Set();
  /* Sequential inside each tile keeps the existing four-worker map gate as the
     sole concurrency bound. Shared partition promises deduplicate those workers. */
  for(const d of descriptors){const bundle=await v051CityChunk(d,signal);v051CityAbort(signal);const radius=Math.max(bounds.maxX-bounds.minX,bounds.maxZ-bounds.minZ)/2+1;
-  for(const feature of bundle.spatial.around(bounds.cx,bounds.cz,radius))if(v050BoxesTouch(bounds,feature.v050Bounds)){const identity=feature.props.kind+':'+feature.sourceId+(feature.props.kind==='road'?':'+JSON.stringify(feature.v050Coverage?.proof.bbox||null):'');if(!seen.has(identity)){seen.add(identity);features.push(feature);}}
+  // Equal source roads can yield complementary paths in adjoining query receipts.
+  // Deduplicate exact rendered copies while preserving those surveyed fragments.
+  for(const feature of bundle.spatial.around(bounds.cx,bounds.cz,radius))if(v050BoxesTouch(bounds,feature.v050Bounds)){const identity=JSON.stringify([feature.props.kind,feature.sourceId,feature.v050Geometry,feature.v050Paths]);if(!seen.has(identity)){seen.add(identity);features.push(feature);}}
   coverages.push(...bundle.coverages);
  }
- return v050ApplySourceOverlays(resource,features,coverages);
+ // Keep different surveyed fragments, but expose conflicting representations
+ // of one source ID for review instead of silently picking one or inventing a merge.
+ const variants=new Map();
+ for(const feature of features){
+  const id=feature.props.kind+':'+feature.sourceId;
+  const geometry=JSON.stringify(feature.v050Geometry);
+  if(!variants.has(id))variants.set(id,new Set());
+  variants.get(id).add(geometry);
+ }
+ const conflicts=[...variants].filter(([,shapes])=>shapes.size>1).map(([id])=>id).sort();
+ // Keep diagnostics from other resident tiles; a clean tile must not erase
+ // a conflict observed in its neighbour. Revisit replaces that tile's report.
+ const tileKey=[resource.source,resource.z,resource.x,resource.y].join(':');
+ // Only publish diagnostics after geometry overlay succeeds; an exception must
+ // leave the last known-good diagnostic state untouched.
+ const enriched=descriptors.length?v050ApplySourceOverlays(resource,features,coverages):resource;
+ v051CityAbort(signal);
+ V051_CITY.conflictsByTile.delete(tileKey);
+ V051_CITY.conflictsByTile.set(tileKey,conflicts);
+ while(V051_CITY.conflictsByTile.size>256)V051_CITY.conflictsByTile.delete(V051_CITY.conflictsByTile.keys().next().value);
+ const all=new Set();
+ for(const ids of V051_CITY.conflictsByTile.values())for(const id of ids)all.add(id);
+ V051_CITY.geometryConflicts=all.size;
+ V051_CITY.geometryConflictIds=[...all].sort().slice(0,50);
+ return enriched;
 }
 const v051CityPlanBase=v046Plan;
 v046Plan=function(lat,lon){
@@ -150,13 +190,14 @@ v046StartLab=async function(){
 const v051CityLeaveLabBase=v047LeaveLab;
 v047LeaveLab=function(){const result=v051CityLeaveLabBase();if(!V046.lab&&V051_CITY.labBounds){V046_BOUNDS[V051_CITY_ID]=V051_CITY.labBounds;V051_CITY.labBounds=null;}return result;};
 function v051CityRefresh(){
- if(V046.busy||V047.pending)return false;V051_CITY.navigationSerial++;V051_CITY.epoch++;V051_CITY.index=null;V051_CITY.indexPromise=null;V051_CITY.terrainIndex=null;V051_CITY.terrainPromise=null;V051_CITY.loads.clear();V051_CITY.cache.clear();V051_CITY.terrainCache.clear();V051_CITY.errors=[];V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();return true;
+ if(V046.busy||V047.pending)return false;V051_CITY.navigationSerial++;V051_CITY.epoch++;V051_CITY.index=null;V051_CITY.indexPromise=null;V051_CITY.terrainIndex=null;V051_CITY.terrainPromise=null;V051_CITY.loads.clear();V051_CITY.cache.clear();V051_CITY.terrainCache.clear();V051_CITY.errors=[];V051_CITY.geometryConflicts=0;V051_CITY.geometryConflictIds=[];V051_CITY.conflictsByTile.clear();V046.gate?.cache.clear();V047.records?.clear();V047.meshes?.clear();return true;
 }
 function v051CityInfo(){
  const index=V051_CITY.index,tiles=index?.tiles||[],resident=[...V051_CITY.cache.values()];
- return{indexPresent:!!index,municipality:index?.municipality?{code:index.municipality.code,name:index.municipality.name,bbox:index.municipality.bbox.slice()}:null,coverage:index?.coverage||null,registered:V051_CITY.registered,tilesAvailable:tiles.length,sourceBuildings:index?.coverage?.uniqueBuildings??tiles.reduce((n,d)=>n+d.counts.buildings,0),sourceRoads:index?.coverage?.uniqueRoads??tiles.reduce((n,d)=>n+d.counts.roads,0),loadedPartitions:resident.length,loadedBuildings:resident.reduce((n,b)=>n+b.counts.buildings,0),loadedRoads:resident.reduce((n,b)=>n+b.counts.roads,0),loadedWireBytes:resident.reduce((n,b)=>n+b.wireBytes,0),sharedProvenanceRecords:resident.reduce((n,b)=>n+b.provenanceRecords,0),cache:V051_CITY.cache.stats(),terrainCache:V051_CITY.terrainCache.stats(),terrainIndexPresent:!!V051_CITY.terrainIndex,terrainTilesAvailable:V051_CITY.terrainIndex?.tiles.length||0,inflight:V051_CITY.loads.size,requests:V051_CITY.requests,errors:V051_CITY.errors.slice()};
+ return{indexPresent:!!index,municipality:index?.municipality?{code:index.municipality.code,name:index.municipality.name,bbox:index.municipality.bbox.slice()}:null,coverage:index?.coverage||null,registered:V051_CITY.registered,tilesAvailable:tiles.length,sourceBuildings:index?.coverage?.uniqueBuildings??tiles.reduce((n,d)=>n+d.counts.buildings,0),sourceRoads:index?.coverage?.uniqueRoads??tiles.reduce((n,d)=>n+d.counts.roads,0),loadedPartitions:resident.length,loadedBuildings:resident.reduce((n,b)=>n+b.counts.buildings,0),loadedRoads:resident.reduce((n,b)=>n+b.counts.roads,0),loadedWireBytes:resident.reduce((n,b)=>n+b.wireBytes,0),sharedProvenanceRecords:resident.reduce((n,b)=>n+b.provenanceRecords,0),cache:V051_CITY.cache.stats(),terrainCache:V051_CITY.terrainCache.stats(),terrainIndexPresent:!!V051_CITY.terrainIndex,terrainTilesAvailable:V051_CITY.terrainIndex?.tiles.length||0,inflight:V051_CITY.loads.size,requests:V051_CITY.requests,geometryConflicts:V051_CITY.geometryConflicts,geometryConflictIds:V051_CITY.geometryConflictIds.slice(),diagnosticTiles:V051_CITY.conflictsByTile.size,errors:V051_CITY.errors.slice()};
 }
 function v051CityAfterInit(){
  Object.assign(window.__MISTRAL_DEBUG,{v051CityInfo,v051CityRefresh,v051CityReady});
  if(typeof location==='undefined'||['http:','https:'].includes(location.protocol)){const epoch=V051_CITY.epoch;v051CityReady().catch(error=>{if(epoch===V051_CITY.epoch)v051CityError(error);});}
 }
+

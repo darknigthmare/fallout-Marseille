@@ -103,3 +103,38 @@ test('Twenty streamed city terrain windows never accumulate in a staged bank or 
  }
  const outside=run(c,'v051CityStageBank({geo_huveaune:active.bounds.geo_huveaune},active)');assert.equal(outside.grids.size,2);assert.equal(c.active.grids.size,3);
 });
+
+test('same full road survives both adjoining source coverages', async()=>{
+ const f=files(),index=JSON.parse(f.data['data/map_pack/city/index.json']);
+ index.coverage={complete:true,uniqueBuildings:0,uniqueRoads:1};
+ const roadCoordinates=[[5.351,43.295],[5.359,43.295]];
+ const boxes=[[43.29,5.35,43.30,5.355],[43.29,5.355,43.30,5.36]];
+ index.tiles=boxes.map((queryBbox,i)=>{
+  const roadProof={bbox:queryBbox,crs:'EPSG:4326',complete:true,layer:'BDTOPO_V3:troncon_de_route',returned:1};
+  const coverages=[{...roadProof,layer:'BDTOPO_V3:batiment',returned:0},roadProof];
+  const road={type:'Feature',id:'fixture-road',properties:{kind:'road',sourceId:'fixture-road',provenance:{...PROOF,coverage:roadProof}},geometry:{type:'LineString',coordinates:roadCoordinates}};
+  const raw={schemaVersion:1,region:REGION,queryBbox,features:[road],source:PROOF,coverages};
+  const chunk=descriptor(raw,'m13055-road-'+i,Q);
+  Object.assign(chunk.descriptor,{id:'m13055-road-'+i,region:REGION,queryBbox,renderBbox:queryBbox,coverages,counts:{buildings:0,roads:1}});
+  f.data[chunk.descriptor.path]=chunk.data;return chunk.descriptor;
+ });
+ f.data['data/map_pack/city/index.json']=JSON.stringify(index);
+ const c=sandbox(f.data);await run(c,'v051CityReady()');
+ c.resource={source:'base',z:14,x:0,y:0,layers:{}};
+ const chunks=await Promise.all(index.tiles.map((d,i)=>{c['descriptor'+i]=d;return run(c,'v051CityChunk(descriptor'+i+')');}));
+ assert.deepEqual(chunks.map(b=>plain(b.projected[0].v050Paths)),[[[[5351,-43295],[5355,-43295]]],[[[5355,-43295],[5359,-43295]]]]);
+ const result=await run(c,'v051CityEnrich(resource)');
+ assert.equal(result.layers.transportation.features[0].sourceId,'fixture-road');
+ assert.equal(result.layers.transportation.features[1].sourceId,'fixture-road');
+ assert.equal(result.layers.transportation.features.length,2,'Both complementary source-covered road fragments must survive');
+ assert.equal(run(c,'V051_CITY.geometryConflicts'),0,'The same surveyed geometry is not a geometry conflict');
+ const paths=result.layers.transportation.features.flatMap(f=>plain(f.v050Paths));
+ assert.equal(paths.length,2);
+ const again=await run(c,'v051CityEnrich(resource)');
+ assert.deepEqual(plain(again.layers.transportation.features.map(f=>f.v050Paths)),plain(result.layers.transportation.features.map(f=>f.v050Paths)),'Repeated load keeps both fragments');
+ run(c,'V051_CITY.index.tiles.reverse()');
+ const reverse=await run(c,'v051CityEnrich(resource)');
+ assert.deepEqual(plain(reverse.layers.transportation.features.map(f=>f.v050Paths)),plain(result.layers.transportation.features.map(f=>f.v050Paths)),'Index order must not choose a different road half');
+ assert.deepEqual(plain(paths.map(p=>[p[0][0],p.at(-1)[0]]).sort((a,b)=>a[0]-b[0])),[[5351,5355],[5355,5359]]);
+});
+
