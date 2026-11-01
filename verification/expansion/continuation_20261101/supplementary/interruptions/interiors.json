@@ -1,0 +1,87 @@
+{
+  "scope": "Supplemental interruption observation only. Excluded from final native validation counts. Original directory remains unchanged.",
+  "observedUtc": "2026-11-01T01:00:05.312729+00:00",
+  "originalDirectory": "/workspace/.cloud-setup/fallout-marseille/continuation-next/interiors/native-98a7",
+  "receiptStageAtObservation": "running",
+  "observedProcessExitCode": null,
+  "reason": "Observer and native child no longer present after session restart; actual exit status cannot be recovered from receipt.",
+  "reportStageAtObservation": "actual_atelier_programme",
+  "reportPassed": 54,
+  "reportFailed": 0,
+  "pngCount": 6,
+  "serverPort": 46289,
+  "files": {
+    "EXECUTED_architecture_native_browser.py": {
+      "size": 88745,
+      "sha256": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5"
+    },
+    "EXECUTED_interior_doors_native.py": {
+      "size": 8170,
+      "sha256": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b"
+    },
+    "EXECUTED_interior_programs_native.py": {
+      "size": 35295,
+      "sha256": "6424a6a85569cb80157abe58f7b16f61ac8b72774c240188c913d45aee8f281f"
+    },
+    "EXECUTED_interior_services_native.py": {
+      "size": 10545,
+      "sha256": "6f0bb4d0da40afac054fd382c14d02280493efd8f11b5f1dfb0a949539683387"
+    },
+    "EXECUTED_interior_storage_native.py": {
+      "size": 11977,
+      "sha256": "1bb891a0cea142acd74a04bd85bbf4ae61573a5b15767672aba77130801785f2"
+    },
+    "EXECUTION_STATUS.json": {
+      "size": 39557,
+      "sha256": "b4c055e121f30433cec25e1a88c118429746a8cb6835883873e39711b1a66d57"
+    },
+    "FROZEN_INPUTS.json": {
+      "size": 35920,
+      "sha256": "ea8383ad382acc52d83316850c78cfc2702e8edd2a147ed5deafd447734db6e5"
+    },
+    "INTERIOR_PROGRAMS_NATIVE.json": {
+      "size": 195569,
+      "sha256": "41b67a55048d7b2c4c400ceb80af063e65ff54985c166e0381175f09f5ff1844"
+    },
+    "architecture_native_browser.imported.py": {
+      "size": 88745,
+      "sha256": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5"
+    },
+    "atelier_equipment.png": {
+      "size": 1491069,
+      "sha256": "d5ed0690ae138153ce4ce901160d5d2999d14ad772131214a6e12fff731b1c2e"
+    },
+    "commerce_continue.png": {
+      "size": 1484609,
+      "sha256": "86f5aa27bab704f94dd2aa1fc2e05d205ee64e31e5026c3550a3e9afdcea2e29"
+    },
+    "commerce_equipment.png": {
+      "size": 1488925,
+      "sha256": "ae5090b4012ad33dca8925193282c42cf2871593e4e5a4c5a2aff12539628abe"
+    },
+    "commerce_room_door_closed.png": {
+      "size": 1497028,
+      "sha256": "f6b47b668582d1deaacaabef6ca0ed217c14b3ad06251e18d4dde8e51312d29d"
+    },
+    "commerce_room_door_inside.png": {
+      "size": 1458025,
+      "sha256": "9b0086cf479bfeffd57292d132b84600a41087a06f6f51cb1a0080a589b884e9"
+    },
+    "commerce_street_return.png": {
+      "size": 1542844,
+      "sha256": "aa4dd961df74dcf883c5acf419c5ee9b2389cfdc0cf20f2b6c59f41d0bc2b76d"
+    },
+    "stdout.log": {
+      "size": 4117,
+      "sha256": "7b8b371a0f53983fbd2e8649914dcaf8135d115b1176ee69795d0078150a0929"
+    }
+  },
+  "serverPortInitialSandboxProbe": "No valid connection observation: restricted sandbox denied socket creation (EPERM).",
+  "serverPortLaterActualProbe": {
+    "port": 46289,
+    "observedUtc": "2026-11-01T01:09:45.919528+00:00",
+    "connectErrno": 111,
+    "connectErrorName": "ECONNREFUSED",
+    "method": "Actual unsandboxed loopback connect_ex"
+  }
+}

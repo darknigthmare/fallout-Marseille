@@ -1,0 +1,44 @@
+{
+  "observer": "/workspace/.cloud-setup/fallout-marseille/continuation-next/lore/RUN_LORE_NATIVE.py",
+  "observer_sha256": "87a71bc1cd84cf352d2766ebc3e971c7eb232955727329fcf86d92240fc91e9b",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/community_dossiers_native.py",
+    "--run",
+    "--with-returns",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/lore/native-98a7-recovery-01",
+    "--expect-html-sha",
+    "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "--expect-lore-sha",
+    "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "expected_html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "before_inputs": {
+    "index.html": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+    "tests/expansion/community_dossiers_native.py": "d8a2cf106fa4b9b2b47058668e7635a7cf3cdf20367e59b3453e6d93c3a595bd",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  },
+  "start_utc": "2026-11-01 01:00:31 UTC",
+  "actual_exit_code": 0,
+  "elapsed_seconds": 712.391,
+  "end_utc": "2026-11-01 01:12:24 UTC",
+  "after_inputs": {
+    "index.html": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+    "tests/expansion/community_dossiers_native.py": "d8a2cf106fa4b9b2b47058668e7635a7cf3cdf20367e59b3453e6d93c3a595bd",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  },
+  "log_sha256": "b791c2f5e7ea40e05a47a6c7573d0b806beca36c0de4726f39a309bda7f931fb",
+  "report_sha256": "0fbf5242fcb84b015ee4d24c9c8a1b475289940c0c3fd2218946b3227766a32b",
+  "passed": 472,
+  "failed": 0,
+  "total": 472,
+  "stage": "complete",
+  "shots": 10,
+  "closed_server_connect_ex": 111
+}

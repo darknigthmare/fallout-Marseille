@@ -1,0 +1,44 @@
+{
+  "observer": "/workspace/.cloud-setup/fallout-marseille/continuation-next/lore/RUN_LORE_NATIVE.py",
+  "observer_sha256": "87a71bc1cd84cf352d2766ebc3e971c7eb232955727329fcf86d92240fc91e9b",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/community_dossiers_native.py",
+    "--run",
+    "--with-returns",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/lore/native-42a6-03",
+    "--expect-html-sha",
+    "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "--expect-lore-sha",
+    "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "expected_html_sha256": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+  "before_inputs": {
+    "index.html": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+    "tests/expansion/community_dossiers_native.py": "d8a2cf106fa4b9b2b47058668e7635a7cf3cdf20367e59b3453e6d93c3a595bd",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  },
+  "start_utc": "2026-11-01 00:48:41 UTC",
+  "actual_exit_code": -15,
+  "elapsed_seconds": 157.962,
+  "end_utc": "2026-11-01 00:51:19 UTC",
+  "after_inputs": {
+    "index.html": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+    "tests/expansion/community_dossiers_native.py": "d8a2cf106fa4b9b2b47058668e7635a7cf3cdf20367e59b3453e6d93c3a595bd",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  },
+  "log_sha256": "8b0272eab2e6620b0a82e415ae979169a75ec0bbdb17068a25de04b98fceb829",
+  "report_sha256": "71b28d33bd11cec3590d56c19fbb4f49a21ef12bec292bfc47d831700a347d0b",
+  "passed": 9,
+  "failed": 0,
+  "total": 9,
+  "stage": "actual_partage_two_named_relay_commitments",
+  "shots": 0,
+  "closed_server_connect_ex": 111
+}

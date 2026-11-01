@@ -5,9 +5,32 @@ import argparse
 import json
 import sys
 
-from world_sources import SourceError, bounded_bytes, decode_json, provenance, publish_bundle, read_geojson, read_terrain
+from world_sources import SourceError, bounded_bytes, checked_bbox, decode_json, provenance, publish_bundle, read_geojson, read_terrain
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def region_bounds(root=ROOT):
+    """Include the installed, complete Marseille atlas beyond the old macro box.
+
+    Missing optional city data leaves historical regional imports available.
+    An invalid city declaration is refused instead of guessing broader bounds.
+    """
+    root = Path(root)
+    manifest = decode_json(bounded_bytes(root / "data/map_pack/terrain/manifest_v039.json"))
+    regions = {r["macro"]: checked_bbox(r["bbox"]) for r in manifest["regions"]}
+    city_path = root / "data/map_pack/city/index.json"
+    if city_path.is_symlink():
+        raise SourceError("communal source index symlink is not accepted")
+    if city_path.exists():
+        city = decode_json(bounded_bytes(city_path))
+        if (city.get("schemaVersion") != 1 or city.get("crs") != "EPSG:4326"
+                or city.get("region") != "geo_marseille_commune"
+                or city.get("municipality", {}).get("code") != "13055"
+                or city.get("coverage", {}).get("complete") is not True):
+            raise SourceError("installed communal source index is incomplete or incompatible")
+        regions["geo_marseille_commune"] = checked_bbox(city["municipality"].get("bbox"))
+    return regions
 
 
 def main(argv=None):
@@ -32,8 +55,7 @@ def main(argv=None):
     if args.geojson is None and args.terrain is None:
         parser.error("provide --geojson and/or --terrain")
     try:
-        manifest = decode_json(bounded_bytes(ROOT / "data/map_pack/terrain/manifest_v039.json"))
-        regions = {r["macro"]: r["bbox"] for r in manifest["regions"]}
+        regions = region_bounds()
         if args.region not in regions:
             raise SourceError("region is not part of the supplied territory manifest")
         source = provenance(name=args.source, license=args.license, attribution=args.attribution, acquired_at=args.acquired_at,

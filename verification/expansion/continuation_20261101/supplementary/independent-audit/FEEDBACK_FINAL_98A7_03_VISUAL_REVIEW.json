@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/audit_release; this agent also corrected and executed the QA pilot. A separate peer review is requested.",
+  "created_utc": "2026-11-01T01:13:53.220492+00:00",
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "source_report": "/workspace/.cloud-setup/fallout-marseille/continuation-next/hud/feedback-final-98a7-03/FPS_FEEDBACK_NATIVE.json",
+  "source_report_sha256": "1033ece2fee68e98dc77c3843ae426ddcf12bf2893f9b647cfd0af76ee79175e",
+  "execution_receipt": "/workspace/.cloud-setup/fallout-marseille/continuation-next/hud/feedback-final-98a7-03/EXECUTION.json",
+  "script_sha256": "d1d912cef0f08e45df50b5704ef20aba4e592cd7e2dc696b9d71e783e7bbbc55",
+  "log_sha256": "572d74dadfcf2814787484fb5ffd718d0d232070578f49981997496aa786dbe6",
+  "native_result": {
+    "passed": 44,
+    "failed": 0,
+    "existing_event_checks": 36,
+    "added_capture_visibility_checks": 8,
+    "stage": "complete",
+    "exit_code": 0
+  },
+  "production_frozen_inputs": 361,
+  "changed_production_inputs": [],
+  "original_check_call_forms_preserved": 27,
+  "original_check_expressions_unchanged": true,
+  "capture_api": "Chromium Page.captureScreenshot; PNG optimizeForSpeed is lossless. No clock, lifetime, DOM visibility, health, enemy or production function changes.",
+  "shots": [
+    {
+      "file": "01_actual_reload_progress.png",
+      "sha256": "21a253108c282ff3b02b05cce18c09d88c26f37ca3738b3caef940a07f4ffbb8",
+      "hash_matches": true,
+      "bytes": 1703540,
+      "width": 1440,
+      "height": 900,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Barre de rechargement partielle et « RECHARGEMENT · 0,6 s » lisibles; 9/42, PV115.",
+        "Mains et bracelet stylisés, poignet partiellement derrière la barre rapide."
+      ],
+      "screenshot_elapsed_seconds": 0.5677297110087238,
+      "dom_before_expected_visible": true,
+      "dom_after_expected_visible": true
+    },
+    {
+      "file": "02_actual_received_damage.png",
+      "sha256": "196d0311de83165d620af5a2285cf44130645b21de6c2ac2daae31f235a492ce",
+      "hash_matches": true,
+      "bytes": 1814039,
+      "width": 1440,
+      "height": 900,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Reçu « −11 PV » visible au-dessus des PV104. Sous-titre « Essai du retour de dégâts / Vous subissez 11 points de dégâts. » visible au centre bas.",
+        "PV et munitions 10/41 restent lisibles sous le voile rouge de dégâts."
+      ],
+      "screenshot_elapsed_seconds": 0.5353609609883279,
+      "dom_before_expected_visible": true,
+      "dom_after_expected_visible": true
+    },
+    {
+      "file": "03_actual_hit_confirmation.png",
+      "sha256": "6259486668b030352fc61627ae4174f79ad23c59b88babf257cf2b7564b5dbfd",
+      "hash_matches": true,
+      "bytes": 1859322,
+      "width": 1440,
+      "height": 900,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Marques jaunes et « TOUCHÉ » visibles au centre. Toast de dégâts de la tarente et 9/41 visibles.",
+        "La géométrie de l’acteur est partiellement masquée par la végétation; le raster prouve ici la présentation du HUD, la santé effective relève du rapport natif."
+      ],
+      "screenshot_elapsed_seconds": 0.36495811998611316,
+      "dom_before_expected_visible": true,
+      "dom_after_expected_visible": true
+    },
+    {
+      "file": "04_actual_neutralisation.png",
+      "sha256": "3df06decbe296700e21def58e7e8d88d9b9596d4cb2575ea9589e72c304c1b34",
+      "hash_matches": true,
+      "bytes": 1852609,
+      "width": 1440,
+      "height": 900,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "« NEUTRALISÉ » visible au centre, toasts de neutralisation et +24XP visibles, 6/41.",
+        "Le rapport natif documente la transition vivant/mort; le rendu 3D a été préparé avant les événements transitoires."
+      ],
+      "screenshot_elapsed_seconds": 0.40158984099980444,
+      "dom_before_expected_visible": true,
+      "dom_after_expected_visible": true
+    },
+    {
+      "file": "05_actual_feedback_1440x900.png",
+      "sha256": "7b5ca6819c2cc2c207e03e2c5acfc3e136dac3c12987e63d1b9ca974bcedabf1",
+      "hash_matches": true,
+      "bytes": 1714709,
+      "width": 1440,
+      "height": 900,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Reçu « −1,0 PV » et sous-titre « Retour de dégâts / Vous subissez 1 points de dégâts. » visibles.",
+        "Aucun chevauchement visible du sous-titre avec PV101 ou munitions6/41."
+      ],
+      "screenshot_elapsed_seconds": 0.3876646179705858,
+      "dom_before_expected_visible": true,
+      "dom_after_expected_visible": true
+    },
+    {
+      "file": "05_actual_feedback_1024x768.png",
+      "sha256": "2b2b9db55004225dba2c887dd79bf116df802315ffae970de80f916d00592f31",
+      "hash_matches": true,
+      "bytes": 1085570,
+      "width": 1024,
+      "height": 768,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Reçu « −1,0 PV » et sous-titre visibles. PV100 et munitions6/41 lisibles.",
+        "Sous-titre dans une bande libre, sans chevauchement visible avec PV/munitions. Titre de lieu replié et certains libellés rapides ellipsés."
+      ],
+      "screenshot_elapsed_seconds": 0.3047364780213684,
+      "dom_before_expected_visible": true,
+      "dom_after_expected_visible": true
+    },
+    {
+      "file": "05_actual_feedback_390x844.png",
+      "sha256": "e8c5bc1eaa4e5e01badd50269fa3a0fc7557c18de187a94799bdb79fb1ffb28f",
+      "hash_matches": true,
+      "bytes": 483876,
+      "width": 390,
+      "height": 844,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Reçu « −1,0 PV » et sous-titre replié sur deux lignes visibles. PV99 et munitions6/41 lisibles.",
+        "Sous-titre au-dessus des blocs PV/munitions, sans les recouvrir. Le grand poignet et l’arme passent partiellement derrière le HUD; plusieurs boutons sont ellipsés."
+      ],
+      "screenshot_elapsed_seconds": 0.10118655604310334,
+      "dom_before_expected_visible": true,
+      "dom_after_expected_visible": true
+    },
+    {
+      "file": "05_actual_feedback_844x390.png",
+      "sha256": "23c885b19be3dd7dd822c62d19ac34cd5fd5907e10bc3dcdc28a838a61efd3b2",
+      "hash_matches": true,
+      "bytes": 478777,
+      "width": 844,
+      "height": 390,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Reçu « −1,0 PV » et sous-titre en bande supérieure visibles; PV98 et munitions6/41 lisibles.",
+        "Sous-titre au-dessus des blocs PV/munitions, sans chevauchement visible. Hauteur de scène réduite et libellés rapides ellipsés."
+      ],
+      "screenshot_elapsed_seconds": 0.1368560899863951,
+      "dom_before_expected_visible": true,
+      "dom_after_expected_visible": true
+    }
+  ],
+  "browser_cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true
+  },
+  "server_port_check": {
+    "checked_utc": "2026-11-01T01:13:14.859954+00:00",
+    "origin": "http://127.0.0.1:35731",
+    "connect_ex": 111,
+    "connection_refused": true,
+    "report_sha256": "1033ece2fee68e98dc77c3843ae426ddcf12bf2893f9b647cfd0af76ee79175e"
+  },
+  "supersedes_for_current_evidence": "hud/feedback-98a7; unchanged older evidence is diagnostic only. Failed attempt hud/feedback-final-98a7-02 remains raw and excluded.",
+  "conclusion_fr": "Les huit captures nouvelles montrent les retours HUD attendus. Les quatre tailles montrent le reçu et le sous-titre dans une bande libre sans recouvrir les PV ni les munitions. Les observations DOM avant et après sont toutes visibles, et les durées de capture réelles sont de 0,101 à 0,568 seconde.",
+  "limits_fr": [
+    "Le rendu 3D est préparé avant l’événement pour respecter les durées de vie de production; la capture démontre la présentation DOM transitoire et ne constitue pas une partie continue.",
+    "Les dégâts entrants viennent de la vraie chaîne v028NativeDamage; ils ne démontrent pas une attaque ennemie.",
+    "Diagnostic caméra/gel/ticks explicite; aucun don de PV, munitions ou changement d’ennemi.",
+    "Mains et armes stylisées; poignet partiellement masqué par le HUD dans plusieurs cadrages.",
+    "Petit texte et libellés rapides ellipsés aux formats étroits; matériel physique mobile/manette hors champ.",
+    "Ce lot ne certifie aucune fidélité urbaine ou architecturale intégrale 1:1."
+  ],
+  "visual_review_additional_native_assertions": 0
+}

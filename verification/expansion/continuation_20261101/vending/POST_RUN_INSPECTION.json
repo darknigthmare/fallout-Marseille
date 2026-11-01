@@ -1,0 +1,118 @@
+{
+  "scope": "Independent post-run inspection of the actual final native vending receipts and all six unmodified PNG captures. Diagnostic attempts 01/02 are excluded.",
+  "recordedUtc": "2026-11-01T01:10:08Z",
+  "report": "VENDING_NATIVE.json",
+  "receipt": "EXECUTION_STATUS.json",
+  "htmlSha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "scriptSha256": "2e034f2a5cee4e7dd67638b1df0d03533587806e91b7336df0ca90364999cec1",
+  "reportSha256": "2bb93ae9f05678ca7188471412c5da9c2182577844caafdb44b46d0767a16b37",
+  "receiptSha256": "5f3936922bba69fdacb1c6e7730d4104ff472a868b260ba2ff7713ed47168c49",
+  "stdoutSha256": "e9335d6d9316a2b2254138182af8788bb3be762e2533e823bcdbdb7e2cfa703e",
+  "checks": {
+    "actual_child_exit_zero": true,
+    "completed_report_and_receipt": true,
+    "all_64_checks_pass": true,
+    "stdout_exact_ok_sequence": true,
+    "report_hash": true,
+    "stdout_hash": true,
+    "script_archive_hash": true,
+    "runtime_361_unchanged": true,
+    "runtime_frozen_copy_exact": true,
+    "runner_input_hashes_unchanged": true,
+    "production_pinned_inputs_unchanged": true,
+    "server_refused_after_child_exit": true,
+    "browser_server_worker_cleaned": true,
+    "no_page_or_local_http_errors": true,
+    "no_injection_network_storage_or_geography_mock": true,
+    "local_pack_actual_complete": true,
+    "real_continue_exact_caps_bag_vending": true,
+    "six_reported_pngs": true,
+    "all_six_png_hashes_and_dimensions": true
+  },
+  "nativePassed": 64,
+  "nativeTotal": 64,
+  "nativeFailed": 0,
+  "frozenRuntimeCount": 361,
+  "pinnedProductionAndSourceInputs": 147,
+  "inputHashesCount": 362,
+  "shots": [
+    {
+      "file": "01_authored_cabinet.png",
+      "sha256": "d3ec3ea7298bfd23bd3aa3dcec6cdd24d5641b8cd93045e1fce9c4dac52b9ad4",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspected": true,
+      "observation": "Original red cabinet and blue/red finite bottles are clearly visible in the authored Aubagne scene, with the actual E interaction label. Camera framing and body geometry are stylized."
+    },
+    {
+      "file": "02_broken_power_and_stock.png",
+      "sha256": "d7cac899538fed87f40c4473a1b05700a3f0b5461fa240320fbf01f47befb005",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspected": true,
+      "observation": "Actual modal fits desktop view; 500 caps, power out, repair cost two scrap plus one circuit, 3 classic and 1 Quantum, disabled purchase buttons are visible."
+    },
+    {
+      "file": "03_paid_stock.png",
+      "sha256": "bcc27d4273adbb3d3fe918c85a71c25b5bd8fbd0fa2f753be2226b7e35fa8b04",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspected": true,
+      "observation": "Actual repaired modal shows 405 caps after 30+65 caps spent, classic reserve 2 and Quantum reserve 0; exhausted Quantum button is disabled."
+    },
+    {
+      "file": "04_exhausted_after_continue.png",
+      "sha256": "34a68fdb81dce92faa186bd6c837756d46fd2d2b06e59deda4047d5e843ce8fc",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspected": true,
+      "observation": "After actual reload and Continue, modal shows 346 caps, power restored, both reserves 0 and both purchases disabled; no repair control is offered."
+    },
+    {
+      "file": "05_real_geographic_counterpart.png",
+      "sha256": "bef5412a064028a333b2ba0a5005fc40998cf5ddf5736152fb24f2eb6e4c0862",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspected": true,
+      "observation": "Same empty original cabinet, green power indicator and actual E label are visible at the Huveaune safe relay on installed source geography. Terrain and surrounding buildings remain stylized game rendering; cabinet placement is invented."
+    },
+    {
+      "file": "06_portrait_marseille_reserve.png",
+      "sha256": "858adbde91ba5693a2665b0c941f0950494247df078c1c7bd4b3b10894d5bf85",
+      "dimensions": [
+        390,
+        844
+      ],
+      "inspected": true,
+      "observation": "At emulated 390x844 the Marseille modal and close control stay within the viewport, wrapping labels remain readable, repair cost and independent classic reserve 4 are visible. Remaining reserve/actions extend vertically below the current scroll; physical touchscreen use is not certified."
+    }
+  ],
+  "externalRequestFailures": {
+    "count": 18,
+    "observation": "Actual optional Supabase remote map/status/manifest requests are recorded as ERR_TUNNEL_CONNECTION_FAILED under the restricted environment. No local source HTTP error or unexpected local request failure occurred. The installed local IGN pack audited complete and supplied the visited geographic source.",
+    "consoleErrorsCount": 18
+  },
+  "assistance": [
+    "v020Load selects existing authored scenes without item grants.",
+    "v020Seed supplies 500 capsules, 6 scrap and 3 circuitry only; no bottles or cabinet state are granted.",
+    "v046SetTime(12), render pause and v018CaptureAt freeze normal simulation for reproducible inspections.",
+    "v018LoadMacro/v046Load select an actual installed Huveaune sector; v042Update materializes the existing safe catalog relay.",
+    "Camera approaches are selected only after actual production body collision and LOS checks. Geographic camera heights come from the actual source terrain.",
+    "One viewport is resized to 390x844 to test responsive controls; this is not physical mobile input."
+  ],
+  "limitations": [
+    "Two authored original game cabinets, not surveyed historical street furniture.",
+    "Native validation visits the Aubagne geographic counterpart. Marseille municipal alias is a controlled production-model contract.",
+    "The cabinet model is original stylized geometry, not a commercial Fallout asset."
+  ]
+}

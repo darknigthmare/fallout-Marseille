@@ -1,0 +1,31 @@
+{
+  "method": "Actual child exit for the continuation phase only; original interrupted outer exit remains unobserved.",
+  "originalOuterExitCode": null,
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/scripts/resume_models.py",
+    "--repo",
+    "/workspace/fallout-Marseille",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/models-final",
+    "--freeze",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/FROZEN_RUNTIME.json",
+    "--expect-html-sha",
+    "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "scriptSha256": "d856dc0019e02bc5c440452f3708cbe7b9423728224e9f251796b77a6cf734cf",
+  "wrapperSha256": "c66b6c4f185373f024b5eada89e8a7090813ca96b76792a34d62a1f06cdd15f5",
+  "startedAtEpoch": 1793495042.650073,
+  "childPid": 225438,
+  "exitCode": 0,
+  "durationSeconds": 265.931,
+  "scriptUnchanged": true,
+  "wrapperUnchanged": true,
+  "reportSha256": "fea3c5eda9c67d40fe50bb77f37eb18f0564d559ed54806eb77da47484e523d6",
+  "provenanceSha256": "85066e9445361d3c30f7d6be69d98fed1f7fd3c55196a3995b1f93d594b03339",
+  "logSha256": "6330626a30160013c8c1bf198b1dbb0d0aaf017626760adceec267ebc85d5670",
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "runtimeInputCount": 361,
+  "runtimeChanged": []
+}

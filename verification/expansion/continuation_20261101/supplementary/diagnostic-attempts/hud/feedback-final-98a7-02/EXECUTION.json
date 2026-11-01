@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/fps_feedback_native.py",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/hud/feedback-final-98a7-02",
+    "--expect-html-sha",
+    "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 228440,
+  "exitCode": 1,
+  "startedAtEpoch": 1793495483.0133624,
+  "durationSeconds": 17.76054883003235,
+  "scriptSha256": "f49cc851dce83cfcee6df597a2092894a26ec8bf12feecafc376e39faa12e8c5",
+  "scriptUnchanged": true,
+  "reportSha256": "4081963f70e784d1018a91082df8bcd95c21ce6f1606ee60ce13a27a8ed072f1",
+  "logSha256": "7c1b36df57e4ef2af42a47b209c5d5c42e329aff6ae3ceac4550033a9a9a0f13",
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "runtimeChanged": [],
+  "runtimeInputCount": 361
+}

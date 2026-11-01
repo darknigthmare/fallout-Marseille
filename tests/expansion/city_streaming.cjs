@@ -103,3 +103,26 @@ test('Twenty streamed city terrain windows never accumulate in a staged bank or 
  }
  const outside=run(c,'v051CityStageBank({geo_huveaune:active.bounds.geo_huveaune},active)');assert.equal(outside.grids.size,2);assert.equal(c.active.grids.size,3);
 });
+
+function optionalCityTerrain(data){
+ // Explicit synthetic source: a three-by-three finer grid in the city fixture.
+ const raw={schemaVersion:1,region:REGION,source:PROOF,features:[],terrain:{macro:'enrichment:'+REGION,width:3,height:3,bbox:Q,values:Array(9).fill(35),rowOrder:'north-to-south',sourceResource:'fixture-city-mnt',verticalDatum:'NGF-IGN69',provenance:{...PROOF,resource:'fixture-city-mnt'}}};
+ const encoded=JSON.stringify(raw),sha256=crypto.createHash('sha256').update(encoded).digest('hex'),path='data/map_pack/enrichment/'+REGION+'-'+sha256.slice(0,16)+'.json';
+ data['data/map_pack/enrichment/index.json']=JSON.stringify({schemaVersion:1,crs:'EPSG:4326',regions:{[REGION]:{path,bytes:Buffer.byteLength(encoded),sha256,bbox:Q}}});data[path]=encoded;return path;
+}
+test('The city base DEM alone loads optional commune terrain before a staged bank chooses its finer nodes',async()=>{
+ const f=files();optionalCityTerrain(f.data);const c=sandbox(f.data);await run(c,'v051CityReady()');
+ c.source=await run(c,"v046Resource('dem:geo_marseille_commune')");
+ const output=plain(run(c,'(()=>{const stage=v051CityStageBank(V046_BOUNDS,V046.terrain);stage.add(source.raw,source.id);return{fine:stage.read(43.295,5.355),outside:stage.read(43.32,5.39),keys:[...stage.grids.keys()]};})()'));
+ assert.ok(Math.abs(output.fine.height-35)<1e-10);assert.deepEqual(output.fine.sources,['enrichment:'+REGION]);assert.equal(output.fine.sourceResource,'fixture-city-mnt');assert.ok(Math.abs(output.outside.height-10)<1e-10);assert.equal(run(c,'V046.terrain.grids.size'),0);assert.equal(run(c,'V050_GEOGRAPHY.bundles.size'),1);
+});
+test('Optional commune terrain refuses corrupt received bytes before touching a published bank',async()=>{
+ const f=files(),optional=optionalCityTerrain(f.data);f.data[optional]=f.data[optional].replace('35,35','36,35');const c=sandbox(f.data);await run(c,'v051CityReady()');
+ await assert.rejects(run(c,"v046Resource('dem:geo_marseille_commune')"),/SHA-256/);assert.equal(run(c,'V046.terrain.grids.size'),0);assert.equal(run(c,'V050_GEOGRAPHY.bundles.size'),0);
+});
+test('Cancelled optional commune terrain loads cannot return a resource to a cancelled navigation',async()=>{
+ const f=files(),optional=optionalCityTerrain(f.data),c=sandbox(f.data);await run(c,'v051CityReady()');let release;const fetch=c.fetch;
+ c.fetch=url=>url===optional?new Promise(resolve=>{release=()=>fetch(url).then(resolve);}):fetch(url);c.controller=new AbortController();
+ const pending=run(c,"v046Resource('dem:geo_marseille_commune',controller.signal)");
+ for(let turn=0;!release&&turn<100;turn++)await new Promise(resolve=>setImmediate(resolve));assert.equal(typeof release,'function');c.controller.abort();release();await assert.rejects(pending,/annulé/);assert.equal(run(c,'V046.terrain.grids.size'),0);
+});

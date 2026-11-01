@@ -1,0 +1,141 @@
+OK HTTP loads the exact frozen production HTML
+OK Menu hides the foreground and refuses held aim
+OK Chosen authored road point is free under actual production collision
+OK Native WebGL scene and projected foreground are both active
+OK Foreground really paints nontransparent pixels and leaves the central hip aperture clear
+OK Actual forward movement drives bounded foreground gait
+OK Actual sprint movement lowers the foreground stance
+OK Ordinary diagnostic grant succeeds for presentation: pistol10
+OK Normal equip selects presentation weapon: pistol10
+OK HUD aim action is enabled for a firearm: pistol
+OK Native attached canvas shows family pistol
+OK Native equipment selects the correct original presentation profile: pistol10
+OK Ordinary diagnostic grant succeeds for presentation: revolver44
+OK Normal equip selects presentation weapon: revolver44
+OK HUD aim action is enabled for a firearm: pistol
+OK Native attached canvas shows family pistol
+OK Native equipment selects the correct original presentation profile: revolver44
+OK Ordinary diagnostic grant succeeds for presentation: doubleBarrel
+OK Normal equip selects presentation weapon: doubleBarrel
+OK HUD aim action is enabled for a firearm: shotgun
+OK Native attached canvas shows family shotgun
+OK Native equipment selects the correct original presentation profile: doubleBarrel
+OK Ordinary diagnostic grant succeeds for presentation: minigun
+OK Normal equip selects presentation weapon: minigun
+OK HUD aim action is enabled for a firearm: heavy
+OK Native attached canvas shows family heavy
+OK Native equipment selects the correct original presentation profile: minigun
+OK Ordinary diagnostic grant succeeds for presentation: pipeCarbine
+OK Normal equip selects presentation weapon: pipeCarbine
+OK HUD aim action is enabled for a firearm: rifle
+OK Native attached canvas shows family rifle
+OK Native equipment selects the correct original presentation profile: pipeCarbine
+OK Ordinary diagnostic grant succeeds for presentation: dockShotgun
+OK Normal equip selects presentation weapon: dockShotgun
+OK HUD aim action is enabled for a firearm: shotgun
+OK Native attached canvas shows family shotgun
+OK Native equipment selects the correct original presentation profile: dockShotgun
+OK Ordinary diagnostic grant succeeds for presentation: laserPistol
+OK Normal equip selects presentation weapon: laserPistol
+OK HUD aim action is enabled for a firearm: energy
+OK Native attached canvas shows family energy
+OK Native equipment selects the correct original presentation profile: laserPistol
+OK Ordinary diagnostic grant succeeds for presentation: missileLauncher
+OK Normal equip selects presentation weapon: missileLauncher
+OK HUD aim action is enabled for a firearm: heavy
+OK Native attached canvas shows family heavy
+OK Native equipment selects the correct original presentation profile: missileLauncher
+OK Ordinary diagnostic grant succeeds for presentation: rivetGun
+OK Normal equip selects presentation weapon: rivetGun
+OK HUD aim action is enabled for a firearm: industrial
+OK Native attached canvas shows family industrial
+OK Native equipment selects the correct original presentation profile: rivetGun
+OK Ordinary diagnostic grant succeeds for presentation: combatKnife
+OK Normal equip selects presentation weapon: combatKnife
+OK HUD aim action is disabled for a melee weapon: combatKnife
+OK Native attached canvas shows family blade
+OK Native equipment selects the correct original presentation profile: combatKnife
+OK Ordinary diagnostic grant succeeds for presentation: sledgehammer
+OK Normal equip selects presentation weapon: sledgehammer
+OK HUD aim action is disabled for a melee weapon: sledgehammer
+OK Native attached canvas shows family melee
+OK Native equipment selects the correct original presentation profile: sledgehammer
+OK Ordinary diagnostic grant succeeds for presentation: powerFist
+OK Normal equip selects presentation weapon: powerFist
+OK HUD aim action is disabled for a melee weapon: powerFist
+OK Native attached canvas shows family fist
+OK Native equipment selects the correct original presentation profile: powerFist
+OK An existing authored wall has a collision-free close approach
+OK Actual wall occlusion lowers the viewmodel and refuses aim
+OK Native held X aligns the sight presentation
+OK Aiming leaves the actual world direction and FOV unchanged
+OK Aiming consumes no ammunition, inventory or capsules
+OK Native X release returns the grip to the hip
+OK Opening actual Pip-Boy clears held aim and hides hands
+OK Closing actual Pip-Boy restores the foreground without stuck aim
+OK Actual C hides the foreground in third person
+OK Actual C restores first person presentation
+OK Real pointer-locked left click emits exactly one ordinary pistol shot
+OK Actual emitted shot drives foreground recoil
+OK Actual R starts the ordinary reload and releases aim
+OK Active simulation exposes the reload hand pose
+OK Real pistol reload retains its supporting grip and held magazine inside the frame
+OK Ordinary reload finishes with the original clip capacity
+OK Reload inspection equips the ordinary weapon: pipeCarbine
+OK Actual shot debits finite ammunition before reload: pipeCarbine
+OK Native R starts this weapon reload: pipeCarbine
+OK Real reload shows the corresponding feed part: pipeCarbine
+OK Real support grip and reload part stay inside the viewport: pipeCarbine
+OK Reload finishes at the actual clip capacity with exactly conserved ammunition: pipeCarbine
+OK Reload feed part clears and no supplies or capsules are fabricated: pipeCarbine
+OK Reload inspection equips the ordinary weapon: revolver44
+OK Actual shot debits finite ammunition before reload: revolver44
+OK Native R starts this weapon reload: revolver44
+OK Real reload shows the corresponding feed part: revolver44
+OK Real support grip and reload part stay inside the viewport: revolver44
+OK Reload finishes at the actual clip capacity with exactly conserved ammunition: revolver44
+OK Reload feed part clears and no supplies or capsules are fabricated: revolver44
+OK Reload inspection equips the ordinary weapon: dockShotgun
+OK Actual shot debits finite ammunition before reload: dockShotgun
+OK Native R starts this weapon reload: dockShotgun
+OK Real reload shows the corresponding feed part: dockShotgun
+OK Real support grip and reload part stay inside the viewport: dockShotgun
+OK Reload finishes at the actual clip capacity with exactly conserved ammunition: dockShotgun
+OK Reload feed part clears and no supplies or capsules are fabricated: dockShotgun
+OK Reload inspection equips the ordinary weapon: laserPistol
+OK Actual shot debits finite ammunition before reload: laserPistol
+OK Native R starts this weapon reload: laserPistol
+OK Real reload shows the corresponding feed part: laserPistol
+OK Real support grip and reload part stay inside the viewport: laserPistol
+OK Reload finishes at the actual clip capacity with exactly conserved ammunition: laserPistol
+OK Reload feed part clears and no supplies or capsules are fabricated: laserPistol
+OK Reload inspection equips the ordinary weapon: missileLauncher
+OK Actual shot debits finite ammunition before reload: missileLauncher
+OK Native R starts this weapon reload: missileLauncher
+OK Real reload shows the corresponding feed part: missileLauncher
+OK Real support grip and reload part stay inside the viewport: missileLauncher
+OK Reload finishes at the actual clip capacity with exactly conserved ammunition: missileLauncher
+OK Reload feed part clears and no supplies or capsules are fabricated: missileLauncher
+OK Reload inspection equips the ordinary weapon: minigun
+OK Actual shot debits finite ammunition before reload: minigun
+OK Native R starts this weapon reload: minigun
+OK Real reload shows the corresponding feed part: minigun
+OK Real support grip and reload part stay inside the viewport: minigun
+OK Reload finishes at the actual clip capacity with exactly conserved ammunition: minigun
+OK Reload feed part clears and no supplies or capsules are fabricated: minigun
+OK Reload inspection equips the ordinary weapon: rivetGun
+OK Actual shot debits finite ammunition before reload: rivetGun
+OK Native R starts this weapon reload: rivetGun
+OK Real reload shows the corresponding feed part: rivetGun
+OK Real support grip and reload part stay inside the viewport: rivetGun
+OK Reload finishes at the actual clip capacity with exactly conserved ammunition: rivetGun
+OK Reload feed part clears and no supplies or capsules are fabricated: rivetGun
+OK Portrait reuses one connected canvas at the actual viewport dimensions
+OK Visible production hold-to-aim HUD action exists
+OK HUD pointerdown holds actual presentation aim
+OK HUD pointerup releases aim without a stuck weapon
+OK Existing reduced motion setting applies the aim pose immediately
+OK Reduced motion release immediately restores the static hip pose
+OK Native pilot records no JavaScript exception
+OK Native local production resources have no HTTP failure
+OK All production and pilot inputs retain their frozen hashes

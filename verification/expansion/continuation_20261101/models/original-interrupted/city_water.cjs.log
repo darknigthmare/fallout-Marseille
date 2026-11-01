@@ -1,0 +1,32 @@
+✔ Water polygons and island rings project without modifying any source coordinates (9.882102ms)
+✔ A water report is not inferred from altitude or administrative complement (0.531052ms)
+✔ An open water ring is rejected before import (2.31209ms)
+✔ A derived point beyond its declared tile boundary is rejected (3.931616ms)
+✔ Counts and provenance must match the byte-pinned source descriptor (0.496006ms)
+✔ Unsafe paths and altered content-addressed filenames are rejected (0.484705ms)
+✔ Repeated maritime tile identities cannot be loaded as separate surveys (0.362697ms)
+✔ A false municipality and excessive resource budget are rejected (2.924764ms)
+✔ Only ocean or sea classes replace an older ocean polygon; inland water remains (0.418101ms)
+✔ Production wrapper installs before debug initialization without a boot exception (28.013005ms)
+✔ Ready loads a real optional descriptor through the shared source reader (6.008786ms)
+✔ Maritime planning includes verified water-only tiles beyond the old pack (1.462753ms)
+✔ The verified high-water sea replaces the old coarse ocean and preserves inland lakes (5.073529ms)
+✔ A fully surveyed land tile removes an old ocean polygon without inventing water (5.253064ms)
+✔ Outside the atlas the original resource is untouched (1.132556ms)
+✔ Water-only coverage never masquerades as an officially empty base vector tile (1.360221ms)
+✔ A repeated unchanged water tile reuses bounded projected geometry (3.199618ms)
+✔ Synthetic laboratory worlds do not receive the real municipal water atlas (1.141703ms)
+✔ Refreshing the source atlas releases maritime ownership and cached geometry (4.188755ms)
+✔ An obsolete load settling after refresh cannot release a replacement shared load (11.752216ms)
+✔ A stale index failure cannot discard the replacement index shared by current callers (12.141263ms)
+✔ An optional missing-index response from before refresh cannot validate a current navigation (5.03708ms)
+✔ Current maritime index errors are reported and a subsequent retry can recover (2.821571ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122.209798
+

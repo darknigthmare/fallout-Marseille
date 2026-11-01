@@ -1,0 +1,67 @@
+{
+  "reviewer": "fps_refinement agent; independent of HUD implementation",
+  "method": "Opened all eight original native PNG files individually with view_image, read the raw report and verified each PNG signature and SHA-256. No image edits, browser rerun or runtime mutation.",
+  "assertion_count": 0,
+  "included_in_numerical_test_sum": false,
+  "html_sha256": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+  "report_sha256": "f0a7ba360d25e6594db04390622b27e54ef547091faae4cc56df3e6bd2f1e06a",
+  "hud_source_sha256": "56f0983e2b749bfa91f1ec9c890184970cdbd1e5431d3a2ead757354a76eb7cb",
+  "observations": [
+    {
+      "file": "01_actual_reload_progress.png",
+      "sha256": "fe1f1c8c4b0599047dd95aec2b57802e8ffcd598a1970bced0ae19312a4423a9",
+      "opened_with_view_image": true,
+      "observation": "Reload time and yellow progress strip are visible within the ammo panel; health, compass, quest and toolbar remain distinct. The lifted support hand and held magazine are visible."
+    },
+    {
+      "file": "02_actual_received_damage.png",
+      "sha256": "5844fecdccf8b245e52a1896aca609627d239ddee3e3c4282805ac0e42c9cd6e",
+      "opened_with_view_image": true,
+      "observation": "The minus 11 HP label sits immediately above the health block. The centered incoming-damage subtitle is legible in a dark strip below the reticle and does not obscure health or ammo."
+    },
+    {
+      "file": "03_actual_hit_confirmation.png",
+      "sha256": "da7978ae6b8f358f7c0fba1b19296f835f36845d58b613da9f3078a562c1b18c",
+      "opened_with_view_image": true,
+      "observation": "The gold reticle confirmation and TOUCHE label are visible on the native shot frame; a separate right-side toast names the existing hostile and lost HP. It partly overlaps scene geometry as expected for an overlay."
+    },
+    {
+      "file": "04_actual_neutralisation.png",
+      "sha256": "4e549c258a61e976bfb96db989a757867a805237114903018e3d68d84b2e4629",
+      "opened_with_view_image": true,
+      "observation": "NEUTRALISE appears below the reticle and four finite combat/story/XP toasts stack at the right above the lamp; the ammo and health panels remain readable."
+    },
+    {
+      "file": "05_actual_feedback_1440x900.png",
+      "sha256": "41cdab73d9272832b10db037d8d46948b977f9b2d552b09c5b3ba8fc83946370",
+      "opened_with_view_image": true,
+      "observation": "Subtitle occupies the free center band at desktop scale; the temporary HP delta stays above health. No overlap with health or ammo is visible."
+    },
+    {
+      "file": "05_actual_feedback_1024x768.png",
+      "sha256": "45ddba17b069bbaff8ccc443994bce4b48ac5ceca1f42b21d13c5520be9cd109",
+      "opened_with_view_image": true,
+      "observation": "Subtitle remains legible above the lower HUD blocks and toolbar; compass, quest and both primary gauges fit. It covers part of the visible weapon/world silhouette, which is expected and does not hide the gauges."
+    },
+    {
+      "file": "05_actual_feedback_390x844.png",
+      "sha256": "af2b973d159506e690b7eb7ad40c840755f8aff0a5403b89757841adeff3993e",
+      "opened_with_view_image": true,
+      "observation": "The subtitle wraps into two readable lines above the critical meter/level band, health and ammo. The separate HP delta is readable on the left. The previously documented lower palm/terminal overlap with the translucent ammo panel remains visible."
+    },
+    {
+      "file": "05_actual_feedback_844x390.png",
+      "sha256": "3ba726ba69bc52d67969d89dd27a454f77df77a3322c0e8850c9d374ed747bd9",
+      "opened_with_view_image": true,
+      "observation": "On the short landscape view, the subtitle is lifted above the reticle and the two lower panels. Quest, compass, nine shortcuts, health and ammo remain visible. World view is necessarily smaller and tiny secondary labels need physical-device legibility testing."
+    }
+  ],
+  "blocking_visual_defects_found": false,
+  "limits": [
+    "Static snapshots do not verify animation duration, accessibility compliance, hardware performance, or all game interfaces.",
+    "Incoming damage is invoked through the actual diagnostic damage chain, not an observed hostile attack; this is declared by the native pilot.",
+    "Lower hands and wrist terminal remain partly behind the translucent portrait ammo block.",
+    "The legacy damage subtitle uses the plural phrase \"1 points de dégâts\" on a one-point hit; editorial issue, no obstruction or gameplay defect.",
+    "Small secondary labels on the 844x390 view need physical-display legibility testing."
+  ]
+}

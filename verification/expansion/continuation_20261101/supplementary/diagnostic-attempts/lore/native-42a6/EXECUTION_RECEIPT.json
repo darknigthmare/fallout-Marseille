@@ -1,0 +1,43 @@
+{
+  "observer": "/workspace/.cloud-setup/fallout-marseille/continuation-next/lore/RUN_LORE_NATIVE.py",
+  "observer_sha256": "87a71bc1cd84cf352d2766ebc3e971c7eb232955727329fcf86d92240fc91e9b",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/community_dossiers_native.py",
+    "--run",
+    "--with-returns",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/lore/native-42a6",
+    "--expect-html-sha",
+    "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "--expect-lore-sha",
+    "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "expected_html_sha256": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+  "before_inputs": {
+    "index.html": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+    "tests/expansion/community_dossiers_native.py": "51c20d15de3e1b90cf2309b0fc3a6595a8e1e8393bb1eeab615ca88bdc51aa97",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  },
+  "start_utc": "2026-11-01 00:43:38 UTC",
+  "actual_exit_code": 1,
+  "elapsed_seconds": 0.333,
+  "end_utc": "2026-11-01 00:43:38 UTC",
+  "after_inputs": {
+    "index.html": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+    "tests/expansion/community_dossiers_native.py": "51c20d15de3e1b90cf2309b0fc3a6595a8e1e8393bb1eeab615ca88bdc51aa97",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  },
+  "log_sha256": "47c07264cdb8fb8fa23f02409d6641419fe4e7eaa3d8cfbfd286df81904ae199",
+  "report_sha256": "82f98a2691ff6c93d285a06d71d796695138f08164725775a2e66d3866a6f9d8",
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "stage": "actual_server_audits_before_chromium",
+  "shots": 0
+}

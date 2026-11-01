@@ -1,0 +1,117 @@
+{
+  "html_sha256": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+  "report_sha256": "8b2a2985cb7c8efe8a7cc2b641589fd1ff4ec7d8d2599c7e7097e419984d8000",
+  "inspection_method": "Each of the 16 original native PNG files was opened using view_image at its actual path; recorded hashes were independently recomputed. No images were edited or combined.",
+  "observations": [
+    {
+      "file": "01_native_pistol_hip.png",
+      "sha256": "f2e51bc2acb84c889976ac10e330f237af3726c1ce1bf49045bccd8e60d5b1ec",
+      "opened": true,
+      "observation": "Both hands, finger groups, sleeves and wrist terminal are visible above the desktop quickbar; the lower sleeves extend behind its row."
+    },
+    {
+      "file": "02_profile_revolver44.png",
+      "sha256": "eeadd000d1b4b1c95e7fb1c04bcb14f64cd90ab73657d99287a05e565ee08070",
+      "opened": true,
+      "observation": "Cylinder, hammer and exposed frame differ from the pistol slide; same two-handed hip stance."
+    },
+    {
+      "file": "02_profile_doubleBarrel.png",
+      "sha256": "f8f45de10574ea6006aa19c254af30fcc0fbc8e1cc2b5a75ac8aeb74d4fb3666",
+      "opened": true,
+      "observation": "Two short barrels and wood fore-end are visible; classification is shotgun. The viewing angle partially overlaps the barrels."
+    },
+    {
+      "file": "02_matrix_rifle.png",
+      "sha256": "fc8946e38e8cbde3d474197a6188ff508c100f98464c84b0ebd6117f9b1f244f",
+      "opened": true,
+      "observation": "Supporting fingers and wrist terminal are above the bottom row; the stock remains a stylized wooden shape."
+    },
+    {
+      "file": "02_matrix_energy.png",
+      "sha256": "02e1d5be8c735d6257ccd649402e8e0d20fc7bb01b53c8d7b462db35960808ff",
+      "opened": true,
+      "observation": "Short energy weapon lacks a rifle butt stock; the side cell and shroud give its distinct outline."
+    },
+    {
+      "file": "02_matrix_blade.png",
+      "sha256": "1d72e6c918cfe21be8d7cfd5bd83119fe050830dd58e38c9e24fb103dc1a503e",
+      "opened": true,
+      "observation": "The existing short knife and older melee hand poses remain visible; these poses were preserved."
+    },
+    {
+      "file": "02b_native_wall_lowering.png",
+      "sha256": "c5e55cc1e2d7fb90653c7d22398a845081fe275366d3dc60d9873af6045d5f3a",
+      "opened": true,
+      "observation": "An actual close wall fills the background; the weapon is lowered and the central aiming aperture remains free. This is a diagnostic wall view."
+    },
+    {
+      "file": "03_native_rifle_aim.png",
+      "sha256": "803f3bb8e8fa4e07814bb3d406067013044ad1c7765167c8e7fc727b26e8b111",
+      "opened": true,
+      "observation": "Front bead is centered in the notch; two sleeve/hand chains remain attached; the lower forearms pass behind the quickbar."
+    },
+    {
+      "file": "04_native_shot_recoil.png",
+      "sha256": "71e28a20e96646a665430f3d078f9d84c1dc6e10b5e6d606eb73d54bbc51e808",
+      "opened": true,
+      "observation": "The emitted shot has a muzzle flash and displaced weapon; this is an active recoil frame, not a static weapon render."
+    },
+    {
+      "file": "05_native_reload_hands.png",
+      "sha256": "d9baa48a3c26fb404fb131521fa3db739d87a944c0a9edf0ee9667896ac25c30",
+      "opened": true,
+      "observation": "Supporting fingers, held magazine, wrist terminal and firing hand are visible together; the held magazine is no longer cropped below the viewport."
+    },
+    {
+      "file": "05_reload_revolver.png",
+      "sha256": "1ad71e9840b80cb7b24f647d5e4f3df8059ed1ad3387da896456a3b31f8841ad",
+      "opened": true,
+      "observation": "Open cylinder, six dark chambers, connecting crane and round loader are visible together."
+    },
+    {
+      "file": "05_reload_break-action.png",
+      "sha256": "f19f0416c1eedd8627ba4df331035d7c098e25a05d44aff84c48e2e029a0f8f6",
+      "opened": true,
+      "observation": "The double barrel has folded down from its hinge and two red/brass shells are held beside it; some chamber edges remain behind the receiver at this angle."
+    },
+    {
+      "file": "05_reload_energy-pistol.png",
+      "sha256": "6f1f0d2e66fec2c1ae49dc9711696695894e151ebc6ca5b8d52e18409f89140e",
+      "opened": true,
+      "observation": "A distinct illuminated energy cell is held in the support hand, with the attached side cell absent."
+    },
+    {
+      "file": "05_reload_launcher.png",
+      "sha256": "4f8c214a5c531c878a1de1bd9c9242e37467b13c99e6646efee83b313d016346",
+      "opened": true,
+      "observation": "Large tube, rear opening and held round are visible; the round is stylized and its pointed end is partly occluded by the fingers."
+    },
+    {
+      "file": "06_native_portrait_hands.png",
+      "sha256": "5856af4c17e11f909e51dd240795a675766a64d52a96d9692906888bd136a90c",
+      "opened": true,
+      "observation": "The two grip centers and upper finger/knuckle groups are higher than the real ammo panel. The bottom of both palms, wrists and terminal still overlaps the translucent panel, and the right wrist extends off the portrait edge."
+    },
+    {
+      "file": "07_native_portrait_reduced_motion.png",
+      "sha256": "7a7bb14bc2246e08a43e624866d2364f9c45c5da5bbb4b6080ebcd10b568b92f",
+      "opened": true,
+      "observation": "Static reduced-motion portrait uses the same raised firearm framing. The upper fingers remain visible; lower palms/terminal remain partly under the panel."
+    }
+  ],
+  "blocking_visual_defects_found": false,
+  "limits": [
+    "Original stylized meshes by family/profile, not a unique replica for every catalog weapon.",
+    "Aubagne is an authored narrative scene; no geographic fidelity is evidenced by these screenshots.",
+    "Portrait hand heels/wrists still cross the translucent HUD and the right wrist can extend beyond the edge.",
+    "The pilot uses ordinary diagnostic grants and stepping; it does not prove acquisition, performance on physical mobile hardware, or continuous human playthrough."
+  ],
+  "network_observations": {
+    "local_http_status_errors": 0,
+    "javascript_exceptions": 0,
+    "external_supabase_tunnel_failures": 9,
+    "loopback_metadata_err_aborted": 1,
+    "abort_phase": "Not recorded by the pilot; no attribution to init, travel or shutdown is asserted."
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "scope": "Assisted native HTTP pilot of Communes/Gilets relay decisions on real geography.\n\nOne native context serves unmodified production bytes and real installed sources.\nThe current NPCs are approached at measured, collision-free points; normal E,\nvisible dialogue and Pip-Boy actions collect two exact relay commitments per\nstory, pay finite inventory supplies, publish Canal 13 replies and save/Continue.\nDeclared sector selection, camera placement, freeze and payment supplies are\nassistance. No source geometry, actor, proof, outcome or storage is fabricated.\n",
+  "with_returns": true,
+  "stage": "actual_server_audits_before_chromium",
+  "stages": [
+    {
+      "name": "actual_server_audits_before_chromium",
+      "elapsed_seconds": 0.042
+    }
+  ],
+  "checks": [
+    {
+      "name": "Coordinated frozen production HTML is installed",
+      "ok": true,
+      "detail": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799"
+    },
+    {
+      "name": "Coordinated actual architecture atlas is installed",
+      "ok": true,
+      "detail": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+    },
+    {
+      "name": "Frozen lore module matches coordinator and inline production bundle",
+      "ok": true,
+      "detail": {
+        "source": "src/v050/10_lore_continuity.js",
+        "sha256": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72"
+      }
+    },
+    {
+      "name": "Pinned historical loadZone awards 18 XP only on first zone discovery",
+      "ok": true,
+      "detail": {
+        "source": "src/core-v017.js",
+        "rewardXP": 18,
+        "condition": "zone absent from player.discovered before load"
+      }
+    }
+  ],
+  "shots": [],
+  "script_sha256": "51c20d15de3e1b90cf2309b0fc3a6595a8e1e8393bb1eeab615ca88bdc51aa97",
+  "native_navigation": false,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "synthetic_geography": false,
+  "synthetic_documents": false,
+  "service_workers_disabled": true,
+  "contexts_created": 0,
+  "maximum_contexts": 1,
+  "assistance": [
+    "Existing v020Load starts an authored scene, then v018LoadMacro/v046Load select actual installed geographic sectors without lab data.",
+    "Existing v018CaptureAt places cameras only at measured collision-free points with real line of sight; actors and source geometry are never moved.",
+    "Production render/simulation freeze and v047Control auto=false bound the visit. v020Tick(.05,true) establishes actual supported ground.",
+    "One declared v020Seed sets caps=1000, water=16, food=12, scrap=12, circuitry=4, cloth=8 to pay real decision supplies. No quest or proof is seeded.",
+    "Existing v046SetTime sets daytime. Native KeyE, Tab, dialogue buttons and visible dossier actions perform all feature mutations.",
+    "Read-only debug exports inspect exact source identity, ledger, resources, contact admission and reward counts."
+  ],
+  "interactions": [],
+  "placements": [],
+  "page_errors": [],
+  "console_errors": [],
+  "javascript_console_errors": [],
+  "resource_console_diagnostics": [],
+  "request_failures": [],
+  "local_request_failures": [],
+  "external_request_failures": [],
+  "local_http_errors": [],
+  "http_responses": [],
+  "html_sha256": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+  "elapsed_seconds": 0.044,
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pinned_inputs": {
+    "index.html": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+    "src/v046/02_environment.js": "f0c4387584a81f2733143dfa2464d38f4366a57466aa7dce278d3f0701c8df92",
+    "src/v050/04a_city_sources.js": "73d66d78b64ec24cc24763232bcc5303b1c9d5f865426dc4dd43a13069ae4556",
+    "src/v050/04aa_city_water.js": "2f5d0186f7bcc76acc7eee9e2546f5b955ea35a24c5d1b424962f2ef40454c9c",
+    "src/v050/07_facades.js": "63f1b830a489e46ca932f5b7f33482bee03df36a727949ff78965a51a9002d02",
+    "src/v050/08_city_interiors.js": "4385728898a5b81798da505ba9134d29f057a178279912f6d4be674e77661a0f",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80",
+    "data/map_pack/city/index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "data/map_pack/city/terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "data/map_pack/city/water-index.json": "f46745db1df594a2ea8a4d60f5ef53ce6fa3ca82bb4e16ab686d62ef2102d927",
+    "src/core-v017.js": "7e07ba0d1723e589b3d7fa3ca76ac8e287c6b0d22f4dc9c1434919b9db366ea3"
+  },
+  "exception": {
+    "message": "[Errno 1] Operation not permitted",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/community_dossiers_native.py\", line 358, in main\n    server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py\", line 453, in __init__\n    self.socket = socket.socket(self.address_family,\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py\", line 233, in __init__\n    _socket.socket.__init__(self, family, type, proto, fileno)\nPermissionError: [Errno 1] Operation not permitted\n"
+  }
+}

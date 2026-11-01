@@ -1,0 +1,42 @@
+{
+  "scope": "Recovery observation only. Does not fabricate child exit status or amend raw execution evidence.",
+  "observed_utc": "2026-11-01 01:00:13 UTC",
+  "attempt": "/workspace/.cloud-setup/fallout-marseille/continuation-next/lore/native-98a7",
+  "classification": "interrupted_without_observed_exit; excluded from completed validation",
+  "recorded_actual_exit_code": null,
+  "report_stage": "actual_partage_two_named_relay_commitments",
+  "intermediate_passed": 60,
+  "intermediate_failed": 0,
+  "intermediate_total": 60,
+  "captures": 0,
+  "completed_stories": [],
+  "live_lane_processes": [],
+  "raw_files": {
+    "EXECUTION_RECEIPT.json": {
+      "size": 1415,
+      "sha256": "fda363d1d4856ed61a9e659f9e0654aa86153312bd85576df4deae3f6aa3d1cd"
+    },
+    "EXECUTED_COMMUNITY_DOSSIERS_NATIVE.py": {
+      "size": 51107,
+      "sha256": "d8a2cf106fa4b9b2b47058668e7635a7cf3cdf20367e59b3453e6d93c3a595bd"
+    },
+    "COMMUNITY_DOSSIERS_NATIVE.json": {
+      "size": 170519,
+      "sha256": "2a1d4f00078573ba1b1681d637b8c7e0aa191a1f828916b3ac70b7a750c71f57"
+    },
+    "EXECUTION.log": {
+      "size": 3734,
+      "sha256": "64b27fcfb4a58c6561c3d1cb0c7869728574af2a62d201527a45890dda7cb775"
+    }
+  },
+  "current_sources": {
+    "index.html": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+    "tests/expansion/community_dossiers_native.py": "d8a2cf106fa4b9b2b47058668e7635a7cf3cdf20367e59b3453e6d93c3a595bd",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  },
+  "sources_equal_started": true,
+  "observer_sha256": "87a71bc1cd84cf352d2766ebc3e971c7eb232955727329fcf86d92240fc91e9b",
+  "raw_attempt_preserved": true,
+  "rerun_started": false
+}

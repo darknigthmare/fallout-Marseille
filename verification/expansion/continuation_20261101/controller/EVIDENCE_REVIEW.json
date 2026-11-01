@@ -1,0 +1,39 @@
+{
+  "scope": "Supplemental independent receipt review for simulated Gamepad API with actual Chromium DOM, keyboard, localStorage and production handlers; adds no check or capture count.",
+  "reviewedUtc": "2026-11-01T01:16:12.381413+00:00",
+  "passed": 63,
+  "failed": 0,
+  "pngCount": 0,
+  "actualChildExitCode": 0,
+  "actualSessionId": 23907,
+  "hashes": {
+    "report": "148839cb26fdc9a39fde4cd026a49f7e8b301f67d9922c883be951bb8c160b00",
+    "executionReceipt": "a16a35c450a6646877097edf29e8d8f0ca1e90a97d3c355aaa2d491237e9968a",
+    "stdout": "002c6a040dbbcde61a7b90b72bfb6b1a0fd64d5de6e0de8ecd098f84641092f8",
+    "executedScript": "cc83a11b3b5444a191fbd76066b3fc0ca44a9b9223f9460756fb974e1fbbbdf3"
+  },
+  "frozenRuntimeRehashedAndUnchanged": true,
+  "runtimeInputCount": 361,
+  "collector": {
+    "exit_key": "exitCode",
+    "receipt_report_hash_key": "reportSha256",
+    "receipt_script_hash_key": "scriptSha256",
+    "receipt_log_hash_key": "logSha256",
+    "category": "simulated_gamepad"
+  },
+  "rootOwnedServerAfterController": {
+    "url": "http://127.0.0.1:45925/index.html?skipboot=1",
+    "pid": 225807,
+    "httpStatus": 200,
+    "htmlSha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "sizeBytes": 2988146,
+    "leftRunningForRootCleanup": true
+  },
+  "limits": [
+    "Gamepad API navigator.getGamepads is simulated and controller diagnostic steps advance input. No physical controller or Bluetooth/USB testing.",
+    "One explicit synthetic touch PointerEvent and seeded initial preferences in actual localStorage test device arbitration/preferences; these are declared test preparation.",
+    "Diagnostic APIs open existing authored scenes and activities. LT aim uses actual first-person presentation state and unchanged world FOV; dispenser focus/B-close uses real modal and collision/LOS-checked placement without granting stock/resources/weapons.",
+    "Report intentionally has no stage, script_sha256 or captures. The actual entrypoint identity and exit are evidenced by EXECUTION.json, archived script and stdout; collector category must be simulated_gamepad.",
+    "The supplied root-owned HTTP server remains running for root to stop after all shared consumers complete."
+  ]
+}

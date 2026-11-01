@@ -1,0 +1,47 @@
+{
+  "method": "Independent controlled DOM/runtime seams; no native or gameplay proof",
+  "source_sha256": "823691acadd2e50d3ebdbea94b9bab8568828d848887f71a3c1217c680e79dbe",
+  "checks": [
+    {
+      "name": "Real wrapper applies a hit only to positive health loss inside a successful emission",
+      "ok": true
+    },
+    {
+      "name": "Direct damage outside emission cannot create a hit receipt",
+      "ok": true
+    },
+    {
+      "name": "Throwing emitter restores scoped collector before later direct damage and emissions",
+      "ok": true
+    },
+    {
+      "name": "Changing world during an emitter cannot leave a receipt in the replacement scene",
+      "ok": true
+    },
+    {
+      "name": "Changing save owner during an emitter cannot credit replacement save",
+      "ok": true
+    },
+    {
+      "name": "Actual incoming health loss is measured and menu opening clears transient feedback",
+      "ok": true
+    },
+    {
+      "name": "Replacing world during incoming damage cannot retain its damage receipt",
+      "ok": true
+    },
+    {
+      "name": "Scene epoch and weapon changes clear existing damage/hit/reload records",
+      "ok": true
+    },
+    {
+      "name": "Actual final adjusted reload duration drives progress and cancellation clears total",
+      "ok": true
+    },
+    {
+      "name": "Expired hit and hurt receipts are hidden after the presentation clock advances",
+      "ok": true
+    }
+  ],
+  "passed": 10
+}

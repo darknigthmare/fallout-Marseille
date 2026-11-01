@@ -1,0 +1,71 @@
+{
+  "scope": "Visual inspection of nine exact original native capture events on final HTML 98a7; descriptive observations outside gameplay assertion sum. No image edits. Elevated cameras, obstruction, contextual Pharo identity and historical water artefacts remain explicit.",
+  "inspectedAt": "2026-11-01T01:05:24.697922+00:00",
+  "htmlSha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "reportSha256": "913af2f0b133a7f07610cd475df911cdc9b9eea21ff83c0181d77efcca6b53c9",
+  "captures": [
+    {
+      "file": "major_ground.png",
+      "sha256": "8137baeb03e32919daa45e03be24c68a6fd237627b60a9aab809a82cca5512ec",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "La surface MNS de la Major est visible depuis le point MNT à hauteur des yeux ; le cadrage coupe une partie du monument. Les fenêtres et façades sont procédurales, sans relevé architectural."
+    },
+    {
+      "file": "major_elevated.png",
+      "sha256": "af9375b995b081d1acc3dfdd1799beaed3681bc2869af6bafc95ded4f4bf0fe2",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue de diagnostic élevée : dômes et emprises visibles avec rugosité et extrusions du sursol. Cette caméra ne démontre aucun accès piéton."
+    },
+    {
+      "file": "garde_ground.png",
+      "sha256": "bd98641adcfb4bef4e65d01d9376192178d538e72ae1b1e538164347c3776d12",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Le sommet MNS et un versant sont visibles depuis un point MNT libre ; le monument complet ne tient pas dans le cadre. Les ouvertures restent des représentations procédurales."
+    },
+    {
+      "file": "garde_elevated.png",
+      "sha256": "e6de9e694d02a5fa78ca8a1ca79e488e02f099f423cd90de17328f0f241d8c88",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue élevée de diagnostic : flèche, versants et relief mesuré visibles, avec bruit de sursol. Aucun détail de statue ou de façade certifié."
+    },
+    {
+      "file": "charite_ground.png",
+      "sha256": "576a0e31fbd18ce8323b5013f7675371f5b8ce95d03c5e884230c00265f3faaf",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Le point MNT au sol est libre de collision mais la ligne de vue est masquée par un volume voisin : la capture montre un mur et le terrain, pas la chapelle. Elle ne prouve pas la visibilité de la chapelle."
+    },
+    {
+      "file": "charite_elevated.png",
+      "sha256": "f660d281fbea485ffe54a17ed6ed877ebb361ebf964554700cb3554c19610521",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue élevée : le dôme de la chapelle est visible dans la cour. Le reste de l’hospice conserve ses volumes historiques et ses finitions procédurales ; seul le contour source de la chapelle reçoit ce MNS."
+    },
+    {
+      "file": "pharo_ground.png",
+      "sha256": "96afc1bd5686c06d39942f9e5fa742eadd884f6c1fd54c3589a25297043a80c3",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue au sol de l’emprise mesurée dans le contexte du Pharo : murs verticaux simplifiés et sursol rugueux. L’association contextuelle ne certifie pas l’identité architecturale, les fenêtres ou les pièces."
+    },
+    {
+      "file": "pharo_elevated.png",
+      "sha256": "9378d6d625833c27c8977337264e9f3e548926edf91001c0615ef10c51c67261",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue élevée de l’emprise et du sursol. Le premier plan FPS couvre une partie du contexte ; les artefacts historiques du rendu d’eau voisin restent très visibles. Aucune façade complète documentée."
+    },
+    {
+      "file": "pharo_continue.png",
+      "sha256": "2ef4a019b4b6f552f51e508c9abaa6a37eb2c50e28e6bf0a1e197717d87323d7",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Retour au même point MNT après un vrai rechargement et le bouton Continuer. La persistance est vérifiée par état et maillage ; la capture ne démontre aucune nouvelle façade documentée."
+    }
+  ]
+}

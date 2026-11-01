@@ -1,0 +1,12 @@
+{
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "gameBytesUnchanged": true,
+  "changes": [
+    {
+      "path": "tools/check_v050.py",
+      "beforeSha256": "a25ead12a804402fc9b0a12aea9428ab224d11c18721cc98617aa1d5ee11206e",
+      "afterSha256": "b1ff20b01772d75a0ef09f1aeb3619045cf64b23d755d8c1a16d1d952c6d6d2f",
+      "reason": "Only the legacy adapter expected old PWA cache12. Release cache13 correctly refreshes the changed HTML. Updating the adapter replaces the current-cache fixture token while retaining all9 assertions, old-cache removal, other-app preservation and offline503 contracts."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+OK Explicit source roof receives a precise closed solid
+OK Source ridge and eaves are retained exactly
+OK The source exterior remains solid below its pitched surface
+OK Empty air inside the old ridge-height box is outside the source solid
+OK A vertical ray hits the pitched source face before the old flat envelope
+OK A horizontal ray above the local roof pitch remains unobstructed
+OK A ray into a source gable hits its measured face
+OK Solid walls below the eaves remain obstructing
+OK A ray starting in the solid returns zero
+OK A ray starting above the local pitch is not treated as inside
+OK Source faces are two-sided for exit and downward rays
+OK A ray limit is respected by exact faces
+OK An unbounded ray still intersects the exact source exterior
+OK Invalid ray inputs cannot create a hit
+OK The footprint-disc maximum is analytic on the source slope
+OK A foot-disc grazing an outer wall still detects its real roof edge
+OK A separated foot-disc cannot collide with a building
+OK A cylinder in empty roof-box air no longer collides
+OK A cylinder intersecting the actual roof volume collides
+OK A cylinder resting on its supporting roof disc is not embedded
+OK A source courtyard remains open to rays and bodies
+OK An elevated source building preserves its open underpass and bottom cap
+OK Negative absolute elevations retain their physical datum
+OK A skillion source roof retains its single measured slope
+OK Unknown source roof shape retains the conservative envelope
+OK Missing source roof direction retains the conservative envelope
+OK An estimated building height does not become a certified source roof
+OK Reachable support never steps more than the existing .72m limit
+OK An airborne actor cannot step upward to a roof surface
+OK Steep source roofs remain solid but are not walking platforms
+OK Production integration: explicit_source_attached
+OK Production integration: empty_air_ray
+OK Production integration: actual_roof_ray
+OK Production integration: solid_wall_ray
+OK Production integration: projectile_path_clear
+OK Production integration: los_above_pitch_clear
+OK Production integration: empty_air_body
+OK Production integration: wall_body
+OK Production integration: walk_source_roof
+OK Production integration: fall_lands_on_source_roof
+OK Production integration: source_base_stops_upward_head
+OK Production integration: courtyard_has_no_roof
+OK Production integration: unknown_shape_keeps_envelope
+OK Production integration: ground_cannot_teleport_onto_roof
+OK The body-height narrow-phase context is restored after each query
+OK Crouched walking uses the actual player eye height on a pitched roof
+OK Stepping off a source roof starts a fall without snapping to the terrain
+OK Other boxes preserve their original collision behavior
+OK Streaming removal invalidates roof support
+{"suite":"roof_solids","passed":49,"failed":0}
+

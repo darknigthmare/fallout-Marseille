@@ -438,17 +438,31 @@ const MistralCityInteriors=(()=>{
  // They add no partition, fixture, water connection or claimed real amenity.
  const SERVICE_LIMIT=2048,SERVICE_KINDS={bed:'rest',medical_bed:'rest',kitchen:'kitchen',workbench:'workshop'},SERVICE_RECIPES={kitchen:['ration','purify'],workshop:['bandage','ceramic','parts','circuit','plate','10mm','shells','cells','rivets','harpoons','fragGrenade']};
  function serviceEdge(ring,from,to){let first=Infinity;const d=[to[0]-from[0],to[1]-from[1]];for(let i=0;i<ring.length;i++){const a=ring[i],b=ring[(i+1)%ring.length],e=[b[0]-a[0],b[1]-a[1]],den=d[0]*e[1]-d[1]*e[0];if(Math.abs(den)<EPS)continue;const q=[a[0]-from[0],a[1]-from[1]],t=(q[0]*e[1]-q[1]*e[0])/den,u=(q[0]*d[1]-q[1]*d[0])/den;if(t>=-EPS&&t<=1+EPS&&u>=-EPS&&u<=1+EPS)first=Math.min(first,t);}return finite(first)?[from[0]+d[0]*first,from[1]+d[1]*first]:null;}
- function servicePlan(l){
-  const services=[],omissions=[];for(const f of l.furniture||[]){const kind=SERVICE_KINDS[f.kind];if(!kind)continue;
+ function furnitureActionPlan(l,kinds,suffix){
+  const services=[],omissions=[];for(const f of l.furniture||[]){const kind=kinds[f.kind];if(!kind)continue;
    const p=f.approach;if(!Array.isArray(p)||p.length!==2||!p.every(finite)||!walkable(l,...p,.38)||(l.furniture||[]).some(o=>furnitureBlocked(o,...p,.38))){omissions.push({furnitureId:f.id,reason:'no-proved-furniture-approach'});continue;}
    const parts=furnitureModel(f),def=furnitureDefinition(f),part=parts.map((part,index)=>({...part,index})).filter(part=>part.size[0]*part.size[2]>=def.size[0]*def.size[1]*.5-EPS).sort((a,b)=>b.pos[1]-a.pos[1])[0],angle=f.rotation||0,place=q=>{const r=rotate(q,angle);return[r[0]+f.pos[0],r[1]+f.pos[1]];};
    if(!part){omissions.push({furnitureId:f.id,reason:'no-visible-service-component'});continue;}const center=place([part.pos[0],part.pos[2]]),dx=center[0]-p[0],dz=center[1]-p[1],distance=Math.hypot(dx,dz);if(distance<.1){omissions.push({furnitureId:f.id,reason:'invalid-furniture-approach'});continue;}
    const partRing=rectangle(part.pos[0]-part.size[0]/2,part.pos[2]-part.size[2]/2,part.size[0],part.size[2]).map(place),edge=serviceEdge(furnitureRing(f),p,center),mesh=serviceEdge(partRing,p,center);
    if(!edge||!mesh){omissions.push({furnitureId:f.id,reason:'no-visible-service-edge'});continue;}const target=[edge[0]-dx/distance*.035,l.elevation+part.pos[1],edge[1]-dz/distance*.035],meshAnchor=[mesh[0],target[1],mesh[1]],meshCenter=[center[0],target[1],center[1]],meshOffset=Math.hypot(target[0]-mesh[0],target[2]-mesh[1]);
    if(meshOffset>.16||!canTravel(l,p,[target[0],target[2]],.04)){omissions.push({furnitureId:f.id,reason:'obstructed-or-distant-service-edge'});continue;}
-   services.push({id:hash([l.buildingId,l.level,l.signature,f.id,kind,'furniture-service-v1']),kind,furnitureId:f.id,furnitureKind:f.kind,label:f.label,approach:p.slice(),target,meshAnchor,meshCenter,meshPart:{index:part.index,material:part.material,offsetMeters:meshOffset},provenance:'invented'});
+   services.push({id:hash([l.buildingId,l.level,l.signature,f.id,kind,suffix]),kind,furnitureId:f.id,furnitureKind:f.kind,label:f.label,approach:p.slice(),target,meshAnchor,meshCenter,meshPart:{index:part.index,material:part.material,offsetMeters:meshOffset},provenance:'invented'});
   }return{services,omissions};
  }
+ function servicePlan(l){return furnitureActionPlan(l,SERVICE_KINDS,'furniture-service-v1');}
+ // Local deposits start empty. They never replace the floor's finite salvage
+ // reserve, transport goods to another instance, or manufacture supplies.
+ const STORAGE_LIMIT=512,STORAGE_COUNT_LIMIT=1000000;
+ const STORAGE_KINDS=Object.freeze({wardrobe:20,tool_cabinet:24,medical_cabinet:10,crate:30,pallet:45,shelf:20,archive:15});
+ const STORAGE_ITEMS=Object.freeze(['water','ration','food','stimpak','radaway','antibiotics','cloth','scrap','circuitry','chemicals','seeds','leather','weaponParts','waterChip','fuelCell','sealant','steelPlate','clay','ceramicFilter']);
+ function storagePlan(l){const p=furnitureActionPlan(l,Object.fromEntries(Object.keys(STORAGE_KINDS).map(k=>[k,'storage'])),'local-furniture-storage-v1');return{stores:p.services.map(s=>({...s,capacityKg:STORAGE_KINDS[s.furnitureKind]})),omissions:p.omissions};}
+ function migrateStorage(raw){
+  const out={};if(!raw||typeof raw!=='object'||Array.isArray(raw))return out;
+  for(const[k,items]of Object.entries(raw).slice(0,STORAGE_LIMIT))if(/^[a-f0-9]{16}$/.test(k)&&items&&typeof items==='object'&&!Array.isArray(items)){
+   const clean={};for(const id of STORAGE_ITEMS)if(Object.hasOwn(items,id)&&Number.isInteger(items[id])&&items[id]>0&&items[id]<=STORAGE_COUNT_LIMIT)clean[id]=items[id];if(Object.keys(clean).length)out[k]=clean;
+  }return out;
+ }
+ function storageMass(items,massFor){let total=0;for(const[id,n]of Object.entries(items||{})){if(!STORAGE_ITEMS.includes(id)||!Number.isInteger(n)||n<0||n>STORAGE_COUNT_LIMIT)return null;const mass=massFor(id);if(!finite(mass)||mass<=0)return null;total+=n*mass;}return finite(total)?total:null;}
  // Interactions use the actual rendered boxes, in furniture-local space.
  // Looking at the former reserve point or empty space does not select a bed
  // or workbench merely because its service has a higher priority.
@@ -458,7 +472,7 @@ const MistralCityInteriors=(()=>{
   return selected;
  }
  function migrateServices(raw){const out={restHours:0,crafts:0,uses:{}};if(!raw||typeof raw!=='object'||Array.isArray(raw))return out;for(const k of['restHours','crafts'])if(Number.isInteger(raw[k])&&raw[k]>=0)out[k]=Math.min(1000000,raw[k]);if(raw.uses&&typeof raw.uses==='object'&&!Array.isArray(raw.uses))for(const[k,v]of Object.entries(raw.uses).slice(0,SERVICE_LIMIT))if(/^[a-f0-9]{16}$/.test(k)&&Number.isInteger(v)&&v>0)out.uses[k]=Math.min(1000000,v);return out;}
- return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,program,roomProgram,programTheme,programTheme4,PLAN_BUDGET,FURNITURE,COMPACT_FURNITURE,furnitureDefinition,furnishingFits,furnitureModel,furnitureRing,furnitureBlocked,walkable,canTravel,layout,ROOM_DOOR_LIMIT,migrateRoomDoorStates,roomDoorPlan,roomDoorGeometry,roomDoorOccupied,SERVICE_LIMIT,SERVICE_KINDS,SERVICE_RECIPES,servicePlan,serviceAim,migrateServices};
+ return{EPS,MAX_POINTS,MAX_LEVELS,hash,area,bounds,inside,clearance,segmentDistance,cleanRings,building,validateBuilding,point,intervals,document,floorLevels,alignStreet,theme,program,roomProgram,programTheme,programTheme4,PLAN_BUDGET,FURNITURE,COMPACT_FURNITURE,furnitureDefinition,furnishingFits,furnitureModel,furnitureRing,furnitureBlocked,walkable,canTravel,layout,ROOM_DOOR_LIMIT,migrateRoomDoorStates,roomDoorPlan,roomDoorGeometry,roomDoorOccupied,SERVICE_LIMIT,SERVICE_KINDS,SERVICE_RECIPES,servicePlan,serviceAim,migrateServices,STORAGE_LIMIT,STORAGE_COUNT_LIMIT,STORAGE_KINDS,STORAGE_ITEMS,storagePlan,migrateStorage,storageMass};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralCityInteriors;
 
@@ -471,7 +485,7 @@ if(typeof baseState==='function'){
  const V050_DOCUMENT_LIMITS={buildings:32,bytes:512*1024};
  const V050_CITY={doors:new Map(),owner:null,tick:0,documentOwner:null,documentRejections:new Map(),holding:false,exitPending:null,entered:0,returned:0,errors:[],last:null,rejections:{}};
  if(!ALL_ZONE_IDS.includes(V050_CITY_ZONE))ALL_ZONE_IDS.push(V050_CITY_ZONE);
- function fresh(){return{schema:2,active:null,returnPoint:null,visits:{},documents:[],documentOmissions:0,documentWarnings:[],roomDoorStates:{},services:MistralCityInteriors.migrateServices(null)};}
+ function fresh(){return{schema:2,active:null,returnPoint:null,visits:{},documents:[],documentOmissions:0,documentWarnings:[],roomDoorStates:{},services:MistralCityInteriors.migrateServices(null),storage:{}};}
  function documentBytes(records){return JSON.stringify(records).length*2;}
  // Guessed floor schedules and labels are not measurements. A documentary
  // schedule replaces those guesses, but never a changed footprint or volume.
@@ -490,6 +504,7 @@ if(typeof baseState==='function'){
   const f=fresh();if(!raw||typeof raw!=='object'||Array.isArray(raw))return f;
   f.roomDoorStates=MistralCityInteriors.migrateRoomDoorStates(raw.roomDoorStates);
   f.services=MistralCityInteriors.migrateServices(raw.services);
+  f.storage=MistralCityInteriors.migrateStorage(raw.storage);
   if(raw.documents!=null){if(!Array.isArray(raw.documents))documentWarning(f,'Registre documentaire sauvegardé invalide.');else{
    if(raw.documents.length>V050_DOCUMENT_LIMITS.buildings)documentWarning(f,'Plans supplémentaires hors budget du registre sauvegardé.',raw.documents.length-V050_DOCUMENT_LIMITS.buildings);
    const seen=new Set();for(const entry of raw.documents.slice(0,V050_DOCUMENT_LIMITS.buildings))try{if(documentBytes([entry])>V050_DOCUMENT_LIMITS.bytes)throw Error('Plan sauvegardé hors budget.');const record=documentRecord(entry?.building,entry?.document);if(seen.has(record.building.id))throw Error('Identifiant de plan sauvegardé dupliqué.');seen.add(record.building.id);f.documents=documentPut(f.documents,record);}catch(e){documentWarning(f,e.message||e);}
@@ -539,14 +554,15 @@ if(typeof baseState==='function'){
    const owner=state,interaction=addInteract(w,'city-room-door:'+door.id,[door.center[0],door.elevation+1.04,door.center[1]],'Porte coulissante',()=>toggleRoomDoor(door.id,w,owner),{kind:'door',radius:2.4,priority:9}),rec={owner,door,draws,collider,interaction,closed:false};interaction.v055RoomDoor=door.id;w.v055RoomDoors.set(door.id,rec);applyRoomDoor(rec,!!state.v050City.roomDoorStates[door.id]);
   }
  }
- function serviceReady(id,expectedWorld=world,expectedState=state){
-  const rec=world?.v056InteriorServices?.get(id),l=world?.v050CityInterior,p=state.player.pos;
+ function furnitureReady(rec,expectedWorld=world,expectedState=state){
+  const l=world?.v050CityInterior,p=state.player.pos,s=rec?.service||rec?.store;
   if(!rec||rec.owner!==state||state!==expectedState||world!==expectedWorld||!l||!state.v050City?.active||!['PLAYING','DIALOGUE'].includes(mode)||state.player.hp<=0||V046.busy||V047.pending||zoneTransitioning||V050_CITY.holding||V050_CITY.exitPending||!onGround)return false;
   if(state.v055Ordnance?.armed?.zone===world.id)return false;
-  if(Math.hypot(p[0]-rec.service.approach[0],p[2]-rec.service.approach[1])>2.2||Math.abs(p[1]-l.elevation-playerEyeHeight())>.7||!MistralCityInteriors.canTravel(l,[p[0],p[2]],[rec.service.target[0],rec.service.target[2]],.04)||!lineOfSight(p,rec.service.target))return false;
+  if(Math.hypot(p[0]-s.approach[0],p[2]-s.approach[1])>2.2||Math.abs(p[1]-l.elevation-playerEyeHeight())>.7||!MistralCityInteriors.canTravel(l,[p[0],p[2]],[s.target[0],s.target[2]],.04)||!lineOfSight(p,s.target))return false;
   if((world.enemies||[]).some(e=>e.alive&&Math.hypot(e.pos[0]-p[0],e.pos[2]-p[2])<25&&lineOfSight(p,[e.pos[0],e.pos[1]+1,e.pos[2]])))return false;
   return rec;
  }
+ function serviceReady(id,expectedWorld=world,expectedState=state){return furnitureReady(world?.v056InteriorServices?.get(id),expectedWorld,expectedState);}
  function serviceRecipe(rec,id){return(MistralCityInteriors.SERVICE_RECIPES[rec.service.kind]||[]).includes(id)&&typeof V020_RECIPES!=='undefined'?V020_RECIPES.find(r=>r.id===id):null;}
  function useService(id,action,expectedWorld=world,expectedState=state){
   const rec=serviceReady(id,expectedWorld,expectedState);if(!rec)return false;const rest=rec.service.kind==='rest',hours=action==='rest:1'?1:action==='rest:4'?4:0,recipe=rest?null:serviceRecipe(rec,action),cost=rest?hours===1?{water:1}:{water:1,ration:1}:recipe?.cost;
@@ -574,6 +590,52 @@ if(typeof baseState==='function'){
   const plan=MistralCityInteriors.servicePlan(l);w.v056InteriorServices=new Map();w.v056InteriorServiceOmissions=plan.omissions;
   for(const service of plan.services){const owner=state,label=service.kind==='rest'?'Se reposer · '+service.label:service.kind==='kitchen'?'Préparer des réserves · cuisine':'Fabriquer · établi de récupération',interaction=addInteract(w,'city-service:'+service.id,service.target.slice(),label,()=>openService(service.id,w,owner),{kind:service.kind==='rest'?'rest':'bench',radius:2.4,priority:10,condition:()=>!!serviceReady(service.id,w,owner)&&!!MistralCityInteriors.serviceAim(l,service,state.player.pos,cameraDir(state.player.yaw,state.player.pitch))});interaction.v056InteriorService=service.id;w.v056InteriorServices.set(service.id,{owner,service,interaction});}
  }
+ function storageReady(id,expectedWorld=world,expectedState=state){return furnitureReady(world?.v057InteriorStorage?.get(id),expectedWorld,expectedState);}
+ function storageQuantity(items,id){const n=items?.[id];return Number.isInteger(n)&&n>=0&&n<=MistralCityInteriors.STORAGE_COUNT_LIMIT?n:0;}
+ function storageAvailable(rec,item,direction){
+  if(!MistralCityInteriors.STORAGE_ITEMS.includes(item)||!['deposit','withdraw'].includes(direction)||typeof v026Mass!=='function')return 0;
+  const id=rec.store.id,items=state.v050City.storage[id]||{},held=storageQuantity(items,item),bag=storageQuantity(state.inventory,item);
+  if(direction==='withdraw')return Math.min(held,MistralCityInteriors.STORAGE_COUNT_LIMIT-bag);
+  if(!state.v050City.storage[id]&&Object.keys(state.v050City.storage).length>=MistralCityInteriors.STORAGE_LIMIT)return 0;
+  const total=MistralCityInteriors.storageMass(items,v026Mass),mass=v026Mass(item);if(total===null||!Number.isFinite(mass)||mass<=0)return 0;
+  return Math.max(0,Math.min(bag,MistralCityInteriors.STORAGE_COUNT_LIMIT-held,Math.floor((rec.store.capacityKg-total+1e-8)/mass)));
+ }
+ function transferStorage(id,item,direction,n,expectedWorld=world,expectedState=state){
+  const rec=storageReady(id,expectedWorld,expectedState);if(!rec||!Number.isInteger(n)||n<1||n>storageAvailable(rec,item,direction))return false;
+  const s=snapshot(),ok=commit(s,()=>{
+   const entries=state.v050City.storage,items=entries[id]||(entries[id]={});
+   if(direction==='deposit'){state.inventory[item]-=n;items[item]=(items[item]||0)+n;}
+   else{items[item]-=n;state.inventory[item]=(state.inventory[item]||0)+n;if(!items[item])delete items[item];if(!Object.keys(items).length)delete entries[id];}
+  });
+  if(ok){toast((direction==='deposit'?'Déposé : ':'Repris : ')+n+' × '+itemLabel(item),'good');updateHUD();}return ok;
+ }
+ function storageDialogue(rec,text,choices){
+  const ticket={},owner=state,w=world;V050_CITY.storageDialogue=ticket;let guarded;
+  const current=()=>mode==='DIALOGUE'&&V050_CITY.storageDialogue===ticket&&!!storageReady(rec.store.id,w,owner)&&(typeof dialogueState==='undefined'||dialogueState?.choices===guarded);
+  guarded=choices.map(c=>({...c,condition:()=>current()&&(typeof c.condition!=='function'||c.condition()),onChoose:()=>current()?c.onChoose():false}));
+  // Native openDialogue evaluates conditions after assigning its dialogueState.
+  openDialogue(speaker(rec.store.label,'DÉPÔT LOCAL · '+rec.store.capacityKg+' KG','▣'),text,guarded);return true;
+ }
+ function storageItem(id,item,direction,page=0,expectedWorld=world,expectedState=state){
+  const rec=storageReady(id,expectedWorld,expectedState);if(!rec||!MistralCityInteriors.STORAGE_ITEMS.includes(item)||!['deposit','withdraw'].includes(direction))return false;
+  const count=storageAvailable(rec,item,direction),verb=direction==='deposit'?'Déposer':'Reprendre',choices=[];
+  for(const n of [...new Set([1,5,count])].filter(n=>n>0&&n<=count))choices.push({text:verb+' '+n+' × '+escapeHtml(itemLabel(item)),condition:()=>n<=storageAvailable(rec,item,direction),lockText:'Quantité ou capacité devenue insuffisante ; aucun transfert effectué.',onChoose:()=>{if(transferStorage(id,item,direction,n,expectedWorld,expectedState))return storageItem(id,item,direction,page,expectedWorld,expectedState);return false;}});
+  choices.push({text:'Revenir aux fournitures',onChoose:()=>openStorage(id,direction,page,expectedWorld,expectedState)},{text:'Fermer le dépôt',onChoose:closeDialogue});
+  return storageDialogue(rec,itemLabel(item)+' · sac : '+storageQuantity(state.inventory,item)+' · ce meuble : '+storageQuantity(state.v050City.storage[id],item)+'. Les fournitures restent dans ce bâtiment, à cet étage ; ce dépôt ne verrouille pas le meuble.',choices);
+ }
+ function openStorage(id,direction='deposit',page=0,expectedWorld=world,expectedState=state){
+  const rec=storageReady(id,expectedWorld,expectedState);if(!rec||!['deposit','withdraw'].includes(direction))return false;
+  const items=state.v050City.storage[id]||{},source=direction==='deposit'?state.inventory:items,ids=MistralCityInteriors.STORAGE_ITEMS.filter(item=>storageQuantity(source,item)>0),pages=Math.max(1,Math.ceil(ids.length/5)),at=Math.max(0,Math.min(pages-1,Number.isInteger(page)?page:0)),choices=[];
+  for(const item of ids.slice(at*5,at*5+5))choices.push({text:escapeHtml(itemLabel(item))+' · sac '+storageQuantity(state.inventory,item)+' / dépôt '+storageQuantity(items,item),onChoose:()=>storageItem(id,item,direction,at,expectedWorld,expectedState)});
+  if(pages>1)choices.push({text:'Autres fournitures · '+(at+1)+'/'+pages,onChoose:()=>openStorage(id,direction,(at+1)%pages,expectedWorld,expectedState)});
+  choices.push({text:direction==='deposit'?'Reprendre des fournitures':'Déposer des fournitures',onChoose:()=>openStorage(id,direction==='deposit'?'withdraw':'deposit',0,expectedWorld,expectedState)},{text:'Fermer le dépôt',onChoose:closeDialogue});
+  const mass=typeof v026Mass==='function'?MistralCityInteriors.storageMass(items,v026Mass):null;
+  return storageDialogue(rec,(direction==='deposit'?'Déposer depuis le sac. ':'Reprendre depuis ce meuble. ')+(mass===null?'Poids indisponible.':mass.toFixed(2)+' / '+rec.store.capacityKg+' kg.')+(ids.length?'':' Aucune fourniture disponible.')+' Ce rangement commence vide ; seules vos fournitures y sont conservées. Armes, armures, munitions, capsules et objets de quête restent dans votre sac.',choices);
+ }
+ function installStorage(w,l){
+  const plan=MistralCityInteriors.storagePlan(l);w.v057InteriorStorage=new Map();w.v057InteriorStorageOmissions=plan.omissions;
+  for(const store of plan.stores){const owner=state,interaction=addInteract(w,'city-storage:'+store.id,store.target.slice(),'Ranger des fournitures · '+store.label,()=>openStorage(store.id,'deposit',0,w,owner),{kind:'loot',radius:2.4,priority:10,condition:()=>!!storageReady(store.id,w,owner)&&!!MistralCityInteriors.serviceAim(l,store,state.player.pos,cameraDir(state.player.yaw,state.player.pitch))});interaction.v057InteriorStorage=store.id;w.v057InteriorStorage.set(store.id,{owner,store,interaction});}
+ }
  function build(){
   const a=state.v050City.active;if(!a)throw Error('Aucun intérieur de bâtiment sélectionné');const b=a.building,l=MistralCityInteriors.layout(b,a.floor,a.entry,a.document),palette={residential:{floor:[.34,.29,.22],wall:[.62,.56,.44]},medical:{floor:[.37,.43,.39],wall:[.58,.65,.59]},industrial:{floor:[.29,.29,.27],wall:[.42,.43,.40]},annex:{floor:[.29,.29,.27],wall:[.42,.43,.40]},sports:{floor:[.35,.37,.30],wall:[.61,.61,.49]},office:{floor:[.35,.34,.28],wall:[.60,.59,.50]},education:{floor:[.38,.34,.25],wall:[.66,.64,.51]},commercial:{floor:[.34,.33,.29],wall:[.58,.57,.49]},civic:{floor:[.42,.38,.31],wall:[.64,.60,.50]}}[l.theme];
   const w=createWorld(V050_CITY_ZONE,b.name,`MARSEILLE · ${a.floor?'NIVEAU '+a.floor:'REZ-DE-CHAUSSÉE'}`,{indoor:true,daylight:.32,fog:[.21,.24,.20],wind:0});w.v050CityInterior=l;w.v050CityBuilding=b;const bb=MistralCityInteriors.bounds(l.rings);w.bounds=[bb.minX-.1,bb.maxX+.1,bb.minZ-.1,bb.maxZ+.1];w.spawn=[l.entry[0],l.elevation+playerEyeHeight(),l.entry[1]];const facing=a.facing||[-l.entry[0],-l.entry[1]];w.spawnYaw=Math.atan2(facing[0],-facing[1]);
@@ -585,6 +647,7 @@ if(typeof baseState==='function'){
   for(let i=0;i<l.furniture.length;i++){const f=l.furniture[i],[x,z]=f.pos,y=l.elevation,parts=MistralCityInteriors.furnitureModel(f),angle=f.rotation||0,c=Math.cos(angle),s=Math.sin(angle);for(let j=0;j<parts.length;j++){const part=parts[j],draw=addBox(w,[x+c*part.pos[0]-s*part.pos[2],y+part.pos[1],z+s*part.pos[0]+c*part.pos[2]],part.size,materials[part.material]||materials.wood,-angle,{id:`city-furniture:${i}:part:${j}`});draw.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}const collider=f.ring?v017AddPolyCollider(w,f.ring,y,y+f.height,{id:'city-furniture:'+i}):addCollider(w,x,z,f.size[0],f.size[1],{id:'city-furniture:'+i,minY:y,maxY:y+f.height});collider.v050CityFurnishing={id:f.id,kind:f.kind,provenance:'invented'};}
   installRoomDoors(w,l,materials);
   installServices(w,l);
+  installStorage(w,l);
   const[x,z]=l.entry,y=l.elevation;
   addBox(w,[x,y+.06,z],[.65,.12,.65],[.57,.52,.28]);
   const inspect=()=>{
@@ -680,7 +743,7 @@ if(typeof baseState==='function'){
   const a=state.v050City.active,l=world?.v050CityInterior,records=state.v050City.documents||[];
   return{version:2,zone:world?.id,active:a?{id:a.building.id,name:a.building.name,layoutVersion:a.building.layoutVersion,floor:a.floor,streetFloor:a.streetFloor??0,levels:a.building.levels,origin:a.building.origin.slice(),signature:l?.signature,layoutProvenance:l?.provenance,documentOrigin:a.documentOrigin||null,documentedLevels:a.document?.levels.map(r=>r.level)||[],documentSource:a.document?{...a.document.source}:null,currentLevelSource:l?.source?{...l.source}:null,furnishing:l?{objects:l.furniture.length,renderFurniture:world.staticDraws.filter(d=>d.v050CityFurnishing).length,colliderFurniture:world.colliders.filter(c=>c.v050CityFurnishing).length,byKind:Object.fromEntries([...new Set(l.furniture.map(f=>f.kind))].map(kind=>[kind,l.furniture.filter(f=>f.kind===kind).length])),functionalUses:[...new Set(l.functionalZones.map(z=>z.use))],roomsBasis:l.roomsBasis,roomCoverage:l.roomCoverage,programCoverage:l.programCoverage||null,provenance:'invented'}:null}:null,
    doors:[...V050_CITY.doors].map(([id,r])=>({id,building:r.building.id,pos:r.interaction.pos.slice(),levels:r.building.levels,streetFloor:r.streetFloor,provenance:r.document?'documented or mixed':'invented',documentOrigin:r.documentOrigin||null,documentedLevels:r.document?.levels.map(l=>l.level)||[],documentSource:r.document?{...r.document.source}:null})),
-   services:{stations:[...(world?.v056InteriorServices?.values()||[])].map(r=>({...deepClone(r.service),interactionId:r.interaction.id,label:r.interaction.label})),omissions:deepClone(world?.v056InteriorServiceOmissions||[]),ledger:deepClone(state.v050City.services),limit:MistralCityInteriors.SERVICE_LIMIT},roomDoors:{doors:[...(world?.v055RoomDoors?.values()||[])].map(r=>({...deepClone(r.door),closed:r.closed,colliderEnabled:!r.collider.disabled,renderedParts:r.draws.filter(d=>!d.hidden).length,interactionId:r.interaction.id,label:r.interaction.label})),omissions:world?.v055RoomDoorOmissions||[],savedClosed:Object.keys(state.v050City.roomDoorStates||{}).length,limit:MistralCityInteriors.ROOM_DOOR_LIMIT},documentRegistry:{entries:records.length,bytes:documentBytes(records),maxBuildings:V050_DOCUMENT_LIMITS.buildings,maxBytes:V050_DOCUMENT_LIMITS.bytes,omissions:state.v050City.documentOmissions||0,warnings:(state.v050City.documentWarnings||[]).slice(),rejections:[...V050_CITY.documentRejections.values()].map(r=>({...r}))},rejections:{...V050_CITY.rejections},interactionBudget:64,entered:V050_CITY.entered,returned:V050_CITY.returned,exitPending:!!V050_CITY.exitPending,last:V050_CITY.last,errors:V050_CITY.errors.slice()};
+   services:{stations:[...(world?.v056InteriorServices?.values()||[])].map(r=>({...deepClone(r.service),interactionId:r.interaction.id,label:r.interaction.label})),omissions:deepClone(world?.v056InteriorServiceOmissions||[]),ledger:deepClone(state.v050City.services),limit:MistralCityInteriors.SERVICE_LIMIT},storage:{stores:[...(world?.v057InteriorStorage?.values()||[])].map(r=>({...deepClone(r.store),interactionId:r.interaction.id,label:r.interaction.label,items:deepClone(state.v050City.storage[r.store.id]||{}),massKg:typeof v026Mass==='function'?MistralCityInteriors.storageMass(state.v050City.storage[r.store.id]||{},v026Mass):null})),omissions:deepClone(world?.v057InteriorStorageOmissions||[]),ledger:deepClone(state.v050City.storage),limit:MistralCityInteriors.STORAGE_LIMIT,allowedItems:MistralCityInteriors.STORAGE_ITEMS.slice()},roomDoors:{doors:[...(world?.v055RoomDoors?.values()||[])].map(r=>({...deepClone(r.door),closed:r.closed,colliderEnabled:!r.collider.disabled,renderedParts:r.draws.filter(d=>!d.hidden).length,interactionId:r.interaction.id,label:r.interaction.label})),omissions:world?.v055RoomDoorOmissions||[],savedClosed:Object.keys(state.v050City.roomDoorStates||{}).length,limit:MistralCityInteriors.ROOM_DOOR_LIMIT},documentRegistry:{entries:records.length,bytes:documentBytes(records),maxBuildings:V050_DOCUMENT_LIMITS.buildings,maxBytes:V050_DOCUMENT_LIMITS.bytes,omissions:state.v050City.documentOmissions||0,warnings:(state.v050City.documentWarnings||[]).slice(),rejections:[...V050_CITY.documentRejections.values()].map(r=>({...r}))},rejections:{...V050_CITY.rejections},interactionBudget:64,entered:V050_CITY.entered,returned:V050_CITY.returned,exitPending:!!V050_CITY.exitPending,last:V050_CITY.last,errors:V050_CITY.errors.slice()};
  }
- globalThis.v050CityInteriorAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v050CityInteriorInfo:info,v050CityInteriorEnter:enter,v050CityInteriorExit:exit,v050CityInteriorFloor:floor,v050CityInteriorBind:()=>bind(true),v050CityRegisterDocument:registerDocument,v055CityRoomDoor:toggleRoomDoor,v056CityInteriorService:useService,v056CityInteriorServiceOpen:openService,v056CityInteriorAimInfo:()=>{const l=world?.v050CityInterior,p=state.player.pos,dir=cameraDir(state.player.yaw,state.player.pitch);return{selected:typeof selectedInteractable==='undefined'?null:selectedInteractable?.id||null,hits:l?[...(world?.v056InteriorServices?.values()||[])].map(r=>({id:r.service.id,hit:MistralCityInteriors.serviceAim(l,r.service,p,dir)})).filter(r=>r.hit):[]};},v052CityInteriorLayout:()=>world?.v050CityInterior?deepClone(world.v050CityInterior):null});bind(true);};
+ globalThis.v050CityInteriorAfterInit=function(){Object.assign(window.__MISTRAL_DEBUG,{v050CityInteriorInfo:info,v050CityInteriorEnter:enter,v050CityInteriorExit:exit,v050CityInteriorFloor:floor,v050CityInteriorBind:()=>bind(true),v050CityRegisterDocument:registerDocument,v055CityRoomDoor:toggleRoomDoor,v056CityInteriorService:useService,v056CityInteriorServiceOpen:openService,v057CityInteriorStorageOpen:openStorage,v057CityInteriorStorageTransfer:transferStorage,v057CityInteriorStorageAimInfo:()=>{const l=world?.v050CityInterior,p=state.player.pos,dir=cameraDir(state.player.yaw,state.player.pitch);return{selected:typeof selectedInteractable==='undefined'?null:selectedInteractable?.id||null,hits:l?[...(world?.v057InteriorStorage?.values()||[])].map(r=>({id:r.store.id,hit:MistralCityInteriors.serviceAim(l,r.store,p,dir)})).filter(r=>r.hit):[]};},v056CityInteriorAimInfo:()=>{const l=world?.v050CityInterior,p=state.player.pos,dir=cameraDir(state.player.yaw,state.player.pitch);return{selected:typeof selectedInteractable==='undefined'?null:selectedInteractable?.id||null,hits:l?[...(world?.v056InteriorServices?.values()||[])].map(r=>({id:r.service.id,hit:MistralCityInteriors.serviceAim(l,r.service,p,dir)})).filter(r=>r.hit):[]};},v052CityInteriorLayout:()=>world?.v050CityInterior?deepClone(world.v050CityInterior):null});bind(true);};
 }

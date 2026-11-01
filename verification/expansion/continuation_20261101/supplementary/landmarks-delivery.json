@@ -1,0 +1,39 @@
+{
+  "status": "complete",
+  "baseline": "29df190",
+  "nativeHtmlSha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "modelChecks": 34,
+  "nativeChecks": 64,
+  "nativeCaptures": 9,
+  "nativeOutput": "/workspace/.cloud-setup/fallout-marseille/continuation-next/landmarks/native-final-98a7-02",
+  "nativeReportSha256": "913af2f0b133a7f07610cd475df911cdc9b9eea21ff83c0181d77efcca6b53c9",
+  "nativeProcessExitCode": 0,
+  "allNativeImagesInspected": true,
+  "runtimeFrozenInputsUnchanged": 361,
+  "sourceObservationsOutsideSum": 56321,
+  "files": {
+    "src/v050/06a_landmark_surfaces.js": "a7e5385e53e9fa3e23bf83ef979b53c3a8ff54a58d0c734d16babaf2ef5641d9",
+    "tools/build_landmark_surfaces.py": "b063c130882eca3947e1fef5a139024f769050ca628281095371dfb056e6c929",
+    "tests/expansion/landmark_surfaces.cjs": "31b653e3f8f7496660d2e7e9362706b720576f4908c9f3039bf06b427ac6d451",
+    "tests/expansion/landmark_surfaces_native.py": "ff5ec2f60a629da39bf691d4b7fe7c257563b751e71527e2faef42a63bfec614",
+    "data/map_pack/landmark_surfaces/index.json": "39c7c6b3347d6a1a3d04f8640e14b3d18905346a65ab6b67b11dc20781a0049e",
+    "data/map_pack/landmark_surfaces/marseille-mns-d784b256e926b869.json": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d",
+    "implementation/landmark-surfaces/MNS_EXTENSION.json": "65119fbfc4685958e417ec275fe1befdfd71e8fe133fd54d860a8e9360c6a4bf",
+    "docs/SILHOUETTES_MNS.md": "a7814145ecf648408e9ba2527a7f164c35a7cf5424d8ea1493e8c766be224654"
+  },
+  "caveats": [
+    "Source MNS upper surfaces only; not semantic roof or architectural facade/interior survey.",
+    "Charité ground capture obstructed; elevated view is diagnostic.",
+    "Pharo identity is a source-context association, not certified architectural identity.",
+    "Historical water-render artefacts visible in elevated Pharo frame.",
+    "98a7-01 interrupted stage garde, 35/35 partial checks/3 PNG/no actual exit receipt, preserved unchanged and excluded.",
+    "42a6 and 6ded native attempts preserved as diagnostics, excluded from final counts."
+  ],
+  "nativeReceiptSha256": "6be28f9338c7197a1768a261a2235f2e40503d2e2996c51f6455de5194535408",
+  "nativeLogSha256": "38cbc9224184a3d1b722e5dbb68ae8fdbce65cf0d04a503d69450deb5d88e404",
+  "nativeScriptSha256": "ff5ec2f60a629da39bf691d4b7fe7c257563b751e71527e2faef42a63bfec614",
+  "inspection": "/workspace/.cloud-setup/fallout-marseille/continuation-next/landmarks/native-final-98a7-02/CAPTURE_INSPECTION.json",
+  "evidenceIdentity": "/workspace/.cloud-setup/fallout-marseille/continuation-next/landmarks/native-final-98a7-02/EVIDENCE_IDENTITY.json",
+  "interruptedFinalRunExcluded": "/workspace/.cloud-setup/fallout-marseille/continuation-next/landmarks/native-final-98a7-01",
+  "previousCandidateRunExcluded": "/workspace/.cloud-setup/fallout-marseille/continuation-next/landmarks/native-final-42a6-01"
+}

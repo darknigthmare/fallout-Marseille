@@ -1,4 +1,4 @@
-/* Native IGN MNS surfaces refine two landmark silhouettes. A MNS is the upper
+/* Native IGN MNS surfaces refine four landmark site contexts. A MNS is the upper
    observed surface, not a facade survey or a semantic/structural roof model.
    Source building identities, XY contours and interior envelopes stay intact. */
 const MistralLandmarkSurfaces=(()=>{

@@ -1,0 +1,80 @@
+{
+  "scope": "Assisted native pilot of the two real northern Marseille terrain windows.\n\nProduction HTML and HTTP, installed source files, actual terrain reads and\nrendered triangles are used. Diagnostic sector selection, render/simulation\nfreeze and measured collision-free camera placement are declared assistance.\nNo HTML, responses, terrain, actors or storage are injected or substituted.\n",
+  "stage": "preflight",
+  "checks": [
+    {
+      "name": "Frozen production HTML is exact",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Frozen installed source index is exact",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Both real northern grids belong to the receipt-pinned regional bundle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual inline dependency is pinned: src/v050/04_source_geometry.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual inline dependency is pinned: src/v050/04a_city_sources.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual inline dependency is pinned: src/v050/14_precise_terrain.js",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [],
+  "placements": [],
+  "pinned_inputs": {
+    "index.html": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "data/map_pack/enrichment/index.json": "d368402cd6c249f45b6ad4e7d9156088bf634e2f6c07fd10fdd7826d1a47c2e2",
+    "data/map_pack/enrichment/geo_marseille_commune-d0cbae62855ff13b.json": "d0cbae62855ff13b9453ebf2773a9239e4c999a4ff2f416f601fc69e2b1368f3",
+    "src/v050/04_source_geometry.js": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+    "src/v050/04a_city_sources.js": "73d66d78b64ec24cc24763232bcc5303b1c9d5f865426dc4dd43a13069ae4556",
+    "src/v050/14_precise_terrain.js": "3fffa47978093dee72cadd5edc189a1794d02573627f3749fa7adbaf8738f5c1",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80",
+    "tools/world_source_bundle.py": "6c89923a0af493102dd1993107f2615987edac90ddbd5b62134800ec1133e477",
+    "data/map_pack/enrichment_archives/manifest.json": "c133f1a1a3dd8cbd0d830cf2f4b5971c79b4b69ca96eddf1db8e3549f256c361"
+  },
+  "page_errors": [],
+  "console_errors": [],
+  "console_observations": [],
+  "request_failures": [],
+  "responses": [],
+  "http_errors": [],
+  "contexts_created": 0,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "synthetic_geography": false,
+  "assistance": [
+    "Existing native map/sector diagnostic APIs.",
+    "Render and simulation frozen for repeatable terrain observations.",
+    "Camera placed only after finite measured source and actual body-collision checks."
+  ],
+  "limitations": [
+    "Two bounded northern Marseille rectangles; not whole Marseille or reconstructed station/port architecture.",
+    "WGS84 nearest-resampled nodes, requested spacing 1 m, not the original native half-metre lattice.",
+    "Rendered triangle samples and screenshots are assisted observations, not a human walk through every place."
+  ],
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "total": 6,
+  "passed": 6,
+  "failed": 0,
+  "elapsed_seconds": 0.089,
+  "script_sha256": "9aade952089086892e4271ecb53d682294491b782b5a6c9cbb76701d47afe64b",
+  "exception": {
+    "message": "[Errno 1] Operation not permitted",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/north_terrain_native.py\", line 132, in main\n    server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py\", line 453, in __init__\n    self.socket = socket.socket(self.address_family,\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py\", line 233, in __init__\n    _socket.socket.__init__(self, family, type, proto, fileno)\nPermissionError: [Errno 1] Operation not permitted\n"
+  }
+}

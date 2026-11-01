@@ -1,0 +1,59 @@
+OK Thirteen physical exemplars cover seven SPECIAL figurines, four magazines and two bottle variants
+OK State migration is bounded and ignores unknown, inherited and nonfinite entries
+OK Prototype names cannot become a reward, effect, item or inherited collection
+OK Migration clones a saved ledger without reapplying any SPECIAL reward
+OK The S figurine adds one permanent point exactly once and leaves input unchanged
+OK The P figurine adds one permanent point exactly once and leaves input unchanged
+OK The E figurine adds one permanent point exactly once and leaves input unchanged
+OK The C figurine adds one permanent point exactly once and leaves input unchanged
+OK The I figurine adds one permanent point exactly once and leaves input unchanged
+OK The A figurine adds one permanent point exactly once and leaves input unchanged
+OK The L figurine adds one permanent point exactly once and leaves input unchanged
+OK An attribute already at ten keeps its cap and still records collection
+OK Unknown exemplars and impossible inventory or SPECIAL values are rejected before award
+OK A physical bottle or magazine grants inventory once and never consumes it remotely
+OK nukaCola applies bounded PV/PA, radiation and one cap in one consumed dose
+OK nukaQuantum applies bounded PV/PA, radiation and one cap in one consumed dose
+OK Reading spends one copy, boosts only its skill and refuses additive same-skill stacking
+OK Effect duration uses active simulation seconds, pauses in menus and expires exactly
+OK Finite interior additions are deterministic and exclude existing, owned and non-city reserves
+OK Geographic targets use existing safe stable identifiers and never invent a new site
+OK All original procedural models have finite metric parts and finite placement candidates
+OK Actual hooks add visible original models, physical stand colliders and proximity interactions without changing source geometry
+OK The solid display supports the actor on top and lets them step off instead of falling inside its collider
+OK Physical collection checks proximity and saves a permanent point exactly once
+OK A false persistence failure rolls back SPECIAL, inventory, caps and ammo side effects
+OK A throw persistence failure rolls back SPECIAL, inventory, caps and ammo side effects
+OK Endurance and Agility rewards update the actual production derived HP and AP calculations
+OK Cold migration and reentry preserve the saved reward and never duplicate its physical exemplar
+OK A new game cannot inherit another session collection, active bonuses or colliders
+OK Pip-Boy and salvage actions consume only the recognized item with one atomic save
+OK Failed drink saving restores the complete consumed dose, effect and cap ledger
+OK Actual buyTradeItem for new aid rolls back stock, both wallets, inventory and transaction logs on fail
+OK Actual buyTradeItem for new aid rolls back stock, both wallets, inventory and transaction logs on throw
+OK Actual sellTradeItem for new aid rolls back stock, both wallets, inventory and transaction logs on fail
+OK Actual sellTradeItem for new aid rolls back stock, both wallets, inventory and transaction logs on throw
+OK Actual buyTradeItem validates the existing trade context and commits nukaCola once
+OK Actual sellTradeItem validates the existing trade context and commits magazineRepair once
+OK A deeply discounted bottle cannot generate caps by an immediate buy/sell loop
+OK Aid barter rejects stale context mode="MENU" without changing either ledger
+OK Aid barter rejects stale context V046.lab=true without changing either ledger
+OK Aid barter rejects stale context state.worldTime=2 without changing either ledger
+OK Aid barter rejects stale context V026.trade.scene=9 without changing either ledger
+OK Aid barter rejects stale context state.player.pos=[15,1.65,15] without changing either ledger
+OK A magazine affects the actual aptitude lookup, pauses in menus/loading and expires without extra consumption
+OK Active same-skill magazines remain in inventory, and legacy item uses retain their handler
+OK Inventory actions and physical collection reject unavailable context mode="MENU"
+OK Inventory actions and physical collection reject unavailable context mode="LOADING"
+OK Inventory actions and physical collection reject unavailable context V046.lab=true
+OK Inventory actions and physical collection reject unavailable context V046.busy=true
+OK Inventory actions and physical collection reject unavailable context V047.pending={}
+OK The synthetic map laboratory never receives real collection props or rewards
+OK A lost line of sight refuses physical collection without marking the ledger
+OK Geographic props require the measured clear source, and a later NoData refuses pickup
+OK Geographic rewards share the story ledger and their own stands do not invalidate measured ground
+OK Source publication rechecks props while new scene ownership removes previous stand/interactions
+OK Finite world reserves enrich only their first creation and retain emptied inventory on reentry
+OK Inventory names, mass, classification and collection UI expose the actual effects and limits
+{"passed":57,"failed":0,"scope":"Shipped iconic object, permanent reward, temporary skill and atomic consumption module; source geometry/storage seams are explicit controlled fixtures"}
+

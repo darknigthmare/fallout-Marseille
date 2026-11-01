@@ -1,0 +1,16 @@
+{
+  "source_before_sha256": "c26b8e446cbc5c11b95ec481b42b78b106b7f6d3cc7173d98fe450c86225fb01",
+  "tests_sha256": "a00b9e572d22d585dd9531e6f0a4724b46db0fad2dcaa2d4cfcbd0bca3901bdf",
+  "command": [
+    "node",
+    "/workspace/fallout-Marseille/tests/expansion/lore_continuity.cjs"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "before_exit_code": 1,
+  "before_log_sha256": "91248f813e3da798e4147bdf27d74e2ae21b2e606640b431c8c3f432cd7bf190",
+  "after_exit_code": 0,
+  "after_log_sha256": "2aa127191b568a2e7601baf0ebc771d53774e08cd41e620102b63319e4f9ae87",
+  "source_after_sha256": "56a7bef7c6e456b967fd637992a38452a605c2fa9c7eace2035f26443b37344e",
+  "tests_unchanged": true,
+  "scope": "Controlled regression: missing/restored catalogues cannot renew consumed counter-gifts; real v049 actor checkpoint envelope composed with controlled storage failure rolls back the complete campaign owner on original resolve, receipt delivery and counter-gift, false return and thrown failure."
+}

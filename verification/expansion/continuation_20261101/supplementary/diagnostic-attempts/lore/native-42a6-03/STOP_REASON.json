@@ -1,0 +1,35 @@
+{
+  "disposition": "Interrupted diagnostic; excluded from final validation",
+  "reason": "Coordinator announced a proved production vending late-bind collision fix and a forthcoming new frozen HTML; this pilot had not reached an interaction or useful capture.",
+  "signal": "SIGTERM",
+  "native_child_exit_code": -15,
+  "observer_shell_exit_code": 241,
+  "known_owned_processes": [
+    220420,
+    220397,
+    220449,
+    220470,
+    220479,
+    220481,
+    220398,
+    220424,
+    220506,
+    220374,
+    220344,
+    219938
+  ],
+  "remaining_pid_observations": [
+    "220344 Z    MainThread",
+    "220397 Z    chromium",
+    "220398 Z    chromium",
+    "220420 Z    chromium",
+    "220424 Z    chromium",
+    "220449 Z    chromium",
+    "220470 Z    chromium",
+    "220479 Z    chromium",
+    "220481 Z    chromium",
+    "220506 Z    chromium"
+  ],
+  "server_connect_ex": 111,
+  "note": "Partial raw report may predate final printed checks; neither is a complete pass or a final-runtime proof."
+}

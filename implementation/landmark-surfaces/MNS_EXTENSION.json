@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two further observed upper surfaces in unchanged IGN source footprints. BD TOPO zone/building overlap is context, not a certified full architectural identity or facade/interior survey.",
+  "createdAt": "2026-11-01T00:30:14.075124+00:00",
+  "nativeDatum": "EPSG:2154 / NGF-IGN69",
+  "sourceMetadata": {
+    "sha256": "d24424ee0380cbfe8a3e85d42fa8f641c8866578174589355204e04a2b52c79c",
+    "numberMatched": 45,
+    "numberReturned": 45
+  },
+  "newReceivedTile": {
+    "feature": {
+      "type": "Feature",
+      "id": "metadata.381945",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                5.35267294,
+                43.2965569
+              ],
+              [
+                5.36498325,
+                43.29628821
+              ],
+              [
+                5.3646145,
+                43.28729664
+              ],
+              [
+                5.3523061,
+                43.28756528
+              ],
+              [
+                5.35267294,
+                43.2965569
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "capteur": "[\"Leica TerrainMapper:90560\"]",
+        "url_mnh": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNH_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6246000.25,891999.75,6247000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6247_MNH_O_0M50_LAMB93_IGN69.tif",
+        "url_mns": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6246000.25,891999.75,6247000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6247_MNS_O_0M50_LAMB93_IGN69.tif",
+        "url_mnt": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6246000.25,891999.75,6247000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+        "url_npl": "https://data.geopf.fr/telechargement/download/LiDARHD-NUALID/NUALHD_1-0__LAZ_LAMB93_PQ_2025-03-14/LHD_FXX_0891_6247_PTS_LAMB93_IGN69.copc.laz",
+        "code_mission": "21LHD7PQ",
+        "date_edition": "2025-03-14Z",
+        "nombre_points": 15249250,
+        "coordonnees_nw": "0891-6247",
+        "moa_acquisition": "IGN",
+        "moe_acquisition": "APEI",
+        "procede_classement": "IGN_AUTO_V5",
+        "date_fin_acquisition": "2021-06-26Z",
+        "systeme_altimetrique": "IGN69",
+        "moe_classement_manuel": "NR",
+        "systeme_planimetrique": "LAMB93",
+        "date_debut_acquisition": "2021-06-26Z",
+        "moe_classement_automatique": "IGN"
+      }
+    },
+    "sha256": "d3ce721f4bb180c5f1a4f5fae12e0ca3f327321400be18a47a95ccee4234d6dd",
+    "bytes": 16000513,
+    "filename": "0891-6247-mns.tif",
+    "header": {
+      "crsWkt": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "bounds": [
+        890999.75,
+        6246000.25,
+        891999.75,
+        6247000.25
+      ],
+      "size": [
+        2000,
+        2000
+      ],
+      "resolutionMeters": [
+        0.5,
+        0.5
+      ],
+      "nodata": -9999
+    },
+    "checksumScope": "Received verified-HTTPS bytes; no independent upstream checksum published."
+  },
+  "transport": "Only the official metadata url_mns over verified HTTPS through the inherited session proxy. All three prior tiles were reused from cache. No independent upstream checksum is published.",
+  "historicalPayload": {
+    "path": "data/map_pack/landmark_surfaces/marseille-mns-e50ea945c27e47a3.json",
+    "sha256": "e50ea945c27e47a3f706c8ea381975032cd6b37857baa913f4f9430fcab3c6f6",
+    "records": 17,
+    "allRecordsEqual": true,
+    "firstThreeReceiptsEqual": true
+  },
+  "runtime": {
+    "schemaVersion": 1,
+    "surface": {
+      "path": "data/map_pack/landmark_surfaces/marseille-mns-d784b256e926b869.json",
+      "sha256": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d",
+      "bytes": 4234515
+    },
+    "recordCount": 19,
+    "siteContexts": [
+      "Cathédrale de la Major",
+      "Notre-Dame de la Garde",
+      "Chapelle et Hospice de la Vieille Charité",
+      "Palais du Pharo"
+    ],
+    "scope": "Measured upper visible surface within unchanged BD TOPO XY; not semantic roof planes, facades, rooms or a full monument survey.",
+    "faces": 101223,
+    "vertices": 56321,
+    "refusedComponent": "BATIMENT0000000273400986",
+    "admissibleRecords": 18,
+    "admissibleFaces": 99882
+  },
+  "additions": [
+    {
+      "cleabs": "BATIMENT0000000258929268",
+      "sourceId": "batiment.9969425",
+      "siteContext": "Chapelle et Hospice de la Vieille Charité",
+      "sourceProperties": {
+        "altitude_minimale_sol": 20.4,
+        "altitude_maximale_sol": null,
+        "altitude_minimale_toit": 31.2,
+        "altitude_maximale_toit": null,
+        "hauteur": 10.8,
+        "nombre_d_etages": null
+      },
+      "vertices": 3377,
+      "faces": 6186,
+      "sourceTileSha256": [
+        "90a4dc5cce5e6942063820c1c9ef1d606fdb9e973f3e28f2f67e751eba4f23cb",
+        "a4d7f88153e7ee25a8f3043005c6db9619aa4d41d0bc0eb4abb939af3b459b96"
+      ],
+      "measurements": {
+        "footprintAreaSquareMetres": 702.6294378665364,
+        "roofProjectedAreaSquareMetres": 702.6294378668421,
+        "boundaryLengthMetres": 118.46752417771313,
+        "sourceBoundaryLengthMetres": 118.46752417771312,
+        "minimumElevation": 26.88968829100256,
+        "maximumElevation": 48.38722229003906,
+        "nativeVertices": 2811,
+        "clippedVertices": 566
+      }
+    },
+    {
+      "cleabs": "BATIMENT0000000273394896",
+      "sourceId": "batiment.10624139",
+      "siteContext": "Palais du Pharo",
+      "sourceProperties": {
+        "altitude_minimale_sol": 24.5,
+        "altitude_maximale_sol": null,
+        "altitude_minimale_toit": 46.3,
+        "altitude_maximale_toit": null,
+        "hauteur": 21.8,
+        "nombre_d_etages": 1
+      },
+      "vertices": 6892,
+      "faces": 12674,
+      "sourceTileSha256": [
+        "d3ce721f4bb180c5f1a4f5fae12e0ca3f327321400be18a47a95ccee4234d6dd"
+      ],
+      "measurements": {
+        "footprintAreaSquareMetres": 1446.2714093077718,
+        "roofProjectedAreaSquareMetres": 1446.2714093094662,
+        "boundaryLengthMetres": 245.95771143277184,
+        "sourceBoundaryLengthMetres": 245.95771143277182,
+        "minimumElevation": 25.82324872654148,
+        "maximumElevation": 49.67986297607422,
+        "nativeVertices": 5784,
+        "clippedVertices": 1108
+      }
+    }
+  ],
+  "sourceObservationsOutsideGameplayAssertionSum": {
+    "scope": "Independent full payload vertex comparison against original received Float32 MNS GeoTIFF cells. Counts are source observations outside the final gameplay/assertion sum.",
+    "payloadSha256": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d",
+    "scriptSha256": "bceb2b335e7a88066881b755137b70f3a986e402defa3220e5f9197ba264ba79",
+    "nativeSourceHashes": [
+      "90a4dc5cce5e6942063820c1c9ef1d606fdb9e973f3e28f2f67e751eba4f23cb",
+      "a4d7f88153e7ee25a8f3043005c6db9619aa4d41d0bc0eb4abb939af3b459b96",
+      "f30b5b346671318a1f4de002ef1174be9163ae71c9e0637b21a354c343c30ccb",
+      "d3ce721f4bb180c5f1a4f5fae12e0ca3f327321400be18a47a95ccee4234d6dd"
+    ],
+    "nativeCentreVerticesCompared": 44936,
+    "clippedPlaneVerticesCompared": 11385,
+    "totalCompared": 56321,
+    "maximumNativeDifferenceMetres": 0,
+    "maximumClippedDifferenceMetres": 1.6211004094657255e-08,
+    "rows": [
+      {
+        "cleabs": "BATIMENT0000000258929268",
+        "nativeCentreVerticesCompared": 2811,
+        "clippedPlaneVerticesCompared": 566,
+        "maximumClippedDifferenceMetres": 2.284878064529039e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000258930468",
+        "nativeCentreVerticesCompared": 3261,
+        "clippedPlaneVerticesCompared": 740,
+        "maximumClippedDifferenceMetres": 3.9781760108326125e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000258930469",
+        "nativeCentreVerticesCompared": 2884,
+        "clippedPlaneVerticesCompared": 831,
+        "maximumClippedDifferenceMetres": 4.019256039100583e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000258930470",
+        "nativeCentreVerticesCompared": 12381,
+        "clippedPlaneVerticesCompared": 1972,
+        "maximumClippedDifferenceMetres": 1.0752309265171789e-08
+      },
+      {
+        "cleabs": "BATIMENT0000000258938064",
+        "nativeCentreVerticesCompared": 1192,
+        "clippedPlaneVerticesCompared": 346,
+        "maximumClippedDifferenceMetres": 4.265281461357517e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000258938065",
+        "nativeCentreVerticesCompared": 1728,
+        "clippedPlaneVerticesCompared": 339,
+        "maximumClippedDifferenceMetres": 4.697895406025054e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273394896",
+        "nativeCentreVerticesCompared": 5784,
+        "clippedPlaneVerticesCompared": 1108,
+        "maximumClippedDifferenceMetres": 6.268614072268974e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400278",
+        "nativeCentreVerticesCompared": 2926,
+        "clippedPlaneVerticesCompared": 894,
+        "maximumClippedDifferenceMetres": 7.979679139680229e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400280",
+        "nativeCentreVerticesCompared": 2293,
+        "clippedPlaneVerticesCompared": 889,
+        "maximumClippedDifferenceMetres": 6.253713991100085e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400282",
+        "nativeCentreVerticesCompared": 688,
+        "clippedPlaneVerticesCompared": 232,
+        "maximumClippedDifferenceMetres": 2.110141394950915e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400286",
+        "nativeCentreVerticesCompared": 60,
+        "clippedPlaneVerticesCompared": 96,
+        "maximumClippedDifferenceMetres": 1.000785232463386e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400287",
+        "nativeCentreVerticesCompared": 144,
+        "clippedPlaneVerticesCompared": 102,
+        "maximumClippedDifferenceMetres": 3.1851072890276555e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400288",
+        "nativeCentreVerticesCompared": 67,
+        "clippedPlaneVerticesCompared": 90,
+        "maximumClippedDifferenceMetres": 1.2015561878797598e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400964",
+        "nativeCentreVerticesCompared": 3058,
+        "clippedPlaneVerticesCompared": 1119,
+        "maximumClippedDifferenceMetres": 1.6211004094657255e-08
+      },
+      {
+        "cleabs": "BATIMENT0000000273400965",
+        "nativeCentreVerticesCompared": 2604,
+        "clippedPlaneVerticesCompared": 970,
+        "maximumClippedDifferenceMetres": 6.723411161146942e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400985",
+        "nativeCentreVerticesCompared": 260,
+        "clippedPlaneVerticesCompared": 211,
+        "maximumClippedDifferenceMetres": 1.6211004094657255e-08
+      },
+      {
+        "cleabs": "BATIMENT0000000273400986",
+        "nativeCentreVerticesCompared": 567,
+        "clippedPlaneVerticesCompared": 209,
+        "maximumClippedDifferenceMetres": 3.970825446231174e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400987",
+        "nativeCentreVerticesCompared": 1413,
+        "clippedPlaneVerticesCompared": 395,
+        "maximumClippedDifferenceMetres": 6.824109277658863e-09
+      },
+      {
+        "cleabs": "BATIMENT0000000273400988",
+        "nativeCentreVerticesCompared": 815,
+        "clippedPlaneVerticesCompared": 276,
+        "maximumClippedDifferenceMetres": 8.077449820120819e-09
+      }
+    ],
+    "passed": true
+  },
+  "toolSha256": "b063c130882eca3947e1fef5a139024f769050ca628281095371dfb056e6c929",
+  "notes": [
+    "The Vieille Charité record is the measured chapel footprint, not the whole surrounding hospice.",
+    "The Pharo site remains a source-context association, not a new certified semantic building identity.",
+    "No facade opening, material, room, statue or analytic roof shape was invented in this mesh.",
+    "Longchamp was not added: its historical catalogue candidate is linked to a fictitious 25 m² source zone covering only 3.93% of the building."
+  ],
+  "offlineReconstruction": {
+    "payloadBytesEqual": true,
+    "indexBytesEqual": true,
+    "payloadSha256": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d"
+  }
+}

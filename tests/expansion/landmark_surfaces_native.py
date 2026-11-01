@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Native HTTP inspection of real IGN MNS landmark surfaces, never a fixture.
 
-One real browser context visits the Major and Notre-Dame de la Garde through
+One real browser context visits the Major, Notre-Dame de la Garde, the Vieille
+Charite chapel and the Pharo site through
 diagnostic geographic navigation. Source loading, mesh publication, collision,
 LOS and save/Continue are production functions; cameras/freeze/time selection
 are declared assistance. Elevated captures are labelled inspections and are
@@ -85,7 +86,7 @@ def main():
         page.wait_for_function("typeof __MISTRAL_DEBUG?.v056LandmarkInfo==='function'")
         debug('setRenderPaused',True);debug('v047Control',{'auto':False})
         i=debug('v056LandmarkReady')
-        check('Actual attributed MNS atlas loads without error',i['loaded'] and not i['missing'] and i['error'] is None and i['records']==17,i)
+        check('Actual attributed MNS atlas loads without error',i['loaded'] and not i['missing'] and i['error'] is None and i['records']==19,i)
     def shot(name,label):
         p=args.output/(name+'.png');page.screenshot(path=str(p));report['shots'].append({'file':p.name,'sha256':sha(p.read_bytes()),'label':label,'method':'Actual unchanged production WebGL frame; declared frozen diagnostic camera, no image editing.'});save()
     try:
@@ -112,16 +113,19 @@ def main():
         document(page.goto(report['url'],wait_until='load',timeout=60000));debug('v020Load','aubagne');debug('v046SetTime',12)
         debug('v051CityReady');debug('v052ArchitectureReady')
         check('Actual municipal metric world is initialized before sector navigation',debug('v018LoadMacro','geo_marseille_commune')=='geo_marseille_commune');ready()
-        sites=[('major',43.2999,5.3648,'BATIMENT0000000258938065',5),('garde',43.284,5.3712,'BATIMENT0000000273400985',11)]
+        sites=[('major',43.2999,5.3648,'BATIMENT0000000258938065',5,'Cathédrale de la Major'),
+               ('garde',43.284,5.3712,'BATIMENT0000000273400985',11,'Notre-Dame de la Garde'),
+               ('charite',43.30052,5.36790,'BATIMENT0000000258929268',1,'Chapelle et Hospice de la Vieille Charité'),
+               ('pharo',43.29421,5.35820,'BATIMENT0000000273394896',1,'Palais du Pharo')]
         saved_camera=None
-        for name,lat,lon,target,expected in sites:
+        for name,lat,lon,target,expected,site_context in sites:
             report['stage']=name;report['stages'].append({'name':name,'elapsed_seconds':time.monotonic()-started});save()
             loaded=debug('v046Load',lat,lon)
             check('Production geographic sector loads '+name,loaded is True,{'result':loaded,'map':debug('v046Info'),'city':debug('v051CityInfo'),'mns':debug('v056LandmarkInfo')});ready()
-            info=debug('v056LandmarkInfo');rows=[r for r in info['applied']if r['siteContext']==('Cathédrale de la Major'if name=='major'else'Notre-Dame de la Garde')]
+            info=debug('v056LandmarkInfo');rows=[r for r in info['applied']if r['siteContext']==site_context]
             check('Actual imported landmark surfaces are attached '+name,len(rows)==expected,rows)
             published=page.evaluate("""()=>__MISTRAL_DEBUG.v018Geometry().filter(d=>d.layer==='roof'&&d.id?.endsWith(':mns')).map(d=>({id:d.id,vertices:d.vertices.length,faces:d.faces.length}))""")
-            expected_records=[r for r in data['records']if r['siteContext']==('Cathédrale de la Major'if name=='major'else'Notre-Dame de la Garde')and r['measurements']['minimumElevation']>=r['sourceProperties']['altitude_minimale_sol']-.01]
+            expected_records=[r for r in data['records']if r['siteContext']==site_context and r['measurements']['minimumElevation']>=r['sourceProperties']['altitude_minimale_sol']-.01]
             publication=[{'sourceId':r['sourceId'],'matches':[p for p in published if ':building:'+r['sourceId']+':'in p['id']],'expectedVertices':len(r['vertices']),'expectedFaces':len(r['faces'])}for r in expected_records]
             check('Actual published world contains every admissible source cap '+name,len(publication)==expected and all(len(p['matches'])==1 and p['matches'][0]['vertices']==p['expectedVertices']and p['matches'][0]['faces']==p['expectedFaces']for p in publication),publication)
             rec=next(r for r in data['records']if r['cleabs']==target);peak=max(rec['vertices'],key=lambda p:p[2]);peak_ll=inverse_lambert(*peak[:2]);world_id=debug('v020Stats')['id'];point=debug('v046Project',world_id,*peak_ll)
@@ -129,7 +133,7 @@ def main():
             check('Native cap uses exact source geometry '+name,actual['rawGeometry']==rec['rawGeometry']and actual['sourceProperties']==rec['sourceProperties'])
             check('Native roof triangle count equals acquired clipped source '+name,actual['roofTriangles']==len(rec['faces'])and actual['roofVertices']==len(rec['vertices']))
             check('Actual highest vertex retains measured elevation '+name,abs(actual['height']-peak[2])<.0001,{'source':peak,'native':actual['height']})
-            check('Measured silhouette adds the source summit above the former envelope '+name,peak[2]-(rec['sourceProperties']['altitude_minimale_sol']+rec['sourceProperties']['hauteur'])>25,{'sourceMaximum':peak[2],'oldFlatTop':rec['sourceProperties']['altitude_minimale_sol']+rec['sourceProperties']['hauteur']})
+            check('Measured silhouette retains a source summit distinct from the former envelope '+name,peak[2]-(rec['sourceProperties']['altitude_minimale_sol']+rec['sourceProperties']['hauteur'])>(25 if name in ['major','garde']else .5),{'sourceMaximum':peak[2],'oldFlatTop':rec['sourceProperties']['altitude_minimale_sol']+rec['sourceProperties']['hauteur'],'minimumSummitDifferenceMetres':25 if name in ['major','garde']else .5})
             above=[point[0],peak[2]+3,point[2]];below=[point[0],peak[2]-.5,point[2]]
             check('Production line of sight hits the real upper cap '+name,not debug('v020LOS',above,below),{'from':above,'to':below})
             check('Air above the measured summit stays clear '+name,debug('v020LOS',above,[above[0]+.3,above[1],above[2]]))
@@ -167,7 +171,7 @@ def main():
         restored=debug('getState')['player'];cap=debug('v056LandmarkSurface',saved_camera['target'])
         check('Real Continue preserves the selected position and yaw',math.dist(before['pos'],restored['pos'])<.01 and abs(before['yaw']-restored['yaw'])<1e-7,{'before':before,'after':restored})
         check('Real Continue reapplies source MNS without saving a copied mesh',cap is not None and cap['roofTriangles']==len(next(r for r in data['records']if r['cleabs']==saved_camera['target'])['faces']) and 'v056MeasuredSurface'not in json.dumps(debug('getState')))
-        debug('v018CaptureAt',saved_camera['pos'],saved_camera['yaw'],saved_camera['pitch']);shot('garde_continue','Même source MNS après rechargement et bouton Continuer natif.')
+        debug('v018CaptureAt',saved_camera['pos'],saved_camera['yaw'],saved_camera['pitch']);shot('pharo_continue','Même source MNS après rechargement et bouton Continuer natif.')
         check('No JavaScript page exception in the native inspection',not report['page_errors'],report['page_errors'])
         check('No missing local source resource or HTTP failure',not report['local_http_errors'],report['local_http_errors'])
         for relative in list(report['pinned_inputs']):pin(relative)

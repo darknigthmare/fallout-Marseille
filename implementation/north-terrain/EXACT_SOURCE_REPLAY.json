@@ -1,0 +1,118 @@
+{
+  "scope": "Compare every imported DEM node with original, caller-supplied GeoTIFFs.\n\nThis is a read-only replay using rasterio's sample API, independently of the\nimport converter's window/index implementation. No TIFF is downloaded or copied\ninto the distribution. Original TIFF SHA-256 values must match the conversion\nreceipts. Reprojection and nearest-cell sampling remain explicitly declared.\n",
+  "region": "geo_marseille_commune",
+  "bundleSha256": "d0cbae62855ff13b9453ebf2773a9239e4c999a4ff2f416f601fc69e2b1368f3",
+  "nodesCompared": 206240,
+  "mismatchedNodes": 0,
+  "grids": [
+    {
+      "id": "enrichment:geo_marseille_commune:5e5d40cc4242f94f",
+      "originalFile": "35f08774005ed880-LHD_FXX_0887_6255_MNT_O_0M50_LAMB93_IGN69.tif",
+      "originalSha256": "35f08774005ed8806f8f27a4e17366bf5112949a8af952ed7a0e18083d0f13ce",
+      "bbox": [
+        43.3624,
+        5.313,
+        43.3652,
+        5.3168
+      ],
+      "width": 310,
+      "height": 313,
+      "nodesCompared": 97030,
+      "mismatchedNodes": 0,
+      "maximumAbsoluteErrorMeters": 0,
+      "actualNoDataNodes": 0,
+      "sourceProbeSamples": [
+        {
+          "index": 0,
+          "lat": 43.3652,
+          "lon": 5.313,
+          "original": 81.88291931152344,
+          "imported": 81.88291931152344
+        },
+        {
+          "index": 309,
+          "lat": 43.3652,
+          "lon": 5.3168,
+          "original": 111.5130615234375,
+          "imported": 111.5130615234375
+        },
+        {
+          "index": 48515,
+          "lat": 43.3638,
+          "lon": 5.314906148867314,
+          "original": 38.1093864440918,
+          "imported": 38.1093864440918
+        },
+        {
+          "index": 96720,
+          "lat": 43.3624,
+          "lon": 5.313,
+          "original": 27.64369773864746,
+          "imported": 27.64369773864746
+        },
+        {
+          "index": 97029,
+          "lat": 43.3624,
+          "lon": 5.3168,
+          "original": 29.291906356811523,
+          "imported": 29.291906356811523
+        }
+      ]
+    },
+    {
+      "id": "enrichment:geo_marseille_commune:90f0857d48cc8f07",
+      "originalFile": "230fadfff8056e03-LHD_FXX_0891_6256_MNT_O_0M50_LAMB93_IGN69.tif",
+      "originalSha256": "230fadfff8056e038cd603868d3fdc20dfbbc4ca89c70a53ebb43fd211e516b5",
+      "bbox": [
+        43.369,
+        5.357,
+        43.372,
+        5.361
+      ],
+      "width": 326,
+      "height": 335,
+      "nodesCompared": 109210,
+      "mismatchedNodes": 0,
+      "maximumAbsoluteErrorMeters": 0,
+      "actualNoDataNodes": 0,
+      "sourceProbeSamples": [
+        {
+          "index": 0,
+          "lat": 43.372,
+          "lon": 5.357,
+          "original": 144.8776092529297,
+          "imported": 144.8776092529297
+        },
+        {
+          "index": 325,
+          "lat": 43.372,
+          "lon": 5.361,
+          "original": 133.00115966796875,
+          "imported": 133.00115966796875
+        },
+        {
+          "index": 54605,
+          "lat": 43.3705,
+          "lon": 5.3590061538461535,
+          "original": 142.86883544921875,
+          "imported": 142.86883544921875
+        },
+        {
+          "index": 108884,
+          "lat": 43.369,
+          "lon": 5.357,
+          "original": 145.36231994628906,
+          "imported": 145.36231994628906
+        },
+        {
+          "index": 109209,
+          "lat": 43.369,
+          "lon": 5.361,
+          "original": 123.22339630126953,
+          "imported": 123.22339630126953
+        }
+      ]
+    }
+  ],
+  "ok": true
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "QA-only correction after the actual frozen production native attempt failed on a case-sensitive rendered-text check. No production input changed.",
+  "failed_attempt": "native-final-98a7-02",
+  "failed_assertion": "Paid bottles appear in ordinary inventory and existing aid category",
+  "diagnosis": "The raw failure screenshot visibly contains AIDE, NUKA-COLA 1 and NUKA-COLA QUANTUM 1. Existing global CSS src/styles.css:11 transforms button text to uppercase; innerText reflects that rendering. The former mixed-case Nuka-Cola substring is not a sound item-presence contract.",
+  "old_pilot_sha256": "6ff37f394266cf1cc2deee667341f3f4ac31dfbc2f230167781fa0f21e392889",
+  "new_pilot_sha256": "2e034f2a5cee4e7dd67638b1df0d03533587806e91b7336df0ca90364999cec1",
+  "old_check": "        check('Paid bottles appear in ordinary inventory and existing aid category', debug('v027UI')['sub'] == 'aid'\n              and 'Nuka-Cola' in page.locator('#pipContent').inner_text())\n",
+  "new_check": "        check('Paid bottles appear in ordinary inventory and existing aid category', debug('v027UI')['sub'] == 'aid'\n              and all(page.locator('#pipContent .p27-row[data-arg='+json.dumps(item)+']').is_visible()\n                      and state()['inventory'].get(item, 0) == 1 for item in ('nukaCola', 'nukaQuantum')))\n",
+  "preserved_assertions": "All actual payment amounts, repair costs, finite reserves, consumption effects, Continue, collision and LOS, actual source geography, focus, mobile bounds and input hash stability checks are unchanged.",
+  "excluded_diagnostic_artifacts": [
+    "native-final-98a7-01",
+    "native-final-98a7-02"
+  ],
+  "recorded_utc": "2026-11-01T01:08:05Z"
+}

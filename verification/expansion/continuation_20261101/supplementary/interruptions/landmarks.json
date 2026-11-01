@@ -1,0 +1,57 @@
+{
+  "recordedAt": "2026-11-01T01:00:24.689342+00:00",
+  "scope": "Recovery observation only; excluded from assertion/capture counts. Existing raw directory untouched.",
+  "path": "/workspace/.cloud-setup/fallout-marseille/continuation-next/landmarks/native-final-98a7-01",
+  "reportStage": "garde",
+  "reportedChecks": 35,
+  "reportedPassed": 35,
+  "reportedFailed": 0,
+  "pngCount": 3,
+  "receiptPresent": false,
+  "actualProcessExit": "unavailable: original parent session and processes were lost on restart; no fabricated exit status",
+  "eligibleForFinalAggregate": false,
+  "reason": "Incomplete report (garde), no cleanup/exit receipt, 3 of 9 expected screenshots.",
+  "rawFiles": {
+    "EXECUTED_LANDMARK_SURFACES_NATIVE.py": {
+      "bytes": 18670,
+      "sha256": "ff5ec2f60a629da39bf691d4b7fe7c257563b751e71527e2faef42a63bfec614"
+    },
+    "FROZEN_RUNTIME_REFERENCE.json": {
+      "bytes": 35920,
+      "sha256": "ea8383ad382acc52d83316850c78cfc2702e8edd2a147ed5deafd447734db6e5"
+    },
+    "LANDMARK_SURFACES_NATIVE.json": {
+      "bytes": 58769,
+      "sha256": "3b77660a0b4a28092577e6808611afc346a791a56fe49f6b4134fbc0cba07837"
+    },
+    "garde_ground.png": {
+      "bytes": 1265967,
+      "sha256": "230f75858448cc9d0ef86dc2cf07d10b487307e83051e6ee3213dc387b4be2a4"
+    },
+    "landmark_surfaces_native.executed.py": {
+      "bytes": 18670,
+      "sha256": "ff5ec2f60a629da39bf691d4b7fe7c257563b751e71527e2faef42a63bfec614"
+    },
+    "major_elevated.png": {
+      "bytes": 1630796,
+      "sha256": "fe1fb007937a93d543028d3a3e7bdb2780351c517251ab4b01ed48635553d263"
+    },
+    "major_ground.png": {
+      "bytes": 1359103,
+      "sha256": "6c8090439cbe039d7e95a620f33c680f8042ec469ea9e1bff8382d230569e428"
+    },
+    "run.log": {
+      "bytes": 2303,
+      "sha256": "0e20b93419c868b5bf033f1630ae2c95731f7e28f6d6eaeed891495d129fa620"
+    },
+    "run_native.executed.py": {
+      "bytes": 3425,
+      "sha256": "3c2a5940f5dcc75f2094496df54c41ffd3596a7ba392fadf49ebb17636267bb7"
+    }
+  },
+  "partialImageObservation": {
+    "major_ground": "Measured rough upper surface visible from MNT eye-height assisted camera; facade/window pattern is procedural.",
+    "major_elevated": "Major multi-dome MNS silhouette clear; elevated diagnostic placement, not a pedestrian view.",
+    "garde_ground": "Measured rough summit visible; procedural windows/façade do not constitute architectural fidelity."
+  }
+}

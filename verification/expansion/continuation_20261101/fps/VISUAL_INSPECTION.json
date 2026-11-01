@@ -1,0 +1,118 @@
+{
+  "reviewed_utc": "2026-11-01T00:55:12Z",
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "report_sha256": "6f27ac2e880874e3c6e1753d41a609ed26fbf1f6e70ec6fd8fcd9ff3a697459e",
+  "inspection_method": "Each of these 16 new native-98a7 PNG files was opened individually with view_image after its actual execution. Signatures and hashes were independently verified. No previous candidate report or image was reused as evidence.",
+  "observations": [
+    {
+      "file": "01_native_pistol_hip.png",
+      "sha256": "98b2b53b2f49cd0028fa840aab57dc4e2a5485f89f16c78120940cf05ddd7ebf",
+      "opened": true,
+      "observation": "Les deux mains, les doigts et le terminal sont visibles devant la scène narrative ; les avant-bras passent derrière la barre de raccourcis."
+    },
+    {
+      "file": "02_profile_revolver44.png",
+      "sha256": "62eaf93a4bc31adbba4479e9abdc887bb413e72c4d2a37bf399b74e2b1c6b381",
+      "opened": true,
+      "observation": "Le barillet polygonal et le chien distinguent le revolver du pistolet à culasse ; les deux prises restent présentes."
+    },
+    {
+      "file": "02_profile_doubleBarrel.png",
+      "sha256": "a2176aebdd1d11712b194da1ea640e173f3ae1db6d6a33c5d179063b7a0af661",
+      "opened": true,
+      "observation": "Les deux canons courts et le garde-main sont visibles dans le profil de fusil ; la perspective superpose partiellement leurs contours."
+    },
+    {
+      "file": "02_matrix_rifle.png",
+      "sha256": "810e4a99a881900b35a977dd031202f64696322c22eef85ccbfb10738ad04dc2",
+      "opened": true,
+      "observation": "Prise de soutien, terminal et crosse sont visibles. Le modèle conserve une finition géométrique stylisée."
+    },
+    {
+      "file": "02_matrix_energy.png",
+      "sha256": "ab02808b034ba26d6f4fa5d6cd92fe4f6de1c4278035061bd914af7240de838b",
+      "opened": true,
+      "observation": "La silhouette courte du pistolet énergétique comprend une cellule latérale et un carénage, sans crosse de carabine."
+    },
+    {
+      "file": "02_matrix_blade.png",
+      "sha256": "6458e143786c71a86f2bfbd48ecc07ce071670af9befa27d5ef203778e53e1a7",
+      "opened": true,
+      "observation": "La lame courte et les poses de mêlée historiques restent présentes, avec leur cadrage antérieur conservé."
+    },
+    {
+      "file": "02b_native_wall_lowering.png",
+      "sha256": "a9f49c44f60695b989c5c2ffa679862fdc4a40cc87065ad1ad4bf44ad5891a21",
+      "opened": true,
+      "observation": "Le mur réel de la scène remplit le fond de ce point de diagnostic ; l’arme est abaissée et le centre libre."
+    },
+    {
+      "file": "03_native_rifle_aim.png",
+      "sha256": "cc482c62a4104d0c3079b8eae045627f8a3e50490c08ddccc3bc3f701d8fca04",
+      "opened": true,
+      "observation": "Le guidon rejoint le centre de la hausse ; mains et manches restent reliées de chaque côté de la crosse."
+    },
+    {
+      "file": "04_native_shot_recoil.png",
+      "sha256": "9e07df27cdd02b06e314e807445e404021dfc3e2a9eb420ff1d3cf867b4d197e",
+      "opened": true,
+      "observation": "Le flash du tir réellement émis est visible et l’arme reculée ; ce cadre saisit une phase active."
+    },
+    {
+      "file": "05_native_reload_hands.png",
+      "sha256": "92574f3a79a29546a857d05a282cbb75bed7505ead3ac23edf857fe95853ca19",
+      "opened": true,
+      "observation": "Les doigts de soutien et le chargeur tenu sont entièrement dans le cadre, au-dessus du raccourci ; les deux avant-bras et le terminal sont lisibles."
+    },
+    {
+      "file": "05_reload_revolver.png",
+      "sha256": "a68840e5009ee35d449f3fb350af8dea760e988690c384fdc27eeae10fd9c9b8",
+      "opened": true,
+      "observation": "Six chambres sombres, le barillet déporté, son bras de liaison et le chargeur rapide sont visibles ensemble."
+    },
+    {
+      "file": "05_reload_break-action.png",
+      "sha256": "758b607f54d5c5408fe707afcf821dcbc7803466ea8a0b3b5a4e2cd09072b999",
+      "opened": true,
+      "observation": "Les canons basculés et les deux cartouches rouges à culot laiton sont visibles ; la perspective masque une partie des lèvres des chambres."
+    },
+    {
+      "file": "05_reload_energy-pistol.png",
+      "sha256": "cff402b54d6fcd4abc7a5d3b93da6a6f87f7f09deba73389994318230bf31046",
+      "opened": true,
+      "observation": "La cellule lumineuse est tenue par la main gauche, distincte du logement laissé libre sur l’arme."
+    },
+    {
+      "file": "05_reload_launcher.png",
+      "sha256": "f9f32d5deb7f6e2460bc7e831601bb327c37676052424f8cde35a497a2fb9f72",
+      "opened": true,
+      "observation": "Le gros tube et son ouverture arrière restent distincts ; le projectile tenu est stylisé et son extrémité reste partiellement cachée par les doigts."
+    },
+    {
+      "file": "06_native_portrait_hands.png",
+      "sha256": "137fbf4e8fcf8a7e59cc1c12404b74929229f82c9409e6cc450a25918d54bb44",
+      "opened": true,
+      "observation": "Les centres des prises et les doigts supérieurs sont au-dessus du panneau de munitions. Les talons des paumes, poignets et terminal restent partiellement sous le panneau translucide ; le poignet droit dépasse le bord."
+    },
+    {
+      "file": "07_native_portrait_reduced_motion.png",
+      "sha256": "c7687df791331b41226956536cd7c107b51a9f66a6947faf401932b4ae7918f7",
+      "opened": true,
+      "observation": "La pose statique conserve ce cadrage portrait relevé. Les mêmes recouvrements inférieurs avec le HUD persistent."
+    }
+  ],
+  "blocking_visual_defects_found": false,
+  "limits": [
+    "Original stylized family/profile meshes, not a unique replica for each weapon.",
+    "The authored Aubagne scene and diagnostic equipment/camera placement do not demonstrate geographic accuracy or weapon acquisition.",
+    "Portrait lower palms, wrists and terminal remain partly underneath the translucent ammo panel and the right wrist extends past the portrait edge.",
+    "No physical-phone, hardware-controller or full human playthrough claim."
+  ],
+  "network_observations": {
+    "local_http_status_errors": 0,
+    "javascript_exceptions": 0,
+    "external_supabase_tunnel_failures": 9,
+    "loopback_metadata_err_aborted": 1,
+    "abort_phase": "Not recorded by pilot; no init, travel or shutdown phase inferred."
+  }
+}

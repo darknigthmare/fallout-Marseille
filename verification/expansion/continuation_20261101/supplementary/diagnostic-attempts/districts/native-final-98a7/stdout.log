@@ -1,0 +1,17 @@
+OK Frozen production HTML is exact
+OK Frozen installed source index is exact
+OK Both real northern grids belong to the receipt-pinned regional bundle
+OK Actual inline dependency is pinned: src/v050/04_source_geometry.js
+OK Actual inline dependency is pinned: src/v050/04a_city_sources.js
+OK Actual inline dependency is pinned: src/v050/14_precise_terrain.js
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/north_terrain_native.py", line 132, in main
+    server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 453, in __init__
+    self.socket = socket.socket(self.address_family,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+PermissionError: [Errno 1] Operation not permitted
+

@@ -1,0 +1,26 @@
+{
+  "scope": "Actual launchers needed by the distribution contract were copied into the isolated checkout; application HTML remains byte-identical. Only its QA adapter expected-cache token changes to13.",
+  "launchers": [
+    {
+      "file": "LANCER_APP_LINUX.sh",
+      "sha256": "f91e1dedca27749910a0b0da94e03dcf1152476ead497975f5e79358692b395e"
+    },
+    {
+      "file": "LANCER_APP_MAC.command",
+      "sha256": "28fc396449ad8701f1f897dfaaf543bd7209777df10dab244ea63cbdc42dae17"
+    },
+    {
+      "file": "LANCER_APP_WINDOWS.bat",
+      "sha256": "dd2ae340f1acc5631bc4ec3e57f054d66933c4bd75476c3d05bf9d68f2c60e26"
+    },
+    {
+      "file": "LANCER_JEU.bat",
+      "sha256": "55716523964622ac07cf99c1e60e63324e6ffccff834669799b593060756818e"
+    },
+    {
+      "file": "LANCER_JEU.sh",
+      "sha256": "c0a6fe432bd2395ee8ce634be30af6b472e47e02323430df14ea0665b9440e26"
+    }
+  ],
+  "html": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241"
+}

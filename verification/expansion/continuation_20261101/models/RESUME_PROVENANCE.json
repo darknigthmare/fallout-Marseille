@@ -1,0 +1,472 @@
+{
+  "method": "Strict exact-prefix continuation of one interrupted run, same frozen inputs; two observed execution phases.",
+  "originalOuterExitCode": null,
+  "originalOuterExitObservation": "No original outer process exit receipt exists. Child exits are preserved from the original runner report and cross-checked against exact logs and stdout.",
+  "originalReportSha256": "c026c2f203b9cab691e481d9559e12df6f299997ad3546df0080c5faac71c865",
+  "originalStdoutSha256": "aebd86d2785234fa24dd901ede09d4de8188035e62e472be66927fd296591e36",
+  "originalRunnerSha256": "40c0132ba42dc8d4afa5834af06433524bdce2aab3b8aaef3cc13d8c51cfa701",
+  "resumerSha256": "d856dc0019e02bc5c440452f3708cbe7b9423728224e9f251796b77a6cf734cf",
+  "frozenRuntimeSha256": "ea8383ad382acc52d83316850c78cfc2702e8edd2a147ed5deafd447734db6e5",
+  "frozenRuntimeInputCount": 361,
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "verifiedPrefixSuiteCount": 26,
+  "verifiedPrefixTotal": 1145,
+  "remainingSuiteCount": 15,
+  "maintainedCommands": [
+    [
+      "source_tools",
+      [
+        "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/expansion",
+        "-p",
+        "test_*.py"
+      ]
+    ],
+    [
+      "base_installers",
+      [
+        "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/v050",
+        "-p",
+        "test_installers.py"
+      ]
+    ],
+    [
+      "renderer_batches.cjs",
+      [
+        "node",
+        "tests/expansion/renderer_batches.cjs"
+      ]
+    ],
+    [
+      "geography.test.cjs",
+      [
+        "node",
+        "tests/expansion/geography.test.cjs"
+      ]
+    ],
+    [
+      "dense_geometry.cjs",
+      [
+        "node",
+        "tests/expansion/dense_geometry.cjs"
+      ]
+    ],
+    [
+      "surfaces_physics.cjs",
+      [
+        "node",
+        "tests/expansion/surfaces_physics.cjs"
+      ]
+    ],
+    [
+      "roof_solids.cjs",
+      [
+        "node",
+        "tests/expansion/roof_solids.cjs"
+      ]
+    ],
+    [
+      "gameplay_wasteland.cjs",
+      [
+        "node",
+        "tests/expansion/gameplay_wasteland.cjs"
+      ]
+    ],
+    [
+      "controller_model.cjs",
+      [
+        "node",
+        "tests/expansion/controller_model.cjs"
+      ]
+    ],
+    [
+      "source_status_model.cjs",
+      [
+        "node",
+        "tests/expansion/source_status_model.cjs"
+      ]
+    ],
+    [
+      "city_streaming.cjs",
+      [
+        "node",
+        "tests/expansion/city_streaming.cjs"
+      ]
+    ],
+    [
+      "facades_model.cjs",
+      [
+        "node",
+        "tests/expansion/facades_model.cjs"
+      ]
+    ],
+    [
+      "facades_coverage.cjs",
+      [
+        "node",
+        "tests/expansion/facades_coverage.cjs"
+      ]
+    ],
+    [
+      "city_interiors.cjs",
+      [
+        "node",
+        "tests/expansion/city_interiors.cjs"
+      ]
+    ],
+    [
+      "city_water.cjs",
+      [
+        "node",
+        "tests/expansion/city_water.cjs"
+      ]
+    ],
+    [
+      "city_water_physics.cjs",
+      [
+        "node",
+        "tests/expansion/city_water_physics.cjs"
+      ]
+    ],
+    [
+      "road_classification.cjs",
+      [
+        "node",
+        "tests/expansion/road_classification.cjs"
+      ]
+    ],
+    [
+      "ground_road_surfaces.cjs",
+      [
+        "node",
+        "tests/expansion/ground_road_surfaces.cjs"
+      ]
+    ],
+    [
+      "interior_document_persistence.cjs",
+      [
+        "node",
+        "tests/expansion/interior_document_persistence.cjs"
+      ]
+    ],
+    [
+      "architecture_sources.cjs",
+      [
+        "node",
+        "tests/expansion/architecture_sources.cjs"
+      ]
+    ],
+    [
+      "architecture_runtime.cjs",
+      [
+        "node",
+        "tests/expansion/architecture_runtime.cjs"
+      ]
+    ],
+    [
+      "landmark_surfaces.cjs",
+      [
+        "node",
+        "tests/expansion/landmark_surfaces.cjs"
+      ]
+    ],
+    [
+      "first_person.cjs",
+      [
+        "node",
+        "tests/expansion/first_person.cjs"
+      ]
+    ],
+    [
+      "fps_hud.cjs",
+      [
+        "node",
+        "tests/expansion/fps_hud.cjs"
+      ]
+    ],
+    [
+      "iconic_mines.cjs",
+      [
+        "node",
+        "tests/expansion/iconic_mines.cjs"
+      ]
+    ],
+    [
+      "iconic_vending.cjs",
+      [
+        "node",
+        "tests/expansion/iconic_vending.cjs"
+      ]
+    ],
+    [
+      "interior_services.cjs",
+      [
+        "node",
+        "tests/expansion/interior_services.cjs"
+      ]
+    ],
+    [
+      "interior_storage.cjs",
+      [
+        "node",
+        "tests/expansion/interior_storage.cjs"
+      ]
+    ],
+    [
+      "world_placements.cjs",
+      [
+        "node",
+        "tests/expansion/world_placements.cjs"
+      ]
+    ],
+    [
+      "lore_continuity.cjs",
+      [
+        "node",
+        "tests/expansion/lore_continuity.cjs"
+      ]
+    ],
+    [
+      "power_armor.cjs",
+      [
+        "node",
+        "tests/expansion/power_armor.cjs"
+      ]
+    ],
+    [
+      "iconic_ecosystem.cjs",
+      [
+        "node",
+        "tests/expansion/iconic_ecosystem.cjs"
+      ]
+    ],
+    [
+      "parallel_systems.cjs",
+      [
+        "node",
+        "tests/expansion/parallel_systems.cjs"
+      ]
+    ],
+    [
+      "regional_bestiary.cjs",
+      [
+        "node",
+        "tests/expansion/regional_bestiary.cjs"
+      ]
+    ],
+    [
+      "precise_terrain.cjs",
+      [
+        "node",
+        "tests/expansion/precise_terrain.cjs"
+      ]
+    ],
+    [
+      "facades_joinery.cjs",
+      [
+        "node",
+        "tests/expansion/facades_joinery.cjs"
+      ]
+    ],
+    [
+      "chems_ecosystem.cjs",
+      [
+        "node",
+        "tests/expansion/chems_ecosystem.cjs"
+      ]
+    ],
+    [
+      "iconic_ordnance.cjs",
+      [
+        "node",
+        "tests/expansion/iconic_ordnance.cjs"
+      ]
+    ],
+    [
+      "interior_room_doors.cjs",
+      [
+        "node",
+        "tests/expansion/interior_room_doors.cjs"
+      ]
+    ],
+    [
+      "native_road_surfaces.cjs",
+      [
+        "node",
+        "tests/expansion/native_road_surfaces.cjs"
+      ]
+    ],
+    [
+      "facades_relief.cjs",
+      [
+        "node",
+        "tests/expansion/facades_relief.cjs"
+      ]
+    ]
+  ],
+  "originalFiles": [
+    {
+      "file": "original-interrupted/UNITS.json",
+      "bytes": 49669,
+      "sha256": "c026c2f203b9cab691e481d9559e12df6f299997ad3546df0080c5faac71c865"
+    },
+    {
+      "file": "original-interrupted/stdout.log",
+      "bytes": 735,
+      "sha256": "aebd86d2785234fa24dd901ede09d4de8188035e62e472be66927fd296591e36"
+    },
+    {
+      "file": "original-interrupted/EXECUTED_check_expansion.py",
+      "bytes": 5642,
+      "sha256": "40c0132ba42dc8d4afa5834af06433524bdce2aab3b8aaef3cc13d8c51cfa701"
+    },
+    {
+      "file": "original-interrupted/source_tools.log",
+      "bytes": 2267,
+      "sha256": "1029907125c4f29e52b2eafc2e34241b11024a42b4b7f40b68179d79773c8820"
+    },
+    {
+      "file": "original-interrupted/base_installers.log",
+      "bytes": 142,
+      "sha256": "ce2ef4f920f4582565cbeaa23b709d24baed7e817714a863661e4edcccee5eb7"
+    },
+    {
+      "file": "original-interrupted/renderer_batches.cjs.log",
+      "bytes": 2042,
+      "sha256": "3022789bb2e525b44569c3ce90d76179d8aa73f7b2e9229d10858eea73ea8975"
+    },
+    {
+      "file": "original-interrupted/geography.test.cjs.log",
+      "bytes": 5029,
+      "sha256": "f819446afcceed45817010d73c59d34c22f6586ea114062adbd654f17fa0f586"
+    },
+    {
+      "file": "original-interrupted/dense_geometry.cjs.log",
+      "bytes": 657,
+      "sha256": "d23b9853ba76a40e715f78f8e358c6020b9d4baaf1dbfae27fab03a89fb22c02"
+    },
+    {
+      "file": "original-interrupted/surfaces_physics.cjs.log",
+      "bytes": 2349,
+      "sha256": "3db3dc1dbd0b8282bfc126dc849c0a95dd70db6ad873ae21f0df67949959b5f1"
+    },
+    {
+      "file": "original-interrupted/roof_solids.cjs.log",
+      "bytes": 2851,
+      "sha256": "fd417a4e949d96005ce86e26761a460c5ffbeadd83fa30325834512903d59e79"
+    },
+    {
+      "file": "original-interrupted/gameplay_wasteland.cjs.log",
+      "bytes": 2826,
+      "sha256": "b53696da994ec22ec7376cb69bb37a527163a2c2ef3954ebfd36ffd58f1ff6cd"
+    },
+    {
+      "file": "original-interrupted/controller_model.cjs.log",
+      "bytes": 2363,
+      "sha256": "5ce028e7a2cd558038374cc03dd3d544942a221f440b0f9beddfe11b006b6086"
+    },
+    {
+      "file": "original-interrupted/source_status_model.cjs.log",
+      "bytes": 1199,
+      "sha256": "42b6c64500a37ffca05483cf590233adf2b5a928b93b281eb9312b2cc5b0aed3"
+    },
+    {
+      "file": "original-interrupted/city_streaming.cjs.log",
+      "bytes": 2418,
+      "sha256": "3c9dfeadd67c90c229eb4443ac8c869e979cfc894b2e43e29c2a401869c79bfb"
+    },
+    {
+      "file": "original-interrupted/facades_model.cjs.log",
+      "bytes": 7258,
+      "sha256": "5a5fee5250ae17701d8a9d997d3ce2f6e130e0bb33f1f62ebac9a359ad9dccb3"
+    },
+    {
+      "file": "original-interrupted/facades_coverage.cjs.log",
+      "bytes": 1957,
+      "sha256": "0ca46d819b4b7016dd6e581ab204aacdd65f3d542588cdfe5c46c68886fa29c9"
+    },
+    {
+      "file": "original-interrupted/city_interiors.cjs.log",
+      "bytes": 14869,
+      "sha256": "7dfb94d8ee958ba3dc16c5152ac01e5f503f3c09e79edd5b57f84962d3234d43"
+    },
+    {
+      "file": "original-interrupted/city_water.cjs.log",
+      "bytes": 2193,
+      "sha256": "048b838b3b51483e42ef98bae346de1619a83c237162bb38594a38ee88e1fe74"
+    },
+    {
+      "file": "original-interrupted/city_water_physics.cjs.log",
+      "bytes": 1895,
+      "sha256": "0db0cfe28974005e1e7f3e1cbcc684f9efdb38c0876d88e61c024a32ce02fe73"
+    },
+    {
+      "file": "original-interrupted/road_classification.cjs.log",
+      "bytes": 793,
+      "sha256": "f1b62c2816153f6e768a76e1aa75cbb53a2bf74b038085204976df0fe8f13a5b"
+    },
+    {
+      "file": "original-interrupted/ground_road_surfaces.cjs.log",
+      "bytes": 797,
+      "sha256": "38c27a3ed9eb8f49c76b7fbc7aff0902031f1f54b7a2205be879e93ad1fe99a6"
+    },
+    {
+      "file": "original-interrupted/interior_document_persistence.cjs.log",
+      "bytes": 2356,
+      "sha256": "9c1cfd00ef4e4bf39db23e8cc0c41cb59ab641cc0c9bfc35aa6c88224cbc29a6"
+    },
+    {
+      "file": "original-interrupted/architecture_sources.cjs.log",
+      "bytes": 5436,
+      "sha256": "862c248e3b04eb7e79dfa0247c74a70d3674a578c39eb27ff57b908d8f7c2b16"
+    },
+    {
+      "file": "original-interrupted/architecture_runtime.cjs.log",
+      "bytes": 966,
+      "sha256": "d7eba6e1b5f4d1677ed7506c879fe27a12947ce90ec92496c1cefb0a48bb1d08"
+    },
+    {
+      "file": "original-interrupted/landmark_surfaces.cjs.log",
+      "bytes": 3331,
+      "sha256": "2f48576b8f27ae5da187af3e1d3646925e5c0dd8babe6a033eb1460d2a9bb93b"
+    },
+    {
+      "file": "original-interrupted/first_person.cjs.log",
+      "bytes": 3778,
+      "sha256": "3e58c7e510cafa2e4f9733159195decc25115d92163acfc002777837505a7c82"
+    },
+    {
+      "file": "original-interrupted/fps_hud.cjs.log",
+      "bytes": 2134,
+      "sha256": "b474de870746bd977822b7443ef0fddba7803adb42b390510bf9ae624cbe39bc"
+    },
+    {
+      "file": "original-interrupted/iconic_mines.cjs.log",
+      "bytes": 4429,
+      "sha256": "5c0bf4580b6ae969029efe61d3abd9eef82b5fb266ec9368d8a156ce0497bc17"
+    },
+    {
+      "file": "original-interrupted/iconic_vending.cjs.log",
+      "bytes": 4469,
+      "sha256": "748fff364e6463c70903b3aaeb11996c64390952a383f25b5f13ca6f56956700"
+    }
+  ],
+  "startedAtEpoch": 1793495043.1159084,
+  "finishedAtEpoch": 1793495308.5688279,
+  "changedInputs": [],
+  "continuedSuiteCount": 15,
+  "continuedTotal": 618,
+  "composedSuiteCount": 41,
+  "composedTotal": 1763,
+  "composedReportSha256": "fea3c5eda9c67d40fe50bb77f37eb18f0564d559ed54806eb77da47484e523d6",
+  "stage": "complete"
+}

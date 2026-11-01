@@ -1,0 +1,62 @@
+{
+  "scope": "Independent evidence identity and completion cross-check, outside gameplay assertion sum. Original report, log, scripts and captures retained without modification.",
+  "checkedAt": "2026-11-01T01:05:24.698378+00:00",
+  "actualWrapperProcessExitCode": 0,
+  "nativeExitCode": 0,
+  "reportStage": "complete",
+  "nativeChecks": 64,
+  "nativePassed": 64,
+  "nativeFailed": 0,
+  "captureEvents": 9,
+  "allCaptureFilesShaMatch": true,
+  "allCaptureFilesInspected": true,
+  "actualExecutedArgv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/landmark_surfaces_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/landmarks/native-final-98a7-02",
+    "--expect-html-sha",
+    "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241"
+  ],
+  "scriptReportReceiptArchiveSha256": "ff5ec2f60a629da39bf691d4b7fe7c257563b751e71527e2faef42a63bfec614",
+  "reportSha256": "913af2f0b133a7f07610cd475df911cdc9b9eea21ff83c0181d77efcca6b53c9",
+  "receiptSha256": "6be28f9338c7197a1768a261a2235f2e40503d2e2996c51f6455de5194535408",
+  "logSha256": "38cbc9224184a3d1b722e5dbb68ae8fdbce65cf0d04a503d69450deb5d88e404",
+  "orderedLogCheckNamesMatchReport": true,
+  "frozenInputs": 361,
+  "frozenBeforeAfterChanged": [],
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true,
+    "server_thread_joined": true
+  },
+  "closedServerConnectionRefused": true,
+  "unmodifiedHtml": true,
+  "networkMocked": false,
+  "storageMocked": false,
+  "pageErrors": [],
+  "localHttpErrors": [],
+  "externalSupabaseRequestFailures": 18,
+  "localMetadataAborts": [
+    {
+      "url": "http://127.0.0.1:39883/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:39883/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "sourcePayloadSha256": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d",
+  "caveats": [
+    "Source MNS upper surfaces only; not semantic roof or architectural facade/interior survey.",
+    "Charité ground capture obstructed; elevated view is diagnostic.",
+    "Pharo identity is a source-context association, not certified architectural identity.",
+    "Historical water-render artefacts visible in elevated Pharo frame.",
+    "98a7-01 interrupted stage garde, 35/35 partial checks/3 PNG/no actual exit receipt, preserved unchanged and excluded.",
+    "42a6 and 6ded native attempts preserved as diagnostics, excluded from final counts."
+  ]
+}

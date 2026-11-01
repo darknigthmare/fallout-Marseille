@@ -1,0 +1,52 @@
+PASS All deposits attach only to actual storage furniture and leave the entire layout unchanged
+PASS Furniture lacking a proved approach has no deposit and an explicit omission
+PASS An invented bed or kitchen never becomes an extra loot or storage container
+PASS All seven storage furniture families receive actions only when their real geometry and proved approach permit them
+PASS Every deposit starts empty and opening its actual furniture interaction creates no item or ledger entry
+PASS Deposit moves exactly five existing scrap to one furniture without changing caps, XP, salvage or other inventory
+PASS Full withdrawal restores original supplies and removes the empty deposit from the bounded registry
+PASS No callback can withdraw the same stored item twice after the last exemplar was removed
+PASS Weight uses the actual ordinary inventory mass helper and rejects an entire over-capacity payment
+PASS Quest, money, gear or unsupported key caps cannot enter a deposit
+PASS Quest, money, gear or unsupported key ammo10 cannot enter a deposit
+PASS Quest, money, gear or unsupported key pipeCarbine cannot enter a deposit
+PASS Quest, money, gear or unsupported key waterKey cannot enter a deposit
+PASS Quest, money, gear or unsupported key __proto__ cannot enter a deposit
+PASS Quest, money, gear or unsupported key constructor cannot enter a deposit
+PASS Malformed or unavailable quantity 0 is refused before any mutation
+PASS Malformed or unavailable quantity -1 is refused before any mutation
+PASS Malformed or unavailable quantity 0.5 is refused before any mutation
+PASS Malformed or unavailable quantity "1" is refused before any mutation
+PASS Malformed or unavailable quantity 1000001 is refused before any mutation
+PASS The registry limit blocks new deposits, preserves all existing ones and frees a slot on emptying
+PASS deposit with failSave restores the whole state and keeps the same usable scene
+PASS withdraw with failSave restores the whole state and keeps the same usable scene
+PASS deposit with throwSave restores the whole state and keeps the same usable scene
+PASS withdraw with throwSave restores the whole state and keeps the same usable scene
+PASS Physical storage guard refuses distance with no item transfer or save
+PASS Physical storage guard refuses different height with no item transfer or save
+PASS Physical storage guard refuses blocked LOS with no item transfer or save
+PASS Physical storage guard refuses pause menu with no item transfer or save
+PASS Physical storage guard refuses death with no item transfer or save
+PASS Physical storage guard refuses pending terrain with no item transfer or save
+PASS Physical storage guard refuses world transition with no item transfer or save
+PASS Physical storage guard refuses airborne with no item transfer or save
+PASS Physical storage guard refuses armed grenade with no item transfer or save
+PASS Physical storage guard refuses visible hostile with no item transfer or save
+PASS Cold Continue preserves exact furniture identities, locally stored supplies, ordinary inventory and geometry
+PASS Another floor of the same building has distinct empty furniture and cannot retrieve the previous floor stock
+PASS Geometry and furniture identities bind deposits independently to source building and layout signature
+PASS Old saves without a deposit registry migrate to an empty registry without producing supplies
+PASS A stale actual furniture callback cannot act after another save replaces the state and scene
+PASS An old dialogue quantity action is invalid after closing or another deposit page replaces it
+PASS A quantity callback also refuses an unrelated native dialogue that replaced the deposit without closing
+PASS Dialogue quantities recheck resources, physical range and capacity at selection time
+PASS The actual dialogue moves selected five supplies, lists the exact remaining stock, then switches to withdrawal
+PASS Deposit diagnostics are deep copies and cannot change live inventory, capacities or guard anchors
+PASS Storage migration rejects malformed, inherited, unsupported and excessive keys without altering its input
+PASS Migration has a hard bounded number of populated local deposits
+PASS A malformed or missing mass helper cannot fabricate space or let unsupported quantities enter a deposit
+PASS The true interaction picker selects the actual cupboard mesh and E opens its local deposit
+PASS Looking away from a cupboard leaves its storage action ineligible and keeps the original finite reserve accessible
+{"passed":50,"scope":"Controlled production interior storage models; not a native playthrough."}
+

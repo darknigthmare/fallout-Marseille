@@ -1,7 +1,7 @@
 # Commandes v0.50 — 28 octobre 2026
 
 - ZQSD / WASD : déplacement ; souris : regarder ; clic gauche : tirer.
-- X maintenu, clic droit avec le pointeur capturé ou bouton Visée maintenu : présenter l’arme FPS dans l’axe du viseur. Le maintien n’ajoute pas de bonus de précision. Le relâchement, une interface, une perte de focus, le rechargement ou un changement d’arme/scène libèrent la visée.
+- X maintenu, clic droit avec le pointeur capturé, bouton Visée maintenu ou LT de la manette standard : présenter l’arme FPS dans l’axe du viseur. Le maintien n’ajoute pas de bonus de précision. Le relâchement, une interface, une perte de focus, le rechargement ou un changement d’arme/scène libèrent la visée.
 - N : lancer une grenade à fragmentation possédée ; le bouton Grenade du HUD reste utilisable au tactile.
 - P : poser une mine à fragmentation possédée sur un support libre et admissible devant le personnage. E à portée la désamorce et la récupère, y compris pendant l’avertissement.
 - E : interagir, ouvrir ou fermer une porte intérieure compatible, utiliser un lit, une cuisine ou un établi admissible en regardant sa surface. Les choix de service vérifient leurs fournitures et leur contexte avant paiement.
@@ -21,3 +21,6 @@ Armure assistée : équiper la tenue, insérer un cœur neuf ou entamé, puis ac
 Le bouton HUD de charge ouvre le même diagnostic. Les six boutons sous le schéma restent utilisables au tactile. L’écran défile pour atteindre les devis et les modifications. Les essais tactiles et Gamepad émulés ne certifient pas un appareil physique.
 
 La partie de démonstration est séparée de la campagne. Le test du portillon peut toujours se terminer avec la manivelle.
+
+- Dans un intérieur, viser un rangement admissible puis E ouvre son dépôt local : fournitures à déposer/reprendre, capacité par meuble, stock initial vide. Les objets restent dans ce bâtiment et à cet étage.
+- Devant un distributeur Nuka-Cola : E, puis réparation ou achat dans le panneau. Échap ou B à la manette ferme le monnayeur. Les réserves ne se renouvellent pas après Continuer.

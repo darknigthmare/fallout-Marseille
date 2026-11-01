@@ -1,0 +1,43 @@
+✔ The shipped four-tile MNS payload is hash-addressed and has nineteen unchanged building identities (490.742939ms)
+✔ Validation clones metric mesh arrays and the raw geographic binding (2.584092ms)
+✔ Rejects frame before a surface is attached (0.566778ms)
+✔ Rejects product before a surface is attached (0.306943ms)
+✔ Rejects spacing before a surface is attached (0.242502ms)
+✔ Rejects HTTP source before a surface is attached (0.223728ms)
+✔ Rejects duplicate identity before a surface is attached (0.871777ms)
+✔ Rejects NaN vertex before a surface is attached (0.246069ms)
+✔ Rejects NoData before a surface is attached (0.300281ms)
+✔ Rejects bad face before a surface is attached (0.62137ms)
+✔ Rejects degenerate face before a surface is attached (0.455921ms)
+✔ Rejects unbound tile before a surface is attached (0.282748ms)
+✔ Rejects area gap before a surface is attached (0.205773ms)
+✔ Rejects boundary crack before a surface is attached (0.173814ms)
+✔ Rejects wrong upper bound before a surface is attached (0.26264ms)
+✔ A geographic reorder, altered source altitude or another ID cannot reuse a measured cap (0.666534ms)
+✔ A measured cap replaces only render walls/top while metric envelope and source remain exact (0.5412ms)
+✔ A source upper surface below the historical ground is refused without clamping its measured cells (0.259936ms)
+✔ Indexed triangle interpolation and padding follow the actual sloping source plane (4.185962ms)
+✔ The optional native cap loads before import and keeps the original draw identity and collider ownership (10.482664ms)
+✔ An existing geographic scene receives one cap without aliasing its original geometry (1.962543ms)
+✔ Missing or corrupt optional sources preserve the original geographic scene (2.882089ms)
+✔ Cancel while optional MNS is pending does not resume superseded navigation (1.112547ms)
+✔ The controlled synthetic geographic laboratory does not wait for or receive MNS geometry (1.446911ms)
+✔ A late MNS attachment invalidates a roof-support cache already read in the open world (1.418127ms)
+✔ An active cap clips a high invented bay, while a later source scene without that exact cap retains its original facade (5.163357ms)
+✔ A forged triangle spanning beyond a native 0.50 m cell is refused before indexing (0.229288ms)
+✔ Nonfinite probes and malformed or enormous index dimensions are bounded refusals (2.500236ms)
+✔ Municipal macros without a legacy origin and older macros with a contradictory origin both use the shared exterior frame (25.884089ms)
+✔ Real shipped MNS vertices project identically through the actual v046 shared-origin production functions (119.271683ms)
+✔ Preparing then cancelling an unpublished source duplicate keeps the active cap facade clipped (2.253986ms)
+✔ The seventeen previous MNS records and their three acquired tile receipts remain byte-defined and identical (238.286576ms)
+✔ The new actual source geometry and unmodified base support a measured render/collision cap: Chapelle et Hospice de la Vieille Charité (439.463915ms)
+✔ The new actual source geometry and unmodified base support a measured render/collision cap: Palais du Pharo (368.677081ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1736.552398
+

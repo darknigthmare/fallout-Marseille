@@ -119,7 +119,13 @@ v046Plan=function(lat,lon){
 const v051CityResourceBase=v046Resource;
 v046Resource=async function(key,signal){
  if(V046.lab)return v051CityResourceBase(key,signal);v051CityAbort(signal);
- if(key==='dem:'+V051_CITY_ID){if(!V051_CITY.terrainIndex)throw Error('Relief communal absent');return v051CityTerrain(V051_CITY.terrainIndex.base,signal,true);}
+ if(key==='dem:'+V051_CITY_ID){
+  if(!V051_CITY.terrainIndex)throw Error('Relief communal absent');
+  const resource=await v051CityTerrain(V051_CITY.terrainIndex.base,signal,true);
+  // The communal DEM bypasses the older regional resource wrapper. Load its
+  // optional, hash-verified imports too, before a staging bank adds the base.
+  await v050EnrichResource(resource,key,signal);v051CityAbort(signal);return resource;
+ }
  if(key.startsWith('citydem:')){const descriptor=V051_CITY.terrainIndex?.tiles.find(d=>d.sha256===key.slice(8));if(!descriptor)throw Error('Dalle communale inconnue');return v051CityTerrain(descriptor,signal);}
  let resource;
  if(!key.startsWith('dem:')){const[source,z0,x0,y0]=key.split(':'),z=+z0,x=+x0,y=+y0;

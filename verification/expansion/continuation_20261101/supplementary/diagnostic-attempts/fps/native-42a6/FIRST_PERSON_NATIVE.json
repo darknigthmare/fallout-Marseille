@@ -1,0 +1,7237 @@
+{
+  "scope": "Native foreground presentation pilot on unchanged production HTML.\n\nDiagnostic navigation selects authored Aubagne (not a surveyed Marseille view),\nplaces the camera at an existing collision-free road point, grants twelve ordinary\nweapons for a presentation matrix and ammunition for their real reload checks. Active\nsimulation is stepped with the inherited diagnostic v020Tick; UI inputs, Canvas,\nWebGL scene, collisions, firing, reload and browser storage remain production.\nNo network, renderer, input handler or localStorage is replaced.\n",
+  "checks": [
+    {
+      "name": "HTTP loads the exact frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Menu hides the foreground and refuses held aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Chosen authored road point is free under actual production collision",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native WebGL scene and projected foreground are both active",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Foreground really paints nontransparent pixels and leaves the central hip aperture clear",
+      "ok": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "solid": 8115,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "name": "Actual forward movement drives bounded foreground gait",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual sprint movement lowers the foreground stance",
+      "ok": true,
+      "detail": {
+        "origin": [
+          0.22215581804827772,
+          -0.24843182574938488,
+          0.82
+        ],
+        "yaw": 0.07999999999999999,
+        "pitch": 0.14,
+        "roll": 0.007768884299839863,
+        "aim": 0,
+        "proximity": 0,
+        "loading": false,
+        "reloadProgress": 0,
+        "reloadLift": 0,
+        "sprint": 1,
+        "melee": false
+      }
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: pistol10",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: pistol10",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: pistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family pistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: pistol10",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: revolver44",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: revolver44",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: pistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family pistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: revolver44",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: doubleBarrel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: doubleBarrel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: shotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family shotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: doubleBarrel",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: minigun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: minigun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: heavy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family heavy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: minigun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: rifle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family rifle",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: shotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family shotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: energy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family energy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: heavy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family heavy",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is enabled for a firearm: industrial",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family industrial",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: combatKnife",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: combatKnife",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is disabled for a melee weapon: combatKnife",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family blade",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: combatKnife",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: sledgehammer",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: sledgehammer",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is disabled for a melee weapon: sledgehammer",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family melee",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: sledgehammer",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary diagnostic grant succeeds for presentation: powerFist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Normal equip selects presentation weapon: powerFist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD aim action is disabled for a melee weapon: powerFist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native attached canvas shows family fist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native equipment selects the correct original presentation profile: powerFist",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "An existing authored wall has a collision-free close approach",
+      "ok": true,
+      "detail": {
+        "position": [
+          -57.05,
+          1.65,
+          24
+        ],
+        "yaw": 1.5707963267948966,
+        "collider": "aub-b1"
+      }
+    },
+    {
+      "name": "Actual wall occlusion lowers the viewmodel and refuses aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native held X aligns the sight presentation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aiming leaves the actual world direction and FOV unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Aiming consumes no ammunition, inventory or capsules",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native X release returns the grip to the hip",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Opening actual Pip-Boy clears held aim and hides hands",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Closing actual Pip-Boy restores the foreground without stuck aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual C hides the foreground in third person",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual C restores first person presentation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real pointer-locked left click emits exactly one ordinary pistol shot",
+      "ok": true,
+      "detail": {
+        "before": {
+          "mode": "PLAYING",
+          "cooldown": 0,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 0,
+          "queue": null,
+          "execution": null,
+          "ammo": 10,
+          "ap": 105,
+          "log": []
+        },
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.3,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 1,
+          "queue": null,
+          "execution": null,
+          "ammo": 9,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Actual emitted shot drives foreground recoil",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual R starts the ordinary reload and releases aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Active simulation exposes the reload hand pose",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real pistol reload retains its supporting grip and held magazine inside the frame",
+      "ok": true,
+      "detail": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "pistol",
+        "profile": "pistol",
+        "anchors": {
+          "triggerFinger": [
+            0.24642588081817035,
+            -0.18479505589001224,
+            0.9239965623607149
+          ],
+          "wrist1": [
+            0.2825082624315752,
+            -0.32574594628810294,
+            0.7568412207377501
+          ],
+          "grip1": [
+            0.27299794044471054,
+            -0.24154472132944813,
+            0.8260200288452058
+          ],
+          "wrist-1": [
+            0.06407927636576052,
+            -0.30450894146763163,
+            0.7116392005318616
+          ],
+          "grip-1": [
+            0.09836840907900574,
+            -0.21039523795574935,
+            0.8079923706835808
+          ],
+          "reloadPart": [
+            0.12524589543521428,
+            -0.16514104536865878,
+            0.8337539463431234
+          ],
+          "muzzle": [
+            0.20792136694734126,
+            -0.03755600050280852,
+            1.1002947840768034
+          ],
+          "sight": [
+            0.21562685039723775,
+            0.0037088618219701663,
+            1.0679399287669673
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            936.5092748805741,
+            612.3605581500739
+          ],
+          "wrist1": [
+            1023.0309029479525,
+            799.4095619919342
+          ],
+          "grip1": [
+            988.305352176131,
+            687.3927855170333
+          ],
+          "wrist-1": [
+            793.100151832981,
+            797.3767357909526
+          ],
+          "grip-1": [
+            818.8345822464997,
+            661.3923122748502
+          ],
+          "reloadPart": [
+            841.9512181963835,
+            610.7968994668532
+          ],
+          "muzzle": [
+            873.4089194406836,
+            477.7096362929779
+          ],
+          "sight": [
+            883.9141923909842,
+            447.18061508055223
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 953.4239771326347,
+            "right": 1067.1092997890646,
+            "top": 676.0768672039119,
+            "bottom": 809.8227056311166
+          },
+          "palm--1": {
+            "left": 749.0774976319165,
+            "right": 853.2896513784797,
+            "top": 642.5773564968247,
+            "bottom": 818.242013624539
+          },
+          "knuckles-1": {
+            "left": 972.754327972223,
+            "right": 1018.8711567286049,
+            "top": 628.396872760997,
+            "bottom": 714.8759356174492
+          },
+          "knuckles--1": {
+            "left": 783.030507143596,
+            "right": 826.3861678697522,
+            "top": 619.5456297869672,
+            "bottom": 670.7180273873474
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "slide": 6,
+          "ejection": 6,
+          "slide-rib": 30,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-magazine": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.131195564693722,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.11521774122511197,
+          "roll": -0.0987580639072388,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.30769230769230793,
+          "reloadLift": 0.8229838658936568,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 482,
+          "visibleFaces": 230
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "name": "Ordinary reload finishes with the original clip capacity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload inspection equips the ordinary weapon: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual shot debits finite ammunition before reload: pipeCarbine",
+      "ok": true,
+      "detail": {
+        "before": {
+          "mode": "PLAYING",
+          "cooldown": 0,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 1,
+          "queue": null,
+          "execution": null,
+          "ammo": 16,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        },
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.3,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 2,
+          "queue": null,
+          "execution": null,
+          "ammo": 15,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Native R starts this weapon reload: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real reload shows the corresponding feed part: pipeCarbine",
+      "ok": true,
+      "detail": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "rifle",
+        "profile": "rifle",
+        "anchors": {
+          "triggerFinger": [
+            0.24492383294389605,
+            -0.17668196887632467,
+            0.9252144449407885
+          ],
+          "wrist1": [
+            0.2781229841806433,
+            -0.32213670921366466,
+            0.761352506496998
+          ],
+          "grip1": [
+            0.2704058823471695,
+            -0.2362107198594654,
+            0.8286070282244911
+          ],
+          "wrist-1": [
+            0.02538473389482821,
+            -0.27660308208994033,
+            0.811027249127307
+          ],
+          "grip-1": [
+            0.061351578496945995,
+            -0.1832250081814077,
+            0.9029489022023379
+          ],
+          "reloadPart": [
+            0.08921168747801518,
+            -0.13804121036423303,
+            0.9277730586306967
+          ],
+          "muzzle": [
+            0.18866677100671936,
+            0.00457556791820668,
+            1.3049825957083008
+          ],
+          "sight": [
+            0.19740779396119462,
+            0.044916325872269236,
+            1.2717377800914096
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.9063193435484,
+            605.0280802370098
+          ],
+          "wrist1": [
+            1016.5593643660065,
+            793.4906971273981
+          ],
+          "grip1": [
+            984.9281249130269,
+            681.4256722284632
+          ],
+          "wrist-1": [
+            745.4095932198111,
+            726.8739600884032
+          ],
+          "grip-1": [
+            775.1598542729469,
+            614.7335732518934
+          ],
+          "reloadPart": [
+            798.0621557919571,
+            570.7890442809819
+          ],
+          "muzzle": [
+            837.3684152047321,
+            447.15356788926863
+          ],
+          "sight": [
+            846.016457098908,
+            421.32739220298447
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9758799245348,
+            "right": 1060.588911192486,
+            "top": 670.8666814528292,
+            "bottom": 802.9319219072752
+          },
+          "palm--1": {
+            "left": 707.2468823377308,
+            "right": 805.573709639683,
+            "top": 597.0383395212717,
+            "bottom": 746.5913635144414
+          },
+          "knuckles-1": {
+            "left": 968.793845780245,
+            "right": 1016.751914310987,
+            "top": 622.4799112658555,
+            "bottom": 708.9346408417873
+          },
+          "knuckles--1": {
+            "left": 744.8949272513125,
+            "right": 780.4611725533196,
+            "top": 577.709547726312,
+            "bottom": 621.7801807410259
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "stock": 10,
+          "butt-plate": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-magazine": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12505639589098672,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.1397744164360532,
+          "roll": -0.11980664265947416,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.48192771084337394,
+          "reloadLift": 0.9983886888289514,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 492,
+          "visibleFaces": 236
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "name": "Real support grip and reload part stay inside the viewport: pipeCarbine",
+      "ok": true,
+      "detail": {
+        "triggerFinger": [
+          934.9063193435484,
+          605.0280802370098
+        ],
+        "wrist1": [
+          1016.5593643660065,
+          793.4906971273981
+        ],
+        "grip1": [
+          984.9281249130269,
+          681.4256722284632
+        ],
+        "wrist-1": [
+          745.4095932198111,
+          726.8739600884032
+        ],
+        "grip-1": [
+          775.1598542729469,
+          614.7335732518934
+        ],
+        "reloadPart": [
+          798.0621557919571,
+          570.7890442809819
+        ],
+        "muzzle": [
+          837.3684152047321,
+          447.15356788926863
+        ],
+        "sight": [
+          846.016457098908,
+          421.32739220298447
+        ]
+      }
+    },
+    {
+      "name": "Reload finishes at the actual clip capacity with exactly conserved ammunition: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload feed part clears and no supplies or capsules are fabricated: pipeCarbine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload inspection equips the ordinary weapon: revolver44",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual shot debits finite ammunition before reload: revolver44",
+      "ok": true,
+      "detail": {
+        "before": {
+          "mode": "PLAYING",
+          "cooldown": 0,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 2,
+          "queue": null,
+          "execution": null,
+          "ammo": 6,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        },
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.65,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 3,
+          "queue": null,
+          "execution": null,
+          "ammo": 5,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Native R starts this weapon reload: revolver44",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real reload shows the corresponding feed part: revolver44",
+      "ok": true,
+      "detail": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "pistol",
+        "profile": "revolver",
+        "anchors": {
+          "triggerFinger": [
+            0.2449189834762393,
+            -0.1766557373046152,
+            0.925218302169294
+          ],
+          "wrist1": [
+            0.2781088185786899,
+            -0.32212475278340574,
+            0.7613671490409029
+          ],
+          "grip1": [
+            0.2703974991599441,
+            -0.23619334588467478,
+            0.8286154119272168
+          ],
+          "wrist-1": [
+            0.040068201387817845,
+            -0.2967159267996765,
+            0.708541893166214
+          ],
+          "grip-1": [
+            0.075989793873646,
+            -0.20334252879740944,
+            0.8004446283025964
+          ],
+          "cylinder": [
+            0.12381325929602204,
+            -0.0806565353130507,
+            0.8639627400917395
+          ],
+          "reloadPart": [
+            0.10385304297553297,
+            -0.15815902490525555,
+            0.8252657951872114
+          ],
+          "muzzle": [
+            0.20943219672943109,
+            -0.02464025068244384,
+            1.0980621038904173
+          ],
+          "sight": [
+            0.21817654656072302,
+            0.015697460929323087,
+            1.0648144668622928
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.9011682945171,
+            605.0044173540925
+          ],
+          "wrist1": [
+            1016.5385566340001,
+            793.4713423855256
+          ],
+          "grip1": [
+            984.9172311617688,
+            681.4063088785815
+          ],
+          "wrist-1": [
+            765.9086855144141,
+            789.9662999274473
+          ],
+          "grip-1": [
+            797.0698503010743,
+            656.2326722495991
+          ],
+          "cylinder": [
+            836.3409716221665,
+            525.7888108216483
+          ],
+          "reloadPart": [
+            822.1611856056956,
+            605.5824753480576
+          ],
+          "muzzle": [
+            874.8378341932557,
+            468.21707984363775
+          ],
+          "sight": [
+            886.3392211471435,
+            438.03215347326716
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9648084700876,
+            "right": 1060.5678697979224,
+            "top": 670.8497530130793,
+            "bottom": 802.909463256266
+          },
+          "palm--1": {
+            "left": 722.1656714119636,
+            "right": 831.4568221715634,
+            "top": 636.9161365795412,
+            "bottom": 811.202493151065
+          },
+          "knuckles-1": {
+            "left": 968.7811037979853,
+            "right": 1016.7450005903922,
+            "top": 622.4607725637014,
+            "bottom": 708.9153127647564
+          },
+          "knuckles--1": {
+            "left": 762.1363013987822,
+            "right": 804.2675930096763,
+            "top": 612.9621556001721,
+            "bottom": 666.3035720035032
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "revolver-frame": 6,
+          "revolver-backstrap": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "revolver-crane": 10,
+          "revolver-cylinder": 14,
+          "cylinder-chamber": 48,
+          "hammer": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-loader": 10,
+          "loader-round": 48
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12503662436525118,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13985350253899534,
+          "roll": -0.11987443074771029,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.48543689320388395,
+          "reloadLift": 0.9989535895642524,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 576,
+          "visibleFaces": 276
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "name": "Real support grip and reload part stay inside the viewport: revolver44",
+      "ok": true,
+      "detail": {
+        "triggerFinger": [
+          934.9011682945171,
+          605.0044173540925
+        ],
+        "wrist1": [
+          1016.5385566340001,
+          793.4713423855256
+        ],
+        "grip1": [
+          984.9172311617688,
+          681.4063088785815
+        ],
+        "wrist-1": [
+          765.9086855144141,
+          789.9662999274473
+        ],
+        "grip-1": [
+          797.0698503010743,
+          656.2326722495991
+        ],
+        "cylinder": [
+          836.3409716221665,
+          525.7888108216483
+        ],
+        "reloadPart": [
+          822.1611856056956,
+          605.5824753480576
+        ],
+        "muzzle": [
+          874.8378341932557,
+          468.21707984363775
+        ],
+        "sight": [
+          886.3392211471435,
+          438.03215347326716
+        ]
+      }
+    },
+    {
+      "name": "Reload finishes at the actual clip capacity with exactly conserved ammunition: revolver44",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload feed part clears and no supplies or capsules are fabricated: revolver44",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload inspection equips the ordinary weapon: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual shot debits finite ammunition before reload: dockShotgun",
+      "ok": true,
+      "detail": {
+        "before": {
+          "mode": "PLAYING",
+          "cooldown": 0,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 3,
+          "queue": null,
+          "execution": null,
+          "ammo": 2,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        },
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.72,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 4,
+          "queue": null,
+          "execution": null,
+          "ammo": 1,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 14.67,
+              "kind": "tir",
+              "text": "Fusil de quai · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Native R starts this weapon reload: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real reload shows the corresponding feed part: dockShotgun",
+      "ok": true,
+      "detail": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "shotgun",
+        "profile": "break-action",
+        "anchors": {
+          "triggerFinger": [
+            0.24492026957793134,
+            -0.17666269406624702,
+            0.9252172792615347
+          ],
+          "wrist1": [
+            0.27811257536776735,
+            -0.32212792387613354,
+            0.761363265722925
+          ],
+          "grip1": [
+            0.27039972242980725,
+            -0.23619795364163843,
+            0.8286131885114025
+          ],
+          "wrist-1": [
+            0.06624236257956136,
+            -0.2595140948258383,
+            0.8684029229833236
+          ],
+          "grip-1": [
+            0.10219997367724816,
+            -0.16613849981470166,
+            0.960312949546331
+          ],
+          "reloadPart": [
+            0.1300623900244641,
+            -0.12095491793106224,
+            0.9851349092485553
+          ],
+          "muzzle": [
+            0.16557381292568496,
+            -0.18599209233113415,
+            1.3067843176748875
+          ],
+          "sight": [
+            0.17386096330057865,
+            -0.11943425534223585,
+            1.3042589515582335
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.9025343618102,
+            605.010692857095
+          ],
+          "wrist1": [
+            1016.5440748876422,
+            793.4764755063859
+          ],
+          "grip1": [
+            984.9201202292458,
+            681.4114441921739
+          ],
+          "wrist-1": [
+            781.926292575391,
+            692.6052625209529
+          ],
+          "grip-1": [
+            806.3969760428126,
+            590.4488031827653
+          ],
+          "reloadPart": [
+            827.1806939889403,
+            549.6754868397244
+          ],
+          "muzzle": [
+            822.860416730668,
+            565.5449873850285
+          ],
+          "sight": [
+            828.2178244501621,
+            524.3405249378305
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9677446337056,
+            "right": 1060.5734500665817,
+            "top": 670.8542425827218,
+            "bottom": 802.915419527139
+          },
+          "palm--1": {
+            "left": 746.1676465165829,
+            "right": 835.0649065362194,
+            "top": 573.5000792959174,
+            "bottom": 711.6008901958558
+          },
+          "knuckles-1": {
+            "left": 968.7844830034151,
+            "right": 1016.7468341857834,
+            "top": 622.4658482611017,
+            "bottom": 708.9204387535619
+          },
+          "knuckles--1": {
+            "left": 776.7192660412678,
+            "right": 812.7572458195807,
+            "top": 556.3903915587191,
+            "bottom": 596.0556334131181
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "double-barrel": 20,
+          "double-chamber": 20,
+          "double-bore": 20,
+          "barrel-hinge": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "stock": 10,
+          "butt-plate": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-shell": 20,
+          "shell-base": 20
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.1250418678376593,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13983252864936274,
+          "roll": -0.11985645312802519,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.48442906574394506,
+          "reloadLift": 0.9988037760668766,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 566,
+          "visibleFaces": 277
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "name": "Real support grip and reload part stay inside the viewport: dockShotgun",
+      "ok": true,
+      "detail": {
+        "triggerFinger": [
+          934.9025343618102,
+          605.010692857095
+        ],
+        "wrist1": [
+          1016.5440748876422,
+          793.4764755063859
+        ],
+        "grip1": [
+          984.9201202292458,
+          681.4114441921739
+        ],
+        "wrist-1": [
+          781.926292575391,
+          692.6052625209529
+        ],
+        "grip-1": [
+          806.3969760428126,
+          590.4488031827653
+        ],
+        "reloadPart": [
+          827.1806939889403,
+          549.6754868397244
+        ],
+        "muzzle": [
+          822.860416730668,
+          565.5449873850285
+        ],
+        "sight": [
+          828.2178244501621,
+          524.3405249378305
+        ]
+      }
+    },
+    {
+      "name": "Reload finishes at the actual clip capacity with exactly conserved ammunition: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload feed part clears and no supplies or capsules are fabricated: dockShotgun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload inspection equips the ordinary weapon: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual shot debits finite ammunition before reload: laserPistol",
+      "ok": true,
+      "detail": {
+        "before": {
+          "mode": "PLAYING",
+          "cooldown": 0,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 4,
+          "queue": null,
+          "execution": null,
+          "ammo": 12,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 14.67,
+              "kind": "tir",
+              "text": "Fusil de quai · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        },
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.3,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 5,
+          "queue": null,
+          "execution": null,
+          "ammo": 11,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 14.67,
+              "kind": "tir",
+              "text": "Fusil de quai · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 19.47,
+              "kind": "tir",
+              "text": "Pistolet laser de service · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Native R starts this weapon reload: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real reload shows the corresponding feed part: laserPistol",
+      "ok": true,
+      "detail": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "energy",
+        "profile": "energy-pistol",
+        "anchors": {
+          "triggerFinger": [
+            0.2449119169642045,
+            -0.17661751291210365,
+            0.9252239219459589
+          ],
+          "wrist1": [
+            0.27808817676460745,
+            -0.3221073266891057,
+            0.761388486606746
+          ],
+          "grip1": [
+            0.27038528324133737,
+            -0.2361680272215383,
+            0.8286276287665989
+          ],
+          "wrist-1": [
+            0.0250223890420557,
+            -0.2351502682269351,
+            0.8555979359993385
+          ],
+          "grip-1": [
+            0.0609513805658065,
+            -0.14178075973764953,
+            0.9474800511568746
+          ],
+          "reloadPart": [
+            0.0888192049953841,
+            -0.09659768490166451,
+            0.9722968621914941
+          ],
+          "muzzle": [
+            0.20943929415543094,
+            -0.024580034765854686,
+            1.0980512874584707
+          ],
+          "sight": [
+            0.21818849163251883,
+            0.01575323708115725,
+            1.064799539750689
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.8936626056407,
+            604.9699365406061
+          ],
+          "wrist1": [
+            1016.5082371851965,
+            793.4431363900339
+          ],
+          "grip1": [
+            984.9013572081984,
+            681.3780919959614
+          ],
+          "wrist-1": [
+            743.7421250070637,
+            673.1188658407091
+          ],
+          "grip-1": [
+            772.2244669112343,
+            571.4808348364534
+          ],
+          "reloadPart": [
+            794.1597984447785,
+            530.6544580410505
+          ],
+          "muzzle": [
+            874.8446067693009,
+            468.17273990080344
+          ],
+          "sight": [
+            886.3506601360286,
+            437.9894610017126
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9486761525259,
+            "right": 1060.5372090061994,
+            "top": 670.825084110372,
+            "bottom": 802.8767347208926
+          },
+          "palm--1": {
+            "left": 707.5633120591783,
+            "right": 801.2006266235791,
+            "top": 554.0464107788516,
+            "bottom": 692.7111814569373
+          },
+          "knuckles-1": {
+            "left": 968.7625370499084,
+            "right": 1016.7349252953298,
+            "top": 622.4328837399569,
+            "bottom": 708.8871467343927
+          },
+          "knuckles--1": {
+            "left": 743.4401366654178,
+            "right": 777.1377706348906,
+            "top": 537.6295357897427,
+            "bottom": 576.3763519914243
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "energy-cell": 24,
+          "energy-shroud": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-cell": 6,
+          "held-cell-contact": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12500781437817102,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13996874248731597,
+          "roll": -0.11997320784627083,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.4932735426008973,
+          "reloadLift": 0.9997767320522569,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 476,
+          "visibleFaces": 230
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "name": "Real support grip and reload part stay inside the viewport: laserPistol",
+      "ok": true,
+      "detail": {
+        "triggerFinger": [
+          934.8936626056407,
+          604.9699365406061
+        ],
+        "wrist1": [
+          1016.5082371851965,
+          793.4431363900339
+        ],
+        "grip1": [
+          984.9013572081984,
+          681.3780919959614
+        ],
+        "wrist-1": [
+          743.7421250070637,
+          673.1188658407091
+        ],
+        "grip-1": [
+          772.2244669112343,
+          571.4808348364534
+        ],
+        "reloadPart": [
+          794.1597984447785,
+          530.6544580410505
+        ],
+        "muzzle": [
+          874.8446067693009,
+          468.17273990080344
+        ],
+        "sight": [
+          886.3506601360286,
+          437.9894610017126
+        ]
+      }
+    },
+    {
+      "name": "Reload finishes at the actual clip capacity with exactly conserved ammunition: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload feed part clears and no supplies or capsules are fabricated: laserPistol",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload inspection equips the ordinary weapon: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual shot debits finite ammunition before reload: missileLauncher",
+      "ok": true,
+      "detail": {
+        "before": {
+          "mode": "PLAYING",
+          "cooldown": 0,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 5,
+          "queue": null,
+          "execution": null,
+          "ammo": 1,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 14.67,
+              "kind": "tir",
+              "text": "Fusil de quai · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 19.47,
+              "kind": "tir",
+              "text": "Pistolet laser de service · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        },
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.55,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 6,
+          "queue": null,
+          "execution": null,
+          "ammo": 0,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 14.67,
+              "kind": "tir",
+              "text": "Fusil de quai · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 19.47,
+              "kind": "tir",
+              "text": "Pistolet laser de service · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 24.12,
+              "kind": "tir",
+              "text": "Lance-missiles · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Native R starts this weapon reload: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real reload shows the corresponding feed part: missileLauncher",
+      "ok": true,
+      "detail": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "heavy",
+        "profile": "launcher",
+        "anchors": {
+          "triggerFinger": [
+            0.24491390010537295,
+            -0.1766282402350917,
+            0.9252223449199771
+          ],
+          "wrist1": [
+            0.27809396967957883,
+            -0.3221122175566969,
+            0.7613824983449222
+          ],
+          "grip1": [
+            0.27038871152845667,
+            -0.23617513284729205,
+            0.828624200200788
+          ],
+          "wrist-1": [
+            0.0023061075904189828,
+            -0.2636753853778836,
+            0.8472918374505517
+          ],
+          "grip-1": [
+            0.03824721267038705,
+            -0.1703042205585904,
+            0.9391810829768665
+          ],
+          "reloadPart": [
+            0.0661137531274733,
+            -0.1251210252219944,
+            0.9639991163826096
+          ],
+          "muzzle": [
+            0.1720304558637332,
+            -0.013960457117863909,
+            1.4277262711645413
+          ],
+          "sight": [
+            0.18556215385622532,
+            0.061766030214297385,
+            1.389945425941439
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.8957689636615,
+            604.9796132015688
+          ],
+          "wrist1": [
+            1016.5167458938074,
+            793.4510524359766
+          ],
+          "grip1": [
+            984.9058120489967,
+            681.3860108990057
+          ],
+          "wrist-1": [
+            722.2095665473335,
+            702.6370900068736
+          ],
+          "grip-1": [
+            753.0606202960489,
+            597.2097645186428
+          ],
+          "reloadPart": [
+            775.6769862677776,
+            555.3693259504337
+          ],
+          "muzzle": [
+            817.8184850999245,
+            457.93807561408545
+          ],
+          "sight": [
+            828.3807618600639,
+            413.92448959778716
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.953203430959,
+            "right": 1060.545813611549,
+            "top": 670.832007323269,
+            "bottom": 802.8859199224601
+          },
+          "palm--1": {
+            "left": 685.7442650170626,
+            "right": 782.2457045390177,
+            "top": 579.9707698164275,
+            "bottom": 721.9250933682765
+          },
+          "knuckles-1": {
+            "left": 968.7677475471766,
+            "right": 1016.7377529162911,
+            "top": 622.4407104919886,
+            "bottom": 708.8950514317014
+          },
+          "knuckles--1": {
+            "left": 724.7547418305738,
+            "right": 757.1467224327744,
+            "top": 562.1704327507687,
+            "bottom": 603.2371810847376
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "launcher-tube": 12,
+          "launcher-bore": 12,
+          "launcher-breech": 12,
+          "launcher-band": 24,
+          "heavy-side-grip": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-rocket": 10,
+          "rocket-tip": 10
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12501589952874206,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13993640188503179,
+          "roll": -0.11994548733002723,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.4904051172707887,
+          "reloadLift": 0.999545727750227,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 490,
+          "visibleFaces": 231
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "name": "Real support grip and reload part stay inside the viewport: missileLauncher",
+      "ok": true,
+      "detail": {
+        "triggerFinger": [
+          934.8957689636615,
+          604.9796132015688
+        ],
+        "wrist1": [
+          1016.5167458938074,
+          793.4510524359766
+        ],
+        "grip1": [
+          984.9058120489967,
+          681.3860108990057
+        ],
+        "wrist-1": [
+          722.2095665473335,
+          702.6370900068736
+        ],
+        "grip-1": [
+          753.0606202960489,
+          597.2097645186428
+        ],
+        "reloadPart": [
+          775.6769862677776,
+          555.3693259504337
+        ],
+        "muzzle": [
+          817.8184850999245,
+          457.93807561408545
+        ],
+        "sight": [
+          828.3807618600639,
+          413.92448959778716
+        ]
+      }
+    },
+    {
+      "name": "Reload finishes at the actual clip capacity with exactly conserved ammunition: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload feed part clears and no supplies or capsules are fabricated: missileLauncher",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload inspection equips the ordinary weapon: minigun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual shot debits finite ammunition before reload: minigun",
+      "ok": true,
+      "detail": {
+        "before": {
+          "mode": "PLAYING",
+          "cooldown": 0,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 6,
+          "queue": null,
+          "execution": null,
+          "ammo": 120,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 14.67,
+              "kind": "tir",
+              "text": "Fusil de quai · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 19.47,
+              "kind": "tir",
+              "text": "Pistolet laser de service · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 24.12,
+              "kind": "tir",
+              "text": "Lance-missiles · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        },
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.55,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 7,
+          "queue": null,
+          "execution": null,
+          "ammo": 112,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 14.67,
+              "kind": "tir",
+              "text": "Fusil de quai · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 19.47,
+              "kind": "tir",
+              "text": "Pistolet laser de service · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 24.12,
+              "kind": "tir",
+              "text": "Lance-missiles · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 29.37,
+              "kind": "tir",
+              "text": "Minigun · 8 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Native R starts this weapon reload: minigun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real reload shows the corresponding feed part: minigun",
+      "ok": true,
+      "detail": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "heavy",
+        "profile": "heavy",
+        "anchors": {
+          "triggerFinger": [
+            0.24491358764412494,
+            -0.17662655005432953,
+            0.9252225933996266
+          ],
+          "wrist1": [
+            0.2780930569556523,
+            -0.3221114469794636,
+            0.7613834418427154
+          ],
+          "grip1": [
+            0.27038817137284976,
+            -0.23617401330480592,
+            0.8286247403992554
+          ],
+          "wrist-1": [
+            0.002302937219745738,
+            -0.26367246698889973,
+            0.8472872303300761
+          ],
+          "grip-1": [
+            0.038243232538459924,
+            -0.1703015194707561,
+            0.9391754564604469
+          ],
+          "reloadPart": [
+            0.06610997529894806,
+            -0.12511834311539594,
+            0.9639932972682448
+          ],
+          "muzzle": [
+            0.17681465404145996,
+            0.021435839948787866,
+            1.423195308423686
+          ],
+          "sight": [
+            0.18556270544790635,
+            0.06177016153134335,
+            1.3899445325069473
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.8954370867883,
+            604.9780885583591
+          ],
+          "wrist1": [
+            1016.5154052660275,
+            793.4498052109709
+          ],
+          "grip1": [
+            984.9051101490716,
+            681.3847632135733
+          ],
+          "wrist-1": [
+            722.2065408965124,
+            702.6356674888189
+          ],
+          "grip-1": [
+            753.0573779407605,
+            597.2083116239965
+          ],
+          "reloadPart": [
+            775.6741408832307,
+            555.3677032880967
+          ],
+          "muzzle": [
+            820.8589158673875,
+            437.7725316961872
+          ],
+          "sight": [
+            828.3811536923122,
+            413.92205344081435
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9524901142538,
+            "right": 1060.5444578797055,
+            "top": 670.8309165181832,
+            "bottom": 802.8844727284481
+          },
+          "palm--1": {
+            "left": 685.7409866469089,
+            "right": 782.242675517183,
+            "top": 579.9693558983182,
+            "bottom": 721.92358164625
+          },
+          "knuckles-1": {
+            "left": 968.766926584498,
+            "right": 1016.737307404881,
+            "top": 622.4394773213644,
+            "bottom": 708.8938059878938
+          },
+          "knuckles--1": {
+            "left": 724.751497281972,
+            "right": 757.1434797895856,
+            "top": 562.168598707676,
+            "bottom": 603.2358634958159
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "heavy-barrels": 20,
+          "heavy-side-grip": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-ammo-box": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12501462563915364,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13994149744338544,
+          "roll": -0.11994985495147321,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.49079754601226966,
+          "reloadLift": 0.9995821245956101,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 466,
+          "visibleFaces": 219
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "name": "Real support grip and reload part stay inside the viewport: minigun",
+      "ok": true,
+      "detail": {
+        "triggerFinger": [
+          934.8954370867883,
+          604.9780885583591
+        ],
+        "wrist1": [
+          1016.5154052660275,
+          793.4498052109709
+        ],
+        "grip1": [
+          984.9051101490716,
+          681.3847632135733
+        ],
+        "wrist-1": [
+          722.2065408965124,
+          702.6356674888189
+        ],
+        "grip-1": [
+          753.0573779407605,
+          597.2083116239965
+        ],
+        "reloadPart": [
+          775.6741408832307,
+          555.3677032880967
+        ],
+        "muzzle": [
+          820.8589158673875,
+          437.7725316961872
+        ],
+        "sight": [
+          828.3811536923122,
+          413.92205344081435
+        ]
+      }
+    },
+    {
+      "name": "Reload finishes at the actual clip capacity with exactly conserved ammunition: minigun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload feed part clears and no supplies or capsules are fabricated: minigun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload inspection equips the ordinary weapon: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual shot debits finite ammunition before reload: rivetGun",
+      "ok": true,
+      "detail": {
+        "before": {
+          "mode": "PLAYING",
+          "cooldown": 0,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 7,
+          "queue": null,
+          "execution": null,
+          "ammo": 8,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 14.67,
+              "kind": "tir",
+              "text": "Fusil de quai · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 19.47,
+              "kind": "tir",
+              "text": "Pistolet laser de service · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 24.12,
+              "kind": "tir",
+              "text": "Lance-missiles · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 29.37,
+              "kind": "tir",
+              "text": "Minigun · 8 munition(s) · 0 cible(s)"
+            }
+          ]
+        },
+        "after": {
+          "mode": "PLAYING",
+          "cooldown": 0.3,
+          "reload": 0,
+          "reloadWeapon": null,
+          "shots": 8,
+          "queue": null,
+          "execution": null,
+          "ammo": 7,
+          "ap": 105,
+          "log": [
+            {
+              "at": 1.92,
+              "kind": "tir",
+              "text": "Pistolet 10 mm · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 5.12,
+              "kind": "tir",
+              "text": "Carabine des ateliers · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 9.82,
+              "kind": "tir",
+              "text": "Revolver .44 · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 14.67,
+              "kind": "tir",
+              "text": "Fusil de quai · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 19.47,
+              "kind": "tir",
+              "text": "Pistolet laser de service · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 24.12,
+              "kind": "tir",
+              "text": "Lance-missiles · 1 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 29.37,
+              "kind": "tir",
+              "text": "Minigun · 8 munition(s) · 0 cible(s)"
+            },
+            {
+              "at": 34.67,
+              "kind": "tir",
+              "text": "Riveteuse de combat · 1 munition(s) · 0 cible(s)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Native R starts this weapon reload: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Real reload shows the corresponding feed part: rivetGun",
+      "ok": true,
+      "detail": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "industrial",
+        "profile": "industrial",
+        "anchors": {
+          "triggerFinger": [
+            0.2449135012098623,
+            -0.17662608250967257,
+            0.9252226621346904
+          ],
+          "wrist1": [
+            0.27809280447432533,
+            -0.3221112338179132,
+            0.7613837028371437
+          ],
+          "grip1": [
+            0.2703880219528073,
+            -0.2361737036118191,
+            0.8286248898312233
+          ],
+          "wrist-1": [
+            0.02501471833020172,
+            -0.2351650385543527,
+            0.8556744054168197
+          ],
+          "grip-1": [
+            0.060954789648887314,
+            -0.14179415114647043,
+            0.9475623495585231
+          ],
+          "reloadPart": [
+            0.08882158837118849,
+            -0.09661098004208432,
+            0.9723801370892947
+          ],
+          "muzzle": [
+            0.18867764029070472,
+            0.004698647474705192,
+            1.3049618755993702
+          ],
+          "sight": [
+            0.19742575099054502,
+            0.04503291474933099,
+            1.2717110494050876
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.8953452818132,
+            604.9776668055803
+          ],
+          "wrist1": [
+            1016.5150344166981,
+            793.4494601975275
+          ],
+          "grip1": [
+            984.904915986797,
+            681.3844180734429
+          ],
+          "wrist-1": [
+            743.7327256430722,
+            673.1129396374035
+          ],
+          "grip-1": [
+            772.2228517950906,
+            571.4817569445584
+          ],
+          "reloadPart": [
+            794.1554372142492,
+            530.6586506286997
+          ],
+          "muzzle": [
+            837.3770405943909,
+            447.076954457733
+          ],
+          "sight": [
+            846.0305691165046,
+            421.252362742158
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9522927940619,
+            "right": 1060.54408285188,
+            "top": 670.8306147748701,
+            "bottom": 802.8840723989503
+          },
+          "palm--1": {
+            "left": 707.5582496704525,
+            "right": 801.195634474673,
+            "top": 554.0467833622762,
+            "bottom": 692.7062318867158
+          },
+          "knuckles-1": {
+            "left": 968.7666994867776,
+            "right": 1016.7371841654261,
+            "top": 622.4391361966675,
+            "bottom": 708.8934614676268
+          },
+          "knuckles--1": {
+            "left": 743.4407862264472,
+            "right": 777.1350146785953,
+            "top": 537.6344406561896,
+            "bottom": 576.3760706636031
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "stock": 10,
+          "butt-plate": 6,
+          "pressure-canister": 10,
+          "gauge": 6,
+          "gauge-needle": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-cassette": 6,
+          "cassette-rivet": 24
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12501427325101339,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.1399429069959465,
+          "roll": -0.1199510631393827,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.5090909090909095,
+          "reloadLift": 0.9995921928281892,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 538,
+          "visibleFaces": 261
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "name": "Real support grip and reload part stay inside the viewport: rivetGun",
+      "ok": true,
+      "detail": {
+        "triggerFinger": [
+          934.8953452818132,
+          604.9776668055803
+        ],
+        "wrist1": [
+          1016.5150344166981,
+          793.4494601975275
+        ],
+        "grip1": [
+          984.904915986797,
+          681.3844180734429
+        ],
+        "wrist-1": [
+          743.7327256430722,
+          673.1129396374035
+        ],
+        "grip-1": [
+          772.2228517950906,
+          571.4817569445584
+        ],
+        "reloadPart": [
+          794.1554372142492,
+          530.6586506286997
+        ],
+        "muzzle": [
+          837.3770405943909,
+          447.076954457733
+        ],
+        "sight": [
+          846.0305691165046,
+          421.252362742158
+        ]
+      }
+    },
+    {
+      "name": "Reload finishes at the actual clip capacity with exactly conserved ammunition: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload feed part clears and no supplies or capsules are fabricated: rivetGun",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Portrait reuses one connected canvas at the actual viewport dimensions",
+      "ok": true,
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "solid": 6412,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "name": "Portrait places both real grip centres above the actual ammo panel",
+      "ok": true,
+      "detail": {
+        "foreground": {
+          "visible": true,
+          "reason": "première personne",
+          "family": "pistol",
+          "profile": "pistol",
+          "anchors": {
+            "triggerFinger": [
+              0.1273196953436449,
+              -0.16847709320695103,
+              0.888262613739977
+            ],
+            "wrist1": [
+              0.19075374169054218,
+              -0.28647709320695103,
+              0.7368389637903747
+            ],
+            "grip1": [
+              0.17291686012266247,
+              -0.21147709320695102,
+              0.8144459586808703
+            ],
+            "wrist-1": [
+              0.0653832168655109,
+              -0.276477093206951,
+              0.7242599532928742
+            ],
+            "grip-1": [
+              0.09071752806641262,
+              -0.18147709320695105,
+              0.8423792687157798
+            ],
+            "muzzle": [
+              0.08913677678695381,
+              -0.045477093206951036,
+              1.1085512079306274
+            ],
+            "sight": [
+              0.091932112453065,
+              -0.0004770932069510375,
+              1.0806910913028427
+            ]
+          },
+          "projectedAnchors": {
+            "triggerFinger": [
+              304.12259569206185,
+              566.3975943845486
+            ],
+            "wrist1": [
+              392.08835423778646,
+              717.9905180710925
+            ],
+            "grip1": [
+              356.6350525799521,
+              619.679457374562
+            ],
+            "wrist-1": [
+              263.72777629738914,
+              712.6197755972289
+            ],
+            "grip-1": [
+              276.9868155317573,
+              586.0116224629201
+            ],
+            "muzzle": [
+              256.21553464559685,
+              453.2318290512677
+            ],
+            "sight": [
+              259.762879300996,
+              422.33609507007543
+            ]
+          },
+          "projectedHandBounds": {
+            "palm-1": {
+              "left": 325.15154651906016,
+              "right": 432.28511744728763,
+              "top": 604.7232024692646,
+              "bottom": 733.556942639716
+            },
+            "palm--1": {
+              "left": 222.01846949676715,
+              "right": 308.9021036573418,
+              "top": 568.5469030059809,
+              "bottom": 731.2972131347053
+            },
+            "knuckles-1": {
+              "left": 350.08318322774517,
+              "right": 380.2832954974243,
+              "top": 566.7961011059382,
+              "bottom": 646.0518742957876
+            },
+            "knuckles--1": {
+              "left": 244.4630504059925,
+              "right": 280.14031039700143,
+              "top": 555.1540410356397,
+              "bottom": 589.4976239271851
+            }
+          },
+          "parts": {
+            "sleeve-1": 10,
+            "forearm-1": 10,
+            "cuff-1": 10,
+            "palm-1": 10,
+            "knuckles-1": 6,
+            "finger-1-0": 20,
+            "finger-1-1": 20,
+            "finger-1-2": 20,
+            "finger-1-3": 20,
+            "thumb-1": 20,
+            "sleeve--1": 10,
+            "forearm--1": 10,
+            "cuff--1": 10,
+            "palm--1": 10,
+            "knuckles--1": 6,
+            "finger--1-0": 20,
+            "finger--1-1": 20,
+            "finger--1-2": 20,
+            "finger--1-3": 20,
+            "thumb--1": 20,
+            "wrist-terminal": 6,
+            "wrist-screen": 6,
+            "wrist-health": 6,
+            "wrist-glyph": 18,
+            "wrist-knob": 8,
+            "receiver": 6,
+            "receiver-top": 6,
+            "pistol-grip": 6,
+            "barrel": 10,
+            "muzzle": 10,
+            "bore": 10,
+            "slide": 6,
+            "ejection": 6,
+            "slide-rib": 30,
+            "pistol-magazine": 6,
+            "rear-sight": 12,
+            "front-sight": 6,
+            "sight-bead": 6,
+            "trigger-guard": 20,
+            "trigger": 6
+          },
+          "aim": 0,
+          "aimHeld": false,
+          "proximity": 0,
+          "pose": {
+            "origin": [
+              0.11808846761453397,
+              -0.10647709320695103,
+              0.82
+            ],
+            "yaw": -0.1,
+            "pitch": 0,
+            "roll": 0,
+            "aim": 0,
+            "proximity": 0,
+            "loading": false,
+            "reloadProgress": 0,
+            "reloadLift": 0,
+            "sprint": 0,
+            "melee": false
+          },
+          "stats": {
+            "faces": 482,
+            "visibleFaces": 234
+          },
+          "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+          "worldCameraUnmodified": true,
+          "canvas": {
+            "width": 390,
+            "height": 844
+          }
+        },
+        "actual_ammo_box": {
+          "x": 211,
+          "y": 631.609375,
+          "width": 165,
+          "height": 86.390625
+        },
+        "limit": "Grip centres and finger roots clear the panel; lower palm heels or wrists may still pass beneath its translucent area."
+      }
+    },
+    {
+      "name": "Visible production hold-to-aim HUD action exists",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD pointerdown holds actual presentation aim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HUD pointerup releases aim without a stuck weapon",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing reduced motion setting applies the aim pose immediately",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reduced motion release immediately restores the static hip pose",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native pilot records no JavaScript exception",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "Native local production resources have no HTTP failure",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "All production and pilot inputs retain their frozen hashes",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_native_pistol_hip.png",
+      "sha256": "f2e51bc2acb84c889976ac10e330f237af3726c1ce1bf49045bccd8e60d5b1ec"
+    },
+    {
+      "file": "02_profile_revolver44.png",
+      "sha256": "eeadd000d1b4b1c95e7fb1c04bcb14f64cd90ab73657d99287a05e565ee08070"
+    },
+    {
+      "file": "02_profile_doubleBarrel.png",
+      "sha256": "f8f45de10574ea6006aa19c254af30fcc0fbc8e1cc2b5a75ac8aeb74d4fb3666"
+    },
+    {
+      "file": "02_matrix_rifle.png",
+      "sha256": "fc8946e38e8cbde3d474197a6188ff508c100f98464c84b0ebd6117f9b1f244f"
+    },
+    {
+      "file": "02_matrix_energy.png",
+      "sha256": "02e1d5be8c735d6257ccd649402e8e0d20fc7bb01b53c8d7b462db35960808ff"
+    },
+    {
+      "file": "02_matrix_blade.png",
+      "sha256": "1d72e6c918cfe21be8d7cfd5bd83119fe050830dd58e38c9e24fb103dc1a503e"
+    },
+    {
+      "file": "02b_native_wall_lowering.png",
+      "sha256": "c5e55cc1e2d7fb90653c7d22398a845081fe275366d3dc60d9873af6045d5f3a"
+    },
+    {
+      "file": "03_native_rifle_aim.png",
+      "sha256": "803f3bb8e8fa4e07814bb3d406067013044ad1c7765167c8e7fc727b26e8b111"
+    },
+    {
+      "file": "04_native_shot_recoil.png",
+      "sha256": "71e28a20e96646a665430f3d078f9d84c1dc6e10b5e6d606eb73d54bbc51e808"
+    },
+    {
+      "file": "05_native_reload_hands.png",
+      "sha256": "d9baa48a3c26fb404fb131521fa3db739d87a944c0a9edf0ee9667896ac25c30"
+    },
+    {
+      "file": "05_reload_revolver.png",
+      "sha256": "1ad71e9840b80cb7b24f647d5e4f3df8059ed1ad3387da896456a3b31f8841ad"
+    },
+    {
+      "file": "05_reload_break-action.png",
+      "sha256": "f19f0416c1eedd8627ba4df331035d7c098e25a05d44aff84c48e2e029a0f8f6"
+    },
+    {
+      "file": "05_reload_energy-pistol.png",
+      "sha256": "6f1f0d2e66fec2c1ae49dc9711696695894e151ebc6ca5b8d52e18409f89140e"
+    },
+    {
+      "file": "05_reload_launcher.png",
+      "sha256": "4f8c214a5c531c878a1de1bd9c9242e37467b13c99e6646efee83b313d016346"
+    },
+    {
+      "file": "06_native_portrait_hands.png",
+      "sha256": "5856af4c17e11f909e51dd240795a675766a64d52a96d9692906888bd136a90c"
+    },
+    {
+      "file": "07_native_portrait_reduced_motion.png",
+      "sha256": "7a7bb14bc2246e08a43e624866d2364f9c45c5da5bbb4b6080ebcd10b568b92f"
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:40969/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "local_http_errors": [],
+  "native_navigation": true,
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "input_hardware_claim": "Native Chromium mouse and keyboard; portrait pointer events are simulated by Playwright, not physical touch hardware.",
+  "assistance": [
+    "Existing authored Aubagne selected through v020Load.",
+    "Camera diagnostic at [0,1.65,85], actual production collision/LOS checked.",
+    "v020GrantWeapon equips twelve ordinary weapons for presentation inspection; not acquisition or balancing evidence.",
+    "v020Seed supplies finite ordinary ammunition reserves for the presentation reload matrix.",
+    "v020Tick(.05,true) steps active production simulation while frame progression is frozen for reproducible screenshots.",
+    "v028Settings controls existing reduceMotion/reducedFlashes settings for their visible checks."
+  ],
+  "url": "http://127.0.0.1:40969/index.html?skipboot",
+  "browser_version": "154.0.8037.57",
+  "passed": 142,
+  "failed": 0,
+  "elapsed_seconds": 43.272,
+  "pinned_inputs": {
+    "index.html": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "src/v050/17_first_person.js": "82007a80ceb75f32493763e3098bb7cc153e2bc56cc8f31367720408484bc293",
+    "src/v050/19_fps_hud.js": "56f0983e2b749bfa91f1ec9c890184970cdbd1e5431d3a2ead757354a76eb7cb",
+    "tests/expansion/first_person_native.py": "92bc88e40b72de398e195096b1012045c8f3164785b38c1ae4bcd245d349a2f4"
+  },
+  "weapon_matrix": [
+    {
+      "weapon": "pistol10",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "pistol",
+        "profile": "pistol",
+        "anchors": {
+          "triggerFinger": [
+            0.23923122772911096,
+            -0.222,
+            0.888262613739977
+          ],
+          "wrist1": [
+            0.3026652740760082,
+            -0.33999999999999997,
+            0.7368389637903747
+          ],
+          "grip1": [
+            0.2848283925081285,
+            -0.265,
+            0.8144459586808703
+          ],
+          "wrist-1": [
+            0.17729474925097696,
+            -0.33,
+            0.7242599532928742
+          ],
+          "grip-1": [
+            0.20262906045187865,
+            -0.235,
+            0.8423792687157798
+          ],
+          "muzzle": [
+            0.20104830917241984,
+            -0.099,
+            1.1085512079306274
+          ],
+          "sight": [
+            0.20384364483853104,
+            -0.054000000000000006,
+            1.0806910913028427
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            938.6437307107475,
+            652.895368963905
+          ],
+          "wrist1": [
+            1053.4652289137732,
+            824.5992274033072
+          ],
+          "grip1": [
+            1003.9105621425767,
+            714.1460646014625
+          ],
+          "wrist-1": [
+            918.7293192576024,
+            819.8963202918846
+          ],
+          "grip-1": [
+            915.2785780189212,
+            676.4752436403107
+          ],
+          "muzzle": [
+            867.2330161394245,
+            522.5003291885561
+          ],
+          "sight": [
+            873.1285422685231,
+            490.5651169014872
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 969.8003030333663,
+            "right": 1097.0839371276147,
+            "top": 699.2803837051238,
+            "bottom": 839.7608503099696
+          },
+          "palm--1": {
+            "left": 873.573500028516,
+            "right": 964.3793868328422,
+            "top": 658.9302472976392,
+            "bottom": 838.8192141913316
+          },
+          "knuckles-1": {
+            "left": 991.3438179288543,
+            "right": 1028.0068524630547,
+            "top": 654.9555851749818,
+            "bottom": 741.8735368103673
+          },
+          "knuckles--1": {
+            "left": 875.9008765543224,
+            "right": 923.702960886249,
+            "top": 641.1849317005217,
+            "bottom": 682.7813634830856
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "slide": 6,
+          "ejection": 6,
+          "slide-rib": 30,
+          "pistol-magazine": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.16,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 482,
+          "visibleFaces": 235
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 8115,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "revolver44",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "pistol",
+        "profile": "revolver",
+        "anchors": {
+          "triggerFinger": [
+            0.23923122772911096,
+            -0.222,
+            0.888262613739977
+          ],
+          "wrist1": [
+            0.3026652740760082,
+            -0.33999999999999997,
+            0.7368389637903747
+          ],
+          "grip1": [
+            0.2848283925081285,
+            -0.265,
+            0.8144459586808703
+          ],
+          "wrist-1": [
+            0.17729474925097696,
+            -0.33,
+            0.7242599532928742
+          ],
+          "grip-1": [
+            0.20262906045187865,
+            -0.235,
+            0.8423792687157798
+          ],
+          "cylinder": [
+            0.22400999500119032,
+            -0.136,
+            0.8797002499166815
+          ],
+          "muzzle": [
+            0.20104830917241984,
+            -0.099,
+            1.1085512079306274
+          ],
+          "sight": [
+            0.20384364483853104,
+            -0.054000000000000006,
+            1.0806910913028427
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            938.6437307107475,
+            652.895368963905
+          ],
+          "wrist1": [
+            1053.4652289137732,
+            824.5992274033072
+          ],
+          "grip1": [
+            1003.9105621425767,
+            714.1460646014625
+          ],
+          "wrist-1": [
+            918.7293192576024,
+            819.8963202918846
+          ],
+          "grip-1": [
+            915.2785780189212,
+            676.4752436403107
+          ],
+          "cylinder": [
+            926.7251065409396,
+            575.5060716796069
+          ],
+          "muzzle": [
+            867.2330161394245,
+            522.5003291885561
+          ],
+          "sight": [
+            873.1285422685231,
+            490.5651169014872
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 969.8003030333663,
+            "right": 1097.0839371276147,
+            "top": 699.2803837051238,
+            "bottom": 839.7608503099696
+          },
+          "palm--1": {
+            "left": 873.573500028516,
+            "right": 964.3793868328422,
+            "top": 658.9302472976392,
+            "bottom": 838.8192141913316
+          },
+          "knuckles-1": {
+            "left": 991.3438179288543,
+            "right": 1028.0068524630547,
+            "top": 654.9555851749818,
+            "bottom": 741.8735368103673
+          },
+          "knuckles--1": {
+            "left": 875.9008765543224,
+            "right": 923.702960886249,
+            "top": 641.1849317005217,
+            "bottom": 682.7813634830856
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "revolver-frame": 6,
+          "revolver-backstrap": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "revolver-crane": 10,
+          "revolver-cylinder": 14,
+          "cylinder-round": 48,
+          "hammer": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.16,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 518,
+          "visibleFaces": 253
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 7833,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "doubleBarrel",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "shotgun",
+        "profile": "break-action",
+        "anchors": {
+          "triggerFinger": [
+            0.23923122772911096,
+            -0.222,
+            0.888262613739977
+          ],
+          "wrist1": [
+            0.3026652740760082,
+            -0.33999999999999997,
+            0.7368389637903747
+          ],
+          "grip1": [
+            0.2848283925081285,
+            -0.265,
+            0.8144459586808703
+          ],
+          "wrist-1": [
+            0.0946261535031444,
+            -0.35,
+            0.9672206564468647
+          ],
+          "grip-1": [
+            0.15080559382766492,
+            -0.25,
+            1.0884348077858221
+          ],
+          "muzzle": [
+            0.18008329167658593,
+            -0.115,
+            1.317502082639013
+          ],
+          "sight": [
+            0.1828786273426971,
+            -0.054000000000000006,
+            1.2896419660112282
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            938.6437307107475,
+            652.895368963905
+          ],
+          "wrist1": [
+            1053.4652289137732,
+            824.5992274033072
+          ],
+          "grip1": [
+            1003.9105621425767,
+            714.1460646014625
+          ],
+          "wrist-1": [
+            799.4229779996564,
+            743.7670112413057
+          ],
+          "grip-1": [
+            832.4800686145629,
+            636.4653454816487
+          ],
+          "muzzle": [
+            830.9641404567114,
+            520.860966798848
+          ],
+          "sight": [
+            835.120943353225,
+            483.9926596749054
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 969.8003030333663,
+            "right": 1097.0839371276147,
+            "top": 699.2803837051238,
+            "bottom": 839.7608503099696
+          },
+          "palm--1": {
+            "left": 768.1398688947041,
+            "right": 857.2987530964276,
+            "top": 619.419798450952,
+            "bottom": 763.882651092619
+          },
+          "knuckles-1": {
+            "left": 991.3438179288543,
+            "right": 1028.0068524630547,
+            "top": 654.9555851749818,
+            "bottom": 741.8735368103673
+          },
+          "knuckles--1": {
+            "left": 804.5191452860488,
+            "right": 835.9557223024785,
+            "top": 610.3114160787562,
+            "bottom": 639.7544522856692
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "double-barrel": 20,
+          "double-chamber": 20,
+          "double-bore": 20,
+          "barrel-hinge": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "stock": 10,
+          "butt-plate": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.16,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 526,
+          "visibleFaces": 252
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9369,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "minigun",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "heavy",
+        "profile": "heavy",
+        "anchors": {
+          "triggerFinger": [
+            0.23923122772911096,
+            -0.222,
+            0.888262613739977
+          ],
+          "wrist1": [
+            0.3026652740760082,
+            -0.33999999999999997,
+            0.7368389637903747
+          ],
+          "grip1": [
+            0.2848283925081285,
+            -0.265,
+            0.8144459586808703
+          ],
+          "wrist-1": [
+            0.0946261535031444,
+            -0.35,
+            0.9672206564468647
+          ],
+          "grip-1": [
+            0.15080559382766492,
+            -0.25,
+            1.0884348077858221
+          ],
+          "muzzle": [
+            0.16810328167896654,
+            -0.099,
+            1.436902582472376
+          ],
+          "sight": [
+            0.17089861734507775,
+            -0.054000000000000006,
+            1.4090424658445913
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            938.6437307107475,
+            652.895368963905
+          ],
+          "wrist1": [
+            1053.4652289137732,
+            824.5992274033072
+          ],
+          "grip1": [
+            1003.9105621425767,
+            714.1460646014625
+          ],
+          "wrist-1": [
+            799.4229779996564,
+            743.7670112413057
+          ],
+          "grip-1": [
+            832.4800686145629,
+            636.4653454816487
+          ],
+          "muzzle": [
+            814.9750235330504,
+            505.93303852168907
+          ],
+          "sight": [
+            818.4634413179368,
+            481.1121641226182
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 969.8003030333663,
+            "right": 1097.0839371276147,
+            "top": 699.2803837051238,
+            "bottom": 839.7608503099696
+          },
+          "palm--1": {
+            "left": 768.1398688947041,
+            "right": 857.2987530964276,
+            "top": 619.419798450952,
+            "bottom": 763.882651092619
+          },
+          "knuckles-1": {
+            "left": 991.3438179288543,
+            "right": 1028.0068524630547,
+            "top": 654.9555851749818,
+            "bottom": 741.8735368103673
+          },
+          "knuckles--1": {
+            "left": 804.5191452860488,
+            "right": 835.9557223024785,
+            "top": 610.3114160787562,
+            "bottom": 639.7544522856692
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "heavy-barrels": 20,
+          "heavy-magazine": 6,
+          "heavy-side-grip": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.16,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 466,
+          "visibleFaces": 222
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 10738,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "pipeCarbine",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "rifle",
+        "profile": "rifle",
+        "anchors": {
+          "triggerFinger": [
+            0.23923122772911096,
+            -0.222,
+            0.888262613739977
+          ],
+          "wrist1": [
+            0.3026652740760082,
+            -0.33999999999999997,
+            0.7368389637903747
+          ],
+          "grip1": [
+            0.2848283925081285,
+            -0.265,
+            0.8144459586808703
+          ],
+          "wrist-1": [
+            0.0946261535031444,
+            -0.35,
+            0.9672206564468647
+          ],
+          "grip-1": [
+            0.15080559382766492,
+            -0.25,
+            1.0884348077858221
+          ],
+          "muzzle": [
+            0.18008329167658593,
+            -0.099,
+            1.317502082639013
+          ],
+          "sight": [
+            0.1828786273426971,
+            -0.054000000000000006,
+            1.2896419660112282
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            938.6437307107475,
+            652.895368963905
+          ],
+          "wrist1": [
+            1053.4652289137732,
+            824.5992274033072
+          ],
+          "grip1": [
+            1003.9105621425767,
+            714.1460646014625
+          ],
+          "wrist-1": [
+            799.4229779996564,
+            743.7670112413057
+          ],
+          "grip-1": [
+            832.4800686145629,
+            636.4653454816487
+          ],
+          "muzzle": [
+            830.9641404567114,
+            511.0020496790083
+          ],
+          "sight": [
+            835.120943353225,
+            483.9926596749054
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 969.8003030333663,
+            "right": 1097.0839371276147,
+            "top": 699.2803837051238,
+            "bottom": 839.7608503099696
+          },
+          "palm--1": {
+            "left": 768.1398688947041,
+            "right": 857.2987530964276,
+            "top": 619.419798450952,
+            "bottom": 763.882651092619
+          },
+          "knuckles-1": {
+            "left": 991.3438179288543,
+            "right": 1028.0068524630547,
+            "top": 654.9555851749818,
+            "bottom": 741.8735368103673
+          },
+          "knuckles--1": {
+            "left": 804.5191452860488,
+            "right": 835.9557223024785,
+            "top": 610.3114160787562,
+            "bottom": 639.7544522856692
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "magazine": 6,
+          "stock": 10,
+          "butt-plate": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.16,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 492,
+          "visibleFaces": 239
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9678,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "dockShotgun",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "shotgun",
+        "profile": "break-action",
+        "anchors": {
+          "triggerFinger": [
+            0.23923122772911096,
+            -0.222,
+            0.888262613739977
+          ],
+          "wrist1": [
+            0.3026652740760082,
+            -0.33999999999999997,
+            0.7368389637903747
+          ],
+          "grip1": [
+            0.2848283925081285,
+            -0.265,
+            0.8144459586808703
+          ],
+          "wrist-1": [
+            0.0946261535031444,
+            -0.35,
+            0.9672206564468647
+          ],
+          "grip-1": [
+            0.15080559382766492,
+            -0.25,
+            1.0884348077858221
+          ],
+          "muzzle": [
+            0.18008329167658593,
+            -0.115,
+            1.317502082639013
+          ],
+          "sight": [
+            0.1828786273426971,
+            -0.054000000000000006,
+            1.2896419660112282
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            938.6437307107475,
+            652.895368963905
+          ],
+          "wrist1": [
+            1053.4652289137732,
+            824.5992274033072
+          ],
+          "grip1": [
+            1003.9105621425767,
+            714.1460646014625
+          ],
+          "wrist-1": [
+            799.4229779996564,
+            743.7670112413057
+          ],
+          "grip-1": [
+            832.4800686145629,
+            636.4653454816487
+          ],
+          "muzzle": [
+            830.9641404567114,
+            520.860966798848
+          ],
+          "sight": [
+            835.120943353225,
+            483.9926596749054
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 969.8003030333663,
+            "right": 1097.0839371276147,
+            "top": 699.2803837051238,
+            "bottom": 839.7608503099696
+          },
+          "palm--1": {
+            "left": 768.1398688947041,
+            "right": 857.2987530964276,
+            "top": 619.419798450952,
+            "bottom": 763.882651092619
+          },
+          "knuckles-1": {
+            "left": 991.3438179288543,
+            "right": 1028.0068524630547,
+            "top": 654.9555851749818,
+            "bottom": 741.8735368103673
+          },
+          "knuckles--1": {
+            "left": 804.5191452860488,
+            "right": 835.9557223024785,
+            "top": 610.3114160787562,
+            "bottom": 639.7544522856692
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "double-barrel": 20,
+          "double-chamber": 20,
+          "double-bore": 20,
+          "barrel-hinge": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "stock": 10,
+          "butt-plate": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.16,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 526,
+          "visibleFaces": 252
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9369,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "laserPistol",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "energy",
+        "profile": "energy-pistol",
+        "anchors": {
+          "triggerFinger": [
+            0.23923122772911096,
+            -0.222,
+            0.888262613739977
+          ],
+          "wrist1": [
+            0.3026652740760082,
+            -0.33999999999999997,
+            0.7368389637903747
+          ],
+          "grip1": [
+            0.2848283925081285,
+            -0.265,
+            0.8144459586808703
+          ],
+          "wrist-1": [
+            0.17729474925097696,
+            -0.33,
+            0.7242599532928742
+          ],
+          "grip-1": [
+            0.20262906045187865,
+            -0.235,
+            0.8423792687157798
+          ],
+          "muzzle": [
+            0.20104830917241984,
+            -0.099,
+            1.1085512079306274
+          ],
+          "sight": [
+            0.20384364483853104,
+            -0.054000000000000006,
+            1.0806910913028427
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            938.6437307107475,
+            652.895368963905
+          ],
+          "wrist1": [
+            1053.4652289137732,
+            824.5992274033072
+          ],
+          "grip1": [
+            1003.9105621425767,
+            714.1460646014625
+          ],
+          "wrist-1": [
+            918.7293192576024,
+            819.8963202918846
+          ],
+          "grip-1": [
+            915.2785780189212,
+            676.4752436403107
+          ],
+          "muzzle": [
+            867.2330161394245,
+            522.5003291885561
+          ],
+          "sight": [
+            873.1285422685231,
+            490.5651169014872
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 969.8003030333663,
+            "right": 1097.0839371276147,
+            "top": 699.2803837051238,
+            "bottom": 839.7608503099696
+          },
+          "palm--1": {
+            "left": 873.573500028516,
+            "right": 964.3793868328422,
+            "top": 658.9302472976392,
+            "bottom": 838.8192141913316
+          },
+          "knuckles-1": {
+            "left": 991.3438179288543,
+            "right": 1028.0068524630547,
+            "top": 654.9555851749818,
+            "bottom": 741.8735368103673
+          },
+          "knuckles--1": {
+            "left": 875.9008765543224,
+            "right": 923.702960886249,
+            "top": 641.1849317005217,
+            "bottom": 682.7813634830856
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "energy-cell": 24,
+          "energy-shroud": 6,
+          "power-cell": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.16,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 470,
+          "visibleFaces": 229
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 8530,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "missileLauncher",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "heavy",
+        "profile": "launcher",
+        "anchors": {
+          "triggerFinger": [
+            0.23923122772911096,
+            -0.222,
+            0.888262613739977
+          ],
+          "wrist1": [
+            0.3026652740760082,
+            -0.33999999999999997,
+            0.7368389637903747
+          ],
+          "grip1": [
+            0.2848283925081285,
+            -0.265,
+            0.8144459586808703
+          ],
+          "wrist-1": [
+            0.0946261535031444,
+            -0.35,
+            0.9672206564468647
+          ],
+          "grip-1": [
+            0.15080559382766492,
+            -0.25,
+            1.0884348077858221
+          ],
+          "muzzle": [
+            0.16810328167896654,
+            -0.135,
+            1.436902582472376
+          ],
+          "sight": [
+            0.17089861734507775,
+            -0.054000000000000006,
+            1.4090424658445913
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            938.6437307107475,
+            652.895368963905
+          ],
+          "wrist1": [
+            1053.4652289137732,
+            824.5992274033072
+          ],
+          "grip1": [
+            1003.9105621425767,
+            714.1460646014625
+          ],
+          "wrist-1": [
+            799.4229779996564,
+            743.7670112413057
+          ],
+          "grip-1": [
+            832.4800686145629,
+            636.4653454816487
+          ],
+          "muzzle": [
+            814.9750235330504,
+            526.2723252568487
+          ],
+          "sight": [
+            818.4634413179368,
+            481.1121641226182
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 969.8003030333663,
+            "right": 1097.0839371276147,
+            "top": 699.2803837051238,
+            "bottom": 839.7608503099696
+          },
+          "palm--1": {
+            "left": 768.1398688947041,
+            "right": 857.2987530964276,
+            "top": 619.419798450952,
+            "bottom": 763.882651092619
+          },
+          "knuckles-1": {
+            "left": 991.3438179288543,
+            "right": 1028.0068524630547,
+            "top": 654.9555851749818,
+            "bottom": 741.8735368103673
+          },
+          "knuckles--1": {
+            "left": 804.5191452860488,
+            "right": 835.9557223024785,
+            "top": 610.3114160787562,
+            "bottom": 639.7544522856692
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "launcher-tube": 12,
+          "launcher-bore": 12,
+          "launcher-breech": 12,
+          "launcher-band": 24,
+          "heavy-side-grip": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.16,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 470,
+          "visibleFaces": 228
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 10278,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "rivetGun",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "industrial",
+        "profile": "industrial",
+        "anchors": {
+          "triggerFinger": [
+            0.23923122772911096,
+            -0.222,
+            0.888262613739977
+          ],
+          "wrist1": [
+            0.3026652740760082,
+            -0.33999999999999997,
+            0.7368389637903747
+          ],
+          "grip1": [
+            0.2848283925081285,
+            -0.265,
+            0.8144459586808703
+          ],
+          "wrist-1": [
+            0.0946261535031444,
+            -0.35,
+            0.9672206564468647
+          ],
+          "grip-1": [
+            0.15080559382766492,
+            -0.25,
+            1.0884348077858221
+          ],
+          "muzzle": [
+            0.18008329167658593,
+            -0.099,
+            1.317502082639013
+          ],
+          "sight": [
+            0.1828786273426971,
+            -0.054000000000000006,
+            1.2896419660112282
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            938.6437307107475,
+            652.895368963905
+          ],
+          "wrist1": [
+            1053.4652289137732,
+            824.5992274033072
+          ],
+          "grip1": [
+            1003.9105621425767,
+            714.1460646014625
+          ],
+          "wrist-1": [
+            799.4229779996564,
+            743.7670112413057
+          ],
+          "grip-1": [
+            832.4800686145629,
+            636.4653454816487
+          ],
+          "muzzle": [
+            830.9641404567114,
+            511.0020496790083
+          ],
+          "sight": [
+            835.120943353225,
+            483.9926596749054
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 969.8003030333663,
+            "right": 1097.0839371276147,
+            "top": 699.2803837051238,
+            "bottom": 839.7608503099696
+          },
+          "palm--1": {
+            "left": 768.1398688947041,
+            "right": 857.2987530964276,
+            "top": 619.419798450952,
+            "bottom": 763.882651092619
+          },
+          "knuckles-1": {
+            "left": 991.3438179288543,
+            "right": 1028.0068524630547,
+            "top": 654.9555851749818,
+            "bottom": 741.8735368103673
+          },
+          "knuckles--1": {
+            "left": 804.5191452860488,
+            "right": 835.9557223024785,
+            "top": 610.3114160787562,
+            "bottom": 639.7544522856692
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "stock": 10,
+          "butt-plate": 6,
+          "pressure-canister": 10,
+          "gauge": 6,
+          "gauge-needle": 6,
+          "rivet-cassette": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.16,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 514,
+          "visibleFaces": 249
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 9777,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "combatKnife",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "blade",
+        "profile": "blade",
+        "anchors": {
+          "wrist1": [
+            0.2768051557823503,
+            -0.395,
+            0.554093669749276
+          ],
+          "grip1": [
+            0.24194004998333632,
+            -0.3,
+            0.671198000999762
+          ],
+          "wrist-1": [
+            -0.19086345190427315,
+            -0.405,
+            0.5574213392724021
+          ],
+          "grip-1": [
+            -0.13914987531933784,
+            -0.28500000000000003,
+            0.6430116774934539
+          ],
+          "bladeBase": [
+            0.23,
+            -0.19,
+            0.67
+          ],
+          "bladeTip": [
+            0.23,
+            0.009999999999999981,
+            0.67
+          ],
+          "handleBase": [
+            0.23,
+            -0.345,
+            0.67
+          ],
+          "handleEnd": [
+            0.23,
+            -0.20500000000000002,
+            0.67
+          ]
+        },
+        "projectedAnchors": {
+          "wrist1": [
+            1125.556652674268,
+            1028.7279407913043
+          ],
+          "grip1": [
+            1012.6291966672319,
+            812.8533556400275
+          ],
+          "wrist-1": [
+            442.02884789212067,
+            1039.836951393682
+          ],
+          "grip-1": [
+            544.3191172862992,
+            809.8210308022213
+          ],
+          "bladeBase": [
+            998.6849890605856,
+            680.2180344413533
+          ],
+          "bladeTip": [
+            998.6849890605856,
+            437.88326134519195
+          ],
+          "handleBase": [
+            998.6849890605856,
+            868.0274835908783
+          ],
+          "handleEnd": [
+            998.6849890605856,
+            698.3931424235655
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 973.3480563441808,
+            "right": 1181.1094919004377,
+            "top": 793.551418826678,
+            "bottom": 1050.7609016745623
+          },
+          "palm--1": {
+            "left": 389.8819671289448,
+            "right": 585.1744228655613,
+            "top": 790.9343669970111,
+            "bottom": 1063.9920757438706
+          },
+          "knuckles-1": {
+            "left": 964.2743566534411,
+            "right": 1084.482833485866,
+            "top": 771.4574197687056,
+            "bottom": 831.0870427749429
+          },
+          "knuckles--1": {
+            "left": 485.54698941840843,
+            "right": 592.8397209171584,
+            "top": 766.7079810807145,
+            "bottom": 828.6777890345235
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "handle": 10,
+          "handle-wrap": 40,
+          "guard": 6,
+          "blade": 2,
+          "blade-spine": 10
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": true
+        },
+        "stats": {
+          "faces": 404,
+          "visibleFaces": 190
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 5453,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "sledgehammer",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "melee",
+        "profile": "melee",
+        "anchors": {
+          "wrist1": [
+            0.2768051557823503,
+            -0.395,
+            0.554093669749276
+          ],
+          "grip1": [
+            0.24194004998333632,
+            -0.3,
+            0.671198000999762
+          ],
+          "wrist-1": [
+            -0.19086345190427315,
+            -0.405,
+            0.5574213392724021
+          ],
+          "grip-1": [
+            -0.13914987531933784,
+            -0.28500000000000003,
+            0.6430116774934539
+          ]
+        },
+        "projectedAnchors": {
+          "wrist1": [
+            1125.556652674268,
+            1028.7279407913043
+          ],
+          "grip1": [
+            1012.6291966672319,
+            812.8533556400275
+          ],
+          "wrist-1": [
+            442.02884789212067,
+            1039.836951393682
+          ],
+          "grip-1": [
+            544.3191172862992,
+            809.8210308022213
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 973.3480563441808,
+            "right": 1181.1094919004377,
+            "top": 793.551418826678,
+            "bottom": 1050.7609016745623
+          },
+          "palm--1": {
+            "left": 389.8819671289448,
+            "right": 585.1744228655613,
+            "top": 790.9343669970111,
+            "bottom": 1063.9920757438706
+          },
+          "knuckles-1": {
+            "left": 964.2743566534411,
+            "right": 1084.482833485866,
+            "top": 771.4574197687056,
+            "bottom": 831.0870427749429
+          },
+          "knuckles--1": {
+            "left": 485.54698941840843,
+            "right": 592.8397209171584,
+            "top": 766.7079810807145,
+            "bottom": 828.6777890345235
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "handle": 10,
+          "handle-wrap": 40,
+          "hammer-head": 6,
+          "hammer-cap": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": true
+        },
+        "stats": {
+          "faces": 398,
+          "visibleFaces": 186
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 16815,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    },
+    {
+      "weapon": "powerFist",
+      "info": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "fist",
+        "profile": "fist",
+        "anchors": {
+          "wrist1": [
+            0.2768051557823503,
+            -0.395,
+            0.554093669749276
+          ],
+          "grip1": [
+            0.24194004998333632,
+            -0.3,
+            0.671198000999762
+          ],
+          "wrist-1": [
+            -0.19086345190427315,
+            -0.405,
+            0.5574213392724021
+          ],
+          "grip-1": [
+            -0.13914987531933784,
+            -0.28500000000000003,
+            0.6430116774934539
+          ]
+        },
+        "projectedAnchors": {
+          "wrist1": [
+            1125.556652674268,
+            1028.7279407913043
+          ],
+          "grip1": [
+            1012.6291966672319,
+            812.8533556400275
+          ],
+          "wrist-1": [
+            442.02884789212067,
+            1039.836951393682
+          ],
+          "grip-1": [
+            544.3191172862992,
+            809.8210308022213
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 973.3480563441808,
+            "right": 1181.1094919004377,
+            "top": 793.551418826678,
+            "bottom": 1050.7609016745623
+          },
+          "palm--1": {
+            "left": 389.8819671289448,
+            "right": 585.1744228655613,
+            "top": 790.9343669970111,
+            "bottom": 1063.9920757438706
+          },
+          "knuckles-1": {
+            "left": 964.2743566534411,
+            "right": 1084.482833485866,
+            "top": 771.4574197687056,
+            "bottom": 831.0870427749429
+          },
+          "knuckles--1": {
+            "left": 485.54698941840843,
+            "right": 592.8397209171584,
+            "top": 766.7079810807145,
+            "bottom": 828.6777890345235
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "powered-fist": 6,
+          "fist-plate": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.225,
+            0.67
+          ],
+          "yaw": -0.1,
+          "pitch": 0,
+          "roll": 0,
+          "aim": 0,
+          "proximity": 0,
+          "loading": false,
+          "reloadProgress": 0,
+          "reloadLift": 0,
+          "sprint": 0,
+          "melee": true
+        },
+        "stats": {
+          "faces": 348,
+          "visibleFaces": 162
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "pixels": {
+        "width": 1440,
+        "height": 900,
+        "solid": 8117,
+        "centre": 0,
+        "connected": true,
+        "visible": true
+      }
+    }
+  ],
+  "wall_approach": {
+    "position": [
+      -57.05,
+      1.65,
+      24
+    ],
+    "yaw": 1.5707963267948966,
+    "collider": "aub-b1"
+  },
+  "reload_matrix": [
+    {
+      "weapon": "pipeCarbine",
+      "profile": "rifle",
+      "middle": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "rifle",
+        "profile": "rifle",
+        "anchors": {
+          "triggerFinger": [
+            0.24492383294389605,
+            -0.17668196887632467,
+            0.9252144449407885
+          ],
+          "wrist1": [
+            0.2781229841806433,
+            -0.32213670921366466,
+            0.761352506496998
+          ],
+          "grip1": [
+            0.2704058823471695,
+            -0.2362107198594654,
+            0.8286070282244911
+          ],
+          "wrist-1": [
+            0.02538473389482821,
+            -0.27660308208994033,
+            0.811027249127307
+          ],
+          "grip-1": [
+            0.061351578496945995,
+            -0.1832250081814077,
+            0.9029489022023379
+          ],
+          "reloadPart": [
+            0.08921168747801518,
+            -0.13804121036423303,
+            0.9277730586306967
+          ],
+          "muzzle": [
+            0.18866677100671936,
+            0.00457556791820668,
+            1.3049825957083008
+          ],
+          "sight": [
+            0.19740779396119462,
+            0.044916325872269236,
+            1.2717377800914096
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.9063193435484,
+            605.0280802370098
+          ],
+          "wrist1": [
+            1016.5593643660065,
+            793.4906971273981
+          ],
+          "grip1": [
+            984.9281249130269,
+            681.4256722284632
+          ],
+          "wrist-1": [
+            745.4095932198111,
+            726.8739600884032
+          ],
+          "grip-1": [
+            775.1598542729469,
+            614.7335732518934
+          ],
+          "reloadPart": [
+            798.0621557919571,
+            570.7890442809819
+          ],
+          "muzzle": [
+            837.3684152047321,
+            447.15356788926863
+          ],
+          "sight": [
+            846.016457098908,
+            421.32739220298447
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9758799245348,
+            "right": 1060.588911192486,
+            "top": 670.8666814528292,
+            "bottom": 802.9319219072752
+          },
+          "palm--1": {
+            "left": 707.2468823377308,
+            "right": 805.573709639683,
+            "top": 597.0383395212717,
+            "bottom": 746.5913635144414
+          },
+          "knuckles-1": {
+            "left": 968.793845780245,
+            "right": 1016.751914310987,
+            "top": 622.4799112658555,
+            "bottom": 708.9346408417873
+          },
+          "knuckles--1": {
+            "left": 744.8949272513125,
+            "right": 780.4611725533196,
+            "top": 577.709547726312,
+            "bottom": 621.7801807410259
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "stock": 10,
+          "butt-plate": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-magazine": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12505639589098672,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.1397744164360532,
+          "roll": -0.11980664265947416,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.48192771084337394,
+          "reloadLift": 0.9983886888289514,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 492,
+          "visibleFaces": 236
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "before": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 16,
+        "ammoReserve": 59,
+        "clipSize": 16,
+        "weapon": "Carabine des ateliers",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "pipeCarbine",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      },
+      "after": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 16,
+        "ammoReserve": 58,
+        "clipSize": 16,
+        "weapon": "Carabine des ateliers",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "pipeCarbine",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      }
+    },
+    {
+      "weapon": "revolver44",
+      "profile": "revolver",
+      "middle": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "pistol",
+        "profile": "revolver",
+        "anchors": {
+          "triggerFinger": [
+            0.2449189834762393,
+            -0.1766557373046152,
+            0.925218302169294
+          ],
+          "wrist1": [
+            0.2781088185786899,
+            -0.32212475278340574,
+            0.7613671490409029
+          ],
+          "grip1": [
+            0.2703974991599441,
+            -0.23619334588467478,
+            0.8286154119272168
+          ],
+          "wrist-1": [
+            0.040068201387817845,
+            -0.2967159267996765,
+            0.708541893166214
+          ],
+          "grip-1": [
+            0.075989793873646,
+            -0.20334252879740944,
+            0.8004446283025964
+          ],
+          "cylinder": [
+            0.12381325929602204,
+            -0.0806565353130507,
+            0.8639627400917395
+          ],
+          "reloadPart": [
+            0.10385304297553297,
+            -0.15815902490525555,
+            0.8252657951872114
+          ],
+          "muzzle": [
+            0.20943219672943109,
+            -0.02464025068244384,
+            1.0980621038904173
+          ],
+          "sight": [
+            0.21817654656072302,
+            0.015697460929323087,
+            1.0648144668622928
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.9011682945171,
+            605.0044173540925
+          ],
+          "wrist1": [
+            1016.5385566340001,
+            793.4713423855256
+          ],
+          "grip1": [
+            984.9172311617688,
+            681.4063088785815
+          ],
+          "wrist-1": [
+            765.9086855144141,
+            789.9662999274473
+          ],
+          "grip-1": [
+            797.0698503010743,
+            656.2326722495991
+          ],
+          "cylinder": [
+            836.3409716221665,
+            525.7888108216483
+          ],
+          "reloadPart": [
+            822.1611856056956,
+            605.5824753480576
+          ],
+          "muzzle": [
+            874.8378341932557,
+            468.21707984363775
+          ],
+          "sight": [
+            886.3392211471435,
+            438.03215347326716
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9648084700876,
+            "right": 1060.5678697979224,
+            "top": 670.8497530130793,
+            "bottom": 802.909463256266
+          },
+          "palm--1": {
+            "left": 722.1656714119636,
+            "right": 831.4568221715634,
+            "top": 636.9161365795412,
+            "bottom": 811.202493151065
+          },
+          "knuckles-1": {
+            "left": 968.7811037979853,
+            "right": 1016.7450005903922,
+            "top": 622.4607725637014,
+            "bottom": 708.9153127647564
+          },
+          "knuckles--1": {
+            "left": 762.1363013987822,
+            "right": 804.2675930096763,
+            "top": 612.9621556001721,
+            "bottom": 666.3035720035032
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "revolver-frame": 6,
+          "revolver-backstrap": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "revolver-crane": 10,
+          "revolver-cylinder": 14,
+          "cylinder-chamber": 48,
+          "hammer": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-loader": 10,
+          "loader-round": 48
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12503662436525118,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13985350253899534,
+          "roll": -0.11987443074771029,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.48543689320388395,
+          "reloadLift": 0.9989535895642524,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 576,
+          "visibleFaces": 276
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "before": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 6,
+        "ammoReserve": 30,
+        "clipSize": 6,
+        "weapon": "Revolver .44",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "revolver44",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      },
+      "after": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 6,
+        "ammoReserve": 29,
+        "clipSize": 6,
+        "weapon": "Revolver .44",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "revolver44",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      }
+    },
+    {
+      "weapon": "dockShotgun",
+      "profile": "break-action",
+      "middle": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "shotgun",
+        "profile": "break-action",
+        "anchors": {
+          "triggerFinger": [
+            0.24492026957793134,
+            -0.17666269406624702,
+            0.9252172792615347
+          ],
+          "wrist1": [
+            0.27811257536776735,
+            -0.32212792387613354,
+            0.761363265722925
+          ],
+          "grip1": [
+            0.27039972242980725,
+            -0.23619795364163843,
+            0.8286131885114025
+          ],
+          "wrist-1": [
+            0.06624236257956136,
+            -0.2595140948258383,
+            0.8684029229833236
+          ],
+          "grip-1": [
+            0.10219997367724816,
+            -0.16613849981470166,
+            0.960312949546331
+          ],
+          "reloadPart": [
+            0.1300623900244641,
+            -0.12095491793106224,
+            0.9851349092485553
+          ],
+          "muzzle": [
+            0.16557381292568496,
+            -0.18599209233113415,
+            1.3067843176748875
+          ],
+          "sight": [
+            0.17386096330057865,
+            -0.11943425534223585,
+            1.3042589515582335
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.9025343618102,
+            605.010692857095
+          ],
+          "wrist1": [
+            1016.5440748876422,
+            793.4764755063859
+          ],
+          "grip1": [
+            984.9201202292458,
+            681.4114441921739
+          ],
+          "wrist-1": [
+            781.926292575391,
+            692.6052625209529
+          ],
+          "grip-1": [
+            806.3969760428126,
+            590.4488031827653
+          ],
+          "reloadPart": [
+            827.1806939889403,
+            549.6754868397244
+          ],
+          "muzzle": [
+            822.860416730668,
+            565.5449873850285
+          ],
+          "sight": [
+            828.2178244501621,
+            524.3405249378305
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9677446337056,
+            "right": 1060.5734500665817,
+            "top": 670.8542425827218,
+            "bottom": 802.915419527139
+          },
+          "palm--1": {
+            "left": 746.1676465165829,
+            "right": 835.0649065362194,
+            "top": 573.5000792959174,
+            "bottom": 711.6008901958558
+          },
+          "knuckles-1": {
+            "left": 968.7844830034151,
+            "right": 1016.7468341857834,
+            "top": 622.4658482611017,
+            "bottom": 708.9204387535619
+          },
+          "knuckles--1": {
+            "left": 776.7192660412678,
+            "right": 812.7572458195807,
+            "top": 556.3903915587191,
+            "bottom": 596.0556334131181
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "double-barrel": 20,
+          "double-chamber": 20,
+          "double-bore": 20,
+          "barrel-hinge": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "stock": 10,
+          "butt-plate": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-shell": 20,
+          "shell-base": 20
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.1250418678376593,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13983252864936274,
+          "roll": -0.11985645312802519,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.48442906574394506,
+          "reloadLift": 0.9988037760668766,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 566,
+          "visibleFaces": 277
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "before": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 2,
+        "ammoReserve": 20,
+        "clipSize": 2,
+        "weapon": "Fusil de quai",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "dockShotgun",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      },
+      "after": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 2,
+        "ammoReserve": 19,
+        "clipSize": 2,
+        "weapon": "Fusil de quai",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "dockShotgun",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      }
+    },
+    {
+      "weapon": "laserPistol",
+      "profile": "energy-pistol",
+      "middle": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "energy",
+        "profile": "energy-pistol",
+        "anchors": {
+          "triggerFinger": [
+            0.2449119169642045,
+            -0.17661751291210365,
+            0.9252239219459589
+          ],
+          "wrist1": [
+            0.27808817676460745,
+            -0.3221073266891057,
+            0.761388486606746
+          ],
+          "grip1": [
+            0.27038528324133737,
+            -0.2361680272215383,
+            0.8286276287665989
+          ],
+          "wrist-1": [
+            0.0250223890420557,
+            -0.2351502682269351,
+            0.8555979359993385
+          ],
+          "grip-1": [
+            0.0609513805658065,
+            -0.14178075973764953,
+            0.9474800511568746
+          ],
+          "reloadPart": [
+            0.0888192049953841,
+            -0.09659768490166451,
+            0.9722968621914941
+          ],
+          "muzzle": [
+            0.20943929415543094,
+            -0.024580034765854686,
+            1.0980512874584707
+          ],
+          "sight": [
+            0.21818849163251883,
+            0.01575323708115725,
+            1.064799539750689
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.8936626056407,
+            604.9699365406061
+          ],
+          "wrist1": [
+            1016.5082371851965,
+            793.4431363900339
+          ],
+          "grip1": [
+            984.9013572081984,
+            681.3780919959614
+          ],
+          "wrist-1": [
+            743.7421250070637,
+            673.1188658407091
+          ],
+          "grip-1": [
+            772.2244669112343,
+            571.4808348364534
+          ],
+          "reloadPart": [
+            794.1597984447785,
+            530.6544580410505
+          ],
+          "muzzle": [
+            874.8446067693009,
+            468.17273990080344
+          ],
+          "sight": [
+            886.3506601360286,
+            437.9894610017126
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9486761525259,
+            "right": 1060.5372090061994,
+            "top": 670.825084110372,
+            "bottom": 802.8767347208926
+          },
+          "palm--1": {
+            "left": 707.5633120591783,
+            "right": 801.2006266235791,
+            "top": 554.0464107788516,
+            "bottom": 692.7111814569373
+          },
+          "knuckles-1": {
+            "left": 968.7625370499084,
+            "right": 1016.7349252953298,
+            "top": 622.4328837399569,
+            "bottom": 708.8871467343927
+          },
+          "knuckles--1": {
+            "left": 743.4401366654178,
+            "right": 777.1377706348906,
+            "top": 537.6295357897427,
+            "bottom": 576.3763519914243
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "energy-cell": 24,
+          "energy-shroud": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-cell": 6,
+          "held-cell-contact": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12500781437817102,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13996874248731597,
+          "roll": -0.11997320784627083,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.4932735426008973,
+          "reloadLift": 0.9997767320522569,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 476,
+          "visibleFaces": 230
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "before": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 12,
+        "ammoReserve": 40,
+        "clipSize": 12,
+        "weapon": "Pistolet laser de service",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "laserPistol",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      },
+      "after": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 12,
+        "ammoReserve": 39,
+        "clipSize": 12,
+        "weapon": "Pistolet laser de service",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "laserPistol",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      }
+    },
+    {
+      "weapon": "missileLauncher",
+      "profile": "launcher",
+      "middle": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "heavy",
+        "profile": "launcher",
+        "anchors": {
+          "triggerFinger": [
+            0.24491390010537295,
+            -0.1766282402350917,
+            0.9252223449199771
+          ],
+          "wrist1": [
+            0.27809396967957883,
+            -0.3221122175566969,
+            0.7613824983449222
+          ],
+          "grip1": [
+            0.27038871152845667,
+            -0.23617513284729205,
+            0.828624200200788
+          ],
+          "wrist-1": [
+            0.0023061075904189828,
+            -0.2636753853778836,
+            0.8472918374505517
+          ],
+          "grip-1": [
+            0.03824721267038705,
+            -0.1703042205585904,
+            0.9391810829768665
+          ],
+          "reloadPart": [
+            0.0661137531274733,
+            -0.1251210252219944,
+            0.9639991163826096
+          ],
+          "muzzle": [
+            0.1720304558637332,
+            -0.013960457117863909,
+            1.4277262711645413
+          ],
+          "sight": [
+            0.18556215385622532,
+            0.061766030214297385,
+            1.389945425941439
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.8957689636615,
+            604.9796132015688
+          ],
+          "wrist1": [
+            1016.5167458938074,
+            793.4510524359766
+          ],
+          "grip1": [
+            984.9058120489967,
+            681.3860108990057
+          ],
+          "wrist-1": [
+            722.2095665473335,
+            702.6370900068736
+          ],
+          "grip-1": [
+            753.0606202960489,
+            597.2097645186428
+          ],
+          "reloadPart": [
+            775.6769862677776,
+            555.3693259504337
+          ],
+          "muzzle": [
+            817.8184850999245,
+            457.93807561408545
+          ],
+          "sight": [
+            828.3807618600639,
+            413.92448959778716
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.953203430959,
+            "right": 1060.545813611549,
+            "top": 670.832007323269,
+            "bottom": 802.8859199224601
+          },
+          "palm--1": {
+            "left": 685.7442650170626,
+            "right": 782.2457045390177,
+            "top": 579.9707698164275,
+            "bottom": 721.9250933682765
+          },
+          "knuckles-1": {
+            "left": 968.7677475471766,
+            "right": 1016.7377529162911,
+            "top": 622.4407104919886,
+            "bottom": 708.8950514317014
+          },
+          "knuckles--1": {
+            "left": 724.7547418305738,
+            "right": 757.1467224327744,
+            "top": 562.1704327507687,
+            "bottom": 603.2371810847376
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "launcher-tube": 12,
+          "launcher-bore": 12,
+          "launcher-breech": 12,
+          "launcher-band": 24,
+          "heavy-side-grip": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-rocket": 10,
+          "rocket-tip": 10
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12501589952874206,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13993640188503179,
+          "roll": -0.11994548733002723,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.4904051172707887,
+          "reloadLift": 0.999545727750227,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 490,
+          "visibleFaces": 231
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "before": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 1,
+        "ammoReserve": 4,
+        "clipSize": 1,
+        "weapon": "Lance-missiles",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "missileLauncher",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      },
+      "after": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 1,
+        "ammoReserve": 3,
+        "clipSize": 1,
+        "weapon": "Lance-missiles",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "missileLauncher",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      }
+    },
+    {
+      "weapon": "minigun",
+      "profile": "heavy",
+      "middle": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "heavy",
+        "profile": "heavy",
+        "anchors": {
+          "triggerFinger": [
+            0.24491358764412494,
+            -0.17662655005432953,
+            0.9252225933996266
+          ],
+          "wrist1": [
+            0.2780930569556523,
+            -0.3221114469794636,
+            0.7613834418427154
+          ],
+          "grip1": [
+            0.27038817137284976,
+            -0.23617401330480592,
+            0.8286247403992554
+          ],
+          "wrist-1": [
+            0.002302937219745738,
+            -0.26367246698889973,
+            0.8472872303300761
+          ],
+          "grip-1": [
+            0.038243232538459924,
+            -0.1703015194707561,
+            0.9391754564604469
+          ],
+          "reloadPart": [
+            0.06610997529894806,
+            -0.12511834311539594,
+            0.9639932972682448
+          ],
+          "muzzle": [
+            0.17681465404145996,
+            0.021435839948787866,
+            1.423195308423686
+          ],
+          "sight": [
+            0.18556270544790635,
+            0.06177016153134335,
+            1.3899445325069473
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.8954370867883,
+            604.9780885583591
+          ],
+          "wrist1": [
+            1016.5154052660275,
+            793.4498052109709
+          ],
+          "grip1": [
+            984.9051101490716,
+            681.3847632135733
+          ],
+          "wrist-1": [
+            722.2065408965124,
+            702.6356674888189
+          ],
+          "grip-1": [
+            753.0573779407605,
+            597.2083116239965
+          ],
+          "reloadPart": [
+            775.6741408832307,
+            555.3677032880967
+          ],
+          "muzzle": [
+            820.8589158673875,
+            437.7725316961872
+          ],
+          "sight": [
+            828.3811536923122,
+            413.92205344081435
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9524901142538,
+            "right": 1060.5444578797055,
+            "top": 670.8309165181832,
+            "bottom": 802.8844727284481
+          },
+          "palm--1": {
+            "left": 685.7409866469089,
+            "right": 782.242675517183,
+            "top": 579.9693558983182,
+            "bottom": 721.92358164625
+          },
+          "knuckles-1": {
+            "left": 968.766926584498,
+            "right": 1016.737307404881,
+            "top": 622.4394773213644,
+            "bottom": 708.8938059878938
+          },
+          "knuckles--1": {
+            "left": 724.751497281972,
+            "right": 757.1434797895856,
+            "top": 562.168598707676,
+            "bottom": 603.2358634958159
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "heavy-barrels": 20,
+          "heavy-side-grip": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-ammo-box": 6
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12501462563915364,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.13994149744338544,
+          "roll": -0.11994985495147321,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.49079754601226966,
+          "reloadLift": 0.9995821245956101,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 466,
+          "visibleFaces": 219
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "before": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 120,
+        "ammoReserve": 160,
+        "clipSize": 120,
+        "weapon": "Minigun",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "minigun",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      },
+      "after": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 120,
+        "ammoReserve": 152,
+        "clipSize": 120,
+        "weapon": "Minigun",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "minigun",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      }
+    },
+    {
+      "weapon": "rivetGun",
+      "profile": "industrial",
+      "middle": {
+        "visible": true,
+        "reason": "première personne",
+        "family": "industrial",
+        "profile": "industrial",
+        "anchors": {
+          "triggerFinger": [
+            0.2449135012098623,
+            -0.17662608250967257,
+            0.9252226621346904
+          ],
+          "wrist1": [
+            0.27809280447432533,
+            -0.3221112338179132,
+            0.7613837028371437
+          ],
+          "grip1": [
+            0.2703880219528073,
+            -0.2361737036118191,
+            0.8286248898312233
+          ],
+          "wrist-1": [
+            0.02501471833020172,
+            -0.2351650385543527,
+            0.8556744054168197
+          ],
+          "grip-1": [
+            0.060954789648887314,
+            -0.14179415114647043,
+            0.9475623495585231
+          ],
+          "reloadPart": [
+            0.08882158837118849,
+            -0.09661098004208432,
+            0.9723801370892947
+          ],
+          "muzzle": [
+            0.18867764029070472,
+            0.004698647474705192,
+            1.3049618755993702
+          ],
+          "sight": [
+            0.19742575099054502,
+            0.04503291474933099,
+            1.2717110494050876
+          ]
+        },
+        "projectedAnchors": {
+          "triggerFinger": [
+            934.8953452818132,
+            604.9776668055803
+          ],
+          "wrist1": [
+            1016.5150344166981,
+            793.4494601975275
+          ],
+          "grip1": [
+            984.904915986797,
+            681.3844180734429
+          ],
+          "wrist-1": [
+            743.7327256430722,
+            673.1129396374035
+          ],
+          "grip-1": [
+            772.2228517950906,
+            571.4817569445584
+          ],
+          "reloadPart": [
+            794.1554372142492,
+            530.6586506286997
+          ],
+          "muzzle": [
+            837.3770405943909,
+            447.076954457733
+          ],
+          "sight": [
+            846.0305691165046,
+            421.252362742158
+          ]
+        },
+        "projectedHandBounds": {
+          "palm-1": {
+            "left": 949.9522927940619,
+            "right": 1060.54408285188,
+            "top": 670.8306147748701,
+            "bottom": 802.8840723989503
+          },
+          "palm--1": {
+            "left": 707.5582496704525,
+            "right": 801.195634474673,
+            "top": 554.0467833622762,
+            "bottom": 692.7062318867158
+          },
+          "knuckles-1": {
+            "left": 968.7666994867776,
+            "right": 1016.7371841654261,
+            "top": 622.4391361966675,
+            "bottom": 708.8934614676268
+          },
+          "knuckles--1": {
+            "left": 743.4407862264472,
+            "right": 777.1350146785953,
+            "top": 537.6344406561896,
+            "bottom": 576.3760706636031
+          }
+        },
+        "parts": {
+          "sleeve-1": 10,
+          "forearm-1": 10,
+          "cuff-1": 10,
+          "palm-1": 10,
+          "knuckles-1": 6,
+          "finger-1-0": 20,
+          "finger-1-1": 20,
+          "finger-1-2": 20,
+          "finger-1-3": 20,
+          "thumb-1": 20,
+          "sleeve--1": 10,
+          "forearm--1": 10,
+          "cuff--1": 10,
+          "palm--1": 10,
+          "knuckles--1": 6,
+          "finger--1-0": 20,
+          "finger--1-1": 20,
+          "finger--1-2": 20,
+          "finger--1-3": 20,
+          "thumb--1": 20,
+          "wrist-terminal": 6,
+          "wrist-screen": 6,
+          "wrist-health": 6,
+          "wrist-glyph": 18,
+          "wrist-knob": 8,
+          "receiver": 6,
+          "receiver-top": 6,
+          "pistol-grip": 6,
+          "barrel": 10,
+          "muzzle": 10,
+          "bore": 10,
+          "fore-end": 6,
+          "fore-end-rib": 30,
+          "stock": 10,
+          "butt-plate": 6,
+          "pressure-canister": 10,
+          "gauge": 6,
+          "gauge-needle": 6,
+          "rear-sight": 12,
+          "front-sight": 6,
+          "sight-bead": 6,
+          "trigger-guard": 20,
+          "trigger": 6,
+          "held-cassette": 6,
+          "cassette-rivet": 24
+        },
+        "aim": 0,
+        "aimHeld": false,
+        "proximity": 0,
+        "pose": {
+          "origin": [
+            0.23,
+            -0.12501427325101339,
+            0.82
+          ],
+          "yaw": -0.1,
+          "pitch": -0.1399429069959465,
+          "roll": -0.1199510631393827,
+          "aim": 0,
+          "proximity": 0,
+          "loading": true,
+          "reloadProgress": 0.5090909090909095,
+          "reloadLift": 0.9995921928281892,
+          "sprint": 0,
+          "melee": false
+        },
+        "stats": {
+          "faces": 538,
+          "visibleFaces": 261
+        },
+        "rendering": "original view-space polygon meshes projected to transparent Canvas 2D",
+        "worldCameraUnmodified": true,
+        "canvas": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "before": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 8,
+        "ammoReserve": 30,
+        "clipSize": 8,
+        "weapon": "Riveteuse de combat",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "rivetGun",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      },
+      "after": {
+        "zone": "aubagne",
+        "pos": [
+          0,
+          1.65,
+          85
+        ],
+        "yaw": 0,
+        "pitch": 0,
+        "hp": 115,
+        "maxHp": 115,
+        "ap": 105,
+        "maxAp": 105,
+        "rad": 0,
+        "ammoClip": 8,
+        "ammoReserve": 29,
+        "clipSize": 8,
+        "weapon": "Riveteuse de combat",
+        "caps": 18,
+        "crouched": false,
+        "cameraMode": "first",
+        "discovered": [
+          "vault",
+          "aubagne"
+        ],
+        "level": 1,
+        "xp": 18,
+        "perkPoints": 0,
+        "activeCompanion": null,
+        "weaponId": "rivetGun",
+        "armorId": "vaultSuit",
+        "critCharge": 0,
+        "damageResistance": 0.05,
+        "radResistance": 0.08
+      }
+    }
+  ],
+  "cleanup": {
+    "context": true,
+    "browser": true,
+    "playwright": true,
+    "server": true
+  },
+  "process_exit_code": 0,
+  "stage": "complete"
+}

@@ -1,0 +1,34 @@
+OK Mémoire : ArrayBuffer mesuré
+OK Mémoire : les vues partagées ne sont pas comptées deux fois
+OK Mémoire : références cycliques supportées
+OK Cache LRU : limite en entrées
+OK Cache LRU : une lecture rend la ressource récente
+OK Cache LRU : limite en octets
+OK Cache LRU : conservation des ressources actives
+OK Dépassement requis affiché et non caché
+OK Déverrouillage permet de libérer le cache
+OK Remplacement ne double pas les octets
+OK Effacement libère les références et épingles
+OK Grille spatiale : élément chevauchant une frontière
+OK Grille spatiale : coordonnées négatives
+OK Grille spatiale : pas de duplicata de requête
+OK Grille spatiale : grandes surfaces restent bornées
+OK Grille invalide refusée
+OK Marqueur vide explicite accepté
+OK Marqueur autre tuile refusé
+OK Marqueur non officiel refusé
+OK Empreinte de vide incohérente refusée
+OK Reprise de position tolérance métrique
+OK Une position invalide n’est pas une reprise
+OK Terrain cloné sans modifier la banque publiée
+OK SHA-256 sans WebCrypto : 0 octets
+OK SHA-256 sans WebCrypto : 1 octets
+OK SHA-256 sans WebCrypto : 3 octets
+OK SHA-256 sans WebCrypto : 55 octets
+OK SHA-256 sans WebCrypto : 56 octets
+OK SHA-256 sans WebCrypto : 63 octets
+OK SHA-256 sans WebCrypto : 64 octets
+OK SHA-256 sans WebCrypto : 65 octets
+OK SHA-256 sans WebCrypto : 1000 octets
+OK SHA-256 sans WebCrypto : 65536 octets
+

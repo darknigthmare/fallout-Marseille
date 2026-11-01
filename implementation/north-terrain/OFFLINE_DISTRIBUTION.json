@@ -1,0 +1,163 @@
+{
+  "scope": "Eight actual offline distribution operations on the exact published old and new source ZIPs. The custom user grid/corruption are explicit synthetic preservation fixtures, not observations of geography. Distinct from native gameplay.",
+  "checks": [
+    {
+      "name": "Actual new ZIP installs into an empty offline directory",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Upgrade adds only the missing commune source region",
+      "ok": true,
+      "detail": {
+        "status": "extended",
+        "addedRegions": [
+          "geo_marseille_commune"
+        ],
+        "addedFiles": 1,
+        "preservedRegions": [
+          "geo_huveaune",
+          "geo_marseille"
+        ],
+        "archive": "world-sources-3df84df4ae353420.zip"
+      }
+    },
+    {
+      "name": "Upgrade preserves actual historical Aubagne and south descriptors and file bytes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Empty and upgraded installations produce identical active runtime files",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Repeated installation is idempotent and keeps all active bytes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A different valid user commune import and all previous regions remain byte-exact",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A corrupt user source is refused without silent replacement",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Independent offline repack is byte-identical to the published new ZIP",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "total": 8,
+  "passed": 8,
+  "newManifestSha256": "c133f1a1a3dd8cbd0d830cf2f4b5971c79b4b69ca96eddf1db8e3549f256c361",
+  "previousManifestSha256": "b70b363d29a5a9da5b67c8380a96b470a0b0e2a017e88391553854ef48cafc19",
+  "newArchive": {
+    "archive": "world-sources-3df84df4ae353420.zip",
+    "bytes": 5410454,
+    "members": [
+      {
+        "bytes": 8047268,
+        "name": "geo_huveaune-edd6959ca0dd2701.json",
+        "sha256": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61"
+      },
+      {
+        "bytes": 7075899,
+        "name": "geo_marseille-4495922b8fb9f9d9.json",
+        "sha256": "4495922b8fb9f9d9e5807adef7c5279ff61e2a15fe68284f112226f3a94691cf"
+      },
+      {
+        "bytes": 3795953,
+        "name": "geo_marseille_commune-d0cbae62855ff13b.json",
+        "sha256": "d0cbae62855ff13b9453ebf2773a9239e4c999a4ff2f416f601fc69e2b1368f3"
+      },
+      {
+        "bytes": 1493,
+        "name": "index.json",
+        "sha256": "d368402cd6c249f45b6ad4e7d9156088bf634e2f6c07fd10fdd7826d1a47c2e2"
+      }
+    ],
+    "schemaVersion": 1,
+    "scope": "Verified runtime source extracts; source resolution and resampling are declared per grid",
+    "sha256": "3df84df4ae353420a515cd168eeb7f7446988913d635d95c1f9dd53073ac712f",
+    "sources": [
+      {
+        "acquiredAt": "2021-06-26",
+        "attribution": "IGN — LiDAR HD — mission 21LHD7PQ, édition 2025-03-14",
+        "license": "Licence Ouverte 2.0",
+        "name": "IGN LiDAR HD MNT — mission 21LHD7PQ",
+        "resource": "ign_lidar_hd_mnt",
+        "url": "https://data.geopf.fr/wms-r",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme",
+        "license": "Licence Ouverte 2.0",
+        "name": "IGN BD TOPO — BDTOPO_V3:batiment",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme",
+        "license": "Licence Ouverte 2.0",
+        "name": "IGN BD TOPO — BDTOPO_V3:troncon_de_route",
+        "resource": "ign-bdtopo",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme",
+        "license": "Licence Ouverte 2.0",
+        "name": "IGN RGE ALTI — API officielle, grille échantillonnée à 1 m",
+        "resource": "ign_rge_alti_wld",
+        "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+      },
+      {
+        "acquiredAt": "2026-10-23",
+        "attribution": "IGN — Géoplateforme",
+        "license": "Licence Ouverte 2.0",
+        "name": "IGN RGE ALTI — points échantillonnés",
+        "resource": "ign_rge_alti_wld",
+        "url": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+        "verticalDatum": "NGF-IGN69 — altitude normale, France continentale"
+      },
+      {
+        "acquiredAt": "2026-10-28",
+        "attribution": "IGN — LiDAR HD",
+        "license": "Licence Ouverte 2.0",
+        "name": "IGN — MNT LiDAR HD — borely — mission 21LHD7PQ, édition 2025-03-14",
+        "resource": "ign_lidar_hd_mnt",
+        "url": "https://data.geopf.fr/wms-r",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "acquiredAt": "2026-10-28",
+        "attribution": "IGN — LiDAR HD",
+        "license": "Licence Ouverte 2.0",
+        "name": "IGN — MNT LiDAR HD — velodrome — mission 21LHD7PQ, édition 2025-03-14",
+        "resource": "ign_lidar_hd_mnt",
+        "url": "https://data.geopf.fr/wms-r",
+        "verticalDatum": "NGF-IGN69"
+      },
+      {
+        "acquiredAt": "2026-11-01",
+        "attribution": "IGN — LiDAR HD",
+        "license": "Licence Ouverte 2.0",
+        "name": "IGN — MNT LiDAR HD",
+        "resource": "ign_lidar_hd_mnt",
+        "url": "https://data.geopf.fr/wfs/ows",
+        "verticalDatum": "NGF-IGN69"
+      }
+    ]
+  }
+}

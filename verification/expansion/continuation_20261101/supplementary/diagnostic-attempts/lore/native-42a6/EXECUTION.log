@@ -1,0 +1,16 @@
+OK Coordinated frozen production HTML is installed
+OK Coordinated actual architecture atlas is installed
+OK Frozen lore module matches coordinator and inline production bundle
+OK Pinned historical loadZone awards 18 XP only on first zone discovery
+STAGE actual_server_audits_before_chromium
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/community_dossiers_native.py", line 358, in main
+    server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 453, in __init__
+    self.socket = socket.socket(self.address_family,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+PermissionError: [Errno 1] Operation not permitted
+

@@ -51,6 +51,7 @@ def inverse_lambert(x, y):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run', action='store_true')
+    parser.add_argument('--with-returns', action='store_true', help='Also complete each outcome-dependent receipt delivery and finite counter-gift.')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--expect-html-sha', required=True)
     parser.add_argument('--expect-architecture-sha', required=True)
@@ -72,7 +73,7 @@ def main():
     script_raw = Path(__file__).read_bytes()
     (args.output / 'EXECUTED_COMMUNITY_DOSSIERS_NATIVE.py').write_bytes(script_raw)
     report = {
-        'scope': __doc__, 'stage': 'preflight', 'stages': [], 'checks': [], 'shots': [],
+        'scope': __doc__, 'with_returns': args.with_returns, 'stage': 'preflight', 'stages': [], 'checks': [], 'shots': [],
         'script_sha256': sha(script_raw), 'native_navigation': False,
         'html_injected': False, 'network_mocked': False, 'storage_mocked': False,
         'synthetic_geography': False, 'synthetic_documents': False,
@@ -83,6 +84,7 @@ def main():
             'Production render/simulation freeze and v047Control auto=false bound the visit. v020Tick(.05,true) establishes actual supported ground.',
             'One declared v020Seed sets caps=1000, water=16, food=12, scrap=12, circuitry=4, cloth=8 to pay real decision supplies. No quest or proof is seeded.',
             'Existing v046SetTime sets daytime. Native KeyE, Tab, dialogue buttons and visible dossier actions perform all feature mutations.',
+            'One real v046Render after relay streaming materializes ordinary rendered gameplay furniture before scouting contact positions; collision/LOS rechecks remain mandatory.',
             'Read-only debug exports inspect exact source identity, ledger, resources, contact admission and reward counts.',
         ],
         'interactions': [], 'placements': [], 'page_errors': [], 'console_errors': [],
@@ -245,6 +247,11 @@ def main():
         place([point['p'][0], point['h']['height'] + 1.65, point['p'][2]],
               reason='source-measured sector arrival ' + site_id, ground=point['h'])
         debug('v042Update', .71)
+        # Normal collection/render binds physical furniture to newly active
+        # relays (including the new vending cabinet). Scout against that actual
+        # complete geometry rather than a pre-render candidate list. This draws
+        # production objects only; actors, supplies and source data stay intact.
+        debug('v046Render')
         # Real update discovers nearby safe sites and materializes their people.
         actors = debug('v042World')['npcs']
         check('Actual world streams the existing source-positioned site', site_id in debug('v042Runtime')['active'] and (not inhabitant or any(n['site'] == site_id for n in actors)),
@@ -533,6 +540,102 @@ def main():
                   and 'Parler du secteur et commercer.' in page.locator('#dialogue').inner_text())
             page.locator('#dialogue button').filter(has_text='Prendre congé.').click()
 
+            if args.with_returns:
+                stage('actual_' + quest + '_receipt_and_finite_counter_gift')
+                r = next(r for r in debug('v053LoreInfo')['returns'] if r['id'] == quest)
+                target = next(site for site in story['witnesses'] if site != story['giver'])
+                check('Completed outcome unlocks only its exact second-relay receipt: ' + quest,
+                      r['available'] and r['phase'] == 'deliver' and r['targetSite'] == target
+                      and r['contactSite'] == story['giver'] and r['choice'] == story['choice'])
+                before_receipt = snapshot()
+                pip('data', 'continuity')
+                click('l53:returnTrack', quest)
+                check('Receipt tracking points to named second relay without changing ledger or supplies: ' + quest,
+                      state()['v042']['tracked'] == target
+                      and snapshot()['v053Lore'] == before_receipt['v053Lore']
+                      and snapshot()['inventory'] == before_receipt['inventory'])
+                check('Giver cannot deliver its own second-relay receipt remotely: ' + quest,
+                      not page.locator('button[data-p27="l53:returnDeliver"][data-arg=' + json.dumps(quest + '|' + target) + ']').is_enabled()
+                      and page.locator('button[data-p27="l53:returnClaim"][data-arg=' + json.dumps(quest) + ']').count() == 0)
+                close_pip()
+                actor = contact(target)
+                page.keyboard.press('e')
+                check('Native E reaches actual second relay and offers receipt handover: ' + quest,
+                      debug('v020Stats')['mode'] == 'DIALOGUE'
+                      and page.locator('#dialogue button').filter(has_text='Remettre la copie du reçu · ' + story['name'] + '.').count() == 1)
+                before_delivery = snapshot()
+                page.locator('#dialogue button').filter(has_text='Remettre la copie du reçu · ' + story['name'] + '.').click()
+                delivered = snapshot()
+                rd = next(r for r in debug('v053LoreInfo')['returns'] if r['id'] == quest)
+                check('Visible actual receipt handover preserves original proof, supplies and reward: ' + quest,
+                      rd['phase'] == 'return' and rd['delivered'] and not rd['claimed']
+                      and delivered['inventory'] == before_delivery['inventory']
+                      and delivered['player']['caps'] == before_delivery['player']['caps']
+                      and total_xp(delivered['player']) == total_xp(before_delivery['player'])
+                      and delivered['rep'] == before_delivery['rep'] and delivered['loreRep'] == before_delivery['loreRep']
+                      and delivered['v053Lore']['quests'] == before_delivery['v053Lore']['quests']
+                      and delivered['v053Lore']['journal'] == before_delivery['v053Lore']['journal']
+                      and len([row for row in delivered['v053Lore']['returnJournal'] if row['quest'] == quest and row['stage'] == 'delivered']) == 1)
+                check('Second relay remembers exact acknowledgement and cannot hand over twice: ' + quest,
+                      rd['text'] in page.locator('#dialogue').inner_text()
+                      and page.locator('#dialogue button').filter(has_text='Remettre la copie du reçu · ' + story['name'] + '.').count() == 0)
+                shot('07_communes_receipt_delivered' if number == 0 else '09_gilets_receipt_delivered',
+                     'Native E dialogue at the unchanged second relay, after the once-only receipt acknowledgement.')
+                page.locator('#dialogue button').filter(has_text='Prendre congé.').click()
+                pip('data', 'continuity')
+                before_track = snapshot()
+                click('l53:returnTrack', quest)
+                check('Acknowledged receipt tracks exact original giver without new progress: ' + quest,
+                      state()['v042']['tracked'] == story['giver']
+                      and snapshot()['v053Lore'] == before_track['v053Lore']
+                      and not page.locator('button[data-p27="l53:returnClaim"][data-arg=' + json.dumps(quest) + ']').is_enabled())
+                close_pip()
+                actor = contact(story['giver'])
+                page.keyboard.press('e')
+                gift_label = 'Recevoir le contre-don · ' + r['label'] + '.'
+                gift = page.locator('#dialogue button').filter(has_text=gift_label)
+                check('Native original giver offers exactly the outcome-specific finite counter-gift: ' + quest,
+                      debug('v020Stats')['mode'] == 'DIALOGUE' and gift.count() == 1 and gift.is_enabled(), r)
+                before_gift = snapshot()
+                gift.click()
+                after_gift = snapshot()
+                rr = next(r for r in debug('v053LoreInfo')['returns'] if r['id'] == quest)
+                expected_items = dict(before_gift['inventory'])
+                for item, count in r['items'].items():
+                    expected_items[item] = expected_items.get(item, 0) + count
+                check('Actual counter-gift credits only the finite ordinary items and no second quest reward: ' + quest,
+                      rr['phase'] == 'done' and rr['claimed'] and after_gift['inventory'] == expected_items
+                      and after_gift['player']['caps'] == before_gift['player']['caps']
+                      and total_xp(after_gift['player']) == total_xp(before_gift['player'])
+                      and after_gift['rep'] == before_gift['rep'] and after_gift['loreRep'] == before_gift['loreRep']
+                      and after_gift['v053Lore']['quests'] == before_gift['v053Lore']['quests']
+                      and after_gift['v053Lore']['journal'] == before_gift['v053Lore']['journal']
+                      and len([row for row in after_gift['v053Lore']['returnJournal'] if row['quest'] == quest and row['stage'] == 'claimed']) == 1,
+                      {'before': before_gift, 'after': after_gift, 'items': r['items']})
+                check('Returned NPC marks donation taken, hides handover and retains historical commerce: ' + quest,
+                      rr['text'] in page.locator('#dialogue').inner_text()
+                      and page.locator('#dialogue button').filter(has_text=gift_label).count() == 0
+                      and page.locator('#dialogue button').filter(has_text='Parler du secteur et commercer.').count() == 1)
+                shot('08_communes_counter_gift' if number == 0 else '10_gilets_counter_gift',
+                     'Native original contact remembers finite branch-specific donation; inventory quantities are checked independently.')
+                page.locator('#dialogue button').filter(has_text='Prendre congé.').click()
+                pip('data', 'consequences')
+                rows = debug('v027QuestRows')
+                check('Actual production journal contains the concluded two-stage receipt: ' + quest,
+                      rr['name'] in page.locator('#pipContent').inner_text()
+                      and rr['text'] in page.locator('#pipContent').inner_text()
+                      and any(row['id'] == 'l53r:' + quest and row['stage'] == 'done'
+                          and all(step[1] for step in row['steps']) for row in rows), rows)
+                pip('radio', 'stations')
+                click('select', 'canal13')
+                receive_station('canal13')
+                check('Canal 13 broadcasts exact completed return consequence: ' + quest,
+                      rr['text'] in page.locator('#pipContent').inner_text())
+                close_pip()
+                report.setdefault('completed_returns', []).append({'id': quest, 'unlock': r,
+                    'before_delivery': before_delivery, 'after_delivery': delivered,
+                    'before_gift': before_gift, 'after_gift': after_gift, 'finished': rr})
+
         stage('native_save_reload_continue_both_decisions')
         pip('data', 'system')
         click('save')
@@ -582,6 +685,11 @@ def main():
                   and 'Décision et récompense conservées.' in card.inner_text())
             shot('05_communes_after_continue' if index == 0 else '06_gilets_after_continue',
                  'Native Continue: the actual completed ' + story['id'] + ' card is scrolled into view; exact ledger, costs and no duplicate reward are separately checked.')
+        if args.with_returns:
+            check('Native Continue preserves both finished receipt journals and exposes no duplicate counter-gift',
+                  len(restored['v053Lore']['returnJournal']) == 4
+                  and all(r['phase'] == 'done' and r['claimed'] and r['delivered'] for r in debug('v053LoreInfo')['returns'])
+                  and page.locator('button[data-p27="l53:returnDeliver"],button[data-p27="l53:returnClaim"],button[data-p27="l53:returnTrack"]').count() == 0)
         close_pip()
         report['dossier_counters'] = debug('v053LoreInfo')
         report['limitations'] = [

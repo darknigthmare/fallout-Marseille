@@ -47,6 +47,7 @@ def main():
     parser.add_argument('--run', action='store_true')
     parser.add_argument('--room-doors', action='store_true', help='Also exercise the real version-five room door lifecycle with native E and KeyW.')
     parser.add_argument('--furniture-services', action='store_true', help='After the unchanged programmes, exercise actual workshop furniture, finite ingredients and cold Continue.')
+    parser.add_argument('--local-storage', action='store_true', help='Exercise native deposits and withdrawals in an already placed storage cupboard, with cold Continue.')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--expect-html-sha', required=True)
     parser.add_argument('--expect-interior-sha', required=True)
@@ -272,6 +273,8 @@ def main():
         fixture = json.loads(pin(FIXTURE))
         if args.furniture_services:
             pin('tests/expansion/interior_services_native.py')
+        if args.local_storage:
+            pin('tests/expansion/interior_storage_native.py')
         check('Case fixture describes attributed real source geometries', fixture['license'] == 'Licence Ouverte 2.0'
               and fixture['attribution'] == 'IGN — Géoplateforme' and len(fixture['cases']) == 3)
         for case in fixture['cases']:
@@ -476,6 +479,11 @@ def main():
             stage('actual_furniture_services')
             report['furniture_services'] = probe_furniture_services(page, debug, check, shot, report, physical_entry,
                                                                   exit_to_street, wait_local_metadata_before_reload, native_document)
+        if args.local_storage:
+            from interior_storage_native import probe_local_storage
+            stage('actual_local_storage')
+            report['local_storage'] = probe_local_storage(page, debug, check, shot, report, physical_entry,
+                                                         exit_to_street, wait_local_metadata_before_reload, native_document)
         check('Both native programmes are distinct and retain source use provenance',
               len(report['programmes']) == 2 and {r['chosen']['layout']['theme'] for r in report['programmes']} == {'commercial', 'industrial'})
         check('No synthetic documentary record entered native storage', debug('v050CityInteriorInfo')['documentRegistry']['entries'] == 0)

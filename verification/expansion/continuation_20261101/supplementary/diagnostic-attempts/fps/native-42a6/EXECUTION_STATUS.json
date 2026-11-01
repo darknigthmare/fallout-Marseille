@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/first_person_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/fps/native-42a6",
+    "--expect-html-sha",
+    "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+    "--expect-fps-sha",
+    "82007a80ceb75f32493763e3098bb7cc153e2bc56cc8f31367720408484bc293"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "script": "/workspace/fallout-Marseille/tests/expansion/first_person_native.py",
+  "script_sha256": "92bc88e40b72de398e195096b1012045c8f3164785b38c1ae4bcd245d349a2f4",
+  "script_archive_sha256": "92bc88e40b72de398e195096b1012045c8f3164785b38c1ae4bcd245d349a2f4",
+  "html_sha256_before": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+  "started_utc": "2026-11-01T00:42:10Z",
+  "process_exit_code": 0,
+  "elapsed_seconds": 43.366,
+  "finished_utc": "2026-11-01T00:42:53Z",
+  "stdout_sha256": "68efa5e8a40d60953c49511a69fe78be54187c4d8b572e9a975814da0c1f2e66",
+  "html_sha256_after": "42a67b1033ba7b18b13ee5e0045cb6dfdf470107d81818ae4d6a58f39264d799",
+  "script_sha256_after": "92bc88e40b72de398e195096b1012045c8f3164785b38c1ae4bcd245d349a2f4",
+  "report": "/workspace/.cloud-setup/fallout-marseille/continuation-next/fps/native-42a6/FIRST_PERSON_NATIVE.json",
+  "report_sha256": "8b2a2985cb7c8efe8a7cc2b641589fd1ff4ec7d8d2599c7e7097e419984d8000",
+  "passed": 142,
+  "failed": 0,
+  "captures": 16
+}

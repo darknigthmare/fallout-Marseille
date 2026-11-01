@@ -211,3 +211,115 @@ for(const id of['partage','passage_libre'])for(const throwing of[false,true])tes
 test('Completed continuity cards show their saved outcome once while active cards keep progress',()=>{
  for(const q of bindings){const f=runtime(),id=JSON.stringify(q.id);f.run('placeGiver('+id+');d.v053LoreAccept('+id+')');if(q.kind==='observation')for(const siteId of q.observationSites)f.run('mode="PLAYING";observeSite('+JSON.stringify(siteId)+')');else if(q.kind!=='delivery')for(const siteId of q.witnessSites.slice(0,q.required))f.run('placeSite('+JSON.stringify(siteId)+');d.v053LoreWitness('+id+','+JSON.stringify(siteId)+')');f.run('mode="PIP";placeGiver('+id+')');const ch=q.choices[0];assert.equal(f.run('d.v053LoreResolve('+id+','+JSON.stringify(ch.id)+')'),true);const html=f.run('V027.sub="continuity";const completedPanel={innerHTML:""};v027Data(completedPanel);completedPanel.innerHTML');assert.equal(html.split(ch.text).length-1,1,q.id+' duplicated its saved outcome');assert.match(html,/Rencontrer le contact pour ouvrir le dossier/);}
 });
+
+
+function completed(id,choice=quest(id).choices[0].id){return step(witnesses(opened(id),id),'resolve',id,giver(id),choice).ledger;}
+function receipt(s,id,type,extra={}){return G.reduceReturn(s,bindings,{type,quest:id},{atGiver:true,contact:true,siteId:G.returnInfo(s,bindings,id).targetSite,inventory:{},playTime:150,...extra});}
+function finishRuntime(f,id,choice=quest(id).choices[0].id){f.run('placeGiver('+JSON.stringify(id)+');d.v053LoreAccept('+JSON.stringify(id)+')');for(const siteId of quest(id).witnessSites)f.run('placeSite('+JSON.stringify(siteId)+');d.v053LoreWitness('+JSON.stringify(id)+','+JSON.stringify(siteId)+')');f.run('placeGiver('+JSON.stringify(id)+');d.v053LoreResolve('+JSON.stringify(id)+','+JSON.stringify(choice)+')');}
+
+test('All eight shipped dossier definitions and named bindings stay byte-identical when return consequences are added',()=>{
+ const digest=v=>require('node:crypto').createHash('sha256').update(JSON.stringify(v)).digest('hex');
+ assert.equal(digest(G.catalog()),'1ca159d19dc0bb1096d112288858547f9ff24c4d84eae15cddc44987d24c683e');assert.equal(digest(bindings),'713bf1e71a42b6ce07c264152a8a7e1385b62899e0993a2a63f1aea652ad3e16');
+});
+
+test('Return consequences remain locked until a valid concluded supply outcome and exact second relay exist',()=>{
+ for(const id of G.returnIds()){
+  assert.equal(G.returnInfo(G.fresh(),bindings,id).available,false);assert.equal(receipt(opened(id),id,'deliver').ok,false);
+  const s=completed(id),r=G.returnInfo(s,bindings,id);assert.equal(r.phase,'deliver');assert.equal(r.targetSite,quest(id).witnessSites.find(site=>site!==quest(id).contactSite));
+  const absent=G.bind(catalog.filter(site=>site.id!==r.targetSite));assert.equal(G.returnInfo(s,absent,id).available,false);assert.equal(G.reduceReturn(s,absent,{type:'deliver',quest:id},{contact:true,siteId:r.targetSite}).ok,false);
+ }
+ for(const id of['cendres','unknown','constructor','__proto__'])assert.equal(G.returnInfo(G.fresh(),bindings,id).available,false);
+});
+
+for(const id of G.returnIds())for(const choice of quest(id).choices)test(id+'/'+choice.id+' delivers the exact receipt, returns a finite outcome-specific ordinary inventory pack once',()=>{
+ const s=completed(id,choice.id),before=clone(s),r=G.returnInfo(s,bindings,id);
+ assert.equal(receipt(s,id,'claim').ok,false);assert.equal(receipt(s,id,'deliver',{siteId:quest(id).contactSite}).ok,false);assert.equal(receipt(s,id,'deliver',{contact:false}).ok,false);
+ const delivered=receipt(s,id,'deliver');assert.equal(delivered.ok,true);assert.deepEqual(delivered.supplies,{});assert.equal(delivered.reward,null);assert.equal(receipt(delivered.ledger,id,'deliver').ok,false);assert.equal(receipt(delivered.ledger,id,'claim',{atGiver:false}).ok,false);
+ const claimed=receipt(delivered.ledger,id,'claim');assert.equal(claimed.ok,true);assert.deepEqual(claimed.supplies,r.items);assert.equal(claimed.reward,null);assert.deepEqual(claimed.cost,{});assert.equal(G.returnInfo(claimed.ledger,bindings,id).phase,'done');assert.equal(receipt(claimed.ledger,id,'claim').ok,false);assert.equal(receipt(claimed.ledger,id,'deliver').ok,false);
+ assert.deepEqual(claimed.ledger.quests,s.quests);assert.deepEqual(claimed.ledger.journal,s.journal);assert.deepEqual(claimed.ledger.returnJournal.map(row=>row.stage),['delivered','claimed']);assert.deepEqual(s,before);
+});
+
+test('Return receipt state and journal migrate only for known outcomes, coherent flags and bounded unique stages',()=>{
+ let s=completed('partage');s.returns.partage={delivered:false,claimed:true};s.returns.passage_libre={delivered:true,claimed:true};s.returns.unknown={delivered:true,claimed:true};s.returnJournal=[{quest:'partage',stage:'claimed',outcome:'reserve',playTime:10},{quest:'partage',stage:'delivered',outcome:'reserve',playTime:Infinity}];
+ let out=G.migrate(s,bindings);assert.deepEqual(out.returns.partage,{delivered:false,claimed:false});assert.deepEqual(out.returns.passage_libre,{delivered:false,claimed:false});assert.deepEqual(Object.keys(out.returns),G.returnIds());assert.deepEqual(out.returnJournal,[]);
+ s.returns.partage={delivered:true,claimed:true};s.returnJournal=[{quest:'partage',stage:'delivered',outcome:'reserve',playTime:-1},{quest:'partage',stage:'delivered',outcome:'reserve',playTime:50},{quest:'partage',stage:'claimed',outcome:'reserve',playTime:Infinity},{quest:'unknown',stage:'claimed',outcome:'bad'}];out=G.migrate(s,bindings);assert.equal(out.returnJournal.length,2);assert.ok(out.returnJournal.every(row=>row.playTime===0));assert.deepEqual(out.quests,s.quests);assert.deepEqual(out.journal,s.journal);
+});
+
+test('A migrated old eight-dossier save keeps every proof and original journal but starts with no receipt or counter-gift',()=>{
+ const old=completed('partage');delete old.returns;delete old.returnJournal;const before=clone(old),out=G.migrate(old,bindings);assert.deepEqual(out.quests,before.quests);assert.deepEqual(out.journal,before.journal);assert.deepEqual(out.returns,G.fresh().returns);assert.deepEqual(out.returnJournal,[]);assert.deepEqual(old,before);
+});
+
+test('Receipt packs returned to callers cannot change private outcome rewards, and invalid full inventory refuses atomically',()=>{
+ const s=completed('partage');G.returnInfo(s,bindings,'partage').items.stimpak=999;const delivered=receipt(s,'partage','deliver').ledger;assert.deepEqual(G.returnInfo(delivered,bindings,'partage').items,{stimpak:1});
+ for(const quantity of[NaN,Infinity,-1,'2',999999]){const before=clone(delivered);assert.equal(receipt(delivered,'partage','claim',{inventory:{stimpak:quantity}}).ok,false);assert.deepEqual(delivered,before);}
+});
+
+for(const id of G.returnIds())test(id+' actual runtime counter-gift shares ordinary inventory and persists without a second caps/XP/reputation reward',()=>{
+ const f=runtime();finishRuntime(f,id);const r=f.json('d.v053LoreInfo().returns').find(row=>row.id===id),before=f.json('state');f.run('placeSite('+JSON.stringify(r.targetSite)+')');assert.equal(f.run('d.v057LoreReturnDeliver('+JSON.stringify(id)+','+JSON.stringify(r.targetSite)+')'),true);assert.deepEqual(f.json('state.inventory'),before.inventory);f.run('placeGiver('+JSON.stringify(id)+')');assert.equal(f.run('d.v057LoreReturnClaim('+JSON.stringify(id)+')'),true);const after=f.json('state');for(const[item,n]of Object.entries(r.items))assert.equal(after.inventory[item],(before.inventory[item]||0)+n);assert.equal(after.player.caps,before.player.caps);assert.equal(after.player.xp,before.player.xp);assert.deepEqual(after.rep,before.rep);assert.deepEqual(after.v046.lore,before.v046.lore);assert.deepEqual(after.v053Lore.quests,before.v053Lore.quests);assert.deepEqual(after.v053Lore.journal,before.v053Lore.journal);
+ f.run('state=migrateState(JSON.parse(test.saved));placeGiver('+JSON.stringify(id)+')');const saved=f.json('state');assert.equal(f.run('d.v057LoreReturnClaim('+JSON.stringify(id)+')'),false);assert.deepEqual(f.json('state'),saved);assert.equal(f.json('v027QuestRows()').find(row=>row.id==='l53r:'+id).stage,'done');assert.match(f.run('V027_STATIONS.canal13.text()'),/contre-don/);
+});
+
+for(const failure of['distance','line of sight','dead NPC','undiscovered','loading','combat','airborne','lab','dead player','scene'])test('Return delivery and counter-gift reject a '+failure+' context with no changes',()=>{
+ const patches={distance:'state.player.pos=[30,1.65,30]','line of sight':'test.sight=false','dead NPC':'world.npcs[0].alive=false',undiscovered:'state.v042.discovered={}',loading:'V046.busy=true',combat:'test.threat=true',airborne:'onGround=false',lab:'V046.lab=true','dead player':'state.player.hp=0',scene:'world.v046=false'};
+ for(const stage of['deliver','claim']){const f=runtime(),id='partage';finishRuntime(f,id);const r=f.json('d.v053LoreInfo().returns').find(row=>row.id===id);f.run('placeSite('+JSON.stringify(r.targetSite)+')');if(stage==='claim'){assert.equal(f.run('d.v057LoreReturnDeliver("partage",'+JSON.stringify(r.targetSite)+')'),true);f.run('placeGiver("partage")');}f.run(patches[failure]);const before=f.json('state'),saved=f.run('test.saved'),saves=f.run('test.saves');assert.equal(f.run(stage==='deliver'?'d.v057LoreReturnDeliver("partage",'+JSON.stringify(r.targetSite)+')':'d.v057LoreReturnClaim("partage")'),false);assert.deepEqual(f.json('state'),before);assert.equal(f.run('test.saved'),saved);assert.equal(f.run('test.saves'),saves);}
+});
+
+for(const stage of['deliver','claim'])for(const throwing of[false,true])test('Return '+stage+' rolls back ledger, materials and both journals on '+(throwing?'throwing':'false-returning')+' storage',()=>{
+ const f=runtime();finishRuntime(f,'partage');const r=f.json('d.v053LoreInfo().returns').find(row=>row.id==='partage');f.run('placeSite('+JSON.stringify(r.targetSite)+')');if(stage==='claim'){f.run('d.v057LoreReturnDeliver("partage",'+JSON.stringify(r.targetSite)+');placeGiver("partage")');}const before=f.json('state'),saved=f.run('test.saved');f.run(throwing?'test.throwSave=true':'test.fail=true');assert.equal(f.run(stage==='deliver'?'d.v057LoreReturnDeliver("partage",'+JSON.stringify(r.targetSite)+')':'d.v057LoreReturnClaim("partage")'),false);assert.deepEqual(f.json('state'),before);assert.equal(f.run('test.saved'),saved);
+});
+
+test('Actual NPC receipt dialogue rechecks stale range, applies its return action once and preserves commerce',()=>{
+ const f=runtime();finishRuntime(f,'partage');const r=f.json('d.v053LoreInfo().returns').find(row=>row.id==='partage');f.run('v042TalkNPC(placeSite('+JSON.stringify(r.targetSite)+'))');assert.ok(f.run('test.dialogue.choices.some(c=>c.text.startsWith("Remettre la copie du reçu"))'));f.run('globalThis.staleReceipt=test.dialogue.choices.find(c=>c.text.startsWith("Remettre la copie du reçu")).onChoose;state.player.pos=[100,1.65,100];staleReceipt()');assert.equal(f.run('state.v053Lore.returns.partage.delivered'),false);
+ f.run('v042TalkNPC(placeSite('+JSON.stringify(r.targetSite)+'));test.dialogue.choices.find(c=>c.text.startsWith("Remettre la copie du reçu")).onChoose()');assert.equal(f.run('state.v053Lore.returns.partage.delivered'),true);assert.ok(!f.run('test.dialogue.choices.some(c=>c.text.startsWith("Remettre la copie du reçu"))'));
+ f.run('v042TalkNPC(placeGiver("partage"));globalThis.claimOnce=test.dialogue.choices.find(c=>c.text.startsWith("Recevoir le contre-don")).onChoose;claimOnce()');assert.equal(f.run('state.inventory.stimpak'),1);f.run('claimOnce()');assert.equal(f.run('state.inventory.stimpak'),1);assert.ok(f.run('test.dialogue.choices.some(c=>c.text==="Parler du secteur et commercer.")'));
+});
+
+test('Journal and Pip-Boy return tracking point to the exact next physical relay without advancing the receipt',()=>{
+ const f=runtime();finishRuntime(f,'partage');const r=f.json('d.v053LoreInfo().returns').find(row=>row.id==='partage'),before=f.json('state.v053Lore');assert.equal(f.run('v027Track("l53r:partage")'),true);assert.equal(f.run('state.v042.tracked'),r.targetSite);assert.deepEqual(f.json('state.v053Lore'),before);f.run('placeSite('+JSON.stringify(r.targetSite)+');d.v057LoreReturnDeliver("partage",'+JSON.stringify(r.targetSite)+')');assert.equal(f.run('v027Dispatch("l53:returnTrack","partage")'),true);assert.equal(f.run('state.v042.tracked'),r.contactSite);const tracked=f.run('state.v042.tracked');f.run('test.fail=true');assert.equal(f.run('d.v057LoreReturnTrack("partage")'),false);assert.equal(f.run('state.v042.tracked'),tracked);
+});
+
+test('Return progress is independent between factions and campaigns, and fresh games inherit no donation',()=>{
+ const f=runtime();finishRuntime(f,'partage');finishRuntime(f,'passage_libre');const r=f.json('d.v053LoreInfo().returns').find(row=>row.id==='partage');f.run('placeSite('+JSON.stringify(r.targetSite)+');d.v057LoreReturnDeliver("partage",'+JSON.stringify(r.targetSite)+');placeGiver("partage");d.v057LoreReturnClaim("partage")');assert.deepEqual(f.json('state.v053Lore.returns.passage_libre'),{delivered:false,claimed:false});assert.equal(f.run('state.v053Lore.returnJournal.length'),2);f.run('state=migrateState(baseState())');assert.deepEqual(f.json('state.v053Lore'),G.fresh());assert.ok(f.json('d.v053LoreInfo().returns').every(r=>r.phase==='locked'));assert.equal(f.run('state.inventory.stimpak'),undefined);
+});
+
+
+test('A stale return dialogue cannot mutate a replacement save or world even if the next campaign has the same valid outcome',()=>{
+ for(const patch of['state=migrateState(JSON.parse(JSON.stringify(state)))','world={...world}'])for(const stage of['deliver','claim']){
+  const f=runtime();finishRuntime(f,'partage');const r=f.json('d.v053LoreInfo().returns').find(row=>row.id==='partage');f.run('placeSite('+JSON.stringify(r.targetSite)+')');if(stage==='claim')f.run('d.v057LoreReturnDeliver("partage",'+JSON.stringify(r.targetSite)+');placeGiver("partage")');
+  f.run('v042TalkNPC(world.npcs[0].id);globalThis.staleReturn=test.dialogue.choices.find(c=>c.text.startsWith('+JSON.stringify(stage==='deliver'?'Remettre la copie du reçu':'Recevoir le contre-don')+')).onChoose;'+patch);const before=f.json('state'),saved=f.run('test.saved');assert.equal(f.run('staleReturn()'),false);assert.deepEqual(f.json('state'),before);assert.equal(f.run('test.saved'),saved);
+ }
+});
+
+test('Temporarily removing a named relay preserves consumed counter-gifts across migration and catalogue restoration',()=>{
+ for(const id of G.returnIds()){
+  const first=completed(id),delivered=receipt(first,id,'deliver').ledger,claimed=receipt(delivered,id,'claim').ledger;
+  const target=G.returnInfo(claimed,bindings,id).targetSite,absent=G.bind(catalog.filter(site=>site.id!==target)),unavailable=G.migrate(claimed,absent);
+  assert.deepEqual(unavailable.returns[id],claimed.returns[id],'missing relay must not erase a consumed donation');assert.deepEqual(unavailable.returnJournal,claimed.returnJournal);assert.equal(G.returnInfo(unavailable,absent,id).available,false);assert.equal(G.reduceReturn(unavailable,absent,{type:'claim',quest:id},giver(id)).ok,false);
+  const restored=G.migrate(unavailable,bindings);assert.equal(restored.quests[id].outcome,claimed.quests[id].outcome);assert.deepEqual(restored.journal,claimed.journal);assert.deepEqual(restored.returnJournal,claimed.returnJournal);assert.equal(G.returnInfo(restored,bindings,id).phase,'done');assert.equal(receipt(restored,id,'claim').ok,false);assert.equal(receipt(restored,id,'deliver').ok,false);
+ }
+});
+
+
+test('Real v049 save checkpoints roll back with the complete campaign owner on refused original and return transactions',()=>{
+ for(const stage of['resolve','deliver','claim'])for(const throwing of[false,true]){
+  const f=runtime();if(stage==='resolve'){f.run('placeGiver("partage");d.v053LoreAccept("partage")');for(const siteId of quest('partage').witnessSites)f.run('placeSite('+JSON.stringify(siteId)+');d.v053LoreWitness("partage",'+JSON.stringify(siteId)+')');f.run('placeGiver("partage")');}else{finishRuntime(f,'partage');const r=f.json('d.v053LoreInfo().returns').find(row=>row.id==='partage');f.run('placeSite('+JSON.stringify(r.targetSite)+')');if(stage==='claim')f.run('d.v057LoreReturnDeliver("partage",'+JSON.stringify(r.targetSite)+');placeGiver("partage")');}
+  f.run('const V042_INSTANCE_ZONE="v042_instance";function v042EnemyId(site,index,inside=false){return`v042:${site.id}:${inside?"inside":"outside"}:${index}`;}');
+  f.run(fs.readFileSync(path.join(root,'src/v049/00_encounters.js'),'utf8'));
+  f.run(fs.readFileSync(path.join(root,'src/v049/01_persistence.js'),'utf8').split('const v049SpawnEnemies=')[0]);
+  f.run('state.v049={schema:1,actors:{}};state.flags.enemyDead={};world.npcs[0].id="v042-npc:"+world.npcs[0].v042Site+":0";world.npcs[0].home=world.npcs[0].pos.slice();v049Own(world);globalThis.priorOwner=state;');
+  const saveSource=fs.readFileSync(path.join(root,'src/v049/02_bodies_lifecycle.js'),'utf8');f.run(saveSource.match(/const v049Save=saveGame;\nsaveGame=function[^\n]+/)[0]);
+  const before=f.json('state'),saved=f.run('test.saved');f.run(throwing?'test.throwSave=true':'test.fail=true');const command=stage==='resolve'?'d.v053LoreResolve("partage","reserve")':stage==='deliver'?'d.v057LoreReturnDeliver("partage",'+JSON.stringify(f.json('d.v053LoreInfo().returns').find(row=>row.id==='partage').targetSite)+')':'d.v057LoreReturnClaim("partage")';assert.equal(f.run(command),false);assert.deepEqual(f.json('state'),before,'real actor checkpoint must be restored on '+stage);assert.equal(f.run('state===priorOwner'),true);assert.equal(f.run('test.saved'),saved);
+ }
+});
+
+test('Both ordinary dossier and return tracking restore real actor checkpoints and retain campaign owner on refused save',()=>{
+ for(const kind of['ordinary','return'])for(const throwing of[false,true]){
+  const f=runtime();finishRuntime(f,'partage');f.run('placeGiver("partage");state.v042.tracked="v042-marseille-landmark-01"');
+  f.run('const V042_INSTANCE_ZONE="v042_instance";function v042EnemyId(site,index,inside=false){return`v042:${site.id}:${inside?"inside":"outside"}:${index}`;}');
+  f.run(fs.readFileSync(path.join(root,'src/v049/00_encounters.js'),'utf8'));
+  f.run(fs.readFileSync(path.join(root,'src/v049/01_persistence.js'),'utf8').split('const v049SpawnEnemies=')[0]);
+  f.run('state.v049={schema:1,actors:{}};state.flags.enemyDead={};world.npcs[0].id="v042-npc:"+world.npcs[0].v042Site+":0";world.npcs[0].home=world.npcs[0].pos.slice();v049Own(world);globalThis.priorOwner=state;');
+  const saveSource=fs.readFileSync(path.join(root,'src/v049/02_bodies_lifecycle.js'),'utf8');f.run(saveSource.match(/const v049Save=saveGame;\nsaveGame=function[^\n]+/)[0]);
+  const before=f.json('state'),saved=f.run('test.saved');f.run(throwing?'test.throwSave=true':'test.fail=true');assert.equal(f.run(kind==='ordinary'?'d.v053LoreTrack("partage")':'d.v057LoreReturnTrack("partage")'),false);assert.deepEqual(f.json('state'),before,kind+' tracking cannot retain a failed save checkpoint');assert.equal(f.run('state===priorOwner'),true);assert.equal(f.run('test.saved'),saved);
+ }
+});

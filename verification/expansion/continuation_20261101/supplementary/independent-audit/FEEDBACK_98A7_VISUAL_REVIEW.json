@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent agent /root/audit_release",
+  "created_utc": "2026-11-01T01:09:29.389995+00:00",
+  "scope": "Read-only independent inspection of eight existing feedback screenshots; no browser execution and no repository or QA modification.",
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "source_report": "/workspace/.cloud-setup/fallout-marseille/continuation-next/hud/feedback-98a7/FPS_FEEDBACK_NATIVE.json",
+  "source_report_sha256": "5f845e5fbd195200ff4285721ac73fba2e7518b9b7979a9b2a472c341faab0e0",
+  "upstream_native_result": {
+    "passed": 36,
+    "failed": 0,
+    "stage": "complete",
+    "independently_reexecuted": false
+  },
+  "counts": {
+    "screenshots_opened_with_view_image": 8,
+    "matching_screenshot_sha256": 8,
+    "new_native_assertions": 0
+  },
+  "shots": [
+    {
+      "file": "01_actual_reload_progress.png",
+      "viewed_with": "tools.view_image, detail=original",
+      "width": 1440,
+      "height": 900,
+      "bytes": 1349934,
+      "expected_sha256": "62cd1aaadad87a0aba6e118efb782d341619e306ec8bff71717cac55c01c50b0",
+      "actual_sha256": "62cd1aaadad87a0aba6e118efb782d341619e306ec8bff71717cac55c01c50b0",
+      "hash_matches": true,
+      "observations_fr": [
+        "Rechargement visible en bas à droite : 9/42, « RECHARGEMENT · 0,6 s », barre partiellement remplie.",
+        "PV/PA/RAD et barre rapide restent visibles. Les mains et le bracelet sont stylisés; une partie du poignet est sous la barre rapide."
+      ]
+    },
+    {
+      "file": "02_actual_received_damage.png",
+      "viewed_with": "tools.view_image, detail=original",
+      "width": 1440,
+      "height": 900,
+      "bytes": 1343812,
+      "expected_sha256": "09cc349a7fa8fc2c00b9821da80ba80ea402c5cebed4bd7909e0b51cfbb7be7a",
+      "actual_sha256": "09cc349a7fa8fc2c00b9821da80ba80ea402c5cebed4bd7909e0b51cfbb7be7a",
+      "hash_matches": true,
+      "observations_fr": [
+        "PV affichés à 104, état « SAIGNEMENT » et toast « SAIGNEMENT actif. ». Chargeur plein 10/41 lisible.",
+        "Le reçu transitoire « − N PV » n’est pas visible sur ce raster; le nom de fichier ne constitue pas une preuve visuelle de ce reçu."
+      ]
+    },
+    {
+      "file": "03_actual_hit_confirmation.png",
+      "viewed_with": "tools.view_image, detail=original",
+      "width": 1440,
+      "height": 900,
+      "bytes": 1519544,
+      "expected_sha256": "ef017655194e0daf40efa545e4a2dd9e6ee48cb8f38080aa10d9da3b5406045e",
+      "actual_sha256": "ef017655194e0daf40efa545e4a2dd9e6ee48cb8f38080aa10d9da3b5406045e",
+      "hash_matches": true,
+      "observations_fr": [
+        "Toast historique « Tarente dominante −20 PV », étoile de bouche et munitions 9/41 visibles.",
+        "L’indicateur transitoire central et le mot « TOUCHÉ » ne sont pas visibles; la cible elle-même n’est pas assez discernable pour juger le contact à partir de l’image seule."
+      ]
+    },
+    {
+      "file": "04_actual_neutralisation.png",
+      "viewed_with": "tools.view_image, detail=original",
+      "width": 1440,
+      "height": 900,
+      "bytes": 1522829,
+      "expected_sha256": "ef649f30747c24c0f6e8ce1bccfa506ff58cd1d345906448a3d3f9aa08f90f3b",
+      "actual_sha256": "ef649f30747c24c0f6e8ce1bccfa506ff58cd1d345906448a3d3f9aa08f90f3b",
+      "hash_matches": true,
+      "observations_fr": [
+        "Toasts « Tarente dominante neutralisé. », sécurité de la cage et +24 XP visibles; munitions 6/41.",
+        "Le texte central « NEUTRALISÉ » n’est pas visible. L’image seule ne démontre pas la transition vivant/mort de l’acteur; cette transition est documentée dans le rapport natif."
+      ]
+    },
+    {
+      "file": "05_actual_feedback_1440x900.png",
+      "viewed_with": "tools.view_image, detail=original",
+      "width": 1440,
+      "height": 900,
+      "bytes": 1342965,
+      "expected_sha256": "d2f17ecac87716bb7355d6ba5f98d7394bb51ecf11d91ca4d64bed341ecca58a",
+      "actual_sha256": "d2f17ecac87716bb7355d6ba5f98d7394bb51ecf11d91ca4d64bed341ecca58a",
+      "hash_matches": true,
+      "observations_fr": [
+        "PV 101 et munitions 6/41 visibles dans leurs panneaux séparés; pas de débordement évident du HUD.",
+        "Ni reçu transitoire de dégâts ni sous-titre ne sont visibles sur le raster."
+      ]
+    },
+    {
+      "file": "05_actual_feedback_1024x768.png",
+      "viewed_with": "tools.view_image, detail=original",
+      "width": 1024,
+      "height": 768,
+      "bytes": 830312,
+      "expected_sha256": "6108ec76ba1d7bc2f5fd66f67720cf5d6b6623a1b620953f9deecee39d6a138f",
+      "actual_sha256": "6108ec76ba1d7bc2f5fd66f67720cf5d6b6623a1b620953f9deecee39d6a138f",
+      "hash_matches": true,
+      "observations_fr": [
+        "PV 100 et munitions 6/41 visibles, panneaux contenus dans le cadre; barre rapide complète en bas.",
+        "Le titre de lieu se replie sur deux lignes. Ni reçu transitoire de dégâts ni sous-titre ne sont visibles."
+      ]
+    },
+    {
+      "file": "05_actual_feedback_390x844.png",
+      "viewed_with": "tools.view_image, detail=original",
+      "width": 390,
+      "height": 844,
+      "bytes": 386091,
+      "expected_sha256": "165b05e187ee646c713a1285a2c1003564e00eb49cd1ebed93830e9325c18e54",
+      "actual_sha256": "165b05e187ee646c713a1285a2c1003564e00eb49cd1ebed93830e9325c18e54",
+      "hash_matches": true,
+      "observations_fr": [
+        "PV 99 et munitions 6/41 lisibles, panneaux contenus dans le cadre; quête sur plusieurs lignes.",
+        "Les mains et l’arme occupent une grande partie du bas droit et passent derrière le HUD translucide. Plusieurs libellés de barre rapide sont ellipsés. Aucun reçu transitoire ni sous-titre visible."
+      ]
+    },
+    {
+      "file": "05_actual_feedback_844x390.png",
+      "viewed_with": "tools.view_image, detail=original",
+      "width": 844,
+      "height": 390,
+      "bytes": 376561,
+      "expected_sha256": "acbfb5bbd1d2a980544ccb70c98092534101f7ddcd415b8c6b80f1dc998de348",
+      "actual_sha256": "acbfb5bbd1d2a980544ccb70c98092534101f7ddcd415b8c6b80f1dc998de348",
+      "hash_matches": true,
+      "observations_fr": [
+        "PV 98 et munitions 6/41 visibles; barre rapide contenue en bas.",
+        "La faible hauteur laisse peu d’espace vertical au jeu; texte de quête étroit sur plusieurs lignes et libellés ellipsés. Aucun reçu transitoire ni sous-titre visible."
+      ]
+    }
+  ],
+  "conclusion_fr": "Les huit fichiers existent, sont des PNG aux dimensions annoncées, ont été ouverts avec view_image et leurs SHA-256 concordent avec FPS_FEEDBACK_NATIVE.json. PV/munitions/rechargement/toasts sont lisibles dans les vues examinées. Les rasters ne fournissent pas la preuve visuelle des nouveaux indicateurs transitoires ni du placement des sous-titres; les assertions DOM réussies restent une preuve distincte.",
+  "limits_fr": [
+    "Ce contrôle visuel n’ajoute aucune assertion native au total et n’a pas relancé le jeu.",
+    "Le pilote contrôle le DOM avant shot(); shot() appelle v046Render puis page.screenshot. Aucune mesure finale de visibilité/temps n’est enregistrée après ce rendu. La cause exacte de l’absence des éléments transitoires dans les PNG n’est pas établie.",
+    "Les quatre captures de formats ne montrent pas de sous-titre; elles ne permettent donc pas de confirmer visuellement son absence de chevauchement avec PV ou munitions. Le rapport natif contient des rectangles DOM et contrôles de visibilité distincts.",
+    "Les dégâts entrants sont appliqués par v028NativeDamage sur la vraie chaîne de perte de PV; ils ne démontrent pas une attaque ennemie jouée.",
+    "Placement de caméra, gel et ticks de diagnostic assistent la préparation. Ces captures ne constituent pas une partie continue ni une validation physique mobile/manette.",
+    "Les images sont stylisées et de faible détail géométrique. Elles ne prouvent aucune fidélité urbaine intégrale 1:1 ni relevé réel des façades.",
+    "Les mains, poignets et armes sont stylisés. Le poignet est partiellement masqué par le HUD dans certaines vues; une validation ergonomique ou de confort sur appareil physique reste hors champ."
+  ],
+  "recommended_evidence_followup_fr": "Si une preuve raster de TOUCHÉ/NEUTRALISÉ/−N PV/sous-titre est nécessaire, conserver ces huit originaux et ajouter des captures diagnostiques synchronisées dans un lot complémentaire explicitement exclu du nombre d’assertions natives, sans modifier les octets de production.",
+  "repository_edits": false,
+  "qa_edits": false,
+  "browser_opened": false
+}

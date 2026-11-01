@@ -1,0 +1,113 @@
+{
+  "scope": "Post-exit source/receipt/visual review. This supplement does not add tests or capture events to the native report count. Failed initial sandbox attempt stays excluded.",
+  "reviewedAtEpoch": 1793495565.352451,
+  "ok": true,
+  "checks": {
+    "actual_complete_46_of_46": true,
+    "actual_exit_zero": true,
+    "receipt_report_and_stdout_exact": true,
+    "executed_pilot_same_before_after_and_archive": true,
+    "wrapper_archive_exact": true,
+    "stdout_exact_all_check_sequence": true,
+    "ten_physics_nodes_and_six_vertices_recomputed_from_actual_bundle": true,
+    "two_old_source_visits_recomputed": true,
+    "all_runtime_and_pinned_inputs_exact": true,
+    "one_context_and_no_mocking_or_app_errors": true,
+    "all_resources_closed": true,
+    "independent_post_exit_tcp_refused": true,
+    "both_png_bytes_hashes_and_actual_review": true
+  },
+  "htmlSha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "sourceIndexSha256": "d368402cd6c249f45b6ad4e7d9156088bf634e2f6c07fd10fdd7826d1a47c2e2",
+  "nativeReportSha256": "8488ee8f42833678366a69527296493fbcc2c0be080694b7f4bd7c84ee32de9e",
+  "executionReceiptSha256": "1b2dd17f2e471fedd2796b12148c766af13e6b994e3a1109f46dd4e1ed1cba31",
+  "actualNativeChecks": 46,
+  "captureEvents": 2,
+  "screenshots": [
+    {
+      "file": "01_saint_antoine_real_terrain.png",
+      "sha256": "7cac4bed9171e8a3ece235f290e5cd5a414f77b83d07726e5398f0f28e859e1e",
+      "width": 1440,
+      "height": 900,
+      "inspectedBy": "validate_north, actual raw PNG viewed through view_image",
+      "observation": "Relief vert triangulé et bâtiments existants visibles autour d’une caméra à hauteur d’œil ; les pentes et triangles restent nettement apparents près des façades sobres et de leurs ouvertures. La vue ne permet pas d’identifier une gare réelle de Saint-Antoine."
+    },
+    {
+      "file": "02_estaque_real_terrain.png",
+      "sha256": "8257ce3e9dbe95dd2b1fe43ef8c602ea40ec07782a73b63fbb8731dc593328f3",
+      "width": 1440,
+      "height": 900,
+      "inspectedBy": "validate_north, actual raw PNG viewed through view_image",
+      "observation": "Pente et dépression du terrain visibles entre les bâtiments existants ; vue vers un ensemble de volumes stylisés. La vue ne montre pas une reconstruction identifiable du port ou de l’architecture de l’Estaque."
+    }
+  ],
+  "physicsSamples": {
+    "count": 10,
+    "maximumAbsoluteErrorMeters": 1.807904936867999e-10
+  },
+  "renderedTriangleVertices": {
+    "count": 6,
+    "visualOffsetMeters": -0.06,
+    "maximumAbsoluteErrorAfterOffsetMeters": 0.0
+  },
+  "publishedMeshes": [
+    {
+      "source": "ign_lidar_hd_mnt",
+      "nodeSpacingMeters": [
+        0.9959589225753878,
+        0.999880239520996
+      ],
+      "vertices": 109210,
+      "faces": 217100,
+      "scope": "Nœuds de la grille importée dans un voisinage borné à 262144 sommets ; LOD de 32 m au-delà",
+      "colorGroups": 1,
+      "colorSampling": "Couleur au centre de chaque triangle ; anneaux et trous conservés, altitudes inchangées",
+      "colorPolygonCount": 0,
+      "colorCandidateTests": 0
+    },
+    {
+      "source": "ign_lidar_hd_mnt",
+      "nodeSpacingMeters": [
+        0.9952630562263199,
+        0.9990256410258479
+      ],
+      "vertices": 97030,
+      "faces": 192816,
+      "scope": "Nœuds de la grille importée dans un voisinage borné à 262144 sommets ; LOD de 32 m au-delà",
+      "colorGroups": 1,
+      "colorSampling": "Couleur au centre de chaque triangle ; anneaux et trous conservés, altitudes inchangées",
+      "colorPolygonCount": 0,
+      "colorCandidateTests": 0
+    }
+  ],
+  "preservedSourceVisits": [
+    {
+      "region": "geo_marseille",
+      "grid": "enrichment:geo_marseille:bc37c85ee5584f36",
+      "bundleSha256": "4495922b8fb9f9d9e5807adef7c5279ff61e2a15fe68284f112226f3a94691cf",
+      "expectedHeightMeters": 11.467022895812988,
+      "actualHeightMeters": 11.467022895854576,
+      "absoluteErrorMeters": 4.1588066324038664e-11
+    },
+    {
+      "region": "geo_huveaune",
+      "grid": "enrichment:geo_huveaune:61e243f5fe4f2c16",
+      "bundleSha256": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61",
+      "expectedHeightMeters": 105.35626220703125,
+      "actualHeightMeters": 105.35626220701721,
+      "absoluteErrorMeters": 1.404032445861958e-11
+    }
+  ],
+  "http": {
+    "actualLocalResponses": 296,
+    "non200LocalResponses": [],
+    "metadataCancellations": 1,
+    "retainedExternalTunnelFailures": 9
+  },
+  "limitations": [
+    "Only two bounded northern terrain rectangles; source files are nearest-resampled WGS84 requested1m nodes, original TIFFs0.5m.",
+    "Ten physics nodes and six rendered vertices are observations of actual runtime samples; the independent206240-node TIFF replay is a separate acquisition receipt, outside native count.",
+    "Camera and sector selection, render/simulation freezing are declared assistance; not an exhaustive human walk.",
+    "Visible faceted soil and stylized inherited buildings do not certify real facades, port, station or interiors."
+  ]
+}

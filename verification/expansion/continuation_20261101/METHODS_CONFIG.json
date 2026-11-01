@@ -1,0 +1,195 @@
+{
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "native_methods": [
+    {
+      "id": "fps",
+      "label": "Vue FPS native",
+      "report": "fps/native-98a7/FIRST_PERSON_NATIVE.json",
+      "receipt": "fps/native-98a7/EXECUTION_STATUS.json",
+      "log": "fps/native-98a7/stdout.log",
+      "exit_key": "process_exit_code",
+      "receipt_report_hash_key": "report_sha256",
+      "receipt_script_hash_key": "script_sha256",
+      "receipt_log_hash_key": "stdout_sha256"
+    },
+    {
+      "id": "feedback",
+      "label": "Retours de combat FPS natifs",
+      "report": "hud/feedback-final-98a7-03/FPS_FEEDBACK_NATIVE.json",
+      "receipt": "hud/feedback-final-98a7-03/EXECUTION.json",
+      "log": "hud/feedback-final-98a7-03/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "hud",
+      "label": "HUD natif, formats et commandes",
+      "report": "hud/layout-98a7/FPS_HUD_NATIVE.json",
+      "receipt": "hud/layout-98a7/EXECUTION.json",
+      "log": "hud/layout-98a7/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "controller",
+      "label": "DOM avec API Gamepad simulée",
+      "report": "controller/native-98a7/CONTROLLER_BROWSER.json",
+      "receipt": "controller/native-98a7/EXECUTION.json",
+      "log": "controller/native-98a7/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "category": "simulated_gamepad"
+    },
+    {
+      "id": "landmarks",
+      "label": "Surfaces MNS natives, quatre sites",
+      "report": "landmarks/native-final-98a7-02/LANDMARK_SURFACES_NATIVE.json",
+      "receipt": "landmarks/native-final-98a7-02/EXECUTION_STATUS.json",
+      "log": "landmarks/native-final-98a7-02/run.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "LANDMARK_SURFACES_NATIVE.jsonSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "run.logSha256"
+    },
+    {
+      "id": "interiors",
+      "label": "Intérieurs, portes, services et dépôts natifs",
+      "report": "interiors/native-final-98a7-02/INTERIOR_PROGRAMS_NATIVE.json",
+      "receipt": "interiors/native-final-98a7-02/EXECUTION_STATUS.json",
+      "log": "interiors/native-final-98a7-02/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "stdoutSha256",
+      "report_script_dependency": "tests/expansion/interior_programs_native.py"
+    },
+    {
+      "id": "lore",
+      "label": "Dossiers et contre-dons natifs des factions",
+      "report": "lore/native-98a7-recovery-01/COMMUNITY_DOSSIERS_NATIVE.json",
+      "receipt": "lore/native-98a7-recovery-01/EXECUTION_RECEIPT.json",
+      "log": "lore/native-98a7-recovery-01/EXECUTION.log",
+      "exit_key": "actual_exit_code",
+      "receipt_report_hash_key": "report_sha256",
+      "receipt_script_hash_key": [
+        "before_inputs",
+        "tests/expansion/community_dossiers_native.py"
+      ],
+      "receipt_log_hash_key": "log_sha256"
+    },
+    {
+      "id": "vending",
+      "label": "Distributeurs Nuka-Cola natifs",
+      "report": "iconic/native-final-98a7-03/VENDING_NATIVE.json",
+      "receipt": "iconic/native-final-98a7-03/EXECUTION_STATUS.json",
+      "log": "iconic/native-final-98a7-03/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "stdoutSha256"
+    },
+    {
+      "id": "north",
+      "label": "Relief nord natif et anciens lots revisités",
+      "report": "districts/native-final-98a7-02/NORTH_TERRAIN_NATIVE.json",
+      "receipt": "districts/native-final-98a7-02/EXECUTION_STATUS.json",
+      "log": "districts/native-final-98a7-02/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256Before",
+      "receipt_log_hash_key": "stdoutSha256"
+    }
+  ],
+  "supplements": [
+    {
+      "source": "diagnostic-attempts",
+      "destination": "diagnostic-attempts"
+    },
+    {
+      "source": "legacy-cache12-attempt",
+      "destination": "legacy-cache12-attempt"
+    },
+    {
+      "source": "independent-audit",
+      "destination": "independent-audit"
+    },
+    {
+      "source": "landmarks/SOURCE_CELL_COMPARISON.json",
+      "destination": "source-audits/MNS_SOURCE_CELL_COMPARISON.json"
+    },
+    {
+      "source": "landmarks/audit_native_vertices.py",
+      "destination": "source-audits/audit_native_vertices.py"
+    },
+    {
+      "source": "landmarks/PEER_LORE_REVIEW.json",
+      "destination": "peer-reviews/PEER_LORE_REVIEW.json"
+    },
+    {
+      "source": "landmarks/peer_lore_review.cjs",
+      "destination": "peer-reviews/peer_lore_review.cjs"
+    },
+    {
+      "source": "landmarks/LANDMARKS_DELIVERY.json",
+      "destination": "landmarks-delivery.json"
+    },
+    {
+      "source": "landmarks/RECOVERY_NATIVE_FINAL_98A7_01.json",
+      "destination": "interruptions/landmarks.json"
+    },
+    {
+      "source": "interiors/INTERRUPTED_NATIVE_98A7_OBSERVATION.json",
+      "destination": "interruptions/interiors.json"
+    },
+    {
+      "source": "interiors/BASELINE_LAYOUT_SERVICE_IDENTITY.json",
+      "destination": "source-audits/BASELINE_LAYOUT_SERVICE_IDENTITY.json"
+    },
+    {
+      "source": "lore/RECOVERY_NATIVE_98A7.json",
+      "destination": "interruptions/lore.json"
+    },
+    {
+      "source": "lore/RECOVERY01_VALIDATION.json",
+      "destination": "peer-reviews/LORE_FINAL_VALIDATION.json"
+    },
+    {
+      "source": "lore/LORE_FIXES_PROOF.json",
+      "destination": "peer-reviews/LORE_FIXES_PROOF.json"
+    },
+    {
+      "source": "lore/TRACK_ROLLBACK_PROOF.json",
+      "destination": "peer-reviews/TRACK_ROLLBACK_PROOF.json"
+    },
+    {
+      "source": "lore/HUD_PEER_PROBES.json",
+      "destination": "peer-reviews/HUD_PEER_PROBES.json"
+    },
+    {
+      "source": "lore/HUD_PEER_PROBES.cjs",
+      "destination": "peer-reviews/HUD_PEER_PROBES.cjs"
+    },
+    {
+      "source": "iconic/PLAYER_VOLUME_BEFORE_AFTER.json",
+      "destination": "peer-reviews/PLAYER_VOLUME_BEFORE_AFTER.json"
+    },
+    {
+      "source": "iconic/probe_player_volume.cjs",
+      "destination": "peer-reviews/probe_player_volume.cjs"
+    },
+    {
+      "source": "iconic/QA_INVENTORY_SELECTOR_CORRECTION.json",
+      "destination": "qa-vending/QA_INVENTORY_SELECTOR_CORRECTION.json"
+    },
+    {
+      "source": "ISOLATED_COPY_REPAIR.json",
+      "destination": "qa-cache/ISOLATED_COPY_REPAIR.json"
+    }
+  ]
+}

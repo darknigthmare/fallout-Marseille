@@ -1,0 +1,711 @@
+{
+  "scope": "Combat feedback on exact production HTML and an existing authored hostile.\n\nReadonly geometry/collision/LOS scouts and inherited camera/freeze diagnostics\nprepare an Aubagne encounter, not a surveyed view or a continuous playthrough.\nOrdinary starter pistol, enemy identities/health, ammunition and browser storage\nare not granted or replaced. Mouse/keyboard fire and reload use production input.\nv028NativeDamage invokes the real incoming-damage chain for the received-HP\ndisplay; it does not demonstrate an enemy attack. Simulation ticks and camera\nplacement are explicit diagnostic assistance. No randomness/network/HTML/storage\nmocking; no private game variables are injected.\nScenes are rendered before transient feedback is emitted. Screenshots do not\nredraw the slow 3D scene after an event; DOM visibility and real elapsed time are\nrecorded on both sides of each screenshot without extending feedback lifetimes.\n",
+  "checks": [
+    {
+      "name": "On-disk production HTML has expected identity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP serves exact frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Starter pistol and living authored hostile are unmodified",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh play has no invented damage or hit receipt",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native left click emits one ordinary shot and spends one round",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "An actual miss creates no positive confirmation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native R starts the real reload and captures its complete adjusted duration",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload bar follows the active timer and exposes a truthful accessible value",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload hint includes the actual remaining seconds",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Capture 01_actual_reload_progress: expected feedback remains visible before and after the real screenshot",
+      "ok": true,
+      "detail": {
+        "file": "01_actual_reload_progress.png",
+        "sha256": "d5c0c95dfdebbffb5949b1c14cfb869a49d8b7a6df6d096eb708c492562dd365",
+        "expected_visible_elements": [
+          "reload"
+        ],
+        "dom_before": {
+          "performance_now_ms": 7971.900000035763,
+          "epoch_ms": 1793495492250,
+          "elements": {
+            "hit": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "hurt": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "subtitle": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "reload": {
+              "visible": true,
+              "text": "",
+              "rect": {
+                "x": 1176,
+                "y": 807,
+                "width": 238,
+                "height": 3
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": null,
+            "hurt": null
+          }
+        },
+        "dom_after": {
+          "performance_now_ms": 9438.600000023842,
+          "epoch_ms": 1793495493717,
+          "elements": {
+            "hit": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "hurt": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "subtitle": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "reload": {
+              "visible": true,
+              "text": "",
+              "rect": {
+                "x": 1176,
+                "y": 807,
+                "width": 238,
+                "height": 3
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": null,
+            "hurt": null
+          }
+        },
+        "screenshot_elapsed_seconds": 1.4411214649444446,
+        "capture_method": "Unmodified page screenshot; no 3D redraw, clock change or transient replay between DOM observations."
+      }
+    },
+    {
+      "name": "Real pause suspends reload instead of advancing the visual countdown",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual reload completion hides the bar and truthfully labels the full magazine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Received-damage receipt equals the real health change after armour",
+      "ok": true,
+      "detail": {
+        "lost": 11.400000000000006,
+        "receipt": {
+          "amount": 11.400000000000006,
+          "until": 12931.800000011921
+        }
+      }
+    },
+    {
+      "name": "Received-damage display contains no inferred enemy location or identity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Capture 02_actual_received_damage: expected feedback remains visible before and after the real screenshot",
+      "ok": false,
+      "detail": {
+        "file": "02_actual_received_damage.png",
+        "sha256": "2aad1d34e9dd0d7529ec66b7b4ecfbd56c179b06132d210e2636838983420abe",
+        "expected_visible_elements": [
+          "hurt",
+          "subtitle"
+        ],
+        "dom_before": {
+          "performance_now_ms": 12180.800000011921,
+          "epoch_ms": 1793495496459,
+          "elements": {
+            "hit": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "hurt": {
+              "visible": true,
+              "text": "− 11 PV",
+              "rect": {
+                "x": 26,
+                "y": 708,
+                "width": 64.359375,
+                "height": 22
+              }
+            },
+            "subtitle": {
+              "visible": true,
+              "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+              "rect": {
+                "x": 481.375,
+                "y": 556,
+                "width": 477.25,
+                "height": 39.984375
+              }
+            },
+            "reload": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": null,
+            "hurt": 751
+          }
+        },
+        "dom_after": {
+          "performance_now_ms": 14107.5,
+          "epoch_ms": 1793495498386,
+          "elements": {
+            "hit": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "hurt": {
+              "visible": false,
+              "text": "− 11 PV",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "subtitle": {
+              "visible": false,
+              "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "reload": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": null,
+            "hurt": -1175.699999988079
+          }
+        },
+        "screenshot_elapsed_seconds": 1.8926374790025875,
+        "capture_method": "Unmodified page screenshot; no 3D redraw, clock change or transient replay between DOM observations."
+      }
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_actual_reload_progress.png",
+      "sha256": "d5c0c95dfdebbffb5949b1c14cfb869a49d8b7a6df6d096eb708c492562dd365",
+      "expected_visible_elements": [
+        "reload"
+      ],
+      "dom_before": {
+        "performance_now_ms": 7971.900000035763,
+        "epoch_ms": 1793495492250,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": true,
+            "text": "",
+            "rect": {
+              "x": 1176,
+              "y": 807,
+              "width": 238,
+              "height": 3
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": null
+        }
+      },
+      "dom_after": {
+        "performance_now_ms": 9438.600000023842,
+        "epoch_ms": 1793495493717,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": true,
+            "text": "",
+            "rect": {
+              "x": 1176,
+              "y": 807,
+              "width": 238,
+              "height": 3
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": null
+        }
+      },
+      "screenshot_elapsed_seconds": 1.4411214649444446,
+      "capture_method": "Unmodified page screenshot; no 3D redraw, clock change or transient replay between DOM observations."
+    },
+    {
+      "file": "02_actual_received_damage.png",
+      "sha256": "2aad1d34e9dd0d7529ec66b7b4ecfbd56c179b06132d210e2636838983420abe",
+      "expected_visible_elements": [
+        "hurt",
+        "subtitle"
+      ],
+      "dom_before": {
+        "performance_now_ms": 12180.800000011921,
+        "epoch_ms": 1793495496459,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": true,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 26,
+              "y": 708,
+              "width": 64.359375,
+              "height": 22
+            }
+          },
+          "subtitle": {
+            "visible": true,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 481.375,
+              "y": 556,
+              "width": 477.25,
+              "height": 39.984375
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": 751
+        }
+      },
+      "dom_after": {
+        "performance_now_ms": 14107.5,
+        "epoch_ms": 1793495498386,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": -1175.699999988079
+        }
+      },
+      "screenshot_elapsed_seconds": 1.8926374790025875,
+      "capture_method": "Unmodified page screenshot; no 3D redraw, clock change or transient replay between DOM observations."
+    },
+    {
+      "file": "failure.png",
+      "sha256": "e2eb83a2a988ce84776c20ecb3380e1a7d8b5fc7ef7a671c6701b9d331064a55",
+      "expected_visible_elements": [],
+      "dom_before": {
+        "performance_now_ms": 14172.5,
+        "epoch_ms": 1793495498450,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": -1240.699999988079
+        }
+      },
+      "dom_after": {
+        "performance_now_ms": 15879.300000011921,
+        "epoch_ms": 1793495500157,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": -2947.5
+        }
+      },
+      "screenshot_elapsed_seconds": 1.6976017790148035,
+      "capture_method": "Unmodified page screenshot; no 3D redraw, clock change or transient replay between DOM observations."
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "local_http_errors": [],
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "script_sha256": "f49cc851dce83cfcee6df597a2092894a26ec8bf12feecafc376e39faa12e8c5",
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "randomness_mocked": false,
+  "stage": "failed",
+  "passed": 14,
+  "failed": 1,
+  "elapsed_seconds": 17.447,
+  "pinned_inputs": {
+    "index.html": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "src/game.js": "03f1b83dae4b257f000f849ca2a5bfef91a40f854f6d26603734562e2dcf94ce",
+    "src/v050/19_fps_hud.js": "56f0983e2b749bfa91f1ec9c890184970cdbd1e5431d3a2ead757354a76eb7cb",
+    "src/v050/17_first_person.js": "82007a80ceb75f32493763e3098bb7cc153e2bc56cc8f31367720408484bc293",
+    "tests/expansion/fps_feedback_native.py": "f49cc851dce83cfcee6df597a2092894a26ec8bf12feecafc376e39faa12e8c5",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80"
+  },
+  "origin": "http://127.0.0.1:40337",
+  "browser_version": "154.0.8037.57",
+  "error": "AssertionError('Capture 02_actual_received_damage: expected feedback remains visible before and after the real screenshot')",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/fps_feedback_native.py\", line 198, in main\n    shot('02_actual_received_damage', ('hurt', 'subtitle'))\n  File \"/workspace/fallout-Marseille/tests/expansion/fps_feedback_native.py\", line 113, in shot\n    check('Capture '+name+': expected feedback remains visible before and after the real screenshot',\n  File \"/workspace/fallout-Marseille/tests/expansion/fps_feedback_native.py\", line 64, in check\n    raise AssertionError(name)\nAssertionError: Capture 02_actual_received_damage: expected feedback remains visible before and after the real screenshot\n",
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true
+  }
+}

@@ -1,0 +1,45 @@
+OK Migration introduces two finite inventories and no bottle, cap or material grant
+OK Cold migration preserves empty stock and repaired state without replenishing either cabinet
+OK Malformed and excessive counts cannot add stock beyond the original finite supply
+OK Pure payment spends exactly one repair and one purchase, without touching unrelated ledgers
+OK All original cabinet parts are bounded original boxes and stock rows visibly empty when exhausted
+OK Geographic counterparts select stable existing safe relays and retain the same original cabinet IDs
+OK Production hooks create one solid cabinet and real E interaction without modifying existing source solids
+OK Cabinet body blocks passage and its actual top supports descent instead of trapping the actor inside
+OK Actual repair, purchase and ordinary Nuka consumption share the same bag and capsule wallet
+OK A fail write rolls back all state and attempted ammo metadata for repair
+OK A fail write rolls back all state and attempted ammo metadata for nukaQuantum
+OK A throw write rolls back all state and attempted ammo metadata for repair
+OK A throw write rolls back all state and attempted ammo metadata for nukaQuantum
+OK Each bottle is finite; close, travel, migration and repeated repair never replenish or grant XP
+OK A quoted cabinet interaction rechecks state.player.pos[0]+=20 before spending supplies
+OK A quoted cabinet interaction rechecks state.player.pos[1]+=3 before spending supplies
+OK A quoted cabinet interaction rechecks test.sight=false before spending supplies
+OK A quoted cabinet interaction rechecks test.missing=true before spending supplies
+OK A quoted cabinet interaction rechecks V046.busy=true before spending supplies
+OK A quoted cabinet interaction rechecks V047.pending={} before spending supplies
+OK A quoted cabinet interaction rechecks V046.lab=true before spending supplies
+OK A quoted cabinet interaction rechecks zoneTransitioning=true before spending supplies
+OK A quoted cabinet interaction rechecks state.player.hp=0 before spending supplies
+OK A quoted cabinet interaction rechecks world.enemies.push({alive:true,alerted:true,pos:state.player.pos.slice()}) before spending supplies
+OK A newly obstructed support refuses repair, and force-rebind omits the cabinet without moving source solids
+OK Stale DOM purchase callbacks cannot act after re-render or close and do not bypass current availability
+OK Escape and native dialog cancellation restore playing mode; world hotkeys remain swallowed inside the modal
+OK A cold new game resets only its finite stock and removes prior world colliders and sessions
+OK Source publication revalidates current cabinets and cleans old scene ownership without collider leaks
+OK Geographic counterpart shares paid stock while disabled layer, absent source and city interiors expose no machine
+OK Diagnostic catalog and state are copies and remote action APIs never open or spend outside physical range
+OK Opening clears the real held movement Set and touch vector without masking them with the previous key handler
+OK An unavailable world or menu produces safe diagnostics and refuses to open without a page exception
+OK Switching the existing world to a laboratory immediately removes cabinets and preserves stock
+OK Opening without the repair materials does not expose a working purchase or consume a partial payment
+OK Insufficient caps and an over-cap or malformed bag cannot spend stock even through the guarded action
+OK The second cabinet has its own finite stock and cannot inherit the first cabinet repair or payment
+OK An audio or DOM failure after successful persistence keeps the committed payment and bottle identical in memory and JSON
+OK The actual municipal Marseille world alias binds the same existing safe relay and finite cabinet
+OK A first bind never embeds a player already standing inside the otherwise valid cabinet candidate
+OK A subsequent source publication rechecks the real player volume instead of recreating a solid around their feet
+OK A player already on the cabinet top preserves that exact support on publication and can move off without jumping
+OK Player overlap admission respects separated floors and the actual standing or crouched body radius
+{"passed":43,"failed":0,"total":43,"scope":"Original finite vending production module composed with actual existing collectible/consumption and geometry helpers; controlled DOM, flat support, storage and actors, not a native geographic visit"}
+

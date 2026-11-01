@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/controller_browser.py",
+    "--url",
+    "http://127.0.0.1:45925/index.html?skipboot=1",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/controller/native-98a7",
+    "--expected-html-sha256",
+    "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 230138,
+  "exitCode": 0,
+  "startedAtEpoch": 1793495648.224777,
+  "durationSeconds": 15.291750431060791,
+  "scriptSha256": "cc83a11b3b5444a191fbd76066b3fc0ca44a9b9223f9460756fb974e1fbbbdf3",
+  "scriptUnchanged": true,
+  "reportSha256": "148839cb26fdc9a39fde4cd026a49f7e8b301f67d9922c883be951bb8c160b00",
+  "logSha256": "002c6a040dbbcde61a7b90b72bfb6b1a0fd64d5de6e0de8ecd098f84641092f8",
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "runtimeChanged": [],
+  "runtimeInputCount": 361
+}

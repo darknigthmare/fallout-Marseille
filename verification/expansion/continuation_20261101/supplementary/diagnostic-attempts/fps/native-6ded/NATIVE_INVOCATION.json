@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/first_person_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/fps/native-6ded",
+    "--expect-html-sha",
+    "6dedb62313702a4fc81fe8fc229b32cb0a870426d22c724185c63a379555f3b5",
+    "--expect-fps-sha",
+    "7983752d3c6c41682da51f6515f93c62b9cc15ad3c85f7dbd20c712a92439a19"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "script": "/workspace/fallout-Marseille/tests/expansion/first_person_native.py",
+  "script_sha256": "0473e89e26dfb097057d8380dd718a37caa775e65e00563a3703f1dc10d4bac1",
+  "script_archive_sha256": "0473e89e26dfb097057d8380dd718a37caa775e65e00563a3703f1dc10d4bac1",
+  "html_sha256_before": "6dedb62313702a4fc81fe8fc229b32cb0a870426d22c724185c63a379555f3b5",
+  "started_utc": "2026-11-01T00:35:42Z",
+  "process_exit_code": null
+}

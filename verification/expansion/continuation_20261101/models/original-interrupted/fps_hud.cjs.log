@@ -1,0 +1,31 @@
+✔ HUD options default to readable full information and ignore foreign fields (8.164614ms)
+✔ health and AP ratios are bounded and never divide by zero (0.232104ms)
+✔ north wrap remains continuous across zero degrees (0.163535ms)
+✔ compass cardinal labels follow actual yaw (0.420464ms)
+✔ compass uses a bounded finite set at non-cardinal and huge wrapped yaw (0.248784ms)
+✔ quest directly ahead uses center and behind is indicated at edge (0.26291ms)
+✔ east objective changes from right edge to center after actual east turn (0.247111ms)
+✔ quest bearing rejects missing coordinate, malformed target and coincident point (0.174806ms)
+✔ critical health is real low living health, without low-AP false warning (0.763886ms)
+✔ empty firearm and melee have distinct truthful HUD labels (0.297204ms)
+✔ reload status follows active timer only (3.617339ms)
+✔ stance follows actual crouch and camera mode without writing player state (0.248403ms)
+✔ damage receipts use actual living health loss and exclude overkill, healing and invalid samples (0.158946ms)
+✔ misses, dead targets and armour-blocked impacts produce no positive hit confirmation (0.299879ms)
+✔ one burst can count multiple applied hits while reporting the same kill only once (0.189222ms)
+✔ real area damage retains distinct affected targets and does not mutate input records (0.341327ms)
+✔ reload progress follows the actual timer rather than animation or weapon nominal duration (0.134691ms)
+✔ finished, cancelled or untracked reloads cannot retain a positive progress bar (0.190135ms)
+✔ portrait subtitle avoids ammunition and vitals instead of covering their shared baseline (28.099668ms)
+✔ subtitle avoids the actual powered panel, interaction and crosshair when each occupies its horizontal span (0.285011ms)
+✔ landscape subtitles can use a free central column beside tall side panels (0.155239ms)
+✔ no free full-height subtitle strip is reported explicitly without dropping or clipping the message (0.166601ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 68.979651
+

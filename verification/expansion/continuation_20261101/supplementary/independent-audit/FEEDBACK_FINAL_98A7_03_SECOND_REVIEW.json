@@ -1,0 +1,123 @@
+{
+  "scope": "Second independent visual review of all eight actual final feedback PNGs; no browser launched and no repository, QA script, image or raw report changed.",
+  "reviewer": "validate_vending",
+  "recordedUtc": "2026-11-01T01:14:09Z",
+  "sourceDirectory": "/workspace/.cloud-setup/fallout-marseille/continuation-next/hud/feedback-final-98a7-03",
+  "htmlSha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "reportSha256": "1033ece2fee68e98dc77c3843ae426ddcf12bf2893f9b647cfd0af76ee79175e",
+  "receiptSha256": "f475299299a97ed9662ff168d1f04eb0815bbc6630ea1485f8c8213533f267df",
+  "logSha256": "572d74dadfcf2814787484fb5ffd718d0d232070578f49981997496aa786dbe6",
+  "scriptSha256": "d1d912cef0f08e45df50b5704ef20aba4e592cd7e2dc696b9d71e783e7bbbc55",
+  "recordedNativeResult": {
+    "exitCode": 0,
+    "passed": 44,
+    "failed": 0,
+    "checks": 44,
+    "runtimeInputCount": 361,
+    "runtimeChanged": []
+  },
+  "conclusion": "PASS: all requested feedback transients are visibly present in the eight PNGs. Damage receipts and subtitles remain separate from health and ammunition panels in all four requested formats.",
+  "nonBlockingEditorialFinding": "The actual one-point subtitle uses the plural wording «1 points de dégâts». This does not affect the requested visibility and overlap checks. No production change was made.",
+  "shots": [
+    {
+      "file": "01_actual_reload_progress.png",
+      "sha256": "21a253108c282ff3b02b05cce18c09d88c26f37ca3738b3caef940a07f4ffbb8",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspectedWith": "view_image",
+      "expectedElementsVisibleInActualPNG": true,
+      "expectedElementsVisibleBeforeAndAfterCapture": true,
+      "observations": "Visible: pistol and actual reload pose, 9/42 ammunition, RECHARGEMENT · 0,6 s and the progress strip below the weapon panel. Health remains readable at bottom left."
+    },
+    {
+      "file": "02_actual_received_damage.png",
+      "sha256": "196d0311de83165d620af5a2285cf44130645b21de6c2ac2daae31f235a492ce",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspectedWith": "view_image",
+      "expectedElementsVisibleInActualPNG": true,
+      "expectedElementsVisibleBeforeAndAfterCapture": true,
+      "observations": "Visible: static −11 PV receipt just above the health panel (104 PV), red damage vignette and the subtitle Essai du retour de dégâts / Vous subissez 11 points de dégâts. Subtitle and receipt are separate from health values and ammunition."
+    },
+    {
+      "file": "03_actual_hit_confirmation.png",
+      "sha256": "6259486668b030352fc61627ae4174f79ad23c59b88babf257cf2b7564b5dbfd",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspectedWith": "view_image",
+      "expectedElementsVisibleInActualPNG": true,
+      "expectedElementsVisibleBeforeAndAfterCapture": true,
+      "observations": "Visible: TOUCHÉ text below the crosshair, hit marker around the reticle, muzzle flash and an enemy damage toast. Health and 9/41 ammunition remain unobscured."
+    },
+    {
+      "file": "04_actual_neutralisation.png",
+      "sha256": "3df06decbe296700e21def58e7e8d88d9b9596d4cb2575ea9589e72c304c1b34",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspectedWith": "view_image",
+      "expectedElementsVisibleInActualPNG": true,
+      "expectedElementsVisibleBeforeAndAfterCapture": true,
+      "observations": "Visible: NEUTRALISÉ text below the crosshair, kill event toasts and 6/41 ammunition. Health and ammunition remain unobscured."
+    },
+    {
+      "file": "05_actual_feedback_1440x900.png",
+      "sha256": "7b5ca6819c2cc2c207e03e2c5acfc3e136dac3c12987e63d1b9ca974bcedabf1",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspectedWith": "view_image",
+      "expectedElementsVisibleInActualPNG": true,
+      "expectedElementsVisibleBeforeAndAfterCapture": true,
+      "observations": "Visible: −1,0 PV receipt above health and Retour de dégâts / Vous subissez 1 points de dégâts subtitle near the center below the reticle. The subtitle does not intersect the health or ammunition panels."
+    },
+    {
+      "file": "05_actual_feedback_1024x768.png",
+      "sha256": "2b2b9db55004225dba2c887dd79bf116df802315ffae970de80f916d00592f31",
+      "dimensions": [
+        1024,
+        768
+      ],
+      "inspectedWith": "view_image",
+      "expectedElementsVisibleInActualPNG": true,
+      "expectedElementsVisibleBeforeAndAfterCapture": true,
+      "observations": "Visible: −1,0 PV receipt and single-line damage subtitle. Health and 6/41 ammunition remain separate and readable."
+    },
+    {
+      "file": "05_actual_feedback_390x844.png",
+      "sha256": "e8c5bc1eaa4e5e01badd50269fa3a0fc7557c18de187a94799bdb79fb1ffb28f",
+      "dimensions": [
+        390,
+        844
+      ],
+      "inspectedWith": "view_image",
+      "expectedElementsVisibleInActualPNG": true,
+      "expectedElementsVisibleBeforeAndAfterCapture": true,
+      "observations": "Visible: −1,0 PV receipt and damage subtitle wrapping onto two lines in the central free band. It stays above the health panel and above the right ammunition panel; both values remain readable. The wrist model occupies the lower world view but does not hide the required HUD text."
+    },
+    {
+      "file": "05_actual_feedback_844x390.png",
+      "sha256": "23c885b19be3dd7dd822c62d19ac34cd5fd5907e10bc3dcdc28a838a61efd3b2",
+      "dimensions": [
+        844,
+        390
+      ],
+      "inspectedWith": "view_image",
+      "expectedElementsVisibleInActualPNG": true,
+      "expectedElementsVisibleBeforeAndAfterCapture": true,
+      "observations": "Visible: −1,0 PV receipt at left and damage subtitle in the upper central free band. Both health and ammunition panels remain unobscured despite limited vertical height."
+    }
+  ],
+  "limitations": [
+    "Static screenshots and recorded DOM observations confirm these captured moments, not arbitrary live frame timing.",
+    "390x844 and 844x390 are emulated viewports; physical mobile input is not certified."
+  ]
+}

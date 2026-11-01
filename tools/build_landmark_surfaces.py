@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Clip official native MNS triangles to unchanged IGN landmark footprints.
 
-The three GeoTIFFs are downloaded only from their already acquired IGN metadata
+The GeoTIFFs are downloaded only from their already acquired IGN metadata
 url_mns. Elevations at native pixel centres remain Float32 source values;
 vertices introduced by footprint clipping use triangle-plane interpolation.
 No silhouette, opening, statue, room or semantic roof plane is invented.
@@ -16,9 +16,10 @@ import sys
 from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-TILES = ('0891-6248', '0892-6248', '0892-6246')
+TILES = ('0891-6248', '0892-6248', '0892-6246', '0891-6247')
 CHUNKS = ('m13055-r05-c05-e010c49d49243bae.json', 'm13055-r04-c06-2-0-8dc4e4c60da6c304.json')
-SITES = ('Cathédrale de la Major', 'Notre-Dame de la Garde')
+SITES = ('Cathédrale de la Major', 'Notre-Dame de la Garde',
+         'Chapelle et Hospice de la Vieille Charité', 'Palais du Pharo')
 
 
 def canonical(value):
@@ -201,7 +202,7 @@ def main():
         composite = memory.open(**profile)
         composite.write(np.concatenate([a.read(1),b.read(1)],axis=1),1)
         composites.append(composite)
-        surfaces = [(composite, {'sha256':None,'sourceHashes':[left[1]['sha256'],right[1]['sha256']]}),rasters[2]]
+        surfaces = [(composite, {'sha256':None,'sourceHashes':[left[1]['sha256'],right[1]['sha256']]})] + rasters[2:]
         catalogue = json.loads((ROOT/'implementation/architecture-continuation/IGN_SITE_CONTEXT_CATALOGUE.json').read_text())
         candidates = {c['cleabs']:row['name'] for row in catalogue['rows'] if row['name'] in SITES for c in row['candidates']}
         features = {}

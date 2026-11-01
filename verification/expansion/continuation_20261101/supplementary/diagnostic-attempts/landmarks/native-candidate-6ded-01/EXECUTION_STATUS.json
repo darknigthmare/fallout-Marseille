@@ -1,0 +1,21 @@
+{
+  "startedAt": "2026-11-01T00:35:50.550396+00:00",
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/landmark_surfaces_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/landmarks/native-candidate-6ded-01",
+    "--expect-html-sha",
+    "6dedb62313702a4fc81fe8fc229b32cb0a870426d22c724185c63a379555f3b5"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "scriptSha256": "ff5ec2f60a629da39bf691d4b7fe7c257563b751e71527e2faef42a63bfec614",
+  "expectHtmlSha256": "6dedb62313702a4fc81fe8fc229b32cb0a870426d22c724185c63a379555f3b5",
+  "exitCode": -15,
+  "elapsedSeconds": 211.88053097901866,
+  "scriptUnchanged": true,
+  "run.logSha256": "3a2fd620813b30ac61b22dc46a4dc87653aedb38b9b322e18ff8841462d527de",
+  "LANDMARK_SURFACES_NATIVE.jsonSha256": "d48d1c4da24cc72e5965cdfc62f97a2ef7683af88e5fd88d04cff79e34851711",
+  "closedServerConnectionRefused": true
+}

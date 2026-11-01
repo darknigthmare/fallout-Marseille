@@ -1,0 +1,17 @@
+{
+  "scope": "Independent controlled probes. No game/test source edits; actual save checkpoint functions composed with test actor/storage seams. Outside root validation assertion sum.",
+  "results": [
+    {
+      "name": "Partial pack preflight never debits or advances when second component is full",
+      "ok": true
+    },
+    {
+      "name": "NPC changing relay site invalidates an old delivery callback with no grant",
+      "ok": true
+    },
+    {
+      "name": "A storage refusal also rolls back the ordinary actor checkpoint called by the real save wrapper",
+      "ok": true
+    }
+  ]
+}

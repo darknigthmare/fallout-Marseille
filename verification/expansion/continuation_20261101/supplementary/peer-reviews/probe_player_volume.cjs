@@ -1,0 +1,20 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{createRequire}=require('node:module');
+const repo='/workspace/fallout-Marseille',out=__dirname,test=path.join(repo,'tests/expansion/iconic_vending.cjs'),source=fs.readFileSync(test,'utf8');
+const prefix=source.slice(0,source.indexOf("check('Migration introduces"));
+const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+function probe(before){const code=before?prefix.replace("read('src/v050/20_iconic_vending.js')","require('node:fs').readFileSync("+JSON.stringify(path.join(out,'BEFORE_PLAYER_VOLUME.js'))+",'utf8')"):prefix;
+ const fixture=Function('require','__dirname',code+';return fixture;')(createRequire(test),path.dirname(test)),f=fixture();
+ f.run('globalThis.sourcePos=cabinet().pos.slice();loadZone("marseille");collectDraws(0);loadZone("aubagne");state.player.pos=[sourcePos[0],sourcePos[1]+1.65,sourcePos[2]];');
+ const clearBefore=f.run('!collidesAt(state.player.pos[0],state.player.pos[2],.38,state.player.pos[1])');
+ f.run('collectDraws(0)');
+ const first=f.json('({entry:cabinet(),player:state.player.pos.slice(),collides:collidesAt(state.player.pos[0],state.player.pos[2],.38,state.player.pos[1])})');
+ f.run('v046Publish(world);collectDraws(0)');
+ const publication=f.json('({entry:cabinet(),player:state.player.pos.slice(),collides:collidesAt(state.player.pos[0],state.player.pos[2],.38,state.player.pos[1]),count:world.colliders.filter(c=>c.v057Vending).length})');
+ const roof=fixture();roof.run('globalThis.roofPos=cabinet().pos.slice();state.player.pos=[roofPos[0],roofPos[1]+2.04+1.65,roofPos[2]];v046Publish(world);collectDraws(0)');
+ const onTop=roof.json('({before:roofPos,after:cabinet().pos,player:state.player.pos,ground:groundHeightAt(roofPos[0],roofPos[2],2.04),collides:collidesAt(state.player.pos[0],state.player.pos[2],.38,state.player.pos[1])})');
+ return{sourceSha256:sha(before?path.join(out,'BEFORE_PLAYER_VOLUME.js'):path.join(repo,'src/v050/20_iconic_vending.js')),clearBeforeFirstBind:clearBefore,first,publication,onTop};
+}
+const report={scope:'Same controlled production vending + existing bottle/geometry fixture executed with archived old fragment and current fixed fragment. New world is created before first bind with the player already at the admitted candidate; a real production publication invalidation repeats binding. A separate player stands exactly on the cabinet roof. These are controlled model observations, not native geographic captures.',scriptSha256:sha(__filename),before:probe(true),after:probe(false)};
+fs.writeFileSync(path.join(out,'PLAYER_VOLUME_BEFORE_AFTER.json'),JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify(report,null,2));

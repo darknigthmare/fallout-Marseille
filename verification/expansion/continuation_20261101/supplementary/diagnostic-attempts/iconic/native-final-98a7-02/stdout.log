@@ -1,0 +1,30 @@
+OK Exact new cabinet source is embedded in frozen HTML
+OK Actual dependency is embedded in production: src/v050/12_iconic_ecosystem.js
+OK Actual dependency is embedded in production: src/v050/06_controller.js
+OK Actual dependency is embedded in production: src/v050/19_fps_hud.js
+OK Actual local source pack audits complete before native bootstrap
+OK Native HTTP document equals frozen production HTML
+OK Actual authored scene loads without cabinet grants: aubagne
+OK One real physical cabinet is bound in aubagne
+OK Fresh finite reserve starts broken without granting a bottle
+OK Actual body collision and LOS admit native E on aubagne
+OK Native E presents finite stock and disabled unpaid controls
+OK Tab traverses the modal and world hotkeys spend or move nothing
+OK Actual Tab focus remains within the modal
+OK Visible enabled real cabinet control: repair
+OK Actual repair debits precisely two scrap and one circuit once
+OK Repaired cabinet removes repeated repair and enables finite purchases
+OK Visible enabled real cabinet control: nukaCola
+OK Actual bottle purchase debits 30 caps and exactly one finite reserve
+OK Visible enabled real cabinet control: nukaQuantum
+OK Actual Quantum purchase debits 65 caps and exhausts only its one original bottle
+OK Native Escape closes and restores focus to the actual game canvas
+OK Native Tab opens the ordinary Pip-Boy after the cabinet closes
+FAIL Paid bottles appear in ordinary inventory and existing aid category
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/vending_native.py", line 282, in main
+    check('Paid bottles appear in ordinary inventory and existing aid category', debug('v027UI')['sub'] == 'aid'
+  File "/workspace/fallout-Marseille/tests/expansion/vending_native.py", line 83, in check
+    raise AssertionError(name)
+AssertionError: Paid bottles appear in ordinary inventory and existing aid category
+

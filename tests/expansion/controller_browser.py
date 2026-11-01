@@ -6,7 +6,7 @@ keyboard events and browser localStorage are real; navigator.getGamepads is the
 explicit test seam. Run against tools/serve_game.py after building the game.
 """
 from pathlib import Path
-import argparse, hashlib, json, sys
+import argparse, hashlib, json, math, sys
 
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'tools'))
@@ -196,6 +196,34 @@ def main():
             check('B exits the terminal with its own callback',page.evaluate("__MISTRAL_DEBUG.getMode()==='PLAYING'"))
             page.evaluate("__MISTRAL_DEBUG.openHolotape('aubagne')");sample();press(1)
             check('B exits the actual holotape player',page.evaluate("__MISTRAL_DEBUG.getMode()==='PLAYING'"))
+            # Explicit diagnostic navigation/camera assistance for the new
+            # foreground hold and modal. No weapon, stock or resources granted.
+            page.evaluate("__MISTRAL_DEBUG.v020Load('aubagne');__MISTRAL_DEBUG.v018CaptureAt([0,1.65,85],0,0);__MISTRAL_DEBUG.v020Equip('pistol10')")
+            sample();camera=page.evaluate('__MISTRAL_DEBUG.v025Snapshot().camera');sample([6])
+            check('Simulated LT holds the actual first-person aim without changing world FOV',page.evaluate('v056FirstPersonIsAiming()') and page.evaluate('__MISTRAL_DEBUG.v025Snapshot().camera.fov')==camera['fov'])
+            sample()
+            check('Releasing simulated LT clears only its held aim',not page.evaluate('v056FirstPersonIsAiming()'))
+            sample([6]);sample([6,8])
+            check('Opening the actual Pip-Boy clears controller-held presentation aim',page.evaluate("__MISTRAL_DEBUG.getMode()==='PIP'&&!v056FirstPersonIsAiming()"))
+            sample([6]);sample([6,1]);sample([6])
+            check('LT held across a menu needs release before aiming again',page.evaluate("__MISTRAL_DEBUG.getMode()==='PLAYING'&&!v056FirstPersonIsAiming()"))
+            sample();sample([6]);page.evaluate('__controllerDisconnect()')
+            check('Selected controller disconnect clears aim while pausing through the real callback',page.evaluate("__MISTRAL_DEBUG.getMode()==='PAUSE'&&!v056FirstPersonIsAiming()"))
+            sample();press(1);sample()
+            vending=page.evaluate('__MISTRAL_DEBUG.v057VendingInfo().physical')
+            check('Existing authored scene publishes a real physical dispenser for modal navigation',bool(vending),vending)
+            target=vending[0]['interaction'];ground=vending[0]['pos'][1];approach=None
+            for angle in (0,.4,-.4,.8,-.8):
+                candidate=[target[0]+math.sin(angle)*1.7,ground+1.65,target[2]+math.cos(angle)*1.7]
+                if not page.evaluate('(p)=>__MISTRAL_DEBUG.v020Collides(p)',candidate) and page.evaluate('([a,b])=>__MISTRAL_DEBUG.v020LOS(a,b)',[candidate,target]):
+                    approach=candidate;break
+            check('Dispenser controller scenario has actual free support and LOS',approach is not None,approach)
+            yaw=math.atan2(target[0]-approach[0],-(target[2]-approach[2]));pitch=math.atan2(target[1]-approach[1],math.hypot(target[0]-approach[0],target[2]-approach[2]))
+            page.evaluate('([p,yaw,pitch])=>__MISTRAL_DEBUG.v018CaptureAt(p,yaw,pitch)',[approach,yaw,pitch])
+            page.keyboard.press('e');sample();press(13)
+            check('Dispenser modal receives actual controller focus',page.evaluate("__MISTRAL_DEBUG.getMode()==='VENDING57'&&document.getElementById('vending57').contains(document.activeElement)"))
+            wallet=page.evaluate('__MISTRAL_DEBUG.getState().player.caps');press(1)
+            check('Controller B closes the dispenser through its production callback without payment',page.evaluate("__MISTRAL_DEBUG.getMode()==='PLAYING'&&!document.getElementById('vending57').open") and page.evaluate('__MISTRAL_DEBUG.getState().player.caps')==wallet)
             saved_preferences=page.evaluate('__MISTRAL_DEBUG.v050ControllerInfo().preferences');page.reload(wait_until='load')
             page.wait_for_function("typeof window.__MISTRAL_DEBUG?.v050ControllerInfo==='function'")
             check('All controller preferences survive a cold DOM initialization',page.evaluate('__MISTRAL_DEBUG.v050ControllerInfo().preferences')==saved_preferences,saved_preferences)
@@ -205,7 +233,7 @@ def main():
             print('FAIL '+str(error),flush=True)
             page.screenshot(path=str(args.output/'failure.png'))
         finally:
-            report={'scope':'Actual game + Chromium DOM, keyboard and localStorage; Gamepad API simulated and one explicit synthetic touch PointerEvent, no physical device validation','html_sha256':html_sha256,'passed':sum(c['ok'] for c in checks),'failed':sum(not c['ok'] for c in checks),'total':len(checks),'errors':errors,'checks':checks}
+            report={'scope':'Actual game + Chromium DOM, keyboard and localStorage; Gamepad API simulated and one explicit synthetic touch PointerEvent, no physical device validation. Existing diagnostics select authored Aubagne and collision/LOS-checked camera positions for LT aim and dispenser modal navigation; no dispenser stock/resources or weapons granted.','html_sha256':html_sha256,'passed':sum(c['ok'] for c in checks),'failed':sum(not c['ok'] for c in checks),'total':len(checks),'errors':errors,'checks':checks}
             (args.output/'CONTROLLER_BROWSER.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
             print(json.dumps({k:report[k] for k in ['passed','failed','total','errors']}),flush=True)
             context.close();browser.close()

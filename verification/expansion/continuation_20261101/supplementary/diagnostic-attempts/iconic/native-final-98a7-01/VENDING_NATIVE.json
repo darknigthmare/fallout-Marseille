@@ -1,0 +1,70 @@
+{
+  "scope": "Native finite Nuka-Cola cabinet loop on exact production HTML.\n\nExisting diagnostic navigation and frozen collision/LOS-checked cameras select\nauthored Aubagne/Marseille and an actual installed Huveaune relay. Payment\ncapsules and repair materials are prepared explicitly, never bottles, cabinet\nstate, merchant stock, actors, source geometry or save contents. E, visible DOM\nbuttons, keyboard focus and the real Continue button perform the game actions.\nPortrait is an emulated viewport, not a hardware touchscreen certification.\nNo HTML, network, storage or production function replacement is used.\n",
+  "stage": "failed",
+  "checks": [
+    {
+      "name": "Exact new cabinet source is embedded in frozen HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual dependency is embedded in production: src/v050/12_iconic_ecosystem.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual dependency is embedded in production: src/v050/06_controller.js",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual dependency is embedded in production: src/v050/19_fps_hud.js",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [],
+  "placements": [],
+  "pinned_inputs": {
+    "index.html": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "src/v050/20_iconic_vending.js": "0757a959324cd76cfe7bcd1352910c14e27711d9a5ce788a1d7b0471e250ac20",
+    "src/v050/12_iconic_ecosystem.js": "550ee004344e4879c0d87164ab97971978113c882e0ca5a2a2045a61b5725e23",
+    "src/v050/06_controller.js": "3b3d5fe3f1fd3e1409fa1f98f1351148555be752290bc5257068db8116be38c8",
+    "src/v050/19_fps_hud.js": "56f0983e2b749bfa91f1ec9c890184970cdbd1e5431d3a2ead757354a76eb7cb",
+    "src/core-v017.js": "7e07ba0d1723e589b3d7fa3ca76ac8e287c6b0d22f4dc9c1434919b9db366ea3",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80",
+    "data/map_pack/enrichment/index.json": "d368402cd6c249f45b6ad4e7d9156088bf634e2f6c07fd10fdd7826d1a47c2e2"
+  },
+  "page_errors": [],
+  "console_errors": [],
+  "request_failures": [],
+  "http_errors": [],
+  "responses": [],
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "synthetic_geography": false,
+  "service_workers_disabled": true,
+  "assistance": [
+    "v020Load selects existing authored scenes without item grants.",
+    "v020Seed supplies 500 capsules, 6 scrap and 3 circuitry only; no bottles or cabinet state are granted.",
+    "v046SetTime(12), render pause and v018CaptureAt freeze normal simulation for reproducible inspections.",
+    "v018LoadMacro/v046Load select an actual installed Huveaune sector; v042Update materializes the existing safe catalog relay.",
+    "Camera approaches are selected only after actual production body collision and LOS checks. Geographic camera heights come from the actual source terrain.",
+    "One viewport is resized to 390x844 to test responsive controls; this is not physical mobile input."
+  ],
+  "limitations": [
+    "Two authored original game cabinets, not surveyed historical street furniture.",
+    "Native validation visits the Aubagne geographic counterpart. Marseille municipal alias is a controlled production-model contract.",
+    "The cabinet model is original stylized geometry, not a commercial Fallout asset."
+  ],
+  "cleanup": {},
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "elapsed_seconds": 0.021,
+  "script_sha256": "6ff37f394266cf1cc2deee667341f3f4ac31dfbc2f230167781fa0f21e392889",
+  "exception": "[Errno 1] Operation not permitted",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/vending_native.py\", line 200, in main\n    server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py\", line 453, in __init__\n    self.socket = socket.socket(self.address_family,\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py\", line 233, in __init__\n    _socket.socket.__init__(self, family, type, proto, fileno)\nPermissionError: [Errno 1] Operation not permitted\n"
+}

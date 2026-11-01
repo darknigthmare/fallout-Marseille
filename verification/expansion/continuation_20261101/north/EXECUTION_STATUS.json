@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/fallout-Marseille/tests/expansion/north_terrain_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/continuation-next/districts/native-final-98a7-02",
+    "--expect-html-sha",
+    "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+    "--expect-index-sha",
+    "d368402cd6c249f45b6ad4e7d9156088bf634e2f6c07fd10fdd7826d1a47c2e2"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "scriptSha256Before": "9aade952089086892e4271ecb53d682294491b782b5a6c9cbb76701d47afe64b",
+  "expectedHtmlSha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "expectedIndexSha256": "d368402cd6c249f45b6ad4e7d9156088bf634e2f6c07fd10fdd7826d1a47c2e2",
+  "startedAtUnix": 1793495418.5565107,
+  "stdout": "stdout.log",
+  "pid": 227788,
+  "exitCode": 0,
+  "elapsedSeconds": 84.272,
+  "scriptSha256After": "9aade952089086892e4271ecb53d682294491b782b5a6c9cbb76701d47afe64b",
+  "htmlSha256After": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "indexSha256After": "d368402cd6c249f45b6ad4e7d9156088bf634e2f6c07fd10fdd7826d1a47c2e2",
+  "stdoutSha256": "0d15510b42aef71533a808d0af03c4c9619c5a11166d0adabc07246968048a1a",
+  "reportSha256": "8488ee8f42833678366a69527296493fbcc2c0be080694b7f4bd7c84ee32de9e",
+  "total": 46,
+  "passed": 46,
+  "stage": "complete"
+}

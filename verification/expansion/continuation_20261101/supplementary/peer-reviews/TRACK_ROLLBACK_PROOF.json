@@ -1,0 +1,16 @@
+{
+  "source_before_sha256": "56a7bef7c6e456b967fd637992a38452a605c2fa9c7eace2035f26443b37344e",
+  "tests_sha256": "e3fdeb5dd9dec14493ba7bba90e780cf2d842b98c48816f72702a4e2efda65fe",
+  "command": [
+    "node",
+    "/workspace/fallout-Marseille/tests/expansion/lore_continuity.cjs"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "before_exit_code": 1,
+  "before_log_sha256": "0c9986da735bb90626982ca719a6a1f0d12671e8b8e2b8775e09276f19c111ec",
+  "after_exit_code": 0,
+  "after_log_sha256": "48b7daa1c5907cc161ec8f506048ebfb2489f27ab12bf8eccf0f5a71073a8d92",
+  "source_after_sha256": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+  "tests_unchanged": true,
+  "scope": "Controlled composed regression: ordinary and receipt tracking, real v049 actor checkpoint and save envelope, storage false return and thrown refusal; no native claims."
+}

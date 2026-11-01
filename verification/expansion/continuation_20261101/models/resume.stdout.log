@@ -1,0 +1,17 @@
+RESUME verified 26 completed suites / 1145 tests; 15 maintained suites remain.
+PASS interior_services.cjs 49
+PASS interior_storage.cjs 50
+PASS world_placements.cjs 13
+PASS lore_continuity.cjs 90
+PASS power_armor.cjs 65
+PASS iconic_ecosystem.cjs 57
+PASS parallel_systems.cjs 10
+PASS regional_bestiary.cjs 87
+PASS precise_terrain.cjs 22
+PASS facades_joinery.cjs 15
+PASS chems_ecosystem.cjs 31
+PASS iconic_ordnance.cjs 64
+PASS interior_room_doors.cjs 36
+PASS native_road_surfaces.cjs 15
+PASS facades_relief.cjs 14
+{"stage": "complete", "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241", "total": 1763, "failedProcesses": 0, "changedInputs": [], "phases": [{"id": "original-interrupted", "suiteCount": 26, "total": 1145, "originalOuterExitCode": null, "archive": "original-interrupted/UNITS.json"}, {"id": "continuation", "suiteCount": 15, "total": 618, "receipt": "EXECUTION_RESUME.json"}]}

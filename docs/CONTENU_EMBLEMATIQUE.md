@@ -1,6 +1,6 @@
-# Objets et gestes emblématiques du Wasteland — 28 octobre 2026
+# Objets et gestes emblématiques du Wasteland — 1er novembre 2026
 
-Les systèmes S.P.E.C.I.A.L., V.A.T.S., avantages, radiations, Stimpaks/RadAway, crochetage, terminaux, compagnons, Pip-Boy, radio et plusieurs créatures de Fallout étaient déjà présents. Les collections de figurines, lectures temporaires et bouteilles de Nuka-Cola sont conservées. La livraison actuelle ajoute la pose de mines et une présentation FPS enrichie des armes et armures, avec usages physiques du mobilier et nouveaux engagements de factions. Les modèles et placements sont des créations du jeu ; ce ne sont ni des relevés IGN ni des assets récupérés d’un jeu commercial.
+Les systèmes S.P.E.C.I.A.L., V.A.T.S., avantages, radiations, Stimpaks/RadAway, crochetage, terminaux, compagnons, Pip-Boy, radio et plusieurs créatures de Fallout étaient déjà présents. Les collections, consommables, grenades et mines sont conservés. La poursuite ajoute deux distributeurs Nuka-Cola réparables, affine mains, armes et HUD, permet des dépôts physiques dans le mobilier et prolonge les décisions des Communes/Gilets par deux retours à contre-don unique. Les modèles, positions et nouveaux récits sont des créations du jeu ; les relevés géographiques gardent leur provenance séparée.
 
 ## Figurines S.P.E.C.I.A.L.
 
@@ -40,6 +40,17 @@ Les bouteilles et magazines possédés peuvent être revendus au comptoir par le
 
 À la première création de certaines réserves inventées d’intérieurs municipaux, un tirage déterministe ajoute aussi une bouteille ou un magazine. Ce contenu est fini. Les réserves déjà existantes, les coffres appartenant à des habitants et les caches de quête ne sont pas réapprovisionnés par cette extension.
 
+## Distributeurs à réparer
+
+Deux [distributeurs Nuka-Cola](DISTRIBUTEURS_NUKA_COLA.md) originaux sont placés dans les scènes d’Aubagne et de Marseille. **E** ouvre le panneau depuis leur face ; chaque machine demande **deux ferrailles et un circuit** pour sa réparation unique. Le Nuka-Cola classique coûte **30 capsules**, le Quantum **65 capsules**.
+
+| Machine | Bouteilles classiques | Quantum |
+| --- | ---: | ---: |
+| Ateliers d’Aubagne | 3 | 1 |
+| Comptoir de Marseille | 4 | 1 |
+
+Les relais géographiques correspondants partagent la réparation et les mêmes réserves finies. Acheter retire une bouteille du stock et l’ajoute à **INV → AIDE** ; une réentrée ou Continuer ne renouvelle rien. Le paiement, le stock et l’inventaire sont sauvegardés ensemble, avec restauration entière si l’écriture échoue. L’implantation géographique exige un sol source utilisable, une marge libre et le respect du volume du joueur ; modèles et positions restent inventés.
+
 ## Placement et persistance
 
 Les présentoirs possèdent leurs modèles procéduraux et collisions propres. Leur support permet de monter puis de redescendre sans tomber à l’intérieur du solide. Les placements évitent les obstacles, les habitants, les dangers et les accès prioritaires ; la géographie réelle et ses colliders ne sont pas remplacés par des boîtes.
@@ -48,7 +59,7 @@ En extérieur géographique, le jeu exige un relais sûr actif, un terrain sourc
 
 Collecte, lecture, consommation et troc contrôlent leur contexte actif. Une écriture de sauvegarde refusée ou une exception annule le changement de fiche, d’objet et de capsules. Pour un achat ou une vente, les deux bourses, le stock et le journal sont également restaurés ; une seule écriture conserve l’opération complète. Changer d’étage, de scène ou de session ne permet pas de doubler une figurine ou de renouveler une réserve vidée.
 
-Le budget global reste borné à treize exemplaires fixes, avec des modèles de cinq à douze primitives chacun ; seuls les exemplaires du lieu courant sont ajoutés. Les [consommables et dépendances](CONSOMMABLES_ET_DEPENDANCES.md) gardent leurs effets, tolérance, retrait et traitement sauvegardés. La collection, les animations et les assets finaux de toute la franchise restent un chantier ouvert.
+Les figurines, magazines et bouteilles fixes restent bornés à treize exemplaires, avec des modèles de cinq à douze primitives chacun ; seuls les exemplaires du lieu courant sont ajoutés. Les deux distributeurs ont leur propre registre borné. Les [consommables et dépendances](CONSOMMABLES_ET_DEPENDANCES.md) gardent leurs effets, tolérance, retrait et traitement sauvegardés. La collection, les animations et les assets finaux de toute la franchise restent un chantier ouvert.
 
 ## Grenades et créatures récurrentes
 
@@ -63,8 +74,10 @@ Le stock est fini : deux mines chez Baptiste et deux à Noailles. Un établi per
 
 ## Mains, armures et mobilier
 
-La [vue FPS](VUE_FPS.md) présente mains articulées, manches, avant-bras, terminal de poignet et gantelets des armures reconnues. Neuf familles d’armes ont des formes stylisées distinctes, avec pose de soutien, rechargement, recul, sprint et abaissement près des murs. Chaque arme du catalogue n’a pas un modèle unique. X, le clic droit capturé et Visée maintiennent la présentation dans l’axe ; les règles de direction et de dégâts du monde restent conservées. Le [HUD](HUD_FPS.md) réunit jauges, munitions, boussole et suivi, avec préférences et réduction des mouvements.
+La [vue FPS](VUE_FPS.md) présente mains articulées, manches, avant-bras, terminal de poignet et gantelets des armures reconnues. Treize profils dans neuf familles disposent de huit alimentations de recharge, avec pose de soutien, recul, sprint et abaissement près des murs. Les modèles restent stylisés et les poignets peuvent encore passer derrière le HUD translucide. X, le clic droit capturé, Visée et LT sur une manette standard maintiennent la présentation dans l’axe ; les règles de direction et de dégâts du monde sont conservées. Le [HUD](HUD_FPS.md) suit impacts, neutralisations, PV perdus et délai réel de rechargement ; les sous-titres cherchent une bande libre, avec préférences et réduction des mouvements conservées.
 
-Les lits, cuisines et établis admissibles des [intérieurs](INTERIEURS_USAGES.md) proposent leurs usages par E, avec coûts ordinaires et réserve finie. Les huit [dossiers de continuité](LORE_CONTINUITE.md), dont les Communes du Mistral et les Gilets de Cendre, relient rencontres, décisions, fournitures, réputations et radios textuelles. Les programmes intérieurs non relevés et les nouveaux récits sont des créations du jeu.
+Les lits, cuisines et établis admissibles des [intérieurs](INTERIEURS_USAGES.md) conservent leurs services par E. Sept types de rangements déjà placés permettent aussi de déposer puis reprendre dix-neuf types de fournitures, avec capacités inventées de 10 à 45 kg et au plus 512 dépôts non vides. Chaque dépôt commence vide, garde son stock par bâtiment, étage, plan et meuble, et utilise la masse du sac ordinaire ; une transaction refusée est entièrement annulée. Les dispositions et signatures des layouts 1–5 sont conservées.
 
-Le [bilan courant](../verification/expansion/immersion/IMMERSION_INTEGRATION.json) identifie le HTML `844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34`. Les méthodes de modèle et les parcours natifs assistés sont distincts ; les 2 892 contrôles descriptifs et 55 captures gardent leur méthode et leurs limites. Les anciens résultats de [Wasteland](../verification/expansion/wasteland/WASTELAND_INTEGRATION.json), 2 887 contrôles et 62 captures sur `ed6e4103…`, et de [précision](../verification/expansion/precision/PRECISION_INTEGRATION.json), 2 324 contrôles, restent historiques. Les créations stylisées, les contextes émulés et les mesures géographiques partielles ne certifient ni Marseille intégralement en 1:1 ni du matériel physique.
+Les huit [dossiers de continuité](LORE_CONTINUITE.md) et leurs liaisons restent intacts. Après les décisions des Communes du Mistral et des Gilets de Cendre, la copie du reçu se remet au second relais nommé ; revenir au donneur accorde un contre-don unique selon l’issue. Ces deux suites utilisent l’inventaire ordinaire, le journal, le suivi, la radio et Continuer, sans seconde récompense de dossier ni réapprovisionnement. Les programmes intérieurs non relevés et les nouveaux récits sont des créations du jeu ; aucune conversation privée supplémentaire n’a été récupérée.
+
+Le [bilan courant](../verification/expansion/continuation_20261101/CONTINUATION_INTEGRATION.json) identifie le HTML `98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241` ; l’[état de production](STATUT_PRODUCTION.md) présente les résultats par méthode. Modèles, parcours natifs assistés, comparaisons de sources et entrées émulées restent distingués. La livraison `29df190` conserve ses [2 892 contrôles descriptifs et 55 captures](../verification/expansion/immersion/IMMERSION_INTEGRATION.json) sur le HTML `844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34`. Les anciens résultats de [Wasteland](../verification/expansion/wasteland/WASTELAND_INTEGRATION.json), 2 887 contrôles et 62 captures sur `ed6e4103…`, et de [précision](../verification/expansion/precision/PRECISION_INTEGRATION.json), 2 324 contrôles et 42 captures, restent historiques. Les créations stylisées, les contextes émulés et les mesures géographiques partielles ne certifient ni Marseille intégralement en 1:1 ni du matériel physique. La distribution Drive n’a pas été actualisée pour cette poursuite.

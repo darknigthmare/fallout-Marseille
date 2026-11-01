@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent agent /root/audit_release; did not author or execute this HUD layout pilot",
+  "created_utc": "2026-11-01T01:19:33.198462+00:00",
+  "scope": "Read-only visual inspection of nine existing HUD PNGs, report/receipt/log hash checks; no browser execution or repository edit.",
+  "html_sha256": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "source_report": "/workspace/.cloud-setup/fallout-marseille/continuation-next/hud/layout-98a7/FPS_HUD_NATIVE.json",
+  "source_report_sha256": "18e06ddd19b0195b8f68ed0333e464de925d59de972a85a29902172b12b2666a",
+  "upstream_native_result": {
+    "passed": 90,
+    "failed": 0,
+    "stage": "complete",
+    "actual_exit_code": 0
+  },
+  "screenshots_opened_with_view_image": 9,
+  "matching_png_hashes": 9,
+  "new_native_assertions": 0,
+  "shots": [
+    {
+      "file": "1440x900_hud.png",
+      "sha256": "4b45f64e4613eae10069c4c49cce67dc3a9ad26ec3b84ad2c11a065aa5059656",
+      "hash_matches": true,
+      "width": 1440,
+      "height": 900,
+      "bytes": 1425922,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "PV115, PA100, munitions10/42, quête, compas et assistance50% visibles; gantelets T45 stylisés.",
+        "Le poignet est partiellement derrière la barre rapide."
+      ]
+    },
+    {
+      "file": "1024x768_hud.png",
+      "sha256": "bd0a428205f1279aa24341cfe70da7266b6e26a03404d08678b11fd1d1bcbe0c",
+      "hash_matches": true,
+      "width": 1024,
+      "height": 768,
+      "bytes": 894578,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "PV115, munitions10/42, quête, compas et assistance50% visibles; blocs contenus dans le cadre.",
+        "Lieu replié sur deux lignes et libellés rapides ellipsés."
+      ]
+    },
+    {
+      "file": "390x844_hud.png",
+      "sha256": "15daeba213641dc7533fe982960b53855e2788f103fc230ca2bdffe87a8e8b6d",
+      "hash_matches": true,
+      "width": 390,
+      "height": 844,
+      "bytes": 386091,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "PV115, munitions10/42 et assistance50% visibles; quête et lieu adaptés en plusieurs lignes.",
+        "Arme/gantelets occupent une grande part du bas droit et passent derrière les panneaux; barre rapide réduite et ellipsée."
+      ]
+    },
+    {
+      "file": "844x390_hud.png",
+      "sha256": "073f5ff85854a5789ca1996600361833c642dc3fdc7d2517288248bb3dd6431f",
+      "hash_matches": true,
+      "width": 844,
+      "height": 390,
+      "bytes": 373515,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "PV115 et munitions10/42 visibles; compas et quête conservés; assistance50% compactée.",
+        "La faible hauteur réduit la scène; titre du panneau assistance masqué dans ce format compact."
+      ]
+    },
+    {
+      "file": "powered_crouch_hud.png",
+      "sha256": "853d85b7e46fe2804cbaa3622ca9da1d16ce51ec982794e21f5c4eea4e6a8d82",
+      "hash_matches": true,
+      "width": 1440,
+      "height": 900,
+      "bytes": 1444754,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "« CACHÉ » et « ACCROUPI » visibles au centre; assistance50%, PV115 et munitions10/42 visibles.",
+        "Gantelets et arme stylisés; préparation T45 diagnostique et non preuve d’acquisition en jeu."
+      ]
+    },
+    {
+      "file": "compact_hud.png",
+      "sha256": "3b97395a6cbd0516075bf349dc01b95bb0cedd1e824b93551f936eb4bd2d075f",
+      "hash_matches": true,
+      "width": 1440,
+      "height": 900,
+      "bytes": 1438036,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "HUD compact visible : niveau et critique retirés, PV/PA/RAD et munitions conservés.",
+        "Petit texte de lieu/objectif; poignet partiellement sous barre rapide."
+      ]
+    },
+    {
+      "file": "touch_390x844_hud.png",
+      "sha256": "bbf608def79c2369d5108d79b02812399fdbcdf487a044ecd8a990e333990ff1",
+      "hash_matches": true,
+      "width": 390,
+      "height": 844,
+      "bytes": 395457,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Joystick et boutons E/TIR/PIP/V et X Visée visibles, avec PV115, munitions10/42 et assistance50%.",
+        "Toast d’équipement au centre; commandes occupent une grande part du bas; capture émulation tactile uniquement."
+      ]
+    },
+    {
+      "file": "touch_aim_presentation.png",
+      "sha256": "fe7303e8ae25c37125cddc6f513d3fc21cf96f08d682d80fe0d6968d58fbab22",
+      "hash_matches": true,
+      "width": 390,
+      "height": 844,
+      "bytes": 397747,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Présentation des contrôles tactiles, PV/munitions et gantelets visible en portrait.",
+        "Une image fixe ne prouve pas à elle seule le mouvement/maintien de la visée; le rapport natif contient les contrôles DOM correspondants."
+      ]
+    },
+    {
+      "file": "touch_844x390_hud.png",
+      "sha256": "9380a5d40089f1fa35e9cd198e0e23f38ec64daa1aba20f6975122bb290c9b9f",
+      "hash_matches": true,
+      "width": 844,
+      "height": 390,
+      "bytes": 383494,
+      "viewed_with": "view_image, detail=original",
+      "observations_fr": [
+        "Joystick et boutons tactiles visibles dans le format bas; CACHÉ/ACCROUPI visibles; PV et munitions lisibles.",
+        "Le toast d’équipement est partiellement masqué par les panneaux assistance/suivi à droite; PV et munitions restent dégagés."
+      ]
+    }
+  ],
+  "conclusion_fr": "Les neuf PNG concordent avec le rapport et ont été ouverts. Les éléments HUD principaux sont visibles et contenus dans les cadres testés. Les captures montrent les variantes T45, accroupi, compacte et tactile. Un toast d’équipement est partiellement masqué en tactile paysage, sans recouvrir PV/munitions.",
+  "limits_fr": [
+    "Émulation coarse pointer et commandes DOM; aucun appareil mobile physique ni confort réel de prise en main certifiés.",
+    "Diagnostic de caméra, gel et pause de rendu explicitement utilisés; T45 préparée par v030Set, non preuve d’acquisition.",
+    "Mains/gantelets/armes stylisés; poignet partiellement sous le HUD et cadrage réduit en portrait.",
+    "Captures fixes : les états et événements détaillés relèvent des assertions natives, non d’une partie continue.",
+    "Pas de sous-titre visible dans ces neuf images; le placement du sous-titre est prouvé séparément par feedback-final-98a7-03.",
+    "Petit texte et libellés ellipsés dans les formats étroits.",
+    "Le toast d’équipement de touch_844x390_hud.png est partiellement masqué par les panneaux assistance/suivi."
+  ]
+}

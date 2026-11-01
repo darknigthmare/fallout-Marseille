@@ -1,0 +1,350 @@
+{
+  "scope": "Two northern Marseille windows, real official IGN MNT LiDAR HD Float32 0.50m GeoTIFFs explicitly nearest-resampled into WGS84 nodes at requested 1m spacing; not a native atlas enlargement or architecture survey.",
+  "runtimeRegion": "geo_marseille_commune",
+  "sourceAcquiredInGameAt": "2026-11-01",
+  "nodes": 206240,
+  "actualNoDataNodes": 0,
+  "entries": [
+    {
+      "zone": "estaque",
+      "receipt": {
+        "provider": "IGN",
+        "product": "MNT LiDAR HD",
+        "catalogue": {
+          "resources": 119,
+          "pages": 3,
+          "lidarResources": [
+            {
+              "title": "20260430-LiDAR-SMi2B",
+              "links": [
+                "https://data.geopf.fr/telechargement/resource/LiDAR_SMi2B_20260430"
+              ]
+            },
+            {
+              "title": "Cartes de classes issues du LiDAR HD",
+              "links": [
+                "https://data.geopf.fr/telechargement/resource/LiDARHD-CARTES-CLASSES"
+              ]
+            },
+            {
+              "title": "Densités issues du LiDAR HD",
+              "links": [
+                "https://data.geopf.fr/telechargement/resource/LiDARHD-DENSITES"
+              ]
+            },
+            {
+              "title": "LiDARHD-NUALID",
+              "links": [
+                "https://data.geopf.fr/telechargement/resource/LiDARHD-NUALID"
+              ]
+            }
+          ]
+        },
+        "discovery": "Catalogue Atom + actual WFS metadata url_mnt export; no guessed tile URL",
+        "metadataUrl": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=IGNF_LIDAR-HD_METADONNEE%3Ametadata&srsName=urn%3Aogc%3Adef%3Acrs%3AOGC%3A1.3%3ACRS84&bbox=5.313%2C43.3624%2C5.3168%2C43.3652%2Curn%3Aogc%3Adef%3Acrs%3AOGC%3A1.3%3ACRS84&count=32&outputFormat=application%2Fjson",
+        "metadataFeature": {
+          "type": "Feature",
+          "id": "metadata.383399",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    5.30630792,
+                    43.36955412
+                  ],
+                  [
+                    5.31863405,
+                    43.3692907
+                  ],
+                  [
+                    5.31827206,
+                    43.36029847
+                  ],
+                  [
+                    5.30594786,
+                    43.36056184
+                  ],
+                  [
+                    5.30630792,
+                    43.36955412
+                  ]
+                ]
+              ]
+            ]
+          },
+          "geometry_name": "geom",
+          "properties": {
+            "capteur": "[\"Leica TerrainMapper:90560\"]",
+            "url_mnh": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNH_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=886999.75,6254000.25,887999.75,6255000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0887_6255_MNH_O_0M50_LAMB93_IGN69.tif",
+            "url_mns": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=886999.75,6254000.25,887999.75,6255000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0887_6255_MNS_O_0M50_LAMB93_IGN69.tif",
+            "url_mnt": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=886999.75,6254000.25,887999.75,6255000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0887_6255_MNT_O_0M50_LAMB93_IGN69.tif",
+            "url_npl": "https://data.geopf.fr/telechargement/download/LiDARHD-NUALID/NUALHD_1-0__LAZ_LAMB93_PQ_2025-03-14/LHD_FXX_0887_6255_PTS_LAMB93_IGN69.copc.laz",
+            "code_mission": "21LHD7PQ",
+            "date_edition": "2025-03-14Z",
+            "nombre_points": 28414138,
+            "coordonnees_nw": "0887-6255",
+            "moa_acquisition": "IGN",
+            "moe_acquisition": "APEI",
+            "procede_classement": "IGN_AUTO_V5",
+            "date_fin_acquisition": "2021-06-26Z",
+            "systeme_altimetrique": "IGN69",
+            "moe_classement_manuel": "NR",
+            "systeme_planimetrique": "LAMB93",
+            "date_debut_acquisition": "2021-06-25Z",
+            "moe_classement_automatique": "IGN"
+          }
+        },
+        "downloadUrl": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=886999.75,6254000.25,887999.75,6255000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0887_6255_MNT_O_0M50_LAMB93_IGN69.tif",
+        "downloadedAt": "2026-11-01T00:29:20.575739+00:00",
+        "tile": "35f08774005ed880-LHD_FXX_0887_6255_MNT_O_0M50_LAMB93_IGN69.tif",
+        "bytes": 16000513,
+        "sha256": "35f08774005ed8806f8f27a4e17366bf5112949a8af952ed7a0e18083d0f13ce",
+        "upstreamChecksum": null,
+        "checksumScope": "SHA-256 of bytes received over verified HTTPS; no upstream checksum was supplied",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — LiDAR HD",
+        "nativeRequest": {
+          "bounds": [
+            886999.75,
+            6254000.25,
+            887999.75,
+            6255000.25
+          ],
+          "size": [
+            2000,
+            2000
+          ],
+          "filename": "LHD_FXX_0887_6255_MNT_O_0M50_LAMB93_IGN69.tif",
+          "crs": "EPSG:2154"
+        },
+        "nativeHeader": {
+          "wkt": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+          "epsg": null,
+          "nativePixelSize": [
+            0.5,
+            0.5
+          ],
+          "nodata": -9999.0
+        },
+        "effectiveCrs": "EPSG:2154",
+        "crsOverrideExplicit": true,
+        "verticalDatum": "NGF-IGN69",
+        "patch": "35f08774005ed880-e9dd2776f851-grid.json",
+        "bbox": [
+          43.3624,
+          5.313,
+          43.3652,
+          5.3168
+        ],
+        "width": 310,
+        "height": 313,
+        "validPoints": 97030,
+        "missingPoints": 0,
+        "resampling": "nearest",
+        "resampled": true,
+        "originalAcquisitionReceiptSha256": "97ea8d71a966aa25d010d1f8baf104895cfd1880f5b5a897eb5bc2a74bee7eba",
+        "publicationNote": "Only external tile and grid paths reduced to basenames. Original acquisition receipt is unchanged in external cache.",
+        "discoveryFiles": [
+          {
+            "file": "lidar-metadata.json",
+            "bytes": 2061,
+            "sha256": "d220ac90a1c717b9fb85a35af6e02091c1bf2a1cccef7f48d97c6c4c214ed441"
+          },
+          {
+            "file": "wfs-capabilities.xml",
+            "bytes": 5589544,
+            "sha256": "e1d21eb6534f3af8042ecde94bd921331f2e52c5d0165bcbec5121332fd015e7"
+          },
+          {
+            "file": "catalogue-page-1.xml",
+            "bytes": 160591,
+            "sha256": "aa2ee418ebf873cac96c88802dd35ff1c44285f397a6a3ec7aa3e9f03cc0bbff"
+          },
+          {
+            "file": "catalogue-page-2.xml",
+            "bytes": 120115,
+            "sha256": "8efa929ef400a13aadfeb6a7be3398ad243704dc3fa2a76ed1614c357bba8b0a"
+          },
+          {
+            "file": "catalogue-page-3.xml",
+            "bytes": 72734,
+            "sha256": "00d5af5b0273f03203f1849c20f04142d21743de834d56c179a0f28256a55c57"
+          }
+        ]
+      }
+    },
+    {
+      "zone": "saint_antoine",
+      "receipt": {
+        "provider": "IGN",
+        "product": "MNT LiDAR HD",
+        "catalogue": {
+          "resources": 119,
+          "pages": 3,
+          "lidarResources": [
+            {
+              "title": "20260430-LiDAR-SMi2B",
+              "links": [
+                "https://data.geopf.fr/telechargement/resource/LiDAR_SMi2B_20260430"
+              ]
+            },
+            {
+              "title": "Cartes de classes issues du LiDAR HD",
+              "links": [
+                "https://data.geopf.fr/telechargement/resource/LiDARHD-CARTES-CLASSES"
+              ]
+            },
+            {
+              "title": "Densités issues du LiDAR HD",
+              "links": [
+                "https://data.geopf.fr/telechargement/resource/LiDARHD-DENSITES"
+              ]
+            },
+            {
+              "title": "LiDARHD-NUALID",
+              "links": [
+                "https://data.geopf.fr/telechargement/resource/LiDARHD-NUALID"
+              ]
+            }
+          ]
+        },
+        "discovery": "Catalogue Atom + actual WFS metadata url_mnt export; no guessed tile URL",
+        "metadataUrl": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=IGNF_LIDAR-HD_METADONNEE%3Ametadata&srsName=urn%3Aogc%3Adef%3Acrs%3AOGC%3A1.3%3ACRS84&bbox=5.357%2C43.369%2C5.361%2C43.372%2Curn%3Aogc%3Adef%3Acrs%3AOGC%3A1.3%3ACRS84&count=32&outputFormat=application%2Fjson",
+        "metadataFeature": {
+          "type": "Feature",
+          "id": "metadata.382636",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    5.35597962,
+                    43.37748418
+                  ],
+                  [
+                    5.36830722,
+                    43.3772151
+                  ],
+                  [
+                    5.36793743,
+                    43.36822298
+                  ],
+                  [
+                    5.35561175,
+                    43.36849201
+                  ],
+                  [
+                    5.35597962,
+                    43.37748418
+                  ]
+                ]
+              ]
+            ]
+          },
+          "geometry_name": "geom",
+          "properties": {
+            "capteur": "[\"Leica TerrainMapper:90560\"]",
+            "url_mnh": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNH_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6255000.25,891999.75,6256000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6256_MNH_O_0M50_LAMB93_IGN69.tif",
+            "url_mns": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6255000.25,891999.75,6256000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6256_MNS_O_0M50_LAMB93_IGN69.tif",
+            "url_mnt": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6255000.25,891999.75,6256000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6256_MNT_O_0M50_LAMB93_IGN69.tif",
+            "url_npl": "https://data.geopf.fr/telechargement/download/LiDARHD-NUALID/NUALHD_1-0__LAZ_LAMB93_PQ_2025-03-14/LHD_FXX_0891_6256_PTS_LAMB93_IGN69.copc.laz",
+            "code_mission": "21LHD7PQ",
+            "date_edition": "2025-03-14Z",
+            "nombre_points": 26032047,
+            "coordonnees_nw": "0891-6256",
+            "moa_acquisition": "IGN",
+            "moe_acquisition": "APEI",
+            "procede_classement": "IGN_AUTO_V5",
+            "date_fin_acquisition": "2021-06-25Z",
+            "systeme_altimetrique": "IGN69",
+            "moe_classement_manuel": "NR",
+            "systeme_planimetrique": "LAMB93",
+            "date_debut_acquisition": "2021-06-25Z",
+            "moe_classement_automatique": "IGN"
+          }
+        },
+        "downloadUrl": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=890999.75,6255000.25,891999.75,6256000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0891_6256_MNT_O_0M50_LAMB93_IGN69.tif",
+        "downloadedAt": "2026-11-01T00:29:23.699224+00:00",
+        "tile": "230fadfff8056e03-LHD_FXX_0891_6256_MNT_O_0M50_LAMB93_IGN69.tif",
+        "bytes": 16000513,
+        "sha256": "230fadfff8056e038cd603868d3fdc20dfbbc4ca89c70a53ebb43fd211e516b5",
+        "upstreamChecksum": null,
+        "checksumScope": "SHA-256 of bytes received over verified HTTPS; no upstream checksum was supplied",
+        "license": "Licence Ouverte 2.0",
+        "attribution": "IGN — LiDAR HD",
+        "nativeRequest": {
+          "bounds": [
+            890999.75,
+            6255000.25,
+            891999.75,
+            6256000.25
+          ],
+          "size": [
+            2000,
+            2000
+          ],
+          "filename": "LHD_FXX_0891_6256_MNT_O_0M50_LAMB93_IGN69.tif",
+          "crs": "EPSG:2154"
+        },
+        "nativeHeader": {
+          "wkt": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+          "epsg": null,
+          "nativePixelSize": [
+            0.5,
+            0.5
+          ],
+          "nodata": -9999.0
+        },
+        "effectiveCrs": "EPSG:2154",
+        "crsOverrideExplicit": true,
+        "verticalDatum": "NGF-IGN69",
+        "patch": "230fadfff8056e03-fc230a30f90d-grid.json",
+        "bbox": [
+          43.369,
+          5.357,
+          43.372,
+          5.361
+        ],
+        "width": 326,
+        "height": 335,
+        "validPoints": 109210,
+        "missingPoints": 0,
+        "resampling": "nearest",
+        "resampled": true,
+        "originalAcquisitionReceiptSha256": "6db1630838bf0c791f8ed756414d85ce6df5b422df5cbd0884e638eb0979603a",
+        "publicationNote": "Only external tile and grid paths reduced to basenames. Original acquisition receipt is unchanged in external cache.",
+        "discoveryFiles": [
+          {
+            "file": "lidar-metadata.json",
+            "bytes": 2061,
+            "sha256": "b53e90d41f0bd17e7c8e420ee8d9c22766d36a01e8a320c26519e189d71c72f0"
+          },
+          {
+            "file": "wfs-capabilities.xml",
+            "bytes": 5589544,
+            "sha256": "a5d3c833ad7b76d27b8e06e0e4a13cfa7f00ee32a97f07b97a0051e3526fa269"
+          },
+          {
+            "file": "catalogue-page-1.xml",
+            "bytes": 160591,
+            "sha256": "aa2ee418ebf873cac96c88802dd35ff1c44285f397a6a3ec7aa3e9f03cc0bbff"
+          },
+          {
+            "file": "catalogue-page-2.xml",
+            "bytes": 120115,
+            "sha256": "8efa929ef400a13aadfeb6a7be3398ad243704dc3fa2a76ed1614c357bba8b0a"
+          },
+          {
+            "file": "catalogue-page-3.xml",
+            "bytes": 72734,
+            "sha256": "00d5af5b0273f03203f1849c20f04142d21743de834d56c179a0f28256a55c57"
+          }
+        ]
+      }
+    }
+  ],
+  "newArchive": "world-sources-3df84df4ae353420.zip"
+}

@@ -1,0 +1,152 @@
+{
+  "scope": "Same controlled production vending + existing bottle/geometry fixture executed with archived old fragment and current fixed fragment. New world is created before first bind with the player already at the admitted candidate; a real production publication invalidation repeats binding. A separate player stands exactly on the cabinet roof. These are controlled model observations, not native geographic captures.",
+  "scriptSha256": "82d3467d83f60ddc983fc29c62e46e8330ddc8b9a78a96006bfbc80e8292b020",
+  "before": {
+    "sourceSha256": "0c6bfe9c851ce60fcb7960bd692a1d33853678bdb59c1d33e35f40813810d7a1",
+    "clearBeforeFirstBind": true,
+    "first": {
+      "entry": {
+        "id": "aubagne",
+        "name": "Distributeur des ateliers",
+        "scene": "aubagne",
+        "siteId": "safe-huveaune",
+        "pos": [
+          0.7782388057081817,
+          0,
+          4.533689927783979
+        ],
+        "interaction": [
+          1.1082388057081818,
+          1.25,
+          5.033689927783979
+        ],
+        "usable": false
+      },
+      "player": [
+        0.7782388057081817,
+        1.65,
+        4.533689927783979
+      ],
+      "collides": true
+    },
+    "publication": {
+      "entry": {
+        "id": "aubagne",
+        "name": "Distributeur des ateliers",
+        "scene": "aubagne",
+        "siteId": "safe-huveaune",
+        "pos": [
+          0.7782388057081817,
+          0,
+          4.533689927783979
+        ],
+        "interaction": [
+          1.1082388057081818,
+          1.25,
+          5.033689927783979
+        ],
+        "usable": false
+      },
+      "player": [
+        0.7782388057081817,
+        1.65,
+        4.533689927783979
+      ],
+      "collides": true,
+      "count": 1
+    },
+    "onTop": {
+      "before": [
+        0.7782388057081817,
+        0,
+        4.533689927783979
+      ],
+      "after": [
+        0.7782388057081817,
+        0,
+        4.533689927783979
+      ],
+      "player": [
+        0.7782388057081817,
+        3.69,
+        4.533689927783979
+      ],
+      "ground": 2.04,
+      "collides": true
+    }
+  },
+  "after": {
+    "sourceSha256": "0757a959324cd76cfe7bcd1352910c14e27711d9a5ce788a1d7b0471e250ac20",
+    "clearBeforeFirstBind": true,
+    "first": {
+      "entry": {
+        "id": "aubagne",
+        "name": "Distributeur des ateliers",
+        "scene": "aubagne",
+        "siteId": "safe-huveaune",
+        "pos": [
+          2.141136322314302,
+          0,
+          4.071306332034767
+        ],
+        "interaction": [
+          2.471136322314302,
+          1.25,
+          4.571306332034767
+        ],
+        "usable": true
+      },
+      "player": [
+        0.7782388057081817,
+        1.65,
+        4.533689927783979
+      ],
+      "collides": false
+    },
+    "publication": {
+      "entry": {
+        "id": "aubagne",
+        "name": "Distributeur des ateliers",
+        "scene": "aubagne",
+        "siteId": "safe-huveaune",
+        "pos": [
+          2.141136322314302,
+          0,
+          4.071306332034767
+        ],
+        "interaction": [
+          2.471136322314302,
+          1.25,
+          4.571306332034767
+        ],
+        "usable": true
+      },
+      "player": [
+        0.7782388057081817,
+        1.65,
+        4.533689927783979
+      ],
+      "collides": false,
+      "count": 1
+    },
+    "onTop": {
+      "before": [
+        0.7782388057081817,
+        0,
+        4.533689927783979
+      ],
+      "after": [
+        0.7782388057081817,
+        0,
+        4.533689927783979
+      ],
+      "player": [
+        0.7782388057081817,
+        3.69,
+        4.533689927783979
+      ],
+      "ground": 2.04,
+      "collides": false
+    }
+  }
+}

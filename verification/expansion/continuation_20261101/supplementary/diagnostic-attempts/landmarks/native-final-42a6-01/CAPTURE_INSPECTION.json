@@ -1,0 +1,70 @@
+{
+  "scope": "Visual inspection of nine exact original native capture events; descriptive observations, outside gameplay assertion sum. Elevated cameras and obstructed views remain identified.",
+  "inspectedAt": "2026-11-01T00:47:13.485491+00:00",
+  "reportSha256": "dc55070e6deea8ad52077a06da4a53fbd689322c5bc4e375156d1d92e4ee45ed",
+  "captures": [
+    {
+      "file": "major_ground.png",
+      "sha256": "5fa256a06f29f666a98909499d2e9be98b1093c419074a00ffcb27a92a9c8954",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "La surface MNS de la Major est visible de près ; le cadrage au sol coupe une partie du monument. Les fenêtres sont une représentation procédurale, sans relevé architectural."
+    },
+    {
+      "file": "major_elevated.png",
+      "sha256": "8ee377ce2d222eee2e12be5ab543211e9990b5813aeb22fab6cdb23d6dc09959",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue de diagnostic élevée : dômes et emprises visibles, avec bruit LiDAR et extrusions verticaux. Elle ne prouve aucun accès piéton à cette caméra."
+    },
+    {
+      "file": "garde_ground.png",
+      "sha256": "a002429c7a7069cbc0ba2d7c400ad7b4355a133224c4972e1f91754a8228ab8e",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "La flèche MNS et un versant sont visibles depuis un point MNT libre ; le monument complet ne tient pas dans ce cadrage. Murs et ouvertures restent des représentations du jeu."
+    },
+    {
+      "file": "garde_elevated.png",
+      "sha256": "fc453e3d538595e9546e6f1f8cecd162d10e364d70d4e8af5a1ca0bbb7f3757b",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue élevée de diagnostic : clocheton, versants et relief mesuré visibles, avec rugosité de sursol. Sans détail de statue ni de façade certifié."
+    },
+    {
+      "file": "charite_ground.png",
+      "sha256": "2f5be5491df1e7710057877d87d9e1c3cac91b8ea198cf06cc2f95d569ba550c",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Le point au sol est libre de collision mais la ligne de vue est masquée par un volume voisin : cette capture montre un mur et le terrain, pas la chapelle. Elle ne doit pas servir de preuve de visibilité de la chapelle."
+    },
+    {
+      "file": "charite_elevated.png",
+      "sha256": "f731c6bd0180bb67da86cbe5cf9bbd47b9e12e06767f91075e5d67e3b48a53f9",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue élevée : le dôme de la chapelle est visible dans la cour. Le reste de l’hospice garde ses volumes antérieurs et ses finitions inventées ; seul le contour de la chapelle reçoit ce MNS."
+    },
+    {
+      "file": "pharo_ground.png",
+      "sha256": "63ab3022e12e15bd30c4f2a6bf7f351da68fc5e637dc53e4f6ce2072a35e69d5",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue au sol de l’emprise mesurée dans le contexte du Pharo : murs verticaux simplifiés et sursol rugueux. Elle ne démontre ni fenêtres réelles ni décor intérieur."
+    },
+    {
+      "file": "pharo_elevated.png",
+      "sha256": "00f5fbbfb2a0b365bcc19a46f48357055f62c0717c6115cf876d74bfdc22ee54",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Vue élevée de l’emprise et du sursol ; une partie est recouverte par le premier plan FPS. Des artefacts historiques du rendu d’eau voisin restent visibles. Pas de relevé de façade complet."
+    },
+    {
+      "file": "pharo_continue.png",
+      "sha256": "c85e09e222b4d6d86ab0a9d8ae66f305f0c1d02bef8dd4fb644495a4d3d63d17",
+      "inspected": true,
+      "imageEditing": false,
+      "observation": "Retour au même point au sol après un vrai rechargement et Continuer. La persistance et la republication du MNS sont vérifiées par état/maillage ; la capture ne montre pas une nouvelle façade documentée."
+    }
+  ]
+}

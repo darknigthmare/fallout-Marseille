@@ -1,0 +1,43 @@
+{
+  "scope": "External post-exit evidence audit; no additional model tests, no contribution to aggregate test counts. The exec tool observed wrapper exit 0; EXECUTION_RESUME.json independently records its actual continuation child exit.",
+  "checkedAtEpoch": 1793495344.1943142,
+  "checks": {
+    "complete_actual_41_suites": true,
+    "all_child_exits_zero_totals_exact_no_skips": true,
+    "maintained_commands_exact": true,
+    "composed_total_matches_actual_rows": true,
+    "original_prefix_rows_preserved": true,
+    "original_archive_bytes_and_sizes_exact": true,
+    "original_report_and_stdout_hashes_exact": true,
+    "original_stdout_unmodified": true,
+    "resumed_stdout_is_exact_new_suite_sequence": true,
+    "original_outer_exit_stays_unobserved": true,
+    "continuation_exit_observed_zero": true,
+    "receipt_report_log_provenance_hashes_exact": true,
+    "actual_executed_scripts_archived_exact": true,
+    "source_and_test_file_sets_and_hashes_unchanged": true,
+    "freeze_manifest_bytes_unchanged": true,
+    "all_361_runtime_hashes_unchanged": true,
+    "html_and_north_index_and_pilot_stable": true
+  },
+  "ok": true,
+  "suiteCount": 41,
+  "actualTotal": 1763,
+  "phaseCounts": [
+    {
+      "id": "original-interrupted",
+      "suiteCount": 26,
+      "total": 1145,
+      "originalOuterExitCode": null,
+      "archive": "original-interrupted/UNITS.json"
+    },
+    {
+      "id": "continuation",
+      "suiteCount": 15,
+      "total": 618,
+      "receipt": "EXECUTION_RESUME.json"
+    }
+  ],
+  "reportSha256": "fea3c5eda9c67d40fe50bb77f37eb18f0564d559ed54806eb77da47484e523d6",
+  "receiptSha256": "4e8a6f1b511394b19bd00c1b25819a1f2755b6dd5e469d5e7f966d9a7b2bdda2"
+}

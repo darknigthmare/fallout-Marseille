@@ -9,7 +9,16 @@ const MistralFpsHud=(()=>{
  function ticks(yaw){const degrees=angle(finite(yaw)*180/Math.PI),labels=['N','NE','E','SE','S','SO','O','NO'],result=[];for(let d=Math.floor((degrees-65)/15)*15;d<=degrees+65;d+=15){const x=delta(d,degrees);if(Math.abs(x)>60)continue;result.push({degree:angle(d),x:(x+60)/120*100,label:d%45===0?labels[angle(d)/45]:'',major:d%45===0});}return result;}
  function bearing(player,target,yaw){if(!Array.isArray(player)||!Array.isArray(target)||player.length<3||target.length<3||![player[0],player[2],target[0],target[2],yaw].every(Number.isFinite))return null;const dx=target[0]-player[0],dz=target[2]-player[2];if(Math.hypot(dx,dz)<.01)return null;const offset=delta(Math.atan2(dx,-dz)*180/Math.PI,yaw*180/Math.PI);return{offset,x:clamp((offset+60)/120*100,2,98),edge:Math.abs(offset)>60};}
  function read(player={},weapon={},reload=0){const hp=percent(player.hp,player.maxHp),ammo=Math.max(0,Math.floor(finite(player.ammoClip)));return{hp,ap:percent(player.ap,player.maxAp),lowHp:hp<=25&&finite(player.hp)>0,empty:!weapon.melee&&ammo===0,reloading:finite(reload)>0,stance:player.cameraMode==='third'?'VUE EXTERIEURE':player.crouched?'ACCROUPI':'DEBOUT'};}
- return Object.freeze({options,percent,angle,delta,ticks,bearing,read});
+ function loss(before,after){return Number.isFinite(before)&&Number.isFinite(after)?Math.max(0,Math.max(0,before)-Math.max(0,after)):0;}
+ function impacts(records=[]){const targets=new Set(),kills=new Set();let damage=0,critical=false;for(const record of records){const amount=loss(record.before,record.after);if(!record.alive||!amount)continue;targets.add(record.target);damage+=amount;if(record.dead)kills.add(record.target);critical||=record.critical===true;}return{damage,targets:targets.size,kills:kills.size,critical};}
+ function reloadProgress(remaining,total){return Number.isFinite(remaining)&&Number.isFinite(total)&&remaining>0&&total>=remaining?clamp((1-remaining/total)*100,0,100):0;}
+ function subtitleTop(width,height,box,obstacles=[]){
+  const size=finite(box?.h);if(width<=0||height<=0||size<=0)return null;
+  const intervals=obstacles.filter(r=>r&&r.w>0&&r.h>0&&r.x<box.x+box.w+6&&r.x+r.w>box.x-6).map(r=>[Math.max(8,r.y-8),Math.min(height-8,r.y+r.h+8)]).filter(r=>r[1]>r[0]).sort((a,b)=>a[0]-b[0]);
+  let start=8;const gaps=[];for(const[a,b]of intervals){if(a-start>=size)gaps.push([start,a-size]);start=Math.max(start,b);}if(height-8-start>=size)gaps.push([start,height-8-size]);
+  if(!gaps.length)return null;const desired=height*.64-size/2;return gaps.map(([a,b])=>clamp(desired,a,b)).sort((a,b)=>Math.abs(a-desired)-Math.abs(b-desired))[0];
+ }
+ return Object.freeze({options,percent,angle,delta,ticks,bearing,read,loss,impacts,reloadProgress,subtitleTop});
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralFpsHud;
 
@@ -93,6 +102,21 @@ function v056HudAfterInit(){
  body.fps56 #crosshair i:nth-child(3){left:12px;top:calc(0px - var(--spread));height:6px}
  body.fps56 #crosshair i:nth-child(4){left:12px;bottom:calc(0px - var(--spread));height:6px}
  body.fps56 #crosshair.interactive i{background:#f3d68c}
+ /* The confirmation is a separate, static mark: it follows applied damage,
+    never an enemy name, proximity query or a guessed direction. */
+ body.fps56 #crosshair.hit{transform:translate(-50%,-50%)}
+ body.fps56 #crosshair.hit i{background:#f0d78c}
+ #fps57Hit{position:absolute;left:50%;top:50%;width:42px;height:42px;transform:translate(-50%,-50%);pointer-events:none;color:#f0d78c}
+ #fps57Hit[hidden],#fps57Hurt[hidden]{display:none!important}
+ #fps57Hit i{position:absolute;width:8px;height:2px;background:currentColor;box-shadow:0 1px 2px #000;transform:rotate(45deg)}
+ #fps57Hit i:nth-child(1){left:2px;top:5px}#fps57Hit i:nth-child(2){right:2px;top:5px;transform:rotate(-45deg)}
+ #fps57Hit i:nth-child(3){left:2px;bottom:5px;transform:rotate(-45deg)}#fps57Hit i:nth-child(4){right:2px;bottom:5px}
+ #fps57Hit b{position:absolute;left:50%;top:64px;transform:translateX(-50%);font:9px/14px monospace;letter-spacing:.08em;white-space:nowrap;text-shadow:0 1px 3px #000}
+ #fps57Hit[data-kill=true]{color:#edbc91}
+ #fps57Hurt{position:absolute;left:0;bottom:100%;padding:3px 8px;font:11px/16px monospace;color:#f0b393;background:#201c18d9;border-left:2px solid #f0b393;white-space:nowrap}
+ body.fps56 #weaponHud .v018-reload{height:3px!important;top:auto!important;bottom:0!important;margin:0!important;background:linear-gradient(90deg,#e8d596 var(--fps57-progress,0%),#c3cba43b 0);font-size:0;overflow:hidden}
+ body.fps56 #hud.fps57-reduced-flashes #fps57Hit i{display:none}
+ @media(max-width:760px){#fps57Hit b{font-size:8px;top:58px}#fps57Hurt{font-size:10px;padding:2px 6px}}
  body.fps56 #fps56Stance{position:absolute;left:50%;top:calc(50% + 28px);transform:translateX(-50%);font:9px monospace;letter-spacing:.13em;color:#e4e9c5;opacity:.8}
  body.fps56 #subtitle{bottom:calc(var(--hud-base) + 50px);font-size:1rem;max-width:65vw}
  body.fps56 #fps56ObjectiveToggle{position:absolute;right:max(24px,env(safe-area-inset-right));top:174px;pointer-events:auto;padding:6px 9px;min-height:32px;font-size:9px;letter-spacing:.05em;border:0;border-bottom:1px solid #95a078;background:#101d18ad}
@@ -139,6 +163,14 @@ function v056HudAfterInit(){
  const strip=document.createElement('div');strip.id='fps56Compass';strip.setAttribute('aria-hidden','true');$('compass').insertBefore(strip,$('questDistance'));
  const pip=document.createElement('span');pip.id='fps56Bearing';pip.hidden=true;pip.setAttribute('aria-hidden','true');$('compass').appendChild(pip);
  const stance=document.createElement('span');stance.id='fps56Stance';hud.appendChild(stance);
+ const hit=document.createElement('span');hit.id='fps57Hit';hit.hidden=true;hit.setAttribute('aria-live','off');hit.innerHTML='<i></i><i></i><i></i><i></i><b></b>';hud.appendChild(hit);
+ const hurt=document.createElement('span');hurt.id='fps57Hurt';hurt.hidden=true;$('statusBars').appendChild(hurt);
+ const feedback={owner:null,world:null,weapon:null,scene:null,hit:null,hurt:null,reloadTotal:0};let emission=null;
+ function syncFeedback(){if(feedback.owner!==state||feedback.world!==world||feedback.weapon!==state?.player?.weaponId||feedback.scene!==V020.scene){Object.assign(feedback,{owner:state,world,weapon:state?.player?.weaponId,scene:V020.scene,hit:null,hurt:null,reloadTotal:0});}}
+ const damageBefore=damageEnemy;damageEnemy=function(enemy,amount,...rest){const record={target:enemy,before:enemy?.health,alive:enemy?.alive===true,critical:rest[1]===true};const result=damageBefore.call(this,enemy,amount,...rest);if(emission){record.after=enemy?.health;record.dead=enemy?.alive===false;emission.push(record);}return result;};
+ const emitBefore=v020Emit;v020Emit=function(...args){syncFeedback();const owner=state,place=world,scene=V020.scene,outer=emission,records=[];emission=records;try{const result=emitBefore.apply(this,args),summary=M.impacts(records);if(result&&summary.damage>0&&state===owner&&world===place&&V020.scene===scene){feedback.hit={...summary,until:performance.now()+750};updateHUD();}return result;}finally{emission=outer;}};
+ const hurtBefore=hurtPlayer;hurtPlayer=function(...args){syncFeedback();const owner=state,place=world,hp=state?.player?.hp,wasPlaying=mode==='PLAYING';const result=hurtBefore.apply(this,args),lost=M.loss(hp,state?.player?.hp);if(wasPlaying&&lost>0&&state===owner&&world===place){const clock=performance.now(),recent=feedback.hurt&&feedback.hurt.until-clock>650?feedback.hurt.amount:0;feedback.hurt={amount:recent+lost,until:clock+1000};updateHUD();}return result;};
+ const reloadBefore=reload;reload=function(...args){syncFeedback();const result=reloadBefore.apply(this,args);if(result&&reloadTimer>0)feedback.reloadTotal=reloadTimer;return result;};
  const objectiveToggle=document.createElement('button');objectiveToggle.id='fps56ObjectiveToggle';objectiveToggle.type='button';objectiveToggle.title='Afficher ou masquer le suivi de quête';hud.appendChild(objectiveToggle);
  const aim=document.createElement('button');aim.type='button';aim.dataset.fps56Aim='true';aim.textContent='X · Visée';aim.title='Maintenir pour présenter l’arme dans l’axe du viseur';aim.setAttribute('aria-label','Maintenir la visée');
  let aimingPointer=null;
@@ -152,13 +184,20 @@ function v056HudAfterInit(){
  function sync(){hud.classList.toggle('fps56-compact',preferences.compact);fields.querySelector('[data-fps56=compact]').checked=preferences.compact;fields.querySelector('[data-fps56=objectives]').checked=preferences.objectives;objectiveToggle.textContent=preferences.objectives?'Suivi · masquer':'Suivi · afficher';objectiveToggle.setAttribute('aria-pressed',String(preferences.objectives));}
  function store(next){const before=preferences;preferences=M.options(next);try{localStorage.setItem(key,JSON.stringify(preferences));}catch{preferences=before;toast('Affichage non enregistré : stockage indisponible.','bad');}sync();}
  fields.addEventListener('change',()=>store({compact:fields.querySelector('[data-fps56=compact]').checked,objectives:fields.querySelector('[data-fps56=objectives]').checked}));objectiveToggle.onclick=()=>store({...preferences,objectives:!preferences.objectives});$('btnOptionsReset')?.addEventListener('click',()=>store(M.options()));sync();
- let compassStamp='',lastMode=null;
+ let compassStamp='',lastMode=null,subtitleLayoutAt=0;
  const base=updateHUD;updateHUD=function(...args){const result=base(...args);if(!gameStarted||!state?.player)return result;const playing=mode==='PLAYING';if(lastMode!==mode){lastMode=mode;if(!playing)releaseAim();}hud.classList.toggle('fps56-compact',preferences.compact);
   const hint=$('v020QuestHint'),quest=$('questCard'),hasHint=!!hint&&!hint.hidden&&!!hint.textContent.trim();
   hint?.classList.toggle('fps56-objective-hidden',!preferences.objectives||!hasHint);quest.classList.toggle('fps56-objective-hidden',!preferences.objectives||hasHint);
   objectiveToggle.hidden=!playing;
+  syncFeedback();const now=performance.now(),combatVisible=playing||mode==='VATS_EXEC';if(!combatVisible){feedback.hit=null;feedback.hurt=null;}
+  hit.hidden=!combatVisible||!feedback.hit||feedback.hit.until<=now;hurt.hidden=!playing||!feedback.hurt||feedback.hurt.until<=now;
+  if(!hit.hidden){hit.dataset.kill=String(feedback.hit.kills>0);hit.querySelector('b').textContent=feedback.hit.kills>0?'NEUTRALISÉ'+(feedback.hit.kills>1?' × '+feedback.hit.kills:''):feedback.hit.critical?'CRITIQUE':'TOUCHÉ';}
+  if(!hurt.hidden){const amount=feedback.hurt.amount;hurt.textContent='− '+(amount<1?amount.toFixed(1).replace('.',','):Math.round(amount))+' PV';}
+  hud.classList.toggle('fps57-reduced-flashes',!!settings.reducedFlashes);
   const model=M.read(state.player,currentWeapon(),reloadTimer);$('statusBars').dataset.critical=String(model.lowHp);$('weaponHud').dataset.empty=String(model.empty);$('weaponHud').dataset.reloading=String(model.reloading);
-  $('reloadHint').textContent=currentWeapon().melee?'CORPS À CORPS':model.reloading?'RECHARGEMENT…':model.empty?'CHARGEUR VIDE · R':'R · RECHARGER';
+  if(!model.reloading)feedback.reloadTotal=0;else if(feedback.reloadTotal<reloadTimer)feedback.reloadTotal=reloadTimer;
+  const progress=M.reloadProgress(reloadTimer,feedback.reloadTotal),meter=$('v018ReloadProgress');if(meter){meter.textContent='';meter.style.setProperty('--fps57-progress',progress+'%');meter.setAttribute('role','progressbar');meter.setAttribute('aria-label','Rechargement');meter.setAttribute('aria-valuemin','0');meter.setAttribute('aria-valuemax','100');meter.setAttribute('aria-valuenow',String(Math.round(progress)));meter.setAttribute('aria-valuetext',model.reloading?reloadTimer.toFixed(1).replace('.',',')+' secondes restantes':'Terminé');}
+  $('reloadHint').textContent=currentWeapon().melee?'CORPS À CORPS':model.reloading?'RECHARGEMENT · '+Math.max(.1,reloadTimer).toFixed(1).replace('.',',')+' s':model.empty?'CHARGEUR VIDE · R':state.player.ammoClip>=currentWeapon().clip?'CHARGEUR PLEIN':state.player.ammoReserve<=0?'RÉSERVE VIDE':'R · RECHARGER';
   stance.textContent=model.stance;stance.hidden=!playing||!state.player.crouched&&state.player.cameraMode!=='third';
   const ticks=M.ticks(state.player.yaw),stamp=JSON.stringify(ticks.map(t=>[t.degree,Math.round(t.x*10)/10]));if(stamp!==compassStamp){compassStamp=stamp;strip.replaceChildren(...ticks.map(t=>{const el=document.createElement('span');el.style.left=t.x+'%';el.className=t.major?'major':'';if(t.label){const label=document.createElement('b');label.textContent=t.label;el.appendChild(label);}return el;}));}
   const objective=getObjectiveMarker(),bearing=objective?.zone===world?.id?M.bearing(state.player.pos,objective.pos,state.player.yaw):null;pip.hidden=!playing||!preferences.objectives||!bearing;if(bearing){pip.style.left=bearing.x+'%';pip.textContent=bearing.edge?(bearing.offset<0?'◀':'▶'):'◇';pip.classList.toggle('edge',bearing.edge);}
@@ -166,8 +205,13 @@ function v056HudAfterInit(){
   if(settings.reduceMotion)hud.classList.add('fps56-reduced');else hud.classList.remove('fps56-reduced');
   const stealth=$('stealth29');if(stealth)stealth.title=stealth.querySelector('small')?.textContent||'';
   if(attribution){const geographic=!!world?.v046;attribution.hidden=!geographic;if(geographic){attribution.title=attribution.textContent;attribution.textContent=typeof V046!=='undefined'&&V046.lab?'Banc synthétique · données de test':'© contributeurs OpenStreetMap · Cadastre/DGFiP · IGN';}}
+  // Reflow an actual subtitle into a free horizontal strip. In portrait the
+  // historical bottom offset otherwise covers both ammunition and health.
+  // Keep the ordinary CSS position if an unusually crowded screen has no
+  // full-height strip; never clip or discard the message to manufacture a fit.
+  const subtitle=$('subtitle');if(playing&&subtitle&&!subtitle.classList.contains('hidden')&&now-subtitleLayoutAt>120){subtitleLayoutAt=now;const rect=el=>{const r=el.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height};},visible=el=>el&&!el.hidden&&!el.classList.contains('hidden')&&el.getClientRects().length&&getComputedStyle(el).display!=='none'&&getComputedStyle(el).opacity!=='0';const ids=['statusBars','weaponHud','v020Quickbar','compass','locationCard','questCard','v020QuestHint','fps56ObjectiveToggle','p30Hud','p28LampHud','v042LayerHud','levelHud','v023CriticalHud','needsHud','companionCard','effectHud','interactPrompt','stealth29','fps56Stance','fps57Hurt','toastStack','crosshair'];const blocks=ids.map(id=>$(id)).filter(visible).map(rect);if(!hit.hidden)blocks.push(rect(hit.querySelector('b')));const top=M.subtitleTop(innerWidth,innerHeight,rect(subtitle),blocks);if(top!==null){subtitle.style.top=top+'px';subtitle.style.bottom='auto';}else{subtitle.style.top='';subtitle.style.bottom='';}}
   return result;
  };
- Object.assign(window.__MISTRAL_DEBUG,{v056HudInfo:()=>({preferences:{...preferences},model:M.read(state?.player,currentWeapon(),reloadTimer),mode,assistance:'Presentation only; no world position, health, ammo or quest writes.'})});
+ Object.assign(window.__MISTRAL_DEBUG,{v056HudInfo:()=>({preferences:{...preferences},model:M.read(state?.player,currentWeapon(),reloadTimer),feedback:{hit:feedback.hit?{...feedback.hit}:null,hurt:feedback.hurt?{...feedback.hurt}:null,reloadTotal:feedback.reloadTotal,reloadProgress:M.reloadProgress(reloadTimer,feedback.reloadTotal)},mode,assistance:'Presentation only; no world position, health, ammo or quest writes. Combat confirmations observe applied ordinary weapon damage and actual HP loss; no source position is inferred.'})});
  updateHUD();
 }
