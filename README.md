@@ -1,14 +1,21 @@
 # FALLOUT Marseille — MISTRAL
 
+
+[Raccords routiers et livraison synchronisée — 29 octobre 2026](docs/QA_STREAMING_2026-10-29.md) : correction des fragments complémentaires, HTML reconstruits, contrôle du cache hors ligne et captures réellement exécutées.
+
 ## v0.50 · Les routes retrouvées
 
 La poursuite du **1er novembre 2026** affine la **vue FPS** : prises mieux cadrées, treize profils dans neuf familles et rechargements distincts selon huit alimentations. Le HUD suit les touches et neutralisations réelles, les PV perdus et le vrai délai de rechargement ; les sous-titres cherchent une bande libre. La manette standard maintient aussi la présentation de visée avec LT. [Vue FPS](docs/VUE_FPS.md) · [HUD](docs/HUD_FPS.md).
 
 En parallèle : surfaces MNS mesurées de la chapelle de la Vieille Charité et du Pharo, deux fenêtres IGN du nord (Estaque/Saint-Antoine), dépôts persistants dans les meubles intérieurs, suites aux décisions des Communes et des Gilets, et distributeurs Nuka-Cola réparables à stock fini. Les anciens lieux, services, dossiers, grenades et mines sont conservés. [Chantiers et limites](docs/CHANTIERS_ACTIFS.md).
 
+L’intégration de `7ab5043` conserve aussi les fragments routiers complémentaires et leur identité entre partitions, les annulations de chargement et les diagnostics de géométries distinctes. Les quatre fichiers générés sont contrôlés ensemble ; le cache hors ligne prend son identité dans l’empreinte du HTML. Les [preuves du 29 octobre](docs/QA_STREAMING_2026-10-29.md) restent historiques et la nouvelle campagne vérifie le programme intégré.
+
 Le jeu couvre **toute la commune officielle de Marseille, îles comprises**, avec les données IGN acquises : 291 001 identifiants d’objets bâtiment et 55 449 tronçons routiers. La précision du relief varie selon la couverture. Les détails architecturaux et intérieurs sans relevé restent inventés. L’échelle métrique ne certifie pas une reproduction documentaire et visuelle intégrale **1:1**. [Portée de la ville](docs/MARSEILLE_ENTIERE.md).
 
-Le [bilan courant](verification/expansion/continuation_20261101/CONTINUATION_INTEGRATION.json) rattache les vérifications au HTML effectivement exécuté. **3 310 contrôles descriptifs et 76 captures**, répartis entre 13 méthodes. Les modèles d’armes restent stylisés, les aménagements non relevés sont inventés et les entrées Gamepad/tactiles émulées ne certifient pas de matériel physique. Les méthodes et parcours assistés sont distingués.
+Le [bilan courant](verification/expansion/continuation_20261101_integrated/CONTINUATION_INTEGRATION.json) rattache les vérifications au HTML intégré `c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1` : **3 312 contrôles descriptifs réussis et 76 captures**, répartis entre 13 méthodes. L’[état de production](docs/STATUT_PRODUCTION.md) présente les résultats confirmés et distingue les preuves complémentaires hors de cette somme. Les modèles d’armes restent stylisés, les aménagements non relevés sont inventés et les entrées Gamepad/tactiles émulées ne certifient pas de matériel physique. Les méthodes et parcours assistés sont distingués.
+
+Le [bilan avant intégration](verification/expansion/continuation_20261101/CONTINUATION_INTEGRATION.json), **3 310 contrôles et 76 captures** sur le HTML `98a78a1c…`, reste historique. Il ne valide pas automatiquement le programme intégré.
 
 La livraison `29df190` conserve ses [2 892 contrôles et 55 captures](verification/expansion/immersion/IMMERSION_INTEGRATION.json) sur son HTML `844376c0…`. Les [2 887 contrôles et 62 captures de `f4a7337`](verification/expansion/wasteland/WASTELAND_INTEGRATION.json), sur `ed6e4103…`, et les [2 324 contrôles et 42 captures de précision](verification/expansion/precision/PRECISION_INTEGRATION.json) restent historiques. Ces résultats ne sont pas réattribués au nouveau programme.
 
@@ -71,6 +78,7 @@ Les essais comprennent des parcours dans Chromium avec **vrais fichiers HTTP et 
 
 ```bash
 python3 tools/build_single.py
+python3 tools/build_single.py --check
 node --check src/game.js
 python3 tools/validate_real_map_v046.py --require-complete --report verification/v050/LOCAL_DATA_STATE.json
 python3 tests/v050/test_installers.py

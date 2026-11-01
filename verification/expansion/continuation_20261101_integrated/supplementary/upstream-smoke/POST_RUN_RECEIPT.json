@@ -1,0 +1,88 @@
+{
+  "scope": "Supplementary upstream Node browser regression; excluded from the principal assertion aggregate. Controlled synthetic test, no real IGN geography visit.",
+  "stage": "complete",
+  "recordedUtc": "2026-11-01T01:46:15Z",
+  "nativeReceipt": "EXECUTION.json",
+  "rawReport": "BROWSER_SMOKE.json",
+  "rawReportSha256": "c4413f5404980ddd68d314c5beaee5a5b6b27dd44a098d255c64950553305dbb",
+  "nativeReceiptSha256": "ba0a6b809f7c47dae2b51c8fe69ce1ead7d4cc0881ab4842caa2527948ba1c64",
+  "stdoutSha256": "51a1d1c3c66cff2c9f90f6d183624b0fa0354c9d5c270e0d8ee9e117a4500f26",
+  "argv": [
+    "node",
+    "tests/expansion/city_delivery_browser.cjs"
+  ],
+  "environment": {
+    "CHROMIUM_PATH": "/usr/bin/chromium",
+    "MISTRAL_PLAYWRIGHT_MODULE": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package",
+    "MISTRAL_QA_OUTPUT": "/workspace/.cloud-setup/fallout-marseille/integrated-release/upstream-smoke"
+  },
+  "childPid": 238504,
+  "childExitCode": 0,
+  "childProcessGone": true,
+  "recordedChecksPassed": 12,
+  "recordedChecksFailed": 0,
+  "excludedFromPrincipalAggregate": true,
+  "runtimeInputCount": 363,
+  "runtimeChanged": [],
+  "htmlBeforeSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "htmlAfterSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "workerBeforeSha256": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+  "workerAfterSha256": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+  "sourceArchiveHashesConfirmed": true,
+  "beforeSourceHashes": {
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "tests/expansion/city_delivery_browser.cjs": "517a377ff616295d5a292f805addae442fda3082d7db4700f0a0217b2d13bcff",
+    "icons/mistral-512.png": "a48d8652462c8df38982540e7c2e6cea9d729ec12375f9aa32d99dcb84510731",
+    "icons/mistral-192.png": "0a107545bcd5f62980b562f63fe5677c47b625a839cf149cd316dce737ee37fd",
+    "sw.js": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+    "manifest.webmanifest": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56",
+    "index.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1"
+  },
+  "afterSourceHashes": {
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "tests/expansion/city_delivery_browser.cjs": "517a377ff616295d5a292f805addae442fda3082d7db4700f0a0217b2d13bcff",
+    "icons/mistral-512.png": "a48d8652462c8df38982540e7c2e6cea9d729ec12375f9aa32d99dcb84510731",
+    "icons/mistral-192.png": "0a107545bcd5f62980b562f63fe5677c47b625a839cf149cd316dce737ee37fd",
+    "sw.js": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+    "manifest.webmanifest": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56",
+    "index.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1"
+  },
+  "oldUpstreamEvidenceFileCount": 9,
+  "oldUpstreamEvidenceUnchanged": true,
+  "shots": [
+    {
+      "file": "01_ABRI_A03.png",
+      "sha256": "7103de1e23cdd06ccb31ea88eecfdc4e7115d095c6bec43ac01b1a4c5533a82b",
+      "bytes": 1434496,
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspectedWith": "view_image",
+      "observation": "Actual A-03 prologue corridor, rendered ceiling lights, doors and visible HUD. Authored vault, not a geographic source capture."
+    },
+    {
+      "file": "02_LAB_LIMITE_A.png",
+      "sha256": "b66ec4945aa8b7a681522daf8739e90dc6a834433e64287f04bd7b74b63fbad9",
+      "bytes": 1242351,
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspectedWith": "view_image",
+      "observation": "Synthetic lab window A shows generated block buildings and ground; the prominent banner explicitly says BANC DE COUTURE SYNTHÉTIQUE — PAS LA CARTE DE MARSEILLE. HUD remains visible."
+    },
+    {
+      "file": "03_LAB_LIMITE_B.png",
+      "sha256": "598f8453c13ee1b90a6a1be1cf131347b0d8d440f8ee9c6b7a446ecb1d230790",
+      "bytes": 1186265,
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspectedWith": "view_image",
+      "observation": "Synthetic lab neighbouring window B shows the test ground and block geometry from its neighbouring camera. The same explicit synthetic-not-Marseille banner and footer remain visible."
+    }
+  ],
+  "limitation": "Actual production HTML and A-03 prologue, then an explicitly synthetic boundary laboratory A→B→A; source-only HTTP metadata404 may be expected, never counted as a real atlas visit."
+}

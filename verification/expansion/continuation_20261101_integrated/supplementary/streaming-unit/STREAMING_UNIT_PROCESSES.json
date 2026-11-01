@@ -1,0 +1,86 @@
+{
+  "scope": "Run three maintained standalone source regressions without inventing test totals.\n\nThese are real Node child process executions of controlled source fixtures.\nThey do not share a machine-readable assertion count and are not browser runs.\n",
+  "stage": "complete",
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "sourceHashes": {
+    "tests/expansion/city_wait_cancel.test.cjs": "b6ca854f0f8966a7af99f529e3747a34cc887458021f06f719fede3f634d3eea",
+    "tests/expansion/city_partition_seams.test.cjs": "47b9ca7f10a9360c434de1f22be9e372bdc5fa05ff770cbbb628566857e804af",
+    "tests/expansion/city_geometry_identity.test.cjs": "a1e966902707ada589bbf6f9da7b9a13026f87414f76729f5cf0fca185489c71",
+    "src/v050/04a_city_sources.js": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b",
+    "src/v050/04_source_geometry.js": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+    "src/v046/00_integrity.js": "1e086efb92cfe9971001a1c4988623d95f362e00f795e3c16231edd53acdeed1",
+    "src/v047/00_stream_primitives.js": "68b654aa1fd122b28eea34e7280983b0c58ba226bcdc759d65dbc565f2fa30e9",
+    ".github/workflows/city-streaming-regression.yml": "0fa338262027b07790371c8753b03f584b0b0a3951673f86f4bda44526c1a7fe",
+    "AGENTS.md": "745f062f2de2b80a2241e2b056c67afda1009c1de1e594c5661892250f238473"
+  },
+  "runnerSha256": "4ed4fb9d8b049c800562c9f86a727c44f3890e751011283c65499ad2ca774c62",
+  "frozenRuntimeInputCount": 363,
+  "frozenRuntimeSha256": "5283e9f7dd059b7550097a91bb58783b27133b0799fd1e5be6876f69223d5c89",
+  "assertionCount": null,
+  "countingNote": "Only process exits are summarized. Standalone script outputs are retained exactly; no assertion count is invented or merged into the main model total.",
+  "processes": [
+    {
+      "script": "tests/expansion/city_wait_cancel.test.cjs",
+      "argv": [
+        "node",
+        "tests/expansion/city_wait_cancel.test.cjs"
+      ],
+      "cwd": "/workspace/fallout-Marseille",
+      "startedAtEpoch": 1793497083.541995,
+      "durationSeconds": 0.115,
+      "exitCode": 0,
+      "scriptSha256Before": "b6ca854f0f8966a7af99f529e3747a34cc887458021f06f719fede3f634d3eea",
+      "scriptSha256After": "b6ca854f0f8966a7af99f529e3747a34cc887458021f06f719fede3f634d3eea",
+      "executedScript": "EXECUTED_city_wait_cancel.test.cjs",
+      "executedScriptSha256": "b6ca854f0f8966a7af99f529e3747a34cc887458021f06f719fede3f634d3eea",
+      "log": "city_wait_cancel.test.cjs.log",
+      "logSha256": "c6882d59ebe1df004f89972ff8514fbf85c59fcc413b44f33f4434f419e0b455",
+      "logFormat": "Captured stdout followed by a newline followed by captured stderr.",
+      "citySourceSha256": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b"
+    },
+    {
+      "script": "tests/expansion/city_partition_seams.test.cjs",
+      "argv": [
+        "node",
+        "tests/expansion/city_partition_seams.test.cjs"
+      ],
+      "cwd": "/workspace/fallout-Marseille",
+      "startedAtEpoch": 1793497083.6580524,
+      "durationSeconds": 0.186,
+      "exitCode": 0,
+      "scriptSha256Before": "47b9ca7f10a9360c434de1f22be9e372bdc5fa05ff770cbbb628566857e804af",
+      "scriptSha256After": "47b9ca7f10a9360c434de1f22be9e372bdc5fa05ff770cbbb628566857e804af",
+      "executedScript": "EXECUTED_city_partition_seams.test.cjs",
+      "executedScriptSha256": "47b9ca7f10a9360c434de1f22be9e372bdc5fa05ff770cbbb628566857e804af",
+      "log": "city_partition_seams.test.cjs.log",
+      "logSha256": "31756c3fa05863a53f8ef87358881b06cae58b4f4ff014bc31cae85da9b5d446",
+      "logFormat": "Captured stdout followed by a newline followed by captured stderr.",
+      "citySourceSha256": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b"
+    },
+    {
+      "script": "tests/expansion/city_geometry_identity.test.cjs",
+      "argv": [
+        "node",
+        "tests/expansion/city_geometry_identity.test.cjs"
+      ],
+      "cwd": "/workspace/fallout-Marseille",
+      "startedAtEpoch": 1793497083.8446858,
+      "durationSeconds": 0.11,
+      "exitCode": 0,
+      "scriptSha256Before": "a1e966902707ada589bbf6f9da7b9a13026f87414f76729f5cf0fca185489c71",
+      "scriptSha256After": "a1e966902707ada589bbf6f9da7b9a13026f87414f76729f5cf0fca185489c71",
+      "executedScript": "EXECUTED_city_geometry_identity.test.cjs",
+      "executedScriptSha256": "a1e966902707ada589bbf6f9da7b9a13026f87414f76729f5cf0fca185489c71",
+      "log": "city_geometry_identity.test.cjs.log",
+      "logSha256": "e13a2bcf53a4e98781638c5b39ab0c0b148499bdba47f7e14837b52f03336e22",
+      "logFormat": "Captured stdout followed by a newline followed by captured stderr.",
+      "citySourceSha256": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b"
+    }
+  ],
+  "processCount": 3,
+  "passedProcesses": 3,
+  "failedProcesses": 0,
+  "changedInputs": [],
+  "runtimeChanged": [],
+  "freezeManifestUnchanged": true
+}

@@ -1,0 +1,94 @@
+{
+  "scope": "Unmodified production HTML, actual Chromium WebGL, isolated browser storage; synthetic boundary laboratory, not an acquired Marseille survey",
+  "checks": [
+    {
+      "name": "HTTP document matches rebuilt production HTML",
+      "ok": true
+    },
+    {
+      "name": "New campaign enters the actual A-03 vault",
+      "ok": true
+    },
+    {
+      "name": "Production renderer uses WebGL",
+      "ok": true,
+      "detail": "WebGL"
+    },
+    {
+      "name": "Synthetic boundary laboratory loads",
+      "ok": true
+    },
+    {
+      "name": "Native collision-aware movement advances on the lab ground",
+      "ok": true
+    },
+    {
+      "name": "Lab contains both building and road geometry",
+      "ok": true,
+      "detail": {
+        "buildings": 5,
+        "roads": 2
+      }
+    },
+    {
+      "name": "Neighbouring geographic window loads",
+      "ok": true
+    },
+    {
+      "name": "Neighbour camera uses available lab terrain",
+      "ok": true
+    },
+    {
+      "name": "Original geographic window reloads",
+      "ok": true
+    },
+    {
+      "name": "A to B to A preserves original road and building geometry",
+      "ok": true
+    },
+    {
+      "name": "Synthetic lab does not overwrite campaign storage",
+      "ok": true
+    },
+    {
+      "name": "No JavaScript exception during the browser smoke",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "pageErrors": [],
+  "missingRequests": [
+    "/__mistral/local-data"
+  ],
+  "htmlSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "browser": "154.0.8037.57",
+  "gpu": "Software WebGL (SwiftShader); no hardware performance claim",
+  "prologue": {
+    "world": "vault_prologue",
+    "renderer": {
+      "backend": "WebGL",
+      "customMeshes": 0,
+      "triangles": 14748,
+      "bufferGroups": 0,
+      "drawCalls": 934,
+      "batchedMeshes": 0,
+      "batchGroups": 0,
+      "batchBuilds": 0
+    }
+  },
+  "lab": {
+    "start": [
+      43.2896693996988,
+      5.429493260222186
+    ],
+    "initialBuildings": 5,
+    "initialRoads": 2,
+    "neighbourBuildings": 5,
+    "neighbourRoads": 2,
+    "returnedBuildings": 5,
+    "returnedRoads": 2,
+    "geometrySha256": "69874d5c22a1578eaa8087570319408e36ea98ccfced2cca7b4bd944026fe4eb"
+  },
+  "passed": 12,
+  "failed": 0
+}

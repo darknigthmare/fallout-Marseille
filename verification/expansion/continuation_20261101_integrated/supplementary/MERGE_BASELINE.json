@@ -1,0 +1,8 @@
+{
+  "localTestedCommit": "0b5a9d4",
+  "localValidatedHTML": "98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241",
+  "remoteMain": "7ab5043b577328578edcbafae22fc2e5d244e764",
+  "mergedHTML": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "policy": "Preserve every upstream change and our optional communal terrain imports; no old proof retagging. Old3310/76 is archived at its tested commit, fresh integrated evidence is separate.",
+  "buildGuard": "HTML-derived worker cache; build_single.py --check."
+}

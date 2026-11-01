@@ -141,6 +141,7 @@ Dans le projet complet, les dépendances de développement sont listées dans <c
 python3 -m pip install -r requirements-dev.txt
 python3 -m playwright install chromium
 python3 tools/build_single.py
+python3 tools/build_single.py --check
 python3 tools/check_v050.py
 python3 tests/v050/poi_travel.py
 python3 tests/v050/campaign_map.py
@@ -148,6 +149,8 @@ python3 tests/v050/continue_save.py
 python3 tests/v050/test_installers.py
 python3 tests/v050/native_real_map.py
 ~~~
+
+Le contrôle `tools/build_single.py --check` compare les quatre sorties générées sans les réécrire : `src/game.js`, les deux HTML jouables et `sw.js`. Le nom du cache hors ligne dérive des seize premiers caractères du SHA-256 du HTML ; pour le programme intégré courant, il vaut `fallout-mistral-v050-c0f13de317f1678c`. La vérification des contrats hérités utilise la même règle plutôt qu’un numéro de cache fixe.
 
 Les pilotes Chromium acceptent <code>CHROMIUM_PATH</code>. Le pilote natif ouvre le serveur local et utilise les fichiers installés ; son mode de diagnostic <code>--allow-debug-entry</code> ne doit pas être utilisé pour une validation finale du raccord de campagne.
 
@@ -159,7 +162,7 @@ python3 tools/report_v050.py
 
 Pillow et les polices DejaVu Sans / Sans Mono sont requis pour le PNG. Si les polices ne sont pas trouvées automatiquement, ajoutez <code>--font-dir /chemin/vers/les/polices</code>. L’outil vérifie les totaux, les SHA du programme et les captures originales avant d’écrire le rapport. Il distingue l’empreinte du HTML canonique de celle du test de voyage instrumenté. Ce rapport initial ne remplace pas le bilan d’intégration des extensions actuelles.
 
-Le [bilan courant](../verification/expansion/continuation_20261101/CONTINUATION_INTEGRATION.json) identifie le HTML `98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241`. L’[état de production](STATUT_PRODUCTION.md) présente les résultats par méthode ; les scripts, captures originales, sorties réelles de processus et aides déclarées sont rattachés à ce programme. Les comparaisons de sources, modèles, parcours assistés et entrées simulées gardent leur périmètre ; leur somme ne représente pas autant de parties humaines. Les essais interrompus et ceux d’autres HTML restent exclus du résultat courant.
+Le [bilan courant](../verification/expansion/continuation_20261101_integrated/CONTINUATION_INTEGRATION.json) identifie le HTML intégré `c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1`, qui conserve les correctifs routiers et de chargement de `7ab5043`. L’[état de production](STATUT_PRODUCTION.md) présente les résultats par méthode ; les scripts, captures originales, sorties réelles de processus et aides déclarées sont rattachés à ce programme. Les comparaisons de sources, modèles, parcours assistés et entrées simulées gardent leur périmètre ; leur somme ne représente pas autant de parties humaines. Les essais interrompus et ceux d’autres HTML restent exclus du résultat courant. Le [bilan avant intégration](../verification/expansion/continuation_20261101/CONTINUATION_INTEGRATION.json), 3 310 contrôles et 76 captures sur `98a78a1c…`, reste historique.
 
 La livraison `29df190` conserve ses [2 892 contrôles descriptifs et 55 captures](../verification/expansion/immersion/IMMERSION_INTEGRATION.json) sur le HTML `844376c014575111f268f292c8307bb3f47ac33629604406f5e0da00104c5a34`. Le [bilan `f4a7337`](../verification/expansion/wasteland/WASTELAND_INTEGRATION.json), **2 887 contrôles et 62 captures** sur `ed6e4103…`, et le [bilan de précision](../verification/expansion/precision/PRECISION_INTEGRATION.json), **2 324 contrôles et 42 captures**, conservent leurs propres versions. Le rapport visuel initial v0.50 et les archives Drive restent antérieurs aux extensions actuelles. Les sources métriques, l’art stylisé et les intérieurs inventés ne certifient pas Marseille intégralement en 1:1 ; les API simulées ne certifient pas du matériel physique.
 

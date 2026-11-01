@@ -1,0 +1,80 @@
+{
+  "scope": "Supplementary upstream Node browser regression; excluded from the principal assertion aggregate. Controlled synthetic test, no real IGN geography visit.",
+  "stage": "complete",
+  "recordedUtc": "2026-11-01T01:46:16Z",
+  "nativeReceipt": "EXECUTION.json",
+  "rawReport": "ROAD_VISUAL.json",
+  "rawReportSha256": "73c0802a5b23fb7922b5af4229f13c9ace3a9f345d1c0a8f16e67469a26bbae9",
+  "nativeReceiptSha256": "0d39addf8c4edb18196ed6ab39a290ec2074aed7aa66cbb711512c3a4deb64b7",
+  "stdoutSha256": "72f80ded55fa9ef554537c8a191a761fa4b24146920459ddc352b172ebde8002",
+  "argv": [
+    "node",
+    "tests/expansion/city_road_visual.cjs"
+  ],
+  "environment": {
+    "CHROMIUM_PATH": "/usr/bin/chromium",
+    "PLAYWRIGHT_MODULE": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package",
+    "MISTRAL_ROAD_VISUAL_OUTPUT": "/workspace/.cloud-setup/fallout-marseille/integrated-release/upstream-road"
+  },
+  "childPid": 239221,
+  "childExitCode": 0,
+  "childProcessGone": true,
+  "recordedChecksPassed": 13,
+  "recordedChecksFailed": 0,
+  "excludedFromPrincipalAggregate": true,
+  "runtimeInputCount": 363,
+  "runtimeChanged": [],
+  "htmlBeforeSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "htmlAfterSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "workerBeforeSha256": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+  "workerAfterSha256": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+  "sourceArchiveHashesConfirmed": true,
+  "beforeSourceHashes": {
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "src/v046/00_integrity.js": "1e086efb92cfe9971001a1c4988623d95f362e00f795e3c16231edd53acdeed1",
+    "icons/mistral-512.png": "a48d8652462c8df38982540e7c2e6cea9d729ec12375f9aa32d99dcb84510731",
+    "icons/mistral-192.png": "0a107545bcd5f62980b562f63fe5677c47b625a839cf149cd316dce737ee37fd",
+    "tests/expansion/city_streaming.cjs": "52bf10b3bf70331d3a5f8647b5803407e0a26186d9811fae8389c298dc4c19c0",
+    "tests/expansion/city_road_visual.cjs": "6cb8e8862cec644d4fd742cad8ff4896786879a074123762993a6daa0a691db5",
+    "sw.js": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+    "manifest.webmanifest": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56",
+    "src/v050/04_source_geometry.js": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+    "src/v047/00_stream_primitives.js": "68b654aa1fd122b28eea34e7280983b0c58ba226bcdc759d65dbc565f2fa30e9",
+    "src/patches/01_geometry.js": "dbb39a1ef4fa26f5753e0ad16892111e66513b3bbc65a24ab1d22bac354bbdb8",
+    "src/v050/04a_city_sources.js": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b",
+    "src/core-v017.js": "7e07ba0d1723e589b3d7fa3ca76ac8e287c6b0d22f4dc9c1434919b9db366ea3",
+    "index.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1"
+  },
+  "afterSourceHashes": {
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "src/v046/00_integrity.js": "1e086efb92cfe9971001a1c4988623d95f362e00f795e3c16231edd53acdeed1",
+    "icons/mistral-512.png": "a48d8652462c8df38982540e7c2e6cea9d729ec12375f9aa32d99dcb84510731",
+    "icons/mistral-192.png": "0a107545bcd5f62980b562f63fe5677c47b625a839cf149cd316dce737ee37fd",
+    "tests/expansion/city_streaming.cjs": "52bf10b3bf70331d3a5f8647b5803407e0a26186d9811fae8389c298dc4c19c0",
+    "tests/expansion/city_road_visual.cjs": "6cb8e8862cec644d4fd742cad8ff4896786879a074123762993a6daa0a691db5",
+    "sw.js": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+    "manifest.webmanifest": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56",
+    "src/v050/04_source_geometry.js": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+    "src/v047/00_stream_primitives.js": "68b654aa1fd122b28eea34e7280983b0c58ba226bcdc759d65dbc565f2fa30e9",
+    "src/patches/01_geometry.js": "dbb39a1ef4fa26f5753e0ad16892111e66513b3bbc65a24ab1d22bac354bbdb8",
+    "src/v050/04a_city_sources.js": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b",
+    "src/core-v017.js": "7e07ba0d1723e589b3d7fa3ca76ac8e287c6b0d22f4dc9c1434919b9db366ea3",
+    "index.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1"
+  },
+  "oldUpstreamEvidenceFileCount": 9,
+  "oldUpstreamEvidenceUnchanged": true,
+  "shots": [
+    {
+      "file": "04_ROAD_FRAGMENTS.png",
+      "sha256": "e955e583777cd5074e3eccb5b46aad7952af480f3b278ac1f8757a7dbeb0ed69",
+      "bytes": 185117,
+      "dimensions": [
+        1600,
+        1017
+      ],
+      "inspectedWith": "view_image",
+      "observation": "Actual direct screenshot of two production-WebGL canvases. Before panel visibly loses the east half (1/2,50%,2 triangles); after panel visibly spans both partitions (2/2,100%,4 triangles). Badge and footer explicitly declare synthetic constant-ground fixture, no real street. Displayed29October date is a literal label in the unchanged upstream test; the actual execution date is in receipts."
+    }
+  ],
+  "limitation": "Two SHA-checked synthetic road partitions with constant test ground and production roadMesh/GLRenderer; original geometry regression baseline is intentionally old."
+}

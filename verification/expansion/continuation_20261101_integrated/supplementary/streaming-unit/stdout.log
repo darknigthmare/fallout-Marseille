@@ -1,0 +1,4 @@
+PASS tests/expansion/city_wait_cancel.test.cjs exit=0
+PASS tests/expansion/city_partition_seams.test.cjs exit=0
+PASS tests/expansion/city_geometry_identity.test.cjs exit=0
+{"stage": "complete", "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1", "processCount": 3, "passedProcesses": 3, "failedProcesses": 0, "assertionCount": null, "changedInputs": [], "runtimeChanged": []}

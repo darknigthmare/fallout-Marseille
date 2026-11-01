@@ -1,6 +1,8 @@
 # Chantiers du 1er novembre 2026
 
-La poursuite affine la vue FPS et le HUD, tout en étendant les surfaces mesurées, le relief du nord, les rangements intérieurs, les conséquences des factions et les distributeurs. Ces six chantiers partagent le programme `98a78a1cd1ca8748d12f206ec5f5fe3562706b00057b84628343f22d36560241`. Le [bilan d’intégration courant](../verification/expansion/continuation_20261101/CONTINUATION_INTEGRATION.json) rattache chaque preuve au HTML effectivement exécuté ; l’[état de production](STATUT_PRODUCTION.md) en présente les résultats et limites.
+La poursuite affine la vue FPS et le HUD, tout en étendant les surfaces mesurées, le relief du nord, les rangements intérieurs, les conséquences des factions et les distributeurs. Ces six chantiers partagent le programme intégré `c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1`. Le [bilan d’intégration courant](../verification/expansion/continuation_20261101_integrated/CONTINUATION_INTEGRATION.json) rattache chaque preuve au HTML effectivement exécuté ; l’[état de production](STATUT_PRODUCTION.md) en présente les résultats et limites.
+
+L’intégration de `7ab5043` conserve les raccords entre fragments routiers source, la déduplication exacte et les annulations indépendantes des chargements partagés. Les représentations géométriques distinctes sont signalées, sans fabriquer de raccord. La génération contrôle ses quatre sorties et le cache hors ligne dépend de l’empreinte du HTML ; ces contrôles de livraison sont distingués des mesures géographiques et des parcours de jeu.
 
 | Chantier | Comportement livré | Portée et limite |
 | --- | --- | --- |
@@ -23,7 +25,7 @@ La campagne, les armures assistées, figurines, magazines, Nuka-Cola, consommabl
 
 ## Preuves courantes et historiques
 
-Les résultats du programme courant sont consignés par méthode dans le [bilan de poursuite](../verification/expansion/continuation_20261101/CONTINUATION_INTEGRATION.json) et l’[état de production](STATUT_PRODUCTION.md). Les scripts exécutés, captures originales, aides, empreintes du programme et événements réseau bruts y gardent leur identité. Les modèles, parcours assistés, comparaisons de sources et entrées simulées ne sont pas autant de parties équivalentes ; les tentatives interrompues et les autres HTML restent hors de la somme courante.
+Les résultats du programme courant sont consignés par méthode dans le [bilan de poursuite intégré](../verification/expansion/continuation_20261101_integrated/CONTINUATION_INTEGRATION.json) et l’[état de production](STATUT_PRODUCTION.md). Les scripts exécutés, captures originales, aides, empreintes du programme et événements réseau bruts y gardent leur identité. Les modèles, parcours assistés, comparaisons de sources et entrées simulées ne sont pas autant de parties équivalentes ; les tentatives interrompues et les autres HTML restent hors de la somme courante. Le [bilan avant intégration](../verification/expansion/continuation_20261101/CONTINUATION_INTEGRATION.json) conserve ses 3 310 contrôles et 76 captures du HTML `98a78a1c…` à titre historique.
 
 La commune conserve ses 290 partitions, 291 001 identifiants d’objets bâtiment, 55 449 tronçons routiers et 118 partitions d’eau. Le relief central natif couvre 12 km² ; les fenêtres nord et sud rééchantillonnées à 1 m et les autres grilles ont leur propre provenance. Les associations documentaires, le MNS supérieur et les programmes inventés restent distingués.
 

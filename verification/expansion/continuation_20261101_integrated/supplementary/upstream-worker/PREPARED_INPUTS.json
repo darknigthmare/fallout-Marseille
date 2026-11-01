@@ -1,0 +1,53 @@
+{
+  "scope": "Supplementary upstream Node browser regression; excluded from the principal assertion aggregate. Controlled synthetic test, no real IGN geography visit.",
+  "stage": "prepared_no_browser_started",
+  "preparedUtc": "2026-11-01T01:38:40Z",
+  "argv": [
+    "node",
+    "tests/expansion/service_worker_delivery.cjs"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "environment": {
+    "CHROMIUM_PATH": "/usr/bin/chromium",
+    "MISTRAL_PLAYWRIGHT_MODULE": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package",
+    "MISTRAL_QA_OUTPUT": "/workspace/.cloud-setup/fallout-marseille/integrated-release/upstream-worker"
+  },
+  "rawReport": "SERVICE_WORKER.json",
+  "runtimeFreeze": "/workspace/.cloud-setup/fallout-marseille/integrated-release/FROZEN_RUNTIME.json",
+  "runtimeInputCount": 363,
+  "htmlSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "workerSha256": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+  "beforeSourceHashes": {
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "icons/mistral-512.png": "a48d8652462c8df38982540e7c2e6cea9d729ec12375f9aa32d99dcb84510731",
+    "icons/mistral-192.png": "0a107545bcd5f62980b562f63fe5677c47b625a839cf149cd316dce737ee37fd",
+    "sw.js": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+    "manifest.webmanifest": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56",
+    "tests/expansion/service_worker_delivery.cjs": "c835526271d7ee40aa76942ba9e87ccb7e0f389afce9996be01671624050fd86",
+    "index.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1"
+  },
+  "sourceArchive": {
+    "tests/expansion/service_worker_delivery.cjs": {
+      "path": "source-archive/tests/expansion/service_worker_delivery.cjs",
+      "sha256": "c835526271d7ee40aa76942ba9e87ccb7e0f389afce9996be01671624050fd86"
+    },
+    "sw.js": {
+      "path": "source-archive/sw.js",
+      "sha256": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22"
+    }
+  },
+  "runnerArchiveSha256": "dd087482fe0c1d352a8bc848123bc91eba429de774d9de456227092385d4b412",
+  "upstreamOldEvidenceHashes": {
+    "verification/gamedev-streaming-2026-10-29/01_ABRI_A03.png": "4941d0a736d489332b01e1a7b7c4dbf5dda2f346ada3fd1dbb1f87119419740f",
+    "verification/gamedev-streaming-2026-10-29/02_LAB_LIMITE_A.png": "7c70f51e3c448df939c40b5bfa82ee5ea01b59ea8a1b629427227dec3d16e66b",
+    "verification/gamedev-streaming-2026-10-29/03_LAB_LIMITE_B.png": "d4f8a78c813fa28040ee3a36ccbfb5eb899672739c97eae215ccc98bb85f2b75",
+    "verification/gamedev-streaming-2026-10-29/04_ROAD_FRAGMENTS.png": "09e52f7a72bfed591766cf5e0aa636ef454572c656426ef99be7c5a83b4e8003",
+    "verification/gamedev-streaming-2026-10-29/BROWSER_SMOKE.json": "56a913bf60b3f49c4eb7f70a3f8765c7e842575235b99d6fa556c710a79a6115",
+    "verification/gamedev-streaming-2026-10-29/BUILD_GUARD.json": "65676fbe83714bd7d2c30bfc99bd4799b9c46d2dfb3849dd937a890f25c874c8",
+    "verification/gamedev-streaming-2026-10-29/ROAD_VISUAL.json": "42a17640d6fed708915955f146966f82e6f498989e531d4ed26b3363a77672b5",
+    "verification/gamedev-streaming-2026-10-29/SERVICE_WORKER.json": "90d73077dc990d7f78e84d15ece188797feb1e414f877e8a10203d643dbc5022",
+    "verification/gamedev-streaming-2026-10-29/UNIT_REGRESSIONS.json": "d226c750466b81812155452b544195e3aacbb389eb7286b24369f30955d84619"
+  },
+  "excludedFromPrincipalAggregate": true,
+  "limitation": "Actual production worker lifecycle upgrading an explicitly synthetic cache12 old HTML shell; offline missing metadata intentionally yields503."
+}

@@ -1,0 +1,102 @@
+{
+  "scope": "Unmodified production HTML, actual Chromium WebGL, isolated browser storage; synthetic boundary laboratory, not an acquired Marseille survey",
+  "checks": [
+    {
+      "name": "HTTP document matches rebuilt production HTML",
+      "ok": true
+    },
+    {
+      "name": "New campaign enters the actual A-03 vault",
+      "ok": true
+    },
+    {
+      "name": "Production renderer uses WebGL",
+      "ok": true,
+      "detail": "WebGL"
+    },
+    {
+      "name": "Synthetic boundary laboratory loads",
+      "ok": true
+    },
+    {
+      "name": "Native collision-aware movement advances on the lab ground",
+      "ok": true
+    },
+    {
+      "name": "Lab contains both building and road geometry",
+      "ok": true,
+      "detail": {
+        "buildings": 5,
+        "roads": 2
+      }
+    },
+    {
+      "name": "Neighbouring geographic window loads",
+      "ok": true
+    },
+    {
+      "name": "Neighbour camera uses available lab terrain",
+      "ok": true
+    },
+    {
+      "name": "Original geographic window reloads",
+      "ok": true
+    },
+    {
+      "name": "A to B to A preserves original road and building geometry",
+      "ok": true
+    },
+    {
+      "name": "Synthetic lab does not overwrite campaign storage",
+      "ok": true
+    },
+    {
+      "name": "No JavaScript exception during the browser smoke",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "pageErrors": [],
+  "missingRequests": [
+    "/data/map_pack/local_pack_v041_status.json",
+    "/data/map_pack/benchmark_v041.json",
+    "/__mistral/local-data",
+    "/data/map_pack/city/index.json",
+    "/data/map_pack/city/terrain-index.json",
+    "/data/map_pack/landmark_surfaces/index.json",
+    "/data/map_pack/architecture/index.json",
+    "/data/map_pack/precise/index.json",
+    "/verification/v050/LOCAL_DATA_STATE.json"
+  ],
+  "htmlSha256": "b5b3033cfa57d62b7f5a09b321cea563081140d16878ed8e0b00c0cdcc7bfcae",
+  "browser": "153.0.8010.0",
+  "gpu": "Software WebGL (SwiftShader); no hardware performance claim",
+  "prologue": {
+    "world": "vault_prologue",
+    "renderer": {
+      "backend": "WebGL",
+      "customMeshes": 0,
+      "triangles": 14748,
+      "bufferGroups": 0,
+      "drawCalls": 934,
+      "batchedMeshes": 0,
+      "batchGroups": 0,
+      "batchBuilds": 0
+    }
+  },
+  "lab": {
+    "start": [
+      43.2896693996988,
+      5.429493260222186
+    ],
+    "initialBuildings": 5,
+    "initialRoads": 2,
+    "neighbourBuildings": 5,
+    "neighbourRoads": 2,
+    "returnedBuildings": 5,
+    "returnedRoads": 2,
+    "geometrySha256": "dd1edeefaf7bcd13604e956a73c19a50d0c14c036a03b9e44f79e0beb7cd54e9"
+  },
+  "passed": 12,
+  "failed": 0
+}

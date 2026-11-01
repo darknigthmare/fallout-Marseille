@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/first_person_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/integrated-release/fps",
+    "--expect-html-sha",
+    "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "--expect-fps-sha",
+    "82007a80ceb75f32493763e3098bb7cc153e2bc56cc8f31367720408484bc293"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 235215,
+  "exitCode": 0,
+  "startedAtEpoch": 1793497059.7279272,
+  "durationSeconds": 56.4408962726593,
+  "scriptSha256": "92bc88e40b72de398e195096b1012045c8f3164785b38c1ae4bcd245d349a2f4",
+  "scriptUnchanged": true,
+  "reportSha256": "77ad54153733bfe0c06fa3c4a3a7921ba8bb3759c858628cca9fcab5124811c5",
+  "logSha256": "68efa5e8a40d60953c49511a69fe78be54187c4d8b572e9a975814da0c1f2e66",
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "runtimeChanged": [],
+  "runtimeInputCount": 363
+}

@@ -1,0 +1,160 @@
+{
+  "scope": "Fresh integrated C0 real local HTTP/production MNS browser pilot and individual inspection of nine unchanged original PNGs. Supplemental review adds no test/image count; historical98 attempts remain separate.",
+  "reviewedUtc": "2026-11-01T01:49:54.964676+00:00",
+  "htmlSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "actualSession": 13160,
+  "actualChildExitCode": 0,
+  "passed": 64,
+  "failed": 0,
+  "capturesIndividuallyInspected": 9,
+  "runtimeInputCount": 363,
+  "runtimeRehashedAndUnchanged": true,
+  "reportPinnedInputsRehashedAndUnchanged": true,
+  "hashes": {
+    "executionReceipt": "e1293be085b844d4663787eb866d39cb52fb3533edc0814bf8a9797e31a97327",
+    "report": "4de57b1da4bc76ad3594be6b9eadcf278872612a80182a3ed14391f4d0bc5e29",
+    "stdout": "38cbc9224184a3d1b722e5dbb68ae8fdbce65cf0d04a503d69450deb5d88e404",
+    "executedEntrypoint": "ff5ec2f60a629da39bf691d4b7fe7c257563b751e71527e2faef42a63bfec614",
+    "preExecutionArchives": "f89b0b9065ff6f0de0dd85779209486f6d5357285378e5d5f7e2da97309e788c"
+  },
+  "independentPortClosure": {
+    "port": 34873,
+    "connectErrno": 111,
+    "connectErrorName": "ECONNREFUSED",
+    "method": "Actual loopback connect_ex outside restricted sandbox after native child exit"
+  },
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true,
+    "server_thread_joined": true
+  },
+  "collector": {
+    "exit_key": "exitCode",
+    "receipt_report_hash_key": "reportSha256",
+    "receipt_script_hash_key": "scriptSha256",
+    "receipt_log_hash_key": "logSha256"
+  },
+  "surfaceCoverage": {
+    "atlasRecords": 19,
+    "admissibleSourceCaps": 18,
+    "perSite": {
+      "major": 5,
+      "garde": 11,
+      "charite": 1,
+      "pharo": 1
+    },
+    "belowOriginalIGNBaseRejected": 1
+  },
+  "diagnostics": {
+    "pageErrors": 0,
+    "localHttpErrors": 0,
+    "consoleErrorsRaw": 18,
+    "requestFailuresRaw": 20,
+    "localRequestFailures": 2,
+    "localRequestFailureDetails": [
+      {
+        "url": "http://127.0.0.1:34873/__mistral/local-data",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:34873/__mistral/local-data",
+        "failure": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  "limits": [
+    "One actual Chromium context with service workers disabled; geographic sector selection, render/simulation freeze, daytime and all camera positions are declared diagnostics. No unassisted walking route is claimed.",
+    "The installed IGN MNS is raw clipped surface height data, not semantic roof reconstruction or an architectural survey. Original heights/vertices/triangles/productionLOS are checked, while procedural facades and interiors remain invented.",
+    "Ground camera means a measured collision-free MNT point; visibility is not guaranteed. charite_ground is entirely occluded by a nearby wall/volume and does not visually show the chapel.",
+    "Four elevated views are source inspections outside pedestrian traversal. The images show rough triangulation, stretched vertical sides, simplified surrounding blocks and incomplete distant source coverage.",
+    "Pharo identification is based on attributed source footprint/context/coordinates; these images do not prove a recognizable exact historical facade. pharo_elevated also shows fragmented/striped water rendering.",
+    "True reload/Continue preserves the last position/yaw and reapplies the source cap without serializing a copied mesh. It does not establish a full urban survey or complete1:1Marseille.",
+    "Raw optional remote request/console failures are retained in the native report; no remote-service availability is claimed.",
+    "Two same-origin /__mistral/local-data metadata requests are retained as net::ERR_ABORTED during this reload-based pilot. All source publication checks and64assertions pass, with no localHTTPerror response; aborted metadata requests are not represented as zero local request failures."
+  ],
+  "observations": [
+    {
+      "file": "major_ground.png",
+      "observation": "Vue au sol assistée vers les volumes de la Major: sursolMNS brut triangulé, sommet/cap visible au-dessus de façades procédurales. Forme rugueuse et raccords verticaux apparents; aucune façade détaillée ni relevé architectural complet démontré.",
+      "sha256": "7dffee722b9916bb35d65051d9a5637722574a453d4d2945598d38154d047a11",
+      "sizeBytes": 1363714,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "major_elevated.png",
+      "observation": "Inspection élevée de la Major: caps/dômesMNS rugueux publiés dans le tissu d'îlots simplifiés. Arme recouvre une partie de la nef. Position hors parcours piéton; la silhouette n'est pas un modèle architectural sémantique ni une façade relevée.",
+      "sha256": "af9375b995b081d1acc3dfdd1799beaed3681bc2869af6bafc95ded4f4bf0fe2",
+      "sizeBytes": 1635207,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "garde_ground.png",
+      "observation": "Vue au solMNT assistée: haut sommet/tour de Notre-Dame et cap triangulé visibles au-dessus de volumes de façade procéduraux. Surfaces fortement étirées et simplifiées; aucun détail de statue/façade certifié.",
+      "sha256": "62a5e6e6e6fe0ae2075004face89d1b1f0bff9e780699ca812351f206d25e1f9",
+      "sizeBytes": 1249536,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "garde_elevated.png",
+      "observation": "Inspection élevée de Notre-Dame: sommet/tour et caps sur terrain mesuré, quartier chargé autour. Relief et maillages rugueux, corps partiellement masqué par arme; périphérie clairsemée au loin. Ne démontre pas marche libre ni ville entière1:1.",
+      "sha256": "f42ae37005a75081498fd7ab926501e43abeade0523601b5d57d392b619dfa67",
+      "sizeBytes": 1596172,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "charite_ground.png",
+      "observation": "PointsolMNT sans collision choisi par le pilote, mais vue entièrement occultée par un mur/volume proche et terrain. Chapelle non visible; ne constitue pas une preuve visuelle du monument au sol.",
+      "sha256": "2f5be5491df1e7710057877d87d9e1c3cac91b8ea198cf06cc2f95d569ba550c",
+      "sizeBytes": 1494426,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "charite_elevated.png",
+      "observation": "ChapelleMNS/dôme central visible dans la cour d'un îlot enclos simplifié. Vue élevée assistée, rugosité/triangles verticaux bruts; façades/ailes environnantes inventées et aucun intérieur relevé.",
+      "sha256": "32bbd6f318d94a63ce6cc9560adb9a90899303f99809f9b79a4185bce6e931d3",
+      "sizeBytes": 1678433,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "pharo_ground.png",
+      "observation": "Volume très allongé du contextePharo vu depuis le solMNT avec parois striées/étirées et terrain schématique. Identification fournie par le contexte source et les coordonnées, pas par une façade patrimoniale reconnaissable dans ce cadrage.",
+      "sha256": "986f14115341980ac39a968c114b315517707a3e3912614aa9361165496ee03e",
+      "sizeBytes": 1475849,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "pharo_elevated.png",
+      "observation": "Inspection élevée: sursolMNS du contextePharo et blocs voisins visibles au bord de l'eau. Le rendu d'eau comporte de larges bandes/triangles morcelés et la géométrie est simplifiée; identification contextuelle, aucune façade exacte ni promenade validée.",
+      "sha256": "1677f4bec57560dbc425bf21fde81fcfec91e2b0fc20b0e2aedf72ff0226bf1c",
+      "sizeBytes": 1636168,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "pharo_continue.png",
+      "observation": "Après rechargement+Continuer réels, retour au cadrage solPharo avec même paroiMNS striée et terrain. L'état natif vérifie position/yaw et réapplication source; la vue ne démontre pas une façade patrimoniale reconnaissable.",
+      "sha256": "cebd36caa41be48ae5ecf7ea776924ea7d73c9aded236c52699ff508155b34e3",
+      "sizeBytes": 1476963,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    }
+  ]
+}

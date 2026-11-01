@@ -1,0 +1,26 @@
+OK A source water polygon is blocked independently of its elevation
+OK Dry land is never classified from elevation zero or missing terrain
+OK Only real measured supports bypass the water boundary
+OK Measured roof support is admitted using the same strict contract
+OK Historical interiors, laboratories and actual vehicle scenes are exempt
+OK Polygon classification preserves a dry courtyard hole
+OK Unflagged existing source water is affected only inside the municipal extent
+OK An explicitly acquired water polygon keeps its full verified border outside the commune
+OK The spatial index excludes land records before polygon classification
+OK Missing source geometry or invalid coordinates do not fabricate water
+OK The actual walking integrator cannot enter surveyed water over valid zero terrain
+OK The same original integrator walks normally over dry zero terrain
+OK A measured bridge allows the original walking integrator across water
+OK An overhead measured bridge cannot make the water below walkable
+OK A guessed bridge layer cannot bypass the surveyed water boundary
+OK Even an actual support cannot weaken an existing wall collision
+OK The laboratory keeps its controlled historical movement behavior
+OK Historical indoor movement is unchanged by municipal water guards
+OK The production boat API retains the existing vehicle movement behavior
+OK A source water polygon never changes the measured height bank or rings
+OK Measured roof support preserves the exterior collision resolver contract
+OK Unmeasured roof markers cannot make water solid
+OK The roof collision context provides the exact crouched actor feet
+OK Airborne actors cannot step up onto a higher platform through the water guard
+{"passed":24,"failed":0,"scope":"Production municipal non-swimmable water boundary, original walking integrator and real bridge support model; explicitly synthetic water/terrain fixtures"}
+

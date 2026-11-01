@@ -1,0 +1,497 @@
+{
+  "suite": "city_road_visual",
+  "kind": "synthetic native WebGL regression evidence",
+  "createdAt": "2026-10-29T15:56:37.254Z",
+  "passed": 13,
+  "failed": 0,
+  "checks": {
+    "same_sha_checked_two_partition_fixture": true,
+    "baseline_reproduces_lost_east_fragment": true,
+    "corrected_preserves_both_exact_source_fragments": true,
+    "same_complete_source_geometry": true,
+    "no_false_geometry_conflict": true,
+    "corrected_repeat_and_reverse_order_stable": true,
+    "native_production_shader_and_draw": true,
+    "native_triangle_counts_match_meshes": true,
+    "before_has_no_east_road_pixels": true,
+    "after_has_native_road_pixels_in_both_partitions": true,
+    "corrected_native_coverage_doubles": true,
+    "no_webgl_errors": true,
+    "fixture_bytes_unchanged": true
+  },
+  "source": {
+    "baselineRef": "ca0e5c6",
+    "defaultPublishedBaselineRef": "5cfe4fcdc82bfbc5370024f7a4ca324f34d722af",
+    "module": "src/v050/04a_city_sources.js",
+    "baselineSha256": "40b96b1a63182d1db79793388fb676f088493410358df48abe887b7836a1f146",
+    "correctedSha256": "ab2b81746145db13c6a8fbbabe566e9a93a23892ce0189c75a98e7b41a9f6e16",
+    "productionModules": {
+      "src/v046/00_integrity.js": "1e086efb92cfe9971001a1c4988623d95f362e00f795e3c16231edd53acdeed1",
+      "src/core-v017.js": "7e07ba0d1723e589b3d7fa3ca76ac8e287c6b0d22f4dc9c1434919b9db366ea3",
+      "src/patches/01_geometry.js": "dbb39a1ef4fa26f5753e0ad16892111e66513b3bbc65a24ab1d22bac354bbdb8",
+      "src/v050/04_source_geometry.js": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+      "tests/expansion/city_streaming.cjs": "df74adea145aeab5226e216a43197e1a2c274c93c93a2725290b7e7482f101e0"
+    }
+  },
+  "fixture": {
+    "label": "EXPLICIT SYNTHETIC FIXTURE — NOT REAL CITY GEOGRAPHY",
+    "projection": "Existing test helper: x=longitude*1000; z=-latitude*1000. Test units are not surveyed metres.",
+    "sourceId": "fixture-road",
+    "sourceCoordinates": [
+      [
+        5.351,
+        43.295
+      ],
+      [
+        5.359,
+        43.295
+      ]
+    ],
+    "inputSha256": "74b3f69b9cee646dc62ac23e66ce939b0cba92b7ca278af77f7f5f2ad5de06ff",
+    "partitions": [
+      {
+        "path": "data/map_pack/city/m13055-road-0-af4c0a5a78d77ee0.json",
+        "bytes": 1206,
+        "sha256": "af4c0a5a78d77ee0e0ba737781bbeeb3d4dd5832a17a8b86f2bfb059e4d5c74d",
+        "bbox": [
+          43.29,
+          5.35,
+          43.3,
+          5.36
+        ],
+        "id": "m13055-road-0",
+        "region": "geo_marseille_commune",
+        "queryBbox": [
+          43.29,
+          5.35,
+          43.3,
+          5.355
+        ],
+        "renderBbox": [
+          43.29,
+          5.35,
+          43.3,
+          5.355
+        ],
+        "coverages": [
+          {
+            "bbox": [
+              43.29,
+              5.35,
+              43.3,
+              5.355
+            ],
+            "crs": "EPSG:4326",
+            "complete": true,
+            "layer": "BDTOPO_V3:batiment",
+            "returned": 0
+          },
+          {
+            "bbox": [
+              43.29,
+              5.35,
+              43.3,
+              5.355
+            ],
+            "crs": "EPSG:4326",
+            "complete": true,
+            "layer": "BDTOPO_V3:troncon_de_route",
+            "returned": 1
+          }
+        ],
+        "counts": {
+          "buildings": 0,
+          "roads": 1
+        }
+      },
+      {
+        "path": "data/map_pack/city/m13055-road-1-c4036ce777563037.json",
+        "bytes": 1206,
+        "sha256": "c4036ce7775630370bff33c2b74edcca84c1d6ba0879d6f0b7503d45ec2f1976",
+        "bbox": [
+          43.29,
+          5.35,
+          43.3,
+          5.36
+        ],
+        "id": "m13055-road-1",
+        "region": "geo_marseille_commune",
+        "queryBbox": [
+          43.29,
+          5.355,
+          43.3,
+          5.36
+        ],
+        "renderBbox": [
+          43.29,
+          5.355,
+          43.3,
+          5.36
+        ],
+        "coverages": [
+          {
+            "bbox": [
+              43.29,
+              5.355,
+              43.3,
+              5.36
+            ],
+            "crs": "EPSG:4326",
+            "complete": true,
+            "layer": "BDTOPO_V3:batiment",
+            "returned": 0
+          },
+          {
+            "bbox": [
+              43.29,
+              5.355,
+              43.3,
+              5.36
+            ],
+            "crs": "EPSG:4326",
+            "complete": true,
+            "layer": "BDTOPO_V3:troncon_de_route",
+            "returned": 1
+          }
+        ],
+        "counts": {
+          "buildings": 0,
+          "roads": 1
+        }
+      }
+    ],
+    "ground": "constant test sample=0; no real DEM",
+    "expectedProjectedExtent": [
+      5351,
+      5359
+    ],
+    "boundary": 5355
+  },
+  "before": {
+    "sourceIds": [
+      "fixture-road"
+    ],
+    "features": 1,
+    "paths": [
+      [
+        [
+          5351,
+          -43295
+        ],
+        [
+          5355,
+          -43295
+        ]
+      ]
+    ],
+    "length": 4,
+    "sourceGeometrySha256": [
+      "e05c4d0c944f345002415cea8c6d854fca62a144f106791fe3c629d1d80b93db"
+    ],
+    "fragmentsSha256": "64a5bec5689e0e0d8b82646af36bec1dbcb1c1c3882406f34129cb3ace3580cb",
+    "geometryConflicts": 0,
+    "repeatedLoadStable": true,
+    "reverseOrderStable": true,
+    "triangles": 2,
+    "vertices": 4,
+    "meshes": [
+      {
+        "sourceId": "fixture-road",
+        "path": [
+          [
+            5351,
+            -43295
+          ],
+          [
+            5355,
+            -43295
+          ]
+        ],
+        "profile": {
+          "width": 5.5,
+          "widthAssumed": true,
+          "widthBasis": "classe de voie — estimation",
+          "heightBasis": "terrain"
+        },
+        "vertices": [
+          [
+            5351,
+            0.085,
+            -43297.75
+          ],
+          [
+            5351,
+            0.085,
+            -43292.25
+          ],
+          [
+            5355,
+            0.085,
+            -43297.75
+          ],
+          [
+            5355,
+            0.085,
+            -43292.25
+          ]
+        ],
+        "faces": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            1,
+            3,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  "after": {
+    "sourceIds": [
+      "fixture-road"
+    ],
+    "features": 2,
+    "paths": [
+      [
+        [
+          5351,
+          -43295
+        ],
+        [
+          5355,
+          -43295
+        ]
+      ],
+      [
+        [
+          5355,
+          -43295
+        ],
+        [
+          5359,
+          -43295
+        ]
+      ]
+    ],
+    "length": 8,
+    "sourceGeometrySha256": [
+      "e05c4d0c944f345002415cea8c6d854fca62a144f106791fe3c629d1d80b93db"
+    ],
+    "fragmentsSha256": "4b1ee31b1b3fa2349ff979f3abed9f8c0d6b920325a2bd08e7dc44e972e04f6b",
+    "geometryConflicts": 0,
+    "repeatedLoadStable": true,
+    "reverseOrderStable": true,
+    "triangles": 4,
+    "vertices": 8,
+    "meshes": [
+      {
+        "sourceId": "fixture-road",
+        "path": [
+          [
+            5351,
+            -43295
+          ],
+          [
+            5355,
+            -43295
+          ]
+        ],
+        "profile": {
+          "width": 5.5,
+          "widthAssumed": true,
+          "widthBasis": "classe de voie — estimation",
+          "heightBasis": "terrain"
+        },
+        "vertices": [
+          [
+            5351,
+            0.085,
+            -43297.75
+          ],
+          [
+            5351,
+            0.085,
+            -43292.25
+          ],
+          [
+            5355,
+            0.085,
+            -43297.75
+          ],
+          [
+            5355,
+            0.085,
+            -43292.25
+          ]
+        ],
+        "faces": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            1,
+            3,
+            2
+          ]
+        ]
+      },
+      {
+        "sourceId": "fixture-road",
+        "path": [
+          [
+            5355,
+            -43295
+          ],
+          [
+            5359,
+            -43295
+          ]
+        ],
+        "profile": {
+          "width": 5.5,
+          "widthAssumed": true,
+          "widthBasis": "classe de voie — estimation",
+          "heightBasis": "terrain"
+        },
+        "vertices": [
+          [
+            5355,
+            0.085,
+            -43297.75
+          ],
+          [
+            5355,
+            0.085,
+            -43292.25
+          ],
+          [
+            5359,
+            0.085,
+            -43297.75
+          ],
+          [
+            5359,
+            0.085,
+            -43292.25
+          ]
+        ],
+        "faces": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            1,
+            3,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  "native": {
+    "before": {
+      "nativeCanvas": [
+        1600,
+        1000
+      ],
+      "nonempty": 70660,
+      "leftCoverage": 69280,
+      "rightCoverage": 0,
+      "roadRender": {
+        "backend": "WebGL",
+        "customMeshes": 1,
+        "triangles": 2,
+        "bufferGroups": 1,
+        "drawCalls": 1,
+        "batchedMeshes": 0,
+        "batchGroups": 0,
+        "batchBuilds": 0
+      },
+      "composedRender": {
+        "backend": "WebGL",
+        "customMeshes": 1,
+        "triangles": 182,
+        "bufferGroups": 1,
+        "drawCalls": 16,
+        "batchedMeshes": 0,
+        "batchGroups": 0,
+        "batchBuilds": 0
+      },
+      "glError": 0,
+      "backend": "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "after": {
+      "nativeCanvas": [
+        1600,
+        1000
+      ],
+      "nonempty": 141307,
+      "leftCoverage": 69280,
+      "rightCoverage": 68991,
+      "roadRender": {
+        "backend": "WebGL",
+        "customMeshes": 2,
+        "triangles": 4,
+        "bufferGroups": 1,
+        "drawCalls": 1,
+        "batchedMeshes": 2,
+        "batchGroups": 1,
+        "batchBuilds": 1
+      },
+      "composedRender": {
+        "backend": "WebGL",
+        "customMeshes": 2,
+        "triangles": 184,
+        "bufferGroups": 1,
+        "drawCalls": 16,
+        "batchedMeshes": 2,
+        "batchGroups": 1,
+        "batchBuilds": 1
+      },
+      "glError": 0,
+      "backend": "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "camera": {
+      "pos": [
+        0,
+        14,
+        11
+      ],
+      "dir": [
+        0,
+        -0.7863183388224227,
+        -0.6178215519319036
+      ],
+      "fov": 48
+    },
+    "originTranslation": [
+      5355,
+      0,
+      -43295
+    ],
+    "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.0 Safari/537.36",
+    "method": "Direct screenshot of two production-WebGL canvases; no pixel compositing.",
+    "browserVersion": "153.0.8010.0",
+    "errors": []
+  },
+  "screenshot": {
+    "path": "verification/gamedev-streaming-2026-10-29/04_ROAD_FRAGMENTS.png",
+    "sha256": "09e52f7a72bfed591766cf5e0aa636ef454572c656426ef99be7c5a83b4e8003"
+  },
+  "limitations": [
+    "Controlled road-enrichment regression fixture only; not a capture of a real street.",
+    "Production roadMesh and GLRenderer are reused, with a translation to center the fixture camera.",
+    "The constant test ground and renderer guide cubes are synthetic; road width uses the same production default in both views.",
+    "No claim of full-game traversal, collision checks, real-city atlas completeness, hardware GPU performance, or human playtesting."
+  ]
+}

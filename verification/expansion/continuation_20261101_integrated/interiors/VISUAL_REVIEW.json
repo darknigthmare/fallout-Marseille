@@ -1,0 +1,199 @@
+{
+  "scope": "Fresh integrated C0 interior native validation: original captures individually inspected by primary agent(6) and peer(10). Supplemental review adds no gameplay checks/images. Historical98 attempts remain separate and immutable.",
+  "reviewedUtc": "2026-11-01T01:46:43.514948+00:00",
+  "htmlSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "actualChildExitCode": 0,
+  "actualSession": 73937,
+  "passed": 122,
+  "failed": 0,
+  "capturesIndividuallyInspected": 16,
+  "primaryInspectorCount": 6,
+  "peerInspectorCount": 10,
+  "peerReviewSha256": "075ed2cd625c6ff4019b88fafa1f0aaa8ee86e87beb0b737a9e2bc1c11c76a1b",
+  "runtimeInputCount": 363,
+  "runtimeRehashedAndUnchanged": true,
+  "hashes": {
+    "executionReceipt": "d67cb6127243cb30ae95156b3914f77210e0df833744260ebe43692daf7c311c",
+    "report": "50589add270d7010bdfcd5bc5ac05ec6aa31803a894c33b8600ceec4f5fec5b0",
+    "stdout": "fd23079970ef005839e115ad2f47372410d622b1a6c3be3499e6b4c00e0f39ab",
+    "executedEntrypoint": "1bb891a0cea142acd74a04bd85bbf4ae61573a5b15767672aba77130801785f2",
+    "reportCoreDependency": "6424a6a85569cb80157abe58f7b16f61ac8b72774c240188c913d45aee8f281f",
+    "preExecutionArchives": "5adba04f66506319017cb071362abe432341ad647514244e8db7f2cadba0a67e"
+  },
+  "independentPortClosure": {
+    "port": 37843,
+    "connectErrno": 111,
+    "connectErrorName": "ECONNREFUSED",
+    "method": "Actual loopback connect_ex outside restricted sandbox after native child exit"
+  },
+  "collector": {
+    "exit_key": "exitCode",
+    "receipt_report_hash_key": "reportSha256",
+    "receipt_script_hash_key": "scriptSha256",
+    "receipt_log_hash_key": "logSha256",
+    "report_script_dependency": "tests/expansion/interior_programs_native.py"
+  },
+  "diagnostics": {
+    "contexts_created": 1,
+    "page_errors": 0,
+    "javascript_console_errors": 0,
+    "local_request_failures": 0,
+    "local_http_errors": 0,
+    "external_request_failures": 45
+  },
+  "limits": [
+    "Camera positions, simulation/render freeze and stepped physics are declared assistance in the native pilot.",
+    "Exterior source attribution does not make invented interior partitions, doors, furniture or supplies a measured architectural survey.",
+    "Close framing and the stylized FPS weapon/arms obscure parts of several scenes; the two Continue frames mainly face a wall.",
+    "Visual descriptions do not add gameplay checks; inventory quantities, persistence and immutable source identities require the native report and process receipt.",
+    "Native coverage: two attributed source programmes, one commerce door, one industrial workshop craft and one originally present cupboard deposit/Continue/withdrawal.",
+    "Bed/kitchen actions, cross-building/floor isolation, full capacity and write-failure rollback remain controlled model tests; no such native coverage is claimed.",
+    "Optional external requests may fail through the environment tunnel; local installed HTML/data path and application assertions completed. No remote-service availability claimed."
+  ],
+  "observations": [
+    {
+      "file": "commerce_equipment.png",
+      "observation": "Comptoir, caisse et étagères stylisés visibles à proximité; HUD présent et comptoir central dégagé. Pas un relevé réel d'ameublement.",
+      "sha256": "55f8c48b7baa63df2ea085a86b0bd39a59f8f8d9c62ed3f264a052ce66887ad6",
+      "sizeBytes": 1482865,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "commerce_room_door_closed.png",
+      "observation": "Deux vantaux bruns fermés et poignées visibles; inviteE Ouvrir/Réserve/porte coulissante lisible. Cadrage rapproché du mécanisme inventé.",
+      "sha256": "603372a81380263cd0afb54937a1c57d781a5febbd151cf291552687d1effb79",
+      "sizeBytes": 1481439,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "commerce_room_door_inside.png",
+      "observation": "Face opposée de la porte fermée et inviteE d'ouverture visibles. Le franchissement/collision est établi par les états et actions du pilote.",
+      "sha256": "e733932fbe250ce4658024dd53bd7d3bf11ddadae7592b9dd74c38f8c000284e",
+      "sizeBytes": 1471243,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "commerce_continue.png",
+      "observation": "Après ContinueC0, même porte commerciale fermée et inviteE lisibles. Cadrage serré; persistance exacte du plan/porte/inventaire établie par les assertions.",
+      "sha256": "5c35bd8c580cd3c08750d900a1900de37d7734e6a5d70eeac3170edfa29dda46",
+      "sizeBytes": 1487772,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "commerce_street_return.png",
+      "observation": "Façade extérieure stylisée avec porte et invite Entrer/Bâtiment/intérieur inventé; attributionOSM/Cadastre/IGN au pied de scène.",
+      "sha256": "16216428a863ca4ea7d674806ccf3d14e1421023444d209b950b9a1c0d5b5b08",
+      "sizeBytes": 1529047,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "atelier_equipment.png",
+      "observation": "Très gros plan d'une surface sombre de l'armoire à outils, invite Ranger des fournitures lisible. Silhouette complète et plan global non visibles dans cette capture.",
+      "sha256": "d5ed0690ae138153ce4ce901160d5d2999d14ad772131214a6e12fff731b1c2e",
+      "sizeBytes": 1491069,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image by primary validation agent on original C0 PNG.",
+      "imageEdited": false
+    },
+    {
+      "file": "atelier_continue.png",
+      "sha256": "81b5fb328b9bdb58a45002960ab946748504c1e89280e8c042e69f0c00929d6b",
+      "bytes": 1440575,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Après Continuer, le cadre montre surtout un mur gris et le premier plan FPS. Le prompt «Palier · niveau 0 · accès et provenance» est lisible. Cette vue ne montre pas l’ensemble du mobilier de l’atelier ; son identité et sa persistance sont vérifiées par le rapport d’état."
+    },
+    {
+      "file": "atelier_street_return.png",
+      "sha256": "358b162f0e5564b92ffac6ee8aef63c273567fe24cc3c82de0bb5952b576c133",
+      "bytes": 1562640,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Vue rapprochée de la façade simplifiée, du portail à deux vantaux et de fenêtres procédurales. Le prompt «Entrer · Bâtiment · intérieur inventé» est lisible. Le cadrage montre le retour devant le portail, sans panorama de la rue ni relevé architectural des façades."
+    },
+    {
+      "file": "industry_reserve_access.png",
+      "sha256": "259170cf8d7e85fbc06c9a11094eddce4e1e5ebcaebcf4160d98894735273e76",
+      "bytes": 282427,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Le panneau «Réserve fictive · Bâtiment» tient dans le viewport. La ligne Ferraille, quantité 2 et masse unitaire 0.25 kg, ainsi que les boutons Prendre et Fermer, sont lisibles. La scène derrière le panneau est floutée ; le panneau seul ne prouve aucun transfert."
+    },
+    {
+      "file": "industry_workshop_service.png",
+      "sha256": "8cbe80acdae4e8dfc0b3ca0752de1dbc05d9e98f1f3df0e8bb62e37fb9af8beb",
+      "bytes": 1132025,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Le dialogue «Établi et étau» affiche les ingrédients, des recettes actives, la pagination «Autres préparations · 1/3» et «Continuer la visite». Les lignes indisponibles ont un contraste faible. Le dialogue couvre une grande partie de l’établi en gros plan ; les rivets sélectionnés ensuite ne figurent pas sur cette première page."
+    },
+    {
+      "file": "industry_workshop_crafted.png",
+      "sha256": "67b5468b7f00e821fa20060901fbdc4f6117baa15208774e8c00410a80fee175",
+      "bytes": 1467847,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Après fermeture du dialogue, l’établi en blocs simples, deux composants et le prompt «Fabriquer · établi de récupération» sont visibles. Arme et avant-bras masquent une partie du bord droit. Aucun compteur de rivets fabriqués n’est visible : paiement et quantité dépendent des assertions d’état, pas de cette seule image."
+    },
+    {
+      "file": "industry_workshop_service_continue.png",
+      "sha256": "d12ef9475ca819ecc12f9db69a61a35957d353fab27698753b7a3bb6193e4fe9",
+      "bytes": 1498770,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Après Continuer, un mur occupe presque tout le cadre ; seul le bord de l’établi et des composants apparaissent en bas. Le prompt est «Fouiller · Réserve fictive · Bâtiment», non le service de fabrication. La capture ne démontre pas visuellement une station complète ni le stock de rivets sauvegardé."
+    },
+    {
+      "file": "industry_storage_cupboard.png",
+      "sha256": "a0fde68c3e55c10dc0cf795cac7292227f2f63790ca7fee1f963690b74d92f6e",
+      "bytes": 1460816,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Une armoire à outils stylisée en volume sombre occupe le centre ; une partie de l’établi est visible à droite. Le prompt «Ranger des fournitures · Armoire à outils» est lisible. Le premier plan FPS masque le bas droit de l’armoire ; aucune finition de meuble relevée sur site n’est démontrée."
+    },
+    {
+      "file": "industry_storage_deposited.png",
+      "sha256": "0197ac7cea182e4112af4e5a554afb1098791a86faad4e44136185a916dc6547",
+      "bytes": 1291643,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Le dialogue Armoire à outils affiche clairement «Eau filtrée · sac : 1 · ce meuble : 1», la capacité «Dépôt local · 24 kg», le bouton Déposer 1 et les commandes Retour/Fermer. Le texte précise le bâtiment et l’étage. Le panneau est entièrement cadré ; le meuble reste un volume simplifié."
+    },
+    {
+      "file": "industry_storage_continue_withdraw.png",
+      "sha256": "8bf28b2d6a11799eb5f5c34a6595e5ad3fd67f17abf8c34b7fe4d710cc837c70",
+      "bytes": 1273129,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Après le vrai Continuer du pilote, le dialogue affiche encore «Eau filtrée · sac : 1 · ce meuble : 1» et le bouton actif «Reprendre 1 × Eau filtrée». Les commandes et la capacité 24 kg sont lisibles. Le contexte visuel correspond au même cadrage d’armoire ; l’identité persistante est également contrôlée par le rapport."
+    },
+    {
+      "file": "industry_storage_emptied.png",
+      "sha256": "1855fa285dafb437164d1120be474c7c02b92ae32ae049073461cb0f06d70c6c",
+      "bytes": 1460515,
+      "inspected": true,
+      "inspectionMethod": "Individual tools.view_image on original local PNG.",
+      "imageEdited": false,
+      "observation": "Après fermeture du dépôt, l’armoire et le prompt Ranger des fournitures sont visibles dans le même cadrage que la visite initiale. Aucun contenu interne ni compteur de zéro n’est montré à l’écran ; l’absence de stock et le retour de l’eau au sac sont vérifiés par les assertions et la sauvegarde, sans modification visuelle du meuble."
+    }
+  ]
+}

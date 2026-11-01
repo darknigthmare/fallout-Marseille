@@ -1,0 +1,156 @@
+{
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "native_methods": [
+    {
+      "id": "fps",
+      "label": "Vue FPS native",
+      "report": "fps/FIRST_PERSON_NATIVE.json",
+      "receipt": "fps/EXECUTION.json",
+      "log": "fps/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "feedback",
+      "label": "Retours de combat FPS natifs",
+      "report": "feedback/FPS_FEEDBACK_NATIVE.json",
+      "receipt": "feedback/EXECUTION.json",
+      "log": "feedback/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "hud",
+      "label": "HUD natif, formats et commandes",
+      "report": "hud/FPS_HUD_NATIVE.json",
+      "receipt": "hud/EXECUTION.json",
+      "log": "hud/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "controller",
+      "label": "DOM avec API Gamepad simulée",
+      "report": "controller/CONTROLLER_BROWSER.json",
+      "receipt": "controller/EXECUTION.json",
+      "log": "controller/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "category": "simulated_gamepad"
+    },
+    {
+      "id": "landmarks",
+      "label": "Surfaces MNS natives, quatre sites",
+      "report": "landmarks/LANDMARK_SURFACES_NATIVE.json",
+      "receipt": "landmarks/EXECUTION.json",
+      "log": "landmarks/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "interiors",
+      "label": "Intérieurs, portes, services et dépôts natifs",
+      "report": "interiors/INTERIOR_PROGRAMS_NATIVE.json",
+      "receipt": "interiors/EXECUTION.json",
+      "log": "interiors/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "report_script_dependency": "tests/expansion/interior_programs_native.py"
+    },
+    {
+      "id": "lore",
+      "label": "Dossiers et contre-dons natifs des factions",
+      "report": "lore/COMMUNITY_DOSSIERS_NATIVE.json",
+      "receipt": "lore/EXECUTION.json",
+      "log": "lore/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "vending",
+      "label": "Distributeurs Nuka-Cola natifs",
+      "report": "vending/VENDING_NATIVE.json",
+      "receipt": "vending/EXECUTION.json",
+      "log": "vending/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    },
+    {
+      "id": "north",
+      "label": "Relief nord natif et anciens lots revisités",
+      "report": "north/NORTH_TERRAIN_NATIVE.json",
+      "receipt": "north/EXECUTION.json",
+      "log": "north/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256"
+    }
+  ],
+  "supplements": [
+    {
+      "source": "streaming-unit",
+      "destination": "streaming-unit"
+    },
+    {
+      "source": "upstream-smoke",
+      "destination": "upstream-smoke"
+    },
+    {
+      "source": "upstream-worker",
+      "destination": "upstream-worker"
+    },
+    {
+      "source": "upstream-road",
+      "destination": "upstream-road"
+    },
+    {
+      "source": "UPSTREAM_COMPLEMENTARY_EVIDENCE.json",
+      "destination": "UPSTREAM_COMPLEMENTARY_EVIDENCE.json"
+    },
+    {
+      "source": "MERGE_BASELINE.json",
+      "destination": "MERGE_BASELINE.json"
+    },
+    {
+      "source": "MERGE_READONLY_REVIEW_7AB5043.json",
+      "destination": "MERGE_READONLY_REVIEW_7AB5043.json"
+    },
+    {
+      "source": "gamedev-guides",
+      "destination": "gamedev-guides"
+    },
+    {
+      "source": "FPS_GROUP_C0_REVIEW.json",
+      "destination": "FPS_GROUP_C0_REVIEW.json"
+    },
+    {
+      "source": "NORTH_VISUAL_NOTES.json",
+      "destination": "NORTH_VISUAL_NOTES.json"
+    },
+    {
+      "source": "CONTROLLER_SERVER.json",
+      "destination": "CONTROLLER_SERVER.json"
+    },
+    {
+      "source": "WHITESPACE_BASELINE.json",
+      "destination": "WHITESPACE_BASELINE.json"
+    }
+  ]
+}

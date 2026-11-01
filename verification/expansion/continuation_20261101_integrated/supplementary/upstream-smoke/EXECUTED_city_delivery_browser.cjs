@@ -1,0 +1,80 @@
+/* Unmodified production HTML over loopback HTTP. Synthetic lab is labelled;
+   no installed metropolitan source archive is claimed by this smoke test.
+   Run with CHROMIUM_PATH and, if needed, MISTRAL_PLAYWRIGHT_MODULE. */
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const {chromium}=require(process.env.MISTRAL_PLAYWRIGHT_MODULE||'playwright');
+const root=path.resolve(__dirname,'../..');
+const out=process.env.MISTRAL_QA_OUTPUT||path.join(root,'verification/gamedev-streaming-2026-10-29');
+fs.mkdirSync(out,{recursive:true});
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const report={scope:'Unmodified production HTML, actual Chromium WebGL, isolated browser storage; synthetic boundary laboratory, not an acquired Marseille survey',checks:[],pageErrors:[],missingRequests:[],htmlSha256:sha(fs.readFileSync(path.join(root,'index.html')))};
+const check=(name,ok,detail)=>{report.checks.push({name,ok:!!ok,...(detail===undefined?{}:{detail})});console.log((ok?'PASS ':'FAIL ')+name);if(!ok)throw Error(name);};
+const server=http.createServer((req,res)=>{
+ const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname),filename=path.resolve(root,'.'+(pathname==='/'?'/index.html':pathname));
+ if(!filename.startsWith(root+path.sep)){res.writeHead(403);return res.end();}
+ if(!fs.existsSync(filename)||!fs.statSync(filename).isFile()){report.missingRequests.push(pathname);res.writeHead(404);return res.end('Unavailable in source-only QA snapshot');}
+ const ext=path.extname(filename),types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png'};
+ res.writeHead(200,{'Content-Type':types[ext]||'application/octet-stream','Cache-Control':'no-store'});fs.createReadStream(filename).pipe(res);
+});
+let browser;
+(async()=>{
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));
+ const origin='http://127.0.0.1:'+server.address().port;
+ browser=await chromium.launch({...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{}),headless:true,timeout:60000,args:['--no-sandbox','--disable-dev-shm-usage','--disable-background-networking','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ report.browser=browser.version();report.gpu='Software WebGL (SwiftShader); no hardware performance claim';
+ const context=await browser.newContext({viewport:{width:1440,height:900},deviceScaleFactor:1,serviceWorkers:'block'});
+ const page=await context.newPage();page.setDefaultTimeout(60000);page.on('pageerror',e=>report.pageErrors.push(String(e)));
+ const response=await page.goto(origin+'/index.html?skipboot=1',{waitUntil:'load'});
+ check('HTTP document matches rebuilt production HTML',sha(await response.body())===report.htmlSha256);
+ await page.waitForFunction(()=>!!window.__MISTRAL_DEBUG?.v051CityInfo);
+ await page.waitForFunction(()=>!document.getElementById('bootScreen').classList.contains('active'));
+ const call=(name,...args)=>page.evaluate(([name,args])=>window.__MISTRAL_DEBUG[name](...args),[name,args]);
+ await call('setRenderPaused',true);
+ await call('startStory');
+ await page.waitForFunction(()=>__MISTRAL_DEBUG.getWorld()==='vault_prologue'&&__MISTRAL_DEBUG.getMode()==='PLAYING');
+ await page.waitForFunction(()=>__MISTRAL_DEBUG.v35pInfo().titleSeen);
+ await page.waitForFunction(()=>!document.getElementById('v35pTitle')||document.getElementById('v35pTitle').classList.contains('hidden'));
+ const state=await call('getState');
+ const capture=await call('v018CaptureAt',state.player.pos,state.player.yaw,state.player.pitch);
+ report.prologue={world:await call('getWorld'),renderer:capture.renderer};
+ check('New campaign enters the actual A-03 vault',report.prologue.world==='vault_prologue');
+ check('Production renderer uses WebGL',String(capture.renderer.backend).toLowerCase().includes('webgl'),capture.renderer.backend);
+ await page.screenshot({path:path.join(out,'01_ABRI_A03.png')});
+ const savedBefore=await page.evaluate(()=>JSON.stringify({...localStorage}));
+ await call('v047Control',{auto:false});
+ check('Synthetic boundary laboratory loads',await call('v046Lab'));
+ await call('setRenderPaused',true);
+ const ll=await call('v046LL');
+ await call('v046Render');
+ const initial=await call('v046Signature');
+ const labStart=(await call('getState')).player;
+ await call('v046Move',1,0);
+ const moved=(await call('getState')).player.pos;
+ check('Native collision-aware movement advances on the lab ground',Math.hypot(moved[0]-labStart.pos[0],moved[2]-labStart.pos[2])>.5);
+ await call('v018CaptureAt',labStart.pos,labStart.yaw,labStart.pitch);
+ const geom=s=>({buildings:s.buildings,roads:s.roads});
+ check('Lab contains both building and road geometry',initial.buildings.length>0&&initial.roads.length>0,{buildings:initial.buildings.length,roads:initial.roads.length});
+ await page.screenshot({path:path.join(out,'02_LAB_LIMITE_A.png')});
+ check('Neighbouring geographic window loads',await call('v046Load',ll[0],ll[1]+.004));
+ const neighbour=await call('v046Signature');
+ const neighbourLL=[ll[0],ll[1]+.004];
+ const neighbourPoint=await call('v046Project',neighbour.region,...neighbourLL);
+ const neighbourGround=await call('v046Height',...neighbourLL);
+ check('Neighbour camera uses available lab terrain',Number.isFinite(neighbourGround.height));
+ neighbourPoint[1]=neighbourGround.height+1.65;
+ await call('v018CaptureAt',neighbourPoint,-Math.PI/2,.02);
+ await page.screenshot({path:path.join(out,'03_LAB_LIMITE_B.png')});
+ check('Original geographic window reloads',await call('v046Load',ll[0],ll[1]));
+ await call('v018CaptureAt',labStart.pos,labStart.yaw,labStart.pitch);
+ const returned=await call('v046Signature');
+ check('A to B to A preserves original road and building geometry',JSON.stringify(geom(initial))===JSON.stringify(geom(returned)));
+ check('Synthetic lab does not overwrite campaign storage',await page.evaluate(()=>JSON.stringify({...localStorage}))===savedBefore);
+ check('No JavaScript exception during the browser smoke',report.pageErrors.length===0,report.pageErrors);
+ report.lab={start:ll,initialBuildings:initial.buildings.length,initialRoads:initial.roads.length,neighbourBuildings:neighbour.buildings.length,neighbourRoads:neighbour.roads.length,returnedBuildings:returned.buildings.length,returnedRoads:returned.roads.length,geometrySha256:sha(JSON.stringify(geom(initial)))};
+ await context.close();
+})().catch(e=>{report.exception=String(e.stack||e);console.error(report.exception);process.exitCode=1;}).finally(async()=>{
+ if(browser)await browser.close().catch(()=>{});await new Promise(r=>server.close(r));
+ report.missingRequests=[...new Set(report.missingRequests)];report.passed=report.checks.filter(c=>c.ok).length;report.failed=Math.max(report.checks.filter(c=>!c.ok).length,report.exception?1:0);
+ fs.writeFileSync(path.join(out,'BROWSER_SMOKE.json'),JSON.stringify(report,null,2)+'\n');
+ console.log(JSON.stringify({passed:report.passed,failed:report.failed,pageErrors:report.pageErrors.length,output:out}));
+});

@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/community_dossiers_native.py",
+    "--run",
+    "--with-returns",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/integrated-release/lore",
+    "--expect-html-sha",
+    "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "--expect-lore-sha",
+    "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 234907,
+  "exitCode": 0,
+  "startedAtEpoch": 1793497024.2269585,
+  "durationSeconds": 830.6408834457397,
+  "scriptSha256": "d8a2cf106fa4b9b2b47058668e7635a7cf3cdf20367e59b3453e6d93c3a595bd",
+  "scriptUnchanged": true,
+  "reportSha256": "b5c842876daa6d9e3ba6d3638f7c93ecb4d9ddc0f1b0592cfccb638eafc0597f",
+  "logSha256": "57eb6ba5664b71b5a1c3753eb051caafca873146bc93099baa732ac1e4899b0a",
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "runtimeChanged": [],
+  "runtimeInputCount": 363
+}

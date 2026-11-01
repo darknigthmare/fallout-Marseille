@@ -1,0 +1,59 @@
+{
+  "scope": "Read-only review of integration worktree; no edits, tests, browser or performance measurements performed by this review. Prior HTML98a7 native evidence does not automatically validate this merged runtime.",
+  "reviewedAt": "2026-11-01T01:33:18.470553+00:00",
+  "upstreamRevision": "19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9",
+  "guidesRead": [
+    {
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/README.md",
+      "localCopy": "/tmp/gamedev-router-19d93f-readonly.md",
+      "sha256": "6accab63914fa2af719d8b5779119c4450767dc254c1081a455d6b92260a70a5"
+    },
+    {
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/router/SKILL.md",
+      "localCopy": "/tmp/gamedev-readonly-0-19d93f.md",
+      "sha256": "69c1167073530655dac859e33c4b8893903b94f13326ef1c85f152b8008418ba"
+    },
+    {
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/router/references/custom-engines.md",
+      "localCopy": "/tmp/gamedev-custom-engines-19d93f-readonly.md",
+      "sha256": "0880a19b3e150e064751af2890573a47652dffcd7586809c2135d14f47dc151a"
+    },
+    {
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/procedural-gen/SKILL.md",
+      "localCopy": "/tmp/gamedev-readonly-1-19d93f.md",
+      "sha256": "4bd422eff2c28dbb12e0edf7ef68f3e98bcbbdf4d430815ba6da2d0692630cc4"
+    },
+    {
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/level-design/SKILL.md",
+      "localCopy": "/tmp/gamedev-readonly-2-19d93f.md",
+      "sha256": "9dd60fec5dc09957f7836739da96b5a2bcff2b46ecaab020f0a9ccff7463ba3a"
+    },
+    {
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/performance-optimization/SKILL.md",
+      "localCopy": "/tmp/gamedev-readonly-3-19d93f.md",
+      "sha256": "287161d2ed49670a051271c8fade5a7265fda5109d39c218c02598dca7983e2a"
+    }
+  ],
+  "reviewedFiles": {
+    "AGENTS.md": "745f062f2de2b80a2241e2b056c67afda1009c1de1e594c5661892250f238473",
+    "src/v050/04a_city_sources.js": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b",
+    "src/v050/04_source_geometry.js": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+    "src/v048/01_preparation.js": "6407face4e421ed6ab0e6a94776c69f289bd8fd25fc3cf42d69d081fdca7b9aa",
+    "src/v050/06a_landmark_surfaces.js": "a7e5385e53e9fa3e23bf83ef979b53c3a8ff54a58d0c734d16babaf2ef5641d9",
+    "src/v046/00_integrity.js": "1e086efb92cfe9971001a1c4988623d95f362e00f795e3c16231edd53acdeed1",
+    "data/map_pack/landmark_surfaces/index.json": "39c7c6b3347d6a1a3d04f8640e14b3d18905346a65ab6b67b11dc20781a0049e",
+    "data/map_pack/landmark_surfaces/marseille-mns-d784b256e926b869.json": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d",
+    "data/map_pack/city/m13055-r05-c05-e010c49d49243bae.json": "e010c49d49243bae4a8962e24def66ef3e012123d1f466ad311d4f08026371e3",
+    "data/map_pack/city/m13055-r04-c06-2-0-8dc4e4c60da6c304.json": "8dc4e4c60da6c304895920ef8ad3d04bb8731a46bea0e98920cfb5fac38f7d63"
+  },
+  "concreteDefectsFound": [],
+  "compatibilityObservations": [
+    "MNS matching still requires original cleabs, complete raw source geometry and source properties. Source payload index and both pinned BD TOPO chunks retain original bytes. Road fragment processing does not synthesize or mutate their building coordinates.",
+    "v051CityStageBank creates a separate TerrainBank and removes old commune enrichment grids; v048 preparation fills it from the new plan. TerrainBank copies bounds, preserving active-bank ownership.",
+    "The commune base-DEM resource waits for v050EnrichResource and checks cancellation before return. TerrainBank.add then reinjects verified commune terrain overlays, including optional north imports; old fine citydem resources are replaced according to the new plan.",
+    "v051CityWait detaches cancellation listener and directly attaches both promise handlers, avoiding the discarded finally rejection; cancel does not cancel a shared partition request belonging to another waiter. Epoch checks prevent refresh-era stale publications.",
+    "Descriptor paths are sorted; exact geometry/path copies deduplicate, distinct surveyed road fragments remain distinct, and geometry conflicts are exposed without synthetic merging.",
+    "Caches, source input size/shape validation and bounded work checkpoints remain explicit; no actual hardware/frame-time claim follows from this static reading."
+  ],
+  "requiredFollowup": "Fresh rebuild and relevant regression/native runs on the merged HTML; root owns these runs. New current HTML SHA and worker cache must replace prior98a7 identity in retained final evidence."
+}

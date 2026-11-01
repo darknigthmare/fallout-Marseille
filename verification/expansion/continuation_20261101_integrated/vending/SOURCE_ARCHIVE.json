@@ -1,0 +1,19 @@
+{
+  "archived_before_execution_utc": "2026-11-01 01:37:38 UTC",
+  "entrypoint": "tests/expansion/vending_native.py",
+  "local_python_dependency_discovery": "AST import traversal among repository tools, entrypoint parent and repository root; standard library and installed packages are not copied.",
+  "files": {
+    "tests/expansion/vending_native.py": "2e034f2a5cee4e7dd67638b1df0d03533587806e91b7336df0ca90364999cec1",
+    "tools/city_sources.py": "aab465f8dd47f71710e86689e61a06f0b85e02d03a8e2aebcc0b39b44c50cf3d",
+    "tools/city_water_sources.py": "95964d2f5cc6012688652b994f43472a5dda5938976ae7e3592938f8e63795d6",
+    "tools/mvt_audit_v036.py": "4e04441678c230b907d27f960d9c81cf36862e31d324664dd03b6468e1bb8979",
+    "tools/precise_terrain_sources.py": "345b6ceae9d95a988caa030b2d75af000be5fdaff11d0d5c055b7cda0c49428b",
+    "tools/prepare_local_pack_v050.py": "99b0ea54ceb875ca3f840ba48789bcbf678d13af1545b71d0ac8007323d9a5b7",
+    "tools/qa_support.py": "6d8b3c241124ca15c05ec8f979a695f0464905c813e768ade03bdee84e91323d",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80",
+    "tools/validate_real_map_v046.py": "b758b002e26b194afa590075076acd718de638b6cf1f776f612f8e7d01a3105a",
+    "tools/world_source_bundle.py": "6c89923a0af493102dd1993107f2615987edac90ddbd5b62134800ec1133e477",
+    "tools/world_sources.py": "eb2a24b5c7f86ea4f4b76c90dc1a817256b30904a72094524ad2eabfefdfa3e2"
+  },
+  "vending_source_sha256": "0757a959324cd76cfe7bcd1352910c14e27711d9a5ce788a1d7b0471e250ac20"
+}

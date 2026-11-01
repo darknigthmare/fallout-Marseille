@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/interior_storage_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/integrated-release/interiors",
+    "--expect-html-sha",
+    "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "--expect-interior-sha",
+    "4385728898a5b81798da505ba9134d29f057a178279912f6d4be674e77661a0f",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 234867,
+  "exitCode": 0,
+  "startedAtEpoch": 1793497017.060998,
+  "durationSeconds": 480.7165126800537,
+  "scriptSha256": "1bb891a0cea142acd74a04bd85bbf4ae61573a5b15767672aba77130801785f2",
+  "scriptUnchanged": true,
+  "reportSha256": "50589add270d7010bdfcd5bc5ac05ec6aa31803a894c33b8600ceec4f5fec5b0",
+  "logSha256": "fd23079970ef005839e115ad2f47372410d622b1a6c3be3499e6b4c00e0f39ab",
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "runtimeChanged": [],
+  "runtimeInputCount": 363
+}

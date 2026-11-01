@@ -1,0 +1,26 @@
+{
+  "scope": "Three blank-at-EOF notices are inherited verbatim from the upstream merge parent; frozen validated files are retained. Other whitespace errors remain checked.",
+  "files": [
+    {
+      "file": "src/v050/04a_city_sources.js",
+      "currentTrailingNewlines": 2,
+      "remoteTrailingNewlines": 2,
+      "currentSha256": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b",
+      "remoteSha256": "ab2b81746145db13c6a8fbbabe566e9a93a23892ce0189c75a98e7b41a9f6e16"
+    },
+    {
+      "file": "tests/expansion/city_streaming.cjs",
+      "currentTrailingNewlines": 2,
+      "remoteTrailingNewlines": 2,
+      "currentSha256": "52bf10b3bf70331d3a5f8647b5803407e0a26186d9811fae8389c298dc4c19c0",
+      "remoteSha256": "df74adea145aeab5226e216a43197e1a2c274c93c93a2725290b7e7482f101e0"
+    },
+    {
+      "file": "tools/build_single.py",
+      "currentTrailingNewlines": 2,
+      "remoteTrailingNewlines": 2,
+      "currentSha256": "e0ac2a98ec2f6ff73518fd7fae00394bf0c58f1853348880444ac430790c00df",
+      "remoteSha256": "486ada60c45e1dd0df3c8045f69e62bc9777dd4965633630e4b09079780a025a"
+    }
+  ]
+}

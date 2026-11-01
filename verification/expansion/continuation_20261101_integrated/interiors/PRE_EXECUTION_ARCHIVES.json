@@ -1,0 +1,30 @@
+{
+  "scope": "Five exact native pilot source archives copied and verified before generic runner dispatch. The generic runner archives its actual argv entrypoint again before child launch.",
+  "copiedAndVerifiedUtc": "2026-11-01T01:36:52.840289+00:00",
+  "dispatchHasOccurred": false,
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "runtimeInputCount": 363,
+  "archives": {
+    "tests/expansion/interior_storage_native.py": {
+      "archive": "EXECUTED_interior_storage_native.py",
+      "sha256": "1bb891a0cea142acd74a04bd85bbf4ae61573a5b15767672aba77130801785f2"
+    },
+    "tests/expansion/interior_programs_native.py": {
+      "archive": "EXECUTED_interior_programs_native.py",
+      "sha256": "6424a6a85569cb80157abe58f7b16f61ac8b72774c240188c913d45aee8f281f"
+    },
+    "tests/expansion/interior_services_native.py": {
+      "archive": "EXECUTED_interior_services_native.py",
+      "sha256": "6f0bb4d0da40afac054fd382c14d02280493efd8f11b5f1dfb0a949539683387"
+    },
+    "tests/expansion/interior_doors_native.py": {
+      "archive": "EXECUTED_interior_doors_native.py",
+      "sha256": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b"
+    },
+    "tests/expansion/architecture_native_browser.py": {
+      "archive": "EXECUTED_architecture_native_browser.py",
+      "sha256": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5"
+    }
+  },
+  "report_script_dependency": "tests/expansion/interior_programs_native.py"
+}

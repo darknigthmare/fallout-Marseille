@@ -1,0 +1,104 @@
+{
+  "observed_utc": "2026-11-01 01:51:25 UTC",
+  "scope": "Completion/hash checks and visual inspection of the fresh merged C0 execution; no additional test count or browser run.",
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "actual_observer_exit": 0,
+  "recorded_child_exit": 0,
+  "passed": 472,
+  "failed": 0,
+  "total": 472,
+  "report_sha256": "b5c842876daa6d9e3ba6d3638f7c93ecb4d9ddc0f1b0592cfccb638eafc0597f",
+  "log_sha256": "57eb6ba5664b71b5a1c3753eb051caafca873146bc93099baa732ac1e4899b0a",
+  "receipt_sha256": "4976ec78c7adac695a11d184fbde3b19f452aebcd21d6080df2f13d046072e19",
+  "executed_script_sha256": "d8a2cf106fa4b9b2b47058668e7635a7cf3cdf20367e59b3453e6d93c3a595bd",
+  "pre_execution_source_archives_unchanged": true,
+  "source_archive_file_count": 11,
+  "frozen_runtime_count": 363,
+  "frozen_runtime_unchanged": true,
+  "runtime_differences": [],
+  "closed_server_connect_ex": 111,
+  "all_10_current_c0_captures_viewed": true,
+  "visual_blocking_defect_observed": false,
+  "captures": [
+    {
+      "file": "01_communes_paid_reserve.png",
+      "label": "Actual completed partage card, named commitments and paid exclusive finite supply decision.",
+      "sha256": "290b713de0998a55da7814bc329ba83f6f5ac4da599dfaf22fd7185982371b8f",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Carte Partage lisible : deux relais, trois eaux/un tissu, décision conservée, aucun renouvellement."
+    },
+    {
+      "file": "02_communes_radio.png",
+      "label": "Actual text station reports only the paid finite decisions and explicitly limits physical world changes.",
+      "sha256": "2d06a7c1a630a20bbbc6e1296fa61ad25876809767035caa48cd040d8a25a07d",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Canal13 choisi ; première décision, quantité finie et absence de canalisation réparée lisibles."
+    },
+    {
+      "file": "07_communes_receipt_delivered.png",
+      "label": "Native E dialogue at the unchanged second relay, after the once-only receipt acknowledgement.",
+      "sha256": "11afe4bbd4645e3af5f325c52ebdf30327cd3b73a3ab029b67b9dcbab0f76865",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Dialogue Aïcha lisible : reçu Saint-Charles et retour Vieux-Port ; arrière-plan surtout façade/terrain."
+    },
+    {
+      "file": "08_communes_counter_gift.png",
+      "label": "Native original contact remembers finite branch-specific donation; inventory quantities are checked independently.",
+      "sha256": "67a70d462c30a67dea62db28c8c1d32c72f4225cfd414f6a58b38bf48bee145d",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Dialogue Marius lisible : Stimpak unique, réserve non renouvelée ; acteur stylisé et table visibles."
+    },
+    {
+      "file": "03_gilets_paid_cantine.png",
+      "label": "Actual completed passage_libre card, named commitments and paid exclusive finite supply decision.",
+      "sha256": "ddec408185dca8e4d6115ebd2ac745f072d00e0718dab7ca3aa4f4859487db65",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Carte Gilets lisible : trois vivres/deux eaux, refus du péage, aucun convoi autonome ni barrage physiquement levé."
+    },
+    {
+      "file": "04_both_factions_radio.png",
+      "label": "Actual text station reports only the paid finite decisions and explicitly limits physical world changes.",
+      "sha256": "cf784cad16bc43de2239db4d81d466ab3b102035e5eca8ad4bbed6e73162ea22",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Les deux décisions figurent lisiblement ; la suite du texte radio passe sous le pli du panneau défilant."
+    },
+    {
+      "file": "09_gilets_receipt_delivered.png",
+      "label": "Native E dialogue at the unchanged second relay, after the once-only receipt acknowledgement.",
+      "sha256": "8039e6932abddaf15f296af532ae13f65ddac00eb9267579d7b95484a5154afd",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Dialogue Maya lisible : réception par relais nommé, aucun droit de péage et retour AubagneHaute ; acteur visible."
+    },
+    {
+      "file": "10_gilets_counter_gift.png",
+      "label": "Native original contact remembers finite branch-specific donation; inventory quantities are checked independently.",
+      "sha256": "509b3daf43c4493439af194295bd682899663fb0966a2a53005ed6d839714043",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Dialogue Basile lisible : ration unique et absence de répétition ; arrière-plan principalement façade proche."
+    },
+    {
+      "file": "05_communes_after_continue.png",
+      "label": "Native Continue: the actual completed partage card is scrolled into view; exact ledger, costs and no duplicate reward are separately checked.",
+      "sha256": "fa36ed0c153c313d488192a543691fec38999216cfd51b88882521be8b72d4ea",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Après Continue, carte Partage finale lisible sans bouton de récompense dans cette carte."
+    },
+    {
+      "file": "06_gilets_after_continue.png",
+      "label": "Native Continue: the actual completed passage_libre card is scrolled into view; exact ledger, costs and no duplicate reward are separately checked.",
+      "sha256": "a7d3e88d499f11ed82ebbae49e1c90f84ccc303131ad9475edfcef25564688a1",
+      "method": "Native rendered game and UI, after declared diagnostic positioning/freeze.",
+      "visually_inspected": true,
+      "observation": "Après Continue, carte Gilets finale lisible avec décision non renouvelable."
+    }
+  ]
+}

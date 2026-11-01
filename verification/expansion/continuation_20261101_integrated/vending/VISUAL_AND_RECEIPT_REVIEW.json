@@ -1,0 +1,84 @@
+{
+  "observed_utc": "2026-11-01 01:53:24 UTC",
+  "scope": "Completion/hash checks and visual inspection of the fresh merged C0 execution; no additional test count or browser run.",
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "actual_observer_exit": 0,
+  "recorded_child_exit": 0,
+  "passed": 64,
+  "failed": 0,
+  "total": 64,
+  "report_sha256": "550b8f8be1e5eff7cc35e8c6ae1b0a5399a23455ca49275d81ae3632fa42aae6",
+  "log_sha256": "e9335d6d9316a2b2254138182af8788bb3be762e2533e823bcdbdb7e2cfa703e",
+  "receipt_sha256": "96b01bb3069b41243236502fbc94284a4fb4db97c53cd7639643592b9b555c52",
+  "executed_script_sha256": "2e034f2a5cee4e7dd67638b1df0d03533587806e91b7336df0ca90364999cec1",
+  "pre_execution_source_archives_unchanged": true,
+  "source_archive_file_count": 11,
+  "frozen_runtime_count": 363,
+  "frozen_runtime_unchanged": true,
+  "runtime_differences": [],
+  "closed_server_connect_ex": 111,
+  "reported_cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_closed": true,
+    "server_closed": true,
+    "worker_stopped": true
+  },
+  "all_6_current_c0_captures_viewed": true,
+  "visual_blocking_defect_observed": false,
+  "captures": [
+    {
+      "file": "01_authored_cabinet.png",
+      "sha256": "3def2ce0d247014359dd5f0b2aa4ca1b59881a127d7365680300eb86ee6a4b64",
+      "label": "Modèle original dans la scène narrative d’Aubagne ; position inventée, approche physique réelle.",
+      "method": "Actual unchanged production frame, declared diagnostic freeze/camera; no image editing.",
+      "visually_inspected": true,
+      "observation": "Machine rouge stylisée entièrement visible dans Aubagne narrative ; quatre bouteilles initiales et invite E lisibles."
+    },
+    {
+      "file": "02_broken_power_and_stock.png",
+      "sha256": "907a5fa77438782af4b64bada4bf01382cf3a97560c748c7e499b1129ff0a4ec",
+      "label": "Avant réparation : fournitures nécessaires et réserves finies réelles.",
+      "method": "Actual unchanged production frame, declared diagnostic freeze/camera; no image editing.",
+      "visually_inspected": true,
+      "observation": "Modal lisible : hors-service, réparation2ferrailles+1circuit, stocks3+1 et prix30/65, achats désactivés."
+    },
+    {
+      "file": "03_paid_stock.png",
+      "sha256": "02bf4293bd1aa5c0964af7808b7fa0dd1df13917a1324dee0129e9ff006b080c",
+      "label": "Paiements et épuisement du Quantum appliqués à l’inventaire ordinaire.",
+      "method": "Actual unchanged production frame, declared diagnostic freeze/camera; no image editing.",
+      "visually_inspected": true,
+      "observation": "Alimentation rétablie,405capsules et stocks2+0 visibles ; Quantum épuisé et achat ordinaire actif."
+    },
+    {
+      "file": "04_exhausted_after_continue.png",
+      "sha256": "38d690df306802282dcf115dfcd0a21e32366b7158beb1419185ca3a82a7b26f",
+      "label": "Même réserve vide et alimentation rétablie après rechargement natif et Continuer.",
+      "method": "Actual unchanged production frame, declared diagnostic freeze/camera; no image editing.",
+      "visually_inspected": true,
+      "observation": "Après Continue :346capsules, deux réserves0/0 et boutons épuisés ; aucune réparation proposée."
+    },
+    {
+      "file": "05_real_geographic_counterpart.png",
+      "sha256": "900006627b381e08619cf48daca34c355799bc8694fdc5a41a72c70a0975eb2a",
+      "label": "Distributeur inventé posé sur un support source réellement validé au relais géographique ; identité et stock communs.",
+      "method": "Actual unchanged production frame, declared diagnostic freeze/camera; no image editing.",
+      "visually_inspected": true,
+      "observation": "Même machine au vrai relais Huveaune, voyant vert, réserve visible vide et invite E ; placement inventé sur terrain source déclaré."
+    },
+    {
+      "file": "06_portrait_marseille_reserve.png",
+      "sha256": "96c1643a9688b260c826fb8c6281065d2b772817dfd379f4555a9a57cee22d16",
+      "label": "Format390×844 émulé, seconde machine avec son stock propre ; aucun appareil mobile physique certifié.",
+      "method": "Actual unchanged production frame, declared diagnostic freeze/camera; no image editing.",
+      "visually_inspected": true,
+      "observation": "Viewport390x844 : titre enveloppé, Quitter et Réparer entiers, stock ordinaire4 visible, contenu bas défilant sans débordement horizontal ; Quantum sous le pli."
+    }
+  ],
+  "limits": [
+    "Authored original machine placements and stylized geometry are declared fiction.",
+    "Native geography covers Aubagne counterpart; Marseille municipal alias is covered by controlled contracts.",
+    "390x844 is an emulated viewport, not physical mobile hardware."
+  ]
+}

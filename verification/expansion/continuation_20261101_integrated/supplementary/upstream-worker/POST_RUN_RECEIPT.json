@@ -1,0 +1,54 @@
+{
+  "scope": "Supplementary upstream Node browser regression; excluded from the principal assertion aggregate. Controlled synthetic test, no real IGN geography visit.",
+  "stage": "complete",
+  "recordedUtc": "2026-11-01T01:46:16Z",
+  "nativeReceipt": "EXECUTION.json",
+  "rawReport": "SERVICE_WORKER.json",
+  "rawReportSha256": "ee5f3b7310780eb31fbae1b699a2cea50d07137e6695897f46505450b77a4ef8",
+  "nativeReceiptSha256": "52545b847bb15f097b9f9651dc7607906dc3c06884f268ef55262deb5163155d",
+  "stdoutSha256": "6e481277bed66cb66555a33a36073dc9526aff30efceed1738cba51ae51ad8ea",
+  "argv": [
+    "node",
+    "tests/expansion/service_worker_delivery.cjs"
+  ],
+  "environment": {
+    "CHROMIUM_PATH": "/usr/bin/chromium",
+    "MISTRAL_PLAYWRIGHT_MODULE": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package",
+    "MISTRAL_QA_OUTPUT": "/workspace/.cloud-setup/fallout-marseille/integrated-release/upstream-worker"
+  },
+  "childPid": 238779,
+  "childExitCode": 0,
+  "childProcessGone": true,
+  "recordedChecksPassed": 6,
+  "recordedChecksFailed": 0,
+  "excludedFromPrincipalAggregate": true,
+  "runtimeInputCount": 363,
+  "runtimeChanged": [],
+  "htmlBeforeSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "htmlAfterSha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "workerBeforeSha256": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+  "workerAfterSha256": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+  "sourceArchiveHashesConfirmed": true,
+  "beforeSourceHashes": {
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "icons/mistral-512.png": "a48d8652462c8df38982540e7c2e6cea9d729ec12375f9aa32d99dcb84510731",
+    "icons/mistral-192.png": "0a107545bcd5f62980b562f63fe5677c47b625a839cf149cd316dce737ee37fd",
+    "sw.js": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+    "manifest.webmanifest": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56",
+    "tests/expansion/service_worker_delivery.cjs": "c835526271d7ee40aa76942ba9e87ccb7e0f389afce9996be01671624050fd86",
+    "index.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1"
+  },
+  "afterSourceHashes": {
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "icons/mistral-512.png": "a48d8652462c8df38982540e7c2e6cea9d729ec12375f9aa32d99dcb84510731",
+    "icons/mistral-192.png": "0a107545bcd5f62980b562f63fe5677c47b625a839cf149cd316dce737ee37fd",
+    "sw.js": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+    "manifest.webmanifest": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56",
+    "tests/expansion/service_worker_delivery.cjs": "c835526271d7ee40aa76942ba9e87ccb7e0f389afce9996be01671624050fd86",
+    "index.html": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1"
+  },
+  "oldUpstreamEvidenceFileCount": 9,
+  "oldUpstreamEvidenceUnchanged": true,
+  "shots": [],
+  "limitation": "Actual production worker lifecycle upgrading an explicitly synthetic cache12 old HTML shell; offline missing metadata intentionally yields503."
+}

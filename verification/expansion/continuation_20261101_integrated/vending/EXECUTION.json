@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/vending_native.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/integrated-release/vending",
+    "--expect-html-sha",
+    "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+    "--expect-vending-sha",
+    "0757a959324cd76cfe7bcd1352910c14e27711d9a5ce788a1d7b0471e250ac20"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 242755,
+  "exitCode": 0,
+  "startedAtEpoch": 1793497903.3108692,
+  "durationSeconds": 60.58073401451111,
+  "scriptSha256": "2e034f2a5cee4e7dd67638b1df0d03533587806e91b7336df0ca90364999cec1",
+  "scriptUnchanged": true,
+  "reportSha256": "550b8f8be1e5eff7cc35e8c6ae1b0a5399a23455ca49275d81ae3632fa42aae6",
+  "logSha256": "e9335d6d9316a2b2254138182af8788bb3be762e2533e823bcdbdb7e2cfa703e",
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "runtimeChanged": [],
+  "runtimeInputCount": 363
+}

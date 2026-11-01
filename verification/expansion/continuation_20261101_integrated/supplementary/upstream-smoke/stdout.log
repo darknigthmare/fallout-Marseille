@@ -1,0 +1,13 @@
+PASS HTTP document matches rebuilt production HTML
+PASS New campaign enters the actual A-03 vault
+PASS Production renderer uses WebGL
+PASS Synthetic boundary laboratory loads
+PASS Native collision-aware movement advances on the lab ground
+PASS Lab contains both building and road geometry
+PASS Neighbouring geographic window loads
+PASS Neighbour camera uses available lab terrain
+PASS Original geographic window reloads
+PASS A to B to A preserves original road and building geometry
+PASS Synthetic lab does not overwrite campaign storage
+PASS No JavaScript exception during the browser smoke
+{"passed":12,"failed":0,"pageErrors":0,"output":"/workspace/.cloud-setup/fallout-marseille/integrated-release/upstream-smoke"}

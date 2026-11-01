@@ -1,0 +1,7 @@
+PASS Offline cache name follows actual HTML digest
+PASS Existing cache serves the old shell
+PASS Updated worker stores rebuilt production HTML
+PASS Previous cache is removed
+PASS Offline navigation receives the rebuilt game
+PASS Missing map data remains an explicit failure offline
+{"passed":6,"failed":0}

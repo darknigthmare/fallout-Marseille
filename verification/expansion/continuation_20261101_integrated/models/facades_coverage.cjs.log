@@ -1,0 +1,21 @@
+OK Pinned actual source geometry and Lambert93 metric copies retain their acquired coordinates
+OK batiment.10611104: a whole doorway and windows follow the unchanged real footprint
+OK batiment.10626012: a whole doorway and windows follow the unchanged real footprint
+OK batiment.9609229: a whole doorway and windows follow the unchanged real footprint
+OK batiment.10611104: microjogs remain source segments and preserve winding/start identity
+OK batiment.10626012: microjogs remain source segments and preserve winding/start identity
+OK batiment.10611104: a complete attributed blind perimeter defeats every inferred microjog opening
+OK batiment.10626012: a complete attributed blind perimeter defeats every inferred microjog opening
+OK batiment.10611104: a documentary raw edge and metric opening remain untouched
+OK batiment.10626012: a documentary raw edge and metric opening remain untouched
+OK batiment.10611104: fragment allocation defers an entire door when its source span exceeds the budget
+OK batiment.10626012: fragment allocation defers an entire door when its source span exceeds the budget
+OK The short hexagonal source pans retain narrow windows on every source face and real doorway jambs
+OK Integrated support directions never bridge a sustained right-angle corner or a reentrant notch
+OK A source contour without an actor-clear approach reports its omission instead of promising access
+OK Runtime-rejected access remains explicit even when the geometric source could carry a doorway
+OK Dense microgeometry stays bounded without changing any source vertex
+OK Non-finite or non-numeric geometry budgets cannot disable the allocation cap
+OK Non-finite or non-numeric opening budgets fail explicitly instead of silently losing the inventory
+{"passed":19,"failed":0,"scope":"Production facade continuation: three pinned actual IGN source footprints and explicitly synthetic documentation/corner/clearance fixtures; source geometry unchanged"}
+

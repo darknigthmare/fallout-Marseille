@@ -1,0 +1,505 @@
+{
+  "created_utc": "2026-11-01T01:44:12.890116+00:00",
+  "scope": "Fresh C0 executions; sequential single-browser lane. All screenshot files listed were opened. Visual observations add no native assertions.",
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "frozen_input_count": 363,
+  "changed_frozen_inputs": [],
+  "methods": [
+    {
+      "id": "fps",
+      "passed": 142,
+      "failed": 0,
+      "report_sha256": "77ad54153733bfe0c06fa3c4a3a7921ba8bb3759c858628cca9fcab5124811c5",
+      "receipt_sha256": "abacdce1faf1a84142901868401d26146d14ea1422a74a0c8979d89309cedaa9",
+      "script_sha256": "92bc88e40b72de398e195096b1012045c8f3164785b38c1ae4bcd245d349a2f4",
+      "stdout_sha256": "68efa5e8a40d60953c49511a69fe78be54187c4d8b572e9a975814da0c1f2e66",
+      "actual_exit_code": 0,
+      "server_origin": "http://127.0.0.1:41373/index.html?skipboot",
+      "server_connect_ex_after_exit": 111,
+      "raw_console_error_count": 9,
+      "console_errors_raw": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "shots": [
+        {
+          "file": "01_native_pistol_hip.png",
+          "sha256": "f291bab4fbf1a2129b331ecab2879511698406583cffe85a1f753a186ad7ad8e",
+          "bytes": 1358633,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Pistolet et deux prises stylisées visibles à droite; ouverture centrale libre."
+        },
+        {
+          "file": "02_profile_revolver44.png",
+          "sha256": "8476a1213c6e79dfc06c5d2adba68b0aa9631ae393e1128ab1d8ea473323f1fc",
+          "bytes": 1363981,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Revolver à barillet distinct visible, HUD6/0."
+        },
+        {
+          "file": "02_profile_doubleBarrel.png",
+          "sha256": "e78db1b05fecf4cc0b442610481b877a9b51c6058e87a85ed2052c4e273a3b4f",
+          "bytes": 1343633,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Profil double canon et prise longue visibles, HUD2/0."
+        },
+        {
+          "file": "02_matrix_rifle.png",
+          "sha256": "1cdba7fddab041e14b505899b0650ca95de8eae0d3404111c081afbb97081965",
+          "bytes": 1348656,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Carabine et prise de support visibles, HUD16/42."
+        },
+        {
+          "file": "02_matrix_energy.png",
+          "sha256": "298bd720f8e9de6a610a68aa87d008a7dc9614ce06a9b49fd872b3b6b03f6a65",
+          "bytes": 1338213,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Pistolet laser vert et prises visibles, HUD12/0."
+        },
+        {
+          "file": "02_matrix_blade.png",
+          "sha256": "cc30d7364c76b85069e8cc915e057ac135f37b1f4341505cecc6e3f861aff0a9",
+          "bytes": 1350382,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Lame et garde visibles à droite, main de support basse à gauche; HUD mêlée."
+        },
+        {
+          "file": "02b_native_wall_lowering.png",
+          "sha256": "7ee910b8919254d4f6c9e7f25bfdd953c032f17728f201ba18c72e3dbe206e17",
+          "bytes": 1459246,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Mur proche remplit la scène; carabine abaissée en bas droit."
+        },
+        {
+          "file": "03_native_rifle_aim.png",
+          "sha256": "7bf21e40cec7e967868dad24a2396aaaa85aa12675a86b5d3036dfbaaa22dfe6",
+          "bytes": 1341735,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Visée alignée au centre, mains rapprochées autour de la carabine."
+        },
+        {
+          "file": "04_native_shot_recoil.png",
+          "sha256": "3cab8370b0bc0e98643a213a222588fe6f66bd9023ae6bfd0491ee73e55d6dee",
+          "bytes": 1344598,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Étoile de bouche et recul du pistolet visibles; HUD9/60."
+        },
+        {
+          "file": "05_native_reload_hands.png",
+          "sha256": "edb31519754d8f7bea09378976d65d60b82e8e84b02ac4bfa57f1535238c6b27",
+          "bytes": 1337694,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Chargeur tenu par la main de support et pistolet levé; rechargement0,7s."
+        },
+        {
+          "file": "05_reload_revolver.png",
+          "sha256": "d70b16eaf585e54dd923e177250911740218e1cc0c379ef250f7fb78115222ea",
+          "bytes": 1355398,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Barillet ouvert et chargeur rapide visibles; rechargement0,8s."
+        },
+        {
+          "file": "05_reload_break-action.png",
+          "sha256": "03930d1ef6727ee52b644a8758f9009dcf5569ac511a1224972d9eed044409fc",
+          "bytes": 1349637,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Bascule du canon et cartouches visibles dans la prise de support."
+        },
+        {
+          "file": "05_reload_energy-pistol.png",
+          "sha256": "8b4fa412d2d79a7c29646fbb4dea33bee2736059a0f5ce2b64e3135c5e0c6aed",
+          "bytes": 1367284,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Cellule verte tenue en main et pistolet levé visibles."
+        },
+        {
+          "file": "05_reload_launcher.png",
+          "sha256": "f4c62d348e112ac49f711cc139a606263c048251e1b91f1d4a8e3272f088424c",
+          "bytes": 1343694,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Tube de lanceur et projectile tenu par la main de support visibles."
+        },
+        {
+          "file": "06_native_portrait_hands.png",
+          "sha256": "bf4fe6a649776039d2856b7ddeb95d834d606ed980000a532d519024e81df329",
+          "bytes": 386215,
+          "width": 390,
+          "height": 844,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Deux prises en portrait visibles au-dessus du panneau munitions; bas du poignet derrière le HUD."
+        },
+        {
+          "file": "07_native_portrait_reduced_motion.png",
+          "sha256": "67abc2f6678fb8a06eda494df06dfc44ac9777ac919576fb5550f8267c9bf5ae",
+          "bytes": 383892,
+          "width": 390,
+          "height": 844,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Présentation portrait statique visible; poignée et bracelet partiellement derrière le HUD translucide."
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "passed": 44,
+      "failed": 0,
+      "report_sha256": "d63fe01c84d0dc835956a26f324f7d785a7c341dbd0ac74a3c740dfe003a23b9",
+      "receipt_sha256": "c039a4b50223e07b5cdcfe7fd27f833c6f7eac567c27eba36dc7748ea1bc2e43",
+      "script_sha256": "d1d912cef0f08e45df50b5704ef20aba4e592cd7e2dc696b9d71e783e7bbbc55",
+      "stdout_sha256": "572d74dadfcf2814787484fb5ffd718d0d232070578f49981997496aa786dbe6",
+      "actual_exit_code": 0,
+      "server_origin": "http://127.0.0.1:42829",
+      "server_connect_ex_after_exit": 111,
+      "raw_console_error_count": 9,
+      "console_errors_raw": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "shots": [
+        {
+          "file": "01_actual_reload_progress.png",
+          "sha256": "e638e10331e3c9f7c72ae50c71e5a377b29b9b7fbfa04edca2f4f7b46c5cd501",
+          "bytes": 1739681,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Rechargement0,6s et barre partielle visibles, HUD9/42.",
+          "screenshot_elapsed_seconds": 0.8231852399767376,
+          "dom_before_visible": {
+            "reload": true
+          },
+          "dom_after_visible": {
+            "reload": true
+          }
+        },
+        {
+          "file": "02_actual_received_damage.png",
+          "sha256": "977dd937b10c8bdda6a37899e04b9267ba5b0a4269f78ff278913a7967a96767",
+          "bytes": 1767340,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Reçu−11PV et sous-titre de dégâts visibles; PV104 et munitions10/41 lisibles.",
+          "screenshot_elapsed_seconds": 0.657238795014564,
+          "dom_before_visible": {
+            "hurt": true,
+            "subtitle": true
+          },
+          "dom_after_visible": {
+            "hurt": true,
+            "subtitle": true
+          }
+        },
+        {
+          "file": "03_actual_hit_confirmation.png",
+          "sha256": "b92a2be0fbf1b45b9b50a32cbeb84e735604b00b5f23b85e310a2f0b1592d990",
+          "bytes": 1839807,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "TOUCHÉ et marque centrale jaunes visibles, toast de dégâts et9/41 lisibles.",
+          "screenshot_elapsed_seconds": 0.6989271700149402,
+          "dom_before_visible": {
+            "hit": true
+          },
+          "dom_after_visible": {
+            "hit": false
+          }
+        },
+        {
+          "file": "04_actual_neutralisation.png",
+          "sha256": "d05b352da7309b0d9634f51e993d461583d572c44c8849adcc89ccfe0083a12e",
+          "bytes": 1868140,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "NEUTRALISÉ visible au centre avec toasts de neutralisation et+24XP, munitions6/41.",
+          "screenshot_elapsed_seconds": 0.4605890389648266,
+          "dom_before_visible": {
+            "hit": true
+          },
+          "dom_after_visible": {
+            "hit": true
+          }
+        },
+        {
+          "file": "05_actual_feedback_1440x900.png",
+          "sha256": "4d4a8686032cc29bad936ac8f24c8208e53be5bfb126b67df859243ac541d6c8",
+          "bytes": 1737975,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Reçu−1,0PV et sous-titre visibles, sans couvrir PV101/munitions6/41.",
+          "screenshot_elapsed_seconds": 0.42960842000320554,
+          "dom_before_visible": {
+            "hurt": true,
+            "subtitle": true
+          },
+          "dom_after_visible": {
+            "hurt": false,
+            "subtitle": true
+          }
+        },
+        {
+          "file": "05_actual_feedback_1024x768.png",
+          "sha256": "4b7dcb3610e9c43498f4f8dc15eb6b2d82cccc0c13c4917d023b255b9c8988f4",
+          "bytes": 1060174,
+          "width": 1024,
+          "height": 768,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Reçu−1,0PV et sous-titre visibles, sans couvrir PV100/munitions6/41.",
+          "screenshot_elapsed_seconds": 0.24912515399046242,
+          "dom_before_visible": {
+            "hurt": true,
+            "subtitle": true
+          },
+          "dom_after_visible": {
+            "hurt": true,
+            "subtitle": true
+          }
+        },
+        {
+          "file": "05_actual_feedback_390x844.png",
+          "sha256": "5a8c44a00d1e6104ea99d86347aca83c0c77a6479c08ed0251cff82af49cabd2",
+          "bytes": 479890,
+          "width": 390,
+          "height": 844,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Sous-titre replié dans une bande libre et reçu−1,0PV visibles, PV99/munitions6/41 dégagés.",
+          "screenshot_elapsed_seconds": 0.22443608700996265,
+          "dom_before_visible": {
+            "hurt": true,
+            "subtitle": true
+          },
+          "dom_after_visible": {
+            "hurt": true,
+            "subtitle": true
+          }
+        },
+        {
+          "file": "05_actual_feedback_844x390.png",
+          "sha256": "903452b41b002f1ca3bf91a365f885bb202041cda323f3cb3f8c61a7410e81da",
+          "bytes": 474110,
+          "width": 844,
+          "height": 390,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Sous-titre en bande supérieure et reçu−1,0PV visibles, PV98/munitions6/41 dégagés.",
+          "screenshot_elapsed_seconds": 0.12098931102082133,
+          "dom_before_visible": {
+            "hurt": true,
+            "subtitle": true
+          },
+          "dom_after_visible": {
+            "hurt": true,
+            "subtitle": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "hud",
+      "passed": 90,
+      "failed": 0,
+      "report_sha256": "00893f01316da7e9f173ca11dd68fc7aed28c37eb15c34da33d73651826b90e7",
+      "receipt_sha256": "2e4a1831ec962b7183d22554313c7984f985be011ebeddda3019539e5743c675",
+      "script_sha256": "36515889880c836aa1b3c56915318df5aaee13037998a4b94e598f752ac766f5",
+      "stdout_sha256": "7b0497bcb54dbe7ffac9647f098073f10fb501a7acdd185db5dd882620df25ad",
+      "actual_exit_code": 0,
+      "server_origin": "http://127.0.0.1:45517",
+      "server_connect_ex_after_exit": 111,
+      "raw_console_error_count": 0,
+      "console_errors_raw": [],
+      "shots": [
+        {
+          "file": "1440x900_hud.png",
+          "sha256": "422172cc893c61bb8d44e31a25faf1c3ca25bbe6151603d0f4eff1ec17983fef",
+          "bytes": 1444495,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "PV, munitions10/42, compas, quête et assistance50% visibles; ganteletsT45 stylisés."
+        },
+        {
+          "file": "1024x768_hud.png",
+          "sha256": "21ac9b877bee6a2a25c3e5f8e0c8d58c09c4dc6c4376aa5d61e05e7e6072f369",
+          "bytes": 879892,
+          "width": 1024,
+          "height": 768,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Blocs HUD principaux contenus, PV/munitions lisibles; lieu replié."
+        },
+        {
+          "file": "390x844_hud.png",
+          "sha256": "1e1fef5617ff81e924a8267d94271cdb2c247b92f713c232182b80aa446490c5",
+          "bytes": 387600,
+          "width": 390,
+          "height": 844,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "HUD portrait et assistance50% visibles; arme/gantelets occupent une grande part du bas droit."
+        },
+        {
+          "file": "844x390_hud.png",
+          "sha256": "d07e73f1fa9d7d4e7b810d18d5613ccb01a42cec1d56960b3b69146cb224225f",
+          "bytes": 373672,
+          "width": 844,
+          "height": 390,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "HUD paysage bas contenu et PV/munitions lisibles; assistance compactée."
+        },
+        {
+          "file": "powered_crouch_hud.png",
+          "sha256": "dfa0f0562ee532d3f4496290070a2a75b8bc014a7e51fadb33933bac226f13af",
+          "bytes": 1441887,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "CACHÉ et ACCROUPI visibles au centre avec les ganteletsT45."
+        },
+        {
+          "file": "compact_hud.png",
+          "sha256": "81573e5c7b265d2111689083ffba79e89b4e4ec90c0e94881d1f6a68c8519248",
+          "bytes": 1437896,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Affichage compact visible: niveau/critique retirés, PV/munitions conservés."
+        },
+        {
+          "file": "touch_390x844_hud.png",
+          "sha256": "86d9459eb80f4d2d614c9aa498bf32b979fc19067f353803b510d4e7a25bb092",
+          "bytes": 399609,
+          "width": 390,
+          "height": 844,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Joystick et commandesE/TIR/PIP/V/Xvisée visibles; toastT45 présent; PV/munitions dégagés."
+        },
+        {
+          "file": "touch_aim_presentation.png",
+          "sha256": "34ca12ed477177854ae49ae4631e3d72b81d9c7cee89fd1020b357c02383ae83",
+          "bytes": 395502,
+          "width": 390,
+          "height": 844,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Présentation des commandes tactiles et gantelets visible; une image fixe ne prouve pas le maintien continu."
+        },
+        {
+          "file": "touch_844x390_hud.png",
+          "sha256": "ec209a8e6bb35df0b355108c83a1244a43c60f3e61626476d2b16af5bf9a595f",
+          "bytes": 383223,
+          "width": 844,
+          "height": 390,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Joystick et commandes visibles en paysage avec CACHÉ/ACCROUPI; PV/munitions dégagés. Aucun toast d’équipement visible dans ce raster."
+        }
+      ]
+    },
+    {
+      "id": "controller",
+      "passed": 63,
+      "failed": 0,
+      "report_sha256": "a0a2aad9d7bad415e711eae0ab0187afb37bcfe89832716882f939f894262c25",
+      "receipt_sha256": "404ccf64f310acd36b9014f9c60109f988ecc7e158149ce0ebdf7f8320f5fdc3",
+      "script_sha256": "cc83a11b3b5444a191fbd76066b3fc0ca44a9b9223f9460756fb974e1fbbbdf3",
+      "stdout_sha256": "002c6a040dbbcde61a7b90b72bfb6b1a0fd64d5de6e0de8ecd098f84641092f8",
+      "actual_exit_code": 0,
+      "server_origin": "http://127.0.0.1:35311/index.html?skipboot=1",
+      "server_connect_ex_after_exit": 111,
+      "raw_console_error_count": 0,
+      "console_errors_raw": [],
+      "shots": []
+    },
+    {
+      "id": "north",
+      "passed": 46,
+      "failed": 0,
+      "report_sha256": "797a8e7ad01f1d53dd87b71fc87c7a758c00b7c9426b90418847903e37a6f9a5",
+      "receipt_sha256": "ee4c380e1c87eb0d7f1f35ca8dc8df29eb5be6e289e58775a25768d1dd86a165",
+      "script_sha256": "9aade952089086892e4271ecb53d682294491b782b5a6c9cbb76701d47afe64b",
+      "stdout_sha256": "0d15510b42aef71533a808d0af03c4c9619c5a11166d0adabc07246968048a1a",
+      "actual_exit_code": 0,
+      "server_origin": "http://127.0.0.1:39919",
+      "server_connect_ex_after_exit": 111,
+      "raw_console_error_count": 0,
+      "console_errors_raw": [],
+      "shots": [
+        {
+          "file": "01_saint_antoine_real_terrain.png",
+          "sha256": "c063f1e33560af1495d38c18bb8aaa2994eb8c3f5ccb96df91754b714e23e48e",
+          "bytes": 1476464,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Terrain vert facetté en pente et volumes bâtis génériques visibles à hauteur d’œil. Certaines ouvertures de façade sont recoupées par la pente. Cette vue prouve la présence du relief, sans certifier une façade, une gare ou un intérieur relevés."
+        },
+        {
+          "file": "02_estaque_real_terrain.png",
+          "sha256": "8257ce3e9dbe95dd2b1fe43ef8c602ea40ec07782a73b63fbb8731dc593328f3",
+          "bytes": 1456821,
+          "width": 1440,
+          "height": 900,
+          "opened_with": "view_image, detail=original",
+          "observations_fr": "Relief facetté marqué et ensemble de volumes bâtis génériques visibles à hauteur d’œil. Façades et toitures simplifiées, bande sombre à l’arrière-plan; aucune identification architecturale précise du port ou du quartier n’est déduite de l’image seule."
+        }
+      ]
+    }
+  ],
+  "passed": 385,
+  "failed": 0,
+  "screenshots_opened": 35,
+  "new_assertions_from_visual_review": 0,
+  "production_edits": false,
+  "qa_edits": false,
+  "limits_fr": [
+    "Caméra, gel et ticks diagnostiques déclarés; ces essais ne sont pas des parties humaines continues.",
+    "Le pilote FPS prépare des armes et réserves ordinaires pour inspecter les familles et rechargements; il ne prouve pas leur acquisition en jeu.",
+    "Les dégâts entrants utilisent la vraie chaîne v028NativeDamage, sans constituer une attaque ennemie observée.",
+    "Les images de combat montrent les textes attendus; deux DOM après encodage ont déjà expiré sous charge, avec les durées exactes conservées. Aucun TTL ou clock modifié.",
+    "Mains, gantelets et armes stylisés; poignets partiellement masqués par le HUD, surtout en portrait.",
+    "Texte HUD petit, libellés ellipsés et espace de scène réduit dans les formats étroits.",
+    "Toucher et Gamepad API simulés, aucun appareil physique certifié.",
+    "Deux fenêtres nord bornées avec nœuds WGS84 rééchantillonnés au plus proche à1m; aucune fidélité urbaine ou architecturale intégrale1:1 certifiée."
+  ]
+}
