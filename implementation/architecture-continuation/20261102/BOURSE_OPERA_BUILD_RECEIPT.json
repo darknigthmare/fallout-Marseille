@@ -1,0 +1,1408 @@
+{
+  "schemaVersion": 1,
+  "kind": "offline-native-mns-source-extension",
+  "buildingCleabs": "BATIMENT0000000258927584",
+  "buildingSourceId": "batiment.9967974",
+  "baselineSurfaceSha256": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d",
+  "previousRecordsUnchanged": 19,
+  "cityIndexSha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+  "sourceChunk": "data/map_pack/city/m13055-r05-c06-0-1-bc93c7f7ec8b18f4.json",
+  "sourceChunkSha256": "bc93c7f7ec8b18f42b3398e0d97c81ccd3454bc0a6b8487a3089d1dcf6fa66b7",
+  "nativeMns": {
+    "previousTileSha256": "a4d7f88153e7ee25a8f3043005c6db9619aa4d41d0bc0eb4abb939af3b459b96",
+    "newTileSha256": "4354e54417d2c2d00392f90820c69c3195145dd0bae244f36fe58aa8b7126b62",
+    "newBytes": 16000513,
+    "newUrl": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6246000.25,892999.75,6247000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6247_MNS_O_0M50_LAMB93_IGN69.tif",
+    "declaredHorizontalFrame": "EPSG:2154 (LAMB93), official request and source metadata",
+    "verticalDatum": "NGF-IGN69",
+    "dtype": "float32",
+    "nativeSpacingMetres": 0.5,
+    "noData": -9999,
+    "headerEpsgAutoIdentification": null,
+    "headerNote": "The acquired WKT is retained exactly; this WMS TIFF has no automatic EPSG identification.",
+    "license": "Licence Ouverte 2.0",
+    "attribution": "IGN — Géoplateforme, LiDAR HD et BD TOPO"
+  },
+  "siteContext": {
+    "zoneCleabs": "SURFACTI0000002002709084",
+    "zoneSourceId": "zone_d_activite_ou_d_interet.449846",
+    "zoneProperties": {
+      "cleabs": "SURFACTI0000002002709084",
+      "categorie": "Culture et loisirs",
+      "nature": "Salle de spectacle ou conférence",
+      "nature_detaillee": "Centre culturel",
+      "toponyme": "Palais de la Bourse",
+      "statut_du_toponyme": "Validé",
+      "importance": "6",
+      "fictif": false,
+      "etat_de_l_objet": "En service",
+      "date_creation": "2017-03-15T14:53:06.959Z",
+      "date_modification": "2024-02-23T15:37:23.382Z",
+      "date_d_apparition": null,
+      "date_de_confirmation": "2024-02-07Z",
+      "sources": null,
+      "identifiants_sources": null,
+      "methode_d_acquisition_planimetrique": "Orthophotographie",
+      "precision_planimetrique": 3,
+      "insee_commune": "13201",
+      "commune": "MARSEILLE 1ER ARRONDISSEMENT",
+      "adresse_postale": "sans objet",
+      "identifiant_voie_ban": null,
+      "nom_commercial": null,
+      "id_ban_odonyme": null
+    },
+    "sourceResponseSha256": "a828afee591cb9445cfc166c972f270ba6212b083175d4a3caeced035ef6eb0f",
+    "sourceUrl": "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=BDTOPO_V3%3Azone_d_activite_ou_d_interet&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A4326&CQL_FILTER=BBOX%28geometrie%2C5.22875102%2C43.1696313%2C5.53254336%2C43.39105653%2C%27EPSG%3A4326%27%29+AND+%28toponyme+ILIKE+%27%25saint-victor%25%27+OR+toponyme+ILIKE+%27%25saint+victor%25%27+OR+toponyme+ILIKE+%27%25saint-jean%25%27+OR+toponyme+ILIKE+%27%25saint+jean%25%27+OR+toponyme+ILIKE+%27%25saint-nicolas%25%27+OR+toponyme+ILIKE+%27%25saint+nicolas%25%27+OR+toponyme+ILIKE+%27%25bor%C3%A9ly%25%27+OR+toponyme+ILIKE+%27%25borely%25%27+OR+toponyme+ILIKE+%27%25bourse%25%27+OR+toponyme+ILIKE+%27%25op%C3%A9ra%25%27+OR+toponyme+ILIKE+%27%25opera%25%27+OR+toponyme+ILIKE+%27%25saint-charles%25%27+OR+toponyme+ILIKE+%27%25saint+charles%25%27+OR+toponyme+ILIKE+%27%25radieuse%25%27+OR+toponyme+ILIKE+%27%25v%C3%A9lodrome%25%27+OR+toponyme+ILIKE+%27%25velodrome%25%27+OR+toponyme+ILIKE+%27%25longchamp%25%27+OR+toponyme+ILIKE+%27%25observatoire%25%27+OR+toponyme+ILIKE+%27%25congr%C3%A8s%25%27+OR+toponyme+ILIKE+%27%25congres%25%27+OR+toponyme+ILIKE+%27%25savon%25%27%29&COUNT=1000&SORTBY=cleabs&STARTINDEX=0",
+    "sourceRequestedAt": "2026-11-02T04:33:04.594051+00:00",
+    "intersectionAreaSquareMetres": 874.6376015126183,
+    "buildingOverlapRatio": 0.28685275492339996,
+    "zoneOverlapRatio": 0.945435022018993,
+    "buildingCentroidInsideZone": false,
+    "zoneCentroidInsideBuilding": true,
+    "documentarySiteLinkInstalled": false,
+    "scope": "Context only: partial source zone, insufficient for the strict whole-building documentary-link rule."
+  },
+  "newRecords": [
+    {
+      "cleabs": "BATIMENT0000000258927584",
+      "context": "Contexte du Palais de la Bourse",
+      "vertices": 13372,
+      "faces": 25562,
+      "measurements": {
+        "footprintAreaSquareMetres": 3049.0821039811244,
+        "roofProjectedAreaSquareMetres": 3049.082103981228,
+        "boundaryLengthMetres": 242.60607024768453,
+        "sourceBoundaryLengthMetres": 242.6060702476845,
+        "minimumElevation": 12.165879207630923,
+        "maximumElevation": 35.46107482910156,
+        "nativeVertices": 12192,
+        "clippedVertices": 1180,
+        "nativeChecks": [
+          {
+            "vertex": 1,
+            "elevation": 28.727252960205078
+          },
+          {
+            "vertex": 4,
+            "elevation": 28.96196937561035
+          },
+          {
+            "vertex": 7,
+            "elevation": 29.08515739440918
+          },
+          {
+            "vertex": 15,
+            "elevation": 28.572200775146484
+          },
+          {
+            "vertex": 17,
+            "elevation": 28.580385208129883
+          },
+          {
+            "vertex": 18,
+            "elevation": 28.7103214263916
+          },
+          {
+            "vertex": 22,
+            "elevation": 28.46694564819336
+          },
+          {
+            "vertex": 25,
+            "elevation": 28.447202682495117
+          },
+          {
+            "vertex": 27,
+            "elevation": 28.41794204711914
+          },
+          {
+            "vertex": 28,
+            "elevation": 28.44122886657715
+          },
+          {
+            "vertex": 29,
+            "elevation": 28.420610427856445
+          },
+          {
+            "vertex": 36,
+            "elevation": 28.59909439086914
+          },
+          {
+            "vertex": 39,
+            "elevation": 28.495891571044922
+          },
+          {
+            "vertex": 41,
+            "elevation": 28.445451736450195
+          },
+          {
+            "vertex": 42,
+            "elevation": 28.52582550048828
+          },
+          {
+            "vertex": 43,
+            "elevation": 28.551572799682617
+          },
+          {
+            "vertex": 44,
+            "elevation": 28.549448013305664
+          },
+          {
+            "vertex": 45,
+            "elevation": 28.397350311279297
+          },
+          {
+            "vertex": 50,
+            "elevation": 28.58200454711914
+          },
+          {
+            "vertex": 53,
+            "elevation": 28.431270599365234
+          },
+          {
+            "vertex": 55,
+            "elevation": 28.501863479614258
+          },
+          {
+            "vertex": 56,
+            "elevation": 28.508460998535156
+          },
+          {
+            "vertex": 57,
+            "elevation": 28.530227661132812
+          },
+          {
+            "vertex": 58,
+            "elevation": 28.723876953125
+          },
+          {
+            "vertex": 59,
+            "elevation": 28.734275817871094
+          },
+          {
+            "vertex": 60,
+            "elevation": 28.64009666442871
+          },
+          {
+            "vertex": 61,
+            "elevation": 28.468536376953125
+          },
+          {
+            "vertex": 64,
+            "elevation": 28.612504959106445
+          },
+          {
+            "vertex": 68,
+            "elevation": 28.578882217407227
+          },
+          {
+            "vertex": 71,
+            "elevation": 28.535646438598633
+          },
+          {
+            "vertex": 73,
+            "elevation": 28.634157180786133
+          },
+          {
+            "vertex": 74,
+            "elevation": 28.525102615356445
+          },
+          {
+            "vertex": 214,
+            "elevation": 28.45723533630371
+          },
+          {
+            "vertex": 321,
+            "elevation": 28.701387405395508
+          },
+          {
+            "vertex": 428,
+            "elevation": 29.6328182220459
+          },
+          {
+            "vertex": 535,
+            "elevation": 29.545196533203125
+          },
+          {
+            "vertex": 642,
+            "elevation": 30.023712158203125
+          },
+          {
+            "vertex": 749,
+            "elevation": 29.252845764160156
+          },
+          {
+            "vertex": 963,
+            "elevation": 29.710453033447266
+          },
+          {
+            "vertex": 1070,
+            "elevation": 28.706647872924805
+          },
+          {
+            "vertex": 1177,
+            "elevation": 28.743003845214844
+          },
+          {
+            "vertex": 1284,
+            "elevation": 30.41859245300293
+          },
+          {
+            "vertex": 1391,
+            "elevation": 28.894237518310547
+          },
+          {
+            "vertex": 1498,
+            "elevation": 28.7689266204834
+          },
+          {
+            "vertex": 1605,
+            "elevation": 29.970661163330078
+          },
+          {
+            "vertex": 1712,
+            "elevation": 31.153743743896484
+          },
+          {
+            "vertex": 1819,
+            "elevation": 30.898204803466797
+          },
+          {
+            "vertex": 1926,
+            "elevation": 28.781261444091797
+          },
+          {
+            "vertex": 2033,
+            "elevation": 28.503110885620117
+          },
+          {
+            "vertex": 2140,
+            "elevation": 28.48546600341797
+          },
+          {
+            "vertex": 2247,
+            "elevation": 28.77970314025879
+          },
+          {
+            "vertex": 2354,
+            "elevation": 28.46977424621582
+          },
+          {
+            "vertex": 2461,
+            "elevation": 28.592710494995117
+          },
+          {
+            "vertex": 2782,
+            "elevation": 28.50096893310547
+          },
+          {
+            "vertex": 2889,
+            "elevation": 30.33173370361328
+          },
+          {
+            "vertex": 2996,
+            "elevation": 30.32967758178711
+          },
+          {
+            "vertex": 3103,
+            "elevation": 29.551979064941406
+          },
+          {
+            "vertex": 3210,
+            "elevation": 29.725996017456055
+          },
+          {
+            "vertex": 3317,
+            "elevation": 30.0256404876709
+          },
+          {
+            "vertex": 3424,
+            "elevation": 30.2080078125
+          },
+          {
+            "vertex": 3531,
+            "elevation": 30.51615333557129
+          },
+          {
+            "vertex": 3638,
+            "elevation": 30.711992263793945
+          },
+          {
+            "vertex": 3745,
+            "elevation": 31.11216926574707
+          },
+          {
+            "vertex": 3852,
+            "elevation": 31.54252052307129
+          },
+          {
+            "vertex": 3959,
+            "elevation": 31.503162384033203
+          },
+          {
+            "vertex": 4066,
+            "elevation": 31.87218475341797
+          },
+          {
+            "vertex": 4173,
+            "elevation": 32.45570373535156
+          },
+          {
+            "vertex": 4280,
+            "elevation": 32.564781188964844
+          },
+          {
+            "vertex": 4387,
+            "elevation": 32.508758544921875
+          },
+          {
+            "vertex": 4494,
+            "elevation": 32.8214225769043
+          },
+          {
+            "vertex": 4601,
+            "elevation": 32.76951599121094
+          },
+          {
+            "vertex": 4708,
+            "elevation": 33.077392578125
+          },
+          {
+            "vertex": 4815,
+            "elevation": 33.04508972167969
+          },
+          {
+            "vertex": 4922,
+            "elevation": 33.38508605957031
+          },
+          {
+            "vertex": 5029,
+            "elevation": 33.360145568847656
+          },
+          {
+            "vertex": 5136,
+            "elevation": 35.120094299316406
+          },
+          {
+            "vertex": 5243,
+            "elevation": 35.177120208740234
+          },
+          {
+            "vertex": 5350,
+            "elevation": 35.34455490112305
+          },
+          {
+            "vertex": 5457,
+            "elevation": 34.76707077026367
+          },
+          {
+            "vertex": 5564,
+            "elevation": 33.404991149902344
+          },
+          {
+            "vertex": 5671,
+            "elevation": 33.613651275634766
+          },
+          {
+            "vertex": 5778,
+            "elevation": 33.1314582824707
+          },
+          {
+            "vertex": 5885,
+            "elevation": 33.1906623840332
+          },
+          {
+            "vertex": 5992,
+            "elevation": 32.89570999145508
+          },
+          {
+            "vertex": 6099,
+            "elevation": 32.930686950683594
+          },
+          {
+            "vertex": 6206,
+            "elevation": 32.6385498046875
+          },
+          {
+            "vertex": 6313,
+            "elevation": 32.67641067504883
+          },
+          {
+            "vertex": 6420,
+            "elevation": 32.398292541503906
+          },
+          {
+            "vertex": 6527,
+            "elevation": 32.440921783447266
+          },
+          {
+            "vertex": 6634,
+            "elevation": 31.5513858795166
+          },
+          {
+            "vertex": 6741,
+            "elevation": 31.70695686340332
+          },
+          {
+            "vertex": 6848,
+            "elevation": 31.246410369873047
+          },
+          {
+            "vertex": 6955,
+            "elevation": 31.423431396484375
+          },
+          {
+            "vertex": 7062,
+            "elevation": 30.794025421142578
+          },
+          {
+            "vertex": 7169,
+            "elevation": 30.885568618774414
+          },
+          {
+            "vertex": 7276,
+            "elevation": 30.459056854248047
+          },
+          {
+            "vertex": 7383,
+            "elevation": 30.51864242553711
+          },
+          {
+            "vertex": 7490,
+            "elevation": 29.488365173339844
+          },
+          {
+            "vertex": 7597,
+            "elevation": 29.41593360900879
+          },
+          {
+            "vertex": 7704,
+            "elevation": 28.89393424987793
+          },
+          {
+            "vertex": 7811,
+            "elevation": 28.596323013305664
+          },
+          {
+            "vertex": 7918,
+            "elevation": 28.479999542236328
+          },
+          {
+            "vertex": 8346,
+            "elevation": 28.50129508972168
+          },
+          {
+            "vertex": 8453,
+            "elevation": 28.639612197875977
+          },
+          {
+            "vertex": 8560,
+            "elevation": 28.865224838256836
+          },
+          {
+            "vertex": 8667,
+            "elevation": 29.0899715423584
+          },
+          {
+            "vertex": 8774,
+            "elevation": 29.48853874206543
+          },
+          {
+            "vertex": 8881,
+            "elevation": 29.479555130004883
+          },
+          {
+            "vertex": 8988,
+            "elevation": 30.058135986328125
+          },
+          {
+            "vertex": 9095,
+            "elevation": 29.854549407958984
+          },
+          {
+            "vertex": 9202,
+            "elevation": 30.30894660949707
+          },
+          {
+            "vertex": 9309,
+            "elevation": 30.13522720336914
+          },
+          {
+            "vertex": 9416,
+            "elevation": 30.557926177978516
+          },
+          {
+            "vertex": 9523,
+            "elevation": 30.4776554107666
+          },
+          {
+            "vertex": 9630,
+            "elevation": 30.561311721801758
+          },
+          {
+            "vertex": 9737,
+            "elevation": 30.53086280822754
+          },
+          {
+            "vertex": 9844,
+            "elevation": 30.451318740844727
+          },
+          {
+            "vertex": 9951,
+            "elevation": 30.62185287475586
+          },
+          {
+            "vertex": 10058,
+            "elevation": 30.32038116455078
+          },
+          {
+            "vertex": 10165,
+            "elevation": 30.155506134033203
+          },
+          {
+            "vertex": 10272,
+            "elevation": 30.300748825073242
+          },
+          {
+            "vertex": 10379,
+            "elevation": 30.276334762573242
+          },
+          {
+            "vertex": 10486,
+            "elevation": 30.332408905029297
+          },
+          {
+            "vertex": 10593,
+            "elevation": 30.28096580505371
+          },
+          {
+            "vertex": 10700,
+            "elevation": 30.33464241027832
+          },
+          {
+            "vertex": 10807,
+            "elevation": 29.860239028930664
+          },
+          {
+            "vertex": 10914,
+            "elevation": 29.464262008666992
+          },
+          {
+            "vertex": 11021,
+            "elevation": 29.261484146118164
+          },
+          {
+            "vertex": 11128,
+            "elevation": 28.639310836791992
+          },
+          {
+            "vertex": 11342,
+            "elevation": 30.248706817626953
+          },
+          {
+            "vertex": 11449,
+            "elevation": 30.887847900390625
+          },
+          {
+            "vertex": 11556,
+            "elevation": 29.737512588500977
+          },
+          {
+            "vertex": 11663,
+            "elevation": 28.99110221862793
+          },
+          {
+            "vertex": 11770,
+            "elevation": 28.888025283813477
+          },
+          {
+            "vertex": 11877,
+            "elevation": 28.401988983154297
+          },
+          {
+            "vertex": 11984,
+            "elevation": 28.66740608215332
+          },
+          {
+            "vertex": 12091,
+            "elevation": 30.053237915039062
+          },
+          {
+            "vertex": 12198,
+            "elevation": 29.49320411682129
+          },
+          {
+            "vertex": 12305,
+            "elevation": 28.460996627807617
+          },
+          {
+            "vertex": 12412,
+            "elevation": 28.964933395385742
+          },
+          {
+            "vertex": 12626,
+            "elevation": 28.385507583618164
+          },
+          {
+            "vertex": 12733,
+            "elevation": 29.590749740600586
+          },
+          {
+            "vertex": 12840,
+            "elevation": 29.345521926879883
+          },
+          {
+            "vertex": 12947,
+            "elevation": 28.980749130249023
+          },
+          {
+            "vertex": 13054,
+            "elevation": 28.60645866394043
+          },
+          {
+            "vertex": 13268,
+            "elevation": 28.75904083251953
+          }
+        ]
+      }
+    },
+    {
+      "cleabs": "BATIMENT0000000273403820",
+      "context": "Contexte de l’Opéra Municipal de Marseille",
+      "vertices": 8010,
+      "faces": 15205,
+      "measurements": {
+        "footprintAreaSquareMetres": 1800.44021846232,
+        "roofProjectedAreaSquareMetres": 1800.4402184638936,
+        "boundaryLengthMetres": 174.12573929004182,
+        "sourceBoundaryLengthMetres": 174.12573929004185,
+        "minimumElevation": 15.47210851377887,
+        "maximumElevation": 33.30599594116211,
+        "nativeVertices": 7197,
+        "clippedVertices": 813,
+        "nativeChecks": [
+          {
+            "vertex": 4,
+            "elevation": 25.642704010009766
+          },
+          {
+            "vertex": 7,
+            "elevation": 25.631868362426758
+          },
+          {
+            "vertex": 10,
+            "elevation": 25.615175247192383
+          },
+          {
+            "vertex": 14,
+            "elevation": 25.593887329101562
+          },
+          {
+            "vertex": 19,
+            "elevation": 25.78070068359375
+          },
+          {
+            "vertex": 22,
+            "elevation": 25.658164978027344
+          },
+          {
+            "vertex": 25,
+            "elevation": 25.6451358795166
+          },
+          {
+            "vertex": 27,
+            "elevation": 25.63858985900879
+          },
+          {
+            "vertex": 28,
+            "elevation": 25.6299991607666
+          },
+          {
+            "vertex": 29,
+            "elevation": 25.617341995239258
+          },
+          {
+            "vertex": 30,
+            "elevation": 25.61153221130371
+          },
+          {
+            "vertex": 34,
+            "elevation": 26.444347381591797
+          },
+          {
+            "vertex": 38,
+            "elevation": 26.507396697998047
+          },
+          {
+            "vertex": 41,
+            "elevation": 26.298995971679688
+          },
+          {
+            "vertex": 43,
+            "elevation": 25.9070987701416
+          },
+          {
+            "vertex": 44,
+            "elevation": 25.644601821899414
+          },
+          {
+            "vertex": 45,
+            "elevation": 25.631479263305664
+          },
+          {
+            "vertex": 46,
+            "elevation": 25.632612228393555
+          },
+          {
+            "vertex": 47,
+            "elevation": 25.63506317138672
+          },
+          {
+            "vertex": 48,
+            "elevation": 25.62574005126953
+          },
+          {
+            "vertex": 49,
+            "elevation": 25.608144760131836
+          },
+          {
+            "vertex": 53,
+            "elevation": 27.35750389099121
+          },
+          {
+            "vertex": 56,
+            "elevation": 26.374835968017578
+          },
+          {
+            "vertex": 58,
+            "elevation": 26.130033493041992
+          },
+          {
+            "vertex": 59,
+            "elevation": 25.67756462097168
+          },
+          {
+            "vertex": 60,
+            "elevation": 25.662431716918945
+          },
+          {
+            "vertex": 61,
+            "elevation": 25.651506423950195
+          },
+          {
+            "vertex": 62,
+            "elevation": 25.640705108642578
+          },
+          {
+            "vertex": 63,
+            "elevation": 25.643291473388672
+          },
+          {
+            "vertex": 64,
+            "elevation": 25.649967193603516
+          },
+          {
+            "vertex": 65,
+            "elevation": 25.64419174194336
+          },
+          {
+            "vertex": 66,
+            "elevation": 25.630868911743164
+          },
+          {
+            "vertex": 107,
+            "elevation": 27.362855911254883
+          },
+          {
+            "vertex": 214,
+            "elevation": 25.653207778930664
+          },
+          {
+            "vertex": 321,
+            "elevation": 29.29407501220703
+          },
+          {
+            "vertex": 428,
+            "elevation": 29.794233322143555
+          },
+          {
+            "vertex": 535,
+            "elevation": 30.06161880493164
+          },
+          {
+            "vertex": 642,
+            "elevation": 30.574283599853516
+          },
+          {
+            "vertex": 749,
+            "elevation": 24.467885971069336
+          },
+          {
+            "vertex": 856,
+            "elevation": 30.731189727783203
+          },
+          {
+            "vertex": 963,
+            "elevation": 24.51429557800293
+          },
+          {
+            "vertex": 1070,
+            "elevation": 27.408395767211914
+          },
+          {
+            "vertex": 1177,
+            "elevation": 31.235071182250977
+          },
+          {
+            "vertex": 1284,
+            "elevation": 24.520000457763672
+          },
+          {
+            "vertex": 1391,
+            "elevation": 27.411352157592773
+          },
+          {
+            "vertex": 1498,
+            "elevation": 29.6734619140625
+          },
+          {
+            "vertex": 1605,
+            "elevation": 25.71889305114746
+          },
+          {
+            "vertex": 1712,
+            "elevation": 25.86994171142578
+          },
+          {
+            "vertex": 1819,
+            "elevation": 29.633214950561523
+          },
+          {
+            "vertex": 1926,
+            "elevation": 26.630550384521484
+          },
+          {
+            "vertex": 2033,
+            "elevation": 25.773448944091797
+          },
+          {
+            "vertex": 2140,
+            "elevation": 29.65898323059082
+          },
+          {
+            "vertex": 2247,
+            "elevation": 27.65262222290039
+          },
+          {
+            "vertex": 2354,
+            "elevation": 24.597156524658203
+          },
+          {
+            "vertex": 2461,
+            "elevation": 29.15422248840332
+          },
+          {
+            "vertex": 2568,
+            "elevation": 28.493717193603516
+          },
+          {
+            "vertex": 2782,
+            "elevation": 28.576740264892578
+          },
+          {
+            "vertex": 2889,
+            "elevation": 28.794193267822266
+          },
+          {
+            "vertex": 3103,
+            "elevation": 28.804378509521484
+          },
+          {
+            "vertex": 3210,
+            "elevation": 28.98458480834961
+          },
+          {
+            "vertex": 3424,
+            "elevation": 28.755268096923828
+          },
+          {
+            "vertex": 3531,
+            "elevation": 28.738048553466797
+          },
+          {
+            "vertex": 3745,
+            "elevation": 29.03829574584961
+          },
+          {
+            "vertex": 3852,
+            "elevation": 28.770000457763672
+          },
+          {
+            "vertex": 3959,
+            "elevation": 24.480222702026367
+          },
+          {
+            "vertex": 4066,
+            "elevation": 28.82439613342285
+          },
+          {
+            "vertex": 4173,
+            "elevation": 28.466922760009766
+          },
+          {
+            "vertex": 4387,
+            "elevation": 29.0788516998291
+          },
+          {
+            "vertex": 4494,
+            "elevation": 28.577190399169922
+          },
+          {
+            "vertex": 4601,
+            "elevation": 25.004722595214844
+          },
+          {
+            "vertex": 4708,
+            "elevation": 29.104671478271484
+          },
+          {
+            "vertex": 4815,
+            "elevation": 30.568838119506836
+          },
+          {
+            "vertex": 4922,
+            "elevation": 24.5665225982666
+          },
+          {
+            "vertex": 5029,
+            "elevation": 29.131498336791992
+          },
+          {
+            "vertex": 5136,
+            "elevation": 30.136152267456055
+          },
+          {
+            "vertex": 5243,
+            "elevation": 24.484243392944336
+          },
+          {
+            "vertex": 5350,
+            "elevation": 31.665485382080078
+          },
+          {
+            "vertex": 5457,
+            "elevation": 30.400104522705078
+          },
+          {
+            "vertex": 5564,
+            "elevation": 24.647817611694336
+          },
+          {
+            "vertex": 5671,
+            "elevation": 31.3006649017334
+          },
+          {
+            "vertex": 5778,
+            "elevation": 31.079240798950195
+          },
+          {
+            "vertex": 5992,
+            "elevation": 30.607526779174805
+          },
+          {
+            "vertex": 6099,
+            "elevation": 31.729869842529297
+          },
+          {
+            "vertex": 6206,
+            "elevation": 25.05817413330078
+          },
+          {
+            "vertex": 6313,
+            "elevation": 29.38654136657715
+          },
+          {
+            "vertex": 6420,
+            "elevation": 31.976898193359375
+          },
+          {
+            "vertex": 6527,
+            "elevation": 26.559059143066406
+          },
+          {
+            "vertex": 6634,
+            "elevation": 29.006879806518555
+          },
+          {
+            "vertex": 6741,
+            "elevation": 32.200965881347656
+          },
+          {
+            "vertex": 6848,
+            "elevation": 24.215824127197266
+          },
+          {
+            "vertex": 6955,
+            "elevation": 24.032047271728516
+          },
+          {
+            "vertex": 7062,
+            "elevation": 29.74808692932129
+          },
+          {
+            "vertex": 7276,
+            "elevation": 24.196470260620117
+          },
+          {
+            "vertex": 7383,
+            "elevation": 26.983592987060547
+          },
+          {
+            "vertex": 7490,
+            "elevation": 23.841428756713867
+          },
+          {
+            "vertex": 7597,
+            "elevation": 23.975788116455078
+          },
+          {
+            "vertex": 7811,
+            "elevation": 24.165830612182617
+          },
+          {
+            "vertex": 7918,
+            "elevation": 19.60592269897461
+          }
+        ]
+      }
+    },
+    {
+      "cleabs": "BATIMENT0000000273403821",
+      "context": "Contexte de l’Opéra Municipal de Marseille",
+      "vertices": 151,
+      "faces": 219,
+      "measurements": {
+        "footprintAreaSquareMetres": 17.195908857210448,
+        "roofProjectedAreaSquareMetres": 17.195908857464442,
+        "boundaryLengthMetres": 16.646898189972447,
+        "sourceBoundaryLengthMetres": 16.646898189972447,
+        "minimumElevation": 6.704075813293457,
+        "maximumElevation": 27.36325454711914,
+        "nativeVertices": 70,
+        "clippedVertices": 81,
+        "nativeChecks": [
+          {
+            "vertex": 1,
+            "elevation": 6.749435901641846
+          },
+          {
+            "vertex": 4,
+            "elevation": 6.749834060668945
+          },
+          {
+            "vertex": 9,
+            "elevation": 6.751952648162842
+          },
+          {
+            "vertex": 15,
+            "elevation": 6.738813400268555
+          },
+          {
+            "vertex": 18,
+            "elevation": 6.753042221069336
+          },
+          {
+            "vertex": 20,
+            "elevation": 6.7402143478393555
+          },
+          {
+            "vertex": 21,
+            "elevation": 6.739999771118164
+          },
+          {
+            "vertex": 22,
+            "elevation": 6.753192901611328
+          },
+          {
+            "vertex": 26,
+            "elevation": 16.377344131469727
+          },
+          {
+            "vertex": 30,
+            "elevation": 6.81658935546875
+          },
+          {
+            "vertex": 33,
+            "elevation": 6.7606987953186035
+          },
+          {
+            "vertex": 35,
+            "elevation": 6.734376430511475
+          },
+          {
+            "vertex": 36,
+            "elevation": 6.744833469390869
+          },
+          {
+            "vertex": 37,
+            "elevation": 6.75
+          },
+          {
+            "vertex": 38,
+            "elevation": 6.715904712677002
+          },
+          {
+            "vertex": 39,
+            "elevation": 6.704075813293457
+          },
+          {
+            "vertex": 41,
+            "elevation": 6.777967929840088
+          },
+          {
+            "vertex": 48,
+            "elevation": 19.125638961791992
+          },
+          {
+            "vertex": 49,
+            "elevation": 10.197391510009766
+          },
+          {
+            "vertex": 50,
+            "elevation": 6.781614303588867
+          },
+          {
+            "vertex": 51,
+            "elevation": 6.747090816497803
+          },
+          {
+            "vertex": 52,
+            "elevation": 6.75762939453125
+          },
+          {
+            "vertex": 53,
+            "elevation": 6.744697570800781
+          },
+          {
+            "vertex": 54,
+            "elevation": 6.740555763244629
+          },
+          {
+            "vertex": 55,
+            "elevation": 9.317404747009277
+          },
+          {
+            "vertex": 56,
+            "elevation": 12.840291976928711
+          },
+          {
+            "vertex": 63,
+            "elevation": 14.176661491394043
+          },
+          {
+            "vertex": 64,
+            "elevation": 10.873408317565918
+          },
+          {
+            "vertex": 65,
+            "elevation": 6.77802038192749
+          },
+          {
+            "vertex": 66,
+            "elevation": 6.769562244415283
+          },
+          {
+            "vertex": 67,
+            "elevation": 11.529271125793457
+          },
+          {
+            "vertex": 68,
+            "elevation": 13.190287590026855
+          },
+          {
+            "vertex": 107,
+            "elevation": 23.925128936767578
+          }
+        ]
+      }
+    },
+    {
+      "cleabs": "BATIMENT0000000273403819",
+      "context": "Contexte de l’Opéra Municipal de Marseille",
+      "vertices": 150,
+      "faces": 218,
+      "measurements": {
+        "footprintAreaSquareMetres": 17.125760856224634,
+        "roofProjectedAreaSquareMetres": 17.12576085687773,
+        "boundaryLengthMetres": 16.46655855792444,
+        "sourceBoundaryLengthMetres": 16.46655855792444,
+        "minimumElevation": 5.878105448840765,
+        "maximumElevation": 27.383337170219356,
+        "nativeVertices": 70,
+        "clippedVertices": 80,
+        "nativeChecks": [
+          {
+            "vertex": 4,
+            "elevation": 6.703814506530762
+          },
+          {
+            "vertex": 7,
+            "elevation": 6.70709753036499
+          },
+          {
+            "vertex": 10,
+            "elevation": 6.743257522583008
+          },
+          {
+            "vertex": 14,
+            "elevation": 9.265507698059082
+          },
+          {
+            "vertex": 19,
+            "elevation": 6.7361578941345215
+          },
+          {
+            "vertex": 22,
+            "elevation": 6.71453857421875
+          },
+          {
+            "vertex": 24,
+            "elevation": 6.704065799713135
+          },
+          {
+            "vertex": 25,
+            "elevation": 6.710000038146973
+          },
+          {
+            "vertex": 26,
+            "elevation": 6.729428768157959
+          },
+          {
+            "vertex": 27,
+            "elevation": 6.781991958618164
+          },
+          {
+            "vertex": 31,
+            "elevation": 6.808410167694092
+          },
+          {
+            "vertex": 35,
+            "elevation": 6.755376815795898
+          },
+          {
+            "vertex": 38,
+            "elevation": 6.730443954467773
+          },
+          {
+            "vertex": 39,
+            "elevation": 6.712972164154053
+          },
+          {
+            "vertex": 40,
+            "elevation": 6.705294132232666
+          },
+          {
+            "vertex": 41,
+            "elevation": 6.713449001312256
+          },
+          {
+            "vertex": 42,
+            "elevation": 6.714884281158447
+          },
+          {
+            "vertex": 43,
+            "elevation": 6.757565975189209
+          },
+          {
+            "vertex": 49,
+            "elevation": 6.825718879699707
+          },
+          {
+            "vertex": 50,
+            "elevation": 6.7217278480529785
+          },
+          {
+            "vertex": 51,
+            "elevation": 6.716309547424316
+          },
+          {
+            "vertex": 52,
+            "elevation": 6.70428466796875
+          },
+          {
+            "vertex": 53,
+            "elevation": 6.70738410949707
+          },
+          {
+            "vertex": 54,
+            "elevation": 6.71876859664917
+          },
+          {
+            "vertex": 55,
+            "elevation": 6.71999979019165
+          },
+          {
+            "vertex": 56,
+            "elevation": 16.031702041625977
+          },
+          {
+            "vertex": 59,
+            "elevation": 12.981842041015625
+          },
+          {
+            "vertex": 64,
+            "elevation": 6.839476108551025
+          },
+          {
+            "vertex": 65,
+            "elevation": 6.751902103424072
+          },
+          {
+            "vertex": 66,
+            "elevation": 6.705291748046875
+          },
+          {
+            "vertex": 67,
+            "elevation": 11.435186386108398
+          },
+          {
+            "vertex": 68,
+            "elevation": 11.370031356811523
+          },
+          {
+            "vertex": 107,
+            "elevation": 25.45692253112793
+          }
+        ]
+      }
+    }
+  ],
+  "combinedRecords": 23,
+  "combinedFaces": 142427,
+  "output": {
+    "schemaVersion": 1,
+    "surface": {
+      "path": "data/map_pack/landmark_surfaces/marseille-mns-c89a3a22e3b2d55c.json",
+      "sha256": "c89a3a22e3b2d55c08d30361ba5c65cae88392b74635a6d5cc2bc7599d99ae7c",
+      "bytes": 5882657
+    },
+    "recordCount": 23,
+    "siteContexts": [
+      "Chapelle et Hospice de la Vieille Charité",
+      "Cathédrale de la Major",
+      "Palais du Pharo",
+      "Notre-Dame de la Garde",
+      "Contexte du Palais de la Bourse",
+      "Contexte de l’Opéra Municipal de Marseille"
+    ],
+    "scope": "Measured upper visible surface within unchanged BD TOPO XY; not semantic roof planes, facades, rooms or a full monument survey."
+  },
+  "builderSha256": "50d5ff637f4167c5f0998f238fcc63952b2483b0e31e1f6178c47eef0733ed9a",
+  "clippingToolSha256": "b063c130882eca3947e1fef5a139024f769050ca628281095371dfb056e6c929",
+  "scope": "Observed upper source surface only; not measured facades, openings, rooms, semantic roof planes or a complete monument survey.",
+  "refusals": [
+    "No 13th documentary-site record: the Bourse source zone is partial and the strict 99% whole-building association does not hold.",
+    "Opera site precision is 5 m: context only, no strict documentary-site link.",
+    "Bourse cannot be clipped completely from 0892-6248 alone; the missing 0892-6247 tile was acquired instead of cropping or filling cells.",
+    "Saint-Victor and Saint-Jean are not added; this extension is bounded to two new contexts."
+  ]
+}

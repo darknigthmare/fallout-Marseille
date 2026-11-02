@@ -1,0 +1,207 @@
+{
+  "scope": "Original acquired IGN exterior only. All domestic rooms, fixtures and equipment are invented; no interior survey claimed.",
+  "baselineCommit": "c3cd2a3",
+  "cases": [
+    {
+      "sourcePath": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json",
+      "sourceChunkSha256": "deaaf0e382a632bdd20b4c0fa308c5fdc8b4cfa0679120cd4ab9e2693f8abd4f",
+      "sourceId": "batiment.26080385",
+      "sourceFeatureSha256": "fd6d953daf3e59250f5887dc6c6bdc8e552797dc2932697972aa0f534635b822",
+      "rawFeature": {
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                [
+                  5.36283291,
+                  43.23672105,
+                  23.5
+                ],
+                [
+                  5.362828,
+                  43.23672116,
+                  29.2
+                ],
+                [
+                  5.36273106,
+                  43.23666838,
+                  29.2
+                ],
+                [
+                  5.36272946,
+                  43.23665942,
+                  20.4
+                ],
+                [
+                  5.36280008,
+                  43.23658048,
+                  22.3
+                ],
+                [
+                  5.36281895,
+                  43.23656027,
+                  20.4
+                ],
+                [
+                  5.36282029,
+                  43.23656294,
+                  28.3
+                ],
+                [
+                  5.36292225,
+                  43.2366183,
+                  28.3
+                ],
+                [
+                  5.3628837,
+                  43.23666864,
+                  23.2
+                ],
+                [
+                  5.36286364,
+                  43.23668978,
+                  23.3
+                ],
+                [
+                  5.36283291,
+                  43.23672105,
+                  23.5
+                ]
+              ]
+            ]
+          ],
+          "type": "MultiPolygon"
+        },
+        "id": "batiment.26080385",
+        "properties": {
+          "altitude_maximale_sol": 19.9,
+          "altitude_maximale_toit": 31,
+          "altitude_minimale_sol": 17.9,
+          "altitude_minimale_toit": null,
+          "appariement_fichiers_fonciers": "C 0.7",
+          "cleabs": "BATIMENT0000000318259082",
+          "construction_legere": false,
+          "date_creation": "2013-01-31T18:07:41.924Z",
+          "date_d_apparition": "2011-01-01Z",
+          "date_de_confirmation": "2011-07-01Z",
+          "date_modification": "2019-04-08T06:50:57.569Z",
+          "etat_de_l_objet": "En service",
+          "hauteur": 11.3,
+          "identifiants_rnb": "YTY1BK8QAHVV",
+          "identifiants_sources": "",
+          "kind": "building",
+          "materiaux_de_la_toiture": "00",
+          "materiaux_des_murs": "00",
+          "methode_d_acquisition_altimetrique": "Photogrammétrie",
+          "methode_d_acquisition_planimetrique": "Photogrammétrie",
+          "nature": "Indifférenciée",
+          "nombre_d_etages": 4,
+          "nombre_de_logements": 6,
+          "origine_du_batiment": "Imagerie aérienne",
+          "precision_altimetrique": 1.5,
+          "precision_planimetrique": 2.5,
+          "provenance": {
+            "acquiredAt": "2026-10-23",
+            "attribution": "IGN — Géoplateforme",
+            "coverage": {
+              "bbox": [
+                43.23113830833333,
+                5.357278548461538,
+                43.24343971,
+                5.368962869230769
+              ],
+              "complete": true,
+              "crs": "EPSG:4326",
+              "layer": "BDTOPO_V3:batiment",
+              "returned": 2418
+            },
+            "inputCrs": "EPSG:4326",
+            "inputSha256": "555f613d12ede49bc87ee4c148608857027e25cfac9541d738dd62a0707737c0",
+            "license": "Licence Ouverte 2.0",
+            "resource": "ign-bdtopo",
+            "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+            "url": "https://data.geopf.fr/wfs/ows",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "sourceId": "batiment.26080385",
+          "sources": null,
+          "usage_1": "Résidentiel",
+          "usage_2": null
+        },
+        "type": "Feature"
+      },
+      "projection": {
+        "crs": "EPSG:2154",
+        "originLatLon": [
+          43.285,
+          5.51
+        ],
+        "axes": "world X=easting−originE, Z=originN−northing",
+        "geometryPreserved": "Original geographic XYZ retained in rawFeature"
+      },
+      "metric": {
+        "rings": [
+          [
+            [
+              -11785.544463036233,
+              5733.394965558313
+            ],
+            [
+              -11785.94373754086,
+              5733.394682600163
+            ],
+            [
+              -11793.64399852883,
+              5739.495356285013
+            ],
+            [
+              -11793.744188652257,
+              5740.494886259548
+            ],
+            [
+              -11787.744163495488,
+              5749.095003061928
+            ],
+            [
+              -11786.14386300405,
+              5751.294859020971
+            ],
+            [
+              -11786.043876231182,
+              5750.994908764958
+            ],
+            [
+              -11777.9443432251,
+              5744.595326440409
+            ],
+            [
+              -11781.243749287212,
+              5739.095273524523
+            ],
+            [
+              -11782.943822573288,
+              5736.794970897026
+            ],
+            [
+              -11785.544463036233,
+              5733.394965558313
+            ]
+          ]
+        ],
+        "baseY": 17.9,
+        "height": 13.100000000000001
+      },
+      "expected": {
+        "buildingId": "BATIMENT0000000318259082:4a71330771879adb",
+        "localEntry": [
+          0,
+          0
+        ],
+        "layoutVersion": 6,
+        "theme": "residential",
+        "sourceUse": "Résidentiel",
+        "provenance": "invented"
+      }
+    }
+  ]
+}

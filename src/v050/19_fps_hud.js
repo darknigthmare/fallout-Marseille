@@ -18,7 +18,20 @@ const MistralFpsHud=(()=>{
   let start=8;const gaps=[];for(const[a,b]of intervals){if(a-start>=size)gaps.push([start,a-size]);start=Math.max(start,b);}if(height-8-start>=size)gaps.push([start,height-8-size]);
   if(!gaps.length)return null;const desired=height*.64-size/2;return gaps.map(([a,b])=>clamp(desired,a,b)).sort((a,b)=>Math.abs(a-desired)-Math.abs(b-desired))[0];
  }
- return Object.freeze({options,percent,angle,delta,ticks,bearing,read,loss,impacts,reloadProgress,subtitleTop});
+ function notificationSlot(width,height,box,obstacles=[]){
+  const pad=12,gap=8,w=finite(box?.w),h=finite(box?.h),minimum=Math.min(h,Math.max(32,finite(box?.minH,44)));
+  if(![width,height,w,h].every(Number.isFinite)||w<=0||h<=0||width<w+2*pad||height<minimum+2*pad)return null;
+  const blocks=obstacles.filter(r=>r&&[r.x,r.y,r.w,r.h].every(Number.isFinite)&&r.w>0&&r.h>0),preferredX=clamp(finite(box.x,width-pad-w),pad,width-pad-w),preferredY=clamp(finite(box.y,height-pad-h),pad,height-pad-minimum);
+  const xs=[preferredX,width-pad-w,(width-w)/2,pad,...blocks.flatMap(r=>[r.x-w-gap,r.x+r.w+gap])].map(x=>clamp(x,pad,width-pad-w));
+  const slots=[];for(const x of new Set(xs)){
+   const intervals=blocks.filter(r=>x<r.x+r.w+gap&&x+w>r.x-gap).map(r=>[Math.max(pad,r.y-gap),Math.min(height-pad,r.y+r.h+gap)]).filter(([a,b])=>b>a).sort((a,b)=>a[0]-b[0]);
+   let start=pad;const gaps=[];for(const[a,b]of intervals){if(a-start>=minimum)gaps.push([start,a]);start=Math.max(start,b);}if(height-pad-start>=minimum)gaps.push([start,height-pad]);
+   for(const[a,b]of gaps){const size=Math.min(h,b-a),y=clamp(preferredY,a,b-size);slots.push({x,y,w,h:size,scroll:size<h,cost:Math.abs(x-preferredX)*.35+Math.abs(y-preferredY)});}
+  }
+  slots.sort((a,b)=>Number(a.scroll)-Number(b.scroll)||(a.scroll?b.h-a.h:0)||a.cost-b.cost||a.y-b.y||a.x-b.x);
+  if(!slots.length)return null;const {cost,...slot}=slots[0];return slot;
+ }
+ return Object.freeze({options,percent,angle,delta,ticks,bearing,read,loss,impacts,reloadProgress,subtitleTop,notificationSlot});
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralFpsHud;
 
@@ -156,8 +169,46 @@ function v056HudAfterInit(){
  @media(prefers-reduced-motion:reduce){body.fps56 #crosshair,body.fps56 #statusBars i b{transition:none}}
  /* Reserve a separate line for the map attribution, including safe areas. */
  body.fps56 #v020Quickbar,body.fps56 #hud.touch #v020Quickbar{bottom:calc(max(12px,env(safe-area-inset-bottom)) + 14px)}
+ body.fps56 #toastStack[data-fps58-placement]{right:auto;bottom:auto;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;pointer-events:auto;align-content:start}
+ body.fps56 #toastStack:focus-visible{outline:2px solid #eadb95;outline-offset:3px}
+ body.fps56 #toastStack .toast{overflow-wrap:anywhere;font-size:12px;line-height:1.5;padding:8px 10px}
  `;document.head.appendChild(style);document.body.classList.add('fps56');
  const hud=$('hud');hud.setAttribute('aria-live','off');
+ const notifications=$('toastStack'),notificationLayout={dirty:true,stamp:'',slot:null,subtitle:null},notificationObstacleIds=['statusBars','weaponHud','v020Quickbar','compass','locationCard','questCard','v020QuestHint','fps56ObjectiveToggle','p30Hud','p28LampHud','v042LayerHud','levelHud','v023CriticalHud','needsHud','companionCard','effectHud','interactPrompt','stealth29','fps56Stance','fps57Hurt','crosshair','subtitle','geoAttribution'];
+ const notificationResize=typeof ResizeObserver==='function'?new ResizeObserver(()=>{notificationLayout.dirty=true;}):null;
+ if(notifications){
+  notifications.setAttribute('role','log');notifications.setAttribute('aria-live','polite');notifications.setAttribute('aria-relevant','additions');notifications.setAttribute('aria-label','Notifications');notifications.tabIndex=-1;
+  new MutationObserver(()=>{notificationLayout.dirty=true;}).observe(notifications,{childList:true});
+  notificationResize?.observe(notifications);
+  window.addEventListener('resize',()=>{notificationLayout.dirty=true;});document.fonts?.ready.then(()=>{notificationLayout.dirty=true;});
+  notifications.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','PageUp','PageDown','Home','End','Space'].includes(e.code))e.stopPropagation();});
+ }
+ const hudRect=el=>{const r=el.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height};},hudVisible=el=>el&&!el.hidden&&!el.classList.contains('hidden')&&el.getClientRects().length&&getComputedStyle(el).display!=='none'&&getComputedStyle(el).opacity!=='0';
+ function placeSubtitle(cap=Infinity){
+  const el=$('subtitle');if(!el)return;const reset=()=>{for(const key of['left','top','bottom','width','transform'])el.style[key]='';notificationLayout.subtitle=null;};reset();
+  if(mode!=='PLAYING'||!hudVisible(el))return;
+  const initial=hudRect(el),blocks=[...notificationObstacleIds.filter(id=>id!=='subtitle').map(id=>$(id)),...document.querySelectorAll('#touchControls button,#touchMove')].filter(hudVisible).map(hudRect);if(hudVisible(hit))blocks.push(hudRect(hit.querySelector('b')));
+  for(const width of new Set([Math.min(initial.w,cap),Math.min(initial.w,cap,320),Math.min(initial.w,cap,240),Math.min(initial.w,cap,180)])){
+   el.style.width=width+'px';const box=hudRect(el),slot=M.notificationSlot(innerWidth,innerHeight,{...initial,w:box.w,h:box.h,minH:box.h},blocks);
+   if(!slot||slot.scroll)continue;Object.assign(el.style,{left:slot.x+'px',top:slot.y+'px',bottom:'auto',transform:'none'});notificationLayout.subtitle=slot;return;
+  }
+  // Preserve the whole ordinary caption when even a narrow column cannot fit.
+  reset();
+ }
+ function placeNotifications(){
+  if(!notifications)return;const reset=()=>{for(const key of['left','right','top','bottom','width','maxHeight'])notifications.style[key]='';delete notifications.dataset.fps58Placement;notifications.tabIndex=-1;notificationLayout.slot=null;};
+  if(mode!=='PLAYING'||!notifications.children.length){reset();return;}
+  reset();const initial=hudRect(notifications);
+  const blocks=[...notificationObstacleIds.map(id=>$(id)),...document.querySelectorAll('#touchControls button,#touchMove')].filter(hudVisible).map(hudRect);if(hudVisible(hit))blocks.push(hudRect(hit.querySelector('b')));
+  let chosen=null;for(const width of new Set([initial.w,Math.min(initial.w,240),Math.min(initial.w,180)])){
+   notifications.style.width=width+'px';const first=[...notifications.children].find(hudVisible),minimum=first?Math.min(110,hudRect(first).h):44;
+   const slot=M.notificationSlot(innerWidth,innerHeight,{...initial,w:width,h:notifications.scrollHeight,minH:minimum},blocks);
+   if(slot&&(!chosen||Number(slot.scroll)<Number(chosen.scroll)||slot.scroll===chosen.scroll&&slot.h>chosen.h))chosen=slot;
+   if(slot&&!slot.scroll)break;
+  }
+  if(!chosen){reset();return;}
+  notifications.dataset.fps58Placement=chosen.scroll?'scroll':'full';Object.assign(notifications.style,{left:chosen.x+'px',right:'auto',top:chosen.y+'px',bottom:'auto',width:chosen.w+'px',maxHeight:chosen.h+'px'});notifications.tabIndex=chosen.scroll?0:-1;notificationLayout.slot=chosen;
+ }
  const attribution=$('geoAttribution')||document.createElement('small');attribution.id='geoAttribution';
  if(attribution){hud.appendChild(attribution);attribution.setAttribute('role','button');attribution.tabIndex=0;attribution.setAttribute('aria-label','Sources géographiques et licences');const openSources=()=>{if(mode==='PLAYING')v047OpenStatus();};attribution.addEventListener('click',openSources);attribution.addEventListener('keydown',e=>{if(['Enter','Space'].includes(e.code)){e.preventDefault();e.stopPropagation();if(!e.repeat)openSources();}});}
  const strip=document.createElement('div');strip.id='fps56Compass';strip.setAttribute('aria-hidden','true');$('compass').insertBefore(strip,$('questDistance'));
@@ -168,8 +219,9 @@ function v056HudAfterInit(){
  const feedback={owner:null,world:null,weapon:null,scene:null,hit:null,hurt:null,reloadTotal:0};let emission=null;
  function syncFeedback(){if(feedback.owner!==state||feedback.world!==world||feedback.weapon!==state?.player?.weaponId||feedback.scene!==V020.scene){Object.assign(feedback,{owner:state,world,weapon:state?.player?.weaponId,scene:V020.scene,hit:null,hurt:null,reloadTotal:0});}}
  const damageBefore=damageEnemy;damageEnemy=function(enemy,amount,...rest){const record={target:enemy,before:enemy?.health,alive:enemy?.alive===true,critical:rest[1]===true};const result=damageBefore.call(this,enemy,amount,...rest);if(emission){record.after=enemy?.health;record.dead=enemy?.alive===false;emission.push(record);}return result;};
- const emitBefore=v020Emit;v020Emit=function(...args){syncFeedback();const owner=state,place=world,scene=V020.scene,outer=emission,records=[];emission=records;try{const result=emitBefore.apply(this,args),summary=M.impacts(records);if(result&&summary.damage>0&&state===owner&&world===place&&V020.scene===scene){feedback.hit={...summary,until:performance.now()+750};updateHUD();}return result;}finally{emission=outer;}};
- const hurtBefore=hurtPlayer;hurtPlayer=function(...args){syncFeedback();const owner=state,place=world,hp=state?.player?.hp,wasPlaying=mode==='PLAYING';const result=hurtBefore.apply(this,args),lost=M.loss(hp,state?.player?.hp);if(wasPlaying&&lost>0&&state===owner&&world===place){const clock=performance.now(),recent=feedback.hurt&&feedback.hurt.until-clock>650?feedback.hurt.amount:0;feedback.hurt={amount:recent+lost,until:clock+1000};updateHUD();}return result;};
+ const emitBefore=v020Emit;v020Emit=function(...args){syncFeedback();const owner=state,place=world,scene=V020.scene,outer=emission,records=[];emission=records;try{const result=emitBefore.apply(this,args),summary=M.impacts(records);if(result&&summary.damage>0&&state===owner&&world===place&&V020.scene===scene){feedback.hit={...summary,until:performance.now()+750};notificationLayout.dirty=true;updateHUD();}return result;}finally{emission=outer;}};
+ const hurtBefore=hurtPlayer;hurtPlayer=function(...args){syncFeedback();const owner=state,place=world,hp=state?.player?.hp,wasPlaying=mode==='PLAYING';const result=hurtBefore.apply(this,args),lost=M.loss(hp,state?.player?.hp);if(wasPlaying&&lost>0&&state===owner&&world===place){const clock=performance.now(),recent=feedback.hurt&&feedback.hurt.until-clock>650?feedback.hurt.amount:0;feedback.hurt={amount:recent+lost,until:clock+1000};notificationLayout.dirty=true;updateHUD();}return result;};
+ const subtitleBefore=subtitle;subtitle=function(...args){const result=subtitleBefore.apply(this,args);notificationLayout.dirty=true;return result;};
  const reloadBefore=reload;reload=function(...args){syncFeedback();const result=reloadBefore.apply(this,args);if(result&&reloadTimer>0)feedback.reloadTotal=reloadTimer;return result;};
  const objectiveToggle=document.createElement('button');objectiveToggle.id='fps56ObjectiveToggle';objectiveToggle.type='button';objectiveToggle.title='Afficher ou masquer le suivi de quête';hud.appendChild(objectiveToggle);
  const aim=document.createElement('button');aim.type='button';aim.dataset.fps56Aim='true';aim.textContent='X · Visée';aim.title='Maintenir pour présenter l’arme dans l’axe du viseur';aim.setAttribute('aria-label','Maintenir la visée');
@@ -184,7 +236,8 @@ function v056HudAfterInit(){
  function sync(){hud.classList.toggle('fps56-compact',preferences.compact);fields.querySelector('[data-fps56=compact]').checked=preferences.compact;fields.querySelector('[data-fps56=objectives]').checked=preferences.objectives;objectiveToggle.textContent=preferences.objectives?'Suivi · masquer':'Suivi · afficher';objectiveToggle.setAttribute('aria-pressed',String(preferences.objectives));}
  function store(next){const before=preferences;preferences=M.options(next);try{localStorage.setItem(key,JSON.stringify(preferences));}catch{preferences=before;toast('Affichage non enregistré : stockage indisponible.','bad');}sync();}
  fields.addEventListener('change',()=>store({compact:fields.querySelector('[data-fps56=compact]').checked,objectives:fields.querySelector('[data-fps56=objectives]').checked}));objectiveToggle.onclick=()=>store({...preferences,objectives:!preferences.objectives});$('btnOptionsReset')?.addEventListener('click',()=>store(M.options()));sync();
- let compassStamp='',lastMode=null,subtitleLayoutAt=0;
+ for(const el of[...notificationObstacleIds.map(id=>$(id)),...document.querySelectorAll('#touchControls button,#touchMove'),hit.querySelector('b')])if(el)notificationResize?.observe(el);
+ let compassStamp='',lastMode=null;
  const base=updateHUD;updateHUD=function(...args){const result=base(...args);if(!gameStarted||!state?.player)return result;const playing=mode==='PLAYING';if(lastMode!==mode){lastMode=mode;if(!playing)releaseAim();}hud.classList.toggle('fps56-compact',preferences.compact);
   const hint=$('v020QuestHint'),quest=$('questCard'),hasHint=!!hint&&!hint.hidden&&!!hint.textContent.trim();
   hint?.classList.toggle('fps56-objective-hidden',!preferences.objectives||!hasHint);quest.classList.toggle('fps56-objective-hidden',!preferences.objectives||hasHint);
@@ -205,13 +258,15 @@ function v056HudAfterInit(){
   if(settings.reduceMotion)hud.classList.add('fps56-reduced');else hud.classList.remove('fps56-reduced');
   const stealth=$('stealth29');if(stealth)stealth.title=stealth.querySelector('small')?.textContent||'';
   if(attribution){const geographic=!!world?.v046;attribution.hidden=!geographic;if(geographic){attribution.title=attribution.textContent;attribution.textContent=typeof V046!=='undefined'&&V046.lab?'Banc synthétique · données de test':'© contributeurs OpenStreetMap · Cadastre/DGFiP · IGN';}}
-  // Reflow an actual subtitle into a free horizontal strip. In portrait the
-  // historical bottom offset otherwise covers both ammunition and health.
-  // Keep the ordinary CSS position if an unusually crowded screen has no
-  // full-height strip; never clip or discard the message to manufacture a fit.
-  const subtitle=$('subtitle');if(playing&&subtitle&&!subtitle.classList.contains('hidden')&&now-subtitleLayoutAt>120){subtitleLayoutAt=now;const rect=el=>{const r=el.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height};},visible=el=>el&&!el.hidden&&!el.classList.contains('hidden')&&el.getClientRects().length&&getComputedStyle(el).display!=='none'&&getComputedStyle(el).opacity!=='0';const ids=['statusBars','weaponHud','v020Quickbar','compass','locationCard','questCard','v020QuestHint','fps56ObjectiveToggle','p30Hud','p28LampHud','v042LayerHud','levelHud','v023CriticalHud','needsHud','companionCard','effectHud','interactPrompt','stealth29','fps56Stance','fps57Hurt','toastStack','crosshair'];const blocks=ids.map(id=>$(id)).filter(visible).map(rect);if(!hit.hidden)blocks.push(rect(hit.querySelector('b')));const top=M.subtitleTop(innerWidth,innerHeight,rect(subtitle),blocks);if(top!==null){subtitle.style.top=top+'px';subtitle.style.bottom='auto';}else{subtitle.style.top='';subtitle.style.bottom='';}}
+  const notificationStamp=[mode,innerWidth,innerHeight,preferences.compact,preferences.objectives,hud.classList.contains('touch'),$('p30Hud')?.hidden,state.player.crouched,state.player.cameraMode,notifications?.children.length,$('subtitle')?.classList.contains('hidden')].join(':');
+  if(notificationLayout.dirty||notificationLayout.stamp!==notificationStamp){
+   notificationLayout.dirty=false;notificationLayout.stamp=notificationStamp;
+   // Captions get a complete readable region first. If this leaves no room
+   // for a live notice, try two narrower caption columns before the fallback.
+   for(const cap of[Infinity,240,180]){placeSubtitle(cap);placeNotifications();if(!notifications?.children.length||notificationLayout.slot||!notificationLayout.subtitle)break;}
+  }
   return result;
  };
- Object.assign(window.__MISTRAL_DEBUG,{v056HudInfo:()=>({preferences:{...preferences},model:M.read(state?.player,currentWeapon(),reloadTimer),feedback:{hit:feedback.hit?{...feedback.hit}:null,hurt:feedback.hurt?{...feedback.hurt}:null,reloadTotal:feedback.reloadTotal,reloadProgress:M.reloadProgress(reloadTimer,feedback.reloadTotal)},mode,assistance:'Presentation only; no world position, health, ammo or quest writes. Combat confirmations observe applied ordinary weapon damage and actual HP loss; no source position is inferred.'})});
+ Object.assign(window.__MISTRAL_DEBUG,{v056HudInfo:()=>({preferences:{...preferences},model:M.read(state?.player,currentWeapon(),reloadTimer),feedback:{hit:feedback.hit?{...feedback.hit}:null,hurt:feedback.hurt?{...feedback.hurt}:null,reloadTotal:feedback.reloadTotal,reloadProgress:M.reloadProgress(reloadTimer,feedback.reloadTotal)},notifications:notificationLayout.slot?{...notificationLayout.slot}:null,mode,assistance:'Presentation only; no world position, health, ammo or quest writes. Combat confirmations observe applied ordinary weapon damage and actual HP loss; no source position is inferred.'})});
  updateHUD();
 }

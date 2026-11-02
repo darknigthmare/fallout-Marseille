@@ -1,0 +1,89 @@
+{
+  "scope": "Read-only visual review of the failed native attempt; not final validation and excluded from release sums. Every PNG opened individually.",
+  "htmlSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "nativeReportSha256": "02c5e051750e57756a57abb4a4637fc5a1a145df02fedebbd5f16cc38cba1262",
+  "stage": "religious",
+  "runPassed": 63,
+  "runFailed": 1,
+  "addedAutomatedChecks": 0,
+  "reviewedImages": 9,
+  "records": [
+    {
+      "file": "01_residential_context.png",
+      "openedIndividuallyWith": "view_image",
+      "actualSha256": "89631dda52df118508a8289463d04bae2c3980bb743d5d9552fbf7a16c0d059f",
+      "expectedSha256": "89631dda52df118508a8289463d04bae2c3980bb743d5d9552fbf7a16c0d059f",
+      "shaMatchesReport": true,
+      "observation": "Contexte réel occulté par une grande paroi voisine ; ne pas présenter comme vue visible des nouvelles ferrures. Aucune géographie de remplacement."
+    },
+    {
+      "file": "06_scout_hardware_1_1.png",
+      "openedIndividuallyWith": "view_image",
+      "actualSha256": "7ff427bdc6eaae1b9bea1a3d97b2ed30d6c9802f304f2add7390a7873cfdaa1e",
+      "expectedSha256": "7ff427bdc6eaae1b9bea1a3d97b2ed30d6c9802f304f2add7390a7873cfdaa1e",
+      "shaMatchesReport": true,
+      "observation": "Baie d’un autre véritable objet résidentiel acquis : montants à retours, persiennes inclinées et quatre ferrures visibles. Bas de la baie partiellement sous l’arme/HUD."
+    },
+    {
+      "file": "06_scout_hardware_1_2.png",
+      "openedIndividuallyWith": "view_image",
+      "actualSha256": "3656dbf485a62a0262c620d5a0576bd7cd37353445a99840b4fdee27874e7467",
+      "expectedSha256": "3656dbf485a62a0262c620d5a0576bd7cd37353445a99840b4fdee27874e7467",
+      "shaMatchesReport": true,
+      "observation": "Porte résidentielle moulurée et interaction E visibles ; une partie droite de la porte/poignée est derrière le modèle d’arme. Ne pas isoler cette photo comme preuve complète de la poignée."
+    },
+    {
+      "file": "06_real_portal_interior.png",
+      "openedIndividuallyWith": "view_image",
+      "actualSha256": "ab37761a12cf5a60978fa28a3d03c9252bd4907464df6df9093569272d74dd17",
+      "expectedSha256": "ab37761a12cf5a60978fa28a3d03c9252bd4907464df6df9093569272d74dd17",
+      "shaMatchesReport": true,
+      "observation": "Intérieur réellement ouvert par E, couloir inventé et palier visible. Les murs proches occupent l’essentiel du cadre ; ce n’est pas une visite panoramique."
+    },
+    {
+      "file": "02_commercial_context.png",
+      "openedIndividuallyWith": "view_image",
+      "actualSha256": "98a80ca7e71c6231a5d50e0a066ab6db3fbd0cf11f306e928d8740835e1930de",
+      "expectedSha256": "98a80ca7e71c6231a5d50e0a066ab6db3fbd0cf11f306e928d8740835e1930de",
+      "shaMatchesReport": true,
+      "observation": "Contexte de rue à pente réelle et volumes sources, détails de baies visibles à distance ; caméra initiale ne désigne pas seule la cible commerciale."
+    },
+    {
+      "file": "02_commercial_hardware_1.png",
+      "openedIndividuallyWith": "view_image",
+      "actualSha256": "ee94396d62cf115966f5860a075735f28669c405deb0b29a017491880d7a206f",
+      "expectedSha256": "ee94396d62cf115966f5860a075735f28669c405deb0b29a017491880d7a206f",
+      "shaMatchesReport": true,
+      "observation": "Porte commerciale cadrée en vue rapprochée, poignée à gauche et retours clairement visibles ; partie haute hors cadre, arme/HUD recouvrent le bas droit."
+    },
+    {
+      "file": "03_industrial_context.png",
+      "openedIndividuallyWith": "view_image",
+      "actualSha256": "e7092fad459e150e217e27f286e479886fe13914b5cd3f5fc2935bd29adb09f4",
+      "expectedSha256": "e7092fad459e150e217e27f286e479886fe13914b5cd3f5fc2935bd29adb09f4",
+      "shaMatchesReport": true,
+      "observation": "Mur industriel gris, châssis d’atelier et contours de baies. Vue initiale de contexte, pas une preuve d’ensemble du bâtiment."
+    },
+    {
+      "file": "03_industrial_hardware_1.png",
+      "openedIndividuallyWith": "view_image",
+      "actualSha256": "5a8b7a729f84a074dcbb39cabe9a4ed883ffd7ffec8d24860e76fbd3bf31a98a",
+      "expectedSha256": "5a8b7a729f84a074dcbb39cabe9a4ed883ffd7ffec8d24860e76fbd3bf31a98a",
+      "shaMatchesReport": true,
+      "observation": "Double vantail, traverses, montants en relief et poignées visibles. Vue rapprochée avec arme/HUD en bas à droite."
+    },
+    {
+      "file": "FAILURE.png",
+      "openedIndividuallyWith": "view_image",
+      "actualSha256": "561618c7f3736bf2662955dabf2e4c9429c03e8a8be7e7cc3225e251da480440",
+      "expectedSha256": null,
+      "shaMatchesReport": null,
+      "observation": "Vue réellement conservée au point de l’échec de comparaison du profil religieux ; longs vitrages et relief voisin visibles, aucune conclusion documentaire tirée de cette image."
+    }
+  ],
+  "limitations": [
+    "Models and architectural details remain invented; no facade survey claimed.",
+    "The religious grouped assertion lacked operand diagnostics; failure cause not yet identified.",
+    "The server thread stopped and owned context/browser closed; the old pilot did not record its ephemeral port for a direct post-close probe."
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "scope": "Actual Chromium service worker lifecycle; production worker and current HTML, explicitly synthetic old cached HTML",
+  "checks": [
+    {
+      "name": "Offline cache name follows actual HTML digest",
+      "ok": true
+    },
+    {
+      "name": "Existing cache serves the old shell",
+      "ok": true
+    },
+    {
+      "name": "Updated worker stores rebuilt production HTML",
+      "ok": true,
+      "detail": {
+        "sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+        "bytes": 3035042,
+        "firstBytes": [
+          60,
+          33,
+          100,
+          111,
+          99,
+          116,
+          121,
+          112,
+          101,
+          32,
+          104,
+          116
+        ]
+      }
+    },
+    {
+      "name": "Previous cache is removed",
+      "ok": true
+    },
+    {
+      "name": "Offline navigation receives the rebuilt game",
+      "ok": true
+    },
+    {
+      "name": "Missing map data remains an explicit failure offline",
+      "ok": true,
+      "detail": {
+        "status": 503,
+        "text": "Ressource locale indisponible"
+      }
+    }
+  ],
+  "htmlSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "cacheName": "fallout-mistral-v050-4581c0c29ce5c74d",
+  "oldCache": "fallout-mistral-v050-12",
+  "requests": [
+    {
+      "path": "/index.html",
+      "upgraded": false,
+      "worker": null
+    },
+    {
+      "path": "/favicon.ico",
+      "upgraded": false,
+      "worker": null
+    },
+    {
+      "path": "/sw.js",
+      "upgraded": false,
+      "worker": "script"
+    },
+    {
+      "path": "/",
+      "upgraded": false,
+      "worker": null
+    },
+    {
+      "path": "/index.html",
+      "upgraded": false,
+      "worker": null
+    },
+    {
+      "path": "/JOUER_FALLOUT_MISTRAL_v0.50.html",
+      "upgraded": false,
+      "worker": null
+    },
+    {
+      "path": "/manifest.webmanifest",
+      "upgraded": false,
+      "worker": null
+    },
+    {
+      "path": "/icons/mistral-192.png",
+      "upgraded": false,
+      "worker": null
+    },
+    {
+      "path": "/icons/mistral-512.png",
+      "upgraded": false,
+      "worker": null
+    },
+    {
+      "path": "/sw.js",
+      "upgraded": true,
+      "worker": "script"
+    },
+    {
+      "path": "/",
+      "upgraded": true,
+      "worker": null
+    },
+    {
+      "path": "/index.html",
+      "upgraded": true,
+      "worker": null
+    },
+    {
+      "path": "/JOUER_FALLOUT_MISTRAL_v0.50.html",
+      "upgraded": true,
+      "worker": null
+    },
+    {
+      "path": "/manifest.webmanifest",
+      "upgraded": true,
+      "worker": null
+    },
+    {
+      "path": "/icons/mistral-192.png",
+      "upgraded": true,
+      "worker": null
+    },
+    {
+      "path": "/icons/mistral-512.png",
+      "upgraded": true,
+      "worker": null
+    },
+    {
+      "path": "/sw.js",
+      "upgraded": true,
+      "worker": "script"
+    }
+  ],
+  "browser": "154.0.8037.57",
+  "cacheSnapshot": {
+    "fallout-mistral-v050-4581c0c29ce5c74d": [
+      {
+        "url": "http://127.0.0.1:43671/",
+        "bytes": 3035042
+      },
+      {
+        "url": "http://127.0.0.1:43671/index.html",
+        "bytes": 3035042
+      },
+      {
+        "url": "http://127.0.0.1:43671/JOUER_FALLOUT_MISTRAL_v0.50.html",
+        "bytes": 3035042
+      },
+      {
+        "url": "http://127.0.0.1:43671/manifest.webmanifest",
+        "bytes": 604
+      },
+      {
+        "url": "http://127.0.0.1:43671/icons/mistral-192.png",
+        "bytes": 2688
+      },
+      {
+        "url": "http://127.0.0.1:43671/icons/mistral-512.png",
+        "bytes": 7688
+      }
+    ]
+  },
+  "passed": 6,
+  "failed": 0
+}

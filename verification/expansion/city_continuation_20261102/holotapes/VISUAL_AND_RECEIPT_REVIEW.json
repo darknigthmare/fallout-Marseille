@@ -1,0 +1,87 @@
+{
+  "stage": "complete",
+  "reviewedAtUtc": "2026-11-02T06:12:47.296920+00:00",
+  "scope": "Read-only review of the final45 run supplied by root; no browser, test, source or QA modification. Adds zero assertions or captures to native60/4. The former84 evidence remains in diagnostic-84 unchanged.",
+  "htmlSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "moduleSha256": "38dc175b60aa227ce9a2f13f77ce57401d36c4950b84cd59de52fe7937d2f217",
+  "scriptSha256": "51d000fe1cc0022084efb018b30ccd5d4065fc5ebd92c44658a10af86e711f5f",
+  "reportSha256": "14bb601233af1b1dbe175157ce2619e63d4cc4003538649d32cfd23461e0601d",
+  "executionReceiptSha256": "e62c8e47f69b5a3c66b236e61218ca2b1440a77efb34a5c5553f57c92b114fc9",
+  "stdoutSha256": "284aff74c87a7f7a1dd17e620c8c3838a34a87e560683a06d82de5a72f98077c",
+  "actualExitCode": 0,
+  "childPid": 309914,
+  "childPidGone": true,
+  "passedNativeControls": 60,
+  "failedNativeControls": 0,
+  "stdoutMatchesChecks": true,
+  "phaseAInputCount": 474,
+  "phaseAFreezeSha256": "daaae557d37062663e070cd448333c641ab6c6bcfac1170c9d9c3d6872911db8",
+  "executionReceiptRuntimeChanged": [],
+  "currentPhaseAInputDifferences": [
+    {
+      "path": "tests/expansion/facade_hardware_native.py",
+      "phaseASha256": "8435e8b232c497963c5b56f3d35e50aac8cbdf408abd071af8816a98374cdd05",
+      "currentSha256": "368baef192ccf76b3ae865eaf5b8c688f4d92a2023455d1bfecf1d030b7409ee",
+      "phaseAArchiveSha256": "8435e8b232c497963c5b56f3d35e50aac8cbdf408abd071af8816a98374cdd05",
+      "currentMtimeEpoch": 1793599792.5444837,
+      "afterNativeCompletion": true
+    }
+  ],
+  "phaseADifferenceScope": "The sole different file is the other facade pilot QA correction announced by root after this run; its exact phaseA copy is preserved. All production inputs and this pilot remain unchanged. No blanket assertion of474 current identical files is made.",
+  "allObservedSourcePinsMatchCurrent": true,
+  "preExecutionEntryArchiveMatches": true,
+  "previous84ReportSha256": "5006803f471e7b1f4305f4f71c657c3c598b65035c9d1f94d580e703c35f8cf6",
+  "previous84ReviewSha256": "925c0b7e3ae58d114442d47c9d2c530046469f2f18ccc65c0d84677430122489",
+  "previous84EvidenceUnmodified": true,
+  "shotsInspected": [
+    {
+      "file": "01_authored_holoband.png",
+      "sha256": "21ea049d694231c15d20ed94decba3a1a9f18783b8ef84f000ea20140eb93245",
+      "openedAndInspected": true,
+      "freshMtimeAfterRunStart": true,
+      "note": "Final45 image01 was actually opened: original cassette and stand are visible at the real E target; neighboring stylized narrative props remain in view. Camera placement and freeze are declared assistance."
+    },
+    {
+      "file": "02_original_transcription.png",
+      "sha256": "a6057a2d3e9efbf39bf0c2a50178a457c5d631e9225fd783d215f01ee38c33d6",
+      "openedAndInspected": true,
+      "freshMtimeAfterRunStart": true,
+      "note": "Final45 image02 was actually opened: segment two and expanded transcription are readable in the existing reader. The title/list have scrolled above the frame and most transcript segments require further vertical scrolling."
+    },
+    {
+      "file": "03_three_bands_portrait.png",
+      "sha256": "5ad4f11b0f52fecf53747926768d355c0d77739a257281e8bd02dfd4259243fa",
+      "openedAndInspected": true,
+      "freshMtimeAfterRunStart": true,
+      "note": "Final45 image03 was actually opened even though its deterministic PNG bytes equal the earlier portrait: the file mtime is fresh for this run. All three acquired titles are readable at390x844; the selected detail continues below the fold, requiring normal scrolling."
+    },
+    {
+      "file": "04_real_counterpart_no_duplicate.png",
+      "sha256": "f85270e541debc38f6ca29ae58f336e6c1db973be1ab882a5bf8572a7db786fe",
+      "openedAndInspected": true,
+      "freshMtimeAfterRunStart": true,
+      "note": "Final45 image04 was actually opened: real installed Huveaune geography and relay are visible, while the collected copy remains absent by actual state/interactable checks. Generic facades, relief presentation and this camera do not certify an architectural1:1 visit."
+    }
+  ],
+  "pageErrors": [],
+  "localHttpErrors": [],
+  "externalTunnelResourceConsoleErrorsRetained": 18,
+  "rawRequestFailureCount": 18,
+  "rawLocalMetadataCancellationCount": 0,
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_closed": true,
+    "server_closed": true,
+    "worker_stopped": true
+  },
+  "serverPort": 43571,
+  "serverConnectExAfterClose": 111,
+  "serverActuallyClosed": true,
+  "limitations": [
+    "Diagnostic placement and frozen simulation remain declared in the raw report.",
+    "No recorded voice or recovered private lore is claimed.",
+    "Portrait uses an emulated viewport and vertical scrolling; no physical device certification.",
+    "No full architectural1:1 or exhaustive human playthrough claim."
+  ]
+}

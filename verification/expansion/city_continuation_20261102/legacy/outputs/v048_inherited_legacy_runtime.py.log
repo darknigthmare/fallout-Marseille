@@ -1,0 +1,51 @@
+OK Démarrage v0.46
+OK Banc se charge par la barrière réelle
+OK Cinq empreintes cadastrales de test chargées
+OK Des arbres sont créés dans le masque forestier
+OK Une seule projection pour les huit régions
+OK Cour du bâtiment reste traversable
+OK Mur du même bâtiment garde sa collision
+OK Région traverse sans reconstruire — aller 1
+OK Bâtiments identiques après franchissement 1
+OK Retour conserve routes et forêt 1
+OK Position retour conservée 1
+OK Région traverse sans reconstruire — aller 2
+OK Bâtiments identiques après franchissement 2
+OK Retour conserve routes et forêt 2
+OK Position retour conservée 2
+OK Région traverse sans reconstruire — aller 3
+OK Bâtiments identiques après franchissement 3
+OK Retour conserve routes et forêt 3
+OK Position retour conservée 3
+OK Écran de chargement réellement visible
+OK Déplacement bloqué pendant chargement
+OK Ressources manquantes interdisent la publication
+OK Réessayer et annuler restent accessibles
+OK Annulation reprend la scène intacte
+OK Réessai réussi
+OK Rechargement ne déplace pas les bâtiments
+OK Une réponse tardive après annulation ne change rien
+OK Raccourcis non reconstruits sur 600 mises à jour
+OK Dimensions des raccourcis constantes
+OK HUD arme constant sur 600 valeurs
+OK HUD étroit stable, borné et sans débordement sur 600 valeurs
+OK Ciel : azimut monde indépendant de la caméra
+OK Ciel : projection change avec le regard
+OK Neuf factions et huit dossiers réintégrés
+OK Objectif non accompli ne donne pas de récompense
+OK Récompense une seule fois
+OK Progression COCHONNET persistante
+OK Le laboratoire ne sauvegarde jamais la campagne
+OK Dossiers de lore accessibles dans le vrai Pip-Boy
+OK Ancienne sauvegarde convertie au repère commun
+OK Portefeuille conservé pendant migration
+OK Retour de porte converti avec la sauvegarde
+OK Migration idempotente : pas de second déplacement
+OK Abri existant toujours ouvrable
+OK Intérieur hérité conservé
+OK Sortie de l’abri acceptée
+OK Retour au même point extérieur
+OK Bâtiments identiques après sortie d’instance
+OK Aucune exception JS
+{"passed": 49, "failed": 0, "total": 49, "errors": []}
+

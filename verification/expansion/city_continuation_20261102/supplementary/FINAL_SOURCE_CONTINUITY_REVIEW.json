@@ -1,0 +1,247 @@
+{
+  "reviewKind": "read-only source/proof continuity review, not an added gameplay or QA test suite",
+  "observedAtUtc": "2026-11-02T06:26:35.855322+00:00",
+  "baselineCommit": "c3cd2a3abf70a86aeef3d7a8ad2d9d5b38545afa",
+  "headAtInspection": "c3cd2a3abf70a86aeef3d7a8ad2d9d5b38545afa",
+  "aggregateAccounting": {
+    "countedIn3318": false,
+    "newGameplayChecks": 0
+  },
+  "gitDiff": {
+    "stat": " JOUER_FALLOUT_MISTRAL_v0.50.html            | 409 +++++++++++++++++++++++-----\n data/map_pack/landmark_surfaces/index.json  |   2 +-\n docs/BESTIAIRE_REGIONAL.md                  |  40 ++-\n docs/FACADES_MENUISERIES.md                 |  62 ++++-\n docs/HUD_FPS.md                             |   6 +-\n docs/INTERIEURS_USAGES.md                   |  19 +-\n docs/VUE_FPS.md                             |   2 +\n index.html                                  | 409 +++++++++++++++++++++++-----\n src/core-v017.js                            |   2 +-\n src/game.js                                 | 409 +++++++++++++++++++++++-----\n src/v050/06a_landmark_surfaces.js           |   8 +-\n src/v050/07_facades.js                      |  55 +++-\n src/v050/08_city_interiors.js               | 109 ++++++--\n src/v050/13_regional_bestiary.js            |  47 +++-\n src/v050/17_first_person.js                 |   6 +-\n src/v050/19_fps_hud.js                      |  75 ++++-\n sw.js                                       |   2 +-\n tests/expansion/first_person.cjs            |   3 +\n tests/expansion/fps_hud_native.py           |  57 ++++\n tests/expansion/landmark_surfaces.cjs       |  36 ++-\n tests/expansion/landmark_surfaces_native.py |  12 +-\n tests/expansion/regional_bestiary.cjs       |  17 +-\n tests/expansion/regional_bestiary_native.py |  37 ++-\n tools/build_single.py                       |   1 +\n tools/check_expansion.py                    |   3 +-\n 25 files changed, 1536 insertions(+), 292 deletions(-)\n",
+    "nameStatus": [
+      {
+        "status": "M",
+        "path": "JOUER_FALLOUT_MISTRAL_v0.50.html"
+      },
+      {
+        "status": "M",
+        "path": "data/map_pack/landmark_surfaces/index.json"
+      },
+      {
+        "status": "M",
+        "path": "docs/BESTIAIRE_REGIONAL.md"
+      },
+      {
+        "status": "M",
+        "path": "docs/FACADES_MENUISERIES.md"
+      },
+      {
+        "status": "M",
+        "path": "docs/HUD_FPS.md"
+      },
+      {
+        "status": "M",
+        "path": "docs/INTERIEURS_USAGES.md"
+      },
+      {
+        "status": "M",
+        "path": "docs/VUE_FPS.md"
+      },
+      {
+        "status": "M",
+        "path": "index.html"
+      },
+      {
+        "status": "M",
+        "path": "src/core-v017.js"
+      },
+      {
+        "status": "M",
+        "path": "src/game.js"
+      },
+      {
+        "status": "M",
+        "path": "src/v050/06a_landmark_surfaces.js"
+      },
+      {
+        "status": "M",
+        "path": "src/v050/07_facades.js"
+      },
+      {
+        "status": "M",
+        "path": "src/v050/08_city_interiors.js"
+      },
+      {
+        "status": "M",
+        "path": "src/v050/13_regional_bestiary.js"
+      },
+      {
+        "status": "M",
+        "path": "src/v050/17_first_person.js"
+      },
+      {
+        "status": "M",
+        "path": "src/v050/19_fps_hud.js"
+      },
+      {
+        "status": "M",
+        "path": "sw.js"
+      },
+      {
+        "status": "M",
+        "path": "tests/expansion/first_person.cjs"
+      },
+      {
+        "status": "M",
+        "path": "tests/expansion/fps_hud_native.py"
+      },
+      {
+        "status": "M",
+        "path": "tests/expansion/landmark_surfaces.cjs"
+      },
+      {
+        "status": "M",
+        "path": "tests/expansion/landmark_surfaces_native.py"
+      },
+      {
+        "status": "M",
+        "path": "tests/expansion/regional_bestiary.cjs"
+      },
+      {
+        "status": "M",
+        "path": "tests/expansion/regional_bestiary_native.py"
+      },
+      {
+        "status": "M",
+        "path": "tools/build_single.py"
+      },
+      {
+        "status": "M",
+        "path": "tools/check_expansion.py"
+      }
+    ],
+    "untrackedPaths": [
+      "data/map_pack/landmark_surfaces/marseille-mns-c89a3a22e3b2d55c.json",
+      "docs/HOLOBANDES.md",
+      "implementation/architecture-continuation/20261102/0892-6247-MNS_RECEIPT.json",
+      "implementation/architecture-continuation/20261102/25ef77d4d1135ece379317940174cf8dd42ca3baf61d7bb78e835a1a256f4b70.json",
+      "implementation/architecture-continuation/20261102/BASELINE_LANDMARK_INDEX.json",
+      "implementation/architecture-continuation/20261102/BOURSE_OPERA_BUILD_RECEIPT.json",
+      "implementation/architecture-continuation/20261102/EXECUTED_NATIVE_CELL_REPLAY.py",
+      "implementation/architecture-continuation/20261102/MNS_EXTENSION_20261102.json",
+      "implementation/architecture-continuation/20261102/NATIVE_CELL_REPLAY.json",
+      "implementation/architecture-continuation/20261102/OFFICIAL_CATALOGUE_CHECKS.json",
+      "implementation/architecture-continuation/20261102/README.md",
+      "implementation/architecture-continuation/20261102/a828afee591cb9445cfc166c972f270ba6212b083175d4a3caeced035ef6eb0f.geojson",
+      "implementation/architecture-continuation/20261102/metadata-original.geojson",
+      "src/v050/21_holotapes.js",
+      "tests/expansion/facade_hardware_native.py",
+      "tests/expansion/facades_hardware.cjs",
+      "tests/expansion/fixtures/bestiary_previous_72_assignments.json",
+      "tests/expansion/fixtures/interior_domestic_rest.json",
+      "tests/expansion/fixtures/interior_domestic_source.json",
+      "tests/expansion/fixtures/interior_layouts_before_domestic.json",
+      "tests/expansion/holotapes.cjs",
+      "tests/expansion/holotapes_native.py",
+      "tests/expansion/hud_notification_layout.cjs",
+      "tests/expansion/interior_domestic.cjs",
+      "tests/expansion/interior_domestic_native.py",
+      "tools/extend_bourse_opera_surfaces.py"
+    ],
+    "note": "git diff reports tracked changes only; untracked future additions are listed separately."
+  },
+  "historicalVerification": {
+    "baselineFiles": 3516,
+    "checkedFiles": 3516,
+    "unchangedFiles": 3516,
+    "bytesRead": 820777345,
+    "missingFiles": [],
+    "changedFiles": [],
+    "unsupportedEntries": [],
+    "baselineManifestSha256": "3c7558f44ac43d5ca80a3e0cedad5566a83f67c45e85725cbefe6cd555f16f0c",
+    "method": "Recompute the Git SHA1 blob digest from every baseline-tracked file currently on disk and compare with the commit tree; no repository writes."
+  },
+  "priorTrackedData": {
+    "baselineFiles": 95,
+    "checkedFiles": 95,
+    "unchangedFiles": 94,
+    "bytesRead": 332322558,
+    "missingFiles": [],
+    "changedFiles": [
+      {
+        "path": "data/map_pack/landmark_surfaces/index.json",
+        "baselineGitObject": "6dcbfbc3192ffb5ce00fb6552fae34dd3f0b56ce",
+        "currentGitObject": "8aebaddc8a4a764b11586cbdf8aa2034bbb8f845",
+        "currentSha256": "544833f547ff6a6f1813b5cb19d0541345b95ece4028ab8c77af1a554c0a6e31"
+      }
+    ],
+    "unsupportedEntries": [],
+    "baselineManifestSha256": "51909a532348356e9727dc459b153b6ae776b5da36d570d4132a80943cf149dd",
+    "method": "Recompute the Git SHA1 blob digest from every baseline-tracked file currently on disk and compare with the commit tree; no repository writes."
+  },
+  "priorImplementationProvenance": {
+    "baselineFiles": 36,
+    "checkedFiles": 36,
+    "unchangedFiles": 36,
+    "bytesRead": 1326058,
+    "missingFiles": [],
+    "changedFiles": [],
+    "unsupportedEntries": [],
+    "baselineManifestSha256": "b4943bb9b8b99e0cc557d81200520e849fe15e908ba95b3467e5e228ea0c6ef7",
+    "method": "Recompute the Git SHA1 blob digest from every baseline-tracked file currently on disk and compare with the commit tree; no repository writes."
+  },
+  "architectureRegistry": {
+    "path": "data/map_pack/architecture/index.json",
+    "baselineLinks": 12,
+    "currentLinks": 12,
+    "wholeFileByteIdentical": true,
+    "recordsExactJsonEqual": true,
+    "sha256": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  },
+  "landmarkSurfaceContinuity": {
+    "baselineIndexPath": "data/map_pack/landmark_surfaces/index.json",
+    "baselineIndexSha256": "39c7c6b3347d6a1a3d04f8640e14b3d18905346a65ab6b67b11dc20781a0049e",
+    "currentIndexSha256": "544833f547ff6a6f1813b5cb19d0541345b95ece4028ab8c77af1a554c0a6e31",
+    "indexUpdated": true,
+    "baselineAtlasPath": "data/map_pack/landmark_surfaces/marseille-mns-d784b256e926b869.json",
+    "baselineAtlasSha256": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d",
+    "baselineAtlasStillPresentAndByteEqual": true,
+    "baselineDescriptorSha256Valid": true,
+    "currentAtlasPath": "data/map_pack/landmark_surfaces/marseille-mns-c89a3a22e3b2d55c.json",
+    "currentAtlasSha256": "c89a3a22e3b2d55c08d30361ba5c65cae88392b74635a6d5cc2bc7599d99ae7c",
+    "currentDescriptorSha256Valid": true,
+    "baselineRecordCount": 19,
+    "currentRecordCount": 23,
+    "baselineRecordsPreservedAsExactJsonValues": true,
+    "baselineRecordsPreservedCount": 19,
+    "missingOrModifiedPriorRecordHashes": [],
+    "addedRecordsCount": 4,
+    "addedRecords": [
+      {
+        "cleabs": "BATIMENT0000000258927584",
+        "sourceId": "batiment.9967974",
+        "siteContext": "Contexte du Palais de la Bourse",
+        "recordSha256": "b7c8ea6df46fd624f43fed2fc0de13fa1c39686f4c0bb43c6e8ac0656a476f69"
+      },
+      {
+        "cleabs": "BATIMENT0000000273403820",
+        "sourceId": "batiment.10631461",
+        "siteContext": "Contexte de l’Opéra Municipal de Marseille",
+        "recordSha256": "7f3e233742bfffbf0f83abdcd2b009b2dbf78775ac0a61987badd0dea35e527a"
+      },
+      {
+        "cleabs": "BATIMENT0000000273403821",
+        "sourceId": "batiment.10631462",
+        "siteContext": "Contexte de l’Opéra Municipal de Marseille",
+        "recordSha256": "af979a304e44c2704f13337086d0ab25633d443aa16a95bd3573d19c591d5720"
+      },
+      {
+        "cleabs": "BATIMENT0000000273403819",
+        "sourceId": "batiment.10631460",
+        "siteContext": "Contexte de l’Opéra Municipal de Marseille",
+        "recordSha256": "a035ff8d5b5ff42bdae2f52e3f4f33f58c0b68cfc8a78312a18de7a246c9c71f"
+      }
+    ],
+    "priorInputHashesPreserved": true,
+    "scope": "Measured upper surface only; no claim of documentary facades/interiors or an added semantic roof survey."
+  },
+  "findings": {
+    "historicalProofChanges": [],
+    "unexpectedPriorDataChanges": [],
+    "priorImplementationChanges": [],
+    "priorMns19Preserved": true,
+    "architecture12Preserved": true
+  },
+  "elapsedSeconds": 3.337
+}

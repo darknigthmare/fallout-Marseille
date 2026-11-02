@@ -1,0 +1,2458 @@
+{
+  "version": "0.50.0",
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "baseCommit": "c3cd2a3abf70a86aeef3d7a8ad2d9d5b38545afa",
+  "passed": 3318,
+  "failed": 0,
+  "methods": [
+    {
+      "id": "models",
+      "label": "Modèles et outils, fixtures contrôlées",
+      "passed": 1934,
+      "report": "models/UNITS.json",
+      "reportSha256": "b5029be327ea887eafc709e72c07a06f20dbffd8f78c536f976aef8dd73174c7",
+      "scope": "Isolated current production model/tool tests, including explicit synthetic documentary, actor, storage and source fixtures; not native playthroughs.",
+      "executionPhases": null
+    },
+    {
+      "id": "rebuild",
+      "label": "Reconstruction indépendante, comparaisons d’octets",
+      "passed": 4,
+      "report": "REPRODUCIBLE_BUILD.json",
+      "reportSha256": "9d1c5eb9c7b5e84948e73158238d4f627c908d297acc22a1d83e3e9a5b4de5ab"
+    },
+    {
+      "id": "closure",
+      "label": "HTTP isolé, dépendances Python standard",
+      "passed": 3,
+      "report": "runtime-closure/RUNTIME_CLOSURE.json",
+      "reportSha256": "2fddf350ce836a29a7e20b1b85d947b91333af22b37f128cc32b80252326150d"
+    },
+    {
+      "id": "legacy",
+      "label": "Contrats hérités, géométries et réseau contrôlés",
+      "passed": 434,
+      "report": "legacy/QA_LEGACY_RUN.json",
+      "reportSha256": "db52b8da4428617e8b5f6c933f2b0a5aa49af0618b3f12a7316e86fd5f9a092d"
+    },
+    {
+      "id": "fps",
+      "label": "Mains, profils et rechargements natifs",
+      "qaPhase": "A",
+      "passed": 142,
+      "report": "fps/FIRST_PERSON_NATIVE.json",
+      "reportSha256": "4b7bdaf6e24752dda37ae68930df15422c61cf63ad823bf03325359bab40494a",
+      "scope": "Native foreground presentation pilot on unchanged production HTML.\n\nDiagnostic navigation selects authored Aubagne (not a surveyed Marseille view),\nplaces the camera at an existing collision-free road point, grants twelve ordinary\nweapons for a presentation matrix and ammunition for their real reload checks. Active\nsimulation is stepped with the inherited diagnostic v020Tick; UI inputs, Canvas,\nWebGL scene, collisions, firing, reload and browser storage remain production.\nNo network, renderer, input handler or localStorage is replaced.\n",
+      "rawConsoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "metadataCancellations": [
+        {
+          "url": "http://127.0.0.1:33029/__mistral/local-data",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "externalRequestFailures": [
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "networkObservationPresent": true
+    },
+    {
+      "id": "feedback",
+      "label": "Retours de combat natifs",
+      "qaPhase": "A",
+      "passed": 43,
+      "report": "feedback/FPS_FEEDBACK_NATIVE.json",
+      "reportSha256": "a7566d8bcacc7900ddb16bb4ad0bf4ae7e870064153754d3dbf5fdaec872c2c4",
+      "scope": "Combat feedback on exact production HTML and an existing authored hostile.\n\nReadonly geometry/collision/LOS scouts and inherited camera/freeze diagnostics\nprepare an Aubagne encounter, not a surveyed view or a continuous playthrough.\nOrdinary starter pistol, enemy identities/health, ammunition and browser storage\nare not granted or replaced. Mouse/keyboard fire and reload use production input.\nv028NativeDamage invokes the real incoming-damage chain for the received-HP\ndisplay; it does not demonstrate an enemy attack. Simulation ticks and camera\nplacement are explicit diagnostic assistance. No randomness/network/HTML/storage\nmocking; no private game variables are injected.\nScenes are rendered before transient feedback is emitted. Screenshots do not\nredraw the slow 3D scene after an event; DOM visibility and real elapsed time are\nrecorded on both sides of each screenshot without extending feedback lifetimes.\n",
+      "rawConsoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "metadataCancellations": [],
+      "externalRequestFailures": [
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "networkObservationPresent": true
+    },
+    {
+      "id": "hud",
+      "label": "HUD et notifications natives",
+      "qaPhase": "A",
+      "passed": 98,
+      "report": "hud/FPS_HUD_NATIVE.json",
+      "reportSha256": "20cc9e3bd781735be34ed8253bc2cb1528be5ce76b419c3ca663cfaa22abed26",
+      "scope": "Native HUD layouts and controls on exact production HTML.\n\nAuthored Aubagne is selected by the existing diagnostic navigation API. Camera\nplacement/freeze and render pause are declared assistance. Input uses real DOM\ncontrols, keyboard and Playwright pointer events; coarse pointer is emulated,\nnot a physical touchscreen certification. No HTML/storage/network mocking.\nTemporary document observers count bubbling activation keys without intercepting\nthem or altering production handlers or state.\nThe existing v030Set diagnostic prepares an equipped powered suit to exercise\nits real HUD and gauntlets; this is not an in-game acquisition proof.\n",
+      "rawConsoleErrors": [],
+      "metadataCancellations": [],
+      "externalRequestFailures": [
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "networkObservationPresent": true
+    },
+    {
+      "id": "controller",
+      "label": "API Gamepad simulée et DOM",
+      "qaPhase": "A",
+      "passed": 63,
+      "report": "controller/CONTROLLER_BROWSER.json",
+      "reportSha256": "d3df23dc9abf6827e63efe6b2fe44035330285fb1e4693254fe4eebf7a2b41b0",
+      "scope": "Actual game + Chromium DOM, keyboard and localStorage; Gamepad API simulated and one explicit synthetic touch PointerEvent, no physical device validation. Existing diagnostics select authored Aubagne and collision/LOS-checked camera positions for LT aim and dispenser modal navigation; no dispenser stock/resources or weapons granted.",
+      "rawConsoleErrors": [],
+      "metadataCancellations": [],
+      "externalRequestFailures": [],
+      "networkObservationPresent": false
+    },
+    {
+      "id": "landmarks",
+      "label": "Surfaces MNS natives, six contextes",
+      "qaPhase": "A",
+      "passed": 85,
+      "report": "landmarks/LANDMARK_SURFACES_NATIVE.json",
+      "reportSha256": "f5418703ed4f3d4b3d456956e04a0e7bec6628fd13239e7225cd1190681498ce",
+      "scope": "Native HTTP inspection of real IGN MNS landmark surfaces, never a fixture.\n\nOne real browser context visits the Major, Notre-Dame de la Garde, the Vieille\nCharite chapel, Bourse, Opera and Pharo site contexts through\ndiagnostic geographic navigation. Source loading, mesh publication, collision,\nLOS and save/Continue are production functions; cameras/freeze/time selection\nare declared assistance. Elevated captures are labelled inspections and are\nnot evidence of unassisted walking or a complete architectural survey.\n",
+      "rawConsoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "metadataCancellations": [
+        {
+          "url": "http://127.0.0.1:35883/__mistral/local-data",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "externalRequestFailures": [
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "networkObservationPresent": true
+    },
+    {
+      "id": "interiors",
+      "label": "Programmes, portes, services, dépôts et habitation6",
+      "qaPhase": "A",
+      "passed": 151,
+      "report": "interiors/INTERIOR_PROGRAMS_NATIVE.json",
+      "reportSha256": "62c9e59589c43b2e7473a1f64678dcdb62cbca7f080b9b140be94d7dcc6895c7",
+      "scope": "Assisted native HTTP pilot for two actual source-based interior programmes.\n\nNo browser starts without --run and coordinated frozen SHA values. Source usage\nand footprints come from real installed IGN chunks; partitions, portals and all\nfurniture remain explicitly invented. Sector selection, measured collision-free\ncamera placement, render/simulation freeze, v020Approach and stepped production\nphysics use the same public diagnostic APIs as architecture_native_browser.py.\nE-key entries, visible exit controls and cold Continue are native browser actions.\nNo synthetic terrain, actor, plan, save, HTML or HTTP response is injected.\n",
+      "rawConsoleErrors": [
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "metadataCancellations": [],
+      "externalRequestFailures": [
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "networkObservationPresent": true
+    },
+    {
+      "id": "bestiary",
+      "label": "Créatures existantes et nouvelles incarnations natives",
+      "qaPhase": "A",
+      "passed": 203,
+      "report": "bestiary/BESTIARY_NATIVE.json",
+      "reportSha256": "6fba5d98efeb8a8b4f03c30d056f8642cf1e4e4bf480a9628c142d04ddb06b26",
+      "scope": "Bounded assisted native bestiary pilot; no browser starts without --run.\n\nUnmodified production HTML, actual GameHandler, installed map pack and native\nstorage. Existing sector selection, measured camera placement, daytime and\nsimulation/render freeze are diagnostic assistance. Public debug APIs inspect\nactual streamed actors and step production physics. No actor, reward, HTML,\nterrain, document or save fixture is injected. This is not a human playthrough.\n",
+      "rawConsoleErrors": [
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "metadataCancellations": [
+        {
+          "url": "http://127.0.0.1:46523/__mistral/local-data",
+          "failure": "net::ERR_ABORTED",
+          "stage": "iconic_native_continue",
+          "elapsed_seconds": 209.217
+        }
+      ],
+      "externalRequestFailures": [
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "native_http_document",
+          "elapsed_seconds": 31.973
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "native_http_document",
+          "elapsed_seconds": 31.974
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "native_http_document",
+          "elapsed_seconds": 31.974
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "native_http_document",
+          "elapsed_seconds": 31.974
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "native_http_document",
+          "elapsed_seconds": 31.974
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "native_http_document",
+          "elapsed_seconds": 31.975
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "native_http_document",
+          "elapsed_seconds": 32.006
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "iconic_native_continue",
+          "elapsed_seconds": 189.375
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "iconic_native_continue",
+          "elapsed_seconds": 189.377
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "iconic_native_continue",
+          "elapsed_seconds": 189.378
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "iconic_native_continue",
+          "elapsed_seconds": 189.378
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "iconic_native_continue",
+          "elapsed_seconds": 189.379
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "iconic_native_continue",
+          "elapsed_seconds": 189.382
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "iconic_native_continue",
+          "elapsed_seconds": 189.385
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "iconic_native_continue",
+          "elapsed_seconds": 189.392
+        }
+      ],
+      "networkObservationPresent": true
+    },
+    {
+      "id": "facades",
+      "label": "Quincaillerie de façade native dans les sources IGN",
+      "qaPhase": "B",
+      "passed": 98,
+      "report": "facades/FACADE_HARDWARE_NATIVE.json",
+      "reportSha256": "0494d8922ff20020376d6a35141e49d8bb95b7e999ed23b37b7248d630897b5d",
+      "scope": "Native facade hardware pilot; no server or Chromium starts without --run.\n\nFive pinned, acquired IGN buildings are read from their actual installed city\npartitions. The production HTML, source module, live opening inventory, emitted\nWebGL vertex ranges, HTTP and localStorage remain real. No fixture is installed\nas geography and no documentary plan is injected. Existing sector/camera APIs,\nQA simulation/render freeze and a collision/LOS checked approach are declared\nassistance; doorway and landing actions use real keyboard E and visible buttons.\nInspection cameras may be above standing height, explicitly recorded as such.\nThis is a bounded assisted integration pilot, not a human citywide playthrough.\n",
+      "rawConsoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "metadataCancellations": [
+        {
+          "url": "http://127.0.0.1:35261/__mistral/local-data",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "externalRequestFailures": [
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "networkObservationPresent": true
+    },
+    {
+      "id": "holotapes",
+      "label": "Holobandes originales et lecteur hérité natifs",
+      "qaPhase": "A",
+      "passed": 60,
+      "report": "holotapes/HOLOTAPES_NATIVE.json",
+      "reportSha256": "14bb601233af1b1dbe175157ce2619e63d4cc4003538649d32cfd23461e0601d",
+      "scope": "Native collection of three original regional holobands on frozen production HTML.\n\nThe existing diagnostic scene selector and collision/LOS-checked camera positions\nare declared assistance. No inventory, collection flag, quest proof or bookmark\nis granted. Native E, existing RADIO/HOLODISQUES buttons and the actual Continue\nbutton perform collection, playback, cold resume and finite-counterpart checks.\nThe geographic sector uses real installed HTTP sources. Render/camera freezing\nand a 390x844 viewport remain diagnostics, not a human or physical-mobile test.\nNo production function, HTML, network response or browser storage is replaced.\n",
+      "rawConsoleErrors": [
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+          "location": {
+            "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "metadataCancellations": [],
+      "externalRequestFailures": [
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "authored-aubagne",
+          "elapsed_seconds": 39.688
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "authored-aubagne",
+          "elapsed_seconds": 39.689
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "authored-aubagne",
+          "elapsed_seconds": 39.69
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "authored-aubagne",
+          "elapsed_seconds": 39.696
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "authored-aubagne",
+          "elapsed_seconds": 39.71
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "authored-aubagne",
+          "elapsed_seconds": 39.71
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "authored-aubagne",
+          "elapsed_seconds": 39.71
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "real-continue",
+          "elapsed_seconds": 57.314
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "real-continue",
+          "elapsed_seconds": 57.315
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "real-continue",
+          "elapsed_seconds": 57.315
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "real-continue",
+          "elapsed_seconds": 57.338
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "real-continue",
+          "elapsed_seconds": 57.338
+        },
+        {
+          "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+          "failure": "net::ERR_TUNNEL_CONNECTION_FAILED",
+          "stage": "real-continue",
+          "elapsed_seconds": 57.339
+        }
+      ],
+      "networkObservationPresent": true
+    }
+  ],
+  "captureCount": 100,
+  "captures": [
+    {
+      "method": "fps",
+      "file": "fps/01_native_pistol_hip.png",
+      "sha256": "621d58db16d34fd678160d6205d2fa34e78eea0739c39b0ff079ad155abca859"
+    },
+    {
+      "method": "fps",
+      "file": "fps/02_profile_revolver44.png",
+      "sha256": "b60a3f73db2ca032993f40e906bece61a9138f6a263c7db0aa78cb0cf3c9c0f8"
+    },
+    {
+      "method": "fps",
+      "file": "fps/02_profile_doubleBarrel.png",
+      "sha256": "4928bfca0c3e48170fc0bf7eb5eb8084cb95fda9499845f39c979d97fb53faba"
+    },
+    {
+      "method": "fps",
+      "file": "fps/02_matrix_rifle.png",
+      "sha256": "e560f8e37e4c31ad14358a7303584a272c4905d0e921138f98daad67e06850e6"
+    },
+    {
+      "method": "fps",
+      "file": "fps/02_matrix_energy.png",
+      "sha256": "f9765be06d957ec5336f561f23718e2246864fc8d627807b1fabe6a9732c91f9"
+    },
+    {
+      "method": "fps",
+      "file": "fps/02_matrix_blade.png",
+      "sha256": "3c03d8f0de132bef74eade5aad62c3ec5897a71e65438668fe18a67462ac5db9"
+    },
+    {
+      "method": "fps",
+      "file": "fps/02b_native_wall_lowering.png",
+      "sha256": "86566995273845972dddc554f2ae83ecda29325d97c24d17422f2f0bb7671bb2"
+    },
+    {
+      "method": "fps",
+      "file": "fps/03_native_rifle_aim.png",
+      "sha256": "f3a36494f4aada3e7fd7a18b8e74d1879f1169b8c2dcd53b8f7f7b5772a145fe"
+    },
+    {
+      "method": "fps",
+      "file": "fps/04_native_shot_recoil.png",
+      "sha256": "e8ae539b0470813c9cbb0cff4a80b7e8f8919ed2f19b126102664e02d4668ad4"
+    },
+    {
+      "method": "fps",
+      "file": "fps/05_native_reload_hands.png",
+      "sha256": "58cadb341ec08607dd87ea66923eba5096a122508885e614ebc5e4bbb0eaa705"
+    },
+    {
+      "method": "fps",
+      "file": "fps/05_reload_revolver.png",
+      "sha256": "4332fd3df9ba0c1cd025643fc278a3135a01dd29b93ced691d66077de09d25be"
+    },
+    {
+      "method": "fps",
+      "file": "fps/05_reload_break-action.png",
+      "sha256": "ad1509e76f434e591d63e63ddbe72c04dd3d7d1184756f02d3d31c8d20ea8891"
+    },
+    {
+      "method": "fps",
+      "file": "fps/05_reload_energy-pistol.png",
+      "sha256": "73536e016137176c2e1c03cf1b43609ff525de4ab07502c4aa6bad3e43171581"
+    },
+    {
+      "method": "fps",
+      "file": "fps/05_reload_launcher.png",
+      "sha256": "fe2201a0edc51f6715718ce8b7a42c10b51d95bfabbf3ead069d4cafabb0f197"
+    },
+    {
+      "method": "fps",
+      "file": "fps/06_native_portrait_hands.png",
+      "sha256": "b96d45050b1a2bb9fae744b2c6d9b427982cb5b62c337b8fcac5fd297c064c9b"
+    },
+    {
+      "method": "fps",
+      "file": "fps/07_native_portrait_reduced_motion.png",
+      "sha256": "f18f3b7c7526b7e35a3bb8b9aac3c2c54358b0b2c4ed6450bbf7e0871db5f2de"
+    },
+    {
+      "method": "feedback",
+      "file": "feedback/01_actual_reload_progress.png",
+      "sha256": "e64443379dc1d2524d6b6068a65ba9cc6cea8fc01030b04bf8374aab32e3ab01"
+    },
+    {
+      "method": "feedback",
+      "file": "feedback/02_actual_received_damage.png",
+      "sha256": "f770553895cd6ccec34d00225e116fa90da6e5fd6fa80a2a891db36daa2abde0"
+    },
+    {
+      "method": "feedback",
+      "file": "feedback/03_actual_hit_confirmation.png",
+      "sha256": "90811e7b0c95641be5dade28c16e3b3cc39bf5aaaeb0a7639b983640794c0edc"
+    },
+    {
+      "method": "feedback",
+      "file": "feedback/04_actual_neutralisation.png",
+      "sha256": "75b87ebee4036fafa7f6b9144c094b68de6fc75746a8b28d729e40d00980f498"
+    },
+    {
+      "method": "feedback",
+      "file": "feedback/05_actual_feedback_1440x900.png",
+      "sha256": "34dd1034b847c5ab9b622f4b1e3a1ae24421e47ece4c266b7adde0eeb4f36c82"
+    },
+    {
+      "method": "feedback",
+      "file": "feedback/05_actual_feedback_1024x768.png",
+      "sha256": "b2f398cf8c76ca24fc6a4205687461d347475f061087ba98b9dca311a6b2ca9a"
+    },
+    {
+      "method": "feedback",
+      "file": "feedback/05_actual_feedback_390x844.png",
+      "sha256": "1b00dc85fdd343b3c738b732c828bb9de855faf3b3823079dadd52f32c10f131"
+    },
+    {
+      "method": "feedback",
+      "file": "feedback/05_actual_feedback_844x390.png",
+      "sha256": "ea69668e7115b9c20457957b96abb79aef242fcfc74e57d8b48663d390b4c0e9"
+    },
+    {
+      "method": "hud",
+      "file": "hud/1440x900_hud.png",
+      "sha256": "223b6e1b52cc081833c5c41064fef856bb029e13fce2ee3436e7ba2ee1c8937a"
+    },
+    {
+      "method": "hud",
+      "file": "hud/1024x768_hud.png",
+      "sha256": "2d7c9d2e6b805c5aa3c7d73467ee5a52d697106b4534e805b15bc5f55cb19109"
+    },
+    {
+      "method": "hud",
+      "file": "hud/390x844_hud.png",
+      "sha256": "c2d5c7d4902253b85f7dad50a1b2217ddaa3c0f9f06daac345dffadd36e57b5a"
+    },
+    {
+      "method": "hud",
+      "file": "hud/844x390_hud.png",
+      "sha256": "a4fe7a892725b930b800759d6708db487e183d8bac8f7c2c778cc0531f11f182"
+    },
+    {
+      "method": "hud",
+      "file": "hud/powered_crouch_hud.png",
+      "sha256": "11471f1253308a1dbfdfd1b7dd359db045f1e9c2ce57cac130adaa617707b1b1"
+    },
+    {
+      "method": "hud",
+      "file": "hud/compact_hud.png",
+      "sha256": "0bd5ec104a64b3bfe15e01fe98d8bcf1e0e0a4f53c76e333f2eb17e12c305d05"
+    },
+    {
+      "method": "hud",
+      "file": "hud/touch_390x844_hud.png",
+      "sha256": "1d2cdeaf2a3745394333401e0292ee6bbaddd0058d96972525d241d2c56ac566"
+    },
+    {
+      "method": "hud",
+      "file": "hud/touch_aim_presentation.png",
+      "sha256": "8885e78d5d29ee0c5dbd25a41bb96e13a7e16fb5fb24b7ca24ed121e4ddf84cc"
+    },
+    {
+      "method": "hud",
+      "file": "hud/touch_844x390_hud.png",
+      "sha256": "efe630ff1c6fc6b9a1d190bd3b2c1c4099728a9e23cbf2e50c476f7802812137"
+    },
+    {
+      "method": "hud",
+      "file": "hud/live_notification_touch_landscape.png",
+      "sha256": "29c7b5be618c821b6e50185d6005c9af1871e5edcf7ea174934c917b6fec1751"
+    },
+    {
+      "method": "hud",
+      "file": "hud/live_notification_and_damage_subtitle.png",
+      "sha256": "a7269bc9877028c22908248e605c5c914baef70f516e5f8500d65f2485dddf9b"
+    },
+    {
+      "method": "hud",
+      "file": "hud/live_notifications_portrait.png",
+      "sha256": "07af1c54d37911ddea2999d850abd99524455fbcc164436479505a5a9022309d"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/major_ground.png",
+      "sha256": "fe55761b8cc75cb430a87f3459215987067f324f34f9d32728116b0a760bac2e"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/major_elevated.png",
+      "sha256": "2b1d1704a6dfbb5caf548ed57e77840ca1d6910dbc44869e9a805d9eea0d2e0f"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/garde_ground.png",
+      "sha256": "36edd5ae901cf94c286d56aeac5a11ee1eb9c165ea2a47a057255fe92073553a"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/garde_elevated.png",
+      "sha256": "0412a2d74678ebc9e1a8262ba694950ee4301dddceb565f2db4b2aa099e1ac34"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/charite_ground.png",
+      "sha256": "cf290bb9717518860db0dad34c26a40454ada3ed16ce75b5aaa687accb6d8d02"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/charite_elevated.png",
+      "sha256": "dda16c5e769ae413fe380cb6c751809ca5934026dd0b4029762c080c108fd5a9"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/bourse_ground.png",
+      "sha256": "838b43a4ecf32d0d481be4dcb100dd19cbbc397f148e09227eca9d5267a4bcda"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/bourse_elevated.png",
+      "sha256": "0230f9533aee13830844bf1737295bd02c90e3256e3f61d53a170592951455a0"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/opera_ground.png",
+      "sha256": "e3c341dbd8f46133ec345c158a88f45f08a62a7c14c4d02e90cb15a85969faa6"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/opera_elevated.png",
+      "sha256": "68b6333cbe24c5b626e3d34905a18b2803d4dbf266f308d61cb6d2b09467f23a"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/pharo_ground.png",
+      "sha256": "ad9240cd555d3e2f1bb0e5c945d57339b8f4cea6759db3ccb4bfebb844c45db4"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/pharo_elevated.png",
+      "sha256": "9d0c282b44a5049a245b556d532295383fb143b1b41d828d2b5c4527b676aa31"
+    },
+    {
+      "method": "landmarks",
+      "file": "landmarks/pharo_continue.png",
+      "sha256": "774718ec252baf93c930d7143f9e7e09aacd51d515ef396a0613f0d581d183a9"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/commerce_equipment.png",
+      "sha256": "55f8c48b7baa63df2ea085a86b0bd39a59f8f8d9c62ed3f264a052ce66887ad6"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/commerce_room_door_closed.png",
+      "sha256": "0f48d54a702c4e39b63125653f7aca9da7f63b2685dbb8b52ce50d3ed2de04b1"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/commerce_room_door_inside.png",
+      "sha256": "6de105406d4cfe76bce54f74af8aefb0b8ea165c54189e2f372454d65e6aad15"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/commerce_continue.png",
+      "sha256": "59c262446dc8b77433776cb2ed215abbef45df66781ba1156739d6a49e25ebe3"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/commerce_street_return.png",
+      "sha256": "e856bf44e75baa8778919c3c50c228afb5a22a479bd9713230a69cdbbfeaab10"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/atelier_equipment.png",
+      "sha256": "b0e23250a2fa20d8efda29ef0d8096173b6b07d6cea6d3084ca1efc2892a8090"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/atelier_continue.png",
+      "sha256": "4f6cbfe06e409afb463549114092fb761168c103f85ea986810f2a09cd12303b"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/atelier_street_return.png",
+      "sha256": "70e04c3d35ca61451c06e55b9449ce72f464c63d57caaa267c45cec45d8f5d3e"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/industry_reserve_access.png",
+      "sha256": "470bf3432933fd05b2a91ae83bde42f430249aedb33d36f3282ee93f4a37dc6f"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/industry_workshop_service.png",
+      "sha256": "6927aefdb854104c8fe79ec9761620020dedec83b27ed2b45b1c3c834397206b"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/industry_workshop_crafted.png",
+      "sha256": "35ae222263117106bb334aaac86c11363daf652a4e53f16f860d5ef94a1db363"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/industry_workshop_service_continue.png",
+      "sha256": "9277bd48970e0d483fca568ffe5bf234283062710f3b7c37001744d6415d0e23"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/industry_storage_cupboard.png",
+      "sha256": "7df01e746c2485d60f9aaeabe80bcc7a0913f3f1ffae0740c68e917422eda220"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/industry_storage_deposited.png",
+      "sha256": "28c0ab567deb173ee6391ce15492318d895922f840472fd154812230cccdeb3a"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/industry_storage_continue_withdraw.png",
+      "sha256": "ab4be75c4208961252545c04a2e12f4c6e85037eff76173d766027ff68c50684"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/industry_storage_emptied.png",
+      "sha256": "1ac8300be5f213971bb2afcd76f27682620d8860f6e9c9b8bedf17cf193781ed"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/home_private_wet_room.png",
+      "sha256": "4b599a9849622c0997fac6bd6d522c032ef068eee405a08aa6ead0582c414be8"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/home_paid_bed.png",
+      "sha256": "c0c50123f940b69aa6e06dd86b25cf8d7e59918a8ee2018a968fe5470458fc39"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/home_deposited.png",
+      "sha256": "2e066746977904bec6af47c75612570a9392721a03f4078da7f63846a3d688f4"
+    },
+    {
+      "method": "interiors",
+      "file": "interiors/home_continued_wardrobe.png",
+      "sha256": "f6c017592ac06020e638821f31333e0694e9118b9e4749db448a34f3d11e6ef0"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/01_new_regional_actor.png",
+      "sha256": "ffbc209f75b6a23b830f212f1b510d26b85600c43fec4f8c8f486e34c0033c69"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/02_true_gabian_flight.png",
+      "sha256": "4a45492e4c9c9c097da3c0fbfcd1e584f9019bd851a937daea8f6246b53dd81f"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/03_real_corrosive_drop.png",
+      "sha256": "1edc4ebcd7d50bfe9e203d3b0b375bdc5c816f153954562b85f6735efa26c9e6"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/04_radscorpion_native.png",
+      "sha256": "e227fad4d092bdd4a37b15cfa8f0b40141f847bb27e5e449b4575807dda02cb0"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/04_radscorpion_vats.png",
+      "sha256": "dc660dd9be5927c6b4710ee5eaa0a41f2c62e0e3819a22a2f28ceb95828e405a"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/05_radscorpion_windup.png",
+      "sha256": "7a3a27b8d68cd8390b9d318e168b3c441e3afbdf54ba59194bdf7675fe638e0e"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/04_mirelurk_native.png",
+      "sha256": "cfdfc4648a0db340016ac589f281bc07d5a92a2bdf3f98244caf4fb8dd6736b2"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/04_mirelurk_vats.png",
+      "sha256": "b7299fd59651ab76a6b9097c53f482601c48cceafdeb301e457c65be905096cb"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/05_mirelurk_windup.png",
+      "sha256": "9f753790d8e7143eaa9865908255c2e7c040ed5c9e20e83287c44c87d6dd38ad"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/04_feralGhoul_native.png",
+      "sha256": "f6a64a451fa0eb1e5a6acea5d00ff6bf344f0486d1cec1bd04f62a037e3ebc9e"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/04_feralGhoul_vats.png",
+      "sha256": "5186f0aaa82b1e10e085c6f09fd5b0172fe0607faf9b119d2e8d6e3c0496b569"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/05_feralGhoul_windup.png",
+      "sha256": "ab8a174b3f94754edff3a4b44fcc5cf036092b4570c6bc1b79718b79160c50f4"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/04_deathclaw_native.png",
+      "sha256": "d980684f3b5174d51f9114903eca8796584309c572284e9d1b30c984e5d153c9"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/04_deathclaw_vats.png",
+      "sha256": "1f4568587adc02b86174bb9c0b5fb68a6db541a7398bdc91ade88da29c6cd721"
+    },
+    {
+      "method": "bestiary",
+      "file": "bestiary/05_deathclaw_windup.png",
+      "sha256": "9b6f26fe45104c352cc9ab96d1431b46cca0f74004650d9052f3536ccebdb7f4"
+    },
+    {
+      "method": "facades",
+      "file": "facades/01_residential_context.png",
+      "sha256": "94e0cd486214b52eb17399f71c7952771e365d7aa48a4a2da69643967aade1f9"
+    },
+    {
+      "method": "facades",
+      "file": "facades/06_scout_hardware_1_1.png",
+      "sha256": "7ff427bdc6eaae1b9bea1a3d97b2ed30d6c9802f304f2add7390a7873cfdaa1e"
+    },
+    {
+      "method": "facades",
+      "file": "facades/06_scout_hardware_1_2.png",
+      "sha256": "4256ef774781110096a4846f6283cff96bd7e1db4493fd3c30445de67a6233eb"
+    },
+    {
+      "method": "facades",
+      "file": "facades/06_real_portal_interior.png",
+      "sha256": "d7d9f7a2a11650c80dd9361987a09a12d396c5cd9e1664b260ea5f0aa3281963"
+    },
+    {
+      "method": "facades",
+      "file": "facades/02_commercial_context.png",
+      "sha256": "c36708fff83478d73a3bc25e0c4e1f9fe456a1d5a6bdcc29903d7c0017eadf2c"
+    },
+    {
+      "method": "facades",
+      "file": "facades/02_commercial_hardware_1.png",
+      "sha256": "63b269c0ccf693500c062f685a8285f0fe007414f72583e420ecc5d0e3d7122d"
+    },
+    {
+      "method": "facades",
+      "file": "facades/03_industrial_context.png",
+      "sha256": "40fd178b980028055110fab1b5ad6835daf950c003c56a3dfef3417f819befdf"
+    },
+    {
+      "method": "facades",
+      "file": "facades/03_industrial_hardware_1.png",
+      "sha256": "7a57a6c2cc14124ecc56d4c74daeb94a9e5137eb5a5ebc757296a69925b68377"
+    },
+    {
+      "method": "facades",
+      "file": "facades/04_religious_context.png",
+      "sha256": "24e1a2f3187dc23680733fd621a0589c9e7304af77fca22b43cdcd7ec137359c"
+    },
+    {
+      "method": "facades",
+      "file": "facades/04_religious_hardware_1.png",
+      "sha256": "aec98c8fc414d17dc00e6836995854161166cc113f9fc018d1350c222c4cebd5"
+    },
+    {
+      "method": "facades",
+      "file": "facades/05_microcurve_context.png",
+      "sha256": "2640762844e24f794bc6e55d548098f1cee6762f20d07a4835359b62da60e998"
+    },
+    {
+      "method": "facades",
+      "file": "facades/05_microcurve_hardware_1.png",
+      "sha256": "c81b5680f1cc0557c62d91d1fb4a174cca325834e2284613b84f1c9a8be2e428"
+    },
+    {
+      "method": "holotapes",
+      "file": "holotapes/01_authored_holoband.png",
+      "sha256": "21ea049d694231c15d20ed94decba3a1a9f18783b8ef84f000ea20140eb93245"
+    },
+    {
+      "method": "holotapes",
+      "file": "holotapes/02_original_transcription.png",
+      "sha256": "a6057a2d3e9efbf39bf0c2a50178a457c5d631e9225fd783d215f01ee38c33d6"
+    },
+    {
+      "method": "holotapes",
+      "file": "holotapes/03_three_bands_portrait.png",
+      "sha256": "5ad4f11b0f52fecf53747926768d355c0d77739a257281e8bd02dfd4259243fa"
+    },
+    {
+      "method": "holotapes",
+      "file": "holotapes/04_real_counterpart_no_duplicate.png",
+      "sha256": "f85270e541debc38f6ca29ae58f336e6c1db973be1ab882a5bf8572a7db786fe"
+    }
+  ],
+  "frozenInputCount": 474,
+  "frozenInputs": {
+    ".github/workflows/city-streaming-regression.yml": "0fa338262027b07790371c8753b03f584b0b0a3951673f86f4bda44526c1a7fe",
+    "AGENTS.md": "745f062f2de2b80a2241e2b056c67afda1009c1de1e594c5661892250f238473",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "data/map_pack/architecture/index.json": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+    "data/map_pack/city/index.json": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+    "data/map_pack/city/terrain-index.json": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+    "data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61",
+    "data/map_pack/enrichment/geo_marseille-4495922b8fb9f9d9.json": "4495922b8fb9f9d9e5807adef7c5279ff61e2a15fe68284f112226f3a94691cf",
+    "data/map_pack/enrichment/geo_marseille_commune-d0cbae62855ff13b.json": "d0cbae62855ff13b9453ebf2773a9239e4c999a4ff2f416f601fc69e2b1368f3",
+    "data/map_pack/enrichment/index.json": "d368402cd6c249f45b6ad4e7d9156088bf634e2f6c07fd10fdd7826d1a47c2e2",
+    "data/map_pack/enrichment_archives/manifest.json": "c133f1a1a3dd8cbd0d830cf2f4b5971c79b4b69ca96eddf1db8e3549f256c361",
+    "data/map_pack/enrichment_archives/world-sources-3df84df4ae353420.zip": "3df84df4ae353420a515cd168eeb7f7446988913d635d95c1f9dd53073ac712f",
+    "data/map_pack/landmark_surfaces/index.json": "544833f547ff6a6f1813b5cb19d0541345b95ece4028ab8c77af1a554c0a6e31",
+    "data/map_pack/landmark_surfaces/marseille-mns-c89a3a22e3b2d55c.json": "c89a3a22e3b2d55c08d30361ba5c65cae88392b74635a6d5cc2bc7599d99ae7c",
+    "data/map_pack/landmark_surfaces/marseille-mns-d784b256e926b869.json": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d",
+    "data/map_pack/landmark_surfaces/marseille-mns-e50ea945c27e47a3.json": "e50ea945c27e47a3f706c8ea381975032cd6b37857baa913f4f9430fcab3c6f6",
+    "index.html": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "src/core-v017.js": "90e1ad788ab4e76d17123a930b5ff8bdaed8cebcd8a35d528827575235528763",
+    "src/game.js": "6cfb1a06c43603aedf36ae546ec2bfad75bf72ca7d67a4183c3c1585abbcfd6a",
+    "src/index.html": "8529bbab467a6a45a37320a2e1fdf56c249270697b2f351373cb26a489567dda",
+    "src/patches/01_geometry.js": "dbb39a1ef4fa26f5753e0ad16892111e66513b3bbc65a24ab1d22bac354bbdb8",
+    "src/patches/02_geography.js": "31eeed20314529a54e630626292c215a1b5b9cc0ef9a901405bd67c87dae8cd3",
+    "src/patches/03_gameplay.js": "f5e1d276571ca6f2e5475303afee10245152790aadd2b41d196e79c979301b0a",
+    "src/patches/04_interface.js": "b67744c9ddf56a5b43fbccb7803d3302080aeb55090e8d354b53a3576a3974e8",
+    "src/styles.css": "27351fa2036cb0290a115b2b29e4f2d9656f774b16b4f7da7109c9c0cfb55bcd",
+    "src/v020/00_state.js": "158398cd1a300a72ec45c1b092c934fdccb6be7f10f94e97ba48ccd5f0e5a2f6",
+    "src/v020/01_combat.js": "74f40d37dbbcdd71bb44df4d9f07ba69211aa457e4973dbc2ff559180eeb556d",
+    "src/v020/02_navigation.js": "5c774ea162c610285b46a0451b63349bc35655565c3acca8de1e65adcfb43c19",
+    "src/v020/03_interiors.js": "91cd78d325695f5402b6aafb8b982fbe94eb095c86ecab5d0593c5073b655e73",
+    "src/v020/04_field.js": "e70bcfe8c8981191a09049d4034db6893f4140a8e1c13e29cd1e7d22a351c013",
+    "src/v020/05_runtime.js": "ca0211fff6ff8124d932559b7b32346ebd541c823233a83aa54f91d54145fc54",
+    "src/v020/style.css": "a284cd2dc20d6fe13d638e97bb0fcc5fa4d5954f13b745c8757b59c92f901e3b",
+    "src/v021/00_state.js": "47b513e96708b43dcd0f117acf772a55afa13a831baf706a7648984dc66c4893",
+    "src/v021/01_navigation.js": "13e95b06e8f3f60890ceae164c032421b8ac5d9c8ec0b12d099f65ca45f596a5",
+    "src/v021/02_visuals.js": "f57135eecc2a915b620706e7763f45a5d96cd768bd7cce6a85c1a566b487dfe8",
+    "src/v021/02z_renderer.js": "3849f8e4b68236a023b852567a3c631337e94f6205c1311514accc3e22eea1e0",
+    "src/v021/03_combat.js": "94ebf2813e3f900b10ce225187ce1585173909eaf74fdd4b22a1eec57146551f",
+    "src/v021/04_story.js": "532b940a58ea78ab549897f4898a13600c21b21dcfce9d3a6946b0f3db3bb611",
+    "src/v021/05_maps.js": "9261cf3e726c524abdcdbcb02bc0b9ceb121984797103c6cbb15a4ff53e7c09c",
+    "src/v021/06_interface.js": "b0d39deeeab1cda10d618721a4c92d84fee5cf469d86e2db829e381d8ec7216f",
+    "src/v021/style.css": "b4df84457736569e2ed4d9e923aa044d6a3b944b22e282c1f6c66134a2ce393d",
+    "src/v022/00_state.js": "5e0e4f4ac8aa67e56d5dfd14b2eec2f08c090c1870fcec3673590f70fd27e44c",
+    "src/v022/01_courts.js": "1295e1a00e6cbba1a1bf9ab690bd23c184991a515a0e29eb26a8ec6d13b746c3",
+    "src/v022/02_residents.js": "9663bffb1d034df62eede04cff65e507342887127f416a848444d2dcc22edd54",
+    "src/v022/03_return_story.js": "e1f3b7ae3f0c08be2f00ea8a78516477dd9031c522cd11e567b1930e48413f9e",
+    "src/v022/04_interface.js": "cf36d877b9984b3657573e5453f510a4f3b7c17728f8af21ed91ec34b5e99547",
+    "src/v022/style.css": "8eb5da10cf922299a601d7833ecebcf972dfce7fea1f6db713cd81bdfc1f1326",
+    "src/v023/00_state.js": "494c9343810c6d1437c981b45eb590453876f2544f216337b889301e40dae43e",
+    "src/v023/01_goat.js": "d155749aa4a8d06d520e831820a68c8fe58579e42571db875c87a3696c1523e8",
+    "src/v023/02_vats.js": "32dede08fdc88e9688297471b253b5266a405b7cad8ff38dbb659547e6cad5a9",
+    "src/v023/03_dialogue.js": "7d5698a1128697cc4648f08747da6412d0adb990ec8d72691d6f9938d780b169",
+    "src/v023/04_story.js": "22742ce9597a80a5d4da63bf212ec5412e5a5eff82e5316fb28cbd73543fac1b",
+    "src/v023/05_world.js": "8542468d42416c21f3d60542dca880d02b34dbd6cbbeb9b8d8ee3f8bc9d23b5a",
+    "src/v023/06_interface.js": "d114af30871cdc87f972a4c17f300bf9132dd80a8fbbc228dc4fcf57cf37b818",
+    "src/v023/style.css": "29ceda0b971b1d2d7c07e5cbcd33415571e880846f1a7fa731fcb2b1f2e2ef75",
+    "src/v025/00_anatomy.js": "12c19d1014aef7468f7ec73540afc83e202d2ec2021db9e9fd28d37e43dfa4dd",
+    "src/v025/01_camera.js": "6ab8cd4e0965270ad298a9deab4f6b72ded823a6e70b54adf54ec8e2e972a3b1",
+    "src/v025/02_interface.js": "6403387f06be8be7f50674fa35f937de90ea6bd337ec0bd3b649f8976c8e6152",
+    "src/v025/03_boot.js": "56de67717af44e2cd375538c0e483741015661476b99fb2c9510042922eb3b2e",
+    "src/v025/style.css": "ae33b654b76b0277519bcc81022a6ec83b7dfb10fa8f558670459b48a621064a",
+    "src/v026/00_state.js": "41bd925bba397d005f8f6f6cb3146d7c69f7fc0738ed5f03e7f48842b2a3f658",
+    "src/v026/01_loot.js": "ed4b10cfdda62fce1dc44306aefb451af02a5cf8aa0618aa0743611d79484735",
+    "src/v026/02_world_story.js": "91635d1938db6adacccbcc66a2f46fbb8a873be2e90f5406288756b9b6392444",
+    "src/v026/03_inventory.js": "b0094a52c41f439aea7d43e11db1d5ce7dfcad36fc6aeaf35b379c1f806c64ee",
+    "src/v026/04_trade_runtime.js": "0da9183a0103957b783627378f6ec2078206eb5856125ebc89786ce44e317745",
+    "src/v026/05_boot.js": "b8b3cfd9227ead9055caa947aa812cc94af599e01be28aafc4c970e3954c6529",
+    "src/v026/style.css": "92f9f6eed2b89a22e326c02f946eab34f16153663b9a6c65428acba6d8d5b432",
+    "src/v027/00_state.js": "b319b625fd42ec6cc4a3166a58764b0f607c9f643a516f701d71a25427f0ff66",
+    "src/v027/01_shell.js": "ee78374d5eb0f2290cf6778f20d8919f8809cc6cc1db145ccfc57844a6b58f5f",
+    "src/v027/02_inventory_status.js": "684ee6055282564f2b94c4fecde3a3ab5f66b8cf104b3278d864a96febc3d5f4",
+    "src/v027/03_data.js": "317d7c850be188cf51972c9f1de20e149dadc419d3b93ea393c9f045d8778c37",
+    "src/v027/04_map_radio.js": "00cb497bfa98c2fcca682be1b67719b6da2f5238a5df677915f63ea76c6508e6",
+    "src/v027/05_controls.js": "441bd330948a72b6dc2b5d9974484fe7d3a3754113be17a30fe7bfb620496226",
+    "src/v027/style.css": "93e0614d1d2755b35316c2e51b4cfad37c6384ff38bb7e88c2b9ccc736f741ed",
+    "src/v028/00_state.js": "f7f53fad81cf45cc164fc1d83a5ec0044c9d92045ffb269b3618a095cc65c61c",
+    "src/v028/01_body.js": "4cff049afd3d62eae18612fd61d751cc5e3489295a9dfce898f4a89430b8c6b3",
+    "src/v028/02_light.js": "b98b86fdad9ffd9b7103110b6baaeceb29de54fd68fbeb9412af54c5f1a30223",
+    "src/v028/03_hologame.js": "0de1c1f8d3874120f51e3193f955659baeea712d58ac88bad619fc289ef5d88d",
+    "src/v028/04_story.js": "964dde3c94a2dbc127666a04a23bc2b2730167602530cd0faaf2c46a6849a30a",
+    "src/v028/05_interface.js": "bead1d8d36306dd0c84bc57a9a3beb622fb4c08df060d7f74fd875891942b4b7",
+    "src/v028/style.css": "686ed7b97a7d9a7282a3e602b406f75d616d8fc4f7bc9004421d6492753b9646",
+    "src/v029/00_state.js": "a074c3287262c4c171495177fe3b8d7e80f2ab01362a97cef5beb8a130fbbd92",
+    "src/v029/01_terminal.js": "d0d3817f3e447e4ad629146d185965ff2ae6bddb3d29908b22825c9300a3e26a",
+    "src/v029/02_perception.js": "d029f07c82b118dd58a11708a8661f5129fb5dd6c2896c4b630c5aadf803881c",
+    "src/v029/03_world.js": "69a27fd8be74d5c20f0e11c5f72179143284dab0187ddc5f909129a711de97a6",
+    "src/v029/04_story.js": "c05a6147cf2db36440d7972d11f9507e0f908fbcbb76951a0e0748ae0218acbb",
+    "src/v029/05_interface.js": "b4b261c9ec1b70682c32638a65f2bc7555a576217d515da819825c970c5e1ff3",
+    "src/v029/style.css": "ada7ea573e751477e91626ca3c59194b80954c952cc8a41c748d43d378cfb5c0",
+    "src/v030/00_state.js": "7d92c7f6f963a01a357ad0526860ae008e44801ee2dc2835365d5070c3f8e30e",
+    "src/v030/01_power.js": "054a9fd2642394126af47612642a7c3d983ae229640319a1c2b2cd7a517c5031",
+    "src/v030/02_visuals_world.js": "4c840563ff3c80e116bceb70d5c6b7b21386d4ca35de4890fa643b2a073da4cd",
+    "src/v030/03_story.js": "649b3360947092c5d6981e552b46c3178e4c25c0c6171ce7e976ce4622040611",
+    "src/v030/04_interface.js": "692faf1551c6e74346f123053242a487f92418c067db45e5bb1a208aaba6ef69",
+    "src/v030/style.css": "c07afcb144b7b6fc04539419945e7d1a56a969b02bd6312f7d59241b72d07276",
+    "src/v035/00_state.js": "5c45a3f2427f255d0ac7b8c0097c1d00ae5d6c36cdd8c6605dc3afba89440522",
+    "src/v035/01_career.js": "7088167baf9482baf8e7e1d094e2f4a8ef8f866451d2c8704a61ac7574f64385",
+    "src/v035/02_operations.js": "3d207458e3fa3becc9175d5b23c24c1806a735d93d0a4b44b4a79dbfca28744d",
+    "src/v035/03_hub.js": "b7156ce8af028eabcb85f01d27c47b3e8fbdeb84bcdf4e054eb4214b07a384f3",
+    "src/v035/04_interface.js": "7ac4353b88c8ceb4bc45e46a6f745a5452b2650132000d5fddd888b4409fad58",
+    "src/v035/05_prologue.js": "dce66417588449c52d1373f4e9fa9322f7a0a9890b677bbfc72de0e2a71bf60d",
+    "src/v035/06_product.js": "1306976d6dae0a8c5ef4807682ccb571af8b6eb3056e9a5c2ec7c585d9326554",
+    "src/v035/style.css": "a0fe85a84ccfc549c66186c6bf3f3597d5a4d5ee568a1364012c6fe592dbdfd9",
+    "src/v036/00_state.js": "4265b87054d0ace68261188b6d28fa18d7442b8eb007d2a7feb2a5ea882b099d",
+    "src/v036/01_streaming.js": "ae9c6e819a81da8b6451ce1761d94bb62986c310b5441d1f5cc5cb78a656fafe",
+    "src/v036/02_continuity.js": "898b275e75d6b36b6cd8d62b430242312c025c675618b4da978a977717244a70",
+    "src/v036/03_interface.js": "5f32b898bfa01744cc0ee93672928ed2e9257f8bdacbcb6e9d440ef657f56c1f",
+    "src/v036/04_boot.js": "a7a109ca320893a5b30bcaa3d0cc45738351963e9684fcddef91909fefd8a1c7",
+    "src/v036/style.css": "24e861283d6f16fb38b4e5cfbe00ab98151bd97438a8bb59b17789aa859fcfc7",
+    "src/v037/00_state.js": "f6f0f883d295403958c59682cd483c2ac12c75ceb73184b6ed6babb76977c4cf",
+    "src/v037/01_cache_streaming.js": "5504e7be3a1939a1f1f7906057e865ff28181879ad74220ccf99be52a920f78e",
+    "src/v037/02_topology.js": "0f4cf728ef4ac6a79a93599ebb74f63b532a518cefd73a01923f6d5e12938d8a",
+    "src/v037/03_interface.js": "250361ccfa77de2469527fa3c893259474d8489ec18b2f464d692a09d7cb660d",
+    "src/v037/04_boot.js": "ece85d2f28c09331cdcae6bc3c797437dbd61fb8737f8f123f996535d5bb46f7",
+    "src/v037/style.css": "6e78f16d80c46f41f92cba1fe65bccd91474ff8d6aa2613c11bece19afa684a6",
+    "src/v038/00_state.js": "05fd25c936f47ef8ca3ff953631a0f74f220eb64bd9e1c01ece05d144c1958a9",
+    "src/v038/01_streaming.js": "1dd3dcde658b32e18c5719b4cfffe299ebf257a7e423292afc9148cb2ae4c47a",
+    "src/v038/02_interface.js": "1cf95c5c724ee45c997ecb17b27556c1740734038ab9ee93f0f740ae3ccb8baa",
+    "src/v038/03_boot.js": "9815048bb3e7eefa5a3d0e324dd9296c3f5e2fd2443bb5a9701194e8ef340c92",
+    "src/v038/style.css": "055617d7bab802ac566f5b46ca95ece34ab5715d5f7e5be92dd9d7c4ceffaa28",
+    "src/v039/00_state.js": "cae55036f3f8d17331807b17c02cf147b1a4b1cb5f42ba5b932e2e3547b3a1b2",
+    "src/v039/01_terrain.js": "d29fef0868786270e5df38dd7a8ccc6101f4b594c6e53881112c68495d1a7b94",
+    "src/v039/02_interface.js": "cc9a93c8fd0f85641ac761f502dda8e6c9512849acd08c091833f37a04efc212",
+    "src/v039/03_boot.js": "774e26596a590b5f06a1422dc43f816e677882aaa93bb824fd3a554c0cb79f7b",
+    "src/v039/style.css": "64f4e7bc59e7a41b577ba1682e5676a4e0a01a0bab1d2edb957091c1438ee3da",
+    "src/v040/00_state.js": "23843db152c74867545a35c8ef5cb6baa060f73f12a015431ea8add0eba8f315",
+    "src/v040/01_corridors.js": "7840672ba93ed3c69143f45875fee2fb9170f377a13d0cb39b065580db1d2112",
+    "src/v040/02_stitching.js": "20472e7231df2eb03642ba21fb64ae02b93087190fd27f93716cca2ad8a2b10d",
+    "src/v040/03_interface.js": "20236e3ea7ea443b5cb88cb5e2ce174613db5343861f511a84901ffa38158531",
+    "src/v040/04_boot.js": "a353a1feb729e9deaffe885bd1969dfaf8f5e515fd9f9d2b852c386ab44a8067",
+    "src/v040/style.css": "93c9b71bae6ffd1d43ffdc425cdecafc16688d2fd99164f29b67cd6abc995fe0",
+    "src/v041/00_state.js": "1274e7e2ad347a08f0b63478afca4e327a52e6971f4f28e74aa8e6d45bf96b3b",
+    "src/v041/01_pack.js": "1408d1acf188f69293fb9229d78a16f87dbf9a7adeb4910dbb143eac3efced4f",
+    "src/v041/02_interface.js": "f8bf24f2ed7ca33f7c636784a3dd2ed09004ffec9978e74592cacfe2943cb91e",
+    "src/v041/03_boot.js": "1a30505f1f16809d01c65811ecfb46e3fad815d5ba81d48844b62275e8220c45",
+    "src/v041/style.css": "deeb0d5e06a24943968ffe99bd5c5f73aa52182b76b806b61e418656f436c20a",
+    "src/v042/00_catalog.js": "80cb61a834316edfbe03e3f1784ad7ff2b53311476edc08dadff6d04db449866",
+    "src/v042/01_state.js": "d9d04eed03e76ce26ca0ebcb408f98b9ee00998b3981ec52fc9f030c040cec30",
+    "src/v042/02_layer.js": "c9e4080ba921ed1994d48e05dcccce3233f8dc051ed1ff9a118fa12ac72ba10f",
+    "src/v042/03_instance.js": "965cc0c74ad64d0c681febd3f9d414191d192a90ab7dce05dd7d2bf33c6344d9",
+    "src/v042/04_interface.js": "625850d32c933ab7aa0edfc9b6ce8511e19cc5419e031b327408ea09c6850d7d",
+    "src/v042/05_boot.js": "566c142f191e6feeb08c5f072f7ad771d02cad3b1c7b7cccf9774a1475babd94",
+    "src/v042/style.css": "78e71d5ccaf564e3d5c2b7abff7879e4fb097cce7ee2627f24fdeff0385ae50a",
+    "src/v046/00_integrity.js": "1e086efb92cfe9971001a1c4988623d95f362e00f795e3c16231edd53acdeed1",
+    "src/v046/01_world.js": "fdfaf8210017bf209e715ffc49020bf37fd62a41ee8c03e4b6647c9c9639fabb",
+    "src/v046/02_environment.js": "f0c4387584a81f2733143dfa2464d38f4366a57466aa7dce278d3f0701c8df92",
+    "src/v046/03_hud_sky.js": "e78f2e0a56e1705caae5b9432249dcfb4e10b1016e25c35bff0f2d29ad589514",
+    "src/v046/04_lore.js": "d4251b2dd4a28462d12187c9b2ebf60ac5205c68a0c4eb5d91b493e373825da6",
+    "src/v046/05_lab.js": "acb6220771c468a807897003ea494947737724396cebb1c7fc50e2c1918cb15c",
+    "src/v046/06_boot.js": "d33d5c31547c7b5e47292f36e059414969ebaf8063aecbe2ecd27aedb4b8fc72",
+    "src/v046/style.css": "22962cce731b285069207fe08d0d68f0bd1617c066864f72ce66eb5bc2ca7acf",
+    "src/v047/00_stream_primitives.js": "68b654aa1fd122b28eea34e7280983b0c58ba226bcdc759d65dbc565f2fa30e9",
+    "src/v047/01_staging.js": "aeeccf46dc255311b0e5d552dc7f7f591e621bfa8cac17c9d98428a903abb4ec",
+    "src/v047/02_streaming.js": "e7b548c9185d9dc19314c7375b4848abf335c0969b6898cc6519c9034a6b50b3",
+    "src/v047/03_interface.js": "bb3a04aeca4977150dd886cfb6f7cb5f2d7536e52f2abe22273dd2045a5a54f6",
+    "src/v047/04_lab_safety.js": "1659c92f81bdf8fdcd87ccd5fb5991f26ed07979e3954574f0850d6c4f5462fd",
+    "src/v047/style.css": "f53ba66a0b507c61a726f7fa919830afa300a097ff007363ea905473d9be1634",
+    "src/v048/00_budget.js": "7d69b79e19b44d060e77a1ed91a5757a6826021b82932674a1b0a13a1ead9c5b",
+    "src/v048/01_preparation.js": "6407face4e421ed6ab0e6a94776c69f289bd8fd25fc3cf42d69d081fdca7b9aa",
+    "src/v048/02_returns.js": "ecc6ae9e940c0ef030186c18ed6bc77566fdcfa98994d41dde59e87e490064bc",
+    "src/v048/02b_passages.js": "1c4ba57eb354fd02bf0e093e5670d047896350af03c3264f2fbeded5dd0135e2",
+    "src/v048/02c_door_transactions.js": "40c3e3d52599154cb3b50fb2745bf964c726e5deac19b8095fa87c8f47545d64",
+    "src/v048/03_interface.js": "2dd9e3108acffcd89ce7a743ae9020d2a42a5aeccc74be5bd3e219594b9fe247",
+    "src/v048/style.css": "90ca4eaa8dcd874527e0e167c5e55b9c6c80984e4c733e8d9cdb212dc4dcc657",
+    "src/v049/00_encounters.js": "bd1db8c19f35891bfbfe8f07427b669b13e0d392f13732925ca76fab82b929a4",
+    "src/v049/01_persistence.js": "9962a7b0eec8fff31f845c84b5caf3b0e0d2dc90931db1d1025a45d014ecc828",
+    "src/v049/02_bodies_lifecycle.js": "b7a0453f923699b8edf21c1a2bf34e1a6c93b102c8ccbee6b7eddab265357866",
+    "src/v049/03_interface.js": "cd500e812a0185bde7792372de73b40a997f936c11bcae826892e615cc0b065e",
+    "src/v049/style.css": "25a1b622dfa03b008ba32efc18ac5912de46c89b98744334e33327d0b0732d2d",
+    "src/v050/00_continue.js": "a1640e1a859d54f91afbc665b8a805ca66d9574070178a9d4d7184d24980e66d",
+    "src/v050/01_campaign.js": "df102b02ca8751c6376dd4753daef64489c42c3749615620aba50188fe786567",
+    "src/v050/02_poi_travel.js": "fb9e198270a6f74869dac352d5339439585fe1d19870572d2e27b97d815a7133",
+    "src/v050/03_interface.js": "924fc8e210b72b39938dbc9c48f708942108e527889e0e7291cccb2941874fa9",
+    "src/v050/04_source_geometry.js": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+    "src/v050/04a_city_sources.js": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b",
+    "src/v050/04aa_city_water.js": "2f5d0186f7bcc76acc7eee9e2546f5b955ea35a24c5d1b424962f2ef40454c9c",
+    "src/v050/04ab_city_water_physics.js": "c8ae99b72af72f81a432d0a3708d1dd5a9c536f6f89ede1b62c9c5454cede2a4",
+    "src/v050/04b_surfaces.js": "9039907e5b949e09d9327a72b2952de3a20252f0c5cf349add0386280ce40b01",
+    "src/v050/04c_roof_collisions.js": "e67887b2a274cf570fa22075ce45e516b462d2090114a1d34cd785a53e33d824",
+    "src/v050/04d_source_status.js": "da9a17ded6a7d515400014c8e536d210b5fb302f122409bc53ff6a473953b916",
+    "src/v050/05_wasteland.js": "de26ba8913138f5423037e86bcb44369f9aece1881cfae8c9e7d48a22e9f5075",
+    "src/v050/06_architecture_sources.js": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+    "src/v050/06_controller.js": "3b3d5fe3f1fd3e1409fa1f98f1351148555be752290bc5257068db8116be38c8",
+    "src/v050/06a_landmark_surfaces.js": "905021b794493dc3e56753aa57e0d2ad6a69290820309bb44ac9fe7e628c4720",
+    "src/v050/07_facades.js": "d9ccd0b0d89a3f42a4de7d4938e217f11da2e7c21fc82a54cf7c3a1d5b7ebcc3",
+    "src/v050/08_city_interiors.js": "793cf959e080e623d444c4436a2baf08a0b7e7463a6ec6d0d2a22cdf24385d68",
+    "src/v050/09_city_interface.js": "1c8e7d35750696bf81eb1432a030a4a71e9fb099055e45d8a50853631bfc8004",
+    "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+    "src/v050/11_power_armor.js": "77e03d9b83f7d35828de22dc13abd6e368879eaeeb5537f39576824a41386ebc",
+    "src/v050/12_iconic_ecosystem.js": "550ee004344e4879c0d87164ab97971978113c882e0ca5a2a2045a61b5725e23",
+    "src/v050/13_regional_bestiary.js": "8ca674889e4944353f16ac16e9a24470ba444623c27271e48e8a928409b35667",
+    "src/v050/14_precise_terrain.js": "3fffa47978093dee72cadd5edc189a1794d02573627f3749fa7adbaf8738f5c1",
+    "src/v050/15_chemistry.js": "b432076d9f0b3fa4a4c0eeab9b95e5044de8089fb2148b958c130efc417ccd4e",
+    "src/v050/16_iconic_ordnance.js": "c5b6fa302bdd29106a4e886d6f4e01382bde5e94ff059b5b1b5a0529a7067362",
+    "src/v050/17_first_person.js": "07f81830b5115bbb1e0ad62517f563b613442b20928f65bdf0dd40fc1ce19214",
+    "src/v050/18_iconic_mines.js": "00ba80a6ed04f55eb0ef9491259a7fbba400742ead55fbd028d6d0ed7ad3c787",
+    "src/v050/19_fps_hud.js": "130d31f98652b5cbe95008998b086ce4df77c8242a4f87ee5e22e1cb9063cabc",
+    "src/v050/20_iconic_vending.js": "0757a959324cd76cfe7bcd1352910c14e27711d9a5ce788a1d7b0471e250ac20",
+    "src/v050/21_holotapes.js": "38dc175b60aa227ce9a2f13f77ce57401d36c4950b84cd59de52fe7937d2f217",
+    "src/v050/style.css": "b112d238f162456a761ec495fd6e3670567bf70db7fdf3db459f44a0511b7e4b",
+    "sw.js": "74f1c238bd1c2e4f65b14857ff3c542fa159674cb090798c4d8058a70ca3035c",
+    "tests/expansion/architecture_native_browser.py": "f9c426e562461ba67be7db78107a91328763250574873293fefd4d31ad957ec5",
+    "tests/expansion/architecture_runtime.cjs": "0f0c3d7eceb45a43e7654e1358a9fd7402f34f12e1ee968c8694c0332e4323ae",
+    "tests/expansion/architecture_sources.cjs": "02ca8d0ee1cade7a1d8f5aa85e44eab950e75cc231ddbb20d2c652fbfce9081d",
+    "tests/expansion/chems_ecosystem.cjs": "bd1bf9e4a7bf83fb37bccc49967e20b73c1f70778bfd0dc70a129198814707e2",
+    "tests/expansion/chems_native.py": "8fee1de8b35a7e6eabb09488eb9ccbc287932b072cc162e11328fbcd32e11298",
+    "tests/expansion/city_architecture_browser.py": "8c2c41d64f0009b47a711ba03d41f29a926c5b9a39c2a88019dd029a4201d178",
+    "tests/expansion/city_delivery_browser.cjs": "517a377ff616295d5a292f805addae442fda3082d7db4700f0a0217b2d13bcff",
+    "tests/expansion/city_geometry_identity.test.cjs": "a1e966902707ada589bbf6f9da7b9a13026f87414f76729f5cf0fca185489c71",
+    "tests/expansion/city_interiors.cjs": "4285a3469f0306a1ec3666a8b60ff9bc313851737f70c3ac31f59248335365ed",
+    "tests/expansion/city_partition_seams.test.cjs": "47b9ca7f10a9360c434de1f22be9e372bdc5fa05ff770cbbb628566857e804af",
+    "tests/expansion/city_restore.py": "54a40d5196da726684be5721ed495afc21733d65e0fccdc893064b72a1ac292a",
+    "tests/expansion/city_road_visual.cjs": "6cb8e8862cec644d4fd742cad8ff4896786879a074123762993a6daa0a691db5",
+    "tests/expansion/city_streaming.cjs": "52bf10b3bf70331d3a5f8647b5803407e0a26186d9811fae8389c298dc4c19c0",
+    "tests/expansion/city_wait_cancel.test.cjs": "b6ca854f0f8966a7af99f529e3747a34cc887458021f06f719fede3f634d3eea",
+    "tests/expansion/city_water.cjs": "f68d42f0b427432d94fa708b1d0174f97fa6290f866eaf5f14cf91e9c4d26872",
+    "tests/expansion/city_water_physics.cjs": "b84674ec59eb2d75aeafbd303101bf2697bc1744b80ca0e76332a5fb2532aee4",
+    "tests/expansion/community_dossiers_native.py": "d8a2cf106fa4b9b2b47058668e7635a7cf3cdf20367e59b3453e6d93c3a595bd",
+    "tests/expansion/continuation_native.py": "178b75824619f7e6b8128e889c9c59bde0e73ee4f5afd50b678c711940afd3ae",
+    "tests/expansion/controller_browser.py": "cc83a11b3b5444a191fbd76066b3fc0ca44a9b9223f9460756fb974e1fbbbdf3",
+    "tests/expansion/controller_model.cjs": "cc3cb50efd6f38224c302405233d84164a689805fe9eff9d0188a168973dfdf4",
+    "tests/expansion/dense_geometry.cjs": "28d0e1e7533a11f7d078b171f6281c2937866044b378d69341ca1c2aacace336",
+    "tests/expansion/facade_hardware_native.py": "368baef192ccf76b3ae865eaf5b8c688f4d92a2023455d1bfecf1d030b7409ee",
+    "tests/expansion/facades_coverage.cjs": "5aac9048041938e2accd44fec01699c50af7773a63457410e0dce596937900cd",
+    "tests/expansion/facades_hardware.cjs": "2373fb91569b6cec3f59dcdd457cfa8796ccaaf21f46f68c14a1771f45f0c72f",
+    "tests/expansion/facades_joinery.cjs": "46ff0e4b5f14ecc7c706817397c6ee06c82d8447c3cb5cd0466ea7d3f9f57eb3",
+    "tests/expansion/facades_model.cjs": "956953fdd416ea6159eca725d1181bfd16971ddfc414307822fd93da9a6bff75",
+    "tests/expansion/facades_relief.cjs": "49da71838e87c194468ac18d6caee4036d5165271fca7115d32ea93897b5237c",
+    "tests/expansion/faction_dossiers_native.py": "f584f05e98fe01e33180bba50aa285bb675ae2485feb3353079eaceaaf7bc6ab",
+    "tests/expansion/first_person.cjs": "e998fbe9b6f6db1b502a49857d3cfce52e9c503c6f4b7db6cda3ef55fc7ed416",
+    "tests/expansion/first_person_native.py": "92bc88e40b72de398e195096b1012045c8f3164785b38c1ae4bcd245d349a2f4",
+    "tests/expansion/fixtures/bestiary_previous_72_assignments.json": "67424fcf6be40719708c018cc246e31aa51f34e137df32b12e96a89d45987f7e",
+    "tests/expansion/fixtures/bestiary_previous_assignments.json": "be8ec02b5b803e23caa72f290d3d410827b6a7a6d4650eacfc7ca3c08b3ec331",
+    "tests/expansion/fixtures/facades_joinery_cameras.json": "e6e3728d495216dd48202d1529e8c210e68aaa4f4e50a6af5bc84473b17dafe3",
+    "tests/expansion/fixtures/facades_joinery_ign.json": "841596785a7753c9860aace5d62e604de0c066f61822f9d63b8ef85f8ee2ae55",
+    "tests/expansion/fixtures/first_person_long_blade.json": "ee72d81f9a16f50509db1224fa637ef06d4de990e501b4a980c3621668eac2b7",
+    "tests/expansion/fixtures/interior_domestic_rest.json": "fb2cf5b778885953828ab447d5d7461ef45635bf7c257d6a93a9bd395ca486f5",
+    "tests/expansion/fixtures/interior_domestic_source.json": "580f6b53f27fa74b5247169ff72faea8afdc24fd0feb6c2ebb30d15142c5b926",
+    "tests/expansion/fixtures/interior_layouts_before_domestic.json": "68c8dc584bf1ae3ea9730b06f7074659eed7ec8b91f1d79b6eb5ac0a178135b8",
+    "tests/expansion/fixtures/interior_layouts_before_services.json": "f9a898159d8c2c6d19b5e94130ad7e632ca9bd19508c433821c94f94c6421452",
+    "tests/expansion/fixtures/interior_layouts_legacy.json": "f7ada9a2c3d34349d7241ddd90ac822a0070ea9762ffdcb18eb529f8de267d60",
+    "tests/expansion/fixtures/interior_source_uses.json": "e9e7b19ae0826ce6d185f754be9ea92bc1ea2807ef79d54e9086658f9689018b",
+    "tests/expansion/fixtures/vieux_port_road_ground.json": "f15d2bb04f0dac13acb8b1c978b2ee9564bdfea379ce812237f5f929e708e2b8",
+    "tests/expansion/fps_feedback_native.py": "d1d912cef0f08e45df50b5704ef20aba4e592cd7e2dc696b9d71e783e7bbbc55",
+    "tests/expansion/fps_hud.cjs": "7d4f7814dbff8102e50998d53af149abf30b4df321d311c283fcbbb0e3cbe055",
+    "tests/expansion/fps_hud_native.py": "b49cbfa8955935693382b9859d417485a11ced70054003dad03c18721daca890",
+    "tests/expansion/gameplay_native.py": "12bd5227620ba9672cd3207fab7573b8b6e5f72aeb1e3d63c7fb7eb587f41525",
+    "tests/expansion/gameplay_wasteland.cjs": "5175048a81f6a5d1ef106970ddb1565abf768e780c915bf17f99a7c4574919fd",
+    "tests/expansion/geography.test.cjs": "e501eb85c228a39e0407f2470c56028db89b3b76e9107909a654ca19bd5dc32a",
+    "tests/expansion/geography_browser.py": "e25bf88897691fa7cc3f82bf121160ee7244b64ce9a79fd1e3c538b86bf3a33a",
+    "tests/expansion/geography_real_sources.py": "301a4b1cf6bdfbc7e808b57c2b5e04bbdea7fc93949381c316a2cfeaa3d27017",
+    "tests/expansion/ground_road_surfaces.cjs": "19886b3ffca41aeed7a146c40ad319b90bd56a5555a7a99c631a7e44669187ac",
+    "tests/expansion/holotapes.cjs": "35162c6c25a3ac452c8b13bdffc8e05d4e33b3e36f7ca965a6980c74eb52b873",
+    "tests/expansion/holotapes_native.py": "51d000fe1cc0022084efb018b30ccd5d4065fc5ebd92c44658a10af86e711f5f",
+    "tests/expansion/hud_notification_layout.cjs": "7c79fe6ff7aa72f063b50cfde1c860b001e8c264673caf654d07081fdd0bee5a",
+    "tests/expansion/iconic_ecosystem.cjs": "32e048c758a5c1116a96edb376937c72868e705ddf97825b286e2c1f0e16f89f",
+    "tests/expansion/iconic_mines.cjs": "564f9a62b0d8c741f38b4e52fa15b39b02c2a38055b670486f70824b806b1e3e",
+    "tests/expansion/iconic_ordnance.cjs": "22f05b4656475a5e97ae91bf07ff52b7136d07e2d57605022c1c7affa6bf6676",
+    "tests/expansion/iconic_vending.cjs": "f68158efbbdcd515a947997dfb54871e9d1b5e9f6457a46394b7db47a3274447",
+    "tests/expansion/importer_sources.py": "7555333fb45f3558d5e973e37669e1c9947d12601567a46062f9f742119edca0",
+    "tests/expansion/interior_document_persistence.cjs": "04d1ce51a6adfed4f7a1ec2b8fae88c55a09c4f4efb93ab2b688e8ac63d2be51",
+    "tests/expansion/interior_domestic.cjs": "572306233d6b3c41fd47d463eb24cbbca3fd9368185db27428244cd353c25363",
+    "tests/expansion/interior_domestic_native.py": "daaf013a80d214f263907b8ffe2c92a0cd078dcd821311fefe99cec383ab38d4",
+    "tests/expansion/interior_doors_native.py": "e521b20e572ea0f74ee4fdddfb9c6d5db3063d49e08f7ea992ff328d4f7ed30b",
+    "tests/expansion/interior_programs_native.py": "6424a6a85569cb80157abe58f7b16f61ac8b72774c240188c913d45aee8f281f",
+    "tests/expansion/interior_room_doors.cjs": "721d42472d5ed91aac000f56dc4287eeb9d3e7b4a307d8bf8d96ed4fc7f2fa88",
+    "tests/expansion/interior_services.cjs": "bc9c22fcdf9a27421f2320c07e6791f5a763016c19c1f4aaf67cd6e8fbec8c8d",
+    "tests/expansion/interior_services_native.py": "6f0bb4d0da40afac054fd382c14d02280493efd8f11b5f1dfb0a949539683387",
+    "tests/expansion/interior_storage.cjs": "da226fb8ab9b4ce1e569c4d8e0c7e502035f0dae5c97b184558d909ede50fbe4",
+    "tests/expansion/interior_storage_native.py": "1bb891a0cea142acd74a04bd85bbf4ae61573a5b15767672aba77130801785f2",
+    "tests/expansion/landmark_surfaces.cjs": "955c9cc2e450a36bd85dcfc97834a972233069e39add579ad40113c2f20c801d",
+    "tests/expansion/landmark_surfaces_native.py": "ba1e0531c0da0e627e439c8eab1196943582cb0db85f7113226d6fce70e6361a",
+    "tests/expansion/lore_continuity.cjs": "e3fdeb5dd9dec14493ba7bba90e780cf2d842b98c48816f72702a4e2efda65fe",
+    "tests/expansion/mines_native.py": "617b4e1c19a60b2e34a9a463b7ed9f3832a5d2997cbfad6e48b7ffc00b3df994",
+    "tests/expansion/native_road_surfaces.cjs": "338fe15f28701fa50a8be16029b9d2ebd5967f895b36305aecd8ab7b891e3855",
+    "tests/expansion/north_terrain_native.py": "9aade952089086892e4271ecb53d682294491b782b5a6c9cbb76701d47afe64b",
+    "tests/expansion/ordnance_native.py": "06b64b10cbeba18c75a147ad036c47663b96a4e4a5528ec4c4bc96746e0bdb62",
+    "tests/expansion/parallel_systems.cjs": "7c1bdcafc5da38cd5c5f71429cf46b389ff6be1e1e93a14c2f64cf02a0dfd0d3",
+    "tests/expansion/power_armor.cjs": "60f62c4e7ad53792ba4ff31ad39c2991fd3b9df41577236eec2cc566fa24882b",
+    "tests/expansion/precise_terrain.cjs": "fd0389cd66611ff9a8a1b4cfecd20ded29c7eaefcc29cbc3df978cbf615ef9ed",
+    "tests/expansion/precise_terrain_native.py": "39b1f25d8963d3ab5bf16a746a3e4e4e26f542149950d9ce426adf5e27f209b8",
+    "tests/expansion/regional_bestiary.cjs": "c6e799d18849f0dcae913d6aab0b2bbc7b51655a975a344e1a7553a1a3df36fd",
+    "tests/expansion/regional_bestiary_native.py": "56e9b990514937de327c396aea29a96795ab5fa454b3d3aa3941ddf933d3b50a",
+    "tests/expansion/renderer_batches.cjs": "934c160e25aff9da123bda4696dac774d61c6cddead4b92723804881dc06c804",
+    "tests/expansion/renderer_browser.py": "f32a3e5ddb51fe52f07e49256c294f577251459017030382c654e2241cbbe33b",
+    "tests/expansion/road_classification.cjs": "579f94db2f8983bb69156e5bfed35b3a39a37fd1c4c7af28cc5dd051238591c4",
+    "tests/expansion/roof_browser.py": "a484e3134f342d356963e82579b2f1c4106ac2170af85e7ffe9fd6adfbf92f9a",
+    "tests/expansion/roof_harness.cjs": "752975fe095c594fdc6ce5079ef7d1705f51a5e22bc34fe648253535dbadaffa",
+    "tests/expansion/roof_solids.cjs": "af9eec6c9b64b64a488bccf64216b05d6cb462826f72f1640f53a92ff9ba363a",
+    "tests/expansion/service_worker_delivery.cjs": "c835526271d7ee40aa76942ba9e87ccb7e0f389afce9996be01671624050fd86",
+    "tests/expansion/source_status_browser.py": "c121ede99bf5cc8678e2c51f22dafe8cc53c41110ee8b3cd639d17f147e7e537",
+    "tests/expansion/source_status_model.cjs": "23773ad627279427839bd4d65bf68f4a44ee4ab10ae8556d132332ea7e40a18f",
+    "tests/expansion/south_terrain_native.py": "57df624b68d69ff4ad57844687a2282bd99ed5a3df4a05a66cec74398698f024",
+    "tests/expansion/surfaces_browser.py": "be0c3d898fdec7836ebb2106cf6ac3c24d7a8973742f36acd1667b685590bdd8",
+    "tests/expansion/surfaces_physics.cjs": "7b23d23cd31df16b99630119b9bc242cdc339396d6c283549051785adde836e0",
+    "tests/expansion/test_acquisition.py": "3aa40f1e6a509218d82721ac4db40913850a83f29905b5eea72b703309e39d99",
+    "tests/expansion/test_city_sources.py": "19fc6c1d3aed897aa78e08477ee9bcd0050fbed6a638e68f7ab05ccc946e1ef8",
+    "tests/expansion/test_city_terrain.py": "3361d93776a1b6e24c96c9769c62f667572cd4879099d80662ca5aef78db4548",
+    "tests/expansion/test_city_water.py": "e5f4186495cc8867ef0d9d035d9e6315b9cef941eff7548f9e501a49f866ad99",
+    "tests/expansion/test_dem_acquisition.py": "0350b488185caecdb2354a5126428d4d7fe96988dac37f93ce5ab9c29bb56754",
+    "tests/expansion/test_dem_conversion.py": "36d86cf1ab65a443e63a5cf61aa1a95f3f99a164b093ba70723841636b685cc9",
+    "tests/expansion/test_geometry_broadphase.py": "7cd0a8cd872887efc7a6f06b4c7b2021141180edad2a66a52fceb4ec408e92b4",
+    "tests/expansion/test_import_regions.py": "d15cbfe96b88b9b88927223002a96ec900e7795022671977ddb132cf61bd87f4",
+    "tests/expansion/test_precise_terrain.py": "4b562d41e8c2d04da6e390098ddb9b8dfa6d18cb9ec776de5fa0ca1622a84078",
+    "tests/expansion/test_resampled_dem_audit.py": "b604bca285792c668a2479944cb6e835c1fd331a7d8f336467e81e39a35f8ded",
+    "tests/expansion/test_server_diagnostics.py": "3a85748d8b39decf73dae71cf3ccf39bdc3650b30f0eb34ac0d605c53ba5ad00",
+    "tests/expansion/test_world_source_bundle.py": "d879d46c69bb866f4078bcd9d90faffd63c8b75609fef14f03f6d0b30049d171",
+    "tests/expansion/vending_native.py": "2e034f2a5cee4e7dd67638b1df0d03533587806e91b7336df0ca90364999cec1",
+    "tests/expansion/world_placements.cjs": "4ed54ada8f5147613f68f57136a61bfc4d86de6e8443b501298545043c0579f5",
+    "tools/acquire_city_terrain.py": "4074bb180265de46d372b979b980e94d7b0351c848830ef5fc24aa49434ee447",
+    "tools/acquire_city_water.py": "c1a5fcfe08afe75052ab629924947e083a47e30de5e7593bb8ecb5ca99ff1b94",
+    "tools/acquire_city_world.py": "f4316428e86ce411c38c189ff39184c03ad64ddfda8259569f32e360c2d6d354",
+    "tools/acquire_ign_dem.py": "7cdac381ca4da8d0e4be7522335e95878036f9e6602189ab4663981061f1d94f",
+    "tools/acquire_precise_terrain.py": "8b6f66cab47e0dbc80e410edf4ba03f06f7ae98108c3170c775a50d9bec2f1f8",
+    "tools/acquire_public_world.py": "5d7c3428f0eec382020fb22f9ab51c2db26b60673fe1b201bb630f317c3fcfea",
+    "tools/audit_corridors_v040.py": "6a0077f5147e71468a60f66b4b694ea8b20cfd048bffab40e3127f69918ba834",
+    "tools/audit_fallout_layer_v042.py": "21a2b4d503444482de52cf0ace944f25ffb97b2e516f96c210fbc72f9d77c7db",
+    "tools/audit_real_map_v036.py": "d4dcb51d4a9cbd53088473afaddd80b4849078ac8620f7fe51dd592e5eb4e960",
+    "tools/audit_real_map_v037.py": "e21fe868c77b2e140e081ec74f4f86911c7e45f75335c8f5687fc6ad8ad38101",
+    "tools/audit_real_map_v038.py": "e1b4d839eceedf8ab528eaba189ad556561f8d1d5aec53547921eba46c8fb77a",
+    "tools/audit_real_map_v039.py": "9f539600a1e2f11339ba3078d2e263f2ac1cad2dbe001ff2dd5bce0cefa431fa",
+    "tools/audit_resampled_dem.py": "1257770f57eff779a1df43f8693dd643332d3d167a4637f7e6674bd48edf847f",
+    "tools/audit_terrain_v039.py": "7d57d8586221d71e91527ad958a5caf0ef1af910a86df08c8188f232a1451361",
+    "tools/benchmark_map_v041.py": "e39c70c94bcd1f830283731bbc6a6dd7c6416141a23f57d9903cf10d86f86770",
+    "tools/build_fallout_layer_v042.py": "25139f0dc990ed28008a7607d36bbba4cb92011802d7b80f529a692f8436175b",
+    "tools/build_landmark_surfaces.py": "b063c130882eca3947e1fef5a139024f769050ca628281095371dfb056e6c929",
+    "tools/build_map_manifest_v036.py": "a0de9cc8f6bf6e70ab1691f0c2a6bee3913b22570646f61bf663d6efe8fd6e5c",
+    "tools/build_map_manifest_v037.py": "f48d8706d675bd6dd87c151d0c5552d12d7e59abff13475ca0b64a0531bbd12f",
+    "tools/build_single.py": "3f33ec6a8931698df40ca4f1db649f65130ae0df1a4fc16ca06c24929d1580ac",
+    "tools/build_terrain_pack.py": "fdebfb03549c9d469571946fad4970cb8b332420f1ee5deab64040719cc667b9",
+    "tools/capture_v029.py": "dc390239b21152dd33ef2f027976d364be72e67c72f3dbba8ecca21fb8e587a6",
+    "tools/capture_v030.py": "8d2f22ae29549e5125e3b5335e7328cf8780986c5a08f98276cec2e106138c90",
+    "tools/capture_v035.py": "f70a11a84dfbc7dda2d324a25884c6d4eef666a7a352521435e8758d4dd1fa81",
+    "tools/capture_v036.py": "1a830e4b2e93540a0bbd701145b4dec92f99ce248d41ffd45ef8b0e173fa6e45",
+    "tools/capture_v037.py": "851183f5981873c1cf7b46ea886314e7ad2c86b226cdcafca4b914c0ad3d588f",
+    "tools/capture_v038.py": "e40aba640d57b46ecceec5d72298f05bc519676e56e8b3394c991b6f65c12f7b",
+    "tools/capture_v039.py": "423139f64c9854df5bb1f4c5bee140ffbd38fb2f85c777cbc209c692ee4ae5fd",
+    "tools/capture_v040.py": "a0faf4b1e4e9b0c813b1d1911c5c4def19ce5b817a4dae306675defc3afa372e",
+    "tools/capture_v041.py": "65c9f343bd4fb51f555e764cd1a4db163929a1c1badfa83d072062442fd852ed",
+    "tools/capture_v042.py": "efff9bf914f57beb95c7c70321f9fcb53c3c94e2b72cc78222f91e7ceef341a9",
+    "tools/check_expansion.py": "a391df2f253e9f94b96c563b948b27b4bb26088c59fe987ef13f19e0a4af8619",
+    "tools/check_v046.py": "98b927fa8cf663bbea9dfb867ba06410b734eb1c4e5fb7fd3ca656ffbbac908a",
+    "tools/check_v047.py": "aceee14f818535e3afc11d9c6487cb836dfad7621633ba08881f51433b02de82",
+    "tools/check_v048.py": "aeb62e1e9e95a5cb7208fc5a3b3f5898ef316618f976748b85ddd16a1875ff0a",
+    "tools/check_v049.py": "a8779307a214e5afaa271569026d860f4e5405301ff3335aa033c452d97f1562",
+    "tools/check_v050.py": "82ba7055dc86363a9cf32ebc42b1dc80753dc2c6268c7420987d6b76554f4e28",
+    "tools/city_sources.py": "aab465f8dd47f71710e86689e61a06f0b85e02d03a8e2aebcc0b39b44c50cf3d",
+    "tools/city_water_sources.py": "95964d2f5cc6012688652b994f43472a5dda5938976ae7e3592938f8e63795d6",
+    "tools/convert_ign_dem.py": "70228d4fbe8a4c85bd917fa4ed5946c3e4fb57363a4bca3d81c96bdf2c526321",
+    "tools/delivery_smoke_v028.py": "c33e7d5615002a3685dd12baad1b54b671ee68f630e9be4b645d83d6b6a96682",
+    "tools/extend_bourse_opera_surfaces.py": "50d5ff637f4167c5f0998f238fcc63952b2483b0e31e1f6178c47eef0733ed9a",
+    "tools/import_world_sources.py": "dedf537bc3b6b7320bad302ed2375b837f9813b51fe926ae8927f897ebe960cf",
+    "tools/install_local_pack_v041.py": "13131719c53f4d72441139808a13df8be221f4f317110efb72be6bec53f070d6",
+    "tools/install_real_map_v036.py": "443c65a5dbcf2025da376fe7c96763f016315a72ae78546ab148dfdc8729953b",
+    "tools/install_real_map_v037.py": "8d1abfcdaf84c4f76206a4dca4e980b2ba0ff8c01e632db258602ee35e5dd718",
+    "tools/install_real_map_v038.py": "fb5f5b3fe6194ba0722c28f7fe8728184e2def9dada711e40b5a88d584280242",
+    "tools/install_real_map_v039.py": "937bed91d6f13d9f07971c54fe2c221bfff5158788641770487a3b5a2c6d61cf",
+    "tools/install_terrain_v039.py": "c31632b5c6934a6deb9aeb57cf2317bad20f51afa7115c5bca07ea9fdba2eb5c",
+    "tools/make_mvt_fixture.py": "a3936f583ade55ecd5590b2363c81aeb43881d5db2edee95da53eb3408a18d1f",
+    "tools/make_report_v029.py": "de1dce5b6cb10129d8e25fc1b7ff9bbf717f6f49fb754cbcc8ee04d423d2c682",
+    "tools/make_report_v030.py": "48b9a9a7dd59ba7cc78b587a3b9836cd958f5caa4aac25be0283a828beeff429",
+    "tools/mvt_audit_v036.py": "4e04441678c230b907d27f960d9c81cf36862e31d324664dd03b6468e1bb8979",
+    "tools/package_v029.py": "6d7c4cb237ec7193e73f8ed34519c2e93921832162cec728541385a6082cc653",
+    "tools/package_v030.py": "8f457b4c744d0920cff61df8fd8a72b43d40be8184b59a3af331d248b6805294",
+    "tools/package_v035.py": "d331c1ee8009ebabf8d5e210ad71432b85e42a88b80fef461e9861368874782d",
+    "tools/package_v037.py": "1e0ece669153f9cec37a72aa8063ccd548af10d88e9140f0210429c3a8405a59",
+    "tools/package_v038.py": "ef50dad6217d4046096cadc83eb76a7dca10d3a9e5a0dad92df4f28ee18f3482",
+    "tools/package_v040.py": "3d61c2f0887e71f3fb8c7735c8585c7ca1bf6137feaa960d9052d5fd365e919e",
+    "tools/package_v041.py": "6908af1627318cffeb2979903af0c088f95455486a3082d146524e39a5795794",
+    "tools/package_v042.py": "4ad22e89b39d4363aa4569688090aadb7160dc4144198a885874f9b4adf84279",
+    "tools/package_v046.py": "9313b5f04c82b3a8d7f57fd68fb95115d8d2b0f374e9add6edfb78e9e5e86d8d",
+    "tools/package_v047.py": "761f3e9bbb9526144c2124c257343649d70f81ebd98ba9ec4c39b8263cb2d233",
+    "tools/package_v048.py": "be380631d0fd935d83586d48e17ee58e313cbad793966e120b5bcd31c2045eb2",
+    "tools/package_v049.py": "4f030dca75c29e559c25f7c4981eddd9ac00d1dbfa535b06b9eb761735e9e5c8",
+    "tools/package_v050.py": "5c9e969079471b6b820da92ae012baa8b4339fce8d23d985105e0dfb13938603",
+    "tools/precise_terrain_sources.py": "345b6ceae9d95a988caa030b2d75af000be5fdaff11d0d5c055b7cda0c49428b",
+    "tools/prefetch_full_zone.py": "b379e5b9023798771d741f59f23cf2b08c7fd6423f72fa8d82924091fab45b99",
+    "tools/prepare_local_pack_v050.py": "99b0ea54ceb875ca3f840ba48789bcbf678d13af1545b71d0ac8007323d9a5b7",
+    "tools/qa029_support.py": "f3b96582786c49ae1e804db809d56c359ba4209e1490bd1cd52923c804f48893",
+    "tools/qa_cloud_proof_v038.py": "fd3fc2e0d3a17dc3a8e812df70f7c2e2a8aeb36c16d872a35c1b3282015f91ea",
+    "tools/qa_cloud_proof_v039.py": "208cb8902512c0be691401cd2c0411b1a379b0dfdd5bc271a6fab487ccf385ed",
+    "tools/qa_cloud_proof_v040.py": "ab5736bf38c459ea23419543190765a446460b3b3758413782b0a2fb2e6c4b26",
+    "tools/qa_local_pack_v041.py": "b0c1753bd12589c3c1cab4b3ff7f6e60bcebe47e06a0ff7ec33898b87a1a4559",
+    "tools/qa_map_tools_v037.py": "9385179cdb4940aa5e8d60faff8f551f56b0126e861ff6b01a700cd27447b09b",
+    "tools/qa_map_tools_v038.py": "76248cc0ed450dfec071c077f2ffd6ceced9b6feae0b12bb9446ef6c2202b9d3",
+    "tools/qa_pwa_v039.py": "5fe93d92dd162a646b0bfdd6d4c93bbb5b01ca952cde23beb740ccaaa4bea5fa",
+    "tools/qa_pwa_v040.py": "bc1053470b384f86ae6ccc1685f9871c2a8fd578aabccc3a9ea36c30cd6a08b3",
+    "tools/qa_pwa_v041.py": "0d1b60942a1913a6bde170e8856c8118512091987e5497a6ac4831e41f254865",
+    "tools/qa_pwa_v042.py": "e8edc24844c311233501befefba78f473948c0066395166cd02f85ae7b55a335",
+    "tools/qa_regression_v020_on_v022.py": "2381e8dcb16173fa0a532d65d185ff5a174bfec6ad7190fb9b7273777c4e42b1",
+    "tools/qa_regression_v021_extra_on_v022.py": "b5c434ab110f1d82b5877a7f48192029cd1649000e3cc4cb7be1634e11421b38",
+    "tools/qa_regression_v021_on_v022.py": "7ae6d5f2f804adeece229083d9e692d14c492149b7dc937023c4d452dbe168f0",
+    "tools/qa_regression_v035_on_v036.py": "cd1de408a07653a70016787bf7fa99a7ce88f5f3023178a6839d3dcef3d17a08",
+    "tools/qa_regression_v035_on_v037.py": "b497b60298b3767acdf4947b9022f7572f6bc36065b8a7d087e7aaebe63b451f",
+    "tools/qa_regression_v035_on_v038.py": "a2f957ad50d11c3350b7b2c7a8627d1208b56eb4bb1adcea34facaae7a338f4d",
+    "tools/qa_regression_v035_on_v039.py": "b07e2f2cd5f05551881cbdfdb4938413b720079c4a8ea444a6b5c31f86a43087",
+    "tools/qa_regression_v035_on_v040.py": "bf2a945b61baa1f78f7da081febf73b00a09779230e5320f1c25825d4ef2ceda",
+    "tools/qa_regression_v035_on_v041.py": "273ecaa931ff95807a79802abdbe8dcfc696b6b8c67460af479a65313922bb71",
+    "tools/qa_regression_v035_on_v042.py": "f9b2d99f1846836f19480829440a838add7c1eeb48d870dc02921941de96cb05",
+    "tools/qa_regression_v035_product_on_v036.py": "1239e9a79a0c54a8cf80cb408b1aadee0699b26d1de1396d15876589c32fd922",
+    "tools/qa_regression_v035_product_on_v037.py": "258729c1bc6a7c13075dc0c9943fdb292e4c56909c483fb17877ec1075c880ae",
+    "tools/qa_regression_v035_product_on_v038.py": "1a9bd020e788697c4a23bb3ebddb92928c3bb669e918b11999b14b4efb3fdeb6",
+    "tools/qa_regression_v035_product_on_v039.py": "a18eecb283ed0b7b94ab30f24bfa354c51508648eea30cb8314283f68932fa1e",
+    "tools/qa_regression_v035_product_on_v040.py": "f71d5a3619bcf770bcc69c6ec85089cb3b0d1f7217edba9180c3b59549450393",
+    "tools/qa_regression_v035_product_on_v041.py": "51cf10aae40361d10b059a4b281adf3996a269a7092a35bcd4eb89a417c45afd",
+    "tools/qa_regression_v035_product_on_v042.py": "d36face9136fc1f448209c783ce8697f92f779fb671b57515b25c783180860f4",
+    "tools/qa_regression_v035_prologue_on_v036.py": "2922e12839ffc2140c2e024e3b04900c8416aef57d73c2a8d9f1a2cecec6d1e4",
+    "tools/qa_regression_v035_prologue_on_v037.py": "b98b660d7ae3314f4fdb56c17a02fe538716666258f6896db9e08a106ff735b5",
+    "tools/qa_regression_v035_prologue_on_v038.py": "dbc0dda3b4adef21925b64c97158bd862a7c885a8c45d68dc888ae67ba3b4622",
+    "tools/qa_regression_v035_prologue_on_v039.py": "bee0ba42dc7619ce931807de92507ff8d25281b48f99395a8c92045a7c00f053",
+    "tools/qa_regression_v035_prologue_on_v040.py": "b6cb7d6a074931095b64ab95331c3bd9738bc9af6f3ed266c9173f3c1fa5d9a0",
+    "tools/qa_regression_v035_prologue_on_v041.py": "0fa0c91c48e8c0de01004c57d1a276b6d795d21b3432347a32866aa48ce01d98",
+    "tools/qa_regression_v035_prologue_on_v042.py": "32b57d107e85cf85f6ab421ebf59c69f2524e01a7cd19f275099fd782d780d09",
+    "tools/qa_regression_v038_on_v039.py": "dc909f885e3af196313b7005233d9c54583030e1538fc0a4600fcbe94865c7eb",
+    "tools/qa_regression_v038_on_v040.py": "10d0834114ff59cd9c2bff4d7562214c08423e53275b3d1903980b0a6431632b",
+    "tools/qa_regression_v038_on_v041.py": "219943aecac2fa1c105d0932a7d387e3ddd52c4ed0ae22d192fe39a9b4120ea7",
+    "tools/qa_regression_v038_on_v042.py": "7b1d5e637bfaf6205576db63c73a3b28264c56b9860567755b3f29abd62e9abd",
+    "tools/qa_regression_v039_on_v040.py": "13e5a621b816905cc736e6d94ea613546260ffaaeb2431396224884468dd183b",
+    "tools/qa_regression_v039_on_v041.py": "bb93a6694660404b086c814c6553cbd4026582ba5da4a7180050d14e431fbef8",
+    "tools/qa_regression_v039_on_v042.py": "2c20a48aeed441ebc76f0fa9134d5c1650a1e51a59be48d73222cfe622808e78",
+    "tools/qa_regression_v040_on_v041.py": "9862843ee438c5e7111bd486b81cad71ab9a3ca1d5d047191c39cd56bc137e3b",
+    "tools/qa_regression_v040_on_v042.py": "098c8107022b112d1a361f45b144baae0e03bbaa0e0f8cbaa7ba0016d81940b2",
+    "tools/qa_regression_v041_on_v042.py": "5941d40102dbb4e663b38d236f0cea30097560cac275a1e65a868079643a6bfa",
+    "tools/qa_support.py": "6d8b3c241124ca15c05ec8f979a695f0464905c813e768ade03bdee84e91323d",
+    "tools/qa_terrain_tools_v039.py": "559abebdb40bf0628a8472a6775ee25e722973c9786e0977bc86a72ffb7a593c",
+    "tools/qa_v022.py": "4b31392551e4a4656f9ed4b2ff75558d898788b51a7ae32e291870c1bc5588cb",
+    "tools/qa_v022_extra.py": "459def89a6351e38b166994f1fc7e32537e82fb8c9157a1bfc92166437c2da3d",
+    "tools/qa_v023.py": "0b9e59d352bd04417c32574959992652bd7632e28b7922c836764ea942be1628",
+    "tools/qa_v023_extra.py": "9b6874b0b67aab7c523d986b7ff67cc11e50e83d9b055f60d9321a999cfc459e",
+    "tools/qa_v025.py": "4f443a52ce3c879853cd9553afc0d8d0ac51e3aa209ac714fa5571a926a48cb9",
+    "tools/qa_v025_pointer.py": "3c26f7863cbc08a544d1a72eb99f25cace3d28da58d50a804ccfbc0856e171f7",
+    "tools/qa_v026.py": "9de676945cc66ab45ee366bc204a985b9e6776d3be1f39b73e207642df49c9c3",
+    "tools/qa_v026_edges.py": "15491f2f5acaf86a6274d52fbbbd6af4199d673544098c84edbaa56b9d0d49bd",
+    "tools/qa_v027.py": "b44f5561e1a7f91a18c62d072aac3af4c7662435fc7497d77cbd6c5fbec80bac",
+    "tools/qa_v027_radio_storage.py": "662969aa1fe4cf13d27539a4c48554ee721b888f7f389402038a42d22c5d51ee",
+    "tools/qa_v028_body.py": "fb0a7659c840617625ed19b44abc864da9075523b5f5ba030b508d99a2959aa2",
+    "tools/qa_v028_light_story_game.py": "b518047f5b8568939fa3ab4f903c346d0dbade4bc21eb429c3657c647f9d539a",
+    "tools/qa_v029_perception_mobile.py": "1af200d5e1c89ad34648aa2f302ca6c3b0a1cd838bfcf8541365a04436ffb9b1",
+    "tools/qa_v029_terminal.py": "b148b7dfd5eaa27bd85f49cf12a75e21c703d01020fd00c85fc3e313dc933003",
+    "tools/qa_v029_world_story.py": "4ed32ec66136642c4ed06459ee0482648a619c2ec5f2f02337ec9fea70fddfab",
+    "tools/qa_v030_edges.py": "8e0c0379e147946b71b2af5372b967011d0698d072d0844690fd54ef63f57fd9",
+    "tools/qa_v030_power.py": "dc019a905de75be0e8eb9b897665bd62506f7530f07f68e5103a5eaeb73b35c3",
+    "tools/qa_v030_story.py": "c938e6d759275bda2e627e28e807feac8faabac4fd7cc24b52d35afff9f6e3df",
+    "tools/qa_v030_touch.py": "1a6efe7a77da5696d299ad161380829f0347779d3ebe00dc7ab8cf4460eb715a",
+    "tools/qa_v035.py": "9a6cc271090ada7ce8c592a32f8f75411a124e178af27df80b7f630817b4568f",
+    "tools/qa_v035_product.py": "1106e6160541ae7558a2ed26c81eef854ef74f7c0b5e09c7e44d1ef6be0e4c57",
+    "tools/qa_v035_prologue.py": "4f06233c45403fb4149595300ba72ecc1dbfab84c656754d556df094c5593bd4",
+    "tools/qa_v035_pwa.py": "0a38bebba47a7942c2ece0ef86cbc0e434455e3389ea5a6b9d2e9118e6fdd839",
+    "tools/qa_v036.py": "530cddd6f43c0206b139ae3a973582e1664d1eecb7dae5e102f9b5b8e54718ee",
+    "tools/qa_v036_product.py": "440118826c5d75250521ae4fbb7f8190b7aa287e711711fdb422e15280722772",
+    "tools/qa_v037.py": "42e1d15f8550cdc03ee687dfcc5d6ac4fa180695a6e3a00d6f8ac7cc2062ec91",
+    "tools/qa_v038.py": "8d982811e43de4cb7b4cdbd565408a83b90fb2dc7531414cc264ffffad3b5c43",
+    "tools/qa_v039.py": "a019e0dc158291fde4f4a6db6531b0a56935a604a8826e629c2babb6cbbb1e1c",
+    "tools/qa_v040.py": "4b9b1984b895ab18b9080416ad307f9ffb485b7cff00fd68c9305d2f4851c762",
+    "tools/qa_v041.py": "7bfc537b77ab4cafa56efe5a6c24c40cdb8b3bc5400d7a2cd8ae578405aba8dc",
+    "tools/qa_v042.py": "a76b7a16b5b95239c2d6ea2c31a4ff12dc57fed82be6ec79c3dba361adf57cb7",
+    "tools/qa_v042_coverage.py": "91e004214ffc15d004b159ba86a1d8c440a6823061e1e3000658a09720b825dc",
+    "tools/reassemble_v050.py": "3b1d1c569748d2bcb58801101725d4df42c0235e000be436b5220712090425b4",
+    "tools/report_v050.py": "0c14104934f33044832aa9aa5d2a39226d717594a9e38e7e1985e479700f4ad9",
+    "tools/run_all_qa_v029.py": "7ee46717fcc15a6f75223b937e280e15fb07e24f9ce59ff9d970bacd936c5296",
+    "tools/run_all_qa_v030.py": "7930cfe7c5b95b8b1bed2a82e0150902da5b610161db3173f6f99cd752cc0661",
+    "tools/run_all_qa_v042.py": "b8535eb3bf0eed815a7ddb12a63f585daffa3e6ae4877b627401302586b469fe",
+    "tools/run_regression_v029.py": "a6db19c8c1b38d7d23ad84927ff1e93e93e6908cc3112c519cff9549ae1b6534",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80",
+    "tools/smoke_v037.py": "81a67d89711efa4221a78690eac0b9765a7fbb8551165382ae412c7f28b6d3a8",
+    "tools/terrain_real_v036.py": "f3a8dcc9ea6aa6392c1a7d5f0f00d7982f89973b19c209b77687596ce8f648b5",
+    "tools/validate_real_map_v046.py": "b758b002e26b194afa590075076acd718de638b6cf1f776f612f8e7d01a3105a",
+    "tools/verify_delivery_v027.py": "5f3f5d6bc152593a0dffdb1b76218876ab6ae09d2f359d851015480956cf5eb7",
+    "tools/verify_delivery_v029.py": "e1cd68d0f9dedfe024de39f0137b187eb039b3016976360de0df07c4f0711aa5",
+    "tools/verify_delivery_v030.py": "a2b53560e389814b459788607723c06051f40b683e7d507bc3a4ce297543eecc",
+    "tools/verify_delivery_v035.py": "1c13cda9c7d3914b6c94f17cdafdc1d38d05e3fe513a793763989b1a6b49ef45",
+    "tools/world_source_bundle.py": "6c89923a0af493102dd1993107f2615987edac90ddbd5b62134800ec1133e477",
+    "tools/world_sources.py": "eb2a24b5c7f86ea4f4b76c90dc1a817256b30904a72094524ad2eabfefdfa3e2",
+    "tools/write_docs_v028.py": "f515febafa3efc2ea5db11ccb2fc625f0afd9a6d4308b2a4b379842d34bfdddf",
+    "tools/write_docs_v029.py": "03921ebaab671b2416e3839c6951e515436d83e2f1dd986668f4dbea1b5e868d"
+  },
+  "inputScope": "Application, build tools, maintained QA/fixtures and selected installed/source JSON frozen before final execution; not a census of every map file.",
+  "methodCaveat": "Methods overlap; sums are not equivalent playthroughs. Geographic placements, freezes, resource/rig preparation and simulated controller inputs are explicitly declared in each report. Raw metadata cancellations and external probe failures remain in their reports.",
+  "limitations": [
+    "Full Marseille facade/interior 1:1 fidelity remains uncertified.",
+    "MNS measures observed upper surfaces, not architectural roof semantics or room plans.",
+    "Northern and southern terrain windows use nearest-resampled requested 1m nodes; the central 0.50m native lattice remains separate.",
+    "First-person meshes are original stylized family models, with partial hand cropping or wrists beneath the HUD in some frames.",
+    "Physical mobile/gamepad hardware and exhaustive human playthroughs are not certified.",
+    "Pharo identification remains contextual; the Charite ground image is obstructed and elevated cameras are diagnostic.",
+    "Notifications and subtitles seek free measured regions; an overcrowded screen without an admissible region retains the explicit ordinary fallback. Physical devices and every possible text are untested.",
+    "Raw projected-coordinate hashes may differ between JavaScript runtimes at nanometer scale. The facade pilot checks exact source geometry/CLEABS and shared native IDs with the pre-existing metric EPS1e-7; cross-engine save identity is not certified.",
+    "An initial final-build feedback attempt missed a transient viewport sample; the unchanged exact pilot passed its retry with the ordinary clock and TTL. The incomplete attempt remains excluded and preserved."
+  ],
+  "collectorSha256": "2e7ec6e48a2c6b4608e694e3627a8911c47d27138668a0ef834117a8d76e7669",
+  "integrationScope": "Fresh validation of the new FPS/HUD, invented facade hardware/domestic interiors, holobands, existing creature rigs and measured MNS extensions. All earlier HTML proofs remain historical and immutable.",
+  "qaPhases": {
+    "scope": "Same game HTML45 and production inputs across QA phases. PhaseB may change only the facade native checker to use exact source/CLEABS and native IDs with the pre-existing metric EPS1e-7 instead of an invalid raw Node/Chromium hash equality. Every old method keeps its exact executed QA and its own pre-execution archive phase.",
+    "unchangedGameHtml": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "onlyPostPhaseAQaChange": {
+      "tests/expansion/facade_hardware_native.py": {
+        "phaseASha256": "8435e8b232c497963c5b56f3d35e50aac8cbdf408abd071af8816a98374cdd05",
+        "phaseBSha256": "368baef192ccf76b3ae865eaf5b8c688f4d92a2023455d1bfecf1d030b7409ee"
+      }
+    },
+    "phaseAReceiptsBoundBySha256": 10,
+    "archiveRecord": "supplementary/QA_PHASES.json",
+    "reason": "Replace invalid cross-runtime raw projected-coordinate hash equality with exact WGS84/CLEABS/native-ID relations and per-vertex existing EPS1e-7. Readonly diagnostics and owned-server closure added; no assertion removed to mask source deviation."
+  }
+}

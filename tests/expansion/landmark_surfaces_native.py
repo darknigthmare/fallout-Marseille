@@ -2,7 +2,7 @@
 """Native HTTP inspection of real IGN MNS landmark surfaces, never a fixture.
 
 One real browser context visits the Major, Notre-Dame de la Garde, the Vieille
-Charite chapel and the Pharo site through
+Charite chapel, Bourse, Opera and Pharo site contexts through
 diagnostic geographic navigation. Source loading, mesh publication, collision,
 LOS and save/Continue are production functions; cameras/freeze/time selection
 are declared assistance. Elevated captures are labelled inspections and are
@@ -86,7 +86,7 @@ def main():
         page.wait_for_function("typeof __MISTRAL_DEBUG?.v056LandmarkInfo==='function'")
         debug('setRenderPaused',True);debug('v047Control',{'auto':False})
         i=debug('v056LandmarkReady')
-        check('Actual attributed MNS atlas loads without error',i['loaded'] and not i['missing'] and i['error'] is None and i['records']==19,i)
+        check('Actual attributed MNS atlas loads without error',i['loaded'] and not i['missing'] and i['error'] is None and i['records']==index['recordCount'],i)
     def shot(name,label):
         p=args.output/(name+'.png');page.screenshot(path=str(p));report['shots'].append({'file':p.name,'sha256':sha(p.read_bytes()),'label':label,'method':'Actual unchanged production WebGL frame; declared frozen diagnostic camera, no image editing.'});save()
     try:
@@ -113,9 +113,17 @@ def main():
         document(page.goto(report['url'],wait_until='load',timeout=60000));debug('v020Load','aubagne');debug('v046SetTime',12)
         debug('v051CityReady');debug('v052ArchitectureReady')
         check('Actual municipal metric world is initialized before sector navigation',debug('v018LoadMacro','geo_marseille_commune')=='geo_marseille_commune');ready()
+        def source_site_centre(cleabs):
+            record=next(r for r in data['records']if r['cleabs']==cleabs)
+            return inverse_lambert((min(p[0]for p in record['vertices'])+max(p[0]for p in record['vertices']))/2,
+                                   (min(p[1]for p in record['vertices'])+max(p[1]for p in record['vertices']))/2)
+        bourse_ll=source_site_centre('BATIMENT0000000258927584')
+        opera_ll=source_site_centre('BATIMENT0000000273403820')
         sites=[('major',43.2999,5.3648,'BATIMENT0000000258938065',5,'Cathédrale de la Major'),
                ('garde',43.284,5.3712,'BATIMENT0000000273400985',11,'Notre-Dame de la Garde'),
                ('charite',43.30052,5.36790,'BATIMENT0000000258929268',1,'Chapelle et Hospice de la Vieille Charité'),
+               ('bourse',*bourse_ll,'BATIMENT0000000258927584',1,'Contexte du Palais de la Bourse'),
+               ('opera',*opera_ll,'BATIMENT0000000273403820',3,'Contexte de l’Opéra Municipal de Marseille'),
                ('pharo',43.29421,5.35820,'BATIMENT0000000273394896',1,'Palais du Pharo')]
         saved_camera=None
         for name,lat,lon,target,expected,site_context in sites:

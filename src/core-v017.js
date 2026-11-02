@@ -2610,7 +2610,7 @@ function hurtPlayer(amount,source='Menace'){
   setEquipmentCondition('armor',state.player.armorId,condition-armorLoss);
   if(final>11&&Math.random()<.11+difficultyInfo().incoming*.04)applyStatus('bleeding',16+difficultyInfo().incoming*5);
   audio.hurt();$('damageFlash').classList.add('show');setTimeout(()=>$('damageFlash').classList.remove('show'),90);
-  subtitle(source,`Vous subissez ${Math.round(final)} points de dégâts.`,1300);
+  subtitle(source,`Vous subissez ${final<1?final.toFixed(1).replace('.',','):Math.round(final)} points de dégâts.`,1300);
   if(state.player.hp<=0)playerDeath()
 }
 function playerDeath(){state.player.hp=0;mode='DEAD';document.exitPointerLock?.();let el=$('deathModal');if(!el){el=document.createElement('section');el.id='deathModal';el.className='modal';el.innerHTML='<div class="modal-card pause-card"><p class="eyebrow">DOSSIER CLOS</p><h2>VOUS ÊTES MORT</h2><p>CONCORDE a mis votre statut à jour avec une ponctualité inhabituelle.</p><button id="deathLoad" class="primary">Recharger la dernière sauvegarde</button><button id="deathMenu">Menu principal</button></div>';document.body.appendChild(el);$('deathLoad').onclick=()=>{el.remove();loadGame()};$('deathMenu').onclick=()=>{el.remove();showMenu()}}}

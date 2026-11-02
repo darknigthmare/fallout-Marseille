@@ -1,0 +1,35 @@
+OK On-disk production HTML has expected identity
+OK HTTP serves exact frozen production HTML
+OK Starter pistol and living authored hostile are unmodified
+OK Fresh play has no invented damage or hit receipt
+OK Native left click emits one ordinary shot and spends one round
+OK An actual miss creates no positive confirmation
+OK Native R starts the real reload and captures its complete adjusted duration
+OK Reload bar follows the active timer and exposes a truthful accessible value
+OK Reload hint includes the actual remaining seconds
+OK Capture 01_actual_reload_progress: expected feedback is visible immediately before the real screenshot
+OK Real pause suspends reload instead of advancing the visual countdown
+OK Actual reload completion hides the bar and truthfully labels the full magazine
+OK Received-damage receipt equals the real health change after armour
+OK Received-damage display contains no inferred enemy location or identity
+OK Capture 02_actual_received_damage: expected feedback is visible immediately before the real screenshot
+OK Opening the actual Pip-Boy clears transient damage feedback
+OK Existing enemy has an actual collision-free and visible supported approach
+OK Positive hit confirmation reports applied damage on the unchanged actor
+OK Capture 03_actual_hit_confirmation: expected feedback is visible immediately before the real screenshot
+OK Positive hit confirmation reports applied damage on the unchanged actor
+OK Positive hit confirmation reports applied damage on the unchanged actor
+OK Positive hit confirmation reports applied damage on the unchanged actor
+OK Neutralisation label requires an actual living-to-dead enemy transition
+OK Capture 04_actual_neutralisation: expected feedback is visible immediately before the real screenshot
+OK Ordinary native shots hit and neutralise the original hostile without health edits
+OK Hit confirmation expires without retaining a permanent target marker
+OK Reduced-flash setting retains readable static damage text
+FAIL Actual feedback 1440x900: damage receipt stays inside the viewport
+Traceback (most recent call last):
+  File "/workspace/fallout-Marseille/tests/expansion/fps_feedback_native.py", line 263, in main
+    check(label+': damage receipt stays inside the viewport', delta is not None and delta['x'] >= 0 and delta['y'] >= 0 and delta['x']+delta['width'] <= width and delta['y']+delta['height'] <= height)
+  File "/workspace/fallout-Marseille/tests/expansion/fps_feedback_native.py", line 65, in check
+    raise AssertionError(name)
+AssertionError: Actual feedback 1440x900: damage receipt stays inside the viewport
+

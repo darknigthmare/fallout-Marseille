@@ -1,0 +1,1822 @@
+{
+  "baselineCommit": "c3cd2a3",
+  "baselineSourceSha256": "4385728898a5b81798da505ba9134d29f057a178279912f6d4be674e77661a0f",
+  "scope": "Synthetic regression cases. Full layout JSON, physical door plans, service IDs, storage IDs and every rendered furniture part captured before domestic layout6.",
+  "cases": [
+    {
+      "name": "studio",
+      "version": 1,
+      "building": {
+        "id": "domestic-baseline-1-studio",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          3,
+          12,
+          4
+        ],
+        "rings": [
+          [
+            [
+              -3,
+              -4
+            ],
+            [
+              3,
+              -4
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              -3,
+              4
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 1,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -2,
+        -3
+      ],
+      "document": null,
+      "sha256": "f8310c007508e1abf2103d3547481e954ada72eb98f96c181ef93f2d252f4f1c"
+    },
+    {
+      "name": "home",
+      "version": 1,
+      "building": {
+        "id": "domestic-baseline-1-home",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 1,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "116ebea07831c98593eaa6788be7019ca9d3a3a95ca3d8b81ec8a4cefa572bd2"
+    },
+    {
+      "name": "courtyard",
+      "version": 1,
+      "building": {
+        "id": "domestic-baseline-1-courtyard",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          12,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -12,
+              -10
+            ],
+            [
+              12,
+              -10
+            ],
+            [
+              12,
+              10
+            ],
+            [
+              -12,
+              10
+            ]
+          ],
+          [
+            [
+              -3,
+              -3
+            ],
+            [
+              3,
+              -3
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              -3,
+              3
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 1,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -11,
+        -9
+      ],
+      "document": null,
+      "sha256": "570f6f6a358f0a0c7518711ecd5f208953523e37cb478766c3987f845b814446"
+    },
+    {
+      "name": "commercial",
+      "version": 1,
+      "building": {
+        "id": "domestic-baseline-1-commercial",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Commercial",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 1,
+        "programmeUse": {
+          "kind": "commercial",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Commercial"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "ce06386b1a52479e316082f7546060d4141618e126466816f17c5cee8b3de10a"
+    },
+    {
+      "name": "studio",
+      "version": 2,
+      "building": {
+        "id": "domestic-baseline-2-studio",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          3,
+          12,
+          4
+        ],
+        "rings": [
+          [
+            [
+              -3,
+              -4
+            ],
+            [
+              3,
+              -4
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              -3,
+              4
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 2,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -2,
+        -3
+      ],
+      "document": null,
+      "sha256": "793be8398e6f64fc629f8c105b1659140f392e151e375b9c4b9ea107c39ad5ea"
+    },
+    {
+      "name": "home",
+      "version": 2,
+      "building": {
+        "id": "domestic-baseline-2-home",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 2,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "7fadeea955db55e7d720f685be364c3d1bd312c2dbf368e45bb525431e709517"
+    },
+    {
+      "name": "courtyard",
+      "version": 2,
+      "building": {
+        "id": "domestic-baseline-2-courtyard",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          12,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -12,
+              -10
+            ],
+            [
+              12,
+              -10
+            ],
+            [
+              12,
+              10
+            ],
+            [
+              -12,
+              10
+            ]
+          ],
+          [
+            [
+              -3,
+              -3
+            ],
+            [
+              3,
+              -3
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              -3,
+              3
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 2,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -11,
+        -9
+      ],
+      "document": null,
+      "sha256": "f322343c56f9366ae573f86221eee563dea66769a2d04d33ebfc37625fa1663d"
+    },
+    {
+      "name": "commercial",
+      "version": 2,
+      "building": {
+        "id": "domestic-baseline-2-commercial",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Commercial",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 2,
+        "programmeUse": {
+          "kind": "commercial",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Commercial"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "fd82ffe4529c1e33a92bb15bc355f74cc2d6fd0d4462b8ce682b2cdaee866b96"
+    },
+    {
+      "name": "studio",
+      "version": 3,
+      "building": {
+        "id": "domestic-baseline-3-studio",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          3,
+          12,
+          4
+        ],
+        "rings": [
+          [
+            [
+              -3,
+              -4
+            ],
+            [
+              3,
+              -4
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              -3,
+              4
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 3,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -2,
+        -3
+      ],
+      "document": null,
+      "sha256": "555888fe60ccb343fd1e6fc741b483456512192ebd6d8eab22af6237f8fc95db"
+    },
+    {
+      "name": "home",
+      "version": 3,
+      "building": {
+        "id": "domestic-baseline-3-home",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 3,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "2e8854b38dc3b3b538d9512c6fab2a09d2ef362fde38efdc5b7b638a59d8a93a"
+    },
+    {
+      "name": "courtyard",
+      "version": 3,
+      "building": {
+        "id": "domestic-baseline-3-courtyard",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          12,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -12,
+              -10
+            ],
+            [
+              12,
+              -10
+            ],
+            [
+              12,
+              10
+            ],
+            [
+              -12,
+              10
+            ]
+          ],
+          [
+            [
+              -3,
+              -3
+            ],
+            [
+              3,
+              -3
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              -3,
+              3
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 3,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -11,
+        -9
+      ],
+      "document": null,
+      "sha256": "f2c457f2cbec4b706d075a8186f687e4884c7458a0b3622d918b1c4e28233ccd"
+    },
+    {
+      "name": "commercial",
+      "version": 3,
+      "building": {
+        "id": "domestic-baseline-3-commercial",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Commercial",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 3,
+        "programmeUse": {
+          "kind": "commercial",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Commercial"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "55b9b3d65d08d45af47411948df1d029fedd353e31cb183dd9bd4729af52ea03"
+    },
+    {
+      "name": "studio",
+      "version": 4,
+      "building": {
+        "id": "domestic-baseline-4-studio",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          3,
+          12,
+          4
+        ],
+        "rings": [
+          [
+            [
+              -3,
+              -4
+            ],
+            [
+              3,
+              -4
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              -3,
+              4
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 4,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -2,
+        -3
+      ],
+      "document": null,
+      "sha256": "4ae60c15cb53e15c84260f19e01471a7b60b8edc778101952edc8348f0d1e6b8"
+    },
+    {
+      "name": "home",
+      "version": 4,
+      "building": {
+        "id": "domestic-baseline-4-home",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 4,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "cdacd0e5b47799884e6c3357c5f184f5e27720473386c0ee0b821420f58c6140"
+    },
+    {
+      "name": "courtyard",
+      "version": 4,
+      "building": {
+        "id": "domestic-baseline-4-courtyard",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          12,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -12,
+              -10
+            ],
+            [
+              12,
+              -10
+            ],
+            [
+              12,
+              10
+            ],
+            [
+              -12,
+              10
+            ]
+          ],
+          [
+            [
+              -3,
+              -3
+            ],
+            [
+              3,
+              -3
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              -3,
+              3
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 4,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -11,
+        -9
+      ],
+      "document": null,
+      "sha256": "b1659f211d005588d425a9159eb7c469f5836bc8ce3ac949004294c22543fed4"
+    },
+    {
+      "name": "commercial",
+      "version": 4,
+      "building": {
+        "id": "domestic-baseline-4-commercial",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Commercial",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 4,
+        "programmeUse": {
+          "kind": "commercial",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Commercial"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "80d0035af2071517aceff48ef95d679cf0d00786118f0ce4fd1f8249bc6cc1be"
+    },
+    {
+      "name": "studio",
+      "version": 5,
+      "building": {
+        "id": "domestic-baseline-5-studio",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          3,
+          12,
+          4
+        ],
+        "rings": [
+          [
+            [
+              -3,
+              -4
+            ],
+            [
+              3,
+              -4
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              -3,
+              4
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 5,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -2,
+        -3
+      ],
+      "document": null,
+      "sha256": "cbded0a34c3bdef7e07364bc3c91683c68de2b914c19a1fa6da52293fe68e430"
+    },
+    {
+      "name": "home",
+      "version": 5,
+      "building": {
+        "id": "domestic-baseline-5-home",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 5,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "5e2e50354ec04344aeccd26c7602142d751bf5cf77337533ccaa9cf08c63e87f"
+    },
+    {
+      "name": "courtyard",
+      "version": 5,
+      "building": {
+        "id": "domestic-baseline-5-courtyard",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          12,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -12,
+              -10
+            ],
+            [
+              12,
+              -10
+            ],
+            [
+              12,
+              10
+            ],
+            [
+              -12,
+              10
+            ]
+          ],
+          [
+            [
+              -3,
+              -3
+            ],
+            [
+              3,
+              -3
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              -3,
+              3
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 5,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -11,
+        -9
+      ],
+      "document": null,
+      "sha256": "cdb9f36a301f05908fc71ecab3d73ac3137148153db741f6ed2be0a976ffc266"
+    },
+    {
+      "name": "commercial",
+      "version": 5,
+      "building": {
+        "id": "domestic-baseline-5-commercial",
+        "sourceId": "synthetic-regression",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Commercial",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 5,
+        "programmeUse": {
+          "kind": "commercial",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Commercial"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -9,
+        -9
+      ],
+      "document": null,
+      "sha256": "4890313f7714f98c3114f29444a9b33975f19f3d9f1566cb5f3732951a3a0070"
+    },
+    {
+      "name": "document",
+      "version": 1,
+      "building": {
+        "id": "domestic-baseline-document-1",
+        "sourceId": "domestic-baseline-document-1",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 1,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -8,
+        -8
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "frame": "building-local-metre",
+        "buildingId": "domestic-baseline-document-1",
+        "source": {
+          "url": "https://example.org/synthetic-domestic-regression",
+          "license": "CC0 synthetic fixture",
+          "attribution": "Controlled regression fixture; no real interior survey",
+          "title": "Synthetic domestic walls",
+          "accessedAt": "2026-11-02"
+        },
+        "levels": [
+          {
+            "level": 0,
+            "elevation": 0,
+            "height": 4,
+            "entry": [
+              -8,
+              -8
+            ],
+            "walls": [
+              {
+                "a": [
+                  -2,
+                  -10
+                ],
+                "b": [
+                  -2,
+                  -1
+                ],
+                "thickness": 0.2
+              },
+              {
+                "a": [
+                  -2,
+                  1
+                ],
+                "b": [
+                  -2,
+                  10
+                ],
+                "thickness": 0.2
+              }
+            ],
+            "rooms": [
+              {
+                "id": "west",
+                "use": "Chambre",
+                "ring": [
+                  [
+                    -10,
+                    -10
+                  ],
+                  [
+                    -2,
+                    -10
+                  ],
+                  [
+                    -2,
+                    10
+                  ],
+                  [
+                    -10,
+                    10
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sha256": "621a64a44b1915681ade3f6d3eb82167fa94c1d91514ec91d7ac1dac2fe541ef"
+    },
+    {
+      "name": "document",
+      "version": 2,
+      "building": {
+        "id": "domestic-baseline-document-2",
+        "sourceId": "domestic-baseline-document-2",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 2,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -8,
+        -8
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "frame": "building-local-metre",
+        "buildingId": "domestic-baseline-document-2",
+        "source": {
+          "url": "https://example.org/synthetic-domestic-regression",
+          "license": "CC0 synthetic fixture",
+          "attribution": "Controlled regression fixture; no real interior survey",
+          "title": "Synthetic domestic walls",
+          "accessedAt": "2026-11-02"
+        },
+        "levels": [
+          {
+            "level": 0,
+            "elevation": 0,
+            "height": 4,
+            "entry": [
+              -8,
+              -8
+            ],
+            "walls": [
+              {
+                "a": [
+                  -2,
+                  -10
+                ],
+                "b": [
+                  -2,
+                  -1
+                ],
+                "thickness": 0.2
+              },
+              {
+                "a": [
+                  -2,
+                  1
+                ],
+                "b": [
+                  -2,
+                  10
+                ],
+                "thickness": 0.2
+              }
+            ],
+            "rooms": [
+              {
+                "id": "west",
+                "use": "Chambre",
+                "ring": [
+                  [
+                    -10,
+                    -10
+                  ],
+                  [
+                    -2,
+                    -10
+                  ],
+                  [
+                    -2,
+                    10
+                  ],
+                  [
+                    -10,
+                    10
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sha256": "b51109c17212b63f9169e73b5e3260959314e64d06de2cc616c0106d88d9cb98"
+    },
+    {
+      "name": "document",
+      "version": 3,
+      "building": {
+        "id": "domestic-baseline-document-3",
+        "sourceId": "domestic-baseline-document-3",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 3,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -8,
+        -8
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "frame": "building-local-metre",
+        "buildingId": "domestic-baseline-document-3",
+        "source": {
+          "url": "https://example.org/synthetic-domestic-regression",
+          "license": "CC0 synthetic fixture",
+          "attribution": "Controlled regression fixture; no real interior survey",
+          "title": "Synthetic domestic walls",
+          "accessedAt": "2026-11-02"
+        },
+        "levels": [
+          {
+            "level": 0,
+            "elevation": 0,
+            "height": 4,
+            "entry": [
+              -8,
+              -8
+            ],
+            "walls": [
+              {
+                "a": [
+                  -2,
+                  -10
+                ],
+                "b": [
+                  -2,
+                  -1
+                ],
+                "thickness": 0.2
+              },
+              {
+                "a": [
+                  -2,
+                  1
+                ],
+                "b": [
+                  -2,
+                  10
+                ],
+                "thickness": 0.2
+              }
+            ],
+            "rooms": [
+              {
+                "id": "west",
+                "use": "Chambre",
+                "ring": [
+                  [
+                    -10,
+                    -10
+                  ],
+                  [
+                    -2,
+                    -10
+                  ],
+                  [
+                    -2,
+                    10
+                  ],
+                  [
+                    -10,
+                    10
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sha256": "626145d7467219946433c56536b85223f679b1f0bd2a7d86379058ad36810a6b"
+    },
+    {
+      "name": "document",
+      "version": 4,
+      "building": {
+        "id": "domestic-baseline-document-4",
+        "sourceId": "domestic-baseline-document-4",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 4,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -8,
+        -8
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "frame": "building-local-metre",
+        "buildingId": "domestic-baseline-document-4",
+        "source": {
+          "url": "https://example.org/synthetic-domestic-regression",
+          "license": "CC0 synthetic fixture",
+          "attribution": "Controlled regression fixture; no real interior survey",
+          "title": "Synthetic domestic walls",
+          "accessedAt": "2026-11-02"
+        },
+        "levels": [
+          {
+            "level": 0,
+            "elevation": 0,
+            "height": 4,
+            "entry": [
+              -8,
+              -8
+            ],
+            "walls": [
+              {
+                "a": [
+                  -2,
+                  -10
+                ],
+                "b": [
+                  -2,
+                  -1
+                ],
+                "thickness": 0.2
+              },
+              {
+                "a": [
+                  -2,
+                  1
+                ],
+                "b": [
+                  -2,
+                  10
+                ],
+                "thickness": 0.2
+              }
+            ],
+            "rooms": [
+              {
+                "id": "west",
+                "use": "Chambre",
+                "ring": [
+                  [
+                    -10,
+                    -10
+                  ],
+                  [
+                    -2,
+                    -10
+                  ],
+                  [
+                    -2,
+                    10
+                  ],
+                  [
+                    -10,
+                    10
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sha256": "4eb8d4158cff451c7d911bce4e0d2af207e46ae10f1ef6c1deed53774ba9f6d5"
+    },
+    {
+      "name": "document",
+      "version": 5,
+      "building": {
+        "id": "domestic-baseline-document-5",
+        "sourceId": "domestic-baseline-document-5",
+        "name": "Bâtiment",
+        "origin": [
+          10,
+          12,
+          10
+        ],
+        "rings": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              -10
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              -10,
+              10
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 3,
+        "levelHeight": 4,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "empreinte source",
+        "schema": 1,
+        "layoutVersion": 5,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "level": 0,
+      "entry": [
+        -8,
+        -8
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "frame": "building-local-metre",
+        "buildingId": "domestic-baseline-document-5",
+        "source": {
+          "url": "https://example.org/synthetic-domestic-regression",
+          "license": "CC0 synthetic fixture",
+          "attribution": "Controlled regression fixture; no real interior survey",
+          "title": "Synthetic domestic walls",
+          "accessedAt": "2026-11-02"
+        },
+        "levels": [
+          {
+            "level": 0,
+            "elevation": 0,
+            "height": 4,
+            "entry": [
+              -8,
+              -8
+            ],
+            "walls": [
+              {
+                "a": [
+                  -2,
+                  -10
+                ],
+                "b": [
+                  -2,
+                  -1
+                ],
+                "thickness": 0.2
+              },
+              {
+                "a": [
+                  -2,
+                  1
+                ],
+                "b": [
+                  -2,
+                  10
+                ],
+                "thickness": 0.2
+              }
+            ],
+            "rooms": [
+              {
+                "id": "west",
+                "use": "Chambre",
+                "ring": [
+                  [
+                    -10,
+                    -10
+                  ],
+                  [
+                    -2,
+                    -10
+                  ],
+                  [
+                    -2,
+                    10
+                  ],
+                  [
+                    -10,
+                    10
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sha256": "40f80ee1f270774eac38014e90297247d378f032b1566a77b81e4c7bbe72fbb5"
+    }
+  ]
+}

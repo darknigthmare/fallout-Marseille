@@ -1,0 +1,14 @@
+{
+  "diagnosticOnly": true,
+  "excludedFromReleaseSum": true,
+  "maintainedScriptSha256": "8435e8b232c497963c5b56f3d35e50aac8cbdf408abd071af8816a98374cdd05",
+  "diagnosticScriptSha256": "0dadfdea9b95a8929942210b2b32624d274bdd58c0b5f63fe49aad2bb6d95646",
+  "assertionsChanged": false,
+  "diagnosticAdditions": [
+    "Explicit actual repo ROOT",
+    "Report diagnostic-only scope",
+    "Read-only operands/durable-key lookup/LOD at original grouped check",
+    "Owned server origin/port and post-close probe"
+  ],
+  "failedAttemptPreserved": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/facades-native-attempt-1-religious"
+}

@@ -1,0 +1,83 @@
+{
+  "checked_utc": "2026-11-02T04:40:27.021552+00:00",
+  "baseline_commit": "c3cd2a3abf70a86aeef3d7a8ad2d9d5b38545afa",
+  "committed_tracked_inputs_matching_baseline": 357,
+  "committed_input_differences": [],
+  "local_installed_inputs_matching_baseline": [
+    {
+      "path": "data/map_pack/city/index.json",
+      "sha256": "3a83c7f821a2f3bd824240d7f065568df7ae786b1f5719c8c57f004dbd817d61",
+      "bytes": 233159,
+      "external_snapshot": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/baseline-installed-inputs/data/map_pack/city/index.json",
+      "tracked_in_commit": false
+    },
+    {
+      "path": "data/map_pack/city/terrain-index.json",
+      "sha256": "53887ce8a6707dafee45ef9993e545f9c23b7c8d926f61696aa6117f21c359cd",
+      "bytes": 13136,
+      "external_snapshot": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/baseline-installed-inputs/data/map_pack/city/terrain-index.json",
+      "tracked_in_commit": false
+    },
+    {
+      "path": "data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json",
+      "sha256": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61",
+      "bytes": 8047268,
+      "external_snapshot": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/baseline-installed-inputs/data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json",
+      "tracked_in_commit": false
+    },
+    {
+      "path": "data/map_pack/enrichment/geo_marseille-4495922b8fb9f9d9.json",
+      "sha256": "4495922b8fb9f9d9e5807adef7c5279ff61e2a15fe68284f112226f3a94691cf",
+      "bytes": 7075899,
+      "external_snapshot": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/baseline-installed-inputs/data/map_pack/enrichment/geo_marseille-4495922b8fb9f9d9.json",
+      "tracked_in_commit": false
+    },
+    {
+      "path": "data/map_pack/enrichment/geo_marseille_commune-d0cbae62855ff13b.json",
+      "sha256": "d0cbae62855ff13b9453ebf2773a9239e4c999a4ff2f416f601fc69e2b1368f3",
+      "bytes": 3795953,
+      "external_snapshot": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/baseline-installed-inputs/data/map_pack/enrichment/geo_marseille_commune-d0cbae62855ff13b.json",
+      "tracked_in_commit": false
+    },
+    {
+      "path": "data/map_pack/enrichment/index.json",
+      "sha256": "d368402cd6c249f45b6ad4e7d9156088bf634e2f6c07fd10fdd7826d1a47c2e2",
+      "bytes": 1493,
+      "external_snapshot": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/baseline-installed-inputs/data/map_pack/enrichment/index.json",
+      "tracked_in_commit": false
+    }
+  ],
+  "total_historical_frozen_inputs": 363,
+  "html_sha256": "c0f13de317f1678cd20a2ed9ea3f2ee687054eb67f3815026357707828ff77b1",
+  "generated_js_sha256": "ac6c90e0f504613622159daab7992a0bdc9d54626c968cce4acf5fac3e97ef06",
+  "service_worker_sha256": "c0d72db356fd1374cdaad9ae5a0e3ad2742eb0642e5447c826a678fde542ae22",
+  "historical_evidence_manifest_sha256": "93c4f3a970739e24994fbb7befe859d20ebafff182ff330ae1a8132d63ab7bf5",
+  "historical_result": {
+    "methods": 13,
+    "passed": 3312,
+    "native_captures": 76
+  },
+  "tracked_worktree_status_at_read": [
+    " M docs/FACADES_MENUISERIES.md",
+    " M src/v050/07_facades.js",
+    " M src/v050/08_city_interiors.js",
+    " M src/v050/13_regional_bestiary.js",
+    " M src/v050/17_first_person.js",
+    " M src/v050/19_fps_hud.js",
+    " M tests/expansion/first_person.cjs",
+    " M tests/expansion/regional_bestiary.cjs",
+    "?? docs/HOLOBANDES.md",
+    "?? src/v050/21_holotapes.js",
+    "?? tests/expansion/facades_hardware.cjs",
+    "?? tests/expansion/fixtures/bestiary_previous_72_assignments.json",
+    "?? tests/expansion/fixtures/interior_layouts_before_domestic.json",
+    "?? tests/expansion/holotapes.cjs",
+    "?? tests/expansion/hud_notification_layout.cjs",
+    "?? tests/expansion/interior_domestic.cjs",
+    "?? tools/extend_bourse_surface.py"
+  ],
+  "new_tests_run": 0,
+  "new_browsers_opened": 0,
+  "source_edits_by_this_agent": false,
+  "note": "Historical C0 proof remains tied to its commit and the six receipt-pinned installed JSON inputs. External snapshots preserve installed input bytes before source acquisition changes; they are not new test evidence. Live edits by other agents are not a final freeze."
+}

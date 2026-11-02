@@ -1,0 +1,48 @@
+OK Three unique original bands contain finite independent transcriptions and use existing scenes
+OK The legacy lore flags are the only collection owner; normalization grants nothing
+OK Invalid inherited, unknown or truthy new collection values cannot authorize a band
+OK New play counts and bookmarks are bounded without changing existing legacy entries
+OK A bookmark or play count cannot create an undiscovered physical exemplar
+OK Pure collection changes only the existing boolean flag and never inventory, economy or quests
+OK Historical archive counts exclude new and unknown IDs while regional copies keep their own finite total
+OK Existing safe relay identifiers bind deterministically in either catalogue order
+OK Original display models and placement candidates stay finite and bounded
+OK Player-volume admission preserves standing and crouched clearance and separated floors
+OK The new module retains every legacy catalogue entry and flag without saving or granting anything at init
+OK Physical props have production solids and E interactions while preserving source and other collection geometry
+OK The stand top uses the real ground helper and permits stepping off above its solid
+OK A native E collection commits once to the existing lore owner and removes its physical duplicate
+OK A fail save restores collection, all side-effect ledgers and the physical exemplar
+OK A throw save restores collection, all side-effect ledgers and the physical exemplar
+OK Quoted physical collection rechecks state.player.pos[0]+=20 without granting or saving
+OK Quoted physical collection rechecks state.player.pos[1]+=2 without granting or saving
+OK Quoted physical collection rechecks test.sight=false without granting or saving
+OK Quoted physical collection rechecks test.missing=true without granting or saving
+OK Quoted physical collection rechecks V046.lab=true without granting or saving
+OK Quoted physical collection rechecks V046.busy=true without granting or saving
+OK Quoted physical collection rechecks V047.pending={} without granting or saving
+OK Quoted physical collection rechecks zoneTransitioning=true without granting or saving
+OK Quoted physical collection rechecks mode="MENU" without granting or saving
+OK Quoted physical collection rechecks state.player.hp=0 without granting or saving
+OK Quoted physical collection rechecks world.enemies.push({alive:true,alerted:true,pos:state.player.pos.slice()}) without granting or saving
+OK A later source obstruction denies collection without deleting or relocating the source solid
+OK A stale E callback after a world change cannot collect from the old scene
+OK Cold migration and reentry preserve the same finite copy with unrelated historical tapes intact
+OK Geographic relays share the same collected identity; the commune alias uses actual Marseille targets
+OK Geographic bands are omitted when settings.geoFalloutLayer=false without inventing ground or collection flags
+OK Geographic bands are omitted when test.missing=true without inventing ground or collection flags
+OK Geographic bands are omitted when V046.lab=true without inventing ground or collection flags
+OK Geographic bands are omitted when world.v050CityInterior=true without inventing ground or collection flags
+OK Refreshes preserve source ownership without leaking colliders or trapping a player on an existing stand
+OK A first bind refuses the candidate occupied by the actual player body
+OK Legacy collect/open handlers still receive their original IDs; unknown new IDs cannot grant a band
+OK The existing reader lists only collected new bands and renders an explicit original transcription
+OK Existing timed playback, segment steps and saved bookmarks resume after cold Continue without collecting twice
+OK New tapes reuse reader pause semantics for dialogue, hidden pages and background-disabled play
+OK Opening a found band uses the existing RADIO/tapes screen and does not create a new modal mode
+OK Opening from an already open Pip-Boy clears a stale search and page before selecting the found band
+OK The historical archive delegates its original click and routes the separate band notice to the same radio reader
+OK A post-save presentation error keeps the committed physical collection identical in memory and JSON
+OK Read-only diagnostics return copies and unavailable menus are safe
+{"passed":46,"failed":0,"total":46,"scope":"Three original physical holobands composed with the maintained legacy collection flags, timed Pip-Boy radio reader and geometry helpers. Flat terrain, actors, DOM and persistence are controlled fixtures; not a native city visit."}
+

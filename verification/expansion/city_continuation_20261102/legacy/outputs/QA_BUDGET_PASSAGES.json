@@ -1,0 +1,120 @@
+{
+  "version": "0.48.0",
+  "passed": 25,
+  "failed": 0,
+  "total": 25,
+  "tests": [
+    {
+      "name": "Pas de pause inutile avant budget",
+      "ok": true
+    },
+    {
+      "name": "Pause au budget temporel",
+      "ok": true
+    },
+    {
+      "name": "Pause au quota opérations",
+      "ok": true
+    },
+    {
+      "name": "Pause forcée de changement de phase",
+      "ok": true
+    },
+    {
+      "name": "Budget et compteurs mesurés",
+      "ok": true,
+      "detail": {
+        "phase": "validation",
+        "units": 6,
+        "yields": 3,
+        "budgetMs": 6,
+        "maxSliceMs": 7,
+        "elapsedMs": 7
+      }
+    },
+    {
+      "name": "Budget invalide refusé {\"budgetMs\":0}",
+      "ok": true
+    },
+    {
+      "name": "Budget invalide refusé {\"budgetMs\":null}",
+      "ok": true
+    },
+    {
+      "name": "Budget invalide refusé {\"maxUnits\":0}",
+      "ok": true
+    },
+    {
+      "name": "Budget invalide refusé {\"maxUnits\":0.5}",
+      "ok": true
+    },
+    {
+      "name": "Pause respecte signal préannulé",
+      "ok": true
+    },
+    {
+      "name": "Checkpoint respecte signal préannulé",
+      "ok": true
+    },
+    {
+      "name": "Annulation pendant attente traitée",
+      "ok": true
+    },
+    {
+      "name": "Le navigateur peut traiter des événements entre lots",
+      "ok": true,
+      "detail": {
+        "heartbeat": 10,
+        "yields": 10
+      }
+    },
+    {
+      "name": "Retour position identique accepté",
+      "ok": true
+    },
+    {
+      "name": "Erreur de position minimale tolérée",
+      "ok": true
+    },
+    {
+      "name": "Autre position refusée",
+      "ok": true
+    },
+    {
+      "name": "Coordonnées NaN refusées",
+      "ok": true
+    },
+    {
+      "name": "Position incomplète refusée",
+      "ok": true
+    },
+    {
+      "name": "Mur inversé conserve les deux segments",
+      "ok": true
+    },
+    {
+      "name": "Mur normal et inversé identiques",
+      "ok": true
+    },
+    {
+      "name": "Porte hors du mur ne crée pas de débordement",
+      "ok": true
+    },
+    {
+      "name": "Porte plus large que mur laisse passage libre",
+      "ok": true
+    },
+    {
+      "name": "Mur sans longueur ignoré",
+      "ok": true
+    },
+    {
+      "name": "Mur sans porte restauré",
+      "ok": true
+    },
+    {
+      "name": "Bornes de cloisons invalides refusées",
+      "ok": true
+    }
+  ]
+}

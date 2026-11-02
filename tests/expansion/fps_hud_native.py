@@ -13,6 +13,7 @@ its real HUD and gauntlets; this is not an in-game acquisition proof.
 from pathlib import Path
 from http.server import ThreadingHTTPServer
 import argparse
+import base64
 import hashlib
 import json
 import math
@@ -235,6 +236,62 @@ def main():
         page.wait_for_timeout(250)
         rectangles('emulated coarse pointer 844x390')
         shot('touch_844x390_hud')
+        # The normal H action emits its actual healing/full-health/missing-item
+        # toast. Ordinary expiry timers remain untouched throughout these checks.
+        page.wait_for_timeout(3800)
+        page.keyboard.press('h')
+        debug('v020Tick', .01, True)
+        page.wait_for_timeout(100)
+        debug('v020Tick', .01, True)
+
+        def notification_state(label):
+            result = page.evaluate('''()=>{
+              const box=el=>{const r=el.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height};};
+              const visible=el=>el&&!el.hidden&&!el.classList.contains('hidden')&&el.getClientRects().length&&getComputedStyle(el).display!=='none'&&getComputedStyle(el).opacity!=='0';
+              const stack=document.getElementById('toastStack');
+              const ids=['statusBars','weaponHud','v020Quickbar','p30Hud','p28LampHud','questCard','v020QuestHint','fps56ObjectiveToggle','compass','locationCard','subtitle','fps57Hurt'];
+              return{epoch_ms:Date.now(),viewport:{w:innerWidth,h:innerHeight},stack:box(stack),placement:stack.dataset.fps58Placement||null,scrollHeight:stack.scrollHeight,clientHeight:stack.clientHeight,
+                texts:[...stack.children].filter(visible).map(el=>el.textContent),blocks:[...ids.map(id=>document.getElementById(id)),...document.querySelectorAll('#touchControls button,#touchMove')].filter(visible).map(el=>({id:el.id||el.dataset.touch,...box(el)}))};
+            }''')
+            result['label'] = label
+            report.setdefault('notification_observations', []).append(result)
+            box = result['stack']
+            w, h = result['viewport']['w'], result['viewport']['h']
+            check(label+': ordinary live notification has an actual fitted viewport region', bool(result['texts']) and result['placement'] in ('full','scroll') and box['x'] >= 0 and box['y'] >= 0 and box['x']+box['w'] <= w and box['y']+box['h'] <= h, result)
+            check(label+': notification avoids actual vital, suit, objective, subtitle and touch rectangles', all(min(box['x']+box['w'],b['x']+b['w']) <= max(box['x'],b['x'])+1 or min(box['y']+box['h'],b['y']+b['h']) <= max(box['y'],b['y'])+1 for b in result['blocks']), result)
+            return result
+
+        def notification_shot(name, before):
+            cdp = context.new_cdp_session(page)
+            try:
+                payload = cdp.send('Page.captureScreenshot', {'format':'png','fromSurface':True,'captureBeyondViewport':False,'optimizeForSpeed':True})
+            finally:
+                cdp.detach()
+            target = args.output/(name+'.png')
+            target.write_bytes(base64.b64decode(payload['data']))
+            after = page.evaluate("()=>({epoch_ms:Date.now(),texts:[...document.querySelectorAll('#toastStack .toast')].filter(e=>getComputedStyle(e).display!=='none'&&getComputedStyle(e).opacity!=='0').map(e=>e.textContent)})")
+            report['shots'].append({'file':target.name,'sha256':sha(target.read_bytes()),'notification_before':before,'notification_after':after,'capture_method':'Native Chromium lossless Page.captureScreenshot; no clock, notification lifetime or game state replacement.'})
+            save()
+
+        notice = notification_state('Live ordinary H notification in powered touch landscape')
+        notification_shot('live_notification_touch_landscape', notice)
+        old_texts = notice['texts']
+        health = debug('getState')['player']['hp']
+        debug('v028NativeDamage', 1, 'Contrôle de lisibilité des notifications')
+        page.wait_for_timeout(100)
+        debug('v020Tick', .01, True)
+        check('Real fractional HP loss keeps a nonzero subtitle around the already-visible ordinary notification', debug('getState')['player']['hp'] < health and page.locator('#subtitle').is_visible() and '0 points de dégâts' not in page.locator('#subtitle').inner_text())
+        notice = notification_state('Same live notification after actual damage and subtitle')
+        check('The existing notification remains intact after the real damage event', all(text in notice['texts'] for text in old_texts))
+        notification_shot('live_notification_and_damage_subtitle', notice)
+        page.set_viewport_size({'width':390,'height':844})
+        page.wait_for_timeout(100)
+        page.keyboard.press('h')
+        debug('v020Tick', .01, True)
+        page.wait_for_timeout(100)
+        debug('v020Tick', .01, True)
+        notice = notification_state('Ordinary notifications after portrait resize')
+        notification_shot('live_notifications_portrait', notice)
         check('No native JavaScript exception or same-origin HTTP error', not report['page_errors'] and not report['http_errors'], {'page_errors':report['page_errors'],'http_errors':report['http_errors']})
         after = {str(x.relative_to(ROOT)):sha(x.read_bytes()) for x in (ROOT/'src').rglob('*') if x.is_file()}
         changed = sorted(name for name in before.keys()|after.keys() if before.get(name)!=after.get(name))

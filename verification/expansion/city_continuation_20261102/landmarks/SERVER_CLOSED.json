@@ -1,0 +1,13 @@
+{
+  "port": 35883,
+  "connectExAfterClose": 111,
+  "expectedConnectionRefused": 111,
+  "closed": true,
+  "nativeCleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true,
+    "server_thread_joined": true
+  }
+}

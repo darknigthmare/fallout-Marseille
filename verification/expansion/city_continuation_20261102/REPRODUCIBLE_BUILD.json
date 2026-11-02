@@ -1,0 +1,35 @@
+{
+  "scope": "Fresh source-only reconstruction of the final corrected candidate; four exact generated artifacts and content-derived worker cache.",
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "exitCode": 0,
+  "stdout": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/rebuild/JOUER_FALLOUT_MISTRAL_v0.50.html 3035042 cache=4581c0c29ce5c74d\n",
+  "stderr": "",
+  "checkExitCode": 0,
+  "checkStdout": "Build artifacts and service worker cache match the current sources.\n",
+  "files": [
+    {
+      "path": "index.html",
+      "same": true,
+      "sourceSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+      "rebuiltSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78"
+    },
+    {
+      "path": "JOUER_FALLOUT_MISTRAL_v0.50.html",
+      "same": true,
+      "sourceSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+      "rebuiltSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78"
+    },
+    {
+      "path": "src/game.js",
+      "same": true,
+      "sourceSha256": "6cfb1a06c43603aedf36ae546ec2bfad75bf72ca7d67a4183c3c1585abbcfd6a",
+      "rebuiltSha256": "6cfb1a06c43603aedf36ae546ec2bfad75bf72ca7d67a4183c3c1585abbcfd6a"
+    },
+    {
+      "path": "sw.js",
+      "same": true,
+      "sourceSha256": "74f1c238bd1c2e4f65b14857ff3c542fa159674cb090798c4d8058a70ca3035c",
+      "rebuiltSha256": "74f1c238bd1c2e4f65b14857ff3c542fa159674cb090798c4d8058a70ca3035c"
+    }
+  ]
+}

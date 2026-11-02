@@ -1,0 +1,263 @@
+{
+  "scope": "Independent read-only visual receipt for the actual phase-B final45 facade run; zero added automated checks.",
+  "report": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/facades-native/FACADE_HARDWARE_NATIVE.json",
+  "reportSha256": "0494d8922ff20020376d6a35141e49d8bb95b7e999ed23b37b7248d630897b5d",
+  "htmlSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "facadeSha256": "d9ccd0b0d89a3f42a4de7d4938e217f11da2e7c21fc82a54cf7c3a1d5b7ebcc3",
+  "executedPilotSha256": "368baef192ccf76b3ae865eaf5b8c688f4d92a2023455d1bfecf1d030b7409ee",
+  "addedAutomatedChecks": 0,
+  "imagesActuallyViewed": 12,
+  "imageShaMatches": 12,
+  "nativeExecution": {
+    "exitCode": 0,
+    "passed": 98,
+    "failed": 0,
+    "runtimeInputCount": 474,
+    "runtimeChanged": [],
+    "contextsCreated": 1,
+    "serverClosureProbe": {
+      "host": "127.0.0.1",
+      "port": 35261,
+      "connectExAfterClose": 111,
+      "closed": true
+    },
+    "serverThreadStopped": true,
+    "cleanupErrors": []
+  },
+  "crossRuntimeProjection": [
+    {
+      "role": "residential",
+      "nodeNativeHashEqual": true,
+      "maxNodeCoordinateDeltaMeters": 0.0,
+      "maxChromeCoordinateDeltaMeters": 0.0,
+      "epsilonMeters": 1e-07
+    },
+    {
+      "role": "commercial",
+      "nodeNativeHashEqual": true,
+      "maxNodeCoordinateDeltaMeters": 0.0,
+      "maxChromeCoordinateDeltaMeters": 0.0,
+      "epsilonMeters": 1e-07
+    },
+    {
+      "role": "industrial",
+      "nodeNativeHashEqual": true,
+      "maxNodeCoordinateDeltaMeters": 0.0,
+      "maxChromeCoordinateDeltaMeters": 0.0,
+      "epsilonMeters": 1e-07
+    },
+    {
+      "role": "religious",
+      "nodeNativeHashEqual": false,
+      "maxNodeCoordinateDeltaMeters": 1.862645149230957e-09,
+      "maxChromeCoordinateDeltaMeters": 0.0,
+      "epsilonMeters": 1e-07
+    },
+    {
+      "role": "microcurve",
+      "nodeNativeHashEqual": false,
+      "maxNodeCoordinateDeltaMeters": 1.862645149230957e-09,
+      "maxChromeCoordinateDeltaMeters": 0.0,
+      "epsilonMeters": 1e-07
+    }
+  ],
+  "rawErrorsPreserved": {
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "requestFailures": [
+      {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "http://127.0.0.1:35261/__mistral/local-data",
+        "failure": "net::ERR_ABORTED"
+      }
+    ],
+    "localHttpErrors": [],
+    "note": "Nine optional remote Supabase coverage/status requests failed at the configured tunnel; one local-data request was aborted. These raw failures remain in the untouched native report. Local installed-source/geographic request checks and transaction checks passed."
+  },
+  "provenanceLimit": "IGN supplies acquired footprint, dimensions and available native attributes. Facade hardware, opening layouts without documentation, interior plan and furniture shown here remain authored fiction. Stylized game models; no claim of final art, real facade survey, physical hardware or citywide 1:1 visual completeness.",
+  "assistance": [
+    "Diagnostic real sector loading; measured free initial camera",
+    "QA simulation/render freeze and actual explicit WebGL captures",
+    "Collision and LOS checked inspection cameras; elevated views separately labelled",
+    "Existing physical approach before real E-key and landing UI actions"
+  ],
+  "shots": [
+    {
+      "file": "01_residential_context.png",
+      "reportedSha256": "94e0cd486214b52eb17399f71c7952771e365d7aa48a4a2da69643967aade1f9",
+      "actualSha256": "94e0cd486214b52eb17399f71c7952771e365d7aa48a4a2da69643967aade1f9",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Contexte natif avec quelques fenêtres/persiennes visibles aux bords.",
+      "limits": "Un grand mur proche occupe la majorité de la vue : cette image ne démontre pas la quincaillerie du profil résidentiel fixe.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "06_scout_hardware_1_1.png",
+      "reportedSha256": "7ff427bdc6eaae1b9bea1a3d97b2ed30d6c9802f304f2add7390a7873cfdaa1e",
+      "actualSha256": "7ff427bdc6eaae1b9bea1a3d97b2ed30d6c9802f304f2add7390a7873cfdaa1e",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Gros plan résidentiel réel supplémentaire : encadrement clair, traverses, lames de persiennes et quatre platines de charnières sombres visibles.",
+      "limits": "Le pistolet et le HUD masquent le bas droit. Point de vue d’inspection élevé déclaré ; détail inventé, sans relevé de façade.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "06_scout_hardware_1_2.png",
+      "reportedSha256": "4256ef774781110096a4846f6283cff96bd7e1db4493fd3c30445de67a6233eb",
+      "actualSha256": "4256ef774781110096a4846f6283cff96bd7e1db4493fd3c30445de67a6233eb",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Porte résidentielle moulurée, retours et cadre en relief, invite E « intérieur inventé », ville native en arrière-plan.",
+      "limits": "Sommet de porte coupé et zone de poignée droite partiellement cachée par le pistolet : cette image seule ne prouve pas sa poignée entière.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "06_real_portal_interior.png",
+      "reportedSha256": "d7d9f7a2a11650c80dd9361987a09a12d396c5cd9e1664b260ea5f0aa3281963",
+      "actualSha256": "d7d9f7a2a11650c80dd9361987a09a12d396c5cd9e1664b260ea5f0aa3281963",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Après la touche E réelle : corridor intérieur inventé avec plafond, petit élément au fond et invite du palier niveau0.",
+      "limits": "Vue étroite prise près du palier, sans panorama de toutes les pièces ; aucune preuve de plan intérieur mesuré.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "02_commercial_context.png",
+      "reportedSha256": "c36708fff83478d73a3bc25e0c4e1f9fe456a1d5a6bdcc29903d7c0017eadf2c",
+      "actualSha256": "c36708fff83478d73a3bc25e0c4e1f9fe456a1d5a6bdcc29903d7c0017eadf2c",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Intersection native, grand volume à baies et persiennes inventées, routes et bâtiments voisins visibles.",
+      "limits": "La quincaillerie est trop petite pour être vérifiée à cette distance ; ce contexte ne constitue pas un relevé commercial réel.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "02_commercial_hardware_1.png",
+      "reportedSha256": "63b269c0ccf693500c062f685a8285f0fe007414f72583e420ecc5d0e3d7122d",
+      "actualSha256": "63b269c0ccf693500c062f685a8285f0fe007414f72583e420ecc5d0e3d7122d",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Gros plan oblique de porte à vitrage : retours, assemblages et poignée gauche à face claire/retour sombre distincts ; invite E visible.",
+      "limits": "Partie supérieure hors cadre ; pistolet sur le bas droit. Vue d’inspection déclarée, pas une photo de façade existante.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "03_industrial_context.png",
+      "reportedSha256": "40fd178b980028055110fab1b5ad6835daf950c003c56a3dfef3417f819befdf",
+      "actualSha256": "40fd178b980028055110fab1b5ad6835daf950c003c56a3dfef3417f819befdf",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Mur gris natif et grandes fenêtres à subdivisions et entourage clair.",
+      "limits": "Façade partielle proche, toit et porte hors cadre ; la quincaillerie nouvelle n’est pas lisible dans cette vue de contexte.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "03_industrial_hardware_1.png",
+      "reportedSha256": "7a57a6c2cc14124ecc56d4c74daeb94a9e5137eb5a5ebc757296a69925b68377",
+      "actualSha256": "7a57a6c2cc14124ecc56d4c74daeb94a9e5137eb5a5ebc757296a69925b68377",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Gros plan de porte de service double : traverses, panneaux, cadres et deux poignées sombres ressortent du fond ; invite E visible.",
+      "limits": "Sommet coupé et une partie basse droite masquée par arme/HUD ; aspect stylisé, aucune certification de matériau physique.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "04_religious_context.png",
+      "reportedSha256": "24e1a2f3187dc23680733fd621a0589c9e7304af77fca22b43cdcd7ec137359c",
+      "actualSha256": "24e1a2f3187dc23680733fd621a0589c9e7304af77fca22b43cdcd7ec137359c",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Porte moulurée et baies hautes entourées d’un cadre clair dans le volume acquis ; terrain et volume voisin visibles.",
+      "limits": "Bas de porte caché par le terrain et bord droit par un autre volume : vue partielle, sans certification de seuil réel ou d’accès de ce profil.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "04_religious_hardware_1.png",
+      "reportedSha256": "aec98c8fc414d17dc00e6836995854161166cc113f9fc018d1350c222c4cebd5",
+      "actualSha256": "aec98c8fc414d17dc00e6836995854161166cc113f9fc018d1350c222c4cebd5",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Gros plan du panneau supérieur, moulure, retours latéraux et appui de baie voisine.",
+      "limits": "Sommet et bas coupés, poignée à droite masquée par arme/invite ; les retours sont visibles, la poignée entière ne l’est pas.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "05_microcurve_context.png",
+      "reportedSha256": "2640762844e24f794bc6e55d548098f1cee6762f20d07a4835359b62da60e998",
+      "actualSha256": "2640762844e24f794bc6e55d548098f1cee6762f20d07a4835359b62da60e998",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Porte et fenêtre inventées sur le volume source, terrain fortement incliné et volumes voisins.",
+      "limits": "La pente domine la moitié droite et masque une partie du pied ; la petite quincaillerie n’est pas vérifiable ici.",
+      "unalteredNativeCapture": true
+    },
+    {
+      "file": "05_microcurve_hardware_1.png",
+      "reportedSha256": "c81b5680f1cc0557c62d91d1fb4a174cca325834e2284613b84f1c9a8be2e428",
+      "actualSha256": "c81b5680f1cc0557c62d91d1fb4a174cca325834e2284613b84f1c9a8be2e428",
+      "shaMatches": true,
+      "openedWith": "view_image",
+      "actuallyViewed": true,
+      "shows": "Vue native d’inspection fortement inclinée avec fragments de façade complexe visibles en haut, et invite E.",
+      "limits": "Le sol occupe la majorité de l’image ; aucun gros plan lisible de poignée ou de persienne. Les contrôles des buffers valident ce profil, mais cette capture n’en apporte pas une preuve visuelle bien cadrée.",
+      "unalteredNativeCapture": true
+    }
+  ]
+}

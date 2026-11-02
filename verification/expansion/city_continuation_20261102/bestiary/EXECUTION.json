@@ -1,0 +1,29 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/regional_bestiary_native.py",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/bestiary",
+    "--expect-html-sha",
+    "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "--run",
+    "--require-iconic",
+    "--require-humanoids",
+    "--expect-bestiary-sha",
+    "8ca674889e4944353f16ac16e9a24470ba444623c27271e48e8a928409b35667",
+    "--expect-architecture-sha",
+    "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 310776,
+  "exitCode": 0,
+  "startedAtEpoch": 1793599174.4936032,
+  "durationSeconds": 263.22785091400146,
+  "scriptSha256": "56e9b990514937de327c396aea29a96795ab5fa454b3d3aa3941ddf933d3b50a",
+  "scriptUnchanged": true,
+  "reportSha256": "6fba5d98efeb8a8b4f03c30d056f8642cf1e4e4bf480a9628c142d04ddb06b26",
+  "logSha256": "7114328a11d71ccc9f09fe3c10a50a1dddc5821f62851a85f3a2f8cbe110bbe0",
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "runtimeChanged": [],
+  "runtimeInputCount": 474
+}

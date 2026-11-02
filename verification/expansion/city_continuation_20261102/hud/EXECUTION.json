@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/fps_hud_native.py",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/hud",
+    "--expect-html-sha",
+    "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 304930,
+  "exitCode": 0,
+  "startedAtEpoch": 1793597763.5606074,
+  "durationSeconds": 28.318228244781494,
+  "scriptSha256": "b49cbfa8955935693382b9859d417485a11ced70054003dad03c18721daca890",
+  "scriptUnchanged": true,
+  "reportSha256": "20cc9e3bd781735be34ed8253bc2cb1528be5ce76b419c3ca663cfaa22abed26",
+  "logSha256": "d61f1a072072e841125bf154e5e679f40cda6b8a0ff4f0bab8ef49069ecdbe2a",
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "runtimeChanged": [],
+  "runtimeInputCount": 474
+}

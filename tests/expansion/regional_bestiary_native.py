@@ -49,7 +49,8 @@ def main():
     parser.add_argument('--expect-architecture-sha', required=True)
     parser.add_argument('--ready-timeout', type=int, default=300)
     parser.add_argument('--maximum-sectors', type=int, default=6)
-    parser.add_argument('--require-iconic', action='store_true', help='Also require both real new iconic rigs, attacks and save metadata.')
+    parser.add_argument('--require-iconic', action='store_true', help='Also require real Radscorpion/Fangeux rigs, attacks and save metadata.')
+    parser.add_argument('--require-humanoids', action='store_true', help='Additionally require the real existing feral/deathclaw slots and their inherited combat/VATS rules.')
     args = parser.parse_args()
     if not args.run:
         print('Prepared only. No server or browser started. Coordinate frozen SHAs and pass --run.')
@@ -336,12 +337,15 @@ def main():
           const m=require('./src/v050/13_regional_bestiary.js');
           console.log(JSON.stringify(c.rows.flatMap(site=>Array.from({length:site.enemySlots},(_,index)=>({
             ...site,index,species:m.candidate(site,index,site.enemyTypes[index%site.enemyTypes.length])
-          })).filter(row=>['radscorpion','mirelurk'].includes(row.species)))));"""
+          })).filter(row=>['radscorpion','mirelurk','feralGhoul','deathclaw'].includes(row.species)))));"""
         selection = subprocess.run(['node', '-e', program], cwd=ROOT, check=True, capture_output=True, text=True)
         rows = json.loads(selection.stdout)
         report['iconic_candidate_selection'] = {'method': 'Frozen production Node module candidate() and unchanged actual territorial catalog; requests only, no browser mutation.',
                                                 'process_exit_code': selection.returncode, 'rows': rows}
-        for species, preferred in (('radscorpion', 'v042-calanques-elite-03'), ('mirelurk', 'v042-laciotat-nest-04')):
+        targets = [('radscorpion', 'v042-calanques-elite-03'), ('mirelurk', 'v042-laciotat-nest-04')]
+        if args.require_humanoids:
+            targets += [('feralGhoul', 'v042-marseille-nest-01'), ('deathclaw', 'v042-saintebaume-nest-01')]
+        for species, preferred in targets:
             stage('actual_iconic_' + species)
             spec = catalogs[species]
             candidates = [row for row in rows if row['species'] == species]
@@ -377,10 +381,16 @@ def main():
                   actor['id'] == f"v042:{site['id']}:outside:{slot}" and actor['baseType'] == site['enemyTypes'][slot % len(site['enemyTypes'])]
                   and original['type'] == actor['baseType'] and original['hp'] == actor['health'] and original['pos'] == actor['pos'])
             check('Actual ' + species + ' mesh and VATS bounds share the same articulated rig',
-                  len(actor['rig']['draws']) == (53 if species == 'radscorpion' else 43)
+                  len(actor['rig']['draws']) == {'radscorpion': 53, 'mirelurk': 43, 'feralGhoul': 42, 'deathclaw': 57}[species]
                   and all(d['v025Enemy'] == actor['id'] and d['v053RegionalPart'] == species for d in actor['rig']['draws'])
                   and {d['v025Part'] for d in actor['rig']['draws']} == {p['id'] for p in actor['rig']['parts']}
-                  and all(next(p for p in actor['rig']['parts'] if p['id'] == claw)['group'] == 'arms' for claw in ('claw_l', 'claw_r')))
+                  and all(next(p for p in actor['rig']['parts'] if p['id'] == claw)['group'] == 'arms' for claw in (('arm_l', 'arm_r') if spec.get('inheritTargeting') else ('claw_l', 'claw_r'))))
+            if spec.get('inheritTargeting'):
+                check('The new visible ' + species + ' body has genuine full-height source clearance',
+                      actor['body']['volumeClear'] and actor['body']['top'] == spec['body']['top']
+                      and all(actor['pos'][1] + spec['body']['bottom'] - 1e-7 <= d['pos'][1] - d['scale'][1] / 2
+                              and d['pos'][1] + d['scale'][1] / 2 <= actor['pos'][1] + spec['body']['top'] + 1e-7 for d in actor['rig']['draws']),
+                      actor['body'])
             projection = debug('v046Project', 'geo_huveaune', site['lat'], site['lon'])
             absolute = debug('v018Projection', site['lat'], site['lon'])['xy']
             frame = [absolute[0] - projection[0], absolute[1] + projection[2]]
@@ -400,14 +410,15 @@ def main():
             vats = debug('v025Snapshot')
             check('Real VATS acquires the source-world ' + species, vats['mode'] == 'VATS' and actor['id'] in [t['id'] for t in vats['targets']])
             target_index = next(i for i, target in enumerate(vats['targets']) if target['id'] == actor['id'])
-            debug('v023Select', target_index, 'claw_l')
+            selected_part = 'arm_l' if spec.get('inheritTargeting') else 'claw_l'
+            debug('v023Select', target_index, selected_part)
             debug('v025Paint')
             vats = debug('v025Snapshot')
-            check('Native VATS actually selects the rendered left claw of ' + species,
-                  debug('v025Info')['selected'] == {'enemy': actor['id'], 'part': 'claw_l'}
-                  and next(p for p in vats['parts'] if p['id'] == 'claw_l')['chance'] > 0
+            check('Native VATS actually selects the rendered left attack limb of ' + species,
+                  debug('v025Info')['selected'] == {'enemy': actor['id'], 'part': selected_part}
+                  and next(p for p in vats['parts'] if p['id'] == selected_part)['chance'] > 0
                   and not page.locator('#vats').get_attribute('class').split().count('hidden'))
-            shot('04_' + species + '_vats', 'Actual VATS selection of the original live source-world left claw; no attack or reward is injected.')
+            shot('04_' + species + '_vats', 'Actual VATS selection of the original live source-world left attack limb; no attack or reward is injected.')
             page.keyboard.press('v')
             after_vats = debug('getState')
             check('Cancelling real ' + species + ' VATS spends no ammunition, AP or inventory',
@@ -419,7 +430,7 @@ def main():
             # production AI is stepped; no alert or attack is injected.
             close = measured_points([ll([actor['pos'][0] + math.sin(n * math.tau / 48) * radius, 0,
                                           actor['pos'][2] + math.cos(n * math.tau / 48) * radius])
-                                     for radius in (1.4, 1.55, 1.7) for n in range(48)], center)
+                                     for radius in ((spec['radius'] + .4, spec['radius'] + .55, spec['radius'] + .7) if spec.get('inheritTargeting') else (1.4, 1.55, 1.7)) for n in range(48)], center)
             close = [p for p in close if abs(p['h']['height'] - actor['pos'][1]) < .2]
             check('A real measured close approach can trigger the ' + species + ' telegraph', bool(close))
             place(close[0], center, 'physical close approach to observe real preparation ' + actor['id'])
@@ -670,7 +681,7 @@ def main():
                 report['actual_actor_rig'] = after['rig']
 
                 flight_native()
-                if args.require_iconic:
+                if args.require_iconic or args.require_humanoids:
                     iconic_native()
 
                 stage('final_integrity')
@@ -690,7 +701,7 @@ def main():
                       not unexpected and not report['local_http_errors']
                       and not any(r['from_service_worker'] for r in report['http_responses']),
                       {'failures': unexpected, 'errors': report['local_http_errors'], 'cancelled_metadata': cancellations})
-                report['limitations'] = ['One Rat-couronné or Cigale and one genuinely airborne Gabian are required; --require-iconic additionally requires a real Radscorpion and Fangeux with their actual AI preparations. This does not certify all 72 potential slots or all seven species natively.',
+                report['limitations'] = ['One Rat-couronné or Cigale and one genuinely airborne Gabian are required; --require-iconic additionally requires a real Radscorpion and Fangeux with their actual AI preparations. This does not certify all 91 potential slots or all nine species natively. --require-humanoids also requires the real feral and deathclaw slots.',
                                          'Wound/old-campaign/body/loot roundtrip and the other species are covered by separate production-wrapper VM regressions.',
                                          'No native enemy kill, resource grant, quest outcome or fabricated historical storage import is performed.',
                                          'Camera navigation, time and freeze are declared diagnostic assistance; no human or citywide 1:1 claim.']

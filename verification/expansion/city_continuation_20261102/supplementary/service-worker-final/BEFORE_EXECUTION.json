@@ -1,0 +1,70 @@
+{
+  "scope": "One execution of the unchanged maintained Node/Chromium service-worker lifecycle test. Old cached HTML is an explicitly synthetic fixture, not a historical production build.",
+  "startedAtUtc": "2026-11-02T06:23:51.367062+00:00",
+  "workingDirectory": "/workspace/fallout-Marseille",
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "tests/expansion/service_worker_delivery.cjs"
+  ],
+  "envOverridesNonSecret": {
+    "MISTRAL_QA_OUTPUT": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/service-worker-final",
+    "MISTRAL_PLAYWRIGHT_MODULE": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package",
+    "CHROMIUM_PATH": "/usr/bin/chromium"
+  },
+  "inheritedEnvironmentValuesRecorded": false,
+  "wrapperPath": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/service-worker-final/RUN_SERVICE_WORKER.py",
+  "wrapperSha256": "729756712c9f1d18aa1135a360b52a2b6c71e1e4c2442981684c3158ecc3bfd6",
+  "expectedHtmlSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "before": {
+    "tests/expansion/service_worker_delivery.cjs": {
+      "sha256": "c835526271d7ee40aa76942ba9e87ccb7e0f389afce9996be01671624050fd86",
+      "bytes": 5970,
+      "copy": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/service-worker-final/inputs-before/tests/expansion/service_worker_delivery.cjs",
+      "copySha256": "c835526271d7ee40aa76942ba9e87ccb7e0f389afce9996be01671624050fd86"
+    },
+    "index.html": {
+      "sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+      "bytes": 3035042,
+      "copy": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/service-worker-final/inputs-before/index.html",
+      "copySha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78"
+    },
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": {
+      "sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+      "bytes": 3035042,
+      "copy": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/service-worker-final/inputs-before/JOUER_FALLOUT_MISTRAL_v0.50.html",
+      "copySha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78"
+    },
+    "sw.js": {
+      "sha256": "74f1c238bd1c2e4f65b14857ff3c542fa159674cb090798c4d8058a70ca3035c",
+      "bytes": 1197,
+      "copy": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/service-worker-final/inputs-before/sw.js",
+      "copySha256": "74f1c238bd1c2e4f65b14857ff3c542fa159674cb090798c4d8058a70ca3035c"
+    },
+    "manifest.webmanifest": {
+      "sha256": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56",
+      "bytes": 604,
+      "copy": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/service-worker-final/inputs-before/manifest.webmanifest",
+      "copySha256": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56"
+    },
+    "icons/mistral-192.png": {
+      "sha256": "0a107545bcd5f62980b562f63fe5677c47b625a839cf149cd316dce737ee37fd",
+      "bytes": 2688,
+      "copy": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/service-worker-final/inputs-before/icons/mistral-192.png.raw",
+      "copySha256": "0a107545bcd5f62980b562f63fe5677c47b625a839cf149cd316dce737ee37fd"
+    },
+    "icons/mistral-512.png": {
+      "sha256": "a48d8652462c8df38982540e7c2e6cea9d729ec12375f9aa32d99dcb84510731",
+      "bytes": 7688,
+      "copy": "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/service-worker-final/inputs-before/icons/mistral-512.png.raw",
+      "copySha256": "a48d8652462c8df38982540e7c2e6cea9d729ec12375f9aa32d99dcb84510731"
+    }
+  },
+  "supplementOutsideExistingCheckAndScreenshotTotals": true,
+  "priorAutomatedChecksTotalNotIncremented": 3318,
+  "priorScreenshotTotalNotIncremented": 100,
+  "screenshotsRequested": false,
+  "expectedNativeChecks": 6,
+  "nodeVersion": "v24.19.0",
+  "playwrightPackageVersion": "1.62.0",
+  "pythonExecutable": "/workspace/.cloud-setup/fallout-marseille/venv/bin/python"
+}

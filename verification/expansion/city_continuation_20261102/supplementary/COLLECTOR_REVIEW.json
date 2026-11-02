@@ -1,0 +1,57 @@
+{
+  "scope": "Independent read-only review of external collector, phase boundaries, executed native dependencies and bounded facade terminal-check logging exception. No collector/browser/test executed by reviewer.",
+  "reviewedUtc": "2026-11-02T06:26:38.840516+00:00",
+  "result": "PASS",
+  "reviewedInputs": {
+    "scripts/collect_city.py": "2e7ec6e48a2c6b4608e694e3627a8911c47d27138668a0ef834117a8d76e7669",
+    "METHODS_CONFIG.json": "cf64ab342e4dd5835ccdd5d5b624284ca8deccb5d7b3c8296a3b89b00d1c31ee",
+    "QA_PHASES.json": "7fb462cfdc508ba808968072ec26017323755a82e15f8eaef15c2b73c7dd61c7",
+    "scripts/run_native.py": "c267d7346373dd46ff7a725f96564343646be54f560750ecc36338caa94c68ba"
+  },
+  "htmlSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "checks": {
+    "same474InputKeys": true,
+    "onlyOneAllowedQaDelta": true,
+    "both274ArchivesExact": true,
+    "all10ClosedReceiptHashesAndTimeWindowsExact": true,
+    "actualExecutedDependencyHashesCurrent": true,
+    "facadeOnlyPhaseB": true,
+    "facadeStartedAfterPhaseB": true,
+    "exactFinalTwoFacadeCheckNames": true,
+    "finalFacadeSourceAndResourceFacts": true
+  },
+  "phaseAClosedReceipts": 10,
+  "phaseBMethod": "facades",
+  "nativeDependencyHashEntriesIndependentlyVerified": 662,
+  "sourceSnapshotFacadeEntries": 16,
+  "sourceSnapshotFacadePathsBeyondBroadFreeze": [
+    "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+    "data/map_pack/city/m13055-r02-c05-2-79e15417bcc09c65.json"
+  ],
+  "conclusion": "QA exception is limited to the one documented facade checker and its phase-specific pre-execution archive. All consumed hashes remain strict against current sources. Facade logging permits exactly the two existing finally checks with their underlying source and resource facts; the96 preceding OK rows remain exact. No concrete blocking defect remains.",
+  "publicationEvidenceAudited": false,
+  "limits": [
+    "Root may still change generated README or supplemental metadata; final published collector/config SHA must be checked during publication audit.",
+    "Raw native reports and pictures are not modified by this review; visual inspection receipts remain separate."
+  ],
+  "nativeAssertionsAddedByReview": 0,
+  "testProcessesStartedByReview": 0,
+  "productionOrQaEditsByReviewer": [],
+  "supplementOnlyConfigUpdate": {
+    "previousConfigSha256": "11b1de042e506d0399b7d913c43eddcd2c809244b5e0a97c2b579c24e00d05d7",
+    "onlyAdditions": [
+      {
+        "source": "VISUAL_REVIEW_COVERAGE.json",
+        "destination": "VISUAL_REVIEW_COVERAGE.json"
+      },
+      {
+        "source": "COLLECTOR_REVIEW.json",
+        "destination": "COLLECTOR_REVIEW.json"
+      }
+    ],
+    "visualCoverageSha256": "1d6dfd48fbaa7b01ff4267e8b3258d4414c4559c1c53da03775f3688fba137b2",
+    "declaredCaptureCount": 100,
+    "addedAutomatedChecks": 0,
+    "collectorLogicUnchanged": true
+  }
+}

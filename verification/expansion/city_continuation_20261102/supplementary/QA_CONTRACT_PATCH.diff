@@ -1,0 +1,170 @@
+--- a/tests/expansion/facade_hardware_native.py
++++ b/tests/expansion/facade_hardware_native.py
+@@ -15,6 +15,7 @@
+ import argparse
+ import hashlib
+ import json
++import socket
+ import math
+ import subprocess
+ import sys
+@@ -50,6 +51,44 @@
+     for _ in range(12):
+         phi = 2 * math.atan(math.exp(value) * ((1 + e * math.sin(phi)) / (1 - e * math.sin(phi))) ** (e / 2)) - math.pi / 2
+     return [math.degrees(phi), 3 + math.degrees(math.atan2(dx, dy) / n)]
++
++
++def metric_comparison(expected, actual, epsilon=1e-7):
++    """Check every ordered metric vertex; never relax original WGS84 equality."""
++    same_shape = (isinstance(actual, list) and len(expected) == len(actual)
++                  and all(len(a) == len(b) for a, b in zip(expected, actual)))
++    differences, maximum = [], 0.0
++    if same_shape:
++        for ring, (a, b) in enumerate(zip(expected, actual)):
++            for vertex, (p, q) in enumerate(zip(a, b)):
++                delta = [q[i] - p[i] for i in (0, 1)]
++                maximum = max(maximum, *(abs(v) for v in delta))
++                if any(delta):
++                    differences.append({'ring': ring, 'vertex': vertex, 'expected': p,
++                                        'native': q, 'deltaMeters': delta})
++    return {'matches': same_shape and maximum <= epsilon, 'epsilonMeters': epsilon,
++            'sameOrderedRingShape': same_shape, 'maximumCoordinateDeltaMeters': maximum,
++            'differentVertices': differences}
++
++
++# Node provides a model reference only. Last-bit Math/libm differences between
++# V8 builds can change an unquantized component hash without changing geometry.
++# Preserve both identities and all coordinate deltas in the native QA report.
++NODE_COMPONENT_PROJECTION = r"""
++const fs=require('node:fs'),vm=require('node:vm');
++const F=require('./src/v050/07_facades.js'),I=require('./src/v046/00_integrity.js');
++const text=fs.readFileSync('src/patches/01_geometry.js','utf8');
++const context=vm.createContext({rad:x=>x*Math.PI/180});
++vm.runInContext(text.slice(text.indexOf('function v018Lambert93'),text.indexOf('const V018_OLD_SCALES')),context);
++const origin=context.v018Lambert93(43.285,5.51);
++const cases=require('./tests/expansion/fixtures/facades_joinery_ign.json').cases.map(c=>{
++ const f=c.feature,p=I.buildingProfile(f.properties),polygon=f.geometry.type==='MultiPolygon'?f.geometry.coordinates[0]:f.geometry.coordinates;
++ const rings=polygon.map(r=>r.map(v=>{const q=context.v018Lambert93(v[1],v[0]);return[q[0]-origin[0],origin[1]-q[1]];}));
++ const d=F.describe({mesh:'prism',geoLayer:'building',rings,baseY:p.groundElevation??0,height:p.height,geoProperties:f.properties});
++ return{role:c.role,id:d.id,rings:d.rings};
++});
++console.log(JSON.stringify({nodeVersion:process.version,v8Version:process.versions.v8,cases}));
++"""
+ 
+ 
+ def main():
+@@ -313,6 +352,8 @@
+               {'html': sha(html), 'facade': sha(module)})
+         check('The frozen HTML actually embeds the exact current facade source', module.decode() in html.decode())
+         report.update(html_sha256=sha(html), facade_sha256=sha(module))
++        pin('src/patches/01_geometry.js')
++        pin('src/v046/00_integrity.js')
+         pin('tests/expansion/facade_hardware_native.py')
+         for relative in ('src/game.js', 'JOUER_FALLOUT_MISTRAL_v0.50.html', 'sw.js',
+                          'src/v050/08_city_interiors.js', 'data/map_pack/city/index.json',
+@@ -327,6 +368,14 @@
+               references['facadeModuleSha256'] == args.expect_facade_sha
+               and references['generatorSha256'] == frozen['tests/expansion/facades_joinery.cjs']
+               and references['sourceFixtureSha256'] == frozen['tests/expansion/fixtures/facades_joinery_ign.json'])
++        node_projection_raw = subprocess.check_output(['node', '-e', NODE_COMPONENT_PROJECTION], cwd=ROOT)
++        (args.output / 'EXECUTED_NODE_COMPONENT_PROJECTION.js').write_text(NODE_COMPONENT_PROJECTION)
++        (args.output / 'NODE_COMPONENT_PROJECTION.json').write_bytes(node_projection_raw)
++        node_projection = json.loads(node_projection_raw)
++        report['nodeProjectionReference'] = {'nodeVersion': node_projection['nodeVersion'],
++                                            'v8Version': node_projection['v8Version'],
++                                            'scriptSha256': sha(NODE_COMPONENT_PROJECTION.encode()),
++                                            'scope': 'Read-only model reference; never installed as geography. Native IDs must agree with native source/facade/portal; cross-runtime projection is compared vertex by vertex at the existing EPS.'}
+         check('Exactly five actual acquired profiles are required',
+               len(fixtures['cases']) == len(ROLES) and {c['role'] for c in fixtures['cases']} == set(ROLES))
+         cases = []
+@@ -356,10 +405,13 @@
+         worker = threading.Thread(target=server.serve_forever, daemon=True)
+         worker.start()
+         origin = f'http://127.0.0.1:{server.server_address[1]}'
++        report['origin'] = origin
++        report['serverPort'] = server.server_address[1]
+         pw = sync_playwright().start()
+         browser = pw.chromium.launch(executable_path=chromium_path(), headless=True,
+                                      args=['--no-sandbox', '--disable-dev-shm-usage'])
+         context = browser.new_context(viewport={'width': 1600, 'height': 1000})
++        report['browser_version'] = browser.version
+         report['contexts_created'] += 1
+         page = context.new_page()
+         page.set_default_timeout(30000)
+@@ -393,13 +445,30 @@
+             camera = clear_initial_camera(lat, lon)
+             before = debug('v052ArchitectureTarget', reference['sourceId'])
+             facade = debug('v050FacadeBuilding', reference['sourceId'])
++            node_component = next(c for c in node_projection['cases'] if c['role'] == role)
++            node_metric = metric_comparison(node_component['rings'], before['component']['rings'] if before else None)
++            polygon = source['geometry']['coordinates'][0] if source['geometry']['type'] == 'MultiPolygon' else source['geometry']['coordinates']
++            chrome_rings = page.evaluate("""rings=>rings.map(r=>r.map(p=>{const q=__MISTRAL_DEBUG.v046Project('geo_huveaune',p[1],p[0]);return[q[0],q[2]];}))""", polygon)
++            chrome_metric = metric_comparison(chrome_rings, before['component']['rings'] if before else None)
++            identity_proof = {'cleabs': source['properties']['cleabs'], 'nodeReferenceId': reference['buildingId'],
++                              'nodeProjectedId': node_component['id'],
++                              'nativeComponentId': before['component']['id'] if before else None,
++                              'nodeNativeHashEqual': bool(before) and before['component']['id'] == reference['buildingId'],
++                              'nodeToNativeMetric': node_metric, 'chromeToNativeMetric': chrome_metric}
++            report.setdefault('crossRuntimeProjection', []).append({'role': role, **identity_proof})
+             check(role + ': real native metric facade matches its complete original IGN geometry',
+                   before is not None and before['rawGeometry'] == source['geometry']
++                  and before['cleabs'] == reference['stableSourceId'] == source['properties']['cleabs']
+                   and facade is not None and facade['rendered'] and not facade['ringsTruncated'] and not facade['openingsTruncated']
+-                  and before['component']['id'] == facade['id'] == reference['buildingId']
++                  and facade['stableSourceId'] == source['properties']['cleabs']
++                  and before['component']['id'] == facade['id']
+                   and before['component']['rings'] == facade['rings']
++                  and node_component['id'] == reference['buildingId']
++                  and node_metric['matches'] and chrome_metric['matches']
+                   and abs(facade['height'] - reference['height']) < 1e-7
+-                  and abs(facade['baseY'] - reference['ground']) < 1e-7)
++                  and abs(facade['baseY'] - reference['ground']) < 1e-7,
++                  {'before': before, 'facade': facade, 'reference': reference, 'camera': camera,
++                   'identityAndMetricProof': identity_proof, 'facadeLod': debug('v050FacadeInfo')})
+             pages, inventory, cursor = [], [], 0
+             for _ in range(16):
+                 result = debug('v050FacadePage', facade['id'], cursor, 128)
+@@ -478,7 +547,8 @@
+                     if acquired is None:
+                         continue
+                     actual_source = debug('v052ArchitectureTarget', cleabs)
+-                    if not actual_source or actual_source['rawGeometry'] != acquired['feature']['geometry']:
++                    portal_facade = debug('v050FacadeBuilding', candidate['building'])
++                    if not actual_source or not portal_facade or actual_source['rawGeometry'] != acquired['feature']['geometry']:
+                         continue
+                     approach = debug('v020Approach', candidate['id'])
+                     if not approach:
+@@ -501,7 +571,9 @@
+                     portal = {'portal': candidate, 'acquiredSource': acquired, 'actualSourceBefore': actual_source,
+                               'approach': approach, 'visibleLabel': label, 'actualKeyboardAction': 'e', 'active': active}
+                     report['portal'] = portal
+-                    check('A real attributed source building is entered through its physical E-key portal', active['id'] == candidate['building'])
++                    check('A real attributed source building is entered through its physical E-key portal',
++                          active['id'] == candidate['building'] == actual_source['component']['id'] == portal_facade['id']
++                          and actual_source['cleabs'] == portal_facade['stableSourceId'] == acquired['feature']['properties']['cleabs'])
+                     return_point = debug('getState')['v050City']['returnPoint']
+                     shot('06_real_portal_interior', 'Actual keyboard E entry into an acquired building footprint; room plan and furniture remain invented')
+                     landing = next(i for i in debug('v020Stats')['interactables'] if i['id'] == 'city-interior-landing')
+@@ -551,7 +623,13 @@
+                     report['cleanup_errors'].append({'owner': name, 'error': str(error)})
+         if server is not None:
+             server.shutdown()
++            port = server.server_address[1]
+             server.server_close()
++            with socket.socket() as probe:
++                probe.settimeout(2)
++                connection = probe.connect_ex(('127.0.0.1', port))
++            report['serverClosureProbe'] = {'host': '127.0.0.1', 'port': port,
++                                            'connectExAfterClose': connection, 'closed': connection != 0}
+         if worker is not None:
+             worker.join(timeout=5)
+             report['server_thread_stopped'] = not worker.is_alive()
+@@ -562,7 +640,7 @@
+         else:
+             report['checks'].append({'name': 'Frozen production and source inputs remain unchanged', 'ok': True})
+         report['checks'].append({'name': 'Only one native context was used and owned resources were closed',
+-                                 'ok': report['contexts_created'] == 1 and not report['cleanup_errors'] and report.get('server_thread_stopped', False),
++                                 'ok': report['contexts_created'] == 1 and not report['cleanup_errors'] and report.get('server_thread_stopped', False) and report.get('serverClosureProbe', {}).get('closed', False),
+                                  'detail': report['cleanup_errors']})
+         save()
+     print(json.dumps({k: report[k] for k in ('stage', 'passed', 'failed', 'total', 'elapsed_seconds')}, ensure_ascii=False))

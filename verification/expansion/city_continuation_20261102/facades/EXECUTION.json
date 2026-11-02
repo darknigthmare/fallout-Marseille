@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/facade_hardware_native.py",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/facades-native",
+    "--expect-html-sha",
+    "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "--run",
+    "--expect-facade-sha",
+    "d9ccd0b0d89a3f42a4de7d4938e217f11da2e7c21fc82a54cf7c3a1d5b7ebcc3"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 313659,
+  "exitCode": 0,
+  "startedAtEpoch": 1793600199.1508079,
+  "durationSeconds": 140.49965238571167,
+  "scriptSha256": "368baef192ccf76b3ae865eaf5b8c688f4d92a2023455d1bfecf1d030b7409ee",
+  "scriptUnchanged": true,
+  "reportSha256": "0494d8922ff20020376d6a35141e49d8bb95b7e999ed23b37b7248d630897b5d",
+  "logSha256": "28946ec67b8bece4f919aa7988af5824bfd09955779a64cce35c7a824f1884ae",
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "runtimeChanged": [],
+  "runtimeInputCount": 474
+}

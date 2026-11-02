@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/facades-diagnostic/facade_hardware_diagnostic.py",
+    "--run",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/facades-diagnostic",
+    "--expect-html-sha",
+    "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "--expect-facade-sha",
+    "d9ccd0b0d89a3f42a4de7d4938e217f11da2e7c21fc82a54cf7c3a1d5b7ebcc3"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 309128,
+  "exitCode": 1,
+  "startedAtEpoch": 1793599042.276714,
+  "durationSeconds": 187.96721839904785,
+  "scriptSha256": "0dadfdea9b95a8929942210b2b32624d274bdd58c0b5f63fe49aad2bb6d95646",
+  "scriptUnchanged": true,
+  "reportSha256": "d2a7b4154343b30a3c473cd30b052a5ec75e2e2d6d98893ead7570ad5a826e35",
+  "logSha256": "2d81453ec50822cc9d50572a5b258de9b399d54649a5b41ac210c36f4f1e1e8a",
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "runtimeChanged": [],
+  "runtimeInputCount": 474
+}

@@ -1,0 +1,611 @@
+{
+  "scope": "Actual acquired IGN exterior objects and exact inputs from the excluded native84 attempt. Rooms and equipment are invented. Full layout hashes captured before changing only service approaches.",
+  "baselineModuleSha256": "64eb7abf7b1bcea40f126a7ecc5c4387409523d83a0d7f7a06cc105bf2ae8968",
+  "nativeHtmlSha256": "84d72618aa19aa2f879f8957e24bca04cbc4cb26b4f9f3fdff4beb7941280e73",
+  "nativeReportSha256": "7fa44dfc7d623f553b50f28ac132e182d1f6ddf7511c2d37d378f26f2df581cb",
+  "cases": [
+    {
+      "sourceId": "batiment.9618068",
+      "sourcePath": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json",
+      "sourceChunkSha256": "deaaf0e382a632bdd20b4c0fa308c5fdc8b4cfa0679120cd4ab9e2693f8abd4f",
+      "rawFeature": {
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                [
+                  5.3582358,
+                  43.2328988,
+                  29
+                ],
+                [
+                  5.35807993,
+                  43.23278882,
+                  29
+                ],
+                [
+                  5.358018,
+                  43.23283966,
+                  29
+                ],
+                [
+                  5.35816885,
+                  43.23294706,
+                  29
+                ],
+                [
+                  5.3582358,
+                  43.2328988,
+                  29
+                ]
+              ]
+            ]
+          ],
+          "type": "MultiPolygon"
+        },
+        "id": "batiment.9618068",
+        "properties": {
+          "altitude_maximale_sol": 22.4,
+          "altitude_maximale_toit": 30.6,
+          "altitude_minimale_sol": 21.5,
+          "altitude_minimale_toit": 29,
+          "appariement_fichiers_fonciers": "A 1.0",
+          "cleabs": "BATIMENT0000000258360969",
+          "construction_legere": false,
+          "date_creation": "2011-05-18T12:09:31.009Z",
+          "date_d_apparition": null,
+          "date_de_confirmation": null,
+          "date_modification": "2019-04-08T06:50:57.569Z",
+          "etat_de_l_objet": "En service",
+          "hauteur": 7.5,
+          "identifiants_rnb": "P9T3JKSMK6YQ",
+          "identifiants_sources": "",
+          "kind": "building",
+          "materiaux_de_la_toiture": "10",
+          "materiaux_des_murs": "10",
+          "methode_d_acquisition_altimetrique": "Corrélation",
+          "methode_d_acquisition_planimetrique": "BDParcellaire recalée",
+          "nature": "Indifférenciée",
+          "nombre_d_etages": 2,
+          "nombre_de_logements": 6,
+          "origine_du_batiment": "Cadastre",
+          "precision_altimetrique": 1,
+          "precision_planimetrique": 3,
+          "provenance": {
+            "acquiredAt": "2026-10-23",
+            "attribution": "IGN — Géoplateforme",
+            "coverage": {
+              "bbox": [
+                43.23113830833333,
+                5.357278548461538,
+                43.24343971,
+                5.368962869230769
+              ],
+              "complete": true,
+              "crs": "EPSG:4326",
+              "layer": "BDTOPO_V3:batiment",
+              "returned": 2418
+            },
+            "inputCrs": "EPSG:4326",
+            "inputSha256": "555f613d12ede49bc87ee4c148608857027e25cfac9541d738dd62a0707737c0",
+            "license": "Licence Ouverte 2.0",
+            "resource": "ign-bdtopo",
+            "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+            "url": "https://data.geopf.fr/wfs/ows",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "sourceId": "batiment.9618068",
+          "sources": null,
+          "usage_1": "Résidentiel",
+          "usage_2": "Annexe"
+        },
+        "type": "Feature"
+      },
+      "sourceFeatureSha256": "fdcb350077e6a40fe111af1cc9e4ef2cbcb655ba44541abd1b5c26b785a6dc41",
+      "metric": {
+        "rings": [
+          [
+            [
+              -12146.34445390245,
+              6169.294976938516
+            ],
+            [
+              -12158.643765374902,
+              6181.894387499429
+            ],
+            [
+              -12163.844320792938,
+              6176.395305506885
+            ],
+            [
+              -12151.94431898417,
+              6164.094782039523
+            ],
+            [
+              -12146.34445390245,
+              6169.294976938516
+            ]
+          ]
+        ],
+        "baseY": 21.5,
+        "height": 9.100000000000001
+      },
+      "ground": 21.568992143962348,
+      "doorId": "BATIMENT0000000258360969:019baa5856f21b14:entrance:0:2:3400",
+      "building": {
+        "schema": 1,
+        "id": "BATIMENT0000000258360969:019baa5856f21b14",
+        "sourceId": "batiment.9618068",
+        "name": "Bâtiment",
+        "origin": [
+          -12155.094387347694,
+          21.5,
+          6172.994584769476
+        ],
+        "rings": [
+          [
+            [
+              8.749933445244096,
+              -3.6996078309603035
+            ],
+            [
+              -3.5493780272081494,
+              8.89980272995308
+            ],
+            [
+              -8.749933445244096,
+              3.4007207374088466
+            ],
+            [
+              3.150068363524042,
+              -8.89980272995308
+            ]
+          ]
+        ],
+        "height": 9.100000000000001,
+        "levels": 2,
+        "levelHeight": 4.550000000000001,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "invented",
+        "layoutVersion": 6,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "floor": 0,
+      "entry": [
+        -4.021157321401915,
+        -0.12091382543621876
+      ],
+      "nativeProgramCoverage": {
+        "provenance": "invented",
+        "frame": "building-local-metre",
+        "domesticProgramme": {
+          "provenance": "invented",
+          "privateWetRoomRequired": true,
+          "equipmentNotOperational": [
+            "shower",
+            "fridge"
+          ],
+          "roomPlacement": "private-sleeping-and-grouped-wet-functions",
+          "waterSupply": "not-surveyed-or-provided"
+        },
+        "programVersion": 6,
+        "useBasis": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        },
+        "mainSpaceReserveFraction": 0.5,
+        "equipmentQuantities": [],
+        "allRequestedEquipmentPlaced": true,
+        "equipmentScale": "standard",
+        "boundaryAccessSamples": 8,
+        "orientationRadians": 0.7733459561576295,
+        "footprintArea": 131.96122782559567,
+        "enclosedRoomArea": 33.96,
+        "openSourceArea": 98.00122782559566,
+        "enclosedRooms": 3,
+        "requestedRoomTypes": [
+          "bathroom",
+          "bedroom",
+          "kitchen"
+        ],
+        "roomOmissions": [],
+        "furnishingRequirements": [
+          {
+            "kind": "sanitary",
+            "roomId": "room:49157c69e314d475"
+          },
+          {
+            "kind": "washbasin",
+            "roomId": "room:49157c69e314d475"
+          },
+          {
+            "kind": "shower",
+            "roomId": "room:49157c69e314d475"
+          },
+          {
+            "kind": "bed",
+            "roomId": "room:4c18467605a039ec"
+          },
+          {
+            "kind": "kitchen",
+            "roomId": "room:6e10ad99264b5411"
+          },
+          {
+            "kind": "wardrobe",
+            "roomId": "room:4c18467605a039ec"
+          },
+          {
+            "kind": "fridge",
+            "roomId": "room:6e10ad99264b5411"
+          },
+          {
+            "kind": "sofa",
+            "roomId": null
+          },
+          {
+            "kind": "dining",
+            "roomId": null
+          }
+        ],
+        "furnishingOmissions": [],
+        "allRequestedFunctionsPlaced": true,
+        "allRequestedRoomsPlaced": true,
+        "completeInventedProgram": true,
+        "roomsLimited": false,
+        "navigation": {
+          "sampledCells": 2201,
+          "stepMeters": 0.24799061915488232,
+          "sourceUnreachableCells": 0,
+          "newUnreachableCells": 0,
+          "reachableCells": 1005,
+          "freeCells": 1005
+        },
+        "budgets": {
+          "rooms": 10,
+          "furniture": 32,
+          "gridCells": 4096,
+          "candidates": 256,
+          "navigationChecks": 180,
+          "accessProbesPerObject": 25,
+          "cacheEntries": 4,
+          "cacheBytes": 1048576,
+          "boundaryAccessProbes": 256
+        },
+        "navigationChecks": 36
+      },
+      "expected": {
+        "signature": "fff652191d95457d",
+        "layoutSha256": "81243172a4c96ed990321578f3185b44d13c3b077d1f59a64d8fb0a25d129f33",
+        "storagePlanSha256": "9bb3f4b793f0398f25ad5cc07a62cdba5c0f77d92d421612d19247600026600d",
+        "bedId": "furnishing:8f34819774c18bc9",
+        "originalApproach": [
+          3.937078715856326,
+          -2.784876874434935
+        ],
+        "originalOmission": {
+          "furnitureId": "furnishing:8f34819774c18bc9",
+          "reason": "obstructed-or-distant-service-edge"
+        },
+        "restAfterBoundedFallback": true
+      }
+    },
+    {
+      "sourceId": "batiment.9618071",
+      "sourcePath": "data/map_pack/city/m13055-r02-c05-3-deaaf0e382a632bd.json",
+      "sourceChunkSha256": "deaaf0e382a632bdd20b4c0fa308c5fdc8b4cfa0679120cd4ab9e2693f8abd4f",
+      "rawFeature": {
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                [
+                  5.35750061,
+                  43.23334052,
+                  23.2
+                ],
+                [
+                  5.35755127,
+                  43.23337541,
+                  23.2
+                ],
+                [
+                  5.35755883,
+                  43.23337974,
+                  23.2
+                ],
+                [
+                  5.35764588,
+                  43.23331125,
+                  23.2
+                ],
+                [
+                  5.3575864,
+                  43.23327115,
+                  23.2
+                ],
+                [
+                  5.35750061,
+                  43.23334052,
+                  23.2
+                ]
+              ]
+            ]
+          ],
+          "type": "MultiPolygon"
+        },
+        "id": "batiment.9618071",
+        "properties": {
+          "altitude_maximale_sol": 18.8,
+          "altitude_maximale_toit": 24.5,
+          "altitude_minimale_sol": 12.5,
+          "altitude_minimale_toit": 23.2,
+          "appariement_fichiers_fonciers": "A 1.0",
+          "cleabs": "BATIMENT0000000258360972",
+          "construction_legere": false,
+          "date_creation": "2011-05-18T12:09:31.009Z",
+          "date_d_apparition": null,
+          "date_de_confirmation": null,
+          "date_modification": "2019-04-08T06:50:57.569Z",
+          "etat_de_l_objet": "En service",
+          "hauteur": 10.6,
+          "identifiants_rnb": "ZN6VTM4VF7K7",
+          "identifiants_sources": "",
+          "kind": "building",
+          "materiaux_de_la_toiture": "00",
+          "materiaux_des_murs": "00",
+          "methode_d_acquisition_altimetrique": "Corrélation",
+          "methode_d_acquisition_planimetrique": "BDParcellaire recalée",
+          "nature": "Indifférenciée",
+          "nombre_d_etages": 2,
+          "nombre_de_logements": 3,
+          "origine_du_batiment": "Cadastre",
+          "precision_altimetrique": 1,
+          "precision_planimetrique": 3,
+          "provenance": {
+            "acquiredAt": "2026-10-23",
+            "attribution": "IGN — Géoplateforme",
+            "coverage": {
+              "bbox": [
+                43.23113830833333,
+                5.357278548461538,
+                43.24343971,
+                5.368962869230769
+              ],
+              "complete": true,
+              "crs": "EPSG:4326",
+              "layer": "BDTOPO_V3:batiment",
+              "returned": 2418
+            },
+            "inputCrs": "EPSG:4326",
+            "inputSha256": "555f613d12ede49bc87ee4c148608857027e25cfac9541d738dd62a0707737c0",
+            "license": "Licence Ouverte 2.0",
+            "resource": "ign-bdtopo",
+            "source": "IGN BD TOPO — BDTOPO_V3:batiment",
+            "url": "https://data.geopf.fr/wfs/ows",
+            "verticalDatum": "NGF-IGN69"
+          },
+          "sourceId": "batiment.9618071",
+          "sources": null,
+          "usage_1": "Résidentiel",
+          "usage_2": null
+        },
+        "type": "Feature"
+      },
+      "sourceFeatureSha256": "d76aeeb205a3c6a5f9f3c33c0832d6466dfee9e844fcd96319b43bea4f9a3b48",
+      "metric": {
+        "rings": [
+          [
+            [
+              -12207.544282408548,
+              6121.994840405881
+            ],
+            [
+              -12203.543994741049,
+              6117.994902958162
+            ],
+            [
+              -12202.94412229932,
+              6117.4954045536
+            ],
+            [
+              -12195.64409268368,
+              6124.894843778573
+            ],
+            [
+              -12200.343706865446,
+              6129.495129047893
+            ],
+            [
+              -12207.544282408548,
+              6121.994840405881
+            ]
+          ]
+        ],
+        "baseY": 12.5,
+        "height": 12
+      },
+      "ground": 18.087912161308495,
+      "doorId": "BATIMENT0000000258360972:1bc7710ef522811a:entrance:0:3:6600",
+      "building": {
+        "schema": 1,
+        "id": "BATIMENT0000000258360972:1bc7710ef522811a",
+        "sourceId": "batiment.9618071",
+        "name": "Bâtiment",
+        "origin": [
+          -12201.594187546114,
+          12.5,
+          6123.495266800746
+        ],
+        "rings": [
+          [
+            [
+              -5.950094862433616,
+              -1.5004263948649168
+            ],
+            [
+              -1.9498071949346922,
+              -5.500363842584193
+            ],
+            [
+              -1.3499347532051615,
+              -5.999862247146666
+            ],
+            [
+              5.950094862433616,
+              1.399576977826655
+            ],
+            [
+              1.250480680668261,
+              5.999862247146666
+            ]
+          ]
+        ],
+        "height": 12,
+        "levels": 2,
+        "levelHeight": 6,
+        "use": "Résidentiel",
+        "levelsBasis": "nombre_d_etages IGN, rez-de-chaussée compris",
+        "outlineBasis": "invented",
+        "layoutVersion": 6,
+        "programmeUse": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        }
+      },
+      "floor": 1,
+      "entry": [
+        2.1838107010789827,
+        3.7568777969745497
+      ],
+      "nativeProgramCoverage": {
+        "provenance": "invented",
+        "frame": "building-local-metre",
+        "domesticProgramme": {
+          "provenance": "invented",
+          "privateWetRoomRequired": true,
+          "equipmentNotOperational": [
+            "shower",
+            "fridge"
+          ],
+          "roomPlacement": "private-sleeping-and-grouped-wet-functions",
+          "waterSupply": "not-surveyed-or-provided"
+        },
+        "programVersion": 6,
+        "useBasis": {
+          "kind": "residential",
+          "basis": "source-attribute",
+          "field": "usage_1",
+          "value": "Résidentiel"
+        },
+        "mainSpaceReserveFraction": 0.5,
+        "equipmentQuantities": [],
+        "allRequestedEquipmentPlaced": true,
+        "equipmentScale": "standard",
+        "boundaryAccessSamples": 10,
+        "orientationRadians": -0.7650135397156799,
+        "footprintArea": 67.82954976770856,
+        "enclosedRoomArea": 10.54,
+        "openSourceArea": 57.28954976770856,
+        "enclosedRooms": 1,
+        "requestedRoomTypes": [
+          "bathroom",
+          "bedroom"
+        ],
+        "roomOmissions": [
+          {
+            "type": "bedroom",
+            "reason": "no-contained-connected-room"
+          }
+        ],
+        "furnishingRequirements": [
+          {
+            "kind": "sanitary",
+            "roomId": "room:8ce551b6a947ef0e"
+          },
+          {
+            "kind": "washbasin",
+            "roomId": "room:8ce551b6a947ef0e"
+          },
+          {
+            "kind": "shower",
+            "roomId": "room:8ce551b6a947ef0e"
+          },
+          {
+            "kind": "bed",
+            "roomId": null
+          },
+          {
+            "kind": "kitchen",
+            "roomId": null
+          },
+          {
+            "kind": "wardrobe",
+            "roomId": null
+          },
+          {
+            "kind": "fridge",
+            "roomId": null
+          },
+          {
+            "kind": "sofa",
+            "roomId": null
+          },
+          {
+            "kind": "dining",
+            "roomId": null
+          }
+        ],
+        "furnishingOmissions": [],
+        "allRequestedFunctionsPlaced": true,
+        "allRequestedRoomsPlaced": false,
+        "completeInventedProgram": false,
+        "roomsLimited": false,
+        "navigation": {
+          "sampledCells": 1161,
+          "stepMeters": 0.24447212534948615,
+          "sourceUnreachableCells": 0,
+          "newUnreachableCells": 0,
+          "reachableCells": 430,
+          "freeCells": 430
+        },
+        "budgets": {
+          "rooms": 10,
+          "furniture": 32,
+          "gridCells": 4096,
+          "candidates": 256,
+          "navigationChecks": 180,
+          "accessProbesPerObject": 25,
+          "cacheEntries": 4,
+          "cacheBytes": 1048576,
+          "boundaryAccessProbes": 256
+        },
+        "navigationChecks": 22
+      },
+      "expected": {
+        "signature": "ebf67e89f220488d",
+        "layoutSha256": "47e9ad5ddba3fcd6555ee5e83c4f49bef66c1f0d622c07c2554b1e56b568fd02",
+        "storagePlanSha256": "79469eeeccac3bc975c2697fa2f50ec0ed1081043eb2bbd0a123d56b9e208325",
+        "bedId": "furnishing:5a48659797d63737",
+        "originalApproach": [
+          -2.9942879642369276,
+          0.25720109308046446
+        ],
+        "originalOmission": {
+          "furnitureId": "furnishing:5a48659797d63737",
+          "reason": "obstructed-or-distant-service-edge"
+        },
+        "restAfterBoundedFallback": false
+      }
+    }
+  ]
+}

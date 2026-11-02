@@ -14,7 +14,12 @@ function harness(options={}){const d=draw(),collider={id:d.id,rings:d.rings,minX
  const c=vm.createContext({console,URL,window:{__MISTRAL_DEBUG:{}},V046:{lab:!!options.lab},V046_ORIGIN:[892000,6247000],V050_ROOFS:{cache:new WeakMap([[world,{entries:[],owner:'previous-owner'}]])},world,V015_GEO_MACROS:{synthetic:{metricOrigin:[892000,6247000]}},MistralRoofSolids:R,MistralIntegrity:{inside:(rings,x,z)=>x>=0&&z>=0&&x+z<=.5},v050LocalSourceJSON:async p=>{observed.fetch++;if(options.error)throw Error('Controlled fetch failure');if(p.endsWith('/index.json')){if(options.delayed)return delayed;return options.missing?null:descriptor;}return clone(payload);},v046Import:()=>{const incoming=options.freshImports?draw():d;return{draws:[incoming],buildings:[incoming],colliders:[options.freshImports?{...collider,rings:incoming.rings}:collider]};},v046Ensure:async()=>{observed.ensures++;return true;},v046Cancel:()=>{observed.cancels++;return'cancel';},v018Triangulate:()=>[[[0,0],[.5,0],[0,.5]]],v018MeshData:x=>[{positions:x.vertices?.flat()||[],indices:x.faces?.flat()||[]}],collectDraws:()=>world.staticDraws});
  vm.runInContext(source+'\nv056LandmarksAfterInit();',c);return{c,d,collider,world,observed,run:s=>vm.runInContext(s,c),ready:()=>vm.runInContext('window.__MISTRAL_DEBUG.v056LandmarkReady()',c),info:()=>clone(vm.runInContext('window.__MISTRAL_DEBUG.v056LandmarkInfo()',c)),resolve:()=>resolve(descriptor)};}
 
-test('The shipped four-tile MNS payload is hash-addressed and has nineteen unchanged building identities',()=>{const index=JSON.parse(fs.readFileSync(path.join(root,'data/map_pack/landmark_surfaces/index.json'))),bytes=fs.readFileSync(path.join(root,index.surface.path));assert.equal(bytes.length,index.surface.bytes);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),index.surface.sha256);const raw=JSON.parse(bytes),out=M.validate(raw);assert.equal(out.records.length,19);assert.equal(out.source.tiles.length,4);assert.equal(out.records.reduce((n,r)=>n+r.faces.length,0),101223);assert.equal(new Set(out.records.map(r=>r.cleabs)).size,19);assert.equal(new Set(out.records.map(r=>r.siteContext)).size,4);assert.equal(out.records.some(r=>r.facadeDocument||r.interiorDocument),false);for(const [p,hash]of Object.entries(raw.inputHashes))assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex'),hash);});
+test('The shipped five-tile MNS payload is hash-addressed and retains twenty-three source identities',()=>{const index=JSON.parse(fs.readFileSync(path.join(root,'data/map_pack/landmark_surfaces/index.json'))),bytes=fs.readFileSync(path.join(root,index.surface.path));assert.equal(bytes.length,index.surface.bytes);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),index.surface.sha256);const raw=JSON.parse(bytes),out=M.validate(raw);assert.equal(out.records.length,23);assert.equal(out.source.tiles.length,5);assert.equal(out.records.reduce((n,r)=>n+r.faces.length,0),142427);assert.equal(new Set(out.records.map(r=>r.cleabs)).size,23);assert.equal(new Set(out.records.map(r=>r.siteContext)).size,6);assert.equal(out.records.some(r=>r.facadeDocument||r.interiorDocument),false);for(const [p,hash]of Object.entries(raw.inputHashes))assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex'),hash);});
+test('Attributed source receipts remain bounded at eight and a ninth is refused',()=>{
+ const raw=fixture();raw.source.tiles=Array.from({length:8},(_,i)=>({...clone(raw.source.tiles[0]),sha256:(i+1).toString(16).padStart(64,'0')}));raw.records[0].sourceTileSha256=[raw.source.tiles[0].sha256];
+ assert.equal(M.MAX_SOURCE_TILES,8);assert.equal(M.validate(raw).source.tiles.length,8);
+ raw.source.tiles.push({...clone(raw.source.tiles[0]),sha256:'9'.padStart(64,'0')});assert.throws(()=>M.validate(raw),/provenance incompatible/);
+});
 test('Validation clones metric mesh arrays and the raw geographic binding',()=>{const raw=fixture(),before=clone(raw),out=M.validate(raw);out.records[0].vertices[0][2]=99;out.records[0].rawGeometry.coordinates[0][0][0]=99;assert.deepEqual(raw,before);});
 for(const[name,change]of[
  ['frame',r=>r.frame='WGS84'],['product',r=>r.source.product='MNT LiDAR HD'],['spacing',r=>r.source.nativeSpacingMeters=1],['HTTP source',r=>r.source.tiles[0].feature.properties.url_mns='http://data.geopf.fr/wms-r?LAYERS=IGNF_LIDAR-HD_MNS_FIXTURE'],['duplicate identity',r=>r.records.push(clone(r.records[0]))],['NaN vertex',r=>r.records[0].vertices[0][2]=NaN],['NoData',r=>r.records[0].vertices[0][2]=-9999],['bad face',r=>r.records[0].faces[0][2]=999],['degenerate face',r=>r.records[0].faces[0]=[0,0,1]],['unbound tile',r=>r.records[0].sourceTileSha256=['b'.repeat(64)]],['area gap',r=>r.records[0].measurements.roofProjectedAreaSquareMetres=.1],['boundary crack',r=>r.records[0].measurements.boundaryLengthMetres+=.1],['wrong upper bound',r=>r.records[0].measurements.maximumElevation=30]
@@ -46,7 +51,14 @@ test('The seventeen previous MNS records and their three acquired tile receipts 
  const previous=JSON.parse(previousRaw),current=shipped(),ids=new Set(previous.records.map(r=>r.cleabs));
  assert.deepEqual(current.records.filter(r=>ids.has(r.cleabs)),previous.records);
  assert.deepEqual(current.source.tiles.slice(0,3),previous.source.tiles);
- assert.deepEqual(current.inputHashes,previous.inputHashes);
+ for(const [p,hash]of Object.entries(previous.inputHashes))assert.equal(current.inputHashes[p],hash);
+});
+test('The nineteen prior surfaces and four original tile receipts remain identical',()=>{
+ const bytes=fs.readFileSync(path.join(root,'data/map_pack/landmark_surfaces/marseille-mns-d784b256e926b869.json'));
+ assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),'d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d');
+ const previous=JSON.parse(bytes),current=shipped();assert.deepEqual(current.records.slice(0,19),previous.records);assert.deepEqual(current.source.tiles.slice(0,4),previous.source.tiles);
+ for(const [p,hash]of Object.entries(previous.inputHashes))assert.equal(current.inputHashes[p],hash);
+ const doc=JSON.parse(fs.readFileSync(path.join(root,'data/map_pack/architecture/index.json')));assert.equal(doc.records.length,12);assert.equal(doc.records.some(r=>r.facadeDocument||r.interiorDocument),false);
 });
 for(const [id,context,faces,vertices,peak]of[
  ['BATIMENT0000000258929268','Chapelle et Hospice de la Vieille Charité',6186,3377,48.38722229003906],
@@ -59,4 +71,24 @@ for(const [id,context,faces,vertices,peak]of[
  const d={mesh:'prism',geoLayer:'building',geoProperties:f.properties,sourceGeometry:f.geometry,baseY:f.properties.altitude_minimale_sol,height:f.properties.hauteur},before=clone(d),origin=[892000,6247000],s=M.build(r,d,origin),index=new M.SurfaceIndex(s.roof.vertices,s.roof.faces),top=s.roof.vertices.find(p=>p[1]===peak);
  assert.deepEqual(d,before);assert.equal(s.roof.vertices.length,vertices);assert.equal(s.roof.faces.length,faces);assert.equal(index.heightAt(top[0],top[2]),peak);assert.ok(s.minimumElevation>d.baseY);assert.ok(s.maximumElevation>d.baseY+d.height);
  assert.equal(s.walls.faces.length,r.boundary.length*2);
+});
+for(const[id,context,vertices,faces,peak]of[
+ ['BATIMENT0000000258927584','Contexte du Palais de la Bourse',13372,25562,35.46107482910156],
+ ['BATIMENT0000000273403820','Contexte de l’Opéra Municipal de Marseille',8010,15205,33.30599594116211],
+ ['BATIMENT0000000273403821','Contexte de l’Opéra Municipal de Marseille',151,219,27.36325454711914],
+ ['BATIMENT0000000273403819','Contexte de l’Opéra Municipal de Marseille',150,218,27.383337170219356]
+])test('A complete new context keeps its original geometry and measured collision surface: '+id,()=>{
+ const raw=shipped(),r=M.validate(raw).records.find(r=>r.cleabs===id),chunk=JSON.parse(fs.readFileSync(path.join(root,'data/map_pack/city/m13055-r05-c06-0-1-bc93c7f7ec8b18f4.json'))),f=chunk.features.find(f=>f.properties.cleabs===id);
+ assert.equal(r.siteContext,context);assert.deepEqual(r.rawGeometry,f.geometry);assert.equal(r.sourceId,f.properties.sourceId);assert.equal(r.vertices.length,vertices);assert.equal(r.faces.length,faces);assert.equal(r.measurements.maximumElevation,peak);assert.equal(r.siteContextEvidence.documentarySiteLinkInstalled,false);
+ const d={mesh:'prism',geoLayer:'building',geoProperties:f.properties,sourceGeometry:f.geometry,baseY:f.properties.altitude_minimale_sol,height:f.properties.hauteur},before=clone(d),s=M.build(r,d,[892000,6247000]),index=new M.SurfaceIndex(s.roof.vertices,s.roof.faces),top=s.roof.vertices.find(p=>p[1]===peak);
+ assert.deepEqual(d,before);assert.ok(s.minimumElevation>d.baseY);assert.equal(s.roof.faces.length,faces);assert.ok(Math.abs(index.heightAt(top[0],top[2])-peak)<1e-5);assert.equal(s.walls.faces.length,r.boundary.length*2);
+ for(const[key,value]of Object.entries(r.sourceProperties))assert.equal(value,f.properties[key]??null);
+});
+test('Bourse crosses the native tile seam with complete source area and no substituted cells',()=>{
+ const r=shipped().records.find(r=>r.cleabs==='BATIMENT0000000258927584');assert.equal(r.sourceTileSha256.length,2);
+ assert.ok(r.vertices.some(p=>p[1]===6247000));assert.ok(r.vertices.some(p=>p[1]===6247000.5));
+ assert.ok(r.faces.some(f=>f.some(i=>r.vertices[i][1]===6247000)&&f.some(i=>r.vertices[i][1]===6247000.5)));
+ assert.ok(Math.abs(r.measurements.footprintAreaSquareMetres-r.measurements.roofProjectedAreaSquareMetres)<.0001);
+ assert.ok(Math.abs(r.measurements.boundaryLengthMetres-r.measurements.sourceBoundaryLengthMetres)<.002);
+ assert.ok(r.siteContextEvidence.buildingOverlapRatio<.3);assert.equal(r.siteContextEvidence.documentarySiteLinkInstalled,false);
 });

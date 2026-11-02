@@ -1,0 +1,171 @@
+{
+  "validated_at_utc": "2026-11-02T06:13:42.961779+00:00",
+  "review_phase": "final45-phaseA",
+  "review_type": "manual screenshot and receipt integrity review; no new browser or automated test",
+  "automated_checks_added": 0,
+  "previous_84_proof_reassigned": false,
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "bestiary_sha256": "8ca674889e4944353f16ac16e9a24470ba444623c27271e48e8a928409b35667",
+  "script_sha256": "56e9b990514937de327c396aea29a96795ab5fa454b3d3aa3941ddf933d3b50a",
+  "report": "BESTIARY_NATIVE.json",
+  "report_sha256": "6fba5d98efeb8a8b4f03c30d056f8642cf1e4e4bf480a9628c142d04ddb06b26",
+  "execution": "EXECUTION.json",
+  "execution_sha256": "9d4e30f60bf239ea3cb0a2b975e9ec53d03198ab4353436e191f2e6f5850cb02",
+  "stdout_log_sha256": "7114328a11d71ccc9f09fe3c10a50a1dddc5821f62851a85f3a2f8cbe110bbe0",
+  "executed_script_copies_sha256_verified": true,
+  "observed_run_passed": 203,
+  "observed_run_failed": 0,
+  "actual_child_exit_code": 0,
+  "runtime_input_count": 474,
+  "runtime_changed": [],
+  "script_unchanged": true,
+  "contexts_created": 1,
+  "cleanup": {
+    "context_created": true,
+    "browser_created": true,
+    "context_close_call": "completed before Playwright driver shutdown",
+    "browser_close_call": "completed before Playwright driver shutdown",
+    "browser_disconnected": true,
+    "server_port_closed": true,
+    "server_port": 46523
+  },
+  "independent_port_probe": {
+    "address": "127.0.0.1",
+    "port": 46523,
+    "connect_ex": 111,
+    "closed": true,
+    "actual_process_exit_code": 0
+  },
+  "screenshots_opened": 15,
+  "screenshot_sha_matches": 15,
+  "shots": [
+    {
+      "file": "01_new_regional_actor.png",
+      "sha256": "ffbc209f75b6a23b830f212f1b510d26b85600c43fec4f8c8f486e34c0033c69",
+      "opened_and_visually_inspected": true,
+      "observation": "Rat-couronné au centre : couronne, oreilles, incisives, quatre pattes et queue identifiables ; autres acteurs réels à distance."
+    },
+    {
+      "file": "02_true_gabian_flight.png",
+      "sha256": "4a45492e4c9c9c097da3c0fbfcd1e584f9019bd851a937daea8f6246b53dd81f",
+      "opened_and_visually_inspected": true,
+      "observation": "Gabian en vol vu de dessous : bec, sac ventral et pattes visibles ; une aile est coupée par le cadre rapproché ; avertissement de lâcher réel."
+    },
+    {
+      "file": "03_real_corrosive_drop.png",
+      "sha256": "1edc4ebcd7d50bfe9e203d3b0b375bdc5c816f153954562b85f6735efa26c9e6",
+      "opened_and_visually_inspected": true,
+      "observation": "Gabian et projectile vert visibles au-dessus du port et du relief source ; capture de fuite native, sans retouche."
+    },
+    {
+      "file": "04_radscorpion_native.png",
+      "sha256": "e227fad4d092bdd4a37b15cfa8f0b40141f847bb27e5e449b4575807dda02cb0",
+      "opened_and_visually_inspected": true,
+      "observation": "Radscorpion avec pinces, pattes et queue segmentée reconnaissables ; un autre acteur réel apparaît partiellement en haut à droite."
+    },
+    {
+      "file": "04_radscorpion_vats.png",
+      "sha256": "dc660dd9be5927c6b4710ee5eaa0a41f2c62e0e3819a22a2f28ceb95828e405a",
+      "opened_and_visually_inspected": true,
+      "observation": "Pince gauche sélectionnée, coloration et boîte sur le membre rendu ; tête, dard et groupes de pattes séparés."
+    },
+    {
+      "file": "05_radscorpion_windup.png",
+      "sha256": "7a3a27b8d68cd8390b9d318e168b3c441e3afbdf54ba59194bdf7675fe638e0e",
+      "opened_and_visually_inspected": true,
+      "observation": "Préparation Dard du Radscorpion visible avec yeux, mandibules et pinces ; vue très proche coupant la pointe de queue."
+    },
+    {
+      "file": "04_mirelurk_native.png",
+      "sha256": "cfdfc4648a0db340016ac589f281bc07d5a92a2bdf3f98244caf4fb8dd6736b2",
+      "opened_and_visually_inspected": true,
+      "observation": "Fangeux entier visible : yeux pédonculés, abdomen, carapace, pinces et pieds ; avertissement actuel provenant ici de l’élite voisine."
+    },
+    {
+      "file": "04_mirelurk_vats.png",
+      "sha256": "b7299fd59651ab76a6b9097c53f482601c48cceafdeb301e457c65be905096cb",
+      "opened_and_visually_inspected": true,
+      "observation": "Pince gauche réellement sélectionnée, volumes sur le membre rendu ; carapace/abdomen, yeux et pattes étiquetés."
+    },
+    {
+      "file": "05_mirelurk_windup.png",
+      "sha256": "9f753790d8e7143eaa9865908255c2e7c040ed5c9e20e83287c44c87d6dd38ad",
+      "opened_and_visually_inspected": true,
+      "observation": "Cisaillement des pinces affiché, deux pinces au premier plan ; gros plan coupant une partie du haut et du bas."
+    },
+    {
+      "file": "04_feralGhoul_native.png",
+      "sha256": "f6a64a451fa0eb1e5a6acea5d00ff6bf344f0486d1cec1bd04f62a037e3ebc9e",
+      "opened_and_visually_inspected": true,
+      "observation": "Goule fine et asymétrique de profil, tête, côtes et membres visibles ; avertissement courant provenant ici du Fangeux voisin."
+    },
+    {
+      "file": "04_feralGhoul_vats.png",
+      "sha256": "5186f0aaa82b1e10e085c6f09fd5b0172fe0607faf9b119d2e8d6e3c0496b569",
+      "opened_and_visually_inspected": true,
+      "observation": "Goule : tête, cage thoracique, deux bras et deux jambes ciblables ; bras gauche sélectionné dans son volume réel."
+    },
+    {
+      "file": "05_feralGhoul_windup.png",
+      "sha256": "ab8a174b3f94754edff3a4b44fcc5cf036092b4570c6bc1b79718b79160c50f4",
+      "opened_and_visually_inspected": true,
+      "observation": "Ruée de la Goule affichée ; côtes et doigts distincts, bras en anticipation ; gros plan coupant le sommet de la tête."
+    },
+    {
+      "file": "04_deathclaw_native.png",
+      "sha256": "d980684f3b5174d51f9114903eca8796584309c572284e9d1b30c984e5d153c9",
+      "opened_and_visually_inspected": true,
+      "observation": "Griffe de profil, cornes, épaules, griffes, jambes et queue segmentée visibles ; avertissement provenant ici du Magistrat voisin et recouvrant une partie du haut."
+    },
+    {
+      "file": "04_deathclaw_vats.png",
+      "sha256": "1f4568587adc02b86174bb9c0b5fb68a6db541a7398bdc91ade88da29c6cd721",
+      "opened_and_visually_inspected": true,
+      "observation": "Griffes gauches sélectionnées sur le membre rendu ; tête/cornes, torse, pattes et queue possèdent leurs volumes."
+    },
+    {
+      "file": "05_deathclaw_windup.png",
+      "sha256": "9b6f26fe45104c352cc9ab96d1431b46cca0f74004650d9052f3536ccebdb7f4",
+      "opened_and_visually_inspected": true,
+      "observation": "Balayage des griffes affiché ; torse et avant-bras articulés au premier plan, gros plan coupant le haut des cornes."
+    }
+  ],
+  "visual_review": "VISUAL_REVIEW_FINAL45.md",
+  "visual_review_sha256": "d074906f2a5bd151876994eb148b61764557642b85c464d97ae0a1e3624dec0c",
+  "limitations": [
+    "One Rat-couronné or Cigale and one genuinely airborne Gabian are required; --require-iconic additionally requires a real Radscorpion and Fangeux with their actual AI preparations. This does not certify all 91 potential slots or all nine species natively. --require-humanoids also requires the real feral and deathclaw slots.",
+    "Wound/old-campaign/body/loot roundtrip and the other species are covered by separate production-wrapper VM regressions.",
+    "No native enemy kill, resource grant, quest outcome or fabricated historical storage import is performed.",
+    "Camera navigation, time and freeze are declared diagnostic assistance; no human or citywide 1:1 claim."
+  ],
+  "source_or_qa_modified_by_review": false,
+  "runtime_integrity_scope": "runtime_changed and script_unchanged reflect start-to-end of the completed phase A run, not a claim that all474 archived values still match the present workspace",
+  "phase_a_freeze": "qa-phase-a/FROZEN_INPUTS.json",
+  "phase_a_freeze_sha256": "daaae557d37062663e070cd448333c641ab6c6bcfac1170c9d9c3d6872911db8",
+  "post_execution_qa_delta": {
+    "path": "tests/expansion/facade_hardware_native.py",
+    "phase_a_sha256": "8435e8b232c497963c5b56f3d35e50aac8cbdf408abd071af8816a98374cdd05",
+    "observed_current_sha256": "368baef192ccf76b3ae865eaf5b8c688f4d92a2023455d1bfecf1d030b7409ee",
+    "reason": "Facade Node/Chromium metric precision contract correction, approximately2nm; separate QA phase B",
+    "observed_at_utc": "2026-11-02T06:13:42.961779+00:00"
+  },
+  "own_pins_rechecked": {
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": {
+      "phase_a_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+      "review_current_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78"
+    },
+    "src/v050/13_regional_bestiary.js": {
+      "phase_a_sha256": "8ca674889e4944353f16ac16e9a24470ba444623c27271e48e8a928409b35667",
+      "review_current_sha256": "8ca674889e4944353f16ac16e9a24470ba444623c27271e48e8a928409b35667"
+    },
+    "tests/expansion/regional_bestiary_native.py": {
+      "phase_a_sha256": "56e9b990514937de327c396aea29a96795ab5fa454b3d3aa3941ddf933d3b50a",
+      "review_current_sha256": "56e9b990514937de327c396aea29a96795ab5fa454b3d3aa3941ddf933d3b50a"
+    },
+    "data/map_pack/architecture/index.json": {
+      "phase_a_sha256": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+      "review_current_sha256": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+    }
+  },
+  "all_phase_a_inputs_claimed_equal_to_current_workspace": false
+}

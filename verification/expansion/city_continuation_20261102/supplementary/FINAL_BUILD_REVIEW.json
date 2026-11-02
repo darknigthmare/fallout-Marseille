@@ -1,0 +1,857 @@
+{
+  "stage": "complete",
+  "createdAtUtc": "2026-11-02T06:28:51.480699+00:00",
+  "reviewer": "/root/holotapes",
+  "verdict": "PASS_WITH_LOW_COSMETIC_RESERVATION",
+  "scope": "Read-only static review from c3cd2a3 of builder/core/FPS/HUD/new holobands and their actual generated delivery. No application test, browser, build or source/QA edit executed; adds zero controls or captures. The reviewer authored the new holoband module; this review is independent of the root-owned builder/core/FPS/HUD changes but is not an independent authorship review of module21.",
+  "baselineCommit": "c3cd2a3abf70a86aeef3d7a8ad2d9d5b38545afa",
+  "htmlSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "focusedDiffSha256": "9477d80cd3e3a95b81ae62d654dd057f60d19a2201b364083b6b482b52054191",
+  "sourceHashes": {
+    "tools/build_single.py": "3f33ec6a8931698df40ca4f1db649f65130ae0df1a4fc16ca06c24929d1580ac",
+    "src/core-v017.js": "90e1ad788ab4e76d17123a930b5ff8bdaed8cebcd8a35d528827575235528763",
+    "src/v050/17_first_person.js": "07f81830b5115bbb1e0ad62517f563b613442b20928f65bdf0dd40fc1ce19214",
+    "src/v050/19_fps_hud.js": "130d31f98652b5cbe95008998b086ce4df77c8242a4f87ee5e22e1cb9063cabc",
+    "src/v050/20_iconic_vending.js": "0757a959324cd76cfe7bcd1352910c14e27711d9a5ce788a1d7b0471e250ac20",
+    "src/v050/21_holotapes.js": "38dc175b60aa227ce9a2f13f77ce57401d36c4950b84cd59de52fe7937d2f217",
+    "src/v027/04_map_radio.js": "00cb497bfa98c2fcca682be1b67719b6da2f5238a5df677915f63ea76c6508e6",
+    "src/v049/01_persistence.js": "9962a7b0eec8fff31f845c84b5caf3b0e0d2dc90931db1d1025a45d014ecc828",
+    "src/v049/02_bodies_lifecycle.js": "b7a0453f923699b8edf21c1a2bf34e1a6c93b102c8ccbee6b7eddab265357866",
+    "src/game.js": "6cfb1a06c43603aedf36ae546ec2bfad75bf72ca7d67a4183c3c1585abbcfd6a",
+    "index.html": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "sw.js": "74f1c238bd1c2e4f65b14857ff3c542fa159674cb090798c4d8058a70ca3035c"
+  },
+  "buildObservations": {
+    "bundledModuleCount": 155,
+    "allModulesEmbeddedExactlyOnce": true,
+    "moduleTransformScope": "Only the existing sandbox-key substitution before v022 and the unchanged final far/fog-distance substitutions are accounted for. No builder executed.",
+    "moduleEmbedding": [
+      {
+        "path": "src/patches/01_geometry.js",
+        "sourceSha256": "dbb39a1ef4fa26f5753e0ad16892111e66513b3bbc65a24ab1d22bac354bbdb8",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/patches/02_geography.js",
+        "sourceSha256": "31eeed20314529a54e630626292c215a1b5b9cc0ef9a901405bd67c87dae8cd3",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/patches/03_gameplay.js",
+        "sourceSha256": "f5e1d276571ca6f2e5475303afee10245152790aadd2b41d196e79c979301b0a",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/patches/04_interface.js",
+        "sourceSha256": "b67744c9ddf56a5b43fbccb7803d3302080aeb55090e8d354b53a3576a3974e8",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v020/00_state.js",
+        "sourceSha256": "158398cd1a300a72ec45c1b092c934fdccb6be7f10f94e97ba48ccd5f0e5a2f6",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v020/01_combat.js",
+        "sourceSha256": "74f40d37dbbcdd71bb44df4d9f07ba69211aa457e4973dbc2ff559180eeb556d",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v020/02_navigation.js",
+        "sourceSha256": "5c774ea162c610285b46a0451b63349bc35655565c3acca8de1e65adcfb43c19",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v020/03_interiors.js",
+        "sourceSha256": "91cd78d325695f5402b6aafb8b982fbe94eb095c86ecab5d0593c5073b655e73",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v020/04_field.js",
+        "sourceSha256": "e70bcfe8c8981191a09049d4034db6893f4140a8e1c13e29cd1e7d22a351c013",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v020/05_runtime.js",
+        "sourceSha256": "ca0211fff6ff8124d932559b7b32346ebd541c823233a83aa54f91d54145fc54",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v021/00_state.js",
+        "sourceSha256": "47b513e96708b43dcd0f117acf772a55afa13a831baf706a7648984dc66c4893",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v021/01_navigation.js",
+        "sourceSha256": "13e95b06e8f3f60890ceae164c032421b8ac5d9c8ec0b12d099f65ca45f596a5",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v021/02_visuals.js",
+        "sourceSha256": "f57135eecc2a915b620706e7763f45a5d96cd768bd7cce6a85c1a566b487dfe8",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v021/02z_renderer.js",
+        "sourceSha256": "3849f8e4b68236a023b852567a3c631337e94f6205c1311514accc3e22eea1e0",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v021/03_combat.js",
+        "sourceSha256": "94ebf2813e3f900b10ce225187ce1585173909eaf74fdd4b22a1eec57146551f",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v021/04_story.js",
+        "sourceSha256": "532b940a58ea78ab549897f4898a13600c21b21dcfce9d3a6946b0f3db3bb611",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v021/05_maps.js",
+        "sourceSha256": "9261cf3e726c524abdcdbcb02bc0b9ceb121984797103c6cbb15a4ff53e7c09c",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v021/06_interface.js",
+        "sourceSha256": "b0d39deeeab1cda10d618721a4c92d84fee5cf469d86e2db829e381d8ec7216f",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v022/00_state.js",
+        "sourceSha256": "5e0e4f4ac8aa67e56d5dfd14b2eec2f08c090c1870fcec3673590f70fd27e44c",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v022/01_courts.js",
+        "sourceSha256": "1295e1a00e6cbba1a1bf9ab690bd23c184991a515a0e29eb26a8ec6d13b746c3",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v022/02_residents.js",
+        "sourceSha256": "9663bffb1d034df62eede04cff65e507342887127f416a848444d2dcc22edd54",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v022/03_return_story.js",
+        "sourceSha256": "e1f3b7ae3f0c08be2f00ea8a78516477dd9031c522cd11e567b1930e48413f9e",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v022/04_interface.js",
+        "sourceSha256": "cf36d877b9984b3657573e5453f510a4f3b7c17728f8af21ed91ec34b5e99547",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v023/00_state.js",
+        "sourceSha256": "494c9343810c6d1437c981b45eb590453876f2544f216337b889301e40dae43e",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v023/01_goat.js",
+        "sourceSha256": "d155749aa4a8d06d520e831820a68c8fe58579e42571db875c87a3696c1523e8",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v023/02_vats.js",
+        "sourceSha256": "32dede08fdc88e9688297471b253b5266a405b7cad8ff38dbb659547e6cad5a9",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v023/03_dialogue.js",
+        "sourceSha256": "7d5698a1128697cc4648f08747da6412d0adb990ec8d72691d6f9938d780b169",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v023/04_story.js",
+        "sourceSha256": "22742ce9597a80a5d4da63bf212ec5412e5a5eff82e5316fb28cbd73543fac1b",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v023/05_world.js",
+        "sourceSha256": "8542468d42416c21f3d60542dca880d02b34dbd6cbbeb9b8d8ee3f8bc9d23b5a",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v023/06_interface.js",
+        "sourceSha256": "d114af30871cdc87f972a4c17f300bf9132dd80a8fbbc228dc4fcf57cf37b818",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v025/00_anatomy.js",
+        "sourceSha256": "12c19d1014aef7468f7ec73540afc83e202d2ec2021db9e9fd28d37e43dfa4dd",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v025/01_camera.js",
+        "sourceSha256": "6ab8cd4e0965270ad298a9deab4f6b72ded823a6e70b54adf54ec8e2e972a3b1",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v025/02_interface.js",
+        "sourceSha256": "6403387f06be8be7f50674fa35f937de90ea6bd337ec0bd3b649f8976c8e6152",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v025/03_boot.js",
+        "sourceSha256": "56de67717af44e2cd375538c0e483741015661476b99fb2c9510042922eb3b2e",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v026/00_state.js",
+        "sourceSha256": "41bd925bba397d005f8f6f6cb3146d7c69f7fc0738ed5f03e7f48842b2a3f658",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v026/01_loot.js",
+        "sourceSha256": "ed4b10cfdda62fce1dc44306aefb451af02a5cf8aa0618aa0743611d79484735",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v026/02_world_story.js",
+        "sourceSha256": "91635d1938db6adacccbcc66a2f46fbb8a873be2e90f5406288756b9b6392444",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v026/03_inventory.js",
+        "sourceSha256": "b0094a52c41f439aea7d43e11db1d5ce7dfcad36fc6aeaf35b379c1f806c64ee",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v026/04_trade_runtime.js",
+        "sourceSha256": "0da9183a0103957b783627378f6ec2078206eb5856125ebc89786ce44e317745",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v026/05_boot.js",
+        "sourceSha256": "b8b3cfd9227ead9055caa947aa812cc94af599e01be28aafc4c970e3954c6529",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v027/00_state.js",
+        "sourceSha256": "b319b625fd42ec6cc4a3166a58764b0f607c9f643a516f701d71a25427f0ff66",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v027/01_shell.js",
+        "sourceSha256": "ee78374d5eb0f2290cf6778f20d8919f8809cc6cc1db145ccfc57844a6b58f5f",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v027/02_inventory_status.js",
+        "sourceSha256": "684ee6055282564f2b94c4fecde3a3ab5f66b8cf104b3278d864a96febc3d5f4",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v027/03_data.js",
+        "sourceSha256": "317d7c850be188cf51972c9f1de20e149dadc419d3b93ea393c9f045d8778c37",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v027/04_map_radio.js",
+        "sourceSha256": "00cb497bfa98c2fcca682be1b67719b6da2f5238a5df677915f63ea76c6508e6",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v027/05_controls.js",
+        "sourceSha256": "441bd330948a72b6dc2b5d9974484fe7d3a3754113be17a30fe7bfb620496226",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v028/00_state.js",
+        "sourceSha256": "f7f53fad81cf45cc164fc1d83a5ec0044c9d92045ffb269b3618a095cc65c61c",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v028/01_body.js",
+        "sourceSha256": "4cff049afd3d62eae18612fd61d751cc5e3489295a9dfce898f4a89430b8c6b3",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v028/02_light.js",
+        "sourceSha256": "b98b86fdad9ffd9b7103110b6baaeceb29de54fd68fbeb9412af54c5f1a30223",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v028/03_hologame.js",
+        "sourceSha256": "0de1c1f8d3874120f51e3193f955659baeea712d58ac88bad619fc289ef5d88d",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v028/04_story.js",
+        "sourceSha256": "964dde3c94a2dbc127666a04a23bc2b2730167602530cd0faaf2c46a6849a30a",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v028/05_interface.js",
+        "sourceSha256": "bead1d8d36306dd0c84bc57a9a3beb622fb4c08df060d7f74fd875891942b4b7",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v029/00_state.js",
+        "sourceSha256": "a074c3287262c4c171495177fe3b8d7e80f2ab01362a97cef5beb8a130fbbd92",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v029/01_terminal.js",
+        "sourceSha256": "d0d3817f3e447e4ad629146d185965ff2ae6bddb3d29908b22825c9300a3e26a",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v029/02_perception.js",
+        "sourceSha256": "d029f07c82b118dd58a11708a8661f5129fb5dd6c2896c4b630c5aadf803881c",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v029/03_world.js",
+        "sourceSha256": "69a27fd8be74d5c20f0e11c5f72179143284dab0187ddc5f909129a711de97a6",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v029/04_story.js",
+        "sourceSha256": "c05a6147cf2db36440d7972d11f9507e0f908fbcbb76951a0e0748ae0218acbb",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v029/05_interface.js",
+        "sourceSha256": "b4b261c9ec1b70682c32638a65f2bc7555a576217d515da819825c970c5e1ff3",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v030/00_state.js",
+        "sourceSha256": "7d92c7f6f963a01a357ad0526860ae008e44801ee2dc2835365d5070c3f8e30e",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v030/01_power.js",
+        "sourceSha256": "054a9fd2642394126af47612642a7c3d983ae229640319a1c2b2cd7a517c5031",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v030/02_visuals_world.js",
+        "sourceSha256": "4c840563ff3c80e116bceb70d5c6b7b21386d4ca35de4890fa643b2a073da4cd",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v030/03_story.js",
+        "sourceSha256": "649b3360947092c5d6981e552b46c3178e4c25c0c6171ce7e976ce4622040611",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v030/04_interface.js",
+        "sourceSha256": "692faf1551c6e74346f123053242a487f92418c067db45e5bb1a208aaba6ef69",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v035/00_state.js",
+        "sourceSha256": "5c45a3f2427f255d0ac7b8c0097c1d00ae5d6c36cdd8c6605dc3afba89440522",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v035/01_career.js",
+        "sourceSha256": "7088167baf9482baf8e7e1d094e2f4a8ef8f866451d2c8704a61ac7574f64385",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v035/02_operations.js",
+        "sourceSha256": "3d207458e3fa3becc9175d5b23c24c1806a735d93d0a4b44b4a79dbfca28744d",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v035/03_hub.js",
+        "sourceSha256": "b7156ce8af028eabcb85f01d27c47b3e8fbdeb84bcdf4e054eb4214b07a384f3",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v035/04_interface.js",
+        "sourceSha256": "7ac4353b88c8ceb4bc45e46a6f745a5452b2650132000d5fddd888b4409fad58",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v035/05_prologue.js",
+        "sourceSha256": "dce66417588449c52d1373f4e9fa9322f7a0a9890b677bbfc72de0e2a71bf60d",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v035/06_product.js",
+        "sourceSha256": "1306976d6dae0a8c5ef4807682ccb571af8b6eb3056e9a5c2ec7c585d9326554",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v036/00_state.js",
+        "sourceSha256": "4265b87054d0ace68261188b6d28fa18d7442b8eb007d2a7feb2a5ea882b099d",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v036/01_streaming.js",
+        "sourceSha256": "ae9c6e819a81da8b6451ce1761d94bb62986c310b5441d1f5cc5cb78a656fafe",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v036/02_continuity.js",
+        "sourceSha256": "898b275e75d6b36b6cd8d62b430242312c025c675618b4da978a977717244a70",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v036/03_interface.js",
+        "sourceSha256": "5f32b898bfa01744cc0ee93672928ed2e9257f8bdacbcb6e9d440ef657f56c1f",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v036/04_boot.js",
+        "sourceSha256": "a7a109ca320893a5b30bcaa3d0cc45738351963e9684fcddef91909fefd8a1c7",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v037/00_state.js",
+        "sourceSha256": "f6f0f883d295403958c59682cd483c2ac12c75ceb73184b6ed6babb76977c4cf",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v037/01_cache_streaming.js",
+        "sourceSha256": "5504e7be3a1939a1f1f7906057e865ff28181879ad74220ccf99be52a920f78e",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v037/02_topology.js",
+        "sourceSha256": "0f4cf728ef4ac6a79a93599ebb74f63b532a518cefd73a01923f6d5e12938d8a",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v037/03_interface.js",
+        "sourceSha256": "250361ccfa77de2469527fa3c893259474d8489ec18b2f464d692a09d7cb660d",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v037/04_boot.js",
+        "sourceSha256": "ece85d2f28c09331cdcae6bc3c797437dbd61fb8737f8f123f996535d5bb46f7",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v038/00_state.js",
+        "sourceSha256": "05fd25c936f47ef8ca3ff953631a0f74f220eb64bd9e1c01ece05d144c1958a9",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v038/01_streaming.js",
+        "sourceSha256": "1dd3dcde658b32e18c5719b4cfffe299ebf257a7e423292afc9148cb2ae4c47a",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v038/02_interface.js",
+        "sourceSha256": "1cf95c5c724ee45c997ecb17b27556c1740734038ab9ee93f0f740ae3ccb8baa",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v038/03_boot.js",
+        "sourceSha256": "9815048bb3e7eefa5a3d0e324dd9296c3f5e2fd2443bb5a9701194e8ef340c92",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v039/00_state.js",
+        "sourceSha256": "cae55036f3f8d17331807b17c02cf147b1a4b1cb5f42ba5b932e2e3547b3a1b2",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v039/01_terrain.js",
+        "sourceSha256": "d29fef0868786270e5df38dd7a8ccc6101f4b594c6e53881112c68495d1a7b94",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v039/02_interface.js",
+        "sourceSha256": "cc9a93c8fd0f85641ac761f502dda8e6c9512849acd08c091833f37a04efc212",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v039/03_boot.js",
+        "sourceSha256": "774e26596a590b5f06a1422dc43f816e677882aaa93bb824fd3a554c0cb79f7b",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v040/00_state.js",
+        "sourceSha256": "23843db152c74867545a35c8ef5cb6baa060f73f12a015431ea8add0eba8f315",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v040/01_corridors.js",
+        "sourceSha256": "7840672ba93ed3c69143f45875fee2fb9170f377a13d0cb39b065580db1d2112",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v040/02_stitching.js",
+        "sourceSha256": "20472e7231df2eb03642ba21fb64ae02b93087190fd27f93716cca2ad8a2b10d",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v040/03_interface.js",
+        "sourceSha256": "20236e3ea7ea443b5cb88cb5e2ce174613db5343861f511a84901ffa38158531",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v040/04_boot.js",
+        "sourceSha256": "a353a1feb729e9deaffe885bd1969dfaf8f5e515fd9f9d2b852c386ab44a8067",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v041/00_state.js",
+        "sourceSha256": "1274e7e2ad347a08f0b63478afca4e327a52e6971f4f28e74aa8e6d45bf96b3b",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v041/01_pack.js",
+        "sourceSha256": "1408d1acf188f69293fb9229d78a16f87dbf9a7adeb4910dbb143eac3efced4f",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v041/02_interface.js",
+        "sourceSha256": "f8bf24f2ed7ca33f7c636784a3dd2ed09004ffec9978e74592cacfe2943cb91e",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v041/03_boot.js",
+        "sourceSha256": "1a30505f1f16809d01c65811ecfb46e3fad815d5ba81d48844b62275e8220c45",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v042/00_catalog.js",
+        "sourceSha256": "80cb61a834316edfbe03e3f1784ad7ff2b53311476edc08dadff6d04db449866",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v042/01_state.js",
+        "sourceSha256": "d9d04eed03e76ce26ca0ebcb408f98b9ee00998b3981ec52fc9f030c040cec30",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v042/02_layer.js",
+        "sourceSha256": "c9e4080ba921ed1994d48e05dcccce3233f8dc051ed1ff9a118fa12ac72ba10f",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v042/03_instance.js",
+        "sourceSha256": "965cc0c74ad64d0c681febd3f9d414191d192a90ab7dce05dd7d2bf33c6344d9",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v042/04_interface.js",
+        "sourceSha256": "625850d32c933ab7aa0edfc9b6ce8511e19cc5419e031b327408ea09c6850d7d",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v042/05_boot.js",
+        "sourceSha256": "566c142f191e6feeb08c5f072f7ad771d02cad3b1c7b7cccf9774a1475babd94",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v046/00_integrity.js",
+        "sourceSha256": "1e086efb92cfe9971001a1c4988623d95f362e00f795e3c16231edd53acdeed1",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v046/01_world.js",
+        "sourceSha256": "fdfaf8210017bf209e715ffc49020bf37fd62a41ee8c03e4b6647c9c9639fabb",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v046/02_environment.js",
+        "sourceSha256": "f0c4387584a81f2733143dfa2464d38f4366a57466aa7dce278d3f0701c8df92",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v046/03_hud_sky.js",
+        "sourceSha256": "e78f2e0a56e1705caae5b9432249dcfb4e10b1016e25c35bff0f2d29ad589514",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v046/04_lore.js",
+        "sourceSha256": "d4251b2dd4a28462d12187c9b2ebf60ac5205c68a0c4eb5d91b493e373825da6",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v046/05_lab.js",
+        "sourceSha256": "acb6220771c468a807897003ea494947737724396cebb1c7fc50e2c1918cb15c",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v046/06_boot.js",
+        "sourceSha256": "d33d5c31547c7b5e47292f36e059414969ebaf8063aecbe2ecd27aedb4b8fc72",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v047/00_stream_primitives.js",
+        "sourceSha256": "68b654aa1fd122b28eea34e7280983b0c58ba226bcdc759d65dbc565f2fa30e9",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v047/01_staging.js",
+        "sourceSha256": "aeeccf46dc255311b0e5d552dc7f7f591e621bfa8cac17c9d98428a903abb4ec",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v047/02_streaming.js",
+        "sourceSha256": "e7b548c9185d9dc19314c7375b4848abf335c0969b6898cc6519c9034a6b50b3",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v047/03_interface.js",
+        "sourceSha256": "bb3a04aeca4977150dd886cfb6f7cb5f2d7536e52f2abe22273dd2045a5a54f6",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v047/04_lab_safety.js",
+        "sourceSha256": "1659c92f81bdf8fdcd87ccd5fb5991f26ed07979e3954574f0850d6c4f5462fd",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v048/00_budget.js",
+        "sourceSha256": "7d69b79e19b44d060e77a1ed91a5757a6826021b82932674a1b0a13a1ead9c5b",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v048/01_preparation.js",
+        "sourceSha256": "6407face4e421ed6ab0e6a94776c69f289bd8fd25fc3cf42d69d081fdca7b9aa",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v048/02_returns.js",
+        "sourceSha256": "ecc6ae9e940c0ef030186c18ed6bc77566fdcfa98994d41dde59e87e490064bc",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v048/02b_passages.js",
+        "sourceSha256": "1c4ba57eb354fd02bf0e093e5670d047896350af03c3264f2fbeded5dd0135e2",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v048/02c_door_transactions.js",
+        "sourceSha256": "40c3e3d52599154cb3b50fb2745bf964c726e5deac19b8095fa87c8f47545d64",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v048/03_interface.js",
+        "sourceSha256": "2dd9e3108acffcd89ce7a743ae9020d2a42a5aeccc74be5bd3e219594b9fe247",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v049/00_encounters.js",
+        "sourceSha256": "bd1db8c19f35891bfbfe8f07427b669b13e0d392f13732925ca76fab82b929a4",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v049/01_persistence.js",
+        "sourceSha256": "9962a7b0eec8fff31f845c84b5caf3b0e0d2dc90931db1d1025a45d014ecc828",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v049/02_bodies_lifecycle.js",
+        "sourceSha256": "b7a0453f923699b8edf21c1a2bf34e1a6c93b102c8ccbee6b7eddab265357866",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v049/03_interface.js",
+        "sourceSha256": "cd500e812a0185bde7792372de73b40a997f936c11bcae826892e615cc0b065e",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/00_continue.js",
+        "sourceSha256": "a1640e1a859d54f91afbc665b8a805ca66d9574070178a9d4d7184d24980e66d",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/01_campaign.js",
+        "sourceSha256": "df102b02ca8751c6376dd4753daef64489c42c3749615620aba50188fe786567",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/02_poi_travel.js",
+        "sourceSha256": "fb9e198270a6f74869dac352d5339439585fe1d19870572d2e27b97d815a7133",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/03_interface.js",
+        "sourceSha256": "924fc8e210b72b39938dbc9c48f708942108e527889e0e7291cccb2941874fa9",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/04_source_geometry.js",
+        "sourceSha256": "5c3791136bc4ee9568e18ba52ba540a66d47e98804122daff082e5a9d0ed7859",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/04a_city_sources.js",
+        "sourceSha256": "2c2c7910e386a60083dccb7ee60294ed575c7da260a4df9e45436b9b09c99b3b",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/04aa_city_water.js",
+        "sourceSha256": "2f5d0186f7bcc76acc7eee9e2546f5b955ea35a24c5d1b424962f2ef40454c9c",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/04ab_city_water_physics.js",
+        "sourceSha256": "c8ae99b72af72f81a432d0a3708d1dd5a9c536f6f89ede1b62c9c5454cede2a4",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/04b_surfaces.js",
+        "sourceSha256": "9039907e5b949e09d9327a72b2952de3a20252f0c5cf349add0386280ce40b01",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/04c_roof_collisions.js",
+        "sourceSha256": "e67887b2a274cf570fa22075ce45e516b462d2090114a1d34cd785a53e33d824",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/04d_source_status.js",
+        "sourceSha256": "da9a17ded6a7d515400014c8e536d210b5fb302f122409bc53ff6a473953b916",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/05_wasteland.js",
+        "sourceSha256": "de26ba8913138f5423037e86bcb44369f9aece1881cfae8c9e7d48a22e9f5075",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/06_architecture_sources.js",
+        "sourceSha256": "bf2767de48b2ebb2421588892164e7c50ddff6a860e99c16f4817816e6ead02c",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/06_controller.js",
+        "sourceSha256": "3b3d5fe3f1fd3e1409fa1f98f1351148555be752290bc5257068db8116be38c8",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/06a_landmark_surfaces.js",
+        "sourceSha256": "905021b794493dc3e56753aa57e0d2ad6a69290820309bb44ac9fe7e628c4720",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/07_facades.js",
+        "sourceSha256": "d9ccd0b0d89a3f42a4de7d4938e217f11da2e7c21fc82a54cf7c3a1d5b7ebcc3",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/08_city_interiors.js",
+        "sourceSha256": "793cf959e080e623d444c4436a2baf08a0b7e7463a6ec6d0d2a22cdf24385d68",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/09_city_interface.js",
+        "sourceSha256": "1c8e7d35750696bf81eb1432a030a4a71e9fb099055e45d8a50853631bfc8004",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/10_lore_continuity.js",
+        "sourceSha256": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/11_power_armor.js",
+        "sourceSha256": "77e03d9b83f7d35828de22dc13abd6e368879eaeeb5537f39576824a41386ebc",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/12_iconic_ecosystem.js",
+        "sourceSha256": "550ee004344e4879c0d87164ab97971978113c882e0ca5a2a2045a61b5725e23",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/13_regional_bestiary.js",
+        "sourceSha256": "8ca674889e4944353f16ac16e9a24470ba444623c27271e48e8a928409b35667",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/14_precise_terrain.js",
+        "sourceSha256": "3fffa47978093dee72cadd5edc189a1794d02573627f3749fa7adbaf8738f5c1",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/15_chemistry.js",
+        "sourceSha256": "b432076d9f0b3fa4a4c0eeab9b95e5044de8089fb2148b958c130efc417ccd4e",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/16_iconic_ordnance.js",
+        "sourceSha256": "c5b6fa302bdd29106a4e886d6f4e01382bde5e94ff059b5b1b5a0529a7067362",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/17_first_person.js",
+        "sourceSha256": "07f81830b5115bbb1e0ad62517f563b613442b20928f65bdf0dd40fc1ce19214",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/18_iconic_mines.js",
+        "sourceSha256": "00ba80a6ed04f55eb0ef9491259a7fbba400742ead55fbd028d6d0ed7ad3c787",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/19_fps_hud.js",
+        "sourceSha256": "130d31f98652b5cbe95008998b086ce4df77c8242a4f87ee5e22e1cb9063cabc",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/20_iconic_vending.js",
+        "sourceSha256": "0757a959324cd76cfe7bcd1352910c14e27711d9a5ce788a1d7b0471e250ac20",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      },
+      {
+        "path": "src/v050/21_holotapes.js",
+        "sourceSha256": "38dc175b60aa227ce9a2f13f77ce57401d36c4950b84cd59de52fe7937d2f217",
+        "embeddedExactCountAfterExistingBuilderTransforms": 1
+      }
+    ],
+    "htmlAliasesByteIdentical": true,
+    "generatedJsEmbeddedExactlyOnceInHtml": true,
+    "holotapeHookDefinitionCount": 1,
+    "holotapeHookCallCount": 1,
+    "vendingHookCallCount": 1,
+    "holotapeHookImmediatelyAfterVending": true,
+    "orderedSourceLoading": "Sorted *.js includes21 after20; all modules are appended before init and the tail callbacks.",
+    "workerCacheMatchesHtmlDigest": true,
+    "newBuilderDiffScope": "One additional replace inserts the holoband callback after vending. Existing build guard, cache derivation, version, save-key and source ordering transformations remain unchanged."
+  },
+  "gameplayObservations": [
+    "The complete raw core delta equals exactly one replacement of subtitle formatting for fractional damage; the final damage formula, difficulty/reduction/armor loss/bleed/HP/death operations remain byte-identical.",
+    "FPS delta introduces exponential aim interpolation and shortest signed yaw wrapping only in view-space pose data. Actual camera/FOV, ray direction, weapon damage, ammunition and reload rules remain unchanged. The existing reduced-motion bypass and scene/state/weapon resets remain.",
+    "HUD delta lays out complete subtitles and scrollable notifications using visible rectangles. Existing applied-damage/HP-delta observers retain owner/world/scene checks and750/1000ms lifetimes. New dirty flags and DOM placement do not write gameplay state.",
+    "Holobands use the existing lore.holotapes/holotapePlays and v018.tapeBookmarks. Only three namespaced entries are normalized, with no parallel ledger, reward, inventory item or quest proof. Migration rebinds the current world via v049Own after state replacement.",
+    "Holoband collection requires current entry/world, mode, source support, height, body clearance, line of sight, no transition/loading/lab or nearby alerted threat. The synchronous transaction restores the full owning state after a refused save; presentation failures after success do not reverse committed state.",
+    "New objects clean their tagged solids/interactions when owner/world/source/layer changes. Full documented/source geometry and other prop tags are preserved. The actual three new bands and cold Continue are already covered by the supplied native60/4 report; no rerun was performed by this review.",
+    "The historical archive counter remains scoped to ALL_ZONE_IDS, with a separate3-band notice routed into the same inherited reader. Legacy catalogue entries and other flags are preserved."
+  ],
+  "blockingFindings": [],
+  "lowRisks": [
+    {
+      "id": "legacy-holotape-milestone-routing",
+      "severity": "low_cosmetic",
+      "status": "explicit_open_work_accepted_by_root_without_changing_validated_build",
+      "evidence": [
+        "src/core-v017.js collectHolotape counts Object.keys(state.lore.holotapes).length and calls achievement only at10/30/60/81.",
+        "New module21 pickup adds to the same owner but deliberately does not call achievement.",
+        "achievement only records a badge and plays toast/audio; no XP, caps, item, stat or quest reward is applied."
+      ],
+      "effect": "A threshold crossed by one of the three new pickups may omit its cosmetic legacy badge; a later historical pickup can count the regional IDs toward the shared threshold. Already-earned badges are not removed.",
+      "example": "Seven historical plus three new bands reaches10 without calling the old milestone branch.",
+      "nextStep": "Connect the new pickups and the desired legacy/shared counting policy in a separately validated follow-up, as root requested; do not silently patch final45."
+    },
+    {
+      "id": "crowded-hud-fallback",
+      "severity": "known_presentation_limit",
+      "effect": "When no full caption region or minimum notification region fits, the existing ordinary placement is preserved instead of discarding text. Very crowded physical-device layouts remain uncertified."
+    },
+    {
+      "id": "capture-framing-and-hardware",
+      "severity": "known_validation_limit",
+      "effect": "The original band reader has vertical scrolling, some technical captures crop titles or details, and diagnostic/emulated viewports do not establish physical-device performance or a human full playthrough."
+    }
+  ],
+  "principalControlsAdded": 0,
+  "nativeCapturesAdded": 0,
+  "browserStarted": false,
+  "testsRun": false,
+  "builderRun": false,
+  "sourceOrQaEdits": false
+}

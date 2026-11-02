@@ -1,0 +1,12 @@
+OK Optional atlas is loaded once before the first geographic import
+OK Annotations are applied after importer metadata without modifying cached source properties
+OK A geographic scene already open at readiness receives labels and refreshes its architecture indexes
+OK A missing optional file leaves the base world available with explicit empty diagnostics
+OK An invalid atlas applies no partial records and reports its rejection
+OK A failed optional request reports an error without replacing the official world
+OK Cancellation during atlas loading cannot resurrect a superseded navigation
+OK Only the latest navigation waiting for the same atlas can publish
+OK The synthetic geographic laboratory does not wait for or receive real annotations
+OK Target export returns complete ordered metric rings and independent source geometry
+{"passed":10,"failed":0,"scope":"Shipped optional architecture runtime hooks; synthetic importer/fetch fixtures explicitly declared"}
+

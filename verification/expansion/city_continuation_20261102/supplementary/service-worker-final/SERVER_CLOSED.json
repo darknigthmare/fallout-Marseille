@@ -1,0 +1,10 @@
+{
+  "method": "Read origin from cached response URL in the native report; attempt a TCP connection after the child has exited.",
+  "nodeProcessExited": true,
+  "serverPortObservable": true,
+  "host": "127.0.0.1",
+  "port": 43671,
+  "tcpConnectEx": 111,
+  "serverPortClosed": true,
+  "interpretation": "ECONNREFUSED after Node exit"
+}

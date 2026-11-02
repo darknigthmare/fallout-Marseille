@@ -1,0 +1,17 @@
+PASS kernel.test.cjs
+PASS runtime.py
+PASS saves.py
+PASS v048_kernel.test.cjs
+PASS v048_runtime.py
+PASS v048_inherited_kernel.test.cjs
+PASS v048_inherited_legacy_kernel.test.cjs
+PASS v048_inherited_legacy_distribution.cjs
+PASS v048_inherited_runtime.py
+PASS v048_inherited_server_io.py
+PASS v048_inherited_lab_isolation.py
+PASS v048_inherited_legacy_runtime.py
+PASS v048_inherited_legacy_regression_campaign.py
+PASS v048_inherited_legacy_regression_prologue.py
+PASS v048_inherited_legacy_regression_product.py
+{"passed": 434, "failed": 0, "total": 434, "allHtmlMatch": true, "javascriptErrors": []}
+{"auditPassed": true, "checks": {"checker_exit_zero": true, "actual_15_processes_exit_zero": true, "exact_434_assertions": true, "final_html_matches": true, "no_javascript_errors": true, "all_reports_and_logs_fresh": true, "all_input_sources_stable": true, "three_indexes_stable": true, "15_adaptations_audited": true}, "checkerExitCode": 0}

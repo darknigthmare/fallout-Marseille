@@ -30,7 +30,8 @@ def main():
              'architecture_sources.cjs', 'architecture_runtime.cjs',
              'landmark_surfaces.cjs', 'first_person.cjs', 'fps_hud.cjs', 'iconic_mines.cjs', 'iconic_vending.cjs', 'interior_services.cjs', 'interior_storage.cjs',
              'world_placements.cjs', 'lore_continuity.cjs', 'power_armor.cjs',
-             'iconic_ecosystem.cjs', 'parallel_systems.cjs', 'regional_bestiary.cjs', 'precise_terrain.cjs', 'facades_joinery.cjs', 'chems_ecosystem.cjs', 'iconic_ordnance.cjs', 'interior_room_doors.cjs', 'native_road_surfaces.cjs', 'facades_relief.cjs']
+             'iconic_ecosystem.cjs', 'parallel_systems.cjs', 'regional_bestiary.cjs', 'precise_terrain.cjs', 'facades_joinery.cjs', 'chems_ecosystem.cjs', 'iconic_ordnance.cjs', 'interior_room_doors.cjs', 'native_road_surfaces.cjs', 'facades_relief.cjs',
+             'facades_hardware.cjs', 'interior_domestic.cjs', 'hud_notification_layout.cjs', 'holotapes.cjs']
     commands = [('source_tools', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests/expansion', '-p', 'test_*.py']),
                 ('base_installers', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests/v050', '-p', 'test_installers.py'])]
     commands.extend((name, ['node', 'tests/expansion/' + name]) for name in names)

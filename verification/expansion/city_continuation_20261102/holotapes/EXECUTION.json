@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/holotapes_native.py",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/holotapes-native",
+    "--expect-html-sha",
+    "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "--run",
+    "--expect-holotapes-sha",
+    "38dc175b60aa227ce9a2f13f77ce57401d36c4950b84cd59de52fe7937d2f217"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 309914,
+  "exitCode": 0,
+  "startedAtEpoch": 1793599074.4952395,
+  "durationSeconds": 99.8487195968628,
+  "scriptSha256": "51d000fe1cc0022084efb018b30ccd5d4065fc5ebd92c44658a10af86e711f5f",
+  "scriptUnchanged": true,
+  "reportSha256": "14bb601233af1b1dbe175157ce2619e63d4cc4003538649d32cfd23461e0601d",
+  "logSha256": "284aff74c87a7f7a1dd17e620c8c3838a34a87e560683a06d82de5a72f98077c",
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "runtimeChanged": [],
+  "runtimeInputCount": 474
+}

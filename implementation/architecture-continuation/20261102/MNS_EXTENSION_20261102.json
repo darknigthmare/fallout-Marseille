@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "scope": "Native MNS upper observed surfaces for Bourse and Opera contexts; no measured facade, opening or room plan added.",
+  "surface": {
+    "path": "data/map_pack/landmark_surfaces/marseille-mns-c89a3a22e3b2d55c.json",
+    "sha256": "c89a3a22e3b2d55c08d30361ba5c65cae88392b74635a6d5cc2bc7599d99ae7c",
+    "bytes": 5882657
+  },
+  "records": 23,
+  "sourceTiles": 5,
+  "faces": 142427,
+  "preservedArchitectureAtlasSha256": "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229",
+  "preservedBaselineSurfaceSha256": "d784b256e926b8696b1173425e5fb4e02cddb88a1ade9168e37b07838bc1625d",
+  "preservedRecordsCanonicalSha256": {
+    "BATIMENT0000000258929268": "5333f5328cbaa215c8d1ca4cc8a096af7a87b648589074c3351d751c274cff01",
+    "BATIMENT0000000258930468": "0ed2ca00e5960e87f9249ab4aa26af8b6013ecfb9284a9edf501f3ac96a582f8",
+    "BATIMENT0000000258930469": "8324523b86ff020f11c9322e53d079da2b1f662db1dc04e4c50568567f173546",
+    "BATIMENT0000000258930470": "e7348903350943a211e642c8f0d377a3b36fb30e82237d2e28ccf1dced4b828a",
+    "BATIMENT0000000258938064": "7ab3197450177053338c77036b29663d1c6be604107ee1a8cc8a324e7c26e1fb",
+    "BATIMENT0000000258938065": "96e25f2101bfd165fe7fbebdd5c794fe82cc072a19880a04e2798c600500fcfe",
+    "BATIMENT0000000273394896": "ed1d4b7dcd200af9be153fe02ec526f93aa9d9b2701cd21611e142425f3def19",
+    "BATIMENT0000000273400278": "d287b530a1d06a7ca38ae4b62a3d6086d8757768288cf63392a482044011e262",
+    "BATIMENT0000000273400280": "09a5266cb62eff0d7ae4de27b71b0b25e103b5a5a7238d6258ad54a675778d43",
+    "BATIMENT0000000273400282": "658e6849b3a54558629a573c896efcb11d4ec9555a1af02d4904ba6ec3c7618e",
+    "BATIMENT0000000273400286": "96b79e34214b574a20838b73fed06797fd1755417591a4099cba59d6e80f1e75",
+    "BATIMENT0000000273400287": "12726d3911dd2b847dc86e0181791bc722741d254c144b59c5560b4134425bf6",
+    "BATIMENT0000000273400288": "af791771b9eaf9077e29daa7fb8317881b09d0a6e21ec01681b7776e73feee80",
+    "BATIMENT0000000273400964": "f71e19a5325a8fbf26c6e4d78be68f90d3a20f184696f9b9836618826f6d56f7",
+    "BATIMENT0000000273400965": "04eadde23100fd30e39d1986d3d81c8d17e89222be9b33218e8de543021f2ccc",
+    "BATIMENT0000000273400985": "9afd8be25f410ff07ae5d806855a282e1ad4871bc995ff7cbebd527ead6d2bc9",
+    "BATIMENT0000000273400986": "0c462f56401e2b05f9bf8a16f9ffedc4aa6164de7dcd157e926ac0d3d237028d",
+    "BATIMENT0000000273400987": "f8482088c5be12969bceca913bd2f694462122c2f66ec7d13fec419d14c44198",
+    "BATIMENT0000000273400988": "7e781aa6824bf9d0a582da9098182d6f6a8478ab022692619519858ca7209314"
+  },
+  "previousRecordsExactlyEqual": true,
+  "previousTileReceiptsExactlyEqual": true,
+  "newRecords": [
+    {
+      "cleabs": "BATIMENT0000000258927584",
+      "context": "Contexte du Palais de la Bourse",
+      "vertices": 13372,
+      "faces": 25562,
+      "minElevation": 12.165879207630923,
+      "maxElevation": 35.46107482910156
+    },
+    {
+      "cleabs": "BATIMENT0000000273403820",
+      "context": "Contexte de l’Opéra Municipal de Marseille",
+      "vertices": 8010,
+      "faces": 15205,
+      "minElevation": 15.47210851377887,
+      "maxElevation": 33.30599594116211
+    },
+    {
+      "cleabs": "BATIMENT0000000273403821",
+      "context": "Contexte de l’Opéra Municipal de Marseille",
+      "vertices": 151,
+      "faces": 219,
+      "minElevation": 6.704075813293457,
+      "maxElevation": 27.36325454711914
+    },
+    {
+      "cleabs": "BATIMENT0000000273403819",
+      "context": "Contexte de l’Opéra Municipal de Marseille",
+      "vertices": 150,
+      "faces": 218,
+      "minElevation": 5.878105448840765,
+      "maxElevation": 27.383337170219356
+    }
+  ],
+  "newNativeMnsSha256": "4354e54417d2c2d00392f90820c69c3195145dd0bae244f36fe58aa8b7126b62",
+  "declaredHorizontalFrame": "EPSG:2154 — LAMB93",
+  "verticalDatum": "NGF-IGN69",
+  "nativeSpacingMetres": 0.5,
+  "dtype": "float32",
+  "noData": -9999,
+  "resampling": "None; original centre samples concatenated vertically; only footprint-edge intersections use triangle-plane interpolation.",
+  "sourceReceiptLimit": {
+    "before": 4,
+    "after": 8,
+    "actual": 5
+  },
+  "otherRuntimeBudgetsUnchanged": true
+}

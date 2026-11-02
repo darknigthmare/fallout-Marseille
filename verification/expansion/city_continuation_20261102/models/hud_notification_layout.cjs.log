@@ -1,0 +1,17 @@
+✔ a short landscape suit notice fits beside the actual top-right assistance and objective columns (2.088819ms)
+✔ a portrait notification avoids both primary panels and can move to the other free column (1.50029ms)
+✔ a fully readable stack takes priority over a closer but shortened scroll region (0.426066ms)
+✔ a crowded viewport returns a bounded scroll region while retaining the original content height (1.024182ms)
+✔ overlapping obstacle intervals are merged before choosing a free strip (0.301273ms)
+✔ no sufficiently tall region is reported explicitly instead of inventing a hidden or clipped message (0.29443ms)
+✔ empty, invalid and offscreen obstacles do not corrupt a valid notification placement (0.240599ms)
+✔ placement is deterministic and never edits source obstacle rectangles (0.486769ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15.782755
+

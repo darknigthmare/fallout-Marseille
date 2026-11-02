@@ -1,0 +1,119 @@
+{
+  "scope": "Same game HTML45 and production inputs across QA phases. PhaseB may change only the facade native checker to use exact source/CLEABS and native IDs with the pre-existing metric EPS1e-7 instead of an invalid raw Node/Chromium hash equality. Every old method keeps its exact executed QA and its own pre-execution archive phase.",
+  "htmlSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "allowedQaChanges": [
+    "tests/expansion/facade_hardware_native.py"
+  ],
+  "phaseA": {
+    "frozen": "qa-phase-a/FROZEN_INPUTS.json",
+    "archives": "qa-phase-a/PRE_EXECUTION_ARCHIVES.json",
+    "sourceDirectory": "qa-phase-a/executed-sources",
+    "closedAtEpoch": 1793599700.2489738,
+    "closedReceipts": [
+      {
+        "directory": "models",
+        "report": "UNITS.json",
+        "receiptSha256": "12be4d8518c897ce8d9f8062d22b8a45433c7b0b8eff914a479bf8d89a62075f",
+        "reportSha256": "b5029be327ea887eafc709e72c07a06f20dbffd8f78c536f976aef8dd73174c7",
+        "exitCode": 0,
+        "passed": 1934,
+        "shots": 0
+      },
+      {
+        "directory": "hud",
+        "report": "FPS_HUD_NATIVE.json",
+        "receiptSha256": "df3247a208516e7519f4ec2b7c512440115d5e0330cf36b522ab1e1fd62ef938",
+        "reportSha256": "20cc9e3bd781735be34ed8253bc2cb1528be5ce76b419c3ca663cfaa22abed26",
+        "exitCode": 0,
+        "passed": 98,
+        "shots": 12
+      },
+      {
+        "directory": "fps",
+        "report": "FIRST_PERSON_NATIVE.json",
+        "receiptSha256": "27c1b236cb92671d76689113bf43909a808e5658a75e82d6b6613b05359d1185",
+        "reportSha256": "4b7bdaf6e24752dda37ae68930df15422c61cf63ad823bf03325359bab40494a",
+        "exitCode": 0,
+        "passed": 142,
+        "shots": 16
+      },
+      {
+        "directory": "feedback",
+        "report": "FPS_FEEDBACK_NATIVE.json",
+        "receiptSha256": "c140e2aeb11f232851b87b1385655d420fe20227d389a6c56f6d8cc4f2212408",
+        "reportSha256": "a7566d8bcacc7900ddb16bb4ad0bf4ae7e870064153754d3dbf5fdaec872c2c4",
+        "exitCode": 0,
+        "passed": 43,
+        "shots": 8
+      },
+      {
+        "directory": "controller",
+        "report": "CONTROLLER_BROWSER.json",
+        "receiptSha256": "a1b66a5c70baff5cd3457d98c252785b481e952cbff12b90103d5369daffbc06",
+        "reportSha256": "d3df23dc9abf6827e63efe6b2fe44035330285fb1e4693254fe4eebf7a2b41b0",
+        "exitCode": 0,
+        "passed": 63,
+        "shots": 0
+      },
+      {
+        "directory": "interiors-native",
+        "report": "INTERIOR_PROGRAMS_NATIVE.json",
+        "receiptSha256": "900f37604f2682b529b5f05368ddfb3b47ac2069bec6cdf97a7828d51e15d5d0",
+        "reportSha256": "62c9e59589c43b2e7473a1f64678dcdb62cbca7f080b9b140be94d7dcc6895c7",
+        "exitCode": 0,
+        "passed": 151,
+        "shots": 20
+      },
+      {
+        "directory": "holotapes-native",
+        "report": "HOLOTAPES_NATIVE.json",
+        "receiptSha256": "e62c8e47f69b5a3c66b236e61218ca2b1440a77efb34a5c5553f57c92b114fc9",
+        "reportSha256": "14bb601233af1b1dbe175157ce2619e63d4cc4003538649d32cfd23461e0601d",
+        "exitCode": 0,
+        "passed": 60,
+        "shots": 4
+      },
+      {
+        "directory": "bestiary",
+        "report": "BESTIARY_NATIVE.json",
+        "receiptSha256": "9d4e30f60bf239ea3cb0a2b975e9ec53d03198ab4353436e191f2e6f5850cb02",
+        "reportSha256": "6fba5d98efeb8a8b4f03c30d056f8642cf1e4e4bf480a9628c142d04ddb06b26",
+        "exitCode": 0,
+        "passed": 203,
+        "shots": 15
+      },
+      {
+        "directory": "landmarks",
+        "report": "LANDMARK_SURFACES_NATIVE.json",
+        "receiptSha256": "13c1055545bc97ef6405152a5d52a8eba02238defb08831a505c77fcf6c94bcf",
+        "reportSha256": "f5418703ed4f3d4b3d456956e04a0e7bec6628fd13239e7225cd1190681498ce",
+        "exitCode": 0,
+        "passed": 85,
+        "shots": 13
+      },
+      {
+        "directory": "legacy-final",
+        "report": "RUN_AUDIT.json",
+        "receiptSha256": "aafdf836306a20a68c1829e05b8a597051965a3da08929b7f172c9f739aa1777",
+        "reportSha256": "8daf1615bde2ae03b73743f21e2ebbc1090a2e67885b4b4b8b0b10934565e6c0",
+        "exitCode": 0,
+        "passed": true,
+        "shots": 0
+      }
+    ]
+  },
+  "phaseB": {
+    "frozen": "FROZEN_INPUTS.json",
+    "archives": "PRE_EXECUTION_ARCHIVES.json",
+    "sourceDirectory": "executed-sources",
+    "openedAtEpoch": 1793600090.726172,
+    "changes": {
+      "tests/expansion/facade_hardware_native.py": {
+        "phaseASha256": "8435e8b232c497963c5b56f3d35e50aac8cbdf408abd071af8816a98374cdd05",
+        "phaseBSha256": "368baef192ccf76b3ae865eaf5b8c688f4d92a2023455d1bfecf1d030b7409ee"
+      }
+    },
+    "gameInputsChanged": [],
+    "reason": "Replace invalid cross-runtime raw projected-coordinate hash equality with exact WGS84/CLEABS/native-ID relations and per-vertex existing EPS1e-7. Readonly diagnostics and owned-server closure added; no assertion removed to mask source deviation."
+  }
+}

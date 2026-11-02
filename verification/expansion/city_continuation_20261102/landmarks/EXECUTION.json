@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+    "tests/expansion/landmark_surfaces_native.py",
+    "--output",
+    "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/landmarks",
+    "--expect-html-sha",
+    "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "--run"
+  ],
+  "cwd": "/workspace/fallout-Marseille",
+  "childPid": 305193,
+  "exitCode": 0,
+  "startedAtEpoch": 1793597790.202497,
+  "durationSeconds": 368.80686116218567,
+  "scriptSha256": "ba1e0531c0da0e627e439c8eab1196943582cb0db85f7113226d6fce70e6361a",
+  "scriptUnchanged": true,
+  "reportSha256": "f5418703ed4f3d4b3d456956e04a0e7bec6628fd13239e7225cd1190681498ce",
+  "logSha256": "6508c8312172add57904ede4293c92b0dbe0ba8690c7b75fbfcb43d6982bfec4",
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "runtimeChanged": [],
+  "runtimeInputCount": 474
+}

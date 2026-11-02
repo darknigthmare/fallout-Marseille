@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtEpoch": 1793598311.8030412,
+  "method": "Visual inspection of all 13 unchanged native PNGs via view_image, plus file hash/decode verification; no image editing and no claim of human playtesting.",
+  "htmlSha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "nativeReportSha256": "f5418703ed4f3d4b3d456956e04a0e7bec6628fd13239e7225cd1190681498ce",
+  "baselineReport": "verification/expansion/continuation_20261101_integrated/landmarks/LANDMARK_SURFACES_NATIVE.json",
+  "baselineReportSha256": "4de57b1da4bc76ad3594be6b9eadcf278872612a80182a3ed14391f4d0bc5e29",
+  "baselineChecksPreserved": 64,
+  "additionalChecks": 21,
+  "missingBaselineCheckNames": [],
+  "shots": [
+    {
+      "file": "major_ground.png",
+      "sha256": "fe55761b8cc75cb430a87f3459215987067f324f34f9d32728116b0a760bac2e",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "partial",
+      "observation": "Coupoles et profil MNS visibles depuis le sol ; parois et ouvertures simplifiées ne sont pas une façade relevée."
+    },
+    {
+      "file": "major_elevated.png",
+      "sha256": "2b1d1704a6dfbb5caf548ed57e77840ca1d6910dbc44869e9a805d9eea0d2e0f",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "clear",
+      "observation": "Silhouette et coupoles MNS lisibles ; inspection élevée assistée, sans preuve de parcours piéton."
+    },
+    {
+      "file": "garde_ground.png",
+      "sha256": "36edd5ae901cf94c286d56aeac5a11ee1eb9c165ea2a47a057255fe92073553a",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "partial",
+      "observation": "Profil haut et flèche visibles ; premier plan et détails de façade restent procéduraux."
+    },
+    {
+      "file": "garde_elevated.png",
+      "sha256": "0412a2d74678ebc9e1a8262ba694950ee4301dddceb565f2db4b2aa099e1ac34",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "clear",
+      "observation": "Basilique et relief observé lisibles dans une vue élevée de diagnostic ; les volumes ne documentent pas les pièces."
+    },
+    {
+      "file": "charite_ground.png",
+      "sha256": "cf290bb9717518860db0dad34c26a40454ada3ed16ce75b5aaa687accb6d8d02",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "occluded",
+      "observation": "Cible complètement masquée par une paroi voisine malgré un placement sur MNT non collisionnant ; cette vue ne prouve pas une visite du monument."
+    },
+    {
+      "file": "charite_elevated.png",
+      "sha256": "dda16c5e769ae413fe380cb6c751809ca5934026dd0b4029762c080c108fd5a9",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "clear",
+      "observation": "Chapelle et coupole visibles dans leur cour ; vue élevée de diagnostic, galeries et façades non mesurées."
+    },
+    {
+      "file": "bourse_ground.png",
+      "sha256": "838b43a4ecf32d0d481be4dcb100dd19cbbc397f148e09227eca9d5267a4bcda",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "partial",
+      "observation": "Volume et profil supérieur MNS lisibles ; les baies et l’enveloppe génériques ne reproduisent pas la façade réelle."
+    },
+    {
+      "file": "bourse_elevated.png",
+      "sha256": "0230f9533aee13830844bf1737295bd02c90e3256e3f61d53a170592951455a0",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "clear",
+      "observation": "Surface supérieure complète lisible ; nom de contexte fondé sur une zone IGN partielle, aucune identification architecturale exhaustive."
+    },
+    {
+      "file": "opera_ground.png",
+      "sha256": "e3c341dbd8f46133ec345c158a88f45f08a62a7c14c4d02e90cb15a85969faa6",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "partial",
+      "observation": "Masse et profil supérieur lisibles ; parois presque aveugles et ouvertures voisines ne certifient pas la façade de l’Opéra."
+    },
+    {
+      "file": "opera_elevated.png",
+      "sha256": "68b6333cbe24c5b626e3d34905a18b2803d4dbf266f308d61cb6d2b09467f23a",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "clear",
+      "observation": "Surface supérieure MNS lisible parmi les îlots ; aucune salle ou décoration de façade documentée."
+    },
+    {
+      "file": "pharo_ground.png",
+      "sha256": "ad9240cd555d3e2f1bb0e5c945d57339b8f4cea6759db3ccb4bfebb844c45db4",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "partial",
+      "observation": "Vue latérale lisible du volume et d’un angle ; elle ne documente pas les baies ni la décoration."
+    },
+    {
+      "file": "pharo_elevated.png",
+      "sha256": "9d0c282b44a5049a245b556d532295383fb143b1b41d828d2b5c4527b676aa31",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "clear",
+      "observation": "Contexte MNS en U lisible ; artefacts historiques de littoral/eau visibles, hors correction de cette tranche."
+    },
+    {
+      "file": "pharo_continue.png",
+      "sha256": "774718ec252baf93c930d7143f9e7e09aacd51d515ef396a0613f0d581d183a9",
+      "size": [
+        1440,
+        900
+      ],
+      "openedWithViewImage": true,
+      "visibility": "partial",
+      "observation": "Même source et point de vue au sol après Continuer ; le HUD peut évoluer avec l’état réel, pas une image synthétique identique."
+    }
+  ],
+  "networkObservations": {
+    "externalLegacyServiceProbeFailures": 18,
+    "localMetadataAborts": [
+      {
+        "url": "http://127.0.0.1:35883/__mistral/local-data",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:35883/__mistral/local-data",
+        "failure": "net::ERR_ABORTED"
+      }
+    ],
+    "installedSourceRequestFailures": [],
+    "globalJavaScriptExceptions": [],
+    "localHttpErrors": []
+  },
+  "limits": [
+    "Native observed upper surfaces only; no measured facade openings or interiors.",
+    "Bourse and Opera remain site contexts with the identification limits declared in source receipts.",
+    "Elevated placements are diagnostic views; ground cameras do not prove unassisted pedestrian access.",
+    "The older source component below its unchanged IGN base remains explicitly refused."
+  ]
+}

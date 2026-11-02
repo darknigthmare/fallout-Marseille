@@ -1,0 +1,32 @@
+✔ Missing optional city atlas leaves the base map and old bounds unchanged (7.597885ms)
+✔ A complete city registers its extent without mutating the active terrain bank (4.787249ms)
+✔ A partial atlas never registers a city extent or starts a source-only scene (7.327912ms)
+✔ City resources outside the old tile pack come only from verified source partitions (18.190836ms)
+✔ Corrupt partition bytes reject before any feature is published or cached (9.778497ms)
+✔ An explicit empty road query removes old road strokes only within its receipt (9.395241ms)
+✔ Concurrent map workers share one immutable chunk request and release settled promises (18.550425ms)
+✔ An aborted waiter cannot publish while another map worker can reuse the completed chunk (12.527389ms)
+✔ Byte budget eviction releases cached partitions and does not retain hidden resolved promises (4.279864ms)
+✔ Refreshing while a chunk is in flight refuses its late response (6.091453ms)
+✔ Synthetic laboratory ignores city resources and restores the exact prior real extent (4.009355ms)
+✔ The verified coarse city DEM stages with its own datum and never mutates the live bank (5.537759ms)
+✔ A city base DEM requires explicit provenance and a compatible normal-height datum (0.591866ms)
+✔ A vector-only city installation leaves old source enrichment usable until terrain is present (2.401775ms)
+✔ A cancelled navigation never starts later when its optional index finishes loading (2.082248ms)
+✔ Refreshing during index readiness invalidates the earlier navigation without overwriting its successful replacement (2.873165ms)
+✔ A background boot index superseded by refresh cannot append a stale error to the healthy replacement (16.147558ms)
+✔ Rendered partition bounds exclude distant whole-road tails while keeping the raw descriptor intact (1.861446ms)
+✔ Twenty streamed city terrain windows never accumulate in a staged bank or alter the published bank before commit (3.394438ms)
+✔ The city base DEM alone loads optional commune terrain before a staged bank chooses its finer nodes (3.44928ms)
+✔ Optional commune terrain refuses corrupt received bytes before touching a published bank (2.130037ms)
+✔ Cancelled optional commune terrain loads cannot return a resource to a cancelled navigation (3.953821ms)
+✔ same full road survives both adjoining source coverages (21.501144ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 179.667886
+

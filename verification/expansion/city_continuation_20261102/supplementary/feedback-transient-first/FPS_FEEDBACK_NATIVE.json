@@ -1,0 +1,1452 @@
+{
+  "scope": "Combat feedback on exact production HTML and an existing authored hostile.\n\nReadonly geometry/collision/LOS scouts and inherited camera/freeze diagnostics\nprepare an Aubagne encounter, not a surveyed view or a continuous playthrough.\nOrdinary starter pistol, enemy identities/health, ammunition and browser storage\nare not granted or replaced. Mouse/keyboard fire and reload use production input.\nv028NativeDamage invokes the real incoming-damage chain for the received-HP\ndisplay; it does not demonstrate an enemy attack. Simulation ticks and camera\nplacement are explicit diagnostic assistance. No randomness/network/HTML/storage\nmocking; no private game variables are injected.\nScenes are rendered before transient feedback is emitted. Screenshots do not\nredraw the slow 3D scene after an event; DOM visibility and real elapsed time are\nrecorded on both sides of each screenshot without extending feedback lifetimes.\n",
+  "checks": [
+    {
+      "name": "On-disk production HTML has expected identity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP serves exact frozen production HTML",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Starter pistol and living authored hostile are unmodified",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh play has no invented damage or hit receipt",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native left click emits one ordinary shot and spends one round",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "An actual miss creates no positive confirmation",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native R starts the real reload and captures its complete adjusted duration",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload bar follows the active timer and exposes a truthful accessible value",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reload hint includes the actual remaining seconds",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Capture 01_actual_reload_progress: expected feedback is visible immediately before the real screenshot",
+      "ok": true,
+      "detail": {
+        "file": "01_actual_reload_progress.png",
+        "sha256": "2f1c8c5d09da655c2c0a77966b3c6a5bf62967f9bde97e2f56c0948610e55d3d",
+        "expected_visible_elements": [
+          "reload"
+        ],
+        "dom_before": {
+          "performance_now_ms": 10445.5,
+          "epoch_ms": 1793598162918,
+          "elements": {
+            "hit": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "hurt": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "subtitle": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "reload": {
+              "visible": true,
+              "text": "",
+              "rect": {
+                "x": 1176,
+                "y": 807,
+                "width": 238,
+                "height": 3
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": null,
+            "hurt": null
+          }
+        },
+        "dom_after": {
+          "performance_now_ms": 10972.800000011921,
+          "epoch_ms": 1793598163445,
+          "elements": {
+            "hit": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "hurt": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "subtitle": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "reload": {
+              "visible": true,
+              "text": "",
+              "rect": {
+                "x": 1176,
+                "y": 807,
+                "width": 238,
+                "height": 3
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": null,
+            "hurt": null
+          }
+        },
+        "screenshot_elapsed_seconds": 0.47282980900490656,
+        "capture_method": "Chromium Page.captureScreenshot of the unmodified viewport, lossless PNG optimizeForSpeed; no 3D redraw, clock change or transient replay between DOM observations."
+      }
+    },
+    {
+      "name": "Real pause suspends reload instead of advancing the visual countdown",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual reload completion hides the bar and truthfully labels the full magazine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Received-damage receipt equals the real health change after armour",
+      "ok": true,
+      "detail": {
+        "lost": 11.400000000000006,
+        "receipt": {
+          "amount": 11.400000000000006,
+          "until": 14621.899999976158
+        }
+      }
+    },
+    {
+      "name": "Received-damage display contains no inferred enemy location or identity",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Capture 02_actual_received_damage: expected feedback is visible immediately before the real screenshot",
+      "ok": true,
+      "detail": {
+        "file": "02_actual_received_damage.png",
+        "sha256": "68a879f23a18b15edd9b3b7eab45f57355924aa4283ba3fafc1c1b27ab783fbf",
+        "expected_visible_elements": [
+          "hurt",
+          "subtitle"
+        ],
+        "dom_before": {
+          "performance_now_ms": 13925.099999964237,
+          "epoch_ms": 1793598166397,
+          "elements": {
+            "hit": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "hurt": {
+              "visible": true,
+              "text": "− 11 PV",
+              "rect": {
+                "x": 26,
+                "y": 708,
+                "width": 64.359375,
+                "height": 22
+              }
+            },
+            "subtitle": {
+              "visible": true,
+              "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+              "rect": {
+                "x": 481.375,
+                "y": 720.015625,
+                "width": 477.25,
+                "height": 39.984375
+              }
+            },
+            "reload": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": null,
+            "hurt": 696.8000000119209
+          }
+        },
+        "dom_after": {
+          "performance_now_ms": 14526.5,
+          "epoch_ms": 1793598166999,
+          "elements": {
+            "hit": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "hurt": {
+              "visible": true,
+              "text": "− 11 PV",
+              "rect": {
+                "x": 26,
+                "y": 708,
+                "width": 64.359375,
+                "height": 22
+              }
+            },
+            "subtitle": {
+              "visible": true,
+              "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+              "rect": {
+                "x": 481.375,
+                "y": 720.015625,
+                "width": 477.25,
+                "height": 39.984375
+              }
+            },
+            "reload": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": null,
+            "hurt": 95.39999997615814
+          }
+        },
+        "screenshot_elapsed_seconds": 0.5656668490264565,
+        "capture_method": "Chromium Page.captureScreenshot of the unmodified viewport, lossless PNG optimizeForSpeed; no 3D redraw, clock change or transient replay between DOM observations."
+      }
+    },
+    {
+      "name": "Opening the actual Pip-Boy clears transient damage feedback",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Existing enemy has an actual collision-free and visible supported approach",
+      "ok": true,
+      "detail": {
+        "position": [
+          64.32907141183368,
+          1.65,
+          -32.42040764049976
+        ],
+        "target": [
+          64.40611932018095,
+          0.49,
+          -44.46692236740759
+        ]
+      }
+    },
+    {
+      "name": "Positive hit confirmation reports applied damage on the unchanged actor",
+      "ok": true,
+      "detail": {
+        "before": {
+          "id": "roux-hunter",
+          "hp": 70,
+          "alive": true,
+          "pos": [
+            64.32907141183368,
+            0,
+            -44.42040764049976
+          ],
+          "alerted": false
+        },
+        "after": {
+          "id": "roux-hunter",
+          "hp": 50.230294,
+          "alive": true,
+          "pos": [
+            64.32907141183368,
+            0,
+            -44.42040764049976
+          ],
+          "alerted": true
+        },
+        "receipt": {
+          "damage": 19.769706,
+          "targets": 1,
+          "kills": 0,
+          "critical": false,
+          "until": 17197.69999998808
+        }
+      }
+    },
+    {
+      "name": "Capture 03_actual_hit_confirmation: expected feedback is visible immediately before the real screenshot",
+      "ok": true,
+      "detail": {
+        "file": "03_actual_hit_confirmation.png",
+        "sha256": "85f871d3c0ba3c90d791dab55ba384a3b63d78f2a3f007dec170a128324b5c82",
+        "expected_visible_elements": [
+          "hit"
+        ],
+        "dom_before": {
+          "performance_now_ms": 16598.19999998808,
+          "epoch_ms": 1793598169070,
+          "elements": {
+            "hit": {
+              "visible": true,
+              "text": "TOUCHÉ",
+              "rect": {
+                "x": 699,
+                "y": 429,
+                "width": 42,
+                "height": 42
+              }
+            },
+            "hurt": {
+              "visible": false,
+              "text": "− 11 PV",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "subtitle": {
+              "visible": false,
+              "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "reload": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": 599.5,
+            "hurt": null
+          }
+        },
+        "dom_after": {
+          "performance_now_ms": 17081.899999976158,
+          "epoch_ms": 1793598169554,
+          "elements": {
+            "hit": {
+              "visible": true,
+              "text": "TOUCHÉ",
+              "rect": {
+                "x": 699,
+                "y": 429,
+                "width": 42,
+                "height": 42
+              }
+            },
+            "hurt": {
+              "visible": false,
+              "text": "− 11 PV",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "subtitle": {
+              "visible": false,
+              "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "reload": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": 115.80000001192093,
+            "hurt": null
+          }
+        },
+        "screenshot_elapsed_seconds": 0.4370412629796192,
+        "capture_method": "Chromium Page.captureScreenshot of the unmodified viewport, lossless PNG optimizeForSpeed; no 3D redraw, clock change or transient replay between DOM observations."
+      }
+    },
+    {
+      "name": "Positive hit confirmation reports applied damage on the unchanged actor",
+      "ok": true,
+      "detail": {
+        "before": {
+          "id": "roux-hunter",
+          "hp": 50.230294,
+          "alive": true,
+          "pos": [
+            64.32907141183368,
+            0,
+            -44.42040764049976
+          ],
+          "alerted": true
+        },
+        "after": {
+          "id": "roux-hunter",
+          "hp": 30.490882,
+          "alive": true,
+          "pos": [
+            64.32907141183368,
+            0,
+            -44.42040764049976
+          ],
+          "alerted": true
+        },
+        "receipt": {
+          "damage": 19.739412,
+          "targets": 1,
+          "kills": 0,
+          "critical": false,
+          "until": 18018
+        }
+      }
+    },
+    {
+      "name": "Positive hit confirmation reports applied damage on the unchanged actor",
+      "ok": true,
+      "detail": {
+        "before": {
+          "id": "roux-hunter",
+          "hp": 30.490882,
+          "alive": true,
+          "pos": [
+            64.32907141183368,
+            0,
+            -44.42040764049976
+          ],
+          "alerted": true
+        },
+        "after": {
+          "id": "roux-hunter",
+          "hp": 10.781763999999999,
+          "alive": true,
+          "pos": [
+            64.32907141183368,
+            0,
+            -44.42040764049976
+          ],
+          "alerted": true
+        },
+        "receipt": {
+          "damage": 19.709118,
+          "targets": 1,
+          "kills": 0,
+          "critical": false,
+          "until": 18259.19999998808
+        }
+      }
+    },
+    {
+      "name": "Positive hit confirmation reports applied damage on the unchanged actor",
+      "ok": true,
+      "detail": {
+        "before": {
+          "id": "roux-hunter",
+          "hp": 10.781763999999999,
+          "alive": true,
+          "pos": [
+            64.32907141183368,
+            0,
+            -44.42040764049976
+          ],
+          "alerted": true
+        },
+        "after": {
+          "id": "roux-hunter",
+          "hp": 0,
+          "alive": false,
+          "pos": [
+            64.32907141183368,
+            0,
+            -44.42040764049976
+          ],
+          "alerted": true
+        },
+        "receipt": {
+          "damage": 10.781763999999999,
+          "targets": 1,
+          "kills": 1,
+          "critical": false,
+          "until": 18522
+        }
+      }
+    },
+    {
+      "name": "Neutralisation label requires an actual living-to-dead enemy transition",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Capture 04_actual_neutralisation: expected feedback is visible immediately before the real screenshot",
+      "ok": true,
+      "detail": {
+        "file": "04_actual_neutralisation.png",
+        "sha256": "064421dff744a66104e61dfb41452bd902a68e3651868a73fd13bb31cc0e2f85",
+        "expected_visible_elements": [
+          "hit"
+        ],
+        "dom_before": {
+          "performance_now_ms": 17902.19999998808,
+          "epoch_ms": 1793598170374,
+          "elements": {
+            "hit": {
+              "visible": true,
+              "text": "NEUTRALISÉ",
+              "rect": {
+                "x": 699,
+                "y": 429,
+                "width": 42,
+                "height": 42
+              }
+            },
+            "hurt": {
+              "visible": false,
+              "text": "− 11 PV",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "subtitle": {
+              "visible": false,
+              "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "reload": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": 619.8000000119209,
+            "hurt": null
+          }
+        },
+        "dom_after": {
+          "performance_now_ms": 18331.599999964237,
+          "epoch_ms": 1793598170804,
+          "elements": {
+            "hit": {
+              "visible": true,
+              "text": "NEUTRALISÉ",
+              "rect": {
+                "x": 699,
+                "y": 429,
+                "width": 42,
+                "height": 42
+              }
+            },
+            "hurt": {
+              "visible": false,
+              "text": "− 11 PV",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "subtitle": {
+              "visible": false,
+              "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            "reload": {
+              "visible": false,
+              "text": "",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          },
+          "feedback_remaining_ms": {
+            "hit": 190.4000000357628,
+            "hurt": null
+          }
+        },
+        "screenshot_elapsed_seconds": 0.3992404090240598,
+        "capture_method": "Chromium Page.captureScreenshot of the unmodified viewport, lossless PNG optimizeForSpeed; no 3D redraw, clock change or transient replay between DOM observations."
+      }
+    },
+    {
+      "name": "Ordinary native shots hit and neutralise the original hostile without health edits",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Hit confirmation expires without retaining a permanent target marker",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Reduced-flash setting retains readable static damage text",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Actual feedback 1440x900: damage receipt stays inside the viewport",
+      "ok": false,
+      "detail": null
+    }
+  ],
+  "shots": [
+    {
+      "file": "01_actual_reload_progress.png",
+      "sha256": "2f1c8c5d09da655c2c0a77966b3c6a5bf62967f9bde97e2f56c0948610e55d3d",
+      "expected_visible_elements": [
+        "reload"
+      ],
+      "dom_before": {
+        "performance_now_ms": 10445.5,
+        "epoch_ms": 1793598162918,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": true,
+            "text": "",
+            "rect": {
+              "x": 1176,
+              "y": 807,
+              "width": 238,
+              "height": 3
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": null
+        }
+      },
+      "dom_after": {
+        "performance_now_ms": 10972.800000011921,
+        "epoch_ms": 1793598163445,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": true,
+            "text": "",
+            "rect": {
+              "x": 1176,
+              "y": 807,
+              "width": 238,
+              "height": 3
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": null
+        }
+      },
+      "screenshot_elapsed_seconds": 0.47282980900490656,
+      "capture_method": "Chromium Page.captureScreenshot of the unmodified viewport, lossless PNG optimizeForSpeed; no 3D redraw, clock change or transient replay between DOM observations."
+    },
+    {
+      "file": "02_actual_received_damage.png",
+      "sha256": "68a879f23a18b15edd9b3b7eab45f57355924aa4283ba3fafc1c1b27ab783fbf",
+      "expected_visible_elements": [
+        "hurt",
+        "subtitle"
+      ],
+      "dom_before": {
+        "performance_now_ms": 13925.099999964237,
+        "epoch_ms": 1793598166397,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": true,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 26,
+              "y": 708,
+              "width": 64.359375,
+              "height": 22
+            }
+          },
+          "subtitle": {
+            "visible": true,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 481.375,
+              "y": 720.015625,
+              "width": 477.25,
+              "height": 39.984375
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": 696.8000000119209
+        }
+      },
+      "dom_after": {
+        "performance_now_ms": 14526.5,
+        "epoch_ms": 1793598166999,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": true,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 26,
+              "y": 708,
+              "width": 64.359375,
+              "height": 22
+            }
+          },
+          "subtitle": {
+            "visible": true,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 481.375,
+              "y": 720.015625,
+              "width": 477.25,
+              "height": 39.984375
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": null,
+          "hurt": 95.39999997615814
+        }
+      },
+      "screenshot_elapsed_seconds": 0.5656668490264565,
+      "capture_method": "Chromium Page.captureScreenshot of the unmodified viewport, lossless PNG optimizeForSpeed; no 3D redraw, clock change or transient replay between DOM observations."
+    },
+    {
+      "file": "03_actual_hit_confirmation.png",
+      "sha256": "85f871d3c0ba3c90d791dab55ba384a3b63d78f2a3f007dec170a128324b5c82",
+      "expected_visible_elements": [
+        "hit"
+      ],
+      "dom_before": {
+        "performance_now_ms": 16598.19999998808,
+        "epoch_ms": 1793598169070,
+        "elements": {
+          "hit": {
+            "visible": true,
+            "text": "TOUCHÉ",
+            "rect": {
+              "x": 699,
+              "y": 429,
+              "width": 42,
+              "height": 42
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": 599.5,
+          "hurt": null
+        }
+      },
+      "dom_after": {
+        "performance_now_ms": 17081.899999976158,
+        "epoch_ms": 1793598169554,
+        "elements": {
+          "hit": {
+            "visible": true,
+            "text": "TOUCHÉ",
+            "rect": {
+              "x": 699,
+              "y": 429,
+              "width": 42,
+              "height": 42
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": 115.80000001192093,
+          "hurt": null
+        }
+      },
+      "screenshot_elapsed_seconds": 0.4370412629796192,
+      "capture_method": "Chromium Page.captureScreenshot of the unmodified viewport, lossless PNG optimizeForSpeed; no 3D redraw, clock change or transient replay between DOM observations."
+    },
+    {
+      "file": "04_actual_neutralisation.png",
+      "sha256": "064421dff744a66104e61dfb41452bd902a68e3651868a73fd13bb31cc0e2f85",
+      "expected_visible_elements": [
+        "hit"
+      ],
+      "dom_before": {
+        "performance_now_ms": 17902.19999998808,
+        "epoch_ms": 1793598170374,
+        "elements": {
+          "hit": {
+            "visible": true,
+            "text": "NEUTRALISÉ",
+            "rect": {
+              "x": 699,
+              "y": 429,
+              "width": 42,
+              "height": 42
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": 619.8000000119209,
+          "hurt": null
+        }
+      },
+      "dom_after": {
+        "performance_now_ms": 18331.599999964237,
+        "epoch_ms": 1793598170804,
+        "elements": {
+          "hit": {
+            "visible": true,
+            "text": "NEUTRALISÉ",
+            "rect": {
+              "x": 699,
+              "y": 429,
+              "width": 42,
+              "height": 42
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "− 11 PV",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "Essai du retour de dégâtsVous subissez 11 points de dégâts.",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": 190.4000000357628,
+          "hurt": null
+        }
+      },
+      "screenshot_elapsed_seconds": 0.3992404090240598,
+      "capture_method": "Chromium Page.captureScreenshot of the unmodified viewport, lossless PNG optimizeForSpeed; no 3D redraw, clock change or transient replay between DOM observations."
+    },
+    {
+      "file": "failure.png",
+      "sha256": "20235b3b0f018aaf5acfc117b18bbce0bee47963d117da7539e49684f3607617",
+      "expected_visible_elements": [],
+      "dom_before": {
+        "performance_now_ms": 24544.099999964237,
+        "epoch_ms": 1793598177016,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "NEUTRALISÉ",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "− 1,0 PV",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "Retour de dégâtsVous subissez 1,0 points de dégâts.",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": -6022.099999964237,
+          "hurt": -1749.7999999523163
+        }
+      },
+      "dom_after": {
+        "performance_now_ms": 25121.899999976158,
+        "epoch_ms": 1793598177594,
+        "elements": {
+          "hit": {
+            "visible": false,
+            "text": "NEUTRALISÉ",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "hurt": {
+            "visible": false,
+            "text": "− 1,0 PV",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "subtitle": {
+            "visible": false,
+            "text": "Retour de dégâtsVous subissez 1,0 points de dégâts.",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "reload": {
+            "visible": false,
+            "text": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        },
+        "feedback_remaining_ms": {
+          "hit": -6599.899999976158,
+          "hurt": -2327.599999964237
+        }
+      },
+      "screenshot_elapsed_seconds": 0.5391011949977838,
+      "capture_method": "Chromium Page.captureScreenshot of the unmodified viewport, lossless PNG optimizeForSpeed; no 3D redraw, clock change or transient replay between DOM observations."
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "request_failures": [
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-map-v038/coverage",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-terrain-v039/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/status",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_marseille",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-corridors-v040/corridor/aubagne_laciotat",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "https://hykklcvvwjwhcvukbzts.supabase.co/functions/v1/fallout-mistral-local-pack-v041/manifest",
+      "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:44431/__mistral/local-data",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "local_http_errors": [],
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "script_sha256": "d1d912cef0f08e45df50b5704ef20aba4e592cd7e2dc696b9d71e783e7bbbc55",
+  "html_injected": false,
+  "network_mocked": false,
+  "storage_mocked": false,
+  "randomness_mocked": false,
+  "stage": "failed",
+  "passed": 27,
+  "failed": 1,
+  "elapsed_seconds": 27.597,
+  "pinned_inputs": {
+    "index.html": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+    "src/game.js": "6cfb1a06c43603aedf36ae546ec2bfad75bf72ca7d67a4183c3c1585abbcfd6a",
+    "src/v050/19_fps_hud.js": "130d31f98652b5cbe95008998b086ce4df77c8242a4f87ee5e22e1cb9063cabc",
+    "src/v050/17_first_person.js": "07f81830b5115bbb1e0ad62517f563b613442b20928f65bdf0dd40fc1ce19214",
+    "tests/expansion/fps_feedback_native.py": "d1d912cef0f08e45df50b5704ef20aba4e592cd7e2dc696b9d71e783e7bbbc55",
+    "tools/serve_game.py": "8e65ffed1aa286c53b4ce155490d6132c6c49ceb42c31083a021128ff3fc1c80"
+  },
+  "origin": "http://127.0.0.1:44431",
+  "browser_version": "154.0.8037.57",
+  "combat_approach": {
+    "position": [
+      64.32907141183368,
+      1.65,
+      -32.42040764049976
+    ],
+    "yaw": 0.006395779984259858,
+    "pitch": -0.09599548070996226,
+    "actor": {
+      "id": "roux-hunter",
+      "hp": 70,
+      "alive": true,
+      "pos": [
+        64.32907141183368,
+        0,
+        -44.42040764049976
+      ],
+      "alerted": false
+    },
+    "rig": {
+      "type": "tarente",
+      "family": "tarente",
+      "parts": [
+        {
+          "id": "head",
+          "label": "TÊTE",
+          "center": [
+            63.72124902376076,
+            0.40874999999999995,
+            -44.05345812822684
+          ],
+          "cost": 35,
+          "group": "head",
+          "size": [
+            0.52,
+            0.4174999999999999,
+            0.47
+          ]
+        },
+        {
+          "id": "body",
+          "label": "CORPS",
+          "center": [
+            64.40611932018095,
+            0.49,
+            -44.46692236740759
+          ],
+          "cost": 25,
+          "group": "body",
+          "size": [
+            0.7,
+            0.6000000000000001,
+            1.3799999999999928
+          ]
+        },
+        {
+          "id": "leg_l",
+          "label": "PATTES GAUCHES",
+          "center": [
+            64.72651438583777,
+            0.19422814782441467,
+            -43.95072521330583
+          ],
+          "cost": 20,
+          "group": "legs",
+          "size": [
+            0.6849999999999987,
+            0.3694067731927717,
+            1.2149999999999972
+          ]
+        },
+        {
+          "id": "leg_r",
+          "label": "PATTES DROITES",
+          "center": [
+            64.09856557258202,
+            0.195448280701886,
+            -44.990871975994
+          ],
+          "cost": 20,
+          "group": "legs",
+          "size": [
+            0.6849999999999994,
+            0.3685507845928044,
+            1.2150000000000007
+          ]
+        },
+        {
+          "id": "tail",
+          "label": "QUEUE",
+          "center": [
+            65.49877982192126,
+            0.32499999999999996,
+            -45.155420310665114
+          ],
+          "cost": 25,
+          "group": "body",
+          "size": [
+            0.31284900219087775,
+            0.27999999999999997,
+            1.2975000000000025
+          ]
+        }
+      ],
+      "draws": 17
+    }
+  },
+  "error": "AssertionError('Actual feedback 1440x900: damage receipt stays inside the viewport')",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/fallout-Marseille/tests/expansion/fps_feedback_native.py\", line 263, in main\n    check(label+': damage receipt stays inside the viewport', delta is not None and delta['x'] >= 0 and delta['y'] >= 0 and delta['x']+delta['width'] <= width and delta['y']+delta['height'] <= height)\n  File \"/workspace/fallout-Marseille/tests/expansion/fps_feedback_native.py\", line 65, in check\n    raise AssertionError(name)\nAssertionError: Actual feedback 1440x900: damage receipt stays inside the viewport\n",
+  "cleanup": {
+    "context_closed": true,
+    "browser_closed": true,
+    "playwright_stopped": true,
+    "server_closed": true
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "html_sha256": "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+  "native_methods": [
+    {
+      "id": "fps",
+      "label": "Mains, profils et rechargements natifs",
+      "report": "fps/FIRST_PERSON_NATIVE.json",
+      "receipt": "fps/EXECUTION.json",
+      "log": "fps/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "entrypoint": "tests/expansion/first_person_native.py",
+      "expected_args": [
+        "--output",
+        "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/fps",
+        "--expect-html-sha",
+        "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+        "--run",
+        "--expect-fps-sha",
+        "07f81830b5115bbb1e0ad62517f563b613442b20928f65bdf0dd40fc1ce19214"
+      ],
+      "qa_phase": "A"
+    },
+    {
+      "id": "feedback",
+      "label": "Retours de combat natifs",
+      "report": "feedback/FPS_FEEDBACK_NATIVE.json",
+      "receipt": "feedback/EXECUTION.json",
+      "log": "feedback/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "entrypoint": "tests/expansion/fps_feedback_native.py",
+      "expected_args": [
+        "--output",
+        "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/feedback",
+        "--expect-html-sha",
+        "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78"
+      ],
+      "qa_phase": "A"
+    },
+    {
+      "id": "hud",
+      "label": "HUD et notifications natives",
+      "report": "hud/FPS_HUD_NATIVE.json",
+      "receipt": "hud/EXECUTION.json",
+      "log": "hud/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "entrypoint": "tests/expansion/fps_hud_native.py",
+      "expected_args": [
+        "--output",
+        "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/hud",
+        "--expect-html-sha",
+        "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78"
+      ],
+      "qa_phase": "A"
+    },
+    {
+      "id": "controller",
+      "label": "API Gamepad simulée et DOM",
+      "report": "controller/CONTROLLER_BROWSER.json",
+      "receipt": "controller/EXECUTION.json",
+      "log": "controller/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "category": "simulated_gamepad",
+      "entrypoint": "tests/expansion/controller_browser.py",
+      "expected_args": [
+        "--output",
+        "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/controller",
+        "--expected-html-sha256",
+        "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+        "--url",
+        "{OWNED_CONTROLLER_URL}"
+      ],
+      "qa_phase": "A"
+    },
+    {
+      "id": "landmarks",
+      "label": "Surfaces MNS natives, six contextes",
+      "report": "landmarks/LANDMARK_SURFACES_NATIVE.json",
+      "receipt": "landmarks/EXECUTION.json",
+      "log": "landmarks/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "entrypoint": "tests/expansion/landmark_surfaces_native.py",
+      "expected_args": [
+        "--output",
+        "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/landmarks",
+        "--expect-html-sha",
+        "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+        "--run"
+      ],
+      "qa_phase": "A"
+    },
+    {
+      "id": "interiors",
+      "label": "Programmes, portes, services, dépôts et habitation6",
+      "report": "interiors-native/INTERIOR_PROGRAMS_NATIVE.json",
+      "receipt": "interiors-native/EXECUTION.json",
+      "log": "interiors-native/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "report_script_dependency": "tests/expansion/interior_programs_native.py",
+      "entrypoint": "tests/expansion/interior_domestic_native.py",
+      "expected_args": [
+        "--output",
+        "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/interiors-native",
+        "--expect-html-sha",
+        "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+        "--run",
+        "--expect-interior-sha",
+        "793cf959e080e623d444c4436a2baf08a0b7e7463a6ec6d0d2a22cdf24385d68",
+        "--expect-architecture-sha",
+        "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+      ],
+      "qa_phase": "A"
+    },
+    {
+      "id": "bestiary",
+      "label": "Créatures existantes et nouvelles incarnations natives",
+      "report": "bestiary/BESTIARY_NATIVE.json",
+      "receipt": "bestiary/EXECUTION.json",
+      "log": "bestiary/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "entrypoint": "tests/expansion/regional_bestiary_native.py",
+      "expected_args": [
+        "--output",
+        "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/bestiary",
+        "--expect-html-sha",
+        "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+        "--run",
+        "--require-iconic",
+        "--require-humanoids",
+        "--expect-bestiary-sha",
+        "8ca674889e4944353f16ac16e9a24470ba444623c27271e48e8a928409b35667",
+        "--expect-architecture-sha",
+        "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+      ],
+      "qa_phase": "A"
+    },
+    {
+      "id": "facades",
+      "label": "Quincaillerie de façade native dans les sources IGN",
+      "report": "facades-native/FACADE_HARDWARE_NATIVE.json",
+      "receipt": "facades-native/EXECUTION.json",
+      "log": "facades-native/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "entrypoint": "tests/expansion/facade_hardware_native.py",
+      "expected_args": [
+        "--output",
+        "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/facades-native",
+        "--expect-html-sha",
+        "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+        "--run",
+        "--expect-facade-sha",
+        "d9ccd0b0d89a3f42a4de7d4938e217f11da2e7c21fc82a54cf7c3a1d5b7ebcc3"
+      ],
+      "qa_phase": "B"
+    },
+    {
+      "id": "holotapes",
+      "label": "Holobandes originales et lecteur hérité natifs",
+      "report": "holotapes-native/HOLOTAPES_NATIVE.json",
+      "receipt": "holotapes-native/EXECUTION.json",
+      "log": "holotapes-native/stdout.log",
+      "exit_key": "exitCode",
+      "receipt_report_hash_key": "reportSha256",
+      "receipt_script_hash_key": "scriptSha256",
+      "receipt_log_hash_key": "logSha256",
+      "entrypoint": "tests/expansion/holotapes_native.py",
+      "expected_args": [
+        "--output",
+        "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/holotapes-native",
+        "--expect-html-sha",
+        "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+        "--run",
+        "--expect-holotapes-sha",
+        "38dc175b60aa227ce9a2f13f77ce57401d36c4950b84cd59de52fe7937d2f217"
+      ],
+      "qa_phase": "A"
+    }
+  ],
+  "supplements": [
+    {
+      "source": "executed-sources",
+      "destination": "executed-sources"
+    },
+    {
+      "source": "PRE_EXECUTION_ARCHIVES.json",
+      "destination": "PRE_EXECUTION_ARCHIVES.json"
+    },
+    {
+      "source": "BASELINE_IDENTITY_READONLY.json",
+      "destination": "BASELINE_IDENTITY_READONLY.json"
+    },
+    {
+      "source": "qa-phase-a",
+      "destination": "qa-phase-a"
+    },
+    {
+      "source": "QA_PHASES.json",
+      "destination": "QA_PHASES.json"
+    },
+    {
+      "source": "facades-qa-contract-candidate/QA_CONTRACT_PATCH.diff",
+      "destination": "QA_CONTRACT_PATCH.diff"
+    },
+    {
+      "source": "feedback-transient-first",
+      "destination": "feedback-transient-first"
+    },
+    {
+      "source": "FPS_HUD_FEEDBACK_VISUAL_REVIEW.json",
+      "destination": "FPS_HUD_FEEDBACK_VISUAL_REVIEW.json"
+    },
+    {
+      "source": "EXCLUDED_ATTEMPTS.json",
+      "destination": "EXCLUDED_ATTEMPTS.json"
+    },
+    {
+      "source": "facades-native-attempt-1-original-outdir",
+      "destination": "excluded-facade-native-attempt"
+    },
+    {
+      "source": "facades-diagnostic/RELIGIOUS_COMPARISON.json",
+      "destination": "facade-projection-diagnostic/RELIGIOUS_COMPARISON.json"
+    },
+    {
+      "source": "facades-diagnostic/EXECUTION.json",
+      "destination": "facade-projection-diagnostic/EXECUTION.json"
+    },
+    {
+      "source": "facades-diagnostic/DIAGNOSTIC_PREPARATION.json",
+      "destination": "facade-projection-diagnostic/DIAGNOSTIC_PREPARATION.json"
+    },
+    {
+      "source": "facades-qa-contract-candidate/APPLIED_QA_CONTRACT.json",
+      "destination": "APPLIED_QA_CONTRACT.json"
+    },
+    {
+      "source": "facades-qa-contract-candidate/QA_CONTRACT_CHANGE.json",
+      "destination": "QA_CONTRACT_CHANGE.json"
+    },
+    {
+      "source": "FINAL_SOURCE_CONTINUITY_REVIEW.json",
+      "destination": "FINAL_SOURCE_CONTINUITY_REVIEW.json"
+    },
+    {
+      "source": "FINAL_BUILD_REVIEW.json",
+      "destination": "FINAL_BUILD_REVIEW.json"
+    },
+    {
+      "source": "service-worker-final",
+      "destination": "service-worker-final"
+    },
+    {
+      "source": "VISUAL_REVIEW_COVERAGE.json",
+      "destination": "VISUAL_REVIEW_COVERAGE.json"
+    },
+    {
+      "source": "COLLECTOR_REVIEW.json",
+      "destination": "COLLECTOR_REVIEW.json"
+    }
+  ],
+  "python": "/workspace/.cloud-setup/fallout-marseille/venv/bin/python"
+}

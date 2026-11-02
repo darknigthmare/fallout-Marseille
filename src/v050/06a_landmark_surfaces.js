@@ -1,14 +1,14 @@
-/* Native IGN MNS surfaces refine four landmark site contexts. A MNS is the upper
+/* Native IGN MNS surfaces refine bounded landmark site contexts. A MNS is the upper
    observed surface, not a facade survey or a semantic/structural roof model.
    Source building identities, XY contours and interior envelopes stay intact. */
 const MistralLandmarkSurfaces=(()=>{
- const MAX_BYTES=16*1024*1024,MAX_RECORDS=24,MAX_FACES=60000,MAX_VERTICES=40000,EPS=1e-7;
+ const MAX_BYTES=16*1024*1024,MAX_RECORDS=24,MAX_FACES=60000,MAX_VERTICES=40000,MAX_SOURCE_TILES=8,EPS=1e-7;
  const finite=n=>typeof n==='number'&&Number.isFinite(n),copy=v=>JSON.parse(JSON.stringify(v));
  function fail(s){throw Error('Surfaces MNS : '+s);}
  function key(g){if(!g||!['Polygon','MultiPolygon'].includes(g.type)||!Array.isArray(g.coordinates))fail('empreinte absente');return JSON.stringify([g.type,g.coordinates]);}
  function validate(raw){
   if(!raw||raw.schemaVersion!==1||raw.kind!=='ign-native-mns-landmark-surfaces'||raw.frame!=='EPSG:2154-NGF-IGN69'||!Array.isArray(raw.records)||raw.records.length>MAX_RECORDS)fail('atlas incompatible');
-  const s=raw.source;if(s?.provider!=='IGN'||s.product!=='MNS LiDAR HD'||s.nativeSpacingMeters!==.5||s.license!=='Licence Ouverte 2.0'||typeof s.attribution!=='string'||!s.attribution||!Array.isArray(s.tiles)||!s.tiles.length||s.tiles.length>4)fail('provenance incompatible');
+  const s=raw.source;if(s?.provider!=='IGN'||s.product!=='MNS LiDAR HD'||s.nativeSpacingMeters!==.5||s.license!=='Licence Ouverte 2.0'||typeof s.attribution!=='string'||!s.attribution||!Array.isArray(s.tiles)||!s.tiles.length||s.tiles.length>MAX_SOURCE_TILES)fail('provenance incompatible');
   const tiles=new Set();for(const t of s.tiles){let u;try{u=new URL(t.feature?.properties?.url_mns);}catch{fail('URL officielle absente');}if(u.protocol!=='https:'||u.hostname!=='data.geopf.fr'||u.username||u.password||u.pathname!=='/wms-r'||!u.searchParams.get('LAYERS')?.startsWith('IGNF_LIDAR-HD_MNS_')||!/^[a-f0-9]{64}$/.test(t.sha256)||tiles.has(t.sha256)||t.header?.resolutionMeters?.some(n=>n!==.5)||t.header?.nodata!==-9999||t.feature.properties.systeme_altimetrique!=='IGN69'||t.feature.properties.systeme_planimetrique!=='LAMB93')fail('dalle non attribuée');tiles.add(t.sha256);}
   const records=[],seen=new Set();let count=0;
   for(const r of raw.records){
@@ -38,7 +38,7 @@ const MistralLandmarkSurfaces=(()=>{
   candidates(x,z,r=0){if(![x,z,r].every(finite)||Math.abs(x)>2e7||Math.abs(z)>2e7||r<0||r>8)return[];const ids=new Set();for(let a=Math.floor((x-r)/this.size);a<=Math.floor((x+r)/this.size);a++)for(let b=Math.floor((z-r)/this.size);b<=Math.floor((z+r)/this.size);b++)for(const i of this.cells.get(a+':'+b)||[])ids.add(i);return[...ids];}
   heightAt(x,z,padding=0){let height=null,best=Infinity;for(const i of this.candidates(x,z,padding)){const ps=this.faces[i].map(n=>this.vertices[n]),t=MistralRoofSolids.projected(ps);if(!t)continue;const y=MistralRoofSolids.plane(t,x,z);if(y!==null){if(best>EPS){height=y;best=0;}else height=Math.max(height,y);continue;}if(!padding||best===0)continue;for(let j=0;j<3;j++){const a=ps[j],b=ps[(j+1)%3],dx=b[0]-a[0],dz=b[2]-a[2],den=dx*dx+dz*dz;if(den<EPS)continue;const u=Math.max(0,Math.min(1,((x-a[0])*dx+(z-a[2])*dz)/den)),d=Math.hypot(x-a[0]-u*dx,z-a[2]-u*dz);if(d<=padding+EPS&&d<best){best=d;height=a[1]+u*(b[1]-a[1]);}}}return height;}
  }
- return{MAX_BYTES,MAX_RECORDS,MAX_FACES,MAX_VERTICES,EPS,key,validate,matches,projected,build,SurfaceIndex};
+ return{MAX_BYTES,MAX_RECORDS,MAX_FACES,MAX_VERTICES,MAX_SOURCE_TILES,EPS,key,validate,matches,projected,build,SurfaceIndex};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralLandmarkSurfaces;
 

@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "provenance": "invented-fittings-on-actual-IGN-envelopes",
+  "facadeModuleSha256": "63f1b830a489e46ca932f5b7f33482bee03df36a727949ff78965a51a9002d02",
+  "generatorSha256": "46ff0e4b5f14ecc7c706817397c6ee06c82d8447c3cb5cd0466ea7d3f9f57eb3",
+  "sourceFixtureSha256": "841596785a7753c9860aace5d62e604de0c066f61822f9d63b8ef85f8ee2ae55",
+  "cases": [
+    {
+      "role": "residential",
+      "sourceId": "batiment.10610455",
+      "stableSourceId": "BATIMENT0000000273377959",
+      "buildingId": "BATIMENT0000000273377959:b90aa14f8c2201f3",
+      "sourcePath": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "sourceChunkSha256": "3ba8b2f83676f863fee31544381a52fa31edf799e373be98d05253f2c545ff2b",
+      "geographicPoint": [
+        5.36318701,
+        43.278286,
+        37.6
+      ],
+      "height": 10.6,
+      "ground": 27,
+      "door": {
+        "center": [
+          -11901.244013576536,
+          27,
+          1111.9450282547623
+        ],
+        "width": 1.15,
+        "clearWidthMeters": 1.1500000000009327,
+        "normal": [
+          0.2999783156529785,
+          -0.9539460205577682
+        ]
+      },
+      "cameras": {
+        "entry": {
+          "position": [
+            -11899.594132840444,
+            28.2925,
+            1106.6983251416946
+          ],
+          "lookAt": [
+            -11901.244013576536,
+            28.2925,
+            1111.9450282547623
+          ],
+          "normal": [
+            0.2999783156529785,
+            -0.9539460205577682
+          ],
+          "reference": "Model camera; reselect runtime entrance after terrain binding before native capture"
+        },
+        "window": {
+          "position": [
+            -11916.01235737983,
+            28.540975,
+            1118.8344699990591
+          ],
+          "lookAt": [
+            -11910.768948115452,
+            28.540975,
+            1120.4947890305193
+          ],
+          "normal": [
+            -0.9533471389779206,
+            -0.3018761875382248
+          ],
+          "reference": "Model camera; reselect runtime entrance after terrain binding before native capture"
+        }
+      },
+      "runtimeBudget": {
+        "maxQuads": 512,
+        "quads": 512,
+        "coverage": {
+          "provenance": "invented",
+          "profiledFittings": 39,
+          "profiledParts": 279,
+          "maximumProjectionMeters": 0.075,
+          "enabled": true,
+          "limit": "quad-budget",
+          "requested": 194,
+          "rendered": 104,
+          "deferred": 90,
+          "byKind": {
+            "joinery": {
+              "requested": 65,
+              "rendered": 65,
+              "deferred": 0
+            },
+            "surround": {
+              "requested": 65,
+              "rendered": 31,
+              "deferred": 34
+            },
+            "shutters": {
+              "requested": 64,
+              "rendered": 8,
+              "deferred": 56
+            }
+          },
+          "reasons": {
+            "shutter-budget-reservation": 34,
+            "quad-budget": 54,
+            "adjacent-opening-or-shutter-conflict": 2
+          }
+        }
+      },
+      "renderedVariants": [
+        "panelled-entry-single",
+        "casement-window",
+        "metric-opening-surround",
+        "open-louvered-pair"
+      ]
+    },
+    {
+      "role": "commercial",
+      "sourceId": "batiment.10618211",
+      "stableSourceId": "BATIMENT0000000273387535",
+      "buildingId": "BATIMENT0000000273387535:d2f99c6e95a15222",
+      "sourcePath": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "sourceChunkSha256": "3ba8b2f83676f863fee31544381a52fa31edf799e373be98d05253f2c545ff2b",
+      "geographicPoint": [
+        5.3607128,
+        43.27967922,
+        67.7
+      ],
+      "height": 8.299999999999997,
+      "ground": 61,
+      "door": {
+        "center": [
+          -12098.94401893916,
+          61,
+          961.0949647114612
+        ],
+        "width": 1.15,
+        "clearWidthMeters": 1.1499999999993034,
+        "normal": [
+          0.9284927438460933,
+          0.3713505414364618
+        ]
+      },
+      "cameras": {
+        "entry": {
+          "position": [
+            -12093.837308848008,
+            62.2925,
+            963.1373926893617
+          ],
+          "lookAt": [
+            -12098.94401893916,
+            62.2925,
+            961.0949647114612
+          ],
+          "normal": [
+            0.9284927438460933,
+            0.3713505414364618
+          ],
+          "reference": "Model camera; reselect runtime entrance after terrain binding before native capture"
+        },
+        "window": null
+      },
+      "runtimeBudget": {
+        "maxQuads": 512,
+        "quads": 235,
+        "coverage": {
+          "provenance": "invented",
+          "profiledFittings": 25,
+          "profiledParts": 131,
+          "maximumProjectionMeters": 0.075,
+          "enabled": true,
+          "limit": "quad-budget",
+          "requested": 50,
+          "rendered": 50,
+          "deferred": 0,
+          "byKind": {
+            "joinery": {
+              "requested": 25,
+              "rendered": 25,
+              "deferred": 0
+            },
+            "surround": {
+              "requested": 25,
+              "rendered": 25,
+              "deferred": 0
+            }
+          },
+          "reasons": {}
+        }
+      },
+      "renderedVariants": [
+        "glazed-entry-single",
+        "shopfront-transom",
+        "casement-window",
+        "metric-opening-surround"
+      ]
+    },
+    {
+      "role": "industrial",
+      "sourceId": "batiment.9618398",
+      "stableSourceId": "BATIMENT0000000258361329",
+      "buildingId": "BATIMENT0000000258361329:c4311cf5a6bd9651",
+      "sourcePath": "data/map_pack/city/m13055-r02-c05-2-79e15417bcc09c65.json",
+      "sourceChunkSha256": "79e15417bcc09c65941beb83d71535cfe6fca634a1561b2d627bcc4b71add4d5",
+      "geographicPoint": [
+        5.35739915,
+        43.23296567,
+        22.4
+      ],
+      "height": 10.400000000000002,
+      "ground": 14.7,
+      "door": {
+        "center": [
+          -12228.144068307418,
+          14.7,
+          6203.444696481805
+        ],
+        "width": 2.4,
+        "clearWidthMeters": 2.4000000000015858,
+        "normal": [
+          0.5573781500348457,
+          0.8302587535604387
+        ]
+      },
+      "cameras": {
+        "entry": {
+          "position": [
+            -12225.078488482226,
+            15.9925,
+            6208.011119626388
+          ],
+          "lookAt": [
+            -12228.144068307418,
+            15.9925,
+            6203.444696481805
+          ],
+          "normal": [
+            0.5573781500348457,
+            0.8302587535604387
+          ],
+          "reference": "Model camera; reselect runtime entrance after terrain binding before native capture"
+        },
+        "window": null
+      },
+      "runtimeBudget": {
+        "maxQuads": 512,
+        "quads": 423,
+        "coverage": {
+          "provenance": "invented",
+          "profiledFittings": 40,
+          "profiledParts": 237,
+          "maximumProjectionMeters": 0.075,
+          "enabled": true,
+          "limit": "quad-budget",
+          "requested": 80,
+          "rendered": 80,
+          "deferred": 0,
+          "byKind": {
+            "joinery": {
+              "requested": 40,
+              "rendered": 40,
+              "deferred": 0
+            },
+            "surround": {
+              "requested": 40,
+              "rendered": 40,
+              "deferred": 0
+            }
+          },
+          "reasons": {}
+        }
+      },
+      "renderedVariants": [
+        "service-entry-double",
+        "workshop-grid",
+        "metric-opening-surround"
+      ]
+    },
+    {
+      "role": "religious",
+      "sourceId": "batiment.10612440",
+      "stableSourceId": "BATIMENT0000000273380428",
+      "buildingId": "BATIMENT0000000273380428:6858cbd655aae63a",
+      "sourcePath": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "sourceChunkSha256": "3ba8b2f83676f863fee31544381a52fa31edf799e373be98d05253f2c545ff2b",
+      "geographicPoint": [
+        5.36682848,
+        43.27613549,
+        97.6
+      ],
+      "height": 5.7,
+      "ground": 91.9,
+      "door": {
+        "center": [
+          -11581.243957660336,
+          91.9,
+          1343.6948219840415
+        ],
+        "width": 1.15,
+        "clearWidthMeters": 1.1499999999999322,
+        "normal": [
+          0.957124731489302,
+          0.2896761094248741
+        ]
+      },
+      "cameras": {
+        "entry": {
+          "position": [
+            -11575.979771637145,
+            93.19250000000001,
+            1345.2880405858782
+          ],
+          "lookAt": [
+            -11581.243957660336,
+            93.19250000000001,
+            1343.6948219840415
+          ],
+          "normal": [
+            0.957124731489302,
+            0.2896761094248741
+          ],
+          "reference": "Model camera; reselect runtime entrance after terrain binding before native capture"
+        },
+        "window": null
+      },
+      "runtimeBudget": {
+        "maxQuads": 512,
+        "quads": 148,
+        "coverage": {
+          "provenance": "invented",
+          "profiledFittings": 11,
+          "profiledParts": 63,
+          "maximumProjectionMeters": 0.075,
+          "enabled": true,
+          "limit": "quad-budget",
+          "requested": 22,
+          "rendered": 22,
+          "deferred": 0,
+          "byKind": {
+            "joinery": {
+              "requested": 11,
+              "rendered": 11,
+              "deferred": 0
+            },
+            "surround": {
+              "requested": 11,
+              "rendered": 11,
+              "deferred": 0
+            }
+          },
+          "reasons": {}
+        }
+      },
+      "renderedVariants": [
+        "panelled-entry-single",
+        "nave-glazing",
+        "metric-opening-surround"
+      ]
+    },
+    {
+      "role": "microcurve",
+      "sourceId": "batiment.10611104",
+      "stableSourceId": "BATIMENT0000000273378724",
+      "buildingId": "BATIMENT0000000273378724:2a811ba1fe707475",
+      "sourcePath": "data/map_pack/city/m13055-r04-c05-1-3ba8b2f83676f863.json",
+      "sourceChunkSha256": "3ba8b2f83676f863fee31544381a52fa31edf799e373be98d05253f2c545ff2b",
+      "geographicPoint": [
+        5.36223932,
+        43.27430464,
+        26.8
+      ],
+      "height": 11.900000000000002,
+      "ground": 15.2,
+      "door": {
+        "center": [
+          -11957.84412834292,
+          15.2,
+          1559.9367782501029
+        ],
+        "width": 1.15,
+        "clearWidthMeters": 1.1073936697847893,
+        "normal": [
+          0.9968668333298628,
+          -0.07909814540740823
+        ]
+      },
+      "cameras": {
+        "entry": {
+          "position": [
+            -11952.361360759605,
+            16.4925,
+            1559.5017384503622
+          ],
+          "lookAt": [
+            -11957.84412834292,
+            16.4925,
+            1559.9367782501029
+          ],
+          "normal": [
+            0.9968668333298628,
+            -0.07909814540740823
+          ],
+          "reference": "Model camera; reselect runtime entrance after terrain binding before native capture"
+        },
+        "window": {
+          "position": [
+            -11964.296555602461,
+            16.91525,
+            1554.8691131431917
+          ],
+          "lookAt": [
+            -11960.39429928636,
+            16.91525,
+            1558.7449866761453
+          ],
+          "normal": [
+            -0.7095011483820005,
+            -0.7047042787188275
+          ],
+          "reference": "Model camera; reselect runtime entrance after terrain binding before native capture"
+        }
+      },
+      "runtimeBudget": {
+        "maxQuads": 512,
+        "quads": 512,
+        "coverage": {
+          "provenance": "invented",
+          "profiledFittings": 2,
+          "profiledParts": 15,
+          "maximumProjectionMeters": 0.075,
+          "enabled": true,
+          "limit": "quad-budget",
+          "requested": 35,
+          "rendered": 14,
+          "deferred": 21,
+          "byKind": {
+            "joinery": {
+              "requested": 12,
+              "rendered": 12,
+              "deferred": 0
+            },
+            "surround": {
+              "requested": 12,
+              "rendered": 1,
+              "deferred": 11
+            },
+            "shutters": {
+              "requested": 11,
+              "rendered": 1,
+              "deferred": 10
+            }
+          },
+          "reasons": {
+            "shutter-budget-reservation": 11,
+            "quad-budget": 10
+          }
+        }
+      },
+      "renderedVariants": [
+        "panelled-entry-single",
+        "casement-window",
+        "metric-opening-surround",
+        "open-louvered-pair"
+      ]
+    }
+  ]
+}

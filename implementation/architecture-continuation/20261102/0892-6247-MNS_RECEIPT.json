@@ -1,0 +1,95 @@
+{
+  "feature": {
+    "type": "Feature",
+    "id": "metadata.62963",
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              5.36498325,
+              43.29628821
+            ],
+            [
+              5.37729345,
+              43.29601813
+            ],
+            [
+              5.37692278,
+              43.2870266
+            ],
+            [
+              5.3646145,
+              43.28729664
+            ],
+            [
+              5.36498325,
+              43.29628821
+            ]
+          ]
+        ]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "capteur": "[\"Leica TerrainMapper:90560\"]",
+      "url_mnh": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNH_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6246000.25,892999.75,6247000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6247_MNH_O_0M50_LAMB93_IGN69.tif",
+      "url_mns": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6246000.25,892999.75,6247000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6247_MNS_O_0M50_LAMB93_IGN69.tif",
+      "url_mnt": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6246000.25,892999.75,6247000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6247_MNT_O_0M50_LAMB93_IGN69.tif",
+      "url_npl": "https://data.geopf.fr/telechargement/download/LiDARHD-NUALID/NUALHD_1-0__LAZ_LAMB93_PQ_2025-03-14/LHD_FXX_0892_6247_PTS_LAMB93_IGN69.copc.laz",
+      "code_mission": "21LHD7PQ",
+      "date_edition": "2025-03-14Z",
+      "nombre_points": 23888799,
+      "coordonnees_nw": "0892-6247",
+      "moa_acquisition": "IGN",
+      "moe_acquisition": "APEI",
+      "procede_classement": "IGN_AUTO_V5",
+      "date_fin_acquisition": "2021-10-17Z",
+      "systeme_altimetrique": "IGN69",
+      "moe_classement_manuel": "NR",
+      "systeme_planimetrique": "LAMB93",
+      "date_debut_acquisition": "2021-06-26Z",
+      "moe_classement_automatique": "IGN"
+    }
+  },
+  "sha256": "4354e54417d2c2d00392f90820c69c3195145dd0bae244f36fe58aa8b7126b62",
+  "bytes": 16000513,
+  "filename": "0892-6247-mns.tif",
+  "header": {
+    "crsWkt": "PROJCS[\"EPSG:2154\",GEOGCS[\"unknown\",DATUM[\"unnamed\",SPHEROID[\"unretrievable - using WGS84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Lambert_Conformal_Conic_2SP\"],PARAMETER[\"latitude_of_origin\",46.5],PARAMETER[\"central_meridian\",3],PARAMETER[\"standard_parallel_1\",49],PARAMETER[\"standard_parallel_2\",44],PARAMETER[\"false_easting\",700000],PARAMETER[\"false_northing\",6600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+    "bounds": [
+      891999.75,
+      6246000.25,
+      892999.75,
+      6247000.25
+    ],
+    "size": [
+      2000,
+      2000
+    ],
+    "resolutionMeters": [
+      0.5,
+      0.5
+    ],
+    "nodata": -9999,
+    "dtype": "float32",
+    "headerEpsgAutoIdentification": null
+  },
+  "metadataResponseSha256": "d03791c589e23082add2d016a2db97ebe097a03a9f03c21f7c10930158ba0471",
+  "http": {
+    "requestedAt": "2026-11-02T04:46:18.567778+00:00",
+    "finishedAt": "2026-11-02T04:46:36.433259+00:00",
+    "url": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6246000.25,892999.75,6247000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6247_MNS_O_0M50_LAMB93_IGN69.tif",
+    "finalUrl": "https://data.geopf.fr/wms-r?SERVICE=WMS&VERSION=1.3.0&EXCEPTIONS=text/xml&REQUEST=GetMap&LAYERS=IGNF_LIDAR-HD_MNS_ELEVATION.ELEVATIONGRIDCOVERAGE.LAMB93&FORMAT=image/geotiff&STYLES=&CRS=EPSG:2154&BBOX=891999.75,6246000.25,892999.75,6247000.25&WIDTH=2000&HEIGHT=2000&FILENAME=LHD_FXX_0892_6247_MNS_O_0M50_LAMB93_IGN69.tif",
+    "status": 200,
+    "headers": {
+      "Content-Type": "image/geotiff",
+      "Content-Length": "16000513",
+      "Date": "Mon, 02 Nov 2026 04:46:23 GMT",
+      "Last-Modified": null,
+      "ETag": null
+    }
+  },
+  "checksumScope": "Received verified-HTTPS bytes; no independent upstream checksum published."
+}

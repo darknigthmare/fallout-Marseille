@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent arithmetic replay against pinned original Float32 rasters; no new physical accuracy claim.",
+  "surfaceSha256": "c89a3a22e3b2d55c08d30361ba5c65cae88392b74635a6d5cc2bc7599d99ae7c",
+  "newRecords": [
+    {
+      "cleabs": "BATIMENT0000000258927584",
+      "vertices": 13372,
+      "nativeCentresVerifiedExactly": 12192,
+      "triangleIntersectionsVerified": 1180,
+      "maximumInterpolationErrorMetres": 7.893266484870765e-09,
+      "referencedNoData": 0
+    },
+    {
+      "cleabs": "BATIMENT0000000273403820",
+      "vertices": 8010,
+      "nativeCentresVerifiedExactly": 7197,
+      "triangleIntersectionsVerified": 813,
+      "maximumInterpolationErrorMetres": 7.382432443137077e-09,
+      "referencedNoData": 0
+    },
+    {
+      "cleabs": "BATIMENT0000000273403821",
+      "vertices": 151,
+      "nativeCentresVerifiedExactly": 70,
+      "triangleIntersectionsVerified": 81,
+      "maximumInterpolationErrorMetres": 5.480492504261747e-09,
+      "referencedNoData": 0
+    },
+    {
+      "cleabs": "BATIMENT0000000273403819",
+      "vertices": 150,
+      "nativeCentresVerifiedExactly": 70,
+      "triangleIntersectionsVerified": 80,
+      "maximumInterpolationErrorMetres": 5.298781857732138e-09,
+      "referencedNoData": 0
+    }
+  ],
+  "nativeCentresVerifiedExactly": 19529,
+  "triangleIntersectionsVerified": 2154,
+  "referencedNoData": 0,
+  "verificationScriptSha256": "a92998c3d62a7b9e73a6c60413b34152337d034c5b12cee8c48c3ba9613a720c"
+}

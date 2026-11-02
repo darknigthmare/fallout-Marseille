@@ -1,0 +1,20 @@
+[
+  {
+    "pid": 304897,
+    "ppid": 304896,
+    "startTicks": "46689849",
+    "argv": [
+      "/workspace/.cloud-setup/fallout-marseille/venv/bin/python",
+      "tests/expansion/interior_domestic_native.py",
+      "--output",
+      "/workspace/.cloud-setup/fallout-marseille/city-continuation-20261102/interiors-native",
+      "--expect-html-sha",
+      "4581c0c29ce5c74da3aba7430227fba844aed1eb40f1b1fc4d7965c7a6600d78",
+      "--run",
+      "--expect-interior-sha",
+      "793cf959e080e623d444c4436a2baf08a0b7e7463a6ec6d0d2a22cdf24385d68",
+      "--expect-architecture-sha",
+      "c5c853a51c56d5b9f9f5dd75085de8ef524d6a0c3efd774fbbbe099daf82f229"
+    ]
+  }
+]

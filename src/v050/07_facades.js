@@ -281,8 +281,35 @@ const MistralFacades=(()=>{
   }
   return{variant,parts,reason:null};
  }
+ /* These shallow assemblies complete invented joinery, not the source wall.
+    Each moulding has four returns and/or a front face, so the normal changes
+    across its section. A documented bay never receives an inferred assembly. */
+ function authoredRelief(d,o,e){
+  if(o.provenance!=='invented')return{variant:'documentary-envelope-only',parts:[],reason:'documentary-joinery-not-supplied'};
+  const parts=[],w=o.width,h=o.height,reverse=!e.surfaceId&&(e.a[0]>e.b[0]||e.a[0]===e.b[0]&&e.a[1]>e.b[1]);
+  function put(x0,y0,x1,y1,material,offset){if(x1<=x0||y1<=y0)return;parts.push({x0:o.offset+(reverse?w-x1:x0),y0:o.bottom+y0,x1:o.offset+(reverse?w-x0:x1),y1:o.bottom+y1,material,offset:reverse&&Array.isArray(offset)?[offset[1],offset[0],offset[3],offset[2]]:offset});}
+  function frame(x0,y0,x1,y1,material,back=.043,front=.069,thickness=.035){const t=Math.min(thickness,(x1-x0)/4,(y1-y0)/4);if(t<=0)return;put(x0,y0,x0+t,y1,material,[back,front,front,back]);put(x1-t,y0,x1,y1,material,[front,back,back,front]);put(x0+t,y0,x1-t,y0+t,material,[back,back,front,front]);put(x0+t,y1-t,x1-t,y1,material,[front,front,back,back]);}
+  function bevel(x0,y0,x1,y1,material,back=.052,front=.074,thickness=.007){const t=Math.min(thickness,(x1-x0)/4,(y1-y0)/4);frame(x0,y0,x1,y1,material,back,front,t);put(x0+t,y0+t,x1-t,y1-t,material,front);}
+  let variant;
+  if(o.type==='door'){
+   const leaves=w>=1.65?2:1,leaf=w/leaves,glazed=d.style==='commercial'||d.style==='civic',service=d.style==='industrial'||d.typology==='annexe'&&d.styleBasis==='invented-fallback';
+   variant=(glazed?'rebated-glazed-entry':service?'pressed-service-entry':'moulded-panel-entry')+(leaves===2?'-double':'-single');
+   for(let i=0;i<leaves;i++){const x=i*leaf,inset=Math.min(.10,leaf*.12),lo=x+inset,hi=x+leaf-inset;
+    frame(lo,.16,hi,h*.42,service?'iron':'paint',.043,.068);
+    frame(lo,h*.53,hi,h-.16,glazed?'iron':'paint',.043,.068);
+    const handle=i===0?x+leaf-Math.min(.12,leaf*.17):x+Math.min(.12,leaf*.17),at=Math.min(1.02,h*.48);bevel(handle-.025,at-.10,handle+.025,at+.10,'iron');
+   }
+  }else{
+   const service=d.style==='industrial',shop=o.type==='shopfront',nave=d.style==='religious';
+   variant=shop?'rebated-shopfront':service?'pressed-workshop-frame':nave?'rebated-nave-frame':'rebated-casement';
+   frame(.02,.02,w-.02,h-.02,service||shop?'iron':'trim',.033,.067,.028);
+   const bars=service&&w>=1.8?2:1;
+   for(let i=1;i<=bars;i++){const x=w*i/(bars+1);bevel(x-.018,.02,x+.018,h-.02,service||shop?'iron':'trim',.049,.070,.006);}
+  }
+  return{variant,parts,reason:null};
+ }
  function geometry(draw,options={}){
-  const maxQuads=budget(options.maxQuads,512,8,4096),detail=options.detail!=='low',plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads*(detail?.60:.85))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
+  const maxQuads=budget(options.maxQuads,512,8,4096),detail=options.detail!=='low',reliefEnabled=detail&&options.joineryRelief!==false,plan=facadePlan(draw,{maxOpenings:Math.min(2048,Math.max(1,Math.floor(maxQuads*(detail?.60:.85))))});if(!plan)return{draws:[],quads:0,openings:0,bytes:0};
   const groups=new Map(),palette=PALETTES[plan.style],shade=((plan.seed%21)-10)/550;
   const material=name=>name==='wall'?palette.wall.map(v=>limit(v+shade,0,1)):name==='paint'?palette.shutter.map(v=>limit(v*1.14,0,1)):name==='louver'?palette.shutter.map(v=>v*.68):name==='recess'?palette.shutter.map(v=>v*.48):palette[name]||palette.trim;
   let quads=0,openingCount=0;const renderedOpenings=[],deferredOpenings=[],joineryDetails=[],byEdge=new Map(plan.edges.map(e=>[edgeKey(e),e])),bySurface=new Map(plan.curves.map(e=>[e.surfaceId,e]));
@@ -308,14 +335,17 @@ const MistralFacades=(()=>{
   const baseQuads=quads;
   // A fitting is indivisible even where its rectangles cross hundreds of
   // original micro-segments. Failed reservations emit no fragment at all.
-  function fitting(o,index,kind,variant,parts,reason=null,allocation=maxQuads){
+  function fitting(o,index,kind,variant,parts,reason=null,allocation=maxQuads,reserveReason='shutter-budget-reservation'){
    const e=openingSurface(o,byEdge,bySurface),cost=parts.reduce((n,p)=>n+surfaceCount(e,p.x0,p.x1),0),allDepths=parts.flatMap(p=>depths(p.offset)),profiledParts=parts.filter(p=>Array.isArray(p.offset)&&Math.max(...p.offset)-Math.min(...p.offset)>EPS).length,record={openingIndex:index,kind,variant,provenance:'invented',basis:'source-usage-and-metric-opening',styleBasis:plan.styleBasis,partCount:parts.length,profiledParts,depthRangeMeters:allDepths.length?[Math.min(...allDepths),Math.max(...allDepths)]:null,requiredQuads:cost,allocationLimit:allocation,rendered:false,reason,meshes:[]};
    if(!reason&&cost&&quads+cost<=allocation){const starts=new Map([...groups].map(([name,g])=>[name,g.vertices.length]));for(const p of parts)quad(e,p.x0,p.y0,p.x1,p.y1,p.material,p.offset);for(const[name,g]of groups){const firstVertex=starts.get(name)||0;if(g.vertices.length>firstVertex)record.meshes.push({material:name,firstVertex,vertexCount:g.vertices.length-firstVertex});}record.rendered=true;record.reason=null;}
-   else if(!reason)record.reason=cost?quads+cost<=maxQuads?'shutter-budget-reservation':'quad-budget':'unsupported-source-surface';
+   else if(!reason)record.reason=cost?quads+cost<=maxQuads?reserveReason:'quad-budget':'unsupported-source-surface';
    joineryDetails.push(record);return record.rendered;
   }
   if(detail){
    for(let i=0;i<renderedOpenings.length;i++){const o=renderedOpenings[i],kit=authoredJoinery(plan,o,openingSurface(o,byEdge,bySurface));fitting(o,i,'joinery',kit.variant,kit.parts,kit.reason);}
+   // A small fixed ceiling dresses a few lower/entry bays in depth. Reserve it
+   // after all ordinary joinery, preserving the established opening inventory.
+   const reliefReserve=reliefEnabled&&renderedOpenings.some(o=>o.provenance==='invented')?Math.min(64,Math.floor((maxQuads-quads)*.25)):0,establishedLimit=maxQuads-reliefReserve;
    const shutterEligible=o=>o.type==='window'&&plan.style==='residential'&&(plan.typology==='stacked'||plan.typology==='annexe'&&plan.styleBasis!=='invented-fallback')&&o.provenance==='invented';
    function shutterKit(o,e){const x=o.offset,y=o.bottom,w=o.width,h=o.height,sw=Math.min(.55,w*.47),ranges=[[x-sw-.035,x-.035],[x+w+.035,x+w+sw+.035]],parts=[];
     if(ranges.some(([a,b])=>a<.08||b>e.length-.08))return{ranges,parts,reason:'insufficient-source-wall-beside-bay'};
@@ -326,14 +356,14 @@ const MistralFacades=(()=>{
    // one whole admissible kit (up to the established 128-quad reserve) before
    // spending the remainder on the new sill and reveal profiles.
    let leastShutter=Infinity;for(const o of renderedOpenings)if(shutterEligible(o)){const e=openingSurface(o,byEdge,bySurface),kit=shutterKit(o,e);if(!kit.reason)leastShutter=Math.min(leastShutter,kit.parts.reduce((n,p)=>n+surfaceCount(e,p.x0,p.x1),0));}
-   const surroundLimit=maxQuads-(finite(leastShutter)?Math.min(128,Math.max(leastShutter,Math.ceil((maxQuads-quads)*.4))):0);
+   const surroundLimit=establishedLimit-(finite(leastShutter)?Math.min(128,Math.max(leastShutter,Math.ceil((maxQuads-quads)*.4))):0);
    for(let i=0;i<renderedOpenings.length;i++){const o=renderedOpenings[i],e=openingSurface(o,byEdge,bySurface),x=o.offset,y=o.bottom,w=o.width,h=o.height,trim=Math.min(.09,w*.075,h*.06),lo=Math.max(0,x-trim),hi=Math.min(e.length,x+w+trim),bottom=Math.max(0,y-trim),top=Math.min(plan.height,y+h+trim),parts=[],add=(x0,y0,x1,y1,offset)=>{if(supportedPatch(x0,y0,x1,y1,offset))parts.push({x0,y0,x1,y1,material:'trim',offset});};
     // A raised inner arris returns to the original wall at the outside edge.
     // All four profiles stay outside the bay: the documentary opening and
     // every pedestrian clear width keep their exact original dimensions.
     add(lo,bottom,x,top,[.012,.071,.071,.012]);add(x+w,bottom,hi,top,[.071,.012,.012,.071]);add(x,y+h,x+w,top,[.071,.071,.012,.012]);if(y>0)add(x,bottom,x+w,y,[.012,.012,.071,.071]);
     if(o.type==='window'&&y>.4){const sill=y-.06;add(lo,Math.max(0,y-.13),hi,sill,[.025,.025,.075,.075]);add(lo,sill,hi,sill,[.025,.025,.075,.075]);}
-    fitting(o,i,'surround','metric-opening-surround',parts,null,o.type==='door'?maxQuads:surroundLimit);
+    fitting(o,i,'surround','metric-opening-surround',parts,null,o.type==='door'?establishedLimit:surroundLimit);
    }
    // Open persiennes occupy the wall beside a bay, never its passage/glazing.
    // Check the actual segmented source intervals against all retained and all
@@ -341,9 +371,20 @@ const MistralFacades=(()=>{
    const occupied=new Map();for(const o of [...renderedOpenings,...plan.fixed.filter(o=>o.provenance==='documented')]){const e=openingSurface(o,byEdge,bySurface);if(!e)continue;for(const s of sourceSpans(e,o.offset,o.width)){const key=edgeKey(s);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({opening:o,offset:s.offset,end:s.offset+s.width,bottom:o.bottom,top:o.bottom+o.height});}}
    const free=(o,e,x0,x1)=>sourceSpans(e,x0,x1-x0).every(s=>(occupied.get(edgeKey(s))||[]).every(other=>other.opening===o||other.top<=o.bottom+EPS||other.bottom>=o.bottom+o.height-EPS||other.end<=s.offset+EPS||other.offset>=s.offset+s.width-EPS));
    const shutterOrder=renderedOpenings.map((o,i)=>({o,i})).filter(({o})=>shutterEligible(o)).sort((a,b)=>a.o.bottom-b.o.bottom||a.i-b.i);
+   const renderedShutters=new Map();
    for(const{o,i}of shutterOrder){const e=openingSurface(o,byEdge,bySurface),kit=shutterKit(o,e),{ranges,parts}=kit;let reason=kit.reason;
     if(!reason&&ranges.some(([a,b])=>!free(o,e,a,b)))reason='adjacent-opening-or-shutter-conflict';
-    if(fitting(o,i,'shutters','open-louvered-pair',reason?[]:parts,reason))for(const[a,b]of ranges)for(const s of sourceSpans(e,a,b-a)){const key=edgeKey(s);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({opening:o,offset:s.offset,end:s.offset+s.width,bottom:o.bottom,top:o.bottom+o.height});}
+    if(fitting(o,i,'shutters','open-louvered-pair',reason?[]:parts,reason,establishedLimit,'joinery-relief-budget-reservation')){renderedShutters.set(i,kit);for(const[a,b]of ranges)for(const s of sourceSpans(e,a,b-a)){const key=edgeKey(s);if(!occupied.has(key))occupied.set(key,[]);occupied.get(key).push({opening:o,offset:s.offset,end:s.offset+s.width,bottom:o.bottom,top:o.bottom+o.height});}}
+   }
+   if(reliefEnabled){
+    const reliefLimit=Math.min(maxQuads,quads+reliefReserve),order=renderedOpenings.map((o,i)=>({o,i})).filter(({o})=>o.provenance==='invented').sort((a,b)=>Number(b.o.type==='door')-Number(a.o.type==='door')||a.o.bottom-b.o.bottom||a.i-b.i).slice(0,12);
+    for(const{o,i}of order){const e=openingSurface(o,byEdge,bySurface),kit=authoredRelief(plan,o,e),baseRendered=joineryDetails.some(j=>j.openingIndex===i&&j.kind==='joinery'&&j.rendered);fitting(o,i,'joinery-relief',kit.variant,kit.parts,baseRendered?kit.reason:'base-joinery-deferred',reliefLimit,'joinery-relief-allocation');
+     const shutter=renderedShutters.get(i);if(!shutter)continue;const parts=[];
+     // Hinge plates and their raised knuckles stay inside the already accepted
+     // shutter panel, never extending towards a neighbouring or measured bay.
+     for(let leaf=0;leaf<shutter.ranges.length;leaf++){const[a,b]=shutter.ranges[leaf],span=b-a,hinge=leaf===0?b-.035:a+.035,width=Math.min(.075,span*.22);for(const t of[.22,.78]){const y=o.bottom+o.height*t,h=Math.min(.045,o.height*.04),x0=Math.max(a+.012,hinge-width/2),x1=Math.min(b-.012,hinge+width/2),mid=(x0+x1)/2;if(x1-x0<=.016)continue;parts.push({x0,y0:y-h,x1,y1:y+h,material:'iron',offset:.056});parts.push({x0:x0+.008,y0:y-h*.75,x1:mid,y1:y+h*.75,material:'iron',offset:[.056,.074,.074,.056]});parts.push({x0:mid,y0:y-h*.75,x1:x1-.008,y1:y+h*.75,material:'iron',offset:[.074,.056,.056,.074]});}}
+     fitting(o,i,'shutter-hardware','hinged-persienne-pair',parts,null,reliefLimit,'joinery-relief-allocation');
+    }
    }
    for(const e of plan.edges){if(quads>=maxQuads)break;if(plan.height>3)quad(e,0,Math.max(.1,plan.height-.20),e.length,plan.height-.05,'trim',.024);}
    // The same floor schedule as interior08 aligns a sloping street entrance.
@@ -351,7 +392,7 @@ const MistralFacades=(()=>{
   }
   const tile=draw.v046Tile||draw.geoTile||'facade:'+plan.id,center=[(plan.bounds.minX+plan.bounds.maxX)/2,plan.baseY+plan.height/2,(plan.bounds.minZ+plan.bounds.maxZ)/2];
   const draws=[...groups].map(([name,g])=>({mesh:'geoSurface',vertices:g.vertices,faces:g.faces,pos:center.slice(),scale:[1,1,1],color:material(name),alpha:1,revision:0,v046Tile:tile,v046GeometryId:'facade:'+plan.id+':'+name,id:'facade:'+plan.id+':'+name,v050Facade:true,geoLayer:'facade',facadeBuildingId:plan.id,facadeProvenance:plan.provenance,facadeDetailProvenance:'invented',sourceProvenance:plan.facadeDocument?{source:plan.facadeDocument.source,license:plan.facadeDocument.license,attribution:plan.facadeDocument.attribution,acquiredAt:plan.facadeDocument.acquiredAt}:null,renderOffsetMeters:.075}));
-  const joineryCoverage={provenance:'invented',profiledFittings:joineryDetails.filter(d=>d.rendered&&d.profiledParts>0).length,profiledParts:joineryDetails.filter(d=>d.rendered).reduce((n,d)=>n+d.profiledParts,0),maximumProjectionMeters:.075,enabled:detail,limit:detail?'quad-budget':'low-detail',requested:joineryDetails.length,rendered:joineryDetails.filter(d=>d.rendered).length,deferred:joineryDetails.filter(d=>!d.rendered).length,byKind:{},reasons:{}};for(const d of joineryDetails){const item=joineryCoverage.byKind[d.kind]||(joineryCoverage.byKind[d.kind]={requested:0,rendered:0,deferred:0});item.requested++;item[d.rendered?'rendered':'deferred']++;if(d.reason)joineryCoverage.reasons[d.reason]=(joineryCoverage.reasons[d.reason]||0)+1;}
+  const joineryCoverage={provenance:'invented',profiledFittings:joineryDetails.filter(d=>d.rendered&&d.profiledParts>0).length,profiledParts:joineryDetails.filter(d=>d.rendered).reduce((n,d)=>n+d.profiledParts,0),maximumProjectionMeters:.075,joineryReliefEnabled:reliefEnabled,maximumJoineryReliefQuads:64,joineryReliefQuads:joineryDetails.filter(d=>d.rendered&&(d.kind==='joinery-relief'||d.kind==='shutter-hardware')).reduce((n,d)=>n+d.requiredQuads,0),enabled:detail,limit:detail?'quad-budget':'low-detail',requested:joineryDetails.length,rendered:joineryDetails.filter(d=>d.rendered).length,deferred:joineryDetails.filter(d=>!d.rendered).length,byKind:{},reasons:{}};for(const d of joineryDetails){const item=joineryCoverage.byKind[d.kind]||(joineryCoverage.byKind[d.kind]={requested:0,rendered:0,deferred:0});item.requested++;item[d.rendered?'rendered':'deferred']++;if(d.reason)joineryCoverage.reasons[d.reason]=(joineryCoverage.reasons[d.reason]||0)+1;}
   const bytes=draws.reduce((n,g)=>n+g.vertices.length*96+g.faces.length*96,0),detailCoverage={...plan.detailCoverage,renderedOpenings:openingCount,unrenderedPlannedOpenings:plan.openings.length-openingCount,deferredOpenings:deferredOpenings.length,openingQuads,panelEdges,totalFacadeEdges:plan.edges.length,decorationQuads:quads-baseQuads,joineryCoverage};
   return{draws,quads,openings:openingCount,renderedOpenings,deferredOpenings,joineryDetails,bytes:bytes+(renderedOpenings.length+deferredOpenings.length+joineryDetails.length)*512+joineryDetails.reduce((n,d)=>n+d.meshes.length*128,0),description:{id:plan.id,sourceId:plan.sourceId,stableSourceId:plan.stableSourceId,style:plan.style,styleBasis:plan.styleBasis,typology:plan.typology,levelInferenceBasis:plan.levelInferenceBasis,baseY:plan.baseY,height:plan.height,levels:plan.levels,levelHeight:plan.levelHeight,levelElevations:plan.levelElevations.slice(),provenance:plan.provenance,openingInventory:plan.openingInventory,detailCoverage}};
  }

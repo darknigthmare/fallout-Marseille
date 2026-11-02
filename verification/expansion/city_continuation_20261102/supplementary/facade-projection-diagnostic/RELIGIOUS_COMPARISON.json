@@ -1,0 +1,56 @@
+{
+  "nodeId": "BATIMENT0000000273380428:6858cbd655aae63a",
+  "nativeId": "BATIMENT0000000273380428:35b7a77afad6be06",
+  "sameRingCounts": true,
+  "ringLengths": [
+    [
+      16,
+      16
+    ]
+  ],
+  "differentVertices": [
+    {
+      "ring": 0,
+      "vertex": 1,
+      "node": [
+        -11591.343914819765,
+        1345.295002374798
+      ],
+      "native": [
+        -11591.343914819881,
+        1345.2950023738667
+      ],
+      "deltaMeters": [
+        -1.1641532182693481e-10,
+        -9.313225746154785e-10
+      ]
+    },
+    {
+      "ring": 0,
+      "vertex": 2,
+      "node": [
+        -11586.244384242571,
+        1351.5948939910159
+      ],
+      "native": [
+        -11586.244384242455,
+        1351.5948939928785
+      ],
+      "deltaMeters": [
+        1.1641532182693481e-10,
+        1.862645149230957e-09
+      ]
+    }
+  ],
+  "maxAbsoluteCoordinateDifferenceMeters": 1.862645149230957e-09,
+  "sourceGeometryByteValuesEqual": true,
+  "sourceEnvelopeSameNodeVsNative": true,
+  "diagnosticOnly": true,
+  "excludedFromReleaseSum": true,
+  "serverClosureProbe": {
+    "host": "127.0.0.1",
+    "port": 42495,
+    "connectExAfterClose": 111,
+    "closed": true
+  }
+}
