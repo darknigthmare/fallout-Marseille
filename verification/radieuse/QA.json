@@ -1,0 +1,50 @@
+{
+  "baseline": "a1e8d3071d01c91c192230c8884515daf401eafe",
+  "source_commit": "86a23b423b20ff6fd68f93f7900274e1d80679ce",
+  "generated_commit": "b08a548b2753783481f75d4abd480d96e92edc52",
+  "ci_run": 42423464598,
+  "html_sha256": "108b713a1c9a1496345ff62d792089696263cb429eddc8b04b684493242e8570",
+  "unit_tests": {
+    "suite": "tests/expansion/lore_cite_radieuse.cjs",
+    "passed": 28,
+    "failed": 0
+  },
+  "browser": {
+    "radieuse": {
+      "passed": 33,
+      "errors": [],
+      "html_sha256": "108b713a1c9a1496345ff62d792089696263cb429eddc8b04b684493242e8570",
+      "scope": "Real authored interior, models, UI, native collision function, saves and software renderer. Injected setup and isolated MemoryStorage; synthetic exterior for portal round-trip, no real IGN exterior traversal."
+    },
+    "poste": {
+      "passed": 17,
+      "errors": [],
+      "html_sha256": "108b713a1c9a1496345ff62d792089696263cb429eddc8b04b684493242e8570",
+      "scope": "Offline about:blank, isolated MemoryStorage, injected ratification; flat synthetic relay and ground stub. Real game model/UI/save/renderer. Not a real-map or hardware performance certification."
+    },
+    "pharmacie": {
+      "passed": 19,
+      "errors": [],
+      "html_sha256": "108b713a1c9a1496345ff62d792089696263cb429eddc8b04b684493242e8570",
+      "scope": "Instrumented production bundle; isolated memory storage; flat synthetic relays; terrain stub; real UI, E interaction, NPC choices, inventory, save migration and renderer. No IGN-world traversal or human playtest."
+    }
+  },
+  "reproducible_commands": [
+    "node --test tests/expansion/lore_cite_radieuse.cjs",
+    "python tests/expansion/radieuse_browser_smoke.py --html index.html --output verification/radieuse",
+    "python tests/expansion/poste_browser_smoke.py --html index.html --output verification/poste",
+    "python tests/expansion/pharmacie_browser_smoke.py --html index.html --output verification/pharmacie"
+  ],
+  "fixes": [
+    "Passage de l’escalier haut dégagé.",
+    "Porte de l’atelier inférieur traversable.",
+    "Procès-verbal figé après le scrutin adopté.",
+    "HUD local et année présente 2297 cohérents."
+  ],
+  "limits": [
+    "Intérieur original compact, pas de restitution architecturale 1:1.",
+    "Parcours navigateur instrumenté : entrée de campagne injectée, stockage isolé, déplacements via fonction native et rendu logiciel.",
+    "Retour des portes testé sur extérieur synthétique retenu, pas sur la carte IGN complète.",
+    "Pas de test humain prolongé ou de performance GPU matériel."
+  ]
+}

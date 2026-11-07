@@ -13,11 +13,12 @@ L’ordre de priorité est le suivant :
 3. [`docs/LORE_A03_MADAME.md`](docs/LORE_A03_MADAME.md) — chaîne de preuves du prologue, registre civique, sept réseaux et projections politiques ;
 4. [`docs/LORE_CONSEIL_REGIONAL.md`](docs/LORE_CONSEIL_REGIONAL.md) — motions, délégations, ratification et épilogues jouables des sept réseaux ;
 5. [`docs/LORE_POSTE_RESTANTE.md`](docs/LORE_POSTE_RESTANTE.md) — tournée post-ratification, sept réclamations, mobilier et contre-dons finis ;
-6. [`docs/LORE_PHARMACIES_DE_GARDE.md`](docs/LORE_PHARMACIES_DE_GARDE.md) — garde tournante, planning contradictoire, lot réservé, stocks finis, deux conclusions et vérifications de la nouvelle boucle ;
-7. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
-8. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
-9. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
-10. les documents spécialisés et les textes en jeu.
+6. [`docs/LORE_PHARMACIES_DE_GARDE.md`](docs/LORE_PHARMACIES_DE_GARDE.md) — garde tournante, planning contradictoire, lot réservé, stocks finis et deux conclusions ;
+7. [`docs/LORE_CITE_RADIEUSE.md`](docs/LORE_CITE_RADIEUSE.md) — intérieur original à trois niveaux, cinq habitants, constats, assemblée, travaux persistants et réserve finie ; cette annexe actualise le statut ancien de « canon documentaire » de la copropriété ;
+8. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
+9. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
+10. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
+11. les documents spécialisés et les textes en jeu.
 
 En cas de contradiction, la bible générale fixe le canon, tandis que les matrices indiquent ce qui existe réellement dans le jeu.
 
@@ -77,6 +78,16 @@ Chaque comptoir possède un stock fini et sauvegardé. Une conclusion permet tro
 
 Ce registre `v062Pharmacy` ne remplace ni le conseil ni les dossiers de La Sociale. Lise Ravel, Sofiane Tabet et Bérénice Fabre sont des voix de comptoir dans les conversations existantes, pas trois compagnons ajoutés.
 
+## Une communauté habitée : Cité Radieuse
+
+**Assemblée générale extraordinaire** se déroule dans un intérieur original à trois niveaux, raccordé au territoire par un ancrage documenté et les portes d’expédition. La scène ne prétend pas reproduire exactement le bâtiment réel.
+
+Josiane, Karim, Lucie, Nadia et Salomé sont cinq PNJ présents dans la scène. Quatre constats révèlent la panne de la pompe, la coupure du réseau commun, l’état du toit et les contradictions du registre des habitants. Au pupitre, le joueur choisit le financement, la représentation et le contrôle des travaux. Il peut exclure le toit du scrutin sans effacer son témoignage : le procès-verbal rend cette décision explicite.
+
+Un vote rejeté demeure amendable. Un accord adopté doit ensuite être exécuté : réparer la pompe supprime sa fuite, réparer le contacteur ouvre la réserve et change les lampes, réparer le toit remplace les bâches dégradées par des jardinières entretenues. La réception auprès de Josiane donne une récompense unique et une réserve de six eaux au maximum.
+
+Le registre `v063Radieuse` conserve les preuves, la motion adoptée, les votes, les travaux et les retraits. Il ne réécrit pas les décisions régionales. SYNDIC-PRIME est un terminal ; Josiane n’est pas encore une compagne recrutable. La menace livrée est une fuite locale et une coupure des communs, pas l’explosion imminente d’un réacteur imaginée dans une première accroche.
+
 ## Les sept réseaux
 
 La région survit grâce à sept réseaux interdépendants :
@@ -112,7 +123,7 @@ Les dossiers de services rendent également jouables :
 - le **Commissariat des Atomes** ;
 - l’**Amirauté du Levant**.
 
-Ces forces, ainsi qu’A‑03 et les Sans‑Dossier, disposent ensuite d’une voix déterministe au conseil régional. **Poste Restante** intervient après le vote par sa tournée et ses reçus, sans ajouter une quatorzième voix au conseil déjà ratifié. Les **Pharmacies de Garde** possèdent une boucle locale de service, distincte des voix du conseil.
+Ces forces, ainsi qu’A‑03 et les Sans‑Dossier, disposent ensuite d’une voix déterministe au conseil régional. **Poste Restante** intervient après le vote par sa tournée et ses reçus, sans ajouter une quatorzième voix au conseil déjà ratifié. Les **Pharmacies de Garde** et la **Copropriété Radieuse** possèdent des boucles locales distinctes des voix du conseil.
 
 ## Règles de cohérence
 
@@ -126,4 +137,4 @@ Ces forces, ainsi qu’A‑03 et les Sans‑Dossier, disposent ensuite d’une v
 
 ## Audit de référence
 
-La consolidation initiale partait de `main` au commit `1d1833a4cb320a2075cba5b57c4504e99b206fe3` du 4 novembre 2026. La matrice d’intégration suit les ajouts fusionnés, les validations du build et les chantiers encore ouverts. La tournée postale part de `84358ace305d40acaa9c6c626622c8f546436dff`. La pharmacie part de `6f3e4629741baf39077f668bdbad247d82fdf5a7`. Leurs documentations dédiées contiennent des matrices de portée et des tests séparés.
+La consolidation initiale partait de `main` au commit `1d1833a4cb320a2075cba5b57c4504e99b206fe3` du 4 novembre 2026. La matrice d’intégration suit les ajouts fusionnés, les validations du build et les chantiers encore ouverts. La tournée postale part de `84358ace305d40acaa9c6c626622c8f546436dff`. La pharmacie part de `6f3e4629741baf39077f668bdbad247d82fdf5a7`. La Cité Radieuse part de `a1e8d3071d01c91c192230c8884515daf401eafe`. Leurs annexes contiennent les matrices de portée actualisées et les limites des validations.

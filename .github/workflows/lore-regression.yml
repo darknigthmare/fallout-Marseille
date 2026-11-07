@@ -54,8 +54,9 @@ jobs:
           node --check src/v050/10c_conseil_regional.js
           node --check src/v050/10d_poste_restante.js
           node --check src/v050/10e_pharmacie_garde.js
-      - name: Tests de continuité, services, registre civique, conseil, poste et pharmacie
-        run: node --test tests/expansion/lore_continuity.cjs tests/expansion/lore_services.cjs tests/expansion/lore_a03_madame.cjs tests/expansion/lore_conseil_regional.cjs tests/expansion/lore_poste_restante.cjs tests/expansion/lore_pharmacie_garde.cjs
+          node --check src/v050/10f_cite_radieuse.js
+      - name: Tests de continuité, services, registre civique, conseil, poste, pharmacie et copropriété
+        run: node --test tests/expansion/lore_continuity.cjs tests/expansion/lore_services.cjs tests/expansion/lore_a03_madame.cjs tests/expansion/lore_conseil_regional.cjs tests/expansion/lore_poste_restante.cjs tests/expansion/lore_pharmacie_garde.cjs tests/expansion/lore_cite_radieuse.cjs
       - name: Reconstruction du jeu
         run: python3 tools/build_single.py
       - name: Vérification du bundle généré
@@ -66,10 +67,12 @@ jobs:
           grep -q 'const MistralCouncil=' src/game.js
           grep -q 'const MistralPoste=' src/game.js
           grep -q 'const MistralPharmacy=' src/game.js
+          grep -q 'const MistralRadieuse=' src/game.js
           grep -q 'M.A.D.A.M.E. ET SEPT RÉSEAUX' JOUER_FALLOUT_MISTRAL_v0.50.html
           grep -q 'CONSEIL RÉGIONAL' JOUER_FALLOUT_MISTRAL_v0.50.html
           grep -q 'POSTE RESTANTE' JOUER_FALLOUT_MISTRAL_v0.50.html
           grep -q 'PHARMACIES DE GARDE' JOUER_FALLOUT_MISTRAL_v0.50.html
+          grep -q 'CITÉ RADIEUSE' JOUER_FALLOUT_MISTRAL_v0.50.html
       - name: Régressions du territoire sur le bundle reconstruit
         run: |
           node tests/expansion/city_streaming.cjs
@@ -79,7 +82,7 @@ jobs:
       - name: Artefact du jeu et des sources de lore
         uses: actions/upload-artifact@v4
         with:
-          name: fallout-mistral-pharmacies-garde-${{ github.sha }}
+          name: fallout-mistral-cite-radieuse-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -87,14 +90,19 @@ jobs:
             src/game.js
             index.html
             sw.js
+            LORE.md
             src/v050/10d_poste_restante.js
             src/v050/10e_pharmacie_garde.js
+            src/v050/10f_cite_radieuse.js
             tests/expansion/lore_poste_restante.cjs
             tests/expansion/lore_pharmacie_garde.cjs
+            tests/expansion/lore_cite_radieuse.cjs
             tests/expansion/poste_browser_smoke.py
             tests/expansion/pharmacie_browser_smoke.py
+            tests/expansion/radieuse_browser_smoke.py
             docs/LORE_POSTE_RESTANTE.md
             docs/LORE_PHARMACIES_DE_GARDE.md
+            docs/LORE_CITE_RADIEUSE.md
       - name: Synchroniser les sorties générées de la branche
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
         run: |
