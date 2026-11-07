@@ -18,43 +18,92 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Inspect new-game, vault and dialogue hooks
+      - name: Extract exact A-03 and campaign hooks
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import re
 
-          targets = [Path('src/core-v017.js'), Path('src/index.html'), Path('tools/build_single.py')]
-          patterns = [
-              r'function\s+[A-Za-z0-9_]*(?:new|start|menu|vault|dialog|character)[A-Za-z0-9_]*\s*\(',
-              r'gameStarted\s*=', r'gameStarted\b', r'buildWorld\(', r"zone:\s*'vault'",
-              r'baseState\(', r'migrateState\(', r'showMenu\(', r'openDialogue\(',
-              r'newGame', r'Nouvelle partie', r'characterScreen', r'createCharacter', r'btnNew',
-              r"world\s*=\s*buildWorld", r"mode\s*=\s*'PLAYING'", r'pointerLock',
+          path = Path('src/core-v017.js')
+          text = path.read_text(encoding='utf-8')
+          lines = text.splitlines()
+
+          def function_span(name):
+              match = re.search(rf'function\s+{re.escape(name)}\s*\([^)]*\)\s*\{{', text)
+              if not match:
+                  return None
+              start = match.start()
+              open_index = text.find('{', match.start())
+              depth = 0
+              quote = None
+              escaped = False
+              template_depth = 0
+              i = open_index
+              while i < len(text):
+                  ch = text[i]
+                  nxt = text[i+1] if i + 1 < len(text) else ''
+                  if quote:
+                      if escaped:
+                          escaped = False
+                      elif ch == '\\':
+                          escaped = True
+                      elif quote == '`' and ch == '$' and nxt == '{':
+                          template_depth += 1
+                          i += 1
+                      elif quote == '`' and ch == '}' and template_depth:
+                          template_depth -= 1
+                      elif ch == quote and not template_depth:
+                          quote = None
+                  else:
+                      if ch in "'\"`":
+                          quote = ch
+                      elif ch == '/' and nxt == '/':
+                          end = text.find('\n', i)
+                          i = len(text) if end < 0 else end
+                      elif ch == '/' and nxt == '*':
+                          end = text.find('*/', i + 2)
+                          i = len(text) if end < 0 else end + 1
+                      elif ch == '{':
+                          depth += 1
+                      elif ch == '}':
+                          depth -= 1
+                          if depth == 0:
+                              return start, i + 1
+                  i += 1
+              return None
+
+          names = [
+              'buildVault','interactRationTerminal','interactVaultExit','talkOdette',
+              'talkMireille','relayInteraction','resolveRelay','questInfo','setMainStage',
+              'completeChapter','startNewGame','migrateState','buildWorld','buildWorldBase',
+              'saveGame','loadZone'
           ]
-          for path in targets:
-              text = path.read_text(encoding='utf-8')
-              lines = text.splitlines()
-              print(f'\n===== {path} · {len(lines)} lines =====')
-              seen = set()
-              for pattern in patterns:
-                  regex = re.compile(pattern, re.I)
-                  matches = [i for i,line in enumerate(lines) if regex.search(line)]
-                  if not matches:
-                      continue
-                  print(f'\n--- {pattern} · {len(matches)} matches ---')
-                  for i in matches[:12]:
-                      key=(path,i)
-                      if key in seen:
-                          continue
-                      seen.add(key)
-                      lo=max(0,i-5); hi=min(len(lines),i+7)
-                      for n in range(lo,hi):
-                          mark='>' if n==i else ' '
-                          print(f'{mark}{n+1:05d}: {lines[n]}')
-                      print()
-          print('\n===== Version modules =====')
-          for path in sorted(Path('src').glob('v*/**/*.js')):
-              if any(token in path.name.lower() for token in ('boot','state','intro','lore','quest')):
-                  print(path)
+          print(f'===== {path} · {len(lines)} lines =====')
+          for name in names:
+              span = function_span(name)
+              print(f'\n===== FUNCTION {name} =====')
+              if not span:
+                  print('NOT FOUND')
+                  continue
+              start, end = span
+              start_line = text.count('\n',0,start)+1
+              end_line = text.count('\n',0,end)+1
+              print(f'LINES {start_line}-{end_line}')
+              body = text[start:end]
+              if len(body) > 30000:
+                  print(body[:15000])
+                  print('\n... TRUNCATED MIDDLE ...\n')
+                  print(body[-15000:])
+              else:
+                  print(body)
+
+          print('\n===== RELATED FUNCTION NAMES =====')
+          for match in re.finditer(r'function\s+([A-Za-z0-9_]+)\s*\(', text):
+              name = match.group(1)
+              if any(token in name.lower() for token in ('chapter','council','ending','final','relay','quest','vault','odette','madame')):
+                  print(name, text.count('\n',0,match.start())+1)
+
+          print('\n===== V050 MODULE ORDER =====')
+          for module in sorted(Path('src/v050').glob('*.js')):
+              print(module.name)
           PY
