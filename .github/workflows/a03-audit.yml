@@ -1,4 +1,4 @@
-name: A03 flow audit
+name: A03 systemic integration
 
 on:
   push:
@@ -6,104 +6,47 @@ on:
       - feature/a03-madame-prologue
     paths:
       - '.github/workflows/a03-audit.yml'
-      - 'src/**'
-      - 'tools/build_single.py'
+      - '.a03-payload/**'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  inspect:
+  integrate:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Extract exact A-03 and campaign hooks
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assemble source and tests
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re
+          import base64
+          import zlib
 
-          path = Path('src/core-v017.js')
-          text = path.read_text(encoding='utf-8')
-          lines = text.splitlines()
-
-          def function_span(name):
-              match = re.search(rf'function\s+{re.escape(name)}\s*\([^)]*\)\s*\{{', text)
-              if not match:
-                  return None
-              start = match.start()
-              open_index = text.find('{', match.start())
-              depth = 0
-              quote = None
-              escaped = False
-              template_depth = 0
-              i = open_index
-              while i < len(text):
-                  ch = text[i]
-                  nxt = text[i+1] if i + 1 < len(text) else ''
-                  if quote:
-                      if escaped:
-                          escaped = False
-                      elif ch == '\\':
-                          escaped = True
-                      elif quote == '`' and ch == '$' and nxt == '{':
-                          template_depth += 1
-                          i += 1
-                      elif quote == '`' and ch == '}' and template_depth:
-                          template_depth -= 1
-                      elif ch == quote and not template_depth:
-                          quote = None
-                  else:
-                      if ch in "'\"`":
-                          quote = ch
-                      elif ch == '/' and nxt == '/':
-                          end = text.find('\n', i)
-                          i = len(text) if end < 0 else end
-                      elif ch == '/' and nxt == '*':
-                          end = text.find('*/', i + 2)
-                          i = len(text) if end < 0 else end + 1
-                      elif ch == '{':
-                          depth += 1
-                      elif ch == '}':
-                          depth -= 1
-                          if depth == 0:
-                              return start, i + 1
-                  i += 1
-              return None
-
-          names = [
-              'buildVault','interactRationTerminal','interactVaultExit','talkOdette',
-              'talkMireille','relayInteraction','resolveRelay','questInfo','setMainStage',
-              'completeChapter','startNewGame','migrateState','buildWorld','buildWorldBase',
-              'saveGame','loadZone'
-          ]
-          print(f'===== {path} · {len(lines)} lines =====')
-          for name in names:
-              span = function_span(name)
-              print(f'\n===== FUNCTION {name} =====')
-              if not span:
-                  print('NOT FOUND')
-                  continue
-              start, end = span
-              start_line = text.count('\n',0,start)+1
-              end_line = text.count('\n',0,end)+1
-              print(f'LINES {start_line}-{end_line}')
-              body = text[start:end]
-              if len(body) > 30000:
-                  print(body[:15000])
-                  print('\n... TRUNCATED MIDDLE ...\n')
-                  print(body[-15000:])
-              else:
-                  print(body)
-
-          print('\n===== RELATED FUNCTION NAMES =====')
-          for match in re.finditer(r'function\s+([A-Za-z0-9_]+)\s*\(', text):
-              name = match.group(1)
-              if any(token in name.lower() for token in ('chapter','council','ending','final','relay','quest','vault','odette','madame')):
-                  print(name, text.count('\n',0,match.start())+1)
-
-          print('\n===== V050 MODULE ORDER =====')
-          for module in sorted(Path('src/v050').glob('*.js')):
-              print(module.name)
+          source = ''.join(path.read_text(encoding='ascii') for path in sorted(Path('.a03-payload').glob('src-*.b64')))
+          tests = Path('.a03-payload/test-00.b64').read_text(encoding='ascii')
+          outputs = {
+              Path('src/v050/10b_a03_madame.js'): zlib.decompress(base64.b64decode(source)),
+              Path('tests/expansion/lore_a03_madame.cjs'): zlib.decompress(base64.b64decode(tests)),
+          }
+          for path, data in outputs.items():
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_bytes(data)
+              print(f'wrote {path} ({len(data)} bytes)')
           PY
+      - name: Validate module and model
+        run: |
+          node --check src/v050/10b_a03_madame.js
+          node --test tests/expansion/lore_a03_madame.cjs
+      - name: Commit integration and remove staging files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/v050/10b_a03_madame.js tests/expansion/lore_a03_madame.cjs
+          git rm -r .a03-payload .github/workflows/a03-audit.yml
+          git commit -m 'feat(a03): add M.A.D.A.M.E. and seven-network registry'
+          git push origin HEAD:feature/a03-madame-prologue
