@@ -1,0 +1,41 @@
+{
+  "baseline_commit": "6f3e4629741baf39077f668bdbad247d82fdf5a7",
+  "source_commit": "be2ceaebdd64bce79f1b17df6264d309880849f2",
+  "generated_commit": "cb0e087fa29b2ed5efb8ac2b9f04baf99b1f009b",
+  "ci_run": 42420244938,
+  "artifact_id": 13592558381,
+  "artifact_sha256": "49ac494b316c1de01c437c544edbe0d8bc8a793bf72235e274465148723a86e1",
+  "html_sha256": "cb8ca169019d2b81c6ce87a262e1bff4a676117958a00ffc92bbc2ebcadde29e",
+  "local_node": "22.16.0",
+  "local_browser": "144.0.7559.96",
+  "renderer": "SoftwareRenderer",
+  "model_adapter_tests": {"pharmacy": 29, "postal_regression": 22, "passed": 51, "failed": 0},
+  "pharmacy_browser": {
+    "passed": 19,
+    "errors": [],
+    "checks": [
+      "three pharmacy cards visible",
+      "no document-wide mobile overflow",
+      "accepted via real dialogue button",
+      "cabinet does not occlude interaction",
+      "E opens actual timetable note",
+      "mismatched shift gives persistent supplier",
+      "closed pharmacy refuses ordinary purchase",
+      "reserved parcel visible at closed office",
+      "reserved pickup works outside duty hours",
+      "actual repair cost deducted",
+      "parcel disappears after pickup",
+      "mutual outcome grants exactly three care credits",
+      "historical ratification untouched",
+      "two purchases deplete real finite stock",
+      "real purchase cost paid twice",
+      "exhausted purchase button removed",
+      "care restores 30 HP only",
+      "save reload preserves spent stock and care",
+      "no runtime JavaScript exceptions"
+    ]
+  },
+  "postal_browser_regression": {"passed": 17, "errors": [], "script": "tests/expansion/poste_browser_smoke.py"},
+  "scope": "Official GitHub-generated HTML downloaded and tested locally. Source and test blobs matched local verified bytes. Browser scripts inject synthetic flat relays, a terrain stub and isolated memory storage; real model, dialogue buttons, E input, costs, save migration and renderer. Not a human campaign traversal, real IGN-map certification or hardware-GPU benchmark.",
+  "screenshots": "Scripts generate PNG captures in their --output directory. Copies are included with the conversation delivery; they are not fabricated concept art."
+}
