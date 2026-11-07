@@ -1,0 +1,82 @@
+name: Council flow audit
+
+on:
+  push:
+    branches:
+      - feature/conseil-regional-final
+    paths:
+      - '.github/workflows/conseil-audit.yml'
+      - 'src/**'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract campaign and ending hooks
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          path=Path('src/core-v017.js')
+          text=path.read_text(encoding='utf-8')
+
+          def span(name):
+              match=re.search(rf'function\s+{re.escape(name)}\s*\([^)]*\)\s*\{{',text)
+              if not match:return None
+              start=match.start(); i=text.find('{',match.start()); depth=0; quote=None; escaped=False; template=0
+              while i<len(text):
+                  ch=text[i]; nxt=text[i+1] if i+1<len(text) else ''
+                  if quote:
+                      if escaped: escaped=False
+                      elif ch=='\\': escaped=True
+                      elif quote=='`' and ch=='$' and nxt=='{': template+=1; i+=1
+                      elif quote=='`' and ch=='}' and template: template-=1
+                      elif ch==quote and not template: quote=None
+                  else:
+                      if ch in "'\"`":quote=ch
+                      elif ch=='/' and nxt=='/':
+                          end=text.find('\n',i); i=len(text) if end<0 else end
+                      elif ch=='/' and nxt=='*':
+                          end=text.find('*/',i+2); i=len(text) if end<0 else end+1
+                      elif ch=='{':depth+=1
+                      elif ch=='}':
+                          depth-=1
+                          if depth==0:return start,i+1
+                  i+=1
+              return None
+
+          names=['talkMireille','completeChapter','completeRoutesChapter','completeWaterChapter','completeIndustryChapter','completeMarseilleChapter','completeAubagneChapter','startAubagneChapterInteraction','aubagneCouncilInteraction','questInfo','setMainStage','saveGame','openDialogue','closeDialogue','speaker','achievement']
+          for name in names:
+              print(f'\n===== {name} =====')
+              s=span(name)
+              if not s:
+                  print('NOT FOUND');continue
+              body=text[s[0]:s[1]]
+              print(f'LINES {text.count(chr(10),0,s[0])+1}-{text.count(chr(10),0,s[1])+1}')
+              print(body if len(body)<50000 else body[:25000]+'\n...TRUNCATED...\n'+body[-25000:])
+
+          print('\n===== ENDING-RELATED FUNCTIONS =====')
+          for m in re.finditer(r'function\s+([A-Za-z0-9_]+)\s*\(',text):
+              name=m.group(1)
+              if any(token in name.lower() for token in ('complete','chapter','council','ending','epilogue','final','aubagne','mireille')):
+                  print(name,text.count('\n',0,m.start())+1)
+
+          print('\n===== MAIN QUEST STAGE ASSIGNMENTS =====')
+          lines=text.splitlines()
+          for i,line in enumerate(lines):
+              if re.search(r'(setMainStage\(|quest\.main\s*=|main===|main==)',line):
+                  print(f'{i+1:05d}: {line}')
+
+          print('\n===== EXISTING OVERLAY / END SCREENS =====')
+          for p in [Path('src/index.html'),Path('src/styles.css')]:
+              print(f'--- {p} ---')
+              for i,line in enumerate(p.read_text(encoding='utf-8').splitlines()):
+                  if re.search(r'ending|epilogue|credits|chapter|overlay|dialogue',line,re.I):
+                      print(f'{i+1:05d}: {line}')
+          PY
