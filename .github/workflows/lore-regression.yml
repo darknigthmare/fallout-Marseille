@@ -7,24 +7,31 @@ on:
       - 'docs/BIBLE_LORE_FALLOUT_MISTRAL.md'
       - 'docs/MATRICE_INTEGRATION_LORE.md'
       - 'docs/LORE_SERVICES_PUBLICS.md'
+      - 'docs/LORE_A03_MADAME.md'
       - 'docs/LORE_CONTINUITE.md'
       - 'src/v046/04_lore.js'
       - 'src/v050/10_lore_continuity.js'
       - 'src/v050/10a_lore_services.js'
+      - 'src/v050/10b_a03_madame.js'
       - 'tests/expansion/lore_*.cjs'
       - 'tools/build_single.py'
       - '.github/workflows/lore-regression.yml'
   push:
     branches:
       - main
-      - feature/lore-bible-services
+      - 'feature/**'
     paths:
       - 'LORE.md'
       - 'docs/BIBLE_LORE_FALLOUT_MISTRAL.md'
       - 'docs/MATRICE_INTEGRATION_LORE.md'
       - 'docs/LORE_SERVICES_PUBLICS.md'
+      - 'docs/LORE_A03_MADAME.md'
+      - 'docs/LORE_CONTINUITE.md'
+      - 'src/v046/04_lore.js'
+      - 'src/v050/10_lore_continuity.js'
       - 'src/v050/10a_lore_services.js'
-      - 'tests/expansion/lore_services.cjs'
+      - 'src/v050/10b_a03_madame.js'
+      - 'tests/expansion/lore_*.cjs'
       - 'tools/build_single.py'
       - '.github/workflows/lore-regression.yml'
 
@@ -34,7 +41,7 @@ permissions:
 jobs:
   lore:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,20 +53,24 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Syntaxe du nouveau module
-        run: node --check src/v050/10a_lore_services.js
-      - name: Tests de continuité du lore
-        run: node --test tests/expansion/lore_continuity.cjs tests/expansion/lore_services.cjs
+      - name: Syntaxe des modules de lore
+        run: |
+          node --check src/v050/10a_lore_services.js
+          node --check src/v050/10b_a03_madame.js
+      - name: Tests de continuité, services et registre civique
+        run: node --test tests/expansion/lore_continuity.cjs tests/expansion/lore_services.cjs tests/expansion/lore_a03_madame.cjs
       - name: Reconstruction du jeu
         run: python3 tools/build_single.py
       - name: Vérification du bundle généré
         run: |
           node --check src/game.js
           python3 tools/build_single.py --check
-      - name: Artefact jouable de la branche
+          grep -q 'const MistralMadame=' src/game.js
+          grep -q 'M.A.D.A.M.E. ET SEPT RÉSEAUX' JOUER_FALLOUT_MISTRAL_v0.50.html
+      - name: Artefact jouable
         uses: actions/upload-artifact@v4
         with:
-          name: fallout-mistral-lore-${{ github.sha }}
+          name: fallout-mistral-a03-madame-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -67,8 +78,8 @@ jobs:
             src/game.js
             index.html
             sw.js
-      - name: Synchroniser les sorties générées de la branche lore
-        if: github.event_name == 'push' && github.ref == 'refs/heads/feature/lore-bible-services'
+      - name: Synchroniser les sorties générées de la branche
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -76,6 +87,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'Les sorties générées sont déjà synchronisées.'
           else
-            git commit -m 'build(lore): refresh generated game'
-            git push origin HEAD:feature/lore-bible-services
+            git commit -m 'build(a03): refresh generated game'
+            git push origin HEAD:${GITHUB_REF_NAME}
           fi
