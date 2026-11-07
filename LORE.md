@@ -9,16 +9,17 @@ Ce fichier est la porte d’entrée du lore de **Fallout: Mistral / Fallout Mars
 L’ordre de priorité est le suivant :
 
 1. [`docs/BIBLE_LORE_FALLOUT_MISTRAL.md`](docs/BIBLE_LORE_FALLOUT_MISTRAL.md) — canon narratif général ;
-2. [`docs/MATRICE_INTEGRATION_LORE.md`](docs/MATRICE_INTEGRATION_LORE.md) — état réel de l’intégration, sans confondre texte, code source, build généré et validation ;
+2. [`docs/MATRICE_INTEGRATION_LORE.md`](docs/MATRICE_INTEGRATION_LORE.md) — audit général ; les matrices de portée des annexes suivantes précisent les ajouts plus récents sans les confondre avec cet audit historique ;
 3. [`docs/LORE_A03_MADAME.md`](docs/LORE_A03_MADAME.md) — chaîne de preuves du prologue, registre civique, sept réseaux et projections politiques ;
 4. [`docs/LORE_CONSEIL_REGIONAL.md`](docs/LORE_CONSEIL_REGIONAL.md) — motions, délégations, ratification et épilogues jouables des sept réseaux ;
-5. [`docs/LORE_POSTE_RESTANTE.md`](docs/LORE_POSTE_RESTANTE.md) — tournée post-ratification, sept réclamations, mobilier et contre-dons finis ; sa matrice de portée complète l’audit général ;
-6. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
-7. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
-8. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
-9. les documents spécialisés et les textes en jeu.
+5. [`docs/LORE_POSTE_RESTANTE.md`](docs/LORE_POSTE_RESTANTE.md) — tournée post-ratification, sept réclamations, mobilier et contre-dons finis ;
+6. [`docs/LORE_PHARMACIES_DE_GARDE.md`](docs/LORE_PHARMACIES_DE_GARDE.md) — garde tournante, planning contradictoire, lot réservé, stocks finis, deux conclusions et vérifications de la nouvelle boucle ;
+7. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
+8. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
+9. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
+10. les documents spécialisés et les textes en jeu.
 
-En cas de contradiction, la bible générale fixe le canon, tandis que la matrice indique ce qui existe réellement dans le jeu.
+En cas de contradiction, la bible générale fixe le canon, tandis que les matrices indiquent ce qui existe réellement dans le jeu.
 
 ## Statuts employés
 
@@ -66,6 +67,16 @@ La lecture et le retrait restent possibles au comptoir lorsqu’aucun emplacemen
 
 Cette première incarnation de Poste Restante ne constitue pas encore un réseau de livraison autonome : Camille Diop est mentionnée comme autrice de la tournée, mais n’est pas ajoutée comme nouveau compagnon dans ce lot.
 
+## Un service du quotidien : Pharmacies de Garde
+
+**La pharmacie de garde** commence au relais de Longchamp, sans exiger de recommencer la campagne ni d’avoir déjà ratifié une charte. Le Vieux-Port, Saint-Charles et Aubagne Haute assurent trois créneaux complémentaires selon l’heure du jeu.
+
+Un échange de garde mal transmis oblige à confronter le planning initial à son contre-reçu. Le lot réservé reste au même dépositaire après la relève. Trois approches matérielles permettent le retrait, puis deux répartitions exclusives concluent à Longchamp : remise directe anonymisée ou réserve mutualiste sans dette héréditaire.
+
+Chaque comptoir possède un stock fini et sauvegardé. Une conclusion permet trois soins limités en PV, sans effacer radiation ou infection. Les croix et les colis sont des ajouts fictionnels conditionnels, pas des relevés d’officines réelles. Les représentants conservent tous leurs autres dialogues.
+
+Ce registre `v062Pharmacy` ne remplace ni le conseil ni les dossiers de La Sociale. Lise Ravel, Sofiane Tabet et Bérénice Fabre sont des voix de comptoir dans les conversations existantes, pas trois compagnons ajoutés.
+
 ## Les sept réseaux
 
 La région survit grâce à sept réseaux interdépendants :
@@ -101,7 +112,7 @@ Les dossiers de services rendent également jouables :
 - le **Commissariat des Atomes** ;
 - l’**Amirauté du Levant**.
 
-Ces forces, ainsi qu’A‑03 et les Sans‑Dossier, disposent ensuite d’une voix déterministe au conseil régional. **Poste Restante** intervient après le vote par sa tournée et ses reçus, sans ajouter une quatorzième voix au conseil déjà ratifié.
+Ces forces, ainsi qu’A‑03 et les Sans‑Dossier, disposent ensuite d’une voix déterministe au conseil régional. **Poste Restante** intervient après le vote par sa tournée et ses reçus, sans ajouter une quatorzième voix au conseil déjà ratifié. Les **Pharmacies de Garde** possèdent une boucle locale de service, distincte des voix du conseil.
 
 ## Règles de cohérence
 
@@ -115,4 +126,4 @@ Ces forces, ainsi qu’A‑03 et les Sans‑Dossier, disposent ensuite d’une v
 
 ## Audit de référence
 
-La consolidation initiale partait de `main` au commit `1d1833a4cb320a2075cba5b57c4504e99b206fe3` du 4 novembre 2026. La matrice d’intégration suit les ajouts fusionnés, les validations du build et les chantiers encore ouverts. La tournée postale part de `84358ace305d40acaa9c6c626622c8f546436dff` et possède une matrice de portée et des tests séparés dans sa documentation dédiée.
+La consolidation initiale partait de `main` au commit `1d1833a4cb320a2075cba5b57c4504e99b206fe3` du 4 novembre 2026. La matrice d’intégration suit les ajouts fusionnés, les validations du build et les chantiers encore ouverts. La tournée postale part de `84358ace305d40acaa9c6c626622c8f546436dff`. La pharmacie part de `6f3e4629741baf39077f668bdbad247d82fdf5a7`. Leurs documentations dédiées contiennent des matrices de portée et des tests séparés.
