@@ -1,0 +1,60 @@
+name: A03 flow audit
+
+on:
+  push:
+    branches:
+      - feature/a03-madame-prologue
+    paths:
+      - '.github/workflows/a03-audit.yml'
+      - 'src/**'
+      - 'tools/build_single.py'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect new-game, vault and dialogue hooks
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          targets = [Path('src/core-v017.js'), Path('src/index.html'), Path('tools/build_single.py')]
+          patterns = [
+              r'function\s+[A-Za-z0-9_]*(?:new|start|menu|vault|dialog|character)[A-Za-z0-9_]*\s*\(',
+              r'gameStarted\s*=', r'gameStarted\b', r'buildWorld\(', r"zone:\s*'vault'",
+              r'baseState\(', r'migrateState\(', r'showMenu\(', r'openDialogue\(',
+              r'newGame', r'Nouvelle partie', r'characterScreen', r'createCharacter', r'btnNew',
+              r"world\s*=\s*buildWorld", r"mode\s*=\s*'PLAYING'", r'pointerLock',
+          ]
+          for path in targets:
+              text = path.read_text(encoding='utf-8')
+              lines = text.splitlines()
+              print(f'\n===== {path} · {len(lines)} lines =====')
+              seen = set()
+              for pattern in patterns:
+                  regex = re.compile(pattern, re.I)
+                  matches = [i for i,line in enumerate(lines) if regex.search(line)]
+                  if not matches:
+                      continue
+                  print(f'\n--- {pattern} · {len(matches)} matches ---')
+                  for i in matches[:12]:
+                      key=(path,i)
+                      if key in seen:
+                          continue
+                      seen.add(key)
+                      lo=max(0,i-5); hi=min(len(lines),i+7)
+                      for n in range(lo,hi):
+                          mark='>' if n==i else ' '
+                          print(f'{mark}{n+1:05d}: {lines[n]}')
+                      print()
+          print('\n===== Version modules =====')
+          for path in sorted(Path('src').glob('v*/**/*.js')):
+              if any(token in path.name.lower() for token in ('boot','state','intro','lore','quest')):
+                  print(path)
+          PY
