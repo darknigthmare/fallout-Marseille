@@ -15,7 +15,9 @@ on:
       - 'tools/build_single.py'
       - '.github/workflows/lore-regression.yml'
   push:
-    branches: [main]
+    branches:
+      - main
+      - feature/lore-bible-services
     paths:
       - 'LORE.md'
       - 'docs/BIBLE_LORE_FALLOUT_MISTRAL.md'
@@ -23,10 +25,11 @@ on:
       - 'docs/LORE_SERVICES_PUBLICS.md'
       - 'src/v050/10a_lore_services.js'
       - 'tests/expansion/lore_services.cjs'
+      - 'tools/build_single.py'
       - '.github/workflows/lore-regression.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   lore:
@@ -62,3 +65,17 @@ jobs:
           path: |
             JOUER_FALLOUT_MISTRAL_v0.50.html
             src/game.js
+            index.html
+            sw.js
+      - name: Synchroniser les sorties générées de la branche lore
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feature/lore-bible-services'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/game.js JOUER_FALLOUT_MISTRAL_v0.50.html index.html sw.js
+          if git diff --cached --quiet; then
+            echo 'Les sorties générées sont déjà synchronisées.'
+          else
+            git commit -m 'build(lore): refresh generated game'
+            git push origin HEAD:feature/lore-bible-services
+          fi
