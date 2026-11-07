@@ -15,8 +15,7 @@ on:
       - '.github/workflows/city-streaming-regression.yml'
   push:
     branches:
-      - 'feature/gamedev-skills-integration'
-      - 'feature/lore-*'
+      - 'feature/**'
     paths:
       - 'src/**'
       - 'tools/build_single.py'
@@ -33,7 +32,7 @@ permissions:
 jobs:
   city-streaming:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
