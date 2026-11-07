@@ -9,7 +9,10 @@
 - continuité : `src/v050/10_lore_continuity.js` ;
 - services : `src/v050/10a_lore_services.js` ;
 - A‑03, M.A.D.A.M.E. et sept réseaux : `src/v050/10b_a03_madame.js` ;
-- conseil régional et épilogues : `src/v050/10c_conseil_regional.js`.
+- conseil régional et épilogues : `src/v050/10c_conseil_regional.js` ;
+- intégration du modèle et des tests : commit `a203a5f466d895fd81396b5c9ba012885600ab37` ;
+- sorties jouables reconstruites : commit `b30ae362339bfdd7180f19e7b1f09b9c6fbfc7b0` ;
+- régression finale du bundle livré : commit `8742e30ca28f53c879b841cb9d8cc7752b1f16bb`.
 
 Cette matrice distingue :
 
@@ -24,7 +27,9 @@ Cette matrice distingue :
 
 Le prologue A‑03, ses preuves et les six conclusions locales sont désormais reliés à une conclusion régionale. Après Aubagne, Mireille peut convoquer treize délégations. Quatre motions amendables fixent les garanties communes ; huit projets de charte sont comparés à la campagne et à la projection `v059Madame`. Une majorité de sept voix ratifie une conclusion exclusive et produit neuf diapositives, dont un épilogue pour chaque réseau.
 
-Le vote rejeté est conservé mais ne bloque pas la partie : les motions restent modifiables et un nouveau projet peut être présenté. Les effets annoncés sont institutionnels et chiffrés ; le texte ne prétend pas créer physiquement une flotte, un train, une pompe, un hôpital ou un réacteur.
+Un vote rejeté est conservé mais ne bloque pas la partie : les motions restent modifiables et un nouveau projet peut être présenté. Les effets annoncés sont institutionnels et chiffrés ; le texte ne prétend pas créer physiquement une flotte, un train, une pompe, un hôpital ou un réacteur.
+
+Les quatre sorties distribuées sont reconstruites et synchronisées : `src/game.js`, `JOUER_FALLOUT_MISTRAL_v0.50.html`, `index.html` et `sw.js`.
 
 ## Matrice générale
 
@@ -49,11 +54,11 @@ Le vote rejeté est conservé mais ne bloque pas la partie : les motions restent
 | Chaîne de preuves 04‑771‑C | oui | oui | oui | oui | oui | journal/Pip‑Boy | systémique |
 | Sept réseaux | oui | oui | oui | oui | oui | tableau et épilogues | systémique |
 | Projections politiques | oui | oui | oui | oui | oui | critères du conseil | systémique |
-| Quatre motions constitutionnelles | oui | oui | oui | oui | à reconstruire | panneau du conseil | jouable en source |
-| Treize délégations | oui | oui | oui | oui | à reconstruire | votes nominatifs | jouable en source |
-| Conseil régional final | oui | oui | oui `v060Council` | oui | à reconstruire | Mireille, Pip‑Boy, radio | jouable en source |
-| Huit projets de charte | oui | oui | oui | oui | à reconstruire | ratification déterministe | jouable en source |
-| Épilogues des sept réseaux | oui | oui | oui | oui | à reconstruire | neuf diapositives | jouable en source |
+| Quatre motions constitutionnelles | oui | oui | oui | oui | oui | panneau du conseil | jouable |
+| Treize délégations | oui | oui | oui | oui | oui | votes nominatifs | jouable |
+| Conseil régional final | oui | oui | oui `v060Council` | oui | oui | Mireille, Pip‑Boy, radio | jouable |
+| Huit projets de charte | oui | oui | oui | oui | oui | ratification déterministe | jouable |
+| Épilogues des sept réseaux | oui | oui | oui | oui | oui | neuf diapositives | jouable |
 | Arsenal de La Ciotat | oui | présence et décisions | partiel | partiel | oui | lieux existants | à consolider comme faction |
 | Francs du Large | oui | réputation et décisions | partiel | partiel | oui | mer et île | à consolider |
 | Commune de la Rade | oui | décisions de chapitre | oui | partiel | oui | Marseille | jouable comme orientation |
@@ -140,10 +145,10 @@ Les valeurs sont bornées entre 0 et 100 et restent des projections politiques h
 
 - **module et tests du conseil** — effectués ;
 - **documentation** — effectuée ;
-- **reconstruction des quatre sorties** — à exécuter sur la tête documentaire finale ;
-- **présence du conseil dans le bundle** — à vérifier ;
-- **cache hors ligne et déterminisme du build** — à vérifier ;
-- **streaming, annulations, coutures et identité géométrique** — à revérifier sur la livraison reconstruite ;
+- **reconstruction des quatre sorties** — effectuée ;
+- **présence du conseil et des États généraux dans le bundle** — vérifiée ;
+- **cache hors ligne et déterminisme du build** — validés ;
+- **streaming, annulations, coutures et identité géométrique** — validés sur le bundle reconstruit ;
 - **smoke test humain prolongé** — non réalisé dans cet audit.
 
 ## Backlog priorisé après la conclusion régionale
