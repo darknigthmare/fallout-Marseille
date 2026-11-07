@@ -8,7 +8,8 @@
 - version déclarée : v0.50 ;
 - chaîne de build : `tools/build_single.py` ;
 - module de continuité existant : `src/v050/10_lore_continuity.js` ;
-- module ajouté par cette extension : `src/v050/10a_lore_services.js`.
+- module ajouté par cette extension : `src/v050/10a_lore_services.js` ;
+- sorties de jeu régénérées sur la branche par le commit `6f73a08d7bd770d3347df5623b550b7b331d2903`.
 
 Cette matrice distingue volontairement quatre choses différentes :
 
@@ -23,42 +24,44 @@ Avant cette extension, le dépôt contenait déjà une intégration de lore plus
 
 Le manque principal était l’absence d’une bible unique et l’absence en jeu des quatre grandes puissances de services développées dans la conception récente.
 
+La branche de la PR contient maintenant le code, la documentation, les tests et les quatre sorties générées attendues : `src/game.js`, `JOUER_FALLOUT_MISTRAL_v0.50.html`, `index.html` et `sw.js`.
+
 ## Matrice générale
 
-| Élément | Bible | Source de jeu | Sauvegarde | Tests automatisés | HTML v0.50 déjà distribué au commit audité | Statut après cette extension |
-|---|---:|---:|---:|---:|---:|---|
-| Convention des Cendres | oui | oui | oui | oui | oui | jouable |
-| CONCORDE / formulaire impossible | oui | oui | oui | oui | oui | jouable |
-| Vigies des Crêtes | oui | oui | oui | oui | oui | jouable |
-| Insulaires du Lazaret | oui | oui | oui | oui | oui | jouable |
-| Syndicat Perpétuel | oui | oui | oui | oui | oui | jouable |
-| Sans-Dossier | oui | oui | oui | oui | oui | jouable |
-| Communes du Mistral | oui | oui | oui | oui | oui | jouable |
-| Gilets de Cendre | oui | oui | oui | oui | oui | jouable |
-| COCHONNET / pétanque | oui | oui | oui | partiel | oui | jouable, à approfondir |
-| La Sociale | oui | oui, nouveau | oui, nouveau | oui, nouveau | non avant reconstruction | câblé en source |
-| Aiguilleurs du Réseau | oui | oui, nouveau | oui, nouveau | oui, nouveau | non avant reconstruction | câblé en source |
-| Commissariat des Atomes | oui | oui, nouveau | oui, nouveau | oui, nouveau | non avant reconstruction | câblé en source |
-| Amirauté du Levant | oui | oui, nouveau | oui, nouveau | oui, nouveau | non avant reconstruction | câblé en source |
-| M.A.D.A.M.E. / Madame la Préfète | oui | fragments | non comme arc complet | non | partiel | canon, arc principal à produire |
-| Abri A‑03 — Les Fontaines | oui | socle narratif partiel | non comme prologue complet | non | partiel | priorité narrative |
-| Sept réseaux | oui | quatre dossiers reliés | oui pour les quatre | oui pour les quatre | non pour les nouveaux | système partiellement jouable |
-| Arsenal de La Ciotat | oui | présence géographique/mentions | non comme faction complète | non | partiel | canon documentaire |
-| Francs du Large | oui | réputation/mentions | partiel | partiel | partiel | à consolider |
-| Commune de la Rade | oui | présence régionale | partiel | non | partiel | à consolider |
-| Cohorte Viénot | oui | non | non | non | non | canon documentaire |
-| Cour du Lys d’If | oui | non comme campagne | non | non | non | canon documentaire |
-| Maquis des Treize Vents | oui | non | non | non | non | canon documentaire |
-| Poste Restante | oui | non comme système complet | non | non | non | chantier prioritaire |
-| Confrérie du Vœu | oui | mentions de veille/secours | non | non | partiel | canon documentaire |
-| Mutuelle Phocéenne | oui | non | non | non | non | accroche de quêtes |
-| Copropriété Radieuse | oui | ville et bâtiments seulement | non | non | partiel | arc local à produire |
-| Plan-de-Campagne / Enseignes | oui | géographie générale | non | non | partiel | arc local à produire |
-| Bestiaire régional | oui | plusieurs familles incarnées | oui pour les acteurs existants | oui selon espèces | oui | partiellement incarné |
-| Armes locales | oui | inventaire partiel | oui selon armes existantes | variable | partiel | catalogue à normaliser |
-| Pigeons et rats mutants | oui | plusieurs variantes présentes | oui | oui selon variante | oui | continuer diversité/IA |
-| Radio Mistral / Canal 13 | oui | bulletins textuels | oui | oui | oui | jouable, à enrichir audio |
-| Fins politiques | oui | non comme finale systémique | non | non | non | grand chantier de campagne |
+| Élément | Bible | Source de jeu | Sauvegarde | Tests automatisés | HTML v0.50 du commit de départ | Build généré de la PR | Statut après cette extension |
+|---|---:|---:|---:|---:|---:|---:|---|
+| Convention des Cendres | oui | oui | oui | oui | oui | oui | jouable |
+| CONCORDE / formulaire impossible | oui | oui | oui | oui | oui | oui | jouable |
+| Vigies des Crêtes | oui | oui | oui | oui | oui | oui | jouable |
+| Insulaires du Lazaret | oui | oui | oui | oui | oui | oui | jouable |
+| Syndicat Perpétuel | oui | oui | oui | oui | oui | oui | jouable |
+| Sans-Dossier | oui | oui | oui | oui | oui | oui | jouable |
+| Communes du Mistral | oui | oui | oui | oui | oui | oui | jouable |
+| Gilets de Cendre | oui | oui | oui | oui | oui | oui | jouable |
+| COCHONNET / pétanque | oui | oui | oui | partiel | oui | oui | jouable, à approfondir |
+| La Sociale | oui | oui, nouveau | oui, nouveau | oui, nouveau | non | oui | jouable dans le build de la PR |
+| Aiguilleurs du Réseau | oui | oui, nouveau | oui, nouveau | oui, nouveau | non | oui | jouable dans le build de la PR |
+| Commissariat des Atomes | oui | oui, nouveau | oui, nouveau | oui, nouveau | non | oui | jouable dans le build de la PR |
+| Amirauté du Levant | oui | oui, nouveau | oui, nouveau | oui, nouveau | non | oui | jouable dans le build de la PR |
+| M.A.D.A.M.E. / Madame la Préfète | oui | fragments | non comme arc complet | non | partiel | partiel | canon, arc principal à produire |
+| Abri A‑03 — Les Fontaines | oui | socle narratif partiel | non comme prologue complet | non | partiel | partiel | priorité narrative |
+| Sept réseaux | oui | quatre dossiers reliés | oui pour les quatre | oui pour les quatre | non pour les nouveaux | oui pour quatre réseaux | système partiellement jouable |
+| Arsenal de La Ciotat | oui | présence géographique/mentions | non comme faction complète | non | partiel | partiel | canon documentaire |
+| Francs du Large | oui | réputation/mentions | partiel | partiel | partiel | partiel | à consolider |
+| Commune de la Rade | oui | présence régionale | partiel | non | partiel | partiel | à consolider |
+| Cohorte Viénot | oui | non | non | non | non | non | canon documentaire |
+| Cour du Lys d’If | oui | non comme campagne | non | non | non | non | canon documentaire |
+| Maquis des Treize Vents | oui | non | non | non | non | non | canon documentaire |
+| Poste Restante | oui | non comme système complet | non | non | non | non | chantier prioritaire |
+| Confrérie du Vœu | oui | mentions de veille/secours | non | non | partiel | partiel | canon documentaire |
+| Mutuelle Phocéenne | oui | non | non | non | non | non | accroche de quêtes |
+| Copropriété Radieuse | oui | ville et bâtiments seulement | non | non | partiel | partiel | arc local à produire |
+| Plan-de-Campagne / Enseignes | oui | géographie générale | non | non | partiel | partiel | arc local à produire |
+| Bestiaire régional | oui | plusieurs familles incarnées | oui pour les acteurs existants | oui selon espèces | oui | oui | partiellement incarné |
+| Armes locales | oui | inventaire partiel | oui selon armes existantes | variable | partiel | partiel | catalogue à normaliser |
+| Pigeons et rats mutants | oui | plusieurs variantes présentes | oui | oui selon variante | oui | oui | continuer diversité/IA |
+| Radio Mistral / Canal 13 | oui | bulletins textuels | oui | oui | oui | oui | jouable, à enrichir audio |
+| Fins politiques | oui | non comme finale systémique | non | non | non | non | grand chantier de campagne |
 
 ## Ce qui est réellement fort
 
@@ -85,6 +88,10 @@ Les quatre nouveaux dossiers utilisent des lieux sûrs déjà présents dans le 
 - La Ciotat.
 
 Ils n’inventent donc pas un nouveau territoire parallèle.
+
+### Livraison générée
+
+Le workflow spécialisé a reconstruit le jeu, vérifié la syntaxe du bundle et contrôlé que `tools/build_single.py --check` ne trouvait plus de différence après génération. Les quatre fichiers de livraison ont ensuite été commités sur la branche. Cette validation ne remplace pas un parcours humain complet dans le navigateur.
 
 ## Ce qui restait faible
 
@@ -134,14 +141,15 @@ La Charte des Vivants, la République des Services, la Continuité, la Fédérat
 
 ## Condition de livraison
 
-Le nouveau module est automatiquement pris en compte par `tools/build_single.py`, qui concatène les fichiers triés de `src/v050`. En revanche, le fichier HTML déjà présent dans la branche de départ ne contient pas ces ajouts tant que la reconstruction n’a pas été exécutée et que les sorties générées n’ont pas été livrées.
+Le nouveau module est automatiquement pris en compte par `tools/build_single.py`, qui concatène les fichiers triés de `src/v050`.
 
-Une intégration honnête doit donc annoncer séparément :
+Une intégration honnête annonce séparément :
 
-- **source et tests ajoutés** ;
-- **build GitHub validé** ;
-- **artefact HTML reconstruit** ;
-- **smoke test navigateur exécuté**.
+- **source et tests ajoutés** — effectué ;
+- **build GitHub validé** — effectué ;
+- **quatre sorties générées commitées** — effectué ;
+- **régression générale sur la tête finale de la PR** — à confirmer par le workflow ;
+- **smoke test navigateur humain** — non réalisé dans cet audit.
 
 ## Backlog priorisé
 
