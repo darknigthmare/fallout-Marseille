@@ -8,11 +8,13 @@ on:
       - 'docs/MATRICE_INTEGRATION_LORE.md'
       - 'docs/LORE_SERVICES_PUBLICS.md'
       - 'docs/LORE_A03_MADAME.md'
+      - 'docs/LORE_CONSEIL_REGIONAL.md'
       - 'docs/LORE_CONTINUITE.md'
       - 'src/v046/04_lore.js'
       - 'src/v050/10_lore_continuity.js'
       - 'src/v050/10a_lore_services.js'
       - 'src/v050/10b_a03_madame.js'
+      - 'src/v050/10c_conseil_regional.js'
       - 'tests/expansion/lore_*.cjs'
       - 'tools/build_single.py'
       - '.github/workflows/lore-regression.yml'
@@ -26,11 +28,13 @@ on:
       - 'docs/MATRICE_INTEGRATION_LORE.md'
       - 'docs/LORE_SERVICES_PUBLICS.md'
       - 'docs/LORE_A03_MADAME.md'
+      - 'docs/LORE_CONSEIL_REGIONAL.md'
       - 'docs/LORE_CONTINUITE.md'
       - 'src/v046/04_lore.js'
       - 'src/v050/10_lore_continuity.js'
       - 'src/v050/10a_lore_services.js'
       - 'src/v050/10b_a03_madame.js'
+      - 'src/v050/10c_conseil_regional.js'
       - 'tests/expansion/lore_*.cjs'
       - 'tools/build_single.py'
       - '.github/workflows/lore-regression.yml'
@@ -41,7 +45,7 @@ permissions:
 jobs:
   lore:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,8 +61,9 @@ jobs:
         run: |
           node --check src/v050/10a_lore_services.js
           node --check src/v050/10b_a03_madame.js
-      - name: Tests de continuité, services et registre civique
-        run: node --test tests/expansion/lore_continuity.cjs tests/expansion/lore_services.cjs tests/expansion/lore_a03_madame.cjs
+          node --check src/v050/10c_conseil_regional.js
+      - name: Tests de continuité, services, registre civique et conseil
+        run: node --test tests/expansion/lore_continuity.cjs tests/expansion/lore_services.cjs tests/expansion/lore_a03_madame.cjs tests/expansion/lore_conseil_regional.cjs
       - name: Reconstruction du jeu
         run: python3 tools/build_single.py
       - name: Vérification du bundle généré
@@ -66,11 +71,14 @@ jobs:
           node --check src/game.js
           python3 tools/build_single.py --check
           grep -q 'const MistralMadame=' src/game.js
+          grep -q 'const MistralCouncil=' src/game.js
           grep -q 'M.A.D.A.M.E. ET SEPT RÉSEAUX' JOUER_FALLOUT_MISTRAL_v0.50.html
+          grep -q 'CONSEIL RÉGIONAL' JOUER_FALLOUT_MISTRAL_v0.50.html
+          grep -q 'ÉTATS GÉNÉRAUX DU MISTRAL' JOUER_FALLOUT_MISTRAL_v0.50.html
       - name: Artefact jouable
         uses: actions/upload-artifact@v4
         with:
-          name: fallout-mistral-a03-madame-${{ github.sha }}
+          name: fallout-mistral-conseil-regional-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -87,6 +95,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'Les sorties générées sont déjà synchronisées.'
           else
-            git commit -m 'build(a03): refresh generated game'
+            git commit -m 'build(council): refresh generated game'
             git push origin HEAD:${GITHUB_REF_NAME}
           fi

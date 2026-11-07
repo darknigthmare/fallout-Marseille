@@ -3,14 +3,16 @@
 ## Référence
 
 - dépôt : `darknigthmare/fallout-Marseille` ;
-- base de cette tranche : `main` au commit `180526e2b40abe9d6fcd91423c5d309ec781d41b` ;
+- base de cette tranche : `main` au commit `8944f963de8de1cfd69cf34d959636ad3c853520` ;
 - version déclarée : v0.50 ;
 - chaîne de build : `tools/build_single.py` ;
 - continuité : `src/v050/10_lore_continuity.js` ;
 - services : `src/v050/10a_lore_services.js` ;
 - A‑03, M.A.D.A.M.E. et sept réseaux : `src/v050/10b_a03_madame.js` ;
-- sorties générées synchronisées : commit `abe3d3f8b3793d42e35e1db6be51a30e9b42b900` ;
-- contrôle final du bundle, du cache, du streaming et des coutures : commit `1f26ec4c40be72d4f047905e433becb1a4b2b53b`.
+- conseil régional et épilogues : `src/v050/10c_conseil_regional.js` ;
+- intégration du modèle et des tests : commit `a203a5f466d895fd81396b5c9ba012885600ab37` ;
+- sorties jouables reconstruites : commit `b30ae362339bfdd7180f19e7b1f09b9c6fbfc7b0` ;
+- régression finale du bundle livré : commit `8742e30ca28f53c879b841cb9d8cc7752b1f16bb`.
 
 Cette matrice distingue :
 
@@ -23,18 +25,9 @@ Cette matrice distingue :
 
 ## Synthèse
 
-Le dépôt possédait déjà un véritable prologue A‑03 : borne de rationnement, décès administratif, Odette, journal falsifié, sortie vers Aubagne, relais AUB‑04 et quatre méthodes de reconnaissance provisoire. Le manque n’était donc pas l’existence du prologue, mais son absence de mémoire politique durable.
+Le prologue A‑03, ses preuves et les six conclusions locales sont désormais reliés à une conclusion régionale. Après Aubagne, Mireille peut convoquer treize délégations. Quatre motions amendables fixent les garanties communes ; huit projets de charte sont comparés à la campagne et à la projection `v059Madame`. Une majorité de sept voix ratifie une conclusion exclusive et produit neuf diapositives, dont un épilogue pour chaque réseau.
 
-La nouvelle tranche ajoute :
-
-- une requête exclusive adressée à M.A.D.A.M.E. ;
-- quatre formes de témoignage d’Odette ;
-- une chaîne de dix preuves dérivée de la campagne ;
-- un registre versionné `v059Madame` ;
-- le calcul des sept réseaux ;
-- huit projections politiques ;
-- une entrée Pip‑Boy, une entrée de journal et une fréquence radio ;
-- une migration rétroactive des anciennes parties.
+Un vote rejeté est conservé mais ne bloque pas la partie : les motions restent modifiables et un nouveau projet peut être présenté. Les effets annoncés sont institutionnels et chiffrés ; le texte ne prétend pas créer physiquement une flotte, un train, une pompe, un hôpital ou un réacteur.
 
 Les quatre sorties distribuées sont reconstruites et synchronisées : `src/game.js`, `JOUER_FALLOUT_MISTRAL_v0.50.html`, `index.html` et `sw.js`.
 
@@ -47,20 +40,25 @@ Les quatre sorties distribuées sont reconstruites et synchronisées : `src/game
 | Vigies des Crêtes | oui | oui | oui | oui | oui | repères existants | jouable |
 | Insulaires du Lazaret | oui | oui | oui | oui | oui | relais existants | jouable |
 | Syndicat Perpétuel | oui | oui | oui | oui | oui | chantiers existants | jouable |
-| Sans-Dossier | oui | oui | oui | oui | oui | relais et textes | jouable |
-| Communes du Mistral | oui | oui | oui | oui | oui | relais et reçus | jouable |
-| Gilets de Cendre | oui | oui | oui | oui | oui | relais et reçus | jouable |
+| Sans‑Dossier | oui | oui | oui | oui | oui | relais et conseil | jouable |
+| Communes du Mistral | oui | oui | oui | oui | oui | relais, reçus et conseil | jouable |
+| Gilets de Cendre | oui | oui | oui | oui | oui | relais, reçus et conseil | jouable |
 | COCHONNET / pétanque | oui | oui | oui | partiel | oui | mini-jeu existant | jouable, à approfondir |
-| La Sociale | oui | oui | oui | oui | oui | relais du Vieux-Port | jouable |
-| Aiguilleurs du Réseau | oui | oui | oui | oui | oui | relais de Saint-Charles | jouable |
-| Commissariat des Atomes | oui | oui | oui | oui | oui | liaison Huveaune | jouable |
-| Amirauté du Levant | oui | oui | oui | oui | oui | relais de La Ciotat | jouable |
+| La Sociale | oui | oui | oui | oui | oui | relais et délégation | jouable |
+| Aiguilleurs du Réseau | oui | oui | oui | oui | oui | relais et délégation | jouable |
+| Commissariat des Atomes | oui | oui | oui | oui | oui | liaison et délégation | jouable |
+| Amirauté du Levant | oui | oui | oui | oui | oui | relais et délégation | jouable |
 | Abri A‑03 — Les Fontaines | oui | oui | oui | oui | oui | scène historique enrichie | jouable |
-| Odette Ferraud | oui | oui | oui | oui | oui | dialogue à quatre orientations | jouable |
-| M.A.D.A.M.E. | oui | oui | oui | oui | oui | borne, Pip‑Boy et radio | systémique |
+| Odette Ferraud | oui | oui | oui | oui | oui | dialogue et délégation | jouable |
+| M.A.D.A.M.E. | oui | oui | oui | oui | oui | borne, Pip‑Boy, radio | systémique |
 | Chaîne de preuves 04‑771‑C | oui | oui | oui | oui | oui | journal/Pip‑Boy | systémique |
-| Sept réseaux | oui | oui, tous calculés | oui | oui | oui | tableau textuel | systémique |
-| Projections politiques | oui | oui, huit orientations | oui | oui | oui | projection textuelle | calculées, pas encore finales |
+| Sept réseaux | oui | oui | oui | oui | oui | tableau et épilogues | systémique |
+| Projections politiques | oui | oui | oui | oui | oui | critères du conseil | systémique |
+| Quatre motions constitutionnelles | oui | oui | oui | oui | oui | panneau du conseil | jouable |
+| Treize délégations | oui | oui | oui | oui | oui | votes nominatifs | jouable |
+| Conseil régional final | oui | oui | oui `v060Council` | oui | oui | Mireille, Pip‑Boy, radio | jouable |
+| Huit projets de charte | oui | oui | oui | oui | oui | ratification déterministe | jouable |
+| Épilogues des sept réseaux | oui | oui | oui | oui | oui | neuf diapositives | jouable |
 | Arsenal de La Ciotat | oui | présence et décisions | partiel | partiel | oui | lieux existants | à consolider comme faction |
 | Francs du Large | oui | réputation et décisions | partiel | partiel | oui | mer et île | à consolider |
 | Commune de la Rade | oui | décisions de chapitre | oui | partiel | oui | Marseille | jouable comme orientation |
@@ -74,113 +72,94 @@ Les quatre sorties distribuées sont reconstruites et synchronisées : `src/game
 | Armes locales | oui | inventaire partiel | oui | variable | oui | oui selon arme | catalogue à normaliser |
 | Radio Mistral / Canal 13 | oui | oui | oui | oui | oui | textuelle | jouable, audio à enrichir |
 
-## A‑03 : ce qui était déjà réel
+## Conseil régional `v060Council`
 
-Le cœur historique contenait déjà :
+### Déverrouillage
 
-- la pièce d’ouverture d’A‑03 ;
-- la borne refusant ration et soins ;
-- l’avis de décès automatique ;
-- Odette et sa cache ;
-- le journal des listes falsifiées ;
-- la sortie vers Aubagne ;
-- le relais AUB‑04 ;
-- les solutions réparation, négociation, falsification ou force ;
-- le retour à Mireille et le premier conseil régional.
+Le conseil devient disponible après les six chapitres. Les anciennes sauvegardes déjà arrivées après Aubagne sont migrées automatiquement au statut `available`.
 
-La nouvelle tranche ne duplique aucun de ces éléments. Elle les enveloppe afin de conserver leurs conséquences.
+### Motions
 
-## Registre `v059Madame`
+Le joueur adopte une clause pour chacun des quatre sujets :
 
-### Identité
+- preuve d’existence ;
+- minimum vital ;
+- contrôle et recours ;
+- force chargée de protéger les réseaux.
 
-Le registre conserve :
+Les clauses restent amendables jusqu’à la ratification.
 
-- statut et étape ;
-- requête à la borne ;
-- choix d’Odette ;
-- méthode du relais ;
-- conclusion du chapitre I ;
-- niveau de contradiction ;
-- pression de M.A.D.A.M.E. ;
-- dix familles de preuves.
+### Délégations
 
-### Réseaux
+Treize délégations votent selon :
 
-Chaque réseau dispose de quatre valeurs bornées entre 0 et 100 :
+- leurs affinités politiques ;
+- les clauses adoptées ;
+- leurs préférences et refus ;
+- le réseau qu’elles représentent ;
+- les décisions de campagne inscrites dans `v059Madame`.
+
+Le calcul est déterministe et la majorité requise est de sept voix.
+
+### Ratification et rejet
+
+Un projet inéligible ne peut pas être présenté. Un vote rejeté est inscrit dans `failedVotes`, puis les clauses peuvent être amendées. Une ratification réussie fixe définitivement :
+
+- la charte ;
+- le résultat nominatif ;
+- la légitimité ;
+- la projection au jour du conseil ;
+- les neuf diapositives finales.
+
+### Épilogues
+
+Chaque réseau reçoit une règle constitutionnelle et une projection avant/après pour :
 
 - accès ;
 - légitimité ;
 - coercition ;
 - résilience.
 
-Le contrôleur et les raisons du calcul sont également conservés.
+Les valeurs sont bornées entre 0 et 100 et restent des projections politiques honnêtes.
 
-### Projections
+## Tests
 
-Les scores comparent :
+`tests/expansion/lore_conseil_regional.cjs` vérifie quatorze points :
 
-- Charte des Vivants ;
-- République des Services ;
-- Continuité administrative ;
-- Fédération des Communes ;
-- Gouvernement des travailleurs ;
-- Autorité du Levant ;
-- Technocratie atomique et contractuelle ;
-- Fragmentation régionale.
-
-La projection indique un gagnant, une alternative, une marge et un niveau de confiance. Elle ne déclenche pas encore une fin.
-
-## Compatibilité des sauvegardes
-
-La migration ne suppose pas qu’une ancienne partie possède `v059Madame`. Elle lit les drapeaux et décisions historiques, notamment :
-
-- refus de ration ;
-- journal A‑03 ;
-- activation du relais ;
-- conclusion du chapitre I ;
-- chartes des routes, de l’eau, du littoral, de Marseille et d’Aubagne ;
-- dossiers de services `v054Services` ;
-- archives et témoignages ultérieurs.
-
-Le registre est ainsi reconstruit sans modifier les décisions d’origine.
-
-## Tests de cette tranche
-
-`tests/expansion/lore_a03_madame.cjs` vérifie dix points :
-
-1. sept réseaux et huit projections ;
-2. migration sans mutation de l’entrée ;
-3. exclusivité de la requête M.A.D.A.M.E. ;
-4. exclusivité du choix d’Odette ;
-5. différences entre les quatre conclusions du chapitre I ;
-6. influence des dossiers de services ;
-7. projection République des Services pour une campagne cohérente ;
-8. déterminisme et bornage des valeurs ;
-9. refus des actions invalides ;
-10. câblage statique de la sauvegarde, du Pip‑Boy, de la radio et des jalons.
+1. quatre motions ;
+2. huit orientations ;
+3. treize délégations ;
+4. sept réseaux ;
+5. déverrouillage après Aubagne ;
+6. migration sans mutation ;
+7. convocation et statuts ;
+8. motions amendables ;
+9. éligibilité des orientations ;
+10. vote déterministe à treize voix ;
+11. ratification et neuf diapositives ;
+12. rejet sans blocage ;
+13. exclusivité après ratification ;
+14. câblage de Mireille, du Pip‑Boy, de la radio, du journal et de l’écran final.
 
 ## Validation de livraison
 
-- **module et tests** — effectués ;
+- **module et tests du conseil** — effectués ;
 - **documentation** — effectuée ;
 - **reconstruction des quatre sorties** — effectuée ;
-- **présence du module et de l’entrée Pip‑Boy dans le bundle** — vérifiée ;
+- **présence du conseil et des États généraux dans le bundle** — vérifiée ;
 - **cache hors ligne et déterminisme du build** — validés ;
-- **streaming, annulations, coutures et identité géométrique** — validés sur la livraison reconstruite ;
+- **streaming, annulations, coutures et identité géométrique** — validés sur le bundle reconstruit ;
 - **smoke test humain prolongé** — non réalisé dans cet audit.
 
-Le workflow du lore exécute ensemble les anciens tests de continuité, les dossiers de services et le registre A‑03. Le workflow de streaming contrôle ensuite le bundle déjà livré au lieu d’un résultat temporaire non commité.
+## Backlog priorisé après la conclusion régionale
 
-## Backlog priorisé après cette tranche
+### P0 — monde post‑ratification
 
-### P0 — conclusion politique
-
-- conseil régional final fondé sur `v059Madame` ;
-- fins et diapositives propres à chaque réseau ;
-- recours jouables lorsque deux réseaux se contredisent ;
+- conséquences visuelles persistantes des chartes dans les lieux ;
+- crises post‑campagne lorsque deux réseaux interprètent différemment la charte ;
 - présence scénique de Madame la Préfète hors des terminaux ;
-- conséquences visuelles persistantes des chartes.
+- épilogues propres aux compagnons ;
+- mise en scène audio et cinématique plus développée du vote.
 
 ### P1 — France institutionnelle jouable
 
