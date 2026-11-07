@@ -11,10 +11,11 @@ L’ordre de priorité est le suivant :
 1. [`docs/BIBLE_LORE_FALLOUT_MISTRAL.md`](docs/BIBLE_LORE_FALLOUT_MISTRAL.md) — canon narratif général ;
 2. [`docs/MATRICE_INTEGRATION_LORE.md`](docs/MATRICE_INTEGRATION_LORE.md) — état réel de l’intégration, sans confondre texte, code source, build généré et validation ;
 3. [`docs/LORE_A03_MADAME.md`](docs/LORE_A03_MADAME.md) — chaîne de preuves du prologue, registre civique, sept réseaux et projections politiques ;
-4. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
-5. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
-6. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
-7. les documents spécialisés et les textes en jeu.
+4. [`docs/LORE_CONSEIL_REGIONAL.md`](docs/LORE_CONSEIL_REGIONAL.md) — motions, délégations, ratification et épilogues jouables des sept réseaux ;
+5. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
+6. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
+7. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
+8. les documents spécialisés et les textes en jeu.
 
 En cas de contradiction, la bible générale fixe le canon, tandis que la matrice indique ce qui existe réellement dans le jeu.
 
@@ -24,6 +25,7 @@ En cas de contradiction, la bible générale fixe le canon, tandis que la matric
 |---|---|
 | **Jouable** | Le joueur peut ouvrir, faire progresser et conclure le contenu dans le programme, avec sauvegarde. |
 | **Systémique** | Le contenu observe plusieurs décisions de campagne et calcule un état régional persistant. |
+| **Ratifié** | Une conclusion régionale a été adoptée par les délégations et possède ses épilogues sauvegardés. |
 | **Câblé en source** | Le code est intégré à la chaîne de build, mais le HTML distribué doit être reconstruit pour le contenir. |
 | **Canon documentaire** | Le concept appartient au monde, mais ne dispose pas encore d’un système jouable complet. |
 | **Accroche** | Le concept est approuvé comme direction, mais demande encore lieux, PNJ, quêtes, assets ou règles. |
@@ -43,7 +45,15 @@ La question centrale n’est pas simplement « qui contrôlera un réacteur ? »
 
 Le prologue **« Un vivant de trop »** est suivi par un registre civique persistant. Il conserve l’avis de décès 04‑771‑C, la présence corporelle, la trace du relais, le journal d’A‑03, le témoignage d’Odette, la solution employée à AUB‑04 et les preuves réunies ensuite dans la campagne.
 
-M.A.D.A.M.E. ne remplace plus seulement une menace écrite : son interface confronte les versions contradictoires et calcule comment les décisions du joueur transforment l’accès, la légitimité, la coercition et la résilience des sept réseaux. Le résultat produit une projection politique, sans prétendre déclencher une fin qui ne serait pas encore mise en scène.
+M.A.D.A.M.E. confronte les versions contradictoires et calcule comment les décisions du joueur transforment l’accès, la légitimité, la coercition et la résilience des sept réseaux. Cette projection devient la base des États généraux, mais ne remplace jamais le vote des délégations.
+
+## États généraux du Mistral
+
+Après les six chapitres, Mireille peut convoquer treize délégations. Le joueur amende quatre motions portant sur la preuve d’existence, le minimum vital, le droit d’arrêter une décision et la force chargée de protéger les réseaux.
+
+Huit projets de charte peuvent devenir éligibles selon la campagne et les garanties adoptées. Une majorité de sept voix est requise. Un vote rejeté laisse les motions amendables ; une ratification réussie devient définitive et produit neuf diapositives, dont un épilogue pour chacun des sept réseaux.
+
+La conclusion est politique et sauvegardée. Les diapositives annoncent des règles et des projections mesurées, pas des transformations physiques absentes du moteur.
 
 ## Les sept réseaux
 
@@ -79,6 +89,8 @@ Les dossiers de services rendent également jouables :
 - les **Aiguilleurs du Réseau** ;
 - le **Commissariat des Atomes** ;
 - l’**Amirauté du Levant**.
+
+Ces forces, ainsi qu’A‑03 et les Sans‑Dossier, disposent ensuite d’une voix déterministe au conseil régional.
 
 ## Règles de cohérence
 
