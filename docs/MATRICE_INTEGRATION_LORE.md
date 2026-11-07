@@ -8,7 +8,9 @@
 - chaîne de build : `tools/build_single.py` ;
 - continuité : `src/v050/10_lore_continuity.js` ;
 - services : `src/v050/10a_lore_services.js` ;
-- A‑03, M.A.D.A.M.E. et sept réseaux : `src/v050/10b_a03_madame.js`.
+- A‑03, M.A.D.A.M.E. et sept réseaux : `src/v050/10b_a03_madame.js` ;
+- sorties générées synchronisées : commit `abe3d3f8b3793d42e35e1db6be51a30e9b42b900` ;
+- contrôle final du bundle, du cache, du streaming et des coutures : commit `1f26ec4c40be72d4f047905e433becb1a4b2b53b`.
 
 Cette matrice distingue :
 
@@ -34,6 +36,8 @@ La nouvelle tranche ajoute :
 - une entrée Pip‑Boy, une entrée de journal et une fréquence radio ;
 - une migration rétroactive des anciennes parties.
 
+Les quatre sorties distribuées sont reconstruites et synchronisées : `src/game.js`, `JOUER_FALLOUT_MISTRAL_v0.50.html`, `index.html` et `sw.js`.
+
 ## Matrice générale
 
 | Élément | Bible | Source | Sauvegarde | Tests | Bundle | Mise en scène | Statut |
@@ -51,12 +55,12 @@ La nouvelle tranche ajoute :
 | Aiguilleurs du Réseau | oui | oui | oui | oui | oui | relais de Saint-Charles | jouable |
 | Commissariat des Atomes | oui | oui | oui | oui | oui | liaison Huveaune | jouable |
 | Amirauté du Levant | oui | oui | oui | oui | oui | relais de La Ciotat | jouable |
-| Abri A‑03 — Les Fontaines | oui | oui | oui | oui | à valider sur la tête finale | scène historique enrichie | jouable |
-| Odette Ferraud | oui | oui | oui | oui | à valider sur la tête finale | dialogue à quatre orientations | jouable |
-| M.A.D.A.M.E. | oui | oui | oui | oui | à valider sur la tête finale | borne, Pip‑Boy et radio | systémique |
-| Chaîne de preuves 04‑771‑C | oui | oui | oui | oui | à valider sur la tête finale | journal/Pip‑Boy | systémique |
-| Sept réseaux | oui | oui, tous calculés | oui | oui | à valider sur la tête finale | tableau textuel | systémique |
-| Projections politiques | oui | oui, huit orientations | oui | oui | à valider sur la tête finale | projection textuelle | calculées, pas encore finales |
+| Abri A‑03 — Les Fontaines | oui | oui | oui | oui | oui | scène historique enrichie | jouable |
+| Odette Ferraud | oui | oui | oui | oui | oui | dialogue à quatre orientations | jouable |
+| M.A.D.A.M.E. | oui | oui | oui | oui | oui | borne, Pip‑Boy et radio | systémique |
+| Chaîne de preuves 04‑771‑C | oui | oui | oui | oui | oui | journal/Pip‑Boy | systémique |
+| Sept réseaux | oui | oui, tous calculés | oui | oui | oui | tableau textuel | systémique |
+| Projections politiques | oui | oui, huit orientations | oui | oui | oui | projection textuelle | calculées, pas encore finales |
 | Arsenal de La Ciotat | oui | présence et décisions | partiel | partiel | oui | lieux existants | à consolider comme faction |
 | Francs du Large | oui | réputation et décisions | partiel | partiel | oui | mer et île | à consolider |
 | Commune de la Rade | oui | décisions de chapitre | oui | partiel | oui | Marseille | jouable comme orientation |
@@ -158,14 +162,15 @@ Le registre est ainsi reconstruit sans modifier les décisions d’origine.
 
 ## Validation de livraison
 
-Une livraison complète doit confirmer séparément :
+- **module et tests** — effectués ;
+- **documentation** — effectuée ;
+- **reconstruction des quatre sorties** — effectuée ;
+- **présence du module et de l’entrée Pip‑Boy dans le bundle** — vérifiée ;
+- **cache hors ligne et déterminisme du build** — validés ;
+- **streaming, annulations, coutures et identité géométrique** — validés sur la livraison reconstruite ;
+- **smoke test humain prolongé** — non réalisé dans cet audit.
 
-- module et tests — effectués ;
-- documentation — effectuée ;
-- reconstruction des quatre sorties — en cours de validation sur la branche ;
-- cache hors ligne — en cours de validation ;
-- régressions de streaming et coutures — en cours de validation ;
-- smoke test humain prolongé — non réalisé dans cet audit.
+Le workflow du lore exécute ensemble les anciens tests de continuité, les dossiers de services et le registre A‑03. Le workflow de streaming contrôle ensuite le bundle déjà livré au lieu d’un résultat temporaire non commité.
 
 ## Backlog priorisé après cette tranche
 
