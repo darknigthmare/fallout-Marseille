@@ -14077,7 +14077,7 @@ if(typeof baseState==='function'&&typeof MistralCouncil!=='undefined'){
  const unlocked=()=>M.unlocked(state.v060Council);
  function blocked(){return !gameStarted||!['PLAYING','PIP','DIALOGUE','NOTE'].includes(mode)||!(state.player?.hp>0)?'Reprenez une partie active.':V046.lab?'Le banc synthétique ne modifie pas la tournée.':zoneTransitioning||V046.busy||V047.pending?'Le territoire est en cours de chargement.':!world?.v046||state.v042?.activeInterior||world.v050CityInterior?'Rejoignez un relais du territoire extérieur.':!settings.geoFalloutLayer?'La couche de rencontres territoriales est désactivée.':typeof onGround==='boolean'&&!onGround?'Rejoignez un sol stable.':typeof v050TravelNearbyThreat==='function'&&v050TravelNearbyThreat(world,state.player.pos)?'Éloignez le danger avant cet échange.':null;}
  function contact(site){const p=state.player.pos,definition=v042Site(site);if(!definition||!v042SiteDiscovered(definition))return false;return (world?.npcs||[]).some(n=>n.alive!==false&&(n.v042Site===site||V042_RUNTIME.npcData.get(n.id)?.siteId===site)&&Math.hypot(n.pos[0]-p[0],n.pos[2]-p[2])<=8&&Math.abs(n.pos[1]+1.4-p[1])<2.8&&lineOfSight(p,[n.pos[0],n.pos[1]+1.4,n.pos[2]]));}
- function physical(id){const e=rt.entries.find(e=>e.q.id===id),p=state.player.pos;return !!(e&&rt.owner===world&&e.state===state&&Math.hypot(e.pos[0]-p[0],e.pos[2]-p[2])<=3&&Math.abs(e.pos[1]+1-p[1])<2.2&&lineOfSight(p,[e.pos[0],e.pos[1]+1,e.pos[2]]));}
+ function physical(id){const e=rt.entries.find(e=>e.q.id===id),p=state.player.pos;return !!(e&&rt.owner===world&&e.state===state&&Math.hypot(e.pos[0]-p[0],e.pos[2]-p[2])<=3&&Math.abs(e.pos[1]+1-p[1])<2.2&&lineOfSight(p,[e.pos[0],e.pos[1]+1,e.pos[2]+.55]));}
  function notice(text){V027.message=text;toast(text,'bad');return false;}
  function transact(type,id,choice,site){
   if(rt.busy)return false;const owner=state,before=copy(owner);let next;
@@ -14118,7 +14118,7 @@ if(typeof baseState==='function'&&typeof MistralCouncil!=='undefined'){
    box([0,.1,0],[.85,.2,.65],[.22,.24,.22]);box([0,.65,0],[.12,1.1,.12],[.33,.36,.34]);box([0,1.2,0],[.85,.5,.10],col);box([0,1.2,.06],[.59,.27,.02],[.88,.85,.70]);
    if(r.choice&&!r.claimed){box([0,.39,.22],[.66,.35,.45],[.51,.35,.17]);box([0,.58,.22],[.70,.05,.47],col);}
    for(const d of temp.staticDraws){d.v061Poste=q.id;d.v042Site=q.site;}rt.draws.push(...temp.staticDraws);
-   const e={q,pos,state},it=addInteract(world,'post61:'+q.id,[pos[0],pos[1]+1,pos[2]],r.choice?(r.claimed?'Relire le reçu · ':'Récupérer le contre-don · ')+q.name:'Examiner le courrier · '+q.name,()=>{if(e.state!==state||rt.owner!==world)return false;return r.choice&&!r.claimed?transact('claim',q.id,null,q.site):inspect(q);},{radius:3,kind:'note',priority:4,condition:()=>!blocked()&&physical(q.id)});it.v061Poste=q.id;it.v042Site=q.site;
+   const e={q,pos,state},it=addInteract(world,'post61:'+q.id,[pos[0],pos[1]+1,pos[2]+.55],r.choice?(r.claimed?'Relire le reçu · ':'Récupérer le contre-don · ')+q.name:'Examiner le courrier · '+q.name,()=>{if(e.state!==state||rt.owner!==world)return false;return r.choice&&!r.claimed?transact('claim',q.id,null,q.site):inspect(q);},{radius:3,kind:'note',priority:4,condition:()=>!blocked()&&physical(q.id)});it.v061Poste=q.id;it.v042Site=q.site;
    const collider=addCollider(world,pos[0],pos[2],.85,.65,{id:'post61:'+q.id,minY:pos[1],maxY:pos[1]+1.45});collider.v061Poste=q.id;collider.v042Site=q.site;rt.entries.push(e);
   }
  }
