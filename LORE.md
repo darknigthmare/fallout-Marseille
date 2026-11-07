@@ -10,10 +10,11 @@ L’ordre de priorité est le suivant :
 
 1. [`docs/BIBLE_LORE_FALLOUT_MISTRAL.md`](docs/BIBLE_LORE_FALLOUT_MISTRAL.md) — canon narratif général ;
 2. [`docs/MATRICE_INTEGRATION_LORE.md`](docs/MATRICE_INTEGRATION_LORE.md) — état réel de l’intégration, sans confondre texte, code source, build généré et validation ;
-3. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables déjà présents dans la v0.50 ;
-4. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — extension des sept réseaux et des quatre factions de services ;
-5. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
-6. les documents spécialisés et les textes en jeu.
+3. [`docs/LORE_A03_MADAME.md`](docs/LORE_A03_MADAME.md) — chaîne de preuves du prologue, registre civique, sept réseaux et projections politiques ;
+4. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
+5. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
+6. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
+7. les documents spécialisés et les textes en jeu.
 
 En cas de contradiction, la bible générale fixe le canon, tandis que la matrice indique ce qui existe réellement dans le jeu.
 
@@ -22,6 +23,7 @@ En cas de contradiction, la bible générale fixe le canon, tandis que la matric
 | Statut | Signification |
 |---|---|
 | **Jouable** | Le joueur peut ouvrir, faire progresser et conclure le contenu dans le programme, avec sauvegarde. |
+| **Systémique** | Le contenu observe plusieurs décisions de campagne et calcule un état régional persistant. |
 | **Câblé en source** | Le code est intégré à la chaîne de build, mais le HTML distribué doit être reconstruit pour le contenir. |
 | **Canon documentaire** | Le concept appartient au monde, mais ne dispose pas encore d’un système jouable complet. |
 | **Accroche** | Le concept est approuvé comme direction, mais demande encore lieux, PNJ, quêtes, assets ou règles. |
@@ -36,6 +38,12 @@ Le protagoniste sort de l’abri **A‑03 — Les Fontaines** après avoir été
 La question centrale n’est pas simplement « qui contrôlera un réacteur ? », mais :
 
 > **Qui a le pouvoir de reconnaître qu’un être vivant existe, et quels droits découlent de cette reconnaissance ?**
+
+## A‑03 et M.A.D.A.M.E.
+
+Le prologue **« Un vivant de trop »** est suivi par un registre civique persistant. Il conserve l’avis de décès 04‑771‑C, la présence corporelle, la trace du relais, le journal d’A‑03, le témoignage d’Odette, la solution employée à AUB‑04 et les preuves réunies ensuite dans la campagne.
+
+M.A.D.A.M.E. ne remplace plus seulement une menace écrite : son interface confronte les versions contradictoires et calcule comment les décisions du joueur transforment l’accès, la légitimité, la coercition et la résilience des sept réseaux. Le résultat produit une projection politique, sans prétendre déclencher une fin qui ne serait pas encore mise en scène.
 
 ## Les sept réseaux
 
@@ -53,7 +61,7 @@ Aucune faction ne doit pouvoir contrôler durablement les sept sans devenir un n
 
 ## Factions déjà raccordées au jeu
 
-Les dossiers v0.50 raccordent notamment :
+Les dossiers de continuité raccordent notamment :
 
 - la **Convention des Cendres** ;
 - la **Direction de la Continuité — CONCORDE** ;
@@ -65,7 +73,7 @@ Les dossiers v0.50 raccordent notamment :
 - les **Gilets de Cendre** ;
 - la **Ligue des Cent Trêves / COCHONNET-3**.
 
-L’extension des services ajoute en source :
+Les dossiers de services rendent également jouables :
 
 - **La Sociale** ;
 - les **Aiguilleurs du Réseau** ;
@@ -84,4 +92,4 @@ L’extension des services ajoute en source :
 
 ## Audit de référence
 
-L’audit ayant produit cette consolidation part de la branche `main` au commit `1d1833a4cb320a2075cba5b57c4504e99b206fe3` du 4 novembre 2026. La matrice d’intégration détaille les contenus confirmés, les ajouts de la branche de travail et les chantiers encore ouverts.
+La consolidation initiale partait de `main` au commit `1d1833a4cb320a2075cba5b57c4504e99b206fe3` du 4 novembre 2026. La matrice d’intégration suit désormais les ajouts fusionnés, les validations du build et les chantiers encore ouverts.
