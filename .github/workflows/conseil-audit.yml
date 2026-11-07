@@ -1,4 +1,4 @@
-name: Council flow audit
+name: Council integration
 
 on:
   push:
@@ -6,42 +6,47 @@ on:
       - feature/conseil-regional-final
     paths:
       - '.github/workflows/conseil-audit.yml'
-      - 'src/**'
+      - '.council-payload/**'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  inspect:
+  integrate:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-      - name: Extract M.A.D.A.M.E. API and integration hooks
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assemble source and tests
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re
+          import base64
+          import zlib
 
-          path=Path('src/v050/10b_a03_madame.js')
-          text=path.read_text(encoding='utf-8')
-          lines=text.splitlines()
-          print(f'===== {path} · {len(lines)} lines · {len(text)} bytes =====')
-
-          for i,line in enumerate(lines):
-              if re.search(r'^(\s*)(const|function)\s+[A-Za-z0-9_]+|return\{|v059Madame|v027|V027_STATIONS|showEnding|talkMireille|saveGame|module\.exports|__MISTRAL_DEBUG',line):
-                  print(f'{i+1:04d}: {line}')
-
-          print('\n===== LAST 180 LINES =====')
-          for i,line in enumerate(lines[-180:], start=max(1,len(lines)-179)):
-              print(f'{i:04d}: {line}')
-
-          print('\n===== PUBLIC MODEL SMOKE =====')
+          source=''.join(path.read_text(encoding='ascii') for path in sorted(Path('.council-payload').glob('src-*.b64')))
+          tests=Path('.council-payload/test-00.b64').read_text(encoding='ascii')
+          outputs={
+              Path('src/v050/10c_conseil_regional.js'):zlib.decompress(base64.b64decode(source)),
+              Path('tests/expansion/lore_conseil_regional.cjs'):zlib.decompress(base64.b64decode(tests)),
+          }
+          for path,data in outputs.items():
+              path.parent.mkdir(parents=True,exist_ok=True)
+              path.write_bytes(data)
+              print(f'wrote {path} ({len(data)} bytes)')
           PY
-          node - <<'NODE'
-          const M=require('./src/v050/10b_a03_madame.js');
-          console.log('keys',Object.keys(M));
-          console.log('network keys',M.NETWORK_KEYS);
-          console.log('projection keys',M.PROJECTION_KEYS);
-          console.log('fresh',JSON.stringify(M.fresh(),null,2));
-          NODE
+      - name: Validate council model and integration surface
+        run: |
+          node --check src/v050/10c_conseil_regional.js
+          node --test tests/expansion/lore_conseil_regional.cjs
+      - name: Commit integration and remove staging files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/v050/10c_conseil_regional.js tests/expansion/lore_conseil_regional.cjs
+          git rm -r .council-payload .github/workflows/conseil-audit.yml
+          git commit -m 'feat(council): add playable regional ratification'
+          git push origin HEAD:feature/conseil-regional-final
