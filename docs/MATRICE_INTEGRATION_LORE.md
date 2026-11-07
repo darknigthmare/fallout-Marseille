@@ -1,179 +1,196 @@
-# Matrice d’intégration du lore — audit du 7 novembre 2026
+# Matrice d’intégration du lore — audit continu du 7 novembre 2026
 
-## Référence auditée
+## Référence
 
 - dépôt : `darknigthmare/fallout-Marseille` ;
-- branche auditée : `main` ;
-- commit de départ : `1d1833a4cb320a2075cba5b57c4504e99b206fe3` ;
+- base de cette tranche : `main` au commit `180526e2b40abe9d6fcd91423c5d309ec781d41b` ;
 - version déclarée : v0.50 ;
 - chaîne de build : `tools/build_single.py` ;
-- module de continuité existant : `src/v050/10_lore_continuity.js` ;
-- module ajouté par cette extension : `src/v050/10a_lore_services.js` ;
-- sorties de jeu régénérées sur la branche par le commit `6f73a08d7bd770d3347df5623b550b7b331d2903`.
+- continuité : `src/v050/10_lore_continuity.js` ;
+- services : `src/v050/10a_lore_services.js` ;
+- A‑03, M.A.D.A.M.E. et sept réseaux : `src/v050/10b_a03_madame.js`.
 
-Cette matrice distingue volontairement quatre choses différentes :
+Cette matrice distingue :
 
-1. un concept écrit dans un document ;
-2. un code présent dans les sources ;
-3. un contenu inclus dans le HTML généré ;
-4. un comportement réellement validé par des tests ou une exécution navigateur.
+1. le canon documentaire ;
+2. le code source ;
+3. l’état réellement sauvegardé ;
+4. les tests de modèle ;
+5. le bundle généré ;
+6. la mise en scène ou conséquence visuelle.
 
 ## Synthèse
 
-Avant cette extension, le dépôt contenait déjà une intégration de lore plus avancée que ne le laissait penser le README : neuf identités de faction, huit dossiers jouables, des coûts finis, des choix exclusifs, une sauvegarde versionnée, des réactions textuelles et des tests dédiés.
+Le dépôt possédait déjà un véritable prologue A‑03 : borne de rationnement, décès administratif, Odette, journal falsifié, sortie vers Aubagne, relais AUB‑04 et quatre méthodes de reconnaissance provisoire. Le manque n’était donc pas l’existence du prologue, mais son absence de mémoire politique durable.
 
-Le manque principal était l’absence d’une bible unique et l’absence en jeu des quatre grandes puissances de services développées dans la conception récente.
+La nouvelle tranche ajoute :
 
-La branche de la PR contient maintenant le code, la documentation, les tests et les quatre sorties générées attendues : `src/game.js`, `JOUER_FALLOUT_MISTRAL_v0.50.html`, `index.html` et `sw.js`.
+- une requête exclusive adressée à M.A.D.A.M.E. ;
+- quatre formes de témoignage d’Odette ;
+- une chaîne de dix preuves dérivée de la campagne ;
+- un registre versionné `v059Madame` ;
+- le calcul des sept réseaux ;
+- huit projections politiques ;
+- une entrée Pip‑Boy, une entrée de journal et une fréquence radio ;
+- une migration rétroactive des anciennes parties.
 
 ## Matrice générale
 
-| Élément | Bible | Source de jeu | Sauvegarde | Tests automatisés | HTML v0.50 du commit de départ | Build généré de la PR | Statut après cette extension |
+| Élément | Bible | Source | Sauvegarde | Tests | Bundle | Mise en scène | Statut |
 |---|---:|---:|---:|---:|---:|---:|---|
-| Convention des Cendres | oui | oui | oui | oui | oui | oui | jouable |
-| CONCORDE / formulaire impossible | oui | oui | oui | oui | oui | oui | jouable |
-| Vigies des Crêtes | oui | oui | oui | oui | oui | oui | jouable |
-| Insulaires du Lazaret | oui | oui | oui | oui | oui | oui | jouable |
-| Syndicat Perpétuel | oui | oui | oui | oui | oui | oui | jouable |
-| Sans-Dossier | oui | oui | oui | oui | oui | oui | jouable |
-| Communes du Mistral | oui | oui | oui | oui | oui | oui | jouable |
-| Gilets de Cendre | oui | oui | oui | oui | oui | oui | jouable |
-| COCHONNET / pétanque | oui | oui | oui | partiel | oui | oui | jouable, à approfondir |
-| La Sociale | oui | oui, nouveau | oui, nouveau | oui, nouveau | non | oui | jouable dans le build de la PR |
-| Aiguilleurs du Réseau | oui | oui, nouveau | oui, nouveau | oui, nouveau | non | oui | jouable dans le build de la PR |
-| Commissariat des Atomes | oui | oui, nouveau | oui, nouveau | oui, nouveau | non | oui | jouable dans le build de la PR |
-| Amirauté du Levant | oui | oui, nouveau | oui, nouveau | oui, nouveau | non | oui | jouable dans le build de la PR |
-| M.A.D.A.M.E. / Madame la Préfète | oui | fragments | non comme arc complet | non | partiel | partiel | canon, arc principal à produire |
-| Abri A‑03 — Les Fontaines | oui | socle narratif partiel | non comme prologue complet | non | partiel | partiel | priorité narrative |
-| Sept réseaux | oui | quatre dossiers reliés | oui pour les quatre | oui pour les quatre | non pour les nouveaux | oui pour quatre réseaux | système partiellement jouable |
-| Arsenal de La Ciotat | oui | présence géographique/mentions | non comme faction complète | non | partiel | partiel | canon documentaire |
-| Francs du Large | oui | réputation/mentions | partiel | partiel | partiel | partiel | à consolider |
-| Commune de la Rade | oui | présence régionale | partiel | non | partiel | partiel | à consolider |
+| Convention des Cendres | oui | oui | oui | oui | oui | textuelle et lieux existants | jouable |
+| CONCORDE / formulaire impossible | oui | oui | oui | oui | oui | textuelle et relais | jouable |
+| Vigies des Crêtes | oui | oui | oui | oui | oui | repères existants | jouable |
+| Insulaires du Lazaret | oui | oui | oui | oui | oui | relais existants | jouable |
+| Syndicat Perpétuel | oui | oui | oui | oui | oui | chantiers existants | jouable |
+| Sans-Dossier | oui | oui | oui | oui | oui | relais et textes | jouable |
+| Communes du Mistral | oui | oui | oui | oui | oui | relais et reçus | jouable |
+| Gilets de Cendre | oui | oui | oui | oui | oui | relais et reçus | jouable |
+| COCHONNET / pétanque | oui | oui | oui | partiel | oui | mini-jeu existant | jouable, à approfondir |
+| La Sociale | oui | oui | oui | oui | oui | relais du Vieux-Port | jouable |
+| Aiguilleurs du Réseau | oui | oui | oui | oui | oui | relais de Saint-Charles | jouable |
+| Commissariat des Atomes | oui | oui | oui | oui | oui | liaison Huveaune | jouable |
+| Amirauté du Levant | oui | oui | oui | oui | oui | relais de La Ciotat | jouable |
+| Abri A‑03 — Les Fontaines | oui | oui | oui | oui | à valider sur la tête finale | scène historique enrichie | jouable |
+| Odette Ferraud | oui | oui | oui | oui | à valider sur la tête finale | dialogue à quatre orientations | jouable |
+| M.A.D.A.M.E. | oui | oui | oui | oui | à valider sur la tête finale | borne, Pip‑Boy et radio | systémique |
+| Chaîne de preuves 04‑771‑C | oui | oui | oui | oui | à valider sur la tête finale | journal/Pip‑Boy | systémique |
+| Sept réseaux | oui | oui, tous calculés | oui | oui | à valider sur la tête finale | tableau textuel | systémique |
+| Projections politiques | oui | oui, huit orientations | oui | oui | à valider sur la tête finale | projection textuelle | calculées, pas encore finales |
+| Arsenal de La Ciotat | oui | présence et décisions | partiel | partiel | oui | lieux existants | à consolider comme faction |
+| Francs du Large | oui | réputation et décisions | partiel | partiel | oui | mer et île | à consolider |
+| Commune de la Rade | oui | décisions de chapitre | oui | partiel | oui | Marseille | jouable comme orientation |
 | Cohorte Viénot | oui | non | non | non | non | non | canon documentaire |
 | Cour du Lys d’If | oui | non comme campagne | non | non | non | non | canon documentaire |
-| Maquis des Treize Vents | oui | non | non | non | non | non | canon documentaire |
 | Poste Restante | oui | non comme système complet | non | non | non | non | chantier prioritaire |
-| Confrérie du Vœu | oui | mentions de veille/secours | non | non | partiel | partiel | canon documentaire |
 | Mutuelle Phocéenne | oui | non | non | non | non | non | accroche de quêtes |
-| Copropriété Radieuse | oui | ville et bâtiments seulement | non | non | partiel | partiel | arc local à produire |
+| Copropriété Radieuse | oui | bâtiments seulement | non | non | partiel | partiel | arc local à produire |
 | Plan-de-Campagne / Enseignes | oui | géographie générale | non | non | partiel | partiel | arc local à produire |
-| Bestiaire régional | oui | plusieurs familles incarnées | oui pour les acteurs existants | oui selon espèces | oui | oui | partiellement incarné |
-| Armes locales | oui | inventaire partiel | oui selon armes existantes | variable | partiel | partiel | catalogue à normaliser |
-| Pigeons et rats mutants | oui | plusieurs variantes présentes | oui | oui selon variante | oui | oui | continuer diversité/IA |
-| Radio Mistral / Canal 13 | oui | bulletins textuels | oui | oui | oui | oui | jouable, à enrichir audio |
-| Fins politiques | oui | non comme finale systémique | non | non | non | non | grand chantier de campagne |
+| Bestiaire régional | oui | plusieurs familles | oui | oui selon espèce | oui | plusieurs rigs | partiellement incarné |
+| Armes locales | oui | inventaire partiel | oui | variable | oui | oui selon arme | catalogue à normaliser |
+| Radio Mistral / Canal 13 | oui | oui | oui | oui | oui | textuelle | jouable, audio à enrichir |
 
-## Ce qui est réellement fort
+## A‑03 : ce qui était déjà réel
 
-### Dossiers v0.50
+Le cœur historique contenait déjà :
 
-Le module de continuité existant possède les caractéristiques attendues d’un système RPG robuste :
+- la pièce d’ouverture d’A‑03 ;
+- la borne refusant ration et soins ;
+- l’avis de décès automatique ;
+- Odette et sa cache ;
+- le journal des listes falsifiées ;
+- la sortie vers Aubagne ;
+- le relais AUB‑04 ;
+- les solutions réparation, négociation, falsification ou force ;
+- le retour à Mireille et le premier conseil régional.
 
-- contact physique et site découvert ;
-- coûts vérifiés ;
-- décision exclusive ;
-- récompense unique ;
-- journal sauvegardé ;
-- migration des anciennes sauvegardes ;
-- annulation atomique si la sauvegarde échoue ;
-- formulations qui ne prétendent pas créer un élément visuel absent.
+La nouvelle tranche ne duplique aucun de ces éléments. Elle les enveloppe afin de conserver leurs conséquences.
 
-### Carte et relais
+## Registre `v059Madame`
 
-Les quatre nouveaux dossiers utilisent des lieux sûrs déjà présents dans le catalogue :
+### Identité
 
-- Vieux-Port ;
-- Saint-Charles ;
-- vallée de l’Huveaune ;
-- La Ciotat.
+Le registre conserve :
 
-Ils n’inventent donc pas un nouveau territoire parallèle.
+- statut et étape ;
+- requête à la borne ;
+- choix d’Odette ;
+- méthode du relais ;
+- conclusion du chapitre I ;
+- niveau de contradiction ;
+- pression de M.A.D.A.M.E. ;
+- dix familles de preuves.
 
-### Livraison générée
+### Réseaux
 
-Le workflow spécialisé a reconstruit le jeu, vérifié la syntaxe du bundle et contrôlé que `tools/build_single.py --check` ne trouvait plus de différence après génération. Les quatre fichiers de livraison ont ensuite été commités sur la branche. Cette validation ne remplace pas un parcours humain complet dans le navigateur.
+Chaque réseau dispose de quatre valeurs bornées entre 0 et 100 :
 
-## Ce qui restait faible
+- accès ;
+- légitimité ;
+- coercition ;
+- résilience.
 
-### 1. Bible dispersée
+Le contrôleur et les raisons du calcul sont également conservés.
 
-Le canon était réparti entre `LORE_RECONSTRUIT_V046.md`, `LORE_CONTINUITE.md`, le bestiaire, les textes de code et les conversations de conception. Il manquait une hiérarchie claire.
+### Projections
 
-**Correction :** ajout de `LORE.md` et de la bible générale.
+Les scores comparent :
 
-### 2. Factions de services absentes
+- Charte des Vivants ;
+- République des Services ;
+- Continuité administrative ;
+- Fédération des Communes ;
+- Gouvernement des travailleurs ;
+- Autorité du Levant ;
+- Technocratie atomique et contractuelle ;
+- Fragmentation régionale.
 
-La Sociale, les Aiguilleurs, le Commissariat et l’Amirauté existaient dans la conception, mais pas dans la boucle jouable.
+La projection indique un gagnant, une alternative, une marge et un niveau de confiance. Elle ne déclenche pas encore une fin.
 
-**Correction :** quatre dossiers à deux choix, état `v054Services`, migration et panneau Pip-Boy.
+## Compatibilité des sauvegardes
 
-### 3. Arc principal insuffisamment raccordé
+La migration ne suppose pas qu’une ancienne partie possède `v059Madame`. Elle lit les drapeaux et décisions historiques, notamment :
 
-M.A.D.A.M.E., A‑03 et la suppression administrative du protagoniste sont le meilleur axe du projet, mais ne forment pas encore un prologue/arc principal entièrement jouable.
+- refus de ration ;
+- journal A‑03 ;
+- activation du relais ;
+- conclusion du chapitre I ;
+- chartes des routes, de l’eau, du littoral, de Marseille et d’Aubagne ;
+- dossiers de services `v054Services` ;
+- archives et témoignages ultérieurs.
 
-**Priorité suivante :** construire un prologue en plusieurs scènes, avec preuve d’existence, première sortie, choix d’Odette et conséquences dans les réseaux.
+Le registre est ainsi reconstruit sans modifier les décisions d’origine.
 
-### 4. Concepts français encore décoratifs
+## Tests de cette tranche
 
-La copropriété, la poste, les pharmacies de garde, la Mutuelle, les notaires et la Cour du Lys sont canoniques mais n’ont pas encore leur boucle de jeu.
+`tests/expansion/lore_a03_madame.cjs` vérifie dix points :
 
-**Priorité suivante :** transformer chaque référence en système : courrier, assurance, propriété, horaires, assemblées, recours.
+1. sept réseaux et huit projections ;
+2. migration sans mutation de l’entrée ;
+3. exclusivité de la requête M.A.D.A.M.E. ;
+4. exclusivité du choix d’Odette ;
+5. différences entre les quatre conclusions du chapitre I ;
+6. influence des dossiers de services ;
+7. projection République des Services pour une campagne cohérente ;
+8. déterminisme et bornage des valeurs ;
+9. refus des actions invalides ;
+10. câblage statique de la sauvegarde, du Pip‑Boy, de la radio et des jalons.
 
-### 5. Fins non systémiques
+## Validation de livraison
 
-La Charte des Vivants, la République des Services, la Continuité, la Fédération et les autres fins existent en texte mais ne sont pas calculées à partir d’un état régional commun.
+Une livraison complète doit confirmer séparément :
 
-**Priorité suivante :** créer un registre des sept réseaux, avec contrôle, légitimité, accès universel et niveau de coercition.
+- module et tests — effectués ;
+- documentation — effectuée ;
+- reconstruction des quatre sorties — en cours de validation sur la branche ;
+- cache hors ligne — en cours de validation ;
+- régressions de streaming et coutures — en cours de validation ;
+- smoke test humain prolongé — non réalisé dans cet audit.
 
-## Tests ajoutés
+## Backlog priorisé après cette tranche
 
-`tests/expansion/lore_services.cjs` vérifie :
+### P0 — conclusion politique
 
-1. quatre dossiers et sept réseaux ;
-2. l’existence et la sûreté des quatre relais ;
-3. la migration défensive ;
-4. l’obligation d’un contact ;
-5. l’exclusivité des décisions ;
-6. le refus sans ressources ;
-7. l’absence de fausses promesses de simulation ;
-8. les bulletins ;
-9. le câblage statique du Pip-Boy et du debug.
+- conseil régional final fondé sur `v059Madame` ;
+- fins et diapositives propres à chaque réseau ;
+- recours jouables lorsque deux réseaux se contredisent ;
+- présence scénique de Madame la Préfète hors des terminaux ;
+- conséquences visuelles persistantes des chartes.
 
-## Condition de livraison
-
-Le nouveau module est automatiquement pris en compte par `tools/build_single.py`, qui concatène les fichiers triés de `src/v050`.
-
-Une intégration honnête annonce séparément :
-
-- **source et tests ajoutés** — effectué ;
-- **build GitHub validé** — effectué ;
-- **quatre sorties générées commitées** — effectué ;
-- **régression générale sur la tête finale de la PR** — à confirmer par le workflow ;
-- **smoke test navigateur humain** — non réalisé dans cet audit.
-
-## Backlog priorisé
-
-### P0 — campagne et identité
-
-- prologue complet d’A‑03 ;
-- M.A.D.A.M.E. comme antagoniste systémique ;
-- registre des sept réseaux ;
-- première version des fins politiques calculées.
-
-### P1 — France jouable
+### P1 — France institutionnelle jouable
 
 - Poste Restante et lettres persistantes ;
 - Pharmacie de garde dynamique ;
 - Cité Radieuse et votes de copropriété ;
 - Cour du Lys d’If ;
 - Mutuelle et sinistres ;
-- train/gares avec conséquences réellement incarnées.
+- train et gares avec changements physiques réellement incarnés.
 
 ### P2 — densité locale
 
 - Plan-de-Campagne et guerre des Enseignes ;
-- Vélodrome et Virages ;
+- Virages du Vélodrome ;
 - fête de la musique ;
 - Tour des Ruines ;
-- événements de pétanque approfondis ;
-- rencontres de pigeons, rats, gabians et robots civils.
+- pétanque approfondie ;
+- rencontres régionales supplémentaires.
