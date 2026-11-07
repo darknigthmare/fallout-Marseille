@@ -15,10 +15,11 @@ L’ordre de priorité est le suivant :
 5. [`docs/LORE_POSTE_RESTANTE.md`](docs/LORE_POSTE_RESTANTE.md) — tournée post-ratification, sept réclamations, mobilier et contre-dons finis ;
 6. [`docs/LORE_PHARMACIES_DE_GARDE.md`](docs/LORE_PHARMACIES_DE_GARDE.md) — garde tournante, planning contradictoire, lot réservé, stocks finis et deux conclusions ;
 7. [`docs/LORE_CITE_RADIEUSE.md`](docs/LORE_CITE_RADIEUSE.md) — intérieur original à trois niveaux, cinq habitants, constats, assemblée, travaux persistants et réserve finie ; cette annexe actualise le statut ancien de « canon documentaire » de la copropriété ;
-8. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
-9. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
-10. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
-11. les documents spécialisés et les textes en jeu.
+8. [`docs/LORE_MUTUELLE_PHOCEENNE.md`](docs/LORE_MUTUELLE_PHOCEENNE.md) — réclamation après travaux, contexte de vote préservé, quatre preuves, trois accords et indemnisation finie ;
+9. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
+10. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
+11. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
+12. les documents spécialisés et les textes en jeu.
 
 En cas de contradiction, la bible générale fixe le canon, tandis que les matrices indiquent ce qui existe réellement dans le jeu.
 
@@ -88,6 +89,14 @@ Un vote rejeté demeure amendable. Un accord adopté doit ensuite être exécut�
 
 Le registre `v063Radieuse` conserve les preuves, la motion adoptée, les votes, les travaux et les retraits. Il ne réécrit pas les décisions régionales. SYNDIC-PRIME est un terminal ; Josiane n’est pas encore une compagne recrutable. La menace livrée est une fuite locale et une coupure des communs, pas l’explosion imminente d’un réacteur imaginée dans une première accroche.
 
+## Après les travaux : la Mutuelle Phocéenne
+
+**Sinistre non couvert** prolonge la Cité Radieuse après réception des réparations. Édith Vernet, nouvelle experte présente dans le hall, examine un refus automatique à partir de quatre pièces déjà ancrées dans la communauté : contrat local, manchon retiré, annexe des habitants et code de classement.
+
+Trois contre-expertises ouvrent trois accords exclusifs : forfait des lots inscrits, avenant de présence ou entraide sans quittance. La confirmation annonce les coûts, les exclusions et le contenu du colis fini. Le colis apparaît dans la réserve réparée ; sa récupération enlève aussi sa collision. Le reçu se remet à Josiane.
+
+Le dossier conserve l'éventuelle exclusion du toit au vote. Reconnaître des occupants dans un accord d'assurance ne réécrit ni leur voix passée, ni le conseil régional. Les copies, la méthode, l'accord et les retraits sont suivis par `v064Mutuelle`. Cette première boucle n'est pas un simulateur d'assurance mondiale ou un siège complet de faction. Son annexe relève du fan-lore original, comme les autres institutions françaises du projet.
+
 ## Les sept réseaux
 
 La région survit grâce à sept réseaux interdépendants :
@@ -138,3 +147,5 @@ Ces forces, ainsi qu’A‑03 et les Sans‑Dossier, disposent ensuite d’une v
 ## Audit de référence
 
 La consolidation initiale partait de `main` au commit `1d1833a4cb320a2075cba5b57c4504e99b206fe3` du 4 novembre 2026. La matrice d’intégration suit les ajouts fusionnés, les validations du build et les chantiers encore ouverts. La tournée postale part de `84358ace305d40acaa9c6c626622c8f546436dff`. La pharmacie part de `6f3e4629741baf39077f668bdbad247d82fdf5a7`. La Cité Radieuse part de `a1e8d3071d01c91c192230c8884515daf401eafe`. Leurs annexes contiennent les matrices de portée actualisées et les limites des validations.
+
+La réclamation de la Mutuelle prolonge `74413fdcf79acecb52fc78af18bae44cc7d42cd6` ; ses tests et sa matrice de portée sont distincts des audits historiques précédents.
