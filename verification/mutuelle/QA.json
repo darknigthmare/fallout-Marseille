@@ -1,0 +1,42 @@
+{
+  "baseline": "74413fdcf79acecb52fc78af18bae44cc7d42cd6",
+  "source_commit": "1f756dd965902e840d119d54751295e4ea7fccb2",
+  "generated_commit": "7709fff4f3cdcac0fe4861c06d0eedccf45c34e4",
+  "ci_run": 42425762893,
+  "html_sha256": "68895f588c265a958cc0ac64bc3fe8763242989aa52b89d6afd16bbbb77dd3d6",
+  "ci_artifact_sha256": "a23668340f842a4679b4678f17734ded61104528c1567b65d0f0e0cfb8b7daa4",
+  "byte_identical_ci_and_browser_program": true,
+  "local_model_tests": {
+    "mutuelle": {"passed": 34, "failed": 0},
+    "cite_radieuse": {"passed": 28, "failed": 0}
+  },
+  "browser": {
+    "version": "144.0.7559.96",
+    "mutuelle": {"passed": 38, "errors": []},
+    "cite_radieuse": {"passed": 33, "errors": []},
+    "poste": {"passed": 17, "errors": []},
+    "pharmacie": {"passed": 19, "errors": []},
+    "all_reports_html_sha256": "68895f588c265a958cc0ac64bc3fe8763242989aa52b89d6afd16bbbb77dd3d6"
+  },
+  "checks": [
+    "Prerequisite supplied by the real Radieuse model; no new expert before completed works.",
+    "Four copies via existing E interactions without removing original dialogue choices.",
+    "Material costs and all three exclusive outcomes exercised.",
+    "Explicit confirmation and stale confirmation rejection.",
+    "Save failure cancels costs, money and conclusion.",
+    "Physical gift, collision removal and exact one-time contents.",
+    "Receipt delivered to Josiane; original vote and older registers unchanged.",
+    "Save migration and repeat-claim rejection after reload.",
+    "No duplicate expert or interactable during repeated rendering.",
+    "Desktop and 390-pixel viewport inspection.",
+    "CI tests, rebuild, deterministic build check and territory regressions passed."
+  ],
+  "scope": "Instrumented browser tests: actual game model, authored interior, E input, dialogue buttons, inventory, saves and software renderer. Completed Radieuse prerequisite injected through its pure model, isolated MemoryStorage and scripted player positions. Existing postal/pharmacy tests use synthetic flat relays. No human full-campaign or real IGN exterior playthrough; no hardware GPU certification.",
+  "reproduction": [
+    "node --test tests/expansion/lore_mutuelle_phoceenne.cjs tests/expansion/lore_cite_radieuse.cjs",
+    "python tests/expansion/mutuelle_browser_smoke.py --html index.html",
+    "python tests/expansion/radieuse_browser_smoke.py --html index.html",
+    "python tests/expansion/poste_browser_smoke.py --html index.html",
+    "python tests/expansion/pharmacie_browser_smoke.py --html index.html"
+  ]
+}
