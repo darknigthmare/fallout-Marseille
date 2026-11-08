@@ -1,0 +1,73 @@
+{
+  "baseline": "9fd5a8bd1c5028583ef60058c0cdc178eb4ab825",
+  "source_commit": "0d0d0c57ca613f508835dbb2e713002299e406dd",
+  "ci_configuration_commit": "910a80208892cedc9db8ea2d4e515e52ff05aaa5",
+  "generated_commit": "0234991016071480096f32229710e19a6a9e5ad0",
+  "html_sha256": "e67da5fd41c89d3f6c23de84ea083f1e0df4b9f2819654bc53483ebfe42f2e03",
+  "ci": {
+    "run_id": 42473518192,
+    "conclusion": "success",
+    "os": "ubuntu-24.04",
+    "playwright": "1.57.0",
+    "browser_reported_version": "156.0.8078.0",
+    "model_tests_passed": 312,
+    "model_tests_failed": 0,
+    "browser_checks_passed": 223,
+    "browser_exceptions": [],
+    "canonical_build_check": "passed",
+    "territory_regressions": "passed",
+    "game_artifact_id": 13614298451,
+    "game_artifact_sha256": "a249b74c219b42121b9ca2b9472dfb7febb6821ab6a1654a30192d797587927c",
+    "browser_artifact_id": 13614622447,
+    "browser_artifact_sha256": "7b6437687f6c691211d92f84b0f40195d36856666d0e8ec23e10ea2258e1bd71"
+  },
+  "browser_reports": {
+    "voisins": {"passed": 68, "errors": []},
+    "notaires": {"passed": 48, "errors": []},
+    "mutuelle": {"passed": 38, "errors": []},
+    "radieuse": {"passed": 33, "errors": []},
+    "poste": {"passed": 17, "errors": []},
+    "pharmacie": {"passed": 19, "errors": []}
+  },
+  "all_ci_browser_reports_match_delivered_html": true,
+  "local_exact_ci_program_recheck": {
+    "model_tests_passed": 138,
+    "model_tests_failed": 0,
+    "new_model_tests": 39,
+    "voisins_browser_checks_passed": 68,
+    "browser_exceptions": [],
+    "browser_reported_version": "144.0.7559.96",
+    "html_sha256": "e67da5fd41c89d3f6c23de84ea083f1e0df4b9f2819654bc53483ebfe42f2e03"
+  },
+  "ci_installation_fix": {
+    "initial_run": 42473335906,
+    "result": "failure during browser installation only; 312 model tests, build and territory checks already passed",
+    "cause": "ubuntu-latest resolved to Ubuntu 26.04, unsupported by the pinned browser dependency",
+    "fix": "pin ubuntu-24.04; six real browser scripts now run in CI and block generated-output publication if they fail"
+  },
+  "checks": [
+    "All 18 source combinations of prior representation, insurance and notarial act remain valid.",
+    "Four invitations, two meal routes, three physical selectors, technical shortcut and unamplified route.",
+    "Only micro/local/limited manual routing succeeds among all eight switch combinations.",
+    "Existing five NPCs staged without duplication, then restored to original positions and conversations.",
+    "Exact finite portions, costs, three outcomes and one-time 30-caps completion.",
+    "Old vote, insurance, notarial act, postal and pharmacy records remain unchanged.",
+    "Failed save does not move actors, spend inventory or freeze service.",
+    "Stale setup confirmation rejected; mid-service reload preserves remaining portions and objections.",
+    "Native collision path retains both stairs and terrace access.",
+    "Native entrance and exit during service preserve staging on a synthetic retained exterior.",
+    "Desktop and 390-pixel viewport checks; real engine screenshots included in workflow artifacts."
+  ],
+  "scope": "Instrumented tests of actual authored interior, existing actors, real E input, dialogue buttons, inventory, saves and software renderer. Prerequisites assembled through original quest reducers, scripted positions and isolated MemoryStorage. Explicit native collision route and native portals with a synthetic retained exterior. Not a human full campaign, IGN exterior traversal, autonomous NPC walking/eating animation or hardware GPU performance certification.",
+  "reproduction": [
+    "node --test tests/expansion/lore_fete_voisins.cjs tests/expansion/lore_notaires_apres.cjs tests/expansion/lore_mutuelle_phoceenne.cjs tests/expansion/lore_cite_radieuse.cjs",
+    "python -m pip install playwright==1.57.0",
+    "python -m playwright install --with-deps chromium",
+    "python tests/expansion/voisins_browser_smoke.py --html index.html",
+    "python tests/expansion/notaires_browser_smoke.py --html index.html",
+    "python tests/expansion/mutuelle_browser_smoke.py --html index.html",
+    "python tests/expansion/radieuse_browser_smoke.py --html index.html",
+    "python tests/expansion/poste_browser_smoke.py --html index.html",
+    "python tests/expansion/pharmacie_browser_smoke.py --html index.html"
+  ]
+}

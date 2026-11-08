@@ -12,7 +12,8 @@ concurrency:
   cancel-in-progress: true
 jobs:
   lore:
-    runs-on: ubuntu-latest
+    # Playwright 1.57 is validated with this LTS, not the rolling ubuntu-latest alias.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
@@ -25,25 +26,42 @@ jobs:
       - name: Syntaxe des modules de lore
         run: for source in src/v050/10*.js; do node --check "$source"; done
       - name: Tests de lore et des institutions
-        run: node --test tests/expansion/lore_continuity.cjs tests/expansion/lore_services.cjs tests/expansion/lore_a03_madame.cjs tests/expansion/lore_conseil_regional.cjs tests/expansion/lore_poste_restante.cjs tests/expansion/lore_pharmacie_garde.cjs tests/expansion/lore_cite_radieuse.cjs tests/expansion/lore_mutuelle_phoceenne.cjs tests/expansion/lore_notaires_apres.cjs
+        run: node --test tests/expansion/lore_continuity.cjs tests/expansion/lore_services.cjs tests/expansion/lore_a03_madame.cjs tests/expansion/lore_conseil_regional.cjs tests/expansion/lore_poste_restante.cjs tests/expansion/lore_pharmacie_garde.cjs tests/expansion/lore_cite_radieuse.cjs tests/expansion/lore_mutuelle_phoceenne.cjs tests/expansion/lore_notaires_apres.cjs tests/expansion/lore_fete_voisins.cjs
       - name: Reconstruction du jeu
         run: python3 tools/build_single.py
       - name: Vérification du bundle généré
         run: |
           node --check src/game.js
           python3 tools/build_single.py --check
-          for model in MistralMadame MistralCouncil MistralPoste MistralPharmacy MistralRadieuse MistralMutuelle MistralNotaires; do grep -q "const $model" src/game.js; done
-          grep -q 'NOTAIRES DE L’APRÈS' JOUER_FALLOUT_MISTRAL_v0.50.html
+          for model in MistralMadame MistralCouncil MistralPoste MistralPharmacy MistralRadieuse MistralMutuelle MistralNotaires MistralVoisins; do grep -q "const $model" src/game.js; done
+          grep -q 'LA FÊTE DES VOISINS' JOUER_FALLOUT_MISTRAL_v0.50.html
       - name: Régressions du territoire sur le bundle reconstruit
         run: |
           node tests/expansion/city_streaming.cjs
           node tests/expansion/city_wait_cancel.test.cjs
           node tests/expansion/city_partition_seams.test.cjs
           node tests/expansion/city_geometry_identity.test.cjs
+      - name: Installer le navigateur de vérification isolée
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Six parcours navigateur instrumentés
+        run: |
+          for suite in voisins notaires mutuelle radieuse poste pharmacie; do
+            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/voisins/ci/${suite}"
+          done
+      - name: Rapports et captures navigateur
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mistral-voisins-browser-${{ github.sha }}
+          if-no-files-found: ignore
+          retention-days: 14
+          path: verification/voisins/ci/
       - name: Artefact du jeu et des sources de lore
         uses: actions/upload-artifact@v4
         with:
-          name: fallout-mistral-notaires-${{ github.sha }}
+          name: fallout-mistral-voisins-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -56,6 +74,8 @@ jobs:
             tests/expansion/lore_*.cjs
             tests/expansion/*browser_smoke.py
             docs/LORE*.md
+            docs/BIBLE_LORE_FALLOUT_MISTRAL.md
+            verification/voisins/ci/voisins/
       - name: Synchroniser les sorties générées de la branche
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
         run: |
