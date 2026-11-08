@@ -1,6 +1,6 @@
-# Lore — point de reprise après la première audience du Lys
+# Lore — point de reprise après La part des absents
 
-Base examinée : `9f8658fb2054e8e70298c8b8314c82125dff4503`, après les Compagnons. Ce suivi prolonge les anciens audits sans attribuer leurs résultats à un nouveau programme. Un arc local jouable ne clôt pas une faction entière.
+Base examinée : `da8e4f99b5d08480101910088c64a4012bbca301`, après la première audience du Lys. Ce suivi prolonge les anciens audits sans attribuer leurs résultats à un nouveau programme. Un arc local jouable ne clôt pas une faction entière.
 
 ## Boucles présentes et limites
 
@@ -17,12 +17,13 @@ Base examinée : `9f8658fb2054e8e70298c8b8314c82125dff4503`, après les Compagno
 | Fête des voisins | Repas, son, dispositions, portions et conclusions | Pas de marche autonome vers la table, doublage ou animations de repas |
 | Compagnons | Deux relais, montage, épreuve et fabrication finie | Pas de maisons de métiers complètes ou de grades |
 | Cour du Lys | Audience indépendante, quatre habitants, LOUIS, archives et trois règlements | Pas de campagne de succession, conquête de la rade ou navigation libre |
+| La part des absents | Quai fictionnel, trois acteurs, six caisses persistantes, deux accès et trois répartitions | Ni flotte, ni faim quotidienne, ni campagne de faction complète |
 
 ## Priorité 1 — territoires et effets concrets
 
-**Cour du Lys d’If : première incarnation livrée, faction encore ouverte.** La prochaine suite doit partir du règlement effectivement choisi : cour sous serment, musée et commune, ou régence de secours. Restent la succession, l’opposition révolutionnaire, les relations avec les Francs et les effets durables sur les familles. Ne pas réinstaller silencieusement l’ancienne monarchie pour répéter l’audience.
+**Cour du Lys d’If : audience et premier ravitaillement incarnés, faction encore ouverte.** La part des absents reconnaît le règlement choisi (serment, commune ou régence), fait intervenir un délégué révolutionnaire et Maëlle des Francs dans une manutention physique. Restent la succession, la campagne de l’opposition, les opérations maritimes et les effets quotidiens sur les familles. Ne pas réinstaller silencieusement l’ancienne monarchie pour répéter l’audience.
 
-**Arsenal / Francs du Large / Amirauté.** Les dossiers existants et le clapet des Compagnons ne constituent pas des chantiers navals complets. Restent les équipages, opérations, lieux et navires incarnés. Une traversée narrative par chargement n’est pas une flotte simulée.
+**Arsenal / Francs du Large / Amirauté.** Les dossiers existants et le clapet des Compagnons ne constituent pas des chantiers navals complets. La cale possède désormais Maëlle, un lot fini et un treuil manipulable, mais restent les équipages complets, opérations, autres lieux et navires incarnés. Une traversée narrative par chargement n’est pas une flotte simulée.
 
 **Missions extérieures.** Développer des objectifs explorables et des obstacles réels hors de la Cité. Les deux relais des Compagnons et les deux points de départ du Lys sont raccordés aux identités du catalogue, mais ne certifient pas tous les trajets sur les routes IGN.
 
@@ -46,7 +47,7 @@ Doublage, animations des métiers et des repas, identité visuelle détaillée d
 
 ## Géographie et validation
 
-Aucun relevé IGN n’a été changé par l’audience du Lys. Son ancrage est un point approximatif du catalogue existant, explicitement distingué d’une porte relevée. Les scènes de port synthétiques testent les dialogues et le retour, pas une traversée maritime réelle.
+Aucun relevé IGN n’a été changé par l’audience du Lys ou sa cale de ravitaillement. Son ancrage est un point approximatif du catalogue existant, explicitement distingué d’une porte relevée. Les scènes de port synthétiques testent les dialogues et le retour, pas une traversée maritime réelle.
 
 Une passe de géographie doit encore vérifier les accès, collisions, annulations et retours sur les données complètes, dans les deux sens. Une altitude absente ne doit pas être remplacée par une mesure inventée.
 
