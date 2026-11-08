@@ -80,3 +80,10 @@ La suite **La part des absents** reprend au commit `da8e4f99b5d08480101910088c64
 Le joueur neutralise le foyer et ouvre les deux portes, puis accompagne réellement les personnes sur des trajets balisés. Leur mouvement dépend de la proximité, de la visibilité, des collisions et de l’état de la partie. Les pauses et les positions se sauvegardent. Deux arrivées physiques sont nécessaires avant la récompense unique de 60 capsules ; déverrouiller les portes ne suffit pas.
 
 Le registre `v070Secours` reste distinct de tous les choix politiques et réserves antérieurs. Les compartiments protégés évitent une minuterie cachée. Le danger présent dans le couloir affecte le joueur avec les mécanismes existants. Ni le secours ni le matériel de l’annexe ne guérissent la condition de Rémi, ne fabriquent un nouveau compagnon ou ne simulent un bateau pilotable. L’annexe précise les limites de l’accompagnement scénarisé, des effets et de la validation.
+
+
+## Bestiaire en situation : Le faux midi
+
+[**Le faux midi — cigales, balise et terrain**](docs/LORE_CIGALES_FAUX_MIDI.md) poursuit `9757fad0a3d95d5a9384b39bf1a8a59587d11fc3` par une rencontre indépendante au départ de Font de Mai. Aline observe trois adultes autour d’un relais agricole perturbé. Les crissements sont annoncés et évitables ; la coupure manuelle permet une résolution sans abattre les insectes. Les survivantes rejoignent progressivement des fissures, sans effacer les blessures ou les pertes.
+
+Les individus réemploient le modèle régional existant, ses ailes, pattes et parties ciblables. Ce lot n’est ni une nouvelle espèce, ni Midi-Zéro, ni un changement de toute l’IA du monde. `v071Cigales` conserve santé, effets, observations, coupure et retrait. Le constat rapporte 65 capsules une seule fois, sans prime par insecte tué. Les autres campagnes et les sources géographiques restent distinctes.
