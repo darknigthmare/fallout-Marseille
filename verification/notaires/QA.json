@@ -1,0 +1,59 @@
+{
+  "baseline": "dac973c8f693115b85442d512feccf00e2351338",
+  "source_commit": "a8950fa371275446ee4d5e6aded68b0b2f77c941",
+  "html_sha256": "0d934eff0b1bec06a4144910de42ac59f27f21bda392de12dcbb062c510fdbc3",
+  "local_unit_tests": {
+    "notaires": 37,
+    "mutuelle": 34,
+    "cite_radieuse": 28,
+    "failures": 0
+  },
+  "browser": {
+    "regression-pharmacie": {
+      "passed": 19,
+      "errors": [],
+      "scope": "Instrumented production bundle; isolated memory storage; flat synthetic relays; terrain stub; real UI, E interaction, NPC choices, inventory, save migration and renderer. No IGN-world traversal or human playtest."
+    },
+    "regression-poste": {
+      "passed": 17,
+      "errors": [],
+      "scope": "Offline about:blank, isolated MemoryStorage, injected ratification; flat synthetic relay and ground stub. Real game model/UI/save/renderer. Not a real-map or hardware performance certification."
+    },
+    "regression-mutuelle": {
+      "passed": 38,
+      "errors": [],
+      "scope": "Real authored Radieuse interior with completed prerequisite injected through its model; actual E interaction, NPC choices, source preservation, save writes and reload. Scripted positioning and isolated MemoryStorage; software renderer, no real IGN traversal."
+    },
+    "regression-radieuse": {
+      "passed": 33,
+      "errors": [],
+      "scope": "Real authored interior, models, UI, native collision function, saves and software renderer. Injected setup and isolated MemoryStorage; synthetic exterior for portal round-trip, no real IGN exterior traversal."
+    },
+    "browser": {
+      "passed": 48,
+      "errors": [],
+      "scope": "Actual Radieuse interior, models, dialogue buttons, E inputs, save/load, visuals and collisions. Prerequisites through real quest reducers, scripted positions, isolated MemoryStorage. Software renderer; no human full-campaign or real IGN exterior validation."
+    }
+  },
+  "ci_verified": true,
+  "notes": [
+    "Wrong-code test compares quest, inventory, source and geometry; the pre-existing dialogue transcript legitimately logs the failed attempt.",
+    "The browser bridge is injected only in memory into isolated test storage; it is not shipped as gameplay.",
+    "Ghoulish appearance uses the existing humanoid renderer and skin palette, not a new high-detail character model."
+  ],
+  "generated_commit": "21687137f175c43ccdbc43c1a90552458983c596",
+  "ci_run": 42466676579,
+  "ci_artifact_id": 13611538311,
+  "ci_artifact_sha256": "e540ea618dbb3d66e0f512955c3842be06902b282452970c8e6ac8643f00f04a",
+  "byte_identical_ci_and_browser_program": true,
+  "browser_checks_total": 155,
+  "unit_tests_total": 99,
+  "reproduction": [
+    "node --test tests/expansion/lore_notaires_apres.cjs tests/expansion/lore_mutuelle_phoceenne.cjs tests/expansion/lore_cite_radieuse.cjs",
+    "python tests/expansion/notaires_browser_smoke.py --html index.html",
+    "python tests/expansion/mutuelle_browser_smoke.py --html index.html",
+    "python tests/expansion/radieuse_browser_smoke.py --html index.html",
+    "python tests/expansion/poste_browser_smoke.py --html index.html",
+    "python tests/expansion/pharmacie_browser_smoke.py --html index.html"
+  ]
+}
