@@ -63,3 +63,12 @@ Base `3d0c3ef0fc8334289759f707dc107792acfc5270` : la manutention des six caisses
 **Ce qui est ajouté :** une scène séparée, Farah, Lila et Rémi, deux voies d’extinction, des trajets d’évacuation contrôlés par proximité/visibilité/collisions, attente/reprise, points de sauvegarde, deux arrivées et une récompense unique. Le modèle de trajet est scénarisé ; ce n’est pas encore un système général de compagnons libres.
 
 **Ce qui demeure ouvert :** caserne et flotte des Marins-Sapeurs, campagne régionale de triage, propagation d’incendie, interventions sur les quartiers IGN, recrutement, retour géographique à froid certifié. Le développement des territoires de l’Arsenal et de l’Amirauté, l’inventaire bestiaire/armes, les factions documentaires et la géographie réelle restent prioritaires ; une première mission de secours ne les clôt pas.
+
+
+## Actualisation après Le faux midi
+
+Base : `9757fad0a3d95d5a9384b39bf1a8a59587d11fc3`, Marins-Sapeurs fusionnés après leurs contrôles finaux. La nouvelle [rencontre des cigales](LORE_CIGALES_FAUX_MIDI.md) donne au modèle régional existant une rencontre indépendante : crissements esquivables, balise coupable, contournement gratuit, retrait des survivantes et pertes persistantes. Ce n’est pas un nouveau catalogue complet.
+
+**Bestiaire restant ouvert :** Midi-Zéro, nymphes et émergences, diversité des comportements hors instance, interactions entre habitats, variantes visuelles réellement distinctes, inventaire complet des espèces et armes promises. Le présent lot ne valide pas toute la carte IGN, les anciens boss ou les comportements des autres espèces.
+
+**Institutions encore à approfondir :** campagnes de la Convention et de ses courants, succession du Lys, Confrérie du Vœu, territoires et opérations de l’Arsenal/Francs/Amirauté, Plan-de-Campagne, Virages du Vélodrome et recrutements. Les boucles locales livrées ne ferment pas ces factions entières.
