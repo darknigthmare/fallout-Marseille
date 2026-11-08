@@ -171,3 +171,12 @@ Le joueur fournit trois vivres et deux eaux, ou récupère un lot festif et la v
 Le service commun dispose les cinq acteurs existants autour du buffet ; le service par paliers conserve leurs postes. Les quatre portions se remettent une fois. Les réponses à Karim et Salomé produisent une table ouverte, un voisinage à plusieurs tables ou une trêve encore incomplète. Trente capsules récompensent la clôture, une seule fois. Les acteurs retrouvent ensuite leurs postes et les autres conversations.
 
 Ce registre `v066Voisins` part de `9fd5a8bd1c5028583ef60058c0cdc178eb4ab825`. Il ne modifie ni les votes, ni l’assurance, ni les actes. La mise en place du rassemblement n’est pas une simulation des déplacements autonomes ; la nouvelle annexe précise les contenus jouables et les limites.
+
+
+## Les Compagnons du Devoir — de la Cité aux relais
+
+[**L’ouvrage et la transmission**](docs/LORE_COMPAGNONS_DU_DEVOIR.md) poursuit la fête depuis `b31fc99af02d2e438b073d5fb431a532f6b43cd3`. Lucie, les correspondants d’Aubagne Haute et de La Ciotat et un banc d’épreuve incarnent la première boucle des Compagnons. Les leçons possèdent une voie sans dépense obligatoire ; les pièces de quête ne sont pas revendables. Montage, commandes et reprise d’épreuve sont sauvegardés.
+
+Le choix final oppose trois doses accessibles aux trois contacts à cinq doses réservées à l’atelier. Chaque préparation de mastic dépense un produit chimique et un tissu, sans effet médical ni décontamination. Les 45 capsules de réception sont uniques. `v067Devoir` ne réécrit aucun scrutin, contrat, acte ou résultat de repas.
+
+La nouvelle [**liste des manques du lore**](docs/ETAT_LORE_MANQUANTS.md) distingue les boucles locales jouables des factions et transformations régionales encore ouvertes. La Cour du Lys, les territoires des puissances maritimes, l’apprentissage complet, les recrutements et la validation humaine de la carte ne sont pas déclarés terminés.
