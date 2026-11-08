@@ -33,6 +33,7 @@ Cet index est volontairement distinct des chapitres complets. Leur contenu reste
 | [Compagnons du Devoir](docs/LORE_COMPAGNONS_DU_DEVOIR.md) | Aubagne et La Ciotat, deux leçons, banc monté et éprouvé, trois doses partagées ou cinq à l’atelier. Pas de décontamination magique. |
 | [Cour du Lys d’If](docs/LORE_COUR_DU_LYS.md) | Première audience indépendante : deux traversées narratives, quatre habitants, LOUIS‑27, trois accès aux archives et trois règlements locaux. Pas de navigation libre ni de nouvelle fin régionale. |
 | [La part des absents](docs/LORE_PARTS_ABSENTS.md) | Suite du Lys : quai fictionnel, trois acteurs, deux amarres, six caisses à porter et trois répartitions. Pas de flotte ni de rationnement quotidien simulés. |
+| [Marins-Sapeurs](docs/LORE_MARINS_SAPEURS.md) | Secours indépendant, dangers neutralisés et deux personnes accompagnées sur des trajets sauvegardés. Pas de simulation globale des incendies ou de nouveaux compagnons recrutables. |
 | [Bestiaire régional](docs/BESTIAIRE_REGIONAL.md) | Espèces effectivement suivies par le dépôt ; la liste générale de la bible ne signifie pas que toutes les espèces sont déjà incarnées. |
 
 ## Accès et continuité des arcs
@@ -43,7 +44,7 @@ A‑03 et le registre civique conduisent aux six chapitres puis aux États gén�
 
 **La part des absents** suit la clôture de cette audience, sans demander la chaîne de la Cité. Le règlement choisi demeure intact : six caisses limitées mettent son application en jeu dans une cale séparée, accessible par les deux passeurs.
 
-Les registres restent séparés : `v059Madame`, `v060Council`, `v061Poste`, `v062Pharmacy`, `v063Radieuse`, `v064Mutuelle`, `v065Notaires`, `v066Voisins`, `v067Devoir` `v068Lys` et `v069Parts`. Une nouvelle institution ne réinitialise pas les anciens votes, réserves ou preuves.
+Les registres restent séparés : `v059Madame`, `v060Council`, `v061Poste`, `v062Pharmacy`, `v063Radieuse`, `v064Mutuelle`, `v065Notaires`, `v066Voisins`, `v067Devoir`, `v068Lys`, `v069Parts` et `v070Secours`. Une nouvelle institution ne réinitialise pas les anciens votes, réserves ou preuves.
 
 ## États employés
 
@@ -70,3 +71,12 @@ La Provence conserve son ciel, sa mer, ses couleurs et ses habitants : l’horre
 La consolidation initiale part de `1d1833a4cb320a2075cba5b57c4504e99b206fe3`. Les annexes conservent les bases suivantes : Poste `84358ace305d40acaa9c6c626622c8f546436dff`, Pharmacies `6f3e4629741baf39077f668bdbad247d82fdf5a7`, Cité `a1e8d3071d01c91c192230c8884515daf401eafe`, Mutuelle `74413fdcf79acecb52fc78af18bae44cc7d42cd6`, Notaires `dac973c8f693115b85442d512feccf00e2351338`, Fête `9fd5a8bd1c5028583ef60058c0cdc178eb4ab825`, Compagnons `b31fc99af02d2e438b073d5fb431a532f6b43cd3`, Lys `9f8658fb2054e8e70298c8b8314c82125dff4503`.
 
 La suite **La part des absents** reprend au commit `da8e4f99b5d08480101910088c64a4012bbca301`, après la fusion du Lys.
+
+
+## Marins-Sapeurs de la Rade — un secours sans condition de dossier
+
+[**Les vivants derrière la porte**](docs/LORE_MARINS_SAPEURS.md) part de `3d0c3ef0fc8334289759f707dc107792acfc5270`, après fusion de La part des absents, mais ne dépend pas de cette chaîne de quêtes. Les représentants du Vieux-Port et de Ratonneau donnent accès à une annexe insulaire fictionnelle. Farah Serra y coordonne le secours de Lila Mensah et de Rémi Laugier, goule consciente.
+
+Le joueur neutralise le foyer et ouvre les deux portes, puis accompagne réellement les personnes sur des trajets balisés. Leur mouvement dépend de la proximité, de la visibilité, des collisions et de l’état de la partie. Les pauses et les positions se sauvegardent. Deux arrivées physiques sont nécessaires avant la récompense unique de 60 capsules ; déverrouiller les portes ne suffit pas.
+
+Le registre `v070Secours` reste distinct de tous les choix politiques et réserves antérieurs. Les compartiments protégés évitent une minuterie cachée. Le danger présent dans le couloir affecte le joueur avec les mécanismes existants. Ni le secours ni le matériel de l’annexe ne guérissent la condition de Rémi, ne fabriquent un nouveau compagnon ou ne simulent un bateau pilotable. L’annexe précise les limites de l’accompagnement scénarisé, des effets et de la validation.
