@@ -16771,6 +16771,159 @@ if(typeof baseState==='function'&&typeof MistralSecours!=='undefined'){
   const after=globalThis.v053LoreAfterInit;globalThis.v053LoreAfterInit=function(){after?.();Object.assign(window.__MISTRAL_DEBUG,{v070SecoursInfo:()=>({ledger:copy(state.v070Secours),points:copy({...P,...Object.fromEntries(M.IDS.map(id=>[id,where(id)||M.position(id,state.v070Secours.people[id].progress)]))}),local:local(),saveBlocked:rt.saveBlocked,error:rt.error}),v070SecoursOpen:()=>v027Open('data','secours'),v070SecoursAction:transact});};
 }
 
+/* Le faux midi — authored encounter, not a new geographic survey.
+ * Existing cicada mesh, isolated combat state, non-lethal retreat and no respawn loot.
+ * HP in hundredths and retreat in millimetres keep saves plain and deterministic. */
+const MistralCigales=(()=>{
+ 'use strict';
+ const copy=x=>JSON.parse(JSON.stringify(x)),integer=(x,max=999999)=>Number.isSafeInteger(x)&&x>=0&&x<=max;
+ const SITE='v071-relais-faux-midi',RELAY='v042-garlaban-caravan-01';
+ const SPECIMENS={ouest:{name:'Crisseuse des restanques',x:-15},centre:{name:'Cymbalier du relais',x:0},est:{name:'Porteuse de chaux',x:15}};
+ const IDS=Object.keys(SPECIMENS),NOTES={mue:{name:'Des mues, pas un nid de reine',text:'Les enveloppes abandonnées sont accrochées près des racines. Aline a noté trois émergences, pas une colonie gouvernée par une reine. Les noms Crisseuse, Cymbalier et Porteuse décrivent ces trois individus, pas trois espèces certifiées.'},signal:{name:'Une sirène qui imite midi',text:'Le programme agricole d’avant-guerre rejoue sa cadence à chaque remise sous tension. Les vibrations du relais entretiennent la réaction des adultes. Couper ce signal peut les laisser rejoindre les fissures ; cela ne décontamine ni le sol ni les insectes.'}};
+ const MAX_HP=7200,LENGTH=10000;
+ function fresh(){return{schema:1,revision:0,opened:false,notes:[],cut:false,method:null,actors:Object.fromEntries(IDS.map(id=>[id,{hp:MAX_HP,arms:0,legs:0,travel:0,burn:0,slow:0}])),finished:false,outcome:null};}
+ function migrate(raw){
+  if(raw==null)return fresh();if(typeof raw!=='object'||Array.isArray(raw)||raw.schema!==1)throw Error('Version du carnet des cigales inconnue.');
+  const l=fresh();if(!integer(raw.revision))throw Error('Révision du carnet invalide.');l.revision=raw.revision;
+  for(const k of ['opened','cut','finished']){if(typeof raw[k]!=='boolean')throw Error('Carnet incomplet.');l[k]=raw[k];}
+  if(!Array.isArray(raw.notes)||new Set(raw.notes).size!==raw.notes.length||raw.notes.some(k=>!Object.hasOwn(NOTES,k)))throw Error('Observations invalides.');l.notes=raw.notes.slice();
+  if(![null,'manuel','technique'].includes(raw.method)||l.cut!==(raw.method!==null))throw Error('Coupure contradictoire.');l.method=raw.method;
+  for(const id of IDS){const a=raw.actors?.[id];if(!a||!integer(a.hp,MAX_HP)||!integer(a.arms,65)||!integer(a.legs,65)||!integer(a.travel,LENGTH)||a.travel>0&&!l.cut||a.travel===LENGTH&&a.hp===0)throw Error('État de spécimen invalide.');if(!integer(a.burn??0,60000)||!integer(a.slow??0,60000))throw Error('Effet temporaire invalide.');l.actors[id]={hp:a.hp,arms:a.arms,legs:a.legs,travel:a.travel,burn:a.burn??0,slow:a.slow??0};}
+  if(![null,'retrait','mixte','abattues'].includes(raw.outcome))throw Error('Conclusion inconnue.');l.outcome=raw.outcome;
+  if(l.finished&&(!l.opened||l.notes.length!==2||!settled(l)||l.outcome!==outcome(l))||!l.finished&&l.outcome!==null)throw Error('Conclusion sans observations ou résolution.');return l;
+ }
+ function settled(l){return l.cut&&IDS.every(id=>l.actors[id].hp===0||l.actors[id].travel===LENGTH);}
+ function outcome(l){const n=IDS.filter(id=>l.actors[id].hp===0).length;return n===0?'retrait':n===3?'abattues':'mixte';}
+ function position(id,a){if(!IDS.includes(id))throw Error('Spécimen inconnu.');return[SPECIMENS[id].x,0,-8-a.travel/1000];}
+ function briefing(raw){const l=migrate(raw);return l.finished?({retrait:'Les trois adultes ont rejoint les fissures. Le relais reste coupé ; leurs habitats ne sont pas guéris.',mixte:'Les survivantes ont rejoint les fissures. Les pertes restent au carnet ; la coupure ne les efface pas.',abattues:'Les trois adultes ont été abattus. Le relais est coupé pour ne pas attirer une nouvelle émergence.'}[l.outcome]):!l.opened?'Aline attend au poste protégé. Le chant vient aussi du vieux relais.':!l.cut?'Observe les mues et le câblage. Les murets coupent la ligne de vue des crissements. Le sectionneur est derrière les trois perchoirs.':!settled(l)?'Signal coupé. Laissez les survivantes rejoindre leurs fissures ; les blessures peuvent ralentir leur retraite.':l.notes.length<2?'Le site est calme, mais il manque des observations au carnet.':'Revenez donner le constat à Aline.';}
+ function act(snapshot,a={},ctx={}){
+  const point=a.type==='open'||a.type==='finish'?'aline':a.type==='note'?a.id:'sectionneur';
+  if(ctx.blocked)throw Error(String(ctx.blocked));if(!ctx.local||!ctx.near||ctx.point!==point)throw Error('Rejoignez le bon point du relais.');
+  if(!Number.isFinite(snapshot?.player?.hp)||snapshot.player.hp<=0||!integer(snapshot.player.caps))throw Error('Personnage indisponible.');
+  const l=migrate(snapshot.v071Cigales);if(ctx.revision!==undefined&&ctx.revision!==l.revision)throw Error('Conversation périmée.');if(l.finished||l.revision===999999)throw Error('Carnet clos ou plein.');let cost=0,reward=0;
+  if(a.type==='open'){if(l.opened)throw Error('Mission déjà ouverte.');l.opened=true;}
+  else if(a.type==='note'){if(!Object.hasOwn(NOTES,a.id)||l.notes.includes(a.id))throw Error('Observation inconnue ou déjà consignée.');l.notes.push(a.id);}
+  else if(a.type==='cut'){if(l.cut||!['manuel','technique'].includes(a.id))throw Error('Relais déjà coupé ou méthode inconnue.');if(a.id==='technique'){if(!Number.isFinite(snapshot.character?.special?.I)||snapshot.character.special.I<5)throw Error('Intelligence 5 nécessaire.');if(!integer(snapshot.inventory?.circuitry)||snapshot.inventory.circuitry<1)throw Error('Un circuit est nécessaire.');cost=1;}l.cut=true;l.method=a.id;}
+  else if(a.type==='finish'){if(!l.opened||l.notes.length!==2||!settled(l))throw Error('Coupez le relais, résolvez la rencontre et conservez les deux observations.');l.finished=true;l.outcome=outcome(l);reward=65;}
+  else throw Error('Action inconnue.');if(snapshot.player.caps+reward>999999)throw Error('Compte plein.');
+  const out=copy(snapshot);if(cost)out.inventory.circuitry-=cost;out.player.caps+=reward;l.revision++;out.v071Cigales=l;return out;
+ }
+ function hit(raw,id,amount,part='body',pierce=0){
+  const l=migrate(raw),a=l.actors[id];if(!IDS.includes(id)||!a||a.hp===0||a.travel===LENGTH||l.finished||l.revision===999999)throw Error('Spécimen non ciblable.');
+  if(!Number.isFinite(amount)||amount<=0||amount>100000||!Number.isFinite(pierce)||typeof part!=='string')throw Error('Dégâts invalides.');
+  const dealt=Math.max(100,Math.round(amount*(1-.08*(1-Math.max(0,Math.min(.9,pierce))))*100));a.hp=Math.max(0,a.hp-dealt);
+  if(/^(arm|claw)/.test(part))a.arms=Math.min(65,a.arms+25);if(/^(leg|fore|back)/.test(part))a.legs=Math.min(65,a.legs+25);l.revision++;return l;
+ }
+ function retreat(raw,id,mm){const l=migrate(raw),a=l.actors[id];if(!IDS.includes(id)||!a||!l.cut||a.hp===0||a.travel===LENGTH||l.finished||!integer(mm,400)||mm===0||l.revision===999999)throw Error('Retraite invalide.');a.travel=Math.min(LENGTH,a.travel+mm);const arrived=a.travel===LENGTH;if(arrived)l.revision++;return{ledger:l,arrived,position:position(id,a)};}
+ function effect(raw,id,type,seconds){const l=migrate(raw),a=l.actors[id];if(!IDS.includes(id)||!a||!['burning','slow'].includes(type)||!Number.isFinite(seconds)||seconds<=0||seconds>60||l.finished||a.hp===0||a.travel===LENGTH||l.revision===999999)throw Error('Effet indisponible.');const key=type==='burning'?'burn':'slow';a[key]=Math.max(a[key],Math.round(seconds*1000));l.revision++;return l;}
+ function effects(raw,id,ms){const l=migrate(raw),a=l.actors[id];if(!IDS.includes(id)||!a||!integer(ms,200)||ms===0||a.hp===0||a.travel===LENGTH||l.finished||l.revision===999999)throw Error('Pas temporel invalide.');const burn=a.burn,slow=a.slow;a.hp=Math.max(0,a.hp-Math.round(Math.min(burn,ms)*.15));a.burn=Math.max(0,burn-ms);a.slow=Math.max(0,slow-ms);const checkpoint=a.hp===0||burn>0&&a.burn===0||slow>0&&a.slow===0;if(checkpoint)l.revision++;return{ledger:l,checkpoint};}
+ function cone(origin,target,player,sight=true){if(!sight||![origin,target,player].every(p=>Array.isArray(p)&&p.length===3&&p.every(Number.isFinite)))return false;const dx=player[0]-origin[0],dz=player[2]-origin[2],ax=target[0]-origin[0],az=target[2]-origin[2],d=Math.hypot(dx,dz),n=Math.hypot(ax,az);return d<=14&&Math.abs(player[1]-origin[1])<3&&d>0&&n>0&&(dx*ax+dz*az)/(d*n)>=Math.cos(Math.PI/12);}
+ return{SITE,RELAY,IDS:IDS.slice(),SPECIMENS:copy(SPECIMENS),NOTES:copy(NOTES),MAX_HP,LENGTH,fresh,migrate,settled,outcome,position,briefing,act,hit,retreat,effect,effects,cone};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralCigales;
+
+/* Runtime of Le faux midi. Existing regional rig and native targeting, not reskinned
+ * humanoids. Authored enclosure; no edit to surveyed geometry or global species AI. */
+if(typeof baseState==='function'&&typeof MistralCigales!=='undefined'){
+ const M=MistralCigales,copy=x=>JSON.parse(JSON.stringify(x)),P={aline:[-10,0,23],mue:[-22,0,8],signal:[22,0,8],sectionneur:[0,0,-24],sortie:[0,0,27]},rt={busy:false,error:null,blocked:false};
+ const anchor=v042Site(M.RELAY);
+ if(anchor&&!v042Site(M.SITE)){const s={...copy(anchor),id:M.SITE,name:'Relais du faux midi',description:'Ancien relais agricole et trois cigales réactives au signal. Enclos fictionnel, pas un observatoire réel relevé.',kind:'interior',interior:'cigales',safe:true,visitable:true,unique:true,npcSlots:0,npcRoles:[],enemySlots:0,enemyTypes:[],enemyRadius:0,rewardCaps:0,rewardXP:0,respawnHours:0,provenance:{kind:'authored-fiction',anchorId:M.RELAY}};V042_CATALOG.push(s);V042_SITE_BY_ID[s.id]=s;V042_SITES_BY_MACRO[s.macro].push(s);V042_LAYER_META.siteCount++;V042_LAYER_META.visitable++;V042_LAYER_META.counts.interior++;V042_LAYER_META.macroCounts[s.macro]++;}
+ const base=baseState;baseState=function(...a){const s=base(...a);s.v071Cigales=M.fresh();return s;};
+ const migration=migrateState;migrateState=function(raw={}){const s=migration(...arguments);s.v071Cigales=M.migrate(raw?.v071Cigales);return s;};state=migrateState(state);if(world&&typeof v049Own==='function')v049Own(world);
+ const local=()=>!!world?.v071Cigales&&state.v042?.activeInterior===M.SITE;
+ const managed=e=>local()&&e?.c71Id&&world.enemies.includes(e);
+ const notice=t=>{V027.message=t;toast(t,'bad');return false;};
+ function blocked(){return !gameStarted||!['PLAYING','PIP','DIALOGUE','NOTE'].includes(mode)||!(state.player?.hp>0)?'Reprenez une partie active.':V046.lab?'Banc géographique sans progression.':zoneTransitioning||V046.busy||V047.pending?'Chargement en cours.':!onGround?'Rejoignez le sol.':null;}
+ function near(id){const p=P[id];return local()&&p&&Math.hypot(state.player.pos[0]-p[0],state.player.pos[2]-p[2])<=3.2&&Math.abs(state.player.pos[1]-p[1]-1.4)<1.9&&lineOfSight(state.player.pos,[p[0],p[1]+1.25,p[2]+.7]);}
+ function restore(owner,s){if(state!==owner)return;for(const k of Object.keys(owner))delete owner[k];Object.assign(owner,s);}
+ function commit(next,caption,refresh=true){if(rt.busy)return false;const owner=state,w=world,before=copy(owner);rt.busy=true;try{owner.v071Cigales=next.v071Cigales;owner.player.caps=next.player.caps;owner.inventory=next.inventory;if(state!==owner||w!==world||saveGame(false)===false)throw Error('Carnet non sauvegardé.');}catch(e){restore(owner,before);return notice(e.message+' Modification annulée.');}finally{rt.busy=false;}if(refresh){visuals(w);updateQuestUI(true);updateHUD();}if(caption)toast(caption,'good');return true;}
+ function act(type,id,revision){const p=['open','finish'].includes(type)?'aline':type==='note'?id:'sectionneur';let next;try{next=M.act(state,{type,id},{blocked:blocked(),local:local(),near:near(p),point:p,revision});}catch(e){return notice(e.message);}return commit(next,type==='finish'?'Constat reçu · 65 capsules, une fois.':type==='cut'?'Signal coupé. Les survivantes peuvent rejoindre les fissures.':'Observation conservée.');}
+ function guard(fn){const owner=state,w=world,rev=state.v071Cigales.revision;return()=>state===owner&&world===w&&rev===state.v071Cigales.revision?fn(rev):notice('Conversation périmée.');}
+ const back=()=>({text:'Revenir.',onChoose:closeDialogue});
+ function dialogue(id){if(blocked()||!near(id))return false;const l=state.v071Cigales,ch=[];let text,name;
+  if(id==='aline'){name='Aline Richaud';text='« La sirène annonce midi à chaque reprise du courant. Les cigales répondent, puis le relais amplifie leur réponse. Les tuer ne coupera pas cette machine. Les murets vous protègent du crissement ; le sectionneur est au fond. Je veux un constat, pas une collection de trophées. »';if(!l.opened)ch.push({text:'Chercher la cause du faux midi.',onChoose:guard(rev=>{act('open',null,rev);dialogue(id);})});if(l.opened&&!l.finished&&M.settled(l)&&l.notes.length===2)ch.push({text:'Remettre le constat · 65 capsules.',onChoose:guard(rev=>{act('finish',null,rev);dialogue(id);})});if(rt.blocked)ch.push({text:'Retenter la sauvegarde du départ.',onChoose:guard(()=>{if(saveGame(false)!==false){rt.blocked=false;toast('Suivi repris.','good');}dialogue(id);})});}
+  else if(M.NOTES[id]){name=M.NOTES[id].name;text=M.NOTES[id].text;if(!l.notes.includes(id))ch.push({text:'Consigner cette observation.',onChoose:guard(rev=>{act('note',id,rev);dialogue(id);})});}
+  else if(id==='sectionneur'){name='Relais agricole — répétition automatique';text='La coupure manuelle arrête la boucle acoustique. Le contrôle technique conserve aussi un relevé de maintenance, mais n’accorde ni soin ni ressource supplémentaire. Les deux solutions laissent les insectes rejoindre leur habitat.';if(!l.cut)for(const [method,label]of [['manuel','Couper le relais manuellement.'],['technique','Isoler et relever le signal · INT 5 + 1 circuit.']])ch.push({text:label,onChoose:guard(rev=>{if(act('cut',method,rev))closeDialogue();})});}
+  else return false;ch.push(back());openDialogue(speaker(name,id==='aline'?'VIGIES DES CRÊTES':'CARNET DE TERRAIN','FM'),text+'\n\n'+M.briefing(l),ch);return true;
+ }
+ function rig(e,t=0){const r=MistralRegionalBestiary.rig(e,'mistralCicada',t,{reduceMotion:settings.reduceMotion,moving:e.state==='retreat',windup:e.c71Wind?e.c71Wind.elapsed/1.4:0}),scale=2;
+  for(const d of r.draws){d.pos=d.pos.map((v,i)=>e.pos[i]+(v-e.pos[i])*scale);d.scale=d.scale.map(v=>v*scale);if(e.c71Id==='est')d.color=d.color.map(v=>Math.min(.85,v*1.2));}
+  for(const p of r.parts){p.center=p.center.map((v,i)=>e.pos[i]+(v-e.pos[i])*scale);p.radius*=scale;p.corners=p.corners.map(c=>c.map((v,i)=>e.pos[i]+(v-e.pos[i])*scale));p.bounds.min=p.bounds.min.map(v=>v*scale);p.bounds.max=p.bounds.max.map(v=>v*scale);}
+  r.bounds.min=r.bounds.min.map(v=>v*scale);r.bounds.max=r.bounds.max.map(v=>v*scale);return r;
+ }
+ function visuals(w){if(!w?.v071Cigales)return;const l=state.v071Cigales;
+  for(const e of w.enemies){if(!e.c71Id)continue;const a=l.actors[e.c71Id];e.pos=M.position(e.c71Id,a);e.home=e.pos.slice();e.health=a.hp/100;e.maxHealth=M.MAX_HP/100;e.armDamage=a.arms/100;e.legDamage=a.legs/100;e.status={...(e.status||{}),burning:a.burn/1000,slow:a.slow/1000};e.alive=a.hp>0&&a.travel<M.LENGTH;if(l.cut||!e.alive){e.c71Wind=null;e.alerted=false;e.state=l.cut&&e.alive?'retreat':'idle';}}
+  for(const d of w.staticDraws){if(d.c71Relay){d.color=l.cut?[.27,.40,.31]:[.88,.54,.20];d.emissive=l.cut?0:.5;}}
+  if(l.cut)inCombat=false;
+ }
+ function build(){
+  rt.blocked=false;const w=createWorld(V042_INSTANCE_ZONE,'Relais du faux midi','GARLABAN · SCÈNE FICTIONNELLE',{skyTop:[80,129,166],skyBottom:[208,187,137],fog:[.50,.52,.42],daylight:.8,wind:.15,indoor:false});w.v071Cigales=true;w.bounds=[-30,30,-29,30];w.spawn=[0,1.65,24];w.spawnYaw=0;V042_RUNTIME.instanceSite=M.SITE;
+  const stone=[.61,.58,.46],steel=[.22,.28,.27],box=(p,s,c=stone,solid=true)=>{const d=addBox(w,p,s,c);if(solid)addCollider(w,p[0],p[2],s[0],s[2],{minY:p[1]-s[1]/2,maxY:p[1]+s[1]/2});return d;};
+  box([0,-.16,0],[60,.3,60],[.54,.51,.38],false);addFloorZone(w,0,0,60,60,0);
+  for(const [x,z,sx,sz]of [[-29,0,.6,59],[29,0,.6,59],[0,-28,58,.6]])box([x,2,z],[sx,4,sz]);
+  // Refuge does not trap the player; two broad lateral lanes bypass every perch.
+  box([-10,1.3,17],[12,2.6,.5]);box([-16,1.3,22],[.5,2.6,10]);box([-10,3.1,22],[12,.2,10],[.33,.36,.31],false);
+  for(const x of [-15,0,15]){box([x,1.2,1],[8,2.4,.65]);box([x,.035,-8],[2.7,.07,1.5],[.42,.45,.31],false);for(const s of [-1,1])box([x+s*1.8,1.2,-19],[1.2,2.4,3],[.45,.44,.33]);box([x,2.65,-19],[5,.35,3],[.45,.44,.33]);}
+  // Visible antenna and emitter, isolated from the surveyed exterior.
+  box([4,5.4,-24],[.32,10.8,.32],steel);box([4,9.3,-24],[5,.15,.15],steel,false);box([4,7.8,-24],[.9,.9,.7],steel);const lamp=box([4,7.8,-23.61],[.65,.36,.05],[.9,.54,.2],false);lamp.c71Relay=true;
+  for(const id of ['mue','signal','sectionneur']){const p=P[id];box([p[0],.5,p[2]],[1.3,1,.7],steel);box([p[0],1.05,p[2]],[1.4,.1,.8],[.75,.69,.52],false);addInteract(w,'c71:'+id,[p[0],1.25,p[2]+.7],id==='sectionneur'?'Couper le faux midi':'Observer · '+M.NOTES[id].name,()=>dialogue(id),{radius:3.2,kind:'quest',priority:5,condition:()=>!blocked()&&near(id)});}
+  // Empty cast, not a second live creature or saleable specimen.
+  const ex={id:'c71:mue-model',pos:[-23,0,6.5],yaw:.5,c71Id:'mue',state:'idle'};for(const d of rig(ex,0).draws){d.color=[.65,.50,.29];d.alpha=.7;w.staticDraws.push(d);}
+  addHumanNPC(w,'c71:aline','Aline Richaud','Vigie du relais',P.aline,[.33,.43,.30],{yaw:Math.PI});
+  for(const id of M.IDS){const a=state.v071Cigales.actors[id],e=addEnemy(w,'c71:'+id,'mistralCicada',M.SPECIMENS[id].name,M.position(id,a),{health:72,damage:6,range:14,armor:.08,loot:{},speed:2});if(e){e.c71Id=id;e.c71Wind=null;e.c71Cooldown=2.5;e.yaw=Math.PI;}}
+  addInteract(w,'c71:sortie',[0,1.25,27.7],'Retourner à Font de Mai',()=>!blocked()&&near('sortie')&&v042ExitInstance(),{radius:3.2,kind:'door',priority:5});
+  if(typeof v021Sign==='function'){v021Sign(w,0,2.5,28,'RETOUR / FONT DE MAI',.07);v021Sign(w,-10,2.5,17.3,'OBSERVATION / VIGIES',.07);v021Sign(w,0,2.2,-25,'ARRET DU SIGNAL',.065);}
+  w.levelRoutes=[{id:'c71-west',points:[[0,0,24],[-25,0,12],[-25,0,-24],[0,0,-22]]},{id:'c71-east',points:[[0,0,24],[25,0,12],[25,0,-24],[0,0,-22]]}];visuals(w);return w;
+ }
+ const buildBase=v042BuildInstance;v042BuildInstance=function(){return state.v042?.activeInterior===M.SITE?build():buildBase(...arguments);};
+ const talk=talkToNPC;talkToNPC=function(id){return id==='c71:aline'?dialogue('aline'):talk(...arguments);};
+ const claim=v042ClaimInterior;v042ClaimInterior=function(id){return id===M.SITE?false:claim(...arguments);};
+ const oldRig=v025Rig;v025Rig=function(e,t=gameClock){return managed(e)?rig(e,V025.active?V025.poseTime:t):oldRig(...arguments);};
+ const oldDamage=damageEnemy;damageEnemy=function(e,amount,part='body',crit=false,pierce=0){
+  if(!managed(e))return oldDamage(...arguments);if(!e.alive||rt.busy||!gameStarted||V046.lab||zoneTransitioning||!(state.player.hp>0))return;
+  let ledger;try{ledger=M.hit(state.v071Cigales,e.c71Id,amount,part,pierce);}catch(err){return notice(err.message);}const next={...state,v071Cigales:ledger};
+  if(commit(next,null,false)){e.c71Wind=null;e.c71Cooldown=Math.max(.9,e.c71Cooldown||0);visuals(world);toast(e.health>0?e.name+' · impact confirmé':e.name+' abattue. Le carnet conserve cette perte.',e.health>0?'':'bad');updateHUD();}
+ };
+ const oldKill=killEnemy;killEnemy=function(e){return managed(e)?damageEnemy(e,M.MAX_HP,'body',false,1):oldKill(...arguments);};
+ const statusBase=applyEnemyStatus;applyEnemyStatus=function(e,id,seconds){if(!managed(e)||!['burning','slow'].includes(id))return statusBase(...arguments);if(!e.alive)return;try{return commit({...state,v071Cigales:M.effect(state.v071Cigales,e.c71Id,id,seconds)},null);}catch(err){return notice(err.message);}};
+ const companionBase=updateCompanion;updateCompanion=function(...args){if(!local()||!state.v071Cigales.cut)return companionBase(...args);const w=world,all=w.enemies;w.enemies=all.filter(e=>!e.c71Id);try{return companionBase(...args);}finally{w.enemies=all;}};
+ const enemiesBase=updateEnemies;updateEnemies=function(dt){
+  if(!local())return enemiesBase(...arguments);if(!gameStarted||mode!=='PLAYING'||zoneTransitioning||V046.busy||V047.pending||V046.lab||!(state.player.hp>0)||rt.busy||!Number.isFinite(dt)||dt<=0)return;
+  if(rt.blocked)return;dt=Math.min(dt,.2);let combat=false;const owner=state,w=world;
+  for(const e of w.enemies){if(!e.c71Id||!e.alive)continue;let a=owner.v071Cigales.actors[e.c71Id];
+   if(a.burn||a.slow){const step=M.effects(owner.v071Cigales,e.c71Id,Math.max(1,Math.round(dt*1000))),before=step.checkpoint?copy(owner):null;owner.v071Cigales=step.ledger;if(step.checkpoint){try{if(saveGame(false)===false)throw Error('Effet non sauvegardé.');}catch(err){restore(owner,before);rt.blocked=true;notice(err.message+' Retentez auprès d’Aline.');break;}}a=owner.v071Cigales.actors[e.c71Id];e.health=a.hp/100;e.status={...(e.status||{}),burning:a.burn/1000,slow:a.slow/1000};if(a.hp===0){e.alive=false;e.c71Wind=null;updateQuestUI(true);continue;}}
+   if(owner.v071Cigales.cut){if(rt.blocked)continue;const n=M.retreat(owner.v071Cigales,e.c71Id,Math.max(1,Math.round(dt*2000*(1-a.legs/100)*(a.slow>0?.55:1))));if(collidesAt(n.position[0],n.position[2],.6,1.65))continue;
+    const before=n.arrived?copy(owner):null;owner.v071Cigales=n.ledger;
+    if(n.arrived){try{if(state!==owner||world!==w||saveGame(false)===false)throw Error('Retraite non sauvegardée.');}catch(err){restore(owner,before);rt.blocked=true;notice(err.message+' Retentez auprès d’Aline.');continue;}}
+    e.pos=n.position;e.yaw=0;e.state='retreat';if(n.arrived){e.alive=false;updateQuestUI(true);}continue;
+   }
+   e.c71Cooldown=Math.max(0,(e.c71Cooldown||0)-dt);const p=owner.player.pos,origin=[e.pos[0],e.pos[1]+1,e.pos[2]],d=Math.hypot(p[0]-e.pos[0],p[2]-e.pos[2]),sight=d<=14&&Math.abs(p[1]-origin[1])<3&&lineOfSight(origin,p);
+   if(e.c71Wind){combat=true;const wind=e.c71Wind;wind.elapsed+=dt;e.state='windup';if(wind.elapsed>=1.4){const hits=M.cone(origin,wind.target,p,lineOfSight(origin,p));e.c71Wind=null;e.c71Cooldown=3.4;e.state='idle';if(hits){const power=(1-a.arms/100)*(.45+.55*a.hp/M.MAX_HP);hurtPlayer(6*power,e.name+' · crissement');owner.player.ap=Math.max(0,owner.player.ap-12*power);updateHUD();}if(audio?.noise)audio.noise(.07,.025,650);} }
+   else if(sight&&e.c71Cooldown<=0){combat=true;e.c71Wind={target:p.slice(),elapsed:0};e.yaw=Math.atan2(p[0]-e.pos[0],-(p[2]-e.pos[2]));e.state='windup';subtitle(e.name,'CRISSEMENT — quittez l’axe ou passez derrière un muret.',1400);}
+   else e.state='idle';
+  }
+  inCombat=combat;
+ };
+ const draws=collectDraws;collectDraws=function(t){const out=draws(...arguments);if(!local())return out;
+  for(const e of world.enemies){const a=state.v071Cigales.actors[e.c71Id];if(!a)continue;if(a.hp===0){const dead={...e,pos:M.position(e.c71Id,a),yaw:e.yaw,state:'idle',c71Wind:null};for(const d of rig(dead,0).draws)out.push({...d,pos:[d.pos[0],d.pos[1]*.25,d.pos[2]],scale:[d.scale[0],d.scale[1]*.25,d.scale[2]],color:d.color.map(v=>v*.55)});}
+   if(!e.alive||!e.c71Wind)continue;const dx=e.c71Wind.target[0]-e.pos[0],dz=e.c71Wind.target[2]-e.pos[2],angle=Math.atan2(dx,dz);for(const offset of [-Math.PI/12,0,Math.PI/12]){const x=e.pos[0]+Math.sin(angle+offset)*7,z=e.pos[2]+Math.cos(angle+offset)*7;out.push({mesh:'cube',pos:[x,.06,z],scale:[.09,.06,14],rotY:angle+offset,color:[.88,.60,.20],emissive:.4,alpha:.55});}}
+  return out;
+ };
+ function relayNear(){const site=v042Site(M.RELAY),p=state.player.pos;return !!site&&world?.v046&&world.geoMacro&&!state.v042?.activeInterior&&!world.v050CityInterior&&settings.geoFalloutLayer&&v042SiteDiscovered(site)&&!v050TravelNearbyThreat(world,p)&&world.npcs.some(n=>n.alive!==false&&V042_RUNTIME.npcData.get(n.id)?.siteId===M.RELAY&&Math.hypot(n.pos[0]-p[0],n.pos[2]-p[2])<=8&&Math.abs(n.pos[1]+1.4-p[1])<2.8&&lineOfSight(p,[n.pos[0],n.pos[1]+1.4,n.pos[2]]));}
+ function enter(){if(blocked()||!relayNear())return false;const owner=state,w=world,before=copy(owner),maps={active:new Map(V042_RUNTIME.active),npc:new Map(V042_RUNTIME.npcData),nearest:V042_RUNTIME.nearest,instance:V042_RUNTIME.instanceSite,retained:V048.retained},save=saveGame;let wrote=false;saveGame=function(...a){const r=save(...a);if(r===false)throw Error('Départ non sauvegardé.');wrote=true;return r;};try{if(!v042EnterSite(M.SITE))throw Error('Départ interrompu.');return true;}catch(err){restore(owner,before);world=w;V042_RUNTIME.active=maps.active;V042_RUNTIME.npcData=maps.npc;V042_RUNTIME.nearest=maps.nearest;V042_RUNTIME.instanceSite=maps.instance;V048.retained=maps.retained;v049Own(w);if(wrote){try{save(false);}catch{}}return notice(err.message);}finally{saveGame=save;}}
+ const relayTalk=v042TalkNPC;v042TalkNPC=function(id){if(blocked()||V042_RUNTIME.npcData.get(id)?.siteId!==M.RELAY||!relayNear())return relayTalk(...arguments);const old=openDialogue;openDialogue=function(s,t,ch,...rest){return old(s,t,[...(ch||[]).slice(0,-1),{text:'Vigies · Le faux midi',onChoose:guard(()=>openDialogue(speaker('Relais de Font de Mai','VIGIES DES CRÊTES','VC'),'Aline observe une émergence de cigales autour d’un relais agricole. Les tirs ne sont pas la seule solution. Passage à pied narratif vers un enclos fictionnel ; aucune géométrie réelle n’est remplacée.',[{text:'Rejoindre le relais d’écoute.',onChoose:guard(enter)},back()]))},...(ch||[]).slice(-1)],...rest);};try{return relayTalk(...arguments);}finally{openDialogue=old;}};
+ function track(){if(blocked())return false;const owner=state,before=copy(owner);owner.v042.tracked=M.RELAY;try{if(saveGame(false)===false)throw Error();}catch{restore(owner,before);return notice('Repère non sauvegardé.');}updateQuestUI(true);return true;}
+ V027_SUBS.data.cigales='CIGALES · LE FAUX MIDI';const data=v027Data;v027Data=function(c){if(V027.sub!=='cigales')return data(...arguments);const l=state.v071Cigales,esc=v027Escape;c.innerHTML='<div class="p27-long"><p class="p27-kicker">ÉCOLOGIE DU RELAIS</p><h2>Le faux midi</h2><p>'+esc(M.briefing(l))+'</p>'+v027Button('Suivre Font de Mai','c71:track')+'<h3>Observations</h3>'+Object.entries(M.NOTES).map(([id,n])=>'<section class="v046-notice"><h3>'+esc(n.name)+'</h3><p>'+esc(l.notes.includes(id)?n.text:'À examiner sur place.')+'</p></section>').join('')+'<h3>Spécimens</h3>'+M.IDS.map(id=>'<p>'+esc(M.SPECIMENS[id].name)+' · '+esc(l.actors[id].hp===0?'abattue':l.actors[id].travel===M.LENGTH?'retournée à la fissure':l.cut?'en retrait':'au perchoir')+'</p>').join('')+'<p>Les trois individus utilisent le modèle régional existant. La scène n’est pas le boss Midi-Zéro ni une colonie entière. Aucun insecte ne réapparaît pour fournir une récompense supplémentaire.</p></div>';};
+ const dispatch=v027Dispatch;v027Dispatch=function(a,arg){return a==='c71:track'?v027CanAct()&&track():dispatch(...arguments);};
+ const rows=v027QuestRows;v027QuestRows=function(){const l=state.v071Cigales;return rows(...arguments).concat(l.opened?[{id:'c71:quest',name:'LE FAUX MIDI',stage:l.finished?'done':'active',active:local()&&!l.finished,text:M.briefing(l),zone:null,steps:[['Deux observations',l.notes.length===2],['Relais coupé',l.cut],['Rencontre résolue',M.settled(l)],['Constat rendu',l.finished]],source:'Vigies des Crêtes',badge:l.finished?'✓':'',hint:'Aline · relais de Font de Mai'}]:[]);};
+ const oldTrack=v027Track;v027Track=function(id){return id==='c71:quest'?track():oldTrack(...arguments);};
+ function next(){const l=state.v071Cigales;return !l.opened?'aline':!l.notes.includes('mue')?'mue':!l.notes.includes('signal')?'signal':!l.cut?'sectionneur':'aline';}
+ const marker=getObjectiveMarker;getObjectiveMarker=function(){if(!local())return marker(...arguments);const id=next(),p=P[id];return {zone:world.id,pos:[p[0],1.25,p[2]+.7],label:'Le faux midi · '+id};};
+ const ui=updateQuestUI;updateQuestUI=function(flash=false){if(!local())return ui(...arguments);$('questTitle').textContent='LE FAUX MIDI';$('questObjective').textContent=M.briefing(state.v071Cigales);if(flash){const f=$('questFlash');f.querySelector('strong').textContent='LE FAUX MIDI';f.querySelector('p').textContent=M.briefing(state.v071Cigales);f.classList.add('show');setTimeout(()=>f.classList.remove('show'),3200);}};
+ V027_STATIONS.cigales={name:'Vigies — le faux midi',freq:'71.3',hint:'La machine n’est pas la nature',available:()=>state.v071Cigales.opened,text:()=>M.briefing(state.v071Cigales)};
+ const after=globalThis.v053LoreAfterInit;globalThis.v053LoreAfterInit=function(){after?.();Object.assign(window.__MISTRAL_DEBUG,{v071CigalesInfo:()=>({ledger:copy(state.v071Cigales),points:copy(P),local:local(),error:rt.error,blocked:rt.blocked,enemies:(world?.enemies||[]).filter(e=>e.c71Id).map(e=>({id:e.c71Id,pos:e.pos.slice(),health:e.health,alive:e.alive,wind:copy(e.c71Wind),state:e.state}))}),v071CigalesOpen:()=>v027Open('data','cigales'),v071CigalesAction:act});};
+}
+
 /* Keep the existing six-plate v0.30 simulation and its finite core ledger.
    This extension closes persistence gaps and brings maintenance to technicians
    already living in discovered geographic relays. It grants no equipment. */
