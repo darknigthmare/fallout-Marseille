@@ -20,7 +20,8 @@ L’ordre de priorité est le suivant :
 10. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
 11. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
 12. [`docs/LORE_NOTAIRES_APRES.md`](docs/LORE_NOTAIRES_APRES.md) — Élias Benhamou, coffre des minutes, propriété et résidence, trois actes et copies remises ;
-13. les documents spécialisés et les textes en jeu.
+13. [`docs/LORE_FETE_DES_VOISINS.md`](docs/LORE_FETE_DES_VOISINS.md) — invitations, repas fini, sonorisation, rassemblement des acteurs, trois conclusions locales ;
+14. les documents spécialisés et les textes en jeu.
 
 En cas de contradiction, la bible générale fixe le canon, tandis que les matrices indiquent ce qui existe réellement dans le jeu.
 
@@ -160,3 +161,13 @@ Un coffre des minutes, dans la rue intérieure, s’ouvre par un ordre de dates,
 Le joueur choisit un répertoire contradictoire, une convention d’usage des communs ou une double garde sans trancher le titre. Ces actes locaux ne réécrivent ni le vote de la copropriété ni l’accord de la Mutuelle. Deux copies sont remises à Josiane et Salomé avant une clôture unique de 35 capsules. Le coffre, son document et les accusés de réception ont des états visuels persistants ; les titres eux-mêmes ne deviennent pas des objets vendables.
 
 Le registre `v065Notaires` part de `dac973c8f693115b85442d512feccf00e2351338`. Il conserve le contexte source, les lectures, les mandats, les rouleaux du coffre, la chaîne de garde, l’acte et les reçus. La nouvelle annexe précise les limites : pas de nouvel étage, de propriété mondiale, de compagnon recruté ou de décision de justice nationale.
+
+## Après les actes : La fête des voisins
+
+**Les assiettes ne votent pas** prolonge la clôture du dossier notarial par un événement matériel et social. Josiane propose une table commune sur la terrasse ou un service entre les paliers. Karim, Lucie, Nadia et Salomé conservent leurs intérêts et les traces des choix précédents.
+
+Le joueur fournit trois vivres et deux eaux, ou récupère un lot festif et la vaisselle affectés à cette seule soirée. Trois sélecteurs de sonorisation se règlent dans le monde ; une voie technique et la coupure gratuite de l’amplification restent possibles. Aucune mauvaise manipulation ne déclenche de massacre caché.
+
+Le service commun dispose les cinq acteurs existants autour du buffet ; le service par paliers conserve leurs postes. Les quatre portions se remettent une fois. Les réponses à Karim et Salomé produisent une table ouverte, un voisinage à plusieurs tables ou une trêve encore incomplète. Trente capsules récompensent la clôture, une seule fois. Les acteurs retrouvent ensuite leurs postes et les autres conversations.
+
+Ce registre `v066Voisins` part de `9fd5a8bd1c5028583ef60058c0cdc178eb4ab825`. Il ne modifie ni les votes, ni l’assurance, ni les actes. La mise en place du rassemblement n’est pas une simulation des déplacements autonomes ; la nouvelle annexe précise les contenus jouables et les limites.
