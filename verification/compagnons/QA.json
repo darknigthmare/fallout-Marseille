@@ -1,0 +1,61 @@
+{
+  "baseline": "b31fc99af02d2e438b073d5fb431a532f6b43cd3",
+  "source_commit": "ac0dddd2f70cadac5c2d397c077481e07a5782f7",
+  "generated_commit": "f2ad8f81a788512564bba706f490a93a207ef3fb",
+  "ci_run": 42481901445,
+  "ci_job": 128735453652,
+  "ci_status": "success",
+  "html_sha256": "95058ead849df10a042b88c2c14208589b34dcc0f14db7a0b43b2a0dabee5aa8",
+  "ci_artifact_id": 13617604028,
+  "ci_artifact_sha256": "6a57618ba2554516049d497d211523144533cbf8b28c525ab1c409090d68d2e3",
+  "ci_browser_artifact_id": 13617748536,
+  "byte_identical_ci_and_local_program": true,
+  "local_unit_tests": {
+    "compagnons": 35,
+    "cite_radieuse": 28,
+    "mutuelle": 34,
+    "notaires": 37,
+    "voisins": 39,
+    "total": 173,
+    "failures": 0
+  },
+  "ci_checks": [
+    "All lore module syntax checks passed.",
+    "Full configured lore and institution test command passed.",
+    "Canonical reconstruction and deterministic --check passed.",
+    "City streaming, cancellation, seams and geometry identity regressions passed.",
+    "Seven browser suites ran successfully and their JSON reports were inspected.",
+    "Four generated outputs were committed by the guarded build synchronization."
+  ],
+  "browser_suites_local_and_ci": {
+    "compagnons": {"passed": 64, "errors": []},
+    "voisins": {"passed": 68, "errors": []},
+    "notaires": {"passed": 48, "errors": []},
+    "mutuelle": {"passed": 38, "errors": []},
+    "radieuse": {"passed": 33, "errors": []},
+    "poste": {"passed": 17, "errors": []},
+    "pharmacie": {"passed": 19, "errors": []}
+  },
+  "browser_checks_per_complete_run": 287,
+  "counting_note": "Local and CI repeat the same browser suites; do not sum them as 574 distinct checks. The 173 local unit tests overlap the broader CI suite.",
+  "historical_contexts_tested": 54,
+  "reproduction": [
+    "node --test tests/expansion/lore_compagnons_devoir.cjs",
+    "node --test tests/expansion/lore_cite_radieuse.cjs tests/expansion/lore_mutuelle_phoceenne.cjs tests/expansion/lore_notaires_apres.cjs tests/expansion/lore_fete_voisins.cjs tests/expansion/lore_compagnons_devoir.cjs",
+    "python tests/expansion/compagnons_browser_smoke.py --html index.html --output verification/compagnons/browser",
+    "python3 tools/build_single.py --check"
+  ],
+  "harness_notes": [
+    "The relay menu check targets its actual preserved commerce topic, not a direct sale absent from the outer menu.",
+    "The native collision route goes around the existing notarial desk; no prior geometry was moved for this test.",
+    "One grouped local execution reached the tool time limit. Remaining browser suites were rerun individually and passed."
+  ],
+  "limits": [
+    "Actual authored Radieuse and production UI, E interactions, reducers, inventory, save/load and scene rendering.",
+    "External relay fixtures retain actual catalogue identities and representative routing but use flat synthetic ground; no full IGN traversal.",
+    "Prior quests assembled with their real reducers, scripted player positions and one explicit native collision path to the workshop.",
+    "Isolated MemoryStorage and software rendering, not a human full-campaign or hardware GPU performance certification.",
+    "Samira and Anton are voices in existing relay conversations, not new autonomous actors or recruitable companions.",
+    "The bench is a discrete mechanical demonstration, not a fluid simulation, water purification or medical treatment."
+  ]
+}
