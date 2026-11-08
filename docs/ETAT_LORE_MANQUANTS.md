@@ -19,6 +19,8 @@ Base examinée : `da8e4f99b5d08480101910088c64a4012bbca301`, après la première
 | Cour du Lys | Audience indépendante, quatre habitants, LOUIS, archives et trois règlements | Pas de campagne de succession, conquête de la rade ou navigation libre |
 | La part des absents | Quai fictionnel, trois acteurs, six caisses persistantes, deux accès et trois répartitions | Ni flotte, ni faim quotidienne, ni campagne de faction complète |
 
+| Marins-Sapeurs | Première intervention indépendante, feu/câble et deux évacuations accompagnées | Ni caserne complète, ni propagation mondiale, ni navigation générale |
+
 ## Priorité 1 — territoires et effets concrets
 
 **Cour du Lys d’If : audience et premier ravitaillement incarnés, faction encore ouverte.** La part des absents reconnaît le règlement choisi (serment, commune ou régence), fait intervenir un délégué révolutionnaire et Maëlle des Francs dans une manutention physique. Restent la succession, la campagne de l’opposition, les opérations maritimes et les effets quotidiens sur les familles. Ne pas réinstaller silencieusement l’ancienne monarchie pour répéter l’audience.
@@ -41,7 +43,7 @@ Base examinée : `da8e4f99b5d08480101910088c64a4012bbca301`, après la première
 
 ## Priorité 3 — factions encore principalement documentaires
 
-Plan-de-Campagne et les Enseignes ; Virages du Vélodrome ; Maquis des Treize Vents ; Cohorte Viénot ; Confrérie du Vœu ; Marins-Sapeurs ; Félibres ; Tour des Ruines. Vérifier l’existant avant d’annoncer une intégration ou d’écraser des lieux et systèmes déjà présents.
+Plan-de-Campagne et les Enseignes ; Virages du Vélodrome ; Maquis des Treize Vents ; Cohorte Viénot ; Confrérie du Vœu ; Félibres ; Tour des Ruines. Vérifier l’existant avant d’annoncer une intégration ou d’écraser des lieux et systèmes déjà présents.
 
 Doublage, animations des métiers et des repas, identité visuelle détaillée des personnages, mise en scène des voyages et performances matérielles restent distincts des dossiers de quêtes.
 
@@ -52,3 +54,12 @@ Aucun relevé IGN n’a été changé par l’audience du Lys ou sa cale de ravi
 Une passe de géographie doit encore vérifier les accès, collisions, annulations et retours sur les données complètes, dans les deux sens. Une altitude absente ne doit pas être remplacée par une mesure inventée.
 
 Ce suivi ne signifie ni « jeu fini » ni « commercialisable ». Les rapports du lot décrivent seulement le programme et les scénarios réellement vérifiés.
+
+
+## Mise à jour — Marins-Sapeurs, premier secours accompagné
+
+Base `3d0c3ef0fc8334289759f707dc107792acfc5270` : la manutention des six caisses est fusionnée. L’annexe [Marins-Sapeurs](LORE_MARINS_SAPEURS.md) décrit une mission indépendante avec feu et câble actifs, deux portes et un accompagnement réellement déplacé et sauvegardé. Le secours d’une goule consciente et d’une humaine n’est pas soumis à la conformité d’un registre.
+
+**Ce qui est ajouté :** une scène séparée, Farah, Lila et Rémi, deux voies d’extinction, des trajets d’évacuation contrôlés par proximité/visibilité/collisions, attente/reprise, points de sauvegarde, deux arrivées et une récompense unique. Le modèle de trajet est scénarisé ; ce n’est pas encore un système général de compagnons libres.
+
+**Ce qui demeure ouvert :** caserne et flotte des Marins-Sapeurs, campagne régionale de triage, propagation d’incendie, interventions sur les quartiers IGN, recrutement, retour géographique à froid certifié. Le développement des territoires de l’Arsenal et de l’Amirauté, l’inventaire bestiaire/armes, les factions documentaires et la géographie réelle restent prioritaires ; une première mission de secours ne les clôt pas.
