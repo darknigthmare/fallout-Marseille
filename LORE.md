@@ -32,6 +32,7 @@ Cet index est volontairement distinct des chapitres complets. Leur contenu reste
 | [Fête des voisins](docs/LORE_FETE_DES_VOISINS.md) | Invitations, repas fini, sonorisation, table commune ou paliers, trois conclusions. Une invitation ne répare pas rétroactivement une exclusion. |
 | [Compagnons du Devoir](docs/LORE_COMPAGNONS_DU_DEVOIR.md) | Aubagne et La Ciotat, deux leçons, banc monté et éprouvé, trois doses partagées ou cinq à l’atelier. Pas de décontamination magique. |
 | [Cour du Lys d’If](docs/LORE_COUR_DU_LYS.md) | Première audience indépendante : deux traversées narratives, quatre habitants, LOUIS‑27, trois accès aux archives et trois règlements locaux. Pas de navigation libre ni de nouvelle fin régionale. |
+| [La part des absents](docs/LORE_PARTS_ABSENTS.md) | Suite du Lys : quai fictionnel, trois acteurs, deux amarres, six caisses à porter et trois répartitions. Pas de flotte ni de rationnement quotidien simulés. |
 | [Bestiaire régional](docs/BESTIAIRE_REGIONAL.md) | Espèces effectivement suivies par le dépôt ; la liste générale de la bible ne signifie pas que toutes les espèces sont déjà incarnées. |
 
 ## Accès et continuité des arcs
@@ -40,7 +41,9 @@ A‑03 et le registre civique conduisent aux six chapitres puis aux États gén�
 
 **La Cour du Lys ne prolonge pas cette chaîne obligatoire.** Son départ se trouve auprès des représentants maritimes du Vieux-Port et de Ratonneau. Elle peut être visitée sans terminer les arcs de la Cité ou ratifier une charte. La sortie conserve le point de départ par le système de retour existant.
 
-Les registres restent séparés : `v059Madame`, `v060Council`, `v061Poste`, `v062Pharmacy`, `v063Radieuse`, `v064Mutuelle`, `v065Notaires`, `v066Voisins`, `v067Devoir` et `v068Lys`. Une nouvelle institution ne réinitialise pas les anciens votes, réserves ou preuves.
+**La part des absents** suit la clôture de cette audience, sans demander la chaîne de la Cité. Le règlement choisi demeure intact : six caisses limitées mettent son application en jeu dans une cale séparée, accessible par les deux passeurs.
+
+Les registres restent séparés : `v059Madame`, `v060Council`, `v061Poste`, `v062Pharmacy`, `v063Radieuse`, `v064Mutuelle`, `v065Notaires`, `v066Voisins`, `v067Devoir` `v068Lys` et `v069Parts`. Une nouvelle institution ne réinitialise pas les anciens votes, réserves ou preuves.
 
 ## États employés
 
@@ -65,3 +68,5 @@ La Provence conserve son ciel, sa mer, ses couleurs et ses habitants : l’horre
 ## Révisions de référence
 
 La consolidation initiale part de `1d1833a4cb320a2075cba5b57c4504e99b206fe3`. Les annexes conservent les bases suivantes : Poste `84358ace305d40acaa9c6c626622c8f546436dff`, Pharmacies `6f3e4629741baf39077f668bdbad247d82fdf5a7`, Cité `a1e8d3071d01c91c192230c8884515daf401eafe`, Mutuelle `74413fdcf79acecb52fc78af18bae44cc7d42cd6`, Notaires `dac973c8f693115b85442d512feccf00e2351338`, Fête `9fd5a8bd1c5028583ef60058c0cdc178eb4ab825`, Compagnons `b31fc99af02d2e438b073d5fb431a532f6b43cd3`, Lys `9f8658fb2054e8e70298c8b8314c82125dff4503`.
+
+La suite **La part des absents** reprend au commit `da8e4f99b5d08480101910088c64a4012bbca301`, après la fusion du Lys.

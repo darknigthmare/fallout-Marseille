@@ -1,0 +1,63 @@
+{
+  "baseline": "da8e4f99b5d08480101910088c64a4012bbca301",
+  "feature": "La part des absents",
+  "html_sha256": "6e22fecf0ded78df1507832442c230821de28491328ae890b8e97e6bf2af1bad",
+  "js_sha256": "708a1ca605ddfb89fd100cb0fa0174cd25193fa7e8518377685875c72336e8ce",
+  "local_tests": {
+    "new_unit": 59,
+    "complete_lore_unit": 439,
+    "failures": 0
+  },
+  "browser_suites": {
+    "parts": {"passed": 115, "errors": [], "browser": "144.0.7559.96"},
+    "pharmacie": {"passed": 19, "errors": [], "browser": "144.0.7559.96"},
+    "voisins": {"passed": 68, "errors": [], "browser": "144.0.7559.96"},
+    "lys": {"passed": 54, "errors": [], "browser": "144.0.7559.96"},
+    "poste": {"passed": 17, "errors": [], "browser": "144.0.7559.96"},
+    "notaires": {"passed": 48, "errors": [], "browser": "144.0.7559.96"},
+    "compagnons": {"passed": 64, "errors": [], "browser": "144.0.7559.96"},
+    "radieuse": {"passed": 33, "errors": [], "browser": "144.0.7559.96"},
+    "mutuelle": {"passed": 38, "errors": [], "browser": "144.0.7559.96"}
+  },
+  "browser_checks_per_complete_run": 456,
+  "counting_note": "The 59 new unit tests are included in the 439 complete lore tests. Browser: 115 new plus 341 old checks, not local/CI repetitions added together.",
+  "local_build": "Exact insertion of the two ordered new modules into the previously shipped bundle; canonical full rebuild performed separately in GitHub.",
+  "ci": {
+    "run_id": 42499517858,
+    "job_id": 128788994473,
+    "status": "success",
+    "canonical_build_check": "passed",
+    "lore_suite": "passed",
+    "city_regression_subset": "passed",
+    "nine_browser_suites": "passed",
+    "browser_checks": 456,
+    "browser": "156.0.8078.0",
+    "program_byte_identical_to_local": true,
+    "configured_unit_test_files_byte_identical_to_local": 13,
+    "game_artifact_id": 13625062188,
+    "game_artifact_sha256": "71844c80c4e14fb4e7deb606639fec7af6ce1a3905aa841bce3e3d11961d57ba",
+    "browser_artifact_id": 13625112012,
+    "browser_artifact_sha256": "2275b36b08225c4831642073501a4e8d6498fa945382ea4b26e40fe98553ac97"
+  },
+  "reproduction": [
+    "node --test tests/expansion/lore_*.cjs",
+    "python3 tools/build_single.py",
+    "python3 tools/build_single.py --check",
+    "python tests/expansion/parts_browser_smoke.py --html index.html --output verification/parts/browser"
+  ],
+  "scope_notes": [
+    "Original fictional yard at an approximate existing catalogue anchor; no surveyed geometry changed.",
+    "Actual authored scene, real UI/E, native collision function, finite cargo and one-time reward.",
+    "Prior audience created through its real model; scripted positions, synthetic ports, isolated MemoryStorage, software renderer.",
+    "Exact retained-world return tested before replacing the save owner; saved departure coordinates separately checked after migration. No full IGN cold-return validation.",
+    "No pilotable ship, autonomous food distribution, recruitable companion, recorded dialogue or human campaign playtest."
+  ],
+  "source_commit": "7a0ba21d7f756015f6d0fa76aff271e4b87d046b",
+  "generated_commit": "1c4b69f164206e6fed062fb3bcda035292d5eaaa",
+  "initial_shipped_build_check": {
+    "run_id": 42499517940,
+    "result": "failed_before_generated_outputs_were_synchronized",
+    "reason": "Stale build artifacts: src/game.js, JOUER_FALLOUT_MISTRAL_v0.50.html, index.html, sw.js",
+    "resolution": "Canonical workflow regenerated and committed all four outputs at 1c4b69f164206e6fed062fb3bcda035292d5eaaa. Final pull-request checks track the synchronized revision independently."
+  }
+}

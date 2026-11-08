@@ -25,15 +25,15 @@ jobs:
       - name: Syntaxe des modules de lore
         run: for source in src/v050/10*.js; do node --check "$source"; done
       - name: Tests de lore et des institutions
-        run: node --test tests/expansion/lore_continuity.cjs tests/expansion/lore_services.cjs tests/expansion/lore_a03_madame.cjs tests/expansion/lore_conseil_regional.cjs tests/expansion/lore_poste_restante.cjs tests/expansion/lore_pharmacie_garde.cjs tests/expansion/lore_cite_radieuse.cjs tests/expansion/lore_mutuelle_phoceenne.cjs tests/expansion/lore_notaires_apres.cjs tests/expansion/lore_fete_voisins.cjs tests/expansion/lore_compagnons_devoir.cjs tests/expansion/lore_cour_lys.cjs
+        run: node --test tests/expansion/lore_*.cjs
       - name: Reconstruction du jeu
         run: python3 tools/build_single.py
       - name: Vérification du bundle généré
         run: |
           node --check src/game.js
           python3 tools/build_single.py --check
-          for model in MistralMadame MistralCouncil MistralPoste MistralPharmacy MistralRadieuse MistralMutuelle MistralNotaires MistralVoisins MistralDevoir MistralLys; do grep -q "const $model" src/game.js; done
-          grep -q 'COUR DU LYS' JOUER_FALLOUT_MISTRAL_v0.50.html
+          for model in MistralMadame MistralCouncil MistralPoste MistralPharmacy MistralRadieuse MistralMutuelle MistralNotaires MistralVoisins MistralDevoir MistralLys MistralParts; do grep -q "const $model" src/game.js; done
+          grep -q 'LA PART DES ABSENTS' JOUER_FALLOUT_MISTRAL_v0.50.html
       - name: Régressions du territoire sur le bundle reconstruit
         run: |
           node tests/expansion/city_streaming.cjs
@@ -44,23 +44,23 @@ jobs:
         run: |
           python -m pip install playwright==1.57.0
           python -m playwright install --with-deps chromium
-      - name: Huit parcours navigateur instrumentés
+      - name: Neuf parcours navigateur instrumentés
         run: |
-          for suite in lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
-            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/lys/ci/${suite}"
+          for suite in parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
+            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/parts/ci/${suite}"
           done
       - name: Rapports et captures navigateur
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: mistral-lys-browser-${{ github.sha }}
+          name: mistral-parts-browser-${{ github.sha }}
           if-no-files-found: ignore
           retention-days: 14
-          path: verification/lys/ci/
+          path: verification/parts/ci/
       - name: Artefact du jeu et des sources de lore
         uses: actions/upload-artifact@v4
         with:
-          name: fallout-mistral-lys-${{ github.sha }}
+          name: fallout-mistral-parts-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -76,7 +76,7 @@ jobs:
             docs/LORE*.md
             docs/ETAT_LORE_MANQUANTS.md
             docs/BIBLE_LORE_FALLOUT_MISTRAL.md
-            verification/lys/ci/lys/
+            verification/parts/ci/parts/
       - name: Synchroniser les sorties générées de la branche
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
         run: |
