@@ -72,3 +72,12 @@ Base : `9757fad0a3d95d5a9384b39bf1a8a59587d11fc3`, Marins-Sapeurs fusionnés apr
 **Bestiaire restant ouvert :** Midi-Zéro, nymphes et émergences, diversité des comportements hors instance, interactions entre habitats, variantes visuelles réellement distinctes, inventaire complet des espèces et armes promises. Le présent lot ne valide pas toute la carte IGN, les anciens boss ou les comportements des autres espèces.
 
 **Institutions encore à approfondir :** campagnes de la Convention et de ses courants, succession du Lys, Confrérie du Vœu, territoires et opérations de l’Arsenal/Francs/Amirauté, Plan-de-Campagne, Virages du Vélodrome et recrutements. Les boucles locales livrées ne ferment pas ces factions entières.
+
+
+## Actualisation après Les dents du réseau
+
+Base : `38a0bd2aff02303dc6c80357915eaf45225eeef2` (Le faux midi fusionné après ses contrôles). La [rencontre des rats-câbles](LORE_RATS_CABLES.md) met le modèle régional existant en situation dans un dépôt original de maintenance : patrouille bornée, morsure esquivable, santé et blessures persistantes, refuge accessible, appât réservé, gaines et éclairage restaurés. Une élimination des animaux ne dispense pas de réparer.
+
+**Ce qui reste ouvert dans le bestiaire :** Rat-couronné, Roi des Égouts, nouveaux comportements urbains hors des scènes dédiées, pigeons et gabians avec interactions de récupération, nymphes et Midi-Zéro, habitats reliés et inventaire complet des armes/espèces. Trois individus nommés ne sont pas trois modèles ou espèces supplémentaires.
+
+**Ce qui reste ouvert chez les Aiguilleurs :** fonctionnement des trains, trafic, dépôts supplémentaires et campagne de souveraineté ferroviaire. Les circuits de cette annexe ne remettent aucun train en service. Les campagnes politiques, opérations maritimes, recrutements et vérification réelle des accès IGN demeurent des chantiers distincts.
