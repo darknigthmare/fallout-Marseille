@@ -1,0 +1,56 @@
+{
+  "feature": "Le faux midi",
+  "baseline": "9757fad0a3d95d5a9384b39bf1a8a59587d11fc3",
+  "source_commit": "156c87cb3bec8fe39386dce8c2323a6d22fa1285",
+  "generated_commit": "5b9aa86a6806d0e6dcc226adc4e1390fc0873807",
+  "html_sha256": "c2de30922906540451f80349c7e1923cb148a458558939fb1d610d980c31dda8",
+  "js_sha256": "881009d60195f2b1d574d4f309e3bc8707a49796309c369ccba9cf6d982a065a",
+  "local_unit": {"new": 29, "failed": 0},
+  "browser_checks_per_complete_run": 575,
+  "counting_note": "52 nouveaux contrôles + 523 anciens. Les répétitions locales et distantes ne sont pas des contrôles distincts.",
+  "browser_suites": {
+    "cigales": {"passed": 52, "errors": []},
+    "compagnons": {"passed": 64, "errors": []},
+    "lys": {"passed": 54, "errors": []},
+    "mutuelle": {"passed": 38, "errors": []},
+    "notaires": {"passed": 48, "errors": []},
+    "parts": {"passed": 115, "errors": []},
+    "pharmacie": {"passed": 19, "errors": []},
+    "poste": {"passed": 17, "errors": []},
+    "radieuse": {"passed": 33, "errors": []},
+    "secours": {"passed": 67, "errors": []},
+    "voisins": {"passed": 68, "errors": []}
+  },
+  "ci": {
+    "run_id": 42510369592,
+    "job_id": 128821914212,
+    "status": "success",
+    "program_byte_identical_to_local": true,
+    "game_artifact_id": 13629247499,
+    "game_artifact_sha256": "a9d97d637ff655bf668e442edbdeb724b8fade79ca7d8ab0a1f0587c961148ae",
+    "browser_artifact_id": 13629695913,
+    "browser_artifact_sha256": "19f07ba2119b95671aa9a3610839bd310fa4dd1dd5aadc977ff76d005790e03f",
+    "unit_tests": {"tests": 504, "passed": 504, "failed": 0},
+    "artifacts_checked_again": true
+  },
+  "local_extra_aggregate_attempt": {
+    "tests_started": 415,
+    "passed": 410,
+    "failed": 5,
+    "reason": "Update-only checkout lacks legacy src/v042/00_catalog.js and src/v046/04_lore.js; the full repository CI ran 504 tests successfully. This partial local aggregate is not counted as a passing full suite."
+  },
+  "scope": [
+    "Scène et moteur réels, ciblage des parties et tir natif avec dépense de munition.",
+    "Les scénarios à pertes multiples emploient directement l’adaptateur de dégâts ; ils ne sont pas décrits comme un combat humain complet.",
+    "Déplacement par la fonction native testé sur le passage latéral ; retraite scénarisée et collision, pas navigation générale.",
+    "Relais extérieur synthétique conservant Font de Mai, stockage isolé, positions/visées scriptées et rendu logiciel.",
+    "Ni Midi-Zéro, ni trois nouveaux modèles, ni réécriture de l’IA mondiale ou des données IGN.",
+    "Failed-health-save rolls back injury, not ammunition already spent by native firing. Burning/slowing persist; after relay cutoff companions stop automatically attacking these retreating insects."
+  ],
+  "reproduction": [
+    "node --test tests/expansion/lore_*.cjs (full repository checkout required)",
+    "python3 tools/build_single.py",
+    "python3 tools/build_single.py --check",
+    "python tests/expansion/cigales_browser_smoke.py --html index.html"
+  ]
+}
