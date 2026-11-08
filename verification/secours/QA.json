@@ -1,0 +1,56 @@
+{
+  "feature": "Les vivants derrière la porte",
+  "baseline": "3d0c3ef0fc8334289759f707dc107792acfc5270",
+  "previous_pr_13": "merged after both final PR checks succeeded",
+  "source_commit": "078da907927b27120442ba9729bc71551b7d4fab",
+  "generated_commit": "ccb34b5fcffbf1c10005f3d39856a4054431d392",
+  "html_sha256": "56e901d59ad3f2fe68977413f314400a72840545651b288f6070b88b81ee49f3",
+  "js_sha256": "db0d0383434a47eb2724b3540c1b3cb9c7c71ad577e7a4bcb47abb3d4d0349b1",
+  "local_unit": {"new": 36, "complete_lore": 475, "failed": 0},
+  "browser_suites": {
+    "compagnons": {"passed": 64, "errors": [], "browser": "156.0.8078.0"},
+    "lys": {"passed": 54, "errors": [], "browser": "156.0.8078.0"},
+    "mutuelle": {"passed": 38, "errors": [], "browser": "156.0.8078.0"},
+    "notaires": {"passed": 48, "errors": [], "browser": "156.0.8078.0"},
+    "parts": {"passed": 115, "errors": [], "browser": "156.0.8078.0"},
+    "pharmacie": {"passed": 19, "errors": [], "browser": "156.0.8078.0"},
+    "poste": {"passed": 17, "errors": [], "browser": "156.0.8078.0"},
+    "radieuse": {"passed": 33, "errors": [], "browser": "156.0.8078.0"},
+    "secours": {"passed": 67, "errors": [], "browser": "156.0.8078.0"},
+    "voisins": {"passed": 68, "errors": [], "browser": "156.0.8078.0"}
+  },
+  "browser_checks_per_complete_run": 523,
+  "counting_note": "67 new browser checks plus 456 existing checks. Local and CI repeat the same suites and are not summed. 36 new unit tests are included in 475.",
+  "ci": {
+    "run_id": 42503996065,
+    "job_id": 128802577249,
+    "status": "success",
+    "canonical_build_check": "passed",
+    "lore_command": "passed",
+    "city_regression_subset": "passed",
+    "ten_browser_suites": "passed",
+    "program_byte_identical_to_local": true,
+    "game_artifact_id": 13626598692,
+    "game_artifact_sha256": "647987d32462584f0266d6684e84c59ab77104c2bfc0ef359f6a2c84691461d9",
+    "browser_artifact_id": 13626454319,
+    "browser_artifact_sha256": "c3260a36c315d9a099f4db09d25a237364305b70408521dc80a3d80687cd5b35"
+  },
+  "fixes_during_verification": [
+    "Moved exit interaction inward from the scene boundary so native reach/collision agree.",
+    "Replaced reception panels that obscured faces with side markers.",
+    "Test harness save call uses an injected internal bridge; the bridge is not included in the playable program."
+  ],
+  "reproduction": [
+    "node --test tests/expansion/lore_*.cjs",
+    "python3 tools/build_single.py",
+    "python3 tools/build_single.py --check",
+    "python tests/expansion/secours_browser_smoke.py --html index.html"
+  ],
+  "scope": [
+    "Actual authored annexe, real E/dialogue buttons, native hazard/collision functions and continuous per-frame NPC scheduling adapter.",
+    "Guide positions scripted; NPCs advance through actual runtime with visibility, distance and collision checks. Fixed authored paths, not unrestricted pathfinding.",
+    "Checkpoint refusal, pause/exit refusal, manual mid-path save and reload, two orders and two ports exercised.",
+    "Synthetic port worlds, isolated MemoryStorage, software renderer. Not a human full campaign, hardware GPU certification or complete real IGN cold-return validation.",
+    "No navigation ship, recruitable companion, recorded voice or volumetric combustion simulation. Prior ledgers unchanged."
+  ]
+}
