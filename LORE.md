@@ -19,7 +19,8 @@ L’ordre de priorité est le suivant :
 9. [`docs/LORE_CONTINUITE.md`](docs/LORE_CONTINUITE.md) — dossiers jouables de continuité ;
 10. [`docs/LORE_SERVICES_PUBLICS.md`](docs/LORE_SERVICES_PUBLICS.md) — sept réseaux et quatre factions de services ;
 11. [`docs/BESTIAIRE_REGIONAL.md`](docs/BESTIAIRE_REGIONAL.md) — créatures effectivement suivies par le dépôt ;
-12. les documents spécialisés et les textes en jeu.
+12. [`docs/LORE_NOTAIRES_APRES.md`](docs/LORE_NOTAIRES_APRES.md) — Élias Benhamou, coffre des minutes, propriété et résidence, trois actes et copies remises ;
+13. les documents spécialisés et les textes en jeu.
 
 En cas de contradiction, la bible générale fixe le canon, tandis que les matrices indiquent ce qui existe réellement dans le jeu.
 
@@ -149,3 +150,13 @@ Ces forces, ainsi qu’A‑03 et les Sans‑Dossier, disposent ensuite d’une v
 La consolidation initiale partait de `main` au commit `1d1833a4cb320a2075cba5b57c4504e99b206fe3` du 4 novembre 2026. La matrice d’intégration suit les ajouts fusionnés, les validations du build et les chantiers encore ouverts. La tournée postale part de `84358ace305d40acaa9c6c626622c8f546436dff`. La pharmacie part de `6f3e4629741baf39077f668bdbad247d82fdf5a7`. La Cité Radieuse part de `a1e8d3071d01c91c192230c8884515daf401eafe`. Leurs annexes contiennent les matrices de portée actualisées et les limites des validations.
 
 La réclamation de la Mutuelle prolonge `74413fdcf79acecb52fc78af18bae44cc7d42cd6` ; ses tests et sa matrice de portée sont distincts des audits historiques précédents.
+
+## Après le règlement : Notaires de l’Après
+
+**Les clés ne font pas un titre** poursuit la chaîne après remise du reçu de la Mutuelle. Maître Élias Benhamou, goule consciente et notaire déjà prévu dans la bible, reçoit les habitants dans le hall. Sa mémoire ne remplace pas les pièces. Trois documents et deux mandats permettent de confronter les titres anciens aux présences actuelles.
+
+Un coffre des minutes, dans la rue intérieure, s’ouvre par un ordre de dates, par une intervention technique ou par la force. Le forçage laisse une rupture de chaîne de garde : une contre-vérification des copies est nécessaire pour les actes autres que la double garde. Aucune mémoire perdue n’est reconstituée magiquement.
+
+Le joueur choisit un répertoire contradictoire, une convention d’usage des communs ou une double garde sans trancher le titre. Ces actes locaux ne réécrivent ni le vote de la copropriété ni l’accord de la Mutuelle. Deux copies sont remises à Josiane et Salomé avant une clôture unique de 35 capsules. Le coffre, son document et les accusés de réception ont des états visuels persistants ; les titres eux-mêmes ne deviennent pas des objets vendables.
+
+Le registre `v065Notaires` part de `dac973c8f693115b85442d512feccf00e2351338`. Il conserve le contexte source, les lectures, les mandats, les rouleaux du coffre, la chaîne de garde, l’acte et les reçus. La nouvelle annexe précise les limites : pas de nouvel étage, de propriété mondiale, de compagnon recruté ou de décision de justice nationale.
