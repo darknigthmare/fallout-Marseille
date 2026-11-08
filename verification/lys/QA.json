@@ -1,0 +1,55 @@
+{
+  "baseline": "9f8658fb2054e8e70298c8b8314c82125dff4503",
+  "source_commit": "1e35aab56fc3f38f049762737ad40999a24d1774",
+  "generated_commit": "436266cd0b5f658b5001abf87681d2ed7508c64e",
+  "ci_run": 42488150954,
+  "ci_job": 128754455959,
+  "ci_status": "success",
+  "html_sha256": "818fca59d21046a08307c5b9370ed36b12fb75505b80fcb48b7fc28cff63ef10",
+  "js_sha256": "a28ed05070f6100244e3a4ad9e4f412bae56a3a1d0af5bd0066803505f7c7c4b",
+  "ci_artifact_id": 13620780980,
+  "ci_artifact_sha256": "2cf25324097d60fcd1da720bfe3289bed0b9df9e371c87b15036083cd5dc74e6",
+  "ci_browser_artifact_id": 13620795931,
+  "ci_browser_artifact_sha256": "e7f4cee0e71646a0bc269c3259d9f23a09d19ff809421843f47c24f0a13eccd4",
+  "byte_identical_ci_and_local_program": true,
+  "local_unit_tests": {
+    "new_lys": 33,
+    "targeted_total": 206,
+    "failures": 0
+  },
+  "browser_suites_local_and_ci": {
+    "lys": {"passed": 54, "errors": []},
+    "compagnons": {"passed": 64, "errors": []},
+    "voisins": {"passed": 68, "errors": []},
+    "notaires": {"passed": 48, "errors": []},
+    "mutuelle": {"passed": 38, "errors": []},
+    "radieuse": {"passed": 33, "errors": []},
+    "poste": {"passed": 17, "errors": []},
+    "pharmacie": {"passed": 19, "errors": []}
+  },
+  "browser_checks_per_complete_run": 341,
+  "counting_note": "Local and CI repeat the same eight browser suites; do not count these as 682 distinct checks. The 206 targeted local unit tests overlap the broader configured CI suite.",
+  "ci_checks": [
+    "All lore module syntax checks passed.",
+    "Full configured lore and institution test command passed.",
+    "Canonical reconstruction and deterministic --check passed.",
+    "City streaming, cancellation, seams and geometry identity regressions passed.",
+    "Eight browser suites succeeded; their JSON reports were inspected and share the same HTML hash.",
+    "Four generated outputs were synchronized on the feature branch."
+  ],
+  "reproduction": [
+    "node --test tests/expansion/lore_cour_lys.cjs",
+    "python3 tools/build_single.py --check",
+    "python tests/expansion/lys_browser_smoke.py --html index.html --output verification/lys/browser"
+  ],
+  "scope_notes": [
+    "Actual authored two-level Cour du Lys scene, four actors, original stylised LOUIS projection, real UI/E, native movement and collisions, state reducers and save/load.",
+    "New fictional audience is distinct from old If dungeons. Approximate existing catalogue anchor, not a surveyed entrance or historical floor plan.",
+    "Two synthetic exterior ports preserve actual catalogue identities and native retained-world entry/return; no full IGN sea traversal.",
+    "Crossing is explicitly narrative through loading, not a freely navigable vessel or continuous naval simulation.",
+    "Scripted positions, isolated MemoryStorage and software rendering, not a human full-campaign or hardware performance certification.",
+    "A kitchen table obstructing approach was moved before final validation. The service route is traversed around its visible control cabinet.",
+    "Old regional charter, Cité vote, contracts, notarial acts, meal and workshop records remain unchanged. Political results are local, not a new regional ending.",
+    "No new recruitable companion, recorded dialogue, detailed facial model, destruction route or autonomous rationing simulation is claimed."
+  ]
+}

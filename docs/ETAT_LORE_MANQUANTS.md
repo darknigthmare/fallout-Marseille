@@ -1,50 +1,53 @@
-# Lore — point de reprise après les Compagnons du Devoir
+# Lore — point de reprise après la première audience du Lys
 
-Base examinée : `b31fc99af02d2e438b073d5fb431a532f6b43cd3` (Fête des voisins). Ce suivi prolonge les anciens audits sans attribuer leurs résultats à un nouveau programme. Un arc local jouable ne clôt pas une faction entière.
+Base examinée : `9f8658fb2054e8e70298c8b8314c82125dff4503`, après les Compagnons. Ce suivi prolonge les anciens audits sans attribuer leurs résultats à un nouveau programme. Un arc local jouable ne clôt pas une faction entière.
 
-## Boucles présentes et leur limite
+## Boucles présentes et limites
 
-| Domaine | État de la source | Limite à conserver |
+| Domaine | État de la source | Limite |
 |---|---|---|
-| A‑03 / M.A.D.A.M.E. | Registre civique, preuves, sept réseaux et projections | La présence du modèle ne prouve pas une campagne humaine complète |
-| Conseil régional | Motions, délégations, ratification, épilogues | Les épilogues ne transforment pas physiquement toutes les villes |
-| Dossiers de continuité / services | Dossiers, coûts, décisions, retours et bulletins | Chaque faction n’a pas encore un territoire et une campagne complets |
-| Poste Restante | Tournée des sept réseaux, copies, mobilier et contre-dons | Pas de facteurs ou véhicules autonomes ni de Camille recrutée |
-| Pharmacies | Garde tournante, lot réservé, stocks et soins finis | Pas d’hôpital complet ni de guérison illimitée |
-| Cité Radieuse | Intérieur original, habitants, vote et trois travaux visibles | Ni tour entière ni restitution architecturale 1:1 |
-| Mutuelle | Sinistre local, trois accords et colis | Ni siège complet ni assurance universelle du monde |
-| Notaires | Coffre, preuves, actes et deux reçus | Pas de justice nationale, de titre de propriété mondial ou de recrutement |
-| Fête des voisins | Invitations, son, deux dispositions, portions et trois conclusions | Pas de marche autonome vers la table, doublage ou animations de repas |
-| Compagnons | Deux relais, montage, épreuve et fabrication finie selon la transmission | Première boucle, pas la faction entière ; validation détaillée dans le rapport du lot |
+| A‑03 / M.A.D.A.M.E. | Registre civique, preuves, réseaux, projections | Pas une preuve de campagne humaine complète |
+| Conseil régional | Motions, délégations, ratification, épilogues | Pas de transformation physique automatique de toutes les villes |
+| Continuité / services | Dossiers, coûts, choix, retours et bulletins | Les factions n’ont pas toutes leur territoire ou campagne complète |
+| Poste Restante | Sept lettres, copies, mobilier et contre-dons | Pas de facteurs, véhicules autonomes ou Camille recrutée |
+| Pharmacies | Garde, lot réservé, stocks et soins finis | Pas d’hôpital complet ni de guérison illimitée |
+| Cité Radieuse | Intérieur, cinq habitants, vote et trois travaux | Ni tour entière ni restitution architecturale 1:1 |
+| Mutuelle | Sinistre local, trois accords et colis | Ni siège complet ni assurance mondiale |
+| Notaires | Coffre, preuves, actes et reçus | Pas de justice nationale ou propriété mondiale |
+| Fête des voisins | Repas, son, dispositions, portions et conclusions | Pas de marche autonome vers la table, doublage ou animations de repas |
+| Compagnons | Deux relais, montage, épreuve et fabrication finie | Pas de maisons de métiers complètes ou de grades |
+| Cour du Lys | Audience indépendante, quatre habitants, LOUIS, archives et trois règlements | Pas de campagne de succession, conquête de la rade ou navigation libre |
 
-## Manques prioritaires conservés ouverts
+## Priorité 1 — territoires et effets concrets
 
-### Priorité 1 — sortir de la chaîne de la Cité
+**Cour du Lys d’If : première incarnation livrée, faction encore ouverte.** La prochaine suite doit partir du règlement effectivement choisi : cour sous serment, musée et commune, ou régence de secours. Restent la succession, l’opposition révolutionnaire, les relations avec les Francs et les effets durables sur les familles. Ne pas réinstaller silencieusement l’ancienne monarchie pour répéter l’audience.
 
-**Cour du Lys d’If.** Transformer la faction documentaire en véritable arc de visite, avec LOUIS‑27, sujets, conflits et accès maritime cohérent. Ne pas ajouter un simple bouton de conclusion au Pip-Boy.
+**Arsenal / Francs du Large / Amirauté.** Les dossiers existants et le clapet des Compagnons ne constituent pas des chantiers navals complets. Restent les équipages, opérations, lieux et navires incarnés. Une traversée narrative par chargement n’est pas une flotte simulée.
 
-**Arsenal / Francs du Large / Amirauté.** Distinguer les dossiers déjà jouables des chantiers, navires, métiers et opérations non incarnés. Une réserve au relais n’est pas une flotte.
+**Missions extérieures.** Développer des objectifs explorables et des obstacles réels hors de la Cité. Les deux relais des Compagnons et les deux points de départ du Lys sont raccordés aux identités du catalogue, mais ne certifient pas tous les trajets sur les routes IGN.
 
-**Marchés, Poste et déplacements.** Relier les boucles existantes à des missions extérieures réellement explorables, avec obstacles et alternatives. Les Compagnons ajoutent deux contacts géographiques ; ils ne constituent pas une simulation de convoi.
+**Conséquences régionales.** Ajouter des effets mesurables sans réécrire les anciennes ratifications. Une décision locale ne remplace pas la fin politique de toute la région.
 
-### Priorité 2 — profondeur des systèmes déjà présents
+## Priorité 2 — profondeur et inventaire
 
-**Compagnons.** Maisons de métiers, apprentissage par plusieurs ouvrages, reconnaissance du joueur, distribution des plans et vrais conflits d’accès au savoir. Les deux correspondants restent des voix de relais dans le lot actuel.
+**Compagnons.** Maisons de métiers, plusieurs ouvrages, reconnaissance, circulation des plans, conflits d’accès au savoir. Les correspondants restent des voix dans les relais existants.
 
-**Pétanque / COCHONNET.** Distinguer les victoires et arbitrages déjà sauvegardés d’un mini-jeu approfondi et d’un recrutement de COCHONNET. Vérifier le code actuel avant de remplacer ou doubler ces systèmes.
+**Pétanque / COCHONNET.** Auditer le mini-jeu et les arbitrages déjà présents avant de les approfondir. Un nouvel intitulé ne constitue pas une mécanique ou un recrutement.
 
-**Bestiaire / armes.** Le dépôt possède déjà des silhouettes régionales et un arsenal. La grande liste de la bible n’est pas intégralement incarnée. Effectuer un inventaire identifiant chaque espèce, habitat, comportement, butin et arme avant d’annoncer une couverture complète.
+**Bestiaire / armes.** Produire un inventaire reliant chaque entrée de la bible à une identité de code, un habitat, une apparence, un comportement, un butin et des preuves de test. La liste documentaire n’est pas une couverture intégrale du jeu.
 
-**Conséquences régionales.** Conserver les anciennes ratifications ; ajouter progressivement des effets concrets et mesurables sans réécrire les votes pour débloquer une meilleure fin.
+**Compagnons recrutables.** Distinguer les personnes présentes dans une scène des alliés réellement recrutables avec suivi, combat et sauvegarde. Les nouvelles scènes ne ferment pas ce chantier.
 
-### Priorité 3 — contenus documentaires et présentation
+## Priorité 3 — factions encore principalement documentaires
 
-Plan-de-Campagne et ses Enseignes ; Virages du Vélodrome ; Maquis des Treize Vents ; Cohorte Viénot ; Confrérie du Vœu ; Marins-Sapeurs ; Félibres ; Tour des Ruines ; véritables campagnes de recrutement des compagnons annoncés. Leur présence dans la bible n’est pas une validation de gameplay.
+Plan-de-Campagne et les Enseignes ; Virages du Vélodrome ; Maquis des Treize Vents ; Cohorte Viénot ; Confrérie du Vœu ; Marins-Sapeurs ; Félibres ; Tour des Ruines. Vérifier l’existant avant d’annoncer une intégration ou d’écraser des lieux et systèmes déjà présents.
 
-Le doublage, les animations propres aux métiers et aux repas, la mise en scène des voyages et l’identité visuelle détaillée de plusieurs PNJ restent à produire. Les captures du moteur existant ne doivent pas être décrites comme des assets HD générés.
+Doublage, animations des métiers et des repas, identité visuelle détaillée des personnages, mise en scène des voyages et performances matérielles restent distincts des dossiers de quêtes.
 
-## Portée de la vérification à ne pas dépasser
+## Géographie et validation
 
-La géographie source n’a pas été changée par ce chantier. Les tests synthétiques de relais et de portes ne valident pas les trajets sur toutes les archives IGN. La prochaine grande passe de géographie doit mesurer les transitions, accès aux portes et collisions sur les données réelles, dans les deux sens, sans remplacer une mesure absente par une élévation inventée.
+Aucun relevé IGN n’a été changé par l’audience du Lys. Son ancrage est un point approximatif du catalogue existant, explicitement distingué d’une porte relevée. Les scènes de port synthétiques testent les dialogues et le retour, pas une traversée maritime réelle.
 
-Aucune ligne de ce suivi ne signifie « jeu fini » ou « commercialisable ». Les validations du lot attestent leur programme précis et leur périmètre ; elles n’acquittent pas tous les chantiers ouverts.
+Une passe de géographie doit encore vérifier les accès, collisions, annulations et retours sur les données complètes, dans les deux sens. Une altitude absente ne doit pas être remplacée par une mesure inventée.
+
+Ce suivi ne signifie ni « jeu fini » ni « commercialisable ». Les rapports du lot décrivent seulement le programme et les scénarios réellement vérifiés.
