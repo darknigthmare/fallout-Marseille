@@ -87,3 +87,12 @@ Le registre `v070Secours` reste distinct de tous les choix politiques et réserv
 [**Le faux midi — cigales, balise et terrain**](docs/LORE_CIGALES_FAUX_MIDI.md) poursuit `9757fad0a3d95d5a9384b39bf1a8a59587d11fc3` par une rencontre indépendante au départ de Font de Mai. Aline observe trois adultes autour d’un relais agricole perturbé. Les crissements sont annoncés et évitables ; la coupure manuelle permet une résolution sans abattre les insectes. Les survivantes rejoignent progressivement des fissures, sans effacer les blessures ou les pertes.
 
 Les individus réemploient le modèle régional existant, ses ailes, pattes et parties ciblables. Ce lot n’est ni une nouvelle espèce, ni Midi-Zéro, ni un changement de toute l’IA du monde. `v071Cigales` conserve santé, effets, observations, coupure et retrait. Le constat rapporte 65 capsules une seule fois, sans prime par insecte tué. Les autres campagnes et les sources géographiques restent distinctes.
+
+
+## Bestiaire urbain : Les dents du réseau
+
+[**Les dents du réseau — rats-câbles et maintenance**](docs/LORE_RATS_CABLES.md) part de `38a0bd2aff02303dc6c80357915eaf45225eeef2`, après intégration du Faux midi. Djamila Rey reçoit le joueur dans une annexe fictionnelle accessible depuis le relais de Saint-Charles. Trois rats du modèle régional existant occupent le dépôt ; ils rongent l’isolant, ne mangent pas l’électricité.
+
+Patrouilles, morsures annoncées, tirs et blessures sont persistants. L’isolation, le volet et l’appât réservé permettent le départ progressif des survivants. Les morts ne sont pas effacés. Deux gaines doivent ensuite être posées aux armoires et le tableau réarmé : six lampes se stabilisent réellement. Les trois constats sont calculés à partir des pertes ; 60 capsules récompensent la réception une seule fois.
+
+`v072Rats` reste distinct des autres registres. La scène ne remet pas de train en circulation et ne simule ni un réseau d’égouts complet ni la vie entière des animaux réfugiés. Le chapitre détaille les limites, les contrôles de sauvegarde et les scénarios validés.
