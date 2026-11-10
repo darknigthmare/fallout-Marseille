@@ -55,6 +55,10 @@ jobs:
           changed=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
           assert set(changed)==set(preimages),changed
           PY
+      - name: Apply reviewed identity and documentation corrections
+        run: |
+          python delivery/retrouvailles-import/review.py
+          git add src/v050/10u_gabians_runtime.js tests/expansion/retrouvailles_browser_smoke.py docs/ETAT_LORE_MANQUANTS.md docs/BIBLE_LORE_FALLOUT_MISTRAL.md docs/LORE_PIGEONS_POSTE_RESTANTE.md
       - name: Syntax and all lore tests
         run: |
           for source in src/v050/10*.js; do node --check "$source"; done
@@ -128,7 +132,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add src/game.js index.html JOUER_FALLOUT_MISTRAL_v0.50.html sw.js
-          git rm -- delivery/retrouvailles-import/part00.b64 delivery/retrouvailles-import/part01.b64
+          git rm -- delivery/retrouvailles-import/part00.b64 delivery/retrouvailles-import/part01.b64 delivery/retrouvailles-import/review.py
           git diff --cached --stat
           git commit -m 'feat(lore): retrouver les propriétaires et éprouver six reprises des oiseaux'
           git push origin HEAD:${GITHUB_REF_NAME}

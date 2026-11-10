@@ -1,0 +1,25 @@
+from pathlib import Path
+import hashlib
+root=Path('.')
+p=root/'src/v050/10u_gabians_runtime.js';s=p.read_text()
+a="speaker(title,'AU COMPTOIR DE LA CONSIGNE','OT')";b="speaker(title,'AU COMPTOIR DE LA CONSIGNE',title.slice(0,2).toLocaleUpperCase('fr-FR'))";assert s.count(a)==1;s=s.replace(a,b)
+a="speaker(title,id==='nora'?'CONSIGNE DU VIEUX-PORT':'LES OBJETS TROUVÉS','NF')";b="speaker(title,id==='nora'?'CONSIGNE DU VIEUX-PORT':id.startsWith('owner:')?'AU COMPTOIR DE LA CONSIGNE':'LES OBJETS TROUVÉS',id.startsWith('owner:')?title.slice(0,2).toLocaleUpperCase('fr-FR'):id==='nora'?'NF':'OT')";assert s.count(a)==1;s=s.replace(a,b);p.write_text(s)
+p=root/'tests/expansion/retrouvailles_browser_smoke.py';s=p.read_text()
+a=' render(){__G73_QA.render();';b=" drawOwner(){const pos=state.player.pos.slice();sky?.draw(currentEnv(),performance.now());renderer.render(collectDraws(gameClock),{pos,dir:vNorm([0,-.1,1]),fov:65},currentEnv());},\n render(){__G73_QA.render();";assert s.count(a)==1;s=s.replace(a,b)
+a="        page.keyboard.press('e')\n    try:";b="        ev('__OWNERS_QA.drawOwner()');page.keyboard.press('e')\n    try:";assert s.count(a)==1;s=s.replace(a,b)
+a="        old=info['old'];inv=info['inv']";b="        old=info['old'];inv=info['inv']\n        # Retire seed-only intro overlays before capturing the authored court.\n        ev('__G73_QA.render()')";assert s.count(a)==1;s=s.replace(a,b)
+a="            choose(question);check('personal memory '+key,len(page.locator('#dialogueLine').inner_text())>90);choose('Revenir.')";b="            initials={'clef':'ÉL','bague':'MI','sifflet':'RA'}[key];before=page.locator('#speakerInitials').inner_text()\n            choose(question);check('personal memory '+key,len(page.locator('#dialogueLine').inner_text())>90)\n            check('correct owner identity in dialogue and memory '+key,before==initials and page.locator('#speakerInitials').inner_text()==initials);choose('Revenir.')";assert s.count(a)==1;s=s.replace(a,b)
+p.write_text(s)
+print('Owner identity and screenshot fixture corrected; gameplay and saves unchanged.')
+s=p.read_text();old="        ev('__MISTRAL_DEBUG.startStory()');page.wait_for_timeout(2300)";new="        ev('__MISTRAL_DEBUG.startStory()');page.wait_for_function('__MISTRAL_DEBUG.getState().v035.prologue.titleSeen && document.getElementById(\"v35pTitle\").classList.contains(\"hidden\")')";assert s.count(old)==1;p.write_text(s.replace(old,new))
+p=root/'docs/ETAT_LORE_MANQUANTS.md';s=p.read_text();old='# Lore — point de reprise après La part des absents\n';new='# Lore — point de reprise après De main en main\n\n> **Lecture actuelle :** Éloi, Mina et Rachid sont présents et les remises personnelles sont jouables. Six scénarios de reprise à froid des oiseaux sont ajoutés ; leurs résultats et le programme exact figurent dans `verification/retrouvailles/QA.json`. Les sections antérieures ci-dessous conservent leur état historique, avant les actualisations placées en fin de document. Elles ne doivent pas être relues comme la liste actuelle des manques.\n\n## Historique des audits et des étapes précédentes\n';assert s.count(old)==1;p.write_text(s.replace(old,new))
+p=root/'docs/BIBLE_LORE_FALLOUT_MISTRAL.md';s=p.read_text();old='descend les paniers et rapporte les objets à Nora.';new='descend les paniers et rapporte les objets à Nora ou à leurs propriétaires présents au comptoir.';assert s.count(old)==1;p.write_text(s.replace(old,new))
+p=root/'docs/LORE_PIGEONS_POSTE_RESTANTE.md';s=p.read_text();old='| Tests locaux de logique et parcours instrumentés | Reprise à froid certifiée pour ces deux missions ou partie humaine complète |';new='| Tests de logique, parcours instrumentés et six scénarios de reprise à froid propres aux oiseaux (voir le rapport actuel) | Partie humaine complète, coupure brutale du système ou tout navigateur et tout matériel |';assert s.count(old)==1;s=s.replace(old,new);s+='\n## Actualisation après De main en main\n\nLe rapport actuel est `verification/retrouvailles/QA.json`. Il distingue les six reprises des oiseaux, le test historique des rats et les parcours instrumentés. Les deux missions ont désormais leur propre suite de fermeture et relance de Chromium ; les anciens rapports locaux restent des historiques. Les propriétaires de la consigne voisine sont incarnés, sans modifier les deux destinataires de cette cour ni les politiques de Poste Restante.\n';p.write_text(s)
+expected={
+ 'src/v050/10u_gabians_runtime.js':'37d023897fe0ed1b493b849eef8036a19ed6278713f8b3f11416c224a86d2f1e',
+ 'tests/expansion/retrouvailles_browser_smoke.py':'8b25e323b0112d3bba0518d0c93790dc30a34b404fe426c2518a351db379b1d0',
+ 'docs/ETAT_LORE_MANQUANTS.md':'e00512837efdc3726d0340cb6067a1caf21b9d9fd2d4cee8319894f2c080b066',
+ 'docs/BIBLE_LORE_FALLOUT_MISTRAL.md':'c304c24e9a86443b2081cfa37441d79cd347146558809ac61cf1f3110c9f328e',
+ 'docs/LORE_PIGEONS_POSTE_RESTANTE.md':'57e60b4c84aa3828c3a49f4e07ee270ca6a4d99de7a36f5b421565ffb0c8b301'
+}
+for name,h in expected.items():assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==h,name
