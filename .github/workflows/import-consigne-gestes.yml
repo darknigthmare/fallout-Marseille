@@ -1,17 +1,18 @@
-name: Import verified consignment gestures
+name: Publish verified consignment gestures
 on:
   push:
     branches: [feature/lore-consigne-gestes-import]
     paths: ['delivery/consigne-gestes-import/**', '.github/workflows/import-consigne-gestes.yml']
 permissions:
   contents: write
+  actions: read
 concurrency:
   group: import-consigne-gestes-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  import-and-verify:
+  publish-verified:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,7 +21,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify exact source preimages and apply reviewed patch
+      - name: Retrieve exact previously validated artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: fallout-mistral-gestes-03934d945b78eaa2eb8c578f9eda6e10a65fdc88
+          run-id: 42917085993
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: /tmp/gestes-canonical
+      - name: Apply verified source patch without changing workflow files
         run: |
           python - <<'PY'
           import base64,hashlib,json,lzma,pathlib,subprocess
@@ -41,100 +49,46 @@ jobs:
           assert set(changed)==set(meta['preimages']),changed
           for name,expected in meta['postimages'].items():
             assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==expected,name
+            if not name.startswith('.github/'):
+              assert pathlib.Path(name).read_bytes()==(pathlib.Path('/tmp/gestes-canonical')/name).read_bytes(),name
+          subprocess.run(['git','restore','--source=HEAD','--staged','--worktree','.github/workflows/lore-regression.yml'],check=True)
+          assert not subprocess.check_output(['git','diff','--cached','--name-only','--','.github'],text=True).strip()
           PY
-      - name: Syntax and all lore tests
+      - name: Rebuild exact game and repeat logic regressions
         shell: bash
         run: |
           set -euo pipefail
           for source in src/v050/10*.js; do node --check "$source"; done
-          python -m py_compile tests/expansion/gestes_browser_smoke.py
           node --test tests/expansion/lore_*.cjs | tee /tmp/gestes-lore.log
-      - name: Canonical full-source build and deterministic check
-        run: |
           python3 tools/build_single.py
           python3 tools/build_single.py --check
           node --check src/game.js
-          grep -q 'MistralConsigneGestures' src/game.js
-          sha256sum index.html src/game.js sw.js
-      - name: Four territory regressions
-        run: |
           node tests/expansion/city_streaming.cjs
           node tests/expansion/city_wait_cancel.test.cjs
           node tests/expansion/city_partition_seams.test.cjs
           node tests/expansion/city_geometry_identity.test.cjs
-      - name: Isolated browser environment
-        run: |
-          python -m pip install playwright==1.57.0
-          python -m playwright install --with-deps chromium
-      - name: Six bird cold restarts
-        run: python tests/expansion/birds_cold_save_smoke.py --html index.html --output verification/gestes/ci/birds-cold
-      - name: Historical rat cold restarts
-        run: python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/gestes/ci/rats-cold
-      - name: Sixteen instrumented browser scenarios
-        run: |
-          for suite in gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
-            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/gestes/ci/${suite}"
-          done
-      - name: Write canonical report from actual successful results
+      - name: Verify canonical identity and retain actual validation provenance
         run: |
           python - <<'PY'
-          import hashlib,json,os,pathlib,re
-          root=pathlib.Path('verification/gestes');ci=root/'ci'
-          digest=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-          outputs={p:digest(p) for p in ['index.html','JOUER_FALLOUT_MISTRAL_v0.50.html','src/game.js','sw.js']}
-          html=outputs['index.html'];assert html==outputs['JOUER_FALLOUT_MISTRAL_v0.50.html']
-          suites='gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie'.split()
-          reports={}
-          for suite in suites+['birds-cold','rats-cold']:
-            candidates=[]
-            for p in (ci/suite).glob('*.json'):
-              v=json.loads(p.read_text())
-              if isinstance(v,dict) and 'passed' in v and 'html_sha256' in v:candidates.append((p,v))
-            assert len(candidates)==1,(suite,candidates)
-            p,v=candidates[0];assert v['html_sha256']==html and not v.get('errors'),suite
-            assert v.get('complete',True),suite
-            reports[suite]={'passed':v['passed'],'errors':v.get('errors',[]),'report':str(p),'browser':v.get('browser'),'scope':v.get('scope')}
+          import hashlib,json,os,pathlib,re,shutil
+          canonical=pathlib.Path('/tmp/gestes-canonical')
+          source=canonical/'verification/gestes/QA.json'
+          assert hashlib.sha256(source.read_bytes()).hexdigest()=='19a82830e7c7113134d0ee541325a5c751782abac324c8ce27337cf6577c24a4'
+          qa=json.loads(source.read_text())
+          assert qa['canonical_ci']['run']==42917085993 and qa['canonical_ci']['lore_passed']==651 and qa['regular_browser_checks']==873
+          assert qa['canonical_outputs']['index.html']=='8b90aea815826c0442c9742b6279c144043b1db99ef954d967621a054713e677'
+          for name,expected in qa['canonical_outputs'].items():
+            actual=pathlib.Path(name).read_bytes()
+            assert hashlib.sha256(actual).hexdigest()==expected,name
+            assert actual==(canonical/name).read_bytes(),name
           log=pathlib.Path('/tmp/gestes-lore.log').read_text()
-          passed=int(re.search(r'^# pass (\d+)$',log,re.M)[1]);failed=int(re.search(r'^# fail (\d+)$',log,re.M)[1]);assert passed==651 and failed==0
-          local=json.loads((root/'QA_LOCAL.json').read_text())
-          report={'baseline':'348a3cb2385b91771112f8c772def4cb82bd8c36','canonical_ci':{'run':int(os.environ['GITHUB_RUN_ID']),'input_commit':os.environ['GITHUB_SHA'],'validation':'all preceding test steps succeeded','lore_passed':passed,'lore_failed':failed,'new_logic_tests':26,'full_source_build_and_check':True,'territory_regression_commands_passed':4},'canonical_outputs':outputs,'preview_byte_identical':local['preview_html_sha256']==html,'browser_suites':{s:reports[s] for s in suites},'regular_browser_checks':sum(reports[s]['passed'] for s in suites),'bird_cold_restart':reports['birds-cold'],'rat_cold_restart':reports['rats-cold'],'features':['Three post-save receive/recognise/keep gestures','Persistent visible key, ring and whistle reconstructed from existing handoffs','Reduced motion and paused menus','Completed objective leads to exit; optional handoffs marked as optional'],'save_schema_changed':False,'original_reward_caps_once':45,'limits':['Procedural stylized received-object gestures, not a continuous transfer from the player hand or counter.','Scripted camera/positions and synthetic origins in browser suites, not a human playthrough or full IGN traversal.','Cold suites cover prepared disk-backed Chromium restarts, not power loss or every browser.','No voice acting, owner departure routines, ferry or autonomous postal network.','Parallel PR17 COCHONNET is not incorporated.'],'counting_note':'Local repetitions are not additional distinct tests. QA_LOCAL is a historical local preview report.','publication_note':'This report records completed validation on the working tree before its source publication commit. It does not assert a main merge or deployment.'}
-          (root/'QA.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
-          print(json.dumps({'lore':passed,'browser':report['regular_browser_checks'],'bird_cold':reports['birds-cold']['passed'],'rat_cold':reports['rats-cold']['passed'],'html':html,'preview_byte_identical':report['preview_byte_identical']},indent=2))
+          assert re.search(r'^# pass 651$',log,re.M) and re.search(r'^# fail 0$',log,re.M)
+          shutil.copyfile(source,'verification/gestes/QA.json')
+          publication={'validation_run':42917085993,'validation_job':130182194919,'validation_result':'651 logic tests, 873 regular browser checks, 65 bird and 26 rat cold restart checks succeeded','validation_run_overall_result':'failure at source publication only: workflow write permission refused','program_artifact':13809798068,'evidence_artifact':13810707308,'publication_run':int(os.environ['GITHUB_RUN_ID']),'publication_input':os.environ['GITHUB_SHA'],'canonical_outputs_byte_identical':True,'logic_tests_repeated':651,'workflow_files_changed_by_bot':False,'note':'Game content is published separately from workflow cleanup. No main merge or deployment.'}
+          pathlib.Path('verification/gestes/PUBLICATION_RECOVERY.json').write_text(json.dumps(publication,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(publication,ensure_ascii=False,indent=2))
           PY
-      - name: Browser evidence including failures
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: mistral-gestes-evidence-${{ github.sha }}
-          path: verification/gestes/ci/
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: Canonical playable program and source delivery
-        uses: actions/upload-artifact@v4
-        with:
-          name: fallout-mistral-gestes-${{ github.sha }}
-          if-no-files-found: error
-          retention-days: 14
-          path: |
-            index.html
-            JOUER_FALLOUT_MISTRAL_v0.50.html
-            src/game.js
-            sw.js
-            LORE.md
-            src/v050/10*.js
-            src/v049/*.js
-            src/v046/04_lore.js
-            src/v042/00_catalog.js
-            tests/expansion/lore_*.cjs
-            tests/expansion/compagnons_fixture.cjs
-            tests/expansion/*browser_smoke.py
-            tests/expansion/*cold_save_smoke.py
-            docs/LORE*.md
-            docs/BIBLE_LORE_FALLOUT_MISTRAL.md
-            docs/ETAT_LORE_MANQUANTS.md
-            verification/gestes/QA.json
-            verification/gestes/QA_LOCAL.json
-      - name: Publish validated sources and generated game on isolated feature branch
+      - name: Publish source and generated game only
         run: |
           remote_head=$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)
           if [ "$remote_head" != "$GITHUB_SHA" ]; then
@@ -143,8 +97,9 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add src/game.js index.html JOUER_FALLOUT_MISTRAL_v0.50.html sw.js verification/gestes/QA.json
-          git rm -- delivery/consigne-gestes-import/part0.b64 delivery/consigne-gestes-import/part1.b64 delivery/consigne-gestes-import/part2.b64 delivery/consigne-gestes-import/meta.json .github/workflows/import-consigne-gestes.yml
+          git add src/game.js index.html JOUER_FALLOUT_MISTRAL_v0.50.html sw.js verification/gestes/QA.json verification/gestes/PUBLICATION_RECOVERY.json
+          git rm -- delivery/consigne-gestes-import/part0.b64 delivery/consigne-gestes-import/part1.b64 delivery/consigne-gestes-import/part2.b64 delivery/consigne-gestes-import/meta.json
+          test -z "$(git diff --cached --name-only -- .github)"
           git diff --cached --stat
           git commit -m 'feat(lore): gestes des propriétaires et objets conservés après restitution'
           git push origin HEAD:${GITHUB_REF_NAME}
