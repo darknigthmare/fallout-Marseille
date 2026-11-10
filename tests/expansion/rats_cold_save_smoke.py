@@ -1,7 +1,8 @@
 """Close/relaunch Chromium with its real disk-backed profile, then click Continue.
-Production HTML is loaded unchanged from the same offline file path on resume. The
-fixture seed uses existing rat/port helpers; no MemoryStorage or save import occurs
-on resume. No real IGN return, human campaign or power-loss guarantee is asserted.
+Production HTML is loaded unchanged from the same offline file path on resume.
+Fixture setup constructs the existing depot and uses its runtime to prepare saves.
+No MemoryStorage, save import or seed bridge runs on resume. No real IGN return,
+human campaign or power-loss guarantee is asserted.
 """
 from pathlib import Path
 import argparse, ast, hashlib, json, shutil, tempfile
@@ -19,14 +20,26 @@ def bridge(path):
 seed_bridge=bridge(root/'tests/expansion/lys_browser_smoke.py')+'\n'+bridge(root/'tests/expansion/rats_browser_smoke.py')
 seed_bridge+=r'''
 globalThis.__R72_COLD={
+ idle(){return gameStarted&&!zoneTransitioning&&!V046.busy&&!V047.pending;},
+ seed(scenario){
+  // Seed only: native port UI is covered by its own full browser suite.
+  __R72_QA.setup();state.v042.activeInterior=MistralRats.SITE;
+  state.v042.returnPoint=null;
+  loadZone(V042_INSTANCE_ZONE,{force:true,instance:true,noTravel:true,silent:true});
+  onGround=true;mode='PLAYING';
+  if(!world.v072Rats)throw Error('Fixture did not build the rat depot.');
+  return this.prepare(scenario);
+ },
  prepare(scenario){
-  const run=(type,id)=>{const p=['open','finish'].includes(type)?'djamila':type==='note'?id:['isolate','restore'].includes(type)?'tableau':type==='repair'?id:type;__R72_QA.near(p);if(!__MISTRAL_DEBUG.v072RatsAction(type,id))throw Error('fixture refused '+type);};
+  const run=(type,id)=>{const p=['open','finish'].includes(type)?'djamila':type==='note'?id:['isolate','restore'].includes(type)?'tableau':type==='repair'?id:type;__R72_QA.near(p);if(!__MISTRAL_DEBUG.v072RatsAction(type,id))throw Error('fixture refused '+type+': '+V027.message);};
   run('open');run('note','morsures');run('note','plan');run('isolate','manuel');run('gate');run('bait');
   if(scenario==='retreat'){
-   __R72_QA.wound('voie');__R72_QA.kill('retour');state.player.pos=[25,1.65,23];mode='PLAYING';
+   __R72_QA.wound('voie');__R72_QA.kill('retour');
+   state.player.pos=[25,1.65,23];mode='PLAYING';
    for(let i=0;i<15;i++)updateEnemies(.2);
    applyEnemyStatus(world.enemies.find(e=>e.r72Id==='armoire'),'burning',4);
-   applyEnemyStatus(world.enemies.find(e=>e.r72Id==='armoire'),'slow',5);updateEnemies(.2);
+   applyEnemyStatus(world.enemies.find(e=>e.r72Id==='armoire'),'slow',5);
+   updateEnemies(.2);
   }else{
    __R72_QA.ticks(100);run('kit');run('repair','eclairage');run('repair','signal');run('restore');run('finish');
   }
@@ -44,9 +57,7 @@ checks=[];errors=[];runs=[]
 def check(label,ok):
  assert ok,label
  checks.append(label);print('PASS',label,flush=True)
-def choose(page,text):page.locator('#dialogueChoices button').filter(has_text=text).click()
-# The observation listener cannot supply or migrate a save. It pauses after the
-# native Continue handler to compare the exact checkpoint before another frame.
+# Only pauses observation after the native handler. Cannot supply/migrate saves.
 observer=r'''document.addEventListener('click',event=>{
  if(event.target.closest?.('#btnContinue'))queueMicrotask(()=>{
   const d=window.__MISTRAL_DEBUG;if(d?.getMode()==='PLAYING')d.pause();
@@ -64,18 +75,19 @@ with tempfile.TemporaryDirectory(prefix='mistral-offline-delivery-') as delivery
     try:
      page=context.pages[0];page.set_default_timeout(10000);page.on('pageerror',lambda e:errors.append(e.stack))
      page.goto(url,wait_until='load');page.wait_for_function('!!window.__MISTRAL_DEBUG?.v072RatsInfo')
-     page.evaluate('__MISTRAL_DEBUG.startStory()');page.wait_for_timeout(800)
-     page.evaluate('__R72_QA.setup()');page.keyboard.press('e');choose(page,'Aiguilleurs ·');choose(page,'Rejoindre le dépôt')
-     seed_state=page.evaluate('(s)=>__R72_COLD.prepare(s)',scenario)
+     page.evaluate('__MISTRAL_DEBUG.startStory()');page.wait_for_function('__R72_COLD.idle()')
+     seed_state=page.evaluate('(s)=>__R72_COLD.seed(s)',scenario)
      expected=seed_state['live'];envelope=json.loads(seed_state['raw']);stored=envelope.get('snapshot',envelope);expected_ledger=expected['ledger']
      check(scenario+': real LocalStorage persisted native save',page.evaluate('localStorage instanceof Storage') and stored['v072Rats']==expected_ledger)
      if scenario=='retreat':
       check('checkpoint: wounded survivor partway to refuge',-22000<expected_ledger['actors']['voie']['z']<-8000 and expected_ledger['actors']['voie']['legs']>0)
       check('checkpoint: death and active effects recorded',expected_ledger['actors']['retour']['hp']==0 and expected_ledger['actors']['armoire']['burn']>0 and expected_ledger['actors']['armoire']['slow']>0)
+    except Exception:
+     page.screenshot(path=str(a.output/(scenario+'-seed-failure.png')))
+     print('SEED DIAGNOSTIC',page.evaluate('({mode:__MISTRAL_DEBUG.getMode(),world:__MISTRAL_DEBUG.getWorld(),rats:__MISTRAL_DEBUG.v072RatsInfo(),continue:__MISTRAL_DEBUG.v050ContinueInfo()})'),flush=True)
+     raise
     finally:context.close()
-    # The same offline launch path now contains unchanged production bytes.
     entry.write_bytes(production)
-    # A new Chromium process opens the same profile. No storage state is imported.
     context=pw.chromium.launch_persistent_context(profile,**opts)
     try:
      page=context.pages[0];page.set_default_timeout(10000);page.on('pageerror',lambda e:errors.append(e.stack));page.add_init_script(observer)
@@ -102,8 +114,10 @@ with tempfile.TemporaryDirectory(prefix='mistral-offline-delivery-') as delivery
       check('retreat: dead rat stays dead, two survivors stay active',sum(e['alive'] for e in got['enemies'])==2)
      runs.append({'scenario':scenario,'storage_key':seed_state['key'],'same_disk_profile':True,'resume_html_sha256':sha,'native_continue':True})
     except Exception:
-     page.screenshot(path=str(a.output/(scenario+'-failure.png')));print('RESUME INFO',page.evaluate('__MISTRAL_DEBUG.v072RatsInfo()'),flush=True);raise
+     page.screenshot(path=str(a.output/(scenario+'-resume-failure.png')))
+     print('RESUME DIAGNOSTIC',page.evaluate('({mode:__MISTRAL_DEBUG.getMode(),world:__MISTRAL_DEBUG.getWorld(),rats:__MISTRAL_DEBUG.v072RatsInfo(),continue:__MISTRAL_DEBUG.v050ContinueInfo()})'),flush=True)
+     raise
     finally:context.close()
   check('no JavaScript exceptions during cold resumes',not errors)
-result={'html_sha256':sha,'passed':len(checks),'checks':checks,'errors':errors,'runs':runs,'scope':'Native disk-backed Chromium LocalStorage at an offline file URL and full process restart followed by native Continue on unchanged production HTML. Seed checkpoint uses existing model/runtime helpers and a synthetic origin. Observer pauses immediately after Continue for exact comparison. No real IGN exterior return, power-loss or human campaign certification.'}
+result={'html_sha256':sha,'passed':len(checks),'checks':checks,'errors':errors,'runs':runs,'scope':'Native disk-backed Chromium LocalStorage at an offline file URL and full process restart followed by native Continue on unchanged production HTML. Fixture-only seed constructs the authored depot and prepares its checkpoint through runtime helpers; it does not verify port travel. Observer pauses immediately after Continue for exact comparison. No real IGN exterior return, power-loss or human campaign certification.'}
 (a.output/'RATS_COLD_SAVE.json').write_text(json.dumps(result,ensure_ascii=False,indent=2));print(json.dumps(result,ensure_ascii=False,indent=2))
