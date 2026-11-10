@@ -14,13 +14,13 @@ const MistralGabians=(()=>{
  };
  const OIDS=Object.keys(OBJECTS),start=id=>[BIRDS[id].side*10000,4400,-7000],feed=id=>[BIRDS[id].side*22000,400,-20000];
  const patrol=id=>{const x=BIRDS[id].side;return[[x*10000,4400,-7000],[x*14000,5000,-9000],[x*14000,4400,-5000],[x*10000,4400,-7000]];};
- function fresh(){return {schema:1,revision:0,opened:false,manifest:false,lures:Object.fromEntries(IDS.map(id=>[id,false])),platforms:Object.fromEntries(IDS.map(id=>[id,{method:null,drop:0}])),objects:Object.fromEntries(OIDS.map(id=>[id,'nest'])),birds:Object.fromEntries(IDS.map(id=>[id,{hp:HP,wings:0,legs:0,pos:start(id),phase:'guard',waypoint:0,burn:0,slow:0,cooldown:1800,wind:null,shot:null}])),finished:false,outcome:null};}
+ function fresh(){return {schema:2,revision:0,opened:false,manifest:false,lures:Object.fromEntries(IDS.map(id=>[id,false])),platforms:Object.fromEntries(IDS.map(id=>[id,{method:null,drop:0}])),objects:Object.fromEntries(OIDS.map(id=>[id,'nest'])),handoffs:Object.fromEntries(OIDS.map(id=>[id,null])),birds:Object.fromEntries(IDS.map(id=>[id,{hp:HP,wings:0,legs:0,pos:start(id),phase:'guard',waypoint:0,burn:0,slow:0,cooldown:1800,wind:null,shot:null}])),finished:false,outcome:null};}
  const vector=p=>Array.isArray(p)&&p.length===3&&p.every(Number.isSafeInteger)&&Math.abs(p[0])<=28000&&p[1]>=0&&p[1]<=6500&&p[2]>=-26000&&p[2]<=30000;
  const safeBird=a=>['fed','dead'].includes(a.phase)&&!a.burn&&!a.shot&&!a.wind;
  const settled=l=>IDS.every(id=>safeBird(l.birds[id]));
  const result=l=>{const n=IDS.filter(id=>l.birds[id].hp===0).length;return n===0?'vivants':n===2?'abattus':'mixte';};
  function migrate(raw){
-  if(raw==null)return fresh();if(typeof raw!=='object'||Array.isArray(raw)||raw.schema!==1)throw Error('Version de consigne inconnue.');
+  if(raw==null)return fresh();if(typeof raw!=='object'||Array.isArray(raw)||![1,2].includes(raw.schema))throw Error('Version de consigne inconnue.');
   if(!uint(raw.revision))throw Error('Révision invalide.');const l=fresh();l.revision=raw.revision;
   for(const k of ['opened','manifest','finished']){if(typeof raw[k]!=='boolean')throw Error('Carnet incomplet.');l[k]=raw[k];}
   for(const id of IDS){
@@ -35,19 +35,25 @@ const MistralGabians=(()=>{
    if(p.method&&!['fed','falling','dead'].includes(a.phase))throw Error('Panier déplacé sous un oiseau en garde.');
   }
   for(const id of OIDS){const v=raw.objects?.[id];if(!['nest','bag','returned'].includes(v)||v!=='nest'&&l.platforms[OBJECTS[id].nest].drop!==DROP||v==='returned'&&!l.opened)throw Error('Objet rendu sans collecte.');l.objects[id]=v;}
+  // Schema 1 tracked return to Nora, never a personal handoff. Do not invent it.
+  if(raw.schema===2){
+   if(!raw.handoffs||typeof raw.handoffs!=='object'||Array.isArray(raw.handoffs))throw Error('Reçus personnels manquants.');
+   for(const id of OIDS){const v=raw.handoffs[id];if(![null,'direct','consigne'].includes(v)||v!==null&&l.objects[id]!=='returned')throw Error('Remise personnelle contradictoire.');l.handoffs[id]=v;}
+  }
   if(![null,'vivants','mixte','abattus'].includes(raw.outcome)||l.finished&&(!l.opened||!settled(l)||OIDS.some(id=>l.objects[id]!=='returned')||raw.outcome!==result(l))||!l.finished&&raw.outcome!==null)throw Error('Réception incohérente.');l.outcome=raw.outcome;return l;
  }
- function actionPoint(type,id){if(['open','return','finish'].includes(type))return 'nora';if(type==='manifest')return 'registre';if(['lure','lower'].includes(type)&&IDS.includes(id))return type+':'+id;if(type==='take'&&own(OBJECTS,id))return 'basket:'+OBJECTS[id].nest;return null;}
+ function actionPoint(type,id){if(type==='deliver'&&own(OBJECTS,id))return 'owner:'+id;if(['open','return','finish'].includes(type))return 'nora';if(type==='manifest')return 'registre';if(['lure','lower'].includes(type)&&IDS.includes(id))return type+':'+id;if(type==='take'&&own(OBJECTS,id))return 'basket:'+OBJECTS[id].nest;return null;}
  function act(s,a={},ctx={}){
   const point=actionPoint(a.type,a.id);if(!point||ctx.blocked||!ctx.local||!ctx.near||ctx.point!==point)throw Error('Rejoignez la personne ou le panier concerné.');
   if(!Number.isFinite(s?.player?.hp)||s.player.hp<=0||!uint(s.player.caps))throw Error('Personnage indisponible.');
-  const l=migrate(s.v073Gabians);if(l.finished||l.revision===999999||ctx.revision!==undefined&&ctx.revision!==l.revision)throw Error('Carnet clos, plein ou conversation périmée.');let cost=0,reward=0;
+  const l=migrate(s.v073Gabians);if(l.finished&&a.type!=='deliver'||l.revision===999999||ctx.revision!==undefined&&ctx.revision!==l.revision)throw Error('Carnet clos, plein ou conversation périmée.');let cost=0,reward=0;
   if(a.type==='open'){if(l.opened)throw Error('Mission déjà ouverte.');l.opened=true;}
   else if(a.type==='manifest'){if(l.manifest)throw Error('Registre déjà lu.');l.manifest=true;}
   else if(a.type==='lure'){const b=l.birds[a.id];if(l.lures[a.id]||b.hp===0)throw Error('Appât inutile.');l.lures[a.id]=true;b.phase='lure';b.waypoint=0;b.wind=null;}
   else if(a.type==='lower'){const p=l.platforms[a.id],b=l.birds[a.id];if(p.method!==null||!safeBird(b)||!['manuel','technique'].includes(a.method))throw Error('Attendez que le gabian soit à l’écart et le danger passé.');if(a.method==='technique'){if(!Number.isFinite(s.character?.special?.I)||s.character.special.I<5)throw Error('Intelligence 5 nécessaire.');if(!uint(s.inventory?.scrap)||s.inventory.scrap<1)throw Error('Une ferraille est nécessaire.');cost=1;}p.method=a.method;}
   else if(a.type==='take'){if(l.objects[a.id]!=='nest'||l.platforms[OBJECTS[a.id].nest].drop!==DROP)throw Error('Descendez entièrement le panier.');l.objects[a.id]='bag';}
   else if(a.type==='return'){if(!l.opened||!own(OBJECTS,a.id)||l.objects[a.id]!=='bag')throw Error('Vous ne portez pas cet objet pour Nora.');l.objects[a.id]='returned';}
+  else if(a.type==='deliver'){if(!l.opened||!own(OBJECTS,a.id)||l.handoffs[a.id]!==null||!['bag','returned'].includes(l.objects[a.id]))throw Error('Retrouvez cet objet avant de le remettre à son propriétaire.');l.handoffs[a.id]=l.objects[a.id]==='bag'?'direct':'consigne';l.objects[a.id]='returned';}
   else if(a.type==='finish'){if(!l.opened||OIDS.some(id=>l.objects[id]!=='returned')||!settled(l))throw Error('Rapportez les trois objets et attendez la fin des dangers.');l.finished=true;l.outcome=result(l);reward=45;}
   else throw Error('Action inconnue.');if(s.player.caps+reward>999999)throw Error('Compte plein.');const out=copy(s);if(cost)out.inventory.scrap-=cost;out.player.caps+=reward;l.revision++;out.v073Gabians=l;return out;
  }
@@ -77,14 +83,14 @@ const MistralGabians=(()=>{
   if(events.length)l.revision++;return{ledger:l,events};
  }
  function briefing(raw){const l=migrate(raw),bag=OIDS.filter(id=>l.objects[id]==='bag').length,n=OIDS.filter(id=>l.objects[id]==='returned').length;
-  if(l.finished)return{vivants:'Les trois objets attendent leurs propriétaires. Les deux gabians sont vivants, à l’écart des paniers.',mixte:'Les trois objets sont revenus. Un gabian a été tué ; le carnet ne l’efface pas.',abattus:'Les objets sont revenus, les deux gabians sont morts. Nora paie la récupération, pas les oiseaux.'}[l.outcome];
+  if(l.finished){const n=OIDS.filter(id=>l.handoffs[id]!==null).length;return {vivants:'Les deux gabians sont vivants, à l’écart des paniers.',mixte:'Un gabian a été tué ; le carnet ne l’efface pas.',abattus:'Les deux gabians sont morts. Nora paie la récupération, pas les oiseaux.'}[l.outcome]+' '+(n===3?'Éloi, Mina et Rachid ont retrouvé leurs affaires.':n+'/3 objet(s) remis en personne. Les autres restent à la consigne ; leurs propriétaires attendent au comptoir.');}
   if(!l.opened)return 'Nora garde une consigne près du Vieux-Port. Trois objets manquent à leurs propriétaires.';
   if(n===3)return settled(l)?'Les trois objets sont rendus. Parlez à Nora.':'Les objets sont rendus. Attendez la fin des dangers.';
-  if(bag)return `${bag} objet(s) dans votre sac de mission ; ${n}/3 rendu(s) à Nora.`;
+  if(bag)return `${bag} objet(s) dans votre sac de mission ; ${n}/3 rendu(s). Remise possible à Nora ou aux propriétaires au comptoir.`;
   const id=IDS.find(id=>OIDS.some(o=>OBJECTS[o].nest===id&&l.objects[o]==='nest'));
   if(id&&!safeBird(l.birds[id]))return l.lures[id]?'Laissez le gabian rejoindre les restes de poisson. Un oiseau blessé vole moins vite.':'Déposez les restes à l’écart, ou affrontez les gabians. Le registre donne le nom des propriétaires.';
   if(id&&l.platforms[id].drop!==DROP)return l.platforms[id].method?'Le panier descend. Ne restez pas dessous.':'Actionnez le palan pour descendre le panier sans détruire le nid.';
-  return 'Prenez chaque objet dans les paniers abaissés, puis rapportez-le à Nora.';
+  return 'Prenez chaque objet dans les paniers abaissés, puis rendez-le à Nora ou à son propriétaire au comptoir.';
  }
  return{SITE,RELAY,HP,DROP,IDS:IDS.slice(),BIRDS:copy(BIRDS),OBJECTS:copy(OBJECTS),fresh,migrate,act,hit,effect,advance,projectilePosition,briefing,actionPoint,settled,result};
 })();

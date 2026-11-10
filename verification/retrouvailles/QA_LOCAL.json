@@ -1,0 +1,40 @@
+{
+  "baseline": "9849cb57512b93379e27070f8145c23180005cd4",
+  "local_html_sha256": "17a8336baa22874f8fa5ecd0d2b635b2525213210f6f3232064d47c07e2fe88e",
+  "local_build_method": "Exact module replacement within the previously downloaded canonical program. Full compiler verification pending CI.",
+  "logic": {
+    "passed": 625,
+    "failed": 0,
+    "new_owner_tests": 15
+  },
+  "browser": {
+    "retrouvailles": {
+      "passed": 43,
+      "errors": [],
+      "html_sha256": "17a8336baa22874f8fa5ecd0d2b635b2525213210f6f3232064d47c07e2fe88e"
+    },
+    "gabians": {
+      "passed": 66,
+      "errors": [],
+      "html_sha256": "17a8336baa22874f8fa5ecd0d2b635b2525213210f6f3232064d47c07e2fe88e"
+    },
+    "pigeons": {
+      "passed": 69,
+      "errors": [],
+      "html_sha256": "17a8336baa22874f8fa5ecd0d2b635b2525213210f6f3232064d47c07e2fe88e"
+    }
+  },
+  "browser_checks": 178,
+  "cold_local": {
+    "status": "blocked_by_browser_policy",
+    "error": "net::ERR_BLOCKED_BY_ADMINISTRATOR at file URL",
+    "passed": 0,
+    "note": "No policy bypass. The six seed preparations were checked separately using MemoryStorage; this is not a disk restart validation."
+  },
+  "canonical_ci": "pending",
+  "limits": [
+    "Instrumented positions and synthetic relay, not a human playthrough or IGN traversal.",
+    "No new handover animation, dubbing, whistle audio or maritime traffic.",
+    "COCHONNET PR 17 is separate; do not overwrite its binary installation."
+  ]
+}

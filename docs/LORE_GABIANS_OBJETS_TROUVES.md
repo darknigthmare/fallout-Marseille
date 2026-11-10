@@ -1,5 +1,7 @@
 # La consigne des gabians — Les objets trouvés
 
+> **Actualisation :** le présent chapitre décrit le lot initial. La publication des oiseaux est dans la PR 18 ; [De main en main](LORE_GABIANS_RESTITUTIONS.md) ajoute désormais les trois propriétaires présents, leurs remises personnelles et le schéma 2. Les limites historiques ci-dessous ne doivent pas être lues comme le statut de cette extension.
+
 ## Place dans Fallout: Mistral
 
 Ce lot prolonge les rats-câbles fusionnés dans `8924be65a69f7335364b09934bc908bf17d0973e`. Il est livré localement avec son programme et son correctif source : il n'est pas présenté comme déjà publié sur GitHub.

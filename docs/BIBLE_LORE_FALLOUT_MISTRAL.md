@@ -616,7 +616,7 @@ Le chant peut réduire la précision, perturber les communications, vider les po
 
 Ils volent objets brillants, munitions, clés et composants. Les nids servent de caches dynamiques.
 
-**Couverture jouable — Les objets trouvés :** deux gabians du rig existant gardent trois objets personnels dans une consigne fictionnelle. Le joueur détourne les oiseaux ou les affronte, descend les paniers et rapporte les objets à Nora. Ces caches sont finies et persistantes ; le vol dynamique dans l’inventaire et les autres espèces de cette liste restent des objectifs de la bible, non des mécaniques livrées par ce chapitre. Voir [la consigne](LORE_GABIANS_OBJETS_TROUVES.md).
+**Couverture jouable — Les objets trouvés :** deux gabians du rig existant gardent trois objets personnels dans une consigne fictionnelle. Le joueur détourne les oiseaux ou les affronte, descend les paniers et rapporte les objets à Nora ou à leurs propriétaires présents au comptoir. Ces caches sont finies et persistantes ; le vol dynamique dans l’inventaire et les autres espèces de cette liste restent des objectifs de la bible, non des mécaniques livrées par ce chapitre. Voir [la consigne](LORE_GABIANS_OBJETS_TROUVES.md).
 
 ### Rats
 
@@ -1284,3 +1284,9 @@ La poste conserve plusieurs moyens de transport. Un pigeon voyageur ne remplace 
 Mirette Valon tient le guichet ; Aïcha Rouanet et Marin Delmas reçoivent chacun un pli et donnent une réponse. Un départ n’est jamais présenté comme un reçu. Les pigeons sont ici des animaux habitués au réseau, non des monstres destinés à fournir du butin. Cette distinction ne retire pas les autres variantes de pigeons du canon documentaire : leur agressivité et leur comportement devront être implémentés séparément.
 
 Le chapitre spécialisé [LORE_PIGEONS_POSTE_RESTANTE.md](LORE_PIGEONS_POSTE_RESTANTE.md) décrit les personnages, les deux routes, la confidentialité et les limites de l’incarnation. Le statut d’implémentation ne transforme pas ce fan-lore en canon officiel.
+
+## 65. De main en main — les propriétaires de la consigne
+
+Éloi, Mina et Rachid ne sont plus seulement les noms de la clé, de la bague et du sifflet. Présents devant le comptoir de Nora Ferrand, ils reconnaissent leurs objets et racontent chacun un souvenir propre. La récupération peut toujours être close par Nora ; l’épilogue personnel est facultatif, sans seconde prime. Une ancienne restitution à la consigne ne devient pas rétroactivement une rencontre avec son propriétaire.
+
+L’annexe [LORE_GABIANS_RESTITUTIONS.md](LORE_GABIANS_RESTITUTIONS.md) précise les remises, les reçus, la migration et les limites. Les bateaux et le signal évoqués dans les dialogues ne sont pas de nouveaux véhicules ou effets sonores implémentés.

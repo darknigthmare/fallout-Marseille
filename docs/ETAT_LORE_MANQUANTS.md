@@ -1,4 +1,8 @@
-# Lore — point de reprise après La part des absents
+# Lore — point de reprise après De main en main
+
+> **Lecture actuelle :** Éloi, Mina et Rachid sont présents et les remises personnelles sont jouables. Six scénarios de reprise à froid des oiseaux sont ajoutés ; leurs résultats et le programme exact figurent dans `verification/retrouvailles/QA.json`. Les sections antérieures ci-dessous conservent leur état historique, avant les actualisations placées en fin de document. Elles ne doivent pas être relues comme la liste actuelle des manques.
+
+## Historique des audits et des étapes précédentes
 
 Base examinée : `da8e4f99b5d08480101910088c64a4012bbca301`, après la première audience du Lys. Ce suivi prolonge les anciens audits sans attribuer leurs résultats à un nouveau programme. Un arc local jouable ne clôt pas une faction entière.
 
@@ -102,3 +106,11 @@ La suite **La bonne adresse** ajoute une cour indépendante, trois personnages, 
 **Restent ouverts :** les pigeons hostiles, le Général Biset, les réseaux de livraison entre véritables territoires IGN, les transports des oiseaux vers les relais, le recrutement de Camille, le doublage, les simulations d’accueil des destinataires et la navigation animale libre. Les gabians restent dans la même livraison ; leurs essais à froid après fermeture complète du navigateur ne sont pas certifiés par les anciennes validations des rats.
 
 **Livraison :** les versions locales Gabians/Pigeons sont réunies pour publication. Le statut exact de la PR et les empreintes canoniques se trouvent dans le rapport de livraison, pas dans une déclaration anticipée de fusion.
+
+## Actualisation — De main en main et reprises des oiseaux
+
+Base : PR 18, `9849cb57512b93379e27070f8145c23180005cd4`. **Propriétaires incarnés :** Éloi, Mina et Rachid sont maintenant présents à la consigne ; remise directe, remise depuis le comptoir, trois souvenirs, reçus matériels et épilogue facultatif. La prime originale reste unique. Le schéma 2 conserve les données du schéma 1 sans inventer des remises personnelles.
+
+**Vérification ajoutée :** six scénarios de reprise à froid propres aux oiseaux, distincts du test historique des rats, et un parcours des restitutions. Le résultat exact (local, CI, programme et empreinte) figure dans `verification/retrouvailles/QA.json` ; la présence du test ne vaut pas à elle seule réussite.
+
+**Restent ouverts :** animations de remise, doublage, routines et départ des propriétaires, vol dynamique de ressources, variantes hostiles des pigeons/Général Biset, réseau postal sur les vrais territoires IGN, écologie hors instance et navigation animale générale. La branche COCHONNET reste séparée. Les campagnes politiques, territoires maritimes et recrutements ne sont pas clos par cet épilogue.

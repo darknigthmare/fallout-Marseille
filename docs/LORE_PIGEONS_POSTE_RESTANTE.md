@@ -103,6 +103,10 @@ Le retour extérieur garde les règles communes du moteur : le monde conservé e
 | Route à pied avec escalier réellement traversable | Animation de sacoche ou prise en main détaillée |
 | Accusés de réception matériels et deux politiques de fin | Création d’un hôpital, réparation d’une pompe ou relocalisation des deux sœurs |
 | Registre, Pip-Boy, journal, radio textuelle et récompense unique | Pigeons hostiles, Général Biset, nouveaux compagnons recrutables |
-| Tests locaux de logique et parcours instrumentés | Reprise à froid certifiée pour ces deux missions ou partie humaine complète |
+| Tests de logique, parcours instrumentés et six scénarios de reprise à froid propres aux oiseaux (voir le rapport actuel) | Partie humaine complète, coupure brutale du système ou tout navigateur et tout matériel |
 
 Les rapports détaillent les scénarios exécutés, le HTML exact et les limites de l’assemblage local. Les chemins de vol et les déplacements de test ne valident pas la traversée de toutes les données IGN.
+
+## Actualisation après De main en main
+
+Le rapport actuel est `verification/retrouvailles/QA.json`. Il distingue les six reprises des oiseaux, le test historique des rats et les parcours instrumentés. Les deux missions ont désormais leur propre suite de fermeture et relance de Chromium ; les anciens rapports locaux restent des historiques. Les propriétaires de la consigne voisine sont incarnés, sans modifier les deux destinataires de cette cour ni les politiques de Poste Restante.

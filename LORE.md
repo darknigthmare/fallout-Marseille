@@ -107,3 +107,7 @@ Patrouilles, morsures annoncées, tirs et blessures sont persistants. L’isolat
 [**La bonne adresse**](docs/LORE_PIGEONS_POSTE_RESTANTE.md) prolonge la livraison locale des gabians par une mission indépendante de Poste Restante, accessible depuis Saint-Charles. Mirette, Aïcha et Marin habitent une cour fictionnelle à deux niveaux. Deux pigeons bagués retournent à leurs colombiers respectifs avec un pli, ou le joueur porte les plis par la passerelle. Le mauvais oiseau n’apprend pas une nouvelle adresse par simple étiquette.
 
 Le registre `v074Pigeons` sépare le départ, l’arrivée physique et la signature. Les vols et leurs positions, les trappes, les enveloppes et les reçus se sauvegardent. La clôture conserve les réponses sous pli ou affiche un bilan sans noms ; 50 capsules sont versées une fois. Les messages racontent des besoins locaux sans prétendre construire un hôpital ou réparer une pompe régionale. Ces oiseaux sont des acteurs neutres, pas la réalisation des pigeons hostiles ou du Général Biset.
+
+## Les affaires retrouvent leurs propriétaires
+
+[De main en main](docs/LORE_GABIANS_RESTITUTIONS.md) approfondit la consigne : Éloi, Mina et Rachid sont présents au comptoir, avec remise directe ou depuis le dépôt de Nora, reçus persistants et épilogue facultatif. La récupération conserve sa prime unique de 45 capsules ; une ancienne partie terminée ne recommence pas la mission.
