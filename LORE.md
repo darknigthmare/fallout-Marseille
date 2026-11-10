@@ -100,7 +100,7 @@ Patrouilles, morsures annoncées, tirs et blessures sont persistants. L’isolat
 
 ## Les objets trouvés — consigne des gabians
 
-[Chapitre de la consigne](docs/LORE_GABIANS_OBJETS_TROUVES.md) : Nora, deux gabians du modèle existant, trois objets personnels, paniers mobiles, restitution finie et conséquences persistantes. Lot livré localement après `8924be65` ; publication GitHub non effectuée. Pas de vol dans l’inventaire ordinaire ni de nouvelle espèce de pigeon annoncée.
+[Chapitre de la consigne](docs/LORE_GABIANS_OBJETS_TROUVES.md) : Nora, deux gabians du modèle existant, trois objets personnels, paniers mobiles, restitution finie et conséquences persistantes. Lot historiquement livré après `8924be65`, puis publié dans la PR 18 avec les pigeons et les propriétaires. Consulter les rapports de livraison pour le statut de fusion. Pas de vol dans l’inventaire ordinaire ni de nouvelle espèce de pigeon annoncée.
 
 ## Courrier de voisinage — La bonne adresse
 
@@ -111,3 +111,8 @@ Le registre `v074Pigeons` sépare le départ, l’arrivée physique et la signat
 ## Les affaires retrouvent leurs propriétaires
 
 [De main en main](docs/LORE_GABIANS_RESTITUTIONS.md) approfondit la consigne : Éloi, Mina et Rachid sont présents au comptoir, avec remise directe ou depuis le dépôt de Nora, reçus persistants et épilogue facultatif. La récupération conserve sa prime unique de 45 capsules ; une ancienne partie terminée ne recommence pas la mission.
+
+
+## Les gestes retrouvés
+
+[Gestes et objets conservés](docs/LORE_CONSIGNE_GESTES.md) : après une remise sauvegardée, Éloi garde sa clef, Mina remet sa bague et Rachid accroche son sifflet. Les trois accessoires sont reconstruits au chargement ; les gestes restent transitoires et respectent la réduction des mouvements. L'épilogue complet pointe ensuite vers la sortie du Vieux-Port, sans seconde prime.

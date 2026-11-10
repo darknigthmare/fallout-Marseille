@@ -1,0 +1,21 @@
+{
+  "baseline": "348a3cb2385b91771112f8c772def4cb82bd8c36",
+  "preview_html_sha256": "8b90aea815826c0442c9742b6279c144043b1db99ef954d967621a054713e677",
+  "method": "Exact verified baseline insertion of new ordered module. Canonical full-source build must be compared separately.",
+  "lore_tests": {
+    "passed": 651,
+    "failed": 0,
+    "new": 26
+  },
+  "gestures_browser": {
+    "passed": 36,
+    "errors": []
+  },
+  "old_browser_repeated": [
+    "retrouvailles",
+    "pigeons",
+    "gabians"
+  ],
+  "scope": "Local Chromium 144.0.7559.96, scripted positions, synthetic origins and MemoryStorage. No full human campaign or IGN traversal.",
+  "canonical_ci": "not yet run; never inferred from local results"
+}

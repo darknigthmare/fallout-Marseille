@@ -1,4 +1,4 @@
-# Lore — point de reprise après De main en main
+# Lore — point de reprise après Les gestes retrouvés
 
 > **Lecture actuelle :** Éloi, Mina et Rachid sont présents et les remises personnelles sont jouables. Six scénarios de reprise à froid des oiseaux sont ajoutés ; leurs résultats et le programme exact figurent dans `verification/retrouvailles/QA.json`. Les sections antérieures ci-dessous conservent leur état historique, avant les actualisations placées en fin de document. Elles ne doivent pas être relues comme la liste actuelle des manques.
 
@@ -114,3 +114,12 @@ Base : PR 18, `9849cb57512b93379e27070f8145c23180005cd4`. **Propriétaires incar
 **Vérification ajoutée :** six scénarios de reprise à froid propres aux oiseaux, distincts du test historique des rats, et un parcours des restitutions. Le résultat exact (local, CI, programme et empreinte) figure dans `verification/retrouvailles/QA.json` ; la présence du test ne vaut pas à elle seule réussite.
 
 **Restent ouverts :** animations de remise, doublage, routines et départ des propriétaires, vol dynamique de ressources, variantes hostiles des pigeons/Général Biset, réseau postal sur les vrais territoires IGN, écologie hors instance et navigation animale générale. La branche COCHONNET reste séparée. Les campagnes politiques, territoires maritimes et recrutements ne sont pas clos par cet épilogue.
+
+
+## Actualisation — Les gestes retrouvés
+
+Base : `348a3cb2385b91771112f8c772def4cb82bd8c36`, PR 18. Les contrôles finaux de cette base ont réussi (run lore 42907011587). La nouvelle annexe [Les gestes retrouvés](LORE_CONSIGNE_GESTES.md) ajoute trois gestes de reconnaissance après remise sauvegardée, les objets visibles sur les propriétaires, la réduction des mouvements et un repère de sortie après clôture complète. Aucun changement des récompenses, des données IGN ou du schéma 2.
+
+**Animation partiellement couverte :** les destinataires reçoivent une pose articulée et conservent leur objet. Le transfert du plateau ou des mains du joueur jusqu'à leur paume, les doigts détaillés, les routines, les départs et le doublage restent ouverts. Les anciens paragraphes qui parlent d'absence totale d'animation sont historiques.
+
+**Validation :** consulter `verification/gestes/QA.json` et les rapports locaux séparés ; les essais ordinaires restent instrumentés. Les résultats précédents ne sont pas réattribués à cette nouvelle compilation. COCHONNET est toujours distinct. Aucune campagne régionale ni validation géographique exhaustive n'est close par ce lot.

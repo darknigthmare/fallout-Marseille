@@ -1290,3 +1290,10 @@ Le chapitre spécialisé [LORE_PIGEONS_POSTE_RESTANTE.md](LORE_PIGEONS_POSTE_RES
 Éloi, Mina et Rachid ne sont plus seulement les noms de la clé, de la bague et du sifflet. Présents devant le comptoir de Nora Ferrand, ils reconnaissent leurs objets et racontent chacun un souvenir propre. La récupération peut toujours être close par Nora ; l’épilogue personnel est facultatif, sans seconde prime. Une ancienne restitution à la consigne ne devient pas rétroactivement une rencontre avec son propriétaire.
 
 L’annexe [LORE_GABIANS_RESTITUTIONS.md](LORE_GABIANS_RESTITUTIONS.md) précise les remises, les reçus, la migration et les limites. Les bateaux et le signal évoqués dans les dialogues ne sont pas de nouveaux véhicules ou effets sonores implémentés.
+
+
+## 66. Les gestes retrouvés — l'objet conservé
+
+Après une remise personnelle à la consigne, Éloi reconnaît sa clef et la garde à la ceinture ; Mina examine sa bague puis la remet à la main ; Rachid conserve son sifflet sur un cordon. Ces gestes et les objets portés sont visibles dans le moteur, sans modifier les récompenses, le schéma de sauvegarde ou les histoires déjà racontées. Une ancienne remise personnelle se reconstruit comme un objet conservé, sans rejouer le geste.
+
+L'annexe [LORE_CONSIGNE_GESTES.md](LORE_CONSIGNE_GESTES.md) distingue le geste du destinataire d'un transfert complet entre deux mains. Le doublage, les doigts détaillés, les départs des propriétaires et le ferry restent ouverts. Après les trois remises et la clôture de Nora, le repère indique la sortie de la cour.
