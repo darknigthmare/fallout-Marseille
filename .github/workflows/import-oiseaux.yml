@@ -1,0 +1,126 @@
+name: Import verified birds update
+on:
+  push:
+    branches: [feature/lore-oiseaux-poste]
+    paths: ['delivery/oiseaux-import/**', '.github/workflows/import-oiseaux.yml']
+permissions:
+  contents: write
+concurrency:
+  group: import-oiseaux-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  import-and-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact payload and apply source preimages
+        run: |
+          python - <<'PY'
+          import base64, hashlib, lzma, pathlib, subprocess
+          root=pathlib.Path('delivery/oiseaux-import')
+          parts=sorted(root.glob('part*.b64'))
+          assert len(parts)==7
+          raw=base64.b64decode(''.join(p.read_text() for p in parts),validate=True)
+          assert len(raw)==55928
+          assert hashlib.sha256(raw).hexdigest()=='3d7f27cb5d4b7a64294d23c2a0a7e340ab18df3ef45d0ff87f66a66f7c19a20c'
+          patch=lzma.decompress(raw,memlimit=256*1024*1024)
+          assert len(patch)==225898
+          assert hashlib.sha256(patch).hexdigest()=='b4a09a9de251487018de61581be7ae2e41798d7403d847e6b24990f9d3ae2adf'
+          target=pathlib.Path('/tmp/mistral-oiseaux.patch')
+          target.write_bytes(patch)
+          subprocess.run(['git','apply','--check',str(target)],check=True)
+          subprocess.run(['git','apply','--index',str(target)],check=True)
+          # Retain the established regression path while packaging both bird reports.
+          wf=pathlib.Path('.github/workflows/lore-regression.yml')
+          text=wf.read_text()
+          text=text.replace('name: mistral-rats-browser-', 'name: mistral-oiseaux-browser-')
+          text=text.replace('name: fallout-mistral-rats-', 'name: fallout-mistral-oiseaux-')
+          text=text.replace('            verification/rats/ci/gabians/','            verification/rats/ci/pigeons/\n            verification/rats/ci/gabians/')
+          wf.write_text(text)
+          subprocess.run(['git','add',str(wf)],check=True)
+          PY
+      - name: Check syntax and all lore tests
+        run: |
+          for source in src/v050/10*.js; do node --check "$source"; done
+          node --test tests/expansion/lore_*.cjs
+      - name: Canonical build and deterministic output check
+        run: |
+          python3 tools/build_single.py
+          python3 tools/build_single.py --check
+          node --check src/game.js
+          grep -q 'const MistralGabians' src/game.js
+          grep -q 'const MistralPigeons' src/game.js
+          sha256sum index.html src/game.js sw.js
+      - name: Territory regressions on canonical program
+        run: |
+          node tests/expansion/city_streaming.cjs
+          node tests/expansion/city_wait_cancel.test.cjs
+          node tests/expansion/city_partition_seams.test.cjs
+          node tests/expansion/city_geometry_identity.test.cjs
+      - name: Browser environment
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Historical rat disk restart on the new program
+        run: python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/pigeons/ci/cold-rats
+      - name: Fourteen production browser scenarios
+        run: |
+          for suite in pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
+            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/pigeons/ci/${suite}"
+          done
+      - name: Browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mistral-oiseaux-import-evidence-${{ github.sha }}
+          path: verification/pigeons/ci/
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: Canonical playable update and sources
+        uses: actions/upload-artifact@v4
+        with:
+          name: fallout-mistral-oiseaux-import-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            index.html
+            JOUER_FALLOUT_MISTRAL_v0.50.html
+            src/game.js
+            sw.js
+            LORE.md
+            src/v050/10*.js
+            src/v049/*.js
+            src/v046/04_lore.js
+            src/v042/00_catalog.js
+            tests/expansion/lore_*.cjs
+            tests/expansion/compagnons_fixture.cjs
+            tests/expansion/*browser_smoke.py
+            tests/expansion/rats_cold_save_smoke.py
+            docs/LORE*.md
+            docs/BIBLE_LORE_FALLOUT_MISTRAL.md
+            docs/ETAT_LORE_MANQUANTS.md
+            .github/workflows/lore-regression.yml
+            verification/pigeons/ci/pigeons/
+            verification/pigeons/ci/gabians/
+            verification/pigeons/QA_LOCAL.json
+      - name: Publish only validated source and canonical outputs on feature branch
+        run: |
+          remote_head=$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)
+          if [ "$remote_head" != "$GITHUB_SHA" ]; then
+            echo 'Branch advanced: refusing to overwrite newer changes.'
+            exit 1
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/game.js index.html JOUER_FALLOUT_MISTRAL_v0.50.html sw.js
+          git rm -- delivery/oiseaux-import/part00.b64 delivery/oiseaux-import/part01.b64 delivery/oiseaux-import/part02.b64 delivery/oiseaux-import/part03.b64 delivery/oiseaux-import/part04.b64 delivery/oiseaux-import/part05.b64 delivery/oiseaux-import/part06.b64 .github/workflows/import-oiseaux.yml
+          git diff --cached --stat
+          git commit -m 'feat(lore): consigne des gabians et pigeons de Poste Restante'
+          git push origin HEAD:${GITHUB_REF_NAME}
