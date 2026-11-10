@@ -110,7 +110,7 @@ jobs:
             verification/pigeons/ci/pigeons/
             verification/pigeons/ci/gabians/
             verification/pigeons/QA_LOCAL.json
-      - name: Publish only validated source and canonical outputs on feature branch
+      - name: Publish validated game sources only on feature branch
         run: |
           remote_head=$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)
           if [ "$remote_head" != "$GITHUB_SHA" ]; then
@@ -119,8 +119,11 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # GITHUB_TOKEN only publishes game files. Workflow updates and importer
+          # removal are separate authenticated connector operations after readback.
+          git restore --source=HEAD --staged --worktree .github/workflows/lore-regression.yml
           git add src/game.js index.html JOUER_FALLOUT_MISTRAL_v0.50.html sw.js
-          git rm -- delivery/oiseaux-import/part00.b64 delivery/oiseaux-import/part01.b64 delivery/oiseaux-import/part02.b64 delivery/oiseaux-import/part03.b64 delivery/oiseaux-import/part04.b64 delivery/oiseaux-import/part05.b64 delivery/oiseaux-import/part06.b64 .github/workflows/import-oiseaux.yml
+          git rm -- delivery/oiseaux-import/part00.b64 delivery/oiseaux-import/part01.b64 delivery/oiseaux-import/part02.b64 delivery/oiseaux-import/part03.b64 delivery/oiseaux-import/part04.b64 delivery/oiseaux-import/part05.b64 delivery/oiseaux-import/part06.b64 delivery/oiseaux-import/README.md
           git diff --cached --stat
           git commit -m 'feat(lore): consigne des gabians et pigeons de Poste Restante'
           git push origin HEAD:${GITHUB_REF_NAME}
