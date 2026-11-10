@@ -81,3 +81,10 @@ Base : `38a0bd2aff02303dc6c80357915eaf45225eeef2` (Le faux midi fusionné après
 **Ce qui reste ouvert dans le bestiaire :** Rat-couronné, Roi des Égouts, nouveaux comportements urbains hors des scènes dédiées, pigeons et gabians avec interactions de récupération, nymphes et Midi-Zéro, habitats reliés et inventaire complet des armes/espèces. Trois individus nommés ne sont pas trois modèles ou espèces supplémentaires.
 
 **Ce qui reste ouvert chez les Aiguilleurs :** fonctionnement des trains, trafic, dépôts supplémentaires et campagne de souveraineté ferroviaire. Les circuits de cette annexe ne remettent aucun train en service. Les campagnes politiques, opérations maritimes, recrutements et vérification réelle des accès IGN demeurent des chantiers distincts.
+
+
+## Mise à jour COCHONNET — 10 novembre 2026
+
+La recommandation antérieure d’auditer COCHONNET a été appliquée sur `8924be65`. Le panneau France utilisait `v046PlayBoule`, une résolution probabiliste. Le nouveau chapitre [La mène des Cent Trêves](LORE_COCHONNET_TERRAIN.md) ajoute une cour jouable reliée au Vieux-Port : trajectoires, chocs, mesure, lanceur adverse, trois boules chacun, trêve et registre `v073Boules`. Les anciens résultats et dossiers sont conservés ; les nouveaux boutons ne permettent plus un résultat à distance.
+
+Le jeu physique local est donc présent, mais le championnat jusqu’à 13, les équipes, adversaires humains animés, variantes de terrains, équipements de boules et conséquences diplomatiques prolongées restent ouverts. Ce lot ne clôt ni toute la faction COCHONNET, ni la pétanque de toute la région. Les résultats de validation se trouvent dans les rapports de la livraison, sans déduire une réussite de la seule présence des scripts.

@@ -20,6 +20,7 @@ Cet index est volontairement distinct des chapitres complets. Leur contenu reste
 
 | Chapitre | Contenu et portée |
 |---|---|
+| [COCHONNET — La mène des Cent Trêves](docs/LORE_COCHONNET_TERRAIN.md) | Cour fictionnelle depuis le Vieux-Port, Nelly, lanceur mécanique, trois boules chacun, collisions et mesure physique, trêve effective et sauvegarde en vol. Exposition sans mise, pas un championnat officiel. |
 | [A‑03 et M.A.D.A.M.E.](docs/LORE_A03_MADAME.md) | Avis 04‑771‑C, présence, traces d’A‑03, Odette, choix d’AUB‑04 et registre des sept réseaux. |
 | [Conseil régional](docs/LORE_CONSEIL_REGIONAL.md) | Treize délégations, quatre motions, huit projets de charte, majorité de sept voix et neuf diapositives sauvegardées. Les projections ne sont pas une reconstruction automatique de toutes les villes. |
 | [Continuité du lore](docs/LORE_CONTINUITE.md) | Dossiers, preuves sur place, coûts, choix exclusifs et contre-dons des factions déjà raccordées. |
