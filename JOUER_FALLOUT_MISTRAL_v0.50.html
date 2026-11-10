@@ -17085,6 +17085,190 @@ if(typeof baseState==='function'&&typeof MistralRats!=='undefined'){
  const after=globalThis.v053LoreAfterInit;globalThis.v053LoreAfterInit=function(){after?.();Object.assign(window.__MISTRAL_DEBUG,{v072RatsInfo:()=>({ledger:copy(state.v072Rats),points:copy(P),local:local(),error:rt.error,paused:rt.paused,enemies:(world?.enemies||[]).filter(e=>e.r72Id).map(e=>({id:e.r72Id,pos:e.pos.slice(),health:e.health,alive:e.alive,wind:copy(e.r72Wind),state:e.state}))}),v072RatsOpen:()=>v027Open('data','rats'),v072RatsAction:act});};
 }
 
+/* COCHONNET-3: deterministic, bounded exhibition boules, not federation rules.
+ * Plain data owns every position/velocity. No random result or inventory stake.
+ * Fixed 5 ms steps; simplified spheres, impacts, bounce and rolling friction. */
+const MistralBoules=(()=>{
+ 'use strict';
+ const copy=x=>JSON.parse(JSON.stringify(x)),teams=['player','house'];
+ const SITE='v073-cour-cent-treves',RELAY='v042-marseille-caravan-01',STEP=.005;
+ const radius=b=>b.id==='jack'?.085:.14,mass=b=>b.id==='jack'?.04:.7;
+ const validInt=(n,max=999999)=>Number.isSafeInteger(n)&&n>=0&&n<=max;
+ const body=(id,team,p)=>({id,team,p:p.slice(),v:[0,0,0],out:false});
+ function fresh(){return {schema:1,revision:0,played:0,wins:0,round:null};}
+ function distances(r){return r.balls.filter(b=>!b.out).map(b=>({id:b.id,team:b.team,metres:Math.hypot(b.p[0]-r.jack.p[0],b.p[2]-r.jack.p[2])})).sort((a,b)=>a.metres-b.metres||a.id.localeCompare(b.id));}
+ function score(r){if(r.jack.out)return {winner:'draw',points:0,reason:'but-sorti'};const d=distances(r);if(!d.length)return {winner:'draw',points:0,reason:'aucune-boule'};const opponent=d.find(b=>b.team!==d[0].team);if(opponent&&Math.abs(opponent.metres-d[0].metres)<=.001)return {winner:'draw',points:0,reason:'egalite'};return {winner:d[0].team,points:d.filter(b=>b.team===d[0].team&&(!opponent||b.metres<opponent.metres-.001)).length,reason:'mesure'};}
+ function next(r){if(r.used.player===3&&r.used.house===3)return null;if(r.used.player===3)return 'house';if(r.used.house===3)return 'player';const s=score(r);return s.winner==='draw'?(r.last==='player'?'house':'player'):s.winner==='player'?'house':'player';}
+ function migrate(raw){
+  if(raw==null)return fresh();if(typeof raw!=='object'||Array.isArray(raw)||raw.schema!==1)throw Error('Carnet COCHONNET inconnu.');
+  for(const k of ['revision','played','wins'])if(!validInt(raw[k]))throw Error('Compteur COCHONNET invalide.');
+  if(raw.wins>raw.played)throw Error('Victoires sans mènes.');
+  const l={schema:1,revision:raw.revision,played:raw.played,wins:raw.wins,round:null};if(raw.round===null)return l;
+  const r=raw.round;if(!r||typeof r!=='object'||!['aim','moving','result'].includes(r.phase)||!validInt(r.number)||r.number<1||r.number!==(r.phase==='result'?l.played:l.played+1))throw Error('Mène incohérente.');
+  if(!teams.includes(r.last)||!validInt(r.used?.player,3)||!validInt(r.used?.house,3)||!Array.isArray(r.balls)||r.balls.length!==r.used.player+r.used.house||!validInt(r.ticks,4000)||!validInt(r.quiet,30)||!Number.isFinite(r.carry)||r.carry<0||r.carry>=STEP+1e-8||!['pointer','tirer'].includes(r.style)||!validInt(r.power,100))throw Error('État de lancer invalide.');
+  const ids=new Set();for(const b of [r.jack,...r.balls]){if(!b||typeof b.out!=='boolean'||!Array.isArray(b.p)||!Array.isArray(b.v)||b.p.length!==3||b.v.length!==3||!b.p.every(n=>Number.isFinite(n)&&Math.abs(n)<=100)||!b.v.every(n=>Number.isFinite(n)&&Math.abs(n)<=40)||b.p[1]<radius(b)-.00001||ids.has(b.id))throw Error('Boule invalide.');ids.add(b.id);
+   if(b===r.jack){if(b.id!=='jack'||b.team!==null)throw Error('But invalide.');}
+   else if(!teams.includes(b.team)||!['1','2','3'].some(i=>b.id===b.team+i))throw Error('Identité de boule invalide.');
+   if((b.out||r.phase!=='moving')&&b.v.some(n=>n!==0))throw Error('Mouvement hors phase.');
+   if(!b.out&&(Math.abs(b.p[0])>2.5+radius(b)||b.p[2]<-12-radius(b)||b.p[2]>2+radius(b)))throw Error('Boule hors terrain non consignée.');
+  }
+  for(const t of teams)for(let i=1;i<=r.used[t];i++)if(!ids.has(t+i))throw Error('Boule manquante.');
+  if(r.phase==='moving'&&(!r.balls.length||r.turn!==r.last||r.result!==null))throw Error('Lancer sans propriétaire.');
+  if(r.phase==='aim'&&(r.turn!==next(r)||r.turn===null||r.result!==null||r.jack.out))throw Error('Tour incohérent.');
+  if(r.phase==='result'&&(r.turn!==null||!r.jack.out&&r.balls.length!==6||JSON.stringify(r.result)!==JSON.stringify(score(r))))throw Error('Résultat sans mesure.');
+  l.round=copy(r);return l;
+ }
+ function revision(l){if(l.revision>=999999)throw Error('Carnet plein.');l.revision++;return l;}
+ function start(raw){const l=migrate(raw);if(l.round&&l.round.phase!=='result')throw Error('La mène en cours doit être terminée.');if(l.played>=999998)throw Error('Carnet plein.');const number=l.played+1;
+  l.round={number,phase:'aim',turn:'player',last:'house',used:{player:0,house:0},jack:body('jack',null,[[-.28,.35,0][(number-1)%3],.085,-8-(number-1)%3*.45]),balls:[],ticks:0,quiet:0,carry:0,style:'pointer',power:34,result:null};return revision(l);}
+ function configure(raw,style,power){const l=migrate(raw);if(!l.round||l.round.phase!=='aim'||l.round.turn!=='player'||!['pointer','tirer'].includes(style)||!validInt(power,100))throw Error('Réglage indisponible.');l.round.style=style;l.round.power=power;return revision(l);}
+ function launch(raw,team,yaw,power,style){const l=migrate(raw),r=l.round;if(!r||r.phase!=='aim'||r.turn!==team||!teams.includes(team)||!Number.isFinite(yaw)||Math.abs(yaw)>.45||!validInt(power,100)||!['pointer','tirer'].includes(style))throw Error('Rejoignez le cercle et attendez votre tour.');
+  const elevation=style==='pointer'?.64:.14,speed=style==='pointer'?4.5+power*.055:5+power*.065;
+  const b=body(team+(r.used[team]+1),team,[0,.85,.5]);b.v=[Math.sin(yaw)*Math.cos(elevation)*speed,Math.sin(elevation)*speed,-Math.cos(yaw)*Math.cos(elevation)*speed];
+  r.balls.push(b);r.used[team]++;r.last=team;r.phase='moving';r.ticks=0;r.quiet=0;r.carry=0;return revision(l);
+ }
+ function physics(r){
+  const all=[r.jack,...r.balls];r.ticks++;
+  for(const b of all){if(b.out)continue;const rad=radius(b);if(b.p[1]>rad+.00001||b.v[1]>0){b.v[1]-=9.81*STEP;}
+   for(let i=0;i<3;i++)b.p[i]+=b.v[i]*STEP;
+   if(b.p[1]<rad){b.p[1]=rad;if(b.v[1]<-.35){b.v[1]*=-.25;b.v[0]*=.72;b.v[2]*=.72;}else b.v[1]=0;}
+   if(b.p[1]<=rad+.00001&&b.v[1]===0){const n=Math.hypot(b.v[0],b.v[2]),factor=n>0?Math.max(0,n-1.35*STEP)/n:0;b.v[0]*=factor;b.v[2]*=factor;}
+   if(Math.abs(b.p[0])>2.5+rad||b.p[2]<-12-rad||b.p[2]>2+rad){b.out=true;b.v=[0,0,0];}
+  }
+  for(let i=0;i<all.length;i++)for(let j=i+1;j<all.length;j++){const a=all[i],b=all[j];if(a.out||b.out)continue;const delta=b.p.map((n,k)=>n-a.p[k]),d=Math.hypot(...delta),min=radius(a)+radius(b);if(d>=min)continue;
+   const n=d>1e-9?delta.map(v=>v/d):[1,0,0],ia=1/mass(a),ib=1/mass(b),inv=ia+ib,overlap=min-d;
+   for(let k=0;k<3;k++){a.p[k]-=n[k]*overlap*ia/inv;b.p[k]+=n[k]*overlap*ib/inv;}
+   a.p[1]=Math.max(radius(a),a.p[1]);b.p[1]=Math.max(radius(b),b.p[1]);
+   const closing=b.v.reduce((v,x,k)=>v+(x-a.v[k])*n[k],0);if(closing<0){const impulse=-(1+.42)*closing/inv;for(let k=0;k<3;k++){a.v[k]-=impulse*n[k]*ia;b.v[k]+=impulse*n[k]*ib;}}
+  }
+  // Contacts may push a resting sphere over a foul line in this same step.
+  for(const b of all){if(!b.out&&(Math.abs(b.p[0])>2.5+radius(b)||b.p[2]<-12-radius(b)||b.p[2]>2+radius(b))){b.out=true;b.v=[0,0,0];}}
+  const quiet=all.every(b=>b.out||b.p[1]<=radius(b)+.001&&Math.hypot(...b.v)<.025);r.quiet=quiet?r.quiet+1:0;
+  if(r.ticks>3999)throw Error('Lancer non stabilisé : reprise nécessaire.');
+  if(r.quiet>=30){for(const b of all)b.v=[0,0,0];r.carry=0;r.turn=r.jack.out?null:next(r);r.phase=r.turn===null?'result':'aim';r.result=r.phase==='result'?score(r):null;return true;}return false;
+ }
+ function advance(raw,dt){const l=migrate(raw),r=l.round;if(!Number.isFinite(dt)||dt<0||dt>.2)throw Error('Pas temporel invalide.');if(!r||r.phase!=='moving'||dt===0)return l;
+  const total=r.carry+dt,steps=Math.floor((total+1e-10)/STEP);r.carry=Number((total-steps*STEP).toFixed(9));
+  for(let i=0;i<steps;i++)if(physics(r)){if(r.phase==='result'){l.played++;if(r.result.winner==='player')l.wins++;}revision(l);break;}return l;
+ }
+ function settle(raw){let l=raw;for(let i=0;i<110&&l.round.phase==='moving';i++)l=advance(l,.2);if(l.round.phase==='moving')throw Error('Simulation non stabilisée.');return l;}
+ // The machine uses the same launch/physics, with visible deterministic imprecision.
+ // It reads the resting board, never the player's next input or hidden random rolls.
+ function house(raw){const l=migrate(raw),r=l.round;if(!r||r.phase!=='aim'||r.turn!=='house')throw Error('Le lanceur attend.');
+  const nearest=distances(r)[0],attack=nearest?.team==='player'&&nearest.metres<.48&&r.used.house>0;
+  const target=attack?r.balls.find(b=>b.id===nearest.id).p:r.jack.p,style=attack?'tirer':'pointer';
+  const error=[.28,-.38,.16][(r.number+r.used.house)%3],x=target[0]+error,z=target[2]+[.25,-.3,.15][r.used.house];
+  const yaw=Math.max(-.44,Math.min(.44,Math.atan2(x,.5-z)));let low=0,high=100;
+  for(let i=0;i<7;i++){const mid=Math.floor((low+high)/2),test=start(fresh());
+   // Empty-lane calibration is not a match action and does not edit the caller.
+   test.round.jack.p=[2,.085,-11];
+   let shot=launch(test,'player',0,mid,style);shot=settle(shot);const end=shot.round.balls[0].p[2];if(end>z)low=mid+1;else high=mid;}
+  return {team:'house',yaw,power:Math.min(100,low),style};
+ }
+ function briefing(raw){const l=migrate(raw),r=l.round;if(!r)return 'Nelly vous attend dans la cour des Cent Trêves. Trois boules chacun, aucune mise.';if(r.phase==='result')return r.result.reason==='but-sorti'?'Le but est sorti : mène annulée, aucune victoire.':r.result.winner==='draw'?'Égalité à la mesure. Personne ne prend de point.':`${r.result.winner==='player'?'Vous':'COCHONNET-3'} : ${r.result.points} point(s). Les positions font foi.`;if(r.phase==='moving')return `${r.last==='player'?'Votre boule':'La boule du lanceur'} est en mouvement. Attendez la mesure.`;return `${r.turn==='player'?'À vous de jouer depuis le cercle':'COCHONNET-3 prépare son lancer'}. Réserves : vous ${3-r.used.player}, machine ${3-r.used.house}.`;}
+ return {SITE,RELAY,STEP,fresh,migrate,start,configure,launch,advance,settle,house,score,distances,briefing,radius};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralBoules;
+
+/* An authored exhibition courtyard uses the existing renderer, inputs and saves.
+ * The surveying layer is untouched; only the existing port anchors its entrance. */
+if(typeof baseState==='function'&&typeof MistralBoules!=='undefined'){
+ const M=MistralBoules,copy=x=>JSON.parse(JSON.stringify(x));
+ const P={nelly:[-5,0,4],cercle:[0,0,1],sortie:[0,0,7]};
+ const rt={busy:false,paused:false,error:null,delay:0,owner:null,world:null};
+ const anchor=v042Site(M.RELAY);
+ if(anchor&&!v042Site(M.SITE)){const s={...copy(anchor),id:M.SITE,name:'Cour des Cent Trêves',description:'Boulodrome d’exposition fictionnel : une mène, trois boules chacun, aucune mise.',kind:'interior',interior:'boules',safe:true,visitable:true,unique:true,npcSlots:0,npcRoles:[],enemySlots:0,enemyTypes:[],enemyRadius:0,rewardCaps:0,rewardXP:0,respawnHours:0,provenance:{kind:'authored-fiction',anchorId:M.RELAY}};V042_CATALOG.push(s);V042_SITE_BY_ID[s.id]=s;V042_SITES_BY_MACRO[s.macro].push(s);V042_LAYER_META.siteCount++;V042_LAYER_META.visitable++;V042_LAYER_META.counts.interior++;V042_LAYER_META.macroCounts[s.macro]++;}
+ const base=baseState;baseState=function(...a){const s=base(...a);s.v073Boules=M.fresh();return s;};
+ const migration=migrateState;migrateState=function(raw={}){const s=migration(...arguments);s.v073Boules=M.migrate(raw?.v073Boules);return s;};state=migrateState(state);if(world&&typeof v049Own==='function')v049Own(world);
+ const local=()=>!!world?.v073Boules&&state.v042?.activeInterior===M.SITE;
+ const notice=t=>{V027.message=t;toast(t,'bad');return false;};
+ function blocked(){return !gameStarted||!['PLAYING','DIALOGUE','PIP','NOTE'].includes(mode)||!(state.player?.hp>0)?'Reprenez une partie active.':V046.lab?'Pas de progression dans le banc géographique.':zoneTransitioning||V046.busy||V047.pending?'Chargement en cours.':!onGround?'Les pieds doivent rester au sol.':null;}
+ function near(id){const p=P[id],v=state.player.pos;return local()&&p&&Math.hypot(v[0]-p[0],v[2]-p[2])<=(id==='cercle'?.65:3.2)&&Math.abs(v[1]-1.65)<.65&&lineOfSight(v,[p[0],1.25,p[2]+.7]);}
+ function sync(){if(rt.owner!==state||rt.world!==world){rt.owner=state;rt.world=world;rt.delay=0;rt.paused=false;rt.error=null;}}
+ function restore(owner,before){if(state!==owner)return;for(const k of Object.keys(owner))delete owner[k];Object.assign(owner,before);}
+ function commit(next){if(rt.busy)return false;const owner=state,w=world,before=copy(owner),old=owner.v073Boules;rt.busy=true;
+  try{const n=M.migrate(next),delta=n.played-old.played,win=n.wins-old.wins;if(delta<0||delta>1||win<0||win>delta)throw Error('Mesure périmée.');
+   if(delta){const p=v046LoreState().petanque;for(const k of ['played','wins'])if(!Number.isSafeInteger(p[k])||p[k]<0||p[k]>999998)throw Error('Historique COCHONNET invalide.');p.played+=delta;p.wins+=win;}
+   owner.v073Boules=n;if(state!==owner||world!==w||saveGame(false)===false)throw Error('La feuille de mène n’a pas pu être sauvegardée.');
+  }catch(e){restore(owner,before);rt.error=e.message;return notice(e.message+' Le coup est annulé.');}finally{rt.busy=false;}
+  rt.error=null;rt.delay=0;updateQuestUI();updateHUD();return true;
+ }
+ function act(type,value){sync();if(blocked()||!local()||rt.busy)return false;try{
+  const l=state.v073Boules,r=l.round;
+  if(type==='start'){if(!near('nelly'))return notice('Nelly garde la feuille de mène.');return commit(M.start(l));}
+  if(type==='retry'){if(!near('nelly'))return false;if(saveGame(false)===false)throw Error('Écriture toujours refusée.');rt.paused=false;rt.error=null;return true;}
+  if(type==='configure'){if(!near('cercle')||rt.paused)return false;return commit(M.configure(l,value?.style,value?.power));}
+  if(type==='throw'){if(!near('cercle')||rt.paused||!r)return notice('Rejoignez le cercle et attendez votre tour.');const yaw=Math.atan2(Math.sin(state.player.yaw),Math.cos(state.player.yaw));return commit(M.launch(l,'player',yaw,r.power,r.style));}
+  return false;
+ }catch(e){return notice(e.message);}}
+ function guard(fn){const owner=state,w=world,rev=state.v073Boules.revision;return()=>owner===state&&w===world&&rev===state.v073Boules.revision?fn():notice('La feuille a changé. Rouvrez la conversation.');}
+ const back=()=>({text:'Revenir.',onChoose:closeDialogue});
+ function dialogue(id){sync();if(blocked()||!near(id))return false;const l=state.v073Boules,r=l.round,ch=[];
+  let text=id==='nelly'?'« Le lanceur a survécu à trois guerres de voisinage. Le mètre aussi. Les deux sont sous ma garde : ici, personne ne gagne parce qu’il parle plus fort. Pas de mise, pas de grenade, et on attend que tout s’arrête avant de mesurer. »\n\nNelly Ferrand ouvre une mène d’exposition : trois boules chacun. Le but est posé par l’arbitre ; s’il sort, la mène est annulée. Le camp qui n’a pas le point rejoue. Une égalité au millimètre fait alterner les lancers.':'Le cercle délimite votre départ. Réglez la force, choisissez pointer (cloche) ou tirer (rasant), puis visez dans le terrain. La commande de tir habituelle lance une boule ; Recharger change le geste. Aucun appui maintenu ni réflexe chronométré n’est nécessaire.';
+  if(id==='nelly'&&(!r||r.phase==='result'))ch.push({text:r?'Commencer une autre mène, sans mise.':'Ouvrir la mène d’exposition.',onChoose:guard(()=>{if(act('start'))closeDialogue();})});
+  if(id==='nelly'&&rt.paused)ch.push({text:'Retenter la sauvegarde et reprendre.',onChoose:guard(()=>{act('retry');dialogue(id);})});
+  if(id==='cercle'&&r?.phase==='aim'&&r.turn==='player'&&!rt.paused){
+   for(const [style,label]of [['pointer','Pointer · lancer en cloche'],['tirer','Tirer · lancer rasant']])ch.push({text:label+(style===r.style?' [choisi]':''),onChoose:guard(()=>{act('configure',{style,power:r.power});dialogue(id);})});
+   for(const n of [-5,-1,1,5])ch.push({text:'Force '+(n>0?'+':'')+n+' · '+Math.max(0,Math.min(100,r.power+n))+' %',onChoose:guard(()=>{act('configure',{style:r.style,power:Math.max(0,Math.min(100,r.power+n))});dialogue(id);})});
+   ch.push({text:'Lancer dans la direction visée.',onChoose:guard(()=>{if(act('throw'))closeDialogue();})});
+  }
+  ch.push({text:'Consulter les distances au but.',onChoose:guard(()=>{closeDialogue();v027Open('data','boules');})},back());
+  openDialogue(speaker(id==='nelly'?'Nelly Ferrand':'Cercle de lancer','COCHONNET · LES CENT TRÊVES','C3'),text+'\n\n'+M.briefing(l)+(r?.phase==='aim'?'\nGeste : '+r.style+' · Force : '+r.power+' %.':''),ch);return true;
+ }
+ function build(){sync();const w=createWorld(V042_INSTANCE_ZONE,'La cour des Cent Trêves','COCHONNET-3 · MÈNE D’EXPOSITION',{skyTop:[90,115,128],skyBottom:[180,168,129],fog:[.45,.48,.42],daylight:.85,wind:.04,indoor:false});w.v073Boules=true;w.bounds=[-8,8,-15,8];w.spawn=[0,1.65,5.5];w.spawnYaw=0;V042_RUNTIME.instanceSite=M.SITE;
+  const stone=[.48,.44,.35],steel=[.25,.32,.32],box=(p,s,c=stone,solid=true)=>{const d=addBox(w,p,s,c);if(solid)addCollider(w,p[0],p[2],s[0],s[2],{minY:p[1]-s[1]/2,maxY:p[1]+s[1]/2});return d;};
+  box([0,-.17,-3.5],[16,.3,23],stone,false);addFloorZone(w,0,-3.5,16,23,0);box([0,-.035,-5],[5,.07,14],[.66,.55,.37],false);
+  for(const [x,z,sx,sz]of [[-7.8,-3.5,.35,23],[7.8,-3.5,.35,23],[0,-14.8,16,.35]])box([x,1.4,z],[sx,2.8,sz]);
+  for(const x of [-2.5,2.5])box([x,.009,-5],[.035,.018,14],[.88,.83,.62],false);
+  for(const z of [-12,2])box([0,.009,z],[5,.018,.035],[.88,.83,.62],false);
+  // The visible rails are outside the dead-ball lines, never invisible bouncers.
+  for(const x of [-3,3])box([x,.14,-5],[.16,.28,14.8],[.34,.28,.19]);
+  for(let i=0;i<40;i++){const a=i*Math.PI*2/40;box([Math.cos(a)*.65,.016,1+Math.sin(a)*.65],[.085,.025,.085],[.8,.79,.67],false);}
+  for(const x of [-6,6])for(const z of [-9,-3]){box([x,.48,z],[1,.16,3.3],[.35,.29,.20]);for(const dz of [-1.1,1.1])box([x,.23,z+dz],[.7,.46,.18],steel);box([x+(x<0?-.35:.35),.95,z],[.14,.85,3.3],[.38,.32,.21]);}
+  box([-5,1,2],[2,.15,1.2],steel);box([-5,.45,2],[1.6,.9,.6]);box([-5,1.13,2],[.8,.1,.5],[.81,.77,.58],false);
+  // The mechanical arm reaches the common release point, not a ghost opponent.
+  box([-1.35,.48,.5],[.65,.96,.8],steel);box([-.62,.85,.5],[1.45,.16,.22],[.62,.47,.24],false);box([-1.35,1.15,.5],[.8,.3,.6],steel);addPart(w,'sphere',[-1.35,1.17,.84],[.18,.18,.12],[.74,.58,.27],0,{emissive:.2});
+  addHumanNPC(w,'r73:nelly','Nelly Ferrand','Arbitre des Cent Trêves',P.nelly,[.30,.39,.34],{yaw:Math.PI});
+  addInteract(w,'r73:cercle',[0,.15,.6],'Régler le lancer · COCHONNET',()=>dialogue('cercle'),{radius:2,kind:'quest',priority:8,condition:()=>near('cercle')&&!blocked()});
+  addInteract(w,'r73:sortie',[0,1.25,7.7],'Retourner au Vieux-Port',()=>!blocked()&&near('sortie')&&v042ExitInstance(),{radius:3.2,kind:'door',priority:5});
+  if(typeof v021Sign==='function'){v021Sign(w,0,2.25,-14.55,'CENT TREVES / PAS DE MISE',.075);v021Sign(w,-5,2.3,1.3,'NELLY / ARBITRE',.055);v021Sign(w,0,2.7,7.8,'RETOUR / VIEUX-PORT',.065);}
+  w.levelRoutes=[{id:'r73-court',points:[[0,0,5.5],[0,0,1],[4,0,1],[4,0,-10]]}];return w;
+ }
+ const buildBase=v042BuildInstance;v042BuildInstance=function(){return state.v042?.activeInterior===M.SITE?build():buildBase(...arguments);};
+ const talk=talkToNPC;talkToNPC=function(id){return id==='r73:nelly'?dialogue('nelly'):talk(...arguments);};
+ const claim=v042ClaimInterior;v042ClaimInterior=function(id){return id===M.SITE?false:claim(...arguments);};
+ const fire=fireWeapon;fireWeapon=function(...a){return local()?mode==='PLAYING'&&act('throw'):fire(...a);};
+ const reloading=reload;reload=function(...a){if(!local())return reloading(...a);const r=state.v073Boules.round;if(mode==='PLAYING'&&r?.phase==='aim'&&r.turn==='player')return act('configure',{style:r.style==='pointer'?'tirer':'pointer',power:r.power});return false;};
+ const combat=v020TickCombat;v020TickCombat=function(...a){return local()?undefined:combat(...a);};
+ const vats=toggleVATS;toggleVATS=function(...a){return local()?false:vats(...a);};
+ const enemies=updateEnemies;updateEnemies=function(dt){if(!local())return enemies(...arguments);sync();if(!gameStarted||mode!=='PLAYING'||zoneTransitioning||V046.busy||V047.pending||V046.lab||!(state.player.hp>0)||rt.busy||rt.paused||!Number.isFinite(dt)||dt<=0)return;inCombat=false;dt=Math.min(dt,.2);const r=state.v073Boules.round;if(!r)return;
+  try{if(r.phase==='moving'){const next=M.advance(state.v073Boules,dt);if(next.round.phase!==r.phase){if(!commit(next))rt.paused=true;}else state.v073Boules=next;}
+   else if(r.phase==='aim'&&r.turn==='house'){rt.delay+=dt;if(rt.delay>=1){const shot=M.house(state.v073Boules);if(!commit(M.launch(state.v073Boules,shot.team,shot.yaw,shot.power,shot.style)))rt.paused=true;}}
+  }catch(e){rt.paused=true;rt.error=e.message;notice(e.message+' Adressez-vous à Nelly.');}
+ };
+ const draws=collectDraws;collectDraws=function(t){const out=draws(...arguments);if(!local())return out;const r=state.v073Boules.round;if(!r)return out;
+  for(const b of [r.jack,...r.balls]){if(b.out)continue;const d=2*M.radius(b),color=b.id==='jack'?[.85,.72,.29]:b.team==='player'?[.78,.80,.75]:[.34,.47,.57];part(out,'sphere',b.p.slice(),[d,d,d],color,0,{emissive:b.id==='jack'?.12:0});if(b.id!=='jack')part(out,'cube',[b.p[0],b.p[1]+M.radius(b)*.83,b.p[2]],[d*.55,.025,.045],b.team==='player'?[.19,.27,.22]:[.85,.66,.35]);}
+  // A neutral sight line shows the launch axis, not a guaranteed landing result.
+  if(r.phase==='aim'&&r.turn==='player'&&near('cercle'))for(let i=1;i<=8;i++){const y=state.player.yaw;part(out,'cube',[Math.sin(y)*i*.45,.018,.5-Math.cos(y)*i*.45],[.045,.015,.11],[.72,.72,.51],-y);}
+  return out;
+ };
+ const hud=updateHUD;updateHUD=function(...a){const r=hud(...a),isLocal=local();document.body.classList.toggle('v073-court',isLocal);const el=document.getElementById('v073CourtHud');if(el){el.hidden=!isLocal||mode!=='PLAYING';if(isLocal){const l=state.v073Boules.round;el.textContent=rt.paused?'MÈNE SUSPENDUE · Nelly peut retenter l’écriture':l?.phase==='aim'&&l.turn==='player'?`${near('cercle')?'DANS LE CERCLE':'REJOIGNEZ LE CERCLE'} · ${l.style.toUpperCase()} · FORCE ${l.power} % · Tir : lancer · Recharger : changer de geste · Interagir : réglages`:M.briefing(state.v073Boules);}}return r;};
+ const ui=updateQuestUI;updateQuestUI=function(...a){if(!local())return ui(...a);$('questTitle').textContent='COCHONNET · LA MÈNE DES CENT TRÊVES';$('questObjective').textContent=M.briefing(state.v073Boules);};
+ const marker=getObjectiveMarker;getObjectiveMarker=function(){if(!local())return marker(...arguments);const r=state.v073Boules.round,id=!r||r.phase==='result'||rt.paused?'nelly':'cercle',p=P[id];return{zone:world.id,pos:[p[0],1.25,p[2]],label:id==='nelly'?'Nelly · feuille de mène':'Cercle de lancer'};};
+ function relayNear(){const site=v042Site(M.RELAY),p=state.player.pos;return !!site&&world?.v046&&world.geoMacro&&!state.v042?.activeInterior&&!world.v050CityInterior&&settings.geoFalloutLayer&&v042SiteDiscovered(site)&&!v050TravelNearbyThreat(world,p)&&world.npcs.some(n=>n.alive!==false&&V042_RUNTIME.npcData.get(n.id)?.siteId===M.RELAY&&Math.hypot(n.pos[0]-p[0],n.pos[2]-p[2])<=8&&Math.abs(n.pos[1]+1.4-p[1])<2.8&&lineOfSight(p,[n.pos[0],n.pos[1]+1.4,n.pos[2]]));}
+ function enter(){if(blocked()||!relayNear())return false;if(state.v055Ordnance?.armed)return notice('Terminez d’abord le lancer de grenade.');const owner=state,w=world,before=copy(owner),maps={active:new Map(V042_RUNTIME.active),npc:new Map(V042_RUNTIME.npcData),nearest:V042_RUNTIME.nearest,instance:V042_RUNTIME.instanceSite,retained:V048.retained},save=saveGame;let wrote=false;saveGame=function(...a){const r=save(...a);if(r===false)throw Error('Départ non sauvegardé.');wrote=true;return r;};try{if(!v042EnterSite(M.SITE))throw Error('Départ interrompu.');return true;}catch(e){restore(owner,before);world=w;V042_RUNTIME.active=maps.active;V042_RUNTIME.npcData=maps.npc;V042_RUNTIME.nearest=maps.nearest;V042_RUNTIME.instanceSite=maps.instance;V048.retained=maps.retained;v049Own(w);if(wrote){try{save(false);}catch{}}return notice(e.message);}finally{saveGame=save;}}
+ const relayTalk=v042TalkNPC;v042TalkNPC=function(id){if(blocked()||V042_RUNTIME.npcData.get(id)?.siteId!==M.RELAY||!relayNear())return relayTalk(...arguments);const old=openDialogue;openDialogue=function(s,t,ch,...rest){return old(s,t,[...(ch||[]).slice(0,-1),{text:'COCHONNET · La cour des Cent Trêves',onChoose:guard(()=>openDialogue(speaker('Relais du Vieux-Port','UNE TRÊVE, TROIS BOULES','C3'),'« Nelly a remis le lanceur en service. Il confond toujours une poignée de mains et une remise à zéro, mais ses boules roulent droit. Enfin… presque. »\n\nLa cour est un lieu fictionnel relié par chargement. L’exposition n’exige aucune autre quête et ne demande aucune mise.',[{text:'Rejoindre le boulodrome d’exposition.',onChoose:guard(enter)},back()]))},...(ch||[]).slice(-1)],...rest);};try{return relayTalk(...arguments);}finally{openDialogue=old;}};
+ function track(){if(blocked())return false;const owner=state,before=copy(owner);owner.v042.tracked=M.RELAY;try{if(saveGame(false)===false)throw Error();}catch{restore(owner,before);return notice('Repère non sauvegardé.');}updateQuestUI();return true;}
+ V027_SUBS.data.boules='COCHONNET · LE TERRAIN';const data=v027Data;v027Data=function(c){if(V027.sub!=='boules')return data(...arguments);const l=state.v073Boules,r=l.round,esc=v027Escape;c.innerHTML='<div class="p27-long"><p class="p27-kicker">LIGUE DES CENT TRÊVES</p><h2>Une mène, pas un tirage au sort</h2><p>'+esc(M.briefing(l))+'</p>'+v027Button('Suivre le relais du Vieux-Port','r73:track')+'<p>Mènes physiques terminées : '+l.played+' · Victoires : '+l.wins+'. Les anciens résultats restent conservés séparément.</p><h3>Mesures entre centres</h3>'+(r&&!r.jack.out?M.distances(r).map(b=>'<p>'+esc((b.team==='player'?'Vous ':'Machine ')+b.id.replace(/\D/g,'')+' : '+(b.metres*100).toFixed(1)+' cm'+(r.phase==='moving'?' · provisoire':''))+'</p>').join(''):'<p>Aucune mesure en cours.</p>')+(r?'<p>Boules sorties : '+r.balls.filter(b=>b.out).length+'.</p>':'')+'<h3>Le règlement de Nelly</h3><p>Trois boules chacun. Celui qui n’a pas le point rejoue ; à égalité au millimètre, les lancers alternent. But sorti : mène annulée. Aucun gain de capsules, de butin ou d’expérience. Une victoire compte pour les anciens dossiers COCHONNET, sans les terminer à distance.</p><p>Depuis le cercle : commande Tir pour lancer, Recharger pour changer de geste, Interagir pour régler la force. Le Pip-Boy mesure mais ne lance pas. Vous pouvez quitter et reprendre la cour : positions, vitesses et tours sont conservés.</p></div>';};
+ const dispatch=v027Dispatch;v027Dispatch=function(a,arg){return a==='r73:track'?v027CanAct()&&track():dispatch(...arguments);};
+ const rows=v027QuestRows;v027QuestRows=function(){const l=state.v073Boules;return rows(...arguments).concat(l.round?[{id:'r73:mene',name:'LA MÈNE DES CENT TRÊVES',stage:l.round.phase==='result'?'done':'active',active:local()&&l.round.phase!=='result',text:M.briefing(l),zone:null,steps:[['Mène ouverte',true],['Boules stabilisées',l.round.phase==='result'],['Résultat mesuré',l.round.phase==='result']],source:'COCHONNET',badge:l.round.phase==='result'?'✓':'',hint:'Nelly · cour du Vieux-Port'}]:[]);};
+ const previousTrack=v027Track;v027Track=function(id){return id==='r73:mene'?track():previousTrack(...arguments);};
+ V027_STATIONS.boules={name:'COCHONNET — Les Cent Trêves',freq:'73.3',hint:'Le mètre a le dernier mot',available:()=>!!state.v073Boules.round,text:()=>M.briefing(state.v073Boules)};
+ // Replace only the old random-roll controls; never re-create the other dossier nodes.
+ const oldPanel=v046LorePanel;v046LorePanel=function(c){const result=oldPanel(...arguments),buttons=c.querySelectorAll('[data-v46-boule]');if(buttons.length){const first=buttons[0],link=document.createElement('button');link.textContent='COCHONNET · Rejoindre le terrain';link.onclick=()=>v027Open('data','boules');first.before(link);for(const b of buttons)b.remove();for(const text of c.querySelectorAll('p'))if(text.textContent.includes('Résolution probabiliste'))text.textContent='Les anciens résultats sont conservés. Les nouvelles mènes se jouent dans la cour des Cent Trêves, auprès du relais du Vieux-Port.';}return result;};
+ const after=globalThis.v053LoreAfterInit;globalThis.v053LoreAfterInit=function(){after?.();const style=document.createElement('style');style.textContent='body.v073-court #weaponModel,body.v073-court #weaponHud{display:none!important}#v073CourtHud{position:fixed;left:50%;transform:translateX(-50%);bottom:15%;max-width:calc(100% - 30px);width:600px;box-sizing:border-box;padding:9px 13px;background:#101b18eb;border:1px solid #9b9f75;color:#eee9cc;font:14px/1.4 monospace;text-align:center;pointer-events:none;z-index:18}#v073CourtHud[hidden]{display:none}@media(max-width:600px){#v073CourtHud{font-size:12px;bottom:26%}}';document.head.appendChild(style);const el=document.createElement('div');el.id='v073CourtHud';el.hidden=true;document.body.appendChild(el);Object.assign(window.__MISTRAL_DEBUG,{v073BoulesInfo:()=>({ledger:copy(state.v073Boules),points:copy(P),local:local(),paused:rt.paused,error:rt.error,nearCircle:near('cercle')}),v073BoulesOpen:()=>v027Open('data','boules'),v073BoulesAction:act});};
+}
+
 /* Keep the existing six-plate v0.30 simulation and its finite core ledger.
    This extension closes persistence gaps and brings maintenance to technicians
    already living in discovered geographic relays. It grants no equipment. */
@@ -17944,7 +18128,7 @@ if(typeof window!=='undefined'&&typeof baseState==='function'){
  const mass=v026Mass;v026Mass=function(id){return id===M.ID?.45:mass(id);};
  const description=v026Description;v026Description=function(id){return id===M.ID?'Explosif de jeu : N ou bouton Grenade pour lancer en visant. Fusée de 3 secondes actives, rayon de 6 m ; les murs arrêtent le souffle. Vous pouvez vous blesser. Une grenade armée à la fois.':description(id);};
  const merchant=merchantState;merchantState=function(id){const ms=merchant(id),ledger=state.v055Ordnance;if(ledger&&Object.hasOwn(M.STOCKS,id)&&!ledger.stocked[id]&&!V046.lab){if(!Object.hasOwn(ms.stock,M.ID))ms.stock[M.ID]=M.STOCKS[id];ledger.stocked[id]=true;}return ms;};
- function available(modes=['PLAYING']){return!!(gameStarted&&world&&state.player.hp>0&&modes.includes(mode)&&!zoneTransitioning&&!V046.lab&&!V046.busy&&!V047.pending);}
+ function available(modes=['PLAYING']){return!!(gameStarted&&world&&!world.v073Boules&&state.player.hp>0&&modes.includes(mode)&&!zoneTransitioning&&!V046.lab&&!V046.busy&&!V047.pending);}
  function restore(owner,before){for(const key of Object.keys(owner))delete owner[key];Object.assign(owner,before);}
  function atomic(action,modes=['PLAYING'],allowDeath=false){if(!available(modes)||runtime.depth)return false;const owner=state,w=world,before=copy(state),actors=(w.enemies||[]).map(e=>[e,copy(e)]),arrays={};for(const key of['enemies','npcs','interactables','staticDraws','colliders','loot'])if(Array.isArray(w[key]))arrays[key]=w[key].slice();const save=saveGame;let requested=false,args=[false];runtime.depth++;saveGame=function(...a){requested=true;args=a;return true;};
   try{const result=action();if(result?.then||owner!==state||world!==w)throw Error('Contexte de grenade périmé.');saveGame=save;if(result===false)throw Error('Opération refusée.');if(!requested)throw Error('Écriture complète non demandée.');if(!(allowDeath&&state.player.hp<=0)&&save(...args)===false)throw Error('Sauvegarde refusée.');runtime.commits++;runtime.error=null;return result;}
@@ -18156,7 +18340,7 @@ if(typeof window!=='undefined'&&typeof baseState==='function'){
  const price=tradePrice;tradePrice=function(id,buying=true,vendor=tradeState?.id){const n=price(id,buying,vendor);return id!==M.ID||buying?n:Math.min(n,Math.max(1,price(id,true,vendor)-1));};
  const craft=v020Craft;v020Craft=function(id){return id===M.ID?W.atomic(()=>craft(id),['FIELD']):craft(id);};
  const barter=renderTrade;renderTrade=function(...a){const r=barter(...a),list=$('tradeSellList');if(tradeState&&list&&v026Qty(M.ID)>0&&!list.querySelector('[data-sell="'+M.ID+'"]')){const row=document.createElement('article'),p=tradePrice(M.ID,false);row.className='trade-row';row.innerHTML='<div><b>Mine à fragmentation</b><small>Disponible : '+v026Qty(M.ID)+'</small></div><strong>'+p+' caps</strong><button data-sell="'+M.ID+'"'+(merchantState(tradeState.id).caps<p?' disabled':'')+'>VENDRE</button>';row.querySelector('button').onclick=()=>sellTradeItem(M.ID);list.appendChild(row);}return r;};
- function available(){return!!(gameStarted&&world&&state.player.hp>0&&mode==='PLAYING'&&!zoneTransitioning&&!V046.lab&&!V046.busy&&!V047.pending&&!(typeof isBoatZone==='function'&&isBoatZone()));}
+ function available(){return!!(gameStarted&&world&&!world.v073Boules&&state.player.hp>0&&mode==='PLAYING'&&!zoneTransitioning&&!V046.lab&&!V046.busy&&!V047.pending&&!(typeof isBoatZone==='function'&&isBoatZone()));}
  function same(m){return!!(world&&m.zone===world.id&&m.scene===W.sceneKey());}
  function sourceHeight(x,z,reference){if(world.v046&&world.geoMacro&&!Number.isFinite(W.support([x,reference+.09,z])))return null;const h=groundHeightAt(x,z,reference);return Number.isFinite(h)?h:null;}
  function supported(m){if(!same(m))return false;const r=M.RADIUS,points=[[0,0],[-r,0],[r,0],[0,-r],[0,r]],b=world.bounds;for(const[dx,dz]of points){const x=m.pos[0]+dx,z=m.pos[2]+dz;if(b&&(x<b[0]||x>b[1]||z<b[2]||z>b[3]))return false;const h=sourceHeight(x,z,m.pos[1]);if(h===null||Math.abs(h-m.pos[1])>.12)return false;}
