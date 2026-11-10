@@ -607,7 +607,7 @@ Le chant peut réduire la précision, perturber les communications, vider les po
 
 ## 30. Faune urbaine
 
-### Pigeons
+### Pigeons et gabians
 
 - Biset de plomb ;
 - Pigeon-paratonnerre ;
@@ -615,6 +615,8 @@ Le chant peut réduire la précision, perturber les communications, vider les po
 - Général Biset, boss de Saint-Charles.
 
 Ils volent objets brillants, munitions, clés et composants. Les nids servent de caches dynamiques.
+
+**Couverture jouable — Les objets trouvés :** deux gabians du rig existant gardent trois objets personnels dans une consigne fictionnelle. Le joueur détourne les oiseaux ou les affronte, descend les paniers et rapporte les objets à Nora. Ces caches sont finies et persistantes ; le vol dynamique dans l’inventaire et les autres espèces de cette liste restent des objectifs de la bible, non des mécaniques livrées par ce chapitre. Voir [la consigne](LORE_GABIANS_OBJETS_TROUVES.md).
 
 ### Rats
 
@@ -1274,3 +1276,11 @@ La poste continue parce qu’une lettre n’a pas été livrée.
 CONCORDE continue parce que la République est encore indiquée comme :
 
 > **TEMPORAIREMENT INDISPONIBLE — TRAITEMENT DE LA DEMANDE EN COURS.**
+
+## 64. Incarnation locale — Les pigeons de Poste Restante
+
+La poste conserve plusieurs moyens de transport. Un pigeon voyageur ne remplace pas un facteur : ramené au guichet par un porteur, il peut retourner au colombier qui lui est familier, mais ne lit ni le nom ni l’adresse sur son tube. Dans **La bonne adresse**, Azur/A‑17 et Brique/B‑04 desservent deux colombiers de voisinage représentés dans une cour fictionnelle. Une route à pied gratuite reste possible.
+
+Mirette Valon tient le guichet ; Aïcha Rouanet et Marin Delmas reçoivent chacun un pli et donnent une réponse. Un départ n’est jamais présenté comme un reçu. Les pigeons sont ici des animaux habitués au réseau, non des monstres destinés à fournir du butin. Cette distinction ne retire pas les autres variantes de pigeons du canon documentaire : leur agressivité et leur comportement devront être implémentés séparément.
+
+Le chapitre spécialisé [LORE_PIGEONS_POSTE_RESTANTE.md](LORE_PIGEONS_POSTE_RESTANTE.md) décrit les personnages, les deux routes, la confidentialité et les limites de l’incarnation. Le statut d’implémentation ne transforme pas ce fan-lore en canon officiel.

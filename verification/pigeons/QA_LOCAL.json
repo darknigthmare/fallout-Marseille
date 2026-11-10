@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-10",
+  "feature": "La bonne adresse — pigeons de Poste Restante",
+  "repository_base": "8924be65a69f7335364b09934bc908bf17d0973e",
+  "local_baseline": "FALLOUT_MISTRAL_GABIANS_MISE_A_JOUR.zip",
+  "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851",
+  "new_logic_tests": 32,
+  "all_logic_tests": 610,
+  "logic_failures": 0,
+  "browser_suites": 14,
+  "browser_checks": 791,
+  "new_browser_checks": 69,
+  "new_browser_errors": [],
+  "regressions": [
+    {
+      "suite": "cigales",
+      "checks": 52,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "compagnons",
+      "checks": 64,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "gabians",
+      "checks": 66,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "lys",
+      "checks": 54,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "mutuelle",
+      "checks": 38,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "notaires",
+      "checks": 48,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "parts",
+      "checks": 115,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "pharmacie",
+      "checks": 19,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "poste",
+      "checks": 17,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "radieuse",
+      "checks": 33,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "rats",
+      "checks": 81,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "secours",
+      "checks": 67,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    },
+    {
+      "suite": "voisins",
+      "checks": 68,
+      "errors": [],
+      "html_sha256": "29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851"
+    }
+  ],
+  "build_method": "Hash-guarded insertion of the two ordered pigeon modules into the local gabian bundle; complete repository builder still requires canonical CI verification.",
+  "limits": [
+    "Scripted positioning and synthetic Saint-Charles relay, isolated MemoryStorage, software renderer.",
+    "Native stairs, flight, E/dialogue, checkpoints, save/load and unavailable-exterior cancellation tested.",
+    "Neither pigeon nor gabian disk-backed cold restart is certified by the historical rat cold-restart test.",
+    "Local file navigation blocked by administrator policy; no attempt to alter that policy.",
+    "Neutral pigeons: no combat, General Biset, regional autonomous routing, voice recordings or real IGN courtyard survey."
+  ],
+  "execution_notes": [
+    "First final-return assertion incorrectly expected a session-only retained exterior after replacing the campaign object during reload. Native loading gate correctly retained the interior. The test now checks this safe pending/cancel path, and tests same-session portal return separately.",
+    "The first attempt to allocate an interactive execution session was rejected by the runtime. It executed no code. Tests ran successfully through normal executions."
+  ]
+}

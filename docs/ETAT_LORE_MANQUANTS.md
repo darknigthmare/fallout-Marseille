@@ -81,3 +81,24 @@ Base : `38a0bd2aff02303dc6c80357915eaf45225eeef2` (Le faux midi fusionné après
 **Ce qui reste ouvert dans le bestiaire :** Rat-couronné, Roi des Égouts, nouveaux comportements urbains hors des scènes dédiées, pigeons et gabians avec interactions de récupération, nymphes et Midi-Zéro, habitats reliés et inventaire complet des armes/espèces. Trois individus nommés ne sont pas trois modèles ou espèces supplémentaires.
 
 **Ce qui reste ouvert chez les Aiguilleurs :** fonctionnement des trains, trafic, dépôts supplémentaires et campagne de souveraineté ferroviaire. Les circuits de cette annexe ne remettent aucun train en service. Les campagnes politiques, opérations maritimes, recrutements et vérification réelle des accès IGN demeurent des chantiers distincts.
+
+
+## Actualisation — Les objets trouvés (livraison locale)
+
+Base confirmée : `8924be65a69f7335364b09934bc908bf17d0973e`. Le nouveau [chapitre des gabians](LORE_GABIANS_OBJETS_TROUVES.md) incarne la récupération de trois objets personnels dans une consigne fictionnelle raccordée au relais existant du Vieux-Port. Nora est le seul nouveau PNJ ; les deux gabians réutilisent le modèle régional et les trois propriétaires sont des personnes évoquées, pas trois acteurs déjà placés.
+
+**Implémenté dans le paquet :** déplacement aérien borné et soumis aux collisions, ailes ciblables, brûlure/ralentissement, lâcher annoncé et projectile sauvegardé, deux appâts réservés, deux palans réellement déplacés, arrêt sous charge occupée, prise puis restitution de chaque objet, silhouettes distinctes, trois constats, 45 capsules uniques, DATA/journal/HUD/radio. Les ressources ordinaires du joueur ne sont pas volées.
+
+**Vérifié :** tests de logique et parcours navigateur détaillés dans `verification/gabians/QA.json`. La reprise à froid des rats n'est pas réattribuée aux gabians. Les tests externes utilisent un relais synthétique, pas un parcours complet IGN. Le correctif du workflow ajoute le treizième parcours mais aucun nouveau run GitHub n'a été déclenché ici.
+
+**Encore ouvert :** Biset de plomb, Pigeon-paratonnerre, Général Biset, écologie hors instance, caches dynamiques et vol d'inventaire sûr, restitution aux propriétaires incarnés, nouveaux rigs détaillés, doublage et géographie réelle. Ce lot ne clôt ni l'inventaire complet du bestiaire ni les campagnes des factions. Succession du Lys, opérations maritimes, territoires de l'Arsenal/Amirauté/Francs, factions documentaires et compagnons recrutables restent ouverts.
+
+**Publication :** paquet local et patch source seulement ; `main` n'a pas été modifié par ce lot.
+
+## Actualisation — Poste Restante et pigeons de voisinage
+
+La suite **La bonne adresse** ajoute une cour indépendante, trois personnages, deux plis et deux pigeons neutres. Chaque oiseau retourne à un colombier fixe ; l’arrivée, la signature et la clôture sont des états distincts. Le portage à pied reste gratuit. Les reçus et l’affichage public sont des conséquences locales, pas une reconstruction des services de toute la ville.
+
+**Restent ouverts :** les pigeons hostiles, le Général Biset, les réseaux de livraison entre véritables territoires IGN, les transports des oiseaux vers les relais, le recrutement de Camille, le doublage, les simulations d’accueil des destinataires et la navigation animale libre. Les gabians restent dans la même livraison ; leurs essais à froid après fermeture complète du navigateur ne sont pas certifiés par les anciennes validations des rats.
+
+**Livraison :** les versions locales Gabians/Pigeons sont réunies pour publication. Le statut exact de la PR et les empreintes canoniques se trouvent dans le rapport de livraison, pas dans une déclaration anticipée de fusion.

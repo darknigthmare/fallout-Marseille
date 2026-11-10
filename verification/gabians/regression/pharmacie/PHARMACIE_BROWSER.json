@@ -1,0 +1,29 @@
+{
+  "html_sha256": "7b714e126bcb2e420ecebe16492dd22ca4bbc8871d21e124fa3f505b92561d4c",
+  "passed": 19,
+  "checks": [
+    "three pharmacy cards visible",
+    "no document-wide mobile overflow",
+    "accepted via real dialogue button",
+    "cabinet does not occlude interaction",
+    "E opens actual timetable note",
+    "mismatched shift gives persistent supplier",
+    "closed pharmacy refuses ordinary purchase",
+    "reserved parcel visible at closed office",
+    "reserved pickup works outside duty hours",
+    "actual repair cost deducted",
+    "parcel disappears after pickup",
+    "mutual outcome grants exactly three care credits",
+    "historical ratification untouched",
+    "two purchases deplete real finite stock",
+    "real purchase cost paid twice",
+    "exhausted purchase button removed",
+    "care restores 30 HP only",
+    "save reload preserves spent stock and care",
+    "no runtime JavaScript exceptions"
+  ],
+  "errors": [],
+  "browser": "144.0.7559.96",
+  "renderer": "SoftwareRenderer",
+  "scope": "Instrumented production bundle; isolated memory storage; flat synthetic relays; terrain stub; real UI, E interaction, NPC choices, inventory, save migration and renderer. No IGN-world traversal or human playtest."
+}

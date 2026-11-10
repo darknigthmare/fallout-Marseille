@@ -96,3 +96,14 @@ Les individus réemploient le modèle régional existant, ses ailes, pattes et p
 Patrouilles, morsures annoncées, tirs et blessures sont persistants. L’isolation, le volet et l’appât réservé permettent le départ progressif des survivants. Les morts ne sont pas effacés. Deux gaines doivent ensuite être posées aux armoires et le tableau réarmé : six lampes se stabilisent réellement. Les trois constats sont calculés à partir des pertes ; 60 capsules récompensent la réception une seule fois.
 
 `v072Rats` reste distinct des autres registres. La scène ne remet pas de train en circulation et ne simule ni un réseau d’égouts complet ni la vie entière des animaux réfugiés. Le chapitre détaille les limites, les contrôles de sauvegarde et les scénarios validés.
+
+
+## Les objets trouvés — consigne des gabians
+
+[Chapitre de la consigne](docs/LORE_GABIANS_OBJETS_TROUVES.md) : Nora, deux gabians du modèle existant, trois objets personnels, paniers mobiles, restitution finie et conséquences persistantes. Lot livré localement après `8924be65` ; publication GitHub non effectuée. Pas de vol dans l’inventaire ordinaire ni de nouvelle espèce de pigeon annoncée.
+
+## Courrier de voisinage — La bonne adresse
+
+[**La bonne adresse**](docs/LORE_PIGEONS_POSTE_RESTANTE.md) prolonge la livraison locale des gabians par une mission indépendante de Poste Restante, accessible depuis Saint-Charles. Mirette, Aïcha et Marin habitent une cour fictionnelle à deux niveaux. Deux pigeons bagués retournent à leurs colombiers respectifs avec un pli, ou le joueur porte les plis par la passerelle. Le mauvais oiseau n’apprend pas une nouvelle adresse par simple étiquette.
+
+Le registre `v074Pigeons` sépare le départ, l’arrivée physique et la signature. Les vols et leurs positions, les trappes, les enveloppes et les reçus se sauvegardent. La clôture conserve les réponses sous pli ou affiche un bilan sans noms ; 50 capsules sont versées une fois. Les messages racontent des besoins locaux sans prétendre construire un hôpital ou réparer une pompe régionale. Ces oiseaux sont des acteurs neutres, pas la réalisation des pigeons hostiles ou du Général Biset.
