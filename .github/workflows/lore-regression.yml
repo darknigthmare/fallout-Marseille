@@ -1,10 +1,10 @@
 name: Lore regression
 on:
   pull_request:
-    paths: ['LORE.md', 'docs/*LORE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/rats_cold_save_smoke.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
+    paths: ['LORE.md', 'docs/*LORE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'src/v050/16_iconic_ordnance.js', 'src/v050/18_iconic_mines.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/*cold_save_smoke.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
   push:
     branches: [main, 'feature/**']
-    paths: ['LORE.md', 'docs/*LORE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/rats_cold_save_smoke.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
+    paths: ['LORE.md', 'docs/*LORE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'src/v050/16_iconic_ordnance.js', 'src/v050/18_iconic_mines.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/*cold_save_smoke.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
 permissions:
   contents: write
 concurrency:
@@ -22,8 +22,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Syntaxe des modules de lore
-        run: for source in src/v050/10*.js; do node --check "$source"; done
+      - name: Syntaxe des modules de lore et de la trêve
+        run: for source in src/v050/10*.js src/v050/16_iconic_ordnance.js src/v050/18_iconic_mines.js; do node --check "$source"; done
       - name: Tests de lore et des institutions
         run: node --test tests/expansion/lore_*.cjs
       - name: Reconstruction du jeu
@@ -32,8 +32,9 @@ jobs:
         run: |
           node --check src/game.js
           python3 tools/build_single.py --check
-          for model in MistralMadame MistralCouncil MistralPoste MistralPharmacy MistralRadieuse MistralMutuelle MistralNotaires MistralVoisins MistralDevoir MistralLys MistralParts MistralSecours MistralCigales MistralRats; do grep -q "const $model" src/game.js; done
+          for model in MistralMadame MistralCouncil MistralPoste MistralPharmacy MistralRadieuse MistralMutuelle MistralNotaires MistralVoisins MistralDevoir MistralLys MistralParts MistralSecours MistralCigales MistralRats MistralBoules; do grep -q "const $model" src/game.js; done
           grep -q 'LES DENTS DU RÉSEAU' JOUER_FALLOUT_MISTRAL_v0.50.html
+          grep -q 'LA MÈNE DES CENT TRÊVES' JOUER_FALLOUT_MISTRAL_v0.50.html
       - name: Régressions du territoire sur le bundle reconstruit
         run: |
           node tests/expansion/city_streaming.cjs
@@ -44,25 +45,27 @@ jobs:
         run: |
           python -m pip install playwright==1.57.0
           python -m playwright install --with-deps chromium
-      - name: Reprise à froid avec un véritable profil Chromium
-        run: python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/rats/ci/cold
-      - name: Douze parcours navigateur instrumentés
+      - name: Rats - reprise à froid avec un véritable profil Chromium
+        run: python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/cochonnet/ci/rats-cold
+      - name: COCHONNET - reprise à froid en vol et après la mesure
+        run: python tests/expansion/cochonnet_cold_save_smoke.py --html index.html --output verification/cochonnet/ci/cochonnet-cold
+      - name: Treize parcours navigateur instrumentés
         run: |
-          for suite in rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
-            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/rats/ci/${suite}"
+          for suite in cochonnet rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
+            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/cochonnet/ci/${suite}"
           done
       - name: Rapports et captures navigateur
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: mistral-rats-browser-${{ github.sha }}
+          name: mistral-cochonnet-browser-${{ github.sha }}
           if-no-files-found: ignore
           retention-days: 14
-          path: verification/rats/ci/
+          path: verification/cochonnet/ci/
       - name: Artefact du jeu et des sources de lore
         uses: actions/upload-artifact@v4
         with:
-          name: fallout-mistral-rats-${{ github.sha }}
+          name: fallout-mistral-cochonnet-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -72,18 +75,20 @@ jobs:
             sw.js
             LORE.md
             src/v050/10*.js
+            src/v050/16_iconic_ordnance.js
+            src/v050/18_iconic_mines.js
             src/v042/00_catalog.js
             src/v046/04_lore.js
             src/v049/*.js
             tests/expansion/lore_*.cjs
             tests/expansion/compagnons_fixture.cjs
             tests/expansion/*browser_smoke.py
-            tests/expansion/rats_cold_save_smoke.py
+            tests/expansion/*cold_save_smoke.py
             docs/LORE*.md
             docs/ETAT_LORE_MANQUANTS.md
             docs/BIBLE_LORE_FALLOUT_MISTRAL.md
-            verification/rats/ci/rats/
-            verification/rats/ci/cold/
+            verification/cochonnet/ci/cochonnet/
+            verification/cochonnet/ci/cochonnet-cold/
       - name: Synchroniser les sorties générées de la branche
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
         run: |
