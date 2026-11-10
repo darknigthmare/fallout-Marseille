@@ -50,23 +50,23 @@ jobs:
         run: python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/rats/ci/cold
       - name: Six reprises à froid des pigeons et gabians
         run: python tests/expansion/birds_cold_save_smoke.py --html index.html --output verification/rats/ci/birds-cold
-      - name: Quinze parcours navigateur instrumentés
+      - name: Seize parcours navigateur instrumentés
         run: |
-          for suite in retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
+          for suite in gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
             python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/rats/ci/${suite}"
           done
       - name: Rapports et captures navigateur
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: mistral-retrouvailles-browser-${{ github.sha }}
+          name: mistral-gestes-browser-${{ github.sha }}
           if-no-files-found: ignore
           retention-days: 14
           path: verification/rats/ci/
       - name: Artefact du jeu et des sources de lore
         uses: actions/upload-artifact@v4
         with:
-          name: fallout-mistral-retrouvailles-${{ github.sha }}
+          name: fallout-mistral-gestes-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -94,6 +94,9 @@ jobs:
             verification/rats/ci/cold/
             verification/pigeons/QA.json
             verification/pigeons/QA_LOCAL.json
+            verification/gestes/QA.json
+            verification/gestes/QA_LOCAL.json
+            verification/rats/ci/gestes/
             verification/retrouvailles/QA.json
             verification/retrouvailles/QA_LOCAL.json
       - name: Synchroniser les sorties générées de la branche
