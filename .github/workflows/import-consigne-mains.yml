@@ -1,0 +1,155 @@
+name: Verify and publish consignment pickup
+on:
+  push:
+    branches: [feature/lore-consigne-mains-import]
+    paths: ['delivery/consigne-mains-import/**', '.github/workflows/import-consigne-mains.yml']
+permissions:
+  contents: write
+concurrency:
+  group: import-consigne-mains-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact preimages and apply source patch
+        run: |
+          python - <<'PY'
+          import base64,hashlib,json,lzma,pathlib,subprocess
+          root=pathlib.Path('delivery/consigne-mains-import');meta=json.loads((root/'meta.json').read_text())
+          parts=sorted(root.glob('part*.b64'));assert len(parts)==3
+          raw=base64.b64decode(''.join(p.read_text() for p in parts),validate=True)
+          assert len(raw)==meta['compressed_size'] and hashlib.sha256(raw).hexdigest()==meta['compressed_sha256']
+          patch=lzma.decompress(raw,memlimit=256*1024*1024)
+          assert len(patch)==meta['patch_size'] and hashlib.sha256(patch).hexdigest()==meta['patch_sha256']
+          for name,expected in meta['preimages'].items():
+            p=pathlib.Path(name)
+            assert (not p.exists()) if expected is None else (hashlib.sha256(p.read_bytes()).hexdigest()==expected),name
+          p=pathlib.Path('/tmp/consigne-mains.patch');p.write_bytes(patch)
+          subprocess.run(['git','apply','--check',str(p)],check=True)
+          subprocess.run(['git','apply','--index',str(p)],check=True)
+          changed=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
+          assert set(changed)==set(meta['preimages']),changed
+          for name,expected in meta['postimages'].items():
+            assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==expected,name
+          assert not subprocess.check_output(['git','diff','--cached','--name-only','--','.github'],text=True).strip()
+          PY
+      - name: Syntax and all lore logic tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          for source in src/v050/10*.js; do node --check "$source"; done
+          python -m py_compile tests/expansion/mains_browser_smoke.py tests/expansion/birds_cold_save_smoke.py
+          node --test tests/expansion/lore_*.cjs | tee /tmp/mains-lore.log
+      - name: Full source build and byte identity
+        run: |
+          python3 tools/build_single.py
+          python3 tools/build_single.py --check
+          node --check src/game.js
+          python - <<'PY'
+          import hashlib,json,pathlib
+          local=json.loads(pathlib.Path('verification/mains/QA_LOCAL.json').read_text())
+          for name,expected in local['preview_outputs'].items():
+            assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==expected,name
+          print('Four full-source outputs are byte-identical to tested local preview')
+          PY
+      - name: Four territory regressions
+        run: |
+          node tests/expansion/city_streaming.cjs
+          node tests/expansion/city_wait_cancel.test.cjs
+          node tests/expansion/city_partition_seams.test.cjs
+          node tests/expansion/city_geometry_identity.test.cjs
+      - name: Isolated browser environment
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Seven bird cold restarts including interrupted pickup
+        run: python tests/expansion/birds_cold_save_smoke.py --html index.html --output verification/mains/ci/birds-cold
+      - name: Historical rat cold restarts
+        run: python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/mains/ci/rats-cold
+      - name: Seventeen instrumented browser scenarios
+        run: |
+          for suite in mains gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
+            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/mains/ci/${suite}"
+          done
+      - name: Record completed canonical validation
+        run: |
+          python - <<'PY'
+          import hashlib,json,os,pathlib,re
+          root=pathlib.Path('verification/mains');ci=root/'ci'
+          outputs={p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest() for p in ['index.html','JOUER_FALLOUT_MISTRAL_v0.50.html','src/game.js','sw.js']}
+          html=outputs['index.html'];assert html==outputs['JOUER_FALLOUT_MISTRAL_v0.50.html']
+          suites='mains gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie'.split();reports={}
+          for suite in suites+['birds-cold','rats-cold']:
+            candidates=[]
+            for p in (ci/suite).glob('*.json'):
+              v=json.loads(p.read_text())
+              if isinstance(v,dict) and 'passed' in v and 'html_sha256' in v:candidates.append((p,v))
+            assert len(candidates)==1,(suite,candidates)
+            p,v=candidates[0];assert v['html_sha256']==html and not v.get('errors') and v.get('complete',True),suite
+            reports[suite]={'passed':v['passed'],'errors':v.get('errors',[]),'report':str(p),'browser':v.get('browser'),'scope':v.get('scope'),'gpu_cache_observed':v.get('gpu_cache_observed'),'cold_scenarios':len(v.get('runs',[]))}
+          assert reports['birds-cold']['cold_scenarios']==7
+          log=pathlib.Path('/tmp/mains-lore.log').read_text();assert re.search(r'^# pass 679$',log,re.M) and re.search(r'^# fail 0$',log,re.M)
+          local=json.loads((root/'QA_LOCAL.json').read_text());assert local['preview_outputs']==outputs
+          regular=sum(reports[s]['passed'] for s in suites);assert regular==930
+          report={'baseline':'a589d8de0da349a0bcdfc6d1636eb41a1595a02e','canonical_ci':{'run':int(os.environ['GITHUB_RUN_ID']),'input_commit':os.environ['GITHUB_SHA'],'validation':'all preceding validation steps completed successfully','logic_passed':679,'logic_failed':0,'new_logic_tests':28,'full_source_build_and_check':True,'territory_regression_commands_passed':4},'canonical_outputs':outputs,'preview_byte_identical':True,'browser_suites':{s:reports[s] for s in suites},'regular_browser_checks':regular,'new_browser_checks':reports['mains']['passed'],'bird_cold_restart':reports['birds-cold'],'rat_cold_restart':reports['rats-cold'],'features':['Three collision-enabled authored pickup trays','Continuous hook-to-owner pickup after saved transaction','Five procedural fingers with three visible joints each','Two tapered arm segments with native skin color','Original recognition, reduced motion and saved ownership preserved'],'save_schema_changed':False,'original_reward_caps_once':45,'limits':['Player-to-owner direct transfer and Nora deposit are not animated.','Scripted positions and synthetic origins; not human campaign or real IGN traversal.','Cold restart covers normal process closure with Chromium disk profile, not power loss or every browser.','No new voice acting, owner routes, ferry or autonomous postal network.','PR17 COCHONNET remains separate; no main merge or deployment.'],'counting_note':'Repeated local and CI checks are not added as distinct tests. QA_LOCAL records local preview including blocked local navigation.','publication_note':'Validation report is written before source publication; workflow outcome and branch head establish publication separately.'}
+          (root/'QA.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps({'logic':679,'regular':regular,'birds':reports['birds-cold'],'rats':reports['rats-cold'],'html':html},ensure_ascii=False,indent=2))
+          PY
+      - name: Evidence including failed scenarios
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mistral-mains-evidence-${{ github.sha }}
+          path: verification/mains/ci/
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: Canonical playable program and source update
+        uses: actions/upload-artifact@v4
+        with:
+          name: fallout-mistral-mains-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            index.html
+            JOUER_FALLOUT_MISTRAL_v0.50.html
+            src/game.js
+            sw.js
+            LORE.md
+            src/v050/10*.js
+            src/v049/*.js
+            src/v046/04_lore.js
+            src/v042/00_catalog.js
+            tests/expansion/lore_*.cjs
+            tests/expansion/compagnons_fixture.cjs
+            tests/expansion/*browser_smoke.py
+            tests/expansion/*cold_save_smoke.py
+            docs/LORE*.md
+            docs/BIBLE_LORE_FALLOUT_MISTRAL.md
+            docs/ETAT_LORE_MANQUANTS.md
+            verification/mains/QA.json
+            verification/mains/QA_LOCAL.json
+            verification/mains/PLAN.md
+      - name: Publish tested source and game without changing workflow files
+        run: |
+          remote_head=$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)
+          if [ "$remote_head" != "$GITHUB_SHA" ]; then
+            echo 'Branch advanced: refusing to overwrite newer work.'
+            exit 1
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/game.js index.html JOUER_FALLOUT_MISTRAL_v0.50.html sw.js verification/mains/QA.json
+          git rm -- delivery/consigne-mains-import/part0.b64 delivery/consigne-mains-import/part1.b64 delivery/consigne-mains-import/part2.b64 delivery/consigne-mains-import/meta.json
+          test -z "$(git diff --cached --name-only -- .github)"
+          git diff --cached --stat
+          git commit -m 'feat(lore): prise continue sur les plateaux et mains articulées'
+          git push origin HEAD:${GITHUB_REF_NAME}
