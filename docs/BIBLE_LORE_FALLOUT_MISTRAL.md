@@ -1343,7 +1343,7 @@ Le vérificateur `tools/verify_lore_registry.py` refuse un module narratif `10*.
 
 ### 68.2 Priorités conservées ouvertes
 
-La Convention, la Bastille du Midi, les courants révolutionnaires, les Gilets de Cendre et le Syndicat gardent leurs qualités et dangers décrits dans la partie III. Leur présence dans les dossiers n’acquitte pas une campagne complète. Le Rat-couronné, le Roi des Égouts, Midi-Zéro, le Général Biset et les espèces annoncées gardent un statut documentaire tant que leurs propres systèmes ne sont pas vérifiés.
+La Convention, la Bastille du Midi, les courants révolutionnaires, les Gilets de Cendre et le Syndicat gardent leurs qualités et dangers décrits dans la partie III. Leur présence dans les dossiers n’acquitte pas une campagne complète. Le Rat-couronné possède déjà un assemblage régional, des volumes ciblables et une ruée sur le type existant `giantRat`, décrits dans [BESTIAIRE_REGIONAL.md](BESTIAIRE_REGIONAL.md). Il ne doit donc pas être reclassé comme entièrement absent. Cet assemblage quadrupède ne réalise toutefois pas l’agrégat de plusieurs individus décrit en section 30 : cet écart de représentation reste ouvert. Le Roi des Égouts, Midi-Zéro, le Général Biset et les autres formes annoncées ne deviennent pas jouables par simple présence dans une liste.
 
 Les arsenaux d’Aubagne, de Marseille, du littoral, les armes révolutionnaires et celles de pétanque restent décrits aux sections 37 à 44 ; ce registre ne prétend pas leur donner à tous un modèle, une animation ou un équilibre final. Un inventaire arme par arme et créature par créature demeure nécessaire. La PR parallèle COCHONNET nº 17 n’est ni écrasée ni déclarée intégrée par cette consolidation.
 

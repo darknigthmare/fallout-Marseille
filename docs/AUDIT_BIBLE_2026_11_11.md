@@ -27,3 +27,7 @@ La vérification n’analyse pas les intentions du récit et ne prouve pas la fi
 Le précédent lot local annonçait correctement 727 tests de logique et 927 contrôles ordinaires, sans reconstruction complète ni reprise à froid validée. Ces preuves restent historiques. Le rapport courant `verification/bible-sync/QA.json` doit provenir des commandes effectivement exécutées sur le programme canonique. Aucune réussite distante n’est déduite du seul passage des tests locaux.
 
 Une visite humaine de toute la carte IGN, tous les matériels, les coupures électriques, la flotte, les emplois du temps régionaux, le doublage et l’intégration COCHONNET restent hors de cette consolidation.
+
+## Précision de lecture du bestiaire
+
+Le chapitre `BESTIAIRE_REGIONAL.md` et `src/v050/13_regional_bestiary.js` décrivent déjà le Rat-couronné sur `giantRat`, avec silhouette, volumes ciblables et attaque. La consolidation ne le classe donc pas parmi les espèces entièrement absentes. Sa représentation actuelle demeure différente de l’agrégat conçu en section 30 ; aucune transformation graphique n’est inventée pour combler cet écart. Cette précision documentaire ne modifie pas les statistiques, les apparitions ou les sauvegardes. Le registre des vingt ensembles couvre les modules narratifs `10*.js`, pas l’inventaire intégral du module de bestiaire 13.
