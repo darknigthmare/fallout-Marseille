@@ -1,17 +1,17 @@
-name: Publish verified bible and courtyard
+name: Review bible against existing bestiary
 on:
   push:
     branches: [feature/bible-cour-sync]
-    paths: ['delivery/bible-cour-import/**', '.github/workflows/import-bible-cour.yml']
+    paths: ['delivery/bible-review.py', '.github/workflows/import-bible-cour.yml']
 permissions:
   contents: write
 concurrency:
   group: import-bible-cour-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  validate-publish:
+  review-documentation:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,133 +20,57 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Exact source preimages and reviewed patch
-        run: |
-          python - <<'PY'
-          import base64,hashlib,json,lzma,pathlib,subprocess
-          root=pathlib.Path('delivery/bible-cour-import');meta=json.loads((root/'meta.json').read_text())
-          parts=sorted(root.glob('part*.b64'));assert len(parts)==4
-          raw=base64.b64decode(''.join(p.read_text() for p in parts),validate=True)
-          assert len(raw)==meta['compressed_size'] and hashlib.sha256(raw).hexdigest()==meta['compressed_sha256']
-          patch=lzma.decompress(raw,memlimit=256*1024*1024)
-          assert len(patch)==meta['patch_size'] and hashlib.sha256(patch).hexdigest()==meta['patch_sha256']
-          for name,expected in meta['preimages'].items():
-            p=pathlib.Path(name)
-            assert (not p.exists()) if expected is None else (hashlib.sha256(p.read_bytes()).hexdigest()==expected),name
-          p=pathlib.Path('/tmp/bible-cour.patch');p.write_bytes(patch)
-          subprocess.run(['git','apply','--check',str(p)],check=True)
-          subprocess.run(['git','apply','--index',str(p)],check=True)
-          changed=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
-          assert set(changed)==set(meta['preimages']),changed
-          assert not any(x.startswith('.github/') for x in changed)
-          for name,expected in meta['postimages'].items():
-            assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==expected,name
-          PY
-      - name: Logic, syntax and bible traceability
+      - name: Clarify existing implementation and navigation into bible
+        run: python delivery/bible-review.py
+      - name: Repeat logic and documentary tests without modifying game
         shell: bash
         run: |
           set -euo pipefail
-          for source in src/v050/10*.js; do node --check "$source"; done
-          node --test tests/expansion/lore_*.cjs | tee /tmp/bible-lore.log
-          python tools/verify_lore_registry.py --output verification/bible-sync/REGISTRY.json
-          python -m unittest discover -s tests/expansion -p 'test_lore_registry.py' -v 2>&1 | tee /tmp/bible-registry-tests.log
-      - name: Complete canonical compilation and deterministic check
-        run: |
-          python3 tools/build_single.py
-          python3 tools/build_single.py --check
-          node --check src/game.js
+          node --test tests/expansion/lore_*.cjs | tee /tmp/bible-review-lore.log
+          python -m unittest discover -s tests/expansion -p 'test_lore_registry.py' -v 2>&1 | tee /tmp/bible-review-tests.log
+          python tools/build_single.py --check
           python tools/verify_lore_registry.py --bundle src/game.js --output verification/bible-sync/REGISTRY.json
-          sha256sum index.html src/game.js sw.js
-      - name: Territory regressions
-        run: |
-          node tests/expansion/city_streaming.cjs
-          node tests/expansion/city_wait_cancel.test.cjs
-          node tests/expansion/city_partition_seams.test.cjs
-          node tests/expansion/city_geometry_identity.test.cjs
-      - name: Browser environment
-        run: |
-          python -m pip install playwright==1.57.0
-          python -m playwright install --with-deps chromium
-      - name: Three courtyard full Chromium restarts
-        run: python tests/expansion/consigne_vie_cold_save_smoke.py --html index.html --output verification/bible-sync/ci/cour-cold
-      - name: Six bird and historical rat full restarts
-        run: |
-          python tests/expansion/birds_cold_save_smoke.py --html index.html --output verification/bible-sync/ci/birds-cold
-          python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/bible-sync/ci/rats-cold
-      - name: Seventeen instrumented browser scenarios
-        run: |
-          for suite in consigne_vie gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
-            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/bible-sync/ci/${suite}"
-          done
-      - name: Record actual current validation and publication boundaries
+      - name: Record final documentation and unchanged tested program
         run: |
           python - <<'PY'
           import hashlib,json,os,pathlib,re
-          root=pathlib.Path('verification/bible-sync');ci=root/'ci'
-          digest=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-          outputs={p:digest(p) for p in ['index.html','JOUER_FALLOUT_MISTRAL_v0.50.html','src/game.js','sw.js']}
-          html=outputs['index.html'];assert html==outputs['JOUER_FALLOUT_MISTRAL_v0.50.html']
-          suites='consigne_vie gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie'.split()
-          reports={}
-          for suite in suites+['cour-cold','birds-cold','rats-cold']:
-            found=[]
-            for p in (ci/suite).glob('*.json'):
-              v=json.loads(p.read_text())
-              if isinstance(v,dict) and 'passed' in v and 'html_sha256' in v:found.append((p,v))
-            assert len(found)==1,(suite,len(found))
-            p,v=found[0];assert v['html_sha256']==html and not v.get('errors') and v.get('complete',True),suite
-            reports[suite]={'passed':v['passed'],'errors':v.get('errors',[]),'report':str(p),'scope':v.get('scope')}
-          log=pathlib.Path('/tmp/bible-lore.log').read_text()
-          passed=int(re.search(r'^# pass (\d+)$',log,re.M)[1]);failed=int(re.search(r'^# fail (\d+)$',log,re.M)[1]);assert passed==727 and failed==0
-          pylog=pathlib.Path('/tmp/bible-registry-tests.log').read_text();assert 'Ran 19 tests' in pylog and '\nOK\n' in pylog
-          registry=json.loads((root/'REGISTRY.json').read_text());assert registry.get('ok') is True,registry
-          report={'baseline_main':'cfa5edd4439e214331323c3a3f1b9833ff464942','previous_local_base':'a589d8de0da349a0bcdfc6d1636eb41a1595a02e','canonical_ci':{'run':int(os.environ['GITHUB_RUN_ID']),'input_commit':os.environ['GITHUB_SHA'],'validation':'All preceding steps completed successfully','lore_passed':passed,'lore_failed':failed,'registry_tests_passed':19,'full_source_build_and_check':True,'territory_regression_commands_passed':4},'canonical_outputs':outputs,'registry':registry,'browser_suites':{s:reports[s] for s in suites},'regular_browser_checks':sum(reports[s]['passed'] for s in suites),'cour_cold':reports['cour-cold'],'birds_cold':reports['birds-cold'],'rats_cold':reports['rats-cold'],'previous_incremental_html_byte_identical':html=='43fc553655c5e06c19f592c27dbd67552f2a914ccfaa93e4e39a35eb56e8029b','scope':['Existing local courtyard extension published without new story retcon.','Central bible consolidation and material traceability of all current src/v050/10*.js modules.','Conceptual factions, weapons, creatures and parallel COCHONNET PR17 remain explicitly separate from completed gameplay.'],'limits':['Registry validation checks links, files, declarations and hashes; it does not prove complete canon fidelity or all ideas ever discussed.','Regular browser tests use scripted positions and synthetic origins with isolated storage and software rendering.','Cold tests use orderly Chromium process closure, not power loss or all browsers.','No full human campaign, exhaustive IGN journey or hardware performance certification.'],'counting_note':'Repeated local and CI suites are not additional unique tests. Prior verification/consigne-vie/QA.json is historical local evidence.','publication_note':'This report attests the tested working tree before source publication. It is not a claim of merge or deployment.'}
-          (root/'QA.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
-          print(json.dumps({'lore':passed,'registry_tests':19,'browser':report['regular_browser_checks'],'cold':{s:reports[s]['passed'] for s in ['cour-cold','birds-cold','rats-cold']},'html':html},indent=2))
+          root=pathlib.Path('verification/bible-sync');qa=json.loads((root/'QA.json').read_text())
+          for name,h in qa['canonical_outputs'].items():
+            assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==h,name
+          log=pathlib.Path('/tmp/bible-review-lore.log').read_text();assert re.search(r'^# pass 727$',log,re.M) and re.search(r'^# fail 0$',log,re.M)
+          log=pathlib.Path('/tmp/bible-review-tests.log').read_text();assert 'Ran 19 tests' in log and '\nOK\n' in log
+          reg=json.loads((root/'REGISTRY.json').read_text());assert reg['ok']
+          changed=['README.md','docs/BIBLE_LORE_FALLOUT_MISTRAL.md','docs/AUDIT_BIBLE_2026_11_11.md']
+          review={'run':int(os.environ['GITHUB_RUN_ID']),'input_commit':os.environ['GITHUB_SHA'],'lore_tests_repeated':727,'registry_tests_repeated':19,'canonical_game_unchanged':True,'registry':reg,'changes':{'README.md':'Current central bible, index, registry, gaps and evidence accessible from repository home.','docs/BIBLE_LORE_FALLOUT_MISTRAL.md':'Rat-couronne existing giantRat rig is not classified as entirely absent; aggregate representation remains open.','docs/AUDIT_BIBLE_2026_11_11.md':'Source of the bestiary qualification and exact scope of the narrative registry.'},'sha256':{p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest() for p in changed},'limits':'Documentary clarification only. Browser and cold-restart evidence belongs to the unchanged program and its earlier completed validation run.'}
+          (root/'DOCUMENTATION_REVIEW.json').write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n')
+          qa['registry_at_game_validation']=qa['registry'];qa['registry']=reg
+          qa['documentation_review']={k:v for k,v in review.items() if k!='registry'}
+          (root/'QA.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps({'run':review['run'],'registry_ok':reg['ok'],'entries':reg['entries'],'modules':reg['narrative_modules'],'chapters':reg['chapters'],'game_unchanged':True},indent=2))
           PY
-      - name: Evidence including failures
-        if: always()
+      - name: Reviewed documents and current evidence
         uses: actions/upload-artifact@v4
         with:
-          name: mistral-bible-cour-evidence-${{ github.sha }}
-          path: |
-            verification/bible-sync/
-            /tmp/bible-lore.log
-            /tmp/bible-registry-tests.log
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: Tested canonical program, sources and bible
-        uses: actions/upload-artifact@v4
-        with:
-          name: fallout-mistral-bible-cour-${{ github.sha }}
+          name: mistral-bible-review-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
-            index.html
-            JOUER_FALLOUT_MISTRAL_v0.50.html
-            sw.js
-            src/
-            tools/
-            tests/expansion/
-            docs/
-            LORE.md
             README.md
-            AGENTS.md
-            LISEZ_MOI_UNE_PLACE_DANS_LA_COUR.md
+            LORE.md
+            docs/BIBLE_LORE_FALLOUT_MISTRAL.md
+            docs/AUDIT_BIBLE_2026_11_11.md
+            docs/REGISTRE_LORE.json
             verification/bible-sync/QA.json
             verification/bible-sync/REGISTRY.json
-      - name: Publish source and generated files, not workflows
+            verification/bible-sync/DOCUMENTATION_REVIEW.json
+      - name: Commit verified documentation only
         run: |
           remote_head=$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)
-          if [ "$remote_head" != "$GITHUB_SHA" ]; then
-            echo 'Branch advanced; refusing to overwrite later work.'
-            exit 1
-          fi
+          test "$remote_head" = "$GITHUB_SHA"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add src/game.js index.html JOUER_FALLOUT_MISTRAL_v0.50.html sw.js verification/bible-sync/QA.json verification/bible-sync/REGISTRY.json
-          git rm -- delivery/bible-cour-import/part0.b64 delivery/bible-cour-import/part1.b64 delivery/bible-cour-import/part2.b64 delivery/bible-cour-import/part3.b64 delivery/bible-cour-import/meta.json
-          test -z "$(git diff --cached --name-only -- .github)"
-          git diff --cached --stat
-          git commit -m 'feat(lore): cour habitée et bible reliée aux sources vérifiées'
+          git add README.md docs/BIBLE_LORE_FALLOUT_MISTRAL.md docs/AUDIT_BIBLE_2026_11_11.md verification/bible-sync/QA.json verification/bible-sync/REGISTRY.json verification/bible-sync/DOCUMENTATION_REVIEW.json
+          git rm -- delivery/bible-review.py
+          test -z "$(git diff --cached --name-only -- src index.html JOUER_FALLOUT_MISTRAL_v0.50.html sw.js .github)"
+          git commit -m 'docs(lore): acces direct a la bible et statut exact du Rat-couronne'
           git push origin HEAD:${GITHUB_REF_NAME}
