@@ -27,6 +27,10 @@ const MistralConsigneGestures = (() => {
     const c=Math.cos(yaw),s=Math.sin(yaw);
     return [p[0]+(v[0]*c+v[2]*s)*scale,p[1]+v[1]*scale,p[2]+(-v[0]*s+v[2]*c)*scale];
   }
+  function unpoint(p,yaw,v,scale=1) {
+    const c=Math.cos(yaw),s=Math.sin(yaw),x=v[0]-p[0],z=v[2]-p[2];
+    return [(x*c-z*s)/scale,(v[1]-p[1])/scale,(x*s+z*c)/scale];
+  }
   function elbow(hand) {
     const shoulder=[.32,1.34,0],delta=hand.map((v,i)=>v-shoulder[i]),length=Math.hypot(...delta);
     if (!(length>0&&length<=.72)) throw Error('Unreachable hand pose');
@@ -34,7 +38,7 @@ const MistralConsigneGestures = (() => {
     const radius=Math.sqrt(Math.max(0,.36*.36-length*length/4));
     return shoulder.map((v,i)=>v+delta[i]/2+bend[i]/norm*radius);
   }
-  return {ids:ids.slice(),duration,pose,elapsed,point,elbow};
+  return {ids:ids.slice(),duration,pose,elapsed,point,unpoint,elbow};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralConsigneGestures;
 
@@ -45,6 +49,8 @@ if(typeof humanParts==='function'&&typeof MistralGabians!=='undefined'){
   const keyOf=n=>G.ids.find(k=>n?.id==='g73:owner:'+k);
   function reset(){pending.clear();owner=state;scene=world;lastTime=null;}
   function sync(){if(state!==owner||world!==scene||!local())reset();}
+  // Read-only presentation gate for optional local walking routines.
+  globalThis.v075ConsigneGestureActive=id=>{sync();return local()&&pending.has(id);};
   function begin(key){
     sync();
     if(!local()||settings.reduceMotion||!state.v073Gabians.handoffs[key])return;
@@ -121,7 +127,16 @@ if(typeof humanParts==='function'&&typeof MistralGabians!=='undefined'){
     // Keep the original body, head, face, clothing, left arm and identity.
     // Fail closed if the upstream rig ever changes instead of showing two arms.
     if(active&&removed!==3){human(out,n,t);shape(out,n,key,G.pose(key,G.duration).item);return;}
-    out.push(...native);if(active)arm(out,proxy,pose.hand);shape(out,proxy,key,pose.item,pose.attachment);
+    out.push(...native);if(active)arm(out,proxy,pose.hand);
+    let item=pose.item;
+    if(!active&&key==='bague'){
+      // Follow the actual native right hand during locomotion, rather than a
+      // static idle point. Fail closed to the existing pose if the rig changes.
+      const sc=proxy.scale||1,expected=G.point(proxy.pos,proxy.yaw||0,[.33,.73,.02],sc);
+      const hands=native.filter(d=>d.mesh==='sphere'&&d.scale?.every((v,i)=>Math.abs(v-[.16,.18,.15][i]*sc)<1e-6)&&Math.hypot(...d.pos.map((v,i)=>v-expected[i]))<.3*sc);
+      if(hands.length===1){item=G.unpoint(proxy.pos,proxy.yaw||0,hands[0].pos,sc);item[2]-=.065;}
+    }
+    shape(out,proxy,key,item,pose.attachment);
   };
   const draws=collectDraws;
   collectDraws=function(t){step(t);return draws(...arguments);};

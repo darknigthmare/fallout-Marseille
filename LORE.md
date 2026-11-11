@@ -116,3 +116,17 @@ Le registre `v074Pigeons` sépare le départ, l’arrivée physique et la signat
 ## Les gestes retrouvés
 
 [Gestes et objets conservés](docs/LORE_CONSIGNE_GESTES.md) : après une remise sauvegardée, Éloi garde sa clef, Mina remet sa bague et Rachid accroche son sifflet. Les trois accessoires sont reconstruits au chargement ; les gestes restent transitoires et respectent la réduction des mouvements. L'épilogue complet pointe ensuite vers la sortie du Vieux-Port, sans seconde prime.
+
+
+## Une place dans la cour
+
+[Promenades et souvenirs des propriétaires](docs/LORE_CONSIGNE_VIE.md) : après une remise personnelle, le joueur peut proposer à Éloi de rejoindre sa table de cartes, à Mina de souffler près du banc et à Rachid de rejoindre l'ardoise des passages. Les trajets physiques restent dans la cour, s'arrêtent devant les obstacles et conservent leur progression. On peut demander d'attendre puis de reprendre. Trois conversations à l'arrivée développent leurs histoires, sans nouveau bateau, seconde prime ou emploi du temps régional.
+
+Sources issues de la livraison locale depuis `a589d8de`, désormais préparées pour une compilation complète sur la base fusionnée `cfa5edd4`. Les résultats locaux restent dans `verification/consigne-vie/QA.json` ; la nouvelle validation et ses limites sont séparées dans `verification/bible-sync/QA.json`. Ne pas transférer les résultats d’une édition à l’autre.
+
+
+## Registre actuel — la bible et le jeu se vérifient ensemble
+
+La [section 68 de la bible](docs/BIBLE_LORE_FALLOUT_MISTRAL.md#68-registre-des-incarnations-et-règle-de-publication) rassemble les vingt ensembles narratifs ci-dessus et leurs vingt et une annexes. [REGISTRE_LORE.json](docs/REGISTRE_LORE.json) associe les vingt-sept modules `src/v050/10*.js`, leurs modèles et leurs tests ; `tools/verify_lore_registry.py --bundle src/game.js` contrôle la couverture documentaire après compilation.
+
+Le [rapport de consolidation](docs/AUDIT_BIBLE_2026_11_11.md) distingue les fondations préservées, la PR 18 fusionnée, la cour issue du lot local et les branches parallèles. Le contrôle des liens et symboles ne constitue pas une vérification automatique du canon officiel ou de chaque concept encore documentaire.

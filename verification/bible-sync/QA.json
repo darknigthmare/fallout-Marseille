@@ -1,0 +1,241 @@
+{
+  "baseline_main": "cfa5edd4439e214331323c3a3f1b9833ff464942",
+  "previous_local_base": "a589d8de0da349a0bcdfc6d1636eb41a1595a02e",
+  "canonical_ci": {
+    "run": 43072219598,
+    "input_commit": "909d04f70fe11228f645ba67e33619309bbc9471",
+    "validation": "All preceding steps completed successfully",
+    "lore_passed": 727,
+    "lore_failed": 0,
+    "registry_tests_passed": 19,
+    "full_source_build_and_check": true,
+    "territory_regression_commands_passed": 4
+  },
+  "canonical_outputs": {
+    "index.html": "43fc553655c5e06c19f592c27dbd67552f2a914ccfaa93e4e39a35eb56e8029b",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "43fc553655c5e06c19f592c27dbd67552f2a914ccfaa93e4e39a35eb56e8029b",
+    "src/game.js": "cf397edd0b8e7c2878fb230aad6e6d8e6e97a4b6e79a25872c880263ccf6daba",
+    "sw.js": "c71e87bc456a671cc35e7b8b91b6c5d3a07d24773fa7f23854e158e7b7d11cc3"
+  },
+  "registry": {
+    "ok": true,
+    "scope": "Modules narratifs src/v050/10*.js et leurs annexes. Ne certifie pas toutes les armes, espèces ou lieux de la bible.",
+    "entries": 20,
+    "narrative_modules": 27,
+    "chapters": 21,
+    "bundle_checked": "src/game.js",
+    "errors": [],
+    "sha256": {
+      "LORE.md": "66f34aad9c6128bfe015f521f0a86e285184cbbb01f4da7f841e8773b59d280b",
+      "docs/BIBLE_LORE_FALLOUT_MISTRAL.md": "a25ba015b7ef442e1cf7b803d80d4a98698355a97e4280ba9952c8c01a7e969e",
+      "docs/LORE_A03_MADAME.md": "3f05fe5c91908982b617de2a0c1d8d9c7d53f525dbce527bf1c81e8eec790a3f",
+      "docs/LORE_CIGALES_FAUX_MIDI.md": "46f6f9a461e85bb6369ec54cdd8cff4b874502999b56534ec5a006c7be1099b1",
+      "docs/LORE_CITE_RADIEUSE.md": "1e6e08636af2fddc9cbfa3bacbecef526a865c6e0d2f02de6fccb88dbea35620",
+      "docs/LORE_COMPAGNONS_DU_DEVOIR.md": "058b5e4f477cfa81bf3953dcbae1a804653ca9cc8093cffb52e4d252944ebcc1",
+      "docs/LORE_CONSEIL_REGIONAL.md": "2454b7ab5d02ab24a8b413e6533f79cbf034af8d6644884956c2fb38cbcbc5b5",
+      "docs/LORE_CONSIGNE_GESTES.md": "908ef6224a9c3bf6b481f01d5d8a56af662116159b12a2c805cecb61a3eed4a0",
+      "docs/LORE_CONSIGNE_VIE.md": "b63c8554256170f337e53eeffbe53db4d5f195fdb9ff8dc84ac135b372e06f4a",
+      "docs/LORE_CONTINUITE.md": "555f26d00b2ba45543413ebbefc05a90211378d8e2a6ed19c221f39d1a55c5c4",
+      "docs/LORE_COUR_DU_LYS.md": "165f619c2b8cbd26d8093337191411628a584bfb2ad86faa319daebdbd80ed84",
+      "docs/LORE_FETE_DES_VOISINS.md": "f51ae0afd358499f3a35269f44df3be58977c357cc572ab3c89243a3c1669ac7",
+      "docs/LORE_GABIANS_OBJETS_TROUVES.md": "57d403ea4db45c8dbaee8b19fbf854b6ec7d57e61f321a0a0bd45bdbe71298a1",
+      "docs/LORE_GABIANS_RESTITUTIONS.md": "3c4c35ff1c07d3e9d04407e28ed5d285cb2725ad0459a062e30049aa2c2d023d",
+      "docs/LORE_MARINS_SAPEURS.md": "22df4f025021d66fc5aea4e3dbbfd7fb0bf9eb0a5ba697e42bac332a528fe41a",
+      "docs/LORE_MUTUELLE_PHOCEENNE.md": "3ecd80ec83ba25465241b4c7a44e020251d362ea7745c1dd7d471e47b0a815cf",
+      "docs/LORE_NOTAIRES_APRES.md": "bc6cd36c28541e5552dea93d1266c9bc8198eede18a184b1c4a279d3a140b00c",
+      "docs/LORE_PARTS_ABSENTS.md": "ee260821bb8d12e3c17c1f0c1a3079dc0c5eb7d9e20dfc8853fbe25d61b42f00",
+      "docs/LORE_PHARMACIES_DE_GARDE.md": "d56507fba9cfe845c69a2223a1ab10fa560168742e137b16f76a14573bc8a349",
+      "docs/LORE_PIGEONS_POSTE_RESTANTE.md": "57e60b4c84aa3828c3a49f4e07ee270ca6a4d99de7a36f5b421565ffb0c8b301",
+      "docs/LORE_POSTE_RESTANTE.md": "46351f9f2931fca8292fcaba1ee0643b760ef4b0be81e14041c634f0c18d604d",
+      "docs/LORE_RATS_CABLES.md": "adcf623070dd5c35b6ff3a77b7a1bc5016c4ae34a21ec33ed36afec8df00ebd6",
+      "docs/LORE_SERVICES_PUBLICS.md": "e990671043e38e257bdba8ca8b7689190777ddb45e20de112b5a5704af2013f9",
+      "docs/REGISTRE_LORE.json": "d2fd85b43670f5c23a4d4bf9ac3d91ebee4f3a365973b3b1ea6dce69a7e2cc36",
+      "src/game.js": "cf397edd0b8e7c2878fb230aad6e6d8e6e97a4b6e79a25872c880263ccf6daba",
+      "src/v050/10_lore_continuity.js": "f9c4688660471d7c7a09d59062ae29371513ba2168a033757abea1d520883b72",
+      "src/v050/10a_lore_services.js": "62ad9f4b1cc72abc8bd096e483394173f0b23a67baddf06b58347907f2f33e78",
+      "src/v050/10b_a03_madame.js": "c86dd099825c35722e41e1dba156c6be38243dd557f903b3f3a6f69cbbb86232",
+      "src/v050/10c_conseil_regional.js": "29a55dc08cb3f34c922b026199d826ad1e1221fe87411168fb114bdc1f1deb01",
+      "src/v050/10d_poste_restante.js": "180efab23276c70020f16b9899ead7b895c462bb5570be30b8adab2e151a15b9",
+      "src/v050/10e_pharmacie_garde.js": "ed4cb842bf10caf4cd236c5ed83af5849746e32707c1686dace31dc297f2bf5d",
+      "src/v050/10f_cite_radieuse.js": "b9d3689919c48d8d1751a4f48be1d43c3a0e7e6f1635472aa24aaf973cd00211",
+      "src/v050/10g_mutuelle_phoceenne.js": "b236697151376b697af8e850c09c859d46a6047ffe0c6335a310b9a7a753b007",
+      "src/v050/10h_notaires_apres.js": "fbed1570b160d4ca28c5b63e55d268c7a9892057c02658f58709cffdce079e90",
+      "src/v050/10i_fete_voisins.js": "66341d988e1d3a5e12444643548a9903261a3648b69c702e9252c08237beb241",
+      "src/v050/10j_compagnons_devoir.js": "04d9209425fcff5fa14f77b47551f569d48bad99cff589928e92134728062fe0",
+      "src/v050/10k_cour_lys.js": "f2113269ec1d24684a2110c6e307e9e09e751bbabe9a65139b66572ce7a56599",
+      "src/v050/10l_parts_absents.js": "7357cb4e38b1f4a6f7e292f86272330a04754a8167098f34207406da195620ce",
+      "src/v050/10m_parts_runtime.js": "c9f4f3daeeea28c8385757bb42a88ad3b2ee95754a0d7988d19d52aed5547939",
+      "src/v050/10n_marins_secours.js": "344bb29b96f0ba39a269c048baba0573660d02b2fdf0ddd22d06bd679c2178e0",
+      "src/v050/10o_secours_runtime.js": "450f7f96e28b262367adf87b05fc28b14c3f71a23bac09a0f09ee5cce3f27a53",
+      "src/v050/10p_cigales.js": "494098f3bcdd0861a0652c1270b2e998bd2f3a2a52f03354907cd42445128569",
+      "src/v050/10q_cigales_runtime.js": "d4ff2993c27b1ab2ebc8d1db40ed25fba9211072acaae238c797292a38ab82fd",
+      "src/v050/10r_rats_cables.js": "38b3b9154645b3180bfc3b015cb41997cb8565d6723cdf46abc2e1c8403961c3",
+      "src/v050/10s_rats_runtime.js": "ee9a344e806ae631154dfc434c0b5da05e86a1de0800d9da5ca2ad11a4e7576b",
+      "src/v050/10t_gabians_consigne.js": "fbcf9ef2cea90abce12a1b407df5fb34dba7c6867c73c0d28a2bb268c1157a22",
+      "src/v050/10u_gabians_runtime.js": "1efc49bc7b9bfa3326ec443b3a5ca56c482fffddf2c20736118cfa8f81b5d905",
+      "src/v050/10v_pigeons_poste.js": "8bf0f62585ad20d34fdc8da62a093d567d009bd79e6369bf325cea92c15796b6",
+      "src/v050/10w_pigeons_runtime.js": "1c60692c9f515ab24cbca76e1e64efb0859158698ef8edcdfd22f6a9987de3d2",
+      "src/v050/10x_consigne_gestes.js": "bed1c153288f2cee40a3eb32725a2557b561851a9bd568ad8bf51f9d07ea6ca9",
+      "src/v050/10y_consigne_vie.js": "91626d175c05eeea6e9b40eff1c3772a626690dfd6a7d35006d6aedb72b77d19",
+      "src/v050/10z_consigne_vie_runtime.js": "801c2944d3e18afe16ad3fa6f6f341746b62b341b17c66d23278e733c9d343b5",
+      "tests/expansion/lore_a03_madame.cjs": "44aa44976a6f8ec3f67f930a8cfd81ad55d50a0e44ecf0241576d6213a365c18",
+      "tests/expansion/lore_cigales.cjs": "bc320a7108f465c65e0b7b5d55384d3bb0314556167891e0b875a30230c34509",
+      "tests/expansion/lore_cite_radieuse.cjs": "429cc3f831fff118034fd59b48b992784cf5d53ddeb3a373a2ff3908eb1191c4",
+      "tests/expansion/lore_compagnons_devoir.cjs": "668f84ce8c346aec1085053179214e4be1eecc268c1087bca617a7f7be0a8c67",
+      "tests/expansion/lore_conseil_regional.cjs": "9aae8aa191f3992744685d44ade2171aa5b9cf2d34ccfee8e10bff433a80c8fe",
+      "tests/expansion/lore_consigne_gestes.cjs": "d49c319dad286b48ea0c8817cfbfc351ddc14015f3b7be8f461b55aca0b12c99",
+      "tests/expansion/lore_consigne_vie.cjs": "8f9ce79bece7404f069b91b4ba7742f3a7853b11087e42bd33329ff36364ccea",
+      "tests/expansion/lore_continuity.cjs": "e3fdeb5dd9dec14493ba7bba90e780cf2d842b98c48816f72702a4e2efda65fe",
+      "tests/expansion/lore_cour_lys.cjs": "c75081fa6a8913e08c572ff3a2c65247c17cf83ee9ddd0dd9253eb7d09181664",
+      "tests/expansion/lore_fete_voisins.cjs": "0696e0dd91f6884901fd04070d704f8a555100e9e7dac1086643a00fccdb2c76",
+      "tests/expansion/lore_gabians_consigne.cjs": "0793a064de8394fb16e26e7a239313987ba9014e81b0224021b7321c0f48c866",
+      "tests/expansion/lore_marins_secours.cjs": "85cc314e20958e2fe278eb2b641f1c921adc7f77926da31b2b471519d74f9a38",
+      "tests/expansion/lore_mutuelle_phoceenne.cjs": "30c38c8a2eea87504b6e00a207c8decd36bbd7d8594bf86054954d75de117a3c",
+      "tests/expansion/lore_notaires_apres.cjs": "6b78c8e46d46eea690abc2d874796e1eb31cddfb5ae6cd950f1d127bc7ad546a",
+      "tests/expansion/lore_parts_absents.cjs": "ed349b8d5b4d69d4fe354dc6961a3c0593ebe7aa04da783cab08aa96f602deed",
+      "tests/expansion/lore_pharmacie_garde.cjs": "1ca2e0d65a492ea13e19776f5eb6d480728220b2c87d84b4b9ab05606df3488d",
+      "tests/expansion/lore_pigeons_poste.cjs": "dde565ec83d5695c47fb6360b98dbed7a246270c4081a16da9ec1f8adc24152d",
+      "tests/expansion/lore_poste_restante.cjs": "7808bd27c42d4773fa46bcc0af0b23a8c95278a343b7825d625a3ed5e8648a80",
+      "tests/expansion/lore_rats_cables.cjs": "58f862880dc55cc691893a8a61e58d14e56df09c2ddf718f50c3a7b8cc748b9e",
+      "tests/expansion/lore_services.cjs": "36c084e7828839b41eb203d74407f5fbd68b24c9ef0a83f9b1d69e15e788af50"
+    },
+    "limits": "Structural traceability, not semantic canon validation, gameplay completion, deployment or exhaustive weapon/creature coverage."
+  },
+  "browser_suites": {
+    "consigne_vie": {
+      "passed": 54,
+      "errors": [],
+      "report": "verification/bible-sync/ci/consigne_vie/CONSIGNE_VIE_BROWSER.json",
+      "scope": "Native optional owner routines: dialogs/E, real collision, saved route distances,\nblocking, rollback, rendering and local doors. Scripted positions, synthetic exterior,\nMemoryStorage and software rendering; not a human playthrough or IGN certification.\n"
+    },
+    "gestes": {
+      "passed": 36,
+      "errors": [],
+      "report": "verification/bible-sync/ci/gestes/GESTES_BROWSER.json",
+      "scope": "Native consignment handoff choices and recognition gestures on the production bundle.\nScripted positions, synthetic Vieux-Port and MemoryStorage. Rendered native people,\nactual callbacks/save rollback and software WebGL; not a human or IGN traversal test.\n"
+    },
+    "retrouvailles": {
+      "passed": 46,
+      "errors": [],
+      "report": "verification/bible-sync/ci/retrouvailles/RETROUVAILLES_BROWSER.json",
+      "scope": "Native consignment owner dialogues and optional handoffs, actual geometry and saves.\nSetup uses a synthetic Vieux-Port relay and scripted positions, with MemoryStorage.\nNot a human playthrough, IGN route or cold process restart (separate suite).\n"
+    },
+    "pigeons": {
+      "passed": 69,
+      "errors": [],
+      "report": "verification/bible-sync/ci/pigeons/PIGEONS_BROWSER.json",
+      "scope": "Actual postal courtyard, progressive flights, manual delivery, native dialogs,\nE inputs, geometry, save/load and rewards. Scripted player positions, synthetic\nSaint-Charles relay and isolated MemoryStorage; software renderer, not human QA.\n"
+    },
+    "gabians": {
+      "passed": 66,
+      "errors": [],
+      "report": "verification/bible-sync/ci/gabians/GABIANS_BROWSER.json",
+      "scope": "Actual consignment runtime, E/dialogues, native gun/collisions and save/load.\nScripted positions/aim and synthetic geographic relay; isolated MemoryStorage.\nThis is not a real IGN traversal, human playtest or disk-backed cold restart.\n"
+    },
+    "rats": {
+      "passed": 81,
+      "errors": [],
+      "report": "verification/bible-sync/ci/rats/RATS_BROWSER.json",
+      "scope": "Actual authored depot, native E/dialogues/shooting/hitboxes/collision, rat runtime and game save/load. Scripted positions and aim, synthetic Saint-Charles relay, isolated MemoryStorage and software renderer. No real IGN traversal or human campaign."
+    },
+    "cigales": {
+      "passed": 52,
+      "errors": [],
+      "report": "verification/bible-sync/ci/cigales/CIGALES_BROWSER.json",
+      "scope": "Real authored scene, existing cicada rig, native E/dialogue/shooting/hitboxes/collisions, custom encounter FSM and original save routines. Scripted guide/aim positions; synthetic Font de Mai relay; isolated MemoryStorage, software renderer. No real IGN traversal or human campaign."
+    },
+    "secours": {
+      "passed": 67,
+      "errors": [],
+      "report": "verification/bible-sync/ci/secours/SECOURS_BROWSER.json",
+      "scope": "Instrumented rescue: real authored annexe, E/UI, native hazard and collision\nfunctions and continuous escort update. Synthetic ports, scripted leader positions,\nisolated MemoryStorage and software renderer; not a human IGN campaign."
+    },
+    "parts": {
+      "passed": 115,
+      "errors": [],
+      "report": "verification/bible-sync/ci/parts/PARTS_BROWSER.json",
+      "scope": "La part des absents: real authored scene/UI/E/collision, isolated MemoryStorage.\nPrior audience prepared through its real reducer; synthetic ports are shared with\nlys_browser_smoke. This is not human playtesting or an IGN maritime traversal.\n"
+    },
+    "lys": {
+      "passed": 54,
+      "errors": [],
+      "report": "verification/bible-sync/ci/lys/LYS_BROWSER.json",
+      "scope": "Actual authored Cour du Lys, models, UI, E, native movement/collision, four actors, saves and visible alternatives. Two synthetic port scenes with real catalogue identities and native retained-world entry/exit. Scripted positions, isolated MemoryStorage, software renderer; no IGN sea traversal or human full campaign."
+    },
+    "compagnons": {
+      "passed": 64,
+      "errors": [],
+      "report": "verification/bible-sync/ci/compagnons/COMPAGNONS_BROWSER.json",
+      "scope": "Real authored Radieuse, native UI/E/dialogues, models, finite inventory, save/load and collision. Earlier quests prepared through original reducers; scripted positions; external relay fixtures use existing catalogue identities and flat synthetic ground, not IGN traversal. Isolated MemoryStorage, software renderer, not a full human campaign."
+    },
+    "voisins": {
+      "passed": 68,
+      "errors": [],
+      "report": "verification/bible-sync/ci/voisins/VOISINS_BROWSER.json",
+      "scope": "Actual authored Radieuse, existing NPCs staged/restored, E interaction, real buttons, inventory and isolated MemoryStorage. Prerequisites via original reducers; scripted positioning plus explicit native collision route. Native portal round-trip uses a synthetic retained exterior. Software renderer; not a full human campaign or IGN exterior traversal."
+    },
+    "notaires": {
+      "passed": 48,
+      "errors": [],
+      "report": "verification/bible-sync/ci/notaires/NOTAIRES_BROWSER.json",
+      "scope": "Actual Radieuse interior, models, dialogue buttons, E inputs, save/load, visuals and collisions. Prerequisites through real quest reducers, scripted positions, isolated MemoryStorage. Software renderer; no human full-campaign or real IGN exterior validation."
+    },
+    "mutuelle": {
+      "passed": 38,
+      "errors": [],
+      "report": "verification/bible-sync/ci/mutuelle/MUTUELLE_BROWSER.json",
+      "scope": "Real authored Radieuse interior with completed prerequisite injected through its model; actual E interaction, NPC choices, source preservation, save writes and reload. Scripted positioning and isolated MemoryStorage; software renderer, no real IGN traversal."
+    },
+    "radieuse": {
+      "passed": 33,
+      "errors": [],
+      "report": "verification/bible-sync/ci/radieuse/RADIEUSE_BROWSER.json",
+      "scope": "Real authored interior, models, UI, native collision function, saves and software renderer. Injected setup and isolated MemoryStorage; synthetic exterior for portal round-trip, no real IGN exterior traversal."
+    },
+    "poste": {
+      "passed": 17,
+      "errors": [],
+      "report": "verification/bible-sync/ci/poste/POSTE_BROWSER.json",
+      "scope": "Offline about:blank, isolated MemoryStorage, injected ratification; flat synthetic relay and ground stub. Real game model/UI/save/renderer. Not a real-map or hardware performance certification."
+    },
+    "pharmacie": {
+      "passed": 19,
+      "errors": [],
+      "report": "verification/bible-sync/ci/pharmacie/PHARMACIE_BROWSER.json",
+      "scope": "Instrumented production bundle; isolated memory storage; flat synthetic relays; terrain stub; real UI, E interaction, NPC choices, inventory, save migration and renderer. No IGN-world traversal or human playtest."
+    }
+  },
+  "regular_browser_checks": 927,
+  "cour_cold": {
+    "passed": 40,
+    "errors": [],
+    "report": "verification/bible-sync/ci/cour-cold/CONSIGNE_VIE_COLD_SAVE.json",
+    "scope": "Three real disk-backed Chromium restarts: owner walking, explicitly waiting,\nand all three arrived with memories heard. Seed-only scripted setup; resumed HTML\nis byte-identical production without test bridge or MemoryStorage. No IGN return,\npower-cut, human campaign or cross-browser certification.\n"
+  },
+  "birds_cold": {
+    "passed": 65,
+    "errors": [],
+    "report": "verification/bible-sync/ci/birds-cold/BIRDS_COLD_SAVE.json",
+    "scope": "Six disk-backed Chromium restarts for postal pigeons and consignment gabians.\nSeed-only fixtures prepare native saves. Resume loads byte-identical production HTML\nat the same file URL, clicks Continue, and has no seed bridge or fake storage.\nScripted positions and authored interiors only; no power-cut or real IGN certification.\n"
+  },
+  "rats_cold": {
+    "passed": 26,
+    "errors": [],
+    "report": "verification/bible-sync/ci/rats-cold/RATS_COLD_SAVE.json",
+    "scope": "Native disk-backed Chromium LocalStorage at an offline file URL and full process restart followed by native Continue on unchanged production HTML. Fixture-only seed constructs the authored depot and prepares its checkpoint through runtime helpers; it does not verify port travel. Observer pauses immediately after Continue for exact comparison. No real IGN exterior return, power-loss or human campaign certification."
+  },
+  "previous_incremental_html_byte_identical": true,
+  "scope": [
+    "Existing local courtyard extension published without new story retcon.",
+    "Central bible consolidation and material traceability of all current src/v050/10*.js modules.",
+    "Conceptual factions, weapons, creatures and parallel COCHONNET PR17 remain explicitly separate from completed gameplay."
+  ],
+  "limits": [
+    "Registry validation checks links, files, declarations and hashes; it does not prove complete canon fidelity or all ideas ever discussed.",
+    "Regular browser tests use scripted positions and synthetic origins with isolated storage and software rendering.",
+    "Cold tests use orderly Chromium process closure, not power loss or all browsers.",
+    "No full human campaign, exhaustive IGN journey or hardware performance certification."
+  ],
+  "counting_note": "Repeated local and CI suites are not additional unique tests. Prior verification/consigne-vie/QA.json is historical local evidence.",
+  "publication_note": "This report attests the tested working tree before source publication. It is not a claim of merge or deployment."
+}

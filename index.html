@@ -17196,7 +17196,7 @@ if(typeof baseState==='function'&&typeof MistralGabians!=='undefined'){
  const local=()=>!!world?.v073Gabians&&state.v042?.activeInterior===M.SITE,managed=e=>local()&&e?.g73Id&&world.enemies.includes(e);
  const notice=t=>{V027.message=t;toast(t,'bad');return false;};
  function blocked(){return !gameStarted||!['PLAYING','PIP','DIALOGUE','NOTE'].includes(mode)||!(state.player?.hp>0)?'Reprenez une partie active.':V046.lab?'Banc géographique sans progression.':zoneTransitioning||V046.busy||V047.pending?'Chargement en cours.':!onGround?'Rejoignez le sol.':null;}
- function near(id){const p=P[id];return local()&&p&&Math.hypot(state.player.pos[0]-p[0],state.player.pos[2]-p[2])<=3.2&&Math.abs(state.player.pos[1]-1.4)<1.9&&lineOfSight(state.player.pos,[p[0],1.25,p[2]+1.4]);}
+ function near(id){const p=id.startsWith('owner:')?(world?.npcs.find(n=>n.id==='g73:'+id)?.pos||P[id]):P[id];return local()&&p&&Math.hypot(state.player.pos[0]-p[0],state.player.pos[2]-p[2])<=3.2&&Math.abs(state.player.pos[1]-1.4)<1.9&&lineOfSight(state.player.pos,[p[0],1.25,p[2]+1.4]);}
  function restore(owner,before){if(state!==owner)return;for(const k of Object.keys(owner))delete owner[k];Object.assign(owner,before);}
  function commit(next,caption){if(rt.busy)return false;const owner=state,w=world,before=copy(owner);rt.busy=true;try{owner.v073Gabians=next.v073Gabians;owner.player.caps=next.player.caps;owner.inventory=next.inventory;if(state!==owner||world!==w||saveGame(false)===false)throw Error('Consigne non sauvegardée.');}catch(err){restore(owner,before);return notice(err.message+' Modification annulée.');}finally{rt.busy=false;if(state===owner&&world===w)visuals(w);}updateQuestUI(true);updateHUD();if(caption)toast(caption,'good');return true;}
  function act(type,id,method,revision){const point=M.actionPoint(type,id);let next;try{next=M.act(state,{type,id,method},{blocked:blocked(),local:local(),near:near(point),point,revision});}catch(err){return notice(err.message);}return commit(next,type==='finish'?'Trois objets rendus · 45 capsules, une fois.':type==='return'?'Objet confié à Nora.':type==='deliver'?'Objet remis à '+M.OBJECTS[id].owner+'.':'Progression de la consigne sauvegardée.');}
@@ -17322,11 +17322,11 @@ if(typeof baseState==='function'&&typeof MistralGabians!=='undefined'){
  const relayTalk=v042TalkNPC;v042TalkNPC=function(id){if(blocked()||V042_RUNTIME.npcData.get(id)?.siteId!==M.RELAY||!relayNear())return relayTalk(...arguments);const old=openDialogue;openDialogue=function(s,t,ch,...rest){return old(s,t,[...(ch||[]).slice(0,-1),{text:'Consigne · Les objets trouvés',onChoose:guard(()=>openDialogue(speaker('Relais du Vieux-Port','OBJETS TROUVÉS','AR'),'Nora garde les affaires des gens qui embarquent. Deux gabians ont emporté trois objets dans les paniers de sa cour. Elle cherche une aide pour les récupérer.',[{text:'Rejoindre la consigne.',onChoose:guard(enter)},back()]))},...(ch||[]).slice(-1)],...rest);};try{return relayTalk(...arguments);}finally{openDialogue=old;}};
  function track(){if(blocked())return false;const owner=state,before=copy(owner);owner.v042.tracked=M.RELAY;try{if(saveGame(false)===false)throw Error();}catch{restore(owner,before);return notice('Repère non sauvegardé.');}updateQuestUI(true);return true;}
  V027_SUBS.data.gabians='GABIANS · OBJETS TROUVÉS';const data=v027Data;v027Data=function(c){if(V027.sub!=='gabians')return data(...arguments);const l=state.v073Gabians,esc=v027Escape;
-  c.innerHTML='<div class="p27-long"><p class="p27-kicker">CONSIGNE DU VIEUX-PORT</p><h2>Les objets trouvés</h2><p>'+esc(M.briefing(l))+'</p>'+v027Button('Suivre le Vieux-Port','g73:track')+'<h3>Objets confiés</h3>'+Object.entries(M.OBJECTS).map(([id,o])=>'<p><b>'+esc(o.name)+'</b> · '+esc(l.handoffs[id]!==null?'remis à '+o.owner:({nest:'dans un panier',bag:'transporté',returned:'déposé chez Nora'}[l.objects[id]]))+(l.manifest?' · '+esc(o.owner)+'<br>'+esc(o.text):'')+'</p>').join('')+'<h3>Paniers</h3>'+M.IDS.map(id=>'<p>'+esc(M.BIRDS[id].name)+' · descente '+Math.round(l.platforms[id].drop/M.DROP*100)+' % · '+esc({guard:'en garde',lure:'en déplacement',fed:'à l’écart',falling:'chute',dead:'abattu'}[l.birds[id].phase])+'</p>').join('')+'<p>Les propriétaires attendent au comptoir. La remise en personne est facultative et ne rapporte pas de seconde prime. Un objet déposé chez Nora reste disponible pour son propriétaire.</p></div>';
+  c.innerHTML='<div class="p27-long"><p class="p27-kicker">CONSIGNE DU VIEUX-PORT</p><h2>Les objets trouvés</h2><p>'+esc(M.briefing(l))+'</p>'+v027Button('Suivre le Vieux-Port','g73:track')+'<h3>Objets confiés</h3>'+Object.entries(M.OBJECTS).map(([id,o])=>'<p><b>'+esc(o.name)+'</b> · '+esc(l.handoffs[id]!==null?'remis à '+o.owner:({nest:'dans un panier',bag:'transporté',returned:'déposé chez Nora'}[l.objects[id]]))+(l.manifest?' · '+esc(o.owner)+'<br>'+esc(o.text):'')+'</p>').join('')+'<h3>Paniers</h3>'+M.IDS.map(id=>'<p>'+esc(M.BIRDS[id].name)+' · descente '+Math.round(l.platforms[id].drop/M.DROP*100)+' % · '+esc({guard:'en garde',lure:'en déplacement',fed:'à l’écart',falling:'chute',dead:'abattu'}[l.birds[id].phase])+'</p>').join('')+'<p>Les propriétaires restent joignables dans la cour. La remise en personne est facultative et ne rapporte pas de seconde prime. Un objet déposé chez Nora reste disponible pour son propriétaire.</p></div>';
  };
  const dispatch=v027Dispatch;v027Dispatch=function(a,arg){return a==='g73:track'?v027CanAct()&&track():dispatch(...arguments);};
  const rows=v027QuestRows;v027QuestRows=function(){const l=state.v073Gabians;return rows(...arguments).concat(l.opened?[{id:'g73:quest',name:'LES OBJETS TROUVÉS',stage:l.finished?'done':'active',active:local()&&!l.finished,text:M.briefing(l),zone:null,steps:[['Deux paniers descendus',M.IDS.every(id=>l.platforms[id].drop===M.DROP)],['Trois objets récupérés',Object.values(l.objects).every(v=>v!=='nest')],['Trois objets rendus',Object.values(l.objects).every(v=>v==='returned')],['Retour auprès de Nora',l.finished]],source:'Consigne',badge:l.finished?'✓':'',hint:'Nora · Vieux-Port'}]:[]);};
- const coreRows=v027QuestRows;v027QuestRows=function(){const l=state.v073Gabians,n=Object.values(l.handoffs).filter(Boolean).length;return coreRows(...arguments).concat(l.opened?[{id:'g73:owners',name:'DE MAIN EN MAIN',stage:n===3?'done':'active',active:local()&&l.finished&&n<3,text:'Facultatif · Éloi, Mina et Rachid attendent au comptoir. '+n+'/3 objet(s) remis en personne. Aucune prime supplémentaire.',zone:null,steps:Object.entries(M.OBJECTS).map(([id,o])=>[o.owner+' · '+o.name,l.handoffs[id]!==null]),source:'Consigne',badge:n===3?'✓':'',hint:'Comptoir · facultatif'}]:[]);};
+ const coreRows=v027QuestRows;v027QuestRows=function(){const l=state.v073Gabians,n=Object.values(l.handoffs).filter(Boolean).length;return coreRows(...arguments).concat(l.opened?[{id:'g73:owners',name:'DE MAIN EN MAIN',stage:n===3?'done':'active',active:local()&&l.finished&&n<3,text:'Facultatif · Retrouvez Éloi, Mina et Rachid dans la cour. '+n+'/3 objet(s) remis en personne. Aucune prime supplémentaire.',zone:null,steps:Object.entries(M.OBJECTS).map(([id,o])=>[o.owner+' · '+o.name,l.handoffs[id]!==null]),source:'Consigne',badge:n===3?'✓':'',hint:'Comptoir · facultatif'}]:[]);};
  const oldTrack=v027Track;v027Track=function(id){return ['g73:quest','g73:owners'].includes(id)?track():oldTrack(...arguments);};
  function next(){const l=state.v073Gabians;if(l.finished){const key=Object.keys(M.OBJECTS).find(id=>l.handoffs[id]===null);if(key)return 'owner:'+key;}if(!l.opened||Object.values(l.objects).includes('bag')||Object.values(l.objects).every(v=>v==='returned'))return 'nora';const id=M.IDS.find(id=>Object.entries(M.OBJECTS).some(([o,d])=>d.nest===id&&l.objects[o]==='nest'));if(!id)return 'nora';if(!l.lures[id]&&l.birds[id].hp>0)return 'lure:'+id;if(l.platforms[id].drop!==M.DROP)return 'lower:'+id;return 'basket:'+id;}
  const marker=getObjectiveMarker;getObjectiveMarker=function(){if(!local())return marker(...arguments);const id=next(),p=P[id];return {zone:world.id,pos:[p[0],1.25,p[2]+1.4],label:'Les objets trouvés · '+(id==='nora'?'Nora':id.startsWith('owner:')?M.OBJECTS[id.slice(6)].owner:id.startsWith('lure:')?'Restes de poisson':id.startsWith('lower:')?'Palan':'Panier')};};
@@ -17624,6 +17624,10 @@ const MistralConsigneGestures = (() => {
     const c=Math.cos(yaw),s=Math.sin(yaw);
     return [p[0]+(v[0]*c+v[2]*s)*scale,p[1]+v[1]*scale,p[2]+(-v[0]*s+v[2]*c)*scale];
   }
+  function unpoint(p,yaw,v,scale=1) {
+    const c=Math.cos(yaw),s=Math.sin(yaw),x=v[0]-p[0],z=v[2]-p[2];
+    return [(x*c-z*s)/scale,(v[1]-p[1])/scale,(x*s+z*c)/scale];
+  }
   function elbow(hand) {
     const shoulder=[.32,1.34,0],delta=hand.map((v,i)=>v-shoulder[i]),length=Math.hypot(...delta);
     if (!(length>0&&length<=.72)) throw Error('Unreachable hand pose');
@@ -17631,7 +17635,7 @@ const MistralConsigneGestures = (() => {
     const radius=Math.sqrt(Math.max(0,.36*.36-length*length/4));
     return shoulder.map((v,i)=>v+delta[i]/2+bend[i]/norm*radius);
   }
-  return {ids:ids.slice(),duration,pose,elapsed,point,elbow};
+  return {ids:ids.slice(),duration,pose,elapsed,point,unpoint,elbow};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MistralConsigneGestures;
 
@@ -17642,6 +17646,8 @@ if(typeof humanParts==='function'&&typeof MistralGabians!=='undefined'){
   const keyOf=n=>G.ids.find(k=>n?.id==='g73:owner:'+k);
   function reset(){pending.clear();owner=state;scene=world;lastTime=null;}
   function sync(){if(state!==owner||world!==scene||!local())reset();}
+  // Read-only presentation gate for optional local walking routines.
+  globalThis.v075ConsigneGestureActive=id=>{sync();return local()&&pending.has(id);};
   function begin(key){
     sync();
     if(!local()||settings.reduceMotion||!state.v073Gabians.handoffs[key])return;
@@ -17718,7 +17724,16 @@ if(typeof humanParts==='function'&&typeof MistralGabians!=='undefined'){
     // Keep the original body, head, face, clothing, left arm and identity.
     // Fail closed if the upstream rig ever changes instead of showing two arms.
     if(active&&removed!==3){human(out,n,t);shape(out,n,key,G.pose(key,G.duration).item);return;}
-    out.push(...native);if(active)arm(out,proxy,pose.hand);shape(out,proxy,key,pose.item,pose.attachment);
+    out.push(...native);if(active)arm(out,proxy,pose.hand);
+    let item=pose.item;
+    if(!active&&key==='bague'){
+      // Follow the actual native right hand during locomotion, rather than a
+      // static idle point. Fail closed to the existing pose if the rig changes.
+      const sc=proxy.scale||1,expected=G.point(proxy.pos,proxy.yaw||0,[.33,.73,.02],sc);
+      const hands=native.filter(d=>d.mesh==='sphere'&&d.scale?.every((v,i)=>Math.abs(v-[.16,.18,.15][i]*sc)<1e-6)&&Math.hypot(...d.pos.map((v,i)=>v-expected[i]))<.3*sc);
+      if(hands.length===1){item=G.unpoint(proxy.pos,proxy.yaw||0,hands[0].pos,sc);item[2]-=.065;}
+    }
+    shape(out,proxy,key,item,pose.attachment);
   };
   const draws=collectDraws;
   collectDraws=function(t){step(t);return draws(...arguments);};
@@ -17739,6 +17754,254 @@ if(typeof humanParts==='function'&&typeof MistralGabians!=='undefined'){
   const after=globalThis.v053LoreAfterInit;
   globalThis.v053LoreAfterInit=function(){after?.();Object.assign(window.__MISTRAL_DEBUG,{
     v075GesturesInfo:()=>{sync();return {active:[...pending].map(([id,a])=>({id,ms:a.ms,...G.pose(id,a.ms)})),local:local(),duration:G.duration};}
+  });};
+}
+
+/* Une place dans la cour — finite, optional post-handoff routines.
+ * Save only plain route distance and choices, never live NPC/renderer objects.
+ * Original fan fiction: the three destinations are inside the authored consigne.
+ */
+const MistralConsigneLife = (() => {
+  'use strict';
+  const IDS = ['clef', 'bague', 'sifflet'];
+  const ROUTES = {
+    clef: {name:'Éloi', place:'la table des cartes', yaw:Math.PI/2,
+      path:[[-11,0,18],[-17,0,18],[-17,0,12],[-20,0,12]]},
+    bague: {name:'Mina', place:'le banc de fin de quart', yaw:0,
+      path:[[-8,0,18],[-8,0,14],[-6,0,14],[-6,0,10]]},
+    sifflet: {name:'Rachid', place:'le panneau des passages', yaw:-Math.PI/2,
+      path:[[-5,0,18],[0,0,18],[5,0,18],[11,0,18]]}
+  };
+  const copy = x => JSON.parse(JSON.stringify(x));
+  const uint = (n,max=999999) => Number.isSafeInteger(n) && n>=0 && n<=max;
+  const idOK = id => {if(!IDS.includes(id))throw Error('Propriétaire inconnu.');};
+  const lengths = id => ROUTES[id].path.slice(1).map((p,i)=>Math.round(Math.hypot(...p.map((v,j)=>v-ROUTES[id].path[i][j]))*1000));
+  function total(id){idOK(id);return lengths(id).reduce((a,b)=>a+b,0);}
+  function fresh(){return {schema:1,revision:0,people:Object.fromEntries(IDS.map(id=>[id,{started:false,progress:0,paused:false,heard:false}]))};}
+  function migrate(raw,handoffs={}){
+    if(raw==null)return fresh();
+    if(typeof raw!=='object'||Array.isArray(raw)||raw.schema!==1||!uint(raw.revision))throw Error('Version ou révision de la cour inconnue.');
+    const l=fresh();l.revision=raw.revision;
+    for(const id of IDS){
+      const a=raw.people?.[id];
+      if(!a||['started','paused','heard'].some(k=>typeof a[k]!=='boolean')||!uint(a.progress,total(id)))throw Error('Trajet de '+ROUTES[id].name+' invalide.');
+      if(a.started&&!['direct','consigne'].includes(handoffs[id])||!a.started&&(a.progress!==0||a.paused||a.heard)||a.heard&&a.progress!==total(id)||a.paused&&a.progress===total(id))throw Error('Trajet de '+ROUTES[id].name+' contradictoire.');
+      l.people[id]={started:a.started,progress:a.progress,paused:a.paused,heard:a.heard};
+    }
+    return l;
+  }
+  function position(id,progress){
+    idOK(id);if(!uint(progress,total(id)))throw Error('Distance invalide.');
+    const path=ROUTES[id].path,ls=lengths(id);let left=progress;
+    for(let i=0;i<ls.length;i++){
+      if(left<=ls[i])return path[i].map((n,j)=>n+(path[i+1][j]-n)*left/ls[i]);
+      left-=ls[i];
+    }
+    return path.at(-1).slice();
+  }
+  function heading(id,progress){
+    const p=position(id,progress);
+    if(progress===total(id))return ROUTES[id].yaw;
+    const next=position(id,progress+1);
+    return Math.atan2(p[0]-next[0],p[2]-next[2]);
+  }
+  function action(raw,handoffs,id,type,ctx={}){
+    idOK(id);
+    if(!ctx.local||!ctx.near||ctx.blocked)throw Error('Rejoignez cette personne dans la cour.');
+    const l=migrate(raw,handoffs),a=l.people[id];
+    if(ctx.revision!==l.revision||l.revision===999999)throw Error('Conversation périmée.');
+    if(type==='go'){
+      if(a.started||!['direct','consigne'].includes(handoffs[id]))throw Error('Rendez d’abord son objet à cette personne.');
+      a.started=true;
+    }else if(type==='wait'||type==='resume'){
+      if(!a.started||a.progress===total(id)||a.paused===(type==='wait'))throw Error('Cette demande n’est plus nécessaire.');
+      a.paused=type==='wait';
+    }else if(type==='listen'){
+      if(!a.started||a.progress!==total(id)||a.heard)throw Error('Cette conversation a déjà été notée ou n’est pas encore disponible.');
+      a.heard=true;
+    }else throw Error('Demande inconnue.');
+    l.revision++;
+    return l;
+  }
+  // A maximum 25cm step, sampled every 5cm, prevents corner-cutting and tunnelling.
+  // The caller supplies the real world collision/crowding check, never a teleport.
+  function advance(raw,handoffs,id,millimetres,canMove=()=>true){
+    idOK(id);if(!uint(millimetres,250))throw Error('Pas de marche invalide.');
+    const l=migrate(raw,handoffs),a=l.people[id],before=a.progress,end=total(id);
+    if(!a.started||a.paused||a.progress===end||millimetres===0)return {ledger:l,moved:false,checkpoint:false,arrived:false,blocked:false};
+    const next=Math.min(end,before+millimetres),ls=lengths(id);
+    let last=position(id,before);
+    for(let p=before;p<next;){
+      const q=Math.min(next,p+50),target=position(id,q);
+      if(!canMove(last,target,id))return {ledger:l,moved:false,checkpoint:false,arrived:false,blocked:true};
+      last=target;p=q;
+    }
+    a.progress=next;
+    const arrived=next===end;
+    if(arrived){if(l.revision===999999)throw Error('Révision de la cour saturée.');l.revision++;}
+    let sum=0;
+    const checkpoint=arrived||Math.floor(before/2000)!==Math.floor(next/2000)||ls.some(n=>{sum+=n;return before<sum&&next>=sum;});
+    return {ledger:l,moved:true,checkpoint,arrived,blocked:false};
+  }
+  function status(id,a){
+    idOK(id);
+    return !a.started?'au comptoir':a.progress===total(id)?(ROUTES[id].place.startsWith('le ')?'au '+ROUTES[id].place.slice(3):'à '+ROUTES[id].place):a.paused?'vous attend en chemin':'en route vers '+ROUTES[id].place;
+  }
+  for(const v of Object.values(ROUTES)){v.path.forEach(Object.freeze);Object.freeze(v.path);Object.freeze(v);}
+  Object.freeze(ROUTES);
+  return {IDS:IDS.slice(),ROUTES,fresh,migrate,total,position,heading,action,advance,status};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=MistralConsigneLife;
+
+/* Post-handoff life inside the existing consigne. Native E/dialogue, collision,
+ * walking rig and transactional saves. No off-screen trips or extra currency. */
+if(typeof baseState==='function'&&typeof MistralConsigneLife!=='undefined'){
+  const M=MistralConsigneLife,copy=x=>JSON.parse(JSON.stringify(x));
+  const rt={state:null,world:null,saveBlocked:null,error:null,blocked:[],busy:false};
+  const local=()=>!!world?.v073Gabians&&state.v042?.activeInterior===MistralGabians.SITE;
+  const person=id=>world?.npcs.find(n=>n.id==='g73:owner:'+id);
+  const base=baseState;baseState=function(...a){const s=base(...a);s.v076Consigne=M.fresh();return s;};
+  const migration=migrateState;migrateState=function(raw={}){const s=migration(...arguments);s.v076Consigne=M.migrate(raw?.v076Consigne,s.v073Gabians.handoffs);return s;};
+  state=migrateState(state);if(world&&typeof v049Own==='function')v049Own(world);
+  function own(){if(rt.state!==state||rt.world!==world){rt.state=state;rt.world=world;rt.saveBlocked=null;rt.error=null;rt.blocked=[];rt.busy=false;}}
+  function unavailable(requireGround=true){return !local()||!gameStarted||!['PLAYING','DIALOGUE'].includes(mode)||state.player.hp<=0||(requireGround&&!onGround)||zoneTransitioning||V046.busy||V047.pending||V046.lab;}
+  function near(id){const n=person(id),p=state.player.pos;return !!n&&n.alive!==false&&Math.hypot(p[0]-n.pos[0],p[2]-n.pos[2])<=3.2&&Math.abs(p[1]-n.pos[1]-1.65)<1.8&&lineOfSight(p,[n.pos[0],n.pos[1]+1.25,n.pos[2]]);}
+  function notice(text){V027.message=text;toast(text,'bad');return false;}
+  function restore(s,b){if(state!==s)return;for(const k of Object.keys(s))delete s[k];Object.assign(s,b);}
+  function visuals(w){
+    if(!w?.v073Gabians)return;
+    for(const d of w.staticDraws)if(d.v076Drawing)d.hidden=state.v076Consigne.people.clef.progress!==M.total('clef');
+    for(const id of M.IDS){const n=w.npcs.find(n=>n.id==='g73:owner:'+id),a=state.v076Consigne.people[id];if(!n)continue;
+      n.pos=M.position(id,a.progress);n.home=n.pos.slice();n.v020Static=true;n.moving=false;n.activity=M.status(id,a);
+      if(a.progress>0)n.yaw=M.heading(id,a.progress);
+    }
+  }
+  function commit(next,caption){
+    own();if(rt.busy)return false;
+    const s=state,w=world,before=copy(s);rt.busy=true;
+    try{s.v076Consigne=next;if(saveGame(false)===false||state!==s||world!==w)throw Error('La cour n’a pas pu être sauvegardée.');}
+    catch(e){restore(s,before);return notice(e.message+' Aucun changement conservé.');}
+    finally{rt.busy=false;if(state===s&&world===w)visuals(w);}
+    rt.saveBlocked=null;rt.error=null;if(caption)toast(caption,'good');return true;
+  }
+  function act(id,type,revision){
+    try{return commit(M.action(state.v076Consigne,state.v073Gabians.handoffs,id,type,{local:local(),near:near(id),blocked:unavailable(),revision}),type==='wait'?'La personne vous attend.':type==='resume'?'La personne reprend son chemin.':null);}
+    catch(e){return notice(e.message);}
+  }
+  function guarded(id,fn){const s=state,w=world,rev=s.v076Consigne.revision;return ()=>{
+    if(state!==s||world!==w||unavailable()||!near(id)||state.v076Consigne.revision!==rev)return notice('Conversation périmée.');
+    return fn(rev);
+  };}
+  const LINES={
+    clef:{go:'Vous vouliez me montrer le Demain ?',intro:'« Venez à la table. J’ai retrouvé un bout de carton assez propre pour dessiner la cabine. Ne vous attendez pas à un palais : le lit touchait presque le moteur. »',
+      question:'C’est ici que se trouvait votre cabine ?',answer:'« Là. Deux pas depuis le moteur, un de plus jusqu’au lit. Le Demain prenait l’eau par quatre endroits, mais cette porte fermait. On se moquait de moi parce que je gardais la clé en dormant. Ils ne s’étaient jamais réveillés avec toutes leurs affaires sous la tête. »',
+      final:'« Regardez : j’ai laissé la porte ouverte sur le dessin. Sur du carton, au moins, on choisit. »'},
+    bague:{go:'Vous avez enfin fini votre quart ?',intro:'« Depuis une heure. Je m’étais seulement promis de ne pas rentrer sans cette bague. Je vais souffler près du banc ; pour une fois, les cordages attendront demain. »',
+      question:'Pas de cordages ce soir ?',answer:'« Non. Quand je la remets, c’est fini. Les autres savent qu’il faut une vraie urgence pour venir me chercher. La dernière “urgence”, c’était une bâche qui claquait. Je leur ai dit de lui proposer un contrat de travail. Elle aussi faisait des heures. »',
+      final:'« Ça fait drôle, une minute sans rien avoir à tenir. Vous pouvez rester. Tant que vous n’apportez pas une corde. »'},
+    sifflet:{go:'Qu’allez-vous annoncer au panneau ?',intro:'« Rien qui fasse courir les gens. Je vais remettre l’ardoise à l’endroit. “Dernier passage” ne veut pas dire “embarquement immédiat”. Avec les rumeurs, ici, on remplit un bateau qui n’existe même pas. »',
+      question:'Pourquoi garder une ardoise sans horaire ?',answer:'« Pour écrire qu’on n’en sait rien. Hier quelqu’un avait mis “départ à l’aube”. Il n’avait ni bateau ni rame, seulement un très beau crayon. J’ai effacé l’heure. Ceux qui attendent méritent mieux qu’une belle écriture. »',
+      final:'« Le sifflet est revenu. Le bateau, non. Quand ça changera, on écrira quelque chose de vrai. »'}
+  };
+  const back=()=>({text:'Revenir.',onChoose:closeDialogue});
+  function talk(id){
+    if(unavailable()||!near(id))return false;own();
+    const a=state.v076Consigne.people[id],d=LINES[id],arrived=a.progress===M.total(id),choices=[];
+    let text=arrived?d.final:a.paused?'« Je vous attends ici. Dites-moi quand nous pouvons reprendre. »':d.intro;
+    if(rt.saveBlocked===id)choices.push({text:'Retenter la sauvegarde du trajet.',onChoose:guarded(id,()=>{if(commit(copy(state.v076Consigne)))talk(id);})});
+    if(!arrived)choices.push({text:a.paused?'Vous pouvez reprendre votre chemin.':'Attendez-moi ici un instant.',onChoose:guarded(id,rev=>{if(act(id,a.paused?'resume':'wait',rev))talk(id);})});
+    if(arrived)choices.push({text:d.question,onChoose:guarded(id,rev=>{
+      if(!a.heard&&!act(id,'listen',rev))return;
+      openDialogue(speaker(M.ROUTES[id].name,'UNE PLACE DANS LA COUR',{clef:'ÉL',bague:'MI',sifflet:'RA'}[id]),d.answer,[{text:'Revenir à notre conversation.',onChoose:guarded(id,()=>talk(id))},back()]);
+    })});
+    choices.push(back());
+    openDialogue(speaker(M.ROUTES[id].name,'UNE PLACE DANS LA COUR',{clef:'ÉL',bague:'MI',sifflet:'RA'}[id]),text,choices);return true;
+  }
+  // Add one optional invitation after the saved handoff; never auto-start a walk
+  // while the player is reading the original recognition dialogue.
+  const dialog=openDialogue;openDialogue=function(s,text,choices,...rest){
+    if(local()){
+      if(s?.name==='Nora Ferrand'&&M.IDS.some(k=>state.v076Consigne.people[k].started))text=text.replace('Éloi, Mina et Rachid attendent de ce côté du comptoir.', 'Éloi, Mina et Rachid sont toujours dans la cour.');
+      const id=M.IDS.find(k=>M.ROUTES[k].name===s?.name),a=id&&state.v076Consigne.people[id];
+      if(id&&state.v073Gabians.handoffs[id]!==null&&!a.started&&!choices?.some(c=>c.v076Invite)){
+        choices=[...(choices||[]).slice(0,-1),{text:LINES[id].go,v076Invite:true,onChoose:guarded(id,rev=>{
+          if(act(id,'go',rev))talk(id);
+        })},...(choices||[]).slice(-1)];
+      }
+    }
+    return dialog(s,text,choices,...rest);
+  };
+  const oldTalk=talkToNPC;talkToNPC=function(id){const key=M.IDS.find(k=>id==='g73:owner:'+k);return local()&&key&&state.v076Consigne.people[key].started?talk(key):oldTalk(...arguments);};
+  function buildProps(w){
+    const wood=[.42,.30,.19],metal=[.23,.30,.30],paper=[.71,.66,.48];
+    function box(pos,size,color,solid=true){const d=addBox(w,pos,size,color);d.v076Prop=true;if(solid){const c=addCollider(w,pos[0],pos[2],size[0],size[2],{minY:pos[1]-size[1]/2,maxY:pos[1]+size[1]/2});c.v076Prop=true;}return d;}
+    box([-22,1,12],[2,.14,3],wood);for(const x of [-22.7,-21.3])for(const z of [10.9,13.1])box([x,.47,z],[.14,.94,.14],metal);
+    box([-22,1.08,12],[1.6,.025,2.3],paper,false);
+    // A small hand-drawn cabin, not a real nautical chart or new destination.
+    for(const [x,z,sx,sz]of [[-22,11.4,1.1,.025],[-22,12.6,1.1,.025],[-22.5,12,.025,1.2],[-21.5,11.7,.025,.6],[-22.15,12.25,.45,.025]])box([x,1.096,z],[sx,.012,sz],metal,false).v076Drawing=true;
+    box([-6,.52,8.3],[4,.16,1.1],wood);box([-6,1.02,7.9],[4,.9,.12],wood);for(const x of [-7.5,-4.5])box([x,.25,8.3],[.18,.5,.9],metal);
+    for(const z of [16.7,19.3])box([13.2,.65,z],[.16,1.3,.16],metal);
+    box([13.2,1.35,18],[.15,2.3,3.3],wood);box([13.105,1.5,18],[.025,1.5,2.6],[.15,.22,.21],false);
+    // Readable note available at the board; no ferry schedule or service implied.
+    addInteract(w,'v076:board',[12.4,1.5,19.7],'Lire l’ardoise des passages',()=>{
+      if(!local()||unavailable()||Math.hypot(state.player.pos[0]-12.4,state.player.pos[2]-19.7)>3.2||!lineOfSight(state.player.pos,[12.4,1.5,19.7]))return false;
+      openDialogue(speaker('Ardoise des passages','CONSIGNE DU VIEUX-PORT','AP'),'PAS D’HORAIRE CONFIRMÉ.\n\n« Un appel n’est pas une promesse de traversée. Demandez avant d’attendre. — Rachid »',[back()]);return true;
+    },{radius:3.2,priority:2,kind:'note'});
+    // Signs have physical supports. The east-facing board's lettering rotates
+    // with its face instead of floating across the path.
+    for(const x of [-23.2,-20.8])box([x,.82,10.3],[.09,1.64,.09],metal);
+    for(const x of [-7.1,-4.9])box([x,.94,7.78],[.08,1.88,.08],metal);
+    if(typeof v021Sign==='function'){
+      v021Sign(w,-22,1.6,10.3,'LE DEMAIN / SOUVENIR',.037);
+      v021Sign(w,-6,1.8,7.78,'FIN DE QUART',.05);
+      for(const [y,text]of [[1.9,'PAS D HORAIRE'],[1.4,'CONFIRME']]){
+        const begin=w.staticDraws.length;v021Sign(w,0,0,0,text,.045);
+        for(const d of w.staticDraws.slice(begin)){const [x,dy,z]=d.pos;d.pos=[13.07-z,y+dy,18+x];d.rotY=(d.rotY||0)-Math.PI/2;d.v076Prop=true;}
+      }
+    }
+  }
+  const builder=v042BuildInstance;v042BuildInstance=function(){const w=builder(...arguments);if(w?.v073Gabians){buildProps(w);visuals(w);}return w;};
+  function clear(id,from,to){
+    if(collidesAt(to[0],to[2],.38,to[1]+1.65)||!lineOfSight([from[0],from[1]+1.1,from[2]],[to[0],to[1]+1.1,to[2]]))return false;
+    const p=state.player.pos;
+    if(Math.abs(p[1]-1.65-to[1])<1.9&&Math.hypot(p[0]-to[0],p[2]-to[2])<.95)return false;
+    return !world.npcs.some(n=>n.id!=='g73:owner:'+id&&n.alive!==false&&Math.abs(n.pos[1]-to[1])<1.8&&Math.hypot(n.pos[0]-to[0],n.pos[2]-to[2])<.8);
+  }
+  function tick(dt){
+    own();if(!local())return;
+    for(const id of M.IDS){const n=person(id);if(n)n.moving=false;}
+    rt.blocked=[];
+    if(unavailable(false)||mode!=='PLAYING'||inCombat||rt.busy||rt.saveBlocked||!Number.isFinite(dt)||dt<=0)return;
+    const mm=Math.max(1,Math.round(Math.min(.2,dt)*1250)),s=state,w=world;
+    for(const id of M.IDS){
+      const n=person(id);if(!n||n.alive===false||globalThis.v075ConsigneGestureActive?.(id))continue;
+      const old=n.pos.slice();let step;
+      try{step=M.advance(s.v076Consigne,s.v073Gabians.handoffs,id,mm,(from,to)=>clear(id,from,to));}
+      catch(e){rt.error=e.message;rt.saveBlocked=id;notice(e.message);return;}
+      if(step.blocked){rt.blocked.push(id);continue;}if(!step.moved)continue;
+      const before=step.checkpoint?copy(s):null;s.v076Consigne=step.ledger;
+      if(step.checkpoint){
+        try{if(saveGame(false)===false||s!==state||w!==world)throw Error('Le trajet n’a pas pu être sauvegardé.');}
+        catch(e){restore(s,before);rt.saveBlocked=id;rt.error=e.message;visuals(w);notice(e.message+' Parlez à '+M.ROUTES[id].name+' pour réessayer.');return;}
+      }
+      if(s!==state||w!==world)return;
+      n.pos=M.position(id,step.ledger.people[id].progress);n.home=n.pos.slice();n.yaw=step.arrived?M.ROUTES[id].yaw:Math.atan2(old[0]-n.pos[0],old[2]-n.pos[2]);
+      n.moving=!step.arrived&&!settings.reduceMotion;n.activity=M.status(id,step.ledger.people[id]);
+      if(step.arrived&&id==='clef')for(const d of w.staticDraws)if(d.v076Drawing)d.hidden=false;
+    }
+  }
+  const schedules=updateNPCSchedules;updateNPCSchedules=function(dt){return local()?tick(dt):schedules(...arguments);};
+  // A doorway must not discard the newest route distance on an unsuccessful save.
+  const exit=v042ExitInstance;v042ExitInstance=function(){if(local()){
+    const s=state,w=world,before=copy(s);
+    try{if(saveGame(false)===false||s!==state||w!==world)throw Error();}catch{restore(s,before);return notice('Sortie annulée : le trajet n’a pas pu être sauvegardé.');}
+  }return exit(...arguments);};
+  const data=v027Data;v027Data=function(c){const result=data(...arguments);if(V027.sub==='gabians'){
+    const l=state.v076Consigne,esc=v027Escape;
+    const panel=document.createElement('section');panel.className='p27-long';panel.innerHTML='<h3>Une place dans la cour · facultatif</h3>'+M.IDS.map(id=>'<p><b>'+esc(M.ROUTES[id].name)+'</b> · '+esc(M.status(id,l.people[id]))+(l.people[id].heard?' · souvenir écouté':'')+'</p>').join('')+'<p>Ces rencontres ne changent ni la prime, ni le résultat de la consigne. Aucun départ de bateau n’est confirmé.</p>';c.appendChild(panel);
+  }return result;};
+  const after=globalThis.v053LoreAfterInit;globalThis.v053LoreAfterInit=function(){after?.();Object.assign(window.__MISTRAL_DEBUG,{
+    v076ConsigneInfo:()=>{own();return {local:local(),ledger:copy(state.v076Consigne),saveBlocked:rt.saveBlocked,error:rt.error,blocked:rt.blocked.slice(),people:(world?.npcs||[]).filter(n=>n.id.startsWith('g73:owner:')).map(n=>({id:n.id,pos:n.pos.slice(),yaw:n.yaw,moving:!!n.moving,activity:n.activity})),props:world?.staticDraws.filter(d=>d.v076Prop).length||0};}
   });};
 }
 

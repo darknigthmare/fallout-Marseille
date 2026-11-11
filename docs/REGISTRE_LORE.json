@@ -1,0 +1,326 @@
+{
+  "schema": 1,
+  "review_date": "2026-11-11",
+  "narrative_year": 2297,
+  "canon": "fan-lore-original-non-officiel",
+  "scope": "Modules narratifs src/v050/10*.js et leurs annexes. Ne certifie pas toutes les armes, espèces ou lieux de la bible.",
+  "baseline_main": "cfa5edd4439e214331323c3a3f1b9833ff464942",
+  "previous_local_delivery": "Une place dans la cour",
+  "unmerged_parallel_work": [
+    {
+      "pr": 17,
+      "name": "COCHONNET physique",
+      "status": "branche parallèle non intégrée par cette livraison"
+    }
+  ],
+  "entries": [
+    {
+      "id": "continuite",
+      "title": "Dossiers de continuité",
+      "status": "implemented-local-scope",
+      "model": "MistralLoreContinuity",
+      "sources": [
+        "src/v050/10_lore_continuity.js"
+      ],
+      "chapters": [
+        "docs/LORE_CONTINUITE.md"
+      ],
+      "logic_test": "tests/expansion/lore_continuity.cjs",
+      "delivered": "Neuf forces raccordées par leurs dossiers, preuves et choix.",
+      "open_limit": "Les dossiers ne constituent pas toutes les campagnes ni tous les territoires."
+    },
+    {
+      "id": "services",
+      "title": "Quatre services publics",
+      "status": "implemented-local-scope",
+      "model": "MistralServiceLore",
+      "sources": [
+        "src/v050/10a_lore_services.js"
+      ],
+      "chapters": [
+        "docs/LORE_SERVICES_PUBLICS.md"
+      ],
+      "logic_test": "tests/expansion/lore_services.cjs",
+      "delivered": "La Sociale, Aiguilleurs, Commissariat et Amirauté : services, coûts et conséquences.",
+      "open_limit": "Pas de trains, flotte ou système hospitalier complet créés par un dialogue."
+    },
+    {
+      "id": "madame",
+      "title": "A‑03 et M.A.D.A.M.E.",
+      "status": "implemented-local-scope",
+      "model": "MistralMadame",
+      "sources": [
+        "src/v050/10b_a03_madame.js"
+      ],
+      "chapters": [
+        "docs/LORE_A03_MADAME.md"
+      ],
+      "logic_test": "tests/expansion/lore_a03_madame.cjs",
+      "delivered": "Preuves du prologue et confrontation des décisions des sept réseaux.",
+      "open_limit": "La projection ne remplace pas le vote régional."
+    },
+    {
+      "id": "conseil",
+      "title": "États généraux du Mistral",
+      "status": "implemented-local-scope",
+      "model": "MistralCouncil",
+      "sources": [
+        "src/v050/10c_conseil_regional.js"
+      ],
+      "chapters": [
+        "docs/LORE_CONSEIL_REGIONAL.md"
+      ],
+      "logic_test": "tests/expansion/lore_conseil_regional.cjs",
+      "delivered": "Motions, délégations, ratification et épilogues conservés.",
+      "open_limit": "Les images de fin ne reconstruisent pas matériellement les villes."
+    },
+    {
+      "id": "poste",
+      "title": "Poste Restante",
+      "status": "implemented-local-scope",
+      "model": "MistralPoste",
+      "sources": [
+        "src/v050/10d_poste_restante.js"
+      ],
+      "chapters": [
+        "docs/LORE_POSTE_RESTANTE.md"
+      ],
+      "logic_test": "tests/expansion/lore_poste_restante.cjs",
+      "delivered": "Tournée de sept plis, réclamations, reçus et contre-dons finis.",
+      "open_limit": "Camille n’est pas recrutée par la seule ouverture de ce dossier."
+    },
+    {
+      "id": "pharmacies",
+      "title": "Pharmacies de Garde",
+      "status": "implemented-local-scope",
+      "model": "MistralPharmacy",
+      "sources": [
+        "src/v050/10e_pharmacie_garde.js"
+      ],
+      "chapters": [
+        "docs/LORE_PHARMACIES_DE_GARDE.md"
+      ],
+      "logic_test": "tests/expansion/lore_pharmacie_garde.cjs",
+      "delivered": "Planning, lot réservé, garde tournante, stocks et soins limités.",
+      "open_limit": "Pas de guérison de radiation ou d’infection par un soin limité en PV."
+    },
+    {
+      "id": "radieuse",
+      "title": "Cité Radieuse",
+      "status": "implemented-local-scope",
+      "model": "MistralRadieuse",
+      "sources": [
+        "src/v050/10f_cite_radieuse.js"
+      ],
+      "chapters": [
+        "docs/LORE_CITE_RADIEUSE.md"
+      ],
+      "logic_test": "tests/expansion/lore_cite_radieuse.cjs",
+      "delivered": "Cinq habitants, assemblée, fuite, contacteur et toit réparables.",
+      "open_limit": "Intérieur original compact, pas restitution 1:1 de la tour réelle."
+    },
+    {
+      "id": "mutuelle",
+      "title": "Mutuelle Phocéenne",
+      "status": "implemented-local-scope",
+      "model": "MistralMutuelle",
+      "sources": [
+        "src/v050/10g_mutuelle_phoceenne.js"
+      ],
+      "chapters": [
+        "docs/LORE_MUTUELLE_PHOCEENNE.md"
+      ],
+      "logic_test": "tests/expansion/lore_mutuelle_phoceenne.cjs",
+      "delivered": "Quatre pièces, contre-expertise, trois accords et colis unique.",
+      "open_limit": "Un accord d’assurance n’efface ni le scrutin ni un titre de propriété."
+    },
+    {
+      "id": "notaires",
+      "title": "Notaires de l’Après",
+      "status": "implemented-local-scope",
+      "model": "MistralNotaires",
+      "sources": [
+        "src/v050/10h_notaires_apres.js"
+      ],
+      "chapters": [
+        "docs/LORE_NOTAIRES_APRES.md"
+      ],
+      "logic_test": "tests/expansion/lore_notaires_apres.cjs",
+      "delivered": "Élias, coffre, trois actes, copies personnelles et clôture unique.",
+      "open_limit": "Pas de propriétaire inventé ou de justice nationale reconstituée."
+    },
+    {
+      "id": "voisins",
+      "title": "La Fête des voisins",
+      "status": "implemented-local-scope",
+      "model": "MistralVoisins",
+      "sources": [
+        "src/v050/10i_fete_voisins.js"
+      ],
+      "chapters": [
+        "docs/LORE_FETE_DES_VOISINS.md"
+      ],
+      "logic_test": "tests/expansion/lore_fete_voisins.cjs",
+      "delivered": "Invitations, sonorisation, repas, objections et trois conclusions.",
+      "open_limit": "Le repas ne vaut pas unanimité et ne réécrit pas l’exclusion du toit."
+    },
+    {
+      "id": "devoir",
+      "title": "Compagnons du Devoir",
+      "status": "implemented-local-scope",
+      "model": "MistralDevoir",
+      "sources": [
+        "src/v050/10j_compagnons_devoir.js"
+      ],
+      "chapters": [
+        "docs/LORE_COMPAGNONS_DU_DEVOIR.md"
+      ],
+      "logic_test": "tests/expansion/lore_compagnons_devoir.cjs",
+      "delivered": "Aubagne, La Ciotat, montage, épreuve et réserve de mastic finie.",
+      "open_limit": "Pas de grade national, purification de l’eau ni ressource infinie."
+    },
+    {
+      "id": "lys",
+      "title": "Cour du Lys d’If",
+      "status": "implemented-local-scope",
+      "model": "MistralLys",
+      "sources": [
+        "src/v050/10k_cour_lys.js"
+      ],
+      "chapters": [
+        "docs/LORE_COUR_DU_LYS.md"
+      ],
+      "logic_test": "tests/expansion/lore_cour_lys.cjs",
+      "delivered": "Audience indépendante, LOUIS‑27, archives et trois règlements.",
+      "open_limit": "La succession et les campagnes politiques restent ouvertes."
+    },
+    {
+      "id": "parts",
+      "title": "La part des absents",
+      "status": "implemented-local-scope",
+      "model": "MistralParts",
+      "sources": [
+        "src/v050/10l_parts_absents.js",
+        "src/v050/10m_parts_runtime.js"
+      ],
+      "chapters": [
+        "docs/LORE_PARTS_ABSENTS.md"
+      ],
+      "logic_test": "tests/expansion/lore_parts_absents.cjs",
+      "delivered": "Amarres, treuil, six caisses à transporter et trois répartitions.",
+      "open_limit": "Pas de flotte ni de simulation quotidienne de faim."
+    },
+    {
+      "id": "secours",
+      "title": "Marins-Sapeurs",
+      "status": "implemented-local-scope",
+      "model": "MistralSecours",
+      "sources": [
+        "src/v050/10n_marins_secours.js",
+        "src/v050/10o_secours_runtime.js"
+      ],
+      "chapters": [
+        "docs/LORE_MARINS_SAPEURS.md"
+      ],
+      "logic_test": "tests/expansion/lore_marins_secours.cjs",
+      "delivered": "Dangers, portes et deux évacuations physiquement accompagnées.",
+      "open_limit": "Trajets scénarisés, pas de nouveau compagnon libre ou de guérison de goule."
+    },
+    {
+      "id": "cigales",
+      "title": "Le faux midi",
+      "status": "implemented-local-scope",
+      "model": "MistralCigales",
+      "sources": [
+        "src/v050/10p_cigales.js",
+        "src/v050/10q_cigales_runtime.js"
+      ],
+      "chapters": [
+        "docs/LORE_CIGALES_FAUX_MIDI.md"
+      ],
+      "logic_test": "tests/expansion/lore_cigales.cjs",
+      "delivered": "Trois cigales, balise, crissements et retrait persistant des survivantes.",
+      "open_limit": "Midi-Zéro, les nymphes et une écologie régionale ne sont pas livrés."
+    },
+    {
+      "id": "rats",
+      "title": "Les dents du réseau",
+      "status": "implemented-local-scope",
+      "model": "MistralRats",
+      "sources": [
+        "src/v050/10r_rats_cables.js",
+        "src/v050/10s_rats_runtime.js"
+      ],
+      "chapters": [
+        "docs/LORE_RATS_CABLES.md"
+      ],
+      "logic_test": "tests/expansion/lore_rats_cables.cjs",
+      "delivered": "Trois rats, refuge, isolation, deux gaines et six lampes stabilisées.",
+      "open_limit": "Ils rongent l’isolant ; ils ne mangent pas l’électricité."
+    },
+    {
+      "id": "gabians",
+      "title": "Les objets trouvés et De main en main",
+      "status": "implemented-local-scope",
+      "model": "MistralGabians",
+      "sources": [
+        "src/v050/10t_gabians_consigne.js",
+        "src/v050/10u_gabians_runtime.js"
+      ],
+      "chapters": [
+        "docs/LORE_GABIANS_OBJETS_TROUVES.md",
+        "docs/LORE_GABIANS_RESTITUTIONS.md"
+      ],
+      "logic_test": "tests/expansion/lore_gabians_consigne.cjs",
+      "delivered": "Nora, deux gabians, paniers, trois objets et leurs propriétaires présents.",
+      "open_limit": "Aucun vol aléatoire d’inventaire ni deuxième prime après restitution."
+    },
+    {
+      "id": "pigeons",
+      "title": "La bonne adresse",
+      "status": "implemented-local-scope",
+      "model": "MistralPigeons",
+      "sources": [
+        "src/v050/10v_pigeons_poste.js",
+        "src/v050/10w_pigeons_runtime.js"
+      ],
+      "chapters": [
+        "docs/LORE_PIGEONS_POSTE_RESTANTE.md"
+      ],
+      "logic_test": "tests/expansion/lore_pigeons_poste.cjs",
+      "delivered": "Deux pigeons reviennent à leurs colombiers ; alternative à pied et signatures.",
+      "open_limit": "Pas d’adresse magique, de Général Biset ou de courrier régional autonome."
+    },
+    {
+      "id": "gestes",
+      "title": "Les gestes retrouvés",
+      "status": "implemented-local-scope",
+      "model": "MistralConsigneGestures",
+      "sources": [
+        "src/v050/10x_consigne_gestes.js"
+      ],
+      "chapters": [
+        "docs/LORE_CONSIGNE_GESTES.md"
+      ],
+      "logic_test": "tests/expansion/lore_consigne_gestes.cjs",
+      "delivered": "Trois gestes après remise sauvegardée et accessoires conservés.",
+      "open_limit": "Pas de transfert continu depuis les mains du joueur ni de doublage."
+    },
+    {
+      "id": "cour",
+      "title": "Une place dans la cour",
+      "status": "implemented-local-scope",
+      "model": "MistralConsigneLife",
+      "sources": [
+        "src/v050/10y_consigne_vie.js",
+        "src/v050/10z_consigne_vie_runtime.js"
+      ],
+      "chapters": [
+        "docs/LORE_CONSIGNE_VIE.md"
+      ],
+      "logic_test": "tests/expansion/lore_consigne_vie.cjs",
+      "delivered": "Trois promenades choisies, attente/reprise et souvenirs à destination.",
+      "open_limit": "Mina reste debout ; pas de ferry, départ hors champ ou emploi du temps régional."
+    }
+  ]
+}
