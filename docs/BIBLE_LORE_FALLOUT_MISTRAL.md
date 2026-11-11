@@ -1,6 +1,6 @@
 # Fallout: Mistral — Bible de lore canonique
 
-**Version documentaire :** 1.2 — consolidation du 11 novembre 2026  
+**Version documentaire :** 1.3 — carnet des ateliers, 11 novembre 2026  
 **Période principale :** 2297  
 **Territoire principal :** Marseille, Aubagne, Garlaban, Calanques, Cassis, La Ciotat, Frioul, Étoile et Sainte-Baume  
 **Statut :** création de fan non officielle située dans l’univers de Fallout
@@ -1345,6 +1345,17 @@ Le vérificateur `tools/verify_lore_registry.py` refuse un module narratif `10*.
 
 La Convention, la Bastille du Midi, les courants révolutionnaires, les Gilets de Cendre et le Syndicat gardent leurs qualités et dangers décrits dans la partie III. Leur présence dans les dossiers n’acquitte pas une campagne complète. Le Rat-couronné possède déjà un assemblage régional, des volumes ciblables et une ruée sur le type existant `giantRat`, décrits dans [BESTIAIRE_REGIONAL.md](BESTIAIRE_REGIONAL.md). Il ne doit donc pas être reclassé comme entièrement absent. Cet assemblage quadrupède ne réalise toutefois pas l’agrégat de plusieurs individus décrit en section 30 : cet écart de représentation reste ouvert. Le Roi des Égouts, Midi-Zéro, le Général Biset et les autres formes annoncées ne deviennent pas jouables par simple présence dans une liste.
 
-Les arsenaux d’Aubagne, de Marseille, du littoral, les armes révolutionnaires et celles de pétanque restent décrits aux sections 37 à 44 ; ce registre ne prétend pas leur donner à tous un modèle, une animation ou un équilibre final. Un inventaire arme par arme et créature par créature demeure nécessaire. La PR parallèle COCHONNET nº 17 n’est ni écrasée ni déclarée intégrée par cette consolidation.
+Les arsenaux d’Aubagne, de Marseille, du littoral, les armes révolutionnaires et celles de pétanque restent décrits aux sections 37 à 44 ; ce registre ne prétend pas leur donner à tous un modèle, une animation ou un équilibre final. L’inventaire des sources est désormais fourni en section 69 ; il ne remplace pas la vérification d’acquisition, d’équilibrage et d’incarnation de chaque entrée. La PR parallèle COCHONNET nº 17 n’est ni écrasée ni déclarée intégrée par cette consolidation.
 
 Les trajets IGN complets, la navigation maritime, le recrutement de tous les compagnons, le doublage et les conséquences matérielles régionales restent ouverts. La continuité et les limitations ne sont pas remplacées par la formule « tout est terminé ».
+
+
+## 69. Le carnet des ateliers et les promesses encore ouvertes
+
+L’[annexe des arsenaux](LORE_ARSENAL_REGIONAL.md) décrit les associations stables des 55 armes déjà déclarées régionales, les présentations des aiguilles pneumatiques, de la scie céramique et du mortier de 40 mm, ainsi que le carnet **DATA → ATELIERS · ARMES**. Cette lecture ne donne aucun équipement et ne modifie ni dégâts, ni stocks, ni récompenses.
+
+L’[inventaire arme par arme et désignation par désignation](INVENTAIRE_ARSENAL_BESTIAIRE.md), accompagné de ses [identifiants et empreintes](INVENTAIRE_ARSENAL_BESTIAIRE.json), sépare trois portées : 55 associations visuelles explicites, 49 concepts d’armes de cette bible et 98 désignations de créatures ou automates. Les variantes de nom ne sont pas comptées comme espèces uniques. Les neuf assemblages du bestiaire existant ne deviennent pas 98 nouvelles créatures.
+
+Les profils partagés ne sont pas des modèles propres à chaque arme. L’alimentation affichée vient du catalogue ; une origine médicale ne rend pas une arme non létale, un nom de mémoire ne restaure pas les souvenirs et une arme de signalisation n’invente pas un ferry. Les seuls rapprochements automatiques de noms sont exacts après normalisation des accents et de la ponctuation ; les équivalences de lore restent à décider explicitement.
+
+Le registre de la section 68 conserve ses vingt ensembles narratifs. Les modules de présentation et de lecture des ateliers se situent hors de la série `10*.js` : ils sont contrôlés par l’inventaire et leurs tests propres, sans fabriquer une vingt-et-unième campagne. Acquisition, armures, alimentation détaillée de toutes les armes, boss, écologie et campagnes complètes restent ouverts.
