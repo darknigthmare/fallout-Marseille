@@ -1,10 +1,10 @@
 name: Lore regression
 on:
   pull_request:
-    paths: ['LORE.md', 'docs/*LORE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/*cold_save_smoke.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
+    paths: ['LORE.md', 'docs/*LORE*', 'docs/AUDIT_BIBLE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/test_lore_registry.py', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/*cold_save_smoke.py', 'tools/verify_lore_registry.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
   push:
     branches: [main, 'feature/**']
-    paths: ['LORE.md', 'docs/*LORE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/*cold_save_smoke.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
+    paths: ['LORE.md', 'docs/*LORE*', 'docs/AUDIT_BIBLE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/test_lore_registry.py', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/*cold_save_smoke.py', 'tools/verify_lore_registry.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
 permissions:
   contents: write
 concurrency:
@@ -22,96 +22,84 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Syntaxe des modules de lore
-        run: for source in src/v050/10*.js; do node --check "$source"; done
-      - name: Tests de lore et des institutions
-        run: node --test tests/expansion/lore_*.cjs
-      - name: Reconstruction du jeu
-        run: python3 tools/build_single.py
-      - name: Vérification du bundle généré
+      - name: Syntaxe et tests de lore
         run: |
+          for source in src/v050/10*.js; do node --check "$source"; done
+          node --test tests/expansion/lore_*.cjs
+      - name: Bible reliee aux sources narratives
+        run: |
+          python tools/verify_lore_registry.py --output verification/bible-sync/REGISTRY.json
+          python -m unittest discover -s tests/expansion -p 'test_lore_registry.py' -v
+      - name: Compilation complete et controle deterministe
+        run: |
+          python3 tools/build_single.py
           node --check src/game.js
           python3 tools/build_single.py --check
-          for model in MistralMadame MistralCouncil MistralPoste MistralPharmacy MistralRadieuse MistralMutuelle MistralNotaires MistralVoisins MistralDevoir MistralLys MistralParts MistralSecours MistralCigales MistralRats MistralGabians MistralPigeons; do grep -q "const $model" src/game.js; done
-          grep -q 'LES DENTS DU RÉSEAU' JOUER_FALLOUT_MISTRAL_v0.50.html
-          grep -q 'LA BONNE ADRESSE' JOUER_FALLOUT_MISTRAL_v0.50.html
-          grep -q 'DE MAIN EN MAIN' JOUER_FALLOUT_MISTRAL_v0.50.html
-      - name: Régressions du territoire sur le bundle reconstruit
+          python tools/verify_lore_registry.py --bundle src/game.js --output verification/bible-sync/REGISTRY.json
+      - name: Regressions du territoire
         run: |
           node tests/expansion/city_streaming.cjs
           node tests/expansion/city_wait_cancel.test.cjs
           node tests/expansion/city_partition_seams.test.cjs
           node tests/expansion/city_geometry_identity.test.cjs
-      - name: Installer le navigateur de vérification isolée
+      - name: Navigateur isole
         run: |
           python -m pip install playwright==1.57.0
           python -m playwright install --with-deps chromium
-      - name: Reprise à froid avec un véritable profil Chromium
-        run: python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/rats/ci/cold
-      - name: Six reprises à froid des pigeons et gabians
-        run: python tests/expansion/birds_cold_save_smoke.py --html index.html --output verification/rats/ci/birds-cold
-      - name: Seize parcours navigateur instrumentés
+      - name: Reprises apres fermeture complete de Chromium
         run: |
-          for suite in gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
-            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/rats/ci/${suite}"
+          python tests/expansion/consigne_vie_cold_save_smoke.py --html index.html --output verification/bible-sync/ci/cour-cold
+          python tests/expansion/birds_cold_save_smoke.py --html index.html --output verification/bible-sync/ci/birds-cold
+          python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/bible-sync/ci/rats-cold
+      - name: Dix-sept parcours navigateur instrumentes
+        run: |
+          for suite in consigne_vie gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
+            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/bible-sync/ci/${suite}"
           done
-      - name: Rapports et captures navigateur
+      - name: Rapports et captures y compris en cas d echec
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: mistral-gestes-browser-${{ github.sha }}
+          name: mistral-bible-cour-browser-${{ github.sha }}
           if-no-files-found: ignore
           retention-days: 14
-          path: verification/rats/ci/
-      - name: Artefact du jeu et des sources de lore
+          path: |
+            verification/bible-sync/ci/
+            verification/bible-sync/REGISTRY.json
+      - name: Programme canonique et sources
         uses: actions/upload-artifact@v4
         with:
-          name: fallout-mistral-gestes-${{ github.sha }}
+          name: fallout-mistral-bible-cour-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
             JOUER_FALLOUT_MISTRAL_v0.50.html
-            src/game.js
             index.html
             sw.js
+            src/
+            tools/
+            tests/expansion/
+            docs/
             LORE.md
-            src/v050/10*.js
-            src/v042/00_catalog.js
-            src/v046/04_lore.js
-            src/v049/*.js
-            tests/expansion/lore_*.cjs
-            tests/expansion/compagnons_fixture.cjs
-            tests/expansion/*browser_smoke.py
-            tests/expansion/*cold_save_smoke.py
-            docs/LORE*.md
-            docs/ETAT_LORE_MANQUANTS.md
-            docs/BIBLE_LORE_FALLOUT_MISTRAL.md
-            verification/rats/ci/retrouvailles/
-            verification/rats/ci/birds-cold/
-            verification/rats/ci/pigeons/
-            verification/rats/ci/gabians/
-            verification/rats/ci/rats/
-            verification/rats/ci/cold/
-            verification/pigeons/QA.json
-            verification/pigeons/QA_LOCAL.json
-            verification/gestes/QA.json
-            verification/gestes/QA_LOCAL.json
-            verification/rats/ci/gestes/
-            verification/retrouvailles/QA.json
-            verification/retrouvailles/QA_LOCAL.json
-      - name: Synchroniser les sorties générées de la branche
+            README.md
+            AGENTS.md
+            verification/bible-sync/QA.json
+            verification/bible-sync/REGISTRY.json
+            verification/bible-sync/DOCUMENTATION_REVIEW.json
+            verification/bible-sync/LIVRAISON.md
+      - name: Synchroniser les sorties generees de la branche
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
         run: |
           remote_head=$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)
           if [ "$remote_head" != "$GITHUB_SHA" ]; then
-            echo 'La branche a avancé : aucune écriture sur une révision périmée.'
+            echo 'Branche avancee : aucune ecriture sur une revision perimee.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add src/game.js JOUER_FALLOUT_MISTRAL_v0.50.html index.html sw.js
           if git diff --cached --quiet; then
-            echo 'Les sorties générées sont déjà synchronisées.'
+            echo 'Sorties generees deja synchronisees.'
           else
             git commit -m 'build(lore): refresh generated game'
             git push origin HEAD:${GITHUB_REF_NAME}
