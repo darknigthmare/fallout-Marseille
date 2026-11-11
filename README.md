@@ -1,5 +1,9 @@
 # FALLOUT Marseille — MISTRAL
 
+## Bible et progression narrative — 11 novembre 2026
+
+La [bible centrale consolidée](docs/BIBLE_LORE_FALLOUT_MISTRAL.md), l’[index des chapitres](LORE.md) et le [registre vérifiable des modules narratifs](docs/REGISTRE_LORE.json) rassemblent les ajouts jusqu’à **Une place dans la cour**. Le [suivi des manques](docs/ETAT_LORE_MANQUANTS.md) conserve les concepts non incarnés ; aucune faction entière ou validation IGN complète n’est déclarée terminée. Les résultats courants se trouvent dans [le rapport de compilation et de parcours](verification/bible-sync/QA.json) et [le contrôle documentaire actualisé](verification/bible-sync/DOCUMENTATION_REVIEW.json). Les bilans plus anciens ci-dessous restent historiques.
+
 
 [Raccords routiers et livraison synchronisée — 29 octobre 2026](docs/QA_STREAMING_2026-10-29.md) : correction des fragments complémentaires, HTML reconstruits, contrôle du cache hors ligne et captures réellement exécutées.
 

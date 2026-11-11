@@ -82,9 +82,14 @@ with tempfile.TemporaryDirectory(prefix='mistral-offline-delivery-') as delivery
      if scenario=='retreat':
       check('checkpoint: wounded survivor partway to refuge',-22000<expected_ledger['actors']['voie']['z']<-8000 and expected_ledger['actors']['voie']['legs']>0)
       check('checkpoint: death and active effects recorded',expected_ledger['actors']['retour']['hp']==0 and expected_ledger['actors']['armoire']['burn']>0 and expected_ledger['actors']['armoire']['slow']>0)
-    except Exception:
-     page.screenshot(path=str(a.output/(scenario+'-seed-failure.png')))
-     print('SEED DIAGNOSTIC',page.evaluate('({mode:__MISTRAL_DEBUG.getMode(),world:__MISTRAL_DEBUG.getWorld(),rats:__MISTRAL_DEBUG.v072RatsInfo(),continue:__MISTRAL_DEBUG.v050ContinueInfo()})'),flush=True)
+    except Exception as failure:
+     # Diagnostic failure must never mask the original navigation/save failure.
+     print('SEED FAILURE',repr(failure),flush=True)
+     try:
+      page.screenshot(path=str(a.output/(scenario+'-seed-failure.png')))
+      print('SEED DIAGNOSTIC',page.evaluate('({mode:window.__MISTRAL_DEBUG?.getMode(),rats:window.__MISTRAL_DEBUG?.v072RatsInfo(),continue:window.__MISTRAL_DEBUG?.v050ContinueInfo()})'),flush=True)
+     except Exception as diagnostic:
+      print('DIAGNOSTIC UNAVAILABLE',repr(diagnostic),flush=True)
      raise
     finally:context.close()
     entry.write_bytes(production)
@@ -113,9 +118,14 @@ with tempfile.TemporaryDirectory(prefix='mistral-offline-delivery-') as delivery
      else:
       check('retreat: dead rat stays dead, two survivors stay active',sum(e['alive'] for e in got['enemies'])==2)
      runs.append({'scenario':scenario,'storage_key':seed_state['key'],'same_disk_profile':True,'resume_html_sha256':sha,'native_continue':True})
-    except Exception:
-     page.screenshot(path=str(a.output/(scenario+'-resume-failure.png')))
-     print('RESUME DIAGNOSTIC',page.evaluate('({mode:__MISTRAL_DEBUG.getMode(),world:__MISTRAL_DEBUG.getWorld(),rats:__MISTRAL_DEBUG.v072RatsInfo(),continue:__MISTRAL_DEBUG.v050ContinueInfo()})'),flush=True)
+    except Exception as failure:
+     # Diagnostic failure must never mask the original navigation/save failure.
+     print('RESUME FAILURE',repr(failure),flush=True)
+     try:
+      page.screenshot(path=str(a.output/(scenario+'-resume-failure.png')))
+      print('RESUME DIAGNOSTIC',page.evaluate('({mode:window.__MISTRAL_DEBUG?.getMode(),rats:window.__MISTRAL_DEBUG?.v072RatsInfo(),continue:window.__MISTRAL_DEBUG?.v050ContinueInfo()})'),flush=True)
+     except Exception as diagnostic:
+      print('DIAGNOSTIC UNAVAILABLE',repr(diagnostic),flush=True)
      raise
     finally:context.close()
   check('no JavaScript exceptions during cold resumes',not errors)

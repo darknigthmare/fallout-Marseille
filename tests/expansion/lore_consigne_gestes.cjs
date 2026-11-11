@@ -119,3 +119,10 @@ test('unrelated dialogue choices and other scenes pass through unchanged',()=>{
  assert.equal(f.ev('displayed.choices[0]===ordinary'),true);f.ev('displayed.choices[0].onChoose()');assert.equal(f.ev('calls'),1);
  f.ev(`world={id:'elsewhere'};start('clef')`);assert.equal(f.ev('info().active.length'),0);
 });
+
+test('inverse rig coordinates preserve world attachment for every yaw and scale',()=>{
+ for(const yaw of [0,.3,-Math.PI/2,Math.PI])for(const sc of [.5,1,2]){
+  const origin=[-5,2,18],p=[.33,.75,.13],q=G.unpoint(origin,yaw,G.point(origin,yaw,p,sc),sc);
+  assert.ok(q.every((v,i)=>Math.abs(v-p[i])<1e-12));
+ }
+});

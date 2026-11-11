@@ -1,6 +1,6 @@
 # Fallout: Mistral — Bible de lore canonique
 
-**Version documentaire :** 1.1  
+**Version documentaire :** 1.2 — consolidation du 11 novembre 2026  
 **Période principale :** 2297  
 **Territoire principal :** Marseille, Aubagne, Garlaban, Calanques, Cassis, La Ciotat, Frioul, Étoile et Sainte-Baume  
 **Statut :** création de fan non officielle située dans l’univers de Fallout
@@ -11,7 +11,7 @@
 
 ## 1. Fonction de cette bible
 
-Cette bible fixe le canon narratif de **Fallout: Mistral**. Elle ne prétend pas que chaque élément décrit est déjà jouable. L’état réel de l’intégration est suivi dans `MATRICE_INTEGRATION_LORE.md`.
+Cette bible fixe le canon narratif de **Fallout: Mistral**. Elle ne prétend pas que chaque élément décrit est déjà jouable. L’audit initial reste conservé dans `MATRICE_INTEGRATION_LORE.md`. Pour la version courante, consulter la section 68 ci-dessous, [le registre vérifiable](REGISTRE_LORE.json) et [le suivi des manques](ETAT_LORE_MANQUANTS.md). Une proposition canonique n’est pas une fonctionnalité terminée.
 
 La règle centrale est simple :
 
@@ -1297,3 +1297,54 @@ L’annexe [LORE_GABIANS_RESTITUTIONS.md](LORE_GABIANS_RESTITUTIONS.md) précise
 Après une remise personnelle à la consigne, Éloi reconnaît sa clef et la garde à la ceinture ; Mina examine sa bague puis la remet à la main ; Rachid conserve son sifflet sur un cordon. Ces gestes et les objets portés sont visibles dans le moteur, sans modifier les récompenses, le schéma de sauvegarde ou les histoires déjà racontées. Une ancienne remise personnelle se reconstruit comme un objet conservé, sans rejouer le geste.
 
 L'annexe [LORE_CONSIGNE_GESTES.md](LORE_CONSIGNE_GESTES.md) distingue le geste du destinataire d'un transfert complet entre deux mains. Le doublage, les doigts détaillés, les départs des propriétaires et le ferry restent ouverts. Après les trois remises et la clôture de Nora, le repère indique la sortie de la cour.
+
+
+## 67. Une place dans la cour — après la restitution
+
+Éloi ne reste pas condamné à attendre sa clef au comptoir après l'avoir retrouvée : une invitation facultative l'amène à une table où sa cabine du Demain tient sur un carton. Son récit parle de la valeur d'une porte qui ferme, pas d'un bateau réparé. Mina rejoint un banc et garde sa bague parce que son quart est fini ; elle reste debout, faute d'une animation d'assise dans ce lot. Rachid rejoint une ardoise sans horaire confirmé : son sifflet n'autorise pas à promettre une traversée.
+
+Les trois personnes marchent réellement sur des trajets locaux avec collisions, attente et reprise. Leur position en chemin, leur arrivée et le souvenir écouté sont conservés par `v076Consigne` ; les anciennes parties ne reçoivent aucune invitation fictive. Le journal les suit et les conversations restent accessibles à leur position réelle. Aucun supplément à la prime unique de 45 capsules.
+
+L'annexe [LORE_CONSIGNE_VIE.md](LORE_CONSIGNE_VIE.md) décrit les lieux, dialogues et limites. Ce lot ne réalise ni départs hors champ, ni ferry, ni navigation libre, ni transmission complète de l'objet entre les mains. Les preuves de l'édition locale restent historiques dans `verification/consigne-vie/QA.json`. La validation depuis le dépôt complet est consignée séparément dans `verification/bible-sync/QA.json`, lorsqu’elle a effectivement été exécutée.
+
+
+## 68. Registre des incarnations et règle de publication
+
+**Cette section rassemble les ajouts dispersés dans les annexes.** Les fondations, factions, armes, créatures et compagnons conçus aux sections 1 à 63 restent conservés ; les lignes ci-dessous indiquent les boucles effectivement présentes dans les sources, sans déclarer les factions entières terminées. Le [registre technique](REGISTRE_LORE.json) relie chaque ligne à son modèle, ses modules, son test de logique et ses chapitres.
+
+| Arc | Ce qui existe dans les sources | Limite à ne pas effacer | Chapitre complet |
+|---|---|---|---|
+| Dossiers de continuité | Neuf forces raccordées par leurs dossiers, preuves et choix. | Les dossiers ne constituent pas toutes les campagnes ni tous les territoires. | [CONTINUITE](LORE_CONTINUITE.md) |
+| Quatre services publics | La Sociale, Aiguilleurs, Commissariat et Amirauté : services, coûts et conséquences. | Pas de trains, flotte ou système hospitalier complet créés par un dialogue. | [SERVICES_PUBLICS](LORE_SERVICES_PUBLICS.md) |
+| A‑03 et M.A.D.A.M.E. | Preuves du prologue et confrontation des décisions des sept réseaux. | La projection ne remplace pas le vote régional. | [A03_MADAME](LORE_A03_MADAME.md) |
+| États généraux du Mistral | Motions, délégations, ratification et épilogues conservés. | Les images de fin ne reconstruisent pas matériellement les villes. | [CONSEIL_REGIONAL](LORE_CONSEIL_REGIONAL.md) |
+| Poste Restante | Tournée de sept plis, réclamations, reçus et contre-dons finis. | Camille n’est pas recrutée par la seule ouverture de ce dossier. | [POSTE_RESTANTE](LORE_POSTE_RESTANTE.md) |
+| Pharmacies de Garde | Planning, lot réservé, garde tournante, stocks et soins limités. | Pas de guérison de radiation ou d’infection par un soin limité en PV. | [PHARMACIES_DE_GARDE](LORE_PHARMACIES_DE_GARDE.md) |
+| Cité Radieuse | Cinq habitants, assemblée, fuite, contacteur et toit réparables. | Intérieur original compact, pas restitution 1:1 de la tour réelle. | [CITE_RADIEUSE](LORE_CITE_RADIEUSE.md) |
+| Mutuelle Phocéenne | Quatre pièces, contre-expertise, trois accords et colis unique. | Un accord d’assurance n’efface ni le scrutin ni un titre de propriété. | [MUTUELLE_PHOCEENNE](LORE_MUTUELLE_PHOCEENNE.md) |
+| Notaires de l’Après | Élias, coffre, trois actes, copies personnelles et clôture unique. | Pas de propriétaire inventé ou de justice nationale reconstituée. | [NOTAIRES_APRES](LORE_NOTAIRES_APRES.md) |
+| La Fête des voisins | Invitations, sonorisation, repas, objections et trois conclusions. | Le repas ne vaut pas unanimité et ne réécrit pas l’exclusion du toit. | [FETE_DES_VOISINS](LORE_FETE_DES_VOISINS.md) |
+| Compagnons du Devoir | Aubagne, La Ciotat, montage, épreuve et réserve de mastic finie. | Pas de grade national, purification de l’eau ni ressource infinie. | [COMPAGNONS_DU_DEVOIR](LORE_COMPAGNONS_DU_DEVOIR.md) |
+| Cour du Lys d’If | Audience indépendante, LOUIS‑27, archives et trois règlements. | La succession et les campagnes politiques restent ouvertes. | [COUR_DU_LYS](LORE_COUR_DU_LYS.md) |
+| La part des absents | Amarres, treuil, six caisses à transporter et trois répartitions. | Pas de flotte ni de simulation quotidienne de faim. | [PARTS_ABSENTS](LORE_PARTS_ABSENTS.md) |
+| Marins-Sapeurs | Dangers, portes et deux évacuations physiquement accompagnées. | Trajets scénarisés, pas de nouveau compagnon libre ou de guérison de goule. | [MARINS_SAPEURS](LORE_MARINS_SAPEURS.md) |
+| Le faux midi | Trois cigales, balise, crissements et retrait persistant des survivantes. | Midi-Zéro, les nymphes et une écologie régionale ne sont pas livrés. | [CIGALES_FAUX_MIDI](LORE_CIGALES_FAUX_MIDI.md) |
+| Les dents du réseau | Trois rats, refuge, isolation, deux gaines et six lampes stabilisées. | Ils rongent l’isolant ; ils ne mangent pas l’électricité. | [RATS_CABLES](LORE_RATS_CABLES.md) |
+| Les objets trouvés et De main en main | Nora, deux gabians, paniers, trois objets et leurs propriétaires présents. | Aucun vol aléatoire d’inventaire ni deuxième prime après restitution. | [GABIANS_OBJETS_TROUVES](LORE_GABIANS_OBJETS_TROUVES.md) · [GABIANS_RESTITUTIONS](LORE_GABIANS_RESTITUTIONS.md) |
+| La bonne adresse | Deux pigeons reviennent à leurs colombiers ; alternative à pied et signatures. | Pas d’adresse magique, de Général Biset ou de courrier régional autonome. | [PIGEONS_POSTE_RESTANTE](LORE_PIGEONS_POSTE_RESTANTE.md) |
+| Les gestes retrouvés | Trois gestes après remise sauvegardée et accessoires conservés. | Pas de transfert continu depuis les mains du joueur ni de doublage. | [CONSIGNE_GESTES](LORE_CONSIGNE_GESTES.md) |
+| Une place dans la cour | Trois promenades choisies, attente/reprise et souvenirs à destination. | Mina reste debout ; pas de ferry, départ hors champ ou emploi du temps régional. | [CONSIGNE_VIE](LORE_CONSIGNE_VIE.md) |
+
+### 68.1 Lire les preuves, pas seulement une promesse de livraison
+
+Une entrée « présente dans les sources » n’est pas une preuve de fusion ou de déploiement. Les commits et PR du rapport de publication établissent l’emplacement distant ; l’empreinte du programme relie les tests à leur binaire. Les anciens rapports ne doivent pas être attribués à une nouvelle compilation.
+
+Le vérificateur `tools/verify_lore_registry.py` refuse un module narratif `10*.js` sans entrée, un chapitre manquant, un modèle absent, un test absent, un identifiant en double ou un chapitre absent des deux index. Il produit les empreintes des documents et sources examinés. Il ne juge ni la qualité d’écriture, ni le canon officiel de Fallout, ni la couverture de chaque item imaginé.
+
+### 68.2 Priorités conservées ouvertes
+
+La Convention, la Bastille du Midi, les courants révolutionnaires, les Gilets de Cendre et le Syndicat gardent leurs qualités et dangers décrits dans la partie III. Leur présence dans les dossiers n’acquitte pas une campagne complète. Le Rat-couronné possède déjà un assemblage régional, des volumes ciblables et une ruée sur le type existant `giantRat`, décrits dans [BESTIAIRE_REGIONAL.md](BESTIAIRE_REGIONAL.md). Il ne doit donc pas être reclassé comme entièrement absent. Cet assemblage quadrupède ne réalise toutefois pas l’agrégat de plusieurs individus décrit en section 30 : cet écart de représentation reste ouvert. Le Roi des Égouts, Midi-Zéro, le Général Biset et les autres formes annoncées ne deviennent pas jouables par simple présence dans une liste.
+
+Les arsenaux d’Aubagne, de Marseille, du littoral, les armes révolutionnaires et celles de pétanque restent décrits aux sections 37 à 44 ; ce registre ne prétend pas leur donner à tous un modèle, une animation ou un équilibre final. Un inventaire arme par arme et créature par créature demeure nécessaire. La PR parallèle COCHONNET nº 17 n’est ni écrasée ni déclarée intégrée par cette consolidation.
+
+Les trajets IGN complets, la navigation maritime, le recrutement de tous les compagnons, le doublage et les conséquences matérielles régionales restent ouverts. La continuité et les limitations ne sont pas remplacées par la formule « tout est terminé ».

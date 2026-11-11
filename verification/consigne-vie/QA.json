@@ -1,0 +1,200 @@
+{
+  "edition": "Une place dans la cour",
+  "date": "2026-11-11",
+  "baseline_commit": "a589d8de0da349a0bcdfc6d1636eb41a1595a02e",
+  "baseline_html_sha256": "8b90aea815826c0442c9742b6279c144043b1db99ef954d967621a054713e677",
+  "outputs": {
+    "src/game.js": "cf397edd0b8e7c2878fb230aad6e6d8e6e97a4b6e79a25872c880263ccf6daba",
+    "index.html": "43fc553655c5e06c19f592c27dbd67552f2a914ccfaa93e4e39a35eb56e8029b",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "43fc553655c5e06c19f592c27dbd67552f2a914ccfaa93e4e39a35eb56e8029b",
+    "sw.js": "c71e87bc456a671cc35e7b8b91b6c5d3a07d24773fa7f23854e158e7b7d11cc3"
+  },
+  "source_modules": {
+    "src/v050/10u_gabians_runtime.js": "1efc49bc7b9bfa3326ec443b3a5ca56c482fffddf2c20736118cfa8f81b5d905",
+    "src/v050/10x_consigne_gestes.js": "bed1c153288f2cee40a3eb32725a2557b561851a9bd568ad8bf51f9d07ea6ca9",
+    "src/v050/10y_consigne_vie.js": "91626d175c05eeea6e9b40eff1c3772a626690dfd6a7d35006d6aedb72b77d19",
+    "src/v050/10z_consigne_vie_runtime.js": "801c2944d3e18afe16ad3fa6f6f341746b62b341b17c66d23278e733c9d343b5"
+  },
+  "build": {
+    "method": "verified incremental source replacement, not a full-repository rebuild",
+    "incremental_check_passed": true,
+    "full_repository_build_executed": false,
+    "reason": "The baseline cumulative ZIP does not contain the complete historical source tree and templates.",
+    "syntax_check_passed": true,
+    "territorial_regression_commands_executed": false
+  },
+  "logic": {
+    "command": "node --test tests/expansion/lore_*.cjs",
+    "passed": 727,
+    "failed": 0,
+    "baseline_passed": 651,
+    "new_tests": 76,
+    "report": "verification/consigne-vie/LOGIC.tap"
+  },
+  "browser": {
+    "ordinary_suites": 17,
+    "passed_checks": 927,
+    "new_suite_checks": 54,
+    "javascript_errors": 0,
+    "suites": {
+      "gestes": {
+        "passed": 36,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/gestes/GESTES_BROWSER.json",
+        "scope": "Native consignment handoff choices and recognition gestures on the production bundle.\nScripted positions, synthetic Vieux-Port and MemoryStorage. Rendered native people,\nactual callbacks/save rollback and software WebGL; not a human or IGN traversal test.\n",
+        "browser": "144.0.7559.96"
+      },
+      "retrouvailles": {
+        "passed": 46,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/retrouvailles/RETROUVAILLES_BROWSER.json",
+        "scope": "Native consignment owner dialogues and optional handoffs, actual geometry and saves.\nSetup uses a synthetic Vieux-Port relay and scripted positions, with MemoryStorage.\nNot a human playthrough, IGN route or cold process restart (separate suite).\n",
+        "browser": "144.0.7559.96"
+      },
+      "pigeons": {
+        "passed": 69,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/pigeons/PIGEONS_BROWSER.json",
+        "scope": "Actual postal courtyard, progressive flights, manual delivery, native dialogs,\nE inputs, geometry, save/load and rewards. Scripted player positions, synthetic\nSaint-Charles relay and isolated MemoryStorage; software renderer, not human QA.\n",
+        "browser": "144.0.7559.96"
+      },
+      "gabians": {
+        "passed": 66,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/gabians/GABIANS_BROWSER.json",
+        "scope": "Actual consignment runtime, E/dialogues, native gun/collisions and save/load.\nScripted positions/aim and synthetic geographic relay; isolated MemoryStorage.\nThis is not a real IGN traversal, human playtest or disk-backed cold restart.\n",
+        "browser": "144.0.7559.96"
+      },
+      "cigales": {
+        "passed": 52,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/cigales/CIGALES_BROWSER.json",
+        "scope": "Real authored scene, existing cicada rig, native E/dialogue/shooting/hitboxes/collisions, custom encounter FSM and original save routines. Scripted guide/aim positions; synthetic Font de Mai relay; isolated MemoryStorage, software renderer. No real IGN traversal or human campaign.",
+        "browser": "144.0.7559.96"
+      },
+      "rats": {
+        "passed": 81,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/rats/RATS_BROWSER.json",
+        "scope": "Actual authored depot, native E/dialogues/shooting/hitboxes/collision, rat runtime and game save/load. Scripted positions and aim, synthetic Saint-Charles relay, isolated MemoryStorage and software renderer. No real IGN traversal or human campaign.",
+        "browser": "144.0.7559.96"
+      },
+      "secours": {
+        "passed": 67,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/secours/SECOURS_BROWSER.json",
+        "scope": "Instrumented rescue: real authored annexe, E/UI, native hazard and collision\nfunctions and continuous escort update. Synthetic ports, scripted leader positions,\nisolated MemoryStorage and software renderer; not a human IGN campaign.",
+        "browser": "144.0.7559.96"
+      },
+      "parts": {
+        "passed": 115,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/parts/PARTS_BROWSER.json",
+        "scope": "La part des absents: real authored scene/UI/E/collision, isolated MemoryStorage.\nPrior audience prepared through its real reducer; synthetic ports are shared with\nlys_browser_smoke. This is not human playtesting or an IGN maritime traversal.\n",
+        "browser": "144.0.7559.96"
+      },
+      "lys": {
+        "passed": 54,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/lys/LYS_BROWSER.json",
+        "scope": "Actual authored Cour du Lys, models, UI, E, native movement/collision, four actors, saves and visible alternatives. Two synthetic port scenes with real catalogue identities and native retained-world entry/exit. Scripted positions, isolated MemoryStorage, software renderer; no IGN sea traversal or human full campaign.",
+        "browser": "144.0.7559.96"
+      },
+      "compagnons": {
+        "passed": 64,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/compagnons/COMPAGNONS_BROWSER.json",
+        "scope": "Real authored Radieuse, native UI/E/dialogues, models, finite inventory, save/load and collision. Earlier quests prepared through original reducers; scripted positions; external relay fixtures use existing catalogue identities and flat synthetic ground, not IGN traversal. Isolated MemoryStorage, software renderer, not a full human campaign.",
+        "browser": "144.0.7559.96"
+      },
+      "voisins": {
+        "passed": 68,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/voisins/VOISINS_BROWSER.json",
+        "scope": "Actual authored Radieuse, existing NPCs staged/restored, E interaction, real buttons, inventory and isolated MemoryStorage. Prerequisites via original reducers; scripted positioning plus explicit native collision route. Native portal round-trip uses a synthetic retained exterior. Software renderer; not a full human campaign or IGN exterior traversal.",
+        "browser": "144.0.7559.96"
+      },
+      "notaires": {
+        "passed": 48,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/notaires/NOTAIRES_BROWSER.json",
+        "scope": "Actual Radieuse interior, models, dialogue buttons, E inputs, save/load, visuals and collisions. Prerequisites through real quest reducers, scripted positions, isolated MemoryStorage. Software renderer; no human full-campaign or real IGN exterior validation.",
+        "browser": "144.0.7559.96"
+      },
+      "mutuelle": {
+        "passed": 38,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/mutuelle/MUTUELLE_BROWSER.json",
+        "scope": "Real authored Radieuse interior with completed prerequisite injected through its model; actual E interaction, NPC choices, source preservation, save writes and reload. Scripted positioning and isolated MemoryStorage; software renderer, no real IGN traversal.",
+        "browser": "144.0.7559.96"
+      },
+      "radieuse": {
+        "passed": 33,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/radieuse/RADIEUSE_BROWSER.json",
+        "scope": "Real authored interior, models, UI, native collision function, saves and software renderer. Injected setup and isolated MemoryStorage; synthetic exterior for portal round-trip, no real IGN exterior traversal.",
+        "browser": "144.0.7559.96"
+      },
+      "poste": {
+        "passed": 17,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/poste/POSTE_BROWSER.json",
+        "scope": "Offline about:blank, isolated MemoryStorage, injected ratification; flat synthetic relay and ground stub. Real game model/UI/save/renderer. Not a real-map or hardware performance certification.",
+        "browser": "144.0.7559.96"
+      },
+      "pharmacie": {
+        "passed": 19,
+        "errors": [],
+        "report": "verification/consigne-vie/regressions/pharmacie/PHARMACIE_BROWSER.json",
+        "scope": "Instrumented production bundle; isolated memory storage; flat synthetic relays; terrain stub; real UI, E interaction, NPC choices, inventory, save migration and renderer. No IGN-world traversal or human playtest.",
+        "browser": "144.0.7559.96"
+      },
+      "consigne_vie": {
+        "passed": 54,
+        "errors": [],
+        "scope": "Native optional owner routines: dialogs/E, real collision, saved route distances,\nblocking, rollback, rendering and local doors. Scripted positions, synthetic exterior,\nMemoryStorage and software rendering; not a human playthrough or IGN certification.\n",
+        "browser": "144.0.7559.96",
+        "report": "verification/consigne-vie/browser/CONSIGNE_VIE_BROWSER.json"
+      }
+    }
+  },
+  "cold_restarts": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "scenarios_completed": 0,
+    "new_scenarios_prepared": [
+      "walking at 1750 mm",
+      "explicit waiting at 1750 mm",
+      "three arrivals and memories heard"
+    ],
+    "new_suite": "verification/consigne-vie/cold/CONSIGNE_VIE_COLD_SAVE.json",
+    "failure": "ERR_BLOCKED_BY_ADMINISTRATOR before the first file navigation. Local HTTP navigation was also blocked; browser security policy was not disabled.",
+    "historical_bird_and_rat_suites": "Also blocked before restart scenarios on this new build. Earlier 65/26 checks are NOT counted as current passes.",
+    "ordinary_reload_note": "Native save/load within a running browser was tested with isolated MemoryStorage; this is not a disk-backed cold restart."
+  },
+  "save": {
+    "new_ledger": "v076Consigne",
+    "schema": 1,
+    "original_gabians_schema": 2,
+    "old_save_defaults": "No invitation, route or memory fabricated",
+    "reward_caps_once": 45,
+    "extra_reward": 0
+  },
+  "publication": {
+    "github_written": false,
+    "drive_uploaded": false,
+    "main_merged": false,
+    "deployment_performed": false,
+    "reason": "Current connector discovery exposes no GitHub push/create-tree action and no Drive upload action. Local delivery and patch only.",
+    "parallel_pr17_cochonnet_incorporated": false
+  },
+  "limitations": [
+    "Three authored local routes, not free navigation or off-screen daily schedules.",
+    "Mina stands near the bench; no sitting animation.",
+    "The cabin drawing appears at arrival; no drawing animation.",
+    "No voice acting, detailed finger animation, continuous hand-to-hand transfer or ferry.",
+    "Ordinary browser suites use scripted positions, synthetic external origins, isolated MemoryStorage and software rendering.",
+    "No human full campaign, exhaustive IGN traversal, hardware performance certification or power-cut validation.",
+    "Canonical full build, CI execution and territorial regression suite must be run in the complete repository before merging."
+  ],
+  "counting_note": "Repeated runs and later archive extraction checks are not additional distinct tests. The regression orchestrator exits nonzero because cold suites are blocked; it is not reported as entirely green."
+}

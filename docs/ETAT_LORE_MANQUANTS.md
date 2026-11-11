@@ -1,6 +1,6 @@
-# Lore — point de reprise après Les gestes retrouvés
+# Lore — point de reprise après consolidation de la bible
 
-> **Lecture actuelle :** Éloi, Mina et Rachid sont présents et les remises personnelles sont jouables. Six scénarios de reprise à froid des oiseaux sont ajoutés ; leurs résultats et le programme exact figurent dans `verification/retrouvailles/QA.json`. Les sections antérieures ci-dessous conservent leur état historique, avant les actualisations placées en fin de document. Elles ne doivent pas être relues comme la liste actuelle des manques.
+> **Lecture actuelle, 11 novembre 2026 :** les remises, gestes et trois promenades facultatives dans la cour sont implémentés dans une livraison locale issue de `a589d8de`. Éloi, Mina et Rachid restent abordables sur leurs trajets et à leurs destinations. Rapport actuel : `verification/consigne-vie/QA.json`. Les reprises à froid sont bloquées avant scénario dans cette session ; les résultats des versions précédentes sont historiques. Aucune nouvelle publication GitHub/Drive ni fusion n'est revendiquée. Les sections anciennes ci-dessous sont un historique, corrigé par les actualisations finales.
 
 ## Historique des audits et des étapes précédentes
 
@@ -123,3 +123,21 @@ Base : `348a3cb2385b91771112f8c772def4cb82bd8c36`, PR 18. Les contrôles finaux 
 **Animation partiellement couverte :** les destinataires reçoivent une pose articulée et conservent leur objet. Le transfert du plateau ou des mains du joueur jusqu'à leur paume, les doigts détaillés, les routines, les départs et le doublage restent ouverts. Les anciens paragraphes qui parlent d'absence totale d'animation sont historiques.
 
 **Validation :** consulter `verification/gestes/QA.json` et les rapports locaux séparés ; les essais ordinaires restent instrumentés. Les résultats précédents ne sont pas réattribués à cette nouvelle compilation. COCHONNET est toujours distinct. Aucune campagne régionale ni validation géographique exhaustive n'est close par ce lot.
+
+
+## Actualisation — Une place dans la cour (livraison locale)
+
+**Désormais implémenté :** trois invitations après remise sauvegardée ; trajets locaux physiques ; cycle de marche et orientation correcte ; collisions, attente du joueur, demande d'attendre/reprendre ; table et croquis d'Éloi, banc de fin de quart, panneau de Rachid ; trois souvenirs contextualisés ; journal des positions ; progression et attentes sauvegardées ; refus transactionnel et reprise après échec de sauvegarde ; bague attachée à la main native en mouvement.
+
+**Toujours ouvert :** transfert continu entre mains, animation des doigts/du dessin, doublage, assise de Mina, destinations hors de la cour, véritables emplois du temps, navigation libre et ferry. Les trois personnes ne quittent pas la cour ; ce n'est pas la fin du chantier des comportements autonomes. Aucun changement à la carte réelle ou à COCHONNET.
+
+**Validation locale actuelle :** 727 tests de logique et 927 contrôles sur 17 parcours navigateur instrumentés. Reprise en cours de processus testée ; trois scénarios après fermeture préparés mais bloqués par le navigateur, ainsi que les anciennes suites à froid. Reconstruction incrémentale contrôlée ; compilation canonique complète et quatre suites territoriales non exécutées faute de dépôt source complet. Vérification humaine de campagne, performances matérielles et continuité géographique exhaustive toujours ouvertes.
+
+**Publication :** ZIP et patch source préparés ; actions d'écriture GitHub et d'upload Drive non disponibles dans cette session. Ne pas assimiler les modifications locales à une nouvelle tête de PR ou une livraison déployée.
+
+
+## Consolidation du 11 novembre 2026
+
+La PR 18 (oiseaux, propriétaires, restitutions et gestes) a été fusionnée dans `main` au commit `cfa5edd4439e214331323c3a3f1b9833ff464942`. Le lot local de la cour est repris dans la publication suivante. Le [registre](REGISTRE_LORE.json) et la section 68 de la bible couvrent vingt ensembles narratifs, vingt et une annexes et vingt-sept modules ; ils ne clôturent pas la liste documentaire d’armes, créatures, factions et compagnons.
+
+La compilation complète, les reprises à froid propres à la cour et les contrôles territoriaux doivent figurer dans le rapport courant avant d’être déclarés réussis. Les rapports locaux antérieurs conservent leurs restrictions réelles. COCHONNET nº 17 demeure une branche parallèle non intégrée par ce lot.
