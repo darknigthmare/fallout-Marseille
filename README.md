@@ -1,5 +1,9 @@
 # FALLOUT Marseille — MISTRAL
 
+## Carnet des ateliers — 11 novembre 2026
+
+La [bible 1.3](docs/BIBLE_LORE_FALLOUT_MISTRAL.md) relie désormais les [55 armes régionales existantes](docs/LORE_ARSENAL_REGIONAL.md) et l’[inventaire des concepts d’armes et du bestiaire](docs/INVENTAIRE_ARSENAL_BESTIAIRE.md). Le Pip-Boy propose **DATA → ATELIERS · ARMES**, une lecture filtrable sans distribution d’équipement. Les trois présentations supplémentaires et les corrections de famille conservent les statistiques. [Résultats et limites de cette livraison](verification/arsenal/QA.json).
+
 ## Bible et progression narrative — 11 novembre 2026
 
 La [bible centrale consolidée](docs/BIBLE_LORE_FALLOUT_MISTRAL.md), l’[index des chapitres](LORE.md) et le [registre vérifiable des modules narratifs](docs/REGISTRE_LORE.json) rassemblent les ajouts jusqu’à **Une place dans la cour**. Le [suivi des manques](docs/ETAT_LORE_MANQUANTS.md) conserve les concepts non incarnés ; aucune faction entière ou validation IGN complète n’est déclarée terminée. Les résultats courants se trouvent dans [le rapport de compilation et de parcours](verification/bible-sync/QA.json) et [le contrôle documentaire actualisé](verification/bible-sync/DOCUMENTATION_REVIEW.json). Les bilans plus anciens ci-dessous restent historiques.

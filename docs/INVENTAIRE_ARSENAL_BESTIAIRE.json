@@ -1,0 +1,2196 @@
+{
+  "schema": 1,
+  "scope": "55 IDs explicitement régionaux du catalogue existant ; armes des sections 38–42 ; créatures des sections 29–36 et liste des 25 témoins v0.46. Les autres armes du jeu ne sont pas renommées. Correspondances exactes normalisées, sans alias supposé.",
+  "canon": "fan-lore-original-non-officiel",
+  "source_sha256": {
+    "src/core-v017.js": "90e1ad788ab4e76d17123a930b5ff8bdaed8cebcd8a35d528827575235528763",
+    "src/v046/04_lore.js": "d4251b2dd4a28462d12187c9b2ebf60ac5205c68a0c4eb5d91b493e373825da6",
+    "src/v050/13_regional_bestiary.js": "8ca674889e4944353f16ac16e9a24470ba444623c27271e48e8a928409b35667",
+    "src/v050/17a_regional_arsenal.js": "3651a9328cae60416277270fabb7cc6c7ae4cd78a5330573cf2ba58518ce370e",
+    "docs/BIBLE_LORE_FALLOUT_MISTRAL.md": "60ed1443809e67eb07f21d7296ef01316a869ce04569e282718ee160910489aa"
+  },
+  "counts": {
+    "regional_weapon_ids": 55,
+    "bible_weapon_concepts": 49,
+    "creature_records": 98,
+    "regional_rigs": 9
+  },
+  "regional_weapons": [
+    {
+      "id": "mistralCarbine",
+      "name": "Carabine du Mistral",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "ammo556",
+      "ammo_name": "Munitions 5,56 mm",
+      "base_damage": 39,
+      "clip": 24,
+      "range": 87,
+      "base_reload": 1.34,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "ceramicLauncher",
+      "name": "Lance-brique céramique",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "industrial",
+      "profile": "industrial",
+      "ammo_id": "ceramicSlug",
+      "ammo_name": "Projectiles céramiques",
+      "base_damage": 91,
+      "clip": 4,
+      "range": 68,
+      "base_reload": 2.15,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "concordePistol",
+      "name": "Pistolet CONCORDE",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy-pistol",
+      "ammo_id": "cells",
+      "ammo_name": "Cellules énergétiques",
+      "base_damage": 52,
+      "clip": 16,
+      "range": 73,
+      "base_reload": 1.18,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "calanquesGlaive",
+      "name": "Glaive des Calanques",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "blade",
+      "profile": "blade",
+      "ammo_id": null,
+      "ammo_name": null,
+      "base_damage": 76,
+      "clip": null,
+      "range": 3.35,
+      "base_reload": null,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "releveTorch",
+      "name": "Chalumeau de la Relève",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "industrial",
+      "profile": "industrial",
+      "ammo_id": "fuel",
+      "ammo_name": "Carburant de lance-flammes",
+      "base_damage": 18,
+      "clip": 45,
+      "range": 12,
+      "base_reload": 1.8,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "cisternNeedler",
+      "name": "Aiguilleur de la Citerne",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "industrial",
+      "profile": "industrial",
+      "ammo_id": "rivets",
+      "ammo_name": "Rivets industriels",
+      "base_damage": 31,
+      "clip": 22,
+      "range": 62,
+      "base_reload": 1.31,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "saltScatter",
+      "name": "Éparpilleur de sel",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "shotgun",
+      "profile": "shotgun",
+      "ammo_id": "shells",
+      "ammo_name": "Cartouches calibre 12",
+      "base_damage": 15,
+      "clip": 6,
+      "range": 34,
+      "base_reload": 1.56,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "gardianArc",
+      "name": "Arc des Veilleurs",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "cells",
+      "ammo_name": "Cellules énergétiques",
+      "base_damage": 61,
+      "clip": 12,
+      "range": 72,
+      "base_reload": 1.42,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "provenceRevolver",
+      "name": "Revolver des Communes",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "pistol",
+      "profile": "revolver",
+      "ammo_id": "ammo44",
+      "ammo_name": "Munitions .44",
+      "base_damage": 55,
+      "clip": 6,
+      "range": 58,
+      "base_reload": 1.48,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "transferCarbine",
+      "name": "Carabine des Correspondances",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "ammo556",
+      "ammo_name": "Munitions 5,56 mm",
+      "base_damage": 44,
+      "clip": 18,
+      "range": 88,
+      "base_reload": 1.36,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "hearthHammer",
+      "name": "Marteau du Foyer témoin",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "melee",
+      "profile": "melee",
+      "ammo_id": null,
+      "ammo_name": null,
+      "base_damage": 102,
+      "clip": null,
+      "range": 3.4,
+      "base_reload": null,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "floodGun",
+      "name": "Canon de la Crue",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "industrial",
+      "profile": "industrial",
+      "ammo_id": "rivets",
+      "ammo_name": "Rivets industriels",
+      "base_damage": 58,
+      "clip": 8,
+      "range": 62,
+      "base_reload": 1.6,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "rootSpear",
+      "name": "Lance des Racines",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "blade",
+      "profile": "blade",
+      "ammo_id": null,
+      "ammo_name": null,
+      "base_damage": 76,
+      "clip": null,
+      "range": 4.5,
+      "base_reload": null,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "seasonRifle",
+      "name": "Fusil des Saisons",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "ammo308",
+      "ammo_name": "Munitions .308",
+      "base_damage": 55,
+      "clip": 6,
+      "range": 104,
+      "base_reload": 1.74,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "keelCannon",
+      "name": "Canon de Quille",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "heavy",
+      "profile": "heavy",
+      "ammo_id": "ammo50",
+      "ammo_name": "Munitions .50",
+      "base_damage": 121,
+      "clip": 2,
+      "range": 72,
+      "base_reload": 2.26,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "echoPistol",
+      "name": "Pistolet de l’Écho",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy-pistol",
+      "ammo_id": "electronCharge",
+      "ammo_name": "Packs de charge électronique",
+      "base_damage": 42,
+      "clip": 11,
+      "range": 67,
+      "base_reload": 1.2,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "mercyLaser",
+      "name": "Laser du Répit",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "microfusion",
+      "ammo_name": "Cellules à microfusion",
+      "base_damage": 52,
+      "clip": 15,
+      "range": 79,
+      "base_reload": 1.45,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "civicJudge",
+      "name": "Juge civique",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "pistol",
+      "profile": "revolver",
+      "ammo_id": "ammo357",
+      "ammo_name": "Munitions .357 Magnum",
+      "base_damage": 63,
+      "clip": 6,
+      "range": 69,
+      "base_reload": 1.58,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "stageGun",
+      "name": "Arme de scène T-05",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "pistol",
+      "profile": "pistol",
+      "ammo_id": "ammo9",
+      "ammo_name": "Munitions 9 mm",
+      "base_damage": 36,
+      "clip": 12,
+      "range": 57,
+      "base_reload": 1.16,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "radeRepeater",
+      "name": "Répétiteur de la Rade",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "ammo357",
+      "ammo_name": "Munitions .357 Magnum",
+      "base_damage": 48,
+      "clip": 9,
+      "range": 84,
+      "base_reload": 1.55,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "mistralNeedler",
+      "name": "Aiguille du Mistral",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "industrial",
+      "profile": "needle",
+      "ammo_id": "syringes",
+      "ammo_name": "Seringues balistiques",
+      "base_damage": 31,
+      "clip": 20,
+      "range": 77,
+      "base_reload": 1.27,
+      "status": "catalogue-et-profil",
+      "additional_presentation": true,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "ceramicSaw",
+      "name": "Scie céramique d’Aubagne",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "blade",
+      "profile": "ceramic-disc",
+      "ammo_id": null,
+      "ammo_name": null,
+      "base_damage": 29,
+      "clip": null,
+      "range": 2.9,
+      "base_reload": null,
+      "status": "catalogue-et-profil",
+      "additional_presentation": true,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "garlabanMortar",
+      "name": "Mortier du Garlaban",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "heavy",
+      "profile": "mortar40",
+      "ammo_id": "grenade40",
+      "ammo_name": "Grenades 40 mm",
+      "base_damage": 126,
+      "clip": 1,
+      "range": 112,
+      "base_reload": 2.5,
+      "status": "catalogue-et-profil",
+      "additional_presentation": true,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "municipalLaser",
+      "name": "Laser municipal",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "cells",
+      "ammo_name": "Cellules énergétiques",
+      "base_damage": 40,
+      "clip": 20,
+      "range": 74,
+      "base_reload": 1.32,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "saltArc",
+      "name": "Arc salin de La Ciotat",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "protonCell",
+      "ammo_name": "Cellules protoniques",
+      "base_damage": 69,
+      "clip": 7,
+      "range": 68,
+      "base_reload": 1.62,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_archivistPistol",
+      "name": "Pistolet de l’Archiviste",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy-pistol",
+      "ammo_id": "archiveCell",
+      "ammo_name": "Cellules d’archive",
+      "base_damage": 51,
+      "clip": 14,
+      "range": 72,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_notaryCarbine",
+      "name": "Carabine notariale",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "ammo556",
+      "ammo_name": "Munitions 5,56 mm",
+      "base_damage": 46,
+      "clip": 18,
+      "range": 82,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_mistralDerringer",
+      "name": "Derringer du Mistral",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "pistol",
+      "profile": "pistol",
+      "ammo_id": "ammo44",
+      "ammo_name": "Munitions .44",
+      "base_damage": 64,
+      "clip": 2,
+      "range": 45,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_seilleGauss",
+      "name": "Gauss de la Seille",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "ammo2mm",
+      "ammo_name": "Cartouches 2 mm EC",
+      "base_damage": 118,
+      "clip": 5,
+      "range": 125,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_longchampLaser",
+      "name": "Laser de Longchamp",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "archiveCell",
+      "ammo_name": "Cellules d’archive",
+      "base_damage": 62,
+      "clip": 22,
+      "range": 92,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_huveauneRebarGun",
+      "name": "Lance-fer de l’Huveaune",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "industrial",
+      "profile": "industrial",
+      "ammo_id": "kilnBolt",
+      "ammo_name": "Boulons réfractaires",
+      "base_damage": 74,
+      "clip": 6,
+      "range": 68,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_garlabanFlareRifle",
+      "name": "Fusil de vigie du Garlaban",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "signalCapsule",
+      "ammo_name": "Capsules de signal",
+      "base_damage": 48,
+      "clip": 8,
+      "range": 100,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_calanqueSpeargun",
+      "name": "Arbalète des Calanques",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "industrial",
+      "profile": "industrial",
+      "ammo_id": "harpoons",
+      "ammo_name": "Harpons",
+      "base_damage": 91,
+      "clip": 2,
+      "range": 74,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_ciotatPlasmaCutter",
+      "name": "Découpeur plasma de La Ciotat",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "plasma",
+      "ammo_name": "Cartouches plasma",
+      "base_damage": 96,
+      "clip": 12,
+      "range": 34,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_aubagneKilnHammer",
+      "name": "Marteau des fours d’Aubagne",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "melee",
+      "profile": "melee",
+      "ammo_id": null,
+      "ammo_name": null,
+      "base_damage": 152,
+      "clip": null,
+      "range": 2.8,
+      "base_reload": null,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_bastideRifle",
+      "name": "Fusil des Bastides",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "ammo308",
+      "ammo_name": "Munitions .308",
+      "base_damage": 72,
+      "clip": 7,
+      "range": 108,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_radeScattergun",
+      "name": "Éparpilleur de la Rade",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "shotgun",
+      "profile": "shotgun",
+      "ammo_id": "shells",
+      "ammo_name": "Cartouches calibre 12",
+      "base_damage": 21,
+      "clip": 6,
+      "range": 42,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_transitPulseGun",
+      "name": "Pistolet à impulsions du Transit",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy-pistol",
+      "ammo_id": "signalCapsule",
+      "ammo_name": "Capsules de signal",
+      "base_damage": 58,
+      "clip": 15,
+      "range": 76,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_concordeStampGun",
+      "name": "Poinçon CONCORDE",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "industrial",
+      "profile": "industrial",
+      "ammo_id": "kilnBolt",
+      "ammo_name": "Boulons réfractaires",
+      "base_damage": 69,
+      "clip": 5,
+      "range": 56,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_mistralReelGun",
+      "name": "Canon-bobine du Mistral",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "heavyFusionCell",
+      "ammo_name": "Cellules de fusion lourdes",
+      "base_damage": 122,
+      "clip": 4,
+      "range": 116,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_oliveBlade",
+      "name": "Lame d’olivier",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "blade",
+      "profile": "blade",
+      "ammo_id": null,
+      "ammo_name": null,
+      "base_damage": 83,
+      "clip": null,
+      "range": 2.1,
+      "base_reload": null,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_brineCaster",
+      "name": "Projeteur de saumure",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "brineCharge",
+      "ammo_name": "Charges de saumure",
+      "base_damage": 67,
+      "clip": 18,
+      "range": 64,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_quarryAutocannon",
+      "name": "Autocanon des Carrières",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "heavy",
+      "profile": "heavy",
+      "ammo_id": "quarryShell",
+      "ammo_name": "Obus de carrière",
+      "base_damage": 88,
+      "clip": 16,
+      "range": 94,
+      "base_reload": 2.15,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_sirenCarbine",
+      "name": "Carabine-Sirène",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "signalCapsule",
+      "ammo_name": "Capsules de signal",
+      "base_damage": 54,
+      "clip": 24,
+      "range": 80,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_refugeNeedler",
+      "name": "Aiguille des Veilleurs",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "industrial",
+      "profile": "needle",
+      "ammo_id": "mistralDart",
+      "ammo_name": "Dards du Mistral",
+      "base_damage": 44,
+      "clip": 20,
+      "range": 58,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": true,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_ceramicGauntlet",
+      "name": "Gantelet céramique",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "fist",
+      "profile": "fist",
+      "ammo_id": null,
+      "ammo_name": null,
+      "base_damage": 126,
+      "clip": null,
+      "range": 1.8,
+      "base_reload": null,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_vineyardRepeater",
+      "name": "Répétiteur des Vignes",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "ammo4570",
+      "ammo_name": "Munitions .45-70",
+      "base_damage": 82,
+      "clip": 9,
+      "range": 92,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_mugelDeckGun",
+      "name": "Canon de pont du Mugel",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "heavy",
+      "profile": "heavy",
+      "ammo_id": "quarryShell",
+      "ammo_name": "Obus de carrière",
+      "base_damage": 104,
+      "clip": 8,
+      "range": 88,
+      "base_reload": 2.15,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_islandSignalPistol",
+      "name": "Pistolet de l’Île Verte",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy-pistol",
+      "ammo_id": "signalCapsule",
+      "ammo_name": "Capsules de signal",
+      "base_damage": 49,
+      "clip": 16,
+      "range": 70,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_canailleRailRifle",
+      "name": "Fusil-rail de Canaille",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "spikes",
+      "ammo_name": "Clous ferroviaires",
+      "base_damage": 106,
+      "clip": 4,
+      "range": 126,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_noaillesCompact",
+      "name": "Compact de Noailles",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "pistol",
+      "profile": "pistol",
+      "ammo_id": "ammo9",
+      "ammo_name": "Munitions 9 mm",
+      "base_damage": 28,
+      "clip": 28,
+      "range": 52,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_saintCharlesSMG",
+      "name": "P.-M. Saint-Charles",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "rifle",
+      "profile": "rifle",
+      "ammo_id": "ammo10",
+      "ammo_name": "Munitions 10 mm",
+      "base_damage": 31,
+      "clip": 36,
+      "range": 59,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_vieuxPortRevolver",
+      "name": "Revolver du Vieux-Port",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "pistol",
+      "profile": "revolver",
+      "ammo_id": "ammo44",
+      "ammo_name": "Munitions .44",
+      "base_damage": 68,
+      "clip": 6,
+      "range": 66,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_firewatchLance",
+      "name": "Lance des Vigies",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "blade",
+      "profile": "blade",
+      "ammo_id": null,
+      "ammo_name": null,
+      "base_damage": 118,
+      "clip": null,
+      "range": 3.2,
+      "base_reload": null,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    },
+    {
+      "id": "m13_memoryRecorderGun",
+      "name": "Enregistreur de mémoire",
+      "source": "src/core-v017.js",
+      "presentation_source": "src/v050/17a_regional_arsenal.js",
+      "family": "energy",
+      "profile": "energy",
+      "ammo_id": "memoryTape",
+      "ammo_name": "Bandes mémorielles",
+      "base_damage": 73,
+      "clip": 10,
+      "range": 78,
+      "base_reload": 1.35,
+      "status": "catalogue-et-profil",
+      "additional_presentation": false,
+      "limits": "Acquisition et équilibrage complet non certifiés par cet inventaire. Les profils partagés ne sont pas des modèles uniques."
+    }
+  ],
+  "bible_weapons": [
+    {
+      "name": "Pistolet de four d’Aubagne",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [
+        "aubagneKilnPistol"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Éparpilleur céramique",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [
+        "ceramicScattergun"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Fusil des Restanques",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [
+        "restanqueRifle"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Fusil en olivier",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [
+        "olivewoodRifle"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Arc du Garlaban",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [
+        "garlabanBow"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Marteau de carrière",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [
+        "quarryHammer"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Fusil-pompe de l’Huveaune",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [
+        "huveaunePumpGun"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Canon du Débit",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [
+        "flowCannon"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Harpon de l’Aqueduc",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [
+        "aqueductHarpoon"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Canon à grêle",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Débroussailleuse de combat",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Fourche voltaïque",
+      "section": "38. Arsenal d’Aubagne et des collines",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "P.-M. des Arcades",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [
+        "marseilleSMG"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Pistolet de la Rumeur",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [
+        "rumorPistol"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Répétiteur du Transit",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [
+        "transitRepeater"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Carabine des Seuils",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [
+        "thresholdCarbine"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Revolver des Héritiers",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [
+        "heirsRevolver"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Aiguille CONCORDE",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [
+        "concordeNeedler"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Laser de Mémoire",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [
+        "memoryLaser"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Lance-fusées civique",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [
+        "civicFlareGun"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Fusil de la Vue",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [
+        "viewpointRifle"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Agrafeuse pneumatique",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Massicot de préfecture",
+      "section": "39. Arsenal de Marseille",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Fusil-riveteur des Mains",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "handsRivetRifle"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Canon-bobine de La Ciotat",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "ciotatCoilgun"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Tesla maritime",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "maritimeTesla"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Canon des Marées",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "tideGun"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Fusil du Mistral",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "mistralShotgun"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Railgun des Calanques",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "calanqueRailgun"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Émetteur de la Sirène",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "sirenEmitter"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Pistolet des Balises",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "beaconPistol"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Scie du Mistral",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "mistralSaw"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Plasma salin",
+      "section": "40. Arsenal du littoral",
+      "catalogue_ids": [
+        "saltPlasma"
+      ],
+      "status": "nom-exact-au-catalogue",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Mousquet voltaïque de l’An 220",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Pique de la République",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Sabre-briquet du Fédéré",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Carabine de Valmy",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Pistolet du Citoyen",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Grenade tricolore",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Bombe de barricade",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Pavé du peuple",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Tambour de rupture",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Couperet civique",
+      "section": "41. Armes révolutionnaires",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Boule n°13",
+      "section": "42. Armes de pétanque",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Boule magnétique",
+      "section": "42. Armes de pétanque",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Boule répulsive",
+      "section": "42. Armes de pétanque",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Boule creuse",
+      "section": "42. Armes de pétanque",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Cochonnet chercheur",
+      "section": "42. Armes de pétanque",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    },
+    {
+      "name": "Maillet de mesure",
+      "section": "42. Armes de pétanque",
+      "catalogue_ids": [],
+      "status": "concept-sans-correspondance-exacte",
+      "limit": "Aucun alias ou équivalent déduit d’une ressemblance de nom."
+    }
+  ],
+  "creatures": [
+    {
+      "name": "Cigale de cendre",
+      "section": "29. Cigales irradiées",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Nymphe foreuse",
+      "section": "29. Cigales irradiées",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Crisseuse",
+      "section": "29. Cigales irradiées",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Cymbalier",
+      "section": "29. Cigales irradiées",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Porteuse de chaux",
+      "section": "29. Cigales irradiées",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Cigale de câble",
+      "section": "29. Cigales irradiées",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Biset de plomb",
+      "section": "30. Faune urbaine",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Pigeon-paratonnerre",
+      "section": "30. Faune urbaine",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Gabian bombardier",
+      "section": "30. Faune urbaine",
+      "catalogue_ids": [],
+      "rig_ids": [
+        "gabianBombardier"
+      ],
+      "status": "representation-regionale",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Général Biset",
+      "section": "30. Faune urbaine",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Rat des caves",
+      "section": "30. Faune urbaine",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Rat-câble",
+      "section": "30. Faune urbaine",
+      "catalogue_ids": [],
+      "rig_ids": [
+        "ratCable"
+      ],
+      "status": "representation-regionale",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Rat-couronné",
+      "section": "30. Faune urbaine",
+      "catalogue_ids": [],
+      "rig_ids": [
+        "ratCrowned"
+      ],
+      "status": "representation-regionale",
+      "limit": "L’assemblage actuel n’est pas l’agrégat décrit en section 30."
+    },
+    {
+      "name": "Roi des Égouts",
+      "section": "30. Faune urbaine",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Sanglier cuirassé",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [
+        "sanglier"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Traqueur de poussière",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [
+        "dustStalker"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Radcerf des collines",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Molosse mutant",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [
+        "mutantHound"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Chèvre des falaises",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Mante des restanques",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Radscorpion de garrigue",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Fourmi de ciment",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Frelon de péage",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Processionnaire radieuse",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Moustique-tigre rouge",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Chien de rond-point",
+      "section": "31. Faune terrestre",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Crabe-fer",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [
+        "crab"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Fangeux de saumure",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [
+        "brineMirelurk"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Chasseur de saumure",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Reine de saumure",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Poulpe de cale",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [
+        "dockOctopus"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Sangsue de quai",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [
+        "quayLeech"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Murène-câble",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Méduse de batterie",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Oursin-grenade",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Bernard-citerne",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Moule mordeuse",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Sardine-lame",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Rascasse rouge",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Dauphin de sonar",
+      "section": "32. Faune maritime",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Porte-racines",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [
+        "rootCarrier"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Porte-spores",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [
+        "sporeCarrier"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Plante à spores",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [
+        "sporePlant"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Laurier rouge",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Platane hurleur",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Canne étrangleuse",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Figuière vorace",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Lavande narcotique",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Mousse alcaline",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Levain-Mère",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Vigne sanguine",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Olivier de verre",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Herbe de sirène",
+      "section": "33. Végétaux et champignons",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Goule saline",
+      "section": "34. Goules régionales",
+      "catalogue_ids": [
+        "saltGhoul"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Porte-cendres",
+      "section": "34. Goules régionales",
+      "catalogue_ids": [
+        "cinderBearer"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Piquet Mort",
+      "section": "34. Goules régionales",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Gilet Fumé",
+      "section": "34. Goules régionales",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Vacancier éternel",
+      "section": "34. Goules régionales",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Usager",
+      "section": "34. Goules régionales",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Agent d’accueil",
+      "section": "34. Goules régionales",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Supporter cendré",
+      "section": "34. Goules régionales",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "CERFA‑77",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [
+        "cerfa77"
+      ],
+      "status": "representation-regionale",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "CRS‑77",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Percepteur 3000",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Contrôleur du Réseau",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Mairie-Adjoint",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Radar automatique",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Fourrière mobile",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Balayeuse municipale",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Facteur Autopostal",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Agent d’accueil 24/24",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Cantinier scolaire",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Inspecteur du Travail",
+      "section": "36. Robots civils",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Drone archiviste",
+      "section": "36. Robots civils",
+      "catalogue_ids": [
+        "archiveDrone"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Huissier d’abri",
+      "section": "36. Robots civils",
+      "catalogue_ids": [
+        "vaultBailiff"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Sirène du Mistral",
+      "section": "36. Robots civils",
+      "catalogue_ids": [
+        "mistralSiren"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Soudeur autonome",
+      "section": "36. Robots civils",
+      "catalogue_ids": [
+        "welder"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Marche-grue",
+      "section": "36. Robots civils",
+      "catalogue_ids": [
+        "craneWalker"
+      ],
+      "rig_ids": [],
+      "status": "archetype-declare",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Midi-Zéro",
+      "section": "29. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Blattes de cité",
+      "section": "30. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Punaises de foyer",
+      "section": "30. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Taupes de métro",
+      "section": "30. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Fouines de compteur",
+      "section": "30. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Mites d’archive",
+      "section": "30. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Termites de béton",
+      "section": "30. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Écorcheur calcaire",
+      "section": "31. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "La Sardine",
+      "section": "32. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Hommes-lourds",
+      "section": "35. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Agrégats ATLAS",
+      "section": "35. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "César ATLAS",
+      "section": "35. Prose et sous-titres",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Roi-Couronne",
+      "section": "Catalogue de témoins v0.46",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Coq d’alarme",
+      "section": "Catalogue de témoins v0.46",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Blatte de cité",
+      "section": "Catalogue de témoins v0.46",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Escargot de béton",
+      "section": "Catalogue de témoins v0.46",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Limace alcaline",
+      "section": "Catalogue de témoins v0.46",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Chien du rond-point",
+      "section": "Catalogue de témoins v0.46",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Cigale du Mistral",
+      "section": "Catalogue de témoins v0.46",
+      "catalogue_ids": [
+        "mistralCicada"
+      ],
+      "rig_ids": [
+        "mistralCicada"
+      ],
+      "status": "representation-regionale",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    },
+    {
+      "name": "Contrôleur RNF",
+      "section": "Catalogue de témoins v0.46",
+      "catalogue_ids": [],
+      "rig_ids": [],
+      "status": "concept-ou-temoignage",
+      "limit": "Un nom et un archétype ne certifient ni modèle unique, ni quête, ni apparition régionale."
+    }
+  ],
+  "known_gaps": [
+    "Profils génériques restants : harpons, charges de saumure, bobines et combustibles ne sont pas des alimentations uniques achevées.",
+    "Pique de la République et Mousquet voltaïque de l’An 220 ne sont pas assimilés à une lance ou un mousquet laser existant.",
+    "Pigeons postaux neutres distincts du Biset de plomb, du Pigeon-paratonnerre et du Général Biset.",
+    "Roi des Égouts et Roi-Couronne : rapprochement éditorial à résoudre, aucun boss déclaré livré.",
+    "Inventaire des armures, acquisition de chaque arme, équilibrage et campagne humaine encore à examiner.",
+    "COCHONNET PR 17 demeure séparé."
+  ]
+}

@@ -1,0 +1,633 @@
+{
+  "baseline": "580f432e32369a950bb7761f9441da9f063f521e",
+  "validation_input": "89c5b6bf47465ae55ddf5ef75d11b6795118ca47",
+  "workflow_run": "43082206647",
+  "lore_passed": 795,
+  "python_tests": {
+    "lore_registry": 19,
+    "regional_inventory": 20
+  },
+  "retained_model_checks": {
+    "first-person": 45,
+    "bestiary": 102
+  },
+  "canonical_outputs": {
+    "index.html": "f3aa677ba40dcd4325bc09c8cd54208775b5e7632e070291606aa009bcc5b0a5",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "f3aa677ba40dcd4325bc09c8cd54208775b5e7632e070291606aa009bcc5b0a5",
+    "src/game.js": "feda59130c6a7e74ca0e0d80e5dcee1aab90fe1aa162b2edc2f48bf8e0848129",
+    "sw.js": "00008967404c07ccc64a36bd688f4c5d6d674b9649d10c703699b5442211678e"
+  },
+  "inventory_counts": {
+    "regional_weapon_ids": 55,
+    "bible_weapon_concepts": 49,
+    "creature_records": 98,
+    "regional_rigs": 9
+  },
+  "browser_suites": {
+    "arsenal": {
+      "passed": 48,
+      "errors": [],
+      "report": "verification/arsenal/ci/arsenal/ARSENAL_BROWSER.json",
+      "scope": "Compiled arsenal: production UI/equip/fire/reload/render; MemoryStorage on about:blank.\nExisting diagnostics choose authored Aubagne, grant inspection weapons and step time.\nNo IGN traversal, acquisition certification, cold restart or human playtest claim.\n",
+      "browser": "156.0.8078.0"
+    },
+    "consigne_vie": {
+      "passed": 54,
+      "errors": [],
+      "report": "verification/arsenal/ci/consigne_vie/CONSIGNE_VIE_BROWSER.json",
+      "scope": "Native optional owner routines: dialogs/E, real collision, saved route distances,\nblocking, rollback, rendering and local doors. Scripted positions, synthetic exterior,\nMemoryStorage and software rendering; not a human playthrough or IGN certification.\n",
+      "browser": "156.0.8078.0"
+    },
+    "gestes": {
+      "passed": 36,
+      "errors": [],
+      "report": "verification/arsenal/ci/gestes/GESTES_BROWSER.json",
+      "scope": "Native consignment handoff choices and recognition gestures on the production bundle.\nScripted positions, synthetic Vieux-Port and MemoryStorage. Rendered native people,\nactual callbacks/save rollback and software WebGL; not a human or IGN traversal test.\n",
+      "browser": "156.0.8078.0"
+    },
+    "retrouvailles": {
+      "passed": 46,
+      "errors": [],
+      "report": "verification/arsenal/ci/retrouvailles/RETROUVAILLES_BROWSER.json",
+      "scope": "Native consignment owner dialogues and optional handoffs, actual geometry and saves.\nSetup uses a synthetic Vieux-Port relay and scripted positions, with MemoryStorage.\nNot a human playthrough, IGN route or cold process restart (separate suite).\n",
+      "browser": "156.0.8078.0"
+    },
+    "pigeons": {
+      "passed": 69,
+      "errors": [],
+      "report": "verification/arsenal/ci/pigeons/PIGEONS_BROWSER.json",
+      "scope": "Actual postal courtyard, progressive flights, manual delivery, native dialogs,\nE inputs, geometry, save/load and rewards. Scripted player positions, synthetic\nSaint-Charles relay and isolated MemoryStorage; software renderer, not human QA.\n",
+      "browser": "156.0.8078.0"
+    },
+    "gabians": {
+      "passed": 66,
+      "errors": [],
+      "report": "verification/arsenal/ci/gabians/GABIANS_BROWSER.json",
+      "scope": "Actual consignment runtime, E/dialogues, native gun/collisions and save/load.\nScripted positions/aim and synthetic geographic relay; isolated MemoryStorage.\nThis is not a real IGN traversal, human playtest or disk-backed cold restart.\n",
+      "browser": "156.0.8078.0"
+    },
+    "rats": {
+      "passed": 81,
+      "errors": [],
+      "report": "verification/arsenal/ci/rats/RATS_BROWSER.json",
+      "scope": "Actual authored depot, native E/dialogues/shooting/hitboxes/collision, rat runtime and game save/load. Scripted positions and aim, synthetic Saint-Charles relay, isolated MemoryStorage and software renderer. No real IGN traversal or human campaign.",
+      "browser": "156.0.8078.0"
+    },
+    "cigales": {
+      "passed": 52,
+      "errors": [],
+      "report": "verification/arsenal/ci/cigales/CIGALES_BROWSER.json",
+      "scope": "Real authored scene, existing cicada rig, native E/dialogue/shooting/hitboxes/collisions, custom encounter FSM and original save routines. Scripted guide/aim positions; synthetic Font de Mai relay; isolated MemoryStorage, software renderer. No real IGN traversal or human campaign.",
+      "browser": "156.0.8078.0"
+    },
+    "secours": {
+      "passed": 67,
+      "errors": [],
+      "report": "verification/arsenal/ci/secours/SECOURS_BROWSER.json",
+      "scope": "Instrumented rescue: real authored annexe, E/UI, native hazard and collision\nfunctions and continuous escort update. Synthetic ports, scripted leader positions,\nisolated MemoryStorage and software renderer; not a human IGN campaign.",
+      "browser": "156.0.8078.0"
+    },
+    "parts": {
+      "passed": 115,
+      "errors": [],
+      "report": "verification/arsenal/ci/parts/PARTS_BROWSER.json",
+      "scope": "La part des absents: real authored scene/UI/E/collision, isolated MemoryStorage.\nPrior audience prepared through its real reducer; synthetic ports are shared with\nlys_browser_smoke. This is not human playtesting or an IGN maritime traversal.\n",
+      "browser": "156.0.8078.0"
+    },
+    "lys": {
+      "passed": 54,
+      "errors": [],
+      "report": "verification/arsenal/ci/lys/LYS_BROWSER.json",
+      "scope": "Actual authored Cour du Lys, models, UI, E, native movement/collision, four actors, saves and visible alternatives. Two synthetic port scenes with real catalogue identities and native retained-world entry/exit. Scripted positions, isolated MemoryStorage, software renderer; no IGN sea traversal or human full campaign.",
+      "browser": "156.0.8078.0"
+    },
+    "compagnons": {
+      "passed": 64,
+      "errors": [],
+      "report": "verification/arsenal/ci/compagnons/COMPAGNONS_BROWSER.json",
+      "scope": "Real authored Radieuse, native UI/E/dialogues, models, finite inventory, save/load and collision. Earlier quests prepared through original reducers; scripted positions; external relay fixtures use existing catalogue identities and flat synthetic ground, not IGN traversal. Isolated MemoryStorage, software renderer, not a full human campaign.",
+      "browser": "156.0.8078.0"
+    },
+    "voisins": {
+      "passed": 68,
+      "errors": [],
+      "report": "verification/arsenal/ci/voisins/VOISINS_BROWSER.json",
+      "scope": "Actual authored Radieuse, existing NPCs staged/restored, E interaction, real buttons, inventory and isolated MemoryStorage. Prerequisites via original reducers; scripted positioning plus explicit native collision route. Native portal round-trip uses a synthetic retained exterior. Software renderer; not a full human campaign or IGN exterior traversal.",
+      "browser": "156.0.8078.0"
+    },
+    "notaires": {
+      "passed": 48,
+      "errors": [],
+      "report": "verification/arsenal/ci/notaires/NOTAIRES_BROWSER.json",
+      "scope": "Actual Radieuse interior, models, dialogue buttons, E inputs, save/load, visuals and collisions. Prerequisites through real quest reducers, scripted positions, isolated MemoryStorage. Software renderer; no human full-campaign or real IGN exterior validation.",
+      "browser": "156.0.8078.0"
+    },
+    "mutuelle": {
+      "passed": 38,
+      "errors": [],
+      "report": "verification/arsenal/ci/mutuelle/MUTUELLE_BROWSER.json",
+      "scope": "Real authored Radieuse interior with completed prerequisite injected through its model; actual E interaction, NPC choices, source preservation, save writes and reload. Scripted positioning and isolated MemoryStorage; software renderer, no real IGN traversal.",
+      "browser": "156.0.8078.0"
+    },
+    "radieuse": {
+      "passed": 33,
+      "errors": [],
+      "report": "verification/arsenal/ci/radieuse/RADIEUSE_BROWSER.json",
+      "scope": "Real authored interior, models, UI, native collision function, saves and software renderer. Injected setup and isolated MemoryStorage; synthetic exterior for portal round-trip, no real IGN exterior traversal.",
+      "browser": "156.0.8078.0"
+    },
+    "poste": {
+      "passed": 17,
+      "errors": [],
+      "report": "verification/arsenal/ci/poste/POSTE_BROWSER.json",
+      "scope": "Offline about:blank, isolated MemoryStorage, injected ratification; flat synthetic relay and ground stub. Real game model/UI/save/renderer. Not a real-map or hardware performance certification.",
+      "browser": "156.0.8078.0"
+    },
+    "pharmacie": {
+      "passed": 19,
+      "errors": [],
+      "report": "verification/arsenal/ci/pharmacie/PHARMACIE_BROWSER.json",
+      "scope": "Instrumented production bundle; isolated memory storage; flat synthetic relays; terrain stub; real UI, E interaction, NPC choices, inventory, save migration and renderer. No IGN-world traversal or human playtest.",
+      "browser": "156.0.8078.0"
+    }
+  },
+  "browser_checks": 975,
+  "cold_suites": {
+    "cour-cold": {
+      "passed": 40,
+      "errors": [],
+      "report": "verification/arsenal/ci/cour-cold/CONSIGNE_VIE_COLD_SAVE.json",
+      "scope": "Three real disk-backed Chromium restarts: owner walking, explicitly waiting,\nand all three arrived with memories heard. Seed-only scripted setup; resumed HTML\nis byte-identical production without test bridge or MemoryStorage. No IGN return,\npower-cut, human campaign or cross-browser certification.\n",
+      "browser": null
+    },
+    "birds-cold": {
+      "passed": 65,
+      "errors": [],
+      "report": "verification/arsenal/ci/birds-cold/BIRDS_COLD_SAVE.json",
+      "scope": "Six disk-backed Chromium restarts for postal pigeons and consignment gabians.\nSeed-only fixtures prepare native saves. Resume loads byte-identical production HTML\nat the same file URL, clicks Continue, and has no seed bridge or fake storage.\nScripted positions and authored interiors only; no power-cut or real IGN certification.\n",
+      "browser": null
+    },
+    "rats-cold": {
+      "passed": 26,
+      "errors": [],
+      "report": "verification/arsenal/ci/rats-cold/RATS_COLD_SAVE.json",
+      "scope": "Native disk-backed Chromium LocalStorage at an offline file URL and full process restart followed by native Continue on unchanged production HTML. Fixture-only seed constructs the authored depot and prepares its checkpoint through runtime helpers; it does not verify port travel. Observer pauses immediately after Continue for exact comparison. No real IGN exterior return, power-loss or human campaign certification.",
+      "browser": null
+    }
+  },
+  "cold_requested": true,
+  "territory_commands": 4,
+  "stages": [
+    {
+      "name": "build",
+      "command": [
+        "python",
+        "tools/build_single.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.16
+    },
+    {
+      "name": "build-check",
+      "command": [
+        "python",
+        "tools/build_single.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "seconds": 0.16
+    },
+    {
+      "name": "syntax",
+      "command": [
+        "node",
+        "--check",
+        "src/game.js"
+      ],
+      "returncode": 0,
+      "seconds": 0.11
+    },
+    {
+      "name": "inventory",
+      "command": [
+        "python",
+        "tools/audit_regional_content.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "seconds": 0.26
+    },
+    {
+      "name": "registry",
+      "command": [
+        "python",
+        "tools/verify_lore_registry.py",
+        "--bundle",
+        "src/game.js",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/REGISTRY.json"
+      ],
+      "returncode": 0,
+      "seconds": 0.97
+    },
+    {
+      "name": "lore",
+      "command": [
+        "node",
+        "--test",
+        "tests/expansion/lore_a03_madame.cjs",
+        "tests/expansion/lore_cigales.cjs",
+        "tests/expansion/lore_cite_radieuse.cjs",
+        "tests/expansion/lore_compagnons_devoir.cjs",
+        "tests/expansion/lore_conseil_regional.cjs",
+        "tests/expansion/lore_consigne_gestes.cjs",
+        "tests/expansion/lore_consigne_vie.cjs",
+        "tests/expansion/lore_continuity.cjs",
+        "tests/expansion/lore_cour_lys.cjs",
+        "tests/expansion/lore_fete_voisins.cjs",
+        "tests/expansion/lore_gabians_consigne.cjs",
+        "tests/expansion/lore_marins_secours.cjs",
+        "tests/expansion/lore_mutuelle_phoceenne.cjs",
+        "tests/expansion/lore_notaires_apres.cjs",
+        "tests/expansion/lore_parts_absents.cjs",
+        "tests/expansion/lore_pharmacie_garde.cjs",
+        "tests/expansion/lore_pigeons_poste.cjs",
+        "tests/expansion/lore_poste_restante.cjs",
+        "tests/expansion/lore_rats_cables.cjs",
+        "tests/expansion/lore_regional_arsenal.cjs",
+        "tests/expansion/lore_services.cjs"
+      ],
+      "returncode": 0,
+      "seconds": 1.57
+    },
+    {
+      "name": "first-person",
+      "command": [
+        "node",
+        "tests/expansion/first_person.cjs"
+      ],
+      "returncode": 0,
+      "seconds": 0.57
+    },
+    {
+      "name": "bestiary",
+      "command": [
+        "node",
+        "tests/expansion/regional_bestiary.cjs"
+      ],
+      "returncode": 0,
+      "seconds": 2.02
+    },
+    {
+      "name": "lore_registry",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/expansion",
+        "-p",
+        "test_lore_registry.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "seconds": 0.16
+    },
+    {
+      "name": "regional_inventory",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/expansion",
+        "-p",
+        "test_regional_inventory.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "seconds": 0.92
+    },
+    {
+      "name": "city_streaming.cjs",
+      "command": [
+        "node",
+        "tests/expansion/city_streaming.cjs"
+      ],
+      "returncode": 0,
+      "seconds": 0.11
+    },
+    {
+      "name": "city_wait_cancel.test.cjs",
+      "command": [
+        "node",
+        "tests/expansion/city_wait_cancel.test.cjs"
+      ],
+      "returncode": 0,
+      "seconds": 0.03
+    },
+    {
+      "name": "city_partition_seams.test.cjs",
+      "command": [
+        "node",
+        "tests/expansion/city_partition_seams.test.cjs"
+      ],
+      "returncode": 0,
+      "seconds": 0.06
+    },
+    {
+      "name": "city_geometry_identity.test.cjs",
+      "command": [
+        "node",
+        "tests/expansion/city_geometry_identity.test.cjs"
+      ],
+      "returncode": 0,
+      "seconds": 0.03
+    },
+    {
+      "name": "arsenal",
+      "command": [
+        "python",
+        "tests/expansion/arsenal_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/arsenal"
+      ],
+      "returncode": 0,
+      "seconds": 92.72
+    },
+    {
+      "name": "consigne_vie",
+      "command": [
+        "python",
+        "tests/expansion/consigne_vie_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/consigne_vie"
+      ],
+      "returncode": 0,
+      "seconds": 57.41
+    },
+    {
+      "name": "gestes",
+      "command": [
+        "python",
+        "tests/expansion/gestes_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/gestes"
+      ],
+      "returncode": 0,
+      "seconds": 26.02
+    },
+    {
+      "name": "retrouvailles",
+      "command": [
+        "python",
+        "tests/expansion/retrouvailles_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/retrouvailles"
+      ],
+      "returncode": 0,
+      "seconds": 30.36
+    },
+    {
+      "name": "pigeons",
+      "command": [
+        "python",
+        "tests/expansion/pigeons_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/pigeons"
+      ],
+      "returncode": 0,
+      "seconds": 31.59
+    },
+    {
+      "name": "gabians",
+      "command": [
+        "python",
+        "tests/expansion/gabians_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/gabians"
+      ],
+      "returncode": 0,
+      "seconds": 31.75
+    },
+    {
+      "name": "rats",
+      "command": [
+        "python",
+        "tests/expansion/rats_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/rats"
+      ],
+      "returncode": 0,
+      "seconds": 39.32
+    },
+    {
+      "name": "cigales",
+      "command": [
+        "python",
+        "tests/expansion/cigales_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/cigales"
+      ],
+      "returncode": 0,
+      "seconds": 28.93
+    },
+    {
+      "name": "secours",
+      "command": [
+        "python",
+        "tests/expansion/secours_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/secours"
+      ],
+      "returncode": 0,
+      "seconds": 31.91
+    },
+    {
+      "name": "parts",
+      "command": [
+        "python",
+        "tests/expansion/parts_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/parts"
+      ],
+      "returncode": 0,
+      "seconds": 45.03
+    },
+    {
+      "name": "lys",
+      "command": [
+        "python",
+        "tests/expansion/lys_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/lys"
+      ],
+      "returncode": 0,
+      "seconds": 34.8
+    },
+    {
+      "name": "compagnons",
+      "command": [
+        "python",
+        "tests/expansion/compagnons_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/compagnons"
+      ],
+      "returncode": 0,
+      "seconds": 38.52
+    },
+    {
+      "name": "voisins",
+      "command": [
+        "python",
+        "tests/expansion/voisins_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/voisins"
+      ],
+      "returncode": 0,
+      "seconds": 43.17
+    },
+    {
+      "name": "notaires",
+      "command": [
+        "python",
+        "tests/expansion/notaires_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/notaires"
+      ],
+      "returncode": 0,
+      "seconds": 34.63
+    },
+    {
+      "name": "mutuelle",
+      "command": [
+        "python",
+        "tests/expansion/mutuelle_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/mutuelle"
+      ],
+      "returncode": 0,
+      "seconds": 31.65
+    },
+    {
+      "name": "radieuse",
+      "command": [
+        "python",
+        "tests/expansion/radieuse_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/radieuse"
+      ],
+      "returncode": 0,
+      "seconds": 30.41
+    },
+    {
+      "name": "poste",
+      "command": [
+        "python",
+        "tests/expansion/poste_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/poste"
+      ],
+      "returncode": 0,
+      "seconds": 21.72
+    },
+    {
+      "name": "pharmacie",
+      "command": [
+        "python",
+        "tests/expansion/pharmacie_browser_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/pharmacie"
+      ],
+      "returncode": 0,
+      "seconds": 18.24
+    },
+    {
+      "name": "cour-cold",
+      "command": [
+        "python",
+        "tests/expansion/consigne_vie_cold_save_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/cour-cold"
+      ],
+      "returncode": 0,
+      "seconds": 29.95
+    },
+    {
+      "name": "birds-cold",
+      "command": [
+        "python",
+        "tests/expansion/birds_cold_save_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/birds-cold"
+      ],
+      "returncode": 0,
+      "seconds": 49.18
+    },
+    {
+      "name": "rats-cold",
+      "command": [
+        "python",
+        "tests/expansion/rats_cold_save_smoke.py",
+        "--html",
+        "index.html",
+        "--output",
+        "/home/runner/work/fallout-Marseille/fallout-Marseille/verification/arsenal/ci/rats-cold"
+      ],
+      "returncode": 0,
+      "seconds": 16.0
+    }
+  ],
+  "seconds": 443.6,
+  "limits": [
+    "55 existing regional IDs, not 55 new or unique models; three additional shared presentation profiles.",
+    "49 weapon concepts and 98 creature/automaton designations are documentary records, not completed content; exact-name matching does not infer aliases.",
+    "Numeric weapon data, ammunition ownership and rewards unchanged; no new save schema.",
+    "Browser suites use scripted origins/positions and isolated MemoryStorage with software rendering; no full human campaign or exhaustive IGN traversal.",
+    "When requested, cold suites cover existing courtyard/birds/rats with orderly Chromium restart, not power loss or every browser. No new arsenal-specific disk restart scenario.",
+    "COCHONNET PR17 not incorporated."
+  ],
+  "publication_note": "Validated working tree. Source publication, PR checks, merge and deployment remain separate facts."
+}
