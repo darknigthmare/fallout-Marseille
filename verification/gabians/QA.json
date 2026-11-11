@@ -1,0 +1,128 @@
+{
+  "project": "Fallout: Mistral",
+  "feature": "Les objets trouvés — La consigne des gabians",
+  "date": "2026-11-10",
+  "baseline_commit": "8924be65a69f7335364b09934bc908bf17d0973e",
+  "publication": {
+    "github": "not published; available connector read-only",
+    "drive": "not uploaded"
+  },
+  "html_sha256": "7b714e126bcb2e420ecebe16492dd22ca4bbc8871d21e124fa3f505b92561d4c",
+  "baseline_html_sha256": "051fd1982157ff37259bb5eeab1dfd949e96163a4196feee615b3cda3d899bc5",
+  "build_method": "Hash-guarded insertion of the two ordered modules into the validated rats CI bundle. Full repository build_single.py rebuild not performed locally.",
+  "unit_tests": {
+    "passed": 578,
+    "failed": 0,
+    "new_gabian_tests": 42,
+    "command": "node --test tests/expansion/lore_*.cjs",
+    "log": "verification/gabians/all-lore.log"
+  },
+  "browser": {
+    "suites": 13,
+    "checks": 722,
+    "new_gabian_checks": 66,
+    "previous_suites_checks": 656,
+    "javascript_errors": 0,
+    "reports": [
+      {
+        "suite": "gabians",
+        "checks": 66,
+        "errors": [],
+        "report": "verification/gabians/browser/GABIANS_BROWSER.json"
+      },
+      {
+        "suite": "rats",
+        "checks": 81,
+        "errors": [],
+        "report": "verification/gabians/regression/rats/RATS_BROWSER.json"
+      },
+      {
+        "suite": "cigales",
+        "checks": 52,
+        "errors": [],
+        "report": "verification/gabians/regression/cigales/CIGALES_BROWSER.json"
+      },
+      {
+        "suite": "secours",
+        "checks": 67,
+        "errors": [],
+        "report": "verification/gabians/regression/secours/SECOURS_BROWSER.json"
+      },
+      {
+        "suite": "parts",
+        "checks": 115,
+        "errors": [],
+        "report": "verification/gabians/regression/parts/PARTS_BROWSER.json"
+      },
+      {
+        "suite": "lys",
+        "checks": 54,
+        "errors": [],
+        "report": "verification/gabians/regression/lys/LYS_BROWSER.json"
+      },
+      {
+        "suite": "compagnons",
+        "checks": 64,
+        "errors": [],
+        "report": "verification/gabians/regression/compagnons/COMPAGNONS_BROWSER.json"
+      },
+      {
+        "suite": "voisins",
+        "checks": 68,
+        "errors": [],
+        "report": "verification/gabians/regression/voisins/VOISINS_BROWSER.json"
+      },
+      {
+        "suite": "notaires",
+        "checks": 48,
+        "errors": [],
+        "report": "verification/gabians/regression/notaires/NOTAIRES_BROWSER.json"
+      },
+      {
+        "suite": "mutuelle",
+        "checks": 38,
+        "errors": [],
+        "report": "verification/gabians/regression/mutuelle/MUTUELLE_BROWSER.json"
+      },
+      {
+        "suite": "radieuse",
+        "checks": 33,
+        "errors": [],
+        "report": "verification/gabians/regression/radieuse/RADIEUSE_BROWSER.json"
+      },
+      {
+        "suite": "poste",
+        "checks": 17,
+        "errors": [],
+        "report": "verification/gabians/regression/poste/POSTE_BROWSER.json"
+      },
+      {
+        "suite": "pharmacie",
+        "checks": 19,
+        "errors": [],
+        "report": "verification/gabians/regression/pharmacie/PHARMACIE_BROWSER.json"
+      }
+    ]
+  },
+  "integrity": {
+    "production_no_test_bridge": true,
+    "baseline_restored_exactly_after_removing_new_modules": true,
+    "two_html_outputs_identical": true,
+    "worker_cache_derived_from_new_html": true,
+    "source_catalog_unchanged": true,
+    "source_lore_layer_unchanged": true
+  },
+  "limitations": [
+    "Instrumented browser interactions, scripted positions/aim, isolated MemoryStorage, synthetic Vieux-Port representative and software rendering.",
+    "New gabian save/load checked within browser; full process restart and real disk-backed storage not certified for this feature.",
+    "No complete real IGN route or geography regressions executed for this local delivery; no source geography changed.",
+    "No long human campaign, hardware frame-rate certification, new recorded voices or new bird species.",
+    "Three objects are finite authored mission objects; no theft from ordinary inventory or regional dynamic nest system.",
+    "The CI workflow is prepared for 13 suites but has not run on GitHub with this patch."
+  ],
+  "execution_notes": [
+    "Initial exit fixture stood outside the court bound; exit was moved inward and the final full smoke passed.",
+    "One grouped regression command was interrupted by the execution environment during voisins (EPIPE); its incomplete output was not counted. The isolated rerun passed.",
+    "Repeated successful runs are not added as additional unique scenarios."
+  ]
+}

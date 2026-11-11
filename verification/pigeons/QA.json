@@ -1,0 +1,21 @@
+{
+  "baseline": "8924be65a69f7335364b09934bc908bf17d0973e",
+  "source_publication_commit": "09312a0d0264bf4cf22444747ca2b0ab678287f5",
+  "canonical_ci": {"run": 42885942243, "job": 130074179082, "input_commit": "bbf087a2eed4c9887220637fbc3c04eab8b32716", "status": "success", "lore_tests_passed": 610, "lore_tests_failed": 0, "territory_regressions_passed": 4, "canonical_build_and_check": true, "program_artifact": 13795374985, "evidence_artifact": 13796012683},
+  "canonical_outputs": {
+    "index.html": "134793d6fb7eb48d199efac27b5a7f386af45c5a93a6f2acc9dbd32404a79382",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "134793d6fb7eb48d199efac27b5a7f386af45c5a93a6f2acc9dbd32404a79382",
+    "src/game.js": "740c00292c91da92a3577688d94a157c3ba2030e709081d84631e6907a6bd4c6",
+    "sw.js": "7d797c0072398aff3cf25465fc20bdfa80e52910eb1f980386eb5b9dcd728057"
+  },
+  "browser_suites_on_canonical_ci": {"pigeons":69,"gabians":66,"rats":81,"cigales":52,"secours":67,"parts":115,"lys":54,"compagnons":64,"voisins":68,"notaires":48,"mutuelle":38,"radieuse":33,"poste":17,"pharmacie":19},
+  "browser_checks":791,
+  "browser_exceptions":[],
+  "historical_rat_cold_restart_checks":26,
+  "local_pigeon_rerun_on_canonical_html":{"passed":69,"errors":[]},
+  "initial_local_build":{"html_sha256":"29006ae8fa05a43798b7b6c7ac4db9ec5292f90d1bb01c746d738e34009c2851","byte_identical_to_canonical":false,"difference":"Extra blank separator lines in the local incremental assembly. The downloaded canonical outputs replace those files in the delivery.","lore_passed":610,"browser_checks":791,"browser_errors":[]},
+  "counting_note":"QA_LOCAL.json records the initial local program. Repeated local and CI scenarios are not additional distinct tests. The final package uses the canonical outputs listed here.",
+  "reproduce":["node --test tests/expansion/lore_*.cjs","python3 tools/build_single.py --check","python tests/expansion/pigeons_browser_smoke.py --html index.html","python tests/expansion/gabians_browser_smoke.py --html index.html","python tests/expansion/rats_cold_save_smoke.py --html index.html"],
+  "limits":["No bird-specific full process-restart validation yet; the 26 cold checks concern the historical rats on this program.","Fourteen regular suites use actual scenes and UI with scripted positions, synthetic relay origins, MemoryStorage and software rendering.","No full human campaign, real IGN traversal, hardware performance certification or regional autonomous postal system.","Parallel PR 17 COCHONNET physique is not incorporated or modified. Do not overwrite an installation from that branch with this binary package."],
+  "publication_note":"Completed canonical import run verified. Cleanup and permanent workflow changes require their own PR checks before merge."
+}

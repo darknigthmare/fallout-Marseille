@@ -1,0 +1,22 @@
+{
+  "baseline": "9849cb57512b93379e27070f8145c23180005cd4",
+  "source_publication_commit": "6dbefa271e9eb01ad6ab6ace461ea2280fc7df6f",
+  "canonical_ci": {"run": 42904811029, "job": 130140120573, "input_commit": "05a7eed5b324408a56f2159cd7e73677e1831761", "status": "success", "lore_tests_passed": 625, "lore_tests_failed": 0, "new_logic_tests": 15, "territory_regressions_passed": 4, "canonical_build_and_check": true, "program_artifact": 13805840204, "evidence_artifact": 13805805324},
+  "canonical_outputs": {
+    "index.html": "f34ed604abc385997c5bcf0b05627d48ecc5e4f5aaf1addd45eeb206fb44a50e",
+    "JOUER_FALLOUT_MISTRAL_v0.50.html": "f34ed604abc385997c5bcf0b05627d48ecc5e4f5aaf1addd45eeb206fb44a50e",
+    "src/game.js": "8bd97b8506787f485c38d9c03a407297fb131be1b0630914088157cf2d1cad45",
+    "sw.js": "a16e0d1b20a6199ad3428797f74162d6f28a35cab867cd33c927c2edc24a35a9"
+  },
+  "browser_suites_on_canonical_ci": {"retrouvailles":46,"pigeons":69,"gabians":66,"rats":81,"cigales":52,"secours":67,"parts":115,"lys":54,"compagnons":64,"voisins":68,"notaires":48,"mutuelle":38,"radieuse":33,"poste":17,"pharmacie":19},
+  "browser_checks":837,
+  "browser_exceptions":[],
+  "bird_cold_restart":{"passed":65,"errors":[],"scenarios":["pigeons-flight","pigeons-public","pigeons-private","gabians-threat","gabians-basket","gabians-owners"],"method":"Native save seeded in isolated persistent Chromium profile; browser process closed, byte-identical uninstrumented production HTML reopened with the same profile; native Continue reconstructs the scene. No MemoryStorage on resume."},
+  "historical_rat_cold_restart_checks":26,
+  "local_review":{"lore_passed":625,"browser_checks":350,"errors":[],"canonical_outputs_byte_identical":true,"changed_game_sources_byte_identical_to_ci_artifact":true,"local_cold":"Blocked by administrator policy; not bypassed. Bird cold results above come from CI, not this local environment."},
+  "features":{"owners":["Éloi","Mina","Rachid"],"optional_personal_handoffs":true,"handoff_provenance":["direct","consigne"],"gabians_save_schema":2,"legacy_completion_and_reward_preserved":true,"existing_reward_caps_once":45},
+  "counting_note":"Regular browser, six bird cold restarts and historical rat cold checks are distinct suites. Local repetitions do not add new tests. QA_LOCAL.json and prior pigeon/gabian reports are historical, not results for this program.",
+  "reproduce":["node --test tests/expansion/lore_*.cjs","python3 tools/build_single.py --check","python tests/expansion/retrouvailles_browser_smoke.py --html index.html","python tests/expansion/birds_cold_save_smoke.py --html index.html","python tests/expansion/rats_cold_save_smoke.py --html index.html"],
+  "limits":["Regular suites use scripted positions, synthetic origins, MemoryStorage and software rendering; no full human campaign or full IGN traversal.","Cold tests cover six prepared checkpoints and orderly Chromium process closure, not power loss, every browser or every hardware configuration.","No new handover animation, voice acting, ferry service or autonomous regional postal simulation.","Parallel PR 17 COCHONNET is not incorporated. Do not overwrite its binary installation with this update."],
+  "publication_note":"Completed canonical import run and downloaded artifacts verified. The cleanup/permanent-workflow commit needs its own PR checks. This report does not assert a merge into main."
+}

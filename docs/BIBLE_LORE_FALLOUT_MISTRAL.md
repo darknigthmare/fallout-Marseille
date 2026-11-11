@@ -607,7 +607,7 @@ Le chant peut réduire la précision, perturber les communications, vider les po
 
 ## 30. Faune urbaine
 
-### Pigeons
+### Pigeons et gabians
 
 - Biset de plomb ;
 - Pigeon-paratonnerre ;
@@ -615,6 +615,8 @@ Le chant peut réduire la précision, perturber les communications, vider les po
 - Général Biset, boss de Saint-Charles.
 
 Ils volent objets brillants, munitions, clés et composants. Les nids servent de caches dynamiques.
+
+**Couverture jouable — Les objets trouvés :** deux gabians du rig existant gardent trois objets personnels dans une consigne fictionnelle. Le joueur détourne les oiseaux ou les affronte, descend les paniers et rapporte les objets à Nora ou à leurs propriétaires présents au comptoir. Ces caches sont finies et persistantes ; le vol dynamique dans l’inventaire et les autres espèces de cette liste restent des objectifs de la bible, non des mécaniques livrées par ce chapitre. Voir [la consigne](LORE_GABIANS_OBJETS_TROUVES.md).
 
 ### Rats
 
@@ -1274,3 +1276,24 @@ La poste continue parce qu’une lettre n’a pas été livrée.
 CONCORDE continue parce que la République est encore indiquée comme :
 
 > **TEMPORAIREMENT INDISPONIBLE — TRAITEMENT DE LA DEMANDE EN COURS.**
+
+## 64. Incarnation locale — Les pigeons de Poste Restante
+
+La poste conserve plusieurs moyens de transport. Un pigeon voyageur ne remplace pas un facteur : ramené au guichet par un porteur, il peut retourner au colombier qui lui est familier, mais ne lit ni le nom ni l’adresse sur son tube. Dans **La bonne adresse**, Azur/A‑17 et Brique/B‑04 desservent deux colombiers de voisinage représentés dans une cour fictionnelle. Une route à pied gratuite reste possible.
+
+Mirette Valon tient le guichet ; Aïcha Rouanet et Marin Delmas reçoivent chacun un pli et donnent une réponse. Un départ n’est jamais présenté comme un reçu. Les pigeons sont ici des animaux habitués au réseau, non des monstres destinés à fournir du butin. Cette distinction ne retire pas les autres variantes de pigeons du canon documentaire : leur agressivité et leur comportement devront être implémentés séparément.
+
+Le chapitre spécialisé [LORE_PIGEONS_POSTE_RESTANTE.md](LORE_PIGEONS_POSTE_RESTANTE.md) décrit les personnages, les deux routes, la confidentialité et les limites de l’incarnation. Le statut d’implémentation ne transforme pas ce fan-lore en canon officiel.
+
+## 65. De main en main — les propriétaires de la consigne
+
+Éloi, Mina et Rachid ne sont plus seulement les noms de la clé, de la bague et du sifflet. Présents devant le comptoir de Nora Ferrand, ils reconnaissent leurs objets et racontent chacun un souvenir propre. La récupération peut toujours être close par Nora ; l’épilogue personnel est facultatif, sans seconde prime. Une ancienne restitution à la consigne ne devient pas rétroactivement une rencontre avec son propriétaire.
+
+L’annexe [LORE_GABIANS_RESTITUTIONS.md](LORE_GABIANS_RESTITUTIONS.md) précise les remises, les reçus, la migration et les limites. Les bateaux et le signal évoqués dans les dialogues ne sont pas de nouveaux véhicules ou effets sonores implémentés.
+
+
+## 66. Les gestes retrouvés — l'objet conservé
+
+Après une remise personnelle à la consigne, Éloi reconnaît sa clef et la garde à la ceinture ; Mina examine sa bague puis la remet à la main ; Rachid conserve son sifflet sur un cordon. Ces gestes et les objets portés sont visibles dans le moteur, sans modifier les récompenses, le schéma de sauvegarde ou les histoires déjà racontées. Une ancienne remise personnelle se reconstruit comme un objet conservé, sans rejouer le geste.
+
+L'annexe [LORE_CONSIGNE_GESTES.md](LORE_CONSIGNE_GESTES.md) distingue le geste du destinataire d'un transfert complet entre deux mains. Le doublage, les doigts détaillés, les départs des propriétaires et le ferry restent ouverts. Après les trois remises et la clôture de Nora, le repère indique la sortie de la cour.

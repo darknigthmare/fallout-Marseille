@@ -1,0 +1,27 @@
+{
+  "html_sha256": "7b714e126bcb2e420ecebe16492dd22ca4bbc8871d21e124fa3f505b92561d4c",
+  "checks": [
+    "locked before ratification",
+    "seven dossiers visible in Pip-Boy",
+    "mobile viewport no page-wide overflow",
+    "synthetic relay creates one stand",
+    "postal topic added to existing dialogue",
+    "accepted through real dialogue button",
+    "stand does not occlude its own interaction",
+    "actual interaction selector finds the stand",
+    "E reads the evidence",
+    "NPC choice deducts actual cloth",
+    "chosen outcome saved",
+    "finite gift has an actual rendered cache",
+    "E claims exactly two waters",
+    "gift cache disappears after claiming",
+    "actual save migration preserves claim",
+    "repeated claim refused after reload",
+    "no JavaScript exceptions during tested path"
+  ],
+  "passed": 17,
+  "errors": [],
+  "browser": "144.0.7559.96",
+  "renderer": "SoftwareRenderer",
+  "scope": "Offline about:blank, isolated MemoryStorage, injected ratification; flat synthetic relay and ground stub. Real game model/UI/save/renderer. Not a real-map or hardware performance certification."
+}
