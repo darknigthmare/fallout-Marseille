@@ -1,0 +1,62 @@
+{
+  "sourceCommit": "580f432e32369a950bb7761f9441da9f063f521e",
+  "runtimeFilesChecked": 7761,
+  "decodedBytes": 1130533682,
+  "wireBytes": 276960249,
+  "httpChecks": [
+    {
+      "path": "index.html",
+      "contentEncoding": "identity",
+      "decodedBytes": 3600641,
+      "sha256": "943b59d095af142753d87fd4cafd63fef85131d72451af8b30e2b35afbaf2df8"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "contentEncoding": "identity",
+      "decodedBytes": 604,
+      "sha256": "c7780492d931fd9ee7eb3778a1fe422122e73e4da8e2ab8cf24b637ab2d75f56"
+    },
+    {
+      "path": "release-manifest.json",
+      "contentEncoding": "identity",
+      "decodedBytes": 2146372,
+      "sha256": "e7813adbe0964a3798ea710ee0ffc4462b6ea594d52887a1735b4d0746b65f09"
+    },
+    {
+      "path": "data/map_pack/france-vector/14/8436/6002.pbf",
+      "contentEncoding": "gzip",
+      "decodedBytes": 1010523,
+      "sha256": "02b3e8ab3c3a8b97af2919a02c1e236882af5f1aaba736959ec888478cc4da87"
+    },
+    {
+      "path": "data/map_pack/cadastre/16/33749/24007.pbf",
+      "contentEncoding": "gzip",
+      "decodedBytes": 156392,
+      "sha256": "0e707e1382a15a80277344e94dae32ed08627bf9c5fe97ac2557823ad451db0f"
+    },
+    {
+      "path": "data/map_pack/terrain/geo_saintebaume.json",
+      "contentEncoding": "gzip",
+      "decodedBytes": 179641,
+      "sha256": "664c85b4e9f3881b193e16e189b0b9333581dfc34aa43f0954b30641efb9f225"
+    },
+    {
+      "path": "data/map_pack/enrichment/geo_huveaune-edd6959ca0dd2701.json",
+      "contentEncoding": "gzip",
+      "decodedBytes": 8047268,
+      "sha256": "edd6959ca0dd2701401f6974c48396ad2c55fb2767b0037bd8e75c29deb7dd61"
+    },
+    {
+      "path": "data/map_pack/city/m13055-r08-c06-5cdd8c92a4dd879a.json",
+      "contentEncoding": "gzip",
+      "decodedBytes": 6296893,
+      "sha256": "5cdd8c92a4dd879ac153ba1f0181e2c08b6a8efdd43cf2e4861f372c8508cb9a"
+    },
+    {
+      "path": "data/map_pack/precise/native-r05000-c00000-9e33110ea15d8c95.f32",
+      "contentEncoding": "gzip",
+      "decodedBytes": 4008004,
+      "sha256": "9e33110ea15d8c9506ce98ebc0f7dbabbc1c3cb72edacdb64c5f0df670bcc25e"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "verifiedAt": "2026-11-13T08:28:27.918166+00:00",
+  "baseSourceCommit": "580f432e32369a950bb7761f9441da9f063f521e",
+  "sourceHtmlSha256": "43fc553655c5e06c19f592c27dbd67552f2a914ccfaa93e4e39a35eb56e8029b",
+  "deployedHtmlSha256": "943b59d095af142753d87fd4cafd63fef85131d72451af8b30e2b35afbaf2df8",
+  "browser": "Native headless Chromium CDP, software WebGL SwiftShader; no TLS exceptions",
+  "url": "http://127.0.0.1:9402/",
+  "title": "Fallout : Mistral · v0.50 · Les routes retrouvées",
+  "nativeFree": {
+    "entry": "Existing Exploration libre button",
+    "world": "canebiere",
+    "before": [
+      0,
+      1.65,
+      112
+    ],
+    "after": [
+      0.19162500000000002,
+      1.65,
+      111.808375
+    ],
+    "movementObserved": true,
+    "pipBoyMapOpened": true
+  },
+  "screenshots": [
+    {
+      "path": "verification/web-hosting-2026-11-13/01-native-free.png",
+      "sha256": "53e43802030857f0570b7c7bc7bf63b8ad9a743cec033b445915f1a4f3d5446a"
+    },
+    {
+      "path": "verification/web-hosting-2026-11-13/02-pip-map.png",
+      "sha256": "132e9ac6a22dda0a3db06959be567abe6b92d454e6a47af21ee251eece0a71e6"
+    }
+  ],
+  "dataIntegrity": {
+    "report": "verification/web-hosting-2026-11-13/data-check.json",
+    "sha256": "ae0dd9d46778a5ac403d381760031d68d50572f1329a3761cf1187373d972304",
+    "runtimeFiles": 7761,
+    "allRuntimeBytesComparedToPreparedSource": true,
+    "httpFamiliesTested": [
+      "france-vector",
+      "cadastre",
+      "terrain",
+      "enrichment",
+      "city",
+      "precise"
+    ],
+    "auditRoutesTested": 4
+  },
+  "geographicDelivery": {
+    "entry": "Existing __MISTRAL_DEBUG.loadGeoMacro(geo_marseille,canebiere), explicitly invoked for delivery QA; no fixture data or state injection",
+    "completed": false,
+    "timeoutSeconds": 240,
+    "requestSnapshot": "verification/web-hosting-2026-11-13/geographic-requests.json",
+    "requestSnapshotSha256": "d25be928ae01726d816a14a3ba43e0a0fbd80b63d89440b93b504c0afd437b4f",
+    "requestSnapshotCount": 140,
+    "requestSnapshotHttpErrors": 0,
+    "lastObservedMode": "LOADING",
+    "lastObservedGateError": null,
+    "lastObservedCityErrors": []
+  },
+  "automatedRegression": {
+    "command": "python3 -m unittest discover -s tests/expansion -p test_server_diagnostics.py -v",
+    "passed": 8,
+    "failed": 0
+  },
+  "publicDeployment": {
+    "projectId": "prj_GnqUcOcSOaeAOXo5CjA9UIFRQnn6",
+    "plannedOwnedUrl": "https://fallout-marseille-mistral.vercel.app",
+    "acceptedDeploymentId": null,
+    "status": "pending",
+    "reason": "Team Hobby 100 deployments/day quota reported reached before any Fallout deployment submission; project deployment list empty."
+  },
+  "limitations": [
+    "Official free exploration prefills level 26 and completed chapter VI; no earned campaign completion is claimed.",
+    "Canebière–Belsunce screenshot is the authored narrative scene, not surveyed street geometry.",
+    "The native geographic loader fetched real map/terrain data, but the scene did not reach PLAYING within the bounded 240-second SwiftShader trial. Completed geographical traversal, travel and rendering are not certified.",
+    "The complete data check validates every published byte, not full campaign play or 1:1 architecture. Native LiDAR coverage remains 12 central km², not all Marseille.",
+    "Public gzip transport and gameplay remain untested until Vercel accepts a deployment.",
+    "The local export was built from the recorded base plus this hosting adaptation in the working tree. The original and adapted HTML hashes are distinct; no Git-byte identity is claimed for adapted HTML."
+  ]
+}
