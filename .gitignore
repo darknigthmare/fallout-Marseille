@@ -21,3 +21,6 @@ data/map_pack/precise/
 tests/v050-legacy-*/
 # The original ZIP is reconstructed from its byte-exact .zip.gz transport.
 data/map_pack/archives/base_00060_100.zip
+
+# Reproducible static web output, rebuilt and audited from source archives.
+.vercel-static/

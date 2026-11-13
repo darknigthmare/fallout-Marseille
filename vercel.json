@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "true",
+  "buildCommand": "python3 tools/build_web.py",
+  "outputDirectory": ".vercel-static",
+  "rewrites": [
+    { "source": "/__mistral/local-data", "destination": "/__mistral/local-data.json" },
+    { "source": "/__mistral/world-sources", "destination": "/__mistral/world-sources.json" },
+    { "source": "/__mistral/city-sources", "destination": "/__mistral/city-sources.json" },
+    { "source": "/__mistral/precise-terrain", "destination": "/__mistral/precise-terrain.json" }
+  ],
+  "headers": [
+    { "source": "/data/:path*", "headers": [
+      { "key": "Content-Encoding", "value": "gzip" },
+      { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+    ] },
+    { "source": "/__mistral/:path*", "headers": [
+      { "key": "Cache-Control", "value": "no-store" }
+    ] },
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" }
+    ] }
+  ]
+}
