@@ -130,3 +130,9 @@ Sources issues de la livraison locale depuis `a589d8de`, désormais préparées 
 La [section 68 de la bible](docs/BIBLE_LORE_FALLOUT_MISTRAL.md#68-registre-des-incarnations-et-règle-de-publication) rassemble les vingt ensembles narratifs ci-dessus et leurs vingt et une annexes. [REGISTRE_LORE.json](docs/REGISTRE_LORE.json) associe les vingt-sept modules `src/v050/10*.js`, leurs modèles et leurs tests ; `tools/verify_lore_registry.py --bundle src/game.js` contrôle la couverture documentaire après compilation.
 
 Le [rapport de consolidation](docs/AUDIT_BIBLE_2026_11_11.md) distingue les fondations préservées, la PR 18 fusionnée, la cour issue du lot local et les branches parallèles. Le contrôle des liens et symboles ne constitue pas une vérification automatique du canon officiel ou de chaque concept encore documentaire.
+
+## Carnet des ateliers — portée documentaire 1.3
+
+[Armes régionales : histoire et présentation](docs/LORE_ARSENAL_REGIONAL.md) · [Inventaire détaillé des armes et désignations du bestiaire](docs/INVENTAIRE_ARSENAL_BESTIAIRE.md) · [Données et empreintes](docs/INVENTAIRE_ARSENAL_BESTIAIRE.json).
+
+Les 55 IDs existaient déjà. Trois profils supplémentaires et le carnet consultable ne terminent pas toutes les armes, leurs voies d’acquisition ou les créatures seulement conçues. Le registre narratif précédent reste inchangé.

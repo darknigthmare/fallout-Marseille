@@ -1,6 +1,6 @@
 # Lore — point de reprise après consolidation de la bible
 
-> **Lecture actuelle, 11 novembre 2026 :** les remises, gestes et trois promenades facultatives dans la cour sont implémentés dans une livraison locale issue de `a589d8de`. Éloi, Mina et Rachid restent abordables sur leurs trajets et à leurs destinations. Rapport actuel : `verification/consigne-vie/QA.json`. Les reprises à froid sont bloquées avant scénario dans cette session ; les résultats des versions précédentes sont historiques. Aucune nouvelle publication GitHub/Drive ni fusion n'est revendiquée. Les sections anciennes ci-dessous sont un historique, corrigé par les actualisations finales.
+> **Lecture actuelle, 11 novembre 2026 :** la cour, les restitutions et leurs gestes sont fusionnés sur la base `580f432e`. Leur rapport historique reste `verification/bible-sync/QA.json`. La poursuite des ateliers apporte 55 associations visuelles stables, trois profils supplémentaires et un carnet consultable ; son état de publication et ses validations propres figurent dans `verification/arsenal/QA.json`. Les paragraphes historiques ci-dessous ne décrivent pas l’état courant à eux seuls.
 
 ## Historique des audits et des étapes précédentes
 
@@ -141,3 +141,10 @@ Base : `348a3cb2385b91771112f8c772def4cb82bd8c36`, PR 18. Les contrôles finaux 
 La PR 18 (oiseaux, propriétaires, restitutions et gestes) a été fusionnée dans `main` au commit `cfa5edd4439e214331323c3a3f1b9833ff464942`. Le lot local de la cour est repris dans la publication suivante. Le [registre](REGISTRE_LORE.json) et la section 68 de la bible couvrent vingt ensembles narratifs, vingt et une annexes et vingt-sept modules ; ils ne clôturent pas la liste documentaire d’armes, créatures, factions et compagnons.
 
 La compilation complète, les reprises à froid propres à la cour et les contrôles territoriaux doivent figurer dans le rapport courant avant d’être déclarés réussis. Les rapports locaux antérieurs conservent leurs restrictions réelles. COCHONNET nº 17 demeure une branche parallèle non intégrée par ce lot.
+
+
+## Actualisation — carnet des ateliers
+
+Les 55 IDs explicitement régionaux sont inventoriés, sans en faire 55 nouveaux modèles. L’Arc salin, le Juge civique et les autres associations ne reposent plus sur le seul texte de leur nom. Trois profils couvrent les aiguilles pneumatiques, le disque réfractaire et la charge de mortier de 40 mm. Le carnet lit les vraies données et la possession sans récompense ni nouveau registre de sauvegarde.
+
+L’inventaire détaille 49 concepts d’armes et 98 désignations de bestiaire ; il garde les alias incertains et les concepts sans correspondance exacte. Il ne certifie pas toutes les apparitions ou voies d’obtention. Restent ouverts : modèles et alimentations individuels de nombreux outils, armures, acquisition naturelle de chaque arme, équilibrage, Général Biset, Midi-Zéro, agrégat du Rat-couronné, autres variantes et boss. La PR 17 COCHONNET reste indépendante.

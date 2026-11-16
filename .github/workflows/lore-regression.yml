@@ -1,12 +1,12 @@
 name: Lore regression
 on:
   pull_request:
-    paths: ['LORE.md', 'docs/*LORE*', 'docs/AUDIT_BIBLE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/test_lore_registry.py', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/*cold_save_smoke.py', 'tools/verify_lore_registry.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
+    paths: ['LORE.md', 'README.md', 'docs/**', 'src/**', 'index.html', 'JOUER_FALLOUT_MISTRAL_v0.50.html', 'sw.js', 'tests/expansion/**', 'tools/build_single.py', 'tools/verify_lore_registry.py', 'tools/audit_regional_content.py', 'tools/regional_catalog_snapshot.cjs', 'tools/validate_arsenal.py', '.github/workflows/lore-regression.yml']
   push:
     branches: [main, 'feature/**']
-    paths: ['LORE.md', 'docs/*LORE*', 'docs/AUDIT_BIBLE*', 'src/v046/04_lore.js', 'src/v050/10*.js', 'tests/expansion/lore_*.cjs', 'tests/expansion/test_lore_registry.py', 'tests/expansion/compagnons_fixture.cjs', 'tests/expansion/*browser_smoke.py', 'tests/expansion/*cold_save_smoke.py', 'tools/verify_lore_registry.py', 'tools/build_single.py', '.github/workflows/lore-regression.yml']
+    paths: ['LORE.md', 'README.md', 'docs/**', 'src/**', 'index.html', 'JOUER_FALLOUT_MISTRAL_v0.50.html', 'sw.js', 'tests/expansion/**', 'tools/build_single.py', 'tools/verify_lore_registry.py', 'tools/audit_regional_content.py', 'tools/regional_catalog_snapshot.cjs', 'tools/validate_arsenal.py', '.github/workflows/lore-regression.yml']
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: lore-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
@@ -22,59 +22,35 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Syntaxe et tests de lore
+      - name: Refuser une livraison ou un inventaire perime avant reconstruction
         run: |
-          for source in src/v050/10*.js; do node --check "$source"; done
-          node --test tests/expansion/lore_*.cjs
-      - name: Bible reliee aux sources narratives
-        run: |
-          python tools/verify_lore_registry.py --output verification/bible-sync/REGISTRY.json
-          python -m unittest discover -s tests/expansion -p 'test_lore_registry.py' -v
-      - name: Compilation complete et controle deterministe
-        run: |
-          python3 tools/build_single.py
-          node --check src/game.js
-          python3 tools/build_single.py --check
-          python tools/verify_lore_registry.py --bundle src/game.js --output verification/bible-sync/REGISTRY.json
-      - name: Regressions du territoire
-        run: |
-          node tests/expansion/city_streaming.cjs
-          node tests/expansion/city_wait_cancel.test.cjs
-          node tests/expansion/city_partition_seams.test.cjs
-          node tests/expansion/city_geometry_identity.test.cjs
-      - name: Navigateur isole
+          python tools/build_single.py --check
+          python tools/audit_regional_content.py --check
+      - name: Installer le navigateur isole
         run: |
           python -m pip install playwright==1.57.0
           python -m playwright install --with-deps chromium
-      - name: Reprises apres fermeture complete de Chromium
-        run: |
-          python tests/expansion/consigne_vie_cold_save_smoke.py --html index.html --output verification/bible-sync/ci/cour-cold
-          python tests/expansion/birds_cold_save_smoke.py --html index.html --output verification/bible-sync/ci/birds-cold
-          python tests/expansion/rats_cold_save_smoke.py --html index.html --output verification/bible-sync/ci/rats-cold
-      - name: Dix-sept parcours navigateur instrumentes
-        run: |
-          for suite in consigne_vie gestes retrouvailles pigeons gabians rats cigales secours parts lys compagnons voisins notaires mutuelle radieuse poste pharmacie; do
-            python "tests/expansion/${suite}_browser_smoke.py" --html index.html --output "verification/bible-sync/ci/${suite}"
-          done
+      - name: Lore, arsenal, bible, territoire, dix-huit parcours et reprises a froid
+        run: python tools/validate_arsenal.py --cold --jobs 2 --output verification/arsenal/ci
       - name: Rapports et captures y compris en cas d echec
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: mistral-bible-cour-browser-${{ github.sha }}
+          name: mistral-arsenal-browser-${{ github.sha }}
           if-no-files-found: ignore
           retention-days: 14
           path: |
-            verification/bible-sync/ci/
-            verification/bible-sync/REGISTRY.json
-      - name: Programme canonique et sources
+            verification/arsenal/ci/
+            verification/arsenal/QA.json
+      - name: Programme canonique, sources et bible
         uses: actions/upload-artifact@v4
         with:
-          name: fallout-mistral-bible-cour-${{ github.sha }}
+          name: fallout-mistral-arsenal-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
-            JOUER_FALLOUT_MISTRAL_v0.50.html
             index.html
+            JOUER_FALLOUT_MISTRAL_v0.50.html
             sw.js
             src/
             tools/
@@ -83,24 +59,5 @@ jobs:
             LORE.md
             README.md
             AGENTS.md
-            verification/bible-sync/QA.json
-            verification/bible-sync/REGISTRY.json
-            verification/bible-sync/DOCUMENTATION_REVIEW.json
-            verification/bible-sync/LIVRAISON.md
-      - name: Synchroniser les sorties generees de la branche
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
-        run: |
-          remote_head=$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)
-          if [ "$remote_head" != "$GITHUB_SHA" ]; then
-            echo 'Branche avancee : aucune ecriture sur une revision perimee.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add src/game.js JOUER_FALLOUT_MISTRAL_v0.50.html index.html sw.js
-          if git diff --cached --quiet; then
-            echo 'Sorties generees deja synchronisees.'
-          else
-            git commit -m 'build(lore): refresh generated game'
-            git push origin HEAD:${GITHUB_REF_NAME}
-          fi
+            verification/arsenal/QA.json
+            verification/arsenal/LIVRAISON.md
